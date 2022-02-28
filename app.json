@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/business/index",
+    "pages/query/index",
+    "pages/news/index",
+    "pages/my/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "达飞轮船中国",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      }, 
+      {
+        "pagePath": "pages/business/index",
+        "text": "业务"
+      },
+      {
+        "pagePath": "pages/query/index",
+        "text": "查询"
+      },
+      {
+        "pagePath": "pages/news/index",
+        "text": "资讯"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
