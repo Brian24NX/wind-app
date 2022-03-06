@@ -1,2 +1,3 @@
-<!--pages/query/index.wxml-->
-<text>pages/query/index.wxml</text>
+<view class="query-layout">
+  <view>Query 查询</view>
+</view>

@@ -14,6 +14,10 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    // 全局的方法, 获取到App的实例就可以拿到方法
+    function: {
+
+    }
   }
 })

@@ -1,0 +1,4 @@
+<view class="home-layout">
+  <view>Home 首页</view>
+  <van-button type="primary">van-button</van-button>
+</view>

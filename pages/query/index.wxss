@@ -1,1 +1,4 @@
-/* pages/query/index.wxss */
+.query-layout{
+  padding: 30rpx;
+  font-size: 32rpx;
+}
