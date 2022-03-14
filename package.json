@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+     "list":"eslit --fix app.js api.js components pages utils"
+  },
   "dependencies": {
     "@vant/weapp": "^1.10.2"
-  }
+  },
+  "repository": {
+     "type":"git",
+     "url":"your project git utl"
+  }  
 }

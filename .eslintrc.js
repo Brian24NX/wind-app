@@ -12,6 +12,8 @@ module.exports = {
     browser: true,
     node: true,
   },
+  //配置解析器
+  parser:babel-eslint,
   ecmaFeatures: {
     modules: true,
   },
