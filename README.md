@@ -96,3 +96,7 @@
     - Query
     - Quotation
     - My 
+#### 10.中英文切换管理
+-util 下面分为两个部分，lang和公共
+    -lang  语言包分为中文、英文两个版本的语言包，后续可拓展其他语言包
+    languageUtils可做语言切换的js，案例写在homejs里面，可以直接使用
