@@ -45,7 +45,7 @@ const request = ( { url, data, method, contentType }) => {
 			},
 			fail: (res) => {
 				// 返回错误提示信息
-				reject('系统开小差了，请联系在线客服哦~')
+				reject('网络出错')
 			},
 			complete: () => {
 				wx.hideLoading();

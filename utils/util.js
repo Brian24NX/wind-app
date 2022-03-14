@@ -29,8 +29,37 @@ const skipNulls = obj => {
   }
   return param;
 }
-
+/**
+ *  根据数组的对象的属性数值大小进行排序(从小到大)
+ */
+const sortNumber=property=>{
+   return function(a,b){
+     var value1=a[property];
+     var value2=b[property];
+     return value1-value2;
+   }
+}
+/**
+ * url参数解析
+ */
+const getUrlkey=url=>{
+  var parmas={};
+  var urls=url.spilt("?");
+  if(urls[1]){
+    var arr=urls[1].spilt("&");
+    for(var i=0,l=arr.length;i<l;i++){
+      var a=arr[i].spilt("=");
+      params[a[0]]=a[1]
+    }
+    return parmas;
+  }
+  else{
+    return urls[0];
+  }
+}
 module.exports = {
   formatTime,
-  skipNulls
+  skipNulls,
+  sortNumber,
+  getUrlkey
 }
