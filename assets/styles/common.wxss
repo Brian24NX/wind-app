@@ -1,3 +1,9 @@
+/* 通配置样式 */
+page,view,text,swiper,swiper-item,image,navigator{
+  padding: 0;
+  margin:0;
+  box-sizing: border-box;
+}
 /* 超出... */
 .text-ellipsis {
   display: inline-block;
