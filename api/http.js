@@ -16,6 +16,9 @@ const { getStorage } = require('../storage.js')
 
 // 请求及拦截封装
 const request = ( { url, data, method, contentType }) => {
+	wx.showLoading({
+		title:"正在加载中..."
+	});
 	return new Promise((resolve, reject) => {
 		wx.request({
 			url: `${config[config.dev_env].url}${url}`,
@@ -26,6 +29,7 @@ const request = ( { url, data, method, contentType }) => {
 				'token': getStorage('token')
 			},
 			success: (res) => {
+				
 				// 返回成功提示信息
 				if (res.statusCode === 200) {
 					// 未登录拦截
@@ -43,7 +47,9 @@ const request = ( { url, data, method, contentType }) => {
 				// 返回错误提示信息
 				reject('系统开小差了，请联系在线客服哦~')
 			},
-			complete: () => {}
+			complete: () => {
+				wx.hideLoading();
+			}
 		})
 	})
 }
