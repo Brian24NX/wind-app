@@ -3,3 +3,35 @@
   padding: 30rpx;
   font-size: 32rpx;
 }
+.card{
+   border: 4rpx solid #ffffff;
+   border-radius: 10rpx;
+   background-color: #ffffff;
+   box-shadow: 8rpx 2rpx 2rpx #cccccc;
+   margin:16rpx;
+   position: relative;
+}
+.swiper-tab{
+  width:100%;
+  border-bottom: 2rpx solid #777777;
+  text-align: center;
+  line-height: 80rpx;
+}
+.swiper-tab-list{
+  display: inline-block;
+  width:33.33%;
+  color:#777777;
+}
+.on{
+  color:#da7c0c;
+  border-bottom: 5rpx solid #da7c0c;
+}
+.swiper-box{
+   display: block;
+   height:100%;
+   width: 100%;
+   overflow: hidden;
+}
+.swiper-box view{
+  text-align: center;
+}

@@ -5,16 +5,58 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    winWidth:0,
+    winHeight:0,
+    currentTab:0,
+    language:'',
+    langIndex:0,
   },
+  changeLanguage(e) {
+    let index = e.currentTarget.dataset.index
+    // console.log(index)
+      this.setData({	// (1)
+        langIndex: index
+      });
+      wx.T.setLocaleByIndex(index);
+      this.setLanguage();
 
+      wx.setStorage({
+        key: 'langIndex',
+        data: this.data.langIndex
+      })
+  },
+  setLanguage() {
+    this.setData ({
+      language: wx.T.getLanguage()
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log('我是首页')
   },
-
+  /**
+   * 滑动切换tab
+   */
+   bindChange:function(e){
+      this.setData({
+        currentTab:e.detail.current
+      });
+   },
+   /**
+    * 点击tab切换
+    */
+    switchNav:function(e){
+      var that=this;
+      if(this.data.currentTab===e.target.dataset.current){
+        return false;
+      }else{
+         that.setData({
+            currentTab:e.target.dataset.current  
+         })
+      }
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -26,7 +68,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    //下面这两句  tabbar 页面建议写onShow里，子页面建议写在onLoad里面
+    this.setData({ 'langIndex': wx.getStorageSync('langIndex') });
+    this.setData({ 'language': wx.T.getLanguage() })
   },
 
   /**
