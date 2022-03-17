@@ -1,5 +1,5 @@
 module.exports = {
-  app_name: 'CMA CMG CHINA',
+  app_name: 'CMA CMG',
 	version: "CMA_CMG_1.0",
 	dev_env: 'dev', // 是否开发环境
 	pro: {

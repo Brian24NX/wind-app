@@ -1,33 +1,82 @@
 <view class="home-layout">
-  <view>{{language.home}}</view>
-  <view  bindtap='changeLanguage' class='language' data-index='0' wx:if="{{langIndex == 1}}">
-  {{language.language}}
- </view>
- <view bindtap='changeLanguage' class='language' data-index='1' wx:elif="{{langIndex == 0}}">
-  {{language.language}}
-    </view>
-  <view class="card">
-     <!-- <view >
+  <!-- <view>{{language.home}}</view>
+  <view bindtap='changeLanguage' class='language' data-index='0' wx:if="{{langIndex == 1}}">
+    {{language.language}}
+  </view>
+  <view bindtap='changeLanguage' class='language' data-index='1' wx:elif="{{langIndex == 0}}">
+    {{language.language}}
+  </view> -->
+  <!-- <van-button type="primary">van-button</van-button> -->
+</view>
+<!-- Tracking&&Schedule -->
+<view class="card">
+  <!-- <view >
        <image  class="image" mode="aspectFill" src="../../assets/img/tabs/home.png" />
        <text  class="time">2022-3-14 15:56:03</text>
        <view class="title">卡片式布局</view>
-     </view>    -->
-     <view class="swiper-tab">
-      <view class="swiper-tab-list {{currentTab==0?'on':''}}" data-current="0" bindtap="switchNav">TRACKING</view>
-      <view class="swiper-tab-list {{currentTab==1?'on':''}}" data-current="1" bindtap="switchNav">SCHEDULE</view>
-      <view class="swiper-tab-list {{currentTab==2?'on':''}}" data-current="2" bindtap="switchNav">PRICE</view>
-   </view>
-   <view class='popup-cnt'>
-     <block  wx:if="{{currentTab == 0}}" wx:key="couponId">
-           <text>我是TRACKING</text>
-     </block>
-     <block  wx:if="{{currentTab == 1}}" wx:key="couponId">
-        <text>我是SCHEDULE</text>
-     </block>
-     <block  wx:if="{{currentTab == 2}}" wx:key="couponId">
-        <text>我是PRICE</text>
-      </block>
-   </view>
+     </view> -->
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0?'on':''}}" data-current="0" bindtap="switchNav">
+      TRACKING
+    </view>
+    <view class="swiper-tab-list {{currentTab==1?'on':''}}" data-current="1" bindtap="switchNav">
+      SCHEDULE
+    </view>
+    <!-- <view class="swiper-tab-list {{currentTab==2?'on':''}}" data-current="2" bindtap="switchNav">PRICE</view> -->
   </view>
-  <!-- <van-button type="primary">van-button</van-button> -->
+  <view class='popup-cnt'>
+    <view class="{{currentTab==0?'left':''}}"  wx:if="{{currentTab == 0}}" wx:key="couponId">
+          <view class="track-tab-list {{currentTrackTab==0?'trackon1':''}}" data-current="0" bindtap="switchTab">
+            Container No.
+          </view>
+        <view class="track-tab-list {{currentTrackTab==1?'trackon2':''}}" data-current="1" bindtap="switchTab">
+              Bill of Lading No.
+          </view>
+          <view class="track-tab-list {{currentTrackTab==2?'trackon3':''}}" data-current="2" bindtap="switchTab">
+              Book Ref.
+          </view>
+           <view class='popup-cnt'>
+              <view  wx:if="{{currentTrackTab == 0}}" wx:key="couponId">
+                  <input type="text" class="containerno" value="{{containerno}}" placeholder="ex:ABCD1234567" bind:change="onChangeContainer"/>
+                  <button class="SearchShip" bindtap="SearchShip"> Shipment Tracking1</button>
+              </view>
+              <view  wx:if="{{currentTrackTab == 1}}" wx:key="couponId">
+                     <input type="text" class="billno" value="{{billnod}}" placeholder="ex:ABCD1234567" bind:change="onChangeContainer"/>
+                  <button class="SearchBill" bindtap="SearchBill">  Shipment Tracking2</button>
+              </view>
+              <view  wx:if="{{currentTrackTab == 2}}" wx:key="couponId">
+                      <input type="text" class="bookref" value="{{bookref}}" placeholder="ex:ABCD1234567" bind:change="onChangeContainer"/>
+                      <button class="SearchBook" bindtap="SearchBook">  Shipment Tracking3</button>
+              </view>
+           </view>
+    </view>
+    <view wx:if="{{currentTab == 1}}" class="{{currentTab==1?'right':''}}" wx:key="couponId">
+      <van-cell-group>
+        <van-field value="{{ landing }}" placeholder="Please of Loading" border="{{ false }}" bind:change="onChangeLanding" />
+        <van-field value="{{ discharge }}" placeholder="Please of Discharge" border="{{ false }}" bind:change="onChangeDischarge" />
+        <van-button type="primary" size="large" round bind:tap="Search">Search</van-button>
+      </van-cell-group>
+    </view>
+  </view>
+</view>
+<!-- Rate -->
+<view class="card">
+  <van-grid>
+    <van-grid-item icon="photo-o" text="Instant Quote" />
+    <van-grid-item icon="photo-o" text="D&D Rate" />
+    <van-grid-item icon="photo-o" text="Price Simulation" />
+    <van-grid-item icon="photo-o" text="Charge Finder" />
+  </van-grid>
+</view>
+<!-- NEWS -->
+<view class="card">
+
+</view>
+<!-- Value Add Service -->
+<view class="card">
+
+</view>
+<!-- CMA CGM -->
+<view class="card">
+  
 </view>

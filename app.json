@@ -8,7 +8,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "CMA CMG CHINA",
+    "navigationBarTitleText": "CMA CMG ",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
@@ -46,6 +46,5 @@
   "debug": true,
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index"
   }
 }

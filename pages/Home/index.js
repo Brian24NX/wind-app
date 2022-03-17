@@ -10,6 +10,10 @@ Page({
     currentTab:0,
     language:'',
     langIndex:0,
+    currentTrackTab:0,
+    containerno:'',
+    billnod:'',
+    bookref:''
   },
   changeLanguage(e) {
     let index = e.currentTarget.dataset.index
@@ -41,7 +45,8 @@ Page({
    */
    bindChange:function(e){
       this.setData({
-        currentTab:e.detail.current
+        currentTab:e.detail.current,
+        currentTrackTab:e.detail.current
       });
    },
    /**
@@ -53,10 +58,25 @@ Page({
         return false;
       }else{
          that.setData({
-            currentTab:e.target.dataset.current  
+            currentTab:e.target.dataset.current ,
+            currentTrackTab:0
          })
       }
     },
+     /**
+    * 点击子tab切换
+    */
+      switchTab:function(e){
+        var that=this;
+        console.log(e.target.dataset.current);
+        if(this.data.currentTrackTab===e.target.dataset.current){
+          return false;
+        }else{
+           that.setData({
+            currentTrackTab:e.target.dataset.current  
+           })
+        }
+      },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

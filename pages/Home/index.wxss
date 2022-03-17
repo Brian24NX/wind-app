@@ -13,18 +13,54 @@
 }
 .swiper-tab{
   width:100%;
-  border-bottom: 2rpx solid #777777;
   text-align: center;
   line-height: 80rpx;
 }
 .swiper-tab-list{
   display: inline-block;
-  width:33.33%;
+  width:50%;
   color:#777777;
 }
 .on{
   color:#da7c0c;
-  border-bottom: 5rpx solid #da7c0c;
+}
+.left{
+     width: 100%;
+     min-height: 100rpx;
+     background: #da7c0c;
+     border-radius: 10rpx;
+     position: relative;
+}
+.left:before{
+ content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      left:0rpx;
+      right: 0rpx;
+      border: 18rpx solid;
+      border-color:   transparent transparent #cccccc transparent;
+      top:-34rpx;
+      left: 150rpx;
+}
+.right{
+  width: 100%;
+  min-height: 100rpx;
+  background: #da7c0c;
+  border-radius: 10rpx;
+  position: relative;
+}
+.right:before{
+  content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      left:0rpx;
+      right: 0rpx;
+      border: 18rpx solid;
+      border-color:   transparent transparent #cccccc transparent;
+      top:-34rpx;
+      left: 520rpx;
 }
 .swiper-box{
    display: block;
@@ -34,4 +70,45 @@
 }
 .swiper-box view{
   text-align: center;
+}
+.track-tab-list{
+  display: inline-block;
+  width:33.3%;
+  color:#ffffff;
+  font-size:30rpx;
+  text-align: center;
+  border:none;
+}
+.SearchShip,.SearchBook,.SearchBill{
+    background-color:#052265;
+    border-radius:64rpx;
+    width:90%;
+    margin-bottom:20rpx;
+    margin-top:20rpx;
+   
+}
+.containerno,.billno,.bookref{
+     height:80rpx;
+     line-height:80rpx;
+}
+.trackon1{
+     background:#cccccc;
+     color:#ffffff;
+     border-top-right-radius: 16rpx;
+     border-bottom-right-radius: -16rpx;
+}
+.trackon2{
+    background:#cccccc;
+    color:#ffffff;
+    border-top-left-radius: 16rpx;
+    border-top-right-radius: 16rpx;
+}
+.trackon3{
+    background:#cccccc;
+    color:#ffffff;
+    border-top-left-radius: 16rpx;
+}
+.popup-cnt{
+  background:#cccccc;
+  margin-top:-2rpx;
 }
