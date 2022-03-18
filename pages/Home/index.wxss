@@ -1,7 +1,6 @@
 /* pages/Home/index.wxss */
-.home-layout{
-  padding: 30rpx;
-  font-size: 32rpx;
+.site-img{
+  width: 100%;
 }
 .card{
    border: 4rpx solid #ffffff;
@@ -10,6 +9,7 @@
    box-shadow: 8rpx 2rpx 2rpx #cccccc;
    margin:16rpx;
    position: relative;
+   top: -350rpx;
 }
 .swiper-tab{
   width:100%;
@@ -32,7 +32,7 @@
      position: relative;
 }
 .left:before{
- content: "";
+      content: "";
       position: absolute;
       width: 0;
       height: 0;
@@ -51,7 +51,7 @@
   position: relative;
 }
 .right:before{
-  content: "";
+      content: "";
       position: absolute;
       width: 0;
       height: 0;

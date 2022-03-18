@@ -1,20 +1,17 @@
-<view class="home-layout">
-  <!-- <view>{{language.home}}</view>
+<!-- <view class="home-layout">
+  <view>{{language.home}}</view>
   <view bindtap='changeLanguage' class='language' data-index='0' wx:if="{{langIndex == 1}}">
     {{language.language}}
   </view>
   <view bindtap='changeLanguage' class='language' data-index='1' wx:elif="{{langIndex == 0}}">
     {{language.language}}
-  </view> -->
-  <!-- <van-button type="primary">van-button</van-button> -->
-</view>
+  </view>
+  <van-button type="primary">van-button</van-button> 
+</view>-->
 <!-- Tracking&&Schedule -->
+<text style="position: relative;top:70rpx;left: 300rpx;">CMA CMG</text>
+<image class='site-img' data-id="{{item.deviceId}}" src="../../assets/img/nav/1.png" catchtap='navmap'></image>
 <view class="card">
-  <!-- <view >
-       <image  class="image" mode="aspectFill" src="../../assets/img/tabs/home.png" />
-       <text  class="time">2022-3-14 15:56:03</text>
-       <view class="title">卡片式布局</view>
-     </view> -->
   <view class="swiper-tab">
     <view class="swiper-tab-list {{currentTab==0?'on':''}}" data-current="0" bindtap="switchNav">
       TRACKING
@@ -22,7 +19,7 @@
     <view class="swiper-tab-list {{currentTab==1?'on':''}}" data-current="1" bindtap="switchNav">
       SCHEDULE
     </view>
-    <!-- <view class="swiper-tab-list {{currentTab==2?'on':''}}" data-current="2" bindtap="switchNav">PRICE</view> -->
+  <view class="swiper-tab-list {{currentTab==2?'on':''}}" data-current="2" bindtap="switchNav">PRICE</view> 
   </view>
   <view class='popup-cnt'>
     <view class="{{currentTab==0?'left':''}}"  wx:if="{{currentTab == 0}}" wx:key="couponId">
@@ -60,23 +57,23 @@
   </view>
 </view>
 <!-- Rate -->
-<view class="card">
+<!-- <view class="card">
   <van-grid>
     <van-grid-item icon="photo-o" text="Instant Quote" />
     <van-grid-item icon="photo-o" text="D&D Rate" />
     <van-grid-item icon="photo-o" text="Price Simulation" />
     <van-grid-item icon="photo-o" text="Charge Finder" />
   </van-grid>
-</view>
+</view> -->
 <!-- NEWS -->
-<view class="card">
+<!-- <view class="card">
 
-</view>
+</view> -->
 <!-- Value Add Service -->
-<view class="card">
+<!-- <view class="card">
 
-</view>
+</view> -->
 <!-- CMA CGM -->
-<view class="card">
+<!-- <view class="card">
   
-</view>
+</view> -->

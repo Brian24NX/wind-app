@@ -1,10 +1,19 @@
 // pages/Home/index.js
+const app= getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '首页', //导航栏 中间的标题
+      white: true, // 是就显示白的，不是就显示黑的。
+      address: '../../assets/img/nav/1.png' // 加个背景 不加就是没有
+    },
+    height:app.globalData.height*2+20,
     winWidth:0,
     winHeight:0,
     currentTab:0,

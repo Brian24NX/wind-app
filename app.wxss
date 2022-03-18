@@ -7,6 +7,9 @@ page{
   font-family: "微软雅黑", "华文细黑", Arial, Helvetica, sans-serif;
   height: 100%;
   width: 100%;
+  position: relative;
+  z-index: 99999;
+  background: #fff;
 }
 
 .container {
