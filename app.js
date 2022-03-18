@@ -51,6 +51,7 @@ App({
     share:false,//默认分享为false
     height:0,
     statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],
+    version:0,//0 为中文  1为英文
     // 全局的方法, 获取到App的实例就可以拿到方法
     function: {
 
