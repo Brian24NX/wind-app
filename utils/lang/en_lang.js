@@ -6,8 +6,7 @@
 var Languague = {
   //个人中心
   userCenter:{
-    //banner
-    banner:"http://hyncdata.maomaokeji.cn/hync/20200717/cb1d554cec91434d9c4e5b9058724a67.png",
+    
     //中英文切换按钮
     changeLanguage:"change to Chinese",
     //个人信息
@@ -21,7 +20,11 @@ var Languague = {
       content:{}
     },
     //页面标题
-    title:"Home"
+    title:"Home",
+    //首页信息
+    homeInfo:{
+
+    }
   },
 
   //底部英文版工具栏，这里是用于自定义tarbar用的
