@@ -99,7 +99,7 @@
 #### 10.中英文切换管理
 -util 下面分为两个部分，lang和公共
     -lang  语言包分为中文、英文两个版本的语言包，后续可拓展其他语言包
-    i18n可做语言切换的js，案例写在homejs里面，可以直接使用
+    languageUtils可做语言切换的js，案例写在homejs里面，可以直接使用
 
 #### 11.防抖和节流函数实现和书写
      -util.js 两个函数throttle和debounce

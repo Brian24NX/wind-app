@@ -1,3 +1,8 @@
+/**
+ *  author:Jason
+ *  time:2022-03-15 17:56:03
+ *  desc:国际化英文语言包
+ */
 var Languague = {
   //个人中心
   userCenter:{
@@ -16,7 +21,7 @@ var Languague = {
       content:{}
     },
     //页面标题
-    title:"userCenter"
+    title:"Home"
   },
 
   //底部英文版工具栏，这里是用于自定义tarbar用的

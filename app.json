@@ -9,8 +9,7 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "CMA CMG ",
-    "navigationBarTextStyle":"black",
-    "navigationStyle": "custom"
+    "navigationBarTextStyle":"black"
   },
   "tabBar": {
     "custom": true, 
