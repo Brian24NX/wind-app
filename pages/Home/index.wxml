@@ -9,8 +9,8 @@
   <van-button type="primary">van-button</van-button> 
 </view>-->
 <!-- Tracking&&Schedule -->
-<view >{{content.lang.userCenter.userInfo.title}}</view>
-<view>{{content.lang.userCenter.contactUs.title}}</view>
+<view >{{content.lang.userCenter.shipmentTracking.containerNotFount}}</view>
+<!-- <view>{{content.lang.userCenter.contactUs.title}}</view> -->
 <button bindtap="switchLanguage">{{content.lang.userCenter.changeLanguage}}</button>
 <tab-bar></tab-bar>
 <!-- <text style="position: relative;top:70rpx;left: 300rpx;">CMA CMG</text>

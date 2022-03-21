@@ -91,7 +91,7 @@ Page({
     console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
     if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 1,//这个是当前页面在导航栏中的下标
+        selected:0,
         list:lang.lang.toolbar.list //赋值
       })
     }

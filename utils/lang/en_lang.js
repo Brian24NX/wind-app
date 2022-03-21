@@ -20,7 +20,7 @@ var Languague = {
       content:{}
     },
     //页面标题
-    title:"Home",
+    title:"CAM CGM",
     homeInfo:{
       //货物追踪
       goods:"Tracking/Shipment Tracking",
@@ -201,7 +201,7 @@ var Languague = {
          //集装箱暂未开始运输.
          containerCycle:"Container cycle not yet started.",
          //暂未查询到运输动态，或该集装箱已卸货/返回堆场。
-         containerNotFount:"Container CMAU577XXX not found or already unstuffed or returned to the depot..",
+         containerNotFount:"Container CMAU577XXX not found or already unstuffed or returned to the depot.",
      },
      load:{
        //努力加载中
@@ -219,25 +219,25 @@ var Languague = {
   toolbar:{
       "list": [
       {
-        "pagePath": "pages/Home/index",
+        "pagePath": "../Home/index",
         "text": "Home",
         "iconPath": "/assets/img/tabs/home.png",
         "selectedIconPath": "/assets/img/tabs/home-active.png"
       }, 
       {
-        "pagePath": "pages/Query/index",
+        "pagePath": "../Query/index",
         "text": "Query",
         "iconPath": "/assets/img/tabs/message.png",
         "selectedIconPath": "/assets/img/tabs/message-active.png"
       },
       {
-        "pagePath": "pages/Quotation/index",
+        "pagePath": "../Quotation/index",
         "text": "Quotation",
         "iconPath": "/assets/img/tabs/contact.png",
         "selectedIconPath": "/assets/img/tabs/contact-active.png"
       },
       {
-        "pagePath": "pages/My/index",
+        "pagePath": "../My/index",
         "text": "My",
         "iconPath": "/assets/img/tabs/profile.png",
         "selectedIconPath": "/assets/img/tabs/profile-active.png"

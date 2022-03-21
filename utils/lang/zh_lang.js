@@ -19,7 +19,7 @@ var Languague = {
       content:{}
     },
     //个人中心
-    title:"首页",
+    title:"CAM CGM",
     homeInfo:{
        //货物追踪
        goods:"货物追踪",
@@ -218,25 +218,25 @@ var Languague = {
   toolbar:{
       "list": [
       {
-        "pagePath": "pages/Home/index",
+        "pagePath": "../Home/index",
         "text": "首页",
         "iconPath": "/assets/img/tabs/home.png",
         "selectedIconPath": "/assets/img/tabs/home-active.png"
       }, 
       {
-        "pagePath": "pages/Query/index",
+        "pagePath": "../Query/index",
         "text": "咨询",
         "iconPath": "/assets/img/tabs/message.png",
         "selectedIconPath": "/assets/img/tabs/message-active.png"
       },
       {
-        "pagePath": "pages/Quotation/index",
+        "pagePath": "../Quotation/index",
         "text": "报价",
         "iconPath": "/assets/img/tabs/contact.png",
         "selectedIconPath": "/assets/img/tabs/contact-active.png"
       },
       {
-        "pagePath": "pages/My/index",
+        "pagePath": "../My/index",
         "text": "我的",
         "iconPath": "/assets/img/tabs/profile.png",
         "selectedIconPath": "/assets/img/tabs/profile-active.png"
