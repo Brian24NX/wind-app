@@ -1,4 +1,6 @@
 // components/calendar/calendar.js
+const app = getApp();
+var languageUtil = require('../../utils/languageUtils')
 Component({
   options: {
     styleIsolation: 'apply-shared'
@@ -7,14 +9,31 @@ Component({
     date: {
       type: null,
       value: new Date(),
-      language:'',
     },
-    /**
-     * 设置语言
-     */
-    setLanguage:{
-      language:String
-    },
+      //中英文切换
+      switchLanguage() {
+        //切换当前版本，即修改公共变量中的version
+        languageUtil.changLanguage()
+        this.initLanguage()
+      },
+      //初始化语言
+      initLanguage() {
+        //获取当前小程序语言版本所对应的字典变量
+        var lang = languageUtil.languageVersion()
+        console.log(lang)
+        this.setData({
+          content: lang
+        })
+        wx.setNavigationBarTitle({
+          title: lang.lang.userCenter.querytitle
+        })
+        console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
+        if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
+          this.getTabBar().setData({
+            list:lang.lang.toolbar.list //赋值
+          })
+        }
+      },
     /**
      * 选中的日期
      */
@@ -37,6 +56,13 @@ Component({
     isOpen: {
       type: Boolean,
       value: false
+    },
+    /**
+     * 语言
+     */
+    lang:{
+       type:String,
+       value:'zh'
     },
     /**
      * 是否多选日期

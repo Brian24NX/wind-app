@@ -9,7 +9,34 @@ Page({
   data: {
     content: {}, // 用于保存当前页面所需字典变了
   },
-
+    /**
+   * 点击日期时候触发的事件
+   * bind:getdate
+   */
+  getdate(e) {
+    console.log(e.detail);
+  },
+    /**
+   * 点击全选触发的事件
+   * bind:checkall
+   */
+  checkall(e) {
+    console.log(e.detail.days);
+  },
+  /** 
+  * 点击确定按钮触发的事件
+  * bind:select
+  */
+  cmfclick(e){
+    console.log(e.detail.selectDays);
+  },
+  /** 
+  * 点击清空事件
+  * bind:clear
+  */
+  clear(e) {
+    console.log("要清空选中日期")
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,6 +55,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.initLanguage();
     if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
       this.getTabBar().setData({
         selected:1
@@ -84,7 +112,7 @@ Page({
         content: lang
       })
       wx.setNavigationBarTitle({
-        title: lang.lang.toolbar.list[1].text
+        title: lang.lang.userCenter.querytitle
       })
       console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
       if (typeof this.getTabBar === 'function' &&this.getTabBar()) {

@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+       
   },
 
   /**
@@ -28,6 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.initLanguage();
     if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
       this.getTabBar().setData({
         selected:2
@@ -84,7 +85,7 @@ Page({
         content: lang
       })
       wx.setNavigationBarTitle({
-        title: lang.lang.toolbar.list[2].text
+        title: lang.lang.userCenter.quotationtitle
       })
       console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
       if (typeof this.getTabBar === 'function' &&this.getTabBar()) {

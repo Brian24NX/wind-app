@@ -37,7 +37,6 @@ module.exports = {
       <!-- <view class='checkalllbtn' bindtap='checkall'>
         全选
       </view> -->
-      {{language}}
       <view class="date-befor" data-id="0" data-type="month" bindtap='dataBefor'>
         <view class="iconfont">
         <view class='left-color'></view>
@@ -45,7 +44,8 @@ module.exports = {
       </view>
       <view class="calendar-panel-box">
         <view>{{canlender.year}}年</view>
-        <view>{{canlender.month}}月</view>
+        <view class="{{lang=='zh'?'dispzh':'none'}}">{{canlender.month}}月</view>
+        <view class="{{lang=='en'?'dispen':'none'}}">Mar</view>
       </view>
       <view class="date-after" data-id="1" data-type="month" bindtap='dataBefor'>
         <view class="iconfont">
@@ -57,7 +57,7 @@ module.exports = {
       </view> -->
     </view>
 
-    <view class="calendar-header {{language=='中文'?'mini':'none'}}">
+    <view class="calendar-header {{mini?'mini':''}} {{lang=='zh'?'display':'none'}}">
       <view>日</view>
       <view>一</view>
       <view>二</view>
@@ -66,14 +66,14 @@ module.exports = {
       <view>五</view>
       <view>六</view>
     </view>
-    <view class="calendar-header {{language=='EN'?'mini':'none'}}">
-      <view>SU</view>
-      <view>MO</view>
-      <view>TU</view>
-      <view>WE</view>
-      <view>TH</view>
-      <view>FR</view>
-      <view>SA</view>
+    <view class="calendar-header {{mini?'mini':''}} {{lang=='en'?'display':'none'}}">
+      <view>Sun</view>
+      <view>Mon</view>
+      <view>Tue</view>
+      <view>Wen</view>
+      <view>Thur</view>
+      <view>Fri</view>
+      <view>Sat</view>
     </view>
     <view class="calendar-body">
       <block wx:for="{{canlender.weeks}}" wx:for-item="weeks" wx:for-index="week" wx:key="weeks">
@@ -93,9 +93,9 @@ module.exports = {
         </view>
       </block>
     </view>
-    <view wx:if="{{!readonly}}" class="packup flex flex-between">
+    <!-- <view wx:if="{{!readonly}}" class="packup flex flex-between">
       <view class="packup-button" bindtap='clear'>清空</view>
       <view class="packup-button border-left" bindtap='packup'>确定</view>
-    </view>
+    </view> -->
   </view>
 </view>

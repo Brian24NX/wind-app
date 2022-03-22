@@ -264,3 +264,17 @@ cover-view{
   color: #fff;
   border: 1rpx solid #39b54a;
 }
+.display{
+  display: flex;
+}
+.none{
+  display: none;
+}
+.dispzh{
+  display: block;
+}
+.dispen{
+  display: block;
+  position: relative;
+  top:6rpx;
+}

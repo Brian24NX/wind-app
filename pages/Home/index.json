@@ -6,7 +6,6 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
-    "nav-bar":"/components/navBar/index",
     "tab-bar":"/custom-tab-bar/index"
   },
   "navigationBarTitleText": "CMA CMG "

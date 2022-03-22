@@ -18,8 +18,13 @@ var Languague = {
       title:"联系我们",
       content:{}
     },
+    // 语言
+    langue:'zh',
     //个人中心
-    title:"CAM CGM",
+    hometitle:"CAM CGM",
+    querytitle:"咨询",
+    quotationtitle:"报价",
+    mytitle:"我的",
     homeInfo:{
        //货物追踪
        goods:"货物追踪",

@@ -29,6 +29,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.initLanguage();
     if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
       this.getTabBar().setData({
         selected:3
@@ -78,7 +79,7 @@ Page({
         content: lang
       })
       wx.setNavigationBarTitle({
-        title: lang.lang.toolbar.list[3].text
+        title: lang.lang.userCenter.mytitle
       })
       console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
       if (typeof this.getTabBar === 'function' &&this.getTabBar()) {

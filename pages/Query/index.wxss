@@ -1,4 +1,11 @@
-.query-layout{
-  padding: 30rpx;
-  font-size: 32rpx;
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+} 
+.center{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10rpx;
 }

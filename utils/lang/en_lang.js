@@ -19,8 +19,12 @@ var Languague = {
       title:"contact us",
       content:{}
     },
+    langue:'en',
     //页面标题
-    title:"CAM CGM",
+    hometitle:"CAM CGM",
+    querytitle:"Query",
+    quotationtitle:"Quotation",
+    mytitle:"My",
     homeInfo:{
       //货物追踪
       goods:"Tracking/Shipment Tracking",
