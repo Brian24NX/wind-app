@@ -70,7 +70,7 @@ module.exports = {
       <view>Sun</view>
       <view>Mon</view>
       <view>Tue</view>
-      <view>Wen</view>
+      <view>Wed</view>
       <view>Thur</view>
       <view>Fri</view>
       <view>Sat</view>
