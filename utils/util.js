@@ -89,6 +89,7 @@ function debounce(fn,interval){
       },gapTime);
     };
 }
+
 module.exports = {
   formatTime,
   skipNulls,

@@ -11,10 +11,33 @@ var formatNumber = function(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-
+var toStr=function (val) {
+  return val.toString();
+}
+var  mouthName=function(val){
+  var result="";
+  var name={
+    "1":"Jan",
+    "2":"Feb",
+    "3":"Mar",
+    "4":"Apr",
+    "5":"May",
+    "6":"Jun",
+    "7":"Jul",
+    "8":"Aug",
+    "9":"Sep",
+    "10":"Oct",
+    "11":"Nov",
+    "12":"Dec"
+  }
+  result=name[val];
+  return result;
+}
 module.exports = {
   formatNumber: formatNumber,
-  strcontains: strcontains
+  strcontains: strcontains,
+  mouthName:mouthName,
+  toStr:toStr
 }
 </wxs>
 
@@ -45,7 +68,7 @@ module.exports = {
       <view class="calendar-panel-box">
         <view>{{canlender.year}}年</view>
         <view class="{{lang=='zh'?'dispzh':'none'}}">{{canlender.month}}月</view>
-        <view class="{{lang=='en'?'dispen':'none'}}">Mar</view>
+        <view class="{{lang=='en'?'dispen':'none'}}">{{filters.mouthName(filters.toStr(canlender.month))}}</view>
       </view>
       <view class="date-after" data-id="1" data-type="month" bindtap='dataBefor'>
         <view class="iconfont">
