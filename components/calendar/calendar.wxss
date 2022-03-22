@@ -270,11 +270,6 @@ cover-view{
 .none{
   display: none;
 }
-.dispzh{
+.dispzh,.dispen{
   display: block;
-}
-.dispen{
-  display: block;
-  position: relative;
-  top:6rpx;
 }
