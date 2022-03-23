@@ -1,4 +1,13 @@
-.quotation-layout{
-  padding: 30rpx;
-  font-size: 32rpx;
+page{
+  background-color: #fff;
+}
+.head_fix{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.con{
+  height: 800rpx;
+  margin: 80px auto;
 }

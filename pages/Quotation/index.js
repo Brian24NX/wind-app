@@ -9,7 +9,23 @@ Page({
   data: {
     content: {}, // 用于保存当前页面所需字典变了
   },
-
+  handlerGobackClick(delta) {
+    const pages = getCurrentPages();
+    if (pages.length >= 2) {
+      wx.navigateBack({
+        delta: delta
+      });
+    } else {
+      wx.switchTab({
+        url: '../Home/index'
+      })
+    }
+  },
+  handlerGohomeClick() {
+    wx.switchTab({
+      url: '../Home/index'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
