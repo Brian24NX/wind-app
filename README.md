@@ -104,3 +104,6 @@
 #### 11.防抖和节流函数实现和书写
      -util.js 两个函数throttle和debounce
      使用方法 引入util  eg:util.throttle(function(){fn.call()})  util.debounce(function(){})
+
+#### 12.公共组件--tabbar底部公共样式中英文切换,部分公共组件在components里面calendar和navBar样式编写
+      eg:在home首页引用tabbar，query页面引用calendar，quotation页面引用navbar组件样式
