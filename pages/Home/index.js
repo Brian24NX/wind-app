@@ -18,7 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('我是首页')
   },
   /**
    * 滑动切换tab
@@ -48,7 +47,6 @@ Page({
    */
   switchTab: function (e) {
     var that = this;
-    console.log(e.target.dataset.current);
     if (this.data.currentTrackTab === e.target.dataset.current) {
       return false;
     } else {
@@ -81,14 +79,12 @@ Page({
   initLanguage() {
     //获取当前小程序语言版本所对应的字典变量
     var lang = languageUtil.languageVersion()
-    console.log(lang)
     this.setData({
       content: lang
     })
     wx.setNavigationBarTitle({
       title: lang.lang.userCenter.hometitle
     })
-    console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
     if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
       this.getTabBar().setData({
         selected:0,

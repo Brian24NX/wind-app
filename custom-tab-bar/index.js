@@ -1,3 +1,8 @@
+/**
+ * author:Jason
+ * date:2022-3-22 14:02
+ * desc: 自定义tabbar 底部导航栏
+ */
 var app=getApp()
 var languageUtil=require('../utils/languageUtils')
 Component({

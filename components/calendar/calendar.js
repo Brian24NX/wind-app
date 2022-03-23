@@ -1,3 +1,8 @@
+/**
+ *  author:Jason
+ *  date:2022-3-23 13:39
+ *  desc:日历组件逻辑遍历
+ */
 // components/calendar/calendar.js
 const app = getApp();
 var languageUtil = require('../../utils/languageUtils')

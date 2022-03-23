@@ -1,3 +1,4 @@
+<!--页面常用方法编写-Jason-2022-03-22 13:52-->
 <wxs module="filters">
 var strcontains = function (str,c) {
   if (str.indexOf(c) >= 0) {
@@ -14,6 +15,11 @@ var formatNumber = function(n) {
 var toStr=function (val) {
   return val.toString();
 }
+/**
+ *  author:Jason
+ *  date: 2022-03-23 13:55
+ *  desc:定义月份枚举
+*/
 var  mouthName=function(val){
   var result="";
   var name={

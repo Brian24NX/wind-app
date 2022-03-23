@@ -1,3 +1,8 @@
+/**
+ *   author:Jason
+ *   date:2022-03-22 10:26
+ *   desc:nav方法定义
+ */
 Component({
   options: {
     multipleSlots: true,
