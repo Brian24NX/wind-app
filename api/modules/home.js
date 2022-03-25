@@ -4,3 +4,6 @@ const { getRequest } = require('../http')
 export const GetHomeData = (params) => {
   return getRequest('/getHome')
 }
+// 获取航线查询数据
+
+// 获取货物追踪数据

@@ -45,10 +45,24 @@ const request = ( { url, data, method, contentType }) => {
 			},
 			fail: (res) => {
 				// 返回错误提示信息
-				reject('网络出错')
+				reject('网络请求失败')
 			},
 			complete: () => {
 				wx.hideLoading();
+				if(response.success){
+					 if(response.success.statusCode!=200){
+						 wx.showToast({
+							 title: '网络出错,请稍后再试',
+						 });
+						 return;
+					 }
+					 resolve(response.success.data);
+				}else{
+					wx.showToast({
+						title: '数据请求失败,请稍后重试',
+					});
+					reject(response.fail);
+				}
 			}
 		})
 	})
