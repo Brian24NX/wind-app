@@ -1,16 +1,57 @@
+const date = new Date()
+const years = []
+const months = []
+const days = []
+
+for (let i = 1990; i <= date.getFullYear(); i++) {
+  years.push(i)
+}
+
+for (let i = 1; i <= 12; i++) {
+  months.push(i)
+}
+
+for (let i = 1; i <= 31; i++) {
+  days.push(i)
+}
+
 // pages/Home/index.js
 const app = getApp();
 var languageUtil = require('../../utils/languageUtils')
 // pages/my/index.js
 Page({
-
+  onShareAppMessage() {
+    return {
+      title: 'picker-view',
+      path: 'page/component/pages/picker-view/picker-view'
+    }
+  },
   /**
    * 页面的初始数据
    */
   data: {
     content: {}, // 用于保存当前页面所需字典变了
+    years,
+    year:date.getFullYear(),
+    months,
+    month:2,
+    days,
+    day:2,
+    value:[9999,1,1],
+    date:'2022-02-23'
   },
-
+  changeDate(e){
+        this.setData({ date:e.detail.value});
+  },
+    
+  bindChange(e){
+      const val=e.detail.value
+      this.setData({
+         year:this.data.years[val[0]],
+         month:this.data.months[val[1]],
+         day:this.data.days[val[2]]
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

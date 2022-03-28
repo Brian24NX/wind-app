@@ -13,7 +13,7 @@ Page({
     const pages = getCurrentPages();
     if (pages.length >= 2) {
       wx.navigateBack({
-        delta: delta
+        delta: 1
       });
     } else {
       wx.switchTab({

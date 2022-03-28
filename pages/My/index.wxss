@@ -3,3 +3,9 @@
   padding: 30rpx;
   font-size: 32rpx;
 }
+.display{
+  display: flex;
+}
+.none{
+  display: none;
+}
