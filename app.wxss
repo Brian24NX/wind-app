@@ -21,3 +21,21 @@ page{
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.blue{
+   color:#04246A;
+}
+.red{
+   color:#E20101;
+}
+.blue_secondary{
+   color:#3E64B8;
+}
+.blur_link{
+   color:#235AF6;
+}
+.blue_hover{
+   color:#031745;
+}
+.red_hover{
+   color:#B20101;
+}

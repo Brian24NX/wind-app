@@ -1,15 +1,4 @@
-<!-- <view class="home-layout">
-  <view>{{language.home}}</view>
-  <view bindtap='changeLanguage' class='language' data-index='0' wx:if="{{langIndex == 1}}">
-    {{language.language}}
-  </view>
-  <view bindtap='changeLanguage' class='language' data-index='1' wx:elif="{{langIndex == 0}}">
-    {{language.language}}
-  </view>
-  <van-button type="primary">van-button</van-button> 
-</view>-->
-<!-- Tracking&&Schedule -->
-<view >{{content.lang.userCenter.shipmentTracking.containerNotFount}}</view>
+<!-- <view >{{content.lang.userCenter.shipmentTracking.containerNotFount}}</view> -->
 <!-- <view>{{content.lang.userCenter.contactUs.title}}</view> -->
 <button bindtap="switchLanguage">{{content.lang.userCenter.changeLanguage}}</button>
 <tab-bar></tab-bar>
@@ -69,15 +58,4 @@
     <van-grid-item icon="photo-o" text="Charge Finder" />
   </van-grid>
 </view> -->
-<!-- NEWS -->
-<!-- <view class="card">
 
-</view> -->
-<!-- Value Add Service -->
-<!-- <view class="card">
-
-</view> -->
-<!-- CMA CGM -->
-<!-- <view class="card">
-  
-</view> -->
