@@ -6,6 +6,6 @@ module.exports = {
 		url: 'https://192.160.0.1/api',
 	},
 	dev: {
-		url: 'https://170.160.0.1/api'
+		url: 'https://uat.wind.cma-cgm.com'
 	}
 }

@@ -1,5 +1,6 @@
 // pages/Home/index.js
 const app = getApp();
+import {routingFinder,shipmentTracking} from '../../api/modules/home';
 var languageUtil = require('../../utils/languageUtils')
 Page({
 
@@ -18,6 +19,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let parmas={
+      placeOfDischarge:'NLRTM',
+      placeOfLoading:'CNSHA' 
+    }
+    routingFinder(parmas).then(res=>{
+       console.log(res.data);
+    })
+    let obj={
+      shipmentRef:''
+    }
+    shipmentTracking(obj).then(res=>{
+       console.log(res.data);
+    })
   },
   /**
    * 滑动切换tab

@@ -12,7 +12,7 @@
 
 import { skipNulls } from '../utils/util'
 const config = require('../config/config')
-const { getStorage } = require('../storage.js')
+// const { getStorage } = require('../storage.js')
 
 // 请求及拦截封装
 const request = ( { url, data, method, contentType }) => {
@@ -20,13 +20,14 @@ const request = ( { url, data, method, contentType }) => {
 		title:"正在加载中..."
 	});
 	return new Promise((resolve, reject) => {
+		console.log(`${config[config.dev_env].url}${url}`);
 		wx.request({
 			url: `${config[config.dev_env].url}${url}`,
 			data: data,
 			method: method,
 			header: {
 				'content-type': contentType || 'application/json',
-				'token': getStorage('token')
+				// 'token': getStorage('token')
 			},
 			success: (res) => {
 				
@@ -49,20 +50,6 @@ const request = ( { url, data, method, contentType }) => {
 			},
 			complete: () => {
 				wx.hideLoading();
-				if(response.success){
-					 if(response.success.statusCode!=200){
-						 wx.showToast({
-							 title: '网络出错,请稍后再试',
-						 });
-						 return;
-					 }
-					 resolve(response.success.data);
-				}else{
-					wx.showToast({
-						title: '数据请求失败,请稍后重试',
-					});
-					reject(response.fail);
-				}
 			}
 		})
 	})
