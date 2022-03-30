@@ -27,7 +27,8 @@ Page({
        console.log(res.data);
     })
     let obj={
-      shipmentRef:''
+      shipmentRef:'LHV2564717',
+      eqpid:''
     }
     shipmentTracking(obj).then(res=>{
        console.log(res.data);

@@ -15,7 +15,9 @@ export const routingFinder=(params)=>{
 // 获取货物追踪数据
 export const shipmentTracking=(params)=>{
     let obj={
-      shipmentRef:params.shipmentRef
+      shipmentRef:params.shipmentRef,
+      eqpid:params.eqpid
     }
+    console.log(obj);
     return getRequest('/api/miniapp/shipment-tracking',obj)
 }
