@@ -24,7 +24,7 @@ var Languague = {
     hometitle:"CAM CGM",
     querytitle:"Query",
     quotationtitle:"Quotation",
-    mytitle:"My",
+    mytitle:"My Account",
     homeInfo:{
       //货物追踪
       goods:"Tracking/Shipment Tracking",
@@ -57,7 +57,7 @@ var Languague = {
       //无纸化提单
       paperinessBl:"Paperless B/L",
       //Priority SPGO Family
-      prioritySpgoFamily:"Priority SPGO Priority SPGO Family ",
+      prioritySpgoFamily:"Priority SPGO Family",
       //多式联运
       intermodal:"Intermodal",
       //关于达飞
@@ -106,19 +106,19 @@ var Languague = {
    searchResultList:{
        //日历
        calendar:"Calendar",
-       //周一
+       //星期一
        mon:"Mon",
-       //周二
+       //星期二
        tue:"Tue",
-       //周三
+       //星期三
        wed:"Wed",
-       //周四
+       //星期四
        thur:"Thur",
-       //周五
+       //星期五
        fri:"Fri",
-       //周六
+       //星期六
        sat:"Sat",
-       //周日
+       //星期日
        sun:"Sun",
        //排序
        sortBy:"Sort by",
@@ -142,7 +142,7 @@ var Languague = {
        fourSolutions:"4 solutions, 2 solutions, 1 solution",
        // 4天
        fourDays:"4 Days",
-       //抱歉，我们暂未查询到匹配的航线方案.
+       //抱歉！未找到此问题的解决方案,在CMA CGM集团内目前暂未能提供处理方案.
        noFindTips:"Sorry! No solution has been found for this query. We are currently not able to propose solutions within CMA CGM Group."
      },
      //routeDetails航线查询详情
@@ -196,6 +196,8 @@ var Languague = {
          wendnesday:"Wednesday",
          // 23-2月-2022
          date:"23-Feb-2022",
+         // 集装箱正柜在托运人处
+         containertoconsignee:"Container to Consignee",
          // 未查询到相关结果
          noResult:"No results found",
          //最多可同时查询三个集装箱状态，请重新输入.
@@ -242,7 +244,7 @@ var Languague = {
       },
       {
         "pagePath": "../My/index",
-        "text": "My",
+        "text": "My Account",
         "iconPath": "/assets/img/tabs/profile.png",
         "selectedIconPath": "/assets/img/tabs/profile-active.png"
       }

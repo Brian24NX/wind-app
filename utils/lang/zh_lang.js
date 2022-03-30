@@ -167,7 +167,7 @@ var Languague = {
           // 运输详情
           trackingDetails:"运输详情",
           // 订舱号 JXTLXXXXX
-          bookingJxtl:"订舱号 JXTLXXXXX",
+          bookingJxtl:"订舱号JXTLXXXXX",
           // 重新搜索
           newSearch:"重新搜索",
           // 预计到港时间
@@ -196,6 +196,8 @@ var Languague = {
           wendnesday:"星期三",
           // 23-2月-2022
           date:"23-2月-2022",
+          // 集装箱正柜在托运人处
+         containertoconsignee:"集装箱正柜在托运人处",
           // 未查询到相关结果
           noResult:"未查询到相关结果",
           //最多可同时查询三个集装箱状态，请重新输入.
