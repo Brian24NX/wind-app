@@ -1,6 +1,6 @@
 // pages/Home/index.js
 const app = getApp();
-import {routingFinder,shipmentTracking} from '../../api/modules/home';
+// import {routingFinder,shipmentTracking} from '../../api/modules/home';
 var languageUtil = require('../../utils/languageUtils')
 Page({
 
@@ -15,7 +15,7 @@ Page({
     billnod: '',
     bookref: '',
     navTop: app.globalData.navTop,
-    navHeight: 0,
+    navHeight: app.globalData.navHeight,
     tabList: [{
       id: 'TRACKING',
       label: 'TRACKING',
@@ -33,28 +33,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    this.setData({
-      navObj: app.globalData.navObj,
-      navHeight: app.globalData.navHeight
-    })
-    let parmas={
-      placeOfDischarge:'NLRTM',
-      placeOfLoading:'CNSHA' 
-    }
-    routingFinder(parmas).then(res=>{
-       console.log(res.data);
-    })
-    let obj={
-      shipmentRef:'LHV2564717',
-      eqpid:''
-    }
-    shipmentTracking(obj).then(res=>{
-       console.log(res.data);
-    })
+    // let parmas={
+    //   placeOfDischarge:'NLRTM',
+    //   placeOfLoading:'CNSHA' 
+    // }
+    // routingFinder(parmas).then(res=>{
+    //    console.log(res.data);
+    // })
+    // let obj={
+    //   shipmentRef:'LHV2564717',
+    //   eqpid:''
+    // }
+    // shipmentTracking(obj).then(res=>{
+    //    console.log(res.data);
+    // })
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this;
+    this.initLanguage();
   },
   // 切换搜索类型
   changeSearchTab(e) {
-    console.log(e)
     this.setData({
       actived: e.currentTarget.dataset.type
     })
@@ -64,57 +66,6 @@ Page({
     this.setData({
       currentIndex: e.detail.current
     })
-  },
-  
-  /**
-   * 滑动切换tab
-   */
-  bindChange: function (e) {
-    this.setData({
-      currentTab: e.detail.current,
-      currentTrackTab: e.detail.current
-    });
-  },
-  /**
-   * 点击tab切换
-   */
-  switchNav: function (e) {
-    var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentTab: e.target.dataset.current,
-        currentTrackTab: 0
-      })
-    }
-  },
-  /**
-   * 点击子tab切换
-   */
-  switchTab: function (e) {
-    var that = this;
-    if (this.data.currentTrackTab === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentTrackTab: e.target.dataset.current
-      })
-    }
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    var that = this;
-    this.initLanguage();
   },
   //中英文切换
   switchLanguage() {
@@ -139,38 +90,4 @@ Page({
       })
     }
   },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
