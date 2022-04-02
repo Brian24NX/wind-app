@@ -13,12 +13,30 @@ Page({
     currentTrackTab: 0,
     containerno: '',
     billnod: '',
-    bookref: ''
+    bookref: '',
+    navTop: app.globalData.navTop,
+    navHeight: 0,
+    tabList: [{
+      id: 'TRACKING',
+      label: 'TRACKING',
+    }, {
+      id: 'SCHEDULE',
+      label: 'SCHEDULE',
+    }, {
+      id: 'PRICE',
+      label: 'PRICE',
+    }],
+    actived: 'TRACKING',
+    currentIndex: 0
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
+    this.setData({
+      navObj: app.globalData.navObj,
+      navHeight: app.globalData.navHeight
+    })
     let parmas={
       placeOfDischarge:'NLRTM',
       placeOfLoading:'CNSHA' 
@@ -34,6 +52,20 @@ Page({
        console.log(res.data);
     })
   },
+  // 切换搜索类型
+  changeSearchTab(e) {
+    console.log(e)
+    this.setData({
+      actived: e.currentTarget.dataset.type
+    })
+  },
+  // discover切换swiper
+  changeCurrentDto(e) {
+    this.setData({
+      currentIndex: e.detail.current
+    })
+  },
+  
   /**
    * 滑动切换tab
    */

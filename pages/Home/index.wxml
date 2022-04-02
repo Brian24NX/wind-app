@@ -1,61 +1,88 @@
-<!-- <view >{{content.lang.userCenter.shipmentTracking.containerNotFount}}</view> -->
-<!-- <view>{{content.lang.userCenter.contactUs.title}}</view> -->
-<button bindtap="switchLanguage">{{content.lang.userCenter.changeLanguage}}</button>
-<tab-bar></tab-bar>
-<!-- <text style="position: relative;top:70rpx;left: 300rpx;">CMA CMG</text>
-<image class='site-img' data-id="{{item.deviceId}}" src="../../assets/img/nav/1.png" catchtap='navmap'></image> -->
-<!-- <view class="card">
-  <view class="swiper-tab">
-    <view class="swiper-tab-list {{currentTab==0?'on':''}}" data-current="0" bindtap="switchNav">
-      TRACKING
-    </view>
-    <view class="swiper-tab-list {{currentTab==1?'on':''}}" data-current="1" bindtap="switchNav">
-      SCHEDULE
-    </view>
-  <view class="swiper-tab-list {{currentTab==2?'on':''}}" data-current="2" bindtap="switchNav">PRICE</view> 
-  </view>
-  <view class='popup-cnt'>
-    <view class="{{currentTab==0?'left':''}}"  wx:if="{{currentTab == 0}}" wx:key="couponId">
-          <view class="track-tab-list {{currentTrackTab==0?'trackon1':''}}" data-current="0" bindtap="switchTab">
-            Container No.
-          </view>
-        <view class="track-tab-list {{currentTrackTab==1?'trackon2':''}}" data-current="1" bindtap="switchTab">
-              Bill of Lading No.
-          </view>
-          <view class="track-tab-list {{currentTrackTab==2?'trackon3':''}}" data-current="2" bindtap="switchTab">
-              Book Ref.
-          </view>
-           <view class='popup-cnt'>
-              <view  wx:if="{{currentTrackTab == 0}}" wx:key="couponId">
-                  <input type="text" class="containerno" value="{{containerno}}" placeholder="ex:ABCD1234567" bind:change="onChangeContainer"/>
-                  <button class="SearchShip" bindtap="SearchShip"> Shipment Tracking1</button>
-              </view>
-              <view  wx:if="{{currentTrackTab == 1}}" wx:key="couponId">
-                     <input type="text" class="billno" value="{{billnod}}" placeholder="ex:ABCD1234567" bind:change="onChangeContainer"/>
-                  <button class="SearchBill" bindtap="SearchBill">  Shipment Tracking2</button>
-              </view>
-              <view  wx:if="{{currentTrackTab == 2}}" wx:key="couponId">
-                      <input type="text" class="bookref" value="{{bookref}}" placeholder="ex:ABCD1234567" bind:change="onChangeContainer"/>
-                      <button class="SearchBook" bindtap="SearchBook">  Shipment Tracking3</button>
-              </view>
-           </view>
-    </view>
-    <view wx:if="{{currentTab == 1}}" class="{{currentTab==1?'right':''}}" wx:key="couponId">
-      <van-cell-group>
-        <van-field value="{{ landing }}" placeholder="Please of Loading" border="{{ false }}" bind:change="onChangeLanding" />
-        <van-field value="{{ discharge }}" placeholder="Please of Discharge" border="{{ false }}" bind:change="onChangeDischarge" />
-        <van-button type="primary" size="large" round bind:tap="Search">Search</van-button>
-      </van-cell-group>
-    </view>
-  </view>
-</view> -->
-<!-- Rate -->
-<!-- <view class="card">
-  <van-grid>
-    <van-grid-item icon="photo-o" text="Instant Quote" />
-    <van-grid-item icon="photo-o" text="D&D Rate" />
-    <van-grid-item icon="photo-o" text="Price Simulation" />
-    <van-grid-item icon="photo-o" text="Charge Finder" />
-  </van-grid>
-</view> -->
+<view class="navbarContainer"style="height: calc({{navHeight}}px + 36rpx);">
+  <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit" ></image>
+</view>
 
+<view class="homeContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
+  <view class="searchContainers">
+    <view class="tabContainer">
+      <view class="oneTab {{actived === item.id ? 'actived' : ''}}" wx:for="{{tabList}}" bindtap="changeSearchTab" data-type="{{item.id}}">
+        <text>{{item.label}}</text>
+        <view class="line"></view>
+      </view>
+    </view>
+    <!-- 货柜号 -->
+    <view class="searchContents" wx:if="{{actived === 'TRACKING'}}">
+      <view class="remind">Container, Bill of lading or Booking Number</view>
+      <input class="inputs" type="text" placeholder="ex:ABCD1234567" placeholder-class="placeholder"/>
+      <view class="searchBtn">Shipment Tracking</view>
+      <view class="reminds">To track up to three containers, please enter references separated by a comma.</view>
+    </view>
+    <!-- 订单 -->
+    <view class="searchContents" wx:if="{{actived === 'SCHEDULE'}}">
+      <view class="serchTitle">Place of Loading</view>
+      <input class="inputs" type="text" placeholder="Name/code" placeholder-class="placeholder"/>
+      <view class="serchTitle mt20">Port of Discharge</view>
+      <input class="inputs" type="text" placeholder="Name/code" placeholder-class="placeholder"/>
+      <view class="searchBtn">Search</view>
+      <view class="searchBtn2">Advanced Search</view>
+    </view>
+    <!-- 价格 -->
+    <view class="searchContents" wx:if="{{actived === 'PRICE'}}">
+      <view class="priceList">
+        <view class="onePrice">
+          <image src="../../assets/img/home/PRICE_1@2x.png"></image>
+          <view>Instant Quote</view>
+        </view>
+        <view class="onePrice">
+          <image src="../../assets/img/home/PRICE_2@2x.png"></image>
+          <view>D&D Rate</view>
+        </view>
+        <view class="onePrice">
+          <image src="../../assets/img/home/PRICE_3@2x.png"></image>
+          <view>Charge Finder</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- discover -->
+  <view class="discoverContainer">
+    <view class="discoverTitle">More to Discover</view>
+    <swiper class="swiper" bindchange="changeCurrentDto">
+      <swiper-item wx:for="{{2}}">
+        <view class="discoverList">
+          <view class="oneDiscover">
+            <image class="icon" src="../../assets/img/home/discover_1@2x.png"></image>
+            <view class="discoverRight">
+              <view class="discoverName">VAS</view>
+              <view>Value Added Service</view>
+            </view>
+          </view>
+          <view class="oneDiscover">
+            <image class="icon" src="../../assets/img/home/discover_2@2x.png"></image>
+            <view class="discoverRight">
+              <view class="discoverName">CMA CGM</view>
+              <view>About Us</view>
+            </view>
+          </view>
+          <view class="oneDiscover">
+            <image class="icon" src="../../assets/img/home/discover_3@2x.png"></image>
+            <view class="discoverRight">
+              <view class="discoverName">News</view>
+              <view>News History</view>
+            </view>
+          </view>
+          <view class="oneDiscover">
+            <image class="icon" src="../../assets/img/home/discover_4@2x.png"></image>
+            <view class="discoverRight">
+              <view class="discoverName">Online Service</view>
+              <view>I Have a Question</view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="swiperDtos">
+      <view class="oneDto {{currentIndex === index ? 'dtoActived' : ''}}" wx:for="{{2}}"></view>
+    </view>
+  </view>
+</view>
