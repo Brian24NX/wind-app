@@ -3,7 +3,8 @@
     "pages/Home/index",
     "pages/Quotation/index",
     "pages/Query/index",
-    "pages/My/index"
+    "pages/My/index",
+    "pages/NoOrders/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

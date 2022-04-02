@@ -1,0 +1,38 @@
+page{
+  background-color: #fff;
+}
+.head_fix{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.noorderbody{
+  height: 1600rpx;
+  margin: 80px auto;
+  background-color: #F0F1F5;
+}
+.contentview{
+    margin-left: 84rpx;
+    margin-right: 84rpx;
+    margin-top: 24rpx;
+}
+.title{
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 36rpx;
+    color:#042462;
+}
+.content{
+    text-align: center;
+    font-weight: bold;
+    font-size: 28rpx;
+    color: #042462;
+}
+.contentlink{
+   margin-left:6rpx ;
+   margin-right:6rpx;
+   color:#649df6;
+   font-size:32rpx; 
+}

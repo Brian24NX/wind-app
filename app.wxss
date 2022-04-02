@@ -39,3 +39,7 @@ page{
 .red_hover{
    color:#B20101;
 }
+.font{
+   font-family: PingFangSC-Regular, sans-serif;
+}
+    
