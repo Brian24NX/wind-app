@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
     "van-field": "@vant/weapp/field/index",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
@@ -8,5 +9,5 @@
     "van-grid-item": "@vant/weapp/grid-item/index",
     "tab-bar":"/custom-tab-bar/index"
   },
-  "navigationBarTitleText": "CMA CMG "
+  "navigationStyle": "custom"
 }

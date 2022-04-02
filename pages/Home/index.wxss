@@ -1,114 +1,209 @@
 /* pages/Home/index.wxss */
-.site-img{
+.navbarContainer {
   width: 100%;
+  position: fixed;
+  z-index: 10;
+  background-color: #ffffff;
+  box-shadow: 0 2rpx 8rpx 0 rgba(238, 238, 238, 0.5);
 }
-.card{
-   border: 4rpx solid #ffffff;
-   border-radius: 10rpx;
-   background-color: #ffffff;
-   box-shadow: 8rpx 2rpx 2rpx #cccccc;
-   margin:16rpx;
-   position: relative;
-   top: -350rpx;
+
+.navbarContainer .logo {
+  width: 240rpx;
+  height: 100rpx;
 }
-.swiper-tab{
-  width:100%;
-  text-align: center;
-  line-height: 80rpx;
+
+.navbarContainer .van-hairline--bottom:after {
+  border-bottom-width: 0;
 }
-.swiper-tab-list{
-  display: inline-block;
-  width:50%;
-  color:#777777;
+
+page {
+  background-color: #F0F1F5;
 }
-.on{
-  color:#da7c0c;
+
+.homeContainer .searchContainers {
+  width: 690rpx;
+  background-color: #ffffff;
+  margin: 30rpx auto;
+  padding: 0 48rpx 48rpx;
 }
-.left{
-     width: 100%;
-     min-height: 100rpx;
-     background: #da7c0c;
-     border-radius: 10rpx;
-     position: relative;
+
+.homeContainer .searchContainers .tabContainer {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #04246A;
+  height: 96rpx;
 }
-.left:before{
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      left:0rpx;
-      right: 0rpx;
-      border: 18rpx solid;
-      border-color:   transparent transparent #cccccc transparent;
-      top:-34rpx;
-      left: 150rpx;
+
+.homeContainer .searchContainers .tabContainer .oneTab {
+  display: flex;
+  align-items: center;
+  color: #071E5D;
+  font-size: 32rpx;
 }
-.right{
-  width: 100%;
-  min-height: 100rpx;
-  background: #da7c0c;
-  border-radius: 10rpx;
+
+.homeContainer .searchContainers .tabContainer .actived {
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #04246A;
   position: relative;
 }
-.right:before{
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      left:0rpx;
-      right: 0rpx;
-      border: 18rpx solid;
-      border-color:   transparent transparent #cccccc transparent;
-      top:-34rpx;
-      left: 520rpx;
+
+.homeContainer .searchContainers .tabContainer .actived .line {
+  width: 60rpx;
+  height: 8rpx;
+  background-color: #E20202;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.swiper-box{
-   display: block;
-   height:100%;
-   width: 100%;
-   overflow: hidden;
+
+.homeContainer .searchContainers .searchContents {
+  margin-top: 50rpx;
 }
-.swiper-box view{
+
+.homeContainer .searchContainers .searchContents .remind {
+  color: #071E5D;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.homeContainer .searchContainers .searchContents .serchTitle {
+  margin-bottom: 12rpx;
+  font-size: 28rpx;
+  color: #04246A;
+}
+
+.homeContainer .searchContainers .searchContents .mt20 {
+  margin-top: 20rpx;
+}
+
+.homeContainer .searchContainers .searchContents .inputs {
+  height: 88rpx;
+  border: 1rpx solid #DFDFDF;
+  font-size: 36rpx;
+  padding: 0 16rpx;
+}
+
+.homeContainer .searchContainers .searchContents .searchBtn {
+  width: 100%;
+  height: 88rpx;
+  background-color: #2D75FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40rpx;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.homeContainer .searchContainers .searchContents .searchBtn2 {
+  margin-top: 20rpx;
+  color: #4468BA;
+  font-size: 24rpx;
   text-align: center;
 }
-.track-tab-list{
-  display: inline-block;
-  width:33.3%;
-  color:#ffffff;
-  font-size:30rpx;
+
+.homeContainer .searchContainers .searchContents .reminds {
+  color: #949494;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+
+.homeContainer .searchContainers .searchContents .priceList {
+  display: flex;
+  justify-content: space-between;
+  padding: 26rpx 0;
+}
+
+.homeContainer .searchContainers .searchContents .priceList .onePrice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #071E5D;
+  font-size: 32rpx;
+  width: 100rpx;
   text-align: center;
-  border:none;
 }
-.SearchShip,.SearchBook,.SearchBill{
-    background-color:#052265;
-    border-radius:64rpx;
-    width:90%;
-    margin-bottom:20rpx;
-    margin-top:20rpx;
-   
+
+.homeContainer .searchContainers .searchContents .priceList .onePrice image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 10rpx;
 }
-.containerno,.billno,.bookref{
-     height:80rpx;
-     line-height:80rpx;
+
+.placeholder {
+  color: #B9BFCA;
 }
-.trackon1{
-     background:#cccccc;
-     color:#ffffff;
-     border-top-right-radius: 16rpx;
-     border-bottom-right-radius: -16rpx;
+
+.homeContainer .discoverContainer {
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 0 48rpx 30rpx;
 }
-.trackon2{
-    background:#cccccc;
-    color:#ffffff;
-    border-top-left-radius: 16rpx;
-    border-top-right-radius: 16rpx;
+
+.homeContainer .discoverContainer .discoverTitle {
+  height: 110rpx;
+  border-bottom: 1rpx solid #dddddd;
+  display: flex;
+  align-items: center;
+  margin-bottom: 48rpx;
 }
-.trackon3{
-    background:#cccccc;
-    color:#ffffff;
-    border-top-left-radius: 16rpx;
+
+.homeContainer .discoverContainer .swiper {
+  height: 186rpx;
 }
-.popup-cnt{
-  background:#cccccc;
-  margin-top:-2rpx;
+
+.homeContainer .discoverContainer .swiper .discoverList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.homeContainer .discoverContainer .swiper .discoverList .oneDiscover {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-top: 48rpx;
+}
+
+.homeContainer .discoverContainer .swiper .discoverList .oneDiscover:nth-of-type(-n + 2) {
+  margin-top: 0;
+}
+
+.homeContainer .discoverContainer .swiper .discoverList .oneDiscover .icon {
+  width: 68rpx;
+  height: 68rpx;
+  margin-right: 8rpx;
+}
+
+.homeContainer .discoverContainer .swiper .discoverList .oneDiscover .discoverRight {
+  width: 224rpx;
+  color: #999999;
+  font-size: 24rpx;
+}
+
+.homeContainer .discoverContainer .swiper .discoverList .oneDiscover .discoverRight .discoverName {
+  color: #04246A;
+  font-size: 28rpx;
+}
+
+.homeContainer .discoverContainer .swiperDtos {
+  margin-top: 30rpx;
+  height: 8rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.homeContainer .discoverContainer .swiperDtos .oneDto {
+  width: 24rpx;
+  height: 100%;
+  background-color: rgba(188, 197, 205, 0.34);
+}
+
+.homeContainer .discoverContainer .swiperDtos .dtoActived {
+  background-color: #04246A;
 }
