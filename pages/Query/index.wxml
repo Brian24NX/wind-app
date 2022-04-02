@@ -1,3 +1,34 @@
-<view class="container">
-    <calendar id="calendar" lang="{{content.lang.userCenter.langue}}" isOpen="{{true}}" selected="{{selectedDays}}" lockDay="{{lockday}}" bind:getdate="getdate" bind:checkall="checkall"></calendar>
+<view class="containerQuery">
+    <view class="backgroundTop"></view>
+    <view class="formRoutes">
+        <view><text class="routes font">Routes </text>
+            <view class="redline"></view><text class="schedul font">Get a schedul</text>
+        </view>
+        <vant-cell-group>
+            <van-field value="Name/code" left-icon="location" border="{{ false }}" />
+        </vant-cell-group>
+        <vant-cell-group>
+            <van-field value="Name/code" left-icon="location" border="{{ false }}" />
+        </vant-cell-group>
+        <vant-cell-group>
+            <van-picker columns="{{ columnssearch }}" default-index="{{ 1 }}" bind:change="onChangesearch" />
+        </vant-cell-group>
+        <vant-cell-group>
+            <view></view>
+            <van-cell title="选择单个日期" value="{{ date }}" bind:click="onDisplay" />
+            <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" />
+        </vant-cell-group>
+        <vant-cell-group>
+            <van-picker columns="{{ columnsnext }}" default-index="{{2}}" bind:change="onChangenext" />
+        </vant-cell-group>
+        <van-button type="primary" color="#2D75FF">Search</van-button>
+    </view>
+    <view class="history">
+        <view><text>History</text>
+            <van-button icon="delete-o" type="primary" />
+        </view>
+        <view>
+            <vant-tag closeable size="medium" type="primary" id="" bind:close="onClose"></vant-tag>
+        </view>
+    </view>
 </view>

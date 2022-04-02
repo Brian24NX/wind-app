@@ -8,6 +8,34 @@ Page({
    */
   data: {
     content: {}, // 用于保存当前页面所需字典变了
+    data:'',
+    show:false,
+    columnssearch:['Departure','Arrival'],
+    columnsnext:['1 Week','2 Weeks','3 Weeks','4 Weeks'],
+  },
+  onChangesearch(event){
+      const {picker,value,index}=event.detail;
+      console.log(`当前值：${value}, 当前索引：${index}`)
+  },
+  onChangenext(event){
+    const {picker,value,index}=event.detail;
+    console.log(`当前值：${value}, 当前索引：${index}`)
+},
+  onDisplay() {
+    this.setData({ show: true });
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
+  formatDate(date) {
+    date = new Date(date);
+    return `${date.getMonth() + 1}/${date.getDate()}`;
+  },
+  onConfirm(event) {
+    this.setData({
+      show: false,
+      date: this.formatDate(event.detail),
+    });
   },
     /**
    * 点击日期时候触发的事件

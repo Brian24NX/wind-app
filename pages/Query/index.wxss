@@ -1,11 +1,26 @@
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-} 
-.center{
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10rpx;
+.containerQuery{
+    background-color: #F0F1F5;
+    width: 100%;
+    height:100%;
+}
+.backgroundTop{
+      height: 20rpx;
+      background-color: #F0F1F5;
+}
+.formRoutes{
+    background-color: #FFFFFF;
+    width:90%;
+    height:1080rpx;
+    margin:auto;
+}
+.redline{
+    width: 6rpx;
+    height: 50rpx;
+    background-color: #E20202;
+    display: inline-block;
+}
+.routes,.schedul{
+   font-size: 56rpx;
+   color:#04246A;
+   font-weight: bold;
 }
