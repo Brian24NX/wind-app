@@ -22,7 +22,7 @@ var Languague = {
     langue:'zh',
     //个人中心
     hometitle:"CAM CGM",
-    querytitle:"咨询",
+    querytitle:"查询",
     quotationtitle:"报价",
     mytitle:"我的",
     homeInfo:{
@@ -46,8 +46,8 @@ var Languague = {
        priceSimulation:"价格模拟",
        //查询费率
        chargeFinder:"查询费率",
-       //新闻咨询
-       news:"新闻咨询",
+       //新闻资讯
+       news:"新闻资讯",
        //增值服务
        valueAddedService:"增值服务",
        //Act with CMA CGM+
@@ -228,25 +228,25 @@ var Languague = {
         "pagePath": "../Home/index",
         "text": "首页",
         "iconPath": "/assets/img/tabs/home.png",
-        "selectedIconPath": "/assets/img/tabs/home-active.png"
+        "selectedIconPath": "/assets/img/tabs/home_selected.png"
       }, 
       {
         "pagePath": "../Query/index",
-        "text": "咨询",
-        "iconPath": "/assets/img/tabs/message.png",
-        "selectedIconPath": "/assets/img/tabs/message-active.png"
+        "text": "查询",
+        "iconPath": "/assets/img/tabs/query.png",
+        "selectedIconPath": "/assets/img/tabs/query_selected.png"
       },
       {
         "pagePath": "../Quotation/index",
         "text": "报价",
-        "iconPath": "/assets/img/tabs/contact.png",
-        "selectedIconPath": "/assets/img/tabs/contact-active.png"
+        "iconPath": "/assets/img/tabs/price.png",
+        "selectedIconPath": "/assets/img/tabs/price_selected.png"
       },
       {
         "pagePath": "../My/index",
         "text": "我的",
-        "iconPath": "/assets/img/tabs/profile.png",
-        "selectedIconPath": "/assets/img/tabs/profile-active.png"
+        "iconPath": "/assets/img/tabs/mine.png",
+        "selectedIconPath": "/assets/img/tabs/mine_selected.png"
       }
     ]
   }

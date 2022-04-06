@@ -1,0 +1,51 @@
+<!--pages/Orders/More/index.wxml-->
+<view class="orderMoreList">
+  <view class="oneOrder" wx:for="{{5}}">
+    <view class="orderTop">
+      <view class="topLeft">预计到港时间</view>
+      <view class="topRight">2022-03-28 星期一 21:00</view>
+    </view>
+    <view class="orderBottom">
+      <view class="oneBottom">
+        <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
+        <view class="details">
+          <view class="detailLeft">
+            <view class="huogui">ERFS6325612</view>
+            <view>货柜号</view>
+          </view>
+          <view class="detailRight">
+            <view class="xiangxing">40HC</view>
+            <view>箱型</view>
+          </view>
+        </view>
+      </view>
+      <view class="oneBottom">
+        <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
+        <view class="details">
+          <view class="detailLeft">
+            <view class="status">转运港卸货</view>
+            <view class="address">SHANGHAI</view>
+            <view>位置</view>
+          </view>
+          <view class="detailRight" style="margin-top: 30rpx;">
+            <view class="xiangxing">2022-03-16 10:00</view>
+            <view>时间</view>
+          </view>
+        </view>
+      </view>
+      <view class="oneBottom">
+        <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
+        <view class="details">
+          <view class="detailLeft">
+            <view class="huogui chuanming">JIAYONG</view>
+            <view>船名</view>
+          </view>
+          <view class="detailRight">
+            <view class="xiangxing">8991WN</view>
+            <view>航次</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

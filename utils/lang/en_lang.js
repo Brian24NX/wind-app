@@ -228,25 +228,25 @@ var Languague = {
         "pagePath": "../Home/index",
         "text": "Home",
         "iconPath": "/assets/img/tabs/home.png",
-        "selectedIconPath": "/assets/img/tabs/home-active.png"
+        "selectedIconPath": "/assets/img/tabs/home_selected.png"
       }, 
       {
         "pagePath": "../Query/index",
         "text": "Query",
-        "iconPath": "/assets/img/tabs/message.png",
-        "selectedIconPath": "/assets/img/tabs/message-active.png"
+        "iconPath": "/assets/img/tabs/query.png",
+        "selectedIconPath": "/assets/img/tabs/query_selected.png"
       },
       {
         "pagePath": "../Quotation/index",
         "text": "Quotation",
-        "iconPath": "/assets/img/tabs/contact.png",
-        "selectedIconPath": "/assets/img/tabs/contact-active.png"
+        "iconPath": "/assets/img/tabs/price.png",
+        "selectedIconPath": "/assets/img/tabs/price_selected.png"
       },
       {
         "pagePath": "../My/index",
         "text": "My Account",
-        "iconPath": "/assets/img/tabs/profile.png",
-        "selectedIconPath": "/assets/img/tabs/profile-active.png"
+        "iconPath": "/assets/img/tabs/mine.png",
+        "selectedIconPath": "/assets/img/tabs/mine_selected.png"
       }
     ]
   }

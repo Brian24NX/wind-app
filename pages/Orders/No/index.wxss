@@ -1,0 +1,19 @@
+/* pages/Orders/No/index.wxss */
+.noOrderData {
+  width: 100%;
+  margin-top: 74rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+}
+
+.noOrderData image {
+  width: 534rpx;
+  height: 336rpx;
+  margin-bottom: 30rpx;
+}

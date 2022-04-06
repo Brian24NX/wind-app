@@ -1,0 +1,102 @@
+/* pages/Orders/More/index.wxss */
+.orderMoreList .oneOrder {
+  background-color: #ffffff;
+  padding: 0 48rpx;
+  margin-bottom: 20rpx;
+}
+
+.orderMoreList .oneOrder .orderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  border-bottom: 1rpx solid #DDDDDD;
+  font-size: 28rpx;
+}
+
+.orderMoreList .oneOrder .orderTop .topLeft {
+  color: #6B7790;
+}
+
+.orderMoreList .oneOrder .orderTop .topRight {
+  color: #04246A;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+}
+
+.orderMoreList .oneOrder .orderBottom {
+  
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom {
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #EEEEEE;
+  display: flex;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .leftIcon {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 30rpx;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details {
+  display: flex;
+  width: 500rpx;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft {
+  width: 60%;
+  color: #6F7384;
+  font-size: 24rpx;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .status {
+  height: 34rpx;
+  padding: 5rpx 20rpx;
+  border-radius: 18rpx;
+  background-color: #DFF0FE;
+  display: inline;
+  color: #235AF6;
+  font-size: 20rpx;
+  line-height: 34rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .address {
+  font-size: 48rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+  margin-bottom: 16rpx;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .huogui {
+  color: #4468BA;
+  font-size: 32rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .chuanming {
+  color: #071E5D;
+}
+
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailRight {
+  width: 40%;
+  color: #6F7384;
+  font-size: 24rpx;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailRight .xiangxing {
+  font-size: 32rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+}

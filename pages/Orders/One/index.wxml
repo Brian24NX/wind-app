@@ -1,0 +1,42 @@
+<!--pages/Orders/One/index.wxml-->
+<view class="oneOrderContainer">
+  <view class="timeContainer">
+    <view class="times timeTop">
+      <view class="left">2022-03-28 星期一 18:00</view>
+      <view class="right">3天</view>
+    </view>
+    <view class="times timeBottom">
+      <view class="left">目的港预计靠泊时间</view>
+      <view class="right">剩余航程</view>
+    </view>
+  </view>
+  <view class="stepContainers">
+    <view class="stepContainer">
+      <view class="stepLine">
+        <view class="stopDto dtoLeft"></view>
+        <view class="stopDto dtoRight"></view>
+        <image class="zhuizong" src="/assets/img/search/zhuizong@2x.png"></image>
+      </view>
+    </view>
+    <view class="stepBottom">
+      <view>SHANGHAI (CN)</view>
+      <view>TOKYO (JP)</view>
+    </view>
+  </view>
+  <view class="stepLists">
+    <view class="oneStep" wx:for="{{stepList}}">
+      <view class="leftLines">
+        <view class="beingDtoBg" wx:if="{{item.status === 'being'}}"></view>
+        <view class="leftLineDto {{item.status === 'past' ? 'pastDto' : item.status === 'being' ? 'beingDto' : ''}}"></view>
+        <view class="leftLine {{item.status === 'past' ? 'past' : ''}}" wx:if="{{index !== stepList.length - 1}}"></view>
+      </view>
+      <view class="stepContent {{item.status === 'being' ? 'beingBg' : ''}}">
+        <view class="stepSatus">准备装船</view>
+      <view class="stepTime">2022-03-28 星期一 SHANGHAI, CN</view>
+      </view>
+    </view>
+  </view>
+  <view class="bottomContainer">
+    <view class="downloadBtn">以PDF格式输出</view>
+  </view>
+</view>

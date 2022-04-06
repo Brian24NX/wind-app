@@ -1,0 +1,211 @@
+/* pages/Orders/One/index.wxss */
+.oneOrderContainer {
+  padding: 0 48rpx;
+  background-color: #ffffff;
+  margin-bottom: 230rpx;
+}
+
+.oneOrderContainer .timeContainer {
+  height: 124rpx;
+  border-bottom: 1rpx solid #dddddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.oneOrderContainer .timeContainer .times {
+  display: flex;
+  width: 100%;
+}
+
+.oneOrderContainer .timeContainer .timeTop {
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+}
+
+.oneOrderContainer .timeContainer .times .left {
+  width: 70%;
+}
+
+.oneOrderContainer .timeContainer .times .right {
+  width: 30%;
+}
+
+.oneOrderContainer .timeContainer .timeBottom {
+  color: rgba(7, 30, 93, 0.5);
+  font-size: 24rpx;
+}
+
+.oneOrderContainer .stepContainers {
+  width: 100%;
+  height: 244rpx;
+  padding: 44rpx 0 0;
+  margin-top: 30rpx;
+  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/hgbj@2x.png) no-repeat;
+  background-size: 100% auto;
+  background-position: bottom right;
+}
+
+.oneOrderContainer .stepContainers .stepContainer {
+  height: 92rpx;
+  display: flex;
+  align-items: center;
+}
+
+.oneOrderContainer .stepContainers .stepContainer .stepLine {
+  width: 100%;
+  height: 4rpx;
+  background-color: rgba(7, 30, 93, 0.1);
+  position: relative;
+}
+
+.oneOrderContainer .stepContainers .stepContainer .stepLine .stopDto {
+  width: 16rpx;
+  height: 16rpx;
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  background-color: #071E5D;
+  top: -8rpx;
+}
+
+.oneOrderContainer .stepContainers .stepContainer .stepLine .dtoLeft {
+  left: 0;
+}
+
+.oneOrderContainer .stepContainers .stepContainer .stepLine .dtoRight {
+  right: 0;
+}
+
+.oneOrderContainer .stepContainers .stepContainer .stepLine .zhuizong {
+  width: 92rpx;
+  height: 92rpx;
+  position: absolute;
+  z-index: 3;
+  top: -46rpx;
+  right: 0;
+  /* transform: translateX(-100%); */
+}
+
+.oneOrderContainer .stepContainers .stepBottom {
+  margin-top: 5rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+}
+
+.oneOrderContainer .stepLists {
+  padding-left: 56rpx;
+  margin-top: 40rpx;
+}
+
+.oneOrderContainer .stepLists .oneStep {
+  padding-bottom: 62rpx;
+  position: relative;
+}
+
+.oneOrderContainer .stepLists .oneStep .leftLines {
+  position: absolute;
+  left: -46rpx;
+  height: 100%;
+  top: 20rpx;
+}
+
+.oneOrderContainer .stepLists .oneStep .leftLines .leftLineDto {
+  width: 16rpx;
+  height: 16rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-50%);
+  z-index: 4;
+  background-color: #E6E8EE;
+  border-radius: 50%;
+}
+
+.oneOrderContainer .stepLists .oneStep .leftLines .pastDto {
+  background-color: #071E5D;
+}
+
+.oneOrderContainer .stepLists .oneStep .leftLines .beingDtoBg {
+  background-color: rgba(226, 2, 2, 0.5);
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -25%);
+  z-index: 3;
+  border-radius: 50%;
+}
+
+.oneOrderContainer .stepLists .oneStep .leftLines .beingDto {
+  background-color: #E20202;
+}
+
+.oneOrderContainer .stepLists .oneStep .leftLines .leftLine {
+  width: 0;
+  height: 100%;
+  border-left: 2rpx solid #E6E8EE;
+}
+
+.oneOrderContainer .stepLists .oneStep .leftLines .past {
+  border-left: 2rpx dashed #071E5D;
+}
+
+.oneOrderContainer .stepLists .oneStep .stepContent {
+  padding: 6rpx 20rpx;
+}
+
+.oneOrderContainer .stepLists .oneStep .beingBg {
+  background-color: rgba(233, 242, 255, 0.8);
+}
+
+.oneOrderContainer .stepLists .oneStep .stepSatus {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #999999;
+}
+
+.oneOrderContainer .stepLists .oneStep .beingBg .stepSatus {
+  color: #4468BA;
+}
+
+.oneOrderContainer .stepLists .oneStep .stepTime {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.oneOrderContainer .bottomContainer {
+  width: 100%;
+  height: 268rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.oneOrderContainer .bottomContainer .downloadBtn {
+  width: 596rpx;
+  height: 86rpx;
+  background-color: #2D75FF;
+  color: #ffffff;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

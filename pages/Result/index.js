@@ -1,40 +1,20 @@
-// pages/business/index.js
-const app = getApp();
-var languageUtil = require('../../utils/languageUtils')
+// pages/Result/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    content: {}, // 用于保存当前页面所需字典变了
-    value:''
-  },
-  onSearch(){
 
   },
-  handlerGobackClick(delta) {
-    const pages = getCurrentPages();
-    if (pages.length >= 2) {
-      wx.navigateBack({
-        delta: 1
-      });
-    } else {
-      wx.switchTab({
-        url: '../Home/index'
-      })
-    }
-  },
-  handlerGohomeClick() {
-    wx.switchTab({
-      url: '../Home/index'
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-       
+  onLoad: function () {
+    wx.setNavigationBarTitle({
+      title: '搜索结果',
+    })
   },
 
   /**
@@ -48,6 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
   },
 
   /**
@@ -78,10 +59,10 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
+  // 去详情
+  toDetail() {
+    wx.navigateTo({
+      url: '/pages/ResultDetail/index',
+    })
+  }
 })

@@ -1,0 +1,22 @@
+<!--pages/Orders/index.wxml-->
+<view class="orderContainer">
+  <view class="inputContainer">
+    <input type="text" class="inputs" placeholder="输入货柜号，提单号或订舱号。" placeholder-class="placeholder" />
+    <view class="search">
+      <image src="/assets/img/search/search@2x.png"></image>
+    </view>
+  </view>
+  <view class="resultContainer">
+    <view class="resTitle">追踪结果</view>
+    <view class="resList">
+      <view class="oneRes" wx:for="{{2}}">
+        <image src="/assets/img/search/order@2x.png" mode="aspectFit" class="resIcon"></image>
+        <view class="resContent">JXTL311972</view>
+      </view>
+    </view>
+  </view>
+  <!-- 结果 -->
+  <one></one>
+  <!-- <more></more> -->
+  <!-- <no></no> -->
+</view>

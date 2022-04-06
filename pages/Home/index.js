@@ -18,36 +18,27 @@ Page({
     navHeight: app.globalData.navHeight,
     tabList: [{
       id: 'TRACKING',
-      label: 'TRACKING',
+      label: '货物追踪',
     }, {
       id: 'SCHEDULE',
-      label: 'SCHEDULE',
+      label: '船期查询',
     }, {
       id: 'PRICE',
-      label: 'PRICE',
+      label: '获取报价',
     }],
     actived: 'TRACKING',
-    currentIndex: 0
+    currentIndex: 0,
+    huoGuiValue: '',
+    showRemind: false,
+    qiYunValue: '',
+    showRemind2: false,
+    xieHuoValue: '',
+    showRemind3: false,
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    // let parmas={
-    //   placeOfDischarge:'NLRTM',
-    //   placeOfLoading:'CNSHA' 
-    // }
-    // routingFinder(parmas).then(res=>{
-    //    console.log(res.data);
-    // })
-    // let obj={
-    //   shipmentRef:'LHV2564717',
-    //   eqpid:''
-    // }
-    // shipmentTracking(obj).then(res=>{
-    //    console.log(res.data);
-    // })
-  },
+  onLoad: function () {},
   /**
    * 生命周期函数--监听页面显示
    */
@@ -58,13 +49,86 @@ Page({
   // 切换搜索类型
   changeSearchTab(e) {
     this.setData({
-      actived: e.currentTarget.dataset.type
+      actived: e.currentTarget.dataset.type,
+      showRemind: false,
+      showRemind2: false,
+      showRemind3: false
     })
   },
   // discover切换swiper
   changeCurrentDto(e) {
     this.setData({
       currentIndex: e.detail.current
+    })
+  },
+  setHuoGui(e) {
+    this.setData({
+      huoGuiValue: e.detail.value,
+      showRemind: e.detail.value ? false : true
+    })
+  },
+  // 获取追踪
+  toHuoWu() {
+    if (this.data.showRemind) {
+      return
+    }
+    if (!this.data.huoGuiValue) {
+      this.setData({
+        showRemind: true
+      })
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/Orders/index',
+    })
+  },
+  // 设置起运港
+  setQiYun(e) {
+    console.log(e)
+    this.setData({
+      qiYunValue: e.detail.value,
+      showRemind2: e.detail.value ? false : true
+    })
+  },
+  // 设置卸货港
+  setXieHuo(e) {
+    this.setData({
+      xieHuoValue: e.detail.value,
+      showRemind3: e.detail.value ? false : true
+    })
+  },
+  // 船期搜索
+  toChuanQi() {
+    if (this.data.showRemind2 || this.data.showRemind3) {
+      return
+    }
+    if (!this.data.qiYunValue && !this.data.xieHuoValue) {
+      this.setData({
+        showRemind2: true,
+        showRemind3: true
+      })
+      return
+    }
+    if (!this.data.qiYunValue) {
+      this.setData({
+        showRemind2: true
+      })
+      return
+    }
+    if (!this.data.xieHuoValue) {
+      this.setData({
+        showRemind3: true
+      })
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/Orders/index',
+    })
+  },
+  // 高级查询
+  toAdvancedSearch() {
+    wx.switchTab({
+      url: '/pages/Query/index',
     })
   },
   //中英文切换
@@ -83,10 +147,10 @@ Page({
     wx.setNavigationBarTitle({
       title: lang.lang.userCenter.hometitle
     })
-    if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected:0,
-        list:lang.lang.toolbar.list //赋值
+        selected: 0,
+        list: lang.lang.toolbar.list //赋值
       })
     }
   },

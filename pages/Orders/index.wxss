@@ -1,0 +1,75 @@
+/* pages/Orders/index.wxss */
+.orderContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30rpx;
+  background-color: #F0F1F5;
+}
+
+.orderContainer .inputContainer {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 0 40rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+}
+
+.orderContainer .placeholder {
+  color: #7087A1;
+  font-size: 24rpx;
+}
+
+.orderContainer .inputContainer .inputs {
+  width: 550rpx;
+  height: 100%;
+  font-size: 26rpx;
+}
+
+.orderContainer .inputContainer .search {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.orderContainer .inputContainer .search image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.orderContainer .resultContainer {
+  width: 100%;
+  padding: 34rpx 0 30rpx 48rpx;
+  background-color: #ffffff;
+  margin: 30rpx 0 24rpx;
+  background: url(https://mmbiz.qpic.cn/mmbiz_png/HR3PlALDED2iaALibNMDoO1XPsH1LpS8YxOcCr73AJFu4lPA25l5BwxbCJU3XhssulDJUbdclgoWPCpSAfzcUEFw/0?wx_fmt=png) no-repeat;
+  background-position: bottom right;
+  background-size: 750rpx 230rpx;
+}
+
+.orderContainer .resultContainer .resTitle {
+  font-size: 56rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+}
+
+.orderContainer .resultContainer .resList .oneRes {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.orderContainer .resultContainer .resList .oneRes .resIcon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 14rpx;
+}
+
+.orderContainer .resultContainer .resList .oneRes .resContent {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #4468BA;
+}
