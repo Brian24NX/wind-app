@@ -5,7 +5,8 @@
     "pages/Query/index",
     "pages/My/index",
     "pages/Orders/index",
-    "pages/Result/index"
+    "pages/Result/index",
+    "pages/ResultDetail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

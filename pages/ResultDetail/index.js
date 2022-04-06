@@ -1,4 +1,4 @@
-// pages/Result/index.js
+// pages/ResultDetail/index.js
 Page({
 
   /**
@@ -11,10 +11,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    wx.setNavigationBarTitle({
-      title: '搜索结果',
-    })
+  onLoad: function (options) {
+
   },
 
   /**
@@ -59,10 +57,10 @@ Page({
 
   },
 
-  // 去详情
-  toDetail() {
-    wx.navigateTo({
-      url: '/pages/ResultDetail/index',
-    })
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })
