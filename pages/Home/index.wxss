@@ -36,6 +36,8 @@ page {
 
 .homeContainer .searchContainers .tabContainer .oneTab {
   display: flex;
+  width: 176rpx;
+  justify-content: center;
   align-items: center;
   color: #071E5D;
   font-size: 32rpx;
@@ -99,6 +101,10 @@ page {
   color: #ffffff;
 }
 
+.homeContainer .searchContainers .searchContents .searchBtn::click {
+
+}
+
 .homeContainer .searchContainers .searchContents .searchBtn2 {
   margin-top: 20rpx;
   color: #4468BA;
@@ -152,10 +158,11 @@ page {
   display: flex;
   align-items: center;
   margin-bottom: 48rpx;
+  font-size: 36rpx;
 }
 
 .homeContainer .discoverContainer .swiper {
-  height: 186rpx;
+  height: 196rpx;
 }
 
 .homeContainer .discoverContainer .swiper .discoverList {

@@ -10,72 +10,72 @@
         <view class="line"></view>
       </view>
     </view>
-    <!-- 货柜号 -->
+    <!-- 货物追踪 -->
     <view class="searchContents" wx:if="{{actived === 'TRACKING'}}">
-      <view class="remind">Container, Bill of lading or Booking Number</view>
+      <view class="remind">输入货柜号，提单号或订舱号。</view>
       <input class="inputs" type="text" placeholder="ex:ABCD1234567" placeholder-class="placeholder"/>
-      <view class="searchBtn">Shipment Tracking</view>
-      <view class="reminds">To track up to three containers, please enter references separated by a comma.</view>
+      <view class="searchBtn">货物追踪</view>
+      <view class="reminds">最多可同时查询三个货柜状态，请输入货柜号并用英文逗号隔开。</view>
     </view>
-    <!-- 订单 -->
+    <!-- 船期查询 -->
     <view class="searchContents" wx:if="{{actived === 'SCHEDULE'}}">
-      <view class="serchTitle">Place of Loading</view>
-      <input class="inputs" type="text" placeholder="Name/code" placeholder-class="placeholder"/>
-      <view class="serchTitle mt20">Port of Discharge</view>
-      <input class="inputs" type="text" placeholder="Name/code" placeholder-class="placeholder"/>
-      <view class="searchBtn">Search</view>
-      <view class="searchBtn2">Advanced Search</view>
+      <view class="serchTitle">起运港</view>
+      <input class="inputs" type="text" placeholder="名称/代码" placeholder-class="placeholder"/>
+      <view class="serchTitle mt20">卸货港</view>
+      <input class="inputs" type="text" placeholder="名称/代码" placeholder-class="placeholder"/>
+      <view class="searchBtn">搜索</view>
+      <view class="searchBtn2">高级搜索</view>
     </view>
     <!-- 价格 -->
     <view class="searchContents" wx:if="{{actived === 'PRICE'}}">
       <view class="priceList">
         <view class="onePrice">
           <image src="../../assets/img/home/PRICE_1@2x.png"></image>
-          <view>Instant Quote</view>
+          <view>实时 报价</view>
         </view>
         <view class="onePrice">
           <image src="../../assets/img/home/PRICE_2@2x.png"></image>
-          <view>D&D Rate</view>
+          <view>柜租 费率</view>
         </view>
         <view class="onePrice">
           <image src="../../assets/img/home/PRICE_3@2x.png"></image>
-          <view>Charge Finder</view>
+          <view>查询 费率</view>
         </view>
       </view>
     </view>
   </view>
   <!-- discover -->
   <view class="discoverContainer">
-    <view class="discoverTitle">More to Discover</view>
+    <view class="discoverTitle">发现更多</view>
     <swiper class="swiper" bindchange="changeCurrentDto">
       <swiper-item wx:for="{{2}}">
         <view class="discoverList">
           <view class="oneDiscover">
             <image class="icon" src="../../assets/img/home/discover_1@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">VAS</view>
-              <view>Value Added Service</view>
+              <view class="discoverName">增值服务</view>
+              <view>定制方案</view>
             </view>
           </view>
           <view class="oneDiscover">
             <image class="icon" src="../../assets/img/home/discover_2@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">CMA CGM</view>
-              <view>About Us</view>
+              <view class="discoverName">关于达飞</view>
+              <view>集团介绍</view>
             </view>
           </view>
           <view class="oneDiscover">
             <image class="icon" src="../../assets/img/home/discover_3@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">News</view>
-              <view>News History</view>
+              <view class="discoverName">新闻资讯</view>
+              <view>往期新闻</view>
             </view>
           </view>
           <view class="oneDiscover">
             <image class="icon" src="../../assets/img/home/discover_4@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">Online Service</view>
-              <view>I Have a Question</view>
+              <view class="discoverName">在线服务</view>
+              <view>我有疑问</view>
             </view>
           </view>
         </view>

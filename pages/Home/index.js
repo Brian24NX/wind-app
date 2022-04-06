@@ -18,13 +18,13 @@ Page({
     navHeight: app.globalData.navHeight,
     tabList: [{
       id: 'TRACKING',
-      label: 'TRACKING',
+      label: '货物追踪',
     }, {
       id: 'SCHEDULE',
-      label: 'SCHEDULE',
+      label: '船期查询',
     }, {
       id: 'PRICE',
-      label: 'PRICE',
+      label: '获取报价',
     }],
     actived: 'TRACKING',
     currentIndex: 0

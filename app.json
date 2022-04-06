@@ -1,47 +1,48 @@
 {
-  "pages":[
+  "pages": [
     "pages/Home/index",
     "pages/Quotation/index",
     "pages/Query/index",
     "pages/My/index",
-    "pages/NoOrders/index"
+    "pages/NoOrders/index",
+    "pages/Orders/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "CMA CMG ",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
-     "custom": true, 
-     "color": "#7A7E83",
-     "selectedColor": "green",
-     "borderStyle": "black",
-     "backgroundColor": "#ffffff",
+    "custom": true,
+    "color": "#6B7790",
+    "selectedColor": "#04246A",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/Home/index",
         "text": "",
         "iconPath": "/assets/img/tabs/home.png",
-        "selectedIconPath": "/assets/img/tabs/home-active.png"
-      }, 
+        "selectedIconPath": "/assets/img/tabs/home_selected.png"
+      },
       {
         "pagePath": "pages/Query/index",
         "text": "",
-        "iconPath": "/assets/img/tabs/message.png",
-        "selectedIconPath": "/assets/img/tabs/message-active.png"
+        "iconPath": "/assets/img/tabs/query.png",
+        "selectedIconPath": "/assets/img/tabs/query_not_select.png"
       },
       {
         "pagePath": "pages/Quotation/index",
         "text": "",
-        "iconPath": "/assets/img/tabs/contact.png",
-        "selectedIconPath": "/assets/img/tabs/contact-active.png"
+        "iconPath": "/assets/img/tabs/price.png",
+        "selectedIconPath": "/assets/img/tabs/price_not_select.png"
       },
       {
         "pagePath": "pages/My/index",
         "text": "",
-        "iconPath": "/assets/img/tabs/profile.png",
-        "selectedIconPath": "/assets/img/tabs/profile-active.png"
+        "iconPath": "/assets/img/tabs/mine.png",
+        "selectedIconPath": "/assets/img/tabs/mine_not_select.png"
       }
     ]
   },
@@ -52,6 +53,6 @@
   "debug": true,
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "navBar":"/components/navBar/index"
+    "navBar": "/components/navBar/index"
   }
 }

@@ -1,5 +1,5 @@
 <view class="head_fix">
-    <navBar title='咨询' background='#fff' back="{{true}}" home="{{false}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick">
+    <navBar title='查询' background='#fff' back="{{true}}" home="{{false}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick">
     </navBar>
 </view>
 <view class="noorderbody">

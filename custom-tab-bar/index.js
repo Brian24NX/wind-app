@@ -9,32 +9,32 @@ Component({
   data: {
     version:0,
     selected: 0,
-    color: "#7A7E83",
-    selectedColor: "#3cc51f",
+    color: "#6B7790",
+    selectedColor: "#04246A",
     "list": [
       {
         "pagePath": "../Home/index",
         "text": "首页",
         "iconPath": "/assets/img/tabs/home.png",
-        "selectedIconPath": "/assets/img/tabs/home-active.png"
+        "selectedIconPath": "/assets/img/tabs/home_selected.png"
       }, 
       {
         "pagePath": "../Query/index",
-        "text": "咨询",
-        "iconPath": "/assets/img/tabs/message.png",
-        "selectedIconPath": "/assets/img/tabs/message-active.png"
+        "text": "查询",
+        "iconPath": "/assets/img/tabs/query.png",
+        "selectedIconPath": "/assets/img/tabs/query_not_select.png"
       },
       {
         "pagePath": "../Quotation/index",
         "text": "报价",
-        "iconPath": "/assets/img/tabs/contact.png",
-        "selectedIconPath": "/assets/img/tabs/contact-active.png"
+        "iconPath": "/assets/img/tabs/price.png",
+        "selectedIconPath": "/assets/img/tabs/price_not_select.png"
       },
       {
         "pagePath": "../My/index",
         "text": "我的",
-        "iconPath": "/assets/img/tabs/profile.png",
-        "selectedIconPath": "/assets/img/tabs/profile-active.png"
+        "iconPath": "/assets/img/tabs/mine.png",
+        "selectedIconPath": "/assets/img/tabs/mine_not_select.png"
       }
     ]
   },

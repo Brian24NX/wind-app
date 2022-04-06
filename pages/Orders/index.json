@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "one": "./One/index",
+    "more": "./More/index"
+  }
+}
