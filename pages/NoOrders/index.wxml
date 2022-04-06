@@ -1,25 +1,29 @@
 <view class="head_fix">
-    <navBar title='咨询' background='#fff' back="{{true}}" home="{{false}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick">
-    </navBar>
+  <navBar title='咨询' background='#fff' back="{{true}}" home="{{false}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick">
+  </navBar>
 </view>
 <view class="noorderbody">
-    
-  <van-search
+<!-- <van-search
     model:value="{{ value }}"
     placeholder="Container, Bill of lading or Booking Number"
     bind:search="onSearch"
-  />
-    
-    <view class="result">
-
+  /> -->
+  <van-search model:value="{{ value }}" placeholder="输入货柜号,提单号或订舱号。" bind:search="onSearch" />
+  <view class="result">
+    <text class="font font28">追踪结果</text>
+    <view class="noresult">
+      <image class="img" src="../../assets/img/noresult/selectorder.png"></image><text class="font font14">JXTL311972</text>
     </view>
-    <view class="bg">
-      
-    </view>
-    <view class="contentview">
-      <text class="title">No results found</text>
-      <text class="content">Booking not found,not yet confirmed or container cycle not yet started.please contract</text>
-      <text class="contentlink" bindtap="onclick">Customer Support</text>
-      <text class="content">for further information</text>
-    </view>
+  </view>
+  <view class="bg">
+  </view>
+  <view class="contentview" style="display:none">
+    <text class="title">No results found</text>
+    <text class="content">Booking not found,not yet confirmed or container cycle not yet started.please contract</text>
+    <text class="contentlink" bindtap="onclick">Customer Support</text>
+    <text class="content">for further information</text>
+  </view>
+  <view class="contentview">
+    <text class="title">未找到结果</text>
+  </view>
 </view>
