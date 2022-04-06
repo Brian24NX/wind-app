@@ -4,7 +4,6 @@
     "pages/Quotation/index",
     "pages/Query/index",
     "pages/My/index",
-    "pages/NoOrders/index",
     "pages/Orders/index"
   ],
   "window": {

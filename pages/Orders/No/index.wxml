@@ -1,0 +1,5 @@
+<!--pages/Orders/No/index.wxml-->
+<view class="noOrderData">
+  <image src="https://mmbiz.qpic.cn/mmbiz_png/HR3PlALDED2iaALibNMDoO1XPsH1LpS8YxuicZ5ZXxCcO0NSFuMYSSK410pxmyGusoY8fDS7YjeVwcVcwWCfrARew/0?wx_fmt=png"></image>
+  <view>未找到结果</view>
+</view>

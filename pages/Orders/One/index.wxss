@@ -2,6 +2,7 @@
 .oneOrderContainer {
   padding: 0 48rpx;
   background-color: #ffffff;
+  margin-bottom: 230rpx;
 }
 
 .oneOrderContainer .timeContainer {

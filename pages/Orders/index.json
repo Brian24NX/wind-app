@@ -2,6 +2,7 @@
   "navigationBarTitleText": "",
   "usingComponents": {
     "one": "./One/index",
-    "more": "./More/index"
+    "more": "./More/index",
+    "no": "./No/index"
   }
 }

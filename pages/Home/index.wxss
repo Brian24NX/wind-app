@@ -51,7 +51,7 @@ page {
 }
 
 .homeContainer .searchContainers .tabContainer .actived .line {
-  width: 60rpx;
+  width: 80rpx;
   height: 8rpx;
   background-color: #E20202;
   position: absolute;

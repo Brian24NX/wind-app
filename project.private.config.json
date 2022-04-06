@@ -14,17 +14,10 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/NoOrders/index",
+          "pathName": "pages/Orders/index",
           "query": "",
           "launchMode": "default",
           "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/Orders/index",
-          "query": "",
-          "scene": null,
-          "launchMode": "default"
         }
       ]
     }
