@@ -29,19 +29,19 @@
         "pagePath": "pages/Query/index",
         "text": "",
         "iconPath": "/assets/img/tabs/query.png",
-        "selectedIconPath": "/assets/img/tabs/query_not_select.png"
+        "selectedIconPath": "/assets/img/tabs/query_selected.png"
       },
       {
         "pagePath": "pages/Quotation/index",
         "text": "",
         "iconPath": "/assets/img/tabs/price.png",
-        "selectedIconPath": "/assets/img/tabs/price_not_select.png"
+        "selectedIconPath": "/assets/img/tabs/price_selected.png"
       },
       {
         "pagePath": "pages/My/index",
         "text": "",
         "iconPath": "/assets/img/tabs/mine.png",
-        "selectedIconPath": "/assets/img/tabs/mine_not_select.png"
+        "selectedIconPath": "/assets/img/tabs/mine_selected.png"
       }
     ]
   },

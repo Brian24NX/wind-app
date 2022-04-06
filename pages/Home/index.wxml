@@ -13,18 +13,21 @@
     <!-- 货物追踪 -->
     <view class="searchContents" wx:if="{{actived === 'TRACKING'}}">
       <view class="remind">输入货柜号，提单号或订舱号。</view>
-      <input class="inputs" type="text" placeholder="ex:ABCD1234567" placeholder-class="placeholder"/>
+      <input class="inputs {{showRemind ? 'noRequestBorder' : ''}}" type="text" placeholder="ex:ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" />
+      <view class="noRequest" wx:if="{{showRemind}}">此项为必填项</view>
       <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">货物追踪</button>
       <view class="reminds">最多可同时查询三个货柜状态，请输入货柜号并用英文逗号隔开。</view>
     </view>
     <!-- 船期查询 -->
     <view class="searchContents" wx:if="{{actived === 'SCHEDULE'}}">
       <view class="serchTitle">起运港</view>
-      <input class="inputs" type="text" placeholder="名称/代码" placeholder-class="placeholder"/>
+      <input class="inputs {{showRemind2 ? 'noRequestBorder' : ''}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setQiYun"/>
+      <view class="noRequest" wx:if="{{showRemind2}}">此项为必填项</view>
       <view class="serchTitle mt20">卸货港</view>
-      <input class="inputs" type="text" placeholder="名称/代码" placeholder-class="placeholder"/>
-      <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">搜索</button>
-      <view class="searchBtn2">高级搜索</view>
+      <input class="inputs {{showRemind3 ? 'noRequestBorder' : ''}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setXieHuo"/>
+      <view class="noRequest" wx:if="{{showRemind3}}">此项为必填项</view>
+      <button class="searchBtn" hover-class="hoverClass" bindtap="toChuanQi">搜索</button>
+      <view class="searchBtn2" bindtap="toAdvancedSearch">高级搜索</view>
     </view>
     <!-- 价格 -->
     <view class="searchContents" wx:if="{{actived === 'PRICE'}}">

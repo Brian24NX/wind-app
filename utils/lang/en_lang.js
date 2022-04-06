@@ -234,19 +234,19 @@ var Languague = {
         "pagePath": "../Query/index",
         "text": "Query",
         "iconPath": "/assets/img/tabs/query.png",
-        "selectedIconPath": "/assets/img/tabs/query_not_select.png"
+        "selectedIconPath": "/assets/img/tabs/query_selected.png"
       },
       {
         "pagePath": "../Quotation/index",
         "text": "Quotation",
         "iconPath": "/assets/img/tabs/price.png",
-        "selectedIconPath": "/assets/img/tabs/price_not_select.png"
+        "selectedIconPath": "/assets/img/tabs/price_selected.png"
       },
       {
         "pagePath": "../My/index",
         "text": "My Account",
         "iconPath": "/assets/img/tabs/mine.png",
-        "selectedIconPath": "/assets/img/tabs/mine_not_select.png"
+        "selectedIconPath": "/assets/img/tabs/mine_selected.png"
       }
     ]
   }
