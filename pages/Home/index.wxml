@@ -14,7 +14,7 @@
     <view class="searchContents" wx:if="{{actived === 'TRACKING'}}">
       <view class="remind">输入货柜号，提单号或订舱号。</view>
       <input class="inputs" type="text" placeholder="ex:ABCD1234567" placeholder-class="placeholder"/>
-      <view class="searchBtn">货物追踪</view>
+      <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">货物追踪</button>
       <view class="reminds">最多可同时查询三个货柜状态，请输入货柜号并用英文逗号隔开。</view>
     </view>
     <!-- 船期查询 -->
@@ -23,7 +23,7 @@
       <input class="inputs" type="text" placeholder="名称/代码" placeholder-class="placeholder"/>
       <view class="serchTitle mt20">卸货港</view>
       <input class="inputs" type="text" placeholder="名称/代码" placeholder-class="placeholder"/>
-      <view class="searchBtn">搜索</view>
+      <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">搜索</button>
       <view class="searchBtn2">高级搜索</view>
     </view>
     <!-- 价格 -->

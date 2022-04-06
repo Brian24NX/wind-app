@@ -99,10 +99,11 @@ page {
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #ffffff;
+  border-radius: 0;
 }
 
-.homeContainer .searchContainers .searchContents .searchBtn::click {
-
+.homeContainer .searchContainers .searchContents .hoverClass {
+  opacity: 0.9;
 }
 
 .homeContainer .searchContainers .searchContents .searchBtn2 {

@@ -67,6 +67,12 @@ Page({
       currentIndex: e.detail.current
     })
   },
+  // 获取追踪
+  toHuoWu() {
+    wx.navigateTo({
+      url: '/pages/Orders/index',
+    })
+  },
   //中英文切换
   switchLanguage() {
     //切换当前版本，即修改公共变量中的version
