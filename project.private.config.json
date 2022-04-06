@@ -18,6 +18,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Result/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
         }
       ]
     }

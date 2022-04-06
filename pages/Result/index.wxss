@@ -1,0 +1,280 @@
+/* pages/Result/index.wxss */
+.searchResultTopContainer {
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 350rpx;
+}
+
+.searchResultTopContainer .searchTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  margin-top: 32rpx;
+}
+
+.searchResultTopContainer .searchTop .serchLeft {
+  font-size: 48rpx;
+  color: #04246A;
+}
+
+.searchResultTopContainer .searchTop .searchLine {
+  width: 6rpx;
+  height: 50rpx;
+  background-color: #E20202;
+  margin: 0 20rpx;
+}
+
+.searchResultTopContainer .searchTop .searchTime {
+  font-size: 32rpx;
+  color: #4468BA;
+}
+
+.searchResultTopContainer .calendarContainer {
+  display: flex;
+  height: 90rpx;
+  padding: 0 30rpx;
+  margin-top: 32rpx;
+}
+
+.searchResultTopContainer .calendarContainer .calendarLeft {
+  width: 546rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchResultTopContainer .calendarContainer .calendarLeft .oneDay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90rpx;
+  height: 90rpx;
+  margin-left: 20rpx;
+  font-size: 20rpx;
+  color: #626262;
+}
+
+.searchResultTopContainer .calendarContainer .calendarLeft .oneDay:nth-of-type(1) {
+  margin-left: 0;
+}
+
+.searchResultTopContainer .calendarContainer .calendarLeft .oneDay .dayValue {
+  color: #070707;
+  font-size: 24rpx;
+}
+
+.searchResultTopContainer .calendarContainer .calendarLeft .current {
+  background-color: #E9F2FF;
+  color: #04246A;
+}
+
+.searchResultTopContainer .calendarContainer .calendarLeft .current .dayValue {
+  color: #04246A;
+}
+
+.searchResultTopContainer .calendarContainer .calendarCenter {
+  width: 30rpx;
+  height: 100%;
+  margin-left: 10rpx;
+}
+
+.searchResultTopContainer .calendarContainer .calendarRight {
+  width: 116rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #04246A;
+  font-size: 20rpx;
+}
+
+.searchResultTopContainer .calendarContainer .calendarRight image {
+  width: 52rpx;
+  height: 52rpx;
+}
+
+.searchResultTopContainer .tabContainers {
+  width: 100%;
+  height: 130rpx;
+  display: flex;
+  padding: 0 30rpx;
+}
+
+.searchResultTopContainer .tabContainers .oneTab {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #6B7790;
+  font-size: 24rpx;
+}
+
+.searchResultTopContainer .tabContainers .oneTab .tabName {
+  font-size: 36rpx;
+}
+
+.searchResultTopContainer .tabContainers .tabActived {
+  color: #04246A;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  position: relative;
+}
+
+.searchResultTopContainer .tabContainers .tabActived .activedLine {
+  width: 40rpx;
+  height: 8rpx;
+  background-color: #E20202;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.resultContainers {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #F0F1F5;
+  padding: 380rpx 30rpx 40rpx;
+}
+
+.resultContainers .oneResult {
+  padding: 20rpx 30rpx 20rpx 20rpx;
+  background-color: #ffffff;
+  margin-bottom: 30rpx;
+}
+
+.resultContainers .oneResult:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.resultContainers .oneResult .tips {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.resultContainers .oneResult .tips .oneTip {
+  height: 34rpx;
+  padding: 4rpx 20rpx;
+  border-radius: 18rpx;
+  background-color: #DFF0FE;
+  font-size: 20rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #235AF6;
+  display: flex;
+  align-items: center;
+  margin-right: 20rpx;
+}
+
+.resultContainers .oneResult .resContents {
+  margin-top: 16rpx;
+  position: relative;
+  padding-left: 36rpx;
+}
+
+.resultContainers .oneResult .resContents .leftStep {
+  width: 24rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 10rpx;
+}
+
+.resultContainers .oneResult .resContents .leftStep .leftStepDto {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: #E20202;
+}
+
+.resultContainers .oneResult .resContents .leftStep .leftStepLine {
+  width: 0;
+  height: calc(100% - 70rpx);
+  border-left: 1rpx solid #9AA6C4;
+  margin: 5rpx 0;
+}
+
+.resultContainers .oneResult .resContents .leftStep .leftStepLoaction {
+  width: 24rpx;
+  height: 28rpx;
+}
+
+.resultContainers .oneResult .resContents .rightContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent {
+  width: 480rpx;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .time {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .end {
+  margin-top: 16rpx;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship {
+  display: flex;
+  align-items: center;
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #6B7790;
+  margin-top: 14rpx;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship .shipIcon {
+  width: 30rpx;
+  height: 34rpx;
+  margin-right: 16rpx;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship view {
+  width: 450rpx;
+  word-break: break-all;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .rightContent {
+  width: 110rpx;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .rightContent .timeDay {
+  text-align: right;
+  font-size: 36rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .rightContent .zhuanrun {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #04246A;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .rightContent .zhuanrun image {
+  width: 40rpx;
+  height: 40rpx;
+}

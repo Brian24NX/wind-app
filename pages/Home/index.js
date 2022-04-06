@@ -147,10 +147,10 @@ Page({
     wx.setNavigationBarTitle({
       title: lang.lang.userCenter.hometitle
     })
-    if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected:0,
-        list:lang.lang.toolbar.list //赋值
+        selected: 0,
+        list: lang.lang.toolbar.list //赋值
       })
     }
   },

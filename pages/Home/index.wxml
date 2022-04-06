@@ -1,5 +1,5 @@
-<view class="navbarContainer"style="height: calc({{navHeight}}px + 36rpx);">
-  <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit" ></image>
+<view class="navbarContainer" style="height: calc({{navHeight}}px + 36rpx);">
+  <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit"></image>
 </view>
 
 <view class="homeContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
@@ -15,16 +15,17 @@
       <view class="remind">输入货柜号，提单号或订舱号。</view>
       <input class="inputs {{showRemind ? 'noRequestBorder' : ''}}" type="text" placeholder="ex:ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" />
       <view class="noRequest" wx:if="{{showRemind}}">此项为必填项</view>
-      <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">货物追踪</button>
-      <view class="reminds">最多可同时查询三个货柜状态，请输入货柜号并用英文逗号隔开。</view>
+      <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">{{content.lang.userCenter.homeInfo.goods}}</button>
+      <view class="reminds">{{content.lang.userCenter.homeInfo.tips}}</view>
+
     </view>
     <!-- 船期查询 -->
     <view class="searchContents" wx:if="{{actived === 'SCHEDULE'}}">
       <view class="serchTitle">起运港</view>
-      <input class="inputs {{showRemind2 ? 'noRequestBorder' : ''}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setQiYun"/>
+      <input class="inputs {{showRemind2 ? 'noRequestBorder' : ''}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setQiYun" />
       <view class="noRequest" wx:if="{{showRemind2}}">此项为必填项</view>
       <view class="serchTitle mt20">卸货港</view>
-      <input class="inputs {{showRemind3 ? 'noRequestBorder' : ''}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setXieHuo"/>
+      <input class="inputs {{showRemind3 ? 'noRequestBorder' : ''}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setXieHuo" />
       <view class="noRequest" wx:if="{{showRemind3}}">此项为必填项</view>
       <button class="searchBtn" hover-class="hoverClass" bindtap="toChuanQi">搜索</button>
       <view class="searchBtn2" bindtap="toAdvancedSearch">高级搜索</view>
@@ -56,7 +57,7 @@
           <view class="oneDiscover">
             <image class="icon" src="../../assets/img/home/discover_1@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">增值服务</view>
+              <view class="discoverName">{{content.lang.userCenter.homeInfo.valueAddedService}}</view>
               <view>定制方案</view>
             </view>
           </view>

@@ -1,0 +1,64 @@
+<!--pages/Result/index.wxml-->
+<view class="searchResultTopContainer">
+  <view class="searchTop">
+    <view class="serchLeft">SHANGHAI - TOKYO</view>
+    <view class="searchLine"></view>
+    <view class="searchTime">未来三星期</view>
+  </view>
+  <view class="calendarContainer">
+    <view class="calendarLeft">
+      <view class="oneDay {{index === 2 ? 'current' : ''}}" wx:for="{{5}}">
+        <view class="dayValue">03.07</view>
+        <view>周一</view>
+      </view>
+    </view>
+    <image class="calendarCenter" src="/assets/img/result/shadow@2x.png"></image>
+    <view class="calendarRight">
+      <image src="/assets/img/result/calendar@2x.png"></image>
+      <view>日历</view>
+    </view>
+  </view>
+  <view class="tabContainers">
+    <view class="oneTab {{index === 0 ? 'tabActived' : ''}}" wx:for="{{3}}">
+      <view class="tabName">CNC</view>
+      <view>4 路线方案</view>
+      <view class="activedLine"></view>
+    </view>
+  </view>
+</view>
+<view class="resultContainers">
+  <view class="oneResult" wx:for="{{5}}">
+    <view class="tips">
+      <view class="oneTip">最快离港</view>
+      <view class="oneTip">最快到港</view>
+    </view>
+    <view class="resContents">
+      <view class="leftStep">
+        <view class="leftStepDto"></view>
+        <view class="leftStepLine"></view>
+        <image class="leftStepLoaction" src="/assets/img/result/location@2x.png"></image>
+      </view>
+      <view class="rightContainer">
+        <view class="leftContent">
+          <view class="time">2022-03-24 星期四 SHANGHAI, CN</view>
+          <view class="ship">
+            <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
+            <view>CMA CGM LA SCALA</view>
+          </view>
+          <view class="ship">
+            <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
+            <view>Service Pacific Express 3 / Service FEASIA9 via BUSAN, KOREA</view>
+          </view>
+          <view class="time end">2022-03-28 星期一 TOKYO, JP</view>
+        </view>
+        <view class="rightContent">
+          <view class="timeDay">4天</view>
+          <view class="zhuanrun">
+            <image src="/assets/img/result/zhuanyun@2x.png"></image>
+            <view>1 转运</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

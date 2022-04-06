@@ -4,7 +4,8 @@
     "pages/Quotation/index",
     "pages/Query/index",
     "pages/My/index",
-    "pages/Orders/index"
+    "pages/Orders/index",
+    "pages/Result/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
