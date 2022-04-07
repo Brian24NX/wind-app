@@ -26,8 +26,8 @@
     </view>
   </view>
 </view>
-<view class="resultContainers">
-  <view class="oneResult" wx:for="{{5}}" bindtap="toDetail" data-id="{{item.id}}">
+<view class="resultContainers" >
+<view class="oneResult" wx:for="{{5}}" bindtap="toDetail" data-id="{{item.id}}"> 
     <view class="tips">
       <view class="oneTip">最快离港</view>
       <view class="oneTip">最快到港</view>
@@ -61,4 +61,7 @@
       </view>
     </view>
   </view>
+  <!--无结果-->
+  <!-- <noresult></noresult> -->
 </view>
+

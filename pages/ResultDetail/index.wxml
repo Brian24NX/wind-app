@@ -1,2 +1,64 @@
 <!--pages/ResultDetail/index.wxml-->
-<text>pages/ResultDetail/index.wxml</text>
+<view class="resultContainer">
+  <view class="resultCardContainer">
+    <view class="cardContainer">SHANGHAI-TOKYO</view>
+    <view class="carddate">
+      <image src="../../assets/img/result/calendar@2x.png"></image><text>4 天</text>
+    </view>
+    <view class="cardtranshipment">
+      <image src="../../assets/img/result/zhuanyun@2x.png"></image><text>1 转运</text>
+    </view>
+  </view>
+  <view class="resultDetailContainer">
+    <view class="polContainer">
+      <view class="polLeftContainer">
+        <view class="redcircle"></view>
+        <view class="line108"></view>
+        <image class="ship" src="../../assets/img/result/huolunhao@2x.png"></image>
+        <view class="line62"></view>
+      </view>
+      <view class="polrightContainer">
+        <view class="polDate">2022-03-24 星期四</view>
+        <view class="polLocation"><text class="pol">起运港</text><text class="polPro">SHANGHAI,</text><text class="polCity">CN</text></view>
+        <view class="polEn">YANGSHAN DEEP WATER PORT PHASE</view>
+        <view class="polVgm"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">2022-03-22 星期二</text></view>
+        <view class="polInter"><text>港口截关时间:</text><text class="InterDate">2022-03-24 星期四</text></view>
+        <view class="polVes"><text>Vessel</text><text class="vesName">CAM CGM SCALA</text></view>
+        <view class="polSer"><text>Service</text><text class="serName">French Asia Line 6(FAL6)</text></view>
+        <view class="polVoy"><text>本地航次</text><text class="voyName">-</text></view>
+        <view class="polVox"><text>航次:</text><text class="voxName">OGG01S1MA</text></view>
+      </view>
+    </view>
+    <view class="transContrainer">
+      <view class="transLeftContainer">
+        <view class="redcircle"></view>
+        <view class="line76"></view>
+        <image class="ship" src="../../assets/img/result/huolunhao@2x.png"></image>
+        <view class="line151"></view>
+      </view>
+      <view class="transRightContainer">
+        <view class="transDate">2022-03-26 星期六</view>
+        <image class="transfership" src="../../assets/img/result/pulltransfer.png"></image>
+        <view class="transLocation"><text class="locaPro">BUSAN,KOREA,</text><text class="localCity">KR</text></view>
+        <view class="transforLoaction"><text class="forLocaPro">BUSAN PORT TERMINAL SINSEONDAE</text></view>
+        <view class="transforDate">2022-03-27 星期日</view>
+        <view class="transVgm"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">2022-03-25 星期五</text></view>
+        <view class="transInter"><text>港口截关时间:</text><text class="InterDate">2022-03-27 星期日</text></view>
+        <view class="transVes"><text>Vessel</text><text class="vesName">CAM CGM SCALA</text></view>
+        <view class="transSer"><text>Service</text><text class="serName">French Asia Line 6(FAL6)</text></view>
+        <view class="transVoy"><text>本地航次</text><text class="voyName">-</text></view>
+        <view class="transVox"><text>航次:</text><text class="voxName">OBB01S1HG</text></view>
+      </view>
+    </view>
+    <view class="podContainer">
+      <view class="podLeftContainer">
+        <image class="location" src="../../assets/img/result/location@2x.png"></image>
+      </view>
+      <view class="podRightContainer">
+        <view class="podDate"><text>2022-03-29 星期二</text></view>
+        <view class="podLocation"><text class="pod">卸货港</text><text class="podPro">TOKYO,</text><text class="podCity">JP</text></view>
+        <view class="podEn">AOMI NO2 TERMINAL</view>
+      </view>
+    </view>
+  </view>
+</view>

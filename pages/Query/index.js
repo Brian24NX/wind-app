@@ -8,62 +8,37 @@ Page({
    */
   data: {
     content: {}, // 用于保存当前页面所需字典变了
-    data:'',
-    show:false,
-    columnssearch:['Departure','Arrival'],
-    columnsnext:['1 Week','2 Weeks','3 Weeks','4 Weeks'],
+    navTop: app.globalData.navTop,
+    navHeight: app.globalData.navHeight,
+    array:[
+      {location:'guangzhou-shanghai'},
+      {location:'guangzhou-yangzhou'},
+      {location:'guangzhou-suzhou'}
+    ],
+    list: [{
+      userid: 123,
+      username: "张三"
+    }, {
+      userid: 456,
+      username: "张四"
+    }, {
+      userid: 789,
+      username: "王三"
+    }, {
+      userid: 101,
+      username: "王四"
+    }]
   },
-  onChangesearch(event){
-      const {picker,value,index}=event.detail;
-      console.log(`当前值：${value}, 当前索引：${index}`)
+  change(e){
+      console.log(e.detail.id);
   },
-  onChangenext(event){
-    const {picker,value,index}=event.detail;
-    console.log(`当前值：${value}, 当前索引：${index}`)
-},
-  onDisplay() {
-    this.setData({ show: true });
+  onClose(index){
+    console.log('删除')
   },
-  onClose() {
-    this.setData({ show: false });
-  },
-  formatDate(date) {
-    date = new Date(date);
-    return `${date.getMonth() + 1}/${date.getDate()}`;
-  },
-  onConfirm(event) {
+  deleteall(){
     this.setData({
-      show: false,
-      date: this.formatDate(event.detail),
-    });
-  },
-    /**
-   * 点击日期时候触发的事件
-   * bind:getdate
-   */
-  getdate(e) {
-    console.log(e.detail);
-  },
-    /**
-   * 点击全选触发的事件
-   * bind:checkall
-   */
-  checkall(e) {
-    console.log(e.detail.days);
-  },
-  /** 
-  * 点击确定按钮触发的事件
-  * bind:select
-  */
-  cmfclick(e){
-    console.log(e.detail.selectDays);
-  },
-  /** 
-  * 点击清空事件
-  * bind:clear
-  */
-  clear(e) {
-    console.log("要清空选中日期")
+      array:[]
+    })
   },
   /**
    * 生命周期函数--监听页面加载

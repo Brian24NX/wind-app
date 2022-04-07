@@ -1,26 +1,153 @@
-.containerQuery{
-    background-color: #F0F1F5;
+.navbarContainer {
     width: 100%;
-    height:100%;
+    position: fixed;
+    z-index: 10;
+    background-color: #ffffff;
+    box-shadow: 0 2rpx 8rpx 0 rgba(238, 238, 238, 0.5);
+  }
+  
+.navbarContainer .logo {
+    width: 240rpx;
+    height: 100rpx;
+  }
+  .navbarContainer .van-hairline--bottom:after {
+    border-bottom-width: 0;
+  }
+  page {
+    background-color: #F0F1F5;
+  }
+.searchContainers {
+    width: 690rpx;
+    background-color: #ffffff;
+    margin: 30rpx auto;
+    padding: 0 48rpx 48rpx;
 }
-.backgroundTop{
-      height: 20rpx;
-      background-color: #F0F1F5;
+.searchtitle{
+    padding:34rpx 46rpx  48rpx 44rpx;
 }
-.formRoutes{
-    background-color: #FFFFFF;
-    width:90%;
-    height:1080rpx;
-    margin:auto;
+.historyContainers{
+    padding:0 46rpx 10rpx 44rpx;
+}
+.route{
+    font-size: 56rpx;
+    color:#04246A;
+    font-weight: bold;
 }
 .redline{
-    width: 6rpx;
-    height: 50rpx;
-    background-color: #E20202;
-    display: inline-block;
+  width: 6rpx;
+  height: 50rpx;
+  background: #E20202;
+  display: inline-block;
+  position: relative;
+  left:10rpx;
+  top: 4rpx;
 }
-.routes,.schedul{
-   font-size: 56rpx;
-   color:#04246A;
-   font-weight: bold;
+.shipdate{
+   font-size: 36rpx;
+   color:#4468BA;
+   font-weight:bold;
+   position: relative;
+   left: 20rpx;
+   top: -4rpx;
+}
+/**
+* 输入框样式
+*/
+.polimg,.podimg{
+    width:22rpx;
+    height:30rpx;
+    position: relative;
+    top: 80rpx;
+    left: -70rpx;
+}
+.podlocation{
+   width: 22rpx;
+   height: 28rpx;
+   position: relative;
+   left: -4rpx;
+   top: 60rpx;
+}
+.font14{
+  font-size: 28rpx;
+  color:#04246A;
+  margin-left: 30rpx;
+}
+.polinput,.podinput{
+  height: 88rpx;
+  border:2rpx solid #DFDFDF;
+  margin-left: 50rpx;
+  margin-top: 10rpx;
+}
+.ship{
+   width: 52rpx;
+   height: 52rpx;
+   position: relative;
+   top: -60rpx;
+   left: -20rpx;
+}
+.redcircle{
+  width: 18rpx;
+  height: 18rpx;
+  background: #E20202;
+  display: inline-block;
+}
+.line{
+  width: 2rpx;
+  height: 72rpx;
+  background: #9AA6C4;
+  border-radius: 4rpx;
+  opacity: 0.59;
+  display: inline-block;
+}
+.top{
+  position: relative;
+  top: -110rpx;
+  left: 6rpx;
+}
+.bottom{
+  position: relative;
+  left: -48rpx;
+  top: 8rpx;
+}
+.searchimg,.dateimg,.weekimg{
+   width: 52rpx;
+   height: 52rpx;
+}
+/*history*/
+.flex{
+height: 24px;
+background: #EAEBEE;
+border-radius: 24rpx;
+display: inline-block;
+}
+.flex:nth-child(2n){
+   margin-left: 20rpx;
+}
+.historydel{
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: -25rpx;
+}
+.clearstyle{
+  width: 32rpx;
+  height: 32rpx;
+  border: none;
+  padding: 0;
+  float: right;
+  display: inline-block;
+}
+.font12{
+  font-size: 24rpx;
+  color:#626262;
+}
+.searchselect,.dateselect,.weekselect{
+   position: relative;
+   top: -40rpx;
+   left: -20rpx;
+}
+.pos{
+  position: relative;
+  top: -15rpx;
+  left: -8rpx;
 }

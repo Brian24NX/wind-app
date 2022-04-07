@@ -1,34 +1,57 @@
-<view class="containerQuery">
-    <view class="backgroundTop"></view>
-    <view class="formRoutes">
-        <view><text class="routes font">Routes </text>
-            <view class="redline"></view><text class="schedul font">Get a schedul</text>
-        </view>
-        <vant-cell-group>
-            <van-field value="Name/code" left-icon="location" border="{{ false }}" />
-        </vant-cell-group>
-        <vant-cell-group>
-            <van-field value="Name/code" left-icon="location" border="{{ false }}" />
-        </vant-cell-group>
-        <vant-cell-group>
-            <van-picker columns="{{ columnssearch }}" default-index="{{ 1 }}" bind:change="onChangesearch" />
-        </vant-cell-group>
-        <vant-cell-group>
-            <view></view>
-            <van-cell title="选择单个日期" value="{{ date }}" bind:click="onDisplay" />
-            <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" />
-        </vant-cell-group>
-        <vant-cell-group>
-            <van-picker columns="{{ columnsnext }}" default-index="{{2}}" bind:change="onChangenext" />
-        </vant-cell-group>
-        <van-button type="primary" color="#2D75FF">Search</van-button>
-    </view>
-    <view class="history">
-        <view><text>History</text>
-            <van-button icon="delete-o" type="primary" />
-        </view>
-        <view>
-            <vant-tag closeable size="medium" type="primary" id="" bind:close="onClose"></vant-tag>
-        </view>
-    </view>
+<view class="navbarContainer" style="height: calc({{navHeight}}px + 36rpx);">
+  <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit"></image>
 </view>
+<scroll-view scroll-y="true" class="homeContainer" style="padding-top: calc({{navHeight}}px + 36rpx)">
+  <view class="searchContainers">
+    <view class="searchtitle">
+      <text class="font route">航线</text>
+      <view class="redline"></view><text class="font shipdate">获取船期</text>
+      <form catchsubmit="formSubmit" catchreset="formReset">
+        <view class="POLinput">
+          <view class="redcircle"></view>
+          <text class="font font14">启运港</text>
+          <image class="polimg" style="left:-66rpx;" src="../../assets/img/seniorsearch/position.png"></image>
+          <input class="polinput" type="text" placeholder="名称/代码" placeholder-style="margin-left:30rpx;" bindblur="changepol" />
+        </view>
+        <view class="line top"></view>
+        <image class="ship" src="../../assets/img/seniorsearch/ship.png"></image>
+        <view class="line bottom"></view>
+        <view class="PODinput" style="position: relative;top: -60rpx;">
+          <image class="podlocation" src="../../assets/img/seniorsearch/location.png"></image>
+          <text class="font font14">卸货港</text>
+          <image class="podimg" src="../../assets/img/seniorsearch/position.png"></image>
+          <input class="podinput" type="text" placeholder="名称/代码" placeholder-style="margin-left:30rpx;" bindblur="changepod" />
+        </view>
+        <view class="searchselect">
+          <image class="searchimg" src="../../assets/img/seniorsearch/search.png"></image>
+          <text class="font font14 pos">搜索</text>
+          <pickerinput style="position: relative;left: 70rpx;" list="{{list}}" _width="460rpx" _height="80rpx" bind:action="change" actualvalue="userid" showvalue="username"></pickerinput>
+        </view>
+        <view class="dateselect">
+          <image class="dateimg" src="../../assets/img/seniorsearch/date.png"></image>
+          <text class="font font14 pos">日期</text>
+          <pickerinput style="position: relative;left: 70rpx;" list="{{list}}" _width="460rpx" _height="80rpx" bind:action="change" actualvalue="userid" showvalue="username"></pickerinput>
+        </view>
+        <view class="weekselect">
+          <image class="weekimg" src="../../assets/img/seniorsearch/week.png"></image>
+          <text class="font font14 pos">未来</text>
+          <pickerinput style="position: relative;left: 70rpx;" list="{{list}}" _width="460rpx" _height="80rpx" bind:action="change" actualvalue="userid" showvalue="username"></pickerinput>
+        </view>
+        <view class="btn">
+          <button style="margin: 60rpx 0;background: #2D75FF;border-radius: 0;;" type="primary" fromType="submit">搜索</button>
+        </view>
+      </form>
+    </view>
+  </view>
+  <view class="historyContainers">
+    <text>搜索历史</text>
+    <button class="clearstyle" bindtap="deleteall()">
+      <image class="historydel" src="../../assets/img/seniorsearch/delete.png"></image>
+    </button>
+    <view class="result">
+    <van-tag class="flex" wx:key="index" wx:for="{{array}}" closeable size="medium"  id="primary" bind:close="onClose(index)">
+      <text class="font font12">{{item.location}}</text>
+    </van-tag>
+    </view>
+  </view>
+</scroll-view>

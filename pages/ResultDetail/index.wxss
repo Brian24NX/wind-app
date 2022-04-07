@@ -1,1 +1,253 @@
 /* pages/ResultDetail/index.wxss */
+.resultContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30rpx;
+  background-color: #F0F1F5;
+}
+
+.resultContainer .resultCardContainer {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 0 40rpx;
+  height: 224rpx;
+  background: url(https://mmbiz.qpic.cn/mmbiz_png/HR3PlALDED2iaALibNMDoO1XPsH1LpS8YxIArdjiaEFtQicTQ3ticTNOrdaEicPYeNZibeqThVFu6QXRpicicO0lrZuRTtw/0?wx_fmt=png);
+}
+
+.carddate image,
+.cardtranshipment image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.cardContainer {
+  padding-top: 40rpx;
+  padding-left: 48rpx;
+  font-size: 48rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+  line-height: 66rpx;
+}
+
+.carddate,
+.cardtranshipment {
+  padding-left: 62rpx;
+}
+
+.carddate text,
+.cardtranshipment text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #4468BA;
+  position: relative;
+  top: -4rpx;
+  left: 10rpx;
+}
+
+.resultDetailContainer {
+  width: 100%;
+  min-height: 200rpx;
+  margin-top: 30rpx;
+  background-color: #ffffff;
+}
+
+.polContainer {
+  height: 472rpx;
+  padding: 28rpx 30rpx 0 30rpx
+}
+
+.polContainer::after {
+  clear: both;
+}
+
+.polLeftContainer {
+  float: left;
+  margin-top: 16rpx;
+}
+
+.ship {
+  width: 56rpx;
+  height: 54rpx;
+}
+
+.redcircle {
+  width: 16rpx;
+  height: 16rpx;
+  background: #E20202;
+  border-radius: 50%;
+  margin-left: 20rpx;
+}
+
+.line108 {
+  width: 2rpx;
+  height: 216rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+
+.line62 {
+  width: 2rpx;
+  height: 124rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+
+.polDate,
+.transDate,.transforDate,
+.podDate {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+}
+.polDate,
+.transDate,
+.podDate {
+  margin-left: 64rpx;
+}
+.polLocation,.podLocation{
+  margin-top: 12rpx;
+}
+.pol,
+.pod {
+  width: 102rpx;
+  height: 32rpx;
+  background: #E6EAEF;
+  border-radius: 16rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+}
+
+.polPro,
+.podPro,.locaPro,.forLocaPro{
+  color: #2B74FF;
+  font-size: 12px;
+  font-family: PingFangSC-Regular;
+  margin-left: 20rpx;
+}
+
+.polCity,
+.podCity,.localCity {
+  font-size: 12px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+  margin-left: 10rpx;
+}
+.transforDate{
+    position: relative;
+    top: -24rpx;
+    left: 24rpx;
+}
+.transLocation,.transforLoaction{
+  position: relative; 
+  top: -80rpx;
+  left: 60rpx;
+}
+.polEn,
+.podEn {
+  font-size: 24rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+  margin-top: 12rpx;
+}
+.polVgm,
+.transVgm,.polVes,.transVes,.polVoy,.transVoy{
+  margin-top: 30rpx;
+  margin-left: 110rpx;
+}
+.transfership{
+    width: 80rpx;
+    height: 84rpx;
+}
+.transLocation{
+ 
+}
+.transforLoaction{
+
+}
+.transInter,.polInter,.polSer,.transSer,.polVox,.transVox{
+  margin-left: 110rpx;
+  margin-top: 4rpx; 
+}
+.polVgm,
+.transVgm,.transInter,.polInter,.polVes,.transVes,.polSer,.transSer,.polVoy,.polVox,.transVoy,.transVox {
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #6B7790;
+}
+.vgmDate,.InterDate,.vesName{
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+  margin-left: 20rpx;
+}
+.serName,.voxName{
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #2B74FF;
+  margin-left: 20rpx;
+}
+.voyName{
+  margin-left: 20rpx;
+}
+.transContrainer {
+  padding: 0 30rpx 0 30rpx;
+}
+
+.transContrainer::after {
+  clear: both;
+}
+
+.transLeftContainer {
+  float: left;
+}
+
+.line76 {
+  width: 2rpx;
+  height: 152rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+
+.line151 {
+  width: 2rpx;
+  height: 302rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+
+.podContainer {
+  height: 190rpx;
+  padding: 0 30rpx 72rpx 30rpx;
+}
+
+.podContainer::after {
+  clear: both;
+}
+
+.podLeftContainer {
+  float: left;
+}
+
+.podRightContainer {
+  float: left;
+}
+
+.location {
+  width: 28rpx;
+  height: 38rpx;
+  margin-left: 14rpx;
+}

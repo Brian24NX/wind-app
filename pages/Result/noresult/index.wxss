@@ -1,0 +1,36 @@
+/* pages/Orders/No/index.wxss */
+.noOrderData {
+  width: 100%;
+  margin-top: 74rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 36rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+}
+
+.noOrderData image {
+  width: 556rpx;
+  height: 376rpx;
+  margin-bottom: 30rpx;
+  display: block;
+}
+.nosolutions{
+  font-size: 36rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+  line-height: 50rpx;
+  text-align: center;
+}
+.settlesolutions{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246A;
+  line-height: 40rpx;
+  text-align: center;
+}
