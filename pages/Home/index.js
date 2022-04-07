@@ -79,7 +79,7 @@ Page({
       return
     }
     wx.navigateTo({
-      url: '/pages/Orders/index',
+      url: `/pages/Orders/index?str=${this.data.huoGuiValue}`
     })
   },
   // 设置起运港

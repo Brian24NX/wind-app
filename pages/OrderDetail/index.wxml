@@ -1,5 +1,6 @@
-<!--pages/Orders/One/index.wxml-->
-<view class="resultContainer">
+<!--pages/OrderDetail/index.wxml-->
+<view class="moreDetailContainer">
+  <view class="resultContainer">
   <view class="resTitle">追踪结果</view>
   <view class="resList others">
     <view class="oneRes">
@@ -53,4 +54,5 @@
   <view class="bottomContainer">
     <view class="downloadBtn">以PDF格式输出</view>
   </view>
+</view>
 </view>

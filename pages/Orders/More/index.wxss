@@ -24,10 +24,6 @@
   font-weight: 500;
 }
 
-.orderMoreList .oneOrder .orderBottom {
-  
-}
-
 .orderMoreList .oneOrder .orderBottom .oneBottom {
   padding: 40rpx 0;
   border-bottom: 1rpx solid #EEEEEE;
