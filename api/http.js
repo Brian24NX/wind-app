@@ -80,7 +80,7 @@ Promise.prototype.finally = function(callback) {
 
 
 export const getRequest = (url, data) => {
-	data = skipNulls(data)
+	// data = skipNulls(data)
 	return request({
 		url,
 		data,

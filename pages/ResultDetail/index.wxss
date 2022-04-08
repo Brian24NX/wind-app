@@ -66,7 +66,9 @@
   float: left;
   margin-top: 16rpx;
 }
-
+.polrightContainer{
+  margin-left: 72rpx;
+}
 .ship {
   width: 56rpx;
   height: 54rpx;
@@ -104,10 +106,9 @@
   font-weight: 600;
   color: #04246A;
 }
-.polDate,
-.transDate,
-.podDate {
-  margin-left: 64rpx;
+.transforDate{
+  position: relative; 
+  top: -14rpx;
 }
 .polLocation,.podLocation{
   margin-top: 12rpx;
@@ -140,15 +141,11 @@
   color: #071E5D;
   margin-left: 10rpx;
 }
-.transforDate{
-    position: relative;
-    top: -24rpx;
-    left: 24rpx;
-}
+
 .transLocation,.transforLoaction{
   position: relative; 
   top: -80rpx;
-  left: 60rpx;
+  left: 80rpx;
 }
 .polEn,
 .podEn {
@@ -161,20 +158,15 @@
 .polVgm,
 .transVgm,.polVes,.transVes,.polVoy,.transVoy{
   margin-top: 30rpx;
-  margin-left: 110rpx;
+  margin-left: 38rpx;
 }
 .transfership{
     width: 80rpx;
     height: 84rpx;
-}
-.transLocation{
- 
-}
-.transforLoaction{
-
+    margin-left: 10rpx;
 }
 .transInter,.polInter,.polSer,.transSer,.polVox,.transVox{
-  margin-left: 110rpx;
+  margin-left: 38rpx;
   margin-top: 4rpx; 
 }
 .polVgm,
@@ -202,6 +194,7 @@
   margin-left: 20rpx;
 }
 .transContrainer {
+  height: 540rpx;
   padding: 0 30rpx 0 30rpx;
 }
 
@@ -212,7 +205,11 @@
 .transLeftContainer {
   float: left;
 }
-
+.transRightContainer{
+  margin-left: 72rpx;
+  position: relative; 
+  top: -10rpx;
+}
 .line76 {
   width: 2rpx;
   height: 152rpx;
@@ -244,6 +241,7 @@
 
 .podRightContainer {
   float: left;
+  margin-left: 36rpx;
 }
 
 .location {
