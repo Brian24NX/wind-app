@@ -113,6 +113,42 @@
    width: 52rpx;
    height: 52rpx;
 }
+.scroll-view{
+  width: 455rpx;
+  position: absolute;
+  top: 290rpx;
+  left: 170rpx;
+  background-color: #ffffff;
+  box-shadow: 0rpx 0rpx 4rpx #e2e2e2;
+  z-index: 40;
+}
+.scroll-viewpod{
+  width: 450rpx;
+  position: absolute;
+  top: 142rpx;
+  left:52rpx;
+  background-color: #ffffff;
+  box-shadow: 0rpx 0rpx 4rpx #e2e2e2;
+  z-index: 40;
+}
+.item{
+  width:100%;
+}
+.dateinput{
+   width:450rpx ;
+   height: 80rpx;
+   display: flex;
+   flex-direction: space-between;
+   border:2rpx #DFDFDF solid;
+   margin-left: 70rpx;
+   padding-left: 10rpx;
+}
+.polname,.podname{
+  width: 100%;
+  padding: 20rpx;
+  font-size: 33rpx;
+  border-bottom: 2rpx solid #e2e2e2;
+}
 /*history*/
 .flex{
 height: 24px;
@@ -145,6 +181,9 @@ display: inline-block;
    position: relative;
    top: -40rpx;
    left: -20rpx;
+}
+.weekselect{
+  top: -60rpx;
 }
 .pos{
   position: relative;

@@ -1,6 +1,7 @@
 // pages/query/index.js
 const app = getApp();
 var languageUtil = require('../../utils/languageUtils')
+import {fuzzySearch,routingFinder} from '../../api/modules/home';
 Page({
 
   /**
@@ -10,24 +11,137 @@ Page({
     content: {}, // 用于保存当前页面所需字典变了
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
+    viewShowedPol:false,
+    viewShowedPod:false,
+    // 卸货港
+    podvalue:"",
+    // 起运港
+    polvalue:"",
     array:[
       {location:'guangzhou-shanghai'},
       {location:'guangzhou-yangzhou'},
       {location:'guangzhou-suzhou'}
     ],
-    list: [{
-      userid: 123,
-      username: "张三"
-    }, {
-      userid: 456,
-      username: "张四"
-    }, {
-      userid: 789,
-      username: "王三"
-    }, {
-      userid: 101,
-      username: "王四"
-    }]
+    pollist:[],
+    podlist:[],
+    searchlist:[{
+          id:0,
+          method:"离岸"
+    },{
+          id:1,
+          method:"到达"
+    }],
+    // search
+    search:'',
+    // week
+    week:'',
+    weeklist:[{
+        id:0,
+        weeks:'1 星期'
+    },{
+        id:1,
+        weeks:'2 星期'
+    },{
+        id:2,
+        weeks:'3 星期'
+    },{
+        id:3,
+        weeks:'4 星期'
+    }],
+    date: '',
+  },
+  changemethod(e){
+    let index=e.detail.id;
+    this.setData({
+      search:this.data.searchlist[index].method
+    })
+    console.log(this.data.search)
+  },
+  changeweek(e){
+    let index=e.detail.id;
+    this.setData({
+      search:this.data.weeklist[index].week
+    })
+  },
+  getDate(){
+    let now=new Date();
+    let year=now.getFullYear();
+    let month=now.getMonth()+1;
+    month=month<10?('0'+month):month;
+    let day=now.getDate();
+    day=day<10?('0'+day):day
+    return year+'-'+month+'-'+day;
+  },
+  bindTimeChange(e){
+      this.setData({
+        date:e.detail.value
+      })
+  },
+  submit(){
+     let arrivalDate,departureDate;
+      if(this.data.search==='离岸'){
+        arrivalDate=this.data.data;
+      }
+      else{
+         departureDate=this.data.data;
+      }
+      let obj={
+        placeOfDischarge:this.data.podvalue||'USDAT',
+        placeOfLoading:this.data.polvalue||'CNSHA',
+        arrivalDate:arrivalDate,
+        departureDate:departureDate||this.data.data,
+        searchRange:this.data.week||this.data.week,
+        shippingCompany:'',
+      }
+      routingFinder(obj).then(res=>{
+          console.log(res.data);
+      })
+  },
+  //获取卸货港的接口处理
+  changepod(e){
+     let obj={
+        searchStr:e.detail.value
+     } 
+     fuzzySearch(obj).then(res=>{
+         this.setData({
+            podlist:res.data
+         })
+     })
+     this.setData({
+          viewShowedPod:true,
+          podvalue:""
+     })
+  },
+  //获取起始港的接口处理
+  changepol(e){
+    let obj={
+       searchStr:e.detail.value
+    } 
+    fuzzySearch(obj).then(res=>{
+        this.setData({
+           pollist:res.data
+        })
+    })
+    this.setData({
+         viewShowedPol:true,
+         polvalue:""
+    })
+ },
+ // 起始港选择
+ changepolname(e){
+    let index=e.currentTarget.dataset.index;  
+    this.setData({
+      viewShowedPol:false,
+      polvalue:this.data.pollist[index].point
+    })
+  },
+  // 卸货港
+  changepodname(e){
+    let index=e.currentTarget.dataset.index;  
+    this.setData({
+      viewShowedPod:false,
+      podvalue:this.data.podlist[index].point
+    })
   },
   change(e){
       console.log(e.detail.id);
@@ -44,7 +158,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      date:this.getDate()
+    })
   },
 
   /**
