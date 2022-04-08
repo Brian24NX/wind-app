@@ -7,7 +7,7 @@
     </view>
   </view>
   <!-- 结果 -->
-  <one detail="{{detail}}" wx:if="{{dataLength === 1}}"></one>
+  <one detail="{{detail}}" list="{{list}}" wx:if="{{dataLength === 1}}"></one>
   <more list="{{list}}" wx:if="{{dataLength > 1}}"></more>
-  <no wx:if="{{dataLength === 0}}"></no>
+  <no lists="{{list}}" wx:if="{{dataLength === 0}}"></no>
 </view>

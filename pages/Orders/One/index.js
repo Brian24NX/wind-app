@@ -1,4 +1,7 @@
 const dayjs = require("dayjs");
+import {
+  reportToPDF
+} from '../../../api/modules/home';
 
 // pages/Orders/One/index.js
 Component({
@@ -11,6 +14,9 @@ Component({
   properties: {
     detail: {
       type: Object
+    },
+    list: {
+      type: Array
     }
   },
 
@@ -18,6 +24,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    originalData: null,
     stepList: [],
     stepCount: 0,
     timeRemaining: 0
@@ -34,7 +41,8 @@ Component({
     setStepList() {
       this.setData({
         stepList: [],
-        stepCount: 0
+        stepCount: 0,
+        originalData: this.data.detail
       })
       const list = this.data.detail.movements.reverse();
       list.forEach((item, index) => {
@@ -90,6 +98,15 @@ Component({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining
       })
+    },
+    
+    // PDF查看
+    reportToPDF() {
+      console.log(this.data.list)
+      // return
+      reportToPDF({
+        trackingResp: this.data.list[0].data
+      }).then(res => {})
     }
   }
 })

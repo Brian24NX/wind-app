@@ -1,4 +1,4 @@
-const { getRequest } = require('../http')
+const { getRequest, postRequest } = require('../http')
 
 // 获取首页数据
 export const GetHomeData = (params) => {
@@ -20,4 +20,9 @@ export const shipmentTracking=(params)=>{
     }
     console.log(obj);
     return getRequest('/api/miniapp/shipment-tracking',obj)
+}
+
+// 获取PDF下载路径
+export const reportToPDF=(params)=>{
+  return postRequest('/api/miniapp/downloadPdf', params, true)
 }

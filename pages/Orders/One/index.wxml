@@ -51,6 +51,6 @@
     </view>
   </view>
   <view class="bottomContainer">
-    <view class="downloadBtn">以PDF格式输出</view>
+    <view class="downloadBtn" bindtap="reportToPDF">以PDF格式输出</view>
   </view>
 </view>
