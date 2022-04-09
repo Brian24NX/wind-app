@@ -1,10 +1,15 @@
 // pages/Orders/No/index.js
 Component({
+  options: {
+    addGlobalClass: true
+  },
   /**
    * 组件的属性列表
    */
   properties: {
-
+    lists: {
+      type: Array
+    }
   },
 
   /**

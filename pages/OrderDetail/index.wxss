@@ -1,4 +1,13 @@
-/* pages/Orders/One/index.wxss */
+/* pages/OrderDetail/index.wxss */
+.moreDetailContainer {
+  padding: 30rpx;
+  background-color: #F0F1F5;
+}
+
+.moreDetailContainer .resultContainer {
+  margin-top: 0;
+}
+
 .others {
   display: flex;
 }

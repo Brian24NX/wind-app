@@ -6,7 +6,8 @@
     "pages/My/index",
     "pages/Orders/index",
     "pages/Result/index",
-    "pages/ResultDetail/index"
+    "pages/ResultDetail/index",
+    "pages/OrderDetail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -48,8 +49,8 @@
     ]
   },
   "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
+    "request": 20000,
+    "downloadFile": 20000
   },
   "debug": true,
   "sitemapLocation": "sitemap.json",

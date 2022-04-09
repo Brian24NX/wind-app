@@ -45,4 +45,39 @@ page{
 .font{
    font-family: PingFangSC-Regular, sans-serif;
 }
-    
+
+/* 结果查询 */
+.resultContainer {
+  width: 100%;
+  padding: 34rpx 0 30rpx 48rpx;
+  background-color: #ffffff;
+  margin: 30rpx 0 24rpx;
+  background: url(https://mmbiz.qpic.cn/mmbiz_png/HR3PlALDED2iaALibNMDoO1XPsH1LpS8YxOcCr73AJFu4lPA25l5BwxbCJU3XhssulDJUbdclgoWPCpSAfzcUEFw/0?wx_fmt=png) no-repeat;
+  background-position: bottom right;
+  background-size: 750rpx 230rpx;
+}
+
+.resultContainer .resTitle {
+  font-size: 56rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+}
+
+.resultContainer .resList .oneRes {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.resultContainer .resList .oneRes .resIcon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 14rpx;
+}
+
+.resultContainer .resList .oneRes .resContent {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #4468BA;
+}

@@ -1,48 +1,84 @@
 <!--pages/Orders/More/index.wxml-->
-<view class="orderMoreList">
-  <view class="oneOrder" wx:for="{{5}}">
-    <view class="orderTop">
-      <view class="topLeft">预计到港时间</view>
-      <view class="topRight">2022-03-28 星期一 21:00</view>
+<!-- <wxs module="filter" src="./more.wxs"></wxs> -->
+<view class="resultContainer">
+  <view class="resTitle">追踪结果</view>
+  <view class="resList">
+    <view class="oneRes" wx:for="{{lists}}">
+      <image src="/assets/img/search/order@2x.png" mode="aspectFit" class="resIcon"></image>
+      <view class="resContent">{{item.shipmentRef}}</view>
     </view>
-    <view class="orderBottom">
-      <view class="oneBottom">
-        <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
-        <view class="details">
-          <view class="detailLeft">
-            <view class="huogui">ERFS6325612</view>
-            <view>货柜号</view>
+  </view>
+</view>
+<view class="orderMoreList">
+  <view wx:for="{{lists}}">
+    <view wx:if="{{item.data}}">
+      <view class="oneOrder" wx:for="{{item.data.routes[0].containers}}" wx:for-item="items" wx:for-index="indexs" bindtap="toDetail" data-index="{{index}}">
+        <view class="orderTop">
+          <view class="topLeft">预计到港时间</view>
+          <view class="topRight">{{items.movements[0].date}} {{items.movements[0].week}} {{items.movements[0].time}}</view>
+        </view>
+        <view class="orderBottom">
+          <view class="oneBottom">
+            <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
+            <view class="details">
+              <view class="detailLeft">
+                <view class="huogui">{{items.id}}</view>
+                <view>货柜号</view>
+              </view>
+              <view class="detailRight">
+                <view class="xiangxing">40HC</view>
+                <view>箱型</view>
+              </view>
+            </view>
           </view>
-          <view class="detailRight">
-            <view class="xiangxing">40HC</view>
-            <view>箱型</view>
+          <view class="oneBottom">
+            <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
+            <view class="details">
+              <view class="detailLeft">
+                <view class="status">{{items.currentStatus.status.code}}</view>
+                <view class="address">{{items.currentStatus.poolLocation}}</view>
+                <view>位置</view>
+              </view>
+              <view class="detailRight" style="margin-top: 30rpx;">
+                <view class="xiangxing">{{items.currentStatus.dateStr}}</view>
+                <view>时间</view>
+              </view>
+            </view>
+          </view>
+          <view class="oneBottom">
+            <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
+            <view class="details">
+              <view class="detailLeft">
+                <view class="huogui chuanming">{{items.movements[items.movements.length - 1].vessel.name}}</view>
+                <view>船名</view>
+              </view>
+              <view class="detailRight">
+                <view class="xiangxing">{{items.movements[items.movements.length - 1].voyageReference}}</view>
+                <view>航次</view>
+              </view>
+            </view>
           </view>
         </view>
       </view>
-      <view class="oneBottom">
-        <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
-        <view class="details">
-          <view class="detailLeft">
-            <view class="status">转运港卸货</view>
-            <view class="address">SHANGHAI</view>
-            <view>位置</view>
-          </view>
-          <view class="detailRight" style="margin-top: 30rpx;">
-            <view class="xiangxing">2022-03-16 10:00</view>
-            <view>时间</view>
-          </view>
+    </view>
+    <view wx:else>
+      <view class="oneOrder">
+        <view class="orderTop">
+          <view class="topLeft">预计到港时间</view>
         </view>
-      </view>
-      <view class="oneBottom">
-        <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
-        <view class="details">
-          <view class="detailLeft">
-            <view class="huogui chuanming">JIAYONG</view>
-            <view>船名</view>
+        <view class="orderBottom">
+          <view class="oneBottom">
+            <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
+            <view class="details">
+              <view class="detailLeft">
+                <view class="huogui">{{item.shipmentRef}}</view>
+                <view>货柜号/提单号/订舱号</view>
+              </view>
+            </view>
           </view>
-          <view class="detailRight">
-            <view class="xiangxing">8991WN</view>
-            <view>航次</view>
+          <view class="noOrderData">
+            <image src="/assets/img/search/no@2x.png"></image>
+            <view>未找到或已经卸货或返回堆场</view>
           </view>
         </view>
       </view>

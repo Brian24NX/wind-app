@@ -52,7 +52,7 @@
     "ignoreUploadUnusedFiles": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.22.1",
+  "libVersion": "2.23.3",
   "appid": "wxa026e360ceef2f02",
   "projectname": "DaFei",
   "debugOptions": {

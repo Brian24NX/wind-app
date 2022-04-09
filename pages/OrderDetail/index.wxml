@@ -1,0 +1,2 @@
+<!--pages/OrderDetail/index.wxml-->
+<one detail="{{detail}}" list="{{list}}"></one>
