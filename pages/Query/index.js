@@ -78,24 +78,30 @@ Page({
       })
   },
   submit(){
-     let arrivalDate,departureDate;
-      if(this.data.search==='离岸'){
-        arrivalDate=this.data.data;
-      }
-      else{
-         departureDate=this.data.data;
-      }
       let obj={
-        placeOfDischarge:this.data.podvalue||'USDAT',
+        placeOfDischarge:this.data.podvalue||'NLRTM',
         placeOfLoading:this.data.polvalue||'CNSHA',
-        arrivalDate:arrivalDate,
-        departureDate:departureDate||this.data.data,
+        arrivalDate:'',
+        departureDate:'',
         searchRange:this.data.week||this.data.week,
         shippingCompany:'',
       }
       routingFinder(obj).then(res=>{
-          console.log(res.data);
+          if(res.code==200){
+            wx.setStorageSync('resultlist', res.data);
+            wx.navigateTo({
+              url: '../Result/index',
+            })
+          }
+          else{
+            wx.showToast({
+              title: res.message,
+              icon: 'warn',
+              duration: 2000
+            })
+          }
       })
+      
   },
   //获取卸货港的接口处理
   changepod(e){

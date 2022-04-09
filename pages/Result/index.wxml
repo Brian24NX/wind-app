@@ -1,3 +1,49 @@
+<!--页面常用方法编写-Jason-2022-03-22 13:52-->
+<wxs module="filters">
+var fmtDate= function(obj){
+  var time = getDate(obj);
+  var year = time.getFullYear();
+  var month = time.getMonth() + 1;
+  var date = time.getDate();
+  
+  month = month < 10 ? "0" + month : month;
+  date = date < 10 ? "0" + date : date;
+  return year + "-" + month + "-" + date ;
+}
+var weekday=function (obj) {
+    var time =getDate(obj);
+    var date=time.getDay();
+    console.log(date);
+    switch (date) {
+    case 0:
+      week = "星期日";
+      break;
+    case 1:
+      week = "星期一";
+      break;
+    case 2:
+      week = "星期二";
+      break;
+    case 3:
+      week = "星期三";
+      break;
+    case 4:
+      week = "星期四";
+      break;
+    case 5:
+      week = "星期五";
+      break;
+    case 6:
+      week = "星期六";
+      break;
+  }
+  return week;
+}
+  module.exports = {
+    fmtDate: fmtDate,
+    weekday: weekday
+  }
+  </wxs>
 <!--pages/Result/index.wxml-->
 <view class="searchResultTopContainer">
   <view class="searchTop">
@@ -18,7 +64,7 @@
       <view>日历</view>
     </view>
   </view>
-  <view class="tabContainers">
+  <view wx:if="{{viewactived}}" class="tabContainers" >
     <view class="oneTab {{index === 0 ? 'tabActived' : ''}}" wx:for="{{3}}">
       <view class="tabName">CNC</view>
       <view>4 路线方案</view>
@@ -27,10 +73,11 @@
   </view>
 </view>
 <view class="resultContainers" >
-<view class="oneResult" wx:for="{{5}}" bindtap="toDetail" data-id="{{item.id}}"> 
+  <view wx:if="{{routinglist!=null}}">
+    <view class="oneResult" wx:for="{{routinglist}}" wx:key="index" bindtap="toDetail" data-id="{{index}}"> 
     <view class="tips">
-      <view class="oneTip">最快离港</view>
-      <view class="oneTip">最快到港</view>
+      <view class="oneTip" wx:if="{{item.departureDateFlag}}">最快离港</view>
+      <view class="oneTip" wx:if="{{item.arrivalDateFlag}}">最快到港</view>
     </view>
     <view class="resContents">
       <view class="leftStep">
@@ -40,28 +87,31 @@
       </view>
       <view class="rightContainer">
         <view class="leftContent">
-          <view class="time">2022-03-24 星期四 SHANGHAI, CN</view>
+          <view class="time">{{filters.fmtDate(item.departuredate)}} {{filters.weekDay(item.departuredate)}} {{item.pointfrom}}</view>
           <view class="ship">
             <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
-            <view>CMA CGM LA SCALA</view>
+            <view>{{item.shipname}}</view>
           </view>
           <view class="ship">
             <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
-            <view>Service Pacific Express 3 / Service FEASIA9 via BUSAN, KOREA</view>
+            <view>{{item.service}}</view>
           </view>
-          <view class="time end">2022-03-28 星期一 TOKYO, JP</view>
+          <view class="time end">{{filters.fmtDate(item.arrivaldate)}} {{filters.weekDay(item.arrivaldate)}} {{item.pointto}}</view>
         </view>
         <view class="rightContent">
-          <view class="timeDay">4天</view>
-          <view class="zhuanrun">
+          <view class="timeDay">{{item.transitTime}} 天</view>
+          <view class="zhuanrun" wx:if="{{item.transhipment}}">
             <image src="/assets/img/result/zhuanyun@2x.png"></image>
-            <view>1 转运</view>
+            <view>{{item.transhipment}} 转运</view>
           </view>
         </view>
       </view>
     </view>
+    </view>
   </view>
   <!--无结果-->
-  <!-- <noresult></noresult> -->
+  <view wx:if="{{routinglist==null}}">
+    <noresult></noresult>
+  </view>
 </view>
 

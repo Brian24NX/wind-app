@@ -1,12 +1,28 @@
+<!--页面常用方法编写-Jason-2022-03-22 13:52-->
+<wxs module="filters">
+  var fmtDate= function(obj){
+    var time = getDate(obj);
+    var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+    var date = time.getDate();
+    
+    month = month < 10 ? "0" + month : month;
+    date = date < 10 ? "0" + date : date;
+    return year + "-" + month + "-" + date ;
+  }
+    module.exports = {
+      fmtDate: fmtDate
+    }
+    </wxs>
 <!--pages/ResultDetail/index.wxml-->
 <view class="resultContainer">
   <view class="resultCardContainer">
     <view class="cardContainer">SHANGHAI-TOKYO</view>
     <view class="carddate">
-      <image src="../../assets/img/result/calendar@2x.png"></image><text>4 天</text>
+      <image src="../../assets/img/result/calendar@2x.png"></image><text>{{detaillist.transitTime}} 天</text>
     </view>
     <view class="cardtranshipment">
-      <image src="../../assets/img/result/zhuanyun@2x.png"></image><text>1 转运</text>
+      <image src="../../assets/img/result/zhuanyun@2x.png"></image><text>{{detaillist.transhipment}} 转运</text>
     </view>
   </view>
   <view class="resultDetailContainer">
@@ -18,13 +34,13 @@
         <view class="line62"></view>
       </view>
       <view class="polrightContainer">
-        <view class="polDate">2022-03-24 星期四</view>
+        <view class="polDate">{{filters.fmtDate(detaillist.departuredate)}} 星期四</view>
         <view class="polLocation"><text class="pol">起运港</text><text class="polPro">SHANGHAI,</text><text class="polCity">CN</text></view>
         <view class="polEn">YANGSHAN DEEP WATER PORT PHASE</view>
         <view class="polVgm"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">2022-03-22 星期二</text></view>
         <view class="polInter"><text>港口截关时间:</text><text class="InterDate">2022-03-24 星期四</text></view>
         <view class="polVes"><text>Vessel</text><text class="vesName">CAM CGM SCALA</text></view>
-        <view class="polSer"><text>Service</text><text class="serName">French Asia Line 6(FAL6)</text></view>
+        <view class="polSer"><text>Service</text><text class="serName">{{detaillist.service}}</text></view>
         <view class="polVoy"><text>本地航次</text><text class="voyName">-</text></view>
         <view class="polVox"><text>航次:</text><text class="voxName">OGG01S1MA</text></view>
       </view>
@@ -55,8 +71,8 @@
         <image class="location" src="../../assets/img/result/location@2x.png"></image>
       </view>
       <view class="podRightContainer">
-        <view class="podDate"><text>2022-03-29 星期二</text></view>
-        <view class="podLocation"><text class="pod">卸货港</text><text class="podPro">TOKYO,</text><text class="podCity">JP</text></view>
+        <view class="podDate"><text>{{filters.fmtDate(detaillist.arrivaldate)}} 星期二</text></view>
+        <view class="podLocation"><text class="pod">卸货港</text><text class="podPro">{{detaillist.pointto}}</text><text class="podCity">JP</text></view>
         <view class="podEn">AOMI NO2 TERMINAL</view>
       </view>
     </view>
