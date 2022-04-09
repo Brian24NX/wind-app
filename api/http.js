@@ -15,10 +15,12 @@ const config = require('../config/config')
 // const { getStorage } = require('../storage.js')
 
 // 请求及拦截封装
-const request = ( { url, data, method, contentType }) => {
-	wx.showLoading({
-		title:"正在加载中..."
-	});
+const request = ( { url, data, method, contentType, hideLoading }) => {
+  if (!hideLoading) {
+    wx.showLoading({
+      title:"正在加载中..."
+    });
+  }
 	return new Promise((resolve, reject) => {
 		console.log(`${config[config.dev_env].url}${url}`);
 		wx.request({
@@ -79,12 +81,14 @@ Promise.prototype.finally = function(callback) {
 
 
 
-export const getRequest = (url, data) => {
+export const getRequest = (url, data, hideLoading) => {
 	// data = skipNulls(data)
 	return request({
 		url,
 		data,
-		method: 'GET'
+    method: 'GET',
+    contentType: '',
+    hideLoading
 	})
 }
 
