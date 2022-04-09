@@ -31,6 +31,5 @@ Page({
       list: [data.list[this.data.index]],
       detail: data.list[this.data.index].data.routes[0].containers[0]
     })
-    console.log(currentPage)
   }
 })

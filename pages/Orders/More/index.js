@@ -35,7 +35,6 @@ Component({
   methods: {
     setList() {
       const lists = this.data.list
-      console.log(lists)
       lists.forEach(items => {
         if (items.data) {
           items.data.routes[0].containers.forEach(one => {
@@ -82,14 +81,11 @@ Component({
                 item.stepStatus = 'coming'
               }
             })
-            console.log(one.movements)
             const beingIndex = one.movements.findIndex(u => u.stepStatus === 'being')
-            console.log(beingIndex)
             one.currentStatus = one.movements[beingIndex > -1 ? beingIndex : 0]
           })
         }
       })
-      console.log(lists)
       this.setData({
         lists
       })
