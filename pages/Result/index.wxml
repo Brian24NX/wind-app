@@ -112,4 +112,7 @@
   <view wx:if="{{routinglist==null}}">
     <noresult></noresult>
   </view>
+  <view>
+    <foot-tab-bar />
+  </view>
 </view>

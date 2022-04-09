@@ -1,0 +1,24 @@
+<view class="tabBarlayout">
+  <view class="flex ai-center jc-between jc-around">
+    <view class="tabbar-item flex-1 flex flex-column ai-center jc-center"  wx:for="{{tabBarData}}"  catchtap="handleClickTab"  data-index="{{index}}" wx:key="index">
+      <image class="tabBarImg" src="{{ item.isChecked ? item.active : item.noactive}}"></image>
+      <view class="tabText {{item.isChecked ? '' : 'color-790'}}">{{item.text}}</view>
+    </view>
+  </view>
+  <!-- 单选框 -->
+  <view class="sort-menu" hidden="{{sortMenu}}" >
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <van-radio name="1" class="mb-10">单选框 1</van-radio>
+      <van-radio name="2" class="mb-10">单选框 2</van-radio>
+      <van-radio name="3">单选框 3</van-radio>
+    </van-radio-group>
+  </view>
+<!-- 多选框 -->
+  <view class="sort-menu" hidden="{{programme}}" >
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <van-radio name="1" class="mb-10">单选框 4</van-radio>
+      <van-radio name="2" class="mb-10">单选框 5</van-radio>
+      <van-radio name="3">单选框 6</van-radio>
+    </van-radio-group>
+  </view>
+</view>
