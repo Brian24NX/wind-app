@@ -51,6 +51,7 @@ Page({
     this.setData({
       actived: e.currentTarget.dataset.type,
       showRemind: false,
+      huiguiType: 1,
       showRemind2: false,
       showRemind3: false
     })
@@ -62,9 +63,30 @@ Page({
     })
   },
   setHuoGui(e) {
+    let value = e.detail.value;
+    if (!value) {
+      this.setData({
+        huoGuiValue: value,
+        showRemind: true,
+        huiguiType: 1
+      })
+      return
+    }
+    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
+    value = value.substr(value.length - 1, 1) === ',' ? value.substr(0, value.length - 1) : value;
+    if (!reg.test(value)) {
+      this.setData({
+        huoGuiValue: value,
+        showRemind: true,
+        huiguiType: 2
+      })
+      return
+    }
+    const length = value.split(',').length
     this.setData({
-      huoGuiValue: e.detail.value,
-      showRemind: e.detail.value ? false : true
+      huoGuiValue: value,
+      showRemind: length > 3 ? true : false,
+      huiguiType: 3
     })
   },
   // 获取追踪
@@ -74,7 +96,8 @@ Page({
     }
     if (!this.data.huoGuiValue) {
       this.setData({
-        showRemind: true
+        showRemind: true,
+        huiguiType: 1
       })
       return
     }
@@ -84,7 +107,6 @@ Page({
   },
   // 设置起运港
   setQiYun(e) {
-    console.log(e)
     this.setData({
       qiYunValue: e.detail.value,
       showRemind2: e.detail.value ? false : true
