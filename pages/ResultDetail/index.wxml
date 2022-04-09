@@ -10,8 +10,37 @@
     date = date < 10 ? "0" + date : date;
     return year + "-" + month + "-" + date ;
   }
+  var weekday=function (obj) {
+    var time =getDate(obj);
+    var date=time.getDay();
+    switch (date) {
+    case 0:
+      week = "星期日";
+      break;
+    case 1:
+      week = "星期一";
+      break;
+    case 2:
+      week = "星期二";
+      break;
+    case 3:
+      week = "星期三";
+      break;
+    case 4:
+      week = "星期四";
+      break;
+    case 5:
+      week = "星期五";
+      break;
+    case 6:
+      week = "星期六";
+      break;
+  }
+  return week;
+}
     module.exports = {
-      fmtDate: fmtDate
+      fmtDate: fmtDate,
+      weekday:weekday
     }
     </wxs>
 <!--pages/ResultDetail/index.wxml-->
@@ -34,17 +63,18 @@
         <view class="line62"></view>
       </view>
       <view class="polrightContainer">
-        <view class="polDate">{{filters.fmtDate(detaillist.departuredate)}} 星期四</view>
-        <view class="polLocation"><text class="pol">起运港</text><text class="polPro">SHANGHAI,</text><text class="polCity">CN</text></view>
-        <view class="polEn">YANGSHAN DEEP WATER PORT PHASE</view>
-        <view class="polVgm"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">2022-03-22 星期二</text></view>
-        <view class="polInter"><text>港口截关时间:</text><text class="InterDate">2022-03-24 星期四</text></view>
-        <view class="polVes"><text>Vessel</text><text class="vesName">CAM CGM SCALA</text></view>
+        <view class="polDate">{{filters.fmtDate(detaillist.departuredate)}} {{filters.weekday(detaillist.departuredate)}}</view>
+        <view class="polLocation"><text class="pol">起运港</text><text class="polPro">{{detaillist.pointfrom}},</text><text class="polCity">{{pollist.location.internalCode}}</text></view>
+        <view class="polEn">{{pollist.location.facility.name}}</view>
+        <view class="polVgm"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">{{filters.fmtDate(pollist.vgmCutoffDate)}} {{filters.weekday(pollist.vgmCutoffDate)}}</text></view>
+        <view class="polInter"><text>港口截关时间:</text><text class="InterDate">{{filters.fmtDate(pollist.portCutoffDate)}} {{filters.weekday(pollist.portCutoffDate)}}</text></view>
+        <view class="polVes"><text>Vessel</text><text class="vesName">{{detaillist.routingDetails[0].transportation.vehicule.vehiculeName}}</text></view>
         <view class="polSer"><text>Service</text><text class="serName">{{detaillist.service}}</text></view>
         <view class="polVoy"><text>本地航次</text><text class="voyName">-</text></view>
-        <view class="polVox"><text>航次:</text><text class="voxName">OGG01S1MA</text></view>
+        <view class="polVox"><text>航次:</text><text class="voxName">{{detaillist.routingDetails[0].transportation.voyage.voyageReference}}</text></view>
       </view>
     </view>
+    <view wx:if="{{tranforlist!=0}}">
     <view class="transContrainer">
       <view class="transLeftContainer">
         <view class="redcircle"></view>
@@ -66,14 +96,15 @@
         <view class="transVox"><text>航次:</text><text class="voxName">OBB01S1HG</text></view>
       </view>
     </view>
+    </view>
     <view class="podContainer">
       <view class="podLeftContainer">
         <image class="location" src="../../assets/img/result/location@2x.png"></image>
       </view>
       <view class="podRightContainer">
-        <view class="podDate"><text>{{filters.fmtDate(detaillist.arrivaldate)}} 星期二</text></view>
-        <view class="podLocation"><text class="pod">卸货港</text><text class="podPro">{{detaillist.pointto}}</text><text class="podCity">JP</text></view>
-        <view class="podEn">AOMI NO2 TERMINAL</view>
+        <view class="podDate"><text>{{filters.fmtDate(detaillist.arrivaldate)}} {{filters.weekday(detaillist.arrivaldate)}}</text></view>
+        <view class="podLocation"><text class="pod">卸货港</text><text class="podPro">{{detaillist.pointto}},</text><text class="podCity">{{podlist.location.internalCode}}</text></view>
+        <view class="podEn">{{podlist.location.facility.name}}</view>
       </view>
     </view>
   </view>
