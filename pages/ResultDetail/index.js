@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      detaillist:[]
   },
 
   /**
@@ -14,6 +14,10 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '详情',
+    })
+    let detail=wx.getStorageSync('details');
+    this.setData({
+      detaillist:detail
     })
   },
 
