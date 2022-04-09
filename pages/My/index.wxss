@@ -1,11 +1,4 @@
 /* pages/my/index.wxss */
-.my-layout{
-  padding: 30rpx;
-  font-size: 32rpx;
-}
-.display{
-  display: flex;
-}
-.none{
-  display: none;
+page {
+  background-color: #f5f5f5;
 }

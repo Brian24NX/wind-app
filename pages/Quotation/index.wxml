@@ -1,7 +1,7 @@
-<view class="head_fix">
-    <navBar title='报价' background='#fff' back="{{true}}" home="{{false}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick">
-    </navBar>
+<view class="navbarContainer" style="height: calc({{navHeight}}px + 36rpx);">
+  <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit"></image>
 </view>
-<view class="con">
-    <text>你好</text>
+
+<view class="priceContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
+  <view>报价功能，尽请期待</view>
 </view>

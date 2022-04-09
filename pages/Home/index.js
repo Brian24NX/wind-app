@@ -1,7 +1,10 @@
 // pages/Home/index.js
 const app = getApp();
-// import {routingFinder,shipmentTracking} from '../../api/modules/home';
+import {
+  fuzzySearch
+} from '../../api/modules/home';
 var languageUtil = require('../../utils/languageUtils')
+const utils = require('../../utils/util')
 Page({
 
   /**
@@ -26,7 +29,7 @@ Page({
       id: 'PRICE',
       label: '获取报价',
     }],
-    actived: 'TRACKING',
+    actived: 'SCHEDULE',
     currentIndex: 0,
     huoGuiValue: '',
     showRemind: false,
@@ -34,6 +37,7 @@ Page({
     showRemind2: false,
     xieHuoValue: '',
     showRemind3: false,
+    codeList: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -106,12 +110,22 @@ Page({
     })
   },
   // 设置起运港
-  setQiYun(e) {
+  setQiYun: utils.debounce(function(e) {
+    const data = e['0'].detail.value
     this.setData({
-      qiYunValue: e.detail.value,
-      showRemind2: e.detail.value ? false : true
+      codeList: [],
+      qiYunValue: data
     })
-  },
+    if (data.length < 2) return
+    fuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      console.log(res)
+      this.setData({
+        codeList: res.data || []
+      })
+    })
+  }, 500),
   // 设置卸货港
   setXieHuo(e) {
     this.setData({
@@ -176,4 +190,10 @@ Page({
       })
     }
   },
+  toMore() {
+    wx.showToast({
+      title: '功能升级中，敬请期待',
+      icon: 'none'
+    })
+  }
 })
