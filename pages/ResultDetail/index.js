@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-      detaillist:[]
+      detaillist:[],
+      podlist:[],
+      pollist:[],
+      tranforlist:[]
   },
 
   /**
@@ -17,7 +20,10 @@ Page({
     })
     let detail=wx.getStorageSync('details');
     this.setData({
-      detaillist:detail
+      detaillist:detail,
+      pollist:detail.routingDetails[0].pointFrom,
+      podlist:detail.routingDetails[detail.routingDetails.length-1].pointTo,
+      translist:detail.transhipment
     })
   },
 
