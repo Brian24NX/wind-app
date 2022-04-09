@@ -24,6 +24,21 @@
   font-weight: 500;
 }
 
+.orderMoreList .oneOrder .orderBottom .noOrderData {
+  width: 404rpx;
+  margin: 20rpx auto;
+  font-size: 24rpx;
+  color: #6F7384;
+  text-align: center;
+  padding-bottom: 40rpx;
+}
+
+.orderMoreList .oneOrder .orderBottom .noOrderData image {
+  width: 404rpx;
+  height: 254rpx;
+  margin-bottom: 34rpx;
+}
+
 .orderMoreList .oneOrder .orderBottom .oneBottom {
   padding: 40rpx 0;
   border-bottom: 1rpx solid #EEEEEE;

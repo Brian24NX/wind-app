@@ -44,6 +44,7 @@ Component({
         stepCount: 0,
         originalData: this.data.detail
       })
+      console.log(this.data.detail)
       const list = this.data.detail.movements.reverse();
       list.forEach((item, index) => {
         const week = new Date(item.date).getDay()

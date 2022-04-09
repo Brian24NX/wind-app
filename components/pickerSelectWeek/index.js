@@ -46,8 +46,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    picker_value:'离岸',//输入框值
-    index: 0,//下拉框下标
+    picker_value:'3 星期',//输入框值
+    index: 2,//下拉框下标
     list2: []//下拉框数据
   },
   created(e) {

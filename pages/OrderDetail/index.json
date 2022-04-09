@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "",
-  "usingComponents": {}
+  "usingComponents": {
+    "one": "../Orders/One/index"
+  }
 }

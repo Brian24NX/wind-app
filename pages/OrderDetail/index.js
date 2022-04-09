@@ -1,5 +1,4 @@
 // pages/OrderDetail/index.js
-const dayjs = require("dayjs");
 
 Page({
 
@@ -7,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    index: null,
     detail: {},
-    stepList: [],
-    stepCount: 0
+    list: []
   },
 
   /**
@@ -20,31 +19,18 @@ Page({
       title: '查询',
     })
     this.setData({
-      detail: JSON.parse(decodeURIComponent(options.detail))
+      index: options.index
     })
-    this.setStepList()
+    this.setOneDetail()
   },
-
-  setStepList() {
+  setOneDetail() {
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
     this.setData({
-      stepList: [],
-      stepCount: 0
+      list: [data.list[this.data.index]],
+      detail: data.list[this.data.index].data.routes[0].containers[0]
     })
-    console.log(this.data.detail)
-    const list = this.data.detail.movements.reverse();
-    list.forEach(item => {
-      if (item.stepStatus === 'past' || item.stepStatus === 'being') {
-        this.setData({
-          stepCount: ++this.data.stepCount
-        })
-      }
-    })
-    const date1 = dayjs(dayjs(list[list.length - 1].date).format('YYYY-MM-DD'))
-    const date2 = dayjs().format('YYYY-MM-DD')
-    const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24)
-    this.setData({
-      stepList: list,
-      timeRemaining: timeRemaining < 0 ? 0 : timeRemaining
-    })
+    console.log(currentPage)
   }
 })

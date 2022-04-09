@@ -18,10 +18,14 @@ Component({
    * 组件的初始数据
    */
   data: {
-    lists: []
+    lists: [],
+    oldList: []
   },
 
   ready() {
+    this.setData({
+      oldList: this.data.list
+    })
     this.setList()
   },
 
@@ -91,9 +95,9 @@ Component({
       })
     },
     toDetail(e) {
-      const item = e.currentTarget.dataset.item
+      const index = e.currentTarget.dataset.index
       wx.navigateTo({
-        url: `/pages/OrderDetail/index?detail=${encodeURIComponent(JSON.stringify(item))}`,
+        url: `/pages/OrderDetail/index?index=${index}`,
       })
     }
   }

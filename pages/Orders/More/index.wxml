@@ -12,7 +12,7 @@
 <view class="orderMoreList">
   <view wx:for="{{lists}}">
     <view wx:if="{{item.data}}">
-      <view class="oneOrder" wx:for="{{item.data.routes[0].containers}}" wx:for-item="items" wx:for-index="indexs" bindtap="toDetail" data-item="{{items}}">
+      <view class="oneOrder" wx:for="{{item.data.routes[0].containers}}" wx:for-item="items" wx:for-index="indexs" bindtap="toDetail" data-index="{{index}}">
         <view class="orderTop">
           <view class="topLeft">预计到港时间</view>
           <view class="topRight">{{items.movements[0].date}} {{items.movements[0].week}} {{items.movements[0].time}}</view>
@@ -61,6 +61,27 @@
         </view>
       </view>
     </view>
-    <view wx:else>无</view>
+    <view wx:else>
+      <view class="oneOrder">
+        <view class="orderTop">
+          <view class="topLeft">预计到港时间</view>
+        </view>
+        <view class="orderBottom">
+          <view class="oneBottom">
+            <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
+            <view class="details">
+              <view class="detailLeft">
+                <view class="huogui">{{item.shipmentRef}}</view>
+                <view>货柜号/提单号/订舱号</view>
+              </view>
+            </view>
+          </view>
+          <view class="noOrderData">
+            <image src="/assets/img/search/no@2x.png"></image>
+            <view>未找到或已经卸货或返回堆场</view>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>
