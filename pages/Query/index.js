@@ -96,7 +96,7 @@ Page({
           else{
             wx.showToast({
               title: res.message,
-              icon: 'warn',
+              icon: 'none',
               duration: 2000
             })
           }

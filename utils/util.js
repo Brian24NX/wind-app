@@ -32,28 +32,27 @@ const skipNulls = obj => {
 /**
  *  根据数组的对象的属性数值大小进行排序(从小到大)
  */
-const sortNumber=property=>{
-   return function(a,b){
-     var value1=a[property];
-     var value2=b[property];
-     return value1-value2;
-   }
+const sortNumber = property => {
+  return function (a, b) {
+    var value1 = a[property];
+    var value2 = b[property];
+    return value1 - value2;
+  }
 }
 /**
  * url参数解析
  */
-const getUrlkey=url=>{
-  var parmas={};
-  var urls=url.spilt("?");
-  if(urls[1]){
-    var arr=urls[1].spilt("&");
-    for(var i=0,l=arr.length;i<l;i++){
-      var a=arr[i].spilt("=");
-      params[a[0]]=a[1]
+const getUrlkey = url => {
+  var parmas = {};
+  var urls = url.spilt("?");
+  if (urls[1]) {
+    var arr = urls[1].spilt("&");
+    for (var i = 0, l = arr.length; i < l; i++) {
+      var a = arr[i].spilt("=");
+      params[a[0]] = a[1]
     }
     return parmas;
-  }
-  else{
+  } else {
     return urls[0];
   }
 }
@@ -61,33 +60,118 @@ const getUrlkey=url=>{
  *  节流函数
  * des：主要防止按钮重复提交等情况了w
  */
-function throttle(fn,interval){
-   var enterTime=0;//触发的时间
-   var gapTime=interval||300;//间隔时间，如果interval不传，则默认为300ms
-   return function(){
-     var context=this;
-     var backTime=new Date();//第一次return触发时间
-     if(backTime-enterTime>gapTime){
-       fn.call(context,arguments);
-       enterTime=backTime;//赋值给第一次触发的时间，这样就保存了第二次触发的时间
-     }
-   };
+function throttle(fn, interval) {
+  var enterTime = 0; //触发的时间
+  var gapTime = interval || 300; //间隔时间，如果interval不传，则默认为300ms
+  return function () {
+    var context = this;
+    var backTime = new Date(); //第一次return触发时间
+    if (backTime - enterTime > gapTime) {
+      fn.call(context, arguments);
+      enterTime = backTime; //赋值给第一次触发的时间，这样就保存了第二次触发的时间
+    }
+  };
 }
 /**
  *  防抖函数
  *  desc:主要用于input输入框，显示匹配的输入内容
  */
-function debounce(fn,interval){
-    var timer;
-    var gapTime=interval||1000;
-    return function(){
-      clearTimeout(timer);
-      var context=this;
-      var args=arguments;//保存此处的arguments,因为setTimeout是全局的，arguments不是防抖函数需要的
-      timer=setTimeout(function(){
-        fn.call(context,args);
-      },gapTime);
-    };
+function debounce(fn, interval) {
+  var timer;
+  var gapTime = interval || 1000;
+  return function () {
+    clearTimeout(timer);
+    var context = this;
+    var args = arguments; //保存此处的arguments,因为setTimeout是全局的，arguments不是防抖函数需要的
+    timer = setTimeout(function () {
+      fn.call(context, args);
+    }, gapTime);
+  };
+}
+
+/**
+ * 格式化货运状态
+ */
+function formatHuoYunStatus(code) {
+  let codeArr = [{
+      code: 'MEA',
+      label: '空集装箱在堆场'
+    },
+    {
+      code: 'MOS',
+      label: '空集装箱已交付托运人'
+    },
+    {
+      code: 'XRX',
+      label: '准备载货'
+    },
+    {
+      code: 'XOF',
+      label: '装船'
+    },
+    {
+      code: 'TDF',
+      label: '转运港卸货'
+    },
+    {
+      code: 'TOF',
+      label: '装船'
+    },
+    {
+      code: 'IDF',
+      label: '已卸货'
+    },
+    {
+      code: 'IFC',
+      label: '集装箱已送达收货人'
+    },
+    {
+      code: 'TAF',
+      label: ''
+    },
+    {
+      code: 'PSI',
+      label: ''
+    },
+    {
+      code: 'IRA',
+      label: ''
+    },
+    {
+      code: 'IRI',
+      label: ''
+    },
+    {
+      code: 'IIT',
+      label: '空集装箱已交付托运人'
+    },
+    {
+      code: 'XLR',
+      label: '已载货做出口转移'
+    },
+    {
+      code: 'TPF',
+      label: '出口铁路装载'
+    },
+    {
+      code: 'PSE',
+      label: '集装箱中转出口'
+    },
+    {
+      code: 'XUR',
+      label: '出口铁路卸载'
+    },
+    {
+      code: 'ETA_FINAL_DISCHARGE',
+      label: '到达最终卸货港'
+    }
+  ]
+  const index = codeArr.findIndex(item => item.code === code)
+  if (index > -1) {
+    return codeArr[index].label
+  } else {
+    return ''
+  }
 }
 
 module.exports = {
@@ -96,5 +180,6 @@ module.exports = {
   sortNumber,
   getUrlkey,
   throttle,
-  debounce
+  debounce,
+  formatHuoYunStatus
 }

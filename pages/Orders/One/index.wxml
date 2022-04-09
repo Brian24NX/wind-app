@@ -33,8 +33,8 @@
       </view>
     </view>
     <view class="stepBottom">
-      <view>{{stepList[stepList.length - 1].portOfLoading}} ({{stepList[0].countryCode}})</view>
-      <view>{{stepList[stepList.length - 1].pointOfDischarge}} ({{stepList[stepList.length - 1].countryCode}})</view>
+      <view>{{stepList[1].portOfLoading}} ({{list[0].data.portOfLoadingCountryCode}})</view>
+      <view>{{stepList[stepList.length - 1].pointOfDischarge}} ({{list[0].data.portOfDischargeCountryCode}})</view>
     </view>
   </view>
   <view class="stepLists">
@@ -45,8 +45,8 @@
         <view class="leftLine {{item.stepStatus === 'past' ? 'past' : ''}}" wx:if="{{index !== stepList.length - 1}}"></view>
       </view>
       <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
-        <view class="stepSatus">{{item.status.name}}</view>
-      <view class="stepTime">{{item.date}} {{item.week}} {{item.poolLocation}}, {{item.countryCode}}</view>
+        <view class="stepSatus">{{item.status.statusLabel}}</view>
+        <view class="stepTime">{{item.date}} {{item.week}} {{item.poolLocation}}, {{item.countryCode}}</view>
       </view>
     </view>
   </view>

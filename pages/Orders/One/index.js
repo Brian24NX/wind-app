@@ -2,6 +2,7 @@ const dayjs = require("dayjs");
 import {
   reportToPDF
 } from '../../../api/modules/home';
+const utils = require("../../../utils/util")
 
 // pages/Orders/One/index.js
 Component({
@@ -39,6 +40,7 @@ Component({
    */
   methods: {
     setStepList() {
+      console.log(this.data.list)
       this.setData({
         stepList: [],
         stepCount: 0,
@@ -46,6 +48,8 @@ Component({
       })
       const list = this.data.detail.movements.reverse();
       list.forEach((item, index) => {
+        item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
+        console.log(item.statusLabel)
         const week = new Date(item.date).getDay()
         switch (week) {
           case 0:
