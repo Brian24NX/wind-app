@@ -19,7 +19,7 @@
       <view class="right">{{timeRemaining}}天</view>
     </view>
     <view class="times timeBottom">
-      <view class="left">目的港预计靠泊时间</view>
+      <view class="left">目的港{{timeRemaining < 1 ? '' : '预计'}}靠泊时间</view>
       <view class="right">剩余航程</view>
     </view>
   </view>

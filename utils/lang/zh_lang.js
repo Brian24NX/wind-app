@@ -49,7 +49,7 @@ var Languague = {
        //新闻资讯
        news:"新闻资讯",
        //增值服务
-       valueAddedService:"增值服务",
+       valueAddedService:"CMA CGM+",
        //Act with CMA CGM+
        actWithCmaCgm:"Act with CMA CGM+",
        //SpotOn即时定价

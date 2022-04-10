@@ -27,10 +27,10 @@ Page({
     podlist:[],
     searchlist:[{
           id:0,
-          method:"离岸时间"
+          method:"离港时间"
     },{
           id:1,
-          method:"到达时间"
+          method:"到港时间"
     }],
     // search 离案
     search:'',
@@ -107,6 +107,13 @@ Page({
       routingFinder(obj).then(res=>{
           if(res.code==200){
             wx.setStorageSync('resultlist', res.data);
+            wx.setStorageSync('searchKey', {
+              placeOfDischarge: obj.placeOfDischarge,
+              placeOfLoading: obj.placeOfLoading,
+              searchRange: obj.searchRange,
+              search: this.data.search,
+              searchDate: this.data.date
+            })
             let history=this.data.array;
             let polpleace=this.data.polvalue;
             let podpleace=this.data.podvalue;

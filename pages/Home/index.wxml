@@ -44,15 +44,15 @@
     <!-- 价格 -->
     <view class="searchContents" wx:if="{{actived === 'PRICE'}}">
       <view class="priceList">
-        <view class="onePrice" bindtap="price">
+        <view class="onePrice" bindtap="toMore">
           <image src="../../assets/img/home/PRICE_1@2x.png"></image>
           <view>实时 报价</view>
         </view>
-        <view class="onePrice" bindtap="price">
+        <view class="onePrice" bindtap="toMore">
           <image src="../../assets/img/home/PRICE_2@2x.png"></image>
           <view>柜租 费率</view>
         </view>
-        <view class="onePrice" bindtap="price">
+        <view class="onePrice" bindtap="toMore">
           <image src="../../assets/img/home/PRICE_3@2x.png"></image>
           <view>查询 费率</view>
         </view>

@@ -13,13 +13,13 @@
     <view class="sort-menu">
       <van-radio-group value="{{ radio }}">
         <van-cell-group>
-          <van-cell title="最早的出发" clickable data-name="1" bind:click="onClickRadio">
+          <van-cell title="最快离港" clickable data-name="1" bind:click="onClickRadio">
             <van-radio slot="right-icon" name="1" />
           </van-cell>
-          <van-cell title="最早的到来" clickable data-name="2" bind:click="onClickRadio">
+          <van-cell title="最快到港" clickable data-name="2" bind:click="onClickRadio">
             <van-radio slot="right-icon" name="2" />
           </van-cell>
-          <van-cell title="最快的运输时间" clickable data-name="3" bind:click="onClickRadio">
+          <van-cell title="最快运输时间" clickable data-name="3" bind:click="onClickRadio">
             <van-radio slot="right-icon" name="3" />
           </van-cell>
         </van-cell-group>

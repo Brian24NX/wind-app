@@ -7,7 +7,7 @@ page {
   width: 690rpx;
   background-color: #ffffff;
   margin: 30rpx auto;
-  padding: 0 48rpx 48rpx;
+  padding: 0 30rpx 48rpx;
 }
 
 .homeContainer .searchContainers .tabContainer {
@@ -23,7 +23,7 @@ page {
   justify-content: center;
   align-items: center;
   color: #071E5D;
-  font-size: 32rpx;
+  font-size: 36rpx;
 }
 
 .homeContainer .searchContainers .tabContainer .actived {
@@ -45,6 +45,7 @@ page {
 
 .homeContainer .searchContainers .searchContents {
   margin-top: 50rpx;
+  padding: 0 18rpx;
 }
 
 .homeContainer .searchContainers .searchContents .remind {
