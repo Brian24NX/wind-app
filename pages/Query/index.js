@@ -21,7 +21,6 @@ Page({
     polvalue:"",
     polcode:"",
     array:[
-      {1:'guangzhou-wuhan'}
     ],
     pollist:[
     ],
@@ -109,7 +108,9 @@ Page({
           if(res.code==200){
             wx.setStorageSync('resultlist', res.data);
             let history=this.data.array;
-            let str=this.data.polcode+'-'+this.data.podcode;
+            let polpleace=this.data.polcode||this.data.polvalue;
+            let podpleace=this.data.polcode||this.data.podvalue;
+            let str=polpleace+'-'+podpleace;
             if(history.length==6){
                history.shift();
                history.push(str);

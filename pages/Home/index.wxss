@@ -92,7 +92,9 @@ page {
   padding: 0 20rpx;
   font-size: 24rpx;
 }
-
+.oneXiala{
+  border:2rpx solid #e2e2e2;
+}
 .homeContainer .searchContainers .searchContents .noRequestBorder {
   border: 2rpx solid #E10202;
 }
