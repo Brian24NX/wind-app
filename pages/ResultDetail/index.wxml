@@ -31,8 +31,9 @@
         <view class="polVox"><text>航次:</text><text class="voxName">{{detaillist.routingDetails[0].transportation.voyage.voyageReference}}</text></view>
       </view>
     </view>
-    <view wx:if="{{tranforlist!=0}}">
-      <view class="transContrainer">
+
+    <view wx:if="{{tranforlist!=0}}" >
+      <view class="transContrainer" wx:for="{{translist}}" wx:key="index">
         <view class="transLeftContainer">
           <view class="redcircle"></view>
           <view class="line76"></view>
@@ -40,17 +41,17 @@
           <view class="line151"></view>
         </view>
         <view class="transRightContainer">
-          <view class="transDate">2022-03-26 星期六</view>
+          <view class="transDate">{{filters.fmtDate(item.pointFrom.departureDateGmt)}} {{filters.weekday(item.pointFrom.departureDateGmt)}}</view>
           <image class="transfership" src="../../assets/img/result/pulltransfer.png"></image>
-          <view class="transLocation"><text class="locaPro">BUSAN,KOREA,</text><text class="localCity">KR</text></view>
-          <view class="transforLoaction"><text class="forLocaPro">BUSAN PORT TERMINAL SINSEONDAE</text></view>
-          <view class="transforDate">2022-03-27 星期日</view>
-          <view class="transVgm"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">2022-03-25 星期五</text></view>
-          <view class="transInter"><text>港口截关时间:</text><text class="InterDate">2022-03-27 星期日</text></view>
-          <view class="transVes"><text>Vessel</text><text class="vesName">CAM CGM SCALA</text></view>
-          <view class="transSer"><text>Service</text><text class="serName">French Asia Line 6(FAL6)</text></view>
+          <view class="transLocation"><text class="locaPro">{{item.pointFrom.location.name}}</text><text class="localCity">{{item.pointFrom.location.internalCode}}</text></view>
+          <view class="transforLoaction"><text class="forLocaPro">{{item.pointFrom.location.facility.name}}</text></view>
+          <view class="transforDate">{{filters.fmtDate(item.pointTo.arrivalDateGmt)}} {{filters.weekday(item.pointTo.arrivalDateGmt)}}</view>
+          <view class="transVgm"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">{{filters.fmtDate(item.pointFrom.vgmCutoffDate)}} {{filters.weekday(item.pointFrom.vgmCutoffDate)}}</text></view>
+          <view class="transInter"><text>港口截关时间:</text><text class="InterDate">{{filters.fmtDate(item.pointFrom.portCutoffDate)}} {{filters.weekday(item.pointFrom.portCutoffDate)}}</text></view>
+          <view class="transVes"><text>Vessel</text><text class="vesName">{{item.transportation.vehicule.vehiculeName}}</text></view>
+          <view class="transSer"><text>Service</text><text class="serName">{{item.transportation.voyage.service.code}}</text></view>
           <view class="transVoy"><text>本地航次</text><text class="voyName">-</text></view>
-          <view class="transVox"><text>航次:</text><text class="voxName">OBB01S1HG</text></view>
+          <view class="transVox"><text>航次:</text><text class="voxName">{{item.transportation.voyage.voyageReference}}</text></view>
         </view>
       </view>
     </view>

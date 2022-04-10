@@ -216,8 +216,12 @@ Page({
       if(res.code==200&&res.data!=''){
         wx.setStorageSync('resultlist', res.data);
         wx.navigateTo({
-          url: '../Result/index.wxml',
+          url: '../Result/index',
         })
+        this.setData({
+          qiYunValue:'',
+          xieHuoValue:''
+       })
       }
       else{
         this.setData({
