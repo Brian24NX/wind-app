@@ -179,11 +179,18 @@ page {
 } */
 
 /*history*/
+.result{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
 .flex {
   height: 24px;
   background: #EAEBEE;
   border-radius: 24rpx;
-  display: inline-block;
 }
 
 .flex:nth-child(2n) {

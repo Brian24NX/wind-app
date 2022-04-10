@@ -29,7 +29,7 @@ Page({
       id: 'PRICE',
       label: '获取报价',
     }],
-    actived: 'SCHEDULE',
+    actived: 'TRACKING',
     currentIndex: 0,
     huoGuiValue: '',
     showRemind: false,
