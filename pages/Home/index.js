@@ -39,6 +39,8 @@ Page({
     xieHuoValue: '',
     xieHuoCode:'',
     showRemind3: false,
+    showRemind4: false,
+    showRemind5: false,
     codePolList: [],
     codePodList: []
   },
@@ -60,7 +62,9 @@ Page({
       showRemind: false,
       huiguiType: 1,
       showRemind2: false,
-      showRemind3: false
+      showRemind3: false,
+      showRemind4:false,
+      showRemind5:false
     })
   },
   // discover切换swiper
@@ -115,30 +119,49 @@ Page({
   // 设置起运港
   setQiYun: utils.debounce(function(e) {
     const data = e['0'].detail.value
-    this.setData({
-      codePolList: [],
-      qiYunValue: data
-    })
-    if (data.length < 2) return
-    fuzzySearch({
-      searchStr: data
-    }, true).then(res => {
-      if(res.data!=''){
+    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
+    let bool=reg.test(data);
+    if(!bool){
         this.setData({
-          codePolList: res.data 
+          showRemind5:true
         })
-      }
-      else{
-        this.setData({
-          qiYunValue: data
-        })
-      }
-      
-    })
+        return;
+    }
+    else{
+      this.setData({
+        showRemind5:false,
+        codePolList: [],
+        qiYunValue: data
+      })
+      if (data.length < 2) return
+      fuzzySearch({
+        searchStr: data
+      }, true).then(res => {
+        if(res.data!=''){
+          this.setData({
+            codePolList: res.data 
+          })
+        }
+        else{
+          this.setData({
+            qiYunValue: data
+          })
+        }
+        
+      })
+    }
   }, 500),
   // 设置卸货港
   setXieHuo: utils.debounce(function(e) {
     const data = e['0'].detail.value
+    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
+    let bool=reg.test(data);
+    if(!bool){
+      this.setData({
+        showRemind5:false
+      })
+      return;
+    }
     this.setData({
       codePodList: [],
       xieHuoValue: data
@@ -164,6 +187,7 @@ Page({
     
     let index=e.currentTarget.dataset.index;  
     this.setData({
+      showRemind2:false,
       codePolList:[],
       qiYunValue:this.data.codePolList[index].point,
       qiYunCode:this.data.codePolList[index].pointCode
@@ -175,6 +199,7 @@ Page({
     let index=e.currentTarget.dataset.index; 
     
     this.setData({
+      showRemind3:false,
       codePodList:[],
       xieHuoValue:this.data.codePodList[index].point,
       xieHuoCode:this.data.codePodList[index].pointCode
@@ -182,9 +207,17 @@ Page({
   },
   // 船期搜索
   toChuanQi() {
-    if (this.data.showRemind2 || this.data.showRemind3) {
-      return
+    if(this.data.qiYunValue!=''){
+       this.setData({
+        showRemind2: false, 
+       })
     }
+    if(this.data.xieHuoValue!=''){
+      this.setData({
+        showRemind3:false
+      })
+    }
+    
     if (!this.data.qiYunValue && !this.data.xieHuoValue) {
       this.setData({
         showRemind2: true,
@@ -192,17 +225,49 @@ Page({
       })
       return
     }
+ 
     if (!this.data.qiYunValue) {
       this.setData({
         showRemind2: true
       })
       return
     }
+    else{
+       this.setData({
+          showRemind2:false
+       })
+    }
     if (!this.data.xieHuoValue) {
       this.setData({
         showRemind3: true
       })
       return
+    }
+    else{
+       this.setData({
+         showRemind3:false
+       })
+    }
+    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
+    if(!reg.test(this.data.qiYunValue)){
+        this.setData({
+          showRemind5:true
+        })
+    }
+    else{
+       this.setData({
+         showRemind5:false
+       })
+    }
+    if(!reg.test(this.data.xieHuoValue)){
+        this.setData({
+          showRemind4:true
+        })
+    }
+    else{
+      this.setData({
+        showRemind5:false
+      })
     }
     let obj={
       placeOfDischarge:this.data.qiYunCode||this.data.qiYunValue,
@@ -213,7 +278,7 @@ Page({
       shippingCompany:'',
     }
     routingFinder(obj).then(res=>{
-      if(res.code==200&&res.data!=''){
+      if(res.code==200||res.data!=''){
         wx.setStorageSync('resultlist', res.data);
         wx.navigateTo({
           url: '../Result/index',
@@ -267,6 +332,12 @@ Page({
     }
   },
   toMore() {
+    wx.showToast({
+      title: '功能升级中，敬请期待',
+      icon: 'none'
+    })
+  },
+  price(){
     wx.showToast({
       title: '功能升级中，敬请期待',
       icon: 'none'
