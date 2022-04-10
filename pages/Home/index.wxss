@@ -34,8 +34,8 @@ page {
 }
 
 .homeContainer .searchContainers .tabContainer .actived .line {
-  width: 80rpx;
-  height: 8rpx;
+  width: 120rpx;
+  height: 10rpx;
   background-color: #E20202;
   position: absolute;
   bottom: 0;
@@ -87,7 +87,7 @@ page {
 
 .homeContainer .searchContainers .searchContents .xialaInput .xialaContainer .oneXiala {
   /* width: 100%; */
-  height: 60rpx;
+  height: 80rpx;
   display: flex;
   align-items: center;
   padding: 0 20rpx;

@@ -28,14 +28,15 @@
           <view class="oneXiala" wx:for="{{codePolList}}" wx:key="index" bindtap='changepolname' data-index="{{index}}">{{item.point}}</view>
         </scroll-view>
       </view>
-      
       <view class="noRequest" wx:if="{{showRemind2}}">此项为必填项</view>
       <view class="noRequest" wx:if="{{showRemind5}}">格式无效</view>
       <view class="serchTitle mt20">卸货港</view>
-      <input value="{{xieHuoValue}}" class="inputs {{showRemind3||showRemind4 ? 'noRequestBorder' : ''}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setXieHuo" />
-      <scroll-view class="xialaContainer" wx:if="{{codePodList.length}}">
-        <view class="oneXiala" wx:for="{{codePodList}}" wx:key="index" bindtap='changepodname' data-index="{{index}}">{{item.point}}</view>
-      </scroll-view>
+      <view class="xialaInput">
+        <input value="{{xieHuoValue}}" class="inputs {{showRemind3||showRemind4 ? 'noRequestBorder' : ''}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setXieHuo" />
+        <scroll-view class="xialaContainer" wx:if="{{codePodList.length}}">
+          <view class="oneXiala" wx:for="{{codePodList}}" wx:key="index" bindtap='changepodname' data-index="{{index}}">{{item.point}}</view>
+        </scroll-view>
+      </view>
       <view class="noRequest" wx:if="{{showRemind3}}">此项为必填项</view>
       <view class="noRequest" wx:if="{{showRemind4}}">格式无效</view>
       <button class="searchBtn" hover-class="hoverClass" bindtap="toChuanQi">搜索</button>

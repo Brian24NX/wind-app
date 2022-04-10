@@ -176,7 +176,7 @@ Page({
     let params = {
       routings: resultlist.routings,
       sortDateType: Number(this.data.sort),
-      solutionNos: this.data.plans
+      sortSolutionNos: this.data.plans
     }
     if (this.data.needEarlyFlag) {
       params.needEarlyFlag = true
