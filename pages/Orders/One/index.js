@@ -3,6 +3,7 @@ import {
   reportToPDF
 } from '../../../api/modules/home';
 const utils = require("../../../utils/util")
+const config = require("../../../config/config")
 
 // pages/Orders/One/index.js
 Component({
@@ -107,7 +108,16 @@ Component({
     // PDF查看
     reportToPDF() {
       // return
-      reportToPDF(this.data.list[0].data).then(res => {})
+      reportToPDF(this.data.list[0].data).then(res => {
+        wx.downloadFile({
+          url: config[config.dev_env].url + '/api/miniapp/' + res.data,
+          success(filePath) {
+            wx.openDocument({
+              filePath: filePath.tempFilePath
+            })
+          }
+        })
+      })
     }
   }
 })
