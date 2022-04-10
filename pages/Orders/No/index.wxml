@@ -1,10 +1,12 @@
 <!--pages/Orders/No/index.wxml-->
-<view class="resultContainer">
-  <view class="resTitle">追踪结果</view>
-  <view class="resList">
-    <view class="oneRes" wx:for="{{lists}}">
-      <image src="/assets/img/search/order@2x.png" mode="aspectFit" class="resIcon"></image>
-      <view class="resContent">{{item.shipmentRef}}</view>
+<view class="searchResultContainers">
+  <view class="searchResultContainer">
+    <view class="resTitle">追踪结果</view>
+    <view class="resList">
+      <view class="oneRes" wx:for="{{lists}}">
+        <image src="/assets/img/search/order@2x.png" mode="aspectFit" class="resIcon"></image>
+        <view class="resContent">{{item.shipmentRef}}</view>
+      </view>
     </view>
   </view>
 </view>
