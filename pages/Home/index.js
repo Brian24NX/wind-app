@@ -1,10 +1,12 @@
 // pages/Home/index.js
 const app = getApp();
 import {
-  fuzzySearch,routingFinder
+  fuzzySearch,
+  routingFinder
 } from '../../api/modules/home';
 var languageUtil = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
+const dayjs = require("dayjs")
 Page({
 
   /**
@@ -34,10 +36,10 @@ Page({
     huoGuiValue: '',
     showRemind: false,
     qiYunValue: '',
-    qiYunCode:'',
+    qiYunCode: '',
     showRemind2: false,
     xieHuoValue: '',
-    xieHuoCode:'',
+    xieHuoCode: '',
     showRemind3: false,
     showRemind4: false,
     showRemind5: false,
@@ -63,8 +65,8 @@ Page({
       huiguiType: 1,
       showRemind2: false,
       showRemind3: false,
-      showRemind4:false,
-      showRemind5:false
+      showRemind4: false,
+      showRemind5: false
     })
   },
   // discover切换swiper
@@ -117,19 +119,18 @@ Page({
     })
   },
   // 设置起运港
-  setQiYun: utils.debounce(function(e) {
+  setQiYun: utils.debounce(function (e) {
     const data = e['0'].detail.value
     var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    let bool=reg.test(data);
-    if(!bool){
-        this.setData({
-          showRemind5:true
-        })
-        return;
-    }
-    else{
+    let bool = reg.test(data);
+    if (!bool) {
       this.setData({
-        showRemind5:false,
+        showRemind5: true
+      })
+      return;
+    } else {
+      this.setData({
+        showRemind5: false,
         codePolList: [],
         qiYunValue: data
       })
@@ -137,33 +138,32 @@ Page({
       fuzzySearch({
         searchStr: data
       }, true).then(res => {
-        if(res.data!=''){
+        if (res.data != '') {
           this.setData({
-            codePolList: res.data 
+            codePolList: res.data
           })
-        }
-        else{
+        } else {
           this.setData({
             qiYunValue: data
           })
         }
-        
+
       })
     }
   }, 500),
   // 设置卸货港
-  setXieHuo: utils.debounce(function(e) {
+  setXieHuo: utils.debounce(function (e) {
     const data = e['0'].detail.value
     var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    let bool=reg.test(data);
-    if(!bool){
+    let bool = reg.test(data);
+    if (!bool) {
       this.setData({
-        showRemind4:true
+        showRemind4: true
       })
       return;
     }
     this.setData({
-      showRemind4:false,
+      showRemind4: false,
       codePodList: [],
       xieHuoValue: data
     })
@@ -171,54 +171,53 @@ Page({
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
-      if(res.data!=''){
+      if (res.data != '') {
         this.setData({
           codePodList: res.data
         })
-      }
-      else{
-          this.setData({
-              xieHuoValue:data
-          })
+      } else {
+        this.setData({
+          xieHuoValue: data
+        })
       }
     })
   }, 500),
   // 设置启运港
-  changepolname(e){
-    
-    let index=e.currentTarget.dataset.index;  
+  changepolname(e) {
+
+    let index = e.currentTarget.dataset.index;
     this.setData({
-      showRemind2:false,
-      codePolList:[],
-      qiYunValue:this.data.codePolList[index].point,
-      qiYunCode:this.data.codePolList[index].pointCode
+      showRemind2: false,
+      codePolList: [],
+      qiYunValue: this.data.codePolList[index].point,
+      qiYunCode: this.data.codePolList[index].pointCode
     })
   },
   // 设置卸货港
-  changepodname(e){
-    console.log(e); 
-    let index=e.currentTarget.dataset.index; 
-    
+  changepodname(e) {
+    console.log(e);
+    let index = e.currentTarget.dataset.index;
+
     this.setData({
-      showRemind3:false,
-      codePodList:[],
-      xieHuoValue:this.data.codePodList[index].point,
-      xieHuoCode:this.data.codePodList[index].pointCode
+      showRemind3: false,
+      codePodList: [],
+      xieHuoValue: this.data.codePodList[index].point,
+      xieHuoCode: this.data.codePodList[index].pointCode
     })
   },
   // 船期搜索
   toChuanQi() {
-    if(this.data.qiYunValue!=''){
-       this.setData({
-        showRemind2: false, 
-       })
-    }
-    if(this.data.xieHuoValue!=''){
+    if (this.data.qiYunValue != '') {
       this.setData({
-        showRemind3:false
+        showRemind2: false,
       })
     }
-    
+    if (this.data.xieHuoValue != '') {
+      this.setData({
+        showRemind3: false
+      })
+    }
+
     if (!this.data.qiYunValue && !this.data.xieHuoValue) {
       this.setData({
         showRemind2: true,
@@ -226,73 +225,75 @@ Page({
       })
       return
     }
- 
+
     if (!this.data.qiYunValue) {
       this.setData({
         showRemind2: true
       })
       return
-    }
-    else{
-       this.setData({
-          showRemind2:false
-       })
+    } else {
+      this.setData({
+        showRemind2: false
+      })
     }
     if (!this.data.xieHuoValue) {
       this.setData({
         showRemind3: true
       })
       return
-    }
-    else{
-       this.setData({
-         showRemind3:false
-       })
-    }
-    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    if(!reg.test(this.data.qiYunValue)){
-        this.setData({
-          showRemind5:true
-        })
-    }
-    else{
-       this.setData({
-         showRemind5:false
-       })
-    }
-    if(!reg.test(this.data.xieHuoValue)){
-        this.setData({
-          showRemind4:true
-        })
-    }
-    else{
+    } else {
       this.setData({
-        showRemind5:false
+        showRemind3: false
       })
     }
-    let obj={
-      placeOfDischarge:this.data.xieHuoCode||this.data.xieHuoValue,
-      placeOfLoading:this.data.qiYunCode||this.data.qiYunValue,
-      arrivalDate:'',
-      departureDate:'',
-      searchRange:'',
-      shippingCompany:'',
+    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
+    if (!reg.test(this.data.qiYunValue)) {
+      this.setData({
+        showRemind5: true
+      })
+    } else {
+      this.setData({
+        showRemind5: false
+      })
     }
-    routingFinder(obj).then(res=>{
-      if(res.code==200||res.data!=''){
+    if (!reg.test(this.data.xieHuoValue)) {
+      this.setData({
+        showRemind4: true
+      })
+    } else {
+      this.setData({
+        showRemind5: false
+      })
+    }
+    let obj = {
+      placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
+      placeOfLoading: this.data.qiYunCode || this.data.qiYunValue,
+      arrivalDate: '',
+      departureDate: dayjs().format('YYYY-MM-DD'),
+      searchRange: '21',
+      shippingCompany: '',
+    }
+    routingFinder(obj).then(res => {
+      if (res.code == 200 || res.data != '') {
         wx.setStorageSync('resultlist', res.data);
+        wx.setStorageSync('searchKey', {
+          placeOfDischarge: obj.placeOfDischarge,
+          placeOfLoading: obj.placeOfLoading,
+          searchRange: obj.searchRange,
+          search: "离港时间",
+          searchDate: obj.departureDate
+        })
         wx.navigateTo({
           url: '../Result/index',
         })
         this.setData({
-          qiYunValue:'',
-          xieHuoValue:''
-       })
-      }
-      else{
+          qiYunValue: '',
+          xieHuoValue: ''
+        })
+      } else {
         this.setData({
-           qiYunValue:'',
-           xieHuoValue:''
+          qiYunValue: '',
+          xieHuoValue: ''
         })
         wx.showToast({
           title: '请求数据不存在或者网络错误,请您重试!',
@@ -301,7 +302,7 @@ Page({
         })
       }
     })
-    
+
   },
   // 高级查询
   toAdvancedSearch() {
@@ -338,7 +339,7 @@ Page({
       icon: 'none'
     })
   },
-  price(){
+  price() {
     wx.showToast({
       title: '功能升级中，敬请期待',
       icon: 'none'

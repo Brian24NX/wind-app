@@ -139,7 +139,7 @@ Page({
       const index = this.data.routingLists.findIndex(item => item.id === plan)
       if (index > -1) {
         this.setData({
-          routinglist: this.data.routingLists[index]
+          routinglist: this.data.routingLists[index].list
         })
       }
     }
