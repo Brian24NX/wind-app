@@ -176,7 +176,7 @@ function formatHuoYunStatus(code) {
 
 function getDayList(date, time) {
   var myDate = new Date(date);
-  myDate.setDate(myDate.getDate() + time);
+  // myDate.setDate(myDate.getDate() + time);
   var dateArray = [];
   var dateTemp;
   var flag = 1;
