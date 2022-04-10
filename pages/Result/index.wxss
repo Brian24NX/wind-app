@@ -6,7 +6,6 @@
   left: 0;
   right: 0;
   z-index: 3;
-  height: 350rpx;
 }
 
 .searchResultTopContainer .searchTop {
@@ -37,8 +36,8 @@
 
 .searchResultTopContainer .calendarContainer {
   display: flex;
-  height: 90rpx;
-  padding: 0 30rpx;
+  height: 120rpx;
+  padding: 0 30rpx 30rpx;
   margin-top: 32rpx;
 }
 
@@ -104,7 +103,7 @@
 
 .searchResultTopContainer .tabContainers {
   width: 100%;
-  height: 130rpx;
+  height: 100rpx;
   display: flex;
   padding: 0 30rpx;
 }
@@ -113,7 +112,7 @@
   width: 33%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   color: #6B7790;
   font-size: 24rpx;
