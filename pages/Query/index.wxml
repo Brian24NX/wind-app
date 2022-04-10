@@ -34,7 +34,7 @@
             </view>
           </scroll-view>
           <view class="noRequest" wx:if="{{showRemind4}}">此项为必填项</view>
-          <view class="noRequest" wx:if="{{showRemind5}}">格式无效</view>>
+          <view class="noRequest" wx:if="{{showRemind5}}">格式无效</view>
         </view>
         <view class="searchselect">
           <image class="searchimg" src="../../assets/img/seniorsearch/search.png"></image>
