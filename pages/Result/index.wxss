@@ -37,9 +37,9 @@
 
 .searchResultTopContainer .calendarContainer {
   display: flex;
-  height: 90rpx;
+  height: 120rpx;
   padding: 0 30rpx 30rpx;
-  margin-top: 32rpx;
+  margin-top: 20rpx;
 }
 
 .searchResultTopContainer .calendarContainer .calendarLeft {

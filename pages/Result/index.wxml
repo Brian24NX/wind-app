@@ -1,60 +1,17 @@
 <!--页面常用方法编写-Jason-2022-03-22 13:52-->
-<wxs module="filters">
-  var fmtDate = function (obj) {
-    var time = getDate(obj);
-    var year = time.getFullYear();
-    var month = time.getMonth() + 1;
-    var date = time.getDate();
-
-    month = month < 10 ? "0" + month : month;
-    date = date < 10 ? "0" + date : date;
-    return year + "-" + month + "-" + date;
-  }
-  var weekDay = function (obj) {
-    var date = getDate(obj).getDay();
-    console.log(date);
-    switch (date) {
-      case 0:
-        week = "星期日";
-        break;
-      case 1:
-        week = "星期一";
-        break;
-      case 2:
-        week = "星期二";
-        break;
-      case 3:
-        week = "星期三";
-        break;
-      case 4:
-        week = "星期四";
-        break;
-      case 5:
-        week = "星期五";
-        break;
-      case 6:
-        week = "星期六";
-        break;
-    }
-    return week;
-  }
-  module.exports = {
-    fmtDate: fmtDate,
-    weekDay: weekDay
-  }
-</wxs>
+<wxs module="filters" src="./index.wxs"></wxs>
 <!--pages/Result/index.wxml-->
 <view class="searchResultTopContainer">
   <view class="searchTop">
     <view class="serchLeft">{{placeOfLoading}} - {{placeOfDischarge}}</view>
     <view class="searchLine"></view>
-    <view class="searchTime">未来三星期</view>
+    <view class="searchTime">未来{{weekNum}}星期</view>
   </view>
   <view class="calendarContainer">
     <view class="calendarLeft">
-      <view class="oneDay {{index === 2 ? 'current' : ''}}" wx:for="{{5}}">
-        <view class="dayValue">03.07</view>
-        <view>周一</view>
+      <view class="oneDay {{item === searchDate ? 'current' : ''}}" wx:for="{{dateList}}" wx:key="index">
+        <view class="dayValue">{{filters.fmtDate2(item)}}</view>
+        <view>周{{filters.weekDay(item)}}</view>
       </view>
     </view>
     <image class="calendarCenter" src="/assets/img/result/shadow@2x.png"></image>
@@ -71,7 +28,7 @@
     </view>
   </view>
 </view>
-<view class="resultContainers" style="padding-top: {{viewactived ? '350rpx' : '250rpx'}};padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
+<view class="resultContainers" style="padding-top: {{viewactived ? '370rpx' : '270rpx'}};padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
   <view wx:if="{{routinglist!=null}}">
     <view class="oneResult" wx:for="{{routinglist}}" wx:key="index" bindtap="toDetail" data-id="{{index}}">
       <view class="tips">
@@ -86,7 +43,7 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{filters.fmtDate(item.departuredate)}} {{filters.weekDay(item.departuredate)}} {{item.pointfrom}}</view>
+            <view class="time">{{filters.fmtDate(item.departuredate)}} 星期{{filters.weekDay(item.departuredate)}} {{item.pointfrom}}</view>
             <view class="ship">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.shipname}}</view>
@@ -95,7 +52,7 @@
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>
-            <view class="time end">{{filters.fmtDate(item.arrivaldate)}} {{filters.weekDay(item.arrivaldate)}} {{item.pointto}}</view>
+            <view class="time end">{{filters.fmtDate(item.arrivaldate)}} 星期{{filters.weekDay(item.arrivaldate)}} {{item.pointto}}</view>
           </view>
           <view class="rightContent">
             <view class="timeDay">{{item.transitTime}} 天</view>
@@ -112,6 +69,6 @@
   <view wx:if="{{routinglist==null}}">
     <noresult></noresult>
   </view>
-  <!-- 底部筛选条件 tabbar -->
-  <foot-tab-bar bind:tabbarchange="onTabbarChange" bind:changeRadio="onChangeRadio" bind:changeCheckBox="onChangeCheckBox" />
 </view>
+<!-- 底部筛选条件 tabbar -->
+<foot-tab-bar routesPlanList="{{routesPlanList}}" bind:tabbarchange="onTabbarChange" />

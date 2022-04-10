@@ -1,0 +1,54 @@
+var fmtDate = function (obj) {
+  var time = getDate(obj);
+  var year = time.getFullYear();
+  var month = time.getMonth() + 1;
+  var date = time.getDate();
+
+  month = month < 10 ? "0" + month : month;
+  date = date < 10 ? "0" + date : date;
+  return year + "-" + month + "-" + date;
+}
+
+var fmtDate2 = function (obj) {
+  var time = getDate(obj);
+  var year = time.getFullYear();
+  var month = time.getMonth() + 1;
+  var date = time.getDate();
+
+  month = month < 10 ? "0" + month : month;
+  date = date < 10 ? "0" + date : date;
+  return month + "." + date;
+}
+
+var weekDay = function (obj) {
+  var date = getDate(obj).getDay();
+  switch (date) {
+    case 0:
+      week = "日";
+      break;
+    case 1:
+      week = "一";
+      break;
+    case 2:
+      week = "二";
+      break;
+    case 3:
+      week = "三";
+      break;
+    case 4:
+      week = "四";
+      break;
+    case 5:
+      week = "五";
+      break;
+    case 6:
+      week = "六";
+      break;
+  }
+  return week;
+}
+module.exports = {
+  fmtDate: fmtDate,
+  fmtDate2: fmtDate2,
+  weekDay: weekDay
+}

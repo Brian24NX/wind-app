@@ -174,6 +174,38 @@ function formatHuoYunStatus(code) {
   }
 }
 
+function getDayList(date, time) {
+  var myDate = new Date(date);
+  // myDate.setDate(myDate.getDate() + time);
+  var dateArray = [];
+  var dateTemp;
+  var flag = 1;
+  // 日期格式化
+  for (var i = 0; i < time; i++) {
+    let month = 0;
+    // 月小于10，在前面加‘0’；因为月从0开始，故需+1
+    if (myDate.getMonth() + 1 < 10) {
+      month = '0' + (myDate.getMonth() + 1);
+    } else {
+      month = myDate.getMonth() + 1;
+    }
+    let day = 0;
+    // 日小于10，在前加0
+    if (myDate.getDate() < 10) {
+      day = '0' + myDate.getDate();
+    } else {
+      day = myDate.getDate();
+    }
+    // YY-MM-DD
+    dateTemp = myDate.getFullYear() + '-' + month + '-' + day;
+    dateArray.push(dateTemp);
+    //若不加flag则结果都是一个日期（当前日期减time天）
+    //日期 +1 天，此日期为减time天后的日期
+    myDate.setDate(myDate.getDate() + flag);
+  }
+  return dateArray
+}
+
 module.exports = {
   formatTime,
   skipNulls,
@@ -181,5 +213,6 @@ module.exports = {
   getUrlkey,
   throttle,
   debounce,
-  formatHuoYunStatus
+  formatHuoYunStatus,
+  getDayList
 }

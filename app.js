@@ -33,6 +33,11 @@ App({
             this.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
             this.globalData.windowHeight = res.windowHeight;
             this.globalData.windowWidth = res.windowWidth;
+            if (res.model.indexOf('iPhone X') > -1 || res.model.indexOf('iPhone 11') > -1 || res.model.indexOf('iPhone 12') > -1 || res.model.indexOf('iPhone 13') > -1) {
+              this.globalData.isPhoneX = true;
+            } else {
+              this.globalData.isPhoneX = false;
+            }    
             // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
           },
           fail(err) {
@@ -45,6 +50,7 @@ App({
     share:false,//默认分享为false
     height:0,
     version:0,// 0中文 1英文
+    isPhoneX: false,
     // 全局的方法, 获取到App的实例就可以拿到方法
     function: {
 

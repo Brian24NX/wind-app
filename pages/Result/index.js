@@ -1,4 +1,8 @@
 // pages/Result/index.js
+const utils = require('../../utils/util')
+import {
+  routingSort
+} from '../../api/modules/home';
 Page({
 
   /**
@@ -11,17 +15,11 @@ Page({
     planList: [],
     placeOfLoading: '',
     placeOfDischarge: '',
-    currentPlan: null
-  },
-
-  onTabbarChange(event) {
-    console.log(event.detail, '传递过来tab最后2项发送筛选请求');
-  },
-  onChangeRadio(event) {
-    console.log(event.detail, '传递过来第一项的单选框');
-  },
-  onChangeCheckBox(event) {
-    console.log(event.detail, '传递过来第二项的多选框');
+    currentPlan: null,
+    searchDate: '',
+    weekNum: '',
+    dateList: [],
+    routesPlanList: []
   },
 
   /**
@@ -34,14 +32,32 @@ Page({
     this.dealData()
   },
 
+  setDayList() {
+    this.setData({
+      dateList: utils.getDayList(this.data.searchDate, 5)
+    })
+  },
+
   dealData() {
     let resultlist = wx.getStorageSync("resultlist");
+    const weekNum = Number(resultlist.searchRange) / 7
+    let routesPlanList = []
+    resultlist.solutionNos.forEach(item => {
+      routesPlanList.push({
+        id: Object.keys(item)[0],
+        label: Object.values(item)[0]
+      })
+    })
+    console.log(routesPlanList)
     this.setData({
+      routesPlanList: routesPlanList,
+      searchDate: resultlist.departureDate,
       routinglist: resultlist.routings,
       placeOfLoading: resultlist.placeOfLoading,
       placeOfDischarge: resultlist.placeOfDischarge,
+      weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四'
     })
-
+    this.setDayList()
     if (!resultlist.anl && !resultlist.apl && !resultlist.cnc) {
       this.setData({
         planList: [],
@@ -65,12 +81,37 @@ Page({
     }
   },
 
+  // 筛选
+  onTabbarChange(e) {
+    console.log('传递过来tab发送筛选请求', e.detail);
+    let resultlist = wx.getStorageSync("resultlist")
+    let params = {
+      routings: resultlist.routings
+    }
+    if (e.detail.actived === 1) {
+      params.sortDateType = Number(e.detail.result)
+    }
+    if (e.detail.actived === 2) {
+      params.solutionNos = e.detail.result.map(id => Number(id))
+    }
+    if (e.detail.actived === 3) {
+      params.needEarlyFlag = true
+    }
+    if (e.detail.actived === 4) {
+      params.needDirectFlag = true
+    }
+    routingSort(params).then(res => {
+      console.log(res)
+      this.setData({
+        routinglist: res.data
+      })
+    })
+  },
+
   // 去详情
   toDetail(e) {
-    console.log(this.data.resultlist);
     let index = e.currentTarget.dataset.id;
     let resultlist = wx.getStorageSync("resultlist")
-    console.log(resultlist)
     let details = resultlist.routings[index];
     wx.setStorageSync('details', details);
     wx.navigateTo({

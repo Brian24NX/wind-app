@@ -43,3 +43,7 @@ export const fuzzySearch = (params, hideLoading) => {
   }
   return getRequest('/api/miniapp/fuzzySearch', obj, hideLoading)
 }
+// 排序
+export const routingSort = (params) => {
+  return postRequest('/api/miniapp/routingSort', params, true)
+}
