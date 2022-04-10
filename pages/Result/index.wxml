@@ -21,7 +21,7 @@
     </view>
   </view>
   <view wx:if="{{viewactived}}" class="tabContainers">
-    <view class="oneTab {{index === currentPlan ? 'tabActived' : ''}}" wx:for="{{planList}}" wx:key="index">
+    <view class="oneTab {{index === currentPlan ? 'tabActived' : ''}}" wx:for="{{planList}}" wx:key="index" catchtap="changePlan" data-="">
       <view class="tabName">{{item.title}}</view>
       <view>{{item.value}} 路线方案</view>
       <view class="activedLine"></view>

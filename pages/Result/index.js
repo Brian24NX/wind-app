@@ -12,6 +12,12 @@ Page({
   data: {
     isPhoneX: getApp().globalData.isPhoneX,
     viewactived: false,
+    routingLists: [
+      {id: 'CMA', list: []},
+      {id: 'ANL', list: []},
+      {id: 'CNC', list: []},
+      {id: 'APL', list: []}
+    ],
     routinglist: [],
     planList: [],
     placeOfLoading: '',
@@ -72,7 +78,6 @@ Page({
 
   setDayList() {
     const searchDate = wx.getStorageSync('searchKey').searchDate
-    console.log(searchDate)
     this.setData({
       searchDate: searchDate,
       dateList: utils.getDayList(searchDate, 5)
@@ -116,13 +121,33 @@ Page({
         }],
         currentPlan: resultlist.cnc ? 0 : resultlist.anl ? 1 : resultlist.apl ? 2 : null
       })
+      resultlist.routings.forEach(item=>{
+        if (item.shippingCompany === '0001') {
+          this.data.routingLists[0].list.push(item)
+        } else if (item.shippingCompany === '0002') {
+          this.data.routingLists[1].list.push(item)
+        } else if (item.shippingCompany === '0011') {
+          this.data.routingLists[2].list.push(item)
+        } else if (item.shippingCompany === '0015') {
+          this.data.routingLists[3].list.push(item)
+        }
+      })
+      this.setData({
+        routingLists: this.data.routingLists
+      })
+      const plan = this.data.planList[this.data.currentPlan].title
+      const index = this.data.routingLists.findIndex(item => item.id === plan)
+      if (index > -1) {
+        this.setData({
+          routinglist: this.data.routingLists[index]
+        })
+      }
     }
     this.sortData()
   },
 
   // 筛选
   onTabbarChange(e) {
-    console.log(e)
     if (e.detail.actived === 1) {
       this.setData({
         sort: e.detail.result

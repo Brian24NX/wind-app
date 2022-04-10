@@ -107,9 +107,7 @@ Component({
     // PDF查看
     reportToPDF() {
       // return
-      reportToPDF({
-        trackingResp: this.data.list[0].data
-      }).then(res => {})
+      reportToPDF(this.data.list[0].data).then(res => {})
     }
   }
 })
