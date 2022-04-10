@@ -1,6 +1,7 @@
 // pages/Result/index.js
 const utils = require('../../utils/util')
 import {
+  routingFinder,
   routingSort
 } from '../../api/modules/home';
 Page({
@@ -18,6 +19,7 @@ Page({
     currentPlan: null,
     searchDate: '',
     weekNum: '',
+    week: 0,
     dateList: [],
     routesPlanList: []
   },
@@ -29,12 +31,47 @@ Page({
     wx.setNavigationBarTitle({
       title: '搜索结果',
     })
+    this.setDayList()
     this.dealData()
   },
 
-  setDayList() {
+  changeDay(e) {
+    const date = e.currentTarget.dataset.item;
+    const searchObj = wx.getStorageSync('searchKey')
     this.setData({
-      dateList: utils.getDayList(this.data.searchDate, 5)
+      searchDate: date
+    })
+    let obj = {
+      placeOfDischarge: searchObj.placeOfDischarge,
+      placeOfLoading: searchObj.placeOfLoading,
+      arrivalDate: searchObj.search === '到达日期' ? date : '',
+      departureDate: searchObj.search === '离案日期' ? date : '',
+      searchRange: searchObj.searchRange,
+      shippingCompany: ''
+    }
+    this.setData({
+      routinglist: []
+    })
+    routingFinder(obj).then(res => {
+      if (res.code == 200) {
+        wx.setStorageSync('resultlist', res.data);
+        this.dealData()
+      } else {
+        wx.showToast({
+          title: res.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
+  },
+
+  setDayList() {
+    const searchDate = wx.getStorageSync('searchKey').searchDate
+    console.log(searchDate)
+    this.setData({
+      searchDate: searchDate,
+      dateList: utils.getDayList(searchDate, 5)
     })
   },
 
@@ -48,16 +85,14 @@ Page({
         label: Object.values(item)[0]
       })
     })
-    console.log(routesPlanList)
     this.setData({
       routesPlanList: routesPlanList,
-      searchDate: resultlist.departureDate,
       routinglist: resultlist.routings,
       placeOfLoading: resultlist.placeOfLoading,
       placeOfDischarge: resultlist.placeOfDischarge,
+      week: resultlist.searchRange,
       weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四'
     })
-    this.setDayList()
     if (!resultlist.anl && !resultlist.apl && !resultlist.cnc) {
       this.setData({
         planList: [],
