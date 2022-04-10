@@ -223,7 +223,7 @@ Page({
       console.log(e.detail.id);
   },
   onClose(index){
-    console.log('删除')
+    this.data.array.splice(index,1)
   },
   deleteall(){
     this.setData({
