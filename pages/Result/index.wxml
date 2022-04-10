@@ -69,6 +69,6 @@
   <view wx:if="{{routinglist==null}}">
     <noresult></noresult>
   </view>
-  <!-- 底部筛选条件 tabbar -->
-  <foot-tab-bar bind:tabbarchange="onTabbarChange" bind:changeRadio="onChangeRadio" bind:changeCheckBox="onChangeCheckBox" />
 </view>
+<!-- 底部筛选条件 tabbar -->
+<foot-tab-bar routesPlanList="{{routesPlanList}}" bind:tabbarchange="onTabbarChange" />

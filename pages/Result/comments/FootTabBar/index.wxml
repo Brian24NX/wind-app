@@ -5,30 +5,40 @@
       <view class="tabText {{item.isChecked ? '' : 'color-790'}}">{{item.text}}</view>
     </view>
   </view>
-  <!-- 单选框 -->
-  <view class="sort-menu" hidden="{{sortMenu}}">
-    <van-radio-group value="{{ radio }}">
-      <van-cell-group>
-        <van-cell title="最早触发" clickable data-name="1" bind:click="onClickRadio">
-          <van-radio slot="right-icon" name="1" />
-        </van-cell>
-        <van-cell title="早期的竞争对手" clickable data-name="2" bind:click="onClickRadio">
-          <van-radio slot="right-icon" name="2" />
-        </van-cell>
-        <van-cell title="最快传输时间" clickable data-name="3" bind:click="onClickRadio">
-          <van-radio slot="right-icon" name="3" />
-        </van-cell>
-      </van-cell-group>
-    </van-radio-group>
+
+</view>
+<!-- 单选框 -->
+<view hidden="{{ sortMenu }}" class="overlay" catchtap="closeSort">
+  <view class="sort-menus">
+    <view class="sort-menu">
+      <van-radio-group value="{{ radio }}">
+        <van-cell-group>
+          <van-cell title="最早的出发" clickable data-name="1" bind:click="onClickRadio">
+            <van-radio slot="right-icon" name="1" />
+          </van-cell>
+          <van-cell title="最早的到来" clickable data-name="2" bind:click="onClickRadio">
+            <van-radio slot="right-icon" name="2" />
+          </van-cell>
+          <van-cell title="最快的运输时间" clickable data-name="3" bind:click="onClickRadio">
+            <van-radio slot="right-icon" name="3" />
+          </van-cell>
+        </van-cell-group>
+      </van-radio-group>
+    </view>
   </view>
-  <!-- 多选框 -->
-  <view class="sort-menu" hidden="{{programme}}">
-    <van-checkbox-group value="{{ result }}" bind:change="changeCheckBox">
-      <van-cell-group>
-        <van-cell wx:for="{{ list }}" wx:key="index" title="复选框 {{ item }}" value-class="value-class" clickable data-index="{{ index }}" bind:click="changeCheckboxtoggle">
-          <van-checkbox catch:tap="noop" shape="square" class="checkboxes-{{ index }}" name="{{ item }}" />
-        </van-cell>
-      </van-cell-group>
-    </van-checkbox-group>
+</view>
+<!-- 多选框 -->
+<view hidden="{{ programme }}" class="overlay" catchtap="closeSort">
+  <view class="sort-menus">
+    <view class="sort-menu" catchtap="return">
+      <van-checkbox-group value="{{ result }}" bind:change="changeCheckBox">
+        <van-cell-group>
+          <van-cell wx:for="{{ routesPlanList }}" wx:key="index" title="{{ item.label }}" value-class="value-class" clickable data-index="{{ index }}" bind:click="changeCheckboxtoggle">
+            <van-checkbox catch:tap="noop" shape="square" class="checkboxes-{{ index }}" name="{{ item.id }}" />
+          </van-cell>
+        </van-cell-group>
+      </van-checkbox-group>
+      <view class="apply" catchtap="apply">应用</view>
+    </view>
   </view>
 </view>

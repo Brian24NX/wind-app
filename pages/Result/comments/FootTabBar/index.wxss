@@ -31,14 +31,35 @@
   border-right: 1px solid #E5E5E5; 
 }
 
-.sort-menu{
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: calc(100vh - 180rpx);
+}
+
+.sort-menus {
+  height: 100%;
+  position: relative;
+}
+
+.sort-menus .sort-menu{
   position: absolute;
   width: 100%;
-  /* padding: 20rpx; */
   left: 0;
-  bottom: 140rpx;
-  /* background: #eee; */
+  bottom: 0;
 }
+
+.sort-menus .sort-menu .apply {
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  text-align: right;
+  border-bottom: 1rpx solid rgb(235, 237, 240);
+}
+
 .value-class {
   flex: none !important;
 }

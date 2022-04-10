@@ -203,7 +203,6 @@ function getDayList(date, time) {
     //日期 +1 天，此日期为减time天后的日期
     myDate.setDate(myDate.getDate() + flag);
   }
-  console.log(dateArray)
   return dateArray
 }
 
