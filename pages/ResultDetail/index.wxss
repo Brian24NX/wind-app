@@ -1,12 +1,12 @@
 /* pages/ResultDetail/index.wxss */
-.resultContainer {
+.resultContainers {
   width: 100%;
   min-height: 100vh;
   padding: 30rpx;
   background-color: #F0F1F5;
 }
 
-.resultContainer .resultCardContainer {
+.resultContainers .resultCardContainer {
   width: 100%;
   background-color: #ffffff;
   padding: 0 40rpx;
@@ -22,17 +22,17 @@
 
 .cardContainer {
   padding-top: 40rpx;
-  padding-left: 48rpx;
   font-size: 48rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #071E5D;
   line-height: 66rpx;
+  word-break: break-all;
 }
 
 .carddate,
 .cardtranshipment {
-  padding-left: 62rpx;
+  padding-top: 10rpx;
 }
 
 .carddate text,

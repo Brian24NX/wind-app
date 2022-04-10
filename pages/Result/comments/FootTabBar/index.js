@@ -14,7 +14,7 @@ Component({
   },
   data: {
     isPhoneX: getApp().globalData.isPhoneX,
-    radio: '1',
+    radio: '',
     sortMenu: true,
     programme: true,
     result: [],
@@ -67,7 +67,8 @@ Component({
       })
       this.triggerEvent('tabbarchange', {
         actived: 2,
-        result: this.data.result
+        result: this.data.result,
+        radio: ''
       })
     },
 
@@ -88,7 +89,8 @@ Component({
       });
       this.triggerEvent('tabbarchange', {
         actived: 1,
-        result: name
+        result: name,
+        result: []
       })
     },
     handleClickTab(e) {
@@ -112,7 +114,9 @@ Component({
       } else if (activeIndex === 2 || activeIndex === 3) {
         this.setData({
           programme: true,
-          sortMenu: true
+          sortMenu: true,
+          result: [],
+          radio: ''
         })
         // tabnar为 后两项时
         this.triggerEvent('tabbarchange', {
