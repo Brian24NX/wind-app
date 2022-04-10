@@ -128,8 +128,8 @@ page {
 .scroll-view {
   width: 540rpx;
   position: absolute;
-  top: 138rpx;
-  left:52rpx;
+  top: 185rpx;
+  left:-208rpx;
   background-color: #ffffff;
   border: 1rpx solid#e2e2e2;
   z-index: 40;
