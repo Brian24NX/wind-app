@@ -113,7 +113,8 @@ Component({
           url: config[config.dev_env].url + '/api/miniapp/' + res.data,
           success(filePath) {
             wx.openDocument({
-              filePath: filePath.tempFilePath
+              filePath: filePath.tempFilePath,
+              showMenu: true
             })
           }
         })
