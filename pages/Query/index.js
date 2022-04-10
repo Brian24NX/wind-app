@@ -27,10 +27,10 @@ Page({
     podlist:[],
     searchlist:[{
           id:0,
-          method:"离岸日期"
+          method:"离港时间"
     },{
           id:1,
-          method:"到达日期"
+          method:"到港时间"
     }],
     // search 离案
     search:'',

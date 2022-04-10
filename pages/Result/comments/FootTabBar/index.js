@@ -14,10 +14,10 @@ Component({
   },
   data: {
     isPhoneX: getApp().globalData.isPhoneX,
-    radio: '',
+    radio: '1',
     sortMenu: true,
     programme: true,
-    result: [],
+    result: ["1", "2", "3"],
     tabBarData: [{
         text: '排序',
         isChecked: true,
@@ -27,7 +27,7 @@ Component({
       },
       {
         text: '航线方案',
-        isChecked: false,
+        isChecked: true,
         id: 2,
         active: '/assets/img/result/tabbar/active/two.png',
         noactive: '/assets/img/result/tabbar/noactive/two.png'
@@ -67,8 +67,7 @@ Component({
       })
       this.triggerEvent('tabbarchange', {
         actived: 2,
-        result: this.data.result,
-        radio: ''
+        result: this.data.result
       })
     },
 
@@ -89,18 +88,14 @@ Component({
       });
       this.triggerEvent('tabbarchange', {
         actived: 1,
-        result: name,
-        result: []
+        result: name
       })
     },
     handleClickTab(e) {
       // 传递的参数
       let activeIndex = e.currentTarget.dataset['index'];
       let activeData = this.data.tabBarData[activeIndex]
-      let data = this.data.tabBarData.map((item, index) => {
-        index === activeIndex ? (item.isChecked = true) : (item.isChecked = false)
-        return item
-      })
+      let data = this.data.tabBarData
       if (activeIndex === 0) {
         this.setData({
           sortMenu: !this.data.sortMenu,
@@ -114,13 +109,13 @@ Component({
       } else if (activeIndex === 2 || activeIndex === 3) {
         this.setData({
           programme: true,
-          sortMenu: true,
-          result: [],
-          radio: ''
+          sortMenu: true
         })
+        data[activeIndex].isChecked = !data[activeIndex].isChecked
         // tabnar为 后两项时
         this.triggerEvent('tabbarchange', {
-          actived: activeData.id
+          actived: activeData.id,
+          result: data[activeIndex].isChecked
         })
       }
       this.setData({

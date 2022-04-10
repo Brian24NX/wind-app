@@ -21,7 +21,11 @@ Page({
     weekNum: '',
     week: 0,
     dateList: [],
-    routesPlanList: []
+    routesPlanList: [],
+    sort: '1',
+    plans: [1, 2, 3],
+    needEarlyFlag: false,
+    needDirectFlag: false
   },
 
   /**
@@ -87,7 +91,6 @@ Page({
     })
     this.setData({
       routesPlanList: routesPlanList,
-      routinglist: resultlist.routings,
       placeOfLoading: resultlist.placeOfLoading,
       placeOfDischarge: resultlist.placeOfDischarge,
       week: resultlist.searchRange,
@@ -114,25 +117,46 @@ Page({
         currentPlan: resultlist.cnc ? 0 : resultlist.anl ? 1 : resultlist.apl ? 2 : null
       })
     }
+    this.sortData()
   },
 
   // 筛选
   onTabbarChange(e) {
-    console.log('传递过来tab发送筛选请求', e.detail);
-    let resultlist = wx.getStorageSync("resultlist")
-    let params = {
-      routings: resultlist.routings
-    }
+    console.log(e)
     if (e.detail.actived === 1) {
-      params.sortDateType = Number(e.detail.result)
+      this.setData({
+        sort: e.detail.result
+      })
     }
     if (e.detail.actived === 2) {
-      params.solutionNos = e.detail.result.map(id => Number(id))
+      this.setData({
+        plans: e.detail.result.map(id => Number(id))
+      })
     }
     if (e.detail.actived === 3) {
-      params.needEarlyFlag = true
+      this.setData({
+        needEarlyFlag: e.detail.result
+      })
     }
     if (e.detail.actived === 4) {
+      this.setData({
+        needDirectFlag: e.detail.result
+      })
+    }
+    this.sortData()
+  },
+
+  sortData() {
+    let resultlist = wx.getStorageSync("resultlist")
+    let params = {
+      routings: resultlist.routings,
+      sortDateType: Number(this.data.sort),
+      solutionNos: this.data.plans
+    }
+    if (this.data.needEarlyFlag) {
+      params.needEarlyFlag = true
+    }
+    if (this.data.needDirectFlag) {
       params.needDirectFlag = true
     }
     routingSort(params).then(res => {
