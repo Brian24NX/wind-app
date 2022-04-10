@@ -9,7 +9,8 @@
   width: 100%;
   height: 100%;
   line-height: 60rpx;
-  font-size: 34rpx;
+  font-size: 28rpx;
+  color: #04246A;
 }
 
 .uni-picker-icon {

@@ -39,7 +39,7 @@
   background: #E20202;
   display: inline-block;
   position: relative;
-  left:10rpx;
+  left:20rpx;
   top: 4rpx;
 }
 .shipdate{
@@ -47,7 +47,7 @@
    color:#4468BA;
    font-weight:bold;
    position: relative;
-   left: 20rpx;
+   left: 40rpx;
    top: -4rpx;
 }
 /**
@@ -75,8 +75,9 @@
 .polinput,.podinput{
   height: 88rpx;
   border:2rpx solid #DFDFDF;
-  margin-left: 50rpx;
+  margin-left: 50rpx; 
   margin-top: 10rpx;
+  padding-left: 30rpx;
 }
 .ship{
    width: 52rpx;
@@ -90,6 +91,7 @@
   height: 18rpx;
   background: #E20202;
   display: inline-block;
+  border-radius: 50%;
 }
 .line{
   width: 2rpx;
@@ -116,8 +118,8 @@
 .scroll-view{
   width: 455rpx;
   position: absolute;
-  top: 290rpx;
-  left: 170rpx;
+  top: 180rpx;
+  left: -210rpx;
   background-color: #ffffff;
   box-shadow: 0rpx 0rpx 4rpx #e2e2e2;
   z-index: 40;
@@ -136,12 +138,14 @@
 }
 .dateinput{
    width:450rpx ;
-   height: 80rpx;
+   height: 88rpx;
    display: flex;
    flex-direction: space-between;
    border:2rpx #DFDFDF solid;
    margin-left: 70rpx;
    padding-left: 10rpx;
+   font-size: 28rpx;
+   color:#04246A;
 }
 .polname,.podname{
   width: 100%;
@@ -153,7 +157,7 @@
 .flex{
 height: 24px;
 background: #EAEBEE;
-border-radius: 24rpx;
+  border-radius: 24rpx;
 display: inline-block;
 }
 .flex:nth-child(2n){
@@ -168,10 +172,12 @@ display: inline-block;
 .clearstyle{
   width: 32rpx;
   height: 32rpx;
-  border: none;
   padding: 0;
   float: right;
   display: inline-block;
+}
+.clearstyle::after{
+  border:none;
 }
 .font12{
   font-size: 24rpx;
@@ -189,4 +195,10 @@ display: inline-block;
   position: relative;
   top: -15rpx;
   left: -8rpx;
+}
+.van-tag--default{
+  --tag-default-color:#F0F1F5 !important;
+}
+.vant-tag{
+  color:#626262 !important;
 }

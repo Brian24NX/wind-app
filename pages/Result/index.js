@@ -10,6 +10,16 @@ Page({
     planList: []
   },
 
+  onTabbarChange(event) {
+    console.log(event.detail,'传递过来tab最后2项发送筛选请求');
+  },
+  onChangeRadio(event){
+    console.log(event.detail,'传递过来第一项的单选框');
+  },
+  onChangeCheckBox(event){
+    console.log(event.detail,'传递过来第二项的多选框');
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
