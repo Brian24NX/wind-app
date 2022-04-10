@@ -1,4 +1,5 @@
 // pages/Result/index.js
+const utils = require('../../utils/util')
 Page({
 
   /**
@@ -11,7 +12,10 @@ Page({
     planList: [],
     placeOfLoading: '',
     placeOfDischarge: '',
-    currentPlan: null
+    currentPlan: null,
+    searchDate: '',
+    weekNum: '',
+    dateList: []
   },
 
   onTabbarChange(event) {
@@ -34,14 +38,24 @@ Page({
     this.dealData()
   },
 
+  setDayList() {
+    this.setData({
+      dateList: utils.getDayList(this.data.searchDate, 5)
+    })
+  },
+
   dealData() {
     let resultlist = wx.getStorageSync("resultlist");
+    const weekNum = Number(resultlist.searchRange) / 7
+    console.log(weekNum)
     this.setData({
+      searchDate: resultlist.departureDate,
       routinglist: resultlist.routings,
       placeOfLoading: resultlist.placeOfLoading,
       placeOfDischarge: resultlist.placeOfDischarge,
+      weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四'
     })
-
+    this.setDayList()
     if (!resultlist.anl && !resultlist.apl && !resultlist.cnc) {
       this.setData({
         planList: [],
