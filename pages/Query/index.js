@@ -108,19 +108,18 @@ Page({
           if(res.code==200){
             wx.setStorageSync('resultlist', res.data);
             let history=this.data.array;
-            let polpleace=this.data.polcode||this.data.polvalue;
-            let podpleace=this.data.polcode||this.data.podvalue;
+            let polpleace=this.data.polvalue;
+            let podpleace=this.data.podvalue;
             let str=polpleace+'-'+podpleace;
             if(history.length==6){
                history.shift();
-               history.push(str);
-            }
-            else{
-                history.push(str);
-            }
+              
+            } 
             history.push(str);
             this.setData({
-                array:history
+                array:history,
+                podvalue:'',
+                polvalue:'',
             })
             wx.navigateTo({
               url: '../Result/index',
@@ -219,15 +218,20 @@ Page({
       podcode:this.data.podlist[index].pointCode
     })
   },
-  change(e){
-      console.log(e.detail.id);
-  },
-  onClose(index){
-    this.data.array.splice(index,1)
+  onClose(e){
+    console.log(e);
+    let index=e.currentTarget.dataset.index; 
+    let history=this.data.array;
+    history.splice(index,1)
+    this.setData({
+       array:history
+    })
   },
   deleteall(){
+    let history=this.data.array;
+    history=[];
     this.setData({
-      array:[]
+      array:history
     })
   },
   /**
