@@ -1,6 +1,7 @@
 // pages/query/index.js
 const app = getApp();
 var languageUtil = require('../../utils/languageUtils')
+const utils = require('../../utils/util')
 import {fuzzySearch,routingFinder} from '../../api/modules/home';
 Page({
 
@@ -15,26 +16,27 @@ Page({
     viewShowedPod:false,
     // 卸货港
     podvalue:"",
+    podcode:"",
     // 起运港
     polvalue:"",
+    polcode:"",
     array:[
-      {location:'guangzhou-shanghai'},
-      {location:'guangzhou-yangzhou'},
-      {location:'guangzhou-suzhou'}
+      {1:'guangzhou-wuhan'}
     ],
-    pollist:[],
+    pollist:[
+    ],
     podlist:[],
     searchlist:[{
           id:0,
-          method:"离岸"
+          method:"离岸日期"
     },{
           id:1,
-          method:"到达"
+          method:"到达日期"
     }],
-    // search
+    // search 离案
     search:'',
-    // week
-    week:'',
+    // week  
+    week:'3 星期',
     weeklist:[{
         id:0,
         weeks:'1 星期'
@@ -60,7 +62,7 @@ Page({
   changeweek(e){
     let index=e.detail.id;
     this.setData({
-      search:this.data.weeklist[index].week
+      week:this.data.weeklist[index].weeks
     })
   },
   getDate(){
@@ -78,67 +80,133 @@ Page({
       })
   },
   submit(){
+      if(this.data.week==='1 星期'){
+            this.setData({
+              week:7
+            })
+      }else if(this.data.week==='2 星期'){
+            this.setData({
+              week:14
+            })
+      }else if(this.data.week==='3 星期'){
+            this.setData({
+               week:21
+            })
+      }else{
+            this.setData({
+              week:28
+            })
+      }
       let obj={
-        placeOfDischarge:this.data.podvalue||'NLRTM',
-        placeOfLoading:this.data.polvalue||'CNSHA',
-        arrivalDate:'',
-        departureDate:'',
-        searchRange:this.data.week||this.data.week,
+        placeOfDischarge:this.data.podcode,
+        placeOfLoading:this.data.polcode,
+        arrivalDate:this.data.search==='到达日期'?this.data.date:'',
+        departureDate:this.data.search==='离案日期'?this.data.date:'',
+        searchRange:this.data.week,
         shippingCompany:'',
       }
       routingFinder(obj).then(res=>{
           if(res.code==200){
             wx.setStorageSync('resultlist', res.data);
+            let history=this.data.array;
+            let str=this.data.polcode+'-'+this.data.podcode;
+            if(history.length==6){
+               history.shift();
+               history.push(str);
+            }
+            else{
+                history.push(str);
+            }
+            history.push(str);
+            this.setData({
+                array:history
+            })
             wx.navigateTo({
               url: '../Result/index',
             })
           }
           else{
+            this.setData({
+              podvalue:'',
+              polvalue:'',
+            })
             wx.showToast({
               title: res.message,
-              icon: 'warn',
+              icon: 'none',
               duration: 2000
             })
           }
       })
-      
   },
   //获取卸货港的接口处理
-  changepod(e){
-     let obj={
-        searchStr:e.detail.value
-     } 
-     fuzzySearch(obj).then(res=>{
-         this.setData({
-            podlist:res.data
-         })
-     })
-     this.setData({
-          viewShowedPod:true,
-          podvalue:""
-     })
-  },
-  //获取起始港的接口处理
-  changepol(e){
-    let obj={
-       searchStr:e.detail.value
-    } 
-    fuzzySearch(obj).then(res=>{
-        this.setData({
-           pollist:res.data
-        })
+  changepod: utils.debounce(function(e) {
+    const data = e['0'].detail.value
+    if (data.length < 2) return
+    fuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      console.log(res)
+      this.setData({
+        podlist: res.data || []
+      })
     })
     this.setData({
-         viewShowedPol:true,
-         polvalue:""
+      viewShowedPod: true,
+      // polvalue: ""
     })
- },
+  }, 500),
+  // changepod(e) {
+  //   let obj = {
+  //     searchStr: e.detail.value
+  //   }
+  //   fuzzySearch(obj).then(res => {
+  //     this.setData({
+  //       podlist: res.data
+  //     })
+  //   })
+  //   this.setData({
+  //     viewShowedPod: true,
+  //     podvalue: ""
+  //   })
+  // },
+  //获取起始港的接口处理
+  changepol: utils.debounce(function(e) {
+    const data = e['0'].detail.value
+    if (data.length < 2) return
+    fuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      console.log(res)
+      this.setData({
+        pollist: res.data || []
+      })
+    })
+    this.setData({
+      viewShowedPol: true,
+      // polvalue: ""
+    })
+  }, 500),
+  // changepol(e) {
+  //   let obj = {
+  //     searchStr: e.detail.value
+  //   }
+  //   fuzzySearch(obj).then(res => {
+  //     this.setData({
+  //       pollist: res.data
+  //     })
+  //   })
+    // this.setData({
+    //   viewShowedPol: true,
+    //   polvalue: ""
+    // })
+  // },
  // 起始港选择
  changepolname(e){
     let index=e.currentTarget.dataset.index;  
     this.setData({
       viewShowedPol:false,
-      polvalue:this.data.pollist[index].point
+      polvalue:this.data.pollist[index].point,
+      polcode:this.data.pollist[index].pointCode
     })
   },
   // 卸货港
@@ -146,7 +214,8 @@ Page({
     let index=e.currentTarget.dataset.index;  
     this.setData({
       viewShowedPod:false,
-      podvalue:this.data.podlist[index].point
+      podvalue:this.data.podlist[index].point,
+      podcode:this.data.podlist[index].pointCode
     })
   },
   change(e){
@@ -165,7 +234,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      date:this.getDate()
+      date:this.getDate(),
+      search:'离案日期'
     })
   },
 
