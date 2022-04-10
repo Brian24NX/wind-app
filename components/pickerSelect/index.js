@@ -46,7 +46,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    picker_value:'离岸',//输入框值
+    picker_value:'离岸日期',//输入框值
     index: 0,//下拉框下标
     list2: []//下拉框数据
   },

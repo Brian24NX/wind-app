@@ -1,7 +1,7 @@
 // pages/Home/index.js
 const app = getApp();
 import {
-  fuzzySearch
+  fuzzySearch,routingFinder
 } from '../../api/modules/home';
 var languageUtil = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
@@ -34,10 +34,13 @@ Page({
     huoGuiValue: '',
     showRemind: false,
     qiYunValue: '',
+    qiYunCode:'',
     showRemind2: false,
     xieHuoValue: '',
+    xieHuoCode:'',
     showRemind3: false,
-    codeList: []
+    codePolList: [],
+    codePodList: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -113,24 +116,68 @@ Page({
   setQiYun: utils.debounce(function(e) {
     const data = e['0'].detail.value
     this.setData({
-      codeList: [],
+      codePolList: [],
       qiYunValue: data
     })
     if (data.length < 2) return
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
-      console.log(res)
-      this.setData({
-        codeList: res.data || []
-      })
+      if(res.data!=''){
+        this.setData({
+          codePolList: res.data 
+        })
+      }
+      else{
+        this.setData({
+          qiYunValue: data
+        })
+      }
+      
     })
   }, 500),
   // 设置卸货港
-  setXieHuo(e) {
+  setXieHuo: utils.debounce(function(e) {
+    const data = e['0'].detail.value
     this.setData({
-      xieHuoValue: e.detail.value,
-      showRemind3: e.detail.value ? false : true
+      codePodList: [],
+      xieHuoValue: data
+    })
+    if (data.length < 2) return
+    fuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      if(res.data!=''){
+        this.setData({
+          codePodList: res.data
+        })
+      }
+      else{
+          this.setData({
+              xieHuoValue:data
+          })
+      }
+    })
+  }, 500),
+  // 设置启运港
+  changepolname(e){
+    
+    let index=e.currentTarget.dataset.index;  
+    this.setData({
+      codePolList:[],
+      qiYunValue:this.data.codePolList[index].point,
+      qiYunCode:this.data.codePolList[index].pointCode
+    })
+  },
+  // 设置卸货港
+  changepodname(e){
+    console.log(e); 
+    let index=e.currentTarget.dataset.index; 
+    
+    this.setData({
+      codePodList:[],
+      xieHuoValue:this.data.codePodList[index].point,
+      xieHuoCode:this.data.codePodList[index].pointCode
     })
   },
   // 船期搜索
@@ -157,9 +204,34 @@ Page({
       })
       return
     }
-    wx.navigateTo({
-      url: '/pages/Orders/index',
+    let obj={
+      placeOfDischarge:this.data.qiYunCode||this.data.qiYunValue,
+      placeOfLoading:this.data.xieHuoCode||this.data.xieHuoValue,
+      arrivalDate:'',
+      departureDate:'',
+      searchRange:'',
+      shippingCompany:'',
+    }
+    routingFinder(obj).then(res=>{
+      if(res.code==200&&res.data!=''){
+        wx.setStorageSync('resultlist', res.data);
+        wx.navigateTo({
+          url: '../Result/index.wxml',
+        })
+      }
+      else{
+        this.setData({
+           qiYunValue:'',
+           xieHuoValue:''
+        })
+        wx.showToast({
+          title: '请求数据不存在或者网络错误,请您重试!',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
+    
   },
   // 高级查询
   toAdvancedSearch() {
