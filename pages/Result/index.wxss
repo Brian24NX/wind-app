@@ -11,10 +11,11 @@
 .searchResultTopContainer .searchTop {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   margin-top: 32rpx;
+  padding: 0 30rpx;
 }
 
 .searchResultTopContainer .searchTop .serchLeft {

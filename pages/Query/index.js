@@ -1,6 +1,7 @@
 // pages/query/index.js
 const app = getApp();
 var languageUtil = require('../../utils/languageUtils')
+const utils = require('../../utils/util')
 import {
   fuzzySearch,
   routingFinder
@@ -126,20 +127,40 @@ Page({
     })
   },
   //获取起始港的接口处理
-  changepol(e) {
-    let obj = {
-      searchStr: e.detail.value
-    }
-    fuzzySearch(obj).then(res => {
+  changepol: utils.debounce(function(e) {
+    const data = e['0'].detail.value
+    this.setData({
+      codeList: [],
+      qiYunValue: data
+    })
+    if (data.length < 2) return
+    fuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      console.log(res)
       this.setData({
-        pollist: res.data
+        pollist: res.data || []
       })
     })
     this.setData({
       viewShowedPol: true,
-      polvalue: ""
+      // polvalue: ""
     })
-  },
+  }, 500),
+  // changepol(e) {
+  //   let obj = {
+  //     searchStr: e.detail.value
+  //   }
+  //   fuzzySearch(obj).then(res => {
+  //     this.setData({
+  //       pollist: res.data
+  //     })
+  //   })
+    // this.setData({
+    //   viewShowedPol: true,
+    //   polvalue: ""
+    // })
+  // },
   // 起始港选择
   changepolname(e) {
     let index = e.currentTarget.dataset.index;
