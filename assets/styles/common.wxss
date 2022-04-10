@@ -34,6 +34,12 @@ page,view,text,swiper,swiper-item,image,navigator{
 .jc-center {
   justify-content: center;
 }
+.jc-between{
+  justify-content: space-between;
+}
+.jc-around{
+  justify-content: space-around;
+}
 .flex-1 {
   flex: 1;
 }

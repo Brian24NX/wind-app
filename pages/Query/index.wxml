@@ -6,12 +6,12 @@
     <view class="searchtitle">
       <text class="font route">航线</text>
       <view class="redline"></view><text class="font shipdate">获取船期</text>
-      <form catchsubmit="formSubmit" catchreset="formReset">
+      <form catchsubmit="formSubmit" catchreset="formReset" style="position: relative;top: 40rpx;">
         <view class="POLinput">
           <view class="redcircle"></view>
           <text class="font font14">启运港</text>
           <image class="polimg" style="left:-66rpx;" src="../../assets/img/seniorsearch/position.png"></image>
-          <input class="polinput" value="{{polvalue}}" type="text" placeholder="名称/代码" placeholder-style="margin-left:30rpx;" bindblur="changepol" />
+          <input class="polinput" value="{{polvalue}}" type="text" placeholder="名称/代码" placeholder-style="margin-left:30rpx;font-size:28rpx;color:#B9BFCA;" bindblur="changepol" />
           <scroll-view class="scroll-view" wx:if='{{viewShowedPol}}' scroll-y>
               <view wx:for="{{pollist}}" wx:key="index" class="item">
                   <view class="polname" bindtap='changepolname' data-index="{{index}}">{{item.point}}</view>
@@ -25,7 +25,7 @@
           <image class="podlocation" src="../../assets/img/seniorsearch/location.png"></image>
           <text class="font font14">卸货港</text>
           <image class="podimg" src="../../assets/img/seniorsearch/position.png"></image>
-          <input class="podinput"  value="{{podvalue}}" type="text" placeholder="名称/代码" placeholder-style="margin-left:30rpx;" bindblur="changepod" />
+          <input class="podinput"  value="{{podvalue}}" type="text" placeholder="名称/代码" placeholder-style="margin-left:30rpx;font-size:28rpx;color:#B9BFCA;" bindblur="changepod" />
           <scroll-view class="scroll-viewpod" wx:if='{{viewShowedPod}}' scroll-y>
             <view wx:for="{{podlist}}" wx:key="index" class="item">
                 <view class="podname" bindtap='changepodname' data-index="{{index}}">{{item.point}}</view>
@@ -35,12 +35,12 @@
         <view class="searchselect">
           <image class="searchimg" src="../../assets/img/seniorsearch/search.png"></image>
           <text class="font font14 pos">搜索</text>
-          <pickerinput style="position: relative;left: 70rpx;" list="{{searchlist}}" _width="460rpx" _height="80rpx" bind:action="changemethod" actualvalue="id" showvalue="method"></pickerinput>
+          <pickerinput style="position: relative;left: 70rpx;" list="{{searchlist}}" _width="460rpx" _height="88rpx" bind:action="changemethod" actualvalue="id" showvalue="method"></pickerinput>
         </view>
         <view class="dateselect">
           <image class="dateimg" src="../../assets/img/seniorsearch/date.png"></image>
           <text class="font font14 pos">日期</text>
-           <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindTimeChange">
+           <picker mode="date" value="{{date}}" start="1970-09-01" end="2079-09-01" bindchange="bindTimeChange">
             <input type="text" class="dateinput" value="{{date}}" bindinput="bindkeyinput"></input>
             <image src="../../assets/img/seniorsearch/bottomarrow.png" style="width:32rpx;height: 32rpx;position: relative;top: -60rpx;left: 484rpx;" />
           </picker>
@@ -48,7 +48,7 @@
         <view class="weekselect">
           <image class="weekimg" src="../../assets/img/seniorsearch/week.png"></image>
           <text class="font font14 pos">未来</text>
-          <pickerinputweek style="position: relative;left: 70rpx;" list="{{weeklist}}" _width="460rpx" _height="80rpx" bind:action="changeweek" actualvalue="id" showvalue="weeks"></pickerinputweek>
+          <pickerinputweek style="position: relative;left: 70rpx;" list="{{weeklist}}" _width="460rpx" _height="88rpx" bind:action="changeweek" actualvalue="id" showvalue="weeks"></pickerinputweek>
         </view>
         <view class="btn">
           <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">搜索</button>
@@ -62,7 +62,7 @@
       <image class="historydel" src="../../assets/img/seniorsearch/delete.png"></image>
     </button>
     <view class="result">
-    <van-tag class="flex" wx:key="index" wx:for="{{array}}" closeable size="medium"  id="primary" bind:close="onClose(index)">
+    <van-tag class="flex" wx:key="index" wx:for="{{array}}" closeable size="medium"  id="primary" bind:close="onClose">
       <text class="font font12">{{item.location}}</text>
     </van-tag>
     </view>
