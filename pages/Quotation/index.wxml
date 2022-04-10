@@ -3,5 +3,5 @@
 </view>
 
 <view class="priceContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
-  <view>报价功能，尽请期待</view>
+  <view style="text-align: center;">功能升级中，尽请期待</view>
 </view>

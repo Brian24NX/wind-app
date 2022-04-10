@@ -8,7 +8,8 @@ Page({
       detaillist:[],
       podlist:[],
       pollist:[],
-      tranforlist:[]
+      tranforlist:[],
+      translist:[]
   },
 
   /**
@@ -19,11 +20,14 @@ Page({
       title: '详情',
     })
     let detail=wx.getStorageSync('details');
+    let arr=detail.routingDetails;
+    let arrdetail=arr.splice(1,arr.length-1);
     this.setData({
       detaillist:detail,
       pollist:detail.routingDetails[0].pointFrom,
       podlist:detail.routingDetails[detail.routingDetails.length-1].pointTo,
-      translist:detail.transhipment
+      tranforlist:detail.transhipment,
+      translist:arrdetail
     })
   },
 

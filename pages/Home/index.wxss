@@ -94,7 +94,10 @@ page {
   font-size: 24rpx;
 }
 .oneXiala{
+  height: 80rpx;
+  background-color: #ffffff;
   border:2rpx solid #e2e2e2;
+  max-height: 430rpx;
 }
 .homeContainer .searchContainers .searchContents .noRequestBorder {
   border: 2rpx solid #E10202;
