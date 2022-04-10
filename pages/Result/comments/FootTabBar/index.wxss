@@ -33,12 +33,12 @@
 
 .sort-menu{
   position: absolute;
-  padding: 20rpx;
+  width: 100%;
+  /* padding: 20rpx; */
   left: 0;
   bottom: 140rpx;
-  background: #eee;
+  /* background: #eee; */
 }
-
-.mb-10{
-  padding-bottom: 20rpx;
+.value-class {
+  flex: none !important;
 }

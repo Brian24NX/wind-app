@@ -55,8 +55,6 @@
   "debug": true,
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "navBar": "/components/navBar/index",
-    "van-radio": "@vant/weapp/radio/index",
-    "van-radio-group": "@vant/weapp/radio-group/index"
+    "navBar": "/components/navBar/index"
   }
 }

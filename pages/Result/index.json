@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "",
+  "component": true,
   "usingComponents": {
     "noresult": "./noresult/index",
     "foot-tab-bar": "./comments/FootTabBar/index"
