@@ -46,7 +46,7 @@
 <!--pages/Result/index.wxml-->
 <view class="searchResultTopContainer">
   <view class="searchTop">
-    <view class="serchLeft">{{placeOfLoading}} - {{placeOfDischarge}}</view>
+    <view class="serchLeft">SHANGHAI - TOKYO</view>
     <view class="searchLine"></view>
     <view class="searchTime">未来三星期</view>
   </view>
@@ -64,14 +64,14 @@
     </view>
   </view>
   <view wx:if="{{viewactived}}" class="tabContainers">
-    <view class="oneTab {{index === 0 ? 'tabActived' : ''}}" wx:for="{{planList}}">
+    <view class="oneTab {{index === 0 ? 'tabActived' : ''}}" wx:for="{{3}}">
       <view class="tabName">CNC</view>
       <view>4 路线方案</view>
       <view class="activedLine"></view>
     </view>
   </view>
 </view>
-<view class="resultContainers" style="padding-top: {{viewactived ? '380rpx' : '280rpx'}};padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
+<view class="resultContainers">
   <view wx:if="{{routinglist!=null}}">
     <view class="oneResult" wx:for="{{routinglist}}" wx:key="index" bindtap="toDetail" data-id="{{index}}">
       <view class="tips">

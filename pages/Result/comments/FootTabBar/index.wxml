@@ -1,12 +1,12 @@
-<view class="tabBarlayout" style="{{isPhoneX ? 'padding-bottom: 40rpx' : ''}}">
+<view class="tabBarlayout">
   <view class="flex ai-center jc-between jc-around">
-    <view class="tabbar-item flex-1 flex flex-column ai-center jc-center" wx:for="{{tabBarData}}" catchtap="handleClickTab" data-index="{{index}}" wx:key="index">
+    <view class="tabbar-item flex-1 flex flex-column ai-center jc-center"  wx:for="{{tabBarData}}"  catchtap="handleClickTab"  data-index="{{index}}" wx:key="index">
       <image class="tabBarImg" src="{{ item.isChecked ? item.active : item.noactive}}"></image>
       <view class="tabText {{item.isChecked ? '' : 'color-790'}}">{{item.text}}</view>
     </view>
   </view>
   <!-- 单选框 -->
-  <view class="sort-menu" hidden="{{sortMenu}}">
+  <view class="sort-menu" hidden="{{sortMenu}}" >
     <van-radio-group value="{{ radio }}">
       <van-cell-group>
         <van-cell title="最早触发" clickable data-name="1" bind:click="onClickRadio">
@@ -21,14 +21,27 @@
       </van-cell-group>
     </van-radio-group>
   </view>
-  <!-- 多选框 -->
-  <view class="sort-menu" hidden="{{programme}}">
+<!-- 多选框 -->
+  <view class="sort-menu" hidden="{{programme}}" >
     <van-checkbox-group value="{{ result }}" bind:change="changeCheckBox">
-      <van-cell-group>
-        <van-cell wx:for="{{ list }}" wx:key="index" title="复选框 {{ item }}" value-class="value-class" clickable data-index="{{ index }}" bind:click="changeCheckboxtoggle">
-          <van-checkbox catch:tap="noop" shape="square" class="checkboxes-{{ index }}" name="{{ item }}" />
-        </van-cell>
-      </van-cell-group>
-    </van-checkbox-group>
+    <van-cell-group>
+      <van-cell
+        wx:for="{{ list }}"
+        wx:key="index"
+        title="复选框 {{ item }}"
+        value-class="value-class"
+        clickable
+        data-index="{{ index }}"
+        bind:click="changeCheckboxtoggle"
+      >
+        <van-checkbox
+          catch:tap="noop"
+          shape="square"
+          class="checkboxes-{{ index }}"
+          name="{{ item }}"
+        />
+      </van-cell>
+    </van-cell-group>
+  </van-checkbox-group>
   </view>
 </view>

@@ -27,6 +27,8 @@
 │   └── config.js        - config.js
 ├── pages                - 页面组件
 │   ├── Home             - Home，命名规范为首字母大写驼峰命名
+│   │   ├── component    - Home模块下的抽离组件
+│   │   │   ├── Tab      - Home模块下的抽离Tab组件
 │   │   ├── index.js     - 逻辑
 │   │   ├── index.json   - 页面的一些配置
 │   │   ├── index.wxml   - 页面结构

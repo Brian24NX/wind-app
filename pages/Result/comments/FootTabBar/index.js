@@ -10,7 +10,6 @@ Component({
     }
   },
   data: {
-    isPhoneX: getApp().globalData.isPhoneX,
     radio: '1',
     sortMenu:true,
     programme:true,
