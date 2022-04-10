@@ -201,7 +201,7 @@ page {
   width: 32rpx;
   height: 32rpx;
   position: relative;
-  top: -20rpx;
+  top: -25rpx;
 }
 
 .clearstyle {
@@ -229,10 +229,9 @@ page {
   left: -20rpx;
 }
 
-.weekselect {
-  top: -60rpx;
+.dateselect{
+   top: -20rpx;
 }
-
 .pos {
   position: relative;
   top: -15rpx;
