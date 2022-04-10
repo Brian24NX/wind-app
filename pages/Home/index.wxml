@@ -5,7 +5,7 @@
 <view class="homeContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
   <view class="searchContainers">
     <view class="tabContainer">
-      <view class="oneTab {{actived === item.id ? 'actived' : ''}}" wx:for="{{tabList}}" bindtap="changeSearchTab" data-type="{{item.id}}">
+      <view class="oneTab {{actived === item.id ? 'actived' : ''}}" wx:for="{{tabList}}" wx:key="index" bindtap="changeSearchTab" data-type="{{item.id}}">
         <text>{{item.label}}</text>
         <view class="line"></view>
       </view>
@@ -25,7 +25,7 @@
       <view class="xialaInput">
         <input class="inputs {{showRemind2 ? 'noRequestBorder' : ''}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setQiYun" />
         <cover-view class="xialaContainer" wx:if="{{codeList.length}}">
-          <cover-view class="oneXiala" wx:for="{{codeList}}">{{item.point}}</cover-view>
+          <cover-view class="oneXiala" wx:for="{{codeList}}" wx:key="index">{{item.point}}</cover-view>
         </cover-view>
       </view>
       
@@ -58,7 +58,7 @@
   <view class="discoverContainer">
     <view class="discoverTitle">发现更多</view>
     <swiper class="swiper" bindchange="changeCurrentDto">
-      <swiper-item wx:for="{{2}}">
+      <swiper-item wx:for="{{2}}" wx:key="index">
         <view class="discoverList">
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/discover_1@2x.png"></image>
@@ -92,7 +92,7 @@
       </swiper-item>
     </swiper>
     <view class="swiperDtos">
-      <view class="oneDto {{currentIndex === index ? 'dtoActived' : ''}}" wx:for="{{2}}"></view>
+      <view class="oneDto {{currentIndex === index ? 'dtoActived' : ''}}" wx:for="{{2}}" wx:key="index"></view>
     </view>
   </view>
 </view>

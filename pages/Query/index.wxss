@@ -126,28 +126,36 @@ page {
 }
 
 .scroll-view {
-  width: 465rpx;
+  width: 540rpx;
   position: absolute;
-  top: 180rpx;
+  top: 184rpx;
   left: -208rpx;
   background-color: #ffffff;
-  box-shadow: 0rpx 0rpx 4rpx #e2e2e2;
+  border: 1rpx solid#e2e2e2;
   z-index: 40;
-  max-height: 400rpx;
+  max-height: 430rpx;
 }
 
 .scroll-viewpod {
-  width: 450rpx;
+  width: 540rpx;
   position: absolute;
-  top: 142rpx;
+  top: 138rpx;
   left: 52rpx;
   background-color: #ffffff;
-  box-shadow: 0rpx 0rpx 4rpx #e2e2e2;
+  border: 1rpx solid#e2e2e2;
   z-index: 40;
+  max-height: 430rpx;
 }
 
-.item {
+.scroll-view .item, .scroll-viewpod .item {
   width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #e2e2e2;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333333;
 }
 
 .dateinput {
@@ -162,13 +170,13 @@ page {
   color: #04246A;
 }
 
-.polname,
+/* .polname,
 .podname {
   width: 100%;
-  padding: 20rpx;
-  font-size: 33rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
   border-bottom: 2rpx solid #e2e2e2;
-}
+} */
 
 /*history*/
 .flex {

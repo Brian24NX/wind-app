@@ -112,27 +112,39 @@ Page({
 
   },
   //获取卸货港的接口处理
-  changepod(e) {
-    let obj = {
-      searchStr: e.detail.value
-    }
-    fuzzySearch(obj).then(res => {
+  changepod: utils.debounce(function(e) {
+    const data = e['0'].detail.value
+    if (data.length < 2) return
+    fuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      console.log(res)
       this.setData({
-        podlist: res.data
+        podlist: res.data || []
       })
     })
     this.setData({
       viewShowedPod: true,
-      podvalue: ""
+      // polvalue: ""
     })
-  },
+  }, 500),
+  // changepod(e) {
+  //   let obj = {
+  //     searchStr: e.detail.value
+  //   }
+  //   fuzzySearch(obj).then(res => {
+  //     this.setData({
+  //       podlist: res.data
+  //     })
+  //   })
+  //   this.setData({
+  //     viewShowedPod: true,
+  //     podvalue: ""
+  //   })
+  // },
   //获取起始港的接口处理
   changepol: utils.debounce(function(e) {
     const data = e['0'].detail.value
-    this.setData({
-      codeList: [],
-      qiYunValue: data
-    })
     if (data.length < 2) return
     fuzzySearch({
       searchStr: data
