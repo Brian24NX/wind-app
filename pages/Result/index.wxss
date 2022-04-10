@@ -6,16 +6,16 @@
   left: 0;
   right: 0;
   z-index: 3;
-  height: 350rpx;
 }
 
 .searchResultTopContainer .searchTop {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   margin-top: 32rpx;
+  padding: 0 30rpx;
 }
 
 .searchResultTopContainer .searchTop .serchLeft {
@@ -38,7 +38,7 @@
 .searchResultTopContainer .calendarContainer {
   display: flex;
   height: 90rpx;
-  padding: 0 30rpx;
+  padding: 0 30rpx 30rpx;
   margin-top: 32rpx;
 }
 
@@ -104,7 +104,7 @@
 
 .searchResultTopContainer .tabContainers {
   width: 100%;
-  height: 130rpx;
+  height: 100rpx;
   display: flex;
   padding: 0 30rpx;
 }
@@ -113,7 +113,7 @@
   width: 33%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   color: #6B7790;
   font-size: 24rpx;
@@ -144,7 +144,8 @@
   min-height: 100vh;
   width: 100%;
   background-color: #F0F1F5;
-  padding: 380rpx 30rpx 40rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
 }
 
 .resultContainers .oneResult {
