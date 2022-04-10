@@ -2,7 +2,10 @@
 const app = getApp();
 var languageUtil = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
-import {fuzzySearch,routingFinder} from '../../api/modules/home';
+import {
+  fuzzySearch,
+  routingFinder
+} from '../../api/modules/home';
 Page({
 
   /**
@@ -12,141 +15,138 @@ Page({
     content: {}, // 用于保存当前页面所需字典变了
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
-    viewShowedPol:false,
-    viewShowedPod:false,
+    viewShowedPol: false,
+    viewShowedPod: false,
     // 卸货港
-    podvalue:"",
-    podcode:"",
+    podvalue: "",
+    podcode: "",
     // 起运港
-    polvalue:"",
-    polcode:"",
-    array:[
-    ],
-    pollist:[
-    ],
-    podlist:[],
-    searchlist:[{
-          id:0,
-          method:"离港时间"
-    },{
-          id:1,
-          method:"到港时间"
+    polvalue: "",
+    polcode: "",
+    array: [],
+    pollist: [],
+    podlist: [],
+    searchlist: [{
+      id: 0,
+      method: "离港时间"
+    }, {
+      id: 1,
+      method: "到港时间"
     }],
     // search 离案
-    search:'',
+    search: '',
     // week  
-    week:'3 星期',
-    weeklist:[{
-        id:0,
-        weeks:'1 星期'
-    },{
-        id:1,
-        weeks:'2 星期'
-    },{
-        id:2,
-        weeks:'3 星期'
-    },{
-        id:3,
-        weeks:'4 星期'
+    week: '3 星期',
+    weeklist: [{
+      id: 0,
+      weeks: '1 星期'
+    }, {
+      id: 1,
+      weeks: '2 星期'
+    }, {
+      id: 2,
+      weeks: '3 星期'
+    }, {
+      id: 3,
+      weeks: '4 星期'
     }],
     date: '',
   },
-  changemethod(e){
-    let index=e.detail.id;
+  changemethod(e) {
+    let index = e.detail.id;
     this.setData({
-      search:this.data.searchlist[index].method
+      search: this.data.searchlist[index].method
     })
     console.log(this.data.search)
   },
-  changeweek(e){
-    let index=e.detail.id;
+  changeweek(e) {
+    let index = e.detail.id;
     this.setData({
-      week:this.data.weeklist[index].weeks
+      week: this.data.weeklist[index].weeks
     })
   },
-  getDate(){
-    let now=new Date();
-    let year=now.getFullYear();
-    let month=now.getMonth()+1;
-    month=month<10?('0'+month):month;
-    let day=now.getDate();
-    day=day<10?('0'+day):day
-    return year+'-'+month+'-'+day;
+  getDate() {
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    month = month < 10 ? ('0' + month) : month;
+    let day = now.getDate();
+    day = day < 10 ? ('0' + day) : day
+    return year + '-' + month + '-' + day;
   },
-  bindTimeChange(e){
+  bindTimeChange(e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  submit() {
+    if (this.data.week === '1 星期') {
       this.setData({
-        date:e.detail.value
+        week: 7
       })
-  },
-  submit(){
-      if(this.data.week==='1 星期'){
-            this.setData({
-              week:7
-            })
-      }else if(this.data.week==='2 星期'){
-            this.setData({
-              week:14
-            })
-      }else if(this.data.week==='3 星期'){
-            this.setData({
-               week:21
-            })
-      }else{
-            this.setData({
-              week:28
-            })
-      }
-      let obj={
-        placeOfDischarge:this.data.podcode,
-        placeOfLoading:this.data.polcode,
-        arrivalDate:this.data.search==='到港时间'?this.data.date:'',
-        departureDate:this.data.search==='离港时间'?this.data.date:'',
-        searchRange:this.data.week,
-        shippingCompany:'',
-      }
-      routingFinder(obj).then(res=>{
-          if(res.code==200){
-            wx.setStorageSync('resultlist', res.data);
-            wx.setStorageSync('searchKey', {
-              placeOfDischarge: obj.placeOfDischarge,
-              placeOfLoading: obj.placeOfLoading,
-              searchRange: obj.searchRange,
-              search: this.data.search,
-              searchDate: this.data.date
-            })
-            let history=this.data.array;
-            let polpleace=this.data.polvalue;
-            let podpleace=this.data.podvalue;
-            let str=polpleace+'-'+podpleace;
-            if(history.length==6){
-               history.shift();
-              
-            } 
-            history.push(str);
-            this.setData({
-                array:history,
-                podvalue:'',
-                polvalue:'',
-            })
-            wx.navigateTo({
-              url: '../Result/index',
-            })
-          }
-          else{
-            this.setData({
-              podvalue:'',
-              polvalue:'',
-            })
-            wx.showToast({
-              title: res.message,
-              icon: 'none',
-              duration: 2000
-            })
-          }
+    } else if (this.data.week === '2 星期') {
+      this.setData({
+        week: 14
       })
+    } else if (this.data.week === '3 星期') {
+      this.setData({
+        week: 21
+      })
+    } else {
+      this.setData({
+        week: 28
+      })
+    }
+    let obj = {
+      placeOfDischarge: this.data.podcode,
+      placeOfLoading: this.data.polcode,
+      arrivalDate: this.data.search === '到达日期' ? this.data.date : '',
+      departureDate: this.data.search === '离案日期' ? this.data.date : '',
+      searchRange: this.data.week,
+      shippingCompany: '',
+    }
+    routingFinder(obj).then(res => {
+      if (res.code == 200) {
+        wx.setStorageSync('resultlist', res.data);
+        wx.setStorageSync('searchKey', {
+          placeOfDischarge: obj.placeOfDischarge,
+          placeOfLoading: obj.placeOfLoading,
+          searchRange: obj.searchRange,
+          search: this.data.search,
+          searchDate: this.data.date
+        })
+        let history = this.data.array;
+        let polpleace = this.data.polvalue;
+        let podpleace = this.data.podvalue;
+        let str = polpleace + '-' + podpleace;
+        if (history.length == 6) {
+          history.shift();
+
+        }
+        history.push(str);
+        this.setData({
+          array: history,
+          podvalue: '',
+          polvalue: '',
+        })
+        wx.navigateTo({
+          url: '../Result/index',
+        })
+      } else {
+        this.setData({
+          podvalue: '',
+          polvalue: '',
+        })
+        wx.showToast({
+          title: res.message,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
   },
   //获取卸货港的接口处理
-  changepod: utils.debounce(function(e) {
+  changepod: utils.debounce(function (e) {
     const data = e['0'].detail.value
     if (data.length < 2) return
     fuzzySearch({
@@ -177,7 +177,7 @@ Page({
   //   })
   // },
   //获取起始港的接口处理
-  changepol: utils.debounce(function(e) {
+  changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
     if (data.length < 2) return
     fuzzySearch({
@@ -202,43 +202,43 @@ Page({
   //       pollist: res.data
   //     })
   //   })
-    // this.setData({
-    //   viewShowedPol: true,
-    //   polvalue: ""
-    // })
+  // this.setData({
+  //   viewShowedPol: true,
+  //   polvalue: ""
+  // })
   // },
- // 起始港选择
- changepolname(e){
-    let index=e.currentTarget.dataset.index;  
+  // 起始港选择
+  changepolname(e) {
+    let index = e.currentTarget.dataset.index;
     this.setData({
-      viewShowedPol:false,
-      polvalue:this.data.pollist[index].point,
-      polcode:this.data.pollist[index].pointCode
+      viewShowedPol: false,
+      polvalue: this.data.pollist[index].point,
+      polcode: this.data.pollist[index].pointCode
     })
   },
   // 卸货港
-  changepodname(e){
-    let index=e.currentTarget.dataset.index;  
+  changepodname(e) {
+    let index = e.currentTarget.dataset.index;
     this.setData({
-      viewShowedPod:false,
-      podvalue:this.data.podlist[index].point,
-      podcode:this.data.podlist[index].pointCode
+      viewShowedPod: false,
+      podvalue: this.data.podlist[index].point,
+      podcode: this.data.podlist[index].pointCode
     })
   },
-  onClose(e){
+  onClose(e) {
     console.log(e);
-    let index=e.currentTarget.dataset.index; 
-    let history=this.data.array;
-    history.splice(index,1)
+    let index = e.currentTarget.dataset.index;
+    let history = this.data.array;
+    history.splice(index, 1)
     this.setData({
-       array:history
+      array: history
     })
   },
-  deleteall(){
-    let history=this.data.array;
-    history=[];
+  deleteall() {
+    let history = this.data.array;
+    history = [];
     this.setData({
-      array:history
+      array: history
     })
   },
   /**
@@ -246,8 +246,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      date:this.getDate(),
-      search:'离案日期'
+      date: this.getDate(),
+      search: '离案日期'
     })
   },
 
@@ -263,9 +263,9 @@ Page({
    */
   onShow: function () {
     this.initLanguage();
-    if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected:1
+        selected: 1
       })
     }
   },
@@ -304,28 +304,28 @@ Page({
   onShareAppMessage: function () {
 
   },
-    //中英文切换
-    switchLanguage() {
-      //切换当前版本，即修改公共变量中的version
-      languageUtil.changLanguage()
-      this.initLanguage()
-    },
-    //初始化语言
-    initLanguage() {
-      //获取当前小程序语言版本所对应的字典变量
-      var lang = languageUtil.languageVersion()
-      console.log(lang)
-      this.setData({
-        content: lang
+  //中英文切换
+  switchLanguage() {
+    //切换当前版本，即修改公共变量中的version
+    languageUtil.changLanguage()
+    this.initLanguage()
+  },
+  //初始化语言
+  initLanguage() {
+    //获取当前小程序语言版本所对应的字典变量
+    var lang = languageUtil.languageVersion()
+    console.log(lang)
+    this.setData({
+      content: lang
+    })
+    wx.setNavigationBarTitle({
+      title: lang.lang.userCenter.querytitle
+    })
+    console.log(typeof this.getTabBar === 'function' && this.getTabBar());
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        list: lang.lang.toolbar.list //赋值
       })
-      wx.setNavigationBarTitle({
-        title: lang.lang.userCenter.querytitle
-      })
-      console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
-      if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
-        this.getTabBar().setData({
-          list:lang.lang.toolbar.list //赋值
-        })
-      }
-    },
+    }
+  },
 })

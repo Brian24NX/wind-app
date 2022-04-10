@@ -143,19 +143,19 @@ function formatHuoYunStatus(code) {
     },
     {
       code: 'IIT',
-      label: '空集装箱已交付托运人'
+      label: '已收到做出口转移'
     },
     {
       code: 'XLR',
-      label: '已载货做出口转移'
-    },
-    {
-      code: 'TPF',
       label: '出口铁路装载'
     },
     {
-      code: 'PSE',
+      code: 'TPF',
       label: '集装箱中转出口'
+    },
+    {
+      code: 'PSE',
+      label: '集装箱出口上轨'
     },
     {
       code: 'XUR',
