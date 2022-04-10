@@ -10,7 +10,8 @@ Page({
     routinglist: [],
     planList: [],
     placeOfLoading: '',
-    placeOfDischarge: ''
+    placeOfDischarge: '',
+    currentPlan: null
   },
 
   onTabbarChange(event) {
@@ -41,7 +42,7 @@ Page({
       placeOfDischarge: resultlist.placeOfDischarge,
     })
 
-    if (!resultlist.anl && !resultlist.anl && !resultlist.cnc) {
+    if (!resultlist.anl && !resultlist.apl && !resultlist.cnc) {
       this.setData({
         planList: [],
         viewactived: false
@@ -54,11 +55,12 @@ Page({
           value: resultlist.cnc
         }, {
           title: 'ANL',
-          value: resultlist.cnc
+          value: resultlist.anl
         }, {
           title: 'APL',
-          value: resultlist.cnc
-        }]
+          value: resultlist.apl
+        }],
+        currentPlan: resultlist.cnc ? 0 : resultlist.anl ? 1 : resultlist.apl ? 2 : null
       })
     }
   },

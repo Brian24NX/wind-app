@@ -64,9 +64,9 @@
     </view>
   </view>
   <view wx:if="{{viewactived}}" class="tabContainers">
-    <view class="oneTab {{index === 0 ? 'tabActived' : ''}}" wx:for="{{3}}">
-      <view class="tabName">CNC</view>
-      <view>4 路线方案</view>
+    <view class="oneTab {{index === currentPlan ? 'tabActived' : ''}}" wx:for="{{planList}}" wx:key="index">
+      <view class="tabName">{{item.title}}</view>
+      <view>{{item.value}} 路线方案</view>
       <view class="activedLine"></view>
     </view>
   </view>
@@ -113,5 +113,5 @@
     <noresult></noresult>
   </view>
   <!-- 底部筛选条件 tabbar -->
-  <foot-tab-bar bind:tabbarchange="onTabbarChange"  bind:changeRadio="onChangeRadio" bind:changeCheckBox="onChangeCheckBox" />
+  <foot-tab-bar bind:tabbarchange="onTabbarChange" bind:changeRadio="onChangeRadio" bind:changeCheckBox="onChangeCheckBox" />
 </view>
