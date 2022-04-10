@@ -99,8 +99,8 @@ Page({
       let obj={
         placeOfDischarge:this.data.podcode,
         placeOfLoading:this.data.polcode,
-        arrivalDate:this.data.search==='到达日期'?this.data.date:'',
-        departureDate:this.data.search==='离案日期'?this.data.date:'',
+        arrivalDate:this.data.search==='到港时间'?this.data.date:'',
+        departureDate:this.data.search==='离港时间'?this.data.date:'',
         searchRange:this.data.week,
         shippingCompany:'',
       }
