@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isPhoneX: getApp().globalData.isPhoneX,
     viewactived: false,
     routinglist: [],
     planList: [],

@@ -144,7 +144,8 @@
   min-height: 100vh;
   width: 100%;
   background-color: #F0F1F5;
-  padding: 380rpx 30rpx 40rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
 }
 
 .resultContainers .oneResult {

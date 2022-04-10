@@ -71,7 +71,7 @@
     </view>
   </view>
 </view>
-<view class="resultContainers" style="{{viewactived ? '' : 'padding: 280rpx 30rpx 40rpx;'}}">
+<view class="resultContainers" style="padding-top: {{viewactived ? '380rpx' : '280rpx'}};padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
   <view wx:if="{{routinglist!=null}}">
     <view class="oneResult" wx:for="{{routinglist}}" wx:key="index" bindtap="toDetail" data-id="{{index}}">
       <view class="tips">
