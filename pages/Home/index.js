@@ -270,8 +270,8 @@ Page({
       })
     }
     let obj={
-      placeOfDischarge:this.data.qiYunCode||this.data.qiYunValue,
-      placeOfLoading:this.data.xieHuoCode||this.data.xieHuoValue,
+      placeOfDischarge:this.data.xieHuoCode||this.data.xieHuoValue,
+      placeOfLoading:this.data.qiYunCode||this.data.qiYunValue,
       arrivalDate:'',
       departureDate:'',
       searchRange:'',
