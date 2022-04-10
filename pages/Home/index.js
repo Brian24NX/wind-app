@@ -158,11 +158,12 @@ Page({
     let bool=reg.test(data);
     if(!bool){
       this.setData({
-        showRemind5:false
+        showRemind4:true
       })
       return;
     }
     this.setData({
+      showRemind4:false,
       codePodList: [],
       xieHuoValue: data
     })
