@@ -80,29 +80,22 @@ Page({
     })
   },
   submit() {
+    let week = '';
     if (this.data.week === '1 星期') {
-      this.setData({
-        week: 7
-      })
+      week = 7
     } else if (this.data.week === '2 星期') {
-      this.setData({
-        week: 14
-      })
+      week = 14
     } else if (this.data.week === '3 星期') {
-      this.setData({
-        week: 21
-      })
+      week = 21
     } else {
-      this.setData({
-        week: 28
-      })
+      week = 28
     }
     let obj = {
       placeOfDischarge: this.data.podcode,
       placeOfLoading: this.data.polcode,
       arrivalDate: this.data.search === '到达日期' ? this.data.date : '',
       departureDate: this.data.search === '离案日期' ? this.data.date : '',
-      searchRange: this.data.week,
+      searchRange: week,
       shippingCompany: '',
     }
     routingFinder(obj).then(res => {
