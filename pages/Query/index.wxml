@@ -11,7 +11,7 @@
           <view class="redcircle"></view>
           <text class="font font14">起运港</text>
           <image class="polimg" style="left:-66rpx;" src="../../assets/img/seniorsearch/position.png"></image>
-          <input class="polinput {{showRemind2||showRemind3 ? 'noRequestBorder' : ''}}" value="{{polvalue}}" type="text" placeholder="名称/代码" placeholder-style="font-size:28rpx;color:#B9BFCA;" bindinput="changepol" />
+          <input class="polinput" value="{{polvalue}}" type="text" placeholder="名称/代码" placeholder-style="font-size:28rpx;color:#B9BFCA;" bindinput="changepol" />
           <scroll-view class="scroll-view" wx:if='{{viewShowedPol}}' scroll-y>
             <view wx:for="{{pollist}}" wx:key="index" class="item" bindtap='changepolname' data-index="{{index}}">
               <view class="polname">{{item.point}}</view>
@@ -46,7 +46,7 @@
           <text class="font font14 pos">日期</text>
           <picker mode="date" value="{{date}}" start="1970-09-01" end="2079-09-01" bindchange="bindTimeChange">
             <input type="text" disabled class="dateinput" value="{{date}}" bindinput="bindkeyinput" disabled></input>
-            <image src="../../assets/img/seniorsearch/bottomarrow.png" style="width:32rpx;height: 32rpx;position: relative;top: -60rpx;left: 560rpx;" />
+            <image src="../../assets/img/seniorsearch/bottomarrow.png" style="width:32rpx;height: 32rpx;position: relative;top: -60rpx;left: 570rpx;" />
           </picker>
         </view>
         <view class="weekselect">

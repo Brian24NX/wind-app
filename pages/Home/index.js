@@ -76,7 +76,9 @@ Page({
     })
   },
   setHuoGui(e) {
-    let value = e.detail.value;
+    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
+    //去掉空格和大写问题
+    let value = e.detail.value.trim().toUpperCase();
     if (!value) {
       this.setData({
         huoGuiValue: value,
@@ -85,8 +87,7 @@ Page({
       })
       return
     }
-    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    value = value.substr(value.length - 1, 1) === ',' ? value.substr(0, value.length - 1) : value;
+    value = value.substr(value.length - 1, 1) === '，' ? value.substr(0, value.length - 1) : value;
     if (!reg.test(value)) {
       this.setData({
         huoGuiValue: value,
@@ -125,12 +126,15 @@ Page({
     let bool = reg.test(data);
     if (!bool) {
       this.setData({
-        showRemind5: true
+        showRemind5: true,
+        showRemind2: false,
+        qiYunValue: data
       })
       return;
     } else {
       this.setData({
         showRemind5: false,
+        showRemind2: false,
         codePolList: [],
         qiYunValue: data
       })
@@ -158,15 +162,19 @@ Page({
     let bool = reg.test(data);
     if (!bool) {
       this.setData({
-        showRemind4: true
+        showRemind4: true,
+        showRemind3:false,
+        xieHuoValue: data
       })
       return;
     }
     this.setData({
       showRemind4: false,
+      showRemind3:false,
       codePodList: [],
       xieHuoValue: data
     })
+    console.log(this.data.xieHuoValue);
     if (data.length < 2) return
     fuzzySearch({
       searchStr: data
@@ -207,64 +215,47 @@ Page({
   },
   // 船期搜索
   toChuanQi() {
-    if (this.data.qiYunValue != '') {
-      this.setData({
-        showRemind2: false,
-      })
-    }
-    if (this.data.xieHuoValue != '') {
-      this.setData({
-        showRemind3: false
-      })
-    }
-
-    if (!this.data.qiYunValue && !this.data.xieHuoValue) {
-      this.setData({
-        showRemind2: true,
-        showRemind3: true
-      })
-      return
-    }
-
-    if (!this.data.qiYunValue) {
-      this.setData({
-        showRemind2: true
-      })
-      return
-    } else {
-      this.setData({
-        showRemind2: false
-      })
-    }
-    if (!this.data.xieHuoValue) {
-      this.setData({
-        showRemind3: true
-      })
-      return
-    } else {
-      this.setData({
-        showRemind3: false
-      })
-    }
     var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    if (!reg.test(this.data.qiYunValue)) {
-      this.setData({
-        showRemind5: true
-      })
-    } else {
-      this.setData({
-        showRemind5: false
-      })
+    // 先判断参数是否为空，再判断参数错误
+    if(this.data.qiYunValue==''){
+          this.setData({
+            showRemind2:true
+          })
     }
-    if (!reg.test(this.data.xieHuoValue)) {
-      this.setData({
-        showRemind4: true
-      })
-    } else {
-      this.setData({
-        showRemind5: false
-      })
+    else{
+       if(!reg.test(this.data.qiYunValue)){
+          this.setData({
+            showRemind2:false,
+            showRemind5:true
+          })
+       }
+       else{
+          this.setData({
+            showRemind2:false,
+            showRemind5:false
+          })
+       }
     }
+    if(this.data.xieHuoValue==''){
+       this.setData({
+          showRemind3:true
+       })
+    }
+    else{
+       if(!reg.test(this.data.xieHuoValue)){
+           this.setData({
+              showRemind3:false,
+              showRemind4:true
+           })
+       }
+       else{
+            this.setData({
+              showRemind4:false,
+              showRemind3:false
+            })
+       }
+    }
+    
     let obj = {
       placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
       placeOfLoading: this.data.qiYunCode || this.data.qiYunValue,
