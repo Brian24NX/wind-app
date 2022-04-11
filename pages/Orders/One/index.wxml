@@ -37,7 +37,7 @@
       </view>
       <view class="stepBottom">
         <view>{{stepList[1].portOfLoading}} ({{list[0].data.portOfLoadingCountryCode}})</view>
-        <view>{{stepList[stepList.length - 1].pointOfDischarge}} ({{list[0].data.portOfDischargeCountryCode}})</view>
+        <view>{{stepList[stepList.length - 2].pointOfDischarge}} ({{list[0].data.portOfDischargeCountryCode}})</view>
       </view>
     </view>
     <view class="stepLists">
@@ -49,7 +49,7 @@
         </view>
         <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
           <view class="stepSatus">{{item.status.statusLabel}}</view>
-          <view class="stepTime">{{item.date}} {{item.week}} {{item.poolLocation}}, {{item.countryCode}}</view>
+          <view class="stepTime">{{item.date}} {{item.week}} {{item.pointLocation.name}}, {{item.countryCode}}</view>
         </view>
       </view>
     </view>

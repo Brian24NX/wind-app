@@ -8,9 +8,9 @@
 
 </view>
 <!-- 单选框 -->
-<view hidden="{{ sortMenu }}" class="overlay" catchtap="closeSort">
+<view hidden="{{ sortMenu }}" class="overlay" style="{{isPhoneX ? 'height: calc(100vh - 180rpx);' : 'height: calc(100vh - 140rpx);'}}" catchtap="closeSort">
   <view class="sort-menus">
-    <view class="sort-menu">
+    <view class="sort-menu" style="bottom: 0;">
       <van-radio-group value="{{ radio }}">
         <van-cell-group>
           <van-cell title="最快离港" clickable data-name="1" bind:click="onClickRadio">
@@ -28,7 +28,7 @@
   </view>
 </view>
 <!-- 多选框 -->
-<view hidden="{{ programme }}" class="overlay" catchtap="closeSort">
+<view hidden="{{ programme }}" class="overlay" style="{{isPhoneX ? 'height: calc(100vh - 180rpx);' : 'height: calc(100vh - 140rpx);'}}" catchtap="closeSort">
   <view class="sort-menus">
     <view class="sort-menu" catchtap="return">
       <van-checkbox-group value="{{ result }}" bind:change="changeCheckBox">
@@ -38,7 +38,7 @@
           </van-cell>
         </van-cell-group>
       </van-checkbox-group>
-      <view class="apply" catchtap="apply">应用</view>
     </view>
+    <view class="apply" catchtap="apply">应用</view>
   </view>
 </view>

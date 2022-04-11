@@ -38,7 +38,6 @@
   right: 0;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.7);
-  height: calc(100vh - 180rpx);
 }
 
 .sort-menus {
@@ -46,20 +45,28 @@
   position: relative;
 }
 
-.sort-menus .sort-menu{
+.sort-menus .sort-menu {
   position: absolute;
   width: 100%;
   left: 0;
-  bottom: 0;
+  bottom: 80rpx;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
-.sort-menus .sort-menu .apply {
+.sort-menus .apply {
   background-color: #ffffff;
-  padding: 20rpx 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
   text-align: right;
   border-bottom: 1rpx solid rgb(235, 237, 240);
   color: #2D75FF;
   font-size: 26rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .value-class {
