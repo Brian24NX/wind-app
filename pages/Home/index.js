@@ -76,7 +76,7 @@ Page({
     })
   },
   setHuoGui(e) {
-    let value = e.detail.value;
+    let value = e.detail.value.toUpperCase();
     if (!value) {
       this.setData({
         huoGuiValue: value,
@@ -125,7 +125,8 @@ Page({
     let bool = reg.test(data);
     if (!bool) {
       this.setData({
-        showRemind5: true
+        showRemind5: true,
+        showRemind2: false
       })
       return;
     } else {
@@ -158,7 +159,8 @@ Page({
     let bool = reg.test(data);
     if (!bool) {
       this.setData({
-        showRemind4: true
+        showRemind4: true,
+        showRemind3:false
       })
       return;
     }
