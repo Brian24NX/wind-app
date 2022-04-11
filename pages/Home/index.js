@@ -91,26 +91,7 @@ Page({
       return
     }
     // 不包含，类型的数据
-    if (!reg.test(value)) {
-      this.setData({
-        huoGuiValue: value,
-        showRemind: true,
-        huiguiType: 2
-      })
-      return
-    }
-    value = value.substr(value.length - 1, 1) === '，' ? value.substr(0, value.length - 1) : value;
-    // 中文逗号
-    if (!reg.test(value.split('，')[0]) || !reg.test(value.split('，')[1]) || !reg.test(value.split('，')[2])) {
-      this.setData({
-        huoGuiValue: value,
-        showRemind: true,
-        huiguiType: 2
-      })
-      return
-    }
-    // 英文逗号
-    if (!reg.test(value.split(',')[0]) || !reg.test(value.split(',')[1]) || !reg.test(value.split(',')[2])) {
+    if (!reg.test(value.replace(/,/g, ""))){
       this.setData({
         huoGuiValue: value,
         showRemind: true,
@@ -145,21 +126,20 @@ Page({
   setQiYun: utils.debounce(function (e) {
     const data = e['0'].detail.value
     var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    let bool = reg.test(data);
-    if (!bool) {
-      this.setData({
-        showRemind5: true,
-        showRemind2: false,
-        qiYunValue: data
-      })
-      return;
-    } else {
-      this.setData({
-        showRemind5: false,
-        showRemind2: false,
-        codePolList: [],
-        qiYunValue: data
-      })
+    // if (!reg.test(data)) {
+    //   this.setData({
+    //     showRemind5: true,
+    //     showRemind2: false,
+    //     qiYunValue: data
+    //   })
+    //   return;
+    // } else {
+    //   this.setData({
+    //     showRemind5: false,
+    //     showRemind2: false,
+    //     codePolList: [],
+    //     qiYunValue: data
+    //   })
       if (data.length < 2) return
       fuzzySearch({
         searchStr: data
@@ -175,27 +155,26 @@ Page({
         }
 
       })
-    }
+    
   }, 500),
   // 设置卸货港
   setXieHuo: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    let bool = reg.test(data);
-    if (!bool) {
-      this.setData({
-        showRemind4: true,
-        showRemind3: false,
-        xieHuoValue: data
-      })
-      return;
-    }
-    this.setData({
-      showRemind4: false,
-      showRemind3: false,
-      codePodList: [],
-      xieHuoValue: data
-    })
+    // var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
+    // if (!reg.test(data)) {
+    //   this.setData({
+    //     showRemind4: true,
+    //     showRemind3: false,
+    //     xieHuoValue: data
+    //   })
+    //   return;
+    // }
+    // this.setData({
+    //   showRemind4: false,
+    //   showRemind3: false,
+    //   codePodList: [],
+    //   xieHuoValue: data
+    // })
     console.log(this.data.xieHuoValue);
     if (data.length < 2) return
     fuzzySearch({
@@ -244,7 +223,8 @@ Page({
         showRemind2: true
       })
     } else {
-      if (!reg.test(this.data.qiYunValue)) {
+      let length =  this.data.qiYunValue.split(';').length;
+      if (length!=2) {
         this.setData({
           showRemind2: false,
           showRemind5: true
@@ -261,7 +241,8 @@ Page({
         showRemind3: true
       })
     } else {
-      if (!reg.test(this.data.xieHuoValue)) {
+      let length =  this.data.xieHuoValue.split(';').length;
+      if (length!=2) {
         this.setData({
           showRemind3: false,
           showRemind4: true

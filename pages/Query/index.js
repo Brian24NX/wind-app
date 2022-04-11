@@ -53,12 +53,25 @@ Page({
     date: '',
     resultlist: {}
   },
+  getlocation(e){
+      let index=e.currentTarget.dataset.index;
+      let location=this.data.array[index];
+      let pollocation=location.split("-")[0];
+      let podlocation=location.split("-")[1];
+      let polcode=pollocation.split(";")[2];
+      let podcode=podlocation.split(";")[2];
+      this.setData({
+        podcode:podcode,
+        polcode:polcode,
+        podvalue:podlocation,
+        polvalue:pollocation
+      })
+  },
   changemethod(e) {
     let index = e.detail.id;
     this.setData({
       search: this.data.searchlist[index].method
     })
-    console.log(this.data.search)
   },
   changeweek(e) {
     let index = e.detail.id;
@@ -157,6 +170,7 @@ Page({
     this.setData({
       array: history,
     })
+    wx.setStorageSync('location', this.data.array);
     wx.navigateTo({
       url: '../Result/index',
     })
@@ -276,9 +290,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let location=wx.getStorageSync('location');
     this.setData({
       date: this.getDate(),
-      search: '离案日期'
+      search: '离案日期',
+      array:location
     })
   },
 

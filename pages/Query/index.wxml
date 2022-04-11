@@ -73,7 +73,7 @@
       <image class="historydel" src="../../assets/img/seniorsearch/delete.png"></image>
     </button>
     <view class="result">
-      <view class="flex" wx:for="{{array}}" wx:key="{{index}}" data-index="index" v-if="{{array[index]!=''}}">
+      <view class="flex" wx:for="{{array}}" wx:key="{{index}}" data-index="{{index}}" v-if="{{array[index]!=''}}" bindtap="getlocation">
         <text class="fonthistory">{{item}}</text><image class="btnclose" src="../../assets/img/search/close@2x.png" bindtap="onclose"></image>
       </view>
     </view>
