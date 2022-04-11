@@ -104,7 +104,7 @@ Component({
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining
       })
     },
-    
+
     // PDF查看
     reportToPDF() {
       // return

@@ -27,7 +27,7 @@ var Languague = {
     mytitle:"我的",
     homeInfo:{
        //货物追踪
-       goods:"货物追踪",
+       goods: "搜索",
        //箱号
        containerNo:"箱号",
        //提单号
@@ -35,7 +35,7 @@ var Languague = {
        //订舱号
        bookingRef:"订舱号",
        //提示
-       tips:"最多可同时查询三个集装箱状态，请输入箱号并用逗号隔开。",
+       tips:"最多可同时查询三个货柜状态，请输入货柜号并用逗号隔开",
        //船期查询
        query:"船期查询",
        //实时报价
