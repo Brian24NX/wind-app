@@ -127,10 +127,7 @@ Page({
           this.setHistory(obj)
         }
       } else {
-        // this.setData({
-        //   podvalue: '',
-        //   polvalue: '',
-        // })
+        this.setHistory(obj)
         wx.showToast({
           title: res.message,
           icon: 'none',
@@ -159,8 +156,6 @@ Page({
     history.push(str);
     this.setData({
       array: history,
-      // podvalue: '',
-      // polvalue: '',
     })
     wx.navigateTo({
       url: '../Result/index',
