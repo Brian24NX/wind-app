@@ -46,7 +46,7 @@ Page({
     codePolList: [],
     codePodList: [],
     resultlist: {},
-    swiperindex:0,
+    swiperindex: 0,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -75,7 +75,7 @@ Page({
   changeCurrentDto(e) {
     console.log(e);
     this.setData({
-      swiperindex:e.detail.current
+      swiperindex: e.detail.current
     })
   },
   setHuoGui(e) {
@@ -91,7 +91,7 @@ Page({
       return
     }
     // 不包含，类型的数据
-    if(!reg.test(value)){
+    if (!reg.test(value)) {
       this.setData({
         huoGuiValue: value,
         showRemind: true,
@@ -101,7 +101,7 @@ Page({
     }
     value = value.substr(value.length - 1, 1) === '，' ? value.substr(0, value.length - 1) : value;
     // 中文逗号
-    if (!reg.test(value.split('，')[0])||!reg.test(value.split('，')[1])||!reg.test(value.split('，')[2])) {
+    if (!reg.test(value.split('，')[0]) || !reg.test(value.split('，')[1]) || !reg.test(value.split('，')[2])) {
       this.setData({
         huoGuiValue: value,
         showRemind: true,
@@ -110,7 +110,7 @@ Page({
       return
     }
     // 英文逗号
-    if (!reg.test(value.split(',')[0])||!reg.test(value.split(',')[1])||!reg.test(value.split(',')[2])) {
+    if (!reg.test(value.split(',')[0]) || !reg.test(value.split(',')[1]) || !reg.test(value.split(',')[2])) {
       this.setData({
         huoGuiValue: value,
         showRemind: true,
@@ -185,14 +185,14 @@ Page({
     if (!bool) {
       this.setData({
         showRemind4: true,
-        showRemind3:false,
+        showRemind3: false,
         xieHuoValue: data
       })
       return;
     }
     this.setData({
       showRemind4: false,
-      showRemind3:false,
+      showRemind3: false,
       codePodList: [],
       xieHuoValue: data
     })
@@ -237,47 +237,43 @@ Page({
   },
   // 船期搜索
   toChuanQi() {
-    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
+    var reg = /^([0-9a-zA-Z;])*([0-9a-zA-Z]+)$/;
     // 先判断参数是否为空，再判断参数错误
-    // if(this.data.qiYunValue==''){
-    //       this.setData({
-    //         showRemind2:true
-    //       })
-    // }
-    // else{
-    //    if(!reg.test(this.data.qiYunValue)){
-    //       this.setData({
-    //         showRemind2:false,
-    //         showRemind5:true
-    //       })
-    //    }
-    //    else{
-    //       this.setData({
-    //         showRemind2:false,
-    //         showRemind5:false
-    //       })
-    //    }
-    // }
-    // if(this.data.xieHuoValue==''){
-    //    this.setData({
-    //       showRemind3:true
-    //    })
-    // }
-    // else{
-    //    if(!reg.test(this.data.xieHuoValue)){
-    //        this.setData({
-    //           showRemind3:false,
-    //           showRemind4:true
-    //        })
-    //    }
-    //    else{
-    //         this.setData({
-    //           showRemind4:false,
-    //           showRemind3:false
-    //         })
-    //    }
-    // }
-    
+    if (!this.data.qiYunValue) {
+      this.setData({
+        showRemind2: true
+      })
+    } else {
+      if (!reg.test(this.data.qiYunValue)) {
+        this.setData({
+          showRemind2: false,
+          showRemind5: true
+        })
+      } else {
+        this.setData({
+          showRemind2: false,
+          showRemind5: false
+        })
+      }
+    }
+    if (!this.data.xieHuoValue) {
+      this.setData({
+        showRemind3: true
+      })
+    } else {
+      if (!reg.test(this.data.xieHuoValue)) {
+        this.setData({
+          showRemind3: false,
+          showRemind4: true
+        })
+      } else {
+        this.setData({
+          showRemind4: false,
+          showRemind3: false
+        })
+      }
+    }
+    if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     let obj = {
       placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
       placeOfLoading: this.data.qiYunCode || this.data.qiYunValue,
@@ -313,12 +309,12 @@ Page({
         } else {
           this.setSearchList(obj)
         }
-        
+
       } else {
-        this.setData({
-          qiYunValue: '',
-          xieHuoValue: ''
-        })
+        // this.setData({
+        //   qiYunValue: '',
+        //   xieHuoValue: ''
+        // })
         wx.showToast({
           title: '请求数据不存在或者网络错误,请您重试!',
           icon: 'none',
@@ -339,10 +335,10 @@ Page({
     wx.navigateTo({
       url: '../Result/index',
     })
-    this.setData({
-      qiYunValue: '',
-      xieHuoValue: ''
-    })
+    // this.setData({
+    //   qiYunValue: '',
+    //   xieHuoValue: ''
+    // })
   },
   // 高级查询
   toAdvancedSearch() {
@@ -385,10 +381,10 @@ Page({
       icon: 'none'
     })
   },
-  changeItem(e){
+  changeItem(e) {
     console.log(e.currentTarget.dataset.index);
     this.setData({
-      swiperindex:e.currentTarget.dataset.index
+      swiperindex: e.currentTarget.dataset.index
     })
   }
 })
