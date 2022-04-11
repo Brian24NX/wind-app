@@ -1,5 +1,4 @@
 <!--pages/Orders/More/index.wxml-->
-<!-- <wxs module="filter" src="./more.wxs"></wxs> -->
 <view class="searchResultContainers">
   <view class="searchResultContainer">
     <view class="resTitle">追踪结果</view>
@@ -16,7 +15,7 @@
     <view wx:if="{{item.data}}">
       <view class="oneOrder" wx:for="{{item.data.routes[0].containers}}" wx:for-item="items" wx:for-index="indexs" bindtap="toDetail" data-index="{{index}}">
         <view class="orderTop">
-          <view class="topLeft">预计到港时间</view>
+          <view class="topLeft">{{items.timeRemaining > 0 ? '预计' : ''}}到港时间</view>
           <view class="topRight">{{items.movements[0].date}} {{items.movements[0].week}} {{items.movements[0].time}}</view>
         </view>
         <view class="orderBottom">
@@ -28,7 +27,7 @@
                 <view>货柜号</view>
               </view>
               <view class="detailRight">
-                <view class="xiangxing">40HC</view>
+                <view class="xiangxing">{{items.size}}{{items.type}}</view>
                 <view>箱型</view>
               </view>
             </view>
@@ -37,7 +36,7 @@
             <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
             <view class="details">
               <view class="detailLeft">
-                <view class="status">{{items.currentStatus.status.code}}</view>
+                <view class="status">{{items.currentStatus.status.statusLabel}}</view>
                 <view class="address">{{items.currentStatus.poolLocation}}</view>
                 <view>位置</view>
               </view>

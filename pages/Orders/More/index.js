@@ -1,5 +1,6 @@
 // pages/Orders/More/index.js
 const dayjs = require("dayjs");
+const utils = require('../../../utils/util')
 
 Component({
   options: {
@@ -40,6 +41,7 @@ Component({
           items.data.routes[0].containers.forEach(one => {
             one.movements = one.movements.reverse();
             one.movements.forEach((item, index) => {
+              item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
               const week = new Date(item.date).getDay()
               switch (week) {
                 case 0:
@@ -82,6 +84,9 @@ Component({
               }
             })
             const beingIndex = one.movements.findIndex(u => u.stepStatus === 'being')
+            if (beingIndex === -1) {
+              one.timeRemaining = -1;
+            }
             one.currentStatus = one.movements[beingIndex > -1 ? beingIndex : 0]
           })
         }
