@@ -14,13 +14,15 @@
   /* justify-content: center; */
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
-  margin-top: 32rpx;
+  /* margin-top: 32rpx; */
   padding: 0 30rpx;
+  height: 120rpx;
 }
 
 .searchResultTopContainer .searchTop .serchLeft {
   font-size: 48rpx;
   color: #04246A;
+  width: 466rpx;
 }
 
 .searchResultTopContainer .searchTop .searchLine {
@@ -33,6 +35,8 @@
 .searchResultTopContainer .searchTop .searchTime {
   font-size: 32rpx;
   color: #4468BA;
+  width: 176rpx;
+  text-align: right;
 }
 
 .searchResultTopContainer .calendarContainer {

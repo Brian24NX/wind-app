@@ -153,7 +153,9 @@ Page({
     wx.setStorageSync('resultlist', this.data.resultlist);
     wx.setStorageSync('searchKey', {
       placeOfDischarge: obj.placeOfDischarge,
+      podvalue: this.data.podvalue.split(';')[0],
       placeOfLoading: obj.placeOfLoading,
+      polvalue: this.data.polvalue.split(';')[0],
       searchRange: obj.searchRange,
       search: this.data.search,
       searchDate: this.data.date

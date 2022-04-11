@@ -12,11 +12,22 @@ Page({
   data: {
     isPhoneX: getApp().globalData.isPhoneX,
     viewactived: false,
-    routingLists: [
-      {id: 'CMA', list: []},
-      {id: 'ANL', list: []},
-      {id: 'CNC', list: []},
-      {id: 'APL', list: []}
+    routingLists: [{
+        id: 'CMA',
+        list: []
+      },
+      {
+        id: 'ANL',
+        list: []
+      },
+      {
+        id: 'CNC',
+        list: []
+      },
+      {
+        id: 'APL',
+        list: []
+      }
     ],
     routinglist: [],
     planList: [],
@@ -113,7 +124,7 @@ Page({
   setDayList() {
     const searchDate = wx.getStorageSync('searchKey').searchDate
     if (!this.data.oneScroll) {
-      wx.createSelectorQuery().select('.calendarLeft').boundingClientRect((rect)=>{
+      wx.createSelectorQuery().select('.calendarLeft').boundingClientRect((rect) => {
         console.log(rect)
         this.setData({
           oneScroll: rect.height,
@@ -133,11 +144,24 @@ Page({
       mask: true
     })
     let resultlist = wx.getStorageSync("resultlist");
+    if (!resultlist.placeOfLoading) {
+      const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7
+      this.setData({
+        placeOfLoading: wx.getStorageSync('searchKey').polvalue,
+        placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
+        week: wx.getStorageSync('searchKey').searchRange,
+        weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四',
+        routingLists: [],
+        isLoading: false
+      })
+      wx.hideLoading()
+      return
+    }
     const weekNum = Number(resultlist.searchRange) / 7
     this.setData({
       resultlist: resultlist,
-      placeOfLoading: resultlist.placeOfLoading,
-      placeOfDischarge: resultlist.placeOfDischarge,
+      placeOfLoading: wx.getStorageSync('searchKey').polvalue,
+      placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
       week: resultlist.searchRange,
       weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四'
     })
@@ -169,7 +193,7 @@ Page({
         plans: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
         routesPlanList: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
       })
-      resultlist.routings.forEach(item=>{
+      resultlist.routings.forEach(item => {
         if (item.shippingCompany === '0001') {
           this.data.routingLists[0].list.push(item)
         } else if (item.shippingCompany === '0002') {
@@ -183,24 +207,24 @@ Page({
       this.setData({
         routingLists: this.data.routingLists
       })
-      const index = this.data.routingLists.findIndex(item => item.id === this.data.currentPlan)
-      if (index > -1) {
-        this.setData({
-          routinglist: this.data.routingLists[index].list
-        })
-      }
+      // const index = this.data.routingLists.findIndex(item => item.id === this.data.currentPlan)
+      // if (index > -1) {
+      //   this.setData({
+      //     routinglist: this.data.routingLists[index].list
+      //   })
+      // }
     }
     this.sortData()
   },
 
   changePlan(e) {
-    console.log(e)
     const title = e.currentTarget.dataset.title
     const items = this.data.routingLists.find(item => item.id === title)
     if (!items.list.length) return
     this.setData({
       currentPlan: title,
-      // routinglist: items.list,
+      routinglist: [],
+      isLoading: true,
       plans: this.data.resultlist.solutionServices[title.toLocaleLowerCase()],
       routesPlanList: this.data.resultlist.solutionServices[title.toLocaleLowerCase()],
     })
@@ -249,6 +273,12 @@ Page({
       console.log(res)
       this.setData({
         routinglist: res.data,
+        isLoading: false
+      })
+      wx.hideLoading()
+    }, () => {
+      this.setData({
+        routinglist: [],
         isLoading: false
       })
       wx.hideLoading()
