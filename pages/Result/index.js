@@ -1,6 +1,5 @@
 // pages/Result/index.js
 const utils = require('../../utils/util')
-import { unix } from 'dayjs';
 import {
   routingFinder,
   routingSort
@@ -34,7 +33,9 @@ Page({
     needEarlyFlag: false,
     needDirectFlag: false,
     resultlist: {},
-    isLoading: true
+    isLoading: true,
+    scrollLeft: 0,
+    oneScroll: 0
   },
 
   /**
@@ -50,11 +51,14 @@ Page({
 
   changeDay(e) {
     const date = e.currentTarget.dataset.item;
+    let offsetLeft = e.currentTarget.offsetLeft;
+    console.log(offsetLeft)
     const searchObj = wx.getStorageSync('searchKey')
     this.setData({
       searchDate: date,
       sort: '1',
-      isLoading: true
+      isLoading: true,
+      scrollLeft: offsetLeft - this.data.oneScroll * 2.5
     })
     let obj = {
       placeOfDischarge: searchObj.placeOfDischarge,
@@ -108,9 +112,18 @@ Page({
 
   setDayList() {
     const searchDate = wx.getStorageSync('searchKey').searchDate
+    if (!this.data.oneScroll) {
+      wx.createSelectorQuery().select('.calendarLeft').boundingClientRect((rect)=>{
+        console.log(rect)
+        this.setData({
+          oneScroll: rect.height,
+          scrollLeft: 15 * rect.height - rect.height / 2
+        })
+      }).exec()
+    }
     this.setData({
       searchDate: searchDate,
-      dateList: utils.getDayList(searchDate, 5)
+      dateList: utils.getDayList(searchDate, 14)
     })
   },
 

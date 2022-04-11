@@ -45,21 +45,18 @@
 .searchResultTopContainer .calendarContainer .calendarLeft {
   width: 546rpx;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  white-space: nowrap;
 }
 
 .searchResultTopContainer .calendarContainer .calendarLeft .oneDay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display: inline-block;
   width: 90rpx;
   height: 90rpx;
   margin-left: 20rpx;
   font-size: 20rpx;
   color: #626262;
+  text-align: center;
+  padding-top: 16rpx;
 }
 
 .searchResultTopContainer .calendarContainer .calendarLeft .oneDay:nth-of-type(1) {

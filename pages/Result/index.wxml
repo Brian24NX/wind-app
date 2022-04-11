@@ -8,12 +8,12 @@
     <view class="searchTime">未来{{weekNum}}星期</view>
   </view>
   <view class="calendarContainer">
-    <view class="calendarLeft">
+    <scroll-view scroll-x class="calendarLeft" scroll-left="{{scrollLeft}}" scroll-with-animation>
       <view class="oneDay {{item === searchDate ? 'current' : ''}}" wx:for="{{dateList}}" wx:key="index" catchtap="changeDay" data-item="{{item}}">
         <view class="dayValue">{{filters.fmtDate2(item)}}</view>
         <view>周{{filters.weekDay(item)}}</view>
       </view>
-    </view>
+    </scroll-view>
     <image class="calendarCenter" src="/assets/img/result/shadow@2x.png"></image>
     <view class="calendarRight">
       <image src="/assets/img/result/calendar@2x.png"></image>

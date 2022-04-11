@@ -176,12 +176,12 @@ function formatHuoYunStatus(code) {
 
 function getDayList(date, time) {
   var myDate = new Date(date);
-  // myDate.setDate(myDate.getDate() + time);
+  myDate.setDate(myDate.getDate() - time);
   var dateArray = [];
   var dateTemp;
   var flag = 1;
   // 日期格式化
-  for (var i = 0; i < time; i++) {
+  for (var i = 0; i < time * 2 + 1; i++) {
     let month = 0;
     // 月小于10，在前面加‘0’；因为月从0开始，故需+1
     if (myDate.getMonth() + 1 < 10) {
