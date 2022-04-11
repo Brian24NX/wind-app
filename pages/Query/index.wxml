@@ -73,9 +73,12 @@
       <image class="historydel" src="../../assets/img/seniorsearch/delete.png"></image>
     </button>
     <view class="result">
-      <van-tag class="flex" wx:key="index" wx:for="{{array}}" data-index="{{index}}" closeable size="medium" id="primary" bind:close="onClose">
+      <view class="flex" wx:for="{{5}}" wx:key="{{index}}" data-index="index" v-if="{{}}">
+        {{item}}<image class="btnclose" src="../../assets/img/search/close@2x.png" bindtap="onclose"></image>
+      </view>
+      <!-- <van-tag class="flex" wx:key="index" wx:for="{{array}}" data-index="{{index}}" closeable size="medium" id="primary" bind:close="onClose">
         <text class="font font12">{{item}}</text>
-      </van-tag>
+      </van-tag> -->
     </view>
   </view>
 </view>
