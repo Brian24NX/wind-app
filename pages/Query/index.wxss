@@ -55,15 +55,12 @@ page {
   height: 30rpx;
   position: relative;
   top: 80rpx;
-  left: -70rpx;
+  left: -66rpx;
 }
 
 .podlocation {
   width: 22rpx;
   height: 28rpx;
-  position: relative;
-  left: -4rpx;
-  top: 60rpx;
 }
 
 .font14 {
@@ -71,7 +68,13 @@ page {
   color: #04246A;
   margin-left: 30rpx;
 }
-
+.xiehuo,.qiyun{
+  margin-left: 0;
+}
+.PODinput{
+  position: relative;
+  top: 20rpx;
+}
 .polinput,
 .podinput {
   height: 88rpx;
@@ -79,14 +82,15 @@ page {
   margin-left: 50rpx;
   margin-top: 10rpx;
   padding-left: 40rpx;
+  font-size: 28rpx;
+  color:#04246A;
 }
 
 .ship {
   width: 52rpx;
   height: 52rpx;
   position: relative;
-  top: -60rpx;
-  left: -20rpx;
+  left: -15rpx;
 }
 
 .redcircle {
@@ -99,24 +103,29 @@ page {
 
 .line {
   width: 2rpx;
-  height: 72rpx;
+  min-height: 84rpx;
   background: #9AA6C4;
   border-radius: 4rpx;
   opacity: 0.59;
-  display: inline-block;
+  margin-left: 8rpx;
+}
+.inputcontainer{
+  width: 100%;
+  min-height: 350rpx;
+}
+.noRequestBorder {
+  border: 2rpx solid #E10202;
+}
+.leftcontainer{
+  float: left;
+  display: flex;
+  flex-direction: column;
+}
+.rightcontianer{
+  position: relative;
+  top: -10rpx;
 }
 
-.top {
-  position: relative;
-  top: -110rpx;
-  left: 6rpx;
-}
-
-.bottom {
-  position: relative;
-  left: -48rpx;
-  top: 8rpx;
-}
 
 .searchimg,
 .dateimg,
@@ -127,11 +136,10 @@ page {
 
 .scroll-view {
   width: 540rpx;
-  position: absolute;
-  top: 140rpx;
-  left:52rpx;
-  background-color: #ffffff;
-  border: 1rpx solid#e2e2e2;
+  position:absolute;
+  margin-left: 50rpx;
+  background:#ffffff;
+  border: 1rpx solid #00245d;
   z-index: 40;
   max-height: 430rpx;
 }
@@ -142,11 +150,13 @@ page {
   top: 138rpx;
   left: 52rpx;
   background-color: #ffffff;
-  border: 1rpx solid#e2e2e2;
+  border: 1rpx solid #00245d;
   z-index: 40;
   max-height: 430rpx;
 }
-
+.scroll-view .item:hover{
+  color: #1c4ebb;
+}
 .scroll-view .item, .scroll-viewpod .item {
   width: 100%;
   height: 80rpx;
@@ -237,7 +247,11 @@ page {
   top: -15rpx;
   left: -8rpx;
 }
-
+.noRequest{
+  font-size: 24rpx;
+  color: #E10202;
+  margin-left: 48rpx;
+}
 .van-tag--default {
   --tag-default-color: #F0F1F5 !important;
 }

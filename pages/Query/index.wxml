@@ -7,34 +7,41 @@
       <text class="font route">航线</text>
       <view class="redline"></view><text class="font shipdate">获取船期</text>
       <form catchsubmit="formSubmit" catchreset="formReset" style="position: relative;top: 40rpx;">
-        <view class="POLinput">
+        <view class="inputcontainer">
+        <view class="leftcontainer">
           <view class="redcircle"></view>
-          <text class="font font14">起运港</text>
-          <image class="polimg" style="left:-66rpx;" src="../../assets/img/seniorsearch/position.png"></image>
-          <input class="polinput" value="{{polvalue}}" type="text" placeholder="名称/代码" placeholder-style="font-size:28rpx;color:#B9BFCA;" bindinput="changepol" />
-          <scroll-view class="scroll-view" wx:if='{{viewShowedPol}}' scroll-y>
-            <view wx:for="{{pollist}}" wx:key="index" class="item" bindtap='changepolname' data-index="{{index}}">
-              <view class="polname">{{item.point}}</view>
-            </view>
-          </scroll-view>
-          <view class="noRequest" wx:if="{{showRemind2}}">此项为必填项</view>
-          <view class="noRequest" wx:if="{{showRemind3}}">格式无效</view>
-        </view>
-        <view class="line top"></view>
-        <image class="ship" src="../../assets/img/seniorsearch/ship.png"></image>
-        <view class="line bottom"></view>
-        <view class="PODinput" style="position: relative;top: -60rpx;">
+          <view class="line top"></view>
+          <image class="ship" src="../../assets/img/seniorsearch/ship.png"></image>
+          <view class="line bottom"></view>
           <image class="podlocation" src="../../assets/img/seniorsearch/location.png"></image>
-          <text class="font font14">卸货港</text>
-          <image class="podimg" src="../../assets/img/seniorsearch/position.png"></image>
-          <input class="podinput {{showRemind4||showRemind5 ? 'noRequestBorder' : ''}}"  value="{{podvalue}}" type="text" placeholder="名称/代码" placeholder-style="font-size:28rpx;color:#B9BFCA;" bindinput="changepod" />
-          <scroll-view class="scroll-viewpod" wx:if='{{viewShowedPod}}' scroll-y>
-            <view wx:for="{{podlist}}" wx:key="index" class="item" bindtap='changepodname' data-index="{{index}}">
-              <view class="podname">{{item.point}}</view>
-            </view>
-          </scroll-view>
-          <view class="noRequest" wx:if="{{showRemind4}}">此项为必填项</view>
-          <view class="noRequest" wx:if="{{showRemind5}}">格式无效</view>
+        </view>
+        <view class="rightcontianer">
+          <view class="POLinput">
+            <text class="font font14 qiyun">起运港</text>
+            <image class="polimg"  src="../../assets/img/seniorsearch/position.png"></image>
+            <input class="polinput {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}" value="{{polvalue}}" type="text" placeholder="名称/代码" placeholder-style="font-size:28rpx;color:#04246A;" bindinput="changepol" />
+            <!-- <scroll-view class="scroll-view" wx:if='{{viewShowedPol}}' scroll-y></scroll-view> -->
+            <scroll-view class="scroll-view" wx:if='{{viewShowedPol}}' scroll-y>
+              <view wx:for="{{pollist}}" wx:key="index" class="item" bindtap='changepolname' data-index="{{index}}">
+                <view class="polname">{{item.point}}</view>
+              </view>
+            </scroll-view>
+            <view class="noRequest" wx:if="{{showRemind1}}">此项为必填项</view>
+            <view class="noRequest" wx:if="{{showRemind2}}">格式无效</view>
+          </view>
+          <view class="PODinput" >
+            <text class="font font14 xiehuo">卸货港</text>
+            <image class="podimg" src="../../assets/img/seniorsearch/position.png"></image>
+            <input class="podinput {{showRemind3||showRemind4 ? 'noRequestBorder' : ''}}" value="{{podvalue}}" type="text" placeholder="名称/代码" placeholder-style="font-size:28rpx;color:#04246A;" bindinput="changepod" />
+            <scroll-view class="scroll-viewpod" wx:if='{{viewShowedPod}}' scroll-y>
+              <view wx:for="{{podlist}}" wx:key="index" class="item" bindtap='changepodname' data-index="{{index}}">
+                <view class="podname">{{item.point}}</view>
+              </view>
+            </scroll-view>
+            <view class="noRequest" wx:if="{{showRemind3}}">此项为必填项</view>
+            <view class="noRequest" wx:if="{{showRemind4}}">格式无效</view>
+          </view>
+        </view>
         </view>
         <view class="searchselect">
           <image class="searchimg" src="../../assets/img/seniorsearch/search.png"></image>
@@ -66,7 +73,7 @@
       <image class="historydel" src="../../assets/img/seniorsearch/delete.png"></image>
     </button>
     <view class="result">
-      <van-tag class="flex" wx:key="index" wx:for="{{array}}"  data-index="{{index}}" closeable size="medium" id="primary" bind:close="onClose">
+      <van-tag class="flex" wx:key="index" wx:for="{{array}}" data-index="{{index}}" closeable size="medium" id="primary" bind:close="onClose">
         <text class="font font12">{{item}}</text>
       </van-tag>
     </view>
