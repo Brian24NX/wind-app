@@ -105,7 +105,7 @@ Component({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining
       })
-      this.getPDFUrl();
+      // this.getPDFUrl();
     },
 
     // 获取PDF地址
