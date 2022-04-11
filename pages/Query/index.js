@@ -259,7 +259,7 @@ Page({
       podcode: this.data.podlist[index].pointCode
     })
   },
-  onClose(e) {
+  onclose(e) {
     console.log(e);
     let index = e.currentTarget.dataset.index;
     let history = this.data.array;
@@ -267,6 +267,7 @@ Page({
     this.setData({
       array: history
     })
+    console.log(this.data.array);
   },
   deleteall() {
     let history = this.data.array;
@@ -274,6 +275,7 @@ Page({
     this.setData({
       array: history
     })
+    console.log(this.data.array);
   },
   /**
    * 生命周期函数--监听页面加载

@@ -69,16 +69,13 @@
   </view>
   <view class="historyContainers">
     <text>搜索历史</text>
-    <button class="clearstyle" bindtap="deleteall()">
+    <button class="clearstyle" bindtap="deleteall">
       <image class="historydel" src="../../assets/img/seniorsearch/delete.png"></image>
     </button>
     <view class="result">
-      <view class="flex" wx:for="{{5}}" wx:key="{{index}}" data-index="index" v-if="{{}}">
-        {{item}}<image class="btnclose" src="../../assets/img/search/close@2x.png" bindtap="onclose"></image>
+      <view class="flex" wx:for="{{array}}" wx:key="{{index}}" data-index="index" v-if="{{array[index]!=''}}">
+        <text class="fonthistory">{{item}}</text><image class="btnclose" src="../../assets/img/search/close@2x.png" bindtap="onclose"></image>
       </view>
-      <!-- <van-tag class="flex" wx:key="index" wx:for="{{array}}" data-index="{{index}}" closeable size="medium" id="primary" bind:close="onClose">
-        <text class="font font12">{{item}}</text>
-      </van-tag> -->
     </view>
   </view>
 </view>

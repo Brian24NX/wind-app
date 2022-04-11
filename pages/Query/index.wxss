@@ -210,13 +210,18 @@ page {
    height: 18rpx;
    line-height: 24rpx;
    margin-top: 15rpx;
-   
+   float: right;
+   margin-left: 32rpx;
 }
 .historydel {
   width: 32rpx;
   height: 32rpx;
   position: relative;
   top: -25rpx;
+}
+.fonthistory{
+   font-size: 24rpx;
+   color: #626262;
 }
 
 .clearstyle {
