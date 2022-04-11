@@ -3,5 +3,8 @@
 </view>
 
 <view class="priceContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
-  <view style="text-align: center;">功能升级中，敬请期待</view>
+  <view class="qidai">
+    <image src="../../assets/img/qidai.png"></image>
+    <text>功能升级中，敬请期待</text>
+  </view>
 </view>
