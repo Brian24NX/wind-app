@@ -64,40 +64,42 @@ Page({
       })
       return
     }
-
+    this.setData({
+      dataLength: null
+    })
     let obj = {
       shipmentRef: value,
       eqpid: ''
     }
     shipmentTracking(obj).then(res => {
-    const data = res.data;
-    if (!data.length || (data.length === 1 && !data[0].data)) {
-      this.setData({
-        dataLength: 0,
-        list: data
-      })
-    } else {
-      const dataLength = data.filter(u => u.data).length;
-      if (!dataLength) {
+      const data = res.data;
+      if (!data.length || (data.length === 1 && !data[0].data)) {
         this.setData({
           dataLength: 0,
           list: data
         })
-        return
-      }
-      if (data.length === 1 && data[0].data.routes[0].containers.length === 1) {
-        this.setData({
-          dataLength: 1,
-          detail: data[0].data.routes[0].containers[0],
-          list: data
-        })
       } else {
-        this.setData({
-          dataLength: 2,
-          list: data
-        })
+        const dataLength = data.filter(u => u.data).length;
+        if (!dataLength) {
+          this.setData({
+            dataLength: 0,
+            list: data
+          })
+          return
+        }
+        if (data.length === 1 && data[0].data.routes[0].containers.length === 1) {
+          this.setData({
+            dataLength: 1,
+            detail: data[0].data.routes[0].containers[0],
+            list: data
+          })
+        } else {
+          this.setData({
+            dataLength: 2,
+            list: data
+          })
+        }
       }
-    }
     })
   }
 })
