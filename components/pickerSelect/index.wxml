@@ -2,7 +2,7 @@
   <input value="{{picker_value}}" class="picker-item-input" bindinput="bindkeyinput" disabled/>
   <picker style="width:30%;height:100%;" bindchange="bindchange" value="{{list2[index][actualvalue]}}" range-key="{{showvalue}}" range="{{list2}}">
     <view class='uni-picker-icon'>
-      <image src="../../assets/img/seniorsearch/bottomarrow.png" style="width:32rpx;height: 32rpx;margin-right:10rpx;margin-top: 20rpx; " />
+      <image src="../../assets/img/seniorsearch/bottomarrow.png" style="width:32rpx;height: 32rpx;margin-right:10rpx;margin-top: 28rpx; " />
       <!-- <view class="iconfont icon-xialajiantou img"></view> -->
     </view>
   </picker>

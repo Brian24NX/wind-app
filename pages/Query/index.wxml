@@ -46,7 +46,7 @@
           <text class="font font14 pos">日期</text>
           <picker mode="date" value="{{date}}" start="1970-09-01" end="2079-09-01" bindchange="bindTimeChange">
             <input type="text" disabled class="dateinput" value="{{date}}" bindinput="bindkeyinput" disabled></input>
-            <image src="../../assets/img/seniorsearch/bottomarrow.png" style="width:32rpx;height: 32rpx;position: relative;top: -60rpx;left: 560rpx;" />
+            <image src="../../assets/img/seniorsearch/bottomarrow.png" style="width:32rpx;height: 32rpx;position: relative;top: -60rpx;left: 570rpx;" />
           </picker>
         </view>
         <view class="weekselect">
