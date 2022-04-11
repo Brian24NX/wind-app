@@ -2,13 +2,15 @@
 <wxs module="filters" src="./index.wxs"></wxs>
 <!--pages/ResultDetail/index.wxml-->
 <view class="resultContainers">
-  <view class="resultCardContainer">
-    <view class="cardContainer">{{detaillist.pointfrom}}-{{detaillist.pointto}}</view>
-    <view class="carddate">
-      <image src="../../assets/img/result/calendar@2x.png"></image><text>{{detaillist.transitTime}} 天</text>
-    </view>
-    <view class="cardtranshipment">
-      <image src="../../assets/img/result/zhuanyun@2x.png"></image><text>{{detaillist.transhipment}} 转运</text>
+  <view class="resultCardContainers">
+    <view class="resultCardContainer">
+      <view class="cardContainer">{{detaillist.pointfrom}}-{{detaillist.pointto}}</view>
+      <view class="carddate">
+        <image src="../../assets/img/result/calendar@2x.png"></image><text>{{detaillist.transitTime}} 天</text>
+      </view>
+      <view class="cardtranshipment">
+        <image src="../../assets/img/result/zhuanyun@2x.png"></image><text>{{detaillist.transhipment}} 转运</text>
+      </view>
     </view>
   </view>
   <view class="resultDetailContainer">

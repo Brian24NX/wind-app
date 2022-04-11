@@ -6,12 +6,16 @@
   background-color: #F0F1F5;
 }
 
-.resultContainers .resultCardContainer {
+.resultContainers .resultCardContainers {
   width: 100%;
   background-color: #ffffff;
-  padding: 0 40rpx;
-  height: 224rpx;
-  background: url(https://mmbiz.qpic.cn/mmbiz_png/HR3PlALDED2iaALibNMDoO1XPsH1LpS8YxIArdjiaEFtQicTQ3ticTNOrdaEicPYeNZibeqThVFu6QXRpicicO0lrZuRTtw/0?wx_fmt=png);
+}
+
+.resultContainers .resultCardContainers .resultCardContainer {
+  padding: 40rpx 40rpx 20rpx;
+  background: url(https://mmbiz.qpic.cn/mmbiz_png/HR3PlALDED2iaALibNMDoO1XPsH1LpS8YxIArdjiaEFtQicTQ3ticTNOrdaEicPYeNZibeqThVFu6QXRpicicO0lrZuRTtw/0?wx_fmt=png) no-repeat;
+  background-position: bottom right;
+  background-size: auto;
 }
 
 .carddate image,
@@ -21,7 +25,6 @@
 }
 
 .cardContainer {
-  padding-top: 40rpx;
   font-size: 48rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
