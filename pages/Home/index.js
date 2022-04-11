@@ -218,43 +218,43 @@ Page({
   toChuanQi() {
     var reg = /^([0-9a-zA-Z;])*([0-9a-zA-Z]+)$/;
     // 先判断参数是否为空，再判断参数错误
-    if (!this.data.qiYunValue) {
-      this.setData({
-        showRemind2: true
-      })
-    } else {
-      let length =  this.data.qiYunValue.split(';').length;
-      if (length!=2) {
-        this.setData({
-          showRemind2: false,
-          showRemind5: true
-        })
-      } else {
-        this.setData({
-          showRemind2: false,
-          showRemind5: false
-        })
-      }
-    }
-    if (!this.data.xieHuoValue) {
-      this.setData({
-        showRemind3: true
-      })
-    } else {
-      let length =  this.data.xieHuoValue.split(';').length;
-      if (length!=2) {
-        this.setData({
-          showRemind3: false,
-          showRemind4: true
-        })
-      } else {
-        this.setData({
-          showRemind4: false,
-          showRemind3: false
-        })
-      }
-    }
-    if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
+    // if (!this.data.qiYunValue) {
+    //   this.setData({
+    //     showRemind2: true
+    //   })
+    // } else {
+    //   let length =  this.data.qiYunValue.split(';').length;
+    //   if (length!=2) {
+    //     this.setData({
+    //       showRemind2: false,
+    //       showRemind5: true
+    //     })
+    //   } else {
+    //     this.setData({
+    //       showRemind2: false,
+    //       showRemind5: false
+    //     })
+    //   }
+    // }
+    // if (!this.data.xieHuoValue) {
+    //   this.setData({
+    //     showRemind3: true
+    //   })
+    // } else {
+    //   let length =  this.data.xieHuoValue.split(';').length;
+    //   if (length!=2) {
+    //     this.setData({
+    //       showRemind3: false,
+    //       showRemind4: true
+    //     })
+    //   } else {
+    //     this.setData({
+    //       showRemind4: false,
+    //       showRemind3: false
+    //     })
+    //   }
+    // }
+    // if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     let obj = {
       placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
       placeOfLoading: this.data.qiYunCode || this.data.qiYunValue,
@@ -308,9 +308,9 @@ Page({
     wx.setStorageSync('resultlist', this.data.resultlist);
     wx.setStorageSync('searchKey', {
       placeOfDischarge: obj.placeOfDischarge,
-      podvalue: this.data.qiYunValue.split(';')[0],
+      podvalue: this.data.xieHuoValue.split(';')[0],
       placeOfLoading: obj.placeOfLoading,
-      polvalue: this.data.xieHuoValue.split(';')[0],
+      polvalue: this.data.qiYunValue.split(';')[0],
       searchRange: obj.searchRange,
       search: "离港时间",
       searchDate: obj.departureDate
