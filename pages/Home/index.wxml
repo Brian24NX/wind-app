@@ -47,22 +47,22 @@
       <view class="priceList">
         <view class="onePrice" bindtap="toMore">
           <image src="../../assets/img/home/PRICE_1@2x.png"></image>
-          <view>实时 报价</view>
+          <view>实时报价</view>
         </view>
         <view class="onePrice" bindtap="toMore">
           <image src="../../assets/img/home/PRICE_2@2x.png"></image>
-          <view>柜租 费率</view>
+          <view>柜租费率</view>
         </view>
         <view class="onePrice" bindtap="toMore">
           <image src="../../assets/img/home/PRICE_3@2x.png"></image>
-          <view>查询 费率</view>
+          <view>查询费率</view>
         </view>
       </view>
     </view>
   </view>
   <!-- discover -->
   <view class="discoverContainer">
-    <view class="discoverTitle">新闻中心</view>
+    <view class="discoverTitle">发现更多</view>
     <swiper class="swiper" bindchange="changeCurrentDto">
       <swiper-item wx:for="{{2}}">
         <view class="discoverList">
@@ -83,7 +83,7 @@
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/discover_3@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">新闻资讯</view>
+              <view class="discoverName">新闻中心</view>
               <!-- <view>往期新闻</view> -->
             </view>
           </view>

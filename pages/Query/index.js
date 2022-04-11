@@ -173,10 +173,16 @@ Page({
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
-      console.log(res)
-      this.setData({
-        podlist: res.data || []
-      })
+      if(res.data!=''){
+        this.setData({
+          podlist: res.data || []
+        })
+      }
+      else{
+        this.setData({
+          viewShowedPod:true
+        })
+      }
     })
     this.setData({
       viewShowedPod: true,
@@ -205,9 +211,16 @@ Page({
       searchStr: data
     }, true).then(res => {
       console.log(res)
-      this.setData({
-        pollist: res.data || []
-      })
+      if(res.data!=''){
+        this.setData({
+          pollist: res.data || []
+        })
+      }
+      else{
+        this.setData({
+           viewShowedPod:false
+        })
+      }
     })
     this.setData({
       viewShowedPol: true,

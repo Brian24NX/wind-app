@@ -237,44 +237,44 @@ Page({
   toChuanQi() {
     var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
     // 先判断参数是否为空，再判断参数错误
-    if(this.data.qiYunValue==''){
-          this.setData({
-            showRemind2:true
-          })
-    }
-    else{
-       if(!reg.test(this.data.qiYunValue)){
-          this.setData({
-            showRemind2:false,
-            showRemind5:true
-          })
-       }
-       else{
-          this.setData({
-            showRemind2:false,
-            showRemind5:false
-          })
-       }
-    }
-    if(this.data.xieHuoValue==''){
-       this.setData({
-          showRemind3:true
-       })
-    }
-    else{
-       if(!reg.test(this.data.xieHuoValue)){
-           this.setData({
-              showRemind3:false,
-              showRemind4:true
-           })
-       }
-       else{
-            this.setData({
-              showRemind4:false,
-              showRemind3:false
-            })
-       }
-    }
+    // if(this.data.qiYunValue==''){
+    //       this.setData({
+    //         showRemind2:true
+    //       })
+    // }
+    // else{
+    //    if(!reg.test(this.data.qiYunValue)){
+    //       this.setData({
+    //         showRemind2:false,
+    //         showRemind5:true
+    //       })
+    //    }
+    //    else{
+    //       this.setData({
+    //         showRemind2:false,
+    //         showRemind5:false
+    //       })
+    //    }
+    // }
+    // if(this.data.xieHuoValue==''){
+    //    this.setData({
+    //       showRemind3:true
+    //    })
+    // }
+    // else{
+    //    if(!reg.test(this.data.xieHuoValue)){
+    //        this.setData({
+    //           showRemind3:false,
+    //           showRemind4:true
+    //        })
+    //    }
+    //    else{
+    //         this.setData({
+    //           showRemind4:false,
+    //           showRemind3:false
+    //         })
+    //    }
+    // }
     
     let obj = {
       placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
