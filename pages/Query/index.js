@@ -295,7 +295,7 @@ Page({
     let location=wx.getStorageSync('location');
     this.setData({
       date: this.getDate(),
-      search: '离案日期',
+      search: '离港时间',
       array:location
     })
   },

@@ -74,8 +74,8 @@ Page({
     let obj = {
       placeOfDischarge: searchObj.placeOfDischarge,
       placeOfLoading: searchObj.placeOfLoading,
-      arrivalDate: searchObj.search === '到达日期' ? date : '',
-      departureDate: searchObj.search === '离案日期' ? date : '',
+      arrivalDate: searchObj.search === '到港时间' ? date : '',
+      departureDate: searchObj.search === '离港时间' ? date : '',
       searchRange: searchObj.searchRange,
       shippingCompany: ''
     }
@@ -91,8 +91,8 @@ Page({
           let obj2 = {
             placeOfDischarge: searchObj.placeOfDischarge,
             placeOfLoading: searchObj.placeOfLoading,
-            arrivalDate: searchObj.search === '到达日期' ? date : '',
-            departureDate: searchObj.search === '离案日期' ? date : '',
+            arrivalDate: searchObj.search === '到港时间' ? date : '',
+            departureDate: searchObj.search === '离港时间' ? date : '',
             searchRange: searchObj.searchRange,
             shippingCompany: '0015'
           }
