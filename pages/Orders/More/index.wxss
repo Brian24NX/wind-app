@@ -80,11 +80,11 @@
 }
 
 .orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .address {
-  font-size: 48rpx;
+  font-size: 32rpx;
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #04246A;
-  margin-bottom: 16rpx;
+  height: 82rpx;
 }
 
 .orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .huogui {
@@ -110,4 +110,9 @@
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #071E5D;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailRight .time {
+  margin-top: 30rpx;
+  height: 90rpx;
 }

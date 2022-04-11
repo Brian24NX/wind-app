@@ -87,7 +87,7 @@ Component({
             if (beingIndex === -1) {
               one.timeRemaining = -1;
             }
-            one.currentStatus = one.movements[beingIndex > -1 ? beingIndex : 0]
+            one.currentStatus = one.movements[beingIndex > -1 ? beingIndex : one.movements.length - 1]
           })
         }
       })

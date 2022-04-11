@@ -169,6 +169,7 @@ page {
 
 .placeholder {
   color: #B9BFCA;
+  font-size: 28rpx;
 }
 
 .homeContainer .discoverContainer {

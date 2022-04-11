@@ -42,18 +42,22 @@ const request = ( { url, data, method, contentType, hideLoading }) => {
           } else if (res.data.code === 401) {
 						wx.redirectTo({url:'/pages/Login/index'})
 					} else {
-            wx.showToast({
-              title: '系统繁忙，请稍后再试',
-              icon: 'none'
-            })
+            if (!hideLoading) {
+              wx.showToast({
+                title: '系统繁忙，请稍后再试',
+                icon: 'none'
+              })
+            }
 						reject(res.data)
 					}
 				} else {
           // 返回错误提示信息
-          wx.showToast({
-            title: '系统繁忙，请稍后再试',
-            icon: 'none'
-          })
+          if (!hideLoading) {
+            wx.showToast({
+              title: '系统繁忙，请稍后再试',
+              icon: 'none'
+            })
+          }
 					reject(res.data)
 				}
 			},
