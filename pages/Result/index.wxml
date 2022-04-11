@@ -21,7 +21,7 @@
     </view>
   </view>
   <view wx:if="{{viewactived}}" class="tabContainers">
-    <view class="oneTab {{index === currentPlan ? 'tabActived' : ''}}" wx:for="{{planList}}" wx:key="index" catchtap="changePlan" data-index="{{index}}">
+    <view class="oneTab {{item.title === currentPlan ? 'tabActived' : ''}}" wx:for="{{planList}}" wx:key="index" catchtap="changePlan" data-title="{{item.title}}">
       <view class="tabName">{{item.title}}</view>
       <view>{{item.value}} 路线方案</view>
       <view class="activedLine"></view>
@@ -29,7 +29,7 @@
   </view>
 </view>
 <view class="resultContainers" style="padding-top: {{viewactived ? '370rpx' : '270rpx'}};padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
-  <view wx:if="{{routinglist!=null}}">
+  <view wx:if="{{routinglist.length}}">
     <view class="oneResult" wx:for="{{routinglist}}" wx:key="index" bindtap="toDetail" data-id="{{index}}">
       <view class="tips">
         <view class="oneTip" wx:if="{{item.departureDateFlag}}">最快离港</view>
@@ -66,7 +66,7 @@
     </view>
   </view>
   <!--无结果-->
-  <view wx:if="{{routinglist==null}}">
+  <view wx:if="{{!routinglist.length}}">
     <noresult></noresult>
   </view>
 </view>

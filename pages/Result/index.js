@@ -31,7 +31,8 @@ Page({
     sort: '1',
     plans: [1, 2, 3],
     needEarlyFlag: false,
-    needDirectFlag: false
+    needDirectFlag: false,
+    resultlist: {}
   },
 
   /**
@@ -64,8 +65,33 @@ Page({
     })
     routingFinder(obj).then(res => {
       if (res.code == 200) {
-        wx.setStorageSync('resultlist', res.data);
-        this.dealData()
+        this.setData({
+          resultlist: res.data
+        })
+        if (res.data.againReq) {
+          let obj2 = {
+            placeOfDischarge: searchObj.placeOfDischarge,
+            placeOfLoading: searchObj.placeOfLoading,
+            arrivalDate: searchObj.search === '到达日期' ? date : '',
+            departureDate: searchObj.search === '离案日期' ? date : '',
+            searchRange: searchObj.searchRange,
+            shippingCompany: '0015'
+          }
+          routingFinder(obj2).then(data => {
+            console.log(data)
+            this.data.resultlist.apl = data.data.apl;
+            this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
+            this.data.resultlist.solutionNos = this.data.resultlist.solutionNos.concat(data.data.solutionNos)
+            this.setData({
+              resultlist: this.data.resultlist
+            })
+            wx.setStorageSync('resultlist', this.data.resultlist);
+            this.dealData()
+          })
+        } else {
+          wx.setStorageSync('resultlist', this.data.resultlist);
+          this.dealData()
+        }
       } else {
         wx.showToast({
           title: res.message,
@@ -119,7 +145,7 @@ Page({
           title: 'APL',
           value: resultlist.apl
         }],
-        currentPlan: resultlist.cnc ? 0 : resultlist.anl ? 1 : resultlist.apl ? 2 : null
+        currentPlan: resultlist.cnc ? "CNC" : resultlist.anl ? "ANL" : resultlist.apl ? "APL" : null
       })
       resultlist.routings.forEach(item=>{
         if (item.shippingCompany === '0001') {
@@ -135,8 +161,7 @@ Page({
       this.setData({
         routingLists: this.data.routingLists
       })
-      const plan = this.data.planList[this.data.currentPlan].title
-      const index = this.data.routingLists.findIndex(item => item.id === plan)
+      const index = this.data.routingLists.findIndex(item => item.id === this.data.currentPlan)
       if (index > -1) {
         this.setData({
           routinglist: this.data.routingLists[index].list
@@ -147,7 +172,14 @@ Page({
   },
 
   changePlan(e) {
-    
+    console.log(e)
+    const title = e.currentTarget.dataset.title
+    const items = this.data.routingLists.find(item => item.id === title)
+    if (!items.list.length) return
+    this.setData({
+      currentPlan: title,
+      routinglist: items.list
+    })
   },
 
   // 筛选

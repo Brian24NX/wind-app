@@ -51,6 +51,7 @@ Page({
       weeks: '4 星期'
     }],
     date: '',
+    resultlist: {}
   },
   changemethod(e) {
     let index = e.detail.id;
@@ -100,6 +101,9 @@ Page({
     }
     routingFinder(obj).then(res => {
       if (res.code == 200) {
+        this.setData({
+          resultlist: res.data
+        })
         if (res.data.againReq) {
           let obj2 = {
             placeOfDischarge: this.data.podcode,
@@ -109,35 +113,19 @@ Page({
             searchRange: week,
             shippingCompany: '0015'
           }
-          routingFinder(obj2).then(data=>{
+          routingFinder(obj2).then(data => {
             console.log(data)
+            this.data.resultlist.apl = data.data.apl;
+            this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
+            this.data.resultlist.solutionNos = this.data.resultlist.solutionNos.concat(data.data.solutionNos)
+            this.setData({
+              resultlist: this.data.resultlist
+            })
+            this.setHistory(obj)
           })
+        } else {
+          this.setHistory(obj)
         }
-        // wx.setStorageSync('resultlist', res.data);
-        // wx.setStorageSync('searchKey', {
-        //   placeOfDischarge: obj.placeOfDischarge,
-        //   placeOfLoading: obj.placeOfLoading,
-        //   searchRange: obj.searchRange,
-        //   search: this.data.search,
-        //   searchDate: this.data.date
-        // })
-        // let history = this.data.array;
-        // let polpleace = this.data.polvalue;
-        // let podpleace = this.data.podvalue;
-        // let str = polpleace + '-' + podpleace;
-        // if (history.length == 6) {
-        //   history.shift();
-
-        // }
-        // history.push(str);
-        // this.setData({
-        //   array: history,
-        //   podvalue: '',
-        //   polvalue: '',
-        // })
-        // wx.navigateTo({
-        //   url: '../Result/index',
-        // })
       } else {
         this.setData({
           podvalue: '',
@@ -149,6 +137,33 @@ Page({
           duration: 2000
         })
       }
+    })
+  },
+  setHistory(obj) {
+    wx.setStorageSync('resultlist', this.data.resultlist);
+    wx.setStorageSync('searchKey', {
+      placeOfDischarge: obj.placeOfDischarge,
+      placeOfLoading: obj.placeOfLoading,
+      searchRange: obj.searchRange,
+      search: this.data.search,
+      searchDate: this.data.date
+    })
+    let history = this.data.array;
+    let polpleace = this.data.polvalue;
+    let podpleace = this.data.podvalue;
+    let str = polpleace + '-' + podpleace;
+    if (history.length == 6) {
+      history.shift();
+
+    }
+    history.push(str);
+    this.setData({
+      array: history,
+      podvalue: '',
+      polvalue: '',
+    })
+    wx.navigateTo({
+      url: '../Result/index',
     })
   },
   //获取卸货港的接口处理
