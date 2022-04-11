@@ -63,8 +63,8 @@
   <!-- discover -->
   <view class="discoverContainer">
     <view class="discoverTitle">发现更多</view>
-    <swiper class="swiper" bindchange="changeCurrentDto">
-      <swiper-item wx:if="{{swiperindex==0}}">
+    <swiper current="{{swiperindex}}" class="swiper" bindchange="changeCurrentDto">
+      <swiper-item>
         <view class="discoverList">
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/discover_1@2x.png"></image>
@@ -96,7 +96,7 @@
           </view>
         </view>
       </swiper-item>
-      <swiper-item wx:if="{{swiperindex==1}}">
+      <swiper-item>
         <view class="discoverList">
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/customernotice@2x.png"></image>
