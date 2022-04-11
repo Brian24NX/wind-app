@@ -38,7 +38,7 @@
           </van-cell>
         </van-cell-group>
       </van-checkbox-group>
-      <view class="apply" catchtap="apply">应用</view>
     </view>
+    <view class="apply" catchtap="apply">应用</view>
   </view>
 </view>

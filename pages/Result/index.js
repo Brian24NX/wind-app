@@ -1,5 +1,6 @@
 // pages/Result/index.js
 const utils = require('../../utils/util')
+import { unix } from 'dayjs';
 import {
   routingFinder,
   routingSort
@@ -32,7 +33,8 @@ Page({
     plans: [],
     needEarlyFlag: false,
     needDirectFlag: false,
-    resultlist: {}
+    resultlist: {},
+    isLoading: true
   },
 
   /**
@@ -51,7 +53,8 @@ Page({
     const searchObj = wx.getStorageSync('searchKey')
     this.setData({
       searchDate: date,
-      sort: '1'
+      sort: '1',
+      isLoading: true
     })
     let obj = {
       placeOfDischarge: searchObj.placeOfDischarge,
@@ -112,6 +115,10 @@ Page({
   },
 
   dealData() {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     let resultlist = wx.getStorageSync("resultlist");
     const weekNum = Number(resultlist.searchRange) / 7
     this.setData({
@@ -228,8 +235,10 @@ Page({
     routingSort(params).then(res => {
       console.log(res)
       this.setData({
-        routinglist: res.data
+        routinglist: res.data,
+        isLoading: false
       })
+      wx.hideLoading()
     })
   },
 
