@@ -71,4 +71,4 @@
   </view>
 </view>
 <!-- 底部筛选条件 tabbar -->
-<foot-tab-bar routesPlanList="{{routesPlanList}}" bind:tabbarchange="onTabbarChange" />
+<foot-tab-bar radio="{{sort}}" plans="{{plans}}" routesPlanList="{{routesPlanList}}" bind:tabbarchange="onTabbarChange" />

@@ -29,7 +29,7 @@ Page({
     dateList: [],
     routesPlanList: [],
     sort: '1',
-    plans: [1, 2, 3],
+    plans: [],
     needEarlyFlag: false,
     needDirectFlag: false,
     resultlist: {}
@@ -50,7 +50,8 @@ Page({
     const date = e.currentTarget.dataset.item;
     const searchObj = wx.getStorageSync('searchKey')
     this.setData({
-      searchDate: date
+      searchDate: date,
+      sort: '1'
     })
     let obj = {
       placeOfDischarge: searchObj.placeOfDischarge,
@@ -81,7 +82,7 @@ Page({
             console.log(data)
             this.data.resultlist.apl = data.data.apl;
             this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
-            this.data.resultlist.solutionNos = this.data.resultlist.solutionNos.concat(data.data.solutionNos)
+            this.data.resultlist.solutionServices.apl = data.data.solutionServices.apl
             this.setData({
               resultlist: this.data.resultlist
             })
@@ -113,15 +114,8 @@ Page({
   dealData() {
     let resultlist = wx.getStorageSync("resultlist");
     const weekNum = Number(resultlist.searchRange) / 7
-    let routesPlanList = []
-    resultlist.solutionNos.forEach(item => {
-      routesPlanList.push({
-        id: Object.keys(item)[0],
-        label: Object.values(item)[0]
-      })
-    })
     this.setData({
-      routesPlanList: routesPlanList,
+      resultlist: resultlist,
       placeOfLoading: resultlist.placeOfLoading,
       placeOfDischarge: resultlist.placeOfDischarge,
       week: resultlist.searchRange,
@@ -130,9 +124,15 @@ Page({
     if (!resultlist.anl && !resultlist.apl && !resultlist.cnc) {
       this.setData({
         planList: [],
-        viewactived: false
+        viewactived: false,
+        currentPlan: "CMA",
+        plans: resultlist.solutionServices['cma'],
+        routesPlanList: resultlist.solutionServices['cma'],
       })
     } else {
+      const planTitle = resultlist.cnc ? "CNC" : resultlist.anl ? "ANL" : resultlist.apl ? "APL" : null
+      console.log(planTitle.toLocaleLowerCase())
+      console.log(resultlist.solutionServices)
       this.setData({
         viewactived: true,
         planList: [{
@@ -145,7 +145,9 @@ Page({
           title: 'APL',
           value: resultlist.apl
         }],
-        currentPlan: resultlist.cnc ? "CNC" : resultlist.anl ? "ANL" : resultlist.apl ? "APL" : null
+        currentPlan: planTitle,
+        plans: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
+        routesPlanList: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
       })
       resultlist.routings.forEach(item=>{
         if (item.shippingCompany === '0001') {
@@ -178,8 +180,11 @@ Page({
     if (!items.list.length) return
     this.setData({
       currentPlan: title,
-      routinglist: items.list
+      // routinglist: items.list,
+      plans: this.data.resultlist.solutionServices[title.toLocaleLowerCase()],
+      routesPlanList: this.data.resultlist.solutionServices[title.toLocaleLowerCase()],
     })
+    this.sortData()
   },
 
   // 筛选
@@ -191,7 +196,7 @@ Page({
     }
     if (e.detail.actived === 2) {
       this.setData({
-        plans: e.detail.result.map(id => Number(id))
+        plans: e.detail.result
       })
     }
     if (e.detail.actived === 3) {
@@ -212,7 +217,7 @@ Page({
     let params = {
       routings: resultlist.routings,
       sortDateType: Number(this.data.sort),
-      sortSolutionNos: this.data.plans
+      sortSolutionServices: this.data.plans
     }
     if (this.data.needEarlyFlag) {
       params.needEarlyFlag = true

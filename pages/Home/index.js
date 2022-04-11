@@ -302,7 +302,7 @@ Page({
             console.log(data)
             this.data.resultlist.apl = data.data.apl;
             this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
-            this.data.resultlist.solutionNos = this.data.resultlist.solutionNos.concat(data.data.solutionNos)
+            this.data.resultlist.solutionServices.apl = data.data.solutionServices.apl
             this.setData({
               resultlist: this.data.resultlist
             })

@@ -10,6 +10,12 @@ Component({
     },
     routesPlanList: {
       type: Array
+    },
+    radio: {
+      type: String
+    },
+    plans: {
+      type: Array
     }
   },
   data: {
@@ -17,7 +23,7 @@ Component({
     radio: '1',
     sortMenu: true,
     programme: true,
-    result: ["1", "2", "3"],
+    result: [],
     tabBarData: [{
         text: '排序',
         isChecked: true,
@@ -100,11 +106,13 @@ Component({
         this.setData({
           sortMenu: !this.data.sortMenu,
           programme: true,
+          radio: this.data.radio
         })
       } else if (activeIndex === 1) {
         this.setData({
           programme: !this.data.programme,
           sortMenu: true,
+          result: this.data.plans
         })
       } else if (activeIndex === 2 || activeIndex === 3) {
         this.setData({

@@ -255,7 +255,7 @@
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent {
-  width: 110rpx;
+  width: 120rpx;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent .timeDay {
@@ -269,6 +269,7 @@
 .resultContainers .oneResult .resContents .rightContainer .rightContent .zhuanrun {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   font-size: 24rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;

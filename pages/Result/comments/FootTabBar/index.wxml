@@ -33,8 +33,8 @@
     <view class="sort-menu" catchtap="return">
       <van-checkbox-group value="{{ result }}" bind:change="changeCheckBox">
         <van-cell-group>
-          <van-cell wx:for="{{ routesPlanList }}" wx:key="index" title="{{ item.label }}" value-class="value-class" clickable data-index="{{ index }}" bind:click="changeCheckboxtoggle">
-            <van-checkbox catch:tap="noop" shape="square" class="checkboxes-{{ index }}" name="{{ item.id }}" />
+          <van-cell wx:for="{{ routesPlanList }}" wx:key="index" title="{{ item }}" value-class="value-class" clickable data-index="{{ index }}" bind:click="changeCheckboxtoggle">
+            <van-checkbox catch:tap="noop" shape="square" class="checkboxes-{{ index }}" name="{{ item }}" />
           </van-cell>
         </van-cell-group>
       </van-checkbox-group>
