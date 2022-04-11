@@ -62,7 +62,7 @@
   </view>
   <!-- discover -->
   <view class="discoverContainer">
-    <view class="discoverTitle">发现更多</view>
+    <view class="discoverTitle">新闻中心</view>
     <swiper class="swiper" bindchange="changeCurrentDto">
       <swiper-item wx:for="{{2}}">
         <view class="discoverList">
@@ -70,28 +70,28 @@
             <image class="icon" src="../../assets/img/home/discover_1@2x.png"></image>
             <view class="discoverRight">
               <view class="discoverName">{{content.lang.userCenter.homeInfo.valueAddedService}}</view>
-              <view>定制方案</view>
+              <!-- <view>定制方案</view> -->
             </view>
           </view>
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/discover_2@2x.png"></image>
             <view class="discoverRight">
               <view class="discoverName">关于达飞</view>
-              <view>集团介绍</view>
+              <!-- <view>集团介绍</view> -->
             </view>
           </view>
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/discover_3@2x.png"></image>
             <view class="discoverRight">
               <view class="discoverName">新闻资讯</view>
-              <view>往期新闻</view>
+              <!-- <view>往期新闻</view> -->
             </view>
           </view>
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/discover_4@2x.png"></image>
             <view class="discoverRight">
               <view class="discoverName">在线服务</view>
-              <view>我有疑问</view>
+              <!-- <view>我有疑问</view> -->
             </view>
           </view>
         </view>
