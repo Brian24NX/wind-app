@@ -76,7 +76,8 @@ Page({
     })
   },
   setHuoGui(e) {
-    let value = e.detail.value.toUpperCase();
+    //去掉空格和大写问题
+    let value = e.detail.value.trim().toUpperCase();
     if (!value) {
       this.setData({
         huoGuiValue: value,
