@@ -10,6 +10,7 @@
  *    .catch(err => console.log('error','出错了～～'))
  */
 
+import { unix } from 'dayjs';
 import { skipNulls } from '../utils/util'
 const config = require('../config/config')
 // const { getStorage } = require('../storage.js')
@@ -32,17 +33,27 @@ const request = ( { url, data, method, contentType, hideLoading }) => {
 				// 'token': getStorage('token')
 			},
 			success: (res) => {
-				
+				console.log(res)
 				// 返回成功提示信息
 				if (res.statusCode === 200) {
 					// 未登录拦截
-					if (res.data.code === 401) {
+					if (res.data.code == 200) {
+            resolve(res.data)
+          } else if (res.data.code === 401) {
 						wx.redirectTo({url:'/pages/Login/index'})
 					} else {
-						resolve(res.data)
+            wx.showToast({
+              title: '系统繁忙，请稍后再试',
+              icon: 'none'
+            })
+						reject(res.data)
 					}
 				} else {
-					// 返回错误提示信息
+          // 返回错误提示信息
+          wx.showToast({
+            title: '系统繁忙，请稍后再试',
+            icon: 'none'
+          })
 					reject(res.data)
 				}
 			},
@@ -78,8 +89,6 @@ Promise.prototype.finally = function(callback) {
 		}
 	)
 }
-
-
 
 export const getRequest = (url, data, hideLoading) => {
 	// data = skipNulls(data)

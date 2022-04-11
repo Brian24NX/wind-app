@@ -24,18 +24,18 @@
       <view class="serchTitle">起运港</view>
       <view class="xialaInput">
         <input value="{{qiYunValue}}" placeholder-style="color:#04246A;font-size:28rpx;" class="inputs {{showRemind2||showRemind5 ? 'noRequestBorder' : ''}}" type="text"  placeholder="名称/代码"  placeholder-class="placeholder" bindinput="setQiYun" />
-        <scroll-view class="xialaContainer" wx:if="{{codePolList.length}}">
+        <view class="xialaContainer" wx:if="{{codePolList.length}}">
           <view class="oneXiala" wx:for="{{codePolList}}" wx:key="index" bindtap='changepolname' data-index="{{index}}">{{item.point}}</view>
-        </scroll-view>
+        </view>
       </view>
       <view class="noRequest" wx:if="{{showRemind2}}">此项为必填项</view>
       <view class="noRequest" wx:if="{{showRemind5}}">格式无效</view>
       <view class="serchTitle mt20">卸货港</view>
       <view class="xialaInput">
         <input value="{{xieHuoValue}}" class="inputs {{showRemind3||showRemind4 ? 'noRequestBorder' : ''}}" type="text" placeholder-style="font-size:28rpx;color:#04246A;" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setXieHuo" />
-        <scroll-view class="xialaContainer" wx:if="{{codePodList.length}}">
+        <view class="xialaContainer" wx:if="{{codePodList.length}}">
           <view class="oneXiala" wx:for="{{codePodList}}" wx:key="index" bindtap='changepodname' data-index="{{index}}">{{item.point}}</view>
-        </scroll-view>
+        </view>
       </view>
       <view class="noRequest" wx:if="{{showRemind3}}">此项为必填项</view>
       <view class="noRequest" wx:if="{{showRemind4}}">格式无效</view>

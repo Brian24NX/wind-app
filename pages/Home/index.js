@@ -44,7 +44,8 @@ Page({
     showRemind4: false,
     showRemind5: false,
     codePolList: [],
-    codePodList: []
+    codePodList: [],
+    resultlist: {}
   },
   /**
    * 生命周期函数--监听页面加载
@@ -285,21 +286,32 @@ Page({
     }
     routingFinder(obj).then(res => {
       if (res.code == 200 || res.data != '') {
-        wx.setStorageSync('resultlist', res.data);
-        wx.setStorageSync('searchKey', {
-          placeOfDischarge: obj.placeOfDischarge,
-          placeOfLoading: obj.placeOfLoading,
-          searchRange: obj.searchRange,
-          search: "离港时间",
-          searchDate: obj.departureDate
-        })
-        wx.navigateTo({
-          url: '../Result/index',
-        })
         this.setData({
-          qiYunValue: '',
-          xieHuoValue: ''
+          resultlist: res.data
         })
+        if (res.data.againReq) {
+          let obj2 = {
+            placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
+            placeOfLoading: this.data.qiYunCode || this.data.qiYunValue,
+            arrivalDate: '',
+            departureDate: dayjs().format('YYYY-MM-DD'),
+            searchRange: '21',
+            shippingCompany: '0015',
+          }
+          routingFinder(obj2).then(data => {
+            console.log(data)
+            this.data.resultlist.apl = data.data.apl;
+            this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
+            this.data.resultlist.solutionNos = this.data.resultlist.solutionNos.concat(data.data.solutionNos)
+            this.setData({
+              resultlist: this.data.resultlist
+            })
+            this.setSearchList(obj)
+          })
+        } else {
+          this.setSearchList(obj)
+        }
+        
       } else {
         this.setData({
           qiYunValue: '',
@@ -312,7 +324,23 @@ Page({
         })
       }
     })
-
+  },
+  setSearchList(obj) {
+    wx.setStorageSync('resultlist', this.data.resultlist);
+    wx.setStorageSync('searchKey', {
+      placeOfDischarge: obj.placeOfDischarge,
+      placeOfLoading: obj.placeOfLoading,
+      searchRange: obj.searchRange,
+      search: "离港时间",
+      searchDate: obj.departureDate
+    })
+    wx.navigateTo({
+      url: '../Result/index',
+    })
+    this.setData({
+      qiYunValue: '',
+      xieHuoValue: ''
+    })
   },
   // 高级查询
   toAdvancedSearch() {
