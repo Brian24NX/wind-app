@@ -24,6 +24,8 @@ page {
   align-items: center;
   color: #071E5D;
   font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
 }
 
 .homeContainer .searchContainers .tabContainer .actived {
@@ -131,8 +133,8 @@ page {
 
 .homeContainer .searchContainers .searchContents .searchBtn2 {
   margin-top: 20rpx;
-  color: #4468BA;
-  font-size: 24rpx;
+  color: #071E5D;
+  font-size: 28rpx;
   text-align: center;
 }
 
@@ -183,6 +185,8 @@ page {
   align-items: center;
   margin-bottom: 48rpx;
   font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
 }
 
 .homeContainer .discoverContainer .swiper {
