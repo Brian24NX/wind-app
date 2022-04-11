@@ -173,6 +173,9 @@ Component({
       wx.showToast({
         title: '发送成功',
       })
+      this.setData({
+        showEmail: false
+      })
       return
       sendEmail({
         path: this.data.path,
@@ -182,7 +185,9 @@ Component({
           title: '发送成功',
           mask: true
         })
-        this.triggerEvent("closeEmail")
+        this.setData({
+          showEmail: false
+        })
       })
     }
   }
