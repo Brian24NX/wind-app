@@ -87,8 +87,27 @@ Page({
       })
       return
     }
+    // 不包含，类型的数据
+    if(!reg.test(value)){
+      this.setData({
+        huoGuiValue: value,
+        showRemind: true,
+        huiguiType: 2
+      })
+      return
+    }
     value = value.substr(value.length - 1, 1) === '，' ? value.substr(0, value.length - 1) : value;
-    if (!reg.test(value)) {
+    // 中文逗号
+    if (!reg.test(value.split('，')[0])||!reg.test(value.split('，')[1])||!reg.test(value.split('，')[2])) {
+      this.setData({
+        huoGuiValue: value,
+        showRemind: true,
+        huiguiType: 2
+      })
+      return
+    }
+    // 英文逗号
+    if (!reg.test(value.split(',')[0])||!reg.test(value.split(',')[1])||!reg.test(value.split(',')[2])) {
       this.setData({
         huoGuiValue: value,
         showRemind: true,
