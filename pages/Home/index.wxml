@@ -64,7 +64,7 @@
   <view class="discoverContainer">
     <view class="discoverTitle">发现更多</view>
     <swiper class="swiper" bindchange="changeCurrentDto">
-      <swiper-item wx:for="{{2}}">
+      <swiper-item wx:if="{{swiperindex==0}}">
         <view class="discoverList">
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/discover_1@2x.png"></image>
@@ -96,9 +96,41 @@
           </view>
         </view>
       </swiper-item>
+      <swiper-item wx:if="{{swiperindex==1}}">
+        <view class="discoverList">
+          <view class="oneDiscover" bindtap="toMore">
+            <image class="icon" src="../../assets/img/home/customernotice@2x.png"></image>
+            <view class="discoverRight">
+              <view class="discoverName">客户公告</view>
+              <!-- <view>定制方案</view> -->
+            </view>
+          </view>
+          <view class="oneDiscover" bindtap="toMore">
+            <image class="icon" src="../../assets/img/home/templatelinks@2x.png"></image>
+            <view class="discoverRight">
+              <view class="discoverName">常用模块和链接</view>
+              <!-- <view>集团介绍</view> -->
+            </view>
+          </view>
+          <view class="oneDiscover" bindtap="toMore">
+            <image class="icon" src="../../assets/img/home/controllproduct@2x.png"></image>
+            <view class="discoverRight">
+              <view class="discoverName">管制品查询</view>
+              <!-- <view>往期新闻</view> -->
+            </view>
+          </view>
+          <view class="oneDiscover" bindtap="toMore">
+            <image class="icon" src="../../assets/img/home/contact@2x.png"></image>
+            <view class="discoverRight">
+              <view class="discoverName">联系我们</view>
+              <!-- <view>我有疑问</view> -->
+            </view>
+          </view>
+        </view>
+      </swiper-item>
     </swiper>
     <view class="swiperDtos">
-      <view class="oneDto {{currentIndex === index ? 'dtoActived' : ''}}" wx:for="{{2}}"></view>
+      <view class="oneDto {{swiperindex === index ? 'dtoActived' : ''}}" wx:for="{{2}}" data-index="{{index}}" bindtap="changeItem"></view>
     </view>
   </view>
 </view>

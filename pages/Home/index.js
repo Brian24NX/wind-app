@@ -45,7 +45,8 @@ Page({
     showRemind5: false,
     codePolList: [],
     codePodList: [],
-    resultlist: {}
+    resultlist: {},
+    swiperindex:0,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -72,8 +73,9 @@ Page({
   },
   // discover切换swiper
   changeCurrentDto(e) {
+    console.log(e);
     this.setData({
-      currentIndex: e.detail.current
+      swiperindex:e.detail.current
     })
   },
   setHuoGui(e) {
@@ -381,6 +383,12 @@ Page({
     wx.showToast({
       title: '功能升级中，敬请期待',
       icon: 'none'
+    })
+  },
+  changeItem(e){
+    console.log(e.currentTarget.dataset.index);
+    this.setData({
+      swiperindex:e.currentTarget.dataset.index
     })
   }
 })
