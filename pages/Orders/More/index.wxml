@@ -50,11 +50,11 @@
             <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
             <view class="details">
               <view class="detailLeft">
-                <view class="huogui chuanming">{{items.movements[items.movements.length - 1].vessel.name}}</view>
+                <view class="huogui chuanming">{{items.movements[items.movements.length - 2].vessel.name}}</view>
                 <view>船名</view>
               </view>
               <view class="detailRight">
-                <view class="xiangxing">{{items.movements[items.movements.length - 1].voyageReference}}</view>
+                <view class="xiangxing">{{items.movements[items.movements.length - 2].voyageReference}}</view>
                 <view>航次</view>
               </view>
             </view>
