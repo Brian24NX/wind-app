@@ -1,0 +1,14 @@
+<!--pages/Orders/email/index.wxml-->
+<view class="emailContainers">
+  <view class="emailContainer">
+    <view class="emailTops">
+      <view>请输入收件人邮箱</view>
+      <view class="closeIcon" catchtap="closeEmail">
+        <image src="../../../assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+    <input type="text" bindinput="setEmail" class="emailInput" placeholder="请输入邮箱号" placeholder-class="placeholder" value="{{receiveMailAccount}}" />
+    <view class="noRequest" wx:if="{{showRemind}}">请输入正确的邮箱号码</view>
+    <button class="sendBtn" hover-class="hoverClass" catchtap="sendEmail">发送</button>
+  </view>
+</view>

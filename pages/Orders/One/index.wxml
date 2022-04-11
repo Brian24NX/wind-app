@@ -41,7 +41,7 @@
       </view>
     </view>
     <view class="stepLists">
-      <view class="oneStep" wx:for="{{stepList}}">
+      <view class="oneStep" wx:for="{{stepList}}" wx:key="index">
         <view class="leftLines">
           <view class="beingDtoBg" wx:if="{{item.stepStatus === 'being'}}"></view>
           <view class="leftLineDto {{item.stepStatus === 'past' ? 'pastDto' : item.stepStatus === 'being' ? 'beingDto' : ''}}"></view>
@@ -55,5 +55,7 @@
     </view>
     <view class="bottomContainer">
       <view class="downloadBtn" bindtap="reportToPDF">以PDF格式输出</view>
+      <view class="toEmail" catchtap="sendReport">以附件形式发送至邮箱</view>
     </view>
   </view>
+  <email path="{{path}}" wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

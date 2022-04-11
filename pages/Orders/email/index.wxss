@@ -1,0 +1,84 @@
+/* pages/Orders/email/index.wxss */
+.emailContainers {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: -100rpx;
+}
+
+.emailContainers .emailContainer {
+  width: 614rpx;
+  /* height: 392rpx; */
+  background-color: #ffffff;
+  margin-top: -130rpx;
+}
+
+.emailContainers .emailContainer .emailTops {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #111111;
+  font-size: 36rpx;
+  padding: 0 30rpx 0 40rpx;
+  border-bottom: 1rpx solid #DEDEDE;
+}
+
+.emailContainers .emailContainer .emailTops .closeIcon {
+  height: 100%;
+  width: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.emailContainers .emailContainer .emailTops .closeIcon image {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.emailContainers .emailContainer .emailInput {
+  width: 494rpx;
+  height: 80rpx;
+  border: 1rpx solid #B7BBC2;
+  margin: 45rpx auto 0;
+  padding: 0 20rpx;
+}
+
+.emailContainers .emailContainer .noRequest {
+  font-size: 24rpx;
+  color: #E10202;
+  margin-top: 20rpx;
+  padding-left: 40rpx;
+}
+
+.emailContainers .emailContainer .placeholder {
+  color: #B9BFCA;
+  font-size: 28rpx;
+}
+
+.emailContainers .emailContainer .sendBtn {
+  width: 534rpx;
+  height: 80rpx;
+  background-color: #2D75FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin: 45rpx auto;
+  border-radius: 0;
+}
+
+.emailContainers .emailContainer .hoverClass {
+  opacity: 0.9;
+}

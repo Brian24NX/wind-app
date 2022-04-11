@@ -29,7 +29,9 @@ Component({
     originalData: null,
     stepList: [],
     stepCount: 0,
-    timeRemaining: 0
+    timeRemaining: 0,
+    showEmail: false,
+    path: ''
   },
 
   ready: function () {
@@ -103,14 +105,27 @@ Component({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining
       })
+      this.getPDFUrl();
+    },
+
+    // 获取PDF地址
+    getPDFUrl(callback) {
+      reportToPDF(this.data.list[0].data).then(res => {
+        this.setData({
+          path: config[config.dev_env].url + '/api/miniapp/' + res.data
+        })
+        if (callback) {
+          callback()
+        }
+      })
     },
 
     // PDF查看
     reportToPDF() {
-      // return
-      reportToPDF(this.data.list[0].data).then(res => {
+      const _this = this
+      if (this.data.path) {
         wx.downloadFile({
-          url: config[config.dev_env].url + '/api/miniapp/' + res.data,
+          url: _this.data.path,
           success(filePath) {
             wx.openDocument({
               filePath: filePath.tempFilePath,
@@ -118,6 +133,56 @@ Component({
             })
           }
         })
+      } else {
+        this.getPDFUrl(() => {
+          wx.downloadFile({
+            url: _this.data.path,
+            success(filePath) {
+              wx.openDocument({
+                filePath: filePath.tempFilePath,
+                showMenu: true
+              })
+            }
+          })
+        })
+      }
+    },
+    closeEmail() {
+      this.setData({
+        showEmail: false
+      })
+    },
+    // 发送邮件
+    sendReport() {
+      this.setData({
+        showEmail: true
+      })
+    },
+    sendEmails(e) {
+      console.log(e)
+      if (this.data.path) {
+        this.sendEmailFn(e.detail)
+      } else {
+        this.getPDFUrl(() => {
+          this.sendEmailFn(e.detail)
+        })
+      }
+
+    },
+    sendEmailFn(receiveMailAccount) {
+      wx.showToast({
+        title: '发送成功',
+      })
+      return
+      sendEmail({
+        path: this.data.path,
+        receiveMailAccount: receiveMailAccount
+      }).then(() => {
+        unixwx.showToast({
+          title: '发送成功',
+          mask: true
+        })
+        this.triggerEvent("closeEmail")
       })
     }
   }

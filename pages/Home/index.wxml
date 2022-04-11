@@ -101,14 +101,14 @@
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/customernotice@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">客户公告</view>
+              <view class="discoverName">客户通告</view>
               <!-- <view>定制方案</view> -->
             </view>
           </view>
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/templatelinks@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">常用模块和链接</view>
+              <view class="discoverName">常用模版和链接</view>
               <!-- <view>集团介绍</view> -->
             </view>
           </view>

@@ -46,3 +46,8 @@ export const fuzzySearch = (params, hideLoading) => {
 export const routingSort = (params) => {
   return postRequest('/api/miniapp/routingSort', params, true)
 }
+
+// 排序
+export const sendEmail = (params) => {
+  return postRequest('/api/miniapp/emailPdf', params, true)
+}
