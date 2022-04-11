@@ -296,7 +296,9 @@ Page({
     this.setData({
       date: this.getDate(),
       search: '离港时间',
-      array:location
+      array:location,
+      pollist:[],
+      podlist:[]
     })
   },
 
