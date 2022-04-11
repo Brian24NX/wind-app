@@ -245,8 +245,7 @@ Page({
   // 去详情
   toDetail(e) {
     let index = e.currentTarget.dataset.id;
-    let resultlist = wx.getStorageSync("resultlist")
-    let details = resultlist.routings[index];
+    let details = this.data.routinglist[index];
     wx.setStorageSync('details', details);
     wx.navigateTo({
       url: '/pages/ResultDetail/index',
