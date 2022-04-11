@@ -50,7 +50,7 @@ page {
 
 .homeContainer .searchContainers .searchContents .remind {
   color: #071E5D;
-  font-size: 24rpx;
+  font-size: 28rpx;
   margin-bottom: 20rpx;
 }
 
@@ -186,6 +186,7 @@ page {
   font-size: 36rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
+  color:#071E5D;
 }
 
 .homeContainer .discoverContainer .swiper {
