@@ -27,7 +27,7 @@ var Languague = {
     mytitle:"我的",
     homeInfo:{
        //货物追踪
-       goods:"货物追踪",
+       goods: "搜索",
        //箱号
        containerNo:"箱号",
        //提单号
