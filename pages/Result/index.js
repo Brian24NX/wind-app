@@ -146,6 +146,10 @@ Page({
     this.sortData()
   },
 
+  changePlan(e) {
+    
+  },
+
   // 筛选
   onTabbarChange(e) {
     if (e.detail.actived === 1) {

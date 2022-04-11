@@ -100,31 +100,44 @@ Page({
     }
     routingFinder(obj).then(res => {
       if (res.code == 200) {
-        wx.setStorageSync('resultlist', res.data);
-        wx.setStorageSync('searchKey', {
-          placeOfDischarge: obj.placeOfDischarge,
-          placeOfLoading: obj.placeOfLoading,
-          searchRange: obj.searchRange,
-          search: this.data.search,
-          searchDate: this.data.date
-        })
-        let history = this.data.array;
-        let polpleace = this.data.polvalue;
-        let podpleace = this.data.podvalue;
-        let str = polpleace + '-' + podpleace;
-        if (history.length == 6) {
-          history.shift();
-
+        if (res.data.againReq) {
+          let obj2 = {
+            placeOfDischarge: this.data.podcode,
+            placeOfLoading: this.data.polcode,
+            arrivalDate: this.data.search === '到达日期' ? this.data.date : '',
+            departureDate: this.data.search === '离案日期' ? this.data.date : '',
+            searchRange: week,
+            shippingCompany: '0015'
+          }
+          routingFinder(obj2).then(data=>{
+            console.log(data)
+          })
         }
-        history.push(str);
-        this.setData({
-          array: history,
-          podvalue: '',
-          polvalue: '',
-        })
-        wx.navigateTo({
-          url: '../Result/index',
-        })
+        // wx.setStorageSync('resultlist', res.data);
+        // wx.setStorageSync('searchKey', {
+        //   placeOfDischarge: obj.placeOfDischarge,
+        //   placeOfLoading: obj.placeOfLoading,
+        //   searchRange: obj.searchRange,
+        //   search: this.data.search,
+        //   searchDate: this.data.date
+        // })
+        // let history = this.data.array;
+        // let polpleace = this.data.polvalue;
+        // let podpleace = this.data.podvalue;
+        // let str = polpleace + '-' + podpleace;
+        // if (history.length == 6) {
+        //   history.shift();
+
+        // }
+        // history.push(str);
+        // this.setData({
+        //   array: history,
+        //   podvalue: '',
+        //   polvalue: '',
+        // })
+        // wx.navigateTo({
+        //   url: '../Result/index',
+        // })
       } else {
         this.setData({
           podvalue: '',
