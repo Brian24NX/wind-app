@@ -18,7 +18,6 @@ export const routingFinder = (params) => {
     shippingCompany: params.shippingCompany,
     specificRoutings: ""
   }
-  console.log(obj);
   return getRequest('/api/miniapp/routing-finder', obj)
 }
 // 获取货物追踪数据
