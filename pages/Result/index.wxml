@@ -15,10 +15,12 @@
       </view>
     </scroll-view>
     <image class="calendarCenter" src="/assets/img/result/shadow@2x.png"></image>
-    <view class="calendarRight">
-      <image src="/assets/img/result/calendar@2x.png"></image>
-      <view>日历</view>
-    </view>
+    <picker mode="date" value="{{searchDate}}" start="1970-09-01" end="2079-09-01" bindchange="bindTimeChange">
+      <view class="calendarRight">
+        <image src="/assets/img/result/calendar@2x.png"></image>
+        <view>日历</view>
+      </view>
+    </picker>
   </view>
   <view wx:if="{{viewactived}}" class="tabContainers">
     <view class="oneTab {{item.title === currentPlan ? 'tabActived' : ''}}" wx:for="{{planList}}" wx:key="index" catchtap="changePlan" data-title="{{item.title}}">

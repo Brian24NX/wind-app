@@ -94,10 +94,10 @@ page {
 .deleteIcon {
   position: absolute;
   bottom: 0;
-  right: 20rpx;
+  right: 0;
   z-index: 3;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   width: 80rpx;
   height: 88rpx;
