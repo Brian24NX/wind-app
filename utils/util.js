@@ -164,7 +164,19 @@ function formatHuoYunStatus(code) {
     {
       code: 'ETA_FINAL_DISCHARGE',
       label: '到达最终卸货港'
-    }
+    },
+    {
+      code: 'ETA_DISCHARGE',
+      label: '卸货'
+    },
+    {
+      code: 'ETA_DEPATURE',
+      label: '离港时间'
+    },
+    {
+      code: 'ETA_LOAD',
+      label: '装货'
+    },
   ]
   const index = codeArr.findIndex(item => item.code === code)
   if (index > -1) {

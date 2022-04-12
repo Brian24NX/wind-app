@@ -154,7 +154,9 @@ Page({
     wx.setStorageSync('searchKey', {
       placeOfDischarge: obj.placeOfDischarge,
       podvalue: this.data.podvalue.split(';')[0],
+      podCode: this.data.podvalue.split(';')[1],
       placeOfLoading: obj.placeOfLoading,
+      polCode: this.data.polvalue.split(';')[1],
       polvalue: this.data.polvalue.split(';')[0],
       searchRange: obj.searchRange,
       search: this.data.search,
@@ -180,7 +182,15 @@ Page({
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    if (data.length < 2) return
+    this.setData({
+      podvalue: data
+    })
+    if (data.length < 2) {
+      this.setData({
+        podlist: []
+      })
+      return
+    }
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
@@ -195,29 +205,18 @@ Page({
         })
       }
     })
-    // this.setData({
-    //   viewShowedPod: true,
-    //   // polvalue: ""
-    // })
   }, 500),
-  // changepod(e) {
-  //   let obj = {
-  //     searchStr: e.detail.value
-  //   }
-  //   fuzzySearch(obj).then(res => {
-  //     this.setData({
-  //       podlist: res.data
-  //     })
-  //   })
-  //   this.setData({
-  //     viewShowedPod: true,
-  //     podvalue: ""
-  //   })
-  // },
   //获取起始港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    if (data.length < 2) return
+    this.setData({
+      polvalue: data
+    })
+    if (data.length < 2) {
+      this.setData({
+        pollist: []
+      })
+    }
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
@@ -238,20 +237,20 @@ Page({
     //   // polvalue: ""
     // })
   }, 500),
-  // changepol(e) {
-  //   let obj = {
-  //     searchStr: e.detail.value
-  //   }
-  //   fuzzySearch(obj).then(res => {
-  //     this.setData({
-  //       pollist: res.data
-  //     })
-  //   })
-  // this.setData({
-  //   viewShowedPol: true,
-  //   polvalue: ""
-  // })
-  // },
+  deleteValue(e) {
+    const type = e.currentTarget.dataset.type
+    if (type === '1') {
+      this.setData({
+        polvalue: '',
+        pollist: []
+      })
+    } else {
+      this.setData({
+        podvalue: '',
+        podlist: []
+      })
+    }
+  },
   // 起始港选择
   changepolname(e) {
     let index = e.currentTarget.dataset.index;
@@ -303,13 +302,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
@@ -319,41 +311,6 @@ Page({
         selected: 1
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
   //中英文切换
   switchLanguage() {

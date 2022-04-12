@@ -105,12 +105,13 @@ export const getRequest = (url, data, hideLoading) => {
 	})
 }
 
-export const postRequest = (url, data, isJson) => {
+export const postRequest = (url, data, isJson, hideLoading) => {
 	return request({
 		url,
 		data,
 		method: 'POST',
-		contentType: isJson ? 'application/json' : 'application/x-www-form-urlencoded'
+    contentType: isJson ? 'application/json' : 'application/x-www-form-urlencoded',
+    hideLoading
 	})
 }
 

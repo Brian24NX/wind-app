@@ -15,10 +15,12 @@
       </view>
     </scroll-view>
     <image class="calendarCenter" src="/assets/img/result/shadow@2x.png"></image>
-    <view class="calendarRight">
-      <image src="/assets/img/result/calendar@2x.png"></image>
-      <view>日历</view>
-    </view>
+    <picker mode="date" value="{{searchDate}}" start="1970-09-01" end="2079-09-01" bindchange="bindTimeChange">
+      <view class="calendarRight">
+        <image src="/assets/img/result/calendar@2x.png"></image>
+        <view>日历</view>
+      </view>
+    </picker>
   </view>
   <view wx:if="{{viewactived}}" class="tabContainers">
     <view class="oneTab {{item.title === currentPlan ? 'tabActived' : ''}}" wx:for="{{planList}}" wx:key="index" catchtap="changePlan" data-title="{{item.title}}">
@@ -43,16 +45,16 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{filters.fmtDate(item.departuredate)}} 星期{{filters.weekDay(item.departuredate)}} {{item.pointfrom}}</view>
-            <view class="ship">
+            <view class="time">{{filters.fmtDate(item.departuredate)}} 星期{{filters.weekDay(item.departuredate)}} {{item.pointfrom}}, {{polCode}}</view>
+            <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{item.shipname}}</view>
+              <view>{{filters.getShopName(item.routingDetails)}}</view>
             </view>
-            <view class="ship">
+            <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>
-            <view class="time end">{{filters.fmtDate(item.arrivaldate)}} 星期{{filters.weekDay(item.arrivaldate)}} {{item.pointto}}</view>
+            <view class="time end">{{filters.fmtDate(item.arrivaldate)}} 星期{{filters.weekDay(item.arrivaldate)}} {{item.pointto}}, {{podCode}}</view>
           </view>
           <view class="rightContent">
             <view class="timeDay">{{item.transitTime}} 天</view>

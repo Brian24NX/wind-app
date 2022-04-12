@@ -9,7 +9,7 @@
 .orderContainer .inputContainer {
   width: 100%;
   background-color: #ffffff;
-  padding: 0 40rpx;
+  padding: 0 30rpx 0 40rpx;
   height: 72rpx;
   display: flex;
   align-items: center;
@@ -21,9 +21,22 @@
 }
 
 .orderContainer .inputContainer .inputs {
-  width: 550rpx;
+  width: 520rpx;
   height: 100%;
   font-size: 26rpx;
+}
+
+.orderContainer .inputContainer .delete {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.orderContainer .inputContainer .delete image {
+  width: 36rpx;
+  height: 36rpx;
 }
 
 .orderContainer .inputContainer .search {

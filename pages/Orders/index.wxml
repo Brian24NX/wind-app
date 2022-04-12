@@ -2,6 +2,9 @@
 <view class="orderContainer">
   <view class="inputContainer">
     <input value="{{shipmentRef}}" type="text" class="inputs" placeholder="输入货柜号，提单号或订舱号" placeholder-class="placeholder" bindinput="changeHuoguiValue" />
+    <view class="delete" catchtap="deleteValue">
+      <image src="/assets/img/search/close@2x.png" wx:if="{{shipmentRef}}"></image>
+    </view>
     <view class="search" bindtap="getHuoGuiResult">
       <image src="/assets/img/search/search@2x.png"></image>
     </view>

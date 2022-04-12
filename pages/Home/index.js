@@ -78,6 +78,27 @@ Page({
       swiperindex: e.detail.current
     })
   },
+  clearInput(e) {
+    console.log(e)
+    const type = e.currentTarget.dataset.type
+    if (type === '1') {
+      this.setData({
+        huoGuiValue: '',
+        showRemind: true,
+        huiguiType: 1
+      })
+    } else if (type === '2') {
+      this.setData({
+        qiYunValue: '',
+        codePolList: []
+      })
+    } else {
+      this.setData({
+        xieHuoValue: '',
+        codePodList: []
+      })
+    }
+  },
   setHuoGui(e) {
     var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
     //去掉空格和大写问题
@@ -127,20 +148,25 @@ Page({
     const data = e['0'].detail.value
     var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
     // if (!reg.test(data)) {
-    //   this.setData({
+      this.setData({
     //     showRemind5: true,
     //     showRemind2: false,
-    //     qiYunValue: data
-    //   })
+        qiYunValue: data
+      })
     //   return;
     // } else {
-    //   this.setData({
+      // this.setData({
     //     showRemind5: false,
     //     showRemind2: false,
     //     codePolList: [],
-    //     qiYunValue: data
-    //   })
-      if (data.length < 2) return
+        // qiYunValue: data
+      // })
+      if (data.length < 2) {
+        this.setData({
+          codePolList: []
+        })
+        return
+      }
       fuzzySearch({
         searchStr: data
       }, true).then(res => {
@@ -162,11 +188,11 @@ Page({
     const data = e['0'].detail.value
     // var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
     // if (!reg.test(data)) {
-    //   this.setData({
+      this.setData({
     //     showRemind4: true,
     //     showRemind3: false,
-    //     xieHuoValue: data
-    //   })
+        xieHuoValue: data
+      })
     //   return;
     // }
     // this.setData({
@@ -176,7 +202,14 @@ Page({
     //   xieHuoValue: data
     // })
     console.log(this.data.xieHuoValue);
-    if (data.length < 2) return
+    if (data.length < 2) {
+      if (data.length < 2) {
+        this.setData({
+          codePolList: []
+        })
+        return
+      }
+    }
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
@@ -309,8 +342,10 @@ Page({
     wx.setStorageSync('searchKey', {
       placeOfDischarge: obj.placeOfDischarge,
       podvalue: this.data.xieHuoValue.split(';')[0],
+      podCode: this.data.xieHuoValue.split(';')[1],
       placeOfLoading: obj.placeOfLoading,
       polvalue: this.data.qiYunValue.split(';')[0],
+      polCode: this.data.qiYunValue.split(';')[1],
       searchRange: obj.searchRange,
       search: "离港时间",
       searchDate: obj.departureDate

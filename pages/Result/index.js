@@ -33,6 +33,8 @@ Page({
     planList: [],
     placeOfLoading: '',
     placeOfDischarge: '',
+    polCode: '',
+    podCode: '',
     currentPlan: null,
     searchDate: '',
     weekNum: '',
@@ -46,7 +48,7 @@ Page({
     resultlist: {},
     isLoading: true,
     scrollLeft: 0,
-    oneScroll: 0
+    oneScroll: 0,
   },
 
   /**
@@ -56,20 +58,41 @@ Page({
     wx.setNavigationBarTitle({
       title: '搜索结果',
     })
+    this.setData({
+      polCode: wx.getStorageSync('searchKey').polCode,
+      podCode: wx.getStorageSync('searchKey').podCode
+    })
     this.setDayList()
     this.dealData()
   },
 
+  bindTimeChange(e) {
+    this.setData({
+      searchDate: e.detail.value,
+      oneScroll: 0
+    })
+    this.setDayList(this.data.searchDate)
+    this.changeDayFn(this.data.searchDate)
+  },
+
   changeDay(e) {
-    const date = e.currentTarget.dataset.item;
+    const date = e.currentTarget.dataset.item
     let offsetLeft = e.currentTarget.offsetLeft;
-    console.log(offsetLeft)
+    this.setData({
+      scrollLeft: offsetLeft - this.data.oneScroll * 2.5
+    })
+    this.setData({
+      searchDate: date
+    })
+    this.changeDayFn(date)
+  },
+
+  changeDayFn(date) {
     const searchObj = wx.getStorageSync('searchKey')
     this.setData({
       searchDate: date,
       sort: '1',
       isLoading: true,
-      scrollLeft: offsetLeft - this.data.oneScroll * 2.5
     })
     let obj = {
       placeOfDischarge: searchObj.placeOfDischarge,
@@ -97,7 +120,6 @@ Page({
             shippingCompany: '0015'
           }
           routingFinder(obj2).then(data => {
-            console.log(data)
             this.data.resultlist.apl = data.data.apl;
             this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
             this.data.resultlist.solutionServices.apl = data.data.solutionServices.apl
@@ -121,11 +143,10 @@ Page({
     })
   },
 
-  setDayList() {
-    const searchDate = wx.getStorageSync('searchKey').searchDate
+  setDayList(searchTime) {
+    const searchDate = searchTime || wx.getStorageSync('searchKey').searchDate
     if (!this.data.oneScroll) {
       wx.createSelectorQuery().select('.calendarLeft').boundingClientRect((rect) => {
-        console.log(rect)
         this.setData({
           oneScroll: rect.height,
           scrollLeft: 15 * rect.height - rect.height / 2
@@ -175,8 +196,6 @@ Page({
       })
     } else {
       const planTitle = resultlist.cnc ? "CNC" : resultlist.anl ? "ANL" : resultlist.apl ? "APL" : null
-      console.log(planTitle.toLocaleLowerCase())
-      console.log(resultlist.solutionServices)
       this.setData({
         viewactived: true,
         planList: [{
@@ -270,7 +289,6 @@ Page({
       params.needDirectFlag = true
     }
     routingSort(params).then(res => {
-      console.log(res)
       this.setData({
         routinglist: res.data,
         isLoading: false
