@@ -127,13 +127,13 @@ Page({
       showRemind: length > 3 ? true : false,
       huiguiType: 3
     })
-    if(value.split(',')[0]==value.split(',')[1]||value.split(',')[0]==value.split(',')[2]||value.split(',')[1]==value.split(',')[2]){
-            this.setData({
-              huoGuiValue:value,
-              showRemind:true,
-              huiguiType:4
-            })
-    }
+    // if(value.split(',')[0]==value.split(',')[1]||value.split(',')[0]==value.split(',')[2]||value.split(',')[1]==value.split(',')[2]){
+    //         this.setData({
+    //           huoGuiValue:value,
+    //           showRemind:true,
+    //           huiguiType:4
+    //         })
+    // }
   },
   // 获取追踪
   toHuoWu() {

@@ -54,6 +54,8 @@
   width: 100%;
   margin-top: 30rpx;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
 }
 
 .polContainer {
@@ -100,7 +102,7 @@
 }
 .line60{
   width: 2rpx;
-  height: 120rpx;
+  height: 100rpx;
   background: #A6B2CC;
   border-radius: 2rpx;
   margin-left: 26rpx;
@@ -277,10 +279,9 @@
 }
 
 .podContainer {
-  height: 190rpx;
   padding: 0 30rpx 72rpx 30rpx;
   position: relative;
-  top: -40rpx;
+  top: -20rpx;
 }
 
 .podContainer::after {
