@@ -144,7 +144,7 @@ Page({
         wx.showToast({
           title: res.message,
           icon: 'none',
-          duration: 2000
+          duration: 5000
         })
       }
     })
@@ -191,14 +191,14 @@ Page({
       }
       else{
         this.setData({
-          viewShowedPod:true
+          podvalue:data
         })
       }
     })
-    this.setData({
-      viewShowedPod: true,
-      // polvalue: ""
-    })
+    // this.setData({
+    //   viewShowedPod: true,
+    //   // polvalue: ""
+    // })
   }, 500),
   // changepod(e) {
   //   let obj = {
@@ -229,14 +229,14 @@ Page({
       }
       else{
         this.setData({
-           viewShowedPod:false
+           polvalue:data
         })
       }
     })
-    this.setData({
-      viewShowedPol: true,
-      // polvalue: ""
-    })
+    // this.setData({
+    //   viewShowedPol: true,
+    //   // polvalue: ""
+    // })
   }, 500),
   // changepol(e) {
   //   let obj = {
@@ -256,18 +256,18 @@ Page({
   changepolname(e) {
     let index = e.currentTarget.dataset.index;
     this.setData({
-      viewShowedPol: false,
       polvalue: this.data.pollist[index].point,
-      polcode: this.data.pollist[index].pointCode
+      polcode: this.data.pollist[index].pointCode,
+      pollist: [],
     })
   },
   // 卸货港
   changepodname(e) {
     let index = e.currentTarget.dataset.index;
     this.setData({
-      viewShowedPod: false,
       podvalue: this.data.podlist[index].point,
-      podcode: this.data.podlist[index].pointCode
+      podcode: this.data.podlist[index].pointCode,
+      podlist:[]
     })
   },
   onclose(e) {
@@ -296,7 +296,9 @@ Page({
     this.setData({
       date: this.getDate(),
       search: '离港时间',
-      array:location
+      array:location,
+      pollist:[],
+      podlist:[]
     })
   },
 
