@@ -292,12 +292,18 @@ Page({
    */
   onLoad: function (options) {
     let location=wx.getStorageSync('location');
+    let polobject=wx.getStorageSync('polobject')
+    let podobject=wx.getStorageSync('podobject');
     this.setData({
       date: this.getDate(),
       search: '离港时间',
       array:location,
       pollist:[],
-      podlist:[]
+      podlist:[],
+      polvalue:polobject.polvalue,
+      podvalue:podobject.podvalue,
+      polcode:polobject.polcode,
+      podcode:podobject.podcode
     })
   },
 

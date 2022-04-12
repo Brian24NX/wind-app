@@ -234,6 +234,7 @@ Page({
       qiYunValue: this.data.codePolList[index].point,
       qiYunCode: this.data.codePolList[index].pointCode
     })
+    
   },
   // 设置卸货港
   changepodname(e) {
@@ -246,6 +247,7 @@ Page({
       xieHuoValue: this.data.codePodList[index].point,
       xieHuoCode: this.data.codePodList[index].pointCode
     })
+   
   },
   // 船期搜索
   toChuanQi() {
@@ -360,6 +362,16 @@ Page({
   },
   // 高级查询
   toAdvancedSearch() {
+    let polobject={
+      polvalue:this.data.qiYunValue,
+      polcode:this.data.qiYunCode
+    }
+    wx.setStorageSync('polobject', polobject);
+    let podobject={
+      podvalue:this.data.xieHuoValue,
+      podcode:this.data.xieHuoCode
+   }
+   wx.setStorageSync('podobject', podobject);
     wx.switchTab({
       url: '/pages/Query/index',
     })
