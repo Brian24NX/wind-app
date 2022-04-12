@@ -31,8 +31,6 @@ Page({
       pollist:detail.routingDetails[0],
       podlist:detail.routingDetails[detail.routingDetails.length-1],
       translist:arrclone
-      // tranforlist:detail.transhipment,
-      // // translist:arrmid
     })
   },
 

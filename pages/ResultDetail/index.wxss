@@ -30,6 +30,7 @@
   font-weight: 600;
   color: #071E5D;
   line-height: 66rpx;
+  width: 460rpx;
   /* word-break: break-all;
   width: 464rpx; */
 }
@@ -123,7 +124,7 @@
 }
 .line62 {
   width: 2rpx;
-  height: 32rpx;
+  height: 62rpx;
   background: #A6B2CC;
   border-radius: 2rpx;
   margin-left: 26rpx;
@@ -170,7 +171,6 @@
 .rail{
   font-size: 24rpx;
   color:#6B7790;
-  margin-top: 40rpx;
   margin-bottom: 40rpx;
 }
 .polCity,.pooCity,.transCity,
@@ -280,8 +280,6 @@
 
 .podContainer {
   padding: 0 30rpx 72rpx 30rpx;
-  position: relative;
-  top: -20rpx;
 }
 
 .podContainer::after {

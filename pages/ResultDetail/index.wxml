@@ -78,7 +78,7 @@
         </view>
 
         <!--陆运-->
-        <view wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'||pollist.transportation.meanOfTransport=='FEEDER'||pollist.transportation.meanOfTransport=='INTERMODAL'}}">
+        <view wx:if="{{item.transportation.meanOfTransport=='RAIL'||item.transportation.meanOfTransport=='TRUCK'||item.transportation.meanOfTransport=='TRUCK / RAIL'||item.transportation.meanOfTransport=='FEEDER'||item.transportation.meanOfTransport=='INTERMODAL'}}">
         <view class="transLeftContainer">
           <view class="redcircle"></view>
           <view class="line76"></view>
@@ -113,7 +113,7 @@
       </view>
     </view>
     <!--陆运-->
-    <view class="podContainer" wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'||pollist.transportation.meanOfTransport=='FEEDER'||pollist.transportation.meanOfTransport=='INTERMODAL'}}" >
+    <view class="podContainer" wx:if="{{podlist.transportation.meanOfTransport=='RAIL'||podlist.transportation.meanOfTransport=='TRUCK'||podlist.transportation.meanOfTransport=='TRUCK / RAIL'||podlist.transportation.meanOfTransport=='FEEDER'||podlist.transportation.meanOfTransport=='INTERMODAL'}}" >
         <view class="podLeftContainer">
           <image  class="freight" src="../../assets/img/result/freight@2x.png"></image>
           <view class="line30"></view>
