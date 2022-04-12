@@ -154,7 +154,9 @@ Page({
     wx.setStorageSync('searchKey', {
       placeOfDischarge: obj.placeOfDischarge,
       podvalue: this.data.podvalue.split(';')[0],
+      podCode: this.data.podvalue.split(';')[1],
       placeOfLoading: obj.placeOfLoading,
+      polCode: this.data.podvalue.split(';')[1],
       polvalue: this.data.polvalue.split(';')[0],
       searchRange: obj.searchRange,
       search: this.data.search,
@@ -303,13 +305,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
@@ -319,41 +314,6 @@ Page({
         selected: 1
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
   //中英文切换
   switchLanguage() {

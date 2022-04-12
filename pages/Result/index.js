@@ -33,6 +33,8 @@ Page({
     planList: [],
     placeOfLoading: '',
     placeOfDischarge: '',
+    polCode: '',
+    podCode: '',
     currentPlan: null,
     searchDate: '',
     weekNum: '',
@@ -46,7 +48,7 @@ Page({
     resultlist: {},
     isLoading: true,
     scrollLeft: 0,
-    oneScroll: 0
+    oneScroll: 0,
   },
 
   /**
@@ -55,6 +57,10 @@ Page({
   onLoad: function () {
     wx.setNavigationBarTitle({
       title: '搜索结果',
+    })
+    this.setData({
+      polCode: wx.getStorageSync('searchKey').polCode,
+      podCode: wx.getStorageSync('searchKey').podCode
     })
     this.setDayList()
     this.dealData()

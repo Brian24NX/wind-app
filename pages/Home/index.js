@@ -309,8 +309,10 @@ Page({
     wx.setStorageSync('searchKey', {
       placeOfDischarge: obj.placeOfDischarge,
       podvalue: this.data.xieHuoValue.split(';')[0],
+      podCode: this.data.xieHuoValue.split(';')[1],
       placeOfLoading: obj.placeOfLoading,
       polvalue: this.data.qiYunValue.split(';')[0],
+      polCode: this.data.qiYunValue.split(';')[1],
       searchRange: obj.searchRange,
       search: "离港时间",
       searchDate: obj.departureDate

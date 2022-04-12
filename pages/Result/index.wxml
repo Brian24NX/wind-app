@@ -43,7 +43,7 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{filters.fmtDate(item.departuredate)}} 星期{{filters.weekDay(item.departuredate)}} {{item.pointfrom}}</view>
+            <view class="time">{{filters.fmtDate(item.departuredate)}} 星期{{filters.weekDay(item.departuredate)}} {{item.pointfrom}}, {{polCode}}</view>
             <view class="ship" wx:if="{{item.shipname}}">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.shipname}}</view>
@@ -52,7 +52,7 @@
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>
-            <view class="time end">{{filters.fmtDate(item.arrivaldate)}} 星期{{filters.weekDay(item.arrivaldate)}} {{item.pointto}}</view>
+            <view class="time end">{{filters.fmtDate(item.arrivaldate)}} 星期{{filters.weekDay(item.arrivaldate)}} {{item.pointto}}, {{podCode}}</view>
           </view>
           <view class="rightContent">
             <view class="timeDay">{{item.transitTime}} 天</view>
