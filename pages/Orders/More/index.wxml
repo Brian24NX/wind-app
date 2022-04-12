@@ -13,7 +13,8 @@
 <view class="orderMoreList">
   <view wx:for="{{lists}}">
     <view wx:if="{{item.data}}">
-      <view class="oneOrder" wx:for="{{item.data.routes[0].containers}}" wx:for-item="items" wx:for-index="indexs" bindtap="toDetail" data-index="{{index}}">
+      <view wx:for="{{item.data.routes}}" wx:for-item="routeItem" wx:for-index="routeIndex" wx:key="routeIndex">
+        <view class="oneOrder" wx:for="{{routeItem.containers}}" wx:for-item="items" wx:for-index="indexs" bindtap="toDetail" data-index="{{index}}" data-routeindex="{{routeIndex}}" data-indexs="{{indexs}}">
         <view class="orderTop">
           <view class="topLeft">{{items.timeRemaining > 0 ? '预计' : ''}}到港时间</view>
           <view class="topRight">{{items.movements[0].date}} {{items.movements[0].week}} {{items.movements[0].time}}</view>
@@ -61,6 +62,8 @@
           </view>
         </view>
       </view>
+      </view>
+      
     </view>
     <view wx:else>
       <view class="oneOrder">

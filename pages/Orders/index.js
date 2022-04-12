@@ -87,7 +87,7 @@ Page({
           })
           return
         }
-        if (data.length === 1 && data[0].data.routes[0].containers.length === 1) {
+        if (data.length === 1 && data[0].data.routes.length === 1 && data[0].data.routes[0].containers.length === 1) {
           this.setData({
             dataLength: 1,
             detail: data[0].data.routes[0].containers[0],

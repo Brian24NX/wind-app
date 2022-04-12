@@ -36,8 +36,8 @@
         </view>
       </view>
       <view class="stepBottom">
-        <view>{{stepList[1].portOfLoading}} ({{list[0].data.portOfLoadingCountryCode}})</view>
-        <view>{{stepList[stepList.length - 2].pointOfDischarge}} ({{list[0].data.portOfDischargeCountryCode}})</view>
+        <view>{{list[0].data.portOfLoading.name}} ({{list[0].data.portOfLoadingCountryCode}})</view>
+        <view>{{list[0].data.portOfDischarge.name}} ({{list[0].data.portOfDischargeCountryCode}})</view>
       </view>
     </view>
     <view class="stepLists">
@@ -58,7 +58,7 @@
       <view class="toEmail" catchtap="sendReport">以附件形式发送至邮箱</view>
     </view>
   </view>
-  <view class="noStepOrderData" wx:if="{{!stepList.length}}">
+  <view class="noStepOrderData" wx:if="{{!stepList.length && !isLoading}}">
     <image src="/assets/img/search/no@2x.png"></image>
     <view>未找到或已经卸货或返回堆场</view>
   </view>

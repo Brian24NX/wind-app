@@ -31,7 +31,8 @@ Component({
     stepCount: 0,
     timeRemaining: 0,
     showEmail: false,
-    path: ''
+    path: '',
+    isLoading: true
   },
 
   ready: function () {
@@ -43,13 +44,24 @@ Component({
    */
   methods: {
     setStepList() {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
       console.log(this.data.list)
       this.setData({
         stepList: [],
         stepCount: 0,
-        originalData: this.data.detail
+        originalData: this.data.detail,
+        isLoading: true
       })
-      if (!this.data.detail.movements.length) return
+      if (!this.data.detail.movements.length) {
+        this.setData({
+          isLoading: false
+        })
+        wx.hideLoading()
+        return
+      }
       const list = this.data.detail.movements.reverse();
       list.forEach((item, index) => {
         item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
@@ -104,9 +116,10 @@ Component({
       const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24)
       this.setData({
         stepList: list,
-        timeRemaining: timeRemaining < 0 ? 0 : timeRemaining
+        timeRemaining: timeRemaining < 0 ? 0 : timeRemaining,
+        isLoading: false
       })
-      // this.getPDFUrl();
+      wx.hideLoading()
     },
 
     // 获取PDF地址
