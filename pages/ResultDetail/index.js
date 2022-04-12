@@ -24,8 +24,8 @@ Page({
     let arrdetail=arr.splice(1,arr.length-1);
     this.setData({
       detaillist:detail,
-      pollist:detail.routingDetails[0].pointFrom,
-      podlist:detail.routingDetails[detail.routingDetails.length-1].pointTo,
+      pollist:detail.routingDetails[0],
+      podlist:detail.routingDetails[detail.routingDetails.length-1],
       tranforlist:detail.transhipment,
       translist:arrdetail
     })
