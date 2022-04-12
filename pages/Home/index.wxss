@@ -69,6 +69,27 @@ page {
   border: 1rpx solid #DFDFDF;
   font-size: 36rpx;
   padding: 0 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.homeContainer .searchContainers .searchContents .inputs input {
+  height: 100%;
+  width: 490rpx;
+}
+
+.homeContainer .searchContainers .searchContents .inputs .delete {
+  width: 80rpx;
+  height: 88rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.homeContainer .searchContainers .searchContents .inputs .delete image {
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .homeContainer .searchContainers .searchContents .xialaInput {
@@ -77,7 +98,7 @@ page {
 
 .homeContainer .searchContainers .searchContents .xialaInput .xialaContainer {
   position: absolute;
-  top: 92rpx;
+  top: 86rpx;
   z-index: 10;
   background-color: #f5f5f5;
   width: 100%;

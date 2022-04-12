@@ -29,6 +29,12 @@ Page({
     }
   },
 
+  deleteValue() {
+    this.setData({
+      shipmentRef: ''
+    })
+  },
+
   changeHuoguiValue(e) {
     this.setData({
       shipmentRef: e.detail.value
