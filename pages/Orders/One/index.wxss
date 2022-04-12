@@ -238,3 +238,19 @@
   margin-top: 20rpx;
   text-align: center;
 }
+
+.noStepOrderData {
+  width: 100%;
+  margin: 20rpx auto;
+  font-size: 24rpx;
+  color: #6F7384;
+  text-align: center;
+  padding: 40rpx 0;
+  background-color: #ffffff;
+}
+
+.noStepOrderData image {
+  width: 404rpx;
+  height: 254rpx;
+  margin-bottom: 34rpx;
+}

@@ -15,7 +15,7 @@
   </view>
 </view>
 
-<view class="oneOrderContainer">
+<view class="oneOrderContainer" wx:if="{{stepList.length}}">
   <view class="timeContainer">
     <view class="times timeTop">
       <view class="left">{{stepList[stepList.length - 1].date}} {{stepList[stepList.length - 1].week}} {{stepList[stepList.length - 1].time}}</view>
@@ -57,5 +57,9 @@
       <view class="downloadBtn" bindtap="reportToPDF">以PDF格式输出</view>
       <view class="toEmail" catchtap="sendReport">以附件形式发送至邮箱</view>
     </view>
+  </view>
+  <view class="noStepOrderData" wx:if="{{!stepList.length}}">
+    <image src="/assets/img/search/no@2x.png"></image>
+    <view>未找到或已经卸货或返回堆场</view>
   </view>
   <email path="{{path}}" wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

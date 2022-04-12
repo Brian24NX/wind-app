@@ -49,6 +49,7 @@ Component({
         stepCount: 0,
         originalData: this.data.detail
       })
+      if (!this.data.detail.movements.length) return
       const list = this.data.detail.movements.reverse();
       list.forEach((item, index) => {
         item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
