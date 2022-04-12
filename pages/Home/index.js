@@ -253,10 +253,10 @@ Page({
   toChuanQi() {
     var reg = /^([0-9a-zA-Z;])*([0-9a-zA-Z]+)$/;
     // 先判断参数是否为空，再判断参数错误
-    // if (!this.data.qiYunValue) {
-    //   this.setData({
-    //     showRemind2: true
-    //   })
+    if (!this.data.qiYunValue) {
+      this.setData({
+        showRemind2: true
+      })
     // } else {
     //   let length =  this.data.qiYunValue.split(';').length;
     //   if (length!=2) {
@@ -270,11 +270,11 @@ Page({
     //       showRemind5: false
     //     })
     //   }
-    // }
-    // if (!this.data.xieHuoValue) {
-    //   this.setData({
-    //     showRemind3: true
-    //   })
+    }
+    if (!this.data.xieHuoValue) {
+      this.setData({
+        showRemind3: true
+      })
     // } else {
     //   let length =  this.data.xieHuoValue.split(';').length;
     //   if (length!=2) {
@@ -288,8 +288,8 @@ Page({
     //       showRemind3: false
     //     })
     //   }
-    // }
-    // if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
+    }
+    if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     let obj = {
       placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
       placeOfLoading: this.data.qiYunCode || this.data.qiYunValue,
