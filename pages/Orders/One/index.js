@@ -1,6 +1,8 @@
 const dayjs = require("dayjs");
+import { unix } from 'dayjs';
 import {
-  reportToPDF
+  reportToPDF,
+  sendEmail
 } from '../../../api/modules/home';
 const utils = require("../../../utils/util")
 const config = require("../../../config/config")
@@ -184,19 +186,18 @@ Component({
 
     },
     sendEmailFn(receiveMailAccount) {
-      wx.showToast({
-        title: '发送成功',
+      wx.showLoading({
+        title: '发送中',
+        mask: true
       })
-      this.setData({
-        showEmail: false
-      })
-      return
       sendEmail({
         path: this.data.path,
+        shipmentRef: this.data.detail.id,
         receiveMailAccount: receiveMailAccount
       }).then(() => {
-        unixwx.showToast({
-          title: '发送成功',
+        wx.showToast({
+          title: '发送成功，请前往邮箱查看',
+          icon: 'none',
           mask: true
         })
         this.setData({

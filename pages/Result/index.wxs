@@ -53,7 +53,6 @@ var weekDay = function (obj) {
 
 function getShopName(list) {
   var name = ''
-  console.log(list)
   for (var index = 0; index < list.length; index++) {
     var element = list[index];
     if (element.transportation.meanOfTransport === 'Vessel') {

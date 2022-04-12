@@ -49,5 +49,5 @@ export const routingSort = (params) => {
 
 // 排序
 export const sendEmail = (params) => {
-  return postRequest('/api/miniapp/emailPdf', params, true)
+  return postRequest('/api/miniapp/emailPdf', params, true, true)
 }
