@@ -74,7 +74,7 @@ Page({
       dataLength: null
     })
     let obj = {
-      shipmentRef: value,
+      shipmentRef: value.toUpperCase(),
       eqpid: ''
     }
     shipmentTracking(obj).then(res => {
