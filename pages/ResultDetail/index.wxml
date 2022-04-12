@@ -4,7 +4,10 @@
 <view class="resultContainers">
   <view class="resultCardContainers">
     <view class="resultCardContainer">
-      <view class="cardContainer">{{detaillist.pointfrom}} - {{detaillist.pointto}}</view>
+      <view class="cardContainer">
+        <view>{{detaillist.pointfrom}} - </view>
+        <view>{{detaillist.pointto}}</view>
+      </view>
       <view class="carddate">
         <image src="../../assets/img/result/calendar@2x.png"></image><text>{{detaillist.transitTime}} 天</text>
       </view>
