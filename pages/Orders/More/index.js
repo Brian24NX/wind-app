@@ -39,6 +39,10 @@ Component({
       lists.forEach(items => {
         if (items.data) {
           items.data.routes[0].containers.forEach(one => {
+            if (!one.movements.length) {
+              items.data = ''
+              return
+            }
             one.movements = one.movements.reverse();
             one.movements.forEach((item, index) => {
               item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
