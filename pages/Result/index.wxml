@@ -3,7 +3,10 @@
 <!--pages/Result/index.wxml-->
 <view class="searchResultTopContainer">
   <view class="searchTop">
-    <view class="serchLeft">{{placeOfLoading}} - {{placeOfDischarge}}</view>
+    <view class="serchLeft">
+      <view>{{placeOfLoading}} - </view>
+      <view>{{placeOfDischarge}}</view>
+    </view>
     <view class="searchLine"></view>
     <view class="searchTime">未来{{weekNum}}星期</view>
   </view>
