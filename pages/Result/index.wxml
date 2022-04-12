@@ -3,10 +3,7 @@
 <!--pages/Result/index.wxml-->
 <view class="searchResultTopContainer">
   <view class="searchTop">
-    <view class="serchLeft">
-      <view>{{placeOfLoading}} - </view>
-      <view>{{placeOfDischarge}}</view>
-    </view>
+    <view class="serchLeft">{{placeOfLoading}} - {{placeOfDischarge}}</view>
     <view class="searchLine"></view>
     <view class="searchTime">未来{{weekNum}}星期</view>
   </view>
@@ -48,7 +45,7 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{filters.fmtDate(item.departuredate)}} 星期{{filters.weekDay(item.departuredate)}} {{item.pointfrom}}, {{polCode}}</view>
+            <view class="time">{{filters.fmtDate(item.departuredate)}} {{filters.weekDay(item.departuredate) ? '星期' + filters.weekDay(item.departuredate) : ''}} {{item.pointfrom}}, {{polCode}}</view>
             <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{filters.getShopName(item.routingDetails)}}</view>
@@ -57,7 +54,7 @@
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>
-            <view class="time end">{{filters.fmtDate(item.arrivaldate)}} 星期{{filters.weekDay(item.arrivaldate)}} {{item.pointto}}, {{podCode}}</view>
+            <view class="time end">{{filters.fmtDate(item.arrivaldate)}} {{filters.weekDay(item.arrivaldate) ? '星期' +  filters.weekDay(item.arrivaldate) : ''}} {{item.pointto}}, {{podCode}}</view>
           </view>
           <view class="rightContent">
             <view class="timeDay">{{item.transitTime}} 天</view>

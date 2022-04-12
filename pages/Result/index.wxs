@@ -1,4 +1,5 @@
 var fmtDate = function (obj) {
+  if (!obj) return ''
   var time = getDate(obj);
   var year = time.getFullYear();
   var month = time.getMonth() + 1;
@@ -20,6 +21,7 @@ var fmtDate2 = function (obj) {
 }
 
 var weekDay = function (obj) {
+  if (!obj) return ''
   var date = getDate(obj).getDay();
   var week = '';
   switch (date) {
