@@ -36,7 +36,7 @@
       </view>
     </view>
     <!--陆运-->
-    <view class="polContainer" wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'}}">
+    <view class="polContainer" wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'||pollist.transportation.meanOfTranspor=='FEEDER'||pollist.transportation.meanOfTranspor=='INTERMODAL'}}">
       <view class="polLeftContainer">
         <view class="redcircle"></view>
         <view class="line36"></view>
@@ -78,7 +78,7 @@
         </view>
 
         <!--陆运-->
-        <view wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'}}">
+        <view wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'||pollist.transportation.meanOfTransport=='FEEDER'||pollist.transportation.meanOfTransport=='INTERMODAL'}}">
         <view class="transLeftContainer">
           <view class="redcircle"></view>
           <view class="line76"></view>
@@ -113,7 +113,7 @@
       </view>
     </view>
     <!--陆运-->
-    <view class="podContainer" wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'}}" >
+    <view class="podContainer" wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'||pollist.transportation.meanOfTransport=='FEEDER'||pollist.transportation.meanOfTransport=='INTERMODAL'}}" >
         <view class="podLeftContainer">
           <image  class="freight" src="../../assets/img/result/freight@2x.png"></image>
           <view class="line30"></view>

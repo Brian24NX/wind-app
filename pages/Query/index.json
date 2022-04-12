@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "van-tag": "@vant/weapp/tag/index",
     "pickerinput": "../../components/pickerSelect/index",
     "pickerinputweek":"../../components/pickerSelectWeek/index"
   },
