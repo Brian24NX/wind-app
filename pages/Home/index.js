@@ -299,7 +299,7 @@ Page({
         wx.showToast({
           title: '请求数据不存在或者网络错误,请您重试!',
           icon: 'none',
-          duration: 2000
+          duration: 5000
         })
       }
     })

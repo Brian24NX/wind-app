@@ -144,7 +144,7 @@ Page({
         wx.showToast({
           title: res.message,
           icon: 'none',
-          duration: 2000
+          duration: 5000
         })
       }
     })
@@ -191,14 +191,14 @@ Page({
       }
       else{
         this.setData({
-          viewShowedPod:true
+          podvalue:data
         })
       }
     })
-    this.setData({
-      viewShowedPod: true,
-      // polvalue: ""
-    })
+    // this.setData({
+    //   viewShowedPod: true,
+    //   // polvalue: ""
+    // })
   }, 500),
   // changepod(e) {
   //   let obj = {
@@ -229,14 +229,14 @@ Page({
       }
       else{
         this.setData({
-           viewShowedPod:false
+           polvalue:data
         })
       }
     })
-    this.setData({
-      viewShowedPol: true,
-      // polvalue: ""
-    })
+    // this.setData({
+    //   viewShowedPol: true,
+    //   // polvalue: ""
+    // })
   }, 500),
   // changepol(e) {
   //   let obj = {
