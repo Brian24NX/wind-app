@@ -44,11 +44,11 @@
         <view class="rightContainer">
           <view class="leftContent">
             <view class="time">{{filters.fmtDate(item.departuredate)}} 星期{{filters.weekDay(item.departuredate)}} {{item.pointfrom}}</view>
-            <view class="ship">
+            <view class="ship" wx:if="{{item.shipname}}">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.shipname}}</view>
             </view>
-            <view class="ship">
+            <view class="ship" wx:if="{{item.shipname}}">
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>

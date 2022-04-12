@@ -30,7 +30,7 @@
   font-weight: 600;
   color: #071E5D;
   line-height: 66rpx;
-  word-break: break-all;
+  /* word-break: break-all; */
 }
 
 .carddate,
