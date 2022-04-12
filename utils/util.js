@@ -168,9 +168,9 @@ function formatHuoYunStatus(code) {
   ]
   const index = codeArr.findIndex(item => item.code === code)
   if (index > -1) {
-    return codeArr[index].label
+    return codeArr[index].label || codeArr[index].code
   } else {
-    return ''
+    return code
   }
 }
 
