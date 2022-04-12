@@ -50,8 +50,23 @@ var weekDay = function (obj) {
   }
   return week;
 }
+
+function getShopName(list) {
+  var name = ''
+  console.log(list)
+  for (var index = 0; index < list.length; index++) {
+    var element = list[index];
+    if (element.transportation.meanOfTransport === 'Vessel') {
+      name = element.transportation.vehicule.vehiculeName
+      break 
+    }
+  }
+  return name
+}
+
 module.exports = {
   fmtDate: fmtDate,
   fmtDate2: fmtDate2,
-  weekDay: weekDay
+  weekDay: weekDay,
+  getShopName: getShopName
 }
