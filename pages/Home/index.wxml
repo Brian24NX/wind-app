@@ -19,7 +19,7 @@
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
       </view>
-      <view class="noRequest" wx:if="{{showRemind}}">{{huiguiType === 1 ? '此项为必填项' : huiguiType === 2 ? '号码无效，请检查格式' : '最多可同时查询三个货柜状态，请重新输入'}}</view>
+      <view class="noRequest" wx:if="{{showRemind}}">{{huiguiType === 1 ? '此项为必填项' : huiguiType === 2 ? '号码无效，请检查格式' : huiguiType === 3 ? '最多可同时查询三个货柜状态，请重新输入':'号码重复，请检查后输入'}}</view>
       <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">{{content.lang.userCenter.homeInfo.goods}}</button>
       <view class="reminds">{{content.lang.userCenter.homeInfo.tips}}</view>
 
