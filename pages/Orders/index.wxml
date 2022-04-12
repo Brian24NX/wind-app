@@ -1,7 +1,7 @@
 <!--pages/Orders/index.wxml-->
 <view class="orderContainer">
   <view class="inputContainer">
-    <input value="{{shipmentRef}}" type="text" class="inputs" placeholder="输入货柜号，提单号或订舱号。" placeholder-class="placeholder" bindinput="changeHuoguiValue" />
+    <input value="{{shipmentRef}}" type="text" class="inputs" placeholder="输入货柜号，提单号或订舱号" placeholder-class="placeholder" bindinput="changeHuoguiValue" />
     <view class="search" bindtap="getHuoGuiResult">
       <image src="/assets/img/search/search@2x.png"></image>
     </view>

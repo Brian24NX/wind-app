@@ -108,7 +108,7 @@
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/templatelinks@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">常用模版和链接</view>
+              <view class="discoverName">常用模版及链接</view>
               <!-- <view>集团介绍</view> -->
             </view>
           </view>

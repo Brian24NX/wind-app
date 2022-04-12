@@ -36,6 +36,7 @@
 
     <view wx:if="{{tranforlist!=0}}" >
       <view class="transContrainer" wx:for="{{translist}}" wx:key="index">
+        <view class="">
         <view class="transLeftContainer">
           <view class="redcircle"></view>
           <view class="line76"></view>
@@ -54,6 +55,7 @@
           <view class="transSer"><text>Service</text><text class="serName">{{item.transportation.voyage.service.code}}</text></view>
           <view class="transVoy"><text>本地航次</text><text class="voyName">-</text></view>
           <view class="transVox"><text>航次:</text><text class="voxName">{{item.transportation.voyage.voyageReference}}</text></view>
+        </view>
         </view>
       </view>
     </view>

@@ -256,18 +256,18 @@ Page({
   changepolname(e) {
     let index = e.currentTarget.dataset.index;
     this.setData({
-      viewShowedPol: false,
       polvalue: this.data.pollist[index].point,
-      polcode: this.data.pollist[index].pointCode
+      polcode: this.data.pollist[index].pointCode,
+      pollist: [],
     })
   },
   // 卸货港
   changepodname(e) {
     let index = e.currentTarget.dataset.index;
     this.setData({
-      viewShowedPod: false,
       podvalue: this.data.podlist[index].point,
-      podcode: this.data.podlist[index].pointCode
+      podcode: this.data.podlist[index].pointCode,
+      podlist:[]
     })
   },
   onclose(e) {
