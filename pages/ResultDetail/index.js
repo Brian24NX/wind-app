@@ -21,13 +21,18 @@ Page({
     })
     let detail=wx.getStorageSync('details');
     let arr=detail.routingDetails;
-    let arrdetail=arr.splice(1,arr.length-1);
+    let arrclone=[...arr];
+    let arrtop=arrclone.shift();
+    let arrbottom=arrclone.pop();
+    console.log(arr);
+    console.log(arrclone);
     this.setData({
       detaillist:detail,
       pollist:detail.routingDetails[0],
       podlist:detail.routingDetails[detail.routingDetails.length-1],
-      tranforlist:detail.transhipment,
-      translist:arrdetail
+      translist:arrclone
+      // tranforlist:detail.transhipment,
+      // // translist:arrmid
     })
   },
 
