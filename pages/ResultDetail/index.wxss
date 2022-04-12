@@ -51,13 +51,13 @@
 
 .resultDetailContainer {
   width: 100%;
-  min-height: 200rpx;
+  min-height: 1050rpx;
   margin-top: 30rpx;
   background-color: #ffffff;
 }
 
 .polContainer {
-  height: 472rpx;
+  min-height: 360rpx;
   padding: 28rpx 30rpx 0 30rpx
 }
 
@@ -84,7 +84,27 @@
   border-radius: 50%;
   margin-left: 20rpx;
 }
-
+.line36{
+  width: 2rpx;
+  height: 72rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.line40{
+  width: 2rpx;
+  height: 80rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.line60{
+  width: 2rpx;
+  height: 120rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
 .line108 {
   width: 2rpx;
   height: 216rpx;
@@ -92,7 +112,13 @@
   border-radius: 2rpx;
   margin-left: 26rpx;
 }
-
+.line85{
+   width: 2rpx;
+   height:170rpx ;
+   background: #A6B2CC;
+   border-radius: 2rpx;
+   margin-left: 26rpx;
+}
 .line62 {
   width: 2rpx;
   height: 124rpx;
@@ -101,7 +127,7 @@
   margin-left: 26rpx;
 }
 
-.polDate,
+.polDate,.polFromDate,
 .transDate,.transforDate,
 .podDate {
   font-size: 28rpx;
@@ -117,7 +143,7 @@
   margin-top: 12rpx;
 }
 .pol,
-.pod {
+.pod,.poo {
   width: 102rpx;
   height: 32rpx;
   background: #E6EAEF;
@@ -127,16 +153,25 @@
   font-weight: 600;
   color: #04246A;
 }
+.freight{
+  width: 56rpx;
+  height: 54rpx;
+}
 
-.polPro,
+.polPro,.pooPro,.transPro,
 .podPro,.locaPro,.forLocaPro{
   color: #2B74FF;
   font-size: 12px;
   font-family: PingFangSC-Regular;
   margin-left: 20rpx;
 }
-
-.polCity,
+.rail{
+  font-size: 24rpx;
+  color:#6B7790;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+.polCity,.pooCity,.transCity,
 .podCity,.localCity {
   font-size: 12px;
   font-family: PingFangSC-Semibold, PingFang SC;
@@ -149,6 +184,13 @@
   position: relative; 
   top: -80rpx;
   left: 80rpx;
+}
+.transtoLocation{
+    position: relative;
+    top: 20rpx;
+}
+.top{
+    margin-top: 40rpx;
 }
 .polEn,
 .podEn {
@@ -197,7 +239,7 @@
   margin-left: 20rpx;
 }
 .transContrainer {
-  height: 540rpx;
+  height: 400rpx;
   padding: 0 30rpx 0 30rpx;
 }
 
@@ -220,7 +262,13 @@
   border-radius: 2rpx;
   margin-left: 26rpx;
 }
-
+.line30{
+  width: 2rpx;
+  height: 30rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
 .line151 {
   width: 2rpx;
   height: 302rpx;
@@ -243,8 +291,9 @@
 }
 
 .podRightContainer {
-  float: left;
-  margin-left: 36rpx;
+  margin-left: 72rpx;
+  position: relative;
+  top: 20rpx;
 }
 
 .location {
