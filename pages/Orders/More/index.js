@@ -46,6 +46,7 @@ Component({
             one.movements = one.movements.reverse();
             one.movements.forEach((item, index) => {
               item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
+              item.date = utils.substrTime(item.date)
               const week = new Date(item.date).getDay()
               switch (week) {
                 case 0:
