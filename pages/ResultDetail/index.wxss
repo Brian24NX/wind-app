@@ -51,7 +51,6 @@
 
 .resultDetailContainer {
   width: 100%;
-  min-height: 1050rpx;
   margin-top: 30rpx;
   background-color: #ffffff;
 }
@@ -121,7 +120,7 @@
 }
 .line62 {
   width: 2rpx;
-  height: 124rpx;
+  height: 32rpx;
   background: #A6B2CC;
   border-radius: 2rpx;
   margin-left: 26rpx;
@@ -239,7 +238,6 @@
   margin-left: 20rpx;
 }
 .transContrainer {
-  height: 400rpx;
   padding: 0 30rpx 0 30rpx;
 }
 
@@ -271,7 +269,7 @@
 }
 .line151 {
   width: 2rpx;
-  height: 302rpx;
+  height: 280rpx;
   background: #A6B2CC;
   border-radius: 2rpx;
   margin-left: 26rpx;
@@ -280,6 +278,8 @@
 .podContainer {
   height: 190rpx;
   padding: 0 30rpx 72rpx 30rpx;
+  position: relative;
+  top: -40rpx;
 }
 
 .podContainer::after {

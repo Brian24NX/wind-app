@@ -36,7 +36,11 @@ var weekday = function (obj) {
   }
   return week;
 }
+var str=function(obj){
+   return obj.substring(0,2)
+}
 module.exports = {
   fmtDate: fmtDate,
-  weekday: weekday
+  weekday: weekday,
+  str:str
 }
