@@ -30,17 +30,16 @@ Component({
       this.triggerEvent("closeEmail")
     },
     sendEmail() {
-      // let email = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-      // if (!email.test(this.data.receiveMailAccount)) {
-      //   this.setData({
-      //     showRemind: true
-      //   })
-      //   return
-      // }
-      // this.setData({
-      //   showRemind: false
-      // })
-      console.log("发送邮件", this.data.receiveMailAccount)
+      let email = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      if (!email.test(this.data.receiveMailAccount)) {
+        this.setData({
+          showRemind: true
+        })
+        return
+      }
+      this.setData({
+        showRemind: false
+      })
       this.triggerEvent("sendEmails", this.data.receiveMailAccount)
     }
   }
