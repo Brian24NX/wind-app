@@ -89,7 +89,7 @@ page {
 
 .deleteIcon {
   position: absolute;
-  bottom: 0;
+  bottom: 0rpx;
   right: 0;
   z-index: 3;
   display: flex;

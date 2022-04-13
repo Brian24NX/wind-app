@@ -21,6 +21,7 @@ Page({
     })
     let detail=wx.getStorageSync('details');
     let arr=detail.routingDetails;
+    let detailsarr=[];
     let arrclone=[...arr];
     if(detail.routingDetails[0].transportation.meanOfTransport=='Vessel'){
       let arrtop=arrclone.shift();
