@@ -11,6 +11,8 @@ Page({
     shipmentRef: '',
     dataLength: null,
     detail: null,
+    showRemind: false,
+    loading: true,
     list: []
   },
 
@@ -36,48 +38,74 @@ Page({
   },
 
   changeHuoguiValue(e) {
+    //去掉空格和大写问题
+    let value = e.detail.value.toUpperCase()
+    let regvalue = value.trim()
     this.setData({
-      shipmentRef: e.detail.value
+      shipmentRef: value
+    })
+    if (!value) {
+      this.setData({
+        showRemind: true,
+        huiguiType: 1
+      })
+      return
+    }
+    var reg = /^([ ]*[A-z0-9]+([\,\，]*)){0,3}$/;
+    // 不包含，类型的数据
+    if (!reg.test(regvalue)) {
+      this.setData({
+        // huoGuiValue: value,
+        showRemind: true,
+        huiguiType: value.split(',').length > 3 ? 3 : 2
+      })
+      return
+    }
+    const value2 = (value.substr(value.length - 1, 1) === ',' || value.substr(value.length - 1, 1) === '，') ? value.substr(0, value.length - 1) : value
+    if (value2.split(',').length >= 2 && value2.split(',').length <= 3) {
+      const arr = value2.split(',').map(item=>item.trim())
+      var newArr = arr.filter(function (value, index, self) {
+        return self.indexOf(value) === index;
+      });
+      if (newArr.length !== arr.length) {
+        this.setData({
+          showRemind: true,
+          huiguiType: 4
+        })
+        return
+      }
+    }
+    this.setData({
+      showRemind: false
     })
   },
 
+  searchList() {
+    if (this.data.showRemind) {
+      const remindMsg = this.data.huiguiType === 1 ? '此项为必填项' : this.data.huiguiType === 2 ? '号码无效，请检查格式' : this.huiguiType === 3 ? '最多可同时查询三个货柜状态，请重新输入' : '号码重复，请检查后输入'
+      wx.showToast({
+        title: remindMsg,
+        icon: 'none',
+        mask: true,
+        duration: 3000
+      })
+      return
+    }
+    this.getHuoGuiResult()
+  },
+
   getHuoGuiResult() {
-    let value = this.data.shipmentRef;
-    if (!value) {
-      wx.showToast({
-        title: '请输入货柜号、提单号或订舱号',
-        icon: 'none',
-        mask: true
-      })
-      return
-    }
-    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    value = value.substr(value.length - 1, 1) === ',' ? value.substr(0, value.length - 1) : value;
-    if (!reg.test(value)) {
-      wx.showToast({
-        title: '货柜号、提单号或订舱号格式有误',
-        icon: 'none',
-        mask: true
-      })
-      return
-    }
-    const length = value.split(',').length
-    if (length > 3) {
-      wx.showToast({
-        title: '最多同时支持3个编号搜索',
-        icon: 'none',
-        mask: true
-      })
-      return
-    }
-    this.setData({
-      dataLength: null
-    })
     let obj = {
-      shipmentRef: value.toUpperCase(),
+      shipmentRef: this.data.shipmentRef,
       eqpid: ''
     }
+    this.setData({
+      loading: true
+    })
     shipmentTracking(obj).then(res => {
+      this.setData({
+        loading: false
+      })
       const data = res.data;
       if (!data.length || (data.length === 1 && !data[0].data)) {
         this.setData({

@@ -91,57 +91,61 @@ Page({
       this.setData({
         qiYunValue: '',
         codePolList: [],
-        showRemind5:false,
-        showRemind2:false
+        showRemind5: false,
+        showRemind2: false
       })
     } else {
       this.setData({
         xieHuoValue: '',
         codePodList: [],
-        showRemind4:false,
-        showRemind3:false
+        showRemind4: false,
+        showRemind3: false
       })
     }
   },
   setHuoGui(e) {
-    var reg = /^([ ]*[A-z0-9]+([\,\，]*)){0,3}$/;
     //去掉空格和大写问题
-    let value = e.detail.value;
+    let value = e.detail.value.toUpperCase()
+    let regvalue = value.trim()
+    this.setData({
+      huoGuiValue: value
+    })
     if (!value) {
       this.setData({
-        huoGuiValue: value,
         showRemind: true,
         huiguiType: 1
       })
       return
     }
-    let regvalue =value.trim().toUpperCase()
+    var reg = /^([ ]*[A-z0-9]+([\,\，]*)){0,3}$/;
+    console.log(regvalue)
+    console.log(reg.test(regvalue))
     // 不包含，类型的数据
-    if (!reg.test(regvalue)){
+    if (!reg.test(regvalue)) {
       this.setData({
-        huoGuiValue: value,
+        // huoGuiValue: value,
         showRemind: true,
-        huiguiType: 2
+        huiguiType: value.split(',').length > 3 ? 3 : 2
       })
       return
     }
-    const length = value.split(',').length
-    this.setData({
-      huoGuiValue: value,
-      showRemind: length > 3 ? true : false,
-      huiguiType: 3
-    })
-    if(value.split(',').length>=2&&value.split(',').length<3){
-        if(value.split(',')[0]==value.split(',')[1]||value.split(',')[0]==value.split(',')[2]||value.split(',')[1]==value.split(',')[2]){
-            this.setData({
-              huoGuiValue:value,
-              showRemind:true,
-              huiguiType:4
-            })
-      } 
-      return 
+    const value2 = (value.substr(value.length - 1, 1) === ',' || value.substr(value.length - 1, 1) === '，') ? value.substr(0, value.length - 1) : value
+    if (value2.split(',').length >= 2 && value2.split(',').length <= 3) {
+      const arr = value2.split(',').map(item=>item.trim())
+      var newArr = arr.filter(function (value, index, self) {
+        return self.indexOf(value) === index;
+      });
+      if (newArr.length !== arr.length) {
+        this.setData({
+          showRemind: true,
+          huiguiType: 4
+        })
+        return
+      }
     }
-    
+    this.setData({
+      showRemind: false
+    })
   },
   // 获取追踪
   toHuoWu() {
@@ -156,49 +160,49 @@ Page({
       return
     }
     wx.navigateTo({
-      url: `/pages/Orders/index?str=${this.data.huoGuiValue.trim().toUpperCase()}`
+      url: `/pages/Orders/index?str=${this.data.huoGuiValue.replaceAll(' ', '')}`
     })
   },
   // 设置起运港
   setQiYun: utils.debounce(function (e) {
     const data = e['0'].detail.value
     var reg = /^[A-z \,\;]{2,}$/;
-     if (!reg.test(data)) {
+    if (!reg.test(data)) {
       this.setData({
-         showRemind5: true,
+        showRemind5: true,
         showRemind2: false,
         qiYunValue: data
       })
-       return;
-     } else {
-       this.setData({
-         showRemind5: false,
-         showRemind2: false,
-         codePolList: [],
-         qiYunValue: data
-       })
-      }
-      if (data.length < 2) {
-        this.setData({
-          codePolList: []
-        })
-        return
-      }
-      fuzzySearch({
-        searchStr: data
-      }, true).then(res => {
-        if (res.data != '') {
-          this.setData({
-            codePolList: res.data
-          })
-        } else {
-          this.setData({
-            qiYunValue: data
-          })
-        }
-
+      return;
+    } else {
+      this.setData({
+        showRemind5: false,
+        showRemind2: false,
+        codePolList: [],
+        qiYunValue: data
       })
-    
+    }
+    if (data.length < 2) {
+      this.setData({
+        codePolList: []
+      })
+      return
+    }
+    fuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      if (res.data != '') {
+        this.setData({
+          codePolList: res.data
+        })
+      } else {
+        this.setData({
+          qiYunValue: data
+        })
+      }
+
+    })
+
   }, 500),
   // 设置卸货港
   setXieHuo: utils.debounce(function (e) {
@@ -250,7 +254,7 @@ Page({
       qiYunValue: this.data.codePolList[index].point,
       qiYunCode: this.data.codePolList[index].pointCode
     })
-    
+
   },
   // 设置卸货港
   changepodname(e) {
@@ -263,7 +267,7 @@ Page({
       xieHuoValue: this.data.codePodList[index].point,
       xieHuoCode: this.data.codePodList[index].pointCode
     })
-   
+
   },
   // 船期搜索
   toChuanQi() {
@@ -272,13 +276,13 @@ Page({
       this.setData({
         showRemind2: true
       })
-      return 
+      return
     }
     if (!this.data.xieHuoValue) {
       this.setData({
         showRemind3: true
       })
-     return 
+      return
     }
     if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     let obj = {
@@ -353,16 +357,16 @@ Page({
   },
   // 高级查询
   toAdvancedSearch() {
-    let polobject={
-      polvalue:this.data.qiYunValue,
-      polcode:this.data.qiYunCode
+    let polobject = {
+      polvalue: this.data.qiYunValue,
+      polcode: this.data.qiYunCode
     }
     wx.setStorageSync('polobject', polobject);
-    let podobject={
-      podvalue:this.data.xieHuoValue,
-      podcode:this.data.xieHuoCode
-   }
-   wx.setStorageSync('podobject', podobject);
+    let podobject = {
+      podvalue: this.data.xieHuoValue,
+      podcode: this.data.xieHuoCode
+    }
+    wx.setStorageSync('podobject', podobject);
     wx.switchTab({
       url: '/pages/Query/index',
     })

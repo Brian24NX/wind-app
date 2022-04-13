@@ -5,12 +5,12 @@
     <view class="delete" catchtap="deleteValue">
       <image src="/assets/img/search/close@2x.png" wx:if="{{shipmentRef}}"></image>
     </view>
-    <view class="search" bindtap="getHuoGuiResult">
+    <view class="search" bindtap="searchList">
       <image src="/assets/img/search/search@2x.png"></image>
     </view>
   </view>
   <!-- 结果 -->
-  <one detail="{{detail}}" list="{{list}}" wx:if="{{dataLength === 1}}"></one>
-  <more list="{{list}}" wx:if="{{dataLength > 1}}"></more>
-  <no lists="{{list}}" wx:if="{{dataLength === 0}}"></no>
+  <one detail="{{detail}}" list="{{list}}" wx:if="{{dataLength === 1 && !loading}}"></one>
+  <more list="{{list}}" wx:if="{{dataLength > 1 && !loading}}"></more>
+  <no lists="{{list}}" wx:if="{{dataLength === 0 && !loading}}"></no>
 </view>
