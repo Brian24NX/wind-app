@@ -68,7 +68,6 @@ page {
   margin-left: 0;
 }
 .PODinput{
-  position: relative;
   top: 20rpx;
 }
 .polinput,
@@ -85,11 +84,14 @@ page {
 .PODinput,
 .POLinput {
   position: relative;
+  height: 160rpx;
 }
-
+.weekselect{
+   top: -20rpx;
+}
 .deleteIcon {
   position: absolute;
-  bottom: 0rpx;
+  bottom: 20rpx;
   right: 0;
   z-index: 3;
   display: flex;
@@ -320,6 +322,9 @@ page {
 }
 
 .dateselect{
+   top: 0rpx;
+}
+.searchselect{
    top: -20rpx;
 }
 .pos {
