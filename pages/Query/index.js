@@ -93,7 +93,24 @@ Page({
       date: e.detail.value
     })
   },
+  // 提交搜索
   submit() {
+       // 先判断参数是否为空
+       if (!this.data.polvalue) {
+        this.setData({
+          showRemind1: true,
+          showRemind2:false
+        })
+        return 
+      }
+      if (!this.data.podvalue) {
+        this.setData({
+          showRemind3: true,
+          showRemind4: false
+        })
+       return 
+      }
+      if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     let week = '';
     if (this.data.week === '1 星期') {
       week = 7
@@ -149,6 +166,7 @@ Page({
       }
     })
   },
+  // 设置历史查询
   setHistory(obj) {
     wx.setStorageSync('resultlist', this.data.resultlist);
     wx.setStorageSync('searchKey', {
@@ -182,7 +200,19 @@ Page({
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
     const data = e['0'].detail.value
+    var reg = /^[A-z \,\;]{2,}$/;
+    if (!reg.test(data)) {
+      this.setData({
+        showRemind4: true,
+        showRemind3: false,
+        podvalue: data
+      })
+      return;
+    }
     this.setData({
+      showRemind4: false,
+      showRemind3: false,
+      codePodList: [],
       podvalue: data
     })
     if (data.length < 2) {
@@ -209,9 +239,22 @@ Page({
   //获取起始港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    this.setData({
-      polvalue: data
-    })
+    var reg = /^[A-z \,\;]{2,}$/;
+    if (!reg.test(data)) {
+     this.setData({
+      showRemind2: true,
+      showRemind1: false,
+       polvalue: data
+     })
+      return;
+    } else {
+      this.setData({
+        showRemind1: false,
+        showRemind2: false,
+        codePolList: [],
+        polvalue: data
+      })
+     }
     if (data.length < 2) {
       this.setData({
         pollist: []

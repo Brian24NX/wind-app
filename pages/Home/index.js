@@ -90,19 +90,23 @@ Page({
     } else if (type === '2') {
       this.setData({
         qiYunValue: '',
-        codePolList: []
+        codePolList: [],
+        showRemind5:false,
+        showRemind2:false
       })
     } else {
       this.setData({
         xieHuoValue: '',
-        codePodList: []
+        codePodList: [],
+        showRemind4:false,
+        showRemind3:false
       })
     }
   },
   setHuoGui(e) {
-    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
+    var reg = /^([ ]*[A-z0-9]+([\,\，]*)){0,3}$/;
     //去掉空格和大写问题
-    let value = e.detail.value.trim().toUpperCase();
+    let value = e.detail.value;
     if (!value) {
       this.setData({
         huoGuiValue: value,
@@ -113,7 +117,7 @@ Page({
     }
     
     // 不包含，类型的数据
-    if (!reg.test(value.replace(/,/g, ""))){
+    if (!reg.test(value)){
       this.setData({
         huoGuiValue: value,
         showRemind: true,
@@ -127,13 +131,17 @@ Page({
       showRemind: length > 3 ? true : false,
       huiguiType: 3
     })
-    // if(value.split(',')[0]==value.split(',')[1]||value.split(',')[0]==value.split(',')[2]||value.split(',')[1]==value.split(',')[2]){
-    //         this.setData({
-    //           huoGuiValue:value,
-    //           showRemind:true,
-    //           huiguiType:4
-    //         })
-    // }
+    if(length>=2&&legnth<3){
+        if(value.split(',')[0]==value.split(',')[1]||value.split(',')[0]==value.split(',')[2]||value.split(',')[1]==value.split(',')[2]){
+            this.setData({
+              huoGuiValue:value,
+              showRemind:true,
+              huiguiType:4
+            })
+      } 
+      return 
+    }
+    
   },
   // 获取追踪
   toHuoWu() {
@@ -148,27 +156,28 @@ Page({
       return
     }
     wx.navigateTo({
-      url: `/pages/Orders/index?str=${this.data.huoGuiValue}`
+      url: `/pages/Orders/index?str=${this.data.huoGuiValue.trim().toUpperCase()}`
     })
   },
   // 设置起运港
   setQiYun: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    // if (!reg.test(data)) {
+    var reg = /^[A-z \,\;]{2,}$/;
+     if (!reg.test(data)) {
       this.setData({
-    //     showRemind5: true,
-    //     showRemind2: false,
+         showRemind5: true,
+        showRemind2: false,
         qiYunValue: data
       })
-    //   return;
-    // } else {
-      // this.setData({
-    //     showRemind5: false,
-    //     showRemind2: false,
-    //     codePolList: [],
-        // qiYunValue: data
-      // })
+       return;
+     } else {
+       this.setData({
+         showRemind5: false,
+         showRemind2: false,
+         codePolList: [],
+         qiYunValue: data
+       })
+      }
       if (data.length < 2) {
         this.setData({
           codePolList: []
@@ -194,22 +203,21 @@ Page({
   // 设置卸货港
   setXieHuo: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    // var reg = /^([0-9a-zA-Z,])*([0-9a-zA-Z]+)$/;
-    // if (!reg.test(data)) {
+    var reg = /^[A-z \,\;]{2,}$/;
+    if (!reg.test(data)) {
       this.setData({
-    //     showRemind4: true,
-    //     showRemind3: false,
+        showRemind4: true,
+        showRemind3: false,
         xieHuoValue: data
       })
-    //   return;
-    // }
-    // this.setData({
-    //   showRemind4: false,
-    //   showRemind3: false,
-    //   codePodList: [],
-    //   xieHuoValue: data
-    // })
-    console.log(this.data.xieHuoValue);
+      return;
+    }
+    this.setData({
+      showRemind4: false,
+      showRemind3: false,
+      codePodList: [],
+      xieHuoValue: data
+    })
     if (data.length < 2) {
       if (data.length < 2) {
         this.setData({
@@ -259,43 +267,18 @@ Page({
   },
   // 船期搜索
   toChuanQi() {
-    var reg = /^([0-9a-zA-Z;])*([0-9a-zA-Z]+)$/;
-    // 先判断参数是否为空，再判断参数错误
+    // 先判断参数是否为空
     if (!this.data.qiYunValue) {
       this.setData({
         showRemind2: true
       })
-    // } else {
-    //   let length =  this.data.qiYunValue.split(';').length;
-    //   if (length!=2) {
-    //     this.setData({
-    //       showRemind2: false,
-    //       showRemind5: true
-    //     })
-    //   } else {
-    //     this.setData({
-    //       showRemind2: false,
-    //       showRemind5: false
-    //     })
-    //   }
+      return 
     }
     if (!this.data.xieHuoValue) {
       this.setData({
         showRemind3: true
       })
-    // } else {
-    //   let length =  this.data.xieHuoValue.split(';').length;
-    //   if (length!=2) {
-    //     this.setData({
-    //       showRemind3: false,
-    //       showRemind4: true
-    //     })
-    //   } else {
-    //     this.setData({
-    //       showRemind4: false,
-    //       showRemind3: false
-    //     })
-    //   }
+     return 
     }
     if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     let obj = {
