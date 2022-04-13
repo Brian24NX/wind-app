@@ -61,12 +61,12 @@
             <image src="../../assets/img/seniorsearch/bottomarrow.png" style="width:32rpx;height: 32rpx;position: relative;top: -60rpx;left: 570rpx;" />
           </picker>
         </view>
-        <view class="weekselect">
+        <view class="weekselect" style="top: -20rpx;">
           <image class="weekimg" src="../../assets/img/seniorsearch/week.png"></image>
           <text class="font font14 pos">未来</text>
           <pickerinputweek style="position: relative;left: 70rpx;" list="{{weeklist}}" _width="calc(100% - 52rpx)" _height="88rpx" bind:action="changeweek" actualvalue="id" showvalue="weeks"></pickerinputweek>
         </view>
-        <view class="btn">
+        <view class="btn" style="margin-top: 40rpx;">
           <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">搜索</button>
         </view>
       </form>

@@ -11,6 +11,9 @@ App({
     //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
     //   }
     // })
+    wx.removeStorageSync('polobject')
+    wx.removeStorageSync('podobject')
+    wx.setStorageSync('setHangXian', false)
     // 展示本地存储能力
     wx.getSystemInfo({
       success: res => {
