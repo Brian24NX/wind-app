@@ -58,7 +58,7 @@
     <view class="{{!filters.judgLand(podlist.transportation.meanOfTransport)?'margin40':''}}" wx:if="{{translist.length!=0}}" >
       <view class="transContrainer" wx:for="{{translist}}" wx:key="{{index}}">
         <!--海运-->
-        <view wx:if="{{item.transportation.meanOfTransport=='Vessel'&&pollist.transportation.meanOfTransport=='Vessel'&&podlist.transportation.meanOfTransport=='Vessel'}}">
+        <view wx:if="{{item.transportation.meanOfTransport=='Vessel'}}">
           <view class="transLeftContainer">
           <view class="redcircle"></view>
           <view class="line76"></view>
@@ -83,7 +83,7 @@
         </view>
 
         <!--陆运-->
-        <view class="{{pollist.transportation.meanOfTransport=='Vessel'?'maringtop':''}}" wx:if="{{filters.judgLand(item.transportation.meanOfTransport)||filters.judgLand(podlist.transportation.meanOfTransport)||filters.judgLand(pollist.transportation.meanOfTransport)}}">
+        <view class="{{pollist.transportation.meanOfTransport=='Vessel'?'maringtop':''}}" wx:if="{{(filters.judgLand(podlist.transportation.meanOfTransport)||filters.judgLand(pollist.transportation.meanOfTransport))&&filters.judgLand(item.transportation.meanOfTransport)}}">
         <view class="transLeftContainer">
           <view class="redcircle" wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}"></view>
           <view class="line76" wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}"></view>
