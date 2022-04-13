@@ -59,7 +59,6 @@ var judgLand=function(obj){
    }else{
     return false;
    }
-
 }
 module.exports = {
   fmtDate: fmtDate,

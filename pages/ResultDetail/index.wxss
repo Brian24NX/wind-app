@@ -102,10 +102,16 @@
 }
 .line60{
   width: 2rpx;
-  height: 100rpx;
+  height: 140rpx;
   background: #A6B2CC;
   border-radius: 2rpx;
   margin-left: 26rpx;
+}
+.maringtop{
+  margin-top:-40rpx;
+}
+.margin40{
+  margin-top: 40rpx;
 }
 .line108 {
   width: 2rpx;
@@ -276,7 +282,13 @@
   border-radius: 2rpx;
   margin-left: 26rpx;
 }
-
+.line20{
+  width: 2rpx;
+  height: 40rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
 .podContainer {
   padding: 0 30rpx 72rpx 30rpx;
 }

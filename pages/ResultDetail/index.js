@@ -22,9 +22,17 @@ Page({
     let detail=wx.getStorageSync('details');
     let arr=detail.routingDetails;
     let arrclone=[...arr];
-    let arrtop=arrclone.shift();
-    console.log(arr);
-    console.log(arrclone);
+    if(detail.routingDetails[0].transportation.meanOfTransport=='Vessel'){
+      let arrtop=arrclone.shift();
+      console.log(arr);
+      console.log(arrclone);
+    }
+    else{
+      let arrtop=arrclone.shift();
+      let arrbottom=arrclone.pop();
+      console.log(arr);
+      console.log(arrclone);
+    }
     this.setData({
       detaillist:detail,
       pollist:detail.routingDetails[0],
