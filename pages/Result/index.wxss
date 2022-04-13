@@ -31,7 +31,7 @@
 .searchResultTopContainer .searchTop .serchLeft .qiyunStr view {
   display: inline-block;
   white-space: nowrap; 
-  width: 430rpx; 
+  max-width: 430rpx; 
   overflow: hidden;
   text-overflow:ellipsis;
 }

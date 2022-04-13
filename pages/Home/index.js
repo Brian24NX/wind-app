@@ -272,7 +272,7 @@ Page({
   // 船期搜索
   toChuanQi() {
     // 先判断参数是否为空
-    if (!this.data.qiYunValue || this.data.xieHuoValue) {
+    if (!this.data.qiYunValue || !this.data.xieHuoValue) {
       if (!this.data.qiYunValue) {
         this.setData({
           showRemind2: true
