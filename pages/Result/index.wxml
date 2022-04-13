@@ -3,7 +3,13 @@
 <!--pages/Result/index.wxml-->
 <view class="searchResultTopContainer">
   <view class="searchTop">
-    <view class="serchLeft">{{placeOfLoading}} - {{placeOfDischarge}}</view>
+    <view class="serchLeft">
+      <view class="qiyunStr">
+        <view>{{placeOfLoading}}</view>
+        <text> - </text>
+      </view>
+      <view class="qiyunStr2">{{placeOfDischarge}}</view>
+    </view>
     <view class="searchLine"></view>
     <view class="searchTime">未来{{weekNum}}星期</view>
   </view>
@@ -30,7 +36,7 @@
     </view>
   </view>
 </view>
-<view class="resultContainers" style="padding-top: {{viewactived ? '390rpx' : '290rpx'}};padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
+<view class="resultContainers" style="padding-top: {{viewactived ? '410rpx' : '310rpx'}};padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
   <view wx:if="{{routinglist.length}}">
     <view class="oneResult" wx:for="{{routinglist}}" wx:key="index" bindtap="toDetail" data-id="{{index}}">
       <view class="tips">

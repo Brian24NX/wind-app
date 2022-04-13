@@ -11,18 +11,41 @@
 .searchResultTopContainer .searchTop {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
-  /* margin-top: 32rpx; */
-  padding: 0 30rpx;
-  height: 120rpx;
+  padding: 20rpx 30rpx 0;
+  height: 140rpx;
 }
 
 .searchResultTopContainer .searchTop .serchLeft {
   font-size: 48rpx;
   color: #04246A;
   width: 466rpx;
+}
+
+.searchResultTopContainer .searchTop .serchLeft .qiyunStr {
+  display: flex;
+  align-items: center;
+}
+
+.searchResultTopContainer .searchTop .serchLeft .qiyunStr view {
+  display: inline-block;
+  white-space: nowrap; 
+  width: 430rpx; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.searchResultTopContainer .searchTop .serchLeft .qiyunStr text {
+  margin-left: 10rpx;
+}
+
+.searchResultTopContainer .searchTop .serchLeft .qiyunStr2 {
+  display: inline-block;
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow:ellipsis;
 }
 
 .searchResultTopContainer .searchTop .searchLine {
