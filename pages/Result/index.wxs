@@ -1,5 +1,8 @@
 var fmtDate = function (obj) {
   if (!obj) return ''
+  if (obj.indexOf('T') > -1) {
+    obj = obj.split('T')[0] + ' ' + obj.split('T')[1].split('+')[0].split('-')[0]
+  }
   var time = getDate(obj);
   var year = time.getFullYear();
   var month = time.getMonth() + 1;
@@ -22,6 +25,9 @@ var fmtDate2 = function (obj) {
 
 var weekDay = function (obj) {
   if (!obj) return ''
+  if (obj.indexOf('T') > -1) {
+    obj = obj.split('T')[0] + ' ' + obj.split('T')[1].split('+')[0].split('-')[0]
+  }
   var date = getDate(obj).getDay();
   var week = '';
   switch (date) {
