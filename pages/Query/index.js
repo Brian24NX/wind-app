@@ -184,15 +184,16 @@ Page({
     let polpleace = this.data.polvalue;
     let podpleace = this.data.podvalue;
     let str = polpleace + '-' + podpleace;
-    if (history.length == 6) {
-      history.shift();
-
+    if (history.findIndex(item => item === str) === -1) {
+      if (history.length == 6) {
+        history.pop();
+      }
+      history.unshift(str);
+      this.setData({
+        array: history,
+      })
+      wx.setStorageSync('location', this.data.array);
     }
-    history.push(str);
-    this.setData({
-      array: history,
-    })
-    wx.setStorageSync('location', this.data.array);
     wx.navigateTo({
       url: '../Result/index',
     })
@@ -320,7 +321,7 @@ Page({
     this.setData({
       array: history
     })
-    console.log(this.data.array);
+    wx.setStorageSync('location', history)
   },
   deleteall() {
     let history = this.data.array;
@@ -328,12 +329,12 @@ Page({
     this.setData({
       array: history
     })
-    console.log(this.data.array);
+    wx.removeStorageSync('location')
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     let location=wx.getStorageSync('location');
     let polobject=wx.getStorageSync('polobject')
     let podobject=wx.getStorageSync('podobject');
