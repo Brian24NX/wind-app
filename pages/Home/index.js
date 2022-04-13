@@ -84,7 +84,7 @@ Page({
     if (type === '1') {
       this.setData({
         huoGuiValue: '',
-        showRemind: true,
+        showRemind: false,
         huiguiType: 1
       })
     } else if (type === '2') {
@@ -115,9 +115,9 @@ Page({
       })
       return
     }
-    
+    let regvalue =value.trim().toUpperCase()
     // 不包含，类型的数据
-    if (!reg.test(value)){
+    if (!reg.test(regvalue)){
       this.setData({
         huoGuiValue: value,
         showRemind: true,
@@ -131,7 +131,7 @@ Page({
       showRemind: length > 3 ? true : false,
       huiguiType: 3
     })
-    if(length>=2&&legnth<3){
+    if(value.split(',').length>=2&&value.split(',').length<3){
         if(value.split(',')[0]==value.split(',')[1]||value.split(',')[0]==value.split(',')[2]||value.split(',')[1]==value.split(',')[2]){
             this.setData({
               huoGuiValue:value,
