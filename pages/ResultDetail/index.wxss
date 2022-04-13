@@ -124,7 +124,7 @@
 }
 .line62 {
   width: 2rpx;
-  height: 62rpx;
+  height: 92rpx;
   background: #A6B2CC;
   border-radius: 2rpx;
   margin-left: 26rpx;

@@ -14,7 +14,6 @@
     </view>
   </view>
   <view class="resultDetailContainer" >
-  
     <!--海运-->
     <view class="polContainer" wx:if="{{pollist.transportation.meanOfTransport=='Vessel'}}">
       <view class="polLeftContainer">
@@ -26,7 +25,7 @@
       <view class="polrightContainer">
         <view class="polDate">{{filters.fmtDate(detaillist.departuredate)}} {{filters.weekday(detaillist.departuredate)}}</view>
         <view class="polLocation"><text class="pol">起运港</text><text class="polPro">{{pollist.pointFrom.location.name}},</text><text class="polCity">{{filters.str(pollist.pointFrom.location.internalCode)}}</text></view>
-        <view class="polEn">{{pollist.location.facility.name}}</view>
+        <view class="polEn">{{pollist.pointFrom.location.facility.name}}</view>
         <view class="polVgm"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">{{filters.fmtDate(pollist.pointFrom.vgmCutoffDate)}} {{filters.weekday(pollist.pointFrom.vgmCutoffDate)}}</text></view>
         <view class="polInter"><text>港口截关时间:</text><text class="InterDate">{{filters.fmtDate(pollist.pointFrom.portCutoffDate)}} {{filters.weekday(pollist.pointFrom.portCutoffDate)}}</text></view>
         <view class="polVes"><text>Vessel</text><text class="vesName">{{detaillist.routingDetails[0].transportation.vehicule.vehiculeName}}</text></view>
@@ -36,7 +35,7 @@
       </view>
     </view>
     <!--陆运-->
-    <view class="polContainer" wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'||pollist.transportation.meanOfTranspor=='FEEDER'||pollist.transportation.meanOfTranspor=='INTERMODAL'}}">
+    <view class="polContainer" wx:if="{{pollist.transportation.meanOfTransport=='RAIL'||pollist.transportation.meanOfTransport=='TRUCK'||pollist.transportation.meanOfTransport=='TRUCK / RAIL'||pollist.transportation.meanOfTransport=='FEEDER'||pollist.transportation.meanOfTransport=='INTERMODAL'}}">
       <view class="polLeftContainer">
         <view class="redcircle"></view>
         <view class="line36"></view>
@@ -44,12 +43,12 @@
         <view class="line85"></view>
       </view>
       <view class="polrightContainer">
-        <view class="polDate">{{filters.fmtDate(detaillist.departuredate)}} {{filters.weekday(detaillist.departuredate)}}</view>
+        <view class="polDate">{{filters.fmtDate(pollist.pointFrom.departureDateGmt)}} {{filters.weekday(pollist.pointFrom.departureDateGmt)?filters.weekday(pollist.pointFrom.departureDateGmt):'星期'}}</view>
         <view class="pooLocation"><text class="poo">始发地</text><text class="pooPro">{{pollist.pointFrom.location.name}},</text><text class="pooCity">{{filters.str(pollist.pointFrom.location.internalCode)}}</text></view>
         <view class="rail">{{pollist.transportation.meanOfTransport}}</view>
-        <view class="polFromDate">{{filters.fmtDate(pollist.pointTo.arrivalDateGmt)}} {{filters.weekday(pollist.pointTo.arrivalDateGmt)}}</view>
+        <view class="polFromDate">{{filters.fmtDate(pollist.pointTo.arrivalDateGmt)}} {{filters.weekday(pollist.pointTo.arrivalDateGmt)?filters.weekday(pollist.pointTo.arrivalDateGmt):'星期'}}</view>
         <view class="polLocation"><text class="pol">起运港</text><text class="polPro">{{pollist.pointTo.location.name}},</text><text class="polCity">CN</text></view>
-        <view class="polEn">{{pollist.location.facility.name}}</view>
+        <view class="polEn">{{pollist.pointTo.location.facility.name}}</view>
       </view>
     </view>
     <view wx:if="{{translist.length!=0}}" >
@@ -95,7 +94,7 @@
           <view class="transSer"><text>Service</text><text class="serName">{{item.transportation.voyage.service.code}}</text></view>
           <view class="transDate top">{{filters.fmtDate(item.pointFrom.departureDateGmt)}} {{filters.weekday(item.pointFrom.departureDateGmt)}}</view>
           <view class="transtoLocation"> <text class="pod">卸货港</text><text class="transPro">{{item.pointTo.location.name}},</text><text class="transCity">{{item.pointTo.location.internalCode}}</text></view>
-          <view class="transDate top">{{filters.fmtDate(item.pointTo.departureDateGmt)}} {{filters.weekday(item.pointTo.departureDateGmt)}}</view>
+          <view class="transDate top">{{filters.fmtDate(item.pointTo.arrivalDateGmt)}} {{filters.weekday(item.pointTo.arrivalDateGmt)}}</view>
         </view>
        </view>
       </view>
@@ -108,7 +107,7 @@
       </view>
       <view class="podRightContainer">
         <view class="podDate"><text>{{filters.fmtDate(detaillist.arrivaldate)}} {{filters.weekday(detaillist.arrivaldate)}}</text></view>
-        <view class="podLocation"><text class="pod">目的港</text><text class="podPro">{{detaillist.pointto}},</text><text class="podCity">{{filters.str(podlist.location.internalCode)}}</text></view>
+        <view class="podLocation"><text class="pod">卸货港</text><text class="podPro">{{podlist.pointTo.location.name}},</text><text class="podCity">{{filters.str(podlist.pointTo.location.internalCode)}}</text></view>
         <view class="podEn">{{podlist.pointTo.location.facility.name}}</view>
       </view>
     </view>
@@ -121,8 +120,8 @@
         </view>
         <view class="podRightContainer" >
             <view class="rail">{{podlist.transportation.meanOfTransport}}</view>
-            <view class="podDate">{{filters.fmtDate(detaillist.arrivaldate)}} {{filters.weekday(detaillist.arrivaldate)}}</view>
-            <view class="podLocation"><text class="pod">最终目的地</text><text class="podPro">{{detaillist.pointto}},</text><text class="podCity">{{filters.str(podlist.pointTo.location.internalCode)}}</text></view>
+            <view class="podDate">{{filters.fmtDate(podlist.pointTo.arrivalDateGmt)}} {{filters.weekday(podlist.pointTo.arrivalDateGmt)}}</view>
+            <view class="podLocation"><text class="pod">最终目的地</text><text class="podPro">{{podlist.pointTo.location.name}},</text><text class="podCity">{{filters.str(podlist.pointTo.location.internalCode)}}</text></view>
             <view class="podEn">{{podlist.pointTo.location.facility.name}}</view>
         </view>
     </view>
