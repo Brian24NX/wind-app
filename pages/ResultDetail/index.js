@@ -23,7 +23,6 @@ Page({
     let arr=detail.routingDetails;
     let arrclone=[...arr];
     let arrtop=arrclone.shift();
-    let arrbottom=arrclone.pop();
     console.log(arr);
     console.log(arrclone);
     this.setData({

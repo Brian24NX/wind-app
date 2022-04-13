@@ -60,7 +60,6 @@
 }
 
 .polContainer {
-  min-height: 360rpx;
   padding: 28rpx 30rpx 0 30rpx
 }
 
@@ -124,7 +123,7 @@
 }
 .line62 {
   width: 2rpx;
-  height: 92rpx;
+  height: 120rpx;
   background: #A6B2CC;
   border-radius: 2rpx;
   margin-left: 26rpx;
@@ -272,7 +271,7 @@
 }
 .line151 {
   width: 2rpx;
-  height: 280rpx;
+  height: 302rpx;
   background: #A6B2CC;
   border-radius: 2rpx;
   margin-left: 26rpx;
