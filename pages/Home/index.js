@@ -368,6 +368,7 @@ Page({
       podcode: this.data.xieHuoCode
     }
     wx.setStorageSync('podobject', podobject);
+    wx.setStorageSync('setHangXian', true)
     wx.switchTab({
       url: '/pages/Query/index',
     })

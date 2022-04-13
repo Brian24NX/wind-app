@@ -335,19 +335,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    let location=wx.getStorageSync('location');
-    let polobject=wx.getStorageSync('polobject')
-    let podobject=wx.getStorageSync('podobject');
+    let location=wx.getStorageSync('location')
     this.setData({
       date: this.getDate(),
       search: '离港时间',
       array:location,
       pollist:[],
-      podlist:[],
-      polvalue:polobject.polvalue,
-      podvalue:podobject.podvalue,
-      polcode:polobject.polcode,
-      podcode:podobject.podcode
+      podlist:[]
     })
   },
 
@@ -360,6 +354,19 @@ Page({
       this.getTabBar().setData({
         selected: 1
       })
+    }
+    if (wx.getStorageSync('setHangXian')) {
+      let polobject=wx.getStorageSync('polobject')
+      let podobject=wx.getStorageSync('podobject')
+      this.setData({
+        polvalue:polobject.polvalue,
+        podvalue:podobject.podvalue,
+        polcode:polobject.polcode,
+        podcode:podobject.podcode
+      })
+      wx.setStorageSync('setHangXian', false)
+      wx.removeStorageSync('polobject')
+      wx.removeStorageSync('podobject')
     }
   },
   //中英文切换
