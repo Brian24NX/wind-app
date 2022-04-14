@@ -34,6 +34,7 @@ const request = ( { url, data, method, contentType, hideLoading }) => {
 			},
 			success: (res) => {
 				console.log(res)
+				wx.hideLoading();
 				// 返回成功提示信息
 				if (res.statusCode === 200) {
 					// 未登录拦截
@@ -62,11 +63,12 @@ const request = ( { url, data, method, contentType, hideLoading }) => {
 				}
 			},
 			fail: (res) => {
+				wx.hideLoading();
 				// 返回错误提示信息
 				reject('网络请求失败')
 			},
 			complete: () => {
-				wx.hideLoading();
+				// wx.hideLoading();
 			}
 		})
 	})
