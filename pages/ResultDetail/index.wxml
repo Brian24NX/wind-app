@@ -54,24 +54,23 @@
         <view class="polEn">{{podlist.pointFrom.location.facility.name}}</view>
       </view>
     </view>
-    <view class="{{!filters.judgLand(podlist.transportation.meanOfTransport)?'margin40':''}}" wx:if="{{translist.length!=0}}" >
+    <view  wx:if="{{translist.length!=0}}" >
     <view class="transContrainer" wx:for="{{translist}}" wx:key="{{index}}">
         <!--海运中间 陆海:出发港是火车,-->
         <view wx:if="{{item.transportation.meanOfTransport=='Vessel'}}">
           <view class="transLeftContainer">
-          <view class="redcircle"></view>
-          <view class="line76"></view>
+          <view class="redcircle" ></view>
+          <view class="line76" ></view>
           <image class="ship" src="../../assets/img/result/huolunhao@2x.png"></image>
           <view class="line151"></view>
           </view>
           <view class="transRightContainer">
-          <view class="transDate" wx:if="{{index==0}}">{{filters.fmtDate(pollist.pointTo.arrivalDateLocal)}} {{filters.weekday(pollist.pointTo.arrivalDateLocal)}}</view>
-          <view class="transDate" wx:if="{{index>0}}">{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
-          <image class="transfership" src="../../assets/img/result/pulltransfer.png"></image>
-          <view class="transLocation"><text class="locaPro">{{item.pointFrom.location.name}}</text><text class="localCity">{{filters.str(item.pointFrom.location.internalCode)}}</text></view>
-          <view class="transforLoaction"><text class="forLocaPro">{{item.pointFrom.location.facility.name}}</text></view>
+          <view class="transDate" wx:if="{{item.transportation.meanOfTransport=='Vessel'&&index==0}}">{{filters.fmtDate(pollist.pointTo.arrivalDateLocal)}} {{filters.weekday(pollist.pointTo.arrivalDateLocal)}}</view>
+          <view class="transDate" wx:if="{{item.transportation.meanOfTransport=='Vessel'&&index>0}}">{{filters.fmtDate(item.toppointTo.arrivalDateLocal)}} {{filters.weekday(pollist.toppointTo.arrivalDateLocal)}}</view>
+          <image  class="transfership" src="../../assets/img/result/pulltransfer.png"></image>
+          <view  class="transLocation"><text class="locaPro">{{item.pointFrom.location.name}}</text><text class="localCity">{{filters.str(item.pointFrom.location.internalCode)}}</text></view>
+          <view  class="transforLoaction"><text class="forLocaPro">{{item.pointFrom.location.facility.name}}</text></view>
           <view class="transforDate" wx:if="{{index==0}}">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
-          <view class="trnaforDate" wx:if="{{index>0}}">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
           <view class="transVgm"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">{{filters.fmtDate(item.pointFrom.vgmCutoffDate)}} {{filters.weekday(item.pointFrom.vgmCutoffDate)}}</text></view>
           <view class="transInter"><text>港口截关时间:</text><text class="InterDate">{{filters.fmtDate(item.pointFrom.portCutoffDate)}} {{filters.weekday(item.pointFrom.portCutoffDate)}}</text></view>
           <view class="transVes"><text>Vessel</text><text class="vesName">{{item.transportation.vehicule.vehiculeName}}</text></view>
@@ -87,19 +86,20 @@
           <view wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}"  class="redcircle" ></view>
           <view wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}"  class="line76" ></view>
           <image wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}" class="ship" src="../../assets/img/result/huolunhao@2x.png" ></image>
-          <view class="line40" ></view>
-          <view class="redcircle" ></view>
-          <view class="line60" ></view>
+          <view class="line40" wx:if="{{filters.judgLand(podlist.transportation.meanOfTransport)}}"  ></view>
+          <view class="redcircle"  wx:if="{{filters.judgLand(podlist.transportation.meanOfTransport)}}" ></view>
+          <view class="line60"  wx:if="{{filters.judgLand(podlist.transportation.meanOfTransport)}}" ></view>
         </view>
         <view class="transRightContainer">
-          <view class="transDate" wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
+          <view class="transDate" wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport&&index==0)}}">{{filters.fmtDate(pollist.pointFrom.departureDateLocal)}} {{filters.weekday(pollist.pointFrom.departureDateLocal)}}</view>
+          <view class="transDate" wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)&&index>1}}">{{filters.fmtDate(item.toppointTo.arrivalDateLocal)}} {{filters.weekday(item.toppointTo.arrivalDateLocal)}}</view>
           <view class="transVgm" style="margin-top: 48rpx;" wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}"><text>验证集装箱总重量(VGM)截止时间:</text><text class="vgmDate">{{filters.fmtDate(item.pointFrom.vgmCutoffDate)}} {{filters.weekday(item.pointFrom.vgmCutoffDate)}} </text></view>
           <view class="transInter" wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}"><text>港口截关时间:</text><text class="InterDate">{{filters.fmtDate(item.pointFrom.portCutoffDate)}} {{filters.weekday(item.pointFrom.portCutoffDate)}} </text></view>
           <view class="transVes" wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}"><text>Vessel</text><text class="vesName">{{item.transportation.vehicule.vehiculeName}}</text></view>
           <view class="transSer" wx:if="{{filters.judgLand(pollist.transportation.meanOfTransport)}}"><text>Service</text><text class="serName">{{item.transportation.voyage.service.code}}</text></view>
-          <view class="transDate top"  >{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
-          <view class="transtoLocation"> <text class="pod">卸货港</text><text class="transPro">{{item.pointFrom.location.name}},</text><text class="transCity">{{item.pointFrom.location.internalCode}}</text></view>
-          <view class="transDate top" >{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
+          <view class="transDate top" wx:if="{{filters.judgLand(podlist.transportation.meanOfTransport)}}" >{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
+          <view class="transtoLocation" wx:if="{{filters.judgLand(podlist.transportation.meanOfTransport)}}"> <text class="pod">卸货港</text><text class="transPro">{{item.pointFrom.location.name}},</text><text class="transCity">{{item.pointFrom.location.internalCode}}</text></view>
+          <view class="transDate top" wx:if="{{filters.judgLand(podlist.transportation.meanOfTransport)}}">{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
         </view>
        </view>
       </view>
