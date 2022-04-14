@@ -22,11 +22,15 @@ Page({
     let detail=wx.getStorageSync('details');
     let arr=detail.routingDetails;
       let arrclone=[...arr];
+      // arrclone.forEach((item,index)=>{
+      //       item[index].toppointTo=item[index-1].pointTo
+      // })
     //如果数据大于3条并且第一条数据为陆地的时候， 陆海转运 并且第一条为海的时候中心值不处理 海陆转运 并且第一条为陆  陆海陆为两个陆地 中间的对象换为RAIL
     //如果数据为两条，两个海为直达，3个海
     //
-    console.log(arr.length)
     if(arrclone.length==3){
+      arrclone[1].toppointTo=arrclone[0].pointTo;
+      arrclone[2].toppointTo=arrclone[1].pointTo;
       // 陆陆
       if(arrclone[0].transportation.meanOfTransport=='RAIL'&&arrclone[2].transportation.meanOfTransport=='RAIL'){
         arrclone[1].transportation.meanOfTransport='RAIL'
@@ -35,10 +39,9 @@ Page({
         
       }
       //陆海
-     else if(arrclone[0].transportation.meanOfTransport=='RAIL'&&arrclone[2].transportation.meanOfTransport=='Vessel'){
+      else if(arrclone[0].transportation.meanOfTransport=='RAIL'&&arrclone[2].transportation.meanOfTransport=='Vessel'){
+        arrclone[1].transportation.meanOfTransport='RAIL'
         let arrtop=arrclone.shift();
-        let arrbottom=arrclone.pop();
-        
       }
       // 海陆 两次循环
       else if(arrclone[0].transportation.meanOfTransport=='RAIL'&&arrclone[2].transportation.meanOfTransport=='Vessel'){
@@ -52,6 +55,7 @@ Page({
           ;
       }
     }else if(arrclone.length==2){
+      arrclone[1].toppointTo=arrclone[0].pointTo;
         //陆海
         if(arrclone[0].transportation.meanOfTransport==='RAIL'&&arrclone[1].transportation.meanOfTransport=='Vessel'){
               let arrtop=arrclone.shift();
@@ -70,14 +74,19 @@ Page({
           
         }
     }else if(arrclone.length==1){
+        
           let arrtop=arrclone.shift();
           
     }else if(arrclone.length=4){
+      arrclone.routingDetails[1].toppointTo=arrclone.routingDetails[0].pointTo
+      arrclone.routingDetails[2].toppointTo=arrclone.routingDetails[1].pointTo
+      arrclone.routingDetails[3].toppointTo=arrclone.routingDetails[2].pointTo
           arrclone[3].transportation.meanOfTransport='Vessel'
           let arrtop=arrclone.shift();
     }else{
       let arrtop=arrclone.shift();
     }
+    console.log(arrclone);
     this.setData({
       detaillist:detail,
       pollist:detail.routingDetails[0],
