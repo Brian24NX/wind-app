@@ -46,7 +46,6 @@ Page({
       // 海陆 两次循环
       else if(arrclone[0].transportation.meanOfTransport=='RAIL'&&arrclone[2].transportation.meanOfTransport=='Vessel'){
         let arrtop=arrclone.shift();
-        
       }
       // 海海多层
       else{

@@ -11,7 +11,9 @@ var fmtDate = function (obj) {
   return obj.split('T')[0]
 }
 var weekday = function (obj) {
+  console.log(obj + 'obj');
   if(!obj) return ''
+  obj = obj.split('T')[0].split('-').join('/')
   var date = getDate(obj).getDay();
   var week = '';
   switch (date) {

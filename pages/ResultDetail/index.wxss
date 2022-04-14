@@ -44,9 +44,6 @@
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #4468BA;
-  position: relative;
-  top: -4rpx;
-  left: 10rpx;
 }
 
 .resultDetailContainer {
@@ -108,8 +105,8 @@
 .maringtop{
   margin-top:-40rpx;
 }
-.margin40{
-  margin-top: 40rpx;
+.margin30{
+  margin-top: 30rpx;
 }
 .line108 {
   width: 2rpx;
@@ -245,6 +242,8 @@
 }
 .transContrainer {
   padding: 0 30rpx 0 30rpx;
+  display: flex;
+  flex-direction: column;
 }
 
 .transContrainer::after {
@@ -256,8 +255,6 @@
 }
 .transRightContainer{
   margin-left: 72rpx;
-  position: relative; 
-  top: -10rpx;
 }
 .line76 {
   width: 2rpx;
