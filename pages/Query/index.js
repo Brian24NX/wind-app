@@ -55,7 +55,9 @@ Page({
     showRemind1: false,
     showRemind2: false,
     showRemind3: false,
-    showRemind4: false
+    showRemind4: false,
+    showDelete1: false,
+    showDelete2: false
   },
   getlocation(e) {
     let index = e.currentTarget.dataset.index;
@@ -103,21 +105,6 @@ Page({
   },
   // 提交搜索
   submit() {
-    // 先判断参数是否为空
-    // if (!this.data.polvalue) {
-    //   this.setData({
-    //     showRemind1: true,
-    //     showRemind2: false
-    //   })
-    //   return
-    // }
-    // if (!this.data.podvalue) {
-    //   this.setData({
-    //     showRemind3: true,
-    //     showRemind4: false
-    //   })
-    //   return
-    // }
     if (!this.data.polvalue || !this.data.podvalue) {
       if (!this.data.polvalue) {
         this.setData({
@@ -261,21 +248,9 @@ Page({
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    // var reg = /^[A-z \,\;]{2,}$/;
-    // if (!reg.test(data)) {
-    //   this.setData({
-    //     showRemind4: true,
-    //     showRemind3: false,
-    //     podvalue: data
-    //   })
-    //   return;
-    // }
-    // this.setData({
-    //   showRemind4: false,
-    //   showRemind3: false,
-    //   codePodList: [],
-    //   podvalue: data
-    // })
+    this.setData({
+      showDelete2: data ? true : false
+    })
     if (data.length < 2) {
       this.setData({
         podlist: []
@@ -299,22 +274,9 @@ Page({
   //获取起始港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    // var reg = /^[A-z \,\;]{2,}$/;
-    // if (!reg.test(data)) {
-    //   this.setData({
-    //     showRemind2: true,
-    //     showRemind1: false,
-    //     polvalue: data
-    //   })
-    //   return;
-    // } else {
-    //   this.setData({
-    //     showRemind1: false,
-    //     showRemind2: false,
-    //     codePolList: [],
-    //     polvalue: data
-    //   })
-    // }
+    this.setData({
+      showDelete1: data ? true : false
+    })
     if (data.length < 2) {
       this.setData({
         pollist: []
@@ -328,28 +290,24 @@ Page({
         this.setData({
           pollist: res.data || []
         })
-      } else {
-        // this.setData({
-        //   polvalue: data
-        // })
       }
     })
-    // this.setData({
-    //   viewShowedPol: true,
-    //   // polvalue: ""
-    // })
   }, 500),
   deleteValue(e) {
     const type = e.currentTarget.dataset.type
     if (type === '1') {
       this.setData({
         polvalue: '',
-        pollist: []
+        polcode: '',
+        pollist: [],
+        showDelete1: false
       })
     } else {
       this.setData({
         podvalue: '',
-        podlist: []
+        podcode: '',
+        podlist: [],
+        showDelete2: false
       })
     }
   },
@@ -372,7 +330,6 @@ Page({
     })
   },
   onclose(e) {
-    console.log(e);
     let index = e.currentTarget.dataset.index;
     let history = this.data.array;
     history.splice(index, 1)

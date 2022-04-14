@@ -64,7 +64,7 @@ function getShopName(list) {
   for (var index = 0; index < list.length; index++) {
     var element = list[index];
     if (element.transportation.meanOfTransport === 'Vessel') {
-      name = element.transportation.vehicule.vehiculeName
+      name = element.transportation.vehicule ? element.transportation.vehicule.vehiculeName : ''
       break 
     }
   }

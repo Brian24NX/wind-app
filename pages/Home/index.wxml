@@ -30,7 +30,7 @@
       <view class="xialaInput">
         <view class="inputs {{showRemind2||showRemind5 ? 'noRequestBorder' : ''}}">
           <input value="{{qiYunValue}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setQiYun" />
-          <view class="delete" catchtap="clearInput" data-type="2" wx:if="{{qiYunValue}}">
+          <view class="delete" catchtap="clearInput" data-type="2" wx:if="{{showDelete1}}">
             <image src="../../assets/img/search/close@2x.png"></image>
           </view>
         </view>
@@ -44,7 +44,7 @@
       <view class="xialaInput">
         <view class="inputs {{showRemind3||showRemind4 ? 'noRequestBorder' : ''}}">
           <input value="{{xieHuoValue}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setXieHuo" />
-          <view class="delete" catchtap="clearInput" data-type="3" wx:if="{{xieHuoValue}}">
+          <view class="delete" catchtap="clearInput" data-type="3" wx:if="{{showDelete2}}">
             <image src="../../assets/img/search/close@2x.png"></image>
           </view>
         </view>

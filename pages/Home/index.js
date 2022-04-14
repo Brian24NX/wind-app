@@ -47,6 +47,8 @@ Page({
     codePodList: [],
     resultlist: {},
     swiperindex: 0,
+    showDelete1: false,
+    showDelete2: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -79,7 +81,6 @@ Page({
     })
   },
   clearInput(e) {
-    console.log(e)
     const type = e.currentTarget.dataset.type
     if (type === '1') {
       this.setData({
@@ -90,16 +91,20 @@ Page({
     } else if (type === '2') {
       this.setData({
         qiYunValue: '',
+        qiYunCode: '',
         codePolList: [],
         showRemind5: false,
-        showRemind2: false
+        showRemind2: false,
+        showDelete1: false
       })
     } else {
       this.setData({
         xieHuoValue: '',
+        xieHuoCode: '',
         codePodList: [],
         showRemind4: false,
-        showRemind3: false
+        showRemind3: false,
+        showDelete2: false
       })
     }
   },
@@ -164,20 +169,9 @@ Page({
   // 设置起运港
   setQiYun: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    // var reg = /^[A-z \,\;]{2,}$/;
-    // if (!reg.test(data)) {
-    //   this.setData({
-    //     showRemind5: true,
-    //     showRemind2: false
-    //   })
-    //   return;
-    // } else {
-    //   this.setData({
-    //     showRemind5: false,
-    //     showRemind2: false,
-    //     codePolList: []
-    //   })
-    // }
+    this.setData({
+      showDelete1: data ? true : false
+    })
     if (data.length < 2) {
       this.setData({
         codePolList: []
@@ -198,21 +192,9 @@ Page({
   // 设置卸货港
   setXieHuo: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    // var reg = /^[A-z \,\;]{2,}$/;
-    // if (!reg.test(data)) {
-    //   this.setData({
-    //     showRemind4: true,
-    //     showRemind3: false,
-    //     // xieHuoValue: data
-    //   })
-    //   return;
-    // }
-    // this.setData({
-    //   showRemind4: false,
-    //   showRemind3: false,
-    //   codePodList: [],
-    //   // xieHuoValue: data
-    // })
+    this.setData({
+      showDelete2: data ? true : false
+    })
     if (data.length < 2) {
       this.setData({
         codePolList: []
@@ -344,10 +326,6 @@ Page({
         }
 
       } else {
-        // this.setData({
-        //   qiYunValue: '',
-        //   xieHuoValue: ''
-        // })
         wx.showToast({
           title: '请求数据不存在或者网络错误,请您重试!',
           icon: 'none',
@@ -372,10 +350,6 @@ Page({
     wx.navigateTo({
       url: '../Result/index',
     })
-    // this.setData({
-    //   qiYunValue: '',
-    //   xieHuoValue: ''
-    // })
   },
   // 高级查询
   toAdvancedSearch() {
