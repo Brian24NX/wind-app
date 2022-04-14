@@ -20,8 +20,8 @@
 
 .carddate image,
 .cardtranshipment image {
-  width: 28rpx;
-  height: 28rpx;
+  width: 40rpx;
+  height: 36rpx;
 }
 
 .cardContainer {
@@ -36,6 +36,8 @@
 .carddate,
 .cardtranshipment {
   padding-top: 10rpx;
+  display: flex;
+  align-items: center;
 }
 
 .carddate text,
@@ -44,6 +46,7 @@
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #4468BA;
+  margin-left: 10rpx;
 }
 
 .resultDetailContainer {
@@ -52,258 +55,179 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  padding: 30rpx 0;
 }
 
-.polContainer {
-  padding: 28rpx 30rpx 0 30rpx
+.yunshuContainers {
+  padding: 0 20rpx 0 80rpx;
+  
 }
 
-.polContainer::after {
-  clear: both;
+.contents {
+  position: relative;
 }
 
-.polLeftContainer {
-  float: left;
-  margin-top: 16rpx;
-}
-.polrightContainer{
-  margin-left: 72rpx;
-}
-.ship {
+.contents .leftIcons {
   width: 56rpx;
-  height: 54rpx;
+  height: calc(100% + 20rpx);
+  position: absolute;
+  left: -60rpx;
+  top: 26rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.redcircle {
+.contents .last {
+  height: calc(100% - 35rpx);
+}
+
+.leftIcons .leftLine {
+  width: 0;
+  height: 100%;
+  border-left: 1rpx solid #A6B2CC;
+}
+
+.leftIcons .lineDto {
   width: 16rpx;
   height: 16rpx;
-  background: #E20202;
   border-radius: 50%;
-  margin-left: 20rpx;
-}
-.line36{
-  width: 2rpx;
-  height: 72rpx;
-  background: #A6B2CC;
-  border-radius: 2rpx;
-  margin-left: 26rpx;
-}
-.line40{
-  width: 2rpx;
-  height: 80rpx;
-  background: #A6B2CC;
-  border-radius: 2rpx;
-  margin-left: 26rpx;
-}
-.line60{
-  width: 2rpx;
-  height: 140rpx;
-  background: #A6B2CC;
-  border-radius: 2rpx;
-  margin-left: 26rpx;
-}
-.maringtop{
-  margin-top:-40rpx;
-}
-.margin30{
-  margin-top: 30rpx;
-}
-.line108 {
-  width: 2rpx;
-  height: 216rpx;
-  background: #A6B2CC;
-  border-radius: 2rpx;
-  margin-left: 26rpx;
-}
-.line85{
-   width: 2rpx;
-   height:170rpx ;
-   background: #A6B2CC;
-   border-radius: 2rpx;
-   margin-left: 26rpx;
-}
-.line62 {
-  width: 2rpx;
-  height: 120rpx;
-  background: #A6B2CC;
-  border-radius: 2rpx;
-  margin-left: 26rpx;
+  background-color: #E20202;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
 }
 
-.polDate,.polFromDate,
-.transDate,.transforDate,
-.podDate {
+.leftIcons .location {
+  position: absolute;
+  left: 50%;
+  bottom: -14rpx;
+  transform: translateX(-50%);
+  width: 28rpx;
+  height: 38rpx;
+}
+
+.leftIcons .shipIcon {
+  width: 56rpx;
+  height: 54rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.leftIcons .freight {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.leftIcons .zhuanyun {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: -20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gangKouNames {
+  font-size: 24rpx;
+  color: #2B74FF;
+  margin-bottom: 10rpx;
+}
+
+.yunshuContainers .yunshuContainer .timeContainer {
   font-size: 28rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #04246A;
+  margin-bottom: 12rpx;
 }
-.transforDate{
-  position: relative; 
-  top: -14rpx;
+
+.rails {
+  font-size: 24rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #6B7790;
+  margin-top: 20rpx;
 }
-.polLocation,.podLocation{
-  margin-top: 12rpx;
+
+.yunshuContainers .yunshuContainer .nameContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
 }
-.pol,
-.pod,.poo {
+
+.yunshuContainers .yunshuContainer .nameContainer .tags {
   width: 102rpx;
   height: 32rpx;
-  background: #E6EAEF;
+  background-color: #E6EAEF;
   border-radius: 16rpx;
   font-size: 20rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #04246A;
-}
-.freight{
-  width: 56rpx;
-  height: 54rpx;
+  text-align: center;
+  line-height: 32rpx;
+  margin-right: 12rpx;
 }
 
-.polPro,.pooPro,.transPro,
-.podPro,.locaPro,.forLocaPro{
-  color: #2B74FF;
-  font-size: 12px;
-  font-family: PingFangSC-Regular;
-  margin-left: 20rpx;
-}
-.rail{
+.names {
   font-size: 24rpx;
-  color:#6B7790;
-  margin-bottom: 40rpx;
+  color: #2B74FF;
 }
-.polCity,.pooCity,.transCity,
-.podCity,.localCity {
-  font-size: 12px;
+
+.code {
+  font-size: 24rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #071E5D;
-  margin-left: 10rpx;
 }
 
-.transLocation,.transforLoaction{
-  position: relative; 
-  top: -80rpx;
-  left: 80rpx;
-}
-.transtoLocation{
-    position: relative;
-    top: 20rpx;
-}
-.top{
-    margin-top: 40rpx;
-}
-.polEn,
-.podEn {
+.yunshuContainers .yunshuContainer .gangKouName {
   font-size: 24rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #071E5D;
-  margin-top: 12rpx;
+  margin-bottom: 30rpx;
 }
-.polVgm,
-.transVgm,.polVes,.transVes,.polVoy,.transVoy{
-  margin-top: 30rpx;
-  margin-left: 38rpx;
-}
-.transfership{
-    width: 80rpx;
-    height: 84rpx;
-    margin-left: 10rpx;
-}
-.transInter,.polInter,.polSer,.transSer,.polVox,.transVox{
-  margin-left: 38rpx;
-  margin-top: 4rpx; 
-}
-.polVgm,
-.transVgm,.transInter,.polInter,.polVes,.transVes,.polSer,.transSer,.polVoy,.polVox,.transVoy,.transVox {
+
+.yunshuContainers .yunshuContainer .gangKouTime {
   font-size: 20rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #6B7790;
+  padding-left: 36rpx;
 }
-.vgmDate,.InterDate,.vesName{
-  font-size: 20rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
+
+.yunshuContainers .yunshuContainer .gangKouTime .time {
   color: #071E5D;
-  margin-left: 20rpx;
 }
-.serName,.voxName{
+
+.yunshuContainers .yunshuContainer .shipName {
   font-size: 20rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
+  padding-left: 36rpx;
+  color: #6B7790;
+}
+
+.yunshuContainers .yunshuContainer .shipName text:nth-last-of-type(1) {
+  color: #071E5D;
+  margin-left: 30rpx;
+}
+
+.yunshuContainers .yunshuContainer .other text:nth-last-of-type(1) {
   color: #2B74FF;
-  margin-left: 20rpx;
+  margin-left: 30rpx;
 }
-.voyName{
-  margin-left: 20rpx;
-}
-.transContrainer {
-  padding: 0 30rpx 0 30rpx;
+
+.diquContainer {
   display: flex;
-  flex-direction: column;
-}
-
-.transContrainer::after {
-  clear: both;
-}
-
-.transLeftContainer {
-  float: left;
-}
-.transRightContainer{
-  margin-left: 72rpx;
-}
-.line76 {
-  width: 2rpx;
-  height: 152rpx;
-  background: #A6B2CC;
-  border-radius: 2rpx;
-  margin-left: 26rpx;
-}
-.line30{
-  width: 2rpx;
-  height: 30rpx;
-  background: #A6B2CC;
-  border-radius: 2rpx;
-  margin-left: 26rpx;
-}
-.line151 {
-  width: 2rpx;
-  height: 302rpx;
-  background: #A6B2CC;
-  border-radius: 2rpx;
-  margin-left: 26rpx;
-}
-.line20{
-  width: 2rpx;
-  height: 40rpx;
-  background: #A6B2CC;
-  border-radius: 2rpx;
-  margin-left: 26rpx;
-}
-.podContainer {
-  padding: 0 30rpx 72rpx 30rpx;
-}
-
-.podContainer::after {
-  clear: both;
-}
-
-.podLeftContainer {
-  float: left;
-}
-
-.podRightContainer {
-  margin-left: 72rpx;
-  position: relative;
-  top: 20rpx;
-}
-
-.location {
-  width: 28rpx;
-  height: 38rpx;
-  margin-left: 14rpx;
+  align-items: center;
 }

@@ -1,0 +1,309 @@
+/* pages/ResultDetail/index.wxss */
+.resultContainers {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30rpx;
+  background-color: #F0F1F5;
+}
+
+.resultContainers .resultCardContainers {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.resultContainers .resultCardContainers .resultCardContainer {
+  padding: 40rpx 40rpx 20rpx;
+  background: url(https://mmbiz.qpic.cn/mmbiz_png/HR3PlALDED2iaALibNMDoO1XPsH1LpS8YxIArdjiaEFtQicTQ3ticTNOrdaEicPYeNZibeqThVFu6QXRpicicO0lrZuRTtw/0?wx_fmt=png) no-repeat;
+  background-position: bottom right;
+  background-size: auto;
+}
+
+.carddate image,
+.cardtranshipment image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.cardContainer {
+  font-size: 48rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+  line-height: 66rpx;
+  word-break: break-all;
+}
+
+.carddate,
+.cardtranshipment {
+  padding-top: 10rpx;
+}
+
+.carddate text,
+.cardtranshipment text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #4468BA;
+}
+
+.resultDetailContainer {
+  width: 100%;
+  margin-top: 30rpx;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.polContainer {
+  padding: 28rpx 30rpx 0 30rpx
+}
+
+.polContainer::after {
+  clear: both;
+}
+
+.polLeftContainer {
+  float: left;
+  margin-top: 16rpx;
+}
+.polrightContainer{
+  margin-left: 72rpx;
+}
+.ship {
+  width: 56rpx;
+  height: 54rpx;
+}
+
+.redcircle {
+  width: 16rpx;
+  height: 16rpx;
+  background: #E20202;
+  border-radius: 50%;
+  margin-left: 20rpx;
+}
+.line36{
+  width: 2rpx;
+  height: 72rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.line40{
+  width: 2rpx;
+  height: 80rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.line60{
+  width: 2rpx;
+  height: 140rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.maringtop{
+  margin-top:-40rpx;
+}
+.margin30{
+  margin-top: 30rpx;
+}
+.line108 {
+  width: 2rpx;
+  height: 216rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.line85{
+   width: 2rpx;
+   height:170rpx ;
+   background: #A6B2CC;
+   border-radius: 2rpx;
+   margin-left: 26rpx;
+}
+.line62 {
+  width: 2rpx;
+  height: 120rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+
+.polDate,.polFromDate,
+.transDate,.transforDate,
+.podDate {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+}
+.transforDate{
+  position: relative; 
+  top: -14rpx;
+}
+.polLocation,.podLocation{
+  margin-top: 12rpx;
+}
+.pol,
+.pod,.poo {
+  width: 102rpx;
+  height: 32rpx;
+  background: #E6EAEF;
+  border-radius: 16rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+}
+.freight{
+  width: 56rpx;
+  height: 54rpx;
+}
+
+.polPro,.pooPro,.transPro,
+.podPro,.locaPro,.forLocaPro{
+  color: #2B74FF;
+  font-size: 12px;
+  font-family: PingFangSC-Regular;
+  margin-left: 20rpx;
+}
+.rail{
+  font-size: 24rpx;
+  color:#6B7790;
+  margin-bottom: 40rpx;
+}
+.polCity,.pooCity,.transCity,
+.podCity,.localCity {
+  font-size: 12px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+  margin-left: 10rpx;
+}
+
+.transLocation,.transforLoaction{
+  position: relative; 
+  top: -80rpx;
+  left: 80rpx;
+}
+.transtoLocation{
+    position: relative;
+    top: 20rpx;
+}
+.top{
+    margin-top: 40rpx;
+}
+.polEn,
+.podEn {
+  font-size: 24rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+  margin-top: 12rpx;
+}
+.polVgm,
+.transVgm,.polVes,.transVes,.polVoy,.transVoy{
+  margin-top: 30rpx;
+  margin-left: 38rpx;
+}
+.transfership{
+    width: 80rpx;
+    height: 84rpx;
+    margin-left: 10rpx;
+}
+.transInter,.polInter,.polSer,.transSer,.polVox,.transVox{
+  margin-left: 38rpx;
+  margin-top: 4rpx; 
+}
+.polVgm,
+.transVgm,.transInter,.polInter,.polVes,.transVes,.polSer,.transSer,.polVoy,.polVox,.transVoy,.transVox {
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #6B7790;
+}
+.vgmDate,.InterDate,.vesName{
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+  margin-left: 20rpx;
+}
+.serName,.voxName{
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #2B74FF;
+  margin-left: 20rpx;
+}
+.voyName{
+  margin-left: 20rpx;
+}
+.transContrainer {
+  padding: 0 30rpx 0 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.transContrainer::after {
+  clear: both;
+}
+
+.transLeftContainer {
+  float: left;
+}
+.transRightContainer{
+  margin-left: 72rpx;
+}
+.line76 {
+  width: 2rpx;
+  height: 152rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.line30{
+  width: 2rpx;
+  height: 30rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.line151 {
+  width: 2rpx;
+  height: 302rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.line20{
+  width: 2rpx;
+  height: 40rpx;
+  background: #A6B2CC;
+  border-radius: 2rpx;
+  margin-left: 26rpx;
+}
+.podContainer {
+  padding: 0 30rpx 72rpx 30rpx;
+}
+
+.podContainer::after {
+  clear: both;
+}
+
+.podLeftContainer {
+  float: left;
+}
+
+.podRightContainer {
+  margin-left: 72rpx;
+  position: relative;
+  top: 20rpx;
+}
+
+.location {
+  width: 28rpx;
+  height: 38rpx;
+  margin-left: 14rpx;
+}

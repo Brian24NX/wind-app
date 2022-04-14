@@ -6,6 +6,7 @@
     "pages/My/index",
     "pages/Orders/index",
     "pages/Result/index",
+    "pages/OldResultDetail/index",
     "pages/ResultDetail/index",
     "pages/OrderDetail/index"
   ],
