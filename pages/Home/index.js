@@ -309,6 +309,10 @@ Page({
             shippingCompany: '0015',
           }
           routingFinder(obj2).then(data => {
+            if (JSON.stringify(data.data) == '{}') {
+              this.setSearchList(obj)
+              return
+            }
             console.log(data)
             this.data.resultlist.apl = data.data.apl;
             this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)

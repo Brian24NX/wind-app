@@ -145,6 +145,10 @@ Page({
           }
           routingFinder(obj2).then(data => {
             console.log(data)
+            if (JSON.stringify(data.data) == '{}') {
+              this.setSearchList(obj)
+              return
+            }
             this.data.resultlist.apl = data.data.apl;
             this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
             this.data.resultlist.solutionServices.apl = data.data.solutionServices.apl
