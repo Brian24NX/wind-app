@@ -1,17 +1,10 @@
 var fmtDate = function (obj) {
   if(!obj) return ''
-  // var time = getDate(obj);
-  // var year = time.getFullYear();
-  // var month = time.getMonth() + 1;
-  // var date = time.getDate();
-
-  // month = month < 10 ? "0" + month : month;
-  // date = date < 10 ? "0" + date : date;
-  // return year + "-" + month + "-" + date;
   return obj.split('T')[0]
 }
 var weekday = function (obj) {
   if(!obj) return ''
+  obj = obj.split('T')[0].split('-').join('/')
   var date = getDate(obj).getDay();
   var week = '';
   switch (date) {
