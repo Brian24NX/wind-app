@@ -118,8 +118,6 @@ Page({
       return
     }
     var reg = /^([ ]*[A-z0-9]+([\,\，]*)){0,3}$/;
-    console.log(regvalue)
-    console.log(reg.test(regvalue))
     // 不包含，类型的数据
     if (!reg.test(regvalue)) {
       this.setData({
@@ -147,7 +145,7 @@ Page({
       showRemind: false
     })
   },
-  // 获取追踪
+  // 货物追踪
   toHuoWu() {
     if (this.data.showRemind) {
       return
@@ -166,22 +164,20 @@ Page({
   // 设置起运港
   setQiYun: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    var reg = /^[A-z \,\;]{2,}$/;
-    if (!reg.test(data)) {
-      this.setData({
-        showRemind5: true,
-        showRemind2: false,
-        qiYunValue: data
-      })
-      return;
-    } else {
-      this.setData({
-        showRemind5: false,
-        showRemind2: false,
-        codePolList: [],
-        qiYunValue: data
-      })
-    }
+    // var reg = /^[A-z \,\;]{2,}$/;
+    // if (!reg.test(data)) {
+    //   this.setData({
+    //     showRemind5: true,
+    //     showRemind2: false
+    //   })
+    //   return;
+    // } else {
+    //   this.setData({
+    //     showRemind5: false,
+    //     showRemind2: false,
+    //     codePolList: []
+    //   })
+    // }
     if (data.length < 2) {
       this.setData({
         codePolList: []
@@ -195,40 +191,33 @@ Page({
         this.setData({
           codePolList: res.data
         })
-      } else {
-        this.setData({
-          qiYunValue: data
-        })
       }
-
     })
 
   }, 500),
   // 设置卸货港
   setXieHuo: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    var reg = /^[A-z \,\;]{2,}$/;
-    if (!reg.test(data)) {
-      this.setData({
-        showRemind4: true,
-        showRemind3: false,
-        xieHuoValue: data
-      })
-      return;
-    }
-    this.setData({
-      showRemind4: false,
-      showRemind3: false,
-      codePodList: [],
-      xieHuoValue: data
-    })
+    // var reg = /^[A-z \,\;]{2,}$/;
+    // if (!reg.test(data)) {
+    //   this.setData({
+    //     showRemind4: true,
+    //     showRemind3: false,
+    //     // xieHuoValue: data
+    //   })
+    //   return;
+    // }
+    // this.setData({
+    //   showRemind4: false,
+    //   showRemind3: false,
+    //   codePodList: [],
+    //   // xieHuoValue: data
+    // })
     if (data.length < 2) {
-      if (data.length < 2) {
-        this.setData({
-          codePolList: []
-        })
-        return
-      }
+      this.setData({
+        codePolList: []
+      })
+      return
     }
     fuzzySearch({
       searchStr: data
@@ -237,16 +226,11 @@ Page({
         this.setData({
           codePodList: res.data
         })
-      } else {
-        this.setData({
-          xieHuoValue: data
-        })
       }
     })
   }, 500),
   // 设置启运港
   changepolname(e) {
-
     let index = e.currentTarget.dataset.index;
     this.setData({
       showRemind2: false,
@@ -260,14 +244,12 @@ Page({
   changepodname(e) {
     console.log(e);
     let index = e.currentTarget.dataset.index;
-
     this.setData({
       showRemind3: false,
       codePodList: [],
       xieHuoValue: this.data.codePodList[index].point,
       xieHuoCode: this.data.codePodList[index].pointCode
     })
-
   },
   // 船期搜索
   toChuanQi() {
@@ -277,13 +259,48 @@ Page({
         this.setData({
           showRemind2: true
         })
+      } else {
+        this.setData({
+          showRemind2: false
+        })
       }
       if (!this.data.xieHuoValue) {
         this.setData({
           showRemind3: true
         })
+      } else {
+        this.setData({
+          showRemind3: false
+        })
       }
-      return
+    } else {
+      this.setData({
+        showRemind2: false,
+        showRemind3: false
+      })
+    }
+    var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
+    if (!this.data.showRemind2) {
+      if (!reg.test(this.data.qiYunValue)) {
+        this.setData({
+          showRemind5: true
+        })
+      } else {
+        this.setData({
+          showRemind5: false
+        })
+      }
+    }
+    if (!this.data.showRemind3) {
+      if (!reg.test(this.data.xieHuoValue)) {
+        this.setData({
+          showRemind4: true
+        })
+      } else {
+        this.setData({
+          showRemind4: false
+        })
+      }
     }
     if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     let obj = {
