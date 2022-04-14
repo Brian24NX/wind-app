@@ -224,7 +224,26 @@ function substrTime(date) {
   }
   return date
 }
-
+/*
+*  货运状态
+*/
+// 判别陆运种类
+var judgLand=function(obj){
+  if(!obj)  return false;
+  if(obj=='RAIL'){
+    return true;
+  }else if(obj=='TRUCK'){
+    return true;
+  }else if(obj=='TRUCK / RAIL'){
+    return true;
+  }else if(obj=='FEEDER'){
+    return true;
+  }else if(obj=='INTERMODAL'){
+   return true;
+  }else{
+   return false;
+  }
+}
 module.exports = {
   formatTime,
   skipNulls,
@@ -234,5 +253,6 @@ module.exports = {
   debounce,
   formatHuoYunStatus,
   getDayList,
-  substrTime
+  substrTime,
+  judgLand
 }
