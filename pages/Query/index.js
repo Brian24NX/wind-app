@@ -377,7 +377,9 @@ Page({
         polvalue: polobject.polvalue,
         podvalue: podobject.podvalue,
         polcode: polobject.polcode,
-        podcode: podobject.podcode
+        podcode: podobject.podcode,
+        showDelete1: true,
+        showDelete2: true
       })
       wx.setStorageSync('setHangXian', false)
       wx.removeStorageSync('polobject')
