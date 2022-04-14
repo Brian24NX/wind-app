@@ -51,21 +51,29 @@ Page({
       weeks: '4 星期'
     }],
     date: '',
-    resultlist: {}
+    resultlist: {},
+    showRemind1: false,
+    showRemind2: false,
+    showRemind3: false,
+    showRemind4: false
   },
-  getlocation(e){
-      let index=e.currentTarget.dataset.index;
-      let location=this.data.array[index];
-      let pollocation=location.split("-")[0];
-      let podlocation=location.split("-")[1];
-      let polcode=pollocation.split(";")[2];
-      let podcode=podlocation.split(";")[2];
-      this.setData({
-        podcode:podcode,
-        polcode:polcode,
-        podvalue:podlocation,
-        polvalue:pollocation
-      })
+  getlocation(e) {
+    let index = e.currentTarget.dataset.index;
+    let location = this.data.array[index];
+    let pollocation = location.split("-")[0];
+    let podlocation = location.split("-")[1];
+    let polcode = pollocation.split(";")[2];
+    let podcode = podlocation.split(";")[2];
+    this.setData({
+      podcode: podcode,
+      polcode: polcode,
+      podvalue: podlocation,
+      polvalue: pollocation,
+      showRemind1: false,
+      showRemind2: false,
+      showRemind3: false,
+      showRemind4: false
+    })
   },
   changemethod(e) {
     let index = e.detail.id;
@@ -95,22 +103,70 @@ Page({
   },
   // 提交搜索
   submit() {
-       // 先判断参数是否为空
-       if (!this.data.polvalue) {
+    // 先判断参数是否为空
+    // if (!this.data.polvalue) {
+    //   this.setData({
+    //     showRemind1: true,
+    //     showRemind2: false
+    //   })
+    //   return
+    // }
+    // if (!this.data.podvalue) {
+    //   this.setData({
+    //     showRemind3: true,
+    //     showRemind4: false
+    //   })
+    //   return
+    // }
+    if (!this.data.polvalue || !this.data.podvalue) {
+      if (!this.data.polvalue) {
         this.setData({
-          showRemind1: true,
-          showRemind2:false
+          showRemind1: true
         })
-        return 
+      } else {
+        this.setData({
+          showRemind1: false
+        })
       }
       if (!this.data.podvalue) {
         this.setData({
-          showRemind3: true,
+          showRemind3: true
+        })
+      } else {
+        this.setData({
+          showRemind3: false
+        })
+      }
+    } else {
+      this.setData({
+        showRemind1: false,
+        showRemind3: false
+      })
+    }
+    var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
+    if (!this.data.showRemind1) {
+      if (!reg.test(this.data.polvalue)) {
+        this.setData({
+          showRemind2: true
+        })
+      } else {
+        this.setData({
+          showRemind2: false
+        })
+      }
+    }
+    if (!this.data.showRemind3) {
+      if (!reg.test(this.data.podvalue)) {
+        this.setData({
+          showRemind4: true
+        })
+      } else {
+        this.setData({
           showRemind4: false
         })
-       return 
       }
-      if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
+    }
+    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
     let week = '';
     if (this.data.week === '1 星期') {
       week = 7
@@ -146,7 +202,7 @@ Page({
           routingFinder(obj2).then(data => {
             console.log(data)
             if (JSON.stringify(data.data) == '{}') {
-              this.setSearchList(obj)
+              this.setHistory(obj)
               return
             }
             this.data.resultlist.apl = data.data.apl;
@@ -205,21 +261,21 @@ Page({
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    var reg = /^[A-z \,\;]{2,}$/;
-    if (!reg.test(data)) {
-      this.setData({
-        showRemind4: true,
-        showRemind3: false,
-        podvalue: data
-      })
-      return;
-    }
-    this.setData({
-      showRemind4: false,
-      showRemind3: false,
-      codePodList: [],
-      podvalue: data
-    })
+    // var reg = /^[A-z \,\;]{2,}$/;
+    // if (!reg.test(data)) {
+    //   this.setData({
+    //     showRemind4: true,
+    //     showRemind3: false,
+    //     podvalue: data
+    //   })
+    //   return;
+    // }
+    // this.setData({
+    //   showRemind4: false,
+    //   showRemind3: false,
+    //   codePodList: [],
+    //   podvalue: data
+    // })
     if (data.length < 2) {
       this.setData({
         podlist: []
@@ -229,37 +285,36 @@ Page({
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
-      if(res.data!=''){
+      if (res.data != '') {
         this.setData({
           podlist: res.data || []
         })
-      }
-      else{
-        this.setData({
-          podvalue:data
-        })
+      } else {
+        // this.setData({
+        //   podvalue: data
+        // })
       }
     })
   }, 500),
   //获取起始港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
-    var reg = /^[A-z \,\;]{2,}$/;
-    if (!reg.test(data)) {
-     this.setData({
-      showRemind2: true,
-      showRemind1: false,
-       polvalue: data
-     })
-      return;
-    } else {
-      this.setData({
-        showRemind1: false,
-        showRemind2: false,
-        codePolList: [],
-        polvalue: data
-      })
-     }
+    // var reg = /^[A-z \,\;]{2,}$/;
+    // if (!reg.test(data)) {
+    //   this.setData({
+    //     showRemind2: true,
+    //     showRemind1: false,
+    //     polvalue: data
+    //   })
+    //   return;
+    // } else {
+    //   this.setData({
+    //     showRemind1: false,
+    //     showRemind2: false,
+    //     codePolList: [],
+    //     polvalue: data
+    //   })
+    // }
     if (data.length < 2) {
       this.setData({
         pollist: []
@@ -269,15 +324,14 @@ Page({
       searchStr: data
     }, true).then(res => {
       console.log(res)
-      if(res.data!=''){
+      if (res.data != '') {
         this.setData({
           pollist: res.data || []
         })
-      }
-      else{
-        this.setData({
-           polvalue:data
-        })
+      } else {
+        // this.setData({
+        //   polvalue: data
+        // })
       }
     })
     // this.setData({
@@ -314,7 +368,7 @@ Page({
     this.setData({
       podvalue: this.data.podlist[index].point,
       podcode: this.data.podlist[index].pointCode,
-      podlist:[]
+      podlist: []
     })
   },
   onclose(e) {
@@ -339,13 +393,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    let location=wx.getStorageSync('location')
+    let location = wx.getStorageSync('location')
     this.setData({
       date: this.getDate(),
       search: '离港时间',
-      array:location,
-      pollist:[],
-      podlist:[]
+      array: location,
+      pollist: [],
+      podlist: []
     })
   },
 
@@ -360,13 +414,13 @@ Page({
       })
     }
     if (wx.getStorageSync('setHangXian')) {
-      let polobject=wx.getStorageSync('polobject')
-      let podobject=wx.getStorageSync('podobject')
+      let polobject = wx.getStorageSync('polobject')
+      let podobject = wx.getStorageSync('podobject')
       this.setData({
-        polvalue:polobject.polvalue,
-        podvalue:podobject.podvalue,
-        polcode:polobject.polcode,
-        podcode:podobject.podcode
+        polvalue: polobject.polvalue,
+        podvalue: podobject.podvalue,
+        polcode: polobject.polcode,
+        podcode: podobject.podcode
       })
       wx.setStorageSync('setHangXian', false)
       wx.removeStorageSync('polobject')
