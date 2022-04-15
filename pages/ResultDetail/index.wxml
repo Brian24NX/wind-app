@@ -40,9 +40,9 @@
             <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
-                <view class="tags">起运港</view>
                 <view class="names">{{item.pointFrom.location.name}}，</view>
                 <view class="code">{{filters.str(item.pointFrom.location.internalCode)}}</view>
+                <view class="tags tags2">起运港</view>
               </view>
               <view class="gangKouName">{{item.pointFrom.location.facility.name}}</view>
             </block>
@@ -107,7 +107,7 @@
                 <view class="tags tags2">始发地</view>
               </view>
             </block>
-            <view class="rails">RAIL</view>
+            <view class="rails">{{item.transportation.meanOfTransport}}</view>
             <view class="timeContainer" style="margin-top: 10rpx;">{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
           </view>
         </view>
