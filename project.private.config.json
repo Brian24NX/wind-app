@@ -21,7 +21,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/ResultDetail2/index",
+          "pathName": "pages/ResultDetail/index",
           "query": "",
           "launchMode": "default",
           "scene": null

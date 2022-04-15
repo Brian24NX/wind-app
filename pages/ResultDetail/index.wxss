@@ -163,8 +163,7 @@
   margin-bottom: 12rpx;
 }
 
-.yunshuContainers .yunshuContainer .nameContainer .tags {
-  width: 102rpx;
+.yunshuContainers .tags {
   height: 32rpx;
   background-color: #E6EAEF;
   border-radius: 16rpx;
@@ -175,6 +174,12 @@
   text-align: center;
   line-height: 32rpx;
   margin-right: 12rpx;
+  padding: 0 10rpx;
+}
+
+.yunshuContainers .tags2 {
+  margin-left: 12rpx;
+  margin-right: 0;
 }
 
 .names {

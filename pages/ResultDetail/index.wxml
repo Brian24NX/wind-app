@@ -31,7 +31,8 @@
           <view wx:if="{{index}}">
             <view class="diquContainer">
               <view class="names">{{item.pointFrom.location.name}}，</view>
-              <view class="code">{{item.pointFrom.location.internalCode}}</view>
+              <view class="code">{{filters.str(item.pointFrom.location.internalCode)}}</view>
+              <view class="tags tags2" wx:if="{{filters.checkQiYunGangKou(index, routingDetails)}}">起运港</view>
             </view>
             <view class="gangKouNames">{{item.pointFrom.location.facility.name}}</view>
           </view>
@@ -39,9 +40,9 @@
             <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
-                <!-- <view class="tags">起运港</view> -->
+                <view class="tags">起运港</view>
                 <view class="names">{{item.pointFrom.location.name}}，</view>
-                <view class="code">{{item.pointFrom.location.internalCode}}</view>
+                <view class="code">{{filters.str(item.pointFrom.location.internalCode)}}</view>
               </view>
               <view class="gangKouName">{{item.pointFrom.location.facility.name}}</view>
             </block>
@@ -75,7 +76,8 @@
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
           <view class="diquContainer">
             <view class="names">{{item.pointTo.location.name}}，</view>
-            <view class="code">{{item.pointTo.location.internalCode}}</view>
+            <view class="code">{{filters.str(item.pointTo.location.internalCode)}}</view>
+            <view class="tags tags2">卸货港</view>
           </view>
           <view class="gangKouNames">{{item.pointTo.location.facility.name}}</view>
         </view>
@@ -92,7 +94,8 @@
           <view wx:if="{{index}}">
             <view class="diquContainer">
               <view class="names">{{item.pointFrom.location.name}}，</view>
-              <view class="code">{{item.pointFrom.location.internalCode}}</view>
+              <view class="code">{{filters.str(item.pointFrom.location.internalCode)}}</view>
+              <view class="tags tags2" wx:if="{{filters.checkXieHuoGangKou(index, routingDetails)}}">卸货港</view>
             </view>
           </view>
           <view class="yunshuContainer">
@@ -100,7 +103,8 @@
             <block wx:if="{{!index}}">
               <view class="nameContainer">
                 <view class="names">{{item.pointFrom.location.name}}，</view>
-                <view class="code">{{item.pointFrom.location.internalCode}}</view>
+                <view class="code">{{filters.str(item.pointFrom.location.internalCode)}}</view>
+                <view class="tags tags2">始发地</view>
               </view>
             </block>
             <view class="rails">RAIL</view>
@@ -110,7 +114,8 @@
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
           <view class="diquContainer">
             <view class="names">{{item.pointTo.location.name}}，</view>
-            <view class="code">{{item.pointTo.location.internalCode}}</view>
+            <view class="code">{{filters.str(item.pointTo.location.internalCode)}}</view>
+            <view class="tags tags2">最终目的地</view>
           </view>
           <!-- <view class="gangKouNames">{{item.pointTo.location.facility.name}}</view> -->
         </view>

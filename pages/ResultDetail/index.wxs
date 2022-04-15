@@ -3,7 +3,6 @@ var fmtDate = function (obj) {
   return obj.split('T')[0]
 }
 var weekday = function (obj) {
-  console.log(obj + 'obj');
   if(!obj) return ''
   obj = obj.split('T')[0].split('-').join('/')
   var date = getDate(obj).getDay();
@@ -33,30 +32,38 @@ var weekday = function (obj) {
   }
   return week;
 }
-var str=function(obj){
+var str = function(obj){
   if(!obj) return ''
    return obj.substring(0,2)
 }
-// 判别陆运种类
-var judgLand=function(obj){
-   if(!obj)  return false;
-   if(obj=='RAIL'){
-     return true;
-   }else if(obj=='TRUCK'){
-     return true;
-   }else if(obj=='TRUCK / RAIL'){
-     return true;
-   }else if(obj=='FEEDER'){
-     return true;
-   }else if(obj=='INTERMODAL'){
-    return true;
-   }else{
-    return false;
-   }
+
+var checkQiYunGangKou = function(index, list) {
+  var newList = list.slice(0, index)
+  var res = true
+  for (var i = 0; i < newList.length; i++) {
+    var element = newList[i];
+    if (element.transportation.meanOfTransport === 'Vessel') {
+      res = false
+      break
+    }
+  }
+  return res
 }
+
+var checkXieHuoGangKou = function(index, list) {
+  var res = false
+  var element = list[index];
+  var element2 = list[index - 1];
+  if (element.transportation.meanOfTransport !== 'Vessel' && element2.transportation.meanOfTransport === 'Vessel') {
+    res = true
+  }
+  return res
+}
+
 module.exports = {
   fmtDate: fmtDate,
   weekday: weekday,
-  str:str,
-  judgLand:judgLand
+  str: str,
+  checkQiYunGangKou: checkQiYunGangKou,
+  checkXieHuoGangKou: checkXieHuoGangKou
 }
