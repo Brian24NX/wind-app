@@ -77,7 +77,7 @@
               <view class="names">{{item.pointTo.location.name}}，</view>
               <view class="code">{{item.pointTo.location.internalCode}}</view>
             </view>
-            <view class="gangKouNames">YANGSHAN DEEP WATER PORT PHASE</view>
+            <view class="gangKouNames">{{item.pointTo.location.facility.name}}</view>
           </view>
       </view>
       <!-- 其他运输 -->
