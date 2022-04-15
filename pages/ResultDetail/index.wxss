@@ -196,9 +196,9 @@
 
 .yunshuContainers .yunshuContainer .gangKouName {
   font-size: 24rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: #071E5D;
+  /* font-family: PingFangSC-Medium, PingFang SC; */
+  /* font-weight: 500; */
+  color: #2B74FF;
   margin-bottom: 30rpx;
 }
 

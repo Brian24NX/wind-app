@@ -29,7 +29,7 @@
       <view class="serchTitle">起运港</view>
       <view class="xialaInput">
         <view class="inputs {{showRemind2||showRemind5 ? 'noRequestBorder' : ''}}">
-          <input value="{{qiYunValue}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setQiYun" />
+          <input value="{{qiYunValue}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setQiYun" hold-keyboard="{{true}}"/>
           <view class="delete" catchtap="clearInput" data-type="2" wx:if="{{showDelete1}}">
             <image src="../../assets/img/search/close@2x.png"></image>
           </view>

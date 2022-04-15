@@ -74,7 +74,7 @@
           </view>
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
-          <view class="diquContainer">
+          <view class="diquContainer" style="margin-bottom: 12rpx;">
             <view class="names">{{item.pointTo.location.name}}，</view>
             <view class="code">{{filters.str(item.pointTo.location.internalCode)}}</view>
             <view class="tags tags2">卸货港</view>
