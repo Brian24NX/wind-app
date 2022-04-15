@@ -31,7 +31,7 @@
           <view wx:if="{{index}}">
             <view class="diquContainer">
               <view class="names">{{item.pointFrom.location.name}}，</view>
-                <view class="code">{{item.pointFrom.location.internalCode}}</view>
+              <view class="code">{{item.pointFrom.location.internalCode}}</view>
             </view>
             <view class="gangKouNames">{{item.pointFrom.location.facility.name}}</view>
           </view>
@@ -73,46 +73,46 @@
           </view>
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
-            <view class="diquContainer">
-              <view class="names">{{item.pointTo.location.name}}，</view>
-              <view class="code">{{item.pointTo.location.internalCode}}</view>
-            </view>
-            <view class="gangKouNames">YANGSHAN DEEP WATER PORT PHASE</view>
-          </view>
-      </view>
-      <!-- 其他运输 -->
-      <view class="yunshuContainers" wx:else>
-        <view class="contents">
-          <view class="leftIcons {{index === routingDetails.length - 1 ? 'last' : ''}}">
-            <view class="leftLine"></view>
-            <view class="lineDto" wx:if="{{!index}}"></view>
-            <image wx:if="{{index === routingDetails.length - 1}}" class="location" src="../../assets/img/seniorsearch/location_white.png" mode="aspectFit"></image>
-            <image src="../../assets/img/result/freight@2x.png" class="freight"></image>
-          </view>
-        <view wx:if="{{index}}">
-          <view class="diquContainer">
-            <view class="names">{{item.pointFrom.location.name}}，</view>
-              <view class="code">{{item.pointFrom.location.internalCode}}</view>
-          </view>
-        </view>
-        <view class="yunshuContainer">
-          <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
-          <block wx:if="{{!index}}">
-            <view class="nameContainer">
-              <view class="names">{{item.pointFrom.location.name}}，</view>
-              <view class="code">{{item.pointFrom.location.internalCode}}</view>
-            </view>
-          </block>
-          <view class="rails">RAIL</view>
-          <view class="timeContainer" style="margin-top: 10rpx;">{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
-        </view>
-        <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
           <view class="diquContainer">
             <view class="names">{{item.pointTo.location.name}}，</view>
             <view class="code">{{item.pointTo.location.internalCode}}</view>
           </view>
           <view class="gangKouNames">{{item.pointTo.location.facility.name}}</view>
         </view>
+      </view>
+      <!-- 其他运输 -->
+      <view class="yunshuContainers" wx:else>
+        <view class="contents">
+          <view class="leftIcons {{index === routingDetails.length - 1 ? 'last' : ''}}">
+            <view class="leftLine"></view>
+            <view class="lineDto" wx:if="{{!index || item.transportation.meanOfTransport !== 'Vessel'}}"></view>
+            <image wx:if="{{index === routingDetails.length - 1}}" class="location" src="../../assets/img/seniorsearch/location_white.png" mode="aspectFit"></image>
+            <image src="../../assets/img/result/freight@2x.png" class="freight"></image>
+          </view>
+          <view wx:if="{{index}}">
+            <view class="diquContainer">
+              <view class="names">{{item.pointFrom.location.name}}，</view>
+              <view class="code">{{item.pointFrom.location.internalCode}}</view>
+            </view>
+          </view>
+          <view class="yunshuContainer">
+            <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
+            <block wx:if="{{!index}}">
+              <view class="nameContainer">
+                <view class="names">{{item.pointFrom.location.name}}，</view>
+                <view class="code">{{item.pointFrom.location.internalCode}}</view>
+              </view>
+            </block>
+            <view class="rails">RAIL</view>
+            <view class="timeContainer" style="margin-top: 10rpx;">{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
+          </view>
+        </view>
+        <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
+          <view class="diquContainer">
+            <view class="names">{{item.pointTo.location.name}}，</view>
+            <view class="code">{{item.pointTo.location.internalCode}}</view>
+          </view>
+          <!-- <view class="gangKouNames">{{item.pointTo.location.facility.name}}</view> -->
         </view>
       </view>
     </view>

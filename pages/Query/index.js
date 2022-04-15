@@ -208,7 +208,7 @@ Page({
         wx.showToast({
           title: res.message,
           icon: 'none',
-          duration: 5000
+          duration: 3000
         })
       }
     })
@@ -270,7 +270,7 @@ Page({
         // })
       }
     })
-  }, 500),
+  }, 800),
   //获取起始港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
@@ -292,7 +292,7 @@ Page({
         })
       }
     })
-  }, 500),
+  }, 800),
   deleteValue(e) {
     const type = e.currentTarget.dataset.type
     if (type === '1') {

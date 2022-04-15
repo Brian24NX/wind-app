@@ -188,7 +188,7 @@ Page({
       }
     })
 
-  }, 500),
+  }, 800),
   // 设置卸货港
   setXieHuo: utils.debounce(function (e) {
     const data = e['0'].detail.value
@@ -210,7 +210,7 @@ Page({
         })
       }
     })
-  }, 500),
+  }, 800),
   // 设置启运港
   changepolname(e) {
     let index = e.currentTarget.dataset.index;
