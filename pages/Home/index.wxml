@@ -84,7 +84,7 @@
           <view class="oneDiscover" bindtap="toMore">
             <image class="icon" src="../../assets/img/home/discover_1@2x.png"></image>
             <view class="discoverRight">
-              <view class="discoverName">{{content.lang.userCenter.homeInfo.valueAddedService}}</view>
+              <view class="discoverName">CMA CGM+</view>
               <!-- <view>定制方案</view> -->
             </view>
           </view>
