@@ -6,9 +6,22 @@
     "pages/My/index",
     "pages/Orders/index",
     "pages/Result/index",
-    "pages/OldResultDetail/index",
     "pages/ResultDetail/index",
     "pages/OrderDetail/index"
+  ],
+  "subPackages": [
+    {
+      "root": "packageMore",
+      "pages": [
+        "pages/about/index",
+        "pages/cma/list/index",
+        "pages/cma/detail/index",
+        "pages/news/list/index",
+        "pages/news/detail/index",
+        "pages/contact/conditions/index",
+        "pages/contact/result/index"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",

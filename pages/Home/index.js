@@ -48,7 +48,67 @@ Page({
     resultlist: {},
     swiperindex: 0,
     showDelete1: false,
-    showDelete2: false
+    showDelete2: false,
+    moreMenuList: [
+      [{
+          id: 'CMA',
+          cnLabel: 'CMA CGM+',
+          enLabel: 'CMA CGM+',
+          icon: '/assets/img/home/discover_1@2x.png',
+          url: '/packageMore/pages/cma/list/index'
+        },
+        {
+          id: 'about',
+          cnLabel: '关于达飞',
+          enLabel: 'CMA CGM+',
+          icon: '/assets/img/home/discover_2@2x.png',
+          url: '/packageMore/pages/about/index'
+        },
+        {
+          id: 'news',
+          cnLabel: '新闻中心',
+          enLabel: 'CMA CGM+',
+          icon: '/assets/img/home/discover_3@2x.png',
+          url: '/packageMore/pages/news/list/index'
+        },
+        {
+          id: 'onlineServices',
+          cnLabel: '在线服务',
+          enLabel: 'CMA CGM+',
+          icon: '/assets/img/home/discover_4@2x.png',
+          url: ''
+        },
+      ],
+      [{
+        id: 'CMA',
+        cnLabel: '客户通告',
+        enLabel: '客户通告',
+        icon: '/assets/img/home/customernotice@2x.png',
+        url: ''
+      },
+      {
+        id: 'about',
+        cnLabel: '常用模版及链接',
+        enLabel: '常用模版及链接',
+        icon: '/assets/img/home/templatelinks@2x.png',
+        url: ''
+      },
+      {
+        id: 'news',
+        cnLabel: '管制品查询',
+        enLabel: '管制品查询',
+        icon: '/assets/img/home/controllproduct@2x.png',
+        url: ''
+      },
+      {
+        id: 'callMe',
+        cnLabel: '联系我们',
+        enLabel: '联系我们',
+        icon: '/assets/img/home/contact@2x.png',
+        url: '/packageMore/pages/contact/conditions/index'
+      },
+    ]
+    ]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -134,7 +194,7 @@ Page({
     }
     const value2 = (value.substr(value.length - 1, 1) === ',' || value.substr(value.length - 1, 1) === '，') ? value.substr(0, value.length - 1) : value
     if (value2.split(',').length >= 2 && value2.split(',').length <= 3) {
-      const arr = value2.split(',').map(item=>item.trim())
+      const arr = value2.split(',').map(item => item.trim())
       var newArr = arr.filter(function (value, index, self) {
         return self.indexOf(value) === index;
       });
@@ -391,10 +451,17 @@ Page({
       })
     }
   },
-  toMore() {
-    wx.showToast({
-      title: '功能升级中，敬请期待',
-      icon: 'none'
+  toNav(e) {
+    const item = e.currentTarget.dataset.item
+    if (!item.url) {
+      wx.showToast({
+        title: '功能升级中，敬请期待',
+        icon: 'none'
+      })
+      return
+    }
+    wx.navigateTo({
+      url: item.url,
     })
   },
   price() {

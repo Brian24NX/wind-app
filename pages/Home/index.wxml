@@ -79,73 +79,20 @@
   <view class="discoverContainer">
     <view class="discoverTitle">发现更多</view>
     <swiper current="{{swiperindex}}" class="swiper" bindchange="changeCurrentDto">
-      <swiper-item>
+      <swiper-item wx:for="{{moreMenuList}}" wx:key="index">
         <view class="discoverList">
-          <view class="oneDiscover" bindtap="toMore">
-            <image class="icon" src="../../assets/img/home/discover_1@2x.png"></image>
+          <view class="oneDiscover" bindtap="toNav" data-item="{{items}}" wx:for="{{item}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+            <image class="icon" src="{{items.icon}}"></image>
             <view class="discoverRight">
-              <view class="discoverName">CMA CGM+</view>
+              <view class="discoverName">{{items.cnLabel}}</view>
               <!-- <view>定制方案</view> -->
-            </view>
-          </view>
-          <view class="oneDiscover" bindtap="toMore">
-            <image class="icon" src="../../assets/img/home/discover_2@2x.png"></image>
-            <view class="discoverRight">
-              <view class="discoverName">关于达飞</view>
-              <!-- <view>集团介绍</view> -->
-            </view>
-          </view>
-          <view class="oneDiscover" bindtap="toMore">
-            <image class="icon" src="../../assets/img/home/discover_3@2x.png"></image>
-            <view class="discoverRight">
-              <view class="discoverName">新闻中心</view>
-              <!-- <view>往期新闻</view> -->
-            </view>
-          </view>
-          <view class="oneDiscover" bindtap="toMore">
-            <image class="icon" src="../../assets/img/home/discover_4@2x.png"></image>
-            <view class="discoverRight">
-              <view class="discoverName">在线服务</view>
-              <!-- <view>我有疑问</view> -->
-            </view>
-          </view>
-        </view>
-      </swiper-item>
-      <swiper-item>
-        <view class="discoverList">
-          <view class="oneDiscover" bindtap="toMore">
-            <image class="icon" src="../../assets/img/home/customernotice@2x.png"></image>
-            <view class="discoverRight">
-              <view class="discoverName">客户通告</view>
-              <!-- <view>定制方案</view> -->
-            </view>
-          </view>
-          <view class="oneDiscover" bindtap="toMore">
-            <image class="icon" src="../../assets/img/home/templatelinks@2x.png"></image>
-            <view class="discoverRight">
-              <view class="discoverName">常用模版及链接</view>
-              <!-- <view>集团介绍</view> -->
-            </view>
-          </view>
-          <view class="oneDiscover" bindtap="toMore">
-            <image class="icon" src="../../assets/img/home/controllproduct@2x.png"></image>
-            <view class="discoverRight">
-              <view class="discoverName">管制品查询</view>
-              <!-- <view>往期新闻</view> -->
-            </view>
-          </view>
-          <view class="oneDiscover" bindtap="toMore">
-            <image class="icon" src="../../assets/img/home/contact@2x.png"></image>
-            <view class="discoverRight">
-              <view class="discoverName">联系我们</view>
-              <!-- <view>我有疑问</view> -->
             </view>
           </view>
         </view>
       </swiper-item>
     </swiper>
     <view class="swiperDtos">
-      <view class="oneDto {{swiperindex === index ? 'dtoActived' : ''}}" wx:for="{{2}}" data-index="{{index}}" bindtap="changeItem"></view>
+      <view class="oneDto {{swiperindex === index ? 'dtoActived' : ''}}" wx:for="{{moreMenuList.length}}" data-index="{{index}}" bindtap="changeItem"></view>
     </view>
   </view>
 </view>
