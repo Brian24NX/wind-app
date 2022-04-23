@@ -451,6 +451,12 @@ Page({
       })
     }
   },
+  toMore() {
+    wx.showToast({
+      title: '功能升级中，敬请期待',
+      icon: 'none'
+    })
+  },
   toNav(e) {
     const item = e.currentTarget.dataset.item
     if (!item.url) {
@@ -471,7 +477,6 @@ Page({
     })
   },
   changeItem(e) {
-    console.log(e.currentTarget.dataset.index);
     this.setData({
       swiperindex: e.currentTarget.dataset.index
     })

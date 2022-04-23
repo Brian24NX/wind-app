@@ -1,1 +1,25 @@
 /* packageMore/pages/news/detail/index.wxss */
+.newsDetail {
+  padding: 40rpx 50rpx;
+}
+
+.newsDetail .newsTitle {
+  font-size: 50rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+}
+
+.newsDetail .newsTime {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #6B7790;
+  font-size: 24rpx;
+  margin: 20rpx 0 40rpx;
+}
+
+.newsDetail .newsTime image {
+  width: 36rpx;
+  height: 36rpx;
+}

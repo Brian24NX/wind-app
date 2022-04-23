@@ -1,2 +1,24 @@
 <!--packageMore/pages/news/list/index.wxml-->
-<text>packageMore/pages/news/list/index.wxml</text>
+<view class="newsContainer">
+  <view class="topTitles">
+    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/newBg.png" class="topBg"></image>
+    <view class="searchInputs">
+      <input type="text" placeholder="Keywords" placeholder-class="placeholder" />
+      <image src="/assets/img/search/search@2x.png"></image>
+    </view>
+  </view>
+  <view class="newsLists">
+    <scroll-view class="categoryList" scroll-x>
+      <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
+        <text>{{item.label}}</text>
+        <view class="line"></view>
+      </view>
+    </scroll-view>
+    <view class="newsList">
+      <view class="oneNews" wx:for="{{10}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
+        <view class="newsTitle">Suspension of Le Havre and Puerto Angamos calls on EUROSAL service connecting North Europe with West Coast South America & the Caribbean</view>
+        <view class="newsTime">Monday, April 11, 2022</view>
+      </view>
+    </view>
+  </view>
+</view>

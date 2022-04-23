@@ -1,2 +1,10 @@
 <!--packageMore/pages/news/detail/index.wxml-->
-<text>packageMore/pages/news/detail/index.wxml</text>
+<view class="topLine"></view>
+<view class="newsDetail">
+  <view class="newsTitle">CMA CGM Group strengthens strategic logistics development with GEFCO acquisition</view>
+  <view class="newsTime">
+    <view>Friday, April 8, 2022</view>
+    <image src="/assets/img/more/dianzan_2@2x.png"></image>
+  </view>
+  <rich-text nodes="{{newsDetail.content}}"></rich-text>
+</view>
