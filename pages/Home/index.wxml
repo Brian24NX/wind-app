@@ -5,7 +5,7 @@
 <view class="homeContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
   <view class="searchContainers">
     <view class="tabContainer">
-      <view class="oneTab {{actived === item.id ? 'actived' : ''}}" wx:for="{{tabList}}" bindtap="changeSearchTab" data-type="{{item.id}}">
+      <view class="oneTab {{actived === item.id ? 'actived' : ''}}" wx:for="{{tabList}}" wx:key="index" bindtap="changeSearchTab" data-type="{{item.id}}">
         <text>{{item.label}}</text>
         <view class="line"></view>
       </view>
@@ -92,7 +92,7 @@
       </swiper-item>
     </swiper>
     <view class="swiperDtos">
-      <view class="oneDto {{swiperindex === index ? 'dtoActived' : ''}}" wx:for="{{moreMenuList.length}}" data-index="{{index}}" bindtap="changeItem"></view>
+      <view class="oneDto {{swiperindex === index ? 'dtoActived' : ''}}" wx:for="{{moreMenuList.length}}" wx:key="index" data-index="{{index}}" bindtap="changeItem"></view>
     </view>
   </view>
 </view>

@@ -8,7 +8,8 @@
     "pages/Result/index",
     "pages/ResultDetail/index",
     "pages/OrderDetail/index",
-    "pages/RouterQuery/index"
+    "pages/RouterQuery/index",
+    "pages/Shipment/index"
   ],
   "subPackages": [
     {

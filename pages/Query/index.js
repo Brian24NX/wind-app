@@ -25,7 +25,7 @@ Page({
       icon: '/assets/img/menu/hwzz@2x.png',
       isNew: false,
       label: '货物追踪',
-      url: ''
+      url: '/pages/Shipment/index'
     }, {
       icon: '/assets/img/menu/gzp@2x.png',
       isNew: true,
@@ -42,6 +42,14 @@ Page({
       label: '查询费率',
       url: ''
     }]
+  },
+  onShow: function() {
+    this.initLanguage();
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 1
+      })
+    }
   },
   toFunction(e) {
     const index = e.currentTarget.dataset.index

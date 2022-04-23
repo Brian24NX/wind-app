@@ -1,1 +1,49 @@
 /* packageMore/pages/cma/list/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.cmaContainer .topContainer {
+  width: 690rpx;
+  height: 210rpx;
+  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/CMA.png) no-repeat;
+  background-size: 100%;
+  margin: 30rpx auto;
+  padding-left: 50rpx;
+  display: flex;
+  align-items: center;
+  font-size: 64rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.cmaContainer .cmaList {
+  background-color: #ffffff;
+  padding: 0 48rpx 40rpx;
+}
+
+.cmaContainer .cmaList .oneCma {
+  border-bottom: 1rpx solid #EEEEEE;
+  padding: 30rpx 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cmaContainer .cmaList .oneCma .cmaTitle {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246A;
+  width: 390rpx;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cmaContainer .cmaList .oneCma image {
+  width: 180rpx;
+  height: 128rpx;
+}

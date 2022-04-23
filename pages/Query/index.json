@@ -1,8 +1,5 @@
 {
   "component": true,
-  "usingComponents": {
-    "pickerinput": "../../components/pickerSelect/index",
-    "pickerinputweek":"../../components/pickerSelectWeek/index"
-  },
+  "usingComponents": {},
   "navigationStyle": "custom"
 }

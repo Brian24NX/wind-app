@@ -79,7 +79,7 @@
     </view>
     
     <view class="result">
-      <view class="oneResult" wx:for="{{array}}" wx:key="{{index}}" data-index="{{index}}" v-if="{{array[index]!=''}}" bindtap="getlocation">
+      <view class="oneResult" wx:for="{{array}}" wx:key="index" data-index="{{index}}" v-if="{{array[index]!=''}}" bindtap="getlocation">
         <text class="fonthistory">{{item}}</text>
         <view class="oneDelete">
           <image class="btnclose" src="../../assets/img/search/close@2x.png" catchtap="onclose" data-index="{{index}}"></image>
