@@ -1,2 +1,19 @@
 <!--packageMore/pages/about/index.wxml-->
-<text>packageMore/pages/about/index.wxml</text>
+<view class="topLine"></view>
+<view class="aboutContainer">
+  <view class="aboutTitle">
+    <text>About </text>
+    <text>CMA CGM</text>
+  </view>
+  <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/about.png" class="aboutThumb"></image>
+  <view class="oneDuan">达飞，由鲁道夫 • 萨德领导的世界领先航运物流集团，服务覆盖全球五大洲420多个港口。2021年，集团旗下566艘船舶完成了近2200万标准集装箱的运输量。子公司基华物流作为全球顶尖物流提供商，每年处理47.4万吨空运货物和2100万吨陆运货物。凭借基华物流和达飞空运部，达飞集团不断推陈出新，以开创性的海陆空货运和物流解决方案，提供端到端服务，助力客户实现业绩增长。</view>
+  <view class="oneDuan">Led by Rodolphe Saadé, the CMA CGM Group, a global leader in shipping and logistics, serves more than 420 ports around the world on five continents. Backed by a fleet of 566 vessels, in 2021 the Group transported 22 million TEU (twenty-foot equivalent units) containers. With its subsidiary CEVA Logistics, a world leader in logistics, which transports 474,000 tons of air freight and more than 21 million tons of land freight each year, and its air freight division CMA CGM AIR CARGO, the CMA CGM Group is continually innovating to offer its customers a complete and increasingly efficient range of new shipping, land, air and logistics solutions. </view>
+  <view class="oneDuan">达飞致力于引领航运业能源转型，不仅率先使用替代燃料，还设定了“2050年实现碳中和”的集团目标。</view>
+  <view class="oneDuan">Committed to the energy transition in shipping, and a pioneer in the use of alternative fuels, the CMA CGM Group has set a target to become Net Zero Carbon by 2050. </view>
+  <view class="oneDuan">通过达飞基金会，集团每年向数千名儿童伸出援手，支持倡导普及教育和机会平等。达飞基金会还借助于集团的航运物流资源，将人道主义物资运送到世界各地亟需帮助的地方，对人道主义危机提供紧急援助。</view>
+  <view class="oneDuan">Through the CMA CGM Foundation, every year the Group helps thousands of children through its actions to promote education for all and equal opportunity. The CMA CGM Foundation also acts in humanitarian crises that require an emergency response by mobilizing the Group’s shipping and logistics expertise to bring humanitarian supplies around the world. </view>
+  <view class="oneDuan">集团网络遍布全球各大洲，拥有超过400个办事机构和750个仓库，在世界160个国家拥有超过13万名员工，其中约2900人服务于马赛总部。</view>
+  <view class="oneDuan">Present in 160 countries through its network of more than 400 offices and 750 warehouses, the Group employs more than 130,000 people worldwide, including 2,900 in Marseilles where its head office is located.</view>
+  <view class="oneDuan">欲知更多详情</view>
+  <view class="fot">请点击<text catchtap="copy" style="color: #E20202;">https://www.cma-cgm.com/about/the-group</text></view>
+</view>

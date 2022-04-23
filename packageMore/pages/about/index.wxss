@@ -1,1 +1,33 @@
 /* packageMore/pages/about/index.wxss */
+.aboutContainer {
+  padding: 30rpx 50rpx 40rpx;
+}
+
+.aboutContainer .aboutTitle {
+  text-align: center;
+  font-size: 50rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.aboutContainer .aboutTitle text:nth-last-of-type(1) {
+  color: #E20202;
+}
+
+.aboutContainer .aboutThumb {
+  width: 100%;
+  height: 366rpx;
+  margin-top: 40rpx;
+}
+
+.aboutContainer .oneDuan {
+  color: #111111;
+  font-size: 28rpx;
+  margin-top: 40rpx;
+}
+
+.aboutContainer .fot {
+  color: #111111;
+  font-size: 28rpx;
+}
