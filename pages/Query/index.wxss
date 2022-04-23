@@ -6,341 +6,39 @@ page {
   padding-bottom: 170rpx;
 }
 
-.searchContainers {
-  width: 690rpx;
-  background-color: #ffffff;
-  margin: 30rpx auto;
-  padding: 0 48rpx 48rpx;
-}
-
-.searchtitle {
-  padding: 34rpx 0 48rpx 0;
-}
-
-.route {
-  font-size: 56rpx;
-  color: #04246A;
-  font-weight: bold;
-}
-
-.redline {
-  width: 6rpx;
-  height: 50rpx;
-  background: #E20202;
-  display: inline-block;
-  position: relative;
-  left: 20rpx;
-  top: 4rpx;
-}
-
-.shipdate {
-  font-size: 36rpx;
-  color: #4468BA;
-  font-weight: bold;
-  position: relative;
-  left: 40rpx;
-  top: -4rpx;
-}
-
-/**
-* 输入框样式
-*/
-.polimg,
-.podimg {
-  width: 30rpx;
-  height: 30rpx;
-  position: relative;
-  top: 80rpx;
-  left: -66rpx;
-}
-
-.podlocation {
-  width: 22rpx;
-  height: 28rpx;
-}
-
-.font14 {
-  font-size: 28rpx;
-  color: #04246A;
-  margin-left: 30rpx;
-}
-.xiehuo,.qiyun{
-  margin-left: 0;
-}
-.PODinput{
-  top: 20rpx;
-}
-.polinput,
-.podinput {
-  height: 88rpx;
-  border: 2rpx solid #DFDFDF;
-  margin-left: 50rpx;
-  margin-top: 10rpx;
-  padding: 0 80rpx 0 40rpx;
-  font-size: 28rpx;
-  color:#04246A;
-}
-
-.PODinput,
-.POLinput {
-  position: relative;
-  height: 160rpx;
-}
-.weekselect{
-   top: -20rpx;
-}
-.deleteIcon {
-  position: absolute;
-  bottom: 20rpx;
-  right: 0;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80rpx;
-  height: 88rpx;
-}
-
-.deleteIcon image {
-  width: 30rpx;
-  height: 30rpx;
-}
-
-.ship {
-  width: 52rpx;
-  height: 52rpx;
-  position: relative;
-  left: -15rpx;
-}
-
-.redcircle {
-  width: 18rpx;
-  height: 18rpx;
-  background: #E20202;
-  display: inline-block;
-  border-radius: 50%;
-}
-
-.line {
-  width: 2rpx;
-  min-height: 84rpx;
-  background: #9AA6C4;
-  border-radius: 4rpx;
-  opacity: 0.59;
-  margin-left: 8rpx;
-}
-.inputcontainer{
-  width: 100%;
-  min-height: 350rpx;
-}
-.noRequestBorder {
-  border: 2rpx solid #E10202;
-}
-.leftcontainer{
-  float: left;
-  display: flex;
-  flex-direction: column;
-}
-.rightcontianer{
-  position: relative;
-  top: -10rpx;
-}
-
-
-.searchimg,
-.dateimg,
-.weekimg {
-  width: 52rpx;
-  height: 52rpx;
-}
-
-.scroll-view {
-  width: 540rpx;
-  position:absolute;
-  margin-left: 50rpx;
-  background:#ffffff;
-  border: 1rpx solid #00245d;
-  z-index: 40;
-  max-height: 430rpx;
-}
-
-.scroll-viewpod {
-  width: 540rpx;
-  position: absolute;
-  top: 138rpx;
-  left: 52rpx;
-  background-color: #ffffff;
-  border: 1rpx solid #00245d;
-  z-index: 40;
-  max-height: 430rpx;
-}
-.scroll-view .item:hover{
-  color: #1c4ebb;
-}
-.scroll-view .item, .scroll-viewpod .item {
-  width: 100%;
-  height: 80rpx;
-  display: flex;
-  align-items: center;
-  border-bottom: 2rpx solid #e2e2e2;
-  padding: 0 20rpx;
-  font-size: 28rpx;
-  color: #333333;
-}
-
-.dateinput {
-  width: calc(100% - 64rpx);
-  height: 88rpx;
-  display: flex;
-  flex-direction: space-between;
-  border: 2rpx #DFDFDF solid;
-  margin-left: 70rpx;
-  padding-left: 10rpx;
-  font-size: 28rpx;
-  color: #04246A;
-}
-
-/* .polname,
-.podname {
-  width: 100%;
-  padding: 0 20rpx;
-  font-size: 28rpx;
-  border-bottom: 2rpx solid #e2e2e2;
-} */
-
-/*history*/
-.historyContainers {
-  padding: 0 30rpx 10rpx;
-}
-
-.historyContainers .historyTitle {
+.queryContainer .menuLists {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  color: #626262;
-  font-size: 28rpx;
-  margin-bottom: 30rpx;
-}
-
-.historyContainers .historyTitle .historydel {
-  width: 40rpx;
-  height: 40rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.historyContainers .historyTitle .historydel image {
-  width: 32rpx;
-  height: 32rpx;
-}
-
-.historyContainers .result {
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  padding: 0 30rpx;
 }
 
-.historyContainers .result .oneResult {
-  padding: 10rpx 75rpx 10rpx 30rpx;
-  font-size: 24rpx;
-  color: #626262;
-  position: relative;
-  background-color: #EAEBEE;
-  border-radius: 24rpx;
-  margin-bottom: 20rpx;
-}
-
-.historyContainers .result .oneResult .oneDelete {
-  width: 48rpx;
-  height: 48rpx;
+.queryContainer .menuLists .oneMenu {
+  width: 330rpx;
+  height: 330rpx;
+  background-color: #ffffff;
+  margin-top: 30rpx;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #071E5D;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  position: relative;
+}
+
+.queryContainer .menuLists .oneMenu .menuIcon {
+  width: 96rpx;
+  height: 96rpx;
+  margin-bottom: 10rpx;
+}
+
+.queryContainer .menuLists .oneMenu .newIcon {
   position: absolute;
   top: 0;
-  right: 20rpx;
-}
-
-.historyContainers .result .oneResult .oneDelete image {
-  width: 24rpx;
-  height: 24rpx;
-}
-/* 
-.flex {
-  width: 100%;
-  height: 48rpx;
-  background: #EAEBEE;
-  border-radius: 24rpx;
-  text-align: center;
-  margin-top: 10rpx;
-  line-height: 48rpx;
-}
-.btnclose{
-   display: inline-block;
-   width: 18rpx;
-   height: 18rpx;
-   line-height: 24rpx;
-   margin-top: 15rpx;
-   float: right;
-   margin-left: 32rpx;
-}
-.historydel {
-  width: 32rpx;
-  height: 32rpx;
-  position: relative;
-  top: -25rpx;
-}
-.fonthistory{
-   font-size: 24rpx;
-   color: #626262;
-}
-
-.clearstyle {
-  width: 32rpx;
-  height: 32rpx;
-  padding: 0;
-  float: right;
-  display: inline-block;
-}
-
-.clearstyle::after {
-  border: none;
-} */
-
-.font12 {
-  font-size: 24rpx;
-  color: #626262;
-}
-
-.searchselect,
-.dateselect,
-.weekselect {
-  position: relative;
-  top: -40rpx;
-  left: -20rpx;
-}
-
-.dateselect{
-   top: 0rpx;
-}
-.searchselect{
-   top: -20rpx;
-}
-.pos {
-  position: relative;
-  top: -15rpx;
-  left: -8rpx;
-}
-.noRequest{
-  font-size: 24rpx;
-  color: #E10202;
-  margin-left: 48rpx;
-}
-.van-tag--default {
-  --tag-default-color: #F0F1F5 !important;
-}
-
-.vant-tag {
-  color: #626262 !important;
+  right: 0;
+  width: 80rpx;
+  height: 80rpx;
 }

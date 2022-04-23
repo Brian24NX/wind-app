@@ -424,8 +424,8 @@ Page({
     }
     wx.setStorageSync('podobject', podobject);
     wx.setStorageSync('setHangXian', true)
-    wx.switchTab({
-      url: '/pages/Query/index',
+    wx.navigateTo({
+      url: '/pages/RouterQuery/index',
     })
   },
   //中英文切换
