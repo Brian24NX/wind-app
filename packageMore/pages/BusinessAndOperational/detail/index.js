@@ -1,20 +1,22 @@
-// packageMore/pages/BusinessAndOperational/index.js
+// packageMore/pages/BusinessAndOperational/detail/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    businessDetail: {
+      content: `· Acquisition of nearly 100% of GEFCO, European leader in automotive logistics.
+      · With the acquisition, the CMA CGM Group ensures the continuity and long-term stability of GEFCO's business.
+      · Deal will accelerate GEFCO’s transformation and strengthen its development within CEVA Logistics.`
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    wx.setNavigationBarTitle({
-      title: '客户通告',
-    })
+
   },
 
   /**

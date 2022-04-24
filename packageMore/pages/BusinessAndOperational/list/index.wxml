@@ -1,7 +1,7 @@
 <!--packageMore/pages/BusinessAndOperational/index.wxml-->
 <view class="businessContainer">
   <view class="topTitles">
-    <view class="topContainer">客户通告</view>
+    <text class="topContainer">业务及运营\n信息更新</text>
   </view>
   <view class="businessLists">
     <view class="businessList">

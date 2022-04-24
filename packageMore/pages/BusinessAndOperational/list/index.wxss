@@ -6,7 +6,7 @@ page {
 .businessContainer .topContainer {
   width: 690rpx;
   height: 210rpx;
-  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/newBg.png) no-repeat;
+  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/yewu.png) no-repeat;
   background-size: 100%;
   padding-left: 50rpx;
   display: flex;

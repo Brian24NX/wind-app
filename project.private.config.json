@@ -11,6 +11,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packageMore/pages/BusinessAndOperational/detail/index",
+          "query": "id=undefined",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

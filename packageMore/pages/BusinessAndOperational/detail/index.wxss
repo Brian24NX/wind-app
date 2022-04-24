@@ -1,0 +1,74 @@
+/* packageMore/pages/BusinessAndOperational/detail/index.wxss */
+.businessDetails {
+  padding: 30rpx 54rpx;
+}
+
+.businessDetails .businessTitle {
+  display: flex;
+  margin-top: 50rpx;
+}
+
+.businessDetails .businessTitle .titleLine {
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+  margin: 15rpx 20rpx 0 0;
+}
+
+.businessDetails .businessTitle .titleContent {
+  width: 610rpx;
+  font-size: 50rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.businessDetails .businessTime {
+  font-size: 24rpx;
+  color: #6B7790;
+  margin-top: 30rpx;
+}
+
+.businessDetails .rich {
+  margin-top: 30rpx;
+}
+
+.businessDetails .fileLists {
+  border: 1rpx solid #CFD2DA;
+  padding: 10rpx 46rpx 10rpx 20rpx;
+  margin-top: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.businessDetails .fileLists .fileIcon {
+  width: 128rpx;
+  height: 128rpx;
+}
+
+.businessDetails .fileLists .fileCenter {
+  width: 390rpx;
+  font-size: 28rpx;
+  color: #6B7790;
+}
+
+.businessDetails .fileLists .fileCenter view:nth-of-type(1) {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+  margin-bottom: 10rpx;
+}
+
+.businessDetails .fileLists .downloadIcon {
+  width: 40rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.businessDetails .fileLists .downloadIcon image {
+  width: 40rpx;
+  height: 40rpx;
+}

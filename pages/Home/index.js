@@ -84,7 +84,7 @@ Page({
         cnLabel: '客户通告',
         enLabel: '客户通告',
         icon: '/assets/img/home/customernotice@2x.png',
-        url: '/packageMore/pages/BusinessAndOperational/index'
+        url: '/packageMore/pages/BusinessAndOperational/list/index'
       },
       {
         id: 'about',
