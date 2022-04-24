@@ -3,6 +3,20 @@ page {
   background-color: #F0F1F5;
 }
 
+.newsContainer .topContainer {
+  width: 690rpx;
+  height: 210rpx;
+  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/newBg.png) no-repeat;
+  background-size: 100%;
+  padding-left: 50rpx;
+  display: flex;
+  align-items: center;
+  font-size: 64rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
 .newsContainer .topTitles {
   padding: 30rpx;
 }

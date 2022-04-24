@@ -1,20 +1,19 @@
-// packageMore/pages/cma/detail/index.js
+// packageMore/pages/BusinessAndOperational/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    id: '',
-    url: ''
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.setData({
-      id: options.id
+    wx.setNavigationBarTitle({
+      title: '客户通告',
     })
   },
 

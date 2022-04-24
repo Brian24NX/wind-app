@@ -1,0 +1,50 @@
+/* packageMore/pages/BusinessAndOperational/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.businessContainer .topContainer {
+  width: 690rpx;
+  height: 210rpx;
+  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/newBg.png) no-repeat;
+  background-size: 100%;
+  padding-left: 50rpx;
+  display: flex;
+  align-items: center;
+  font-size: 64rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.businessContainer .topTitles {
+  padding: 30rpx;
+}
+
+.businessContainer .topTitles .topBg {
+  width: 100%;
+  height: 210rpx;
+}
+
+.businessContainer .businessLists {
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 0 48rpx 40rpx;
+}
+
+.businessList .oneBusiness {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.businessList .oneBusiness .businessTitle {
+  font-size: 28rpx;
+  color: #04246A;
+}
+
+.businessList .oneBusiness .businessTime {
+  color: #6B7790;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+}

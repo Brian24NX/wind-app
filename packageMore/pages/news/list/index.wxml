@@ -1,7 +1,7 @@
 <!--packageMore/pages/news/list/index.wxml-->
 <view class="newsContainer">
   <view class="topTitles">
-    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/newBg.png" class="topBg"></image>
+    <view class="topContainer">新闻中心</view>
     <view class="searchInputs">
       <input type="text" placeholder="Keywords" placeholder-class="placeholder" />
       <image src="/assets/img/search/search@2x.png"></image>

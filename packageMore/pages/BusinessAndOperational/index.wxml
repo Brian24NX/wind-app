@@ -1,0 +1,14 @@
+<!--packageMore/pages/BusinessAndOperational/index.wxml-->
+<view class="businessContainer">
+  <view class="topTitles">
+    <view class="topContainer">客户通告</view>
+  </view>
+  <view class="businessLists">
+    <view class="businessList">
+      <view class="oneBusiness" wx:for="{{10}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
+        <view class="businessTitle">Suspension of Le Havre and Puerto Angamos calls on EUROSAL service connecting North Europe with West Coast South America & the Caribbean</view>
+        <view class="businessTime">Monday, April 11, 2022</view>
+      </view>
+    </view>
+  </view>
+</view>

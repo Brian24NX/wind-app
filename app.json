@@ -21,7 +21,8 @@
         "pages/news/list/index",
         "pages/news/detail/index",
         "pages/contact/conditions/index",
-        "pages/contact/result/index"
+        "pages/contact/result/index",
+        "pages/BusinessAndOperational/index"
       ]
     }
   ],
