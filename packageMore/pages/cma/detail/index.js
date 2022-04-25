@@ -6,7 +6,7 @@ Page({
    */
   data: {
     id: '',
-    url: ''
+    url: 'https://uat.wind.cma-cgm.com/pages/index/index2'
   },
 
   /**
