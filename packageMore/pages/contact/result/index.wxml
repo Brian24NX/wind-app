@@ -1,2 +1,37 @@
 <!--packageMore/pages/contact/result/index.wxml-->
-<text>packageMore/pages/contact/result/index.wxml</text>
+<view class="contactNavbarContainer" style="padding-top: {{navTop}}px;">
+  <view class="backIcons" style="height: {{navHeight}}px;" catchtap="back">
+    <van-icon color="#ffffff" size="50rpx" name="arrow-left" />
+  </view>
+  <image src="/assets/img/more/message@2x.png" class="message" mode="aspectFit"></image>
+  <view class="contactTopTitle">
+    <text>CMA CGM </text>
+    <text>客户服务</text>
+  </view>
+</view>
+<view class="contactDetailContainer">
+  <view class="contactLists">
+    <view class="oneContact" wx:for="{{2}}" wx:key="index">
+      <view class="ones">
+        <image src="/assets/img/more/location@2x.png"></image>
+        <view class="oneContent">
+          <view>中国 上海</view>
+        </view>
+      </view>
+      <view class="ones">
+        <image src="/assets/img/more/callme@2x.png"></image>
+        <view class="oneContent">
+          <view>周一到周五<text style="margin-left: 30rpx;">09:00-18:00</text></view>
+          <view catchtap="callme" data-phone="021-88888888">联系方式：021-88888888</view>
+        </view>
+      </view>
+      <view class="ones">
+        <image src="/assets/img/more/email@2x.png"></image>
+        <view class="oneContent noLine">
+          <view>邮箱地址：</view>
+          <view catchtap="copyEmail" data-email="SHG.LINWANG@cma-cgm.com">SHG.LINWANG@cma-cgm.com</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

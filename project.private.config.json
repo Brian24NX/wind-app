@@ -25,6 +25,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packageMore/pages/contact/result/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
