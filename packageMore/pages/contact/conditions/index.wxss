@@ -1,1 +1,125 @@
 /* packageMore/pages/contact/conditions/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.contactContainer {
+  padding: 30rpx;
+}
+
+.contactContainer .topContainer {
+  width: 690rpx;
+  height: 210rpx;
+  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/contact.png) no-repeat;
+  background-size: 100%;
+  margin: 0 auto;
+  padding-left: 50rpx;
+  display: flex;
+  align-items: center;
+  font-size: 64rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.contactContainer .blockContainer {
+  padding: 40rpx 48rpx;
+  background-color: #ffffff;
+  margin-top: 30rpx;
+}
+
+.contactContainer .blockContainer .oneBlock {
+  margin-bottom: 40rpx;
+}
+
+.contactContainer .blockContainer .oneBlock:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.contactContainer .blockContainer .oneBlock .contactTitle {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246A;
+  margin-bottom: 20rpx;
+}
+
+.contactContainer .blockContainer .oneBlock .selectContainer {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 24rpx;
+}
+
+.contactContainer .blockContainer .oneBlock .selectContainer image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.contactContainer .blockContainer .oneBlock .selectContainer input {
+  font-size: 24rpx;
+  width: 100%;
+  height: 100%;
+}
+
+.contactContainer .blockContainer .oneBlock .radioContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactContainer .blockContainer .oneBlock .radioContainer .oneRadio {
+  margin-right: 70rpx;
+  display: flex;
+  align-items: center;
+  color: #071E5D;
+  font-size: 28rpx;
+}
+
+.contactContainer .blockContainer .oneBlock .radioContainer .oneRadio .radioDto {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border: 1rpx solid #04246A;
+  margin-right: 15rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactContainer .blockContainer .oneBlock .radioContainer .oneRadio .radioActived {
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background-color: #04246A;
+}
+
+.contactContainer .blockContainer .oneBlock .radioContainer .oneRadio:nth-last-of-type(1) {
+  margin-right: 0;
+}
+
+.placeholder {
+  color: #B9BFCA;
+}
+
+.contactContainer .blockContainer .submitBtn {
+  width: 100%;
+  height: 88rpx;
+  background-color: #2D75FF;
+  border: none;
+  border-radius: 0;
+  margin-top: 30rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+}
+
+.contactContainer .blockContainer .submitHover {
+  opacity: .9;
+}

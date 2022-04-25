@@ -110,3 +110,11 @@ page{
   top: 0;
   left: 0;
 }
+
+.van-picker__confirm {
+  color: #071E5D !important;
+}
+
+.van-picker__cancel {
+  color: #999999 !important;
+}

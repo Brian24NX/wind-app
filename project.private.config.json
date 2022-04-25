@@ -18,6 +18,13 @@
           "query": "id=undefined",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packageMore/pages/contact/conditions/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

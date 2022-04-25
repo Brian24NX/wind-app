@@ -1,0 +1,4 @@
+<!--components/customPicker/index.wxml-->
+<van-popup bind:close="onClose" show="{{ showPopup }}" position="bottom">
+  <van-picker bind:cancel="onClose" bind:confirm="onConfirm" columns="{{ columns }}" show-toolbar value-key="{{valueKey}}" />
+</van-popup>
