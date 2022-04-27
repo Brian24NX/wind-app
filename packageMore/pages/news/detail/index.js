@@ -1,4 +1,7 @@
 // packageMore/pages/news/detail/index.js
+import {
+  newsDetail
+} from '../../../../api/modules/more';
 Page({
 
   /**
@@ -6,11 +9,7 @@ Page({
    */
   data: {
     id: '',
-    newsDetail: {
-      content: `· Acquisition of nearly 100% of GEFCO, European leader in automotive logistics.
-      · With the acquisition, the CMA CGM Group ensures the continuity and long-term stability of GEFCO's business.
-      · Deal will accelerate GEFCO’s transformation and strengthen its development within CEVA Logistics.`
-    }
+    newsDetail: {}
   },
 
   /**
@@ -27,5 +26,12 @@ Page({
   },
 
   // 获取新闻详情
-  getNewsDetail() {}
+  getNewsDetail() {
+    newsDetail({id: this.data.id}).then(res=>{
+      console.log(res)
+      this.setData({
+        newsDetail: res.data
+      })
+    })
+  }
 })

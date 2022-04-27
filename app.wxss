@@ -118,3 +118,49 @@ page{
 .van-picker__cancel {
   color: #999999 !important;
 }
+
+.inputContainer {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 0 30rpx 0 40rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+}
+
+.placeholder {
+  color: #7087A1;
+  font-size: 24rpx;
+}
+
+.inputContainer .inputs {
+  width: 520rpx;
+  height: 100%;
+  font-size: 26rpx;
+}
+
+.inputContainer .delete {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.inputContainer .delete image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.inputContainer .search {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.inputContainer .search image {
+  width: 36rpx;
+  height: 36rpx;
+}

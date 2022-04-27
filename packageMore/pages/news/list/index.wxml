@@ -1,24 +1,31 @@
 <!--packageMore/pages/news/list/index.wxml-->
+<wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="newsContainer">
   <view class="topTitles">
     <view class="topContainer">新闻中心</view>
-    <view class="searchInputs">
-      <input type="text" placeholder="Keywords" placeholder-class="placeholder" />
-      <image src="/assets/img/search/search@2x.png"></image>
+    <view class="inputContainer" style="margin-top: 30rpx;">
+      <input value="{{keyword}}" type="text" class="inputs" placeholder="keyword" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+      <view class="delete" catchtap="deleteValue">
+        <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+      </view>
+      <view class="search" bindtap="search">
+        <image src="/assets/img/search/search@2x.png"></image>
+      </view>
     </view>
   </view>
   <view class="newsLists">
     <scroll-view class="categoryList" scroll-x>
       <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
-        <text>{{item.label}}</text>
+        <text>{{item.category}}</text>
         <view class="line"></view>
       </view>
     </scroll-view>
     <view class="newsList">
-      <view class="oneNews" wx:for="{{10}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
-        <view class="newsTitle">Suspension of Le Havre and Puerto Angamos calls on EUROSAL service connecting North Europe with West Coast South America & the Caribbean</view>
-        <view class="newsTime">Monday, April 11, 2022</view>
+      <view class="oneNews" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
+        <view class="newsTitle">{{item.title}}</view>
+        <view class="newsTime">{{format.formatEnDate(item.publishDate)}}</view>
       </view>
+      <loading loading="{{loading}}" noMore="{{noMore}}"></loading>
     </view>
   </view>
 </view>

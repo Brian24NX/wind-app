@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "",
-  "usingComponents": {}
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "loading": "../../../../components/loading/index"
+  }
 }
