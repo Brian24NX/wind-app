@@ -1,4 +1,8 @@
 {
-   "component": true,
-   "usingComponents": {}
+  "component": true,
+  "usingComponents": {
+    "van-divider": "@vant/weapp/divider/index",
+    "van-loading": "@vant/weapp/loading/index"
+  },
+  "addGlobalClass": true
 }

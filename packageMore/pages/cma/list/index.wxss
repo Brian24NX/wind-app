@@ -20,7 +20,7 @@ page {
 
 .cmaContainer .cmaList {
   background-color: #ffffff;
-  padding: 0 48rpx 40rpx;
+  padding: 1rpx 48rpx;
 }
 
 .cmaContainer .cmaList .oneCma {
@@ -36,11 +36,6 @@ page {
   font-weight: 400;
   color: #04246A;
   width: 390rpx;
-  word-break: break-all;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .cmaContainer .cmaList .oneCma image {

@@ -59,7 +59,7 @@
     </view>
   </view>
   <view class="noStepOrderData" wx:if="{{!stepList.length && !isLoading}}">
-    <image src="/assets/img/search/no@2x.png"></image>
+    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no.png"></image>
     <view>未找到或已经卸货或返回堆场</view>
   </view>
   <email path="{{path}}" wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

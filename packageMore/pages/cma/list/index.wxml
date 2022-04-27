@@ -4,9 +4,11 @@
     CMA CGM<text style="color: #E20202;">+</text>
   </view>
   <view class="cmaList">
-    <view class="oneCma" wx:for="{{10}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
-      <view class="cmaTitle">达飞 ACT with CMA CGM+ 助您迈向碳中和之路 Rediscover ACT withCMA CGM+</view>
+    <view class="oneCma" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
+      <view class="cmaTitle">{{item.title}}</view>
       <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/shipment.png" mode="aspectFill"></image>
     </view>
+    <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+    <van-empty wx:if="{{!loading && noData}}" description="暂无相关信息" />
   </view>
 </view>

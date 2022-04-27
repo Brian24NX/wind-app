@@ -225,25 +225,36 @@ function substrTime(date) {
   return date
 }
 /*
-*  货运状态
-*/
+ *  货运状态
+ */
 // 判别陆运种类
-var judgLand=function(obj){
-  if(!obj)  return false;
-  if(obj=='RAIL'){
+var judgLand = function (obj) {
+  if (!obj) return false;
+  if (obj == 'RAIL') {
     return true;
-  }else if(obj=='TRUCK'){
+  } else if (obj == 'TRUCK') {
     return true;
-  }else if(obj=='TRUCK / RAIL'){
+  } else if (obj == 'TRUCK / RAIL') {
     return true;
-  }else if(obj=='FEEDER'){
+  } else if (obj == 'FEEDER') {
     return true;
-  }else if(obj=='INTERMODAL'){
-   return true;
-  }else{
-   return false;
+  } else if (obj == 'INTERMODAL') {
+    return true;
+  } else {
+    return false;
   }
 }
+
+function formatEnDate(date) {
+  var dt = new Date(date.split('T')[0].replaceAll('-', '/'));
+  var m = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec");
+  var week = new Array("Sunday", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday", "Saturday");
+  var mn = dt.getMonth(),
+  wn = dt.getDay(),
+  dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
+  return week[wn - 1] + '，' + m[mn] + " " + dn + "，" + dt.getFullYear()
+}
+
 module.exports = {
   formatTime,
   skipNulls,
@@ -254,5 +265,6 @@ module.exports = {
   formatHuoYunStatus,
   getDayList,
   substrTime,
-  judgLand
+  judgLand,
+  formatEnDate
 }
