@@ -8,6 +8,7 @@
       <view class="cmaTitle">{{item.title}}</view>
       <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/shipment.png" mode="aspectFill"></image>
     </view>
-    <loading loading="{{loading}}" noMore="{{noMore}}"></loading>
+    <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+    <van-empty wx:if="{{!loading && noData}}" description="暂无相关信息" />
   </view>
 </view>

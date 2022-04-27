@@ -16,6 +16,7 @@ Page({
     pageNum: 1,
     loading: true,
     noMore: false,
+    noData: false,
     list: []
   },
 
@@ -65,6 +66,7 @@ Page({
     this.setData({
       loading: true,
       noMore: false,
+      noData: false,
       pageNum: 1,
       list: []
     })
@@ -91,7 +93,7 @@ Page({
     this.setData({
       categoryId
     })
-    this.getNewsList()
+    this.search()
   },
 
   // 获取新闻列表
@@ -111,6 +113,7 @@ Page({
       }
       this.setData({
         loading: false,
+        noData: list.length ? false : true,
         list
       })
     })

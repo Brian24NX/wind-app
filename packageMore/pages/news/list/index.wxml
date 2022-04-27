@@ -20,12 +20,16 @@
         <view class="line"></view>
       </view>
     </scroll-view>
-    <view class="newsList">
+    <view class="newsList" wx:if="{{list.length}}">
       <view class="oneNews" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
         <view class="newsTitle">{{item.title}}</view>
         <view class="newsTime">{{format.formatEnDate(item.publishDate)}}</view>
       </view>
-      <loading loading="{{loading}}" noMore="{{noMore}}"></loading>
     </view>
+    <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+    <van-empty
+      wx:if="{{!loading && noData}}"
+      description="暂无相关信息"
+    />
   </view>
 </view>

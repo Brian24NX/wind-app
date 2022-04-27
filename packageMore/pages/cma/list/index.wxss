@@ -20,7 +20,7 @@ page {
 
 .cmaContainer .cmaList {
   background-color: #ffffff;
-  padding: 20rpx 48rpx 40rpx;
+  padding: 1rpx 48rpx;
 }
 
 .cmaContainer .cmaList .oneCma {

@@ -2,6 +2,8 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "loading": "../../../../components/loading/index"
-  }
+    "loading": "../../../../components/loading/index",
+    "van-empty": "@vant/weapp/empty/index"
+  },
+  "addGlobalClass": true
 }

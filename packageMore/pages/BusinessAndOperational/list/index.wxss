@@ -30,7 +30,7 @@ page {
   width: 690rpx;
   margin: 0 auto;
   background-color: #ffffff;
-  padding: 0 48rpx 40rpx;
+  padding: 1rpx 48rpx;
 }
 
 .businessList .oneBusiness {

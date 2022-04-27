@@ -12,6 +12,7 @@ Page({
     list: [],
     loading: true,
     noMore: false,
+    noData: false,
     pageNum: 1
   },
 
@@ -48,6 +49,7 @@ Page({
     this.setData({
       loading: true,
       noMore: false,
+      noData: false,
       pageNum: 1,
       list: []
     })
@@ -72,6 +74,7 @@ Page({
       }
       this.setData({
         loading: false,
+        noData: list.length ? false : true,
         list
       })
     })
