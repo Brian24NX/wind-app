@@ -71,6 +71,7 @@
     "request": 20000,
     "downloadFile": 20000
   },
+  "lazyCodeLoading": "requiredComponents",
   "debug": true,
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
