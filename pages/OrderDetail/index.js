@@ -39,7 +39,7 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    console.log(data)
+    // console.log(data)
     this.setData({
       list: [data.list[this.data.index]],
       detail: data.list[this.data.index].data.routes[this.data.routeIndex].containers[this.data.indexs],

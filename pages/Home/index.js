@@ -135,7 +135,7 @@ Page({
   },
   // discover切换swiper
   changeCurrentDto(e) {
-    console.log(e);
+    // console.log(e);
     this.setData({
       swiperindex: e.detail.current
     })
@@ -284,7 +284,7 @@ Page({
   },
   // 设置卸货港
   changepodname(e) {
-    console.log(e);
+    // console.log(e);
     let index = e.currentTarget.dataset.index;
     this.setData({
       showRemind3: false,
@@ -372,7 +372,7 @@ Page({
               this.setSearchList(obj)
               return
             }
-            console.log(data)
+            // console.log(data)
             this.data.resultlist.apl = data.data.apl;
             this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
             this.data.resultlist.solutionServices.apl = data.data.solutionServices.apl

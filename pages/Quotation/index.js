@@ -98,14 +98,14 @@ Page({
     initLanguage() {
       //获取当前小程序语言版本所对应的字典变量
       var lang = languageUtil.languageVersion()
-      console.log(lang)
+      // console.log(lang)
       this.setData({
         content: lang
       })
       wx.setNavigationBarTitle({
         title: lang.lang.userCenter.quotationtitle
       })
-      console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
+      // console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
       if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
         this.getTabBar().setData({
           list:lang.lang.toolbar.list //赋值

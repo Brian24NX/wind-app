@@ -44,7 +44,7 @@ App({
         // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
       },
       fail(err) {
-        console.log(err);
+        // console.log(err);
       }
     })
   },

@@ -16,7 +16,7 @@ Page({
   },
 
   getMessage(e) {
-    console.log(e)
+    // console.log(e)
     const data = e.detail.data[0]
     wx.showToast({
       title: data.access_token,

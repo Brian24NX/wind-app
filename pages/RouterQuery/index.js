@@ -187,7 +187,7 @@ Page({
             shippingCompany: '0015'
           }
           routingFinder(obj2).then(data => {
-            console.log(data)
+            // console.log(data)
             if (JSON.stringify(data.data) == '{}') {
               this.setHistory(obj)
               return
@@ -285,7 +285,7 @@ Page({
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
-      console.log(res)
+      // console.log(res)
       if (res.data != '') {
         this.setData({
           pollist: res.data || []
@@ -396,14 +396,14 @@ Page({
   initLanguage() {
     //获取当前小程序语言版本所对应的字典变量
     var lang = languageUtil.languageVersion()
-    console.log(lang)
+    // console.log(lang)
     this.setData({
       content: lang
     })
     wx.setNavigationBarTitle({
       title: lang.lang.userCenter.querytitle
     })
-    console.log(typeof this.getTabBar === 'function' && this.getTabBar());
+    // console.log(typeof this.getTabBar === 'function' && this.getTabBar());
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         list: lang.lang.toolbar.list //赋值

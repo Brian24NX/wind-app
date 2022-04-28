@@ -23,7 +23,7 @@ const request = ( { url, data, method, contentType, hideLoading }) => {
     });
   }
 	return new Promise((resolve, reject) => {
-		console.log(`${config[config.dev_env].url}${url}`);
+		// console.log(`${config[config.dev_env].url}${url}`);
 		wx.request({
 			url: `${config[config.dev_env].url}${url}`,
 			data: data,
@@ -33,7 +33,7 @@ const request = ( { url, data, method, contentType, hideLoading }) => {
 				// 'token': getStorage('token')
 			},
 			success: (res) => {
-				console.log(res)
+				// console.log(res)
 				wx.hideLoading();
 				// 返回成功提示信息
 				if (res.statusCode === 200) {

@@ -6,7 +6,7 @@ function formatEnDate(date) {
   var mn = dt.getMonth(),
   wn = dt.getDay(),
   dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
-  console.log('wn', wn)
+  // console.log('wn', wn)
   return week[wn] + '，' + m[mn] + " " + dn + "，" + dt.getFullYear()
 }
 

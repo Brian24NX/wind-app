@@ -49,7 +49,7 @@ Component({
         title: '加载中',
         mask: true
       })
-      console.log(this.data.list)
+      // console.log(this.data.list)
       this.setData({
         stepList: [],
         stepCount: 0,
@@ -174,7 +174,7 @@ Component({
       })
     },
     sendEmails(e) {
-      console.log(e)
+      // console.log(e)
       if (this.data.path) {
         this.sendEmailFn(e.detail)
       } else {

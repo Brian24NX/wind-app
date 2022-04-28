@@ -28,7 +28,7 @@ Page({
   // 获取新闻详情
   getNewsDetail() {
     newsDetail({id: this.data.id}).then(res=>{
-      console.log(res)
+      // console.log(res)
       this.setData({
         newsDetail: res.data
       })

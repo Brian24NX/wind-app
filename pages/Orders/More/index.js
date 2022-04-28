@@ -36,7 +36,7 @@ Component({
   methods: {
     setList() {
       const lists = this.data.list
-      console.log(lists)
+      // console.log(lists)
       lists.forEach(items => {
         if (items.data) {
           items.data.routes.forEach(routeItem => {

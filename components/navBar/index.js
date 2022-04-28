@@ -194,8 +194,8 @@ Component({
             top: systemInfo.statusBarHeight + gap,
             width: width
           };
-          console.log('error', error);
-          console.log('rect', rect);
+          // console.log('error', error);
+          // console.log('rect', rect);
         }
 
         let navBarHeight = '';

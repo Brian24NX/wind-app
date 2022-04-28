@@ -59,7 +59,7 @@ Page({
   // 确认选择
   onConfirm(e) {
     const detail = e.detail
-    console.log(detail)
+    // console.log(detail)
     this.setData({
       showPopup: false
     })

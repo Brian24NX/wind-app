@@ -39,7 +39,7 @@ Component({
     ]
   },
   attached() {
-      console.log(this.list);
+      // console.log(this.list);
   },
   show(){
 
@@ -48,7 +48,7 @@ Component({
     switchTab(e) {
       const data = e.currentTarget.dataset
       const url = data.path
-      console.log(data)
+      // console.log(data)
       //切换导航栏，标识导航栏下标
       this.setData({
         selected: data.index
