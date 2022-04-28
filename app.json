@@ -24,7 +24,8 @@
         "pages/contact/conditions/index",
         "pages/contact/result/index",
         "pages/BusinessAndOperational/list/index",
-        "pages/BusinessAndOperational/detail/index"
+        "pages/BusinessAndOperational/detail/index",
+        "pages/Faq/index"
       ]
     }
   ],

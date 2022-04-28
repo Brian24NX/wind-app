@@ -76,7 +76,7 @@ Page({
           cnLabel: '在线服务',
           enLabel: 'CMA CGM+',
           icon: '/assets/img/home/discover_4@2x.png',
-          url: ''
+          url: '/packageMore/pages/Faq/index'
         },
       ],
       [{

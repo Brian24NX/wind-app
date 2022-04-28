@@ -1,20 +1,21 @@
 <!--packageMore/pages/BusinessAndOperational/detail/index.wxml-->
+<wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="topLine"></view>
 <view class="businessDetails">
   <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/top.png" mode="widthFix" style="width: 100%;"></image>
   <view class="businessTitle">
     <view class="titleLine"></view>
-    <view class="titleContent">码头附加费南非进出口</view>
+    <view class="titleContent">{{businessDetail.title}}</view>
   </view>
-  <view class="businessTime">2022-04-11 星期一</view>
+  <view class="businessTime">{{businessDetail.formatDate}} {{format.weekday(businessDetail.publishDate)}}</view>
   <view class="rich">
     <rich-text nodes="{{businessDetail.content}}"></rich-text>
   </view>
-  <view class="fileLists">
+  <view class="fileLists" wx:if="{{businiessOpentionalDetail.file}}">
     <image src="/assets/img/more/pdf@2x.png" class="fileIcon"></image>
     <view class="fileCenter">
       <view>202203190703.pdf</view>
-      <view>102.07KB</view>
+      <!-- <view>102.07KB</view> -->
     </view>
     <view class="downloadIcon">
       <image src="/assets/img/more/download@2x.png"></image>

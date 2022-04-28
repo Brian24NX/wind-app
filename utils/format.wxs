@@ -6,9 +6,42 @@ function formatEnDate(date) {
   var mn = dt.getMonth(),
   wn = dt.getDay(),
   dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
-  return week[wn - 1] + '，' + m[mn] + " " + dn + "，" + dt.getFullYear()
+  console.log('wn', wn)
+  return week[wn] + '，' + m[mn] + " " + dn + "，" + dt.getFullYear()
+}
+
+var weekday = function (obj) {
+  if(!obj) return ''
+  obj = obj.split('T')[0].split('-').join('/')
+  var date = getDate(obj).getDay();
+  var week = '';
+  switch (date) {
+    case 0:
+      week = "星期日";
+      break;
+    case 1:
+      week = "星期一";
+      break;
+    case 2:
+      week = "星期二";
+      break;
+    case 3:
+      week = "星期三";
+      break;
+    case 4:
+      week = "星期四";
+      break;
+    case 5:
+      week = "星期五";
+      break;
+    case 6:
+      week = "星期六";
+      break;
+  }
+  return week;
 }
 
 module.exports = {
-  formatEnDate: formatEnDate
+  formatEnDate: formatEnDate,
+  weekday: weekday
 }
