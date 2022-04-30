@@ -11,7 +11,7 @@
   <view class="rich">
     <rich-text nodes="{{businessDetail.content}}"></rich-text>
   </view>
-  <view class="fileLists" wx:if="{{businiessOpentionalDetail.file}}">
+  <view class="fileLists" wx:if="{{businiessOpentionalDetail.filePath}}">
     <image src="/assets/img/more/pdf@2x.png" class="fileIcon"></image>
     <view class="fileCenter">
       <view>202203190703.pdf</view>

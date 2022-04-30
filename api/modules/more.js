@@ -32,3 +32,18 @@ export const businiessOpentionalList = (params) => {
 export const businiessOpentionalDetail = (params) => {
   return getRequest('/api/miniapp/businiessOpentionalDetail', params)
 }
+
+// 字典列表
+export const dictList = (params) => {
+  return getRequest('/api/miniapp/dictList', params, true)
+}
+
+// 字典列表
+export const contactTradeList = (params) => {
+  return getRequest('/api/miniapp/contactTradeList', params, true)
+}
+
+// 联系我们
+export const contractInfo = (params) => {
+  return getRequest('/api/miniapp/contactInfoSearch', params)
+}

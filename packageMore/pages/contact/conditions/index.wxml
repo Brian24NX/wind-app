@@ -4,17 +4,19 @@
   <view class="blockContainer">
     <view class="oneBlock">
       <view class="contactTitle">请选择您准备联系的本地办事处</view>
-      <view class="selectContainer" catchtap="openPopup">
-        <view>请选择</view>
+      <view class="selectContainer" catchtap="openPopup" data-type="1">
+        <view style="{{office ? 'color: #071E5D;' : ''}}">{{officeName||'请选择'}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
+      <view class="noRequest" wx:if="{{showRemind1}}">此项为必填项</view>
     </view>
     <view class="oneBlock">
       <view class="contactTitle">请选择您需要咨询的业务类型</view>
-      <view class="selectContainer" catchtap="openPopup">
-        <view>请选择</view>
+      <view class="selectContainer" catchtap="openPopup" data-type="2">
+        <view style="{{businessType ? 'color: #071E5D;' : ''}}">{{businessTypeName||'请选择'}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
+      <view class="noRequest" wx:if="{{showRemind2}}">此项为必填项</view>
     </view>
     <view class="oneBlock">
       <view class="contactTitle">请问您是否可以提供订舱信息？</view>
@@ -38,22 +40,23 @@
     <block wx:if="{{!canProvide}}">
       <view class="oneBlock">
         <view class="contactTitle">请选择您需要咨询的航线</view>
-        <view class="selectContainer" catchtap="openPopup">
-          <view>请选择</view>
+        <view class="selectContainer" catchtap="openPopup" data-type="3">
+          <view style="{{trade ? 'color: #071E5D;' : ''}}">{{tradeName || '请选择'}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
+        <view class="noRequest" wx:if="{{showRemind3}}">此项为必填项</view>
       </view>
       <view class="oneBlock">
         <view class="contactTitle">公司名称</view>
         <view class="selectContainer">
-          <input type="text" placeholder="请输入" placeholder-class="placeholder"/>
+          <input type="text" bindinput="setAccount" placeholder="请输入" placeholder-class="placeholder" />
         </view>
       </view>
     </block>
     <block wx:else>
       <view class="oneBlock">
         <view class="selectContainer">
-          <input type="text" placeholder="请输入订单号" placeholder-class="placeholder"/>
+          <input type="text" placeholder="请输入订单号" placeholder-class="placeholder" />
         </view>
       </view>
     </block>
