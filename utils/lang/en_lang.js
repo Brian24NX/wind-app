@@ -30,6 +30,7 @@ var Languague = {
       more3: 'Maximum three container states, please re-enter',
       chongfu: 'Duplicate number, please check and enter'
     },
+    // 首页
     homeInfo: {
       //页面标题
       hometitle: "CAM CGM",
@@ -74,6 +75,15 @@ var Languague = {
       gzp: 'Sanctions and Commodity',
       // 联系我们
       callMe: 'call me'
+    },
+    // 查询
+    queryInfo: {
+      dingcang: 'Booking Space',
+      chuanqi: 'SCHEDULE',
+      huowu: 'TRACKING',
+      gzp: 'Sanctions and Commodity',
+      gzfl: 'D&D Rate',
+      cxfl: 'Charge Finder'
     },
     //航线查询
     scheduleSearching: {

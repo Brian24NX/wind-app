@@ -32,6 +32,7 @@ var Languague = {
       more3: '最多可同时查询三个货柜状态，请重新输入',
       chongfu: '号码重复，请检查后输入'
     },
+    // 首页
     homeInfo: {
       hometitle: "CAM CGM",
       // 获取追踪
@@ -76,6 +77,15 @@ var Languague = {
       gzp: '管制品查询',
       // 联系我们
       callMe: '联系我们'
+    },
+    // 查询
+    queryInfo: {
+      dingcang: '订舱',
+      chuanqi: '船期查询',
+      huowu: '货物追踪',
+      gzp: '管制品查询',
+      gzfl: '柜租费率',
+      cxfl: '查询费率'
     },
     //航线查询
     scheduleSearching: {

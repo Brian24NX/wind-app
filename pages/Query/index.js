@@ -8,38 +8,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content: {}, // 用于保存当前页面所需字典变了
+    languageContent: {}, // 用于保存当前页面所需字典
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     menuList: [{
       icon: '/assets/img/menu/dc@2x.png',
       isNew: true,
-      label: '订舱',
+      label: 'dingcang',
       url: ''
     }, {
       icon: '/assets/img/menu/cqcx@2x.png',
       isNew: false,
-      label: '船期查询',
+      label: 'chuanqi',
       url: '/pages/RouterQuery/index'
     }, {
       icon: '/assets/img/menu/hwzz@2x.png',
       isNew: false,
-      label: '货物追踪',
+      label: 'huowu',
       url: '/pages/Shipment/index'
     }, {
       icon: '/assets/img/menu/gzp@2x.png',
       isNew: true,
-      label: '管制品查询',
+      label: 'gzp',
       url: ''
     }, {
       icon: '/assets/img/menu/gzfl@2x.png',
       isNew: false,
-      label: '柜租费率',
+      label: 'gzfl',
       url: ''
     }, {
       icon: '/assets/img/menu/cxfl@2x.png',
       isNew: false,
-      label: '查询费率',
+      label: 'cxfl',
       url: ''
     }]
   },
@@ -64,24 +64,15 @@ Page({
       url: this.data.menuList[index].url,
     })
   },
-  //中英文切换
-  switchLanguage() {
-    //切换当前版本，即修改公共变量中的version
-    languageUtil.changLanguage()
-    this.initLanguage()
-  },
+  
   //初始化语言
   initLanguage() {
     //获取当前小程序语言版本所对应的字典变量
     var lang = languageUtil.languageVersion()
     // console.log(lang)
     this.setData({
-      content: lang
+      languageContent: lang.lang.page.queryInfo
     })
-    wx.setNavigationBarTitle({
-      title: lang.lang.page.querytitle
-    })
-    // console.log(typeof this.getTabBar === 'function' && this.getTabBar());
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         list: lang.lang.toolbar.list //赋值

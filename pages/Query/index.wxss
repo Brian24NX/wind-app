@@ -42,3 +42,8 @@ page {
   width: 80rpx;
   height: 80rpx;
 }
+
+.queryContainer .menuLists .oneMenu view {
+  padding: 0 20rpx;
+  text-align: center;
+}

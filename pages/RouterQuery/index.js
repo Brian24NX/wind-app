@@ -13,6 +13,7 @@ Page({
    */
   data: {
     languageContent: {}, // 用于保存当前页面所需字典
+    verifyInfo: {},
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     viewShowedPol: false,
@@ -66,9 +67,9 @@ Page({
     })
   },
   changeweek(e) {
-    let index = e.detail.id;
+    let id = e.detail.id;
     this.setData({
-      week: this.data.weeklist[index].id
+      week: id
     })
   },
   getDate() {
@@ -80,6 +81,7 @@ Page({
     day = day < 10 ? ('0' + day) : day
     return year + '-' + month + '-' + day;
   },
+
   bindTimeChange(e) {
     this.setData({
       date: e.detail.value
@@ -136,22 +138,12 @@ Page({
       }
     }
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
-    let week = '';
-    if (this.data.week === '1 星期') {
-      week = 7
-    } else if (this.data.week === '2 星期') {
-      week = 14
-    } else if (this.data.week === '3 星期') {
-      week = 21
-    } else {
-      week = 28
-    }
     let obj = {
       placeOfDischarge: this.data.podcode,
       placeOfLoading: this.data.polcode,
       arrivalDate: this.data.search === 0 ? this.data.date : '',
       departureDate: this.data.search === 1 ? this.data.date : '',
-      searchRange: week,
+      searchRange: this.data.week * 7,
       shippingCompany: '',
     }
     routingFinder(obj).then(res => {
@@ -165,7 +157,7 @@ Page({
             placeOfLoading: this.data.polcode,
             arrivalDate: this.data.search == 0 ? this.data.date : '',
             departureDate: this.data.search == 1 ? this.data.date : '',
-            searchRange: week,
+            searchRange: this.data.week * 7,
             shippingCompany: '0015'
           }
           routingFinder(obj2).then(data => {

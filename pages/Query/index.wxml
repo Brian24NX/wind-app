@@ -6,7 +6,7 @@
     <view class="oneMenu" wx:for="{{menuList}}" wx:key="index" catchtap="toFunction" data-index="{{index}}">
       <image class="newIcon" src="/assets/img/menu/new@2x.png" wx:if="{{item.isNew}}"></image>
       <image class="menuIcon" src="{{item.icon}}"></image>
-      <view>{{item.label}}</view>
+      <view>{{languageContent[item.label]}}</view>
     </view>
   </view>
 </view>

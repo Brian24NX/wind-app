@@ -3,16 +3,16 @@
   <view class="searchContainers">
     <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/shipment.png" class="huowuImg"></image>
     <view class="searchContents">
-      <view class="remind">输入货柜号，提单号或订舱号</view>
+      <view class="remind">{{languageContent.goodsRemind}}</view>
       <view class="inputs {{showRemind ? 'noRequestBorder' : ''}}">
         <input type="text" placeholder="ex:ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" />
         <view class="delete" catchtap="clearInput" wx:if="{{huoGuiValue}}">
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
       </view>
-      <view class="noRequest" wx:if="{{showRemind}}">{{huiguiType === 1 ? '此项为必填项' : huiguiType === 2 ? '号码无效，请检查格式' : huiguiType === 3 ?'最多可同时查询三个货柜状态，请重新输入':'号码重复，请检查后输入'}}</view>
-      <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">{{content.lang.page.homeInfo.goods}}</button>
-      <view class="reminds">{{content.lang.page.homeInfo.tips}}</view>
+      <view class="noRequest" wx:if="{{showRemind}}">{{huiguiType === 1 ? verifyInfo.required : huiguiType === 2 ? verifyInfo.gswx : huiguiType === 3 ? verifyInfo.more3 : verifyInfo.chongfu}}</view>
+      <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">{{languageContent.goods}}</button>
+      <view class="reminds">{{languageContent.tips}}</view>
     </view>
   </view>
 </view>

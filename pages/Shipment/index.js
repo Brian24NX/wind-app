@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content: {}, // 用于保存当前页面所需字典变了
+    languageContent: {}, // 用于保存当前页面所需字典
+    verifyInfo: {},
     showRemind: false,
     huiguiType: 1
   },
@@ -15,10 +16,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    wx.setNavigationBarTitle({
-      title: '货物追踪'
-    })
+  onLoad() {
     this.initLanguage();
   },
 
@@ -94,14 +92,12 @@ Page({
   initLanguage() {
     //获取当前小程序语言版本所对应的字典变量
     var lang = languageUtil.languageVersion()
-    this.setData({
-      content: lang
+    wx.setNavigationBarTitle({
+      title: lang.lang.page.homeInfo.TRACKING
     })
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0,
-        list: lang.lang.toolbar.list //赋值
-      })
-    }
+    this.setData({
+      languageContent: lang.lang.page.homeInfo,
+      verifyInfo: lang.lang.page.verifyInfo
+    })
   },
 })
