@@ -7,4 +7,5 @@
     <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/qidai.png"></image>
     <text>功能升级中，敬请期待</text>
   </view>
+  <view catchtap="switchLanguage">切换</view>
 </view>

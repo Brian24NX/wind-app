@@ -269,7 +269,7 @@ Page({
     const type = e.currentTarget.dataset.type
     this.setData({
       currentType: type,
-      valueKey: type === '3' ? 'trade' : 'value',
+      valueKey: type === '3' ? 'trade' : type === '2' ? 'valueCn' : 'value',
       columns: type === '1' ? this.data.officeList : type === '2' ? this.data.businessScopeList : type === '3' ? this.data.contactTradeList : [],
       showPopup: true
     })
@@ -297,7 +297,7 @@ Page({
       case '2':
         this.setData({
           businessType: detail.key,
-          businessTypeName: detail.value,
+          businessTypeName: detail.valueCn,
           showRemind2: false
         })
         break;

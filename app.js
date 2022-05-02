@@ -1,26 +1,14 @@
 // app.js
-
 App({
   onLaunch() {
-    // const logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-    // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //   }
-    // })
     wx.removeStorageSync('polobject')
     wx.removeStorageSync('podobject')
     wx.setStorageSync('setHangXian', false)
-    // 展示本地存储能力
-    wx.getSystemInfo({
-      success: res => {
-        let Height = res.windowHeight;
-        this.globalData.Height = Height;
-      },
-    })
+    if (wx.getStorageSync('language') === 'us') {
+      this.globalData.version = 1
+    } else {
+      this.globalData.version = 0
+    }
     // 自定义头部
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -41,7 +29,6 @@ App({
         } else {
           this.globalData.isPhoneX = false;
         }
-        // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
       },
       fail(err) {
         // console.log(err);
@@ -49,9 +36,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
-    share: false, //默认分享为false
-    height: 0,
     version: 0, // 0中文 1英文
     isPhoneX: false,
     // 全局的方法, 获取到App的实例就可以拿到方法

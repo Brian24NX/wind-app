@@ -103,7 +103,7 @@ Page({
         content: lang
       })
       wx.setNavigationBarTitle({
-        title: lang.lang.userCenter.quotationtitle
+        title: lang.lang.page.quotationtitle
       })
       // console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
       if (typeof this.getTabBar === 'function' &&this.getTabBar()) {

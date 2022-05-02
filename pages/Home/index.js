@@ -13,23 +13,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content: {}, // 用于保存当前页面所需字典变了
+    languageContent: {}, // 用于保存当前页面所需字典
+    verifyInfo: {},
     currentTab: 0,
     currentTrackTab: 0,
-    containerno: '',
-    billnod: '',
-    bookref: '',
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     tabList: [{
-      id: 'TRACKING',
-      label: '货物追踪',
+      id: 'TRACKING'
     }, {
-      id: 'SCHEDULE',
-      label: '船期查询',
+      id: 'SCHEDULE'
     }, {
-      id: 'PRICE',
-      label: '获取报价',
+      id: 'PRICE'
     }],
     actived: 'TRACKING',
     currentIndex: 0,
@@ -51,76 +46,76 @@ Page({
     showDelete2: false,
     moreMenuList: [
       [{
-          id: 'CMA',
-          cnLabel: 'CMA CGM+',
-          enLabel: 'CMA CGM+',
+          id: 'cma',
           icon: '/assets/img/home/discover_1@2x.png',
           url: '/packageMore/pages/cma/list/index'
         },
         {
           id: 'about',
-          cnLabel: '关于达飞',
-          enLabel: 'CMA CGM+',
           icon: '/assets/img/home/discover_2@2x.png',
           url: '/packageMore/pages/about/index'
         },
         {
           id: 'news',
-          cnLabel: '新闻中心',
-          enLabel: 'CMA CGM+',
           icon: '/assets/img/home/discover_3@2x.png',
           url: '/packageMore/pages/news/list/index'
         },
         {
           id: 'onlineServices',
-          cnLabel: '在线服务',
-          enLabel: 'CMA CGM+',
           icon: '/assets/img/home/discover_4@2x.png',
           url: '/packageMore/pages/Faq/index'
         },
       ],
       [{
-        id: 'CMA',
-        cnLabel: '客户通告',
-        enLabel: '客户通告',
-        icon: '/assets/img/home/customernotice@2x.png',
-        url: '/packageMore/pages/BusinessAndOperational/list/index'
-      },
-      {
-        id: 'about',
-        cnLabel: '常用模版及链接',
-        enLabel: '常用模版及链接',
-        icon: '/assets/img/home/templatelinks@2x.png',
-        url: ''
-      },
-      {
-        id: 'news',
-        cnLabel: '管制品查询',
-        enLabel: '管制品查询',
-        icon: '/assets/img/home/controllproduct@2x.png',
-        url: ''
-      },
-      {
-        id: 'callMe',
-        cnLabel: '联系我们',
-        enLabel: '联系我们',
-        icon: '/assets/img/home/contact@2x.png',
-        url: '/packageMore/pages/contact/conditions/index'
-      },
-    ]
+          id: 'valueAddedService',
+          icon: '/assets/img/home/customernotice@2x.png',
+          url: '/packageMore/pages/BusinessAndOperational/list/index'
+        },
+        {
+          id: 'template',
+          icon: '/assets/img/home/templatelinks@2x.png',
+          url: ''
+        },
+        {
+          id: 'gzp',
+          icon: '/assets/img/home/controllproduct@2x.png',
+          url: ''
+        },
+        {
+          id: 'callMe',
+          icon: '/assets/img/home/contact@2x.png',
+          url: '/packageMore/pages/contact/conditions/index'
+        },
+      ]
     ]
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {},
+  onLoad: function () {
+    this.initLanguage();
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    this.initLanguage();
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0,
+        list: languageUtil.languageVersion().lang.toolbar.list //赋值
+      })
+    }
   },
+
+  //初始化语言
+  initLanguage() {
+    //获取当前小程序语言版本所对应的字典变量
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.homeInfo,
+      verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
+    })
+  },
+
   // 切换搜索类型
   changeSearchTab(e) {
     this.setData({
@@ -133,6 +128,7 @@ Page({
       showRemind5: false
     })
   },
+
   // discover切换swiper
   changeCurrentDto(e) {
     // console.log(e);
@@ -140,6 +136,7 @@ Page({
       swiperindex: e.detail.current
     })
   },
+
   clearInput(e) {
     const type = e.currentTarget.dataset.type
     if (type === '1') {
@@ -168,6 +165,7 @@ Page({
       })
     }
   },
+
   setHuoGui(e) {
     //去掉空格和大写问题
     let value = e.detail.value.toUpperCase()
@@ -210,6 +208,7 @@ Page({
       showRemind: false
     })
   },
+
   // 货物追踪
   toHuoWu() {
     if (this.data.showRemind) {
@@ -226,6 +225,7 @@ Page({
       url: `/pages/Orders/index?str=${this.data.huoGuiValue.replaceAll(' ', '')}`
     })
   },
+
   // 设置起运港
   setQiYun: utils.debounce(function (e) {
     const data = e['0'].detail.value
@@ -247,8 +247,8 @@ Page({
         })
       }
     })
-
   }, 800),
+
   // 设置卸货港
   setXieHuo: utils.debounce(function (e) {
     const data = e['0'].detail.value
@@ -271,6 +271,7 @@ Page({
       }
     })
   }, 800),
+
   // 设置启运港
   changepolname(e) {
     let index = e.currentTarget.dataset.index;
@@ -280,8 +281,8 @@ Page({
       qiYunValue: this.data.codePolList[index].point,
       qiYunCode: this.data.codePolList[index].pointCode
     })
-
   },
+
   // 设置卸货港
   changepodname(e) {
     // console.log(e);
@@ -293,6 +294,7 @@ Page({
       xieHuoCode: this.data.codePodList[index].pointCode
     })
   },
+
   // 船期搜索
   toChuanQi() {
     // 先判断参数是否为空
@@ -394,6 +396,7 @@ Page({
       }
     })
   },
+
   setSearchList(obj) {
     wx.setStorageSync('resultlist', this.data.resultlist);
     wx.setStorageSync('searchKey', {
@@ -411,6 +414,7 @@ Page({
       url: '../Result/index',
     })
   },
+
   // 高级查询
   toAdvancedSearch() {
     let polobject = {
@@ -428,35 +432,14 @@ Page({
       url: '/pages/RouterQuery/index',
     })
   },
-  //中英文切换
-  switchLanguage() {
-    //切换当前版本，即修改公共变量中的version
-    languageUtil.changLanguage()
-    this.initLanguage()
-  },
-  //初始化语言
-  initLanguage() {
-    //获取当前小程序语言版本所对应的字典变量
-    var lang = languageUtil.languageVersion()
-    this.setData({
-      content: lang
-    })
-    wx.setNavigationBarTitle({
-      title: lang.lang.userCenter.hometitle
-    })
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0,
-        list: lang.lang.toolbar.list //赋值
-      })
-    }
-  },
+
   toMore() {
     wx.showToast({
       title: '功能升级中，敬请期待',
       icon: 'none'
     })
   },
+
   toNav(e) {
     const item = e.currentTarget.dataset.item
     if (!item.url) {
@@ -470,12 +453,14 @@ Page({
       url: item.url,
     })
   },
+
   price() {
     wx.showToast({
       title: '功能升级中，敬请期待',
       icon: 'none'
     })
   },
+
   changeItem(e) {
     this.setData({
       swiperindex: e.currentTarget.dataset.index

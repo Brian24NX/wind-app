@@ -6,30 +6,30 @@
   <view class="searchContainers">
     <view class="tabContainer">
       <view class="oneTab {{actived === item.id ? 'actived' : ''}}" wx:for="{{tabList}}" wx:key="index" bindtap="changeSearchTab" data-type="{{item.id}}">
-        <text>{{item.label}}</text>
+        <text>{{languageContent[item.id]}}</text>
         <view class="line"></view>
       </view>
     </view>
     <!-- 货物追踪 -->
     <view class="searchContents" wx:if="{{actived === 'TRACKING'}}">
-      <view class="remind">输入货柜号，提单号或订舱号</view>
+      <view class="remind">{{languageContent.goodsRemind}}</view>
       <view class="inputs {{showRemind ? 'noRequestBorder' : ''}}">
         <input type="text" placeholder="ex:ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" />
         <view class="delete" catchtap="clearInput" data-type="1" wx:if="{{huoGuiValue}}">
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
       </view>
-      <view class="noRequest" wx:if="{{showRemind}}">{{huiguiType === 1 ? '此项为必填项' : huiguiType === 2 ? '号码无效，请检查格式' : huiguiType === 3 ?'最多可同时查询三个货柜状态，请重新输入':'号码重复，请检查后输入'}}</view>
-      <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">{{content.lang.userCenter.homeInfo.goods}}</button>
-      <view class="reminds">{{content.lang.userCenter.homeInfo.tips}}</view>
+      <view class="noRequest" wx:if="{{showRemind}}">{{huiguiType === 1 ? verifyInfo.required : huiguiType === 2 ? verifyInfo.gswx : huiguiType === 3 ? verifyInfo.more3 : verifyInfo.chongfu}}</view>
+      <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">{{languageContent.goods}}</button>
+      <view class="reminds">{{languageContent.tips}}</view>
 
     </view>
     <!-- 船期查询 -->
     <view class="searchContents" wx:if="{{actived === 'SCHEDULE'}}">
-      <view class="serchTitle">起运港</view>
+      <view class="serchTitle">{{languageContent.qyg}}</view>
       <view class="xialaInput">
         <view class="inputs {{showRemind2||showRemind5 ? 'noRequestBorder' : ''}}">
-          <input value="{{qiYunValue}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setQiYun" hold-keyboard="{{true}}"/>
+          <input value="{{qiYunValue}}" type="text" placeholder="{{languageContent.gCode}}" placeholder-class="placeholder" bindinput="setQiYun" hold-keyboard="{{true}}" />
           <view class="delete" catchtap="clearInput" data-type="2" wx:if="{{showDelete1}}">
             <image src="../../assets/img/search/close@2x.png"></image>
           </view>
@@ -38,12 +38,12 @@
           <view class="oneXiala" wx:for="{{codePolList}}" wx:key="index" bindtap='changepolname' data-index="{{index}}">{{item.point}}</view>
         </view>
       </view>
-      <view class="noRequest" wx:if="{{showRemind2}}">此项为必填项</view>
-      <view class="noRequest" wx:if="{{showRemind5}}">格式无效</view>
-      <view class="serchTitle mt20">卸货港</view>
+      <view class="noRequest" wx:if="{{showRemind2}}">{{verifyInfo.required}}</view>
+      <view class="noRequest" wx:if="{{showRemind5}}">{{verifyInfo.gswx}}</view>
+      <view class="serchTitle mt20">{{languageContent.xhg}}</view>
       <view class="xialaInput">
         <view class="inputs {{showRemind3||showRemind4 ? 'noRequestBorder' : ''}}">
-          <input value="{{xieHuoValue}}" type="text" placeholder="名称/代码" placeholder-class="placeholder" bindinput="setXieHuo" />
+          <input value="{{xieHuoValue}}" type="text" placeholder="{{languageContent.gCode}}" placeholder-class="placeholder" bindinput="setXieHuo" />
           <view class="delete" catchtap="clearInput" data-type="3" wx:if="{{showDelete2}}">
             <image src="../../assets/img/search/close@2x.png"></image>
           </view>
@@ -52,39 +52,39 @@
           <view class="oneXiala" wx:for="{{codePodList}}" wx:key="index" bindtap='changepodname' data-index="{{index}}">{{item.point}}</view>
         </view>
       </view>
-      <view class="noRequest" wx:if="{{showRemind3}}">此项为必填项</view>
-      <view class="noRequest" wx:if="{{showRemind4}}">格式无效</view>
-      <button class="searchBtn" hover-class="hoverClass" bindtap="toChuanQi">搜索</button>
-      <view class="searchBtn2" bindtap="toAdvancedSearch">高级搜索</view>
+      <view class="noRequest" wx:if="{{showRemind3}}">{{verifyInfo.required}}</view>
+      <view class="noRequest" wx:if="{{showRemind4}}">{{verifyInfo.gswx}}</view>
+      <button class="searchBtn" hover-class="hoverClass" bindtap="toChuanQi">{{languageContent.scheduleBtn}}</button>
+      <view class="searchBtn2" bindtap="toAdvancedSearch">{{languageContent.advancedBtn}}</view>
     </view>
     <!-- 价格 -->
     <view class="searchContents" wx:if="{{actived === 'PRICE'}}">
       <view class="priceList">
         <view class="onePrice" bindtap="toMore">
           <image src="../../assets/img/home/PRICE_1@2x.png"></image>
-          <view>实时报价</view>
+          <view>{{languageContent.instantQuote}}</view>
         </view>
         <view class="onePrice" bindtap="toMore">
           <image src="../../assets/img/home/PRICE_2@2x.png"></image>
-          <view>柜租费率</view>
+          <view>{{languageContent.ddRate}}</view>
         </view>
         <view class="onePrice" bindtap="toMore">
           <image src="../../assets/img/home/PRICE_3@2x.png"></image>
-          <view>查询费率</view>
+          <view>{{languageContent.chargeFinder}}</view>
         </view>
       </view>
     </view>
   </view>
   <!-- discover -->
   <view class="discoverContainer">
-    <view class="discoverTitle">发现更多</view>
+    <view class="discoverTitle">{{languageContent.more}}</view>
     <swiper current="{{swiperindex}}" class="swiper" bindchange="changeCurrentDto">
       <swiper-item wx:for="{{moreMenuList}}" wx:key="index">
         <view class="discoverList">
           <view class="oneDiscover" bindtap="toNav" data-item="{{items}}" wx:for="{{item}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
             <image class="icon" src="{{items.icon}}"></image>
             <view class="discoverRight">
-              <view class="discoverName">{{items.cnLabel}}</view>
+              <view class="discoverName">{{languageContent[items.id]}}</view>
               <!-- <view>定制方案</view> -->
             </view>
           </view>
