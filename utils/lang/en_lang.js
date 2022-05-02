@@ -78,17 +78,14 @@ var Languague = {
     //航线查询
     scheduleSearching: {
       //航线|获取船期
-      getASchedule: "Routes | Get a schedule",
+      getASchedule1: "Routes",
+      getASchedule2: 'Get a schedule',
       //卸货港
       portOfDischarge: "Port of Discharge, POD",
       //起运港
       protOfLanding: "Port of Loading, POL",
       //港口名称/代码
       name: "Name/Code",
-      //此项为必填项
-      theFieldIsMandatory: "The field is mandatory",
-      //格式无效
-      formatIsInvalid: "Format is invalid",
       //查询
       searchOn: "Search on",
       //离港时间

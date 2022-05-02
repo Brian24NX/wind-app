@@ -5,12 +5,13 @@ page {
 
 .queryContainer {
   padding-bottom: 40rpx;
+  padding-top: 30rpx;
 }
 
 .searchContainers {
   width: 690rpx;
   background-color: #ffffff;
-  margin: 30rpx auto;
+  margin: 0 auto 30rpx;
   padding: 0 48rpx 48rpx;
 }
 
@@ -48,11 +49,8 @@ page {
 */
 .polimg,
 .podimg {
-  width: 30rpx;
-  height: 30rpx;
-  position: relative;
-  top: 80rpx;
-  left: -66rpx;
+  width: 44rpx;
+  height: 44rpx;
 }
 
 .podlocation {
@@ -77,24 +75,28 @@ page {
   border: 2rpx solid #DFDFDF;
   margin-left: 50rpx;
   margin-top: 10rpx;
-  padding: 0 80rpx 0 40rpx;
+  padding: 0 0 0 10rpx;
   font-size: 28rpx;
   color:#04246A;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.polinput input,
+.podinput input {
+  width: 410rpx;
 }
 
 .PODinput,
 .POLinput {
-  position: relative;
+  /* position: relative; */
   height: 160rpx;
 }
 .weekselect{
    top: -20rpx;
 }
 .deleteIcon {
-  position: absolute;
-  bottom: 20rpx;
-  right: 0;
-  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +134,7 @@ page {
 }
 .inputcontainer{
   width: 100%;
-  min-height: 350rpx;
+  min-height: 330rpx;
 }
 .noRequestBorder {
   border: 2rpx solid #E10202;
@@ -158,23 +160,14 @@ page {
 .scroll-view {
   width: 540rpx;
   position:absolute;
-  margin-left: 50rpx;
   background:#ffffff;
   border: 1rpx solid #00245d;
+  top: 86rpx;
+  left: -1rpx;
   z-index: 40;
   max-height: 430rpx;
 }
 
-.scroll-viewpod {
-  width: 540rpx;
-  position: absolute;
-  top: 138rpx;
-  left: 52rpx;
-  background-color: #ffffff;
-  border: 1rpx solid #00245d;
-  z-index: 40;
-  max-height: 430rpx;
-}
 .scroll-view .item:hover{
   color: #1c4ebb;
 }

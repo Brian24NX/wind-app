@@ -1,11 +1,4 @@
 // components/hui-picker-input.js
-const listvalue = [{
-  id: '1',
-  name: "张三"
-}, {
-  id: '2',
-  name: "李四"
-}]
 let _self;
 Component({
   /**
@@ -14,7 +7,7 @@ Component({
   properties: {
     list: {//下拉框数据来源
       type: [Array, Object],
-      value: listvalue,
+      value: [],
       description: '数据源',
       observer(newVal, oldVal) {
         this.setData({
@@ -46,12 +39,15 @@ Component({
    * 组件的初始数据
    */
   data: {
-    picker_value:'离港时间',//输入框值
+    picker_value: '',//输入框值
     index: 0,//下拉框下标
     list2: []//下拉框数据
   },
-  created(e) {
+  ready() {
     _self = this;
+    this.setData({
+      picker_value: this.data.list[this.data.index][this.data.showvalue]
+    })
   },
   /**
    * 组件的方法列表

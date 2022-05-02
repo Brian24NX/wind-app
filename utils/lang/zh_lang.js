@@ -35,7 +35,7 @@ var Languague = {
     homeInfo: {
       hometitle: "CAM CGM",
       // 获取追踪
-      TRACKING: 'TRACKING',
+      TRACKING: '货物追踪',
       // 提示
       goodsRemind: '输入货柜号，提单号或订舱号',
       //货物追踪
@@ -80,17 +80,14 @@ var Languague = {
     //航线查询
     scheduleSearching: {
       //航线|获取船期
-      getASchedule: "航线|获取船期",
+      getASchedule1: "航线",
+      getASchedule2: '获取船期',
       //卸货港
       portOfDischarge: "卸货港",
       //起运港
       protOfLanding: "起运港",
       //港口名称/代码
-      name: "港口名称/代码",
-      //此项为必填项
-      theFieldIsMandatory: "此项为必填项",
-      //格式无效
-      formatIsInvalid: "格式无效",
+      name: "名称/代码",
       //查询
       searchOn: "查询",
       //离港时间

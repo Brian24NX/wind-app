@@ -12,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content: {}, // 用于保存当前页面所需字典变了
+    languageContent: {}, // 用于保存当前页面所需字典
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     viewShowedPol: false,
@@ -26,30 +26,12 @@ Page({
     array: [],
     pollist: [],
     podlist: [],
-    searchlist: [{
-      id: 0,
-      method: "离港时间"
-    }, {
-      id: 1,
-      method: "到港时间"
-    }],
+    searchlist: [],
     // search 离案
     search: '',
     // week  
-    week: '3 星期',
-    weeklist: [{
-      id: 0,
-      weeks: '1 星期'
-    }, {
-      id: 1,
-      weeks: '2 星期'
-    }, {
-      id: 2,
-      weeks: '3 星期'
-    }, {
-      id: 3,
-      weeks: '4 星期'
-    }],
+    week: 3,
+    weeklist: [],
     date: '',
     resultlist: {},
     showRemind1: false,
@@ -80,13 +62,13 @@ Page({
   changemethod(e) {
     let index = e.detail.id;
     this.setData({
-      search: this.data.searchlist[index].method
+      search: this.data.searchlist[index].id
     })
   },
   changeweek(e) {
     let index = e.detail.id;
     this.setData({
-      week: this.data.weeklist[index].weeks
+      week: this.data.weeklist[index].id
     })
   },
   getDate() {
@@ -167,8 +149,8 @@ Page({
     let obj = {
       placeOfDischarge: this.data.podcode,
       placeOfLoading: this.data.polcode,
-      arrivalDate: this.data.search === '到港时间' ? this.data.date : '',
-      departureDate: this.data.search === '离港时间' ? this.data.date : '',
+      arrivalDate: this.data.search === 0 ? this.data.date : '',
+      departureDate: this.data.search === 1 ? this.data.date : '',
       searchRange: week,
       shippingCompany: '',
     }
@@ -181,8 +163,8 @@ Page({
           let obj2 = {
             placeOfDischarge: this.data.podcode,
             placeOfLoading: this.data.polcode,
-            arrivalDate: this.data.search == '到港时间' ? this.data.date : '',
-            departureDate: this.data.search == '离港时间' ? this.data.date : '',
+            arrivalDate: this.data.search == 0 ? this.data.date : '',
+            departureDate: this.data.search == 1 ? this.data.date : '',
             searchRange: week,
             shippingCompany: '0015'
           }
@@ -350,10 +332,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    this.initLanguage()
     let location = wx.getStorageSync('location')
     this.setData({
       date: this.getDate(),
-      search: '离港时间',
+      search: 0,
       array: location,
       pollist: [],
       podlist: []
@@ -374,39 +357,61 @@ Page({
       wx.removeStorageSync('podobject')
     }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    this.initLanguage();
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 1
-      })
-    }
-  },
-  //中英文切换
-  switchLanguage() {
-    //切换当前版本，即修改公共变量中的version
-    languageUtil.changLanguage()
-    this.initLanguage()
-  },
+  
   //初始化语言
   initLanguage() {
-    //获取当前小程序语言版本所对应的字典变量
-    var lang = languageUtil.languageVersion()
-    // console.log(lang)
     this.setData({
-      content: lang
+      languageContent: languageUtil.languageVersion().lang.page.scheduleSearching,
+      verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
     })
     wx.setNavigationBarTitle({
-      title: lang.lang.page.querytitle
+      title: languageUtil.languageVersion().lang.page.querytitle
     })
-    // console.log(typeof this.getTabBar === 'function' && this.getTabBar());
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        list: lang.lang.toolbar.list //赋值
+    if (languageUtil.languageVersion().lang.page.langue === 'en') {
+      this.setData({
+        searchlist: [{
+          id: 0,
+          method: "Departure"
+        }, {
+          id: 1,
+          method: "Arrival"
+        }],
+        weeklist: [{
+          id: 1,
+          weeks: '1 Week'
+        }, {
+          id: 2,
+          weeks: '2 Weeks'
+        }, {
+          id: 3,
+          weeks: '3 Weeks'
+        }, {
+          id: 4,
+          weeks: '4 Weeks'
+        }]
+      })
+    } else {
+      this.setData({
+        searchlist: [{
+          id: 0,
+          method: "离港时间"
+        }, {
+          id: 1,
+          method: "到港时间"
+        }],
+        weeklist: [{
+          id: 1,
+          weeks: '1 星期'
+        }, {
+          id: 2,
+          weeks: '2 星期'
+        }, {
+          id: 3,
+          weeks: '3 星期'
+        }, {
+          id: 4,
+          weeks: '4 星期'
+        }]
       })
     }
   },
