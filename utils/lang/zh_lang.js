@@ -7,23 +7,12 @@ var Languague = {
   //个人中心
   page: {
     //中英文切换按钮
-    changeLanguage: "切换英文",
-    //个人信息
-    userInfo: {
-      title: "个人信息",
-      content: {}
-    },
-    //联系我们
-    contactUs: {
-      title: "联系我们",
-      content: {}
-    },
+    changeLanguage: "是否切换为英文",
+    sure: '确认',
+    cancel: '取消',
     // 语言
     langue: 'zh',
-    //个人中心
-    querytitle: "查询",
-    quotationtitle: "报价",
-    mytitle: "我的",
+    // 校验
     verifyInfo: {
       // 必填
       required: '此项为必填项',
@@ -250,11 +239,12 @@ var Languague = {
     },
     load: {
       //努力加载中
-      loading: "努力加载中",
+      loading: "努力加载中...",
       //网络不给力,请稍后刷新
       networkIsNotWorking: "网络不给力,请稍后刷新",
       // 功能升级中,敬请期待
-      functionIsUnderDevelopment: "功能升级中,敬请期待",
+      functionIsUnderDevelopment: "功能升级中，敬请期待",
+      chaoshi: '请求超时，请稍后再试',
       // 系统繁忙,请稍后重试
       systemIsBusyNow: "系统繁忙,请稍后重试"
     }

@@ -9,6 +9,8 @@ Page({
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     languageContent: {}, // 用于保存当前页面所需字典
+    changeLanguage: {},
+    load: {}
   },
 
   /**
@@ -35,10 +37,13 @@ Page({
     var lang = languageUtil.languageVersion()
     // console.log(lang)
     this.setData({
-      content: lang
-    })
-    wx.setNavigationBarTitle({
-      title: lang.lang.page.mytitle
+      languageContent: lang.lang.page.userCenter,
+      load: lang.lang.page.load,
+      changeLanguage: {
+        changLanguage: lang.lang.page.changeLanguage,
+        sure: lang.lang.page.sure,
+        cancel: lang.lang.page.cancel
+      }
     })
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
@@ -50,9 +55,21 @@ Page({
   //中英文切换
   switchLanguage() {
     //切换当前版本，即修改公共变量中的version
-    languageUtil.changLanguage()
-    wx.reLaunch({
-      url: '/pages/Home/index',
+    const _this = this
+    wx.showModal({
+      cancelColor: '#666666',
+      title: _this.data.changeLanguage.changLanguage,
+      cancelText: _this.data.changeLanguage.cancel,
+      confirmColor: '#2D75FF',
+      confirmText: _this.data.changeLanguage.sure,
+      success(res) {
+        if (res.confirm) {
+          languageUtil.changLanguage()
+          wx.reLaunch({
+            url: '/pages/Home/index',
+          })
+        }
+      }
     })
   }
 })

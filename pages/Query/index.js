@@ -9,6 +9,7 @@ Page({
    */
   data: {
     languageContent: {}, // 用于保存当前页面所需字典
+    load: {},
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     menuList: [{
@@ -43,19 +44,24 @@ Page({
       url: ''
     }]
   },
-  onShow: function() {
+
+  onLoad: function() {
     this.initLanguage();
+  },
+
+  onShow: function() {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: 1
       })
     }
   },
+
   toFunction(e) {
     const index = e.currentTarget.dataset.index
     if (!this.data.menuList[index].url) {
       wx.showToast({
-        title: '功能升级中，敬请期待！',
+        title: this.data.load.functionIsUnderDevelopment,
         icon: 'none'
       })
       return
@@ -71,7 +77,8 @@ Page({
     var lang = languageUtil.languageVersion()
     // console.log(lang)
     this.setData({
-      languageContent: lang.lang.page.queryInfo
+      languageContent: lang.lang.page.queryInfo,
+      load: lang.lang.page.load
     })
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({

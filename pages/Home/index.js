@@ -14,6 +14,7 @@ Page({
    */
   data: {
     languageContent: {}, // 用于保存当前页面所需字典
+    load: {},
     verifyInfo: {},
     currentTab: 0,
     currentTrackTab: 0,
@@ -112,7 +113,8 @@ Page({
     //获取当前小程序语言版本所对应的字典变量
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.homeInfo,
-      verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
+      verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo,
+      load: languageUtil.languageVersion().lang.page.load
     })
   },
 
@@ -407,7 +409,7 @@ Page({
       polvalue: this.data.qiYunValue.split(';')[0],
       polCode: this.data.qiYunValue.split(';')[1],
       searchRange: obj.searchRange,
-      search: "离港时间",
+      search: 0,
       searchDate: obj.departureDate
     })
     wx.navigateTo({
@@ -435,7 +437,7 @@ Page({
 
   toMore() {
     wx.showToast({
-      title: '功能升级中，敬请期待',
+      title: this.data.load.functionIsUnderDevelopment,
       icon: 'none'
     })
   },
@@ -444,7 +446,7 @@ Page({
     const item = e.currentTarget.dataset.item
     if (!item.url) {
       wx.showToast({
-        title: '功能升级中，敬请期待',
+        title: this.data.load.functionIsUnderDevelopment,
         icon: 'none'
       })
       return
@@ -456,7 +458,7 @@ Page({
 
   price() {
     wx.showToast({
-      title: '功能升级中，敬请期待',
+      title: this.data.load.functionIsUnderDevelopment,
       icon: 'none'
     })
   },

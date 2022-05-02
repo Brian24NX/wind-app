@@ -7,21 +7,11 @@ var Languague = {
   // 页面
   page: {
     //中英文切换按钮
-    changeLanguage: "change to Chinese",
-    //个人信息
-    userInfo: {
-      title: "personal information",
-      content: {}
-    },
-    //联系我们
-    contactUs: {
-      title: "contact us",
-      content: {}
-    },
+    changeLanguage: "Whether to switch to Chinese",
+    sure: 'YES',
+    cancel: 'No',
     langue: 'en',
-    querytitle: "Query",
-    quotationtitle: "Quotation",
-    mytitle: "My Account",
+    // 校验
     verifyInfo: {
       // 必填
       required: 'This parameter is required',
@@ -248,11 +238,12 @@ var Languague = {
     },
     load: {
       //努力加载中
-      loading: "Loading ",
+      loading: "Loading...",
       //网络不给力,请稍后刷新
       networkIsNotWorking: "Network is not working, please click and refresh later",
       // 功能升级中,敬请期待
       functionIsUnderDevelopment: "Function is under development, stay tuned~ ",
+      chaoshi: 'Request timeout, please try again later',
       // 系统繁忙,请稍后重试
       systemIsBusyNow: "System is busy now, please try again later "
     }

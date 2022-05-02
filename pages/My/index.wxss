@@ -14,7 +14,7 @@ page {
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #04246A;
-
+  text-align: center;
 }
 
 .qidai image {
