@@ -1,4 +1,5 @@
 // pages/Orders/index.js
+var languageUtil = require('../../utils/languageUtils')
 import {
   shipmentTracking
 } from '../../api/modules/home';
@@ -8,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
+    verifyInfo: {},
     shipmentRef: '',
     dataLength: null,
     detail: null,
@@ -20,9 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '查询',
-    })
+    this.initLanguage()
     if (options.str) {
       this.setData({
         shipmentRef: options.str
@@ -31,9 +32,24 @@ Page({
     }
   },
 
+  initLanguage() {
+    //获取当前小程序语言版本所对应的字典变量
+    var lang = languageUtil.languageVersion()
+    lang.lang.page.queryRes.language = lang.lang.page.langue
+    wx.setNavigationBarTitle({
+      title: lang.lang.page.queryRes.topTitle,
+    })
+    this.setData({
+      languageContent: lang.lang.page.queryRes,
+      verifyInfo: lang.lang.page.verifyInfo
+    })
+  },
+
   deleteValue() {
     this.setData({
-      shipmentRef: ''
+      shipmentRef: '',
+      showRemind: true,
+      huiguiType: 1
     })
   },
 
@@ -82,7 +98,7 @@ Page({
 
   searchList() {
     if (this.data.showRemind) {
-      const remindMsg = this.data.huiguiType === 1 ? '此项为必填项' : this.data.huiguiType === 2 ? '号码无效，请检查格式' : this.huiguiType === 3 ? '最多可同时查询三个货柜状态，请重新输入' : '号码重复，请检查后输入'
+      const remindMsg = this.data.huiguiType === 1 ? this.data.verifyInfo.required : this.data.huiguiType === 2 ? this.data.verifyInfo.gswx : this.data.huiguiType === 3 ? this.data.verifyInfo.more3 : this.data.verifyInfo.chongfu
       wx.showToast({
         title: remindMsg,
         icon: 'none',

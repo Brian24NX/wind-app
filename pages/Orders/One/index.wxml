@@ -1,7 +1,7 @@
 <!--pages/Orders/One/index.wxml-->
 <view class="searchResultContainers">
   <view class="searchResultContainer">
-    <view class="resTitle">追踪结果</view>
+    <view class="resTitle">{{languageContent.title}}</view>
     <view class="resList others">
       <view class="oneRes">
         <image src="/assets/img/search/xianghao@2x.png" mode="aspectFit" class="resIcon"></image>
@@ -19,47 +19,49 @@
   <view class="timeContainer">
     <view class="times timeTop">
       <view class="left">{{stepList[stepList.length - 1].date}} {{stepList[stepList.length - 1].week}} {{stepList[stepList.length - 1].time}}</view>
-      <view class="right">{{timeRemaining}}天</view>
+      <view class="right">{{timeRemaining}} {{languageContent.tian}}</view>
     </view>
     <view class="times timeBottom">
-      <view class="left">目的港{{timeRemaining < 1 ? '' : '预计' }}靠泊时间</view>
-          <view class="right">剩余航程</view>
+      <view class="left">
+        <text>{{timeRemaining < 1 ? languageContent.tingbo : languageContent.yuji }}</text>
       </view>
-    </view>
-    <view class="stepContainers">
-      <view class="stepContainer">
-        <view class="stepLine">
-          <view class="stopDto dtoLeft"></view>
-          <view class="stopDto dtoRight"></view>
-          <view class="activedLine" style="width: {{(stepCount / stepList.length) * 100 + '%;'}};"></view>
-          <image class="zhuizong" style="left: {{(stepCount / stepList.length) * 100 + '%;'}}" src="/assets/img/search/zhuizong@2x.png"></image>
-        </view>
-      </view>
-      <view class="stepBottom">
-        <view>{{list[0].data.portOfLoading.name}} ({{list[0].data.portOfLoadingCountryCode}})</view>
-        <view>{{list[0].data.portOfDischarge.name}} ({{list[0].data.portOfDischargeCountryCode}})</view>
-      </view>
-    </view>
-    <view class="stepLists">
-      <view class="oneStep" wx:for="{{stepList}}" wx:key="index">
-        <view class="leftLines">
-          <view class="beingDtoBg" wx:if="{{item.stepStatus === 'being'}}"></view>
-          <view class="leftLineDto {{item.stepStatus === 'past' ? 'pastDto' : item.stepStatus === 'being' ? 'beingDto' : ''}}"></view>
-          <view class="leftLine {{item.stepStatus === 'past' ? 'past' : ''}}" wx:if="{{index !== stepList.length - 1}}"></view>
-        </view>
-        <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
-          <view class="stepSatus">{{item.status.statusLabel}}</view>
-          <view class="stepTime">{{item.date}} {{item.week}} {{item.pointLocation.name}}, {{item.countryCode}}</view>
-        </view>
-      </view>
-    </view>
-    <view class="bottomContainer">
-      <view class="downloadBtn" bindtap="reportToPDF">以PDF格式输出</view>
-      <view class="toEmail" catchtap="sendReport">以附件形式发送至邮箱</view>
+      <view class="right">{{languageContent.shengyu}}</view>
     </view>
   </view>
-  <view class="noStepOrderData" wx:if="{{!stepList.length && !isLoading}}">
-    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no.png"></image>
-    <view>未找到或已经卸货或返回堆场</view>
+  <view class="stepContainers">
+    <view class="stepContainer">
+      <view class="stepLine">
+        <view class="stopDto dtoLeft"></view>
+        <view class="stopDto dtoRight"></view>
+        <view class="activedLine" style="width: {{(stepCount / stepList.length) * 100 + '%;'}};"></view>
+        <image class="zhuizong" style="left: {{(stepCount / stepList.length) * 100 + '%;'}}" src="/assets/img/search/zhuizong@2x.png"></image>
+      </view>
+    </view>
+    <view class="stepBottom">
+      <view>{{list[0].data.portOfLoading.name}} ({{list[0].data.portOfLoadingCountryCode}})</view>
+      <view>{{list[0].data.portOfDischarge.name}} ({{list[0].data.portOfDischargeCountryCode}})</view>
+    </view>
   </view>
-  <email path="{{path}}" wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>
+  <view class="stepLists">
+    <view class="oneStep" wx:for="{{stepList}}" wx:key="index">
+      <view class="leftLines">
+        <view class="beingDtoBg" wx:if="{{item.stepStatus === 'being'}}"></view>
+        <view class="leftLineDto {{item.stepStatus === 'past' ? 'pastDto' : item.stepStatus === 'being' ? 'beingDto' : ''}}"></view>
+        <view class="leftLine {{item.stepStatus === 'past' ? 'past' : ''}}" wx:if="{{index !== stepList.length - 1}}"></view>
+      </view>
+      <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
+        <view class="stepSatus">{{languageContent.language === 'en' ? item.status.name : item.status.statusLabel}}</view>
+        <view class="stepTime">{{item.date}} {{item.week}} {{item.pointLocation.name}}, {{item.countryCode}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="bottomContainer">
+    <view class="downloadBtn" bindtap="reportToPDF">{{languageContent.export}}</view>
+    <view class="toEmail" catchtap="sendReport">{{languageContent.toEmail}}</view>
+  </view>
+</view>
+<view class="noStepOrderData" wx:if="{{!stepList.length && !isLoading}}">
+  <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no.png"></image>
+  <view>未找到或已经卸货或返回堆场</view>
+</view>
+<email path="{{path}}" wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

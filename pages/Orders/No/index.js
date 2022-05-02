@@ -9,6 +9,9 @@ Component({
   properties: {
     lists: {
       type: Array
+    },
+    languageContent: {
+      type: Object
     }
   },
 

@@ -20,6 +20,9 @@ Component({
     },
     list: {
       type: Array
+    },
+    languageContent: {
+      type: Object
     }
   },
 
@@ -70,25 +73,25 @@ Component({
         const week = new Date(item.date).getDay()
         switch (week) {
           case 0:
-            item.week = '星期日'
+            item.week = this.data.languageContent.language === 'en' ? 'Sunday' : '星期日'
             break;
           case 1:
-            item.week = '星期一'
+            item.week = this.data.languageContent.language === 'en' ? 'Monday' : '星期一'
             break;
           case 2:
-            item.week = '星期二'
+            item.week = this.data.languageContent.language === 'en' ? 'Tuesday' : '星期二'
             break;
           case 3:
-            item.week = '星期三'
+            item.week = this.data.languageContent.language === 'en' ? 'Wednesday' : '星期三'
             break;
           case 4:
-            item.week = '星期四'
+            item.week = this.data.languageContent.language === 'en' ? 'Thursday' : '星期四'
             break;
           case 5:
-            item.week = '星期五'
+            item.week = this.data.languageContent.language === 'en' ? 'Friday' : '星期五'
             break;
           case 6:
-            item.week = '星期六'
+            item.week = this.data.languageContent.language === 'en' ? 'Saturday' : '星期六'
             break;
           default:
             break;

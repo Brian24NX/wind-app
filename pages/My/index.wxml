@@ -1,5 +1,5 @@
 <view class="navbarContainer" style="height: calc({{navHeight}}px + 36rpx);">
-  <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit"></image>
+  <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit" catchtap="switchLanguage"></image>
 </view>
 
 <view class="priceContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
@@ -7,5 +7,4 @@
     <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/qidai.png"></image>
     <text>功能升级中，敬请期待</text>
   </view>
-  <view catchtap="switchLanguage">切换</view>
 </view>

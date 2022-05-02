@@ -17,3 +17,11 @@
   height: 336rpx;
   margin-bottom: 30rpx;
 }
+
+.noOrderData .noDataDesc {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246A;
+  text-align: center;
+}

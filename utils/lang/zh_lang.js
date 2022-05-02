@@ -87,6 +87,26 @@ var Languague = {
       gzfl: '柜租费率',
       cxfl: '查询费率'
     },
+    // 查询结果
+    queryRes: {
+      topTitle: '查询',
+      title: '追踪结果',
+      placeholder: '输入货柜号，提单号或订舱号',
+      yuji: '目的港预计停泊时间',
+      tingbo: '目的港停泊时间',
+      shengyu: '剩余航程',
+      tian: '天',
+      export: '以PDF格式输出',
+      toEmail: '以附件形式发送至邮箱',
+      huoguihao: '货柜号',
+      xiangxing: '箱型',
+      location: '位置',
+      time: '时间',
+      chuanming: '船名',
+      chuanci: '船次',
+      noData: '未找到结果',
+      noDataDesc: '未找到或已经卸货或返回堆场'
+    },
     //航线查询
     scheduleSearching: {
       //航线|获取船期

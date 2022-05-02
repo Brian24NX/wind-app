@@ -12,6 +12,9 @@ Component({
   properties: {
     list: {
       type: Array
+    },
+    languageContent: {
+      type: Object
     }
   },
 

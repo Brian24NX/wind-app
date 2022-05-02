@@ -1,7 +1,7 @@
 <!--pages/Orders/More/index.wxml-->
 <view class="searchResultContainers">
   <view class="searchResultContainer">
-    <view class="resTitle">追踪结果</view>
+    <view class="resTitle">{{languageContent.title}}</view>
     <view class="resList">
       <view class="oneRes" wx:for="{{lists}}">
         <image src="/assets/img/search/order@2x.png" mode="aspectFit" class="resIcon"></image>
@@ -15,60 +15,62 @@
     <view wx:if="{{item.data}}">
       <view wx:for="{{item.data.routes}}" wx:for-item="routeItem" wx:for-index="routeIndex" wx:key="routeIndex">
         <view class="oneOrder" wx:for="{{routeItem.containers}}" wx:for-item="items" wx:for-index="indexs" bindtap="toDetail" data-index="{{index}}" data-routeindex="{{routeIndex}}" data-indexs="{{indexs}}">
-        <view class="orderTop">
-          <view class="topLeft">{{items.timeRemaining > 0 ? '预计' : ''}}到港时间</view>
-          <view class="topRight">{{items.movements[items.movements.length - 1].date}} {{items.movements[items.movements.length - 1].week}} {{items.movements[items.movements.length - 1].time}}</view>
-        </view>
-        <view class="orderBottom">
-          <view class="oneBottom">
-            <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
-            <view class="details">
-              <view class="detailLeft">
-                <view class="huogui">{{items.id}}</view>
-                <view>货柜号</view>
-              </view>
-              <view class="detailRight">
-                <view class="xiangxing">{{items.size}}{{items.type}}</view>
-                <view>箱型</view>
+          <view class="orderTop">
+            <view class="topLeft">
+              <text>{{items.timeRemaining < 1 ? languageContent.tingbo : languageContent.yuji }}</text>
+            </view>
+            <view class="topRight">{{items.movements[items.movements.length - 1].date}} {{items.movements[items.movements.length - 1].week}} {{items.movements[items.movements.length - 1].time}}</view>
+          </view>
+          <view class="orderBottom">
+            <view class="oneBottom">
+              <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
+              <view class="details">
+                <view class="detailLeft">
+                  <view class="huogui">{{items.id}}</view>
+                  <view>{{languageContent.huoguihao}}</view>
+                </view>
+                <view class="detailRight">
+                  <view class="xiangxing">{{items.size}}{{items.type}}</view>
+                  <view>{{languageContent.xiangxing}}</view>
+                </view>
               </view>
             </view>
-          </view>
-          <view class="oneBottom">
-            <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
-            <view class="details">
-              <view class="detailLeft">
-                <view class="status">{{items.currentStatus.status.statusLabel}}</view>
-                <view class="address">{{items.currentStatus.pointLocation.name}}</view>
-                <view>位置</view>
-              </view>
-              <view class="detailRight">
-                <view class="xiangxing time">{{items.currentStatus.dateStr}}</view>
-                <view>时间</view>
+            <view class="oneBottom">
+              <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
+              <view class="details">
+                <view class="detailLeft">
+                  <view class="status">{{languageContent.language === 'en' ? items.currentStatus.status.name : items.currentStatus.status.statusLabel}}</view>
+                  <view class="address">{{items.currentStatus.pointLocation.name}}</view>
+                  <view>{{languageContent.location}}</view>
+                </view>
+                <view class="detailRight">
+                  <view class="xiangxing time">{{items.currentStatus.dateStr}}</view>
+                  <view>{{languageContent.time}}</view>
+                </view>
               </view>
             </view>
-          </view>
-          <view class="oneBottom">
-            <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
-            <view class="details">
-              <view class="detailLeft">
-                <view class="huogui chuanming">{{items.movements[items.movements.length - 2].vessel.name}}</view>
-                <view>船名</view>
-              </view>
-              <view class="detailRight">
-                <view class="xiangxing">{{items.movements[items.movements.length - 2].voyageReference}}</view>
-                <view>航次</view>
+            <view class="oneBottom">
+              <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
+              <view class="details">
+                <view class="detailLeft">
+                  <view class="huogui chuanming">{{items.movements[items.movements.length - 2].vessel.name}}</view>
+                  <view>{{languageContent.chuanming}}</view>
+                </view>
+                <view class="detailRight">
+                  <view class="xiangxing">{{items.movements[items.movements.length - 2].voyageReference}}</view>
+                  <view>{{languageContent.chuanci}}</view>
+                </view>
               </view>
             </view>
           </view>
         </view>
       </view>
-      </view>
-      
+
     </view>
     <view wx:else>
       <view class="oneOrder">
         <view class="orderTop">
-          <view class="topLeft">预计到港时间</view>
+          <view class="topLeft">{{languageContent.yuji}}</view>
         </view>
         <view class="orderBottom">
           <view class="oneBottom">
@@ -82,7 +84,7 @@
           </view>
           <view class="noOrderData">
             <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no.png"></image>
-            <view>未找到或已经卸货或返回堆场</view>
+            <view>{{languageContent.noDataDesc}}</view>
           </view>
         </view>
       </view>

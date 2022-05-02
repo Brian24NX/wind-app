@@ -85,6 +85,26 @@ var Languague = {
       gzfl: 'D&D Rate',
       cxfl: 'Charge Finder'
     },
+    // 查询结果
+    queryRes: {
+      topTitle: 'query',
+      title: 'Tracking Details',
+      placeholder: 'Container, Bill of lading or Booking Number',
+      yuji: 'ETA Berth at POD',
+      tingbo: 'Berth at POD',
+      shengyu: 'Remaining',
+      tian: 'Days',
+      export: 'Export PDF',
+      toEmail: 'Sand to Email',
+      huoguihao: 'Container',
+      xiangxing: 'Equipment Type',
+      location: 'Location',
+      time: 'Time',
+      chuanming: 'Vessel',
+      chuanci: 'Voyage',
+      noData: 'No results found',
+      noDataDesc: 'Booking not found,not yet confirmed or container cycle not yet started'
+    },
     //航线查询
     scheduleSearching: {
       //航线|获取船期

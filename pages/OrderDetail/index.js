@@ -1,11 +1,12 @@
 // pages/OrderDetail/index.js
-
+var languageUtil = require('../../utils/languageUtils')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
     index: null,
     routeIndex: null,
     indexs: null,
@@ -18,9 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '查询',
-    })
+    this.initLanguage()
     this.setData({
       index: options.index,
       routeIndex: options.routeIndex,
@@ -28,6 +27,19 @@ Page({
     })
     this.setOneDetail()
   },
+
+  initLanguage() {
+    //获取当前小程序语言版本所对应的字典变量
+    var lang = languageUtil.languageVersion()
+    lang.lang.page.queryRes.language = lang.lang.page.langue
+    wx.setNavigationBarTitle({
+      title: lang.lang.page.queryRes.topTitle,
+    })
+    this.setData({
+      languageContent: lang.lang.page.queryRes
+    })
+  },
+
   setOneDetail() {
     this.setData({
       loading: true
