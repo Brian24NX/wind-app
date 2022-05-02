@@ -19,7 +19,9 @@ var Languague = {
       // 格式无效
       gswx: '号码无效，请检查格式',
       more3: '最多可同时查询三个货柜状态，请重新输入',
-      chongfu: '号码重复，请检查后输入'
+      chongfu: '号码重复，请检查后输入',
+      input: '请输入',
+      select: '请选择'
     },
     // 首页
     homeInfo: {
@@ -66,6 +68,26 @@ var Languague = {
       gzp: '管制品查询',
       // 联系我们
       callMe: '联系我们'
+    },
+    khtg: {
+      topTitle: '业务及运营\n信息更新'
+    },
+    callMe: {
+      topTitle: '业务咨询',
+      bsc: '请选择您准备联系的本地办事处',
+      businessType: '请选择您需要咨询的业务类型',
+      tigong: '请问您是否可以提供订舱信息？',
+      yes: '是',
+      no: '否',
+      hangxian: '请选择您需要咨询的航线',
+      dingdan: '请输入订单号',
+      accountName: '公司名称',
+      submitBtn: '提交并获取联系信息'
+    },
+    callMeResult: {
+      fuwu: '客户服务',
+      phone: '联系方式',
+      email: '邮箱地址'
     },
     // 查询
     queryInfo: {

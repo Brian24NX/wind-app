@@ -4,12 +4,14 @@ import {
   newsList
 } from '../../../../api/modules/more';
 const pageSize = 10;
+const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    title: '',
     keyword: '',
     categoryId: '',
     categoryList: [],
@@ -25,7 +27,10 @@ Page({
    */
   onLoad() {
     wx.setNavigationBarTitle({
-      title: '新闻中心'
+      title: languageUtil.languageVersion().lang.page.homeInfo.news
+    })
+    this.setData({
+      title: languageUtil.languageVersion().lang.page.homeInfo.news
     })
     this.getCategoryList()
     this.search()

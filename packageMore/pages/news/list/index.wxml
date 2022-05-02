@@ -2,7 +2,7 @@
 <wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="newsContainer">
   <view class="topTitles">
-    <view class="topContainer">新闻中心</view>
+    <view class="topContainer">{{title}}</view>
     <view class="inputContainer" style="margin-top: 30rpx;">
       <input value="{{keyword}}" type="text" class="inputs" placeholder="keyword" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
       <view class="delete" catchtap="deleteValue">

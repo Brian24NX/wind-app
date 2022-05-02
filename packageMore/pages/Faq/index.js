@@ -1,5 +1,6 @@
 // packageMore/pages/Faq/index.js
 const config = require("../../../config/config")
+const languageUtil = require('../../../utils/languageUtils')
 Page({
 
   /**
@@ -15,7 +16,7 @@ Page({
    */
   onLoad() {
     wx.setNavigationBarTitle({
-      title: '在线服务',
+      title: languageUtil.languageVersion().lang.page.homeInfo.onlineServices
     })
     if (getApp().globalData.isPhoneX) {
       this.setData({

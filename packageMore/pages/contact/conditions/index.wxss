@@ -22,6 +22,11 @@ page {
   color: #071E5D;
 }
 
+.contactContainer .topContainer .scale {
+  transform: scaleX(0.6);
+  transform-origin: left;
+}
+
 .contactContainer .blockContainer {
   padding: 40rpx 48rpx;
   background-color: #ffffff;

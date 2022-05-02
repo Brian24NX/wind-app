@@ -18,7 +18,9 @@ var Languague = {
       // 格式无效
       gswx: 'Invalid number, please check format',
       more3: 'Maximum three container states, please re-enter',
-      chongfu: 'Duplicate number, please check and enter'
+      chongfu: 'Duplicate number, please check and enter',
+      input: 'Input',
+      select: 'Select'
     },
     // 首页
     homeInfo: {
@@ -53,18 +55,38 @@ var Languague = {
       // cmacgm
       cma: 'CMA CGM+',
       // 关于我们
-      about: 'About US',
+      about: 'About CMA CGM',
       //新闻咨询
-      news: "News",
+      news: "News Center",
       // 在线服务
       onlineServices: 'Online Services',
       //增值服务
-      valueAddedService: "Value Added Service",
+      valueAddedService: "Customer Advisory",
       template: 'Useful Template and Link',
       // 管制品
       gzp: 'Sanctions and Commodity',
       // 联系我们
-      callMe: 'call me'
+      callMe: 'Contact Us'
+    },
+    khtg: {
+      topTitle: 'Business & Operational Update'
+    },
+    callMe: {
+      topTitle: 'I HAVE A QUESTION',
+      bsc: 'Choose a local office you want to be in contact with',
+      businessType: 'What kind of business you want to inquire about?',
+      tigong: 'Do you have the booking reference information to provide?',
+      yes: 'Yes',
+      no: 'No',
+      dingdan: 'Booking reference',
+      hangxian: 'What trade or cargo you want to inquire about?',
+      accountName: 'Account Name',
+      submitBtn: 'Submit and Obtain Contact Information',
+    },
+    callMeResult: {
+      fuwu: 'Customer Service',
+      phone: 'Phone',
+      email: 'Email Address'
     },
     // 查询
     queryInfo: {

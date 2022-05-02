@@ -2,6 +2,7 @@
 import {
   businiessOpentionalList
 } from '../../../../api/modules/more';
+const languageUtil = require('../../../../utils/languageUtils')
 const pageSize = 10;
 Page({
 
@@ -9,6 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
+    load: {},
     list: [],
     loading: true,
     noMore: false,
@@ -20,9 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    wx.setNavigationBarTitle({
-      title: '客户通告',
-    })
+    this.initLanguage()
     this.resetList()
   },
 
@@ -43,6 +44,17 @@ Page({
       pageNum: ++this.data.pageNum
     })
     this.getBusiniessOpentionalList()
+  },
+
+  initLanguage() {
+    wx.setNavigationBarTitle({
+      title: languageUtil.languageVersion().lang.page.homeInfo.valueAddedService
+    })
+    //获取当前小程序语言版本所对应的字典变量
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.khtg,
+      load: languageUtil.languageVersion().lang.page.load
+    })
   },
 
   resetList() {

@@ -2,7 +2,7 @@
 <wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="businessContainer">
   <view class="topTitles">
-    <text class="topContainer">业务及运营\n信息更新</text>
+    <text class="topContainer">{{languageContent.topTitle}}</text>
   </view>
   <view class="businessLists">
     <view class="businessList">

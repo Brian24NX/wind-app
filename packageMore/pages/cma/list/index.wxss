@@ -18,6 +18,11 @@ page {
   color: #071E5D;
 }
 
+.cmaContainer .topContainer .text {
+  transform: scaleX(0.75);
+  transform-origin: left;
+}
+
 .cmaContainer .cmaList {
   background-color: #ffffff;
   padding: 1rpx 48rpx;

@@ -1,4 +1,5 @@
 // packageMore/pages/about/index.js
+const languageUtil = require('../../../utils/languageUtils')
 Page({
 
   /**
@@ -13,7 +14,7 @@ Page({
    */
   onLoad() {
     wx.setNavigationBarTitle({
-      title: '关于达飞'
+      title: languageUtil.languageVersion().lang.page.homeInfo.about
     })
   },
 

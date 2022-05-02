@@ -2,6 +2,7 @@
 import {
   contractInfo
 } from '../../../../api/modules/more';
+const languageUtil = require('../../../../utils/languageUtils')
 const app = getApp();
 Page({
 
@@ -14,13 +15,15 @@ Page({
     office: '',
     businessType: '',
     trade: '',
-    accountName: ''
+    accountName: '',
+    languageContent: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    this.initLanguage()
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
@@ -31,6 +34,13 @@ Page({
       accountName: data.accountName
     })
     this.getContractInfo()
+  },
+
+  initLanguage() {
+    //获取当前小程序语言版本所对应的字典变量
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.callMeResult
+    })
   },
 
   getContractInfo() {

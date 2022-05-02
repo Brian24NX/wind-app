@@ -6,7 +6,7 @@
   <image src="/assets/img/more/message@2x.png" class="message" mode="aspectFit"></image>
   <view class="contactTopTitle">
     <text>CMA CGM </text>
-    <text>客户服务</text>
+    <text>{{languageContent.fuwu}}</text>
   </view>
 </view>
 <view class="contactDetailContainer">
@@ -22,13 +22,13 @@
         <image src="/assets/img/more/callme@2x.png"></image>
         <view class="oneContent">
           <view>周一到周五<text style="margin-left: 30rpx;">09:00-18:00</text></view>
-          <view catchtap="callme" data-phone="021-88888888">联系方式：021-88888888</view>
+          <view catchtap="callme" data-phone="021-88888888">{{languageContent.phone}}：021-88888888</view>
         </view>
       </view>
       <view class="ones">
         <image src="/assets/img/more/email@2x.png"></image>
         <view class="oneContent noLine">
-          <view>邮箱地址：</view>
+          <view>{{languageContent.email}}：</view>
           <view catchtap="copyEmail" data-email="SHG.LINWANG@cma-cgm.com">SHG.LINWANG@cma-cgm.com</view>
         </view>
       </view>

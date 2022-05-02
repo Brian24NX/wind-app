@@ -3,12 +3,16 @@ import {
   dictList,
   contactTradeList
 } from '../../../../api/modules/more';
+const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    language: '',
+    languageContent: {},
+    verifyInfo: {},
     canProvide: true,
     columns: [],
     currentType: '',
@@ -33,12 +37,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    wx.setNavigationBarTitle({
-      title: '联系我们'
-    })
+    this.initLanguage()
     this.getOfficeList()
     this.getBussinessScopeList()
     this.getContactTradeList()
+  },
+
+  initLanguage() {
+    wx.setNavigationBarTitle({
+      title: languageUtil.languageVersion().lang.page.homeInfo.callMe
+    })
+    //获取当前小程序语言版本所对应的字典变量
+    this.setData({
+      language: languageUtil.languageVersion().lang.page.langue,
+      languageContent: languageUtil.languageVersion().lang.page.callMe,
+      verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
+    })
   },
 
   // 获取办事处list
@@ -52,7 +66,8 @@ Page({
           "id": 24,
           "name": "dict_office",
           "key": 1,
-          "value": "Beihai, Fangcheng, Qunzhou, Wuzhou, Guigang, Haikou, Yangpu"
+          "value": "Beihai, Fangcheng, Qunzhou, Wuzhou, Guigang, Haikou, Yangpu",
+          "valueCn": "Beihai, Fangcheng, Qunzhou, Wuzhou, Guigang, Haikou, Yangpu"
         },
         {
           "deleted": 1,
@@ -62,7 +77,8 @@ Page({
           "id": 25,
           "name": "dict_office",
           "key": 2,
-          "value": "Beijing"
+          "value": "Beijing",
+          "valueCn": "Beijing"
         },
         {
           "deleted": 1,
@@ -72,7 +88,8 @@ Page({
           "id": 26,
           "name": "dict_office",
           "key": 3,
-          "value": "Dalian"
+          "value": "Dalian",
+          "valueCn": "Dalian"
         },
         {
           "deleted": 1,
@@ -82,7 +99,8 @@ Page({
           "id": 27,
           "name": "dict_office",
           "key": 4,
-          "value": "Fuzhou"
+          "value": "Fuzhou",
+          "valueCn": "Fuzhou"
         },
         {
           "deleted": 1,
@@ -92,7 +110,8 @@ Page({
           "id": 28,
           "name": "dict_office",
           "key": 5,
-          "value": "Guangzhou"
+          "value": "Guangzhou",
+          "valueCn": "Guangzhou"
         },
         {
           "deleted": 1,
@@ -102,7 +121,8 @@ Page({
           "id": 29,
           "name": "dict_office",
           "key": 6,
-          "value": "Lianyungang"
+          "value": "Lianyungang",
+          "valueCn": "Lianyungang"
         },
         {
           "deleted": 1,
@@ -112,7 +132,8 @@ Page({
           "id": 30,
           "name": "dict_office",
           "key": 7,
-          "value": "Nanjing"
+          "value": "Nanjing",
+          "valueCn": "Nanjing"
         },
         {
           "deleted": 1,
@@ -122,7 +143,8 @@ Page({
           "id": 31,
           "name": "dict_office",
           "key": 8,
-          "value": "Ningbo"
+          "value": "Ningbo",
+          "valueCn": "Ningbo"
         },
         {
           "deleted": 1,
@@ -132,7 +154,8 @@ Page({
           "id": 32,
           "name": "dict_office",
           "key": 9,
-          "value": "Qingdao"
+          "value": "Qingdao",
+          "valueCn": "Qingdao"
         },
         {
           "deleted": 1,
@@ -142,7 +165,8 @@ Page({
           "id": 33,
           "name": "dict_office",
           "key": 10,
-          "value": "Shanghai"
+          "value": "Shanghai",
+          "valueCn": "Shanghai",
         },
         {
           "deleted": 1,
@@ -152,7 +176,8 @@ Page({
           "id": 34,
           "name": "dict_office",
           "key": 11,
-          "value": "Shantou"
+          "value": "Shantou",
+          "valueCn": "Shantou",
         },
         {
           "deleted": 1,
@@ -162,7 +187,8 @@ Page({
           "id": 35,
           "name": "dict_office",
           "key": 12,
-          "value": "Shenzhen"
+          "value": "Shenzhen",
+          "valueCn": "Shenzhen"
         },
         {
           "deleted": 1,
@@ -172,7 +198,8 @@ Page({
           "id": 36,
           "name": "dict_office",
           "key": 13,
-          "value": "Shunde"
+          "value": "Shunde",
+          "valueCn": "Shunde"
         },
         {
           "deleted": 1,
@@ -182,7 +209,8 @@ Page({
           "id": 37,
           "name": "dict_office",
           "key": 14,
-          "value": "Tianjin"
+          "value": "Tianjin",
+          "valueCn": "Tianjin"
         },
         {
           "deleted": 1,
@@ -192,7 +220,8 @@ Page({
           "id": 38,
           "name": "dict_office",
           "key": 15,
-          "value": "Xiamen"
+          "value": "Xiamen",
+          "valueCn": "Xiamen"
         },
         {
           "deleted": 1,
@@ -202,7 +231,8 @@ Page({
           "id": 39,
           "name": "dict_office",
           "key": 16,
-          "value": "Zhongshan"
+          "value": "Zhongshan",
+          "valueCn": "Zhongshan"
         }
       ]
     })
@@ -269,7 +299,7 @@ Page({
     const type = e.currentTarget.dataset.type
     this.setData({
       currentType: type,
-      valueKey: type === '3' ? 'trade' : type === '2' ? 'valueCn' : 'value',
+      valueKey: type === '3' ? 'trade' : this.data.language === 'en' ? 'value' : 'valueCn',
       columns: type === '1' ? this.data.officeList : type === '2' ? this.data.businessScopeList : type === '3' ? this.data.contactTradeList : [],
       showPopup: true
     })
@@ -290,14 +320,14 @@ Page({
       case '1':
         this.setData({
           office: detail.key,
-          officeName: detail.value,
+          officeName: this.data.language === 'en' ? detail.value : detail.valueCn,
           showRemind1: false
         })
         break;
       case '2':
         this.setData({
           businessType: detail.key,
-          businessTypeName: detail.valueCn,
+          businessTypeName: this.data.language === 'en' ? detail.value : detail.valueCn,
           showRemind2: false
         })
         break;

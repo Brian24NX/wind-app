@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "CMA CGM+",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "loading": "../../../../components/loading/index",
