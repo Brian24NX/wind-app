@@ -357,7 +357,7 @@ Page({
       verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
     })
     wx.setNavigationBarTitle({
-      title: languageUtil.languageVersion().lang.page.querytitle
+      title: languageUtil.languageVersion().lang.page.homeInfo.SCHEDULE
     })
     if (languageUtil.languageVersion().lang.page.langue === 'en') {
       this.setData({

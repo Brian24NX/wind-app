@@ -2,6 +2,7 @@
 import {
   businiessOpentionalDetail
 } from '../../../../api/modules/more';
+const languageUtil = require('../../../../utils/languageUtils')
 const dayjs = require('dayjs')
 Page({
 
@@ -17,6 +18,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: languageUtil.languageVersion().lang.page.homeInfo.valueAddedService
+    })
     this.setData({
       id: options.id
     })

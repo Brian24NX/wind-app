@@ -4,6 +4,7 @@ import {
   routingFinder,
   routingSort
 } from '../../api/modules/home';
+const languageUtil = require('../../utils/languageUtils')
 Page({
 
   /**
@@ -56,7 +57,7 @@ Page({
    */
   onLoad: function () {
     wx.setNavigationBarTitle({
-      title: '搜索结果',
+      title: languageUtil.languageVersion().lang.page.homeInfo.SCHEDULE
     })
     this.setData({
       polCode: wx.getStorageSync('searchKey').polCode,

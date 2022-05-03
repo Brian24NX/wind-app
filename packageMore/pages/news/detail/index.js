@@ -2,6 +2,7 @@
 import {
   newsDetail
 } from '../../../../api/modules/more';
+const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
   /**
@@ -17,7 +18,7 @@ Page({
    */
   onLoad(options) {
     wx.setNavigationBarTitle({
-      title: 'News Center',
+      title: languageUtil.languageVersion().lang.page.homeInfo.news
     })
     this.setData({
       id: options.id
