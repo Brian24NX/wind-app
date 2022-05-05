@@ -3,6 +3,7 @@ App({
   onLaunch() {
     wx.removeStorageSync('polobject')
     wx.removeStorageSync('podobject')
+    wx.removeStorageSync('details')
     wx.setStorageSync('setHangXian', false)
     if (wx.getStorageSync('language') === 'us') {
       this.globalData.version = 1
