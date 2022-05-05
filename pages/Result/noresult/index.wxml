@@ -1,6 +1,6 @@
 <!--没有结果页面-->
 <view class="noOrderData">
   <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no-result.png"></image>
-  <text class="nosolutions">抱歉！未找到此问题的解决方案</text>
-  <text class="settlesolutions">在CMA CGM集团内目前暂未能提供处理方案</text>
+  <text class="nosolutions">{{languageContent.noFindTips1}}</text>
+  <text class="settlesolutions">{{languageContent.noFindTips2}}</text>
 </view>

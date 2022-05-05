@@ -11,20 +11,20 @@
       <view class="qiyunStr2">{{placeOfDischarge}}</view>
     </view>
     <view class="searchLine"></view>
-    <view class="searchTime">未来{{weekNum}}星期</view>
+    <view class="searchTime">{{languageContent['future' + weekNum]}}</view>
   </view>
   <view class="calendarContainer">
     <scroll-view scroll-x class="calendarLeft" scroll-left="{{scrollLeft}}" scroll-with-animation>
       <view class="oneDay {{item === searchDate ? 'current' : ''}}" wx:for="{{dateList}}" wx:key="index" catchtap="changeDay" data-item="{{item}}">
         <view class="dayValue">{{filters.fmtDate2(item)}}</view>
-        <view>周{{filters.weekDay(item)}}</view>
+        <view>{{languageContent['week' + filters.weekDay(item)]}}</view>
       </view>
     </scroll-view>
     <image class="calendarCenter" src="/assets/img/result/shadow@2x.png"></image>
     <picker mode="date" value="{{searchDate}}" start="1970-09-01" end="2079-09-01" bindchange="bindTimeChange">
       <view class="calendarRight">
         <image src="/assets/img/result/calendar@2x.png"></image>
-        <view>日历</view>
+        <view>{{languageContent.calendar}}</view>
       </view>
     </picker>
   </view>
@@ -40,8 +40,8 @@
   <view wx:if="{{routinglist.length}}">
     <view class="oneResult" wx:for="{{routinglist}}" wx:key="index" bindtap="toDetail" data-id="{{index}}">
       <view class="tips">
-        <view class="oneTip" wx:if="{{item.departureDateFlag}}">最快离港</view>
-        <view class="oneTip" wx:if="{{item.arrivalDateFlag}}">最快到港</view>
+        <view class="oneTip" wx:if="{{item.departureDateFlag}}">{{languageContent.earliestDeparture}}</view>
+        <view class="oneTip" wx:if="{{item.arrivalDateFlag}}">{{languageContent.earliestArrival}}</view>
       </view>
       <view class="resContents">
         <view class="leftStep">
@@ -63,10 +63,10 @@
             <view class="time end">{{filters.fmtDate(item.arrivaldate)}} {{filters.weekDay(item.arrivaldate) ? '星期' +  filters.weekDay(item.arrivaldate) : ''}} {{item.pointto}}, {{podCode}}</view>
           </view>
           <view class="rightContent">
-            <view class="timeDay">{{item.transitTime}} 天</view>
+            <view class="timeDay">{{item.transitTime}} {{item.transitTime == 1 ? languageContent.day : languageContent.days}}</view>
             <view class="zhuanrun" wx:if="{{item.transhipment}}">
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
-              <view>{{item.transhipment}} 转运</view>
+              <view>{{item.transhipment}} {{languageContent.zhuanyun}}</view>
             </view>
           </view>
         </view>
@@ -75,8 +75,8 @@
   </view>
   <!--无结果-->
   <view wx:if="{{!routinglist.length && !isLoading}}">
-    <noresult></noresult>
+    <noresult languageContent="{{languageContent}}"></noresult>
   </view>
 </view>
 <!-- 底部筛选条件 tabbar -->
-<foot-tab-bar radio="{{sort}}" plans="{{plans}}" routesPlanList="{{routesPlanList}}" bind:tabbarchange="onTabbarChange" />
+<foot-tab-bar languageContent="{{languageContent}}" radio="{{sort}}" plans="{{plans}}" routesPlanList="{{routesPlanList}}" bind:tabbarchange="onTabbarChange" />

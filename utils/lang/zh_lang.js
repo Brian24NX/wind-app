@@ -150,46 +150,58 @@ var Languague = {
     },
     //航线查询结果列表
     searchResultList: {
+      // 标题
+      title: '航线结果',
       //日历
       calendar: "日历",
       //星期一
-      mon: "星期一",
+      week1: "周一",
       //星期二
-      tue: "星期二",
+      week2: "周二",
       //周三
-      wed: "星期三",
+      week3: "周三",
       //周四
-      thur: "星期四",
+      week4: "周四",
       //周五
-      fri: "星期五",
+      week5: "周五",
       //周六
-      sat: "星期六",
+      week6: "周六",
       //周日
-      sun: "星期日",
+      week0: "周日",
+      // 未来一星期
+      future1: '未来一星期',
+      // 未来二星期
+      future2: '未来二星期',
+      // 未来三星期
+      future3: '未来三星期',
+      // 未来四星期
+      future4: '未来四星期',
+      days: '天',
+      day: '天',
+      // 转运
+      zhuanyun: '转运',
+      apply: '应用',
       //排序
       sortBy: "排序",
       //最快离港
       earliestDeparture: "最快离港",
       //最快到港
       earliestArrival: "最快到港",
+      // 最快运输时间
+      earliestTime: '最快运输时间',
       //离港
       depart: "离港",
-      //最快运输时间
-      fastestTransit: "最快运输时间",
-      // 最佳碳足迹
-      bestCarbonfootpint: "最佳碳足迹",
-      //航线方案，航线方案1
-      routingSolutions: "航线方案，航线方案1",
-      //仅看最早出发
-      earliestArrivalOnly: "仅看最早出发",
+      //航线方案
+      routingSolutions: "航线方案",
+      //仅看最早到达
+      earliestArrivalOnly: "仅看最早到达",
       //仅看直达
       directOnly: "仅看直达",
-      //4条航线方案
-      fourSolutions: "4条航线方案",
       // 4天
       fourDays: "4天",
       //抱歉，我们暂未查询到匹配的航线方案.
-      noFindTips: "抱歉，我们暂未查询到匹配的航线方案."
+      noFindTips1: "抱歉！未找到此问题的解决方案",
+      noFindTips2: "在CMA CGM集团内目前暂未能提供处理方案"
     },
     //routeDetails航线查询详情
     routeDetails: {

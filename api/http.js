@@ -32,10 +32,18 @@ const request = ({
           // 未登录拦截
           if (res.data.code == 200) {
             resolve(res.data)
-          } else if (res.data.code === 401) {
+          } else if (res.data.code == 401) {
             wx.redirectTo({
               url: '/pages/Login/index'
             })
+          } else if (res.data.code == 408) {
+            if (!hideLoading) {
+              wx.showToast({
+                title: languageUtil.languageVersion().lang.page.load.chaoshi,
+                icon: 'none'
+              })
+            }
+            reject(res.data)
           } else {
             if (!hideLoading) {
               wx.showToast({

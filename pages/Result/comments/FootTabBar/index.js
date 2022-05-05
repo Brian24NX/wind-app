@@ -3,6 +3,9 @@ Component({
     addGlobalClass: true
   },
   properties: {
+    languageContent: {
+      type: Object
+    },
     // 这里定义了innerText属性，属性值可以在组件使用时指定
     innerText: {
       type: String,
@@ -25,28 +28,28 @@ Component({
     programme: true,
     result: [],
     tabBarData: [{
-        text: '排序',
+        text: 'sortBy',
         isChecked: true,
         id: 1,
         active: '/assets/img/result/tabbar/active/one.png',
         noactive: '/assets/img/result/tabbar/noactive/one.png'
       },
       {
-        text: '航线方案',
+        text: 'routingSolutions',
         isChecked: true,
         id: 2,
         active: '/assets/img/result/tabbar/active/two.png',
         noactive: '/assets/img/result/tabbar/noactive/two.png'
       },
       {
-        text: '仅限最早到达',
+        text: 'earliestArrivalOnly',
         isChecked: false,
         id: 3,
         active: '/assets/img/result/tabbar/active/three.png',
         noactive: '/assets/img/result/tabbar/noactive/three.png'
       },
       {
-        text: '仅看直达',
+        text: 'directOnly',
         isChecked: false,
         id: 4,
         active: '/assets/img/result/tabbar/active/four.png',

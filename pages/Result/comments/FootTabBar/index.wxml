@@ -2,7 +2,7 @@
   <view class="flex ai-center jc-between jc-around">
     <view class="tabbar-item flex-1 flex flex-column ai-center jc-center" wx:for="{{tabBarData}}" catchtap="handleClickTab" data-index="{{index}}" wx:key="index">
       <image class="tabBarImg" src="{{ item.isChecked ? item.active : item.noactive}}"></image>
-      <view class="tabText {{item.isChecked ? '' : 'color-790'}}">{{item.text}}</view>
+      <text class="tabText {{item.isChecked ? '' : 'color-790'}}">{{languageContent[item.text]}}</text>
     </view>
   </view>
 
@@ -13,13 +13,13 @@
     <view class="sort-menu" style="bottom: 0;">
       <van-radio-group value="{{ radio }}">
         <van-cell-group>
-          <van-cell title="最快离港" clickable data-name="1" bind:click="onClickRadio">
+          <van-cell title="{{languageContent.earliestDeparture}}" clickable data-name="1" bind:click="onClickRadio">
             <van-radio slot="right-icon" name="1" />
           </van-cell>
-          <van-cell title="最快到港" clickable data-name="2" bind:click="onClickRadio">
+          <van-cell title="{{languageContent.earliestArrival}}" clickable data-name="2" bind:click="onClickRadio">
             <van-radio slot="right-icon" name="2" />
           </van-cell>
-          <van-cell title="最快运输时间" clickable data-name="3" bind:click="onClickRadio">
+          <van-cell title="{{languageContent.earliestTime}}" clickable data-name="3" bind:click="onClickRadio">
             <van-radio slot="right-icon" name="3" />
           </van-cell>
         </van-cell-group>
@@ -39,6 +39,6 @@
         </van-cell-group>
       </van-checkbox-group>
     </view>
-    <view class="apply" catchtap="apply">应用</view>
+    <view class="apply" catchtap="apply">{{languageContent.apply}}</view>
   </view>
 </view>

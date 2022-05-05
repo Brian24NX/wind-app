@@ -143,52 +143,63 @@ var Languague = {
       next: "Next",
       //查询
       search: "Search",
-      week: 'Week(s)',
       //查询历史
       history: "History"
     },
     //航线查询结果列表
     searchResultList: {
+      // 标题
+      title: 'Schedule Results',
       //日历
       calendar: "Calendar",
       //星期一
-      mon: "Mon",
+      week1: "Mon",
       //星期二
-      tue: "Tue",
+      week2: "Tue",
       //星期三
-      wed: "Wed",
+      week3: "Wed",
       //星期四
-      thur: "Thur",
+      week4: "Thur",
       //星期五
-      fri: "Fri",
+      week5: "Fri",
       //星期六
-      sat: "Sat",
+      week6: "Sat",
       //星期日
-      sun: "Sun",
+      week0: "Sun",
+      // 未来一星期
+      future1: '1 Week',
+      // 未来二星期
+      future2: '2 Weeks',
+      // 未来一星期
+      future3: '3 Weeks',
+      // 未来一星期
+      future4: '4 Weeks',
+      days: 'days',
+      day: 'day',
+      // 转运
+      zhuanyun: 'transhipment',
+      apply: 'apply',
       //排序
       sortBy: "Sort by",
       //最快离港
-      earliestDeparture: "Earliest Departure",
+      earliestDeparture: "EARLIEST DEPARTURE",
       //最快到港
-      earliestArrival: "Earliest Arrival",
+      earliestArrival: "EARLIEST ARRIVAL",
+      // 最快运输时间
+      earliestTime: 'EARLIEST TRANSPORTATION TIME',
       //离港
       depart: "Depart/Departure ",
-      //最快运输时间
-      fastestTransit: "Fastest transit time",
-      // 最佳碳足迹
-      bestCarbonfootpint: "Best carbon footpint",
       //航线方案，航线方案1
-      routingSolutions: "Routing solutions, Solution One",
-      //仅看最早出发
-      earliestArrivalOnly: "Earliest arrival only",
+      routingSolutions: "Routing\nsolutions",
+      //仅看最早到达
+      earliestArrivalOnly: "Earliest\n arrival only",
       //仅看直达
-      directOnly: "Direct only",
-      //4条航线方案
-      fourSolutions: "4 solutions, 2 solutions, 1 solution",
+      directOnly: "Direct\nonly",
       // 4天
       fourDays: "4 Days",
       //抱歉！未找到此问题的解决方案,在CMA CGM集团内目前暂未能提供处理方案.
-      noFindTips: "Sorry! No solution has been found for this query. We are currently not able to propose solutions within CMA CGM Group."
+      noFindTips1: "Sorry! No solution has been found for this query.",
+      noFindTips2: "We are currently not able to propose solutions within CMA CGM Group."
     },
     //routeDetails航线查询详情
     routeDetails: {
