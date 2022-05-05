@@ -200,13 +200,13 @@ Page({
       viewactived: true,
       planList: [{
         title: 'CNC',
-        value: this.data.routingLists.find(u => u.id === 'CNC').list ? this.data.routingLists.find(u => u.id === 'CNC').list.length : 0
+        value: this.data.routingLists.find(u => u.id === 'CNC').solutionServices ? this.data.routingLists.find(u => u.id === 'CNC').solutionServices.length : 0
       }, {
         title: 'ANL',
-        value: this.data.routingLists.find(u => u.id === 'ANL').list ? this.data.routingLists.find(u => u.id === 'ANL').list.length : 0
+        value: this.data.routingLists.find(u => u.id === 'ANL').solutionServices ? this.data.routingLists.find(u => u.id === 'ANL').solutionServices.length : 0
       }, {
         title: 'APL',
-        value: this.data.routingLists.find(u => u.id === 'APL').list ? this.data.routingLists.find(u => u.id === 'APL').list.length : 0
+        value: this.data.routingLists.find(u => u.id === 'APL').solutionServices ? this.data.routingLists.find(u => u.id === 'APL').solutionServices.length : 0
       }]
     })
     console.log(this.data.routingLists)
