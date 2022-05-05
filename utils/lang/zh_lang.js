@@ -152,6 +152,8 @@ var Languague = {
     searchResultList: {
       // 标题
       title: '航线结果',
+      fangan1: '路线方案',
+      fangan2: '路线方案',
       //日历
       calendar: "日历",
       //星期一

@@ -11,7 +11,8 @@ const request = ({
 }) => {
   if (!hideLoading) {
     wx.showLoading({
-      title: languageUtil.languageVersion().lang.page.load.loading
+      title: languageUtil.languageVersion().lang.page.load.loading,
+      mask: true
     });
   }
   return new Promise((resolve, reject) => {

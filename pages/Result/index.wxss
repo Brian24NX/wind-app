@@ -240,6 +240,7 @@
 .resultContainers .oneResult .resContents .rightContainer {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent {
@@ -279,7 +280,9 @@
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent {
-  width: 120rpx;
+  width: 220rpx;
+  position: absolute;
+  right: 0;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent .timeDay {

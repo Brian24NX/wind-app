@@ -150,6 +150,8 @@ var Languague = {
     searchResultList: {
       // 标题
       title: 'Schedule Results',
+      fangan1: 'solution',
+      fangan2: 'solutions',
       //日历
       calendar: "Calendar",
       //星期一
@@ -165,7 +167,21 @@ var Languague = {
       //星期六
       week6: "Sat",
       //星期日
-      week0: "Sun",
+      weeks0: "Sun",
+      //星期一
+      weeks1: "Monday",
+      //星期二
+      weeks2: "Tuesday",
+      //星期三
+      weeks3: "Wednesday",
+      //星期四
+      weeks4: "Thursday",
+      //星期五
+      weeks5: "Friday",
+      //星期六
+      weeks6: "Saturday",
+      //星期日
+      weeks0: "Sunday",
       // 未来一星期
       future1: '1 Week',
       // 未来二星期

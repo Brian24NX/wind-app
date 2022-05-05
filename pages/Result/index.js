@@ -21,12 +21,12 @@ Page({
       },
       {
         id: 'ANL',
-        shippingCompany: '0011',
+        shippingCompany: '0002',
         list: []
       },
       {
         id: 'CNC',
-        shippingCompany: '0002',
+        shippingCompany: '0011',
         list: []
       },
       {
@@ -111,12 +111,12 @@ Page({
         },
         {
           id: 'ANL',
-          shippingCompany: '0011',
+          shippingCompany: '0002',
           list: []
         },
         {
           id: 'CNC',
-          shippingCompany: '0002',
+          shippingCompany: '0011',
           list: []
         },
         {
