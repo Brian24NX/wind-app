@@ -51,7 +51,9 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <block wx:if="{{language === 'en'}}"><view class="time">{{languageContent['weeks' + filters.weekDay(item.departuredate)]}}, {{filters.fmtDate(item.departuredate)}}</view></block>
+            <block wx:if="{{language === 'en'}}">
+              <view class="time">{{languageContent['weeks' + filters.weekDay(item.departuredate)]}}, {{filters.fmtDate(item.departuredate)}}</view>
+            </block>
             <block wx:else>
               <view class="time">{{filters.fmtDate(item.departuredate)}} {{languageContent['weeks' + filters.weekDay(item.departuredate)]}}</view>
             </block>
@@ -64,7 +66,12 @@
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>
-            <view class="time end">{{filters.fmtDate(item.arrivaldate)}} {{languageContent['weeks' + filters.weekDay(item.arrivaldate)]}} {{item.pointto}}, {{podCode}}</view>
+            <block wx:if="{{language === 'en'}}">
+              <view class="time end">{{languageContent['weeks' + filters.weekDay(item.arrivaldate)]}}, {{filters.fmtDate(item.arrivaldate)}} {{item.pointto}}, {{podCode}}</view>
+            </block>
+            <block wx:else>
+              <view class="time end">{{filters.fmtDate(item.arrivaldate)}} {{languageContent['weeks' + filters.weekDay(item.arrivaldate)]}} {{item.pointto}}, {{podCode}}</view>
+            </block>
           </view>
           <view class="rightContent">
             <view class="timeDay">{{item.transitTime}} {{item.transitTime == 1 ? languageContent.day : languageContent.days}}</view>
