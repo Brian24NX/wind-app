@@ -51,7 +51,10 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{filters.fmtDate(item.departuredate)}} {{languageContent['weeks' + filters.weekDay(item.departuredate)]}}</view>
+            <block wx:if="{{language === 'en'}}"><view class="time">{{languageContent['weeks' + filters.weekDay(item.departuredate)]}}, {{filters.fmtDate(item.departuredate)}}</view></block>
+            <block wx:else>
+              <view class="time">{{filters.fmtDate(item.departuredate)}} {{languageContent['weeks' + filters.weekDay(item.departuredate)]}}</view>
+            </block>
             <view class="time">{{item.pointfrom}}, {{polCode}}</view>
             <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>

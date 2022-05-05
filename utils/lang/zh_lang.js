@@ -169,7 +169,7 @@ var Languague = {
       //周六
       week6: "周六",
       //周日
-      weeks0: "周日",
+      week0: "周日",
       //星期一
       weeks1: "星期一",
       //星期二

@@ -12,6 +12,7 @@ Page({
    */
   data: {
     languageContent: {},
+    language: '',
     isPhoneX: getApp().globalData.isPhoneX,
     viewactived: false,
     routingLists: [{
@@ -63,7 +64,8 @@ Page({
       title: languageUtil.languageVersion().lang.page.searchResultList.title
     })
     this.setData({
-      languageContent: languageUtil.languageVersion().lang.page.searchResultList
+      languageContent: languageUtil.languageVersion().lang.page.searchResultList,
+      language: languageUtil.languageVersion().lang.page.langue
     })
     const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7
     this.setData({

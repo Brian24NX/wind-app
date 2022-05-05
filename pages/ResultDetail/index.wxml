@@ -37,7 +37,7 @@
             <view class="gangKouNames">{{item.pointFrom.location.facility.name}}</view>
           </view>
           <view class="yunshuContainer">
-            <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
+            <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDate)}} {{filters.weekday(item.pointFrom.departureDate)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
                 <view class="names">{{item.pointFrom.location.name}}，</view>
@@ -70,7 +70,7 @@
               <text>航次：</text>
               <text>{{item.transportation.voyage.voyageReference}}</text>
             </view>
-            <view class="timeContainer" style="margin-top: 30rpx;">{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
+            <view class="timeContainer" style="margin-top: 30rpx;">{{filters.fmtDate(item.pointTo.arrivalDate)}} {{filters.weekday(item.pointTo.arrivalDate)}}</view>
           </view>
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
@@ -99,7 +99,7 @@
             </view>
           </view>
           <view class="yunshuContainer">
-            <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
+            <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDate)}} {{filters.weekday(item.pointFrom.departureDate)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
                 <view class="names">{{item.pointFrom.location.name}}，</view>
@@ -108,7 +108,7 @@
               </view>
             </block>
             <view class="rails">{{item.transportation.meanOfTransport}}</view>
-            <view class="timeContainer" style="margin-top: 10rpx;">{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
+            <view class="timeContainer" style="margin-top: 10rpx;">{{filters.fmtDate(item.pointTo.arrivalDate)}} {{filters.weekday(item.pointTo.arrivalDate)}}</view>
           </view>
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
