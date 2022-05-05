@@ -1,18 +1,20 @@
-.tabBarlayout{
+.tabBarlayout {
   width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
   background-color: #fff;
 }
-.tabbar-item{
+
+.tabbar-item {
   height: 140rpx;
 }
-.tabbar-item:last-child .tabText{
+
+.tabbar-item:last-child .tabText {
   border-right: none
 }
 
-.tabBarImg{
+.tabBarImg {
   width: 40rpx;
   height: 40rpx;
 }
@@ -21,14 +23,14 @@
   color: #6B7790 !important;
 }
 
-.tabText{
+.tabText {
   display: inline-block;
   width: 100%;
   margin-top: 8rpx;
   color: #04246A;
   font-size: 24rpx;
   text-align: center;
-  border-right: 1px solid #E5E5E5; 
+  border-right: 1px solid #E5E5E5;
 }
 
 .overlay {

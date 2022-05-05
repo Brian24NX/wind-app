@@ -28,6 +28,8 @@ var Languague = {
       hometitle: "CAM CGM",
       // 获取追踪
       TRACKING: '货物追踪',
+      chuanqi1: '船期',
+      chuanqi2: '查询',
       // 提示
       goodsRemind: '输入货柜号，提单号或订舱号',
       //货物追踪
@@ -87,7 +89,8 @@ var Languague = {
     callMeResult: {
       fuwu: '客户服务',
       phone: '联系方式',
-      email: '邮箱地址'
+      email: '邮箱地址',
+      noContact: '无相应联系信息，请修改搜索条件'
     },
     // 查询
     queryInfo: {
@@ -141,14 +144,7 @@ var Languague = {
       next: "未来",
       //查询
       search: "查询",
-      //1 星期
-      oneWeek: "1 星期",
-      //2 星期
-      twoWeek: "2 星期",
-      //3 星期
-      threeWeek: "3 星期",
-      //4 星期
-      fourWeek: "4 星期",
+      week: '星期',
       //查询历史
       history: "查询历史"
     },

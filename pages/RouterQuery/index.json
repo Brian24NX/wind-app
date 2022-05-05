@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "",
   "usingComponents": {
-    "pickerinput": "../../components/pickerSelect/index",
-    "pickerinputweek":"../../components/pickerSelectWeek/index"
+    "custom-picker": "/components/customPicker/index",
+    "custom-time": "/components/customTime/index"
   }
 }

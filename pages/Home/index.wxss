@@ -191,6 +191,7 @@ page {
 .placeholder {
   color: #B9BFCA;
   font-size: 28rpx;
+  font-style: oblique;
 }
 
 .homeContainer .discoverContainer {
@@ -239,7 +240,7 @@ page {
 }
 
 .homeContainer .discoverContainer .swiper .discoverList .oneDiscover .discoverRight {
-  width: 224rpx;
+  width: 218rpx;
   color: #999999;
   font-size: 24rpx;
 }

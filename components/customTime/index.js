@@ -4,21 +4,21 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    columns: {
-      type: Array,
-      value: []
-    },
-    valueKey: {
+    type: {
       type: String,
-      value: 'text'
+      value: 'date'
+    },
+    currentDate: {
+      type: Number,
+      value: new Date().getTime()
     },
     showPopup: {
       type: Boolean,
       value: false
     },
-    defaultIndex: {
-      type: Number,
-      value: 0
+    formatter: {
+      type: String,
+      value: 'day'
     }
   },
 
@@ -26,11 +26,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onClose() {
-      this.triggerEvent('onClose')
+    onCancel() {
+      this.triggerEvent('onCancel')
     },
     onConfirm(e) {
-      this.triggerEvent('onConfirm', e.detail.value)
+      console.log(e)
+      this.triggerEvent('onConfirm', e.detail)
     }
   }
 })

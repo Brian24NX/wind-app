@@ -16,7 +16,9 @@ Page({
     businessType: '',
     trade: '',
     accountName: '',
-    languageContent: {}
+    languageContent: {},
+    loading: true,
+    contractList: []
   },
 
   /**
@@ -44,6 +46,10 @@ Page({
   },
 
   getContractInfo() {
+    this.setData({
+      loading: true,
+      contractList: []
+    })
     contractInfo({
       office: this.data.office,
       businessType: this.data.businessType,
@@ -51,6 +57,10 @@ Page({
       accountName: this.data.accountName
     }).then(res => {
       console.log(res)
+      this.setData({
+        contractList: res.data,
+        loading: false
+      })
     })
   },
 

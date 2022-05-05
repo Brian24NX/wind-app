@@ -8,117 +8,95 @@ page {
   padding-top: 30rpx;
 }
 
-.placeholder {
-  font-size: 28rpx;
-  color: #DFDFDF;
-  font-style: oblique;
+.searchContainers {
+  width: 690rpx;
+  background-color: #ffffff;
+  margin: 0 auto 30rpx;
+  padding: 0 48rpx 48rpx;
 }
 
-.queryContainer .routeTitles {
+.searchtitle {
+  padding: 34rpx 0 48rpx 0;
+}
+
+.route {
   font-size: 56rpx;
   color: #04246A;
   font-weight: bold;
-  font-family: Antonio-Bold, Antonio;
-  display: flex;
-  align-items: center;
-  padding-left: 50rpx;
-  margin-bottom: 20rpx;
 }
 
-.queryContainer .route2 {
-  color: #4468BA;
-}
-
-.queryContainer .redline {
+.redline {
   width: 6rpx;
   height: 50rpx;
   background: #E20202;
-  margin: 0 20rpx;
-}
-
-.queryContainer .searchLists {
-  width: 690rpx;
-  background-color: #ffffff;
-  margin: 0 auto 40rpx;
-  padding: 30rpx 0 48rpx;
-}
-
-.queryContainer .searchList {
-  padding: 0 46rpx 0 120rpx;
-  margin-bottom: 34rpx;
+  display: inline-block;
   position: relative;
+  left: 20rpx;
+  top: 4rpx;
 }
 
-.queryContainer .searchList .leftIcons {
-  position: absolute;
-  left: 44rpx;
-  top: 12rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.queryContainer .searchList .leftIcons .leftDto {
-  width: 18rpx;
-  height: 18rpx;
-  border-radius: 50%;
-  background-color: #E20202;
-}
-
-.queryContainer .searchList .leftIcons .leftLine {
-  width: 2rpx;
-  height: 84rpx;
-  background-color: #9AA6C4;
-}
-
-.queryContainer .searchList .leftIcons .shipIcon {
-  width: 52rpx;
-  height: 52rpx;
-}
-
-.queryContainer .searchList .leftIcons .shipLocation {
-  width: 26rpx;
-  height: 26rpx;
-}
-
-.queryContainer .searchList .noRequest {
-  font-size: 24rpx;
-  color: #E10202;
-  position: absolute;
-  left: 0;
-  top: 90rpx;
-}
-
-.queryContainer .searchList .searchTitle {
-  font-size: 28rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: #04246A;
-  margin-bottom: 12rpx;
-}
-
-.queryContainer .searchList .codeInputs {
-  height: 88rpx;
-  border: 2rpx solid #DFDFDF;
-  margin-top: 10rpx;
-  padding: 0 0 0 10rpx;
-  font-size: 28rpx;
-  color: #04246A;
-  display: flex;
-  align-items: center;
+.shipdate {
+  font-size: 36rpx;
+  color: #4468BA;
+  font-weight: bold;
   position: relative;
+  left: 40rpx;
+  top: -4rpx;
 }
 
-.queryContainer .searchList .codeInputs .codeIcon {
+/**
+* 输入框样式
+*/
+.polimg,
+.podimg {
   width: 44rpx;
   height: 44rpx;
 }
 
-.queryContainer .searchList .codeInputs input {
-  width: 386rpx;
+.podlocation {
+  width: 22rpx;
+  height: 28rpx;
 }
 
-.queryContainer .searchList .codeInputs .deleteIcon {
+.font14 {
+  font-size: 28rpx;
+  color: #04246A;
+  margin-left: 30rpx;
+}
+.xiehuo,.qiyun{
+  margin-left: 0;
+}
+.PODinput{
+  top: 20rpx;
+}
+.polinput,
+.podinput {
+  height: 88rpx;
+  border: 2rpx solid #DFDFDF;
+  margin-left: 50rpx;
+  margin-top: 10rpx;
+  padding: 0 0 0 10rpx;
+  font-size: 28rpx;
+  color:#04246A;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.polinput input,
+.podinput input {
+  width: 410rpx;
+}
+
+.PODinput,
+.POLinput {
+  /* position: relative; */
+  height: 160rpx;
+}
+.weekselect{
+   top: -20rpx;
+}
+.deleteIcon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,15 +104,63 @@ page {
   height: 88rpx;
 }
 
-.queryContainer .searchList .codeInputs .deleteIcon image {
+.deleteIcon image {
   width: 30rpx;
   height: 30rpx;
 }
 
-.scroll-view {
+.ship {
+  width: 52rpx;
+  height: 52rpx;
+  position: relative;
+  left: -15rpx;
+}
+
+.redcircle {
+  width: 18rpx;
+  height: 18rpx;
+  background: #E20202;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.line {
+  width: 2rpx;
+  min-height: 84rpx;
+  background: #9AA6C4;
+  border-radius: 4rpx;
+  opacity: 0.59;
+  margin-left: 8rpx;
+}
+.inputcontainer{
   width: 100%;
-  position: absolute;
-  background: #ffffff;
+  min-height: 330rpx;
+}
+.noRequestBorder {
+  border: 2rpx solid #E10202;
+}
+.leftcontainer{
+  float: left;
+  display: flex;
+  flex-direction: column;
+}
+.rightcontianer{
+  position: relative;
+  top: -10rpx;
+}
+
+
+.searchimg,
+.dateimg,
+.weekimg {
+  width: 52rpx;
+  height: 52rpx;
+}
+
+.scroll-view {
+  width: 540rpx;
+  position:absolute;
+  background:#ffffff;
   border: 1rpx solid #00245d;
   top: 86rpx;
   left: -1rpx;
@@ -142,11 +168,10 @@ page {
   max-height: 430rpx;
 }
 
-.scroll-view .item:hover {
+.scroll-view .item:hover{
   color: #1c4ebb;
 }
-
-.scroll-view .item {
+.scroll-view .item, .scroll-viewpod .item {
   width: 100%;
   height: 80rpx;
   display: flex;
@@ -157,39 +182,25 @@ page {
   color: #333333;
 }
 
-.queryContainer .searchLists .selectContainer {
-  width: 100%;
-  height: 80rpx;
-  border: 1rpx solid #dfdfdf;
+.dateinput {
+  width: calc(100% - 64rpx);
+  height: 88rpx;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24rpx;
-  color: #B9BFCA;
+  flex-direction: space-between;
+  border: 2rpx #DFDFDF solid;
+  margin-left: 70rpx;
+  padding-left: 10rpx;
   font-size: 28rpx;
+  color: #04246A;
 }
 
-.queryContainer .searchLists .selectContainer view {
-  width: 490rpx;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow:ellipsis;
-}
-
-.queryContainer .searchLists .selectContainer image {
-  width: 32rpx;
-  height: 32rpx;
-}
-
-.noRequestBorder {
-  border: 2rpx solid #E10202;
-}
-
-.queryContainer .btn {
-  width: 596rpx;
-  margin: 0 auto;
-}
+/* .polname,
+.podname {
+  width: 100%;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  border-bottom: 2rpx solid #e2e2e2;
+} */
 
 /*history*/
 .historyContainers {
@@ -249,8 +260,49 @@ page {
   width: 24rpx;
   height: 24rpx;
 }
+/* 
+.flex {
+  width: 100%;
+  height: 48rpx;
+  background: #EAEBEE;
+  border-radius: 24rpx;
+  text-align: center;
+  margin-top: 10rpx;
+  line-height: 48rpx;
+}
+.btnclose{
+   display: inline-block;
+   width: 18rpx;
+   height: 18rpx;
+   line-height: 24rpx;
+   margin-top: 15rpx;
+   float: right;
+   margin-left: 32rpx;
+}
+.historydel {
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: -25rpx;
+}
+.fonthistory{
+   font-size: 24rpx;
+   color: #626262;
+}
 
-/* .font12 {
+.clearstyle {
+  width: 32rpx;
+  height: 32rpx;
+  padding: 0;
+  float: right;
+  display: inline-block;
+}
+
+.clearstyle::after {
+  border: none;
+} */
+
+.font12 {
   font-size: 24rpx;
   color: #626262;
 }
@@ -286,4 +338,4 @@ page {
 
 .vant-tag {
   color: #626262 !important;
-} */
+}

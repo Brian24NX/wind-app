@@ -10,28 +10,29 @@
   </view>
 </view>
 <view class="contactDetailContainer">
-  <view class="contactLists">
-    <view class="oneContact" wx:for="{{2}}" wx:key="index">
+  <view class="contactLists" wx:if="{{contractList.length}}">
+    <view class="oneContact" wx:for="{{contractList}}" wx:key="index">
       <view class="ones">
         <image src="/assets/img/more/location@2x.png"></image>
         <view class="oneContent">
-          <view>中国 上海</view>
+          <view>{{item.regionName}} {{item.officeName}}</view>
         </view>
       </view>
       <view class="ones">
         <image src="/assets/img/more/callme@2x.png"></image>
         <view class="oneContent">
-          <view>周一到周五<text style="margin-left: 30rpx;">09:00-18:00</text></view>
-          <view catchtap="callme" data-phone="021-88888888">{{languageContent.phone}}：021-88888888</view>
+          <view>周一到周五<text style="margin-left: 30rpx;">{{item.dutyTime}}</text></view>
+          <view catchtap="callme" data-phone="{{item.phone}}">{{languageContent.phone}}：{{item.phone}}</view>
         </view>
       </view>
       <view class="ones">
         <image src="/assets/img/more/email@2x.png"></image>
         <view class="oneContent noLine">
           <view>{{languageContent.email}}：</view>
-          <view catchtap="copyEmail" data-email="SHG.LINWANG@cma-cgm.com">SHG.LINWANG@cma-cgm.com</view>
+          <view catchtap="copyEmail" data-email="SHG.LINWANG@cma-cgm.com">{{item.email}}</view>
         </view>
       </view>
     </view>
   </view>
+  <text class="noContact" wx:if="{{!contractList.length && !loading}}">{{languageContent.noContact}}</text>
 </view>

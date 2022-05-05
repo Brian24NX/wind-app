@@ -28,6 +28,8 @@ var Languague = {
       hometitle: "CAM CGM",
       // 获取追踪
       TRACKING: 'TRACKING',
+      chuanqi1: 'SHIPMENT',
+      chuanqi2: 'TRACKING',
       // 提示
       goodsRemind: 'Container, Bill of lading or Booking Number',
       //货物追踪按钮
@@ -64,7 +66,7 @@ var Languague = {
       valueAddedService: "Customer Advisory",
       template: 'Useful Template and Link',
       // 管制品
-      gzp: 'Sanctions and Commodity',
+      gzp: 'Sanction Check',
       // 联系我们
       callMe: 'Contact Us'
     },
@@ -86,14 +88,15 @@ var Languague = {
     callMeResult: {
       fuwu: 'Customer Service',
       phone: 'Phone',
-      email: 'Email Address'
+      email: 'Email Address',
+      noContact: 'No relevant contact information,\n please amend your searching criteria.'
     },
     // 查询
     queryInfo: {
-      dingcang: 'Booking Space',
-      chuanqi: 'SCHEDULE',
-      huowu: 'TRACKING',
-      gzp: 'Sanctions and Commodity',
+      dingcang: 'Place Booking',
+      chuanqi: 'Routing Finder',
+      huowu: 'Shipment Tracking',
+      gzp: 'Sanction Check',
       gzfl: 'D&D Rate',
       cxfl: 'Charge Finder'
     },
@@ -140,14 +143,7 @@ var Languague = {
       next: "Next",
       //查询
       search: "Search",
-      //1 星期
-      oneWeek: "1 Week",
-      //2 星期
-      twoWeek: "2 Weeks",
-      //3 星期
-      threeWeek: "3 Weeks",
-      //4 星期
-      fourWeek: "4 Weeks",
+      week: 'Week(s)',
       //查询历史
       history: "History"
     },

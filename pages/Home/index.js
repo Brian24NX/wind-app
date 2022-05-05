@@ -349,87 +349,37 @@ Page({
       }
     }
     if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
-    let obj = {
-      placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
-      placeOfLoading: this.data.qiYunCode || this.data.qiYunValue,
-      arrivalDate: '',
-      departureDate: dayjs().format('YYYY-MM-DD'),
-      searchRange: '21',
-      shippingCompany: '',
-    }
-    routingFinder(obj).then(res => {
-      if (res.code == 200 || res.data != '') {
-        this.setData({
-          resultlist: res.data
-        })
-        if (res.data.againReq) {
-          let obj2 = {
-            placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
-            placeOfLoading: this.data.qiYunCode || this.data.qiYunValue,
-            arrivalDate: '',
-            departureDate: dayjs().format('YYYY-MM-DD'),
-            searchRange: '21',
-            shippingCompany: '0015',
-          }
-          routingFinder(obj2).then(data => {
-            if (JSON.stringify(data.data) == '{}') {
-              this.setSearchList(obj)
-              return
-            }
-            // console.log(data)
-            this.data.resultlist.apl = data.data.apl;
-            this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
-            this.data.resultlist.solutionServices.apl = data.data.solutionServices.apl
-            this.setData({
-              resultlist: this.data.resultlist
-            })
-            this.setSearchList(obj)
-          })
-        } else {
-          this.setSearchList(obj)
-        }
-
-      } else {
-        wx.showToast({
-          title: '请求数据不存在或者网络错误,请您重试!',
-          icon: 'none',
-          duration: 5000
-        })
-      }
-    })
-  },
-
-  setSearchList(obj) {
-    wx.setStorageSync('resultlist', this.data.resultlist);
     wx.setStorageSync('searchKey', {
-      placeOfDischarge: obj.placeOfDischarge,
+      placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
       podvalue: this.data.xieHuoValue.split(';')[0],
       podCode: this.data.xieHuoValue.split(';')[1],
-      placeOfLoading: obj.placeOfLoading,
+      placeOfLoading: this.data.qiYunCode || this.data.qiYunValue,
       polvalue: this.data.qiYunValue.split(';')[0],
       polCode: this.data.qiYunValue.split(';')[1],
-      searchRange: obj.searchRange,
+      searchRange: '21',
       search: 0,
-      searchDate: obj.departureDate
+      searchDate: dayjs().format('YYYY-MM-DD')
     })
     wx.navigateTo({
-      url: '../Result/index',
+      url: '/pages/Result/index',
     })
   },
 
   // 高级查询
   toAdvancedSearch() {
-    let polobject = {
-      polvalue: this.data.qiYunValue,
-      polcode: this.data.qiYunCode
+    if (this.data.qiYunCode && this.data.xieHuoCode) {
+      let polobject = {
+        polvalue: this.data.qiYunValue,
+        polcode: this.data.qiYunCode
+      }
+      wx.setStorageSync('polobject', polobject);
+      let podobject = {
+        podvalue: this.data.xieHuoValue,
+        podcode: this.data.xieHuoCode
+      }
+      wx.setStorageSync('podobject', podobject);
+      wx.setStorageSync('setHangXian', true)
     }
-    wx.setStorageSync('polobject', polobject);
-    let podobject = {
-      podvalue: this.data.xieHuoValue,
-      podcode: this.data.xieHuoCode
-    }
-    wx.setStorageSync('podobject', podobject);
-    wx.setStorageSync('setHangXian', true)
     wx.navigateTo({
       url: '/pages/RouterQuery/index',
     })

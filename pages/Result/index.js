@@ -15,18 +15,22 @@ Page({
     viewactived: false,
     routingLists: [{
         id: 'CMA',
+        shippingCompany: '0001',
         list: []
       },
       {
         id: 'ANL',
+        shippingCompany: '0011',
         list: []
       },
       {
         id: 'CNC',
+        shippingCompany: '0002',
         list: []
       },
       {
         id: 'APL',
+        shippingCompany: '0015',
         list: []
       }
     ],
@@ -59,9 +63,13 @@ Page({
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.homeInfo.SCHEDULE
     })
+    const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7
     this.setData({
       polCode: wx.getStorageSync('searchKey').polCode,
-      podCode: wx.getStorageSync('searchKey').podCode
+      podCode: wx.getStorageSync('searchKey').podCode,
+      placeOfLoading: wx.getStorageSync('searchKey').polvalue,
+      placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
+      weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四',
     })
     this.setDayList()
     this.dealData()
@@ -98,9 +106,10 @@ Page({
     let obj = {
       placeOfDischarge: searchObj.placeOfDischarge,
       placeOfLoading: searchObj.placeOfLoading,
-      arrivalDate: searchObj.search === '到港时间' ? date : '',
-      departureDate: searchObj.search === '离港时间' ? date : '',
+      arrivalDate: searchObj.search === 0 ? date : '',
+      departureDate: searchObj.search === 1 ? date : '',
       searchRange: searchObj.searchRange,
+      specificRoutings: [],
       shippingCompany: ''
     }
     this.setData({
@@ -115,9 +124,10 @@ Page({
           let obj2 = {
             placeOfDischarge: searchObj.placeOfDischarge,
             placeOfLoading: searchObj.placeOfLoading,
-            arrivalDate: searchObj.search === '到港时间' ? date : '',
-            departureDate: searchObj.search === '离港时间' ? date : '',
+            arrivalDate: searchObj.search === 0 ? date : '',
+            departureDate: searchObj.search === 1 ? date : '',
             searchRange: searchObj.searchRange,
+            specificRoutings: [],
             shippingCompany: '0015'
           }
           routingFinder(obj2).then(data => {
@@ -160,81 +170,119 @@ Page({
     })
   },
 
+  getList(shippingCompany, callback) {
+    const searchKey = wx.getStorageSync('searchKey')
+    const params = {
+      placeOfDischarge: searchKey.placeOfDischarge,
+      placeOfLoading: searchKey.placeOfLoading,
+      arrivalDate: searchKey.search === 0 ? searchKey.searchDate : '',
+      departureDate: searchKey.search === 1 ? searchKey.searchDate : '',
+      searchRange: searchKey.searchRange,
+      specificRoutings: [],
+      shippingCompany: shippingCompany
+    }
+    routingFinder(params).then(res => {
+      console.log(res)
+      if (callback) {
+        const index = this.data.routingLists.findIndex(item=>item.shippingCompany === shippingCompany)
+        if (index > -1) {
+          this.data.routingLists[index].list = res.data.routings
+          this.setData({
+            routingLists: this.data.routingLists,
+          })
+        }
+        if (!res.data.routings.length && shippingCompany === '0001') {
+          callback(true)
+        } else {
+          // this.setData({
+          //   routinglist: this.data.routingLists[0].list
+          // })
+          callback(false)
+        }
+      }
+    })
+  },
+
   dealData() {
     wx.showLoading({
       title: '加载中',
       mask: true
     })
-    let resultlist = wx.getStorageSync("resultlist");
-    if (!resultlist.placeOfLoading) {
-      const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7
-      this.setData({
-        placeOfLoading: wx.getStorageSync('searchKey').polvalue,
-        placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
-        week: wx.getStorageSync('searchKey').searchRange,
-        weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四',
-        routingLists: [],
-        isLoading: false
-      })
-      wx.hideLoading()
-      return
-    }
-    const weekNum = Number(resultlist.searchRange) / 7
-    this.setData({
-      resultlist: resultlist,
-      placeOfLoading: wx.getStorageSync('searchKey').polvalue,
-      placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
-      week: resultlist.searchRange,
-      weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四'
+    
+    this.getList(this.data.routingLists[0].shippingCompany, (res)=>{
+      if (!res) {
+        this.sortData()
+      }
     })
-    if (!resultlist.anl && !resultlist.apl && !resultlist.cnc) {
-      this.setData({
-        planList: [],
-        viewactived: false,
-        currentPlan: "CMA",
-        plans: resultlist.solutionServices['cma'],
-        routesPlanList: resultlist.solutionServices['cma'],
-      })
-    } else {
-      const planTitle = resultlist.cnc ? "CNC" : resultlist.anl ? "ANL" : resultlist.apl ? "APL" : null
-      this.setData({
-        viewactived: true,
-        planList: [{
-          title: 'CNC',
-          value: resultlist.cnc
-        }, {
-          title: 'ANL',
-          value: resultlist.anl
-        }, {
-          title: 'APL',
-          value: resultlist.apl
-        }],
-        currentPlan: planTitle,
-        plans: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
-        routesPlanList: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
-      })
-      resultlist.routings.forEach(item => {
-        if (item.shippingCompany === '0001') {
-          this.data.routingLists[0].list.push(item)
-        } else if (item.shippingCompany === '0002') {
-          this.data.routingLists[1].list.push(item)
-        } else if (item.shippingCompany === '0011') {
-          this.data.routingLists[2].list.push(item)
-        } else if (item.shippingCompany === '0015') {
-          this.data.routingLists[3].list.push(item)
-        }
-      })
-      this.setData({
-        routingLists: this.data.routingLists
-      })
-      // const index = this.data.routingLists.findIndex(item => item.id === this.data.currentPlan)
-      // if (index > -1) {
-      //   this.setData({
-      //     routinglist: this.data.routingLists[index].list
-      //   })
-      // }
-    }
-    this.sortData()
+    // let resultlist = wx.getStorageSync("resultlist");
+    // if (!resultlist.placeOfLoading) {
+    //   const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7
+    //   this.setData({
+    //     placeOfLoading: wx.getStorageSync('searchKey').polvalue,
+    //     placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
+    //     week: wx.getStorageSync('searchKey').searchRange,
+    //     weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四',
+    //     routingLists: [],
+    //     isLoading: false
+    //   })
+    //   wx.hideLoading()
+    //   return
+    // }
+    // const weekNum = Number(resultlist.searchRange) / 7
+    // this.setData({
+    //   resultlist: resultlist,
+    //   placeOfLoading: wx.getStorageSync('searchKey').polvalue,
+    //   placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
+    //   week: resultlist.searchRange,
+    //   weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四'
+    // })
+    // if (!resultlist.anl && !resultlist.apl && !resultlist.cnc) {
+    //   this.setData({
+    //     planList: [],
+    //     viewactived: false,
+    //     currentPlan: "CMA",
+    //     plans: resultlist.solutionServices['cma'],
+    //     routesPlanList: resultlist.solutionServices['cma'],
+    //   })
+    // } else {
+    //   const planTitle = resultlist.cnc ? "CNC" : resultlist.anl ? "ANL" : resultlist.apl ? "APL" : null
+    //   this.setData({
+    //     viewactived: true,
+    //     planList: [{
+    //       title: 'CNC',
+    //       value: resultlist.cnc
+    //     }, {
+    //       title: 'ANL',
+    //       value: resultlist.anl
+    //     }, {
+    //       title: 'APL',
+    //       value: resultlist.apl
+    //     }],
+    //     currentPlan: planTitle,
+    //     plans: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
+    //     routesPlanList: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
+    //   })
+    //   resultlist.routings.forEach(item => {
+    //     if (item.shippingCompany === '0001') {
+    //       this.data.routingLists[0].list.push(item)
+    //     } else if (item.shippingCompany === '0002') {
+    //       this.data.routingLists[1].list.push(item)
+    //     } else if (item.shippingCompany === '0011') {
+    //       this.data.routingLists[2].list.push(item)
+    //     } else if (item.shippingCompany === '0015') {
+    //       this.data.routingLists[3].list.push(item)
+    //     }
+    //   })
+    //   this.setData({
+    //     routingLists: this.data.routingLists
+    //   })
+    //   // const index = this.data.routingLists.findIndex(item => item.id === this.data.currentPlan)
+    //   // if (index > -1) {
+    //   //   this.setData({
+    //   //     routinglist: this.data.routingLists[index].list
+    //   //   })
+    //   // }
+    // }
   },
 
   changePlan(e) {

@@ -35,7 +35,7 @@ export const businiessOpentionalDetail = (params) => {
 
 // 字典列表
 export const dictList = (params) => {
-  return getRequest('/api/miniapp/dictList', params, true)
+  return getRequest('/api/miniapp/dictItem', params, true)
 }
 
 // 字典列表

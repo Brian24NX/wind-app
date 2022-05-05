@@ -63,12 +63,5 @@
 
 .businessDetails .fileLists .downloadIcon {
   width: 40rpx;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.businessDetails .fileLists .downloadIcon image {
-  width: 40rpx;
   height: 40rpx;
 }

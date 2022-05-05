@@ -57,224 +57,23 @@ Page({
 
   // 获取办事处list
   getOfficeList() {
-    this.setData({
-      officeList: [{
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 24,
-          "name": "dict_office",
-          "key": 1,
-          "value": "Beihai, Fangcheng, Qunzhou, Wuzhou, Guigang, Haikou, Yangpu",
-          "valueCn": "Beihai, Fangcheng, Qunzhou, Wuzhou, Guigang, Haikou, Yangpu"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 25,
-          "name": "dict_office",
-          "key": 2,
-          "value": "Beijing",
-          "valueCn": "Beijing"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 26,
-          "name": "dict_office",
-          "key": 3,
-          "value": "Dalian",
-          "valueCn": "Dalian"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 27,
-          "name": "dict_office",
-          "key": 4,
-          "value": "Fuzhou",
-          "valueCn": "Fuzhou"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 28,
-          "name": "dict_office",
-          "key": 5,
-          "value": "Guangzhou",
-          "valueCn": "Guangzhou"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 29,
-          "name": "dict_office",
-          "key": 6,
-          "value": "Lianyungang",
-          "valueCn": "Lianyungang"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 30,
-          "name": "dict_office",
-          "key": 7,
-          "value": "Nanjing",
-          "valueCn": "Nanjing"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 31,
-          "name": "dict_office",
-          "key": 8,
-          "value": "Ningbo",
-          "valueCn": "Ningbo"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 32,
-          "name": "dict_office",
-          "key": 9,
-          "value": "Qingdao",
-          "valueCn": "Qingdao"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 33,
-          "name": "dict_office",
-          "key": 10,
-          "value": "Shanghai",
-          "valueCn": "Shanghai",
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 34,
-          "name": "dict_office",
-          "key": 11,
-          "value": "Shantou",
-          "valueCn": "Shantou",
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 35,
-          "name": "dict_office",
-          "key": 12,
-          "value": "Shenzhen",
-          "valueCn": "Shenzhen"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 36,
-          "name": "dict_office",
-          "key": 13,
-          "value": "Shunde",
-          "valueCn": "Shunde"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 37,
-          "name": "dict_office",
-          "key": 14,
-          "value": "Tianjin",
-          "valueCn": "Tianjin"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 38,
-          "name": "dict_office",
-          "key": 15,
-          "value": "Xiamen",
-          "valueCn": "Xiamen"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 39,
-          "name": "dict_office",
-          "key": 16,
-          "value": "Zhongshan",
-          "valueCn": "Zhongshan"
-        }
-      ]
+    dictList({
+      dictName: 'dict_office'
+    }).then(res => {
+      this.setData({
+        officeList: res.data
+      })
     })
   },
 
   // 获取业务列表
   getBussinessScopeList() {
-    this.setData({
-      businessScopeList: [{
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 41,
-          "name": "dict_business_scope",
-          "key": 1,
-          "value": "Import",
-          "valueCn": "进口"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 42,
-          "name": "dict_business_scope",
-          "key": 2,
-          "value": "Export",
-          "valueCn": "出口"
-        },
-        {
-          "deleted": 1,
-          "createUser": 1,
-          "updateUser": 0,
-          "createTime": "2022-04-18T16:00:00.000+00:00",
-          "id": 43,
-          "name": "dict_business_scope",
-          "key": 3,
-          "value": "OBL & Telex Release",
-          "valueCn": "柜台业务"
-        }
-      ]
+    dictList({
+      dictName: 'dict_business_scope'
+    }).then(res => {
+      this.setData({
+        businessScopeList: res.data
+      })
     })
   },
 
@@ -299,7 +98,7 @@ Page({
     const type = e.currentTarget.dataset.type
     this.setData({
       currentType: type,
-      valueKey: type === '3' ? 'trade' : this.data.language === 'en' ? 'value' : 'valueCn',
+      valueKey: type === '3' ? 'trade' : type === '1' ? 'value' : this.data.language === 'en' ? 'value' : 'valueCn',
       columns: type === '1' ? this.data.officeList : type === '2' ? this.data.businessScopeList : type === '3' ? this.data.contactTradeList : [],
       showPopup: true
     })
@@ -320,7 +119,7 @@ Page({
       case '1':
         this.setData({
           office: detail.key,
-          officeName: this.data.language === 'en' ? detail.value : detail.valueCn,
+          officeName: detail.value,
           showRemind1: false
         })
         break;
@@ -388,7 +187,7 @@ Page({
         })
       }
     }
-    
+
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3) return
     wx.navigateTo({
       url: '/packageMore/pages/contact/result/index',

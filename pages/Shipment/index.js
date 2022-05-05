@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    language: '',
     languageContent: {}, // 用于保存当前页面所需字典
     verifyInfo: {},
     showRemind: false,
@@ -96,6 +97,7 @@ Page({
       title: lang.lang.page.homeInfo.TRACKING
     })
     this.setData({
+      language: lang.lang.page.langue,
       languageContent: lang.lang.page.homeInfo,
       verifyInfo: lang.lang.page.verifyInfo
     })

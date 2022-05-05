@@ -1,7 +1,13 @@
 <!--pages/Shipment/index.wxml-->
 <view class="homeContainer">
   <view class="searchContainers">
-    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/shipment.png" class="huowuImg"></image>
+    <view class="shipTitles">
+      <view class="shipLine"></view>
+      <view class="shipTitle {{language === 'en' ? 'scale' : ''}}">
+        <text>{{languageContent.chuanqi1}}</text>
+        <text>{{languageContent.chuanqi2}}</text>
+      </view>
+    </view>
     <view class="searchContents">
       <view class="remind">{{languageContent.goodsRemind}}</view>
       <view class="inputs {{showRemind ? 'noRequestBorder' : ''}}">
