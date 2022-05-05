@@ -64,7 +64,7 @@
             </view>
             <view class="shipName other" style="margin-top: 30rpx;">
               <text>本地航次： </text>
-              <text>-</text>
+              <text>{{item.transportation.voyage.localVoyageReference || '-'}}</text>
             </view>
             <view class="shipName other">
               <text>航次：</text>
