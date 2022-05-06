@@ -4,7 +4,7 @@
   <view class="topTitles">
     <view class="topContainer">{{title}}</view>
     <view class="inputContainer" style="margin-top: 30rpx;">
-      <input value="{{keyword}}" type="text" class="inputs" placeholder="keyword" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+      <input value="{{keyword}}" type="text" class="inputs" placeholder="Keyword" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
       <view class="delete" catchtap="deleteValue">
         <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
       </view>

@@ -1,2 +1,2 @@
 <!--packageMore/pages/Faq/index.wxml-->
-<web-view src="{{baseUrl}}/pages/faq/index?needBottom={{needBottom}}"></web-view>
+<web-view src="{{baseUrl}}/pages/faq/index?needBottom={{needBottom}}&language={{language}}"></web-view>

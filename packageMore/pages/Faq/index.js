@@ -8,6 +8,7 @@ Page({
    */
   data: {
     baseUrl: config[config.dev_env].url,
+    language: 'cn',
     needBottom: ''
   },
 
@@ -17,6 +18,9 @@ Page({
   onLoad() {
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.homeInfo.onlineServices
+    })
+    this.setData({
+      language: languageUtil.languageVersion().lang.page.langue
     })
     if (getApp().globalData.isPhoneX) {
       this.setData({

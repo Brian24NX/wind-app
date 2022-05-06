@@ -28,8 +28,8 @@ var Languague = {
       hometitle: "CAM CGM",
       // 获取追踪
       TRACKING: '货物追踪',
-      chuanqi1: '船期',
-      chuanqi2: '查询',
+      chuanqi1: '货物',
+      chuanqi2: '追踪',
       // 提示
       goodsRemind: '输入货柜号，提单号或订舱号',
       //货物追踪

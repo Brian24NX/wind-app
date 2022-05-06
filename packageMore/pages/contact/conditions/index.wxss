@@ -17,14 +17,9 @@ page {
   display: flex;
   align-items: center;
   font-size: 64rpx;
-  font-family: Antonio-Regular, Antonio;
+  font-family: Antonio-Regular;
   font-weight: 400;
   color: #071E5D;
-}
-
-.contactContainer .topContainer .scale {
-  transform: scaleX(0.6);
-  transform-origin: left;
 }
 
 .contactContainer .blockContainer {

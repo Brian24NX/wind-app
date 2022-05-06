@@ -81,7 +81,7 @@
 
 .orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .address {
   font-size: 32rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Bold;
   font-weight: bold;
   color: #04246A;
   height: 82rpx;

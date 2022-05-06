@@ -18,7 +18,7 @@
 .businessDetails .businessTitle .titleContent {
   width: 610rpx;
   font-size: 50rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Bold;
   font-weight: bold;
   color: #04246A;
 }

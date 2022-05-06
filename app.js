@@ -10,6 +10,21 @@ App({
     } else {
       this.globalData.version = 0
     }
+    wx.loadFontFace({
+      global: true,
+      family: 'Antonio-Bold',
+      source: 'url("https://uat.wind.cma-cgm.com/ttf/Antonio-Bold.ttf")'
+    })
+    wx.loadFontFace({
+      global: true,
+      family: 'Antonio-Regular',
+      source: 'url("https://uat.wind.cma-cgm.com/ttf/Antonio-Regular.ttf")'
+    })
+    wx.loadFontFace({
+      global: true,
+      family: 'Antonio-Light',
+      source: 'url("https://uat.wind.cma-cgm.com/ttf/Antonio-Light.ttf")'
+    })
     // 自定义头部
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({

@@ -84,7 +84,8 @@ Page({
       // console.log(res)
       const all = [{
         id: '',
-        category: 'all'
+        category: 'all',
+        categoryCn: '全部'
       }]
       this.setData({
         categoryList: all.concat(res.data)

@@ -24,7 +24,7 @@ page {
 
 .homeContainer .searchContainers .shipTitles .shipTitle {
   font-size: 56rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Bold;
   font-weight: bold;
   color: #04246A;
 }
