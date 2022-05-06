@@ -11,7 +11,7 @@ Page({
    */
   data: {
     languageContent: {},
-    load: {},
+    language: 'zh',
     list: [],
     loading: true,
     noMore: false,
@@ -53,7 +53,7 @@ Page({
     //获取当前小程序语言版本所对应的字典变量
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.khtg,
-      load: languageUtil.languageVersion().lang.page.load
+      language: languageUtil.languageVersion().lang.page.langue
     })
   },
 

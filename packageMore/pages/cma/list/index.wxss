@@ -30,6 +30,10 @@ page {
   justify-content: space-between;
 }
 
+.cmaContainer .cmaList .oneCma:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
 .cmaContainer .cmaList .oneCma .cmaTitle {
   font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;

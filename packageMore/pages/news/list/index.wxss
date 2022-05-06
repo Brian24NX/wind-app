@@ -39,7 +39,7 @@ page {
 .placeholder {
   color: #7087A1;
   font-size: 24rpx;
-  font-style: oblique;
+  font-style: italic;
 }
 
 .newsContainer .topTitles .searchInputs input {
@@ -101,6 +101,10 @@ page {
 .newsList .oneNews {
   padding: 30rpx 0;
   border-bottom: 1rpx solid #EEEEEE;
+}
+
+.newsList .oneNews:nth-last-of-type(1) {
+  border-bottom: none;
 }
 
 .newsList .oneNews .newsTitle {

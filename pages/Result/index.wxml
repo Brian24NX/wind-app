@@ -16,8 +16,10 @@
   <view class="calendarContainer">
     <scroll-view scroll-x class="calendarLeft" scroll-left="{{scrollLeft}}" scroll-with-animation>
       <view class="oneDay {{item === searchDate ? 'current' : ''}}" wx:for="{{dateList}}" wx:key="index" catchtap="changeDay" data-item="{{item}}">
-        <view class="dayValue">{{filters.fmtDate2(item)}}</view>
-        <view>{{languageContent['week' + filters.weekDay(item)]}}</view>
+        <view class="oneDays">
+          <view class="dayValue">{{filters.fmtDate2(item)}}</view>
+          <view>{{weeksContent['week' + filters.weekDay(item)]}}</view>
+        </view>
       </view>
     </scroll-view>
     <image class="calendarCenter" src="/assets/img/result/shadow@2x.png"></image>
@@ -52,10 +54,10 @@
         <view class="rightContainer">
           <view class="leftContent">
             <block wx:if="{{language === 'en'}}">
-              <view class="time">{{languageContent['weeks' + filters.weekDay(item.departuredate)]}}, {{filters.fmtDate(item.departuredate)}}</view>
+              <view class="time">{{weeksContent['weeks' + filters.weekDay(item.departuredate)]}}, {{filters.fmtDate(item.departuredate)}}</view>
             </block>
             <block wx:else>
-              <view class="time">{{filters.fmtDate(item.departuredate)}} {{languageContent['weeks' + filters.weekDay(item.departuredate)]}}</view>
+              <view class="time">{{filters.fmtDate(item.departuredate)}} {{weeksContent['weeks' + filters.weekDay(item.departuredate)]}}</view>
             </block>
             <view class="time">{{item.pointfrom}}, {{polCode}}</view>
             <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
@@ -67,10 +69,10 @@
               <view>{{item.service}}</view>
             </view>
             <block wx:if="{{language === 'en'}}">
-              <view class="time end">{{languageContent['weeks' + filters.weekDay(item.arrivaldate)]}}, {{filters.fmtDate(item.arrivaldate)}} {{item.pointto}}, {{podCode}}</view>
+              <view class="time end">{{weeksContent['weeks' + filters.weekDay(item.arrivaldate)]}}, {{filters.fmtDate(item.arrivaldate)}} {{item.pointto}}, {{podCode}}</view>
             </block>
             <block wx:else>
-              <view class="time end">{{filters.fmtDate(item.arrivaldate)}} {{languageContent['weeks' + filters.weekDay(item.arrivaldate)]}} {{item.pointto}}, {{podCode}}</view>
+              <view class="time end">{{filters.fmtDate(item.arrivaldate)}} {{weeksContent['weeks' + filters.weekDay(item.arrivaldate)]}} {{item.pointto}}, {{podCode}}</view>
             </block>
           </view>
           <view class="rightContent">

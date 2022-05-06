@@ -1,4 +1,5 @@
 function formatEnDate(date) {
+  if(!date) return ''
   date = date.split('T')[0].split('-').join('/')
   var dt = getDate(date);
   var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec"];
@@ -6,8 +7,19 @@ function formatEnDate(date) {
   var mn = dt.getMonth(),
   wn = dt.getDay(),
   dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
-  // console.log('wn', wn)
-  return week[wn] + '，' + m[mn] + " " + dn + "，" + dt.getFullYear()
+  return week[wn] + ', ' + m[mn] + " " + dn + ", " + dt.getFullYear()
+}
+
+function formatCnDate(date) {
+  if(!date) return ''
+  date = date.split('T')[0].split('-').join('/')
+  var dt = getDate(date);
+  var m = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+  var week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+  var mn = dt.getMonth(),
+  wn = dt.getDay(),
+  dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
+  return dt.getFullYear() + '-' + m[mn] + '-' + dn + ' ' + week[wn]
 }
 
 var weekday = function (obj) {
@@ -43,5 +55,6 @@ var weekday = function (obj) {
 
 module.exports = {
   formatEnDate: formatEnDate,
+  formatCnDate: formatCnDate,
   weekday: weekday
 }

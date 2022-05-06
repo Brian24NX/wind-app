@@ -164,3 +164,7 @@ page{
   width: 36rpx;
   height: 36rpx;
 }
+
+.van-divider {
+  margin-top: 0 !important;
+}

@@ -12,6 +12,23 @@ var Languague = {
     cancel: '取消',
     // 语言
     langue: 'zh',
+    // 星期
+    weeks: {
+      week0: '周日',
+      week1: '周一',
+      week2: '周二',
+      week3: '周三',
+      week4: '周四',
+      week5: '周五',
+      week6: '周六',
+      weeks0: '星期日',
+      weeks1: '星期一',
+      weeks2: '星期二',
+      weeks3: '星期三',
+      weeks4: '星期四',
+      weeks5: '星期五',
+      weeks6: '星期六',
+    },
     // 校验
     verifyInfo: {
       // 必填
@@ -73,6 +90,11 @@ var Languague = {
     },
     khtg: {
       topTitle: '业务及运营\n信息更新'
+    },
+    newsCenter: {
+      title: '新闻中心',
+      topTitle: '新闻中心',
+      keyword: '关键词'
     },
     callMe: {
       topTitle: '业务咨询',
@@ -156,34 +178,6 @@ var Languague = {
       fangan2: '路线方案',
       //日历
       calendar: "日历",
-      //星期一
-      week1: "周一",
-      //星期二
-      week2: "周二",
-      //周三
-      week3: "周三",
-      //周四
-      week4: "周四",
-      //周五
-      week5: "周五",
-      //周六
-      week6: "周六",
-      //周日
-      week0: "周日",
-      //星期一
-      weeks1: "星期一",
-      //星期二
-      weeks2: "星期二",
-      //周三
-      weeks3: "星期三",
-      //周四
-      weeks4: "星期四",
-      //周五
-      weeks5: "星期五",
-      //周六
-      weeks6: "星期六",
-      //周日
-      weeks0: "星期日",
       // 未来一星期
       future1: '未来一星期',
       // 未来二星期
@@ -213,8 +207,6 @@ var Languague = {
       earliestArrivalOnly: "仅看最早到达",
       //仅看直达
       directOnly: "仅看直达",
-      // 4天
-      fourDays: "4天",
       //抱歉，我们暂未查询到匹配的航线方案.
       noFindTips1: "抱歉！未找到此问题的解决方案",
       noFindTips2: "在CMA CGM集团内目前暂未能提供处理方案"
@@ -292,7 +284,9 @@ var Languague = {
       functionIsUnderDevelopment: "功能升级中，敬请期待",
       chaoshi: '请求超时，请稍后再试',
       // 系统繁忙,请稍后重试
-      systemIsBusyNow: "系统繁忙,请稍后重试"
+      systemIsBusyNow: "系统繁忙,请稍后重试",
+      // 暂无更多数据
+      noMoreData: '暂无更多数据'
     }
   },
 

@@ -11,7 +11,7 @@ page {
 .placeholder {
   font-size: 28rpx;
   color: #DFDFDF;
-  font-style: oblique;
+  font-style: italic;
 }
 
 .queryContainer .routeTitles {

@@ -1,10 +1,11 @@
 <!--packageMore/pages/news/detail/index.wxml-->
+<wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="topLine"></view>
-<view class="newsDetail" wx:if="{{!newsDetail.historyFlag}}">
+<view class="newsDetail" wx:if="{{newsDetail.historyFlag === 0}}">
   <view class="newsTitle">{{newsDetail.title}}</view>
   <view class="newsTime">
-    <view>Friday, April 8, 2022</view>
-    <image src="/assets/img/more/dianzan_2@2x.png"></image>
+    <view>{{language === 'zh' ? format.formatCnDate(newsDetail.publishDate || newsDetail.createTime) : format.formatEnDate(newsDetail.publishDate || newsDetail.createTime)}}</view>
+    <image src="/assets/img/more/dianzan_1@2x.png"></image>
   </view>
   <rich-text nodes="{{newsDetail.content}}"></rich-text>
 </view>

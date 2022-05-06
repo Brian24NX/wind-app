@@ -2,6 +2,7 @@
 import {
   newsDetail
 } from '../../../../api/modules/more';
+import languageUtils from '../../../../utils/languageUtils';
 const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
@@ -10,6 +11,7 @@ Page({
    */
   data: {
     id: '',
+    language: 'zh',
     newsDetail: {}
   },
 
@@ -21,7 +23,8 @@ Page({
       title: languageUtil.languageVersion().lang.page.homeInfo.news
     })
     this.setData({
-      id: options.id
+      id: options.id,
+      language: languageUtils.languageVersion().lang.page.langue
     })
     this.getNewsDetail()
   },

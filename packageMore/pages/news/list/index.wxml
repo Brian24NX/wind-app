@@ -2,9 +2,9 @@
 <wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="newsContainer">
   <view class="topTitles">
-    <view class="topContainer">{{title}}</view>
+    <view class="topContainer">{{languageContent.topTitle}}</view>
     <view class="inputContainer" style="margin-top: 30rpx;">
-      <input value="{{keyword}}" type="text" class="inputs" placeholder="Keyword" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+      <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.keyword}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
       <view class="delete" catchtap="deleteValue">
         <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
       </view>
@@ -16,14 +16,14 @@
   <view class="newsLists">
     <scroll-view class="categoryList" scroll-x>
       <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
-        <text>{{item.category}}</text>
+        <text>{{language === 'en' ? item.category : item.categoryCn}}</text>
         <view class="line"></view>
       </view>
     </scroll-view>
     <view class="newsList" wx:if="{{list.length}}">
       <view class="oneNews" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
         <view class="newsTitle">{{item.title}}</view>
-        <view class="newsTime">{{format.formatEnDate(item.publishDate)}}</view>
+        <view class="newsTime">{{language === 'zh' ? format.formatCnDate(item.publishDate || item.createTime) : format.formatEnDate(item.publishDate || item.createTime)}}</view>
       </view>
     </view>
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>

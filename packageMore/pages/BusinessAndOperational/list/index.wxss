@@ -38,6 +38,10 @@ page {
   border-bottom: 1rpx solid #EEEEEE;
 }
 
+.businessList .oneBusiness:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
 .businessList .oneBusiness .businessTitle {
   font-size: 28rpx;
   color: #04246A;

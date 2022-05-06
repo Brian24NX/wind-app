@@ -18,7 +18,7 @@
               <text class="font font14 qiyun">{{languageContent.protOfLanding}}</text>
               <view class="polinput {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
                 <image class="polimg" src="../../assets/img/seniorsearch/position.png"></image>
-                <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: oblique;" bindinput="changepol" />
+                <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
                 <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
                   <image src="../../assets/img/search/close@2x.png"></image>
                 </view>
@@ -35,7 +35,7 @@
               <text class="font font14 xiehuo">{{languageContent.portOfDischarge}}</text>
               <view class="podinput {{showRemind3 ||showRemind4 ? 'noRequestBorder' : ''}}">
                 <image class="podimg" src="../../assets/img/seniorsearch/position.png"></image>
-                <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: oblique;" bindinput="changepod" />
+                <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepod" />
                 <view class="deleteIcon" wx:if="{{showDelete2}}" catchtap="deleteValue" data-type="2">
                   <image src="../../assets/img/search/close@2x.png"></image>
                 </view>

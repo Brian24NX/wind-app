@@ -12,6 +12,7 @@ Page({
    */
   data: {
     languageContent: {},
+    weeksContent: {},
     language: '',
     isPhoneX: getApp().globalData.isPhoneX,
     viewactived: false,
@@ -65,6 +66,7 @@ Page({
     })
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.searchResultList,
+      weeksContent: languageUtil.languageVersion().lang.page.weeks,
       language: languageUtil.languageVersion().lang.page.langue
     })
     const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7

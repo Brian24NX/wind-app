@@ -11,6 +11,7 @@ Page({
    */
   data: {
     id: '',
+    language: 'zh',
     businessDetail: {}
   },
 
@@ -22,7 +23,8 @@ Page({
       title: languageUtil.languageVersion().lang.page.homeInfo.valueAddedService
     })
     this.setData({
-      id: options.id
+      id: options.id,
+      language: languageUtil.languageVersion().lang.page.langue
     })
     this.getBusiniessOpentionalDetail()
   },

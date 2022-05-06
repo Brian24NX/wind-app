@@ -83,16 +83,25 @@
   font-size: 20rpx;
   color: #626262;
   text-align: center;
-  padding-top: 16rpx;
 }
 
 .searchResultTopContainer .calendarContainer .calendarLeft .oneDay:nth-of-type(1) {
   margin-left: 0;
 }
 
-.searchResultTopContainer .calendarContainer .calendarLeft .oneDay .dayValue {
+.searchResultTopContainer .calendarContainer .calendarLeft .oneDay .oneDays {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchResultTopContainer .calendarContainer .calendarLeft .oneDay .oneDays .dayValue {
   color: #070707;
   font-size: 24rpx;
+  margin-bottom: 5rpx;
 }
 
 .searchResultTopContainer .calendarContainer .calendarLeft .current {

@@ -11,7 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: '',
+    languageContent: {},
+    language: 'cn',
     keyword: '',
     categoryId: '',
     categoryList: [],
@@ -27,10 +28,11 @@ Page({
    */
   onLoad() {
     wx.setNavigationBarTitle({
-      title: languageUtil.languageVersion().lang.page.homeInfo.news
+      title: languageUtil.languageVersion().lang.page.newsCenter.title
     })
     this.setData({
-      title: languageUtil.languageVersion().lang.page.homeInfo.news
+      languageContent: languageUtil.languageVersion().lang.page.newsCenter,
+      language: languageUtil.languageVersion().lang.page.langue
     })
     this.getCategoryList()
     this.search()
@@ -84,7 +86,7 @@ Page({
       // console.log(res)
       const all = [{
         id: '',
-        category: 'all',
+        category: 'All',
         categoryCn: '全部'
       }]
       this.setData({

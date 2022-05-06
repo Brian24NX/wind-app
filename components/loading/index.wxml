@@ -1,5 +1,5 @@
 <!--components/loading/index.wxml-->
 <van-divider contentPosition="center" fontSize="24rpx">
-  <van-loading size="24rpx" wx:if="{{loading}}">加载中...</van-loading>
-  <block wx:if="{{!loading && noMore}}">暂无更多数据</block>
+  <van-loading size="24rpx" wx:if="{{loading}}">{{loadContent.loading}}</van-loading>
+  <block wx:if="{{!loading && noMore}}">{{loadContent.noMoreData}}</block>
 </van-divider>

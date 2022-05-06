@@ -22,6 +22,23 @@ var Languague = {
       input: 'Input',
       select: 'Select'
     },
+    // 星期
+    weeks: {
+      week1: "Mon",
+      week2: "Tue",
+      week3: "Wed",
+      week4: "Thur",
+      week5: "Fri",
+      week6: "Sat",
+      week0: "Sun",
+      weeks1: "Monday",
+      weeks2: "Tuesday",
+      weeks3: "Wednesday",
+      weeks4: "Thursday",
+      weeks5: "Friday",
+      weeks6: "Saturday",
+      weeks0: "Sunday",
+    },
     // 首页
     homeInfo: {
       //页面标题
@@ -72,6 +89,11 @@ var Languague = {
     },
     khtg: {
       topTitle: 'Business & Operational Update'
+    },
+    newsCenter: {
+      title: 'News Center',
+      topTitle: 'News Center',
+      keyword: 'Keyword'
     },
     callMe: {
       topTitle: 'I HAVE A QUESTION',
@@ -154,34 +176,6 @@ var Languague = {
       fangan2: 'solutions',
       //日历
       calendar: "Calendar",
-      //星期一
-      week1: "Mon",
-      //星期二
-      week2: "Tue",
-      //星期三
-      week3: "Wed",
-      //星期四
-      week4: "Thur",
-      //星期五
-      week5: "Fri",
-      //星期六
-      week6: "Sat",
-      //星期日
-      week0: "Sun",
-      //星期一
-      weeks1: "Monday",
-      //星期二
-      weeks2: "Tuesday",
-      //星期三
-      weeks3: "Wednesday",
-      //星期四
-      weeks4: "Thursday",
-      //星期五
-      weeks5: "Friday",
-      //星期六
-      weeks6: "Saturday",
-      //星期日
-      weeks0: "Sunday",
       // 未来一星期
       future1: '1 Week',
       // 未来二星期
@@ -211,8 +205,6 @@ var Languague = {
       earliestArrivalOnly: "Earliest\n arrival only",
       //仅看直达
       directOnly: "Direct\nonly",
-      // 4天
-      fourDays: "4 Days",
       //抱歉！未找到此问题的解决方案,在CMA CGM集团内目前暂未能提供处理方案.
       noFindTips1: "Sorry! No solution has been found for this query.",
       noFindTips2: "We are currently not able to propose solutions within CMA CGM Group."
@@ -290,7 +282,9 @@ var Languague = {
       functionIsUnderDevelopment: "Function is under development, stay tuned~ ",
       chaoshi: 'Request timeout, please try again later',
       // 系统繁忙,请稍后重试
-      systemIsBusyNow: "System is busy now, please try again later "
+      systemIsBusyNow: "System is busy now, please try again later ",
+      // 暂无更多数据
+      noMoreData: 'No more data available'
     }
   },
 
