@@ -154,77 +154,77 @@ Page({
       }
     }
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
-    let week = '';
-    if (this.data.week === '1 星期') {
-      week = 7
-    } else if (this.data.week === '2 星期') {
-      week = 14
-    } else if (this.data.week === '3 星期') {
-      week = 21
-    } else {
-      week = 28
-    }
-    let obj = {
-      placeOfDischarge: this.data.podcode,
-      placeOfLoading: this.data.polcode,
-      arrivalDate: this.data.search === '到港时间' ? this.data.date : '',
-      departureDate: this.data.search === '离港时间' ? this.data.date : '',
-      searchRange: week,
-      shippingCompany: '',
-    }
-    routingFinder(obj).then(res => {
-      if (res.code == 200) {
-        this.setData({
-          resultlist: res.data
-        })
-        if (res.data.againReq) {
-          let obj2 = {
-            placeOfDischarge: this.data.podcode,
-            placeOfLoading: this.data.polcode,
-            arrivalDate: this.data.search == '到港时间' ? this.data.date : '',
-            departureDate: this.data.search == '离港时间' ? this.data.date : '',
-            searchRange: week,
-            shippingCompany: '0015'
-          }
-          routingFinder(obj2).then(data => {
-            console.log(data)
-            if (JSON.stringify(data.data) == '{}') {
-              this.setHistory(obj)
-              return
-            }
-            this.data.resultlist.apl = data.data.apl;
-            this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
-            this.data.resultlist.solutionServices.apl = data.data.solutionServices.apl
-            this.setData({
-              resultlist: this.data.resultlist
-            })
-            this.setHistory(obj)
-          })
-        } else {
-          this.setHistory(obj)
-        }
-      } else {
-        this.setHistory(obj)
-        wx.showToast({
-          title: res.message,
-          icon: 'none',
-          duration: 3000
-        })
-      }
-    })
+    this.setHistory()
+    // let week = '';
+    // if (this.data.week === '1 星期') {
+    //   week = 7
+    // } else if (this.data.week === '2 星期') {
+    //   week = 14
+    // } else if (this.data.week === '3 星期') {
+    //   week = 21
+    // } else {
+    //   week = 28
+    // }
+    // let obj = {
+    //   placeOfDischarge: this.data.podcode,
+    //   placeOfLoading: this.data.polcode,
+    //   arrivalDate: this.data.search === '到港时间' ? this.data.date : '',
+    //   departureDate: this.data.search === '离港时间' ? this.data.date : '',
+    //   searchRange: week,
+    //   shippingCompany: '',
+    // }
+    // routingFinder(obj).then(res => {
+    //   if (res.code == 200) {
+    //     this.setData({
+    //       resultlist: res.data
+    //     })
+    //     if (res.data.againReq) {
+    //       let obj2 = {
+    //         placeOfDischarge: this.data.podcode,
+    //         placeOfLoading: this.data.polcode,
+    //         arrivalDate: this.data.search == '到港时间' ? this.data.date : '',
+    //         departureDate: this.data.search == '离港时间' ? this.data.date : '',
+    //         searchRange: week,
+    //         shippingCompany: '0015'
+    //       }
+    //       routingFinder(obj2).then(data => {
+    //         console.log(data)
+    //         if (JSON.stringify(data.data) == '{}') {
+    //           this.setHistory(obj)
+    //           return
+    //         }
+    //         this.data.resultlist.apl = data.data.apl;
+    //         this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
+    //         this.data.resultlist.solutionServices.apl = data.data.solutionServices.apl
+    //         this.setData({
+    //           resultlist: this.data.resultlist
+    //         })
+    //         this.setHistory(obj)
+    //       })
+    //     } else {
+    //       this.setHistory(obj)
+    //     }
+    //   } else {
+    //     this.setHistory(obj)
+    //     wx.showToast({
+    //       title: res.message,
+    //       icon: 'none',
+    //       duration: 3000
+    //     })
+    //   }
+    // })
   },
   // 设置历史查询
   setHistory(obj) {
-    wx.setStorageSync('resultlist', this.data.resultlist);
     wx.setStorageSync('searchKey', {
-      placeOfDischarge: obj.placeOfDischarge,
+      placeOfDischarge: this.data.podcode,
       podvalue: this.data.podvalue.split(';')[0],
       podCode: this.data.podvalue.split(';')[1],
-      placeOfLoading: obj.placeOfLoading,
+      placeOfLoading: this.data.polcode,
       polCode: this.data.polvalue.split(';')[1],
       polvalue: this.data.polvalue.split(';')[0],
-      searchRange: obj.searchRange,
-      search: this.data.search,
+      searchRange: Number(this.data.week.split(' ')[0]) * 7,
+      search: this.data.search == '到港时间' ? 0 : 1,
       searchDate: this.data.date
     })
     let history = this.data.array || [];
@@ -242,7 +242,7 @@ Page({
       wx.setStorageSync('location', this.data.array);
     }
     wx.navigateTo({
-      url: '../Result/index',
+      url: '/pages/Result/index',
     })
   },
   //获取卸货港的接口处理
@@ -399,9 +399,6 @@ Page({
     console.log(lang)
     this.setData({
       content: lang
-    })
-    wx.setNavigationBarTitle({
-      title: lang.lang.userCenter.querytitle
     })
     console.log(typeof this.getTabBar === 'function' && this.getTabBar());
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {

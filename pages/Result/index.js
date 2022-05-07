@@ -4,28 +4,36 @@ import {
   routingFinder,
   routingSort
 } from '../../api/modules/home';
+const languageUtil = require('../../utils/languageUtils')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
+    weeksContent: {},
+    language: '',
     isPhoneX: getApp().globalData.isPhoneX,
     viewactived: false,
     routingLists: [{
         id: 'CMA',
+        shippingCompany: '0001',
         list: []
       },
       {
         id: 'ANL',
+        shippingCompany: '0002',
         list: []
       },
       {
         id: 'CNC',
+        shippingCompany: '0011',
         list: []
       },
       {
         id: 'APL',
+        shippingCompany: '0015',
         list: []
       }
     ],
@@ -38,14 +46,12 @@ Page({
     currentPlan: null,
     searchDate: '',
     weekNum: '',
-    week: 0,
     dateList: [],
     routesPlanList: [],
     sort: '1',
     plans: [],
     needEarlyFlag: false,
     needDirectFlag: false,
-    resultlist: {},
     isLoading: true,
     scrollLeft: 0,
     oneScroll: 0,
@@ -56,11 +62,20 @@ Page({
    */
   onLoad: function () {
     wx.setNavigationBarTitle({
-      title: '搜索结果',
+      title: languageUtil.languageVersion().lang.page.searchResultList.title
     })
     this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.searchResultList,
+      weeksContent: languageUtil.languageVersion().lang.page.weeks,
+      language: languageUtil.languageVersion().lang.page.langue
+    })
+    const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7
+    this.setData({
       polCode: wx.getStorageSync('searchKey').polCode,
-      podCode: wx.getStorageSync('searchKey').podCode
+      podCode: wx.getStorageSync('searchKey').podCode,
+      placeOfLoading: wx.getStorageSync('searchKey').polvalue,
+      placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
+      weekNum: weekNum
     })
     this.setDayList()
     this.dealData()
@@ -72,7 +87,8 @@ Page({
       oneScroll: 0
     })
     this.setDayList(this.data.searchDate)
-    this.changeDayFn(this.data.searchDate)
+    this.resetData()
+    this.dealData()
   },
 
   changeDay(e) {
@@ -84,62 +100,37 @@ Page({
     this.setData({
       searchDate: date
     })
-    this.changeDayFn(date)
+    this.resetData()
+    this.dealData()
   },
 
-  changeDayFn(date) {
-    const searchObj = wx.getStorageSync('searchKey')
+  resetData() {
     this.setData({
-      searchDate: date,
-      sort: '1',
       isLoading: true,
-    })
-    let obj = {
-      placeOfDischarge: searchObj.placeOfDischarge,
-      placeOfLoading: searchObj.placeOfLoading,
-      arrivalDate: searchObj.search === '到港时间' ? date : '',
-      departureDate: searchObj.search === '离港时间' ? date : '',
-      searchRange: searchObj.searchRange,
-      shippingCompany: ''
-    }
-    this.setData({
-      routinglist: []
-    })
-    routingFinder(obj).then(res => {
-      if (res.code == 200) {
-        this.setData({
-          resultlist: res.data
-        })
-        if (res.data.againReq) {
-          let obj2 = {
-            placeOfDischarge: searchObj.placeOfDischarge,
-            placeOfLoading: searchObj.placeOfLoading,
-            arrivalDate: searchObj.search === '到港时间' ? date : '',
-            departureDate: searchObj.search === '离港时间' ? date : '',
-            searchRange: searchObj.searchRange,
-            shippingCompany: '0015'
-          }
-          routingFinder(obj2).then(data => {
-            this.data.resultlist.apl = data.data.apl;
-            this.data.resultlist.routings = this.data.resultlist.routings.concat(data.data.routings)
-            this.data.resultlist.solutionServices.apl = data.data.solutionServices.apl
-            this.setData({
-              resultlist: this.data.resultlist
-            })
-            wx.setStorageSync('resultlist', this.data.resultlist);
-            this.dealData()
-          })
-        } else {
-          wx.setStorageSync('resultlist', this.data.resultlist);
-          this.dealData()
+      viewactived: false,
+      routingLists: [{
+          id: 'CMA',
+          shippingCompany: '0001',
+          list: []
+        },
+        {
+          id: 'ANL',
+          shippingCompany: '0002',
+          list: []
+        },
+        {
+          id: 'CNC',
+          shippingCompany: '0011',
+          list: []
+        },
+        {
+          id: 'APL',
+          shippingCompany: '0015',
+          list: []
         }
-      } else {
-        wx.showToast({
-          title: res.message,
-          icon: 'none',
-          duration: 2000
-        })
-      }
+      ],
+      routinglist: [],
+      planList: []
     })
   },
 
@@ -159,81 +150,110 @@ Page({
     })
   },
 
-  dealData() {
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    })
-    let resultlist = wx.getStorageSync("resultlist");
-    if (!resultlist.placeOfLoading) {
-      const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7
-      this.setData({
-        placeOfLoading: wx.getStorageSync('searchKey').polvalue,
-        placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
-        week: wx.getStorageSync('searchKey').searchRange,
-        weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四',
-        routingLists: [],
-        isLoading: false
-      })
-      wx.hideLoading()
-      return
+  getList(shippingCompany, callback) {
+    const searchKey = wx.getStorageSync('searchKey')
+    const params = {
+      placeOfDischarge: searchKey.placeOfDischarge,
+      placeOfLoading: searchKey.placeOfLoading,
+      departureDate: searchKey.search === 0 ? this.data.searchDate : '',
+      arrivalDate: searchKey.search === 1 ? this.data.searchDate : '',
+      searchRange: searchKey.searchRange,
+      specificRoutings: [],
+      shippingCompany: shippingCompany
     }
-    const weekNum = Number(resultlist.searchRange) / 7
-    this.setData({
-      resultlist: resultlist,
-      placeOfLoading: wx.getStorageSync('searchKey').polvalue,
-      placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
-      week: resultlist.searchRange,
-      weekNum: weekNum === 1 ? '一' : weekNum === 2 ? '二' : weekNum === 3 ? '三' : '四'
-    })
-    if (!resultlist.anl && !resultlist.apl && !resultlist.cnc) {
-      this.setData({
-        planList: [],
-        viewactived: false,
-        currentPlan: "CMA",
-        plans: resultlist.solutionServices['cma'],
-        routesPlanList: resultlist.solutionServices['cma'],
-      })
-    } else {
-      const planTitle = resultlist.cnc ? "CNC" : resultlist.anl ? "ANL" : resultlist.apl ? "APL" : null
-      this.setData({
-        viewactived: true,
-        planList: [{
-          title: 'CNC',
-          value: resultlist.cnc
-        }, {
-          title: 'ANL',
-          value: resultlist.anl
-        }, {
-          title: 'APL',
-          value: resultlist.apl
-        }],
-        currentPlan: planTitle,
-        plans: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
-        routesPlanList: resultlist.solutionServices[planTitle.toLocaleLowerCase()],
-      })
-      resultlist.routings.forEach(item => {
-        if (item.shippingCompany === '0001') {
-          this.data.routingLists[0].list.push(item)
-        } else if (item.shippingCompany === '0002') {
-          this.data.routingLists[1].list.push(item)
-        } else if (item.shippingCompany === '0011') {
-          this.data.routingLists[2].list.push(item)
-        } else if (item.shippingCompany === '0015') {
-          this.data.routingLists[3].list.push(item)
+    routingFinder(params).then(res => {
+      console.log(res)
+      if (callback) {
+        const index = this.data.routingLists.findIndex(item => item.shippingCompany === shippingCompany)
+        if (index > -1) {
+          this.data.routingLists[index].list = res.data.routings
+          this.setData({
+            routingLists: this.data.routingLists,
+          })
         }
-      })
-      this.setData({
-        routingLists: this.data.routingLists
-      })
-      // const index = this.data.routingLists.findIndex(item => item.id === this.data.currentPlan)
-      // if (index > -1) {
-      //   this.setData({
-      //     routinglist: this.data.routingLists[index].list
-      //   })
-      // }
-    }
+        if (shippingCompany === '0001' && !res.data.routings) {
+          callback(true)
+        } else {
+          this.setData({
+            planList: [],
+            viewactived: false,
+            currentPlan: "CMA",
+            plans: res.data.solutionServices['cma'],
+            routesPlanList: res.data.solutionServices['cma']
+          })
+          callback(false)
+        }
+      }
+    })
+  },
+
+  dealData() {
+    this.getList(this.data.routingLists[0].shippingCompany, (res) => {
+      if (!res) {
+        this.sortData()
+      } else {
+        this.getLists()
+      }
+    })
+  },
+
+  async getLists() {
+    await this.getOneList()
+    console.log(this.data.routingLists)
+    this.setData({
+      viewactived: true,
+      planList: [{
+        title: 'CNC',
+        value: this.data.routingLists.find(u => u.id === 'CNC').solutionServices ? this.data.routingLists.find(u => u.id === 'CNC').solutionServices.length : 0
+      }, {
+        title: 'ANL',
+        value: this.data.routingLists.find(u => u.id === 'ANL').solutionServices ? this.data.routingLists.find(u => u.id === 'ANL').solutionServices.length : 0
+      }, {
+        title: 'APL',
+        value: this.data.routingLists.find(u => u.id === 'APL').solutionServices ? this.data.routingLists.find(u => u.id === 'APL').solutionServices.length : 0
+      }]
+    })
+    console.log(this.data.routingLists)
+    this.setData({
+      currentPlan: this.data.planList.find(u => u.value).title,
+      routesPlanList: this.data.routingLists.find(u => u.id === this.data.planList.find(u => u.value).title).solutionServices,
+      plans: this.data.routingLists.find(u => u.id === this.data.planList.find(u => u.value).title).solutionServices,
+    })
     this.sortData()
+  },
+
+  async getOneList() {
+    let response = []
+    const searchKey = wx.getStorageSync('searchKey')
+    console.log(searchKey)
+    // 循环依次等待上传结果
+    for (let i = 1; i < this.data.routingLists.length; i++) {
+      const params = {
+        placeOfDischarge: searchKey.placeOfDischarge,
+        placeOfLoading: searchKey.placeOfLoading,
+        departureDate: searchKey.search === 0 ? searchKey.searchDate : '',
+        arrivalDate: searchKey.search === 1 ? searchKey.searchDate : '',
+        searchRange: searchKey.searchRange,
+        specificRoutings: [],
+        shippingCompany: this.data.routingLists[i].shippingCompany
+      }
+      const res = await routingFinder(params)
+      const index = this.data.routingLists.findIndex(item => item.shippingCompany === this.data.routingLists[i].shippingCompany)
+      if (res.data.routings) {
+        if (index > -1) {
+          this.data.routingLists[index].list = res.data.routings
+          this.data.routingLists[index].solutionServices = res.data.solutionServices[this.data.routingLists[index].id.toLocaleLowerCase()]
+        }
+      } else {
+        this.data.routingLists[index].list = []
+        this.data.routingLists[index].solutionServices = []
+      }
+      this.setData({
+        routingLists: this.data.routingLists,
+      })
+      response.push(res)
+    }
+    return response
   },
 
   changePlan(e) {
@@ -244,8 +264,8 @@ Page({
       currentPlan: title,
       routinglist: [],
       isLoading: true,
-      plans: this.data.resultlist.solutionServices[title.toLocaleLowerCase()],
-      routesPlanList: this.data.resultlist.solutionServices[title.toLocaleLowerCase()],
+      plans: items.solutionServices,
+      routesPlanList: items.solutionServices,
     })
     this.sortData()
   },
@@ -276,12 +296,13 @@ Page({
   },
 
   sortData() {
-    let resultlist = wx.getStorageSync("resultlist")
+    const item = this.data.routingLists.find(u => u.id === this.data.currentPlan)
     let params = {
-      routings: resultlist.routings,
+      routings: item.list,
       sortDateType: Number(this.data.sort),
       sortSolutionServices: this.data.plans
     }
+    console.log(params)
     if (this.data.needEarlyFlag) {
       params.needEarlyFlag = true
     }
