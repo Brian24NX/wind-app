@@ -47,3 +47,8 @@ export const contactTradeList = (params) => {
 export const contractInfo = (params) => {
   return getRequest('/api/miniapp/contactInfoSearch', params)
 }
+
+// 根据订单号联系我们
+export const contractInfoByOrderId = (params) => {
+  return getRequest('/api/miniapp/contactSearchByBooking', params)
+}

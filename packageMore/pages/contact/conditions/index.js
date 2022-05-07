@@ -152,6 +152,12 @@ Page({
     })
   },
 
+  setBookingReference(e) {
+    this.setData({
+      bookingReference: e.detail.value || ''
+    })
+  },
+
   // 查询结果
   searchResult() {
     if (!this.data.office) {

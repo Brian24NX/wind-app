@@ -58,7 +58,7 @@
     <block wx:else>
       <view class="oneBlock">
         <view class="selectContainer">
-          <input type="text" placeholder="{{languageContent.dingdan}}" placeholder-class="placeholder" />
+          <input type="text" bindinput="{{setBookingReference}}" placeholder="{{languageContent.dingdan}}" placeholder-class="placeholder" />
         </view>
       </view>
     </block>
