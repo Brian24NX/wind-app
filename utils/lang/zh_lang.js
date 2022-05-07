@@ -42,7 +42,7 @@ var Languague = {
     },
     // 首页
     homeInfo: {
-      hometitle: "CAM CGM",
+      hometitle: "CMA CGM",
       // 获取追踪
       TRACKING: '货物追踪',
       chuanqi1: '货物',
