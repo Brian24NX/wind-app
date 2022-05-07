@@ -115,9 +115,9 @@ Component({
           })
         }
       })
-      const date1 = dayjs(dayjs(list[list.length - 1].date).format('YYYY-MM-DD'))
-      const date2 = dayjs().format('YYYY-MM-DD')
-      const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24)
+      const date1 = dayjs(dayjs(list[list.length - 1].date).format('YYYY-MM-DD HH:mm:ss'))
+      const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
+      const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) + 1
       this.setData({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining,
