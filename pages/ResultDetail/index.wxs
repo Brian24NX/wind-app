@@ -1,9 +1,9 @@
 var fmtDate = function (obj) {
-  if(!obj) return ''
+  if (!obj) return ''
   return obj.split('T')[0]
 }
 var weekday = function (obj) {
-  if(!obj) return ''
+  if (!obj) return ''
   obj = obj.split('T')[0].split('-').join('/')
   var date = getDate(obj).getDay();
   var week = '';
@@ -32,17 +32,29 @@ var weekday = function (obj) {
   }
   return week;
 }
-var str = function(obj){
-  if(!obj) return ''
-   return obj.substring(0,2)
+var str = function (obj) {
+  if (!obj) return ''
+  return obj.substring(0, 2)
 }
 
-var checkQiYunGangKou = function(index, list) {
+var checkIsVessel = function (type) {
+  if (!type) return true
+  var array = ['truck', 'road', 'mixed', 'rail', 'barge', 'feeder', 'third party feeder', 'intermodal', 'unknown']
+  for (var i = 0; i < array.length; i++) {
+    var element = array[i];
+    if (type.toLocaleLowerCase().indexOf(element) > -1) {
+      return false
+    }
+  }
+  return true
+}
+
+var checkQiYunGangKou = function (index, list) {
   var newList = list.slice(0, index)
   var res = true
   for (var i = 0; i < newList.length; i++) {
     var element = newList[i];
-    if (element.transportation.meanOfTransport === 'Vessel') {
+    if (checkIsVessel(element.transportation.vehicle.vehicleName)) {
       res = false
       break
     }
@@ -50,11 +62,11 @@ var checkQiYunGangKou = function(index, list) {
   return res
 }
 
-var checkXieHuoGangKou = function(index, list) {
+var checkXieHuoGangKou = function (index, list) {
   var res = false
   var element = list[index];
   var element2 = list[index - 1];
-  if (element.transportation.meanOfTransport !== 'Vessel' && element2.transportation.meanOfTransport === 'Vessel') {
+  if (!checkIsVessel(element.transportation.vehicle.vehicleName) && checkIsVessel(element2.transportation.vehicle.vehicleName)) {
     res = true
   }
   return res
@@ -65,5 +77,6 @@ module.exports = {
   weekday: weekday,
   str: str,
   checkQiYunGangKou: checkQiYunGangKou,
-  checkXieHuoGangKou: checkXieHuoGangKou
+  checkXieHuoGangKou: checkXieHuoGangKou,
+  checkIsVessel: checkIsVessel
 }

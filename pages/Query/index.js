@@ -226,7 +226,7 @@ Page({
       polCode: this.data.polvalue.split(';')[1],
       polvalue: this.data.polvalue.split(';')[0],
       searchRange: Number(this.data.week.split(' ')[0]) * 7,
-      search: this.data.search == '到港时间' ? 0 : 1,
+      search: this.data.search == '到港时间' ? 1 : 0,
       searchDate: this.data.date
     })
     let history = this.data.array || [];
