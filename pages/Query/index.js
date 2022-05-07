@@ -74,7 +74,9 @@ Page({
       showRemind1: false,
       showRemind2: false,
       showRemind3: false,
-      showRemind4: false
+      showRemind4: false,
+      showDelete1: true,
+      showDelete2: true
     })
   },
   changemethod(e) {

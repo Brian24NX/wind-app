@@ -56,7 +56,7 @@
             </view>
             <view class="shipName" style="margin-top: 30rpx;">
               <text>Vessel</text>
-              <text>{{item.transportation.vehicule.vehiculeName}}</text>
+              <text>{{item.transportation.vehicle.vehicleName}}</text>
             </view>
             <view class="shipName other">
               <text>Service</text>
