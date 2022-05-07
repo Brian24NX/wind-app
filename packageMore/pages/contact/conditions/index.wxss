@@ -70,6 +70,7 @@ page {
 }
 
 .contactContainer .blockContainer .oneBlock .selectContainer input {
+  color: #111111;
   font-size: 24rpx;
   width: 100%;
   height: 100%;

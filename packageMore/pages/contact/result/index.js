@@ -67,18 +67,20 @@ Page({
           loading: false
         })
       })
-    }
-    contractInfo({
-      office: this.data.office,
-      businessType: this.data.businessType,
-      trade: this.data.trade,
-      accountName: this.data.accountName
-    }).then(res => {
-      this.setData({
-        contractList: res.data,
-        loading: false
+    } else {
+      contractInfo({
+        office: this.data.office,
+        businessType: this.data.businessType,
+        trade: this.data.trade,
+        accountName: this.data.accountName
+      }).then(res => {
+        this.setData({
+          contractList: res.data,
+          loading: false
+        })
       })
-    })
+    }
+    
   },
 
   // 返回

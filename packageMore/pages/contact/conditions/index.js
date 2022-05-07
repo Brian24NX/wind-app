@@ -30,7 +30,8 @@ Page({
     trade: '',
     showRemind1: false,
     showRemind2: false,
-    showRemind3: false
+    showRemind3: false,
+    showRemind4: false
   },
 
   /**
@@ -154,7 +155,8 @@ Page({
 
   setBookingReference(e) {
     this.setData({
-      bookingReference: e.detail.value || ''
+      bookingReference: e.detail.value || '',
+      showRemind4: e.detail.value ? false : true
     })
   },
 
@@ -182,7 +184,19 @@ Page({
       this.setData({
         showRemind3: false
       })
+      if (!this.data.bookingReference) {
+        this.setData({
+          showRemind4: true
+        })
+      } else {
+        this.setData({
+          showRemind4: false
+        })
+      }
     } else {
+      this.setData({
+        showRemind4: false
+      })
       if (!this.data.trade) {
         this.setData({
           showRemind3: true
@@ -194,7 +208,7 @@ Page({
       }
     }
 
-    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3) return
+    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
     wx.navigateTo({
       url: '/packageMore/pages/contact/result/index',
     })
