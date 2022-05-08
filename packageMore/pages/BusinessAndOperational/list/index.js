@@ -1,7 +1,7 @@
 // packageMore/pages/BusinessAndOperational/index.js
 import {
   businiessOpentionalList
-} from '../../../../api/modules/more';
+} from '../../../api/modules/more';
 const languageUtil = require('../../../../utils/languageUtils')
 const pageSize = 10;
 Page({

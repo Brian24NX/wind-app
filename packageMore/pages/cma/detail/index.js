@@ -1,5 +1,5 @@
 // packageMore/pages/cma/detail/index.js
-import {cmaNewsDetail} from '../../../../api/modules/more'
+import {cmaNewsDetail} from '../../../api/modules/more'
 Page({
 
   /**

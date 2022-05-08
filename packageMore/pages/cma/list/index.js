@@ -1,7 +1,7 @@
 // packageMore/pages/cma/list/index.js
 import {
   cmaNewsList
-} from '../../../../api/modules/more';
+} from '../../../api/modules/more';
 const pageSize = 10;
 Page({
 

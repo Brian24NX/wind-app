@@ -1,7 +1,7 @@
 // packageMore/pages/news/detail/index.js
 import {
   newsDetail
-} from '../../../../api/modules/more';
+} from '../../../api/modules/more';
 import languageUtils from '../../../../utils/languageUtils';
 const languageUtil = require('../../../../utils/languageUtils')
 Page({

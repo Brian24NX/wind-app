@@ -1,7 +1,6 @@
 const {
-  getRequest,
-  postRequest
-} = require('../http')
+  getRequest
+} = require('../../../api/http')
 
 // 获取列表
 export const categoryList = (params) => {

@@ -2,7 +2,7 @@
 import {
   dictList,
   contactTradeList
-} from '../../../../api/modules/more';
+} from '../../../api/modules/more';
 const languageUtil = require('../../../../utils/languageUtils')
 Page({
 

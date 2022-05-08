@@ -1,7 +1,7 @@
 // packageMore/pages/BusinessAndOperational/detail/index.js
 import {
   businiessOpentionalDetail
-} from '../../../../api/modules/more';
+} from '../../../api/modules/more';
 const languageUtil = require('../../../../utils/languageUtils')
 const dayjs = require('dayjs')
 Page({

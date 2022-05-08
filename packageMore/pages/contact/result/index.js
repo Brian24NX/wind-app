@@ -2,7 +2,7 @@
 import {
   contractInfo,
   contractInfoByOrderId
-} from '../../../../api/modules/more';
+} from '../../../api/modules/more';
 const languageUtil = require('../../../../utils/languageUtils')
 const app = getApp();
 Page({
