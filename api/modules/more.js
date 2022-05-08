@@ -23,6 +23,11 @@ export const cmaNewsList = (params) => {
   return getRequest('/api/miniapp/cmaNewsList', params, true)
 }
 
+// CMA CGM 详情
+export const cmaNewsDetail = (params) => {
+  return getRequest('/api/miniapp/cmaNewsDetail', params)
+}
+
 // 获取businiessOpentionalList列表数据
 export const businiessOpentionalList = (params) => {
   return getRequest('/api/miniapp/businiessOpentionalList', params, true)

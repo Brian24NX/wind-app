@@ -4,6 +4,7 @@ import {
   routingFinder,
   routingSort
 } from '../../api/modules/home';
+const dayjs = require("dayjs");
 const languageUtil = require('../../utils/languageUtils')
 Page({
 
@@ -55,6 +56,8 @@ Page({
     isLoading: true,
     scrollLeft: 0,
     oneScroll: 0,
+    showDatePopup: false,
+    currentDate: null
   },
 
   /**
@@ -81,10 +84,36 @@ Page({
     this.dealData()
   },
 
-  bindTimeChange(e) {
+  // bindTimeChange(e) {
+  //   this.setData({
+  //     searchDate: e.detail.value,
+  //     oneScroll: 0
+  //   })
+  //   this.setDayList(this.data.searchDate)
+  //   this.resetData()
+  //   this.dealData()
+  // },
+
+  openDate() {
+    const date = this.data.searchDate.replaceAll('-', '/')
     this.setData({
-      searchDate: e.detail.value,
-      oneScroll: 0
+      currentDate: new Date(date).getTime(),
+      showDatePopup: true
+    })
+  },
+
+  closeDate() {
+    this.setData({
+      showDatePopup: false
+    })
+  },
+
+  confirmDate(e) {
+    console.log(e)
+    this.setData({
+      searchDate: dayjs(e.detail).format('YYYY-MM-DD'),
+      oneScroll: 0,
+      showDatePopup: false
     })
     this.setDayList(this.data.searchDate)
     this.resetData()

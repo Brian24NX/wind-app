@@ -1,10 +1,13 @@
 // pages/ResultDetail/index.js
+const languageUtil = require('../../utils/languageUtils')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
+    language: 'zh',
     detail: {},
     routingDetails: []
   },
@@ -14,7 +17,11 @@ Page({
    */
   onLoad: function () {
     wx.setNavigationBarTitle({
-      title: '详情',
+      title: languageUtil.languageVersion().lang.page.routeDetails.title,
+    })
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.routeDetails,
+      language: languageUtil.languageVersion().lang.page.langue
     })
     this.dealData()
   },

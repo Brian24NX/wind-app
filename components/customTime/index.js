@@ -1,4 +1,5 @@
 // components/customPicker/index.js
+const languageUtil = require('../../utils/languageUtils')
 Component({
   /**
    * 组件的属性列表
@@ -20,6 +21,10 @@ Component({
       type: String,
       value: 'day'
     }
+  },
+
+  data: {
+    languageContent: languageUtil.languageVersion().lang.page.popupBtn
   },
 
   /**

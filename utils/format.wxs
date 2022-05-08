@@ -1,16 +1,22 @@
-function formatEnDate(date) {
+function formatEnDate(date, fuhao, type, hideWeek) {
   if(!date) return ''
   date = date.split('T')[0].split('-').join('/')
   var dt = getDate(date);
   var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec"];
-  var week = ["Sunday", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var weeks = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
   var mn = dt.getMonth(),
   wn = dt.getDay(),
   dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
-  return week[wn] + ', ' + m[mn] + " " + dn + ", " + dt.getFullYear()
+  var weekStr = (type === 'short' ? weeks[wn] : week[wn])
+  if (!fuhao) {
+    return (!hideWeek ? weekStr + ', ' : '') + m[mn] + " " + dn + ", " + dt.getFullYear()
+  } else {
+    return (!hideWeek ? weekStr + ', ' : '') + dn + fuhao + m[mn] + fuhao + dt.getFullYear()
+  }
 }
 
-function formatCnDate(date) {
+function formatCnDate(date, hideWeek) {
   if(!date) return ''
   date = date.split('T')[0].split('-').join('/')
   var dt = getDate(date);
@@ -19,42 +25,68 @@ function formatCnDate(date) {
   var mn = dt.getMonth(),
   wn = dt.getDay(),
   dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
-  return dt.getFullYear() + '-' + m[mn] + '-' + dn + ' ' + week[wn]
+  return dt.getFullYear() + '-' + m[mn] + '-' + dn + (!hideWeek ? ' ' + week[wn] : '')
 }
 
-var weekday = function (obj) {
-  if(!obj) return ''
-  obj = obj.split('T')[0].split('-').join('/')
-  var date = getDate(obj).getDay();
-  var week = '';
-  switch (date) {
-    case 0:
-      week = "星期日";
-      break;
-    case 1:
-      week = "星期一";
-      break;
-    case 2:
-      week = "星期二";
-      break;
-    case 3:
-      week = "星期三";
-      break;
-    case 4:
-      week = "星期四";
-      break;
-    case 5:
-      week = "星期五";
-      break;
-    case 6:
-      week = "星期六";
-      break;
+var strSub = function (obj) {
+  if (!obj) return ''
+  return obj.substring(0, 2)
+}
+
+var checkIsVessel = function (type) {
+  if (!type) return true
+  var array = ['truck', 'road', 'mixed', 'rail', 'barge', 'feeder', 'third party feeder', 'intermodal', 'unknown']
+  for (var i = 0; i < array.length; i++) {
+    var element = array[i];
+    if (type.toLocaleLowerCase().indexOf(element) > -1) {
+      return false
+    }
   }
-  return week;
+  return true
+}
+
+var checkQiYunGangKou = function (index, list) {
+  var newList = list.slice(0, index)
+  var res = true
+  for (var i = 0; i < newList.length; i++) {
+    var element = newList[i];
+    if (checkIsVessel(element.transportation.vehicle.vehicleName)) {
+      res = false
+      break
+    }
+  }
+  return res
+}
+
+var checkXieHuoGangKou = function (index, list) {
+  var res = false
+  var element = list[index];
+  var element2 = list[index - 1];
+  if (!checkIsVessel(element.transportation.vehicle.vehicleName) && checkIsVessel(element2.transportation.vehicle.vehicleName)) {
+    res = true
+  }
+  return res
+}
+
+
+function getShopName(list) {
+  var name = ''
+  for (var index = 0; index < list.length; index++) {
+    var element = list[index];
+    if (checkIsVessel(element.transportation.vehicle.vehicleName)) {
+      name = element.transportation.vehicle ? element.transportation.vehicle.vehicleName : ''
+      break 
+    }
+  }
+  return name
 }
 
 module.exports = {
   formatEnDate: formatEnDate,
   formatCnDate: formatCnDate,
-  weekday: weekday
+  strSub: strSub,
+  checkIsVessel: checkIsVessel,
+  checkQiYunGangKou: checkQiYunGangKou,
+  checkXieHuoGangKou: checkXieHuoGangKou,
+  getShopName: getShopName
 }

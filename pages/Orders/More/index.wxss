@@ -1,7 +1,7 @@
 /* pages/Orders/More/index.wxss */
 .orderMoreList .oneOrder {
   background-color: #ffffff;
-  padding: 0 48rpx;
+  padding: 0 40rpx;
   margin-bottom: 20rpx;
 }
 
@@ -57,7 +57,23 @@
 
 .orderMoreList .oneOrder .orderBottom .oneBottom .details {
   display: flex;
-  width: 500rpx;
+  width: 510rpx;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .status {
+  padding: 5rpx 20rpx;
+  border-radius: 18rpx;
+  background-color: #DFF0FE;
+  display: inline-block;
+  color: #235AF6;
+  font-size: 20rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+}
+
+.orderMoreList .oneOrder .orderBottom .oneBottom .details .details2 {
+  display: flex;
+  width: 100%;
 }
 
 .orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft {
@@ -66,25 +82,12 @@
   font-size: 24rpx;
 }
 
-.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .status {
-  height: 34rpx;
-  padding: 5rpx 20rpx;
-  border-radius: 18rpx;
-  background-color: #DFF0FE;
-  display: inline;
-  color: #235AF6;
-  font-size: 20rpx;
-  line-height: 34rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-}
 
 .orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .address {
-  font-size: 32rpx;
+  font-size: 48rpx;
   font-family: Antonio-Bold;
   font-weight: bold;
   color: #04246A;
-  height: 82rpx;
 }
 
 .orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .huogui {
@@ -110,9 +113,4 @@
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #071E5D;
-}
-
-.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailRight .time {
-  margin-top: 30rpx;
-  height: 90rpx;
 }

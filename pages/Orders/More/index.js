@@ -22,14 +22,10 @@ Component({
    * 组件的初始数据
    */
   data: {
-    lists: [],
-    oldList: []
+    lists: []
   },
 
   ready() {
-    this.setData({
-      oldList: this.data.list
-    })
     this.setList()
   },
 
@@ -39,7 +35,6 @@ Component({
   methods: {
     setList() {
       const lists = this.data.list
-      // console.log(lists)
       lists.forEach(items => {
         if (items.data) {
           items.data.routes.forEach(routeItem => {
@@ -52,34 +47,7 @@ Component({
               one.movements.forEach((item, index) => {
                 item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
                 item.date = utils.substrTime(item.date)
-                const week = new Date(item.date).getDay()
-                switch (week) {
-                  case 0:
-                    item.week = '星期日'
-                    break;
-                  case 1:
-                    item.week = '星期一'
-                    break;
-                  case 2:
-                    item.week = '星期二'
-                    break;
-                  case 3:
-                    item.week = '星期三'
-                    break;
-                  case 4:
-                    item.week = '星期四'
-                    break;
-                  case 5:
-                    item.week = '星期五'
-                    break;
-                  case 6:
-                    item.week = '星期六'
-                    break;
-                  default:
-                    break;
-                }
                 item.time = dayjs(item.date).format('HH:mm')
-                item.dateStr = dayjs(item.date).format('YYYY-MM-DD HH:mm')
                 item.date = dayjs(item.date).format('YYYY-MM-DD')
                 const dayStatus = dayjs(item.date).isBefore(dayjs(), 'date')
                 if (dayStatus) {

@@ -135,6 +135,7 @@ var Languague = {
       export: '以PDF格式输出',
       toEmail: '以附件形式发送至邮箱',
       huoguihao: '货柜号',
+      dingdans: '货柜号/提单号/订舱号',
       xiangxing: '箱型',
       location: '位置',
       time: '时间',
@@ -213,67 +214,34 @@ var Languague = {
     },
     //routeDetails航线查询详情
     routeDetails: {
+      title: '航线详情',
+      day: '天',
+      days: '天',
+      transhipment: '转运',
+      transhipments: '转运',
+      // 船名
+      vessel: '船名',
+      // 航线方案
+      service: '航线方案',
       //验证集装箱重量截止时间
-      vgmCutOff: "验证集装箱重量截止时间",
+      vgmCutOff: "验证集装箱总重量(VGM)截止时间",
       //港口截关时间
       portCutOff: "港口截关时间",
       //本地航次
       localVoyageRef: "本地航次",
       //航次
       vouageRef: "航次",
-      //转运
-      transhipment: "转运",
       // 起运港
       pol: "起运港",
       // 卸货港
       pod: "卸货港",
+      // 始发地
+      coc: '始发地',
+      dest: '最终目的地'
     },
-    //shipmentTracking货物追踪
-    shipmentTracking: {
-      // 运输详情
-      trackingDetails: "运输详情",
-      // 订舱号 JXTLXXXXX
-      bookingJxtl: "订舱号JXTLXXXXX",
-      // 重新搜索
-      newSearch: "重新搜索",
-      // 预计到港时间
-      eta: "预计到港时间",
-      // 集装箱号
-      contianer: "集装箱号",
-      // 目的港预计靠泊时间
-      etaBerthAtPod: "目的港预计靠泊时间",
-      // 剩余航程
-      remaining: "剩余航程",
-      // 导出pdf
-      exportPdf: "导出pdf",
-      // 空集装箱抵达堆场
-      emptyToDepot: "空集装箱抵达堆场",
-      // 空集装箱已交付托运人
-      emptyToShipper: "空集装箱已交付托运人",
-      // 准备卸货
-      readyToBeLoaded: "准备卸货",
-      // 装船
-      loadedOnBoard: "装船",
-      // 转运港卸货
-      dischargedInTranshipment: "转运港卸货",
-      // 到达最终卸货港
-      arrivalFinalPortOf: "到达最终卸货港",
-      // 星期三
-      wendnesday: "星期三",
-      // 23-2月-2022
-      date: "23-2月-2022",
-      // 集装箱正柜在托运人处
-      containertoconsignee: "集装箱正柜在托运人处",
-      // 未查询到相关结果
-      noResult: "未查询到相关结果",
-      //最多可同时查询三个集装箱状态，请重新输入.
-      threeContainers: "最多可同时查询三个集装箱状态，请重新输入.",
-      //号码无效，请检查格式。例如：ABCD1234567
-      referencesIsNotValid: "号码无效，请检查格式。例如：ABCD1234567",
-      //集装箱暂未开始运输.
-      containerCycle: "集装箱暂未开始运输.",
-      //暂未查询到运输动态，或该集装箱已卸货/返回堆场。
-      containerNotFount: "暂未查询到运输动态，或该集装箱已卸货/返回堆场.",
+    popupBtn: {
+      confirm: '确定',
+      cancel: '取消'
     },
     load: {
       //努力加载中

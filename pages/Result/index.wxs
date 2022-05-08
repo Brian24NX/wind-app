@@ -1,20 +1,4 @@
 var fmtDate = function (obj) {
-  if (!obj) return ''
-  if (obj.indexOf('T') > -1) {
-    obj = obj.split('T')[0] + ' ' + obj.split('T')[1].split('+')[0].split('-')[0]
-  }
-  obj = obj.split('-').join('/')
-  var time = getDate(obj);
-  var year = time.getFullYear();
-  var month = time.getMonth() + 1;
-  var date = time.getDate();
-
-  month = month < 10 ? "0" + month : month;
-  date = date < 10 ? "0" + date : date;
-  return year + "-" + month + "-" + date;
-}
-
-var fmtDate2 = function (obj) {
   obj = obj.split('-').join('/')
   var time = getDate(obj);
   var month = time.getMonth() + 1;
@@ -35,33 +19,7 @@ var weekDay = function (obj) {
   return week;
 }
 
-var checkIsVessel = function (type) {
-  if (!type) return true
-  var array = ['truck', 'road', 'mixed', 'rail', 'barge', 'feeder', 'third party feeder', 'intermodal', 'unknown']
-  for (var i = 0; i < array.length; i++) {
-    var element = array[i];
-    if (type.toLocaleLowerCase().indexOf(element) > -1) {
-      return false
-    }
-  }
-  return true
-}
-
-function getShopName(list) {
-  var name = ''
-  for (var index = 0; index < list.length; index++) {
-    var element = list[index];
-    if (checkIsVessel(element.transportation.vehicle.vehicleName)) {
-      name = element.transportation.vehicle ? element.transportation.vehicle.vehicleName : ''
-      break 
-    }
-  }
-  return name
-}
-
 module.exports = {
   fmtDate: fmtDate,
-  fmtDate2: fmtDate2,
-  weekDay: weekDay,
-  getShopName: getShopName
+  weekDay: weekDay
 }

@@ -253,7 +253,7 @@
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent {
-  width: 480rpx;
+  width: 100%;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent .time {
@@ -275,6 +275,7 @@
   font-weight: 500;
   color: #6B7790;
   margin-top: 14rpx;
+  width: 400rpx;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent .ship .shipIcon {

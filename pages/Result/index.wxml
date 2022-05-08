@@ -1,5 +1,6 @@
 <!--页面常用方法编写-Jason-2022-03-22 13:52-->
 <wxs module="filters" src="./index.wxs"></wxs>
+<wxs module="commonFilters" src="../../utils/format.wxs"></wxs>
 <!--pages/Result/index.wxml-->
 <view class="searchResultTopContainer">
   <view class="searchTop">
@@ -17,18 +18,18 @@
     <scroll-view scroll-x class="calendarLeft" scroll-left="{{scrollLeft}}" scroll-with-animation>
       <view class="oneDay {{item === searchDate ? 'current' : ''}}" wx:for="{{dateList}}" wx:key="index" catchtap="changeDay" data-item="{{item}}">
         <view class="oneDays">
-          <view class="dayValue">{{filters.fmtDate2(item)}}</view>
+          <view class="dayValue">{{filters.fmtDate(item)}}</view>
           <view>{{weeksContent['week' + filters.weekDay(item)]}}</view>
         </view>
       </view>
     </scroll-view>
     <image class="calendarCenter" src="/assets/img/result/shadow@2x.png"></image>
-    <picker mode="date" value="{{searchDate}}" start="1970-09-01" end="2079-09-01" bindchange="bindTimeChange">
-      <view class="calendarRight">
+    <!-- <picker mode="date" value="{{searchDate}}" start="1970-09-01" end="2079-09-01" bindchange="bindTimeChange"> -->
+      <view class="calendarRight" catchtap="openDate">
         <image src="/assets/img/result/calendar@2x.png"></image>
         <view>{{languageContent.calendar}}</view>
       </view>
-    </picker>
+    <!-- </picker> -->
   </view>
   <view wx:if="{{viewactived}}" class="tabContainers">
     <view class="oneTab {{item.title === currentPlan ? 'tabActived' : ''}}" wx:for="{{planList}}" wx:key="index" catchtap="changePlan" data-title="{{item.title}}">
@@ -53,27 +54,17 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <block wx:if="{{language === 'en'}}">
-              <view class="time">{{weeksContent['weeks' + filters.weekDay(item.departuredate)]}}, {{filters.fmtDate(item.departuredate)}}</view>
-            </block>
-            <block wx:else>
-              <view class="time">{{filters.fmtDate(item.departuredate)}} {{weeksContent['weeks' + filters.weekDay(item.departuredate)]}}</view>
-            </block>
+            <view class="time">{{language === 'zh' ? commonFilters.formatCnDate(item.departuredate, '-') : commonFilters.formatEnDate(item.departuredate, '-')}}</view>
             <view class="time">{{item.pointfrom}}, {{polCode}}</view>
             <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{filters.getShopName(item.routingDetails)}}</view>
+              <view>{{commonFilters.getShopName(item.routingDetails)}}</view>
             </view>
             <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>
-            <block wx:if="{{language === 'en'}}">
-              <view class="time end">{{weeksContent['weeks' + filters.weekDay(item.arrivaldate)]}}, {{filters.fmtDate(item.arrivaldate)}} {{item.pointto}}, {{podCode}}</view>
-            </block>
-            <block wx:else>
-              <view class="time end">{{filters.fmtDate(item.arrivaldate)}} {{weeksContent['weeks' + filters.weekDay(item.arrivaldate)]}} {{item.pointto}}, {{podCode}}</view>
-            </block>
+            <view class="time end">{{language === 'zh' ? commonFilters.formatCnDate(item.arrivaldate, '-') : commonFilters.formatEnDate(item.arrivaldate, '-')}} {{item.pointto}}, {{podCode}}</view>
           </view>
           <view class="rightContent">
             <view class="timeDay">{{item.transitTime}} {{item.transitTime == 1 ? languageContent.day : languageContent.days}}</view>
@@ -91,5 +82,8 @@
     <noresult languageContent="{{languageContent}}"></noresult>
   </view>
 </view>
+
+<custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
+
 <!-- 底部筛选条件 tabbar -->
 <foot-tab-bar languageContent="{{languageContent}}" radio="{{sort}}" plans="{{plans}}" routesPlanList="{{routesPlanList}}" bind:tabbarchange="onTabbarChange" />

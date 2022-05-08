@@ -1,4 +1,4 @@
 <!--components/customPicker/index.wxml-->
 <van-popup bind:close="onCancel" show="{{ showPopup }}" position="bottom">
-  <van-datetime-picker type="{{type}}" value="{{ currentDate }}" show-toolbar bind:confirm="onConfirm" bind:cancel="onCancel"/>
+  <van-datetime-picker type="{{type}}" value="{{ currentDate }}" confirm-button-text="{{languageContent.confirm}}" cancel-button-text="{{languageContent.cancel}}" show-toolbar bind:confirm="onConfirm" bind:cancel="onCancel"/>
 </van-popup>

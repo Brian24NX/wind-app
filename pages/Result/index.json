@@ -2,6 +2,7 @@
   "navigationBarTitleText": "",
   "component": true,
   "usingComponents": {
+    "custom-time": "/components/customTime/index",
     "noresult": "./noresult/index",
     "foot-tab-bar": "./comments/FootTabBar/index"
   }

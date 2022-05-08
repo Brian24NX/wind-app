@@ -100,8 +100,8 @@ var Languague = {
       bsc: 'Choose a local office you want to be in contact with',
       businessType: 'What kind of business you want to inquire about?',
       tigong: 'Do you have the booking reference information to provide?',
-      yes: 'Yes',
-      no: 'No',
+      yes: 'Sure',
+      no: 'Cancel',
       dingdan: 'Booking reference',
       hangxian: 'What trade or cargo you want to inquire about?',
       accountName: 'Account Name',
@@ -133,7 +133,8 @@ var Languague = {
       tian: 'Days',
       export: 'Export PDF',
       toEmail: 'Sand to Email',
-      huoguihao: 'Container',
+      huoguihao: 'Container (Ref.)',
+      dingdans: 'Container (Ref.)',
       xiangxing: 'Equipment Type',
       location: 'Location',
       time: 'Time',
@@ -211,6 +212,15 @@ var Languague = {
     },
     //routeDetails航线查询详情
     routeDetails: {
+      title: 'Route Detail',
+      day: 'DAY',
+      days: 'DAYS',
+      transhipment: 'transhipment',
+      transhipments: 'transhipments',
+      // 船名
+      vessel: 'Vessel',
+      // 航线方案
+      service: 'Service',
       //验证集装箱重量截止时间
       vgmCutOff: "VGM Cut-off",
       //港口截关时间
@@ -219,59 +229,18 @@ var Languague = {
       localVoyageRef: "Local Voyage Ref.",
       //航次
       vouageRef: "Voyage Ref.",
-      //转运
-      transhipment: "Transshipment",
       // 起运港
       pol: "POL",
       // 卸货港
       pod: "POD",
+      // 始发地
+      coc: 'POO',
+      // 最终目的地
+      dest: 'DEST'
     },
-    //shipmentTracking货物追踪
-    shipmentTracking: {
-      // 运输详情
-      trackingDetails: "Tracking details",
-      // 订舱号 JXTLXXXXX
-      bookingJxtl: "Booking JXTLXXXXX",
-      // 重新搜索
-      newSearch: "New search",
-      // 预计到港时间
-      eta: "ETA",
-      // 集装箱号
-      contianer: "Container (Ref.)",
-      // 目的港预计靠泊时间
-      etaBerthAtPod: "ETA Berth at POD",
-      // 剩余航程
-      remaining: "Remaining",
-      // 导出pdf
-      exportPdf: "Export PDF",
-      // 空集装箱抵达堆场
-      emptyToDepot: "Empty to Depot",
-      // 空集装箱已交付托运人
-      emptyToShipper: "Empty to Shipper",
-      // 准备卸货
-      readyToBeLoaded: "Ready to be Loaded",
-      // 装船
-      loadedOnBoard: "Loaded on Board",
-      // 转运港卸货
-      dischargedInTranshipment: "Discharged in Transhipment ",
-      // 到达最终卸货港
-      arrivalFinalPortOf: "Arrival Final Port of XX ",
-      // 星期三
-      wendnesday: "Wednesday",
-      // 23-2月-2022
-      date: "23-Feb-2022",
-      // 集装箱正柜在托运人处
-      containertoconsignee: "Container to Consignee",
-      // 未查询到相关结果
-      noResult: "No results found",
-      //最多可同时查询三个集装箱状态，请重新输入.
-      threeContainers: "Maximum of three containers references can be filled out. Please amend your search criteria.",
-      //号码无效，请检查格式。例如：ABCD1234567
-      referencesIsNotValid: "Reference is not valid. Please check the format. Example: ABCD1234567",
-      //集装箱暂未开始运输.
-      containerCycle: "Container cycle not yet started.",
-      //暂未查询到运输动态，或该集装箱已卸货/返回堆场。
-      containerNotFount: "Container CMAU577XXX not found or already unstuffed or returned to the depot.",
+    popupBtn: {
+      confirm: 'confirm',
+      cancel: 'cancel'
     },
     load: {
       //努力加载中

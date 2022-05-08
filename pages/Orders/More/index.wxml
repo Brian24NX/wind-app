@@ -1,4 +1,5 @@
 <!--pages/Orders/More/index.wxml-->
+<wxs module="filters" src="../../../utils/format.wxs"></wxs>
 <view class="searchResultContainers">
   <view class="searchResultContainer">
     <view class="resTitle">{{languageContent.title}}</view>
@@ -19,7 +20,7 @@
             <view class="topLeft">
               <text>{{items.timeRemaining < 1 ? languageContent.tingbo : languageContent.yuji }}</text>
             </view>
-            <view class="topRight">{{items.movements[items.movements.length - 1].date}} {{items.movements[items.movements.length - 1].week}} {{items.movements[items.movements.length - 1].time}}</view>
+            <view class="topRight">{{languageContent.language === 'en' ? filters.formatEnDate(items.movements[items.movements.length - 1].date, '-', '') : filters.formatCnDate(items.movements[items.movements.length - 1].date)}} {{items.movements[items.movements.length - 1].time}}</view>
           </view>
           <view class="orderBottom">
             <view class="oneBottom">
@@ -37,15 +38,18 @@
             </view>
             <view class="oneBottom">
               <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
-              <view class="details">
-                <view class="detailLeft">
-                  <view class="status">{{languageContent.language === 'en' ? items.currentStatus.status.name : items.currentStatus.status.statusLabel}}</view>
-                  <view class="address">{{items.currentStatus.pointLocation.name}}</view>
-                  <view>{{languageContent.location}}</view>
-                </view>
-                <view class="detailRight">
-                  <view class="xiangxing time">{{items.currentStatus.dateStr}}</view>
-                  <view>{{languageContent.time}}</view>
+              <view class="details" style="flex-direction: column;">
+                <view> <view class="status">{{languageContent.language === 'en' ? items.currentStatus.status.name : items.currentStatus.status.statusLabel}}</view></view>
+               
+                <view class="details2">
+                  <view class="detailLeft">
+                    <view class="address">{{items.currentStatus.pointLocation.name}}</view>
+                    <view>{{languageContent.location}}</view>
+                  </view>
+                  <view class="detailRight">
+                    <view class="xiangxing time">{{languageContent.language === 'en' ? filters.formatEnDate(items.currentStatus.date, '-', '', true) : filters.formatCnDate(items.currentStatus.date, true)}} {{items.currentStatus.time}}</view>
+                    <view>{{languageContent.time}}</view>
+                  </view>
                 </view>
               </view>
             </view>
@@ -78,7 +82,7 @@
             <view class="details">
               <view class="detailLeft">
                 <view class="huogui">{{item.shipmentRef}}</view>
-                <view>货柜号/提单号/订舱号</view>
+                <view>{{languageContent.dingdans}}</view>
               </view>
             </view>
           </view>
