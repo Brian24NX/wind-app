@@ -121,9 +121,6 @@ Page({
       this.setData({
         content: lang
       })
-      wx.setNavigationBarTitle({
-        title: lang.lang.userCenter.mytitle
-      })
       console.log(typeof this.getTabBar === 'function' &&this.getTabBar());
       if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
         this.getTabBar().setData({

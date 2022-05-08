@@ -19,11 +19,11 @@
   <view class="resultDetailContainer">
     <view style="padding-top: 20rpx;" wx:for="{{routingDetails}}" wx:key="index">
       <!-- 海运 -->
-      <view class="yunshuContainers" wx:if="{{item.transportation.meanOfTransport === 'Vessel'}}">
+      <view class="yunshuContainers" wx:if="{{filters.checkIsVessel(item.transportation.vehicle.vehicleName)}}">
         <view class="contents">
           <view class="leftIcons {{index === routingDetails.length - 1 ? 'last' : ''}}">
             <view class="leftLine"></view>
-            <view class="lineDto" wx:if="{{!index || routingDetails[index - 1].transportation.meanOfTransport !== 'Vessel'}}"></view>
+            <view class="lineDto" wx:if="{{!index || !filters.checkIsVessel(routingDetails[index - 1].transportation.vehicle.vehicleName)}}"></view>
             <image src="../../assets/img/result/zhuanyun@2x.png" mode="aspectFit" wx:else class="zhuanyun"></image>
             <image wx:if="{{index === routingDetails.length - 1}}" class="location" src="../../assets/img/seniorsearch/location_white.png" mode="aspectFit"></image>
             <image src="../../assets/img/seniorsearch/ship.png" class="shipIcon"></image>
@@ -37,7 +37,7 @@
             <view class="gangKouNames">{{item.pointFrom.location.facility.name}}</view>
           </view>
           <view class="yunshuContainer">
-            <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
+            <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDate)}} {{filters.weekday(item.pointFrom.departureDate)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
                 <view class="names">{{item.pointFrom.location.name}}，</view>
@@ -56,21 +56,21 @@
             </view>
             <view class="shipName" style="margin-top: 30rpx;">
               <text>Vessel</text>
-              <text>{{item.transportation.vehicule.vehiculeName}}</text>
+              <text>{{item.transportation.vehicle.vehicleName || '-'}}</text>
             </view>
             <view class="shipName other">
               <text>Service</text>
-              <text>{{item.transportation.voyage.service.code}}</text>
+              <text>{{item.transportation.voyage.service.code || '-'}}</text>
             </view>
             <view class="shipName other" style="margin-top: 30rpx;">
               <text>本地航次： </text>
-              <text>-</text>
+              <text>{{item.transportation.voyage.localVoyageReference || '-'}}</text>
             </view>
             <view class="shipName other">
               <text>航次：</text>
-              <text>{{item.transportation.voyage.voyageReference}}</text>
+              <text>{{item.transportation.voyage.voyageReference || '-'}}</text>
             </view>
-            <view class="timeContainer" style="margin-top: 30rpx;">{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
+            <view class="timeContainer" style="margin-top: 30rpx;">{{filters.fmtDate(item.pointTo.arrivalDate)}} {{filters.weekday(item.pointTo.arrivalDate)}}</view>
           </view>
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
@@ -87,7 +87,7 @@
         <view class="contents">
           <view class="leftIcons {{index === routingDetails.length - 1 ? 'last' : ''}}">
             <view class="leftLine"></view>
-            <view class="lineDto" wx:if="{{!index || item.transportation.meanOfTransport !== 'Vessel'}}"></view>
+            <view class="lineDto" wx:if="{{!index || !filters.checkIsVessel(item.transportation.vehicle.vehicleName)}}"></view>
             <image wx:if="{{index === routingDetails.length - 1}}" class="location" src="../../assets/img/seniorsearch/location_white.png" mode="aspectFit"></image>
             <image src="../../assets/img/result/freight@2x.png" class="freight"></image>
           </view>
@@ -99,7 +99,7 @@
             </view>
           </view>
           <view class="yunshuContainer">
-            <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDateLocal)}} {{filters.weekday(item.pointFrom.departureDateLocal)}}</view>
+            <view class="timeContainer">{{filters.fmtDate(item.pointFrom.departureDate)}} {{filters.weekday(item.pointFrom.departureDate)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
                 <view class="names">{{item.pointFrom.location.name}}，</view>
@@ -107,8 +107,8 @@
                 <view class="tags tags2">始发地</view>
               </view>
             </block>
-            <view class="rails">{{item.transportation.meanOfTransport}}</view>
-            <view class="timeContainer" style="margin-top: 10rpx;">{{filters.fmtDate(item.pointTo.arrivalDateLocal)}} {{filters.weekday(item.pointTo.arrivalDateLocal)}}</view>
+            <view class="rails">{{item.transportation.vehicle.vehicleName}}</view>
+            <view class="timeContainer" style="margin-top: 10rpx;">{{filters.fmtDate(item.pointTo.arrivalDate)}} {{filters.weekday(item.pointTo.arrivalDate)}}</view>
           </view>
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
