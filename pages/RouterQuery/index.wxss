@@ -225,7 +225,7 @@ page {
 }
 
 .historyContainers .result .oneResult {
-  padding: 10rpx 75rpx 10rpx 30rpx;
+  padding: 10rpx 50rpx 10rpx 20rpx;
   font-size: 24rpx;
   color: #626262;
   position: relative;
@@ -242,7 +242,7 @@ page {
   align-items: center;
   position: absolute;
   top: 0;
-  right: 20rpx;
+  right: 0;
 }
 
 .historyContainers .result .oneResult .oneDelete image {
