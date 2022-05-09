@@ -66,15 +66,14 @@ page{
 /* 结果查询 */
 .searchResultContainers {
   width: 100%;
-  padding: 34rpx 0 0 48rpx;
   background-color: #ffffff;  
   margin: 30rpx 0 24rpx;
 }
 .searchResultContainers .searchResultContainer {
-  background: url(https://mmbiz.qpic.cn/mmbiz_png/HR3PlALDED2iaALibNMDoO1XPsH1LpS8YxOcCr73AJFu4lPA25l5BwxbCJU3XhssulDJUbdclgoWPCpSAfzcUEFw/0?wx_fmt=png) no-repeat;
+  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/huowuzhuizong.png) no-repeat;
   background-position: bottom right;
-  background-size: auto 230rpx;
-  padding-bottom: 30rpx;
+  background-size: auto 100%;
+  padding: 34rpx 0 30rpx 48rpx;
 }
 
 .searchResultContainers .searchResultContainer .resTitle {

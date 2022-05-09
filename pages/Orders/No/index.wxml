@@ -11,7 +11,7 @@
   </view>
 </view>
 <view class="noOrderData">
-  <image src="https://mmbiz.qpic.cn/mmbiz_png/HR3PlALDED2iaALibNMDoO1XPsH1LpS8YxuicZ5ZXxCcO0NSFuMYSSK410pxmyGusoY8fDS7YjeVwcVcwWCfrARew/0?wx_fmt=png"></image>
+  <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/noData.png"></image>
   <view>{{languageContent.noData}}</view>
   <view class="noDataDesc">{{languageContent.noDataDesc}}</view>
 </view>
