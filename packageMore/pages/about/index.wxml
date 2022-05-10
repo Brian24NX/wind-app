@@ -14,6 +14,6 @@
   <view class="oneDuan">Through the CMA CGM Foundation, every year the Group helps thousands of children through its actions to promote education for all and equal opportunity. The CMA CGM Foundation also acts in humanitarian crises that require an emergency response by mobilizing the Group’s shipping and logistics expertise to bring humanitarian supplies around the world. </view>
   <view class="oneDuan">集团网络遍布全球各大洲，拥有超过400个办事机构和750个仓库，在世界160个国家拥有超过13万名员工，其中约2900人服务于马赛总部。</view>
   <view class="oneDuan">Present in 160 countries through its network of more than 400 offices and 750 warehouses, the Group employs more than 130,000 people worldwide, including 2,900 in Marseilles where its head office is located.</view>
-  <view class="oneDuan">欲知更多详情</view>
-  <view class="fot">请点击<text catchtap="copy" style="color: #E20202;">https://www.cma-cgm.com/about/the-group</text></view>
+  <view class="oneDuan">欲知更多详情请点击</view>
+  <view class="fot"><text catchtap="copy" style="color: #E20202;">https://www.cma-cgm.com/about/the-group</text></view>
 </view>

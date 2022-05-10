@@ -21,7 +21,7 @@
       <view class="ones">
         <image src="/assets/img/more/callme@2x.png"></image>
         <view class="oneContent">
-          <view>周一到周五<text style="margin-left: 30rpx;">{{item.dutyTime}}</text></view>
+          <view>{{item.dutyDate}}<text style="margin-left: 30rpx;">{{item.dutyTime}}</text></view>
           <view catchtap="callme" data-phone="{{item.phone}}">{{languageContent.phone}}：{{item.phone}}</view>
         </view>
       </view>

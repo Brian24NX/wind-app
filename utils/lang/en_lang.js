@@ -242,6 +242,9 @@ var Languague = {
       confirm: 'confirm',
       cancel: 'cancel'
     },
+    copyInfo: {
+      success: '已复制，请前往浏览器打开'
+    },
     load: {
       //努力加载中
       loading: "Loading...",

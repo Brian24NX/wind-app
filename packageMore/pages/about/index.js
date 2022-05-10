@@ -23,7 +23,7 @@ Page({
       data: 'https://www.cma-cgm.com/about/the-group',
       success() {
         wx.showToast({
-          title: '已复制，请前往浏览器打开',
+          title: languageUtil.languageVersion().lang.page.copyInfo.success,
           icon: 'none'
         })
       }
