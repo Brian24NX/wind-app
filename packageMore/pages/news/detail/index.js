@@ -1,6 +1,7 @@
 // packageMore/pages/news/detail/index.js
 import {
-  newsDetail
+  newsDetail,
+  newsLike
 } from '../../../api/modules/more';
 import languageUtils from '../../../../utils/languageUtils';
 const languageUtil = require('../../../../utils/languageUtils')
@@ -12,6 +13,7 @@ Page({
   data: {
     id: '',
     language: 'zh',
+    zanStatus: false,
     newsDetail: {}
   },
 
@@ -35,6 +37,16 @@ Page({
       // console.log(res)
       this.setData({
         newsDetail: res.data
+      })
+    })
+  },
+
+  // 赞
+  zan() {
+    if (this.data.zanStatus) return
+    newsLike({id: this.data.id}).then(res=>{
+      this.setData({
+        zanStatus: true
       })
     })
   }

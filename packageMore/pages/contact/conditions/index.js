@@ -28,6 +28,7 @@ Page({
     accountName: '',
     tradeName: '',
     trade: '',
+    defaultIndex: 0,
     showRemind1: false,
     showRemind2: false,
     showRemind3: false,
@@ -99,6 +100,7 @@ Page({
     const type = e.currentTarget.dataset.type
     this.setData({
       currentType: type,
+      defaultIndex: type === '1' ? this.data.officeList.findIndex(i => i.key === this.data.office) : type === '2' ? this.data.businessScopeList.findIndex(i => i.key === this.data.businessType) : this.data.contactTradeList.findIndex(i => i.tradeKey === this.data.trade),
       valueKey: type === '3' ? 'trade' : type === '1' ? 'value' : this.data.language === 'en' ? 'value' : 'valueCn',
       columns: type === '1' ? this.data.officeList : type === '2' ? this.data.businessScopeList : type === '3' ? this.data.contactTradeList : [],
       showPopup: true

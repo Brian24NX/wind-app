@@ -24,18 +24,39 @@ Component({
   },
 
   data: {
-    languageContent: languageUtil.languageVersion().lang.page.popupBtn
+    languageContent: languageUtil.languageVersion().lang.page.popupBtn,
+    value: [],
+    showPicker: false
+  },
+
+  observers: {
+    showPopup(newValue) {
+      if (newValue) {
+        this.setData({
+          value: [this.data.defaultIndex],
+          showPicker: true
+        })
+      }
+    }
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    bindChange(e) {
+      this.setData({
+        value: e.detail.value
+      })
+    },
     onClose() {
+      this.setData({
+        showPicker: false
+      })
       this.triggerEvent('onClose')
     },
-    onConfirm(e) {
-      this.triggerEvent('onConfirm', e.detail.value)
+    onConfirm() {
+      this.triggerEvent('onConfirm', this.data.columns[this.data.value[0]])
     }
   }
 })

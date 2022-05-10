@@ -17,6 +17,11 @@ export const newsDetail = (params) => {
   return getRequest('/api/miniapp/newsDetail', params)
 }
 
+// 新闻点赞
+export const newsLike = (params) => {
+  return getRequest('/api/miniapp/newsLikeCount', params)
+}
+
 // 获取CMA CGM列表数据
 export const cmaNewsList = (params) => {
   return getRequest('/api/miniapp/cmaNewsList', params, true)

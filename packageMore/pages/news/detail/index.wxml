@@ -5,7 +5,7 @@
   <view class="newsTitle">{{newsDetail.title}}</view>
   <view class="newsTime">
     <view>{{language === 'zh' ? format.formatCnDate(newsDetail.publishDate || newsDetail.createTime) : format.formatEnDate(newsDetail.publishDate || newsDetail.createTime)}}</view>
-    <image src="/assets/img/more/dianzan_1@2x.png"></image>
+    <image catchtap="zan" src="{{zanStatus ? '/assets/img/more/dianzan_2@2x.png' : '/assets/img/more/dianzan_1@2x.png'}}"></image>
   </view>
   <rich-text nodes="{{newsDetail.content}}"></rich-text>
 </view>

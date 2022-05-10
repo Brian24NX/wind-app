@@ -67,4 +67,4 @@
   </view>
 </view>
 
-<custom-picker columns="{{columns}}" valueKey="{{valueKey}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
+<custom-picker columns="{{columns}}" valueKey="{{valueKey}}" showPopup="{{showPopup}}" defaultIndex="{{defaultIndex}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>

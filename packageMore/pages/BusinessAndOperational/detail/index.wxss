@@ -35,7 +35,7 @@
 
 .businessDetails .fileLists {
   border: 1rpx solid #CFD2DA;
-  padding: 10rpx 46rpx 10rpx 20rpx;
+  padding: 18rpx 46rpx 18rpx 30rpx;
   margin-top: 30rpx;
   display: flex;
   align-items: center;
@@ -43,8 +43,8 @@
 }
 
 .businessDetails .fileLists .fileIcon {
-  width: 128rpx;
-  height: 128rpx;
+  width: 104rpx;
+  height: 112rpx;
 }
 
 .businessDetails .fileLists .fileCenter {
