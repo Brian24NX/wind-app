@@ -88,7 +88,8 @@ var Languague = {
       callMe: 'Contact Us'
     },
     khtg: {
-      topTitle: 'Business & Operational Update'
+      topTitle: 'Business & Operational Update',
+      send: 'Send Email'
     },
     newsCenter: {
       title: 'News Center',
@@ -256,7 +257,15 @@ var Languague = {
       // 系统繁忙,请稍后重试
       systemIsBusyNow: "System is busy now, please try again later ",
       // 暂无更多数据
-      noMoreData: 'No more data available'
+      noMoreData: 'No more data available',
+      // 发送中
+      send: 'Sending...',
+      sendSuccess: 'Send successfully, please go to mailbox to check'
+    },
+    email: {
+      title: 'Email Address',
+      exprise: 'Please enter the correct recipient email address',
+      send: 'Send'
     }
   },
 

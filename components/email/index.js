@@ -1,4 +1,5 @@
 // pages/Orders/email/index.js
+const languageUtil = require('../../utils/languageUtils')
 Component({
   /**
    * 组件的属性列表
@@ -13,8 +14,15 @@ Component({
    * 组件的初始数据
    */
   data: {
+    languageContent: {},
     receiveMailAccount: '',
     showRemind: false
+  },
+
+  attached() {
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.email
+    })
   },
 
   /**

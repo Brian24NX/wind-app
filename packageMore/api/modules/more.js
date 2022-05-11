@@ -42,6 +42,11 @@ export const businiessOpentionalDetail = (params) => {
   return getRequest('/api/miniapp/businiessOpentionalDetail', params)
 }
 
+// 发送Email
+export const sendEmail = (params) => {
+  return getRequest('', params, true)
+}
+
 // 字典列表
 export const dictList = (params) => {
   return getRequest('/api/miniapp/dictItem', params, true)

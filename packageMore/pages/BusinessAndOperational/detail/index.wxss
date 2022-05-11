@@ -48,7 +48,7 @@
 }
 
 .businessDetails .fileLists .fileCenter {
-  width: 390rpx;
+  width: 430rpx;
   font-size: 28rpx;
   color: #6B7790;
 }
@@ -60,8 +60,8 @@
   color: #071E5D;
   margin-bottom: 10rpx;
 }
-
+/* 
 .businessDetails .fileLists .downloadIcon {
   width: 40rpx;
   height: 40rpx;
-}
+} */

@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "",
-  "usingComponents": {}
+  "usingComponents": {
+    "email": "../../../../components/email/index"
+  }
 }

@@ -15,7 +15,9 @@
     <image src="/assets/img/more/pdf@2x.png" class="fileIcon"></image>
     <view class="fileCenter">
       <view>{{businessDetail.fileName}}</view>
+      <view catchtap="download">{{languageContent.send}}</view>
     </view>
-    <image class="downloadIcon" catchtap="download" src="/assets/img/more/download@2x.png"></image>
+    <!-- <image class="downloadIcon" catchtap="download" src="/assets/img/more/download@2x.png"></image> -->
   </view>
 </view>
+<email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

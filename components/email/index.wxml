@@ -1,0 +1,14 @@
+<!--pages/Orders/email/index.wxml-->
+<view class="emailContainers">
+  <view class="emailContainer">
+    <view class="emailTops">
+      <view>{{languageContent.title}}</view>
+      <view class="closeIcon" catchtap="closeEmail">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+    <input type="text" bindinput="setEmail" class="emailInput" placeholder="{{languageContent.title}}" placeholder-class="placeholder" value="{{receiveMailAccount}}" />
+    <view class="noRequest" wx:if="{{showRemind}}">{{languageContent.exprise}}</view>
+    <button class="sendBtn" hover-class="hoverClass" catchtap="sendEmail">{{languageContent.send}}</button>
+  </view>
+</view>

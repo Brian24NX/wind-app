@@ -62,6 +62,7 @@
 .emailContainers .emailContainer .placeholder {
   color: #B9BFCA;
   font-size: 28rpx;
+  font-style: italic;
 }
 
 .emailContainers .emailContainer .sendBtn {

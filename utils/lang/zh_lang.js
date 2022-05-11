@@ -89,7 +89,8 @@ var Languague = {
       callMe: '联系我们'
     },
     khtg: {
-      topTitle: '业务及运营\n信息更新'
+      topTitle: '业务及运营\n信息更新',
+      send: '发送至邮箱'
     },
     newsCenter: {
       title: '新闻中心',
@@ -257,7 +258,15 @@ var Languague = {
       // 系统繁忙,请稍后重试
       systemIsBusyNow: "系统繁忙,请稍后重试",
       // 暂无更多数据
-      noMoreData: '暂无更多数据'
+      noMoreData: '暂无更多数据',
+      // 发送中
+      send: '发送中...',
+      sendSuccess: '发送成功，请前往邮箱查看'
+    },
+    email: {
+      title: '请输入收件人邮箱',
+      exprise: '请输入正确的邮箱地址',
+      send: '发送'
     }
   },
 
