@@ -35,7 +35,7 @@
 
 .businessDetails .fileLists {
   border: 1rpx solid #CFD2DA;
-  padding: 18rpx 46rpx 18rpx 30rpx;
+  padding: 18rpx 30rpx;
   margin-top: 30rpx;
   display: flex;
   align-items: center;
@@ -59,6 +59,7 @@
   font-weight: 500;
   color: #071E5D;
   margin-bottom: 10rpx;
+  word-break: break-all;
 }
 /* 
 .businessDetails .fileLists .downloadIcon {

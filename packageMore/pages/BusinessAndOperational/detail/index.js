@@ -39,7 +39,9 @@ Page({
     }).then(res => {
       res.data.formatDate = dayjs(res.data.publishDate).format('YYYY-MM-DD')
       if (res.data.filepath) {
-        res.data.fileName = res.data.filepath.split('/')[res.data.filepath.split('/').length - 1]
+        const name = res.data.filepath.split('/')[res.data.filepath.split('/').length - 1]
+        const index = name.indexOf('_') > -1 ? name.indexOf('_') : 0
+        res.data.fileName = name.substr(index + 1)
         res.data.fileType = res.data.filepath.split('.')[res.data.filepath.split('.').length - 1]
       }
       this.setData({
