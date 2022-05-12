@@ -1,5 +1,5 @@
 const {
-  getRequest
+  getRequest, postRequest
 } = require('../../../api/http')
 
 // 获取列表
@@ -44,7 +44,7 @@ export const businiessOpentionalDetail = (params) => {
 
 // 发送Email
 export const sendEmail = (params) => {
-  return getRequest('', params, true)
+  return postRequest('/api/miniapp/businiessSendEmail', params, true, true)
 }
 
 // 字典列表

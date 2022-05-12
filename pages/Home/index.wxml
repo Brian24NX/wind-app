@@ -19,7 +19,10 @@
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
       </view>
-      <view class="noRequest" wx:if="{{showRemind}}">{{huiguiType === 1 ? verifyInfo.required : huiguiType === 2 ? verifyInfo.gswx : huiguiType === 3 ? verifyInfo.more3 : verifyInfo.chongfu}}</view>
+      <view class="noRequest" wx:if="{{showRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{huiguiType === 1 ? verifyInfo.required : huiguiType === 2 ? verifyInfo.gswx : huiguiType === 3 ? verifyInfo.more3 : verifyInfo.chongfu}}</text>
+      </view>
       <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">{{languageContent.goods}}</button>
       <view class="reminds">{{languageContent.tips}}</view>
 
@@ -38,8 +41,14 @@
           <view class="oneXiala" wx:for="{{codePolList}}" wx:key="index" bindtap='changepolname' data-index="{{index}}">{{item.point}}</view>
         </view>
       </view>
-      <view class="noRequest" wx:if="{{showRemind2}}">{{verifyInfo.required}}</view>
-      <view class="noRequest" wx:if="{{showRemind5}}">{{verifyInfo.gswx}}</view>
+      <view class="noRequest" wx:if="{{showRemind2}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+      <view class="noRequest" wx:if="{{showRemind5}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.gswx}}</text>
+      </view>
       <view class="serchTitle mt20">{{languageContent.xhg}}</view>
       <view class="xialaInput">
         <view class="inputs {{showRemind3||showRemind4 ? 'noRequestBorder' : ''}}">
@@ -52,8 +61,14 @@
           <view class="oneXiala" wx:for="{{codePodList}}" wx:key="index" bindtap='changepodname' data-index="{{index}}">{{item.point}}</view>
         </view>
       </view>
-      <view class="noRequest" wx:if="{{showRemind3}}">{{verifyInfo.required}}</view>
-      <view class="noRequest" wx:if="{{showRemind4}}">{{verifyInfo.gswx}}</view>
+      <view class="noRequest" wx:if="{{showRemind3}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+      <view class="noRequest" wx:if="{{showRemind4}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.gswx}}</text>
+      </view>
       <button class="searchBtn" hover-class="hoverClass" bindtap="toChuanQi">{{languageContent.scheduleBtn}}</button>
       <view class="searchBtn2" bindtap="toAdvancedSearch">{{languageContent.advancedBtn}}</view>
     </view>

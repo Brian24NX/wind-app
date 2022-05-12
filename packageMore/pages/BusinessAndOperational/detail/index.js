@@ -4,6 +4,7 @@ import {
   sendEmail
 } from '../../../api/modules/more';
 const languageUtil = require('../../../../utils/languageUtils')
+const config = require('../../../../config/config')
 const dayjs = require('dayjs')
 Page({
 
@@ -39,10 +40,15 @@ Page({
     }).then(res => {
       res.data.formatDate = dayjs(res.data.publishDate).format('YYYY-MM-DD')
       if (res.data.filepath) {
-        const name = res.data.filepath.split('/')[res.data.filepath.split('/').length - 1]
+        const name = res.data.filepath.split('wind/')[1]
         const index = name.indexOf('_') > -1 ? name.indexOf('_') : 0
         res.data.fileName = name.substr(index + 1)
         res.data.fileType = res.data.filepath.split('.')[res.data.filepath.split('.').length - 1]
+        res.data.filepath = config[config.dev_env].fileUrl + res.data.filepath
+        res.data.emailPath = res.data.filepath.split('wind/')[1]
+      }
+      if (res.data.content) {
+        res.data.content = res.data.content.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('\n', '<br>').replaceAll('↵', '<br>')
       }
       this.setData({
         businessDetail: res.data
@@ -52,12 +58,14 @@ Page({
 
   // 预览
   preview() {
-    if (this.data.businessDetail.fileType === 'png' || this.data.businessDetail.fileType === 'jpg' || this.data.businessDetail.fileType === 'jpeg' || this.data.businessDetail.fileType === 'gif') {
+    const imageType = ['png', 'jpg', 'jpeg', 'git']
+    const fileType = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf']
+    if (imageType.findIndex(this.data.businessDetail.fileType) > -1) {
       wx.previewImage({
         urls: [this.data.businessDetail.filepath],
         current: 0
       })
-    } else {
+    } else if (fileType.findIndex(this.data.businessDetail.fileType) > -1) {
       wx.downloadFile({
         url: this.data.businessDetail.filepath,
         success(filePath) {
@@ -66,6 +74,11 @@ Page({
             showMenu: true
           })
         }
+      })
+    } else {
+      wx.showToast({
+        title: '暂不支持此种类型文件的预览',
+        icon: 'none'
       })
     }
   },
@@ -87,8 +100,7 @@ Page({
       mask: true
     })
     sendEmail({
-      path: this.data.businessDetail.filepath,
-      // shipmentRef: this.data.detail.id,
+      fileName: this.data.businessDetail.emailPath,
       receiveMailAccount: e.detail
     }).then(() => {
       wx.showToast({

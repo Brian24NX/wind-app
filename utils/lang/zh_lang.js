@@ -107,7 +107,8 @@ var Languague = {
       hangxian: '请选择您需要咨询的航线',
       dingdan: '请输入订单号',
       accountName: '公司名称',
-      submitBtn: '提交并获取联系信息'
+      submitBtn: '提交并获取联系信息',
+      noOrder: '无法找到相关订舱号，请提供更多信息'
     },
     callMeResult: {
       fuwu: '客户服务',

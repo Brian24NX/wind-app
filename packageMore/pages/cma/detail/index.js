@@ -1,5 +1,9 @@
 // packageMore/pages/cma/detail/index.js
-import {cmaNewsDetail} from '../../../api/modules/more'
+import {
+  cmaNewsDetail,
+  newsLike
+} from '../../../api/modules/more'
+const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
   /**
@@ -7,7 +11,9 @@ Page({
    */
   data: {
     id: '',
-    url: ''
+    language: 'zh',
+    zanStatus: false,
+    newsDetail: {}
   },
 
   /**
@@ -15,15 +21,33 @@ Page({
    */
   onLoad(options) {
     this.setData({
-      id: options.id
+      id: options.id,
+      language: languageUtil.languageVersion().lang.page.langue
     })
     this.getDetail()
   },
   // 获取详情
   getDetail() {
-    cmaNewsDetail({id: this.data.id}).then(res=>{
+    cmaNewsDetail({
+      id: this.data.id
+    }).then(res => {
+      if (res.data.content) {
+        res.data.content = res.data.content.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('\n', '<br>').replaceAll('↵', '<br>')
+      }
       this.setData({
-        url: res.data.originalLink
+        newsDetail: res.data
+      })
+    })
+  },
+
+  // 赞
+  zan() {
+    if (this.data.zanStatus) return
+    newsLike({
+      id: this.data.id
+    }).then(res => {
+      this.setData({
+        zanStatus: true
       })
     })
   }

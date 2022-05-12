@@ -3,7 +3,6 @@ import {
   newsDetail,
   newsLike
 } from '../../../api/modules/more';
-import languageUtils from '../../../../utils/languageUtils';
 const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
@@ -26,7 +25,7 @@ Page({
     })
     this.setData({
       id: options.id,
-      language: languageUtils.languageVersion().lang.page.langue
+      language: languageUtil.languageVersion().lang.page.langue
     })
     this.getNewsDetail()
   },
@@ -35,6 +34,9 @@ Page({
   getNewsDetail() {
     newsDetail({id: this.data.id}).then(res=>{
       // console.log(res)
+      if (res.data.content) {
+        res.data.content = res.data.content.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('\n', '<br>').replaceAll('↵', '<br>')
+      }
       this.setData({
         newsDetail: res.data
       })

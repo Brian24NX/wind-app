@@ -11,17 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    canProvide: true,
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navObj,
-    canProvide: true,
-    office: '',
-    businessType: '',
-    trade: '',
-    accountName: '',
-    bookingReference: '',
     languageContent: {},
-    loading: true,
     contractList: []
   },
 
@@ -34,14 +26,8 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({
-      canProvide: data.canProvide,
-      bookingReference: data.bookingReference,
-      office: data.office,
-      businessType: data.businessType,
-      trade: data.trade,
-      accountName: data.accountName
+      contractList: data.contractList
     })
-    this.getContractInfo()
   },
 
   initLanguage() {
@@ -49,38 +35,6 @@ Page({
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.callMeResult
     })
-  },
-
-  getContractInfo() {
-    this.setData({
-      loading: true,
-      contractList: []
-    })
-    if (this.data.canProvide) {
-      contractInfoByOrderId({
-        bookingReference: this.data.bookingReference,
-        office: this.data.office,
-        businessType: this.data.businessType,
-      }).then(res => {
-        this.setData({
-          contractList: res.data,
-          loading: false
-        })
-      })
-    } else {
-      contractInfo({
-        office: this.data.office,
-        businessType: this.data.businessType,
-        trade: this.data.trade,
-        accountName: this.data.accountName
-      }).then(res => {
-        this.setData({
-          contractList: res.data,
-          loading: false
-        })
-      })
-    }
-    
   },
 
   // 返回

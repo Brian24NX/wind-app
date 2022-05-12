@@ -107,6 +107,7 @@ var Languague = {
       hangxian: 'What trade or cargo you want to inquire about?',
       accountName: 'Account Name',
       submitBtn: 'Submit and Obtain Contact Information',
+      noOrder: 'Unable to find the relevant booking number, please provide more information'
     },
     callMeResult: {
       fuwu: 'Customer Service',

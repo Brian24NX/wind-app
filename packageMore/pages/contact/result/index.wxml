@@ -34,5 +34,5 @@
       </view>
     </view>
   </view>
-  <text class="noContact" wx:if="{{!contractList.length && !loading}}">{{languageContent.noContact}}</text>
+  <text class="noContact" wx:if="{{!contractList.length}}">{{languageContent.noContact}}</text>
 </view>

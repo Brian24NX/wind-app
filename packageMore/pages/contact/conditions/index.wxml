@@ -10,7 +10,10 @@
         <view style="{{office ? 'color: #071E5D;' : ''}}">{{officeName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
-      <view class="noRequest" wx:if="{{showRemind1}}">{{verifyInfo.required}}</view>
+      <view class="noRequest" wx:if="{{showRemind1}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
     </view>
     <view class="oneBlock">
       <view class="contactTitle">{{languageContent.businessType}}</view>
@@ -18,7 +21,10 @@
         <view style="{{businessType ? 'color: #071E5D;' : ''}}">{{businessTypeName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
-      <view class="noRequest" wx:if="{{showRemind2}}">{{verifyInfo.required}}</view>
+      <view class="noRequest" wx:if="{{showRemind2}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
     </view>
     <view class="oneBlock">
       <view class="contactTitle">{{languageContent.tigong}}</view>
@@ -46,7 +52,10 @@
           <view style="{{trade ? 'color: #071E5D;' : ''}}">{{tradeName || verifyInfo.select}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
-        <view class="noRequest" wx:if="{{showRemind3}}">{{verifyInfo.required}}</view>
+        <view class="noRequest" wx:if="{{showRemind3}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
       </view>
       <view class="oneBlock">
         <view class="contactTitle">{{languageContent.accountName}}</view>
@@ -60,7 +69,10 @@
         <view class="selectContainer">
           <input type="text" bindinput="setBookingReference" placeholder="{{languageContent.dingdan}}" placeholder-class="placeholder" />
         </view>
-        <view class="noRequest" wx:if="{{showRemind4}}">{{verifyInfo.required}}</view>
+        <view class="noRequest" wx:if="{{showRemind4}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
       </view>
     </block>
     <button class="submitBtn" hover-class="submitHover" catchtap="searchResult">{{languageContent.submitBtn}}</button>

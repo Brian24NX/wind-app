@@ -45,6 +45,8 @@ const request = ({
               })
             }
             reject(res.data)
+          } else if (res.data.code == 404) {
+            reject(res.data)
           } else {
             if (!hideLoading) {
               wx.showToast({

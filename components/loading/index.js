@@ -19,7 +19,13 @@ Component({
    * 组件的初始数据
    */
   data: {
-    loadContent: languageUtil.languageVersion().lang.page.load
+    loadContent: {}
+  },
+
+  attached() {
+    this.setData({
+      loadContent: languageUtil.languageVersion().lang.page.load
+    })
   },
 
   /**

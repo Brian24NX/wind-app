@@ -1,7 +1,9 @@
 // packageMore/pages/contact/conditions/index.js
 import {
   dictList,
-  contactTradeList
+  contactTradeList,
+  contractInfo,
+  contractInfoByOrderId
 } from '../../../api/modules/more';
 const languageUtil = require('../../../../utils/languageUtils')
 Page({
@@ -32,7 +34,8 @@ Page({
     showRemind1: false,
     showRemind2: false,
     showRemind3: false,
-    showRemind4: false
+    showRemind4: false,
+    contractList: []
   },
 
   /**
@@ -98,9 +101,10 @@ Page({
 
   openPopup(e) {
     const type = e.currentTarget.dataset.type
+    const defaultIndex = type === '1' ? this.data.officeList.findIndex(i => i.key === this.data.office) : type === '2' ? this.data.businessScopeList.findIndex(i => i.key === this.data.businessType) : this.data.contactTradeList.findIndex(i => i.tradeKey === this.data.trade)
     this.setData({
       currentType: type,
-      defaultIndex: type === '1' ? this.data.officeList.findIndex(i => i.key === this.data.office) : type === '2' ? this.data.businessScopeList.findIndex(i => i.key === this.data.businessType) : this.data.contactTradeList.findIndex(i => i.tradeKey === this.data.trade),
+      defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
       valueKey: type === '3' ? 'trade' : type === '1' ? 'value' : this.data.language === 'en' ? 'value' : 'valueCn',
       columns: type === '1' ? this.data.officeList : type === '2' ? this.data.businessScopeList : type === '3' ? this.data.contactTradeList : [],
       showPopup: true
@@ -211,8 +215,56 @@ Page({
     }
 
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
-    wx.navigateTo({
-      url: '/packageMore/pages/contact/result/index',
+    this.getContractInfo()
+  },
+
+  getContractInfo() {
+    this.setData({
+      loading: true,
+      contractList: []
     })
-  }
+    if (this.data.canProvide) {
+      contractInfoByOrderId({
+        bookingReference: this.data.bookingReference,
+        office: this.data.office,
+        businessType: this.data.businessType,
+      }).then(res => {
+        console.log(res)
+        if (res.data.length) {
+          this.setData({
+            contractList: res.data
+          })
+          wx.navigateTo({
+            url: '/packageMore/pages/contact/result/index',
+          })
+        } else {
+          
+        }
+      }, err=>{
+        wx.showToast({
+          title: languageUtil.languageVersion().lang.page.callMe.noOrder,
+          icon: 'none',
+          duration: 5000
+        })
+        this.setData({
+          canProvide: false
+        })
+      })
+    } else {
+      contractInfo({
+        office: this.data.office,
+        businessType: this.data.businessType,
+        trade: this.data.trade,
+        accountName: this.data.accountName
+      }).then(res => {
+        this.setData({
+          contractList: res.data
+        })
+        wx.navigateTo({
+          url: '/packageMore/pages/contact/result/index',
+        })
+      })
+    }
+
+  },
 })
