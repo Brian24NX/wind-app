@@ -99,14 +99,14 @@ var Languague = {
     },
     callMe: {
       topTitle: '业务咨询',
-      bsc: '请选择您准备联系的本地办事处',
+      bsc: '请选择您需要联系的本地办事处',
       businessType: '请选择您需要咨询的业务类型',
       tigong: '请问您是否可以提供订舱信息？',
       yes: '是',
       no: '否',
       hangxian: '请选择您需要咨询的航线',
       dingdan: '请输入订单号',
-      accountName: '公司名称',
+      accountName: '请填写您所在的公司名称',
       submitBtn: '提交并获取联系信息',
       noOrder: '无法找到相关订舱号，请提供更多信息'
     },
@@ -114,7 +114,7 @@ var Languague = {
       fuwu: '客户服务',
       phone: '联系方式',
       email: '邮箱地址',
-      noContact: '无相应联系信息，请修改搜索条件'
+      noContact: '未查询到相关订舱号，请提供更多信息'
     },
     // 查询
     queryInfo: {
@@ -265,7 +265,7 @@ var Languague = {
       sendSuccess: '发送成功，请前往邮箱查看'
     },
     email: {
-      title: '请输入收件人邮箱',
+      title: '请输入邮箱地址',
       exprise: '请输入正确的邮箱地址',
       send: '发送'
     }

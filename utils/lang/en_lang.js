@@ -98,14 +98,14 @@ var Languague = {
     },
     callMe: {
       topTitle: 'I HAVE A QUESTION',
-      bsc: 'Choose a local office you want to be in contact with',
+      bsc: 'Choose a local office you need to be in contact with',
       businessType: 'What kind of business you want to inquire about?',
       tigong: 'Do you have the booking reference information to provide?',
       yes: 'YES',
       no: 'NO',
       dingdan: 'Booking reference',
       hangxian: 'What trade or cargo you want to inquire about?',
-      accountName: 'Account Name',
+      accountName: 'Please input your account name',
       submitBtn: 'Submit and Obtain Contact Information',
       noOrder: 'Unable to find the relevant booking number, please provide more information'
     },
@@ -113,7 +113,7 @@ var Languague = {
       fuwu: 'Customer Service',
       phone: 'Phone',
       email: 'Email Address',
-      noContact: 'No relevant contact information,\n please amend your searching criteria.'
+      noContact: 'Unable to find the relevant booking number, please provide more information'
     },
     // 查询
     queryInfo: {
@@ -265,7 +265,7 @@ var Languague = {
     },
     email: {
       title: 'Email Address',
-      exprise: 'Please enter the correct recipient email address',
+      exprise: 'Please enter the correct email address',
       send: 'Send'
     }
   },

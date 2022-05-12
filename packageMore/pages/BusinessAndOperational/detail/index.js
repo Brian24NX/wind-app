@@ -59,13 +59,13 @@ Page({
   // 预览
   preview() {
     const imageType = ['png', 'jpg', 'jpeg', 'git']
-    const fileType = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf']
-    if (imageType.findIndex(this.data.businessDetail.fileType) > -1) {
+    const fileTypes = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf']
+    if (imageType.indexOf(this.data.businessDetail.fileType) > -1) {
       wx.previewImage({
         urls: [this.data.businessDetail.filepath],
         current: 0
       })
-    } else if (fileType.findIndex(this.data.businessDetail.fileType) > -1) {
+    } else if (fileTypes.indexOf(this.data.businessDetail.fileType) > -1) {
       wx.downloadFile({
         url: this.data.businessDetail.filepath,
         success(filePath) {

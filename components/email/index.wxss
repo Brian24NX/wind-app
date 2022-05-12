@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: space-between;
   color: #111111;
-  font-size: 36rpx;
+  font-size: 32rpx;
   padding: 0 30rpx 0 40rpx;
   border-bottom: 1rpx solid #DEDEDE;
 }
