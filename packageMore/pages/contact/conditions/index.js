@@ -84,7 +84,9 @@ Page({
 
   // 获取资讯航线
   getContactTradeList() {
-    contactTradeList().then(res => {
+    dictList({
+      dictName: 'dict_trade'
+    }).then(res => {
       this.setData({
         contactTradeList: res.data
       })
@@ -105,7 +107,7 @@ Page({
     this.setData({
       currentType: type,
       defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
-      valueKey: type === '3' ? 'trade' : type === '1' ? 'value' : this.data.language === 'en' ? 'value' : 'valueCn',
+      valueKey: type === '1' ? 'value' : this.data.language === 'en' ? 'value' : 'valueCn',
       columns: type === '1' ? this.data.officeList : type === '2' ? this.data.businessScopeList : type === '3' ? this.data.contactTradeList : [],
       showPopup: true
     })
@@ -139,8 +141,8 @@ Page({
         break;
       case '3':
         this.setData({
-          trade: detail.tradeKey,
-          tradeName: detail.trade,
+          trade: detail.key,
+          tradeName: this.data.language === 'en' ? detail.value : detail.valueCn,
           showRemind3: false
         })
         break;
