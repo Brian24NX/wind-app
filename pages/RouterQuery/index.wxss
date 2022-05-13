@@ -83,7 +83,7 @@ page {
 
 .queryContainer .searchList .noRequest {
   font-size: 24rpx;
-  color: #E10202;
+  color: #E2014B;
   position: absolute;
   left: 0;
   top: 90rpx;
@@ -191,7 +191,7 @@ page {
 }
 
 .noRequestBorder {
-  border: 2rpx solid #E10202;
+  border: 2rpx solid #E2014B !important;
 }
 
 .queryContainer .btn {
@@ -257,41 +257,3 @@ page {
   width: 24rpx;
   height: 24rpx;
 }
-
-/* .font12 {
-  font-size: 24rpx;
-  color: #626262;
-}
-
-.searchselect,
-.dateselect,
-.weekselect {
-  position: relative;
-  top: -40rpx;
-  left: -20rpx;
-}
-
-.dateselect{
-   top: 0rpx;
-}
-.searchselect{
-   top: -20rpx;
-}
-.pos {
-  position: relative;
-  top: -15rpx;
-  left: 70rpx;
-  margin-left: 0;
-}
-.noRequest{
-  font-size: 24rpx;
-  color: #E10202;
-  margin-left: 48rpx;
-}
-.van-tag--default {
-  --tag-default-color: #F0F1F5 !important;
-}
-
-.vant-tag {
-  color: #626262 !important;
-} */

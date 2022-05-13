@@ -123,12 +123,12 @@ page {
 }
 
 .homeContainer .searchContainers .searchContents .noRequestBorder {
-  border: 2rpx solid #E10202;
+  border: 2rpx solid #E2014B;
 }
 
 .homeContainer .searchContainers .searchContents .noRequest {
   font-size: 24rpx;
-  color: #E10202;
+  color: #E2014B;
   margin-top: 20rpx;
   margin-bottom: -10rpx;
   display: flex;

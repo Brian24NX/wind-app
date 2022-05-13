@@ -6,7 +6,7 @@
   <view class="blockContainer">
     <view class="oneBlock">
       <view class="contactTitle">{{languageContent.bsc}}</view>
-      <view class="selectContainer" catchtap="openPopup" data-type="1">
+      <view class="selectContainer {{showRemind1 ? 'noRequestContainer' : ''}}" catchtap="openPopup" data-type="1">
         <view style="{{office ? 'color: #071E5D;' : 'font-style: italic;'}}">{{officeName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
@@ -17,7 +17,7 @@
     </view>
     <view class="oneBlock">
       <view class="contactTitle">{{languageContent.businessType}}</view>
-      <view class="selectContainer" catchtap="openPopup" data-type="2">
+      <view class="selectContainer {{showRemind2 ? 'noRequestContainer' : ''}}" catchtap="openPopup" data-type="2">
         <view style="{{businessType ? 'color: #071E5D;' : 'font-style: italic;'}}">{{businessTypeName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
@@ -48,7 +48,7 @@
     <block wx:if="{{!canProvide}}">
       <view class="oneBlock">
         <view class="contactTitle">{{languageContent.hangxian}}</view>
-        <view class="selectContainer" catchtap="openPopup" data-type="3">
+        <view class="selectContainer {{showRemind3 ? 'noRequestContainer' : ''}}" catchtap="openPopup" data-type="3">
           <view style="{{trade ? 'color: #071E5D;' : 'font-style: italic;'}}">{{tradeName || verifyInfo.select}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
@@ -66,7 +66,7 @@
     </block>
     <block wx:else>
       <view class="oneBlock">
-        <view class="selectContainer">
+        <view class="selectContainer {{showRemind4 ? 'noRequestContainer' : ''}}">
           <input type="text" bindinput="setBookingReference" placeholder="{{languageContent.dingdan}}" placeholder-class="placeholder" />
         </view>
         <view class="noRequest" wx:if="{{showRemind4}}">

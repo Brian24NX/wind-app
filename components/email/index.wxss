@@ -54,7 +54,7 @@
 
 .emailContainers .emailContainer .noRequest {
   font-size: 24rpx;
-  color: #E10202;
+  color: #E2014B;
   margin-top: 20rpx;
   padding-left: 40rpx;
   display: flex;

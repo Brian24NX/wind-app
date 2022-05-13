@@ -56,6 +56,10 @@ page {
   font-size: 24rpx;
 }
 
+.contactContainer .blockContainer .oneBlock .noRequestContainer {
+  border-color: #E2014B;
+}
+
 .contactContainer .blockContainer .oneBlock .selectContainer view {
   width: 490rpx;
   display: inline-block;
@@ -78,7 +82,7 @@ page {
 
 .contactContainer .blockContainer .oneBlock .noRequest {
   font-size: 24rpx;
-  color: #E10202;
+  color: #E2014B;
   margin-top: 10rpx;
   display: flex;
   align-items: center;
