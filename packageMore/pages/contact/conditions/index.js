@@ -205,7 +205,7 @@ Page({
       this.setData({
         showRemind4: false
       })
-      if (!this.data.trade) {
+      if (this.data.trade === '') {
         this.setData({
           showRemind3: true
         })
