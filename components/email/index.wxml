@@ -8,7 +8,10 @@
       </view>
     </view>
     <input type="text" bindinput="setEmail" class="emailInput" placeholder="{{languageContent.title}}" placeholder-class="placeholder" value="{{receiveMailAccount}}" />
-    <view class="noRequest" wx:if="{{showRemind}}">{{languageContent.exprise}}</view>
+    <view class="noRequest" wx:if="{{showRemind}}">
+      <image src="/assets/img/search/error@2x.png"></image>
+      <text>{{languageContent.exprise}}</text>
+    </view>
     <button class="sendBtn" hover-class="hoverClass" catchtap="sendEmail">{{languageContent.send}}</button>
   </view>
 </view>

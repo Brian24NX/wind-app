@@ -57,6 +57,14 @@
   color: #E10202;
   margin-top: 20rpx;
   padding-left: 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.emailContainers .emailContainer .noRequest image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
 }
 
 .emailContainers .emailContainer .placeholder {

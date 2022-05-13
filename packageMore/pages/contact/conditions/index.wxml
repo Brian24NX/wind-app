@@ -7,7 +7,7 @@
     <view class="oneBlock">
       <view class="contactTitle">{{languageContent.bsc}}</view>
       <view class="selectContainer" catchtap="openPopup" data-type="1">
-        <view style="{{office ? 'color: #071E5D;' : ''}}">{{officeName || verifyInfo.select}}</view>
+        <view style="{{office ? 'color: #071E5D;' : 'font-style: italic;'}}">{{officeName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
       <view class="noRequest" wx:if="{{showRemind1}}">
@@ -18,7 +18,7 @@
     <view class="oneBlock">
       <view class="contactTitle">{{languageContent.businessType}}</view>
       <view class="selectContainer" catchtap="openPopup" data-type="2">
-        <view style="{{businessType ? 'color: #071E5D;' : ''}}">{{businessTypeName || verifyInfo.select}}</view>
+        <view style="{{businessType ? 'color: #071E5D;' : 'font-style: italic;'}}">{{businessTypeName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
       <view class="noRequest" wx:if="{{showRemind2}}">
@@ -49,7 +49,7 @@
       <view class="oneBlock">
         <view class="contactTitle">{{languageContent.hangxian}}</view>
         <view class="selectContainer" catchtap="openPopup" data-type="3">
-          <view style="{{trade ? 'color: #071E5D;' : ''}}">{{tradeName || verifyInfo.select}}</view>
+          <view style="{{trade ? 'color: #071E5D;' : 'font-style: italic;'}}">{{tradeName || verifyInfo.select}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
         <view class="noRequest" wx:if="{{showRemind3}}">

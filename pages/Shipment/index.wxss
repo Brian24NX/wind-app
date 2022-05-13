@@ -35,7 +35,6 @@ page {
 }
 
 .homeContainer .searchContainers .shipTitles .shipTitle text:nth-last-of-type(1) {
-  margin-left: 15rpx;
   color: #4468BA;
 }
 

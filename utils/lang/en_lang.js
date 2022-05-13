@@ -46,7 +46,7 @@ var Languague = {
       // 获取追踪
       TRACKING: 'TRACKING',
       chuanqi1: 'SHIPMENT',
-      chuanqi2: 'TRACKING',
+      chuanqi2: ' TRACKING',
       // 提示
       goodsRemind: 'Container, Bill of lading or Booking Number',
       //货物追踪按钮

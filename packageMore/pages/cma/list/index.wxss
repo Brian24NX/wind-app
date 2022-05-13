@@ -14,7 +14,7 @@ page {
   align-items: center;
   font-size: 64rpx;
   font-family: Antonio-Regular;
-  font-weight: 400;
+  font-weight: 600;
   color: #071E5D;
 }
 

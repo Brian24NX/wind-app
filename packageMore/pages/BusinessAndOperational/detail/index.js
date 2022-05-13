@@ -66,12 +66,25 @@ Page({
         current: 0
       })
     } else if (fileTypes.indexOf(this.data.businessDetail.fileType) > -1) {
+      wx.showLoading({
+        title: languageUtil.languageVersion().lang.page.load.loading,
+        mask: true
+      })
       wx.downloadFile({
         url: this.data.businessDetail.filepath,
         success(filePath) {
+          wx.hideLoading()
           wx.openDocument({
             filePath: filePath.tempFilePath,
             showMenu: true
+          })
+        },
+        fail(err) {
+          wx.hideLoading()
+          wx.showToast({
+            title: err.errMsg,
+            icon: 'none',
+            duration: 3000
           })
         }
       })

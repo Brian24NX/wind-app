@@ -18,7 +18,7 @@ page {
   align-items: center;
   font-size: 64rpx;
   font-family: Antonio-Regular;
-  font-weight: 400;
+  font-weight: 600;
   color: #071E5D;
 }
 
@@ -61,7 +61,7 @@ page {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 
 .contactContainer .blockContainer .oneBlock .selectContainer image {
@@ -128,6 +128,7 @@ page {
 
 .placeholder {
   color: #B9BFCA;
+  font-style: italic;
 }
 
 .contactContainer .blockContainer .submitBtn {
