@@ -114,7 +114,7 @@ var Languague = {
       fuwu: '客户服务',
       phone: '联系方式',
       email: '邮箱地址',
-      noContact: '未查询到相关订舱号，请提供更多信息'
+      noContact: '无相应联系信息，请修改搜索条件'
     },
     // 查询
     queryInfo: {

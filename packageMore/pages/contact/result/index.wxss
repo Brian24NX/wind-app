@@ -94,4 +94,5 @@ page {
   padding: 60rpx 100rpx 0;
   text-align: center;
   display: inline-block;
+  width: 100%;
 }

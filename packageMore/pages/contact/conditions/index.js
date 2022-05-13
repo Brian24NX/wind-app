@@ -244,7 +244,7 @@ Page({
         wx.showToast({
           title: languageUtil.languageVersion().lang.page.callMe.noOrder,
           icon: 'none',
-          duration: 5000
+          duration: 3000
         })
         this.setData({
           canProvide: false

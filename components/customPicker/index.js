@@ -24,9 +24,15 @@ Component({
   },
 
   data: {
-    languageContent: languageUtil.languageVersion().lang.page.popupBtn,
+    languageContent: {},
     value: [],
     showPicker: false
+  },
+
+  attached() {
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.popupBtn
+    })
   },
 
   observers: {

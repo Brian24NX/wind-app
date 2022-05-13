@@ -113,7 +113,7 @@ var Languague = {
       fuwu: 'Customer Service',
       phone: 'Phone',
       email: 'Email Address',
-      noContact: 'Unable to find the relevant booking number, please provide more information'
+      noContact: 'No relevant contact information,\n please amend your searching criteria.'
     },
     // 查询
     queryInfo: {
