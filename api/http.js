@@ -67,8 +67,15 @@ const request = ({
           reject(res.data)
         }
       },
-      fail: (res) => {
+      fail: (err) => {
         wx.hideLoading();
+        console.log(err)
+        if (err.errMsg === 'request:fail timeout') {
+          wx.showToast({
+            title: languageUtil.languageVersion().lang.page.load.chaoshi,
+            icon: 'none'
+          })
+        }
         // 返回错误提示信息
         reject('网络请求失败')
       },

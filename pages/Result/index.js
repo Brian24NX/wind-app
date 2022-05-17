@@ -243,12 +243,21 @@ Page({
       }]
     })
     console.log(this.data.routingLists)
-    this.setData({
-      currentPlan: this.data.planList.find(u => u.value).title,
-      routesPlanList: this.data.routingLists.find(u => u.id === this.data.planList.find(u => u.value).title).solutionServices,
-      plans: this.data.routingLists.find(u => u.id === this.data.planList.find(u => u.value).title).solutionServices,
-    })
-    this.sortData()
+    if (this.data.planList[0].value || this.data.planList[1].value || this.data.planList[2].value) {
+      this.setData({
+        currentPlan: this.data.planList.find(u => u.value).title,
+        routesPlanList: this.data.routingLists.find(u => u.id === this.data.planList.find(u => u.value).title).solutionServices,
+        plans: this.data.routingLists.find(u => u.id === this.data.planList.find(u => u.value).title).solutionServices,
+      })
+      this.sortData()
+    } else {
+      this.setData({
+        routinglist: [],
+        isLoading: false,
+        viewactived: false
+      })
+    }
+    
   },
 
   async getOneList() {
