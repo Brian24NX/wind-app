@@ -264,7 +264,8 @@ var Languague = {
       sendSuccess: 'Send successfully, please go to mailbox to check'
     },
     email: {
-      title: 'Email Address',
+      title: 'Recipient Email Address',
+      placeholder: 'Email Address',
       exprise: 'Please enter the correct email address',
       send: 'Send'
     }

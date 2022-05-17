@@ -62,6 +62,9 @@ Component({
       this.triggerEvent('onClose')
     },
     onConfirm() {
+      this.setData({
+        showPicker: false
+      })
       this.triggerEvent('onConfirm', this.data.columns[this.data.value[0]])
     }
   }

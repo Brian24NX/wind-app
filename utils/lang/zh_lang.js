@@ -105,7 +105,7 @@ var Languague = {
       yes: '是',
       no: '否',
       hangxian: '请选择您需要咨询的航线',
-      dingdan: '请输入订单号',
+      dingdan: '请输入订舱号',
       accountName: '请填写您所在的公司名称',
       submitBtn: '提交并获取联系信息',
       noOrder: '无法找到相关订舱号，请提供更多信息'
@@ -265,7 +265,8 @@ var Languague = {
       sendSuccess: '发送成功，请前往邮箱查看'
     },
     email: {
-      title: '请输入邮箱地址',
+      title: '请输入收件人邮箱',
+      placeholder: '邮箱地址',
       exprise: '请输入正确的邮箱地址',
       send: '发送'
     }

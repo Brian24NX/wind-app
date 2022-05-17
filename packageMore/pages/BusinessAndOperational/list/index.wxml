@@ -2,13 +2,13 @@
 <wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="businessContainer">
   <view class="topTitles">
-    <text class="topContainer">{{languageContent.topTitle}}</text>
+    <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400;'}}">{{languageContent.topTitle}}</text>
   </view>
   <view class="businessLists">
     <view class="businessList">
       <view class="oneBusiness" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
         <view class="businessTitle">{{item.title}}</view>
-        <view class="businessTime">{{language === 'zh' ? format.formatCnDate(item.publishDate) : format.formatEnDate(item.publishDate)}}</view>
+        <view class="businessTime">{{language === 'zh' ? format.formatCnDate2(item.publishDate) : format.formatEnDate2(item.publishDate)}}</view>
       </view>
     </view>
   <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>

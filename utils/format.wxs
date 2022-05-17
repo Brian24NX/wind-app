@@ -28,6 +28,34 @@ function formatCnDate(date, hideWeek) {
   return dt.getFullYear() + '-' + m[mn] + '-' + dn + (!hideWeek ? ' ' + week[wn] : '')
 }
 
+function formatEnDate2(date, fuhao, type, hideWeek) {
+  if(!date) return ''
+  var dt = getDate(date);
+  var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec"];
+  var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var weeks = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+  var mn = dt.getMonth(),
+  wn = dt.getDay(),
+  dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
+  var weekStr = (type === 'short' ? weeks[wn] : week[wn])
+  if (!fuhao) {
+    return (!hideWeek ? weekStr + ', ' : '') + m[mn] + " " + dn + ", " + dt.getFullYear()
+  } else {
+    return (!hideWeek ? weekStr + ', ' : '') + dn + fuhao + m[mn] + fuhao + dt.getFullYear()
+  }
+}
+
+function formatCnDate2(date, hideWeek) {
+  if(!date) return ''
+  var dt = getDate(date);
+  var m = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+  var week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+  var mn = dt.getMonth(),
+  wn = dt.getDay(),
+  dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
+  return dt.getFullYear() + '-' + m[mn] + '-' + dn + (!hideWeek ? ' ' + week[wn] : '')
+}
+
 var strSub = function (obj) {
   if (!obj) return ''
   return obj.substring(0, 2)
@@ -84,6 +112,8 @@ function getShopName(list) {
 module.exports = {
   formatEnDate: formatEnDate,
   formatCnDate: formatCnDate,
+  formatEnDate2: formatEnDate2,
+  formatCnDate2: formatCnDate2,
   strSub: strSub,
   checkIsVessel: checkIsVessel,
   checkQiYunGangKou: checkQiYunGangKou,
