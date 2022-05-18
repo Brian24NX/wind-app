@@ -52,7 +52,12 @@ export const dictList = (params) => {
   return getRequest('/api/miniapp/dictItem', params, true)
 }
 
-// 字典列表
+// 业务类型列表
+export const bussinessScopeList = (params) => {
+  return getRequest('/api/miniapp/contactBusinessTypeList', params, true)
+}
+
+// 航线列表
 export const contactTradeList = (params) => {
   return getRequest('/api/miniapp/contactTradeList', params, true)
 }

@@ -1,6 +1,7 @@
 // packageMore/pages/contact/conditions/index.js
 import {
   dictList,
+  bussinessScopeList,
   contactTradeList,
   contractInfo,
   contractInfoByOrderId
@@ -12,7 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    language: '',
+    language: 'zh',
     languageContent: {},
     verifyInfo: {},
     canProvide: true,
@@ -44,8 +45,6 @@ Page({
   onLoad() {
     this.initLanguage()
     this.getOfficeList()
-    this.getBussinessScopeList()
-    this.getContactTradeList()
   },
 
   initLanguage() {
@@ -73,8 +72,14 @@ Page({
 
   // 获取业务列表
   getBussinessScopeList() {
-    dictList({
-      dictName: 'dict_business_scope'
+    this.setData({
+      businessType: '',
+      businessTypeName: '',
+      trade: '',
+      tradeName: ''
+    })
+    bussinessScopeList({
+      officeKey: this.data.office
     }).then(res => {
       this.setData({
         businessScopeList: res.data
@@ -84,8 +89,13 @@ Page({
 
   // 获取资讯航线
   getContactTradeList() {
-    dictList({
-      dictName: 'dict_trade'
+    this.setData({
+      trade: '',
+      tradeName: ''
+    })
+    contactTradeList({
+      officeKey: this.data.office,
+      businessTypeKey: this.data.businessType
     }).then(res => {
       this.setData({
         contactTradeList: res.data
@@ -103,14 +113,34 @@ Page({
 
   openPopup(e) {
     const type = e.currentTarget.dataset.type
-    const defaultIndex = type === '1' ? this.data.officeList.findIndex(i => i.key === this.data.office) : type === '2' ? this.data.businessScopeList.findIndex(i => i.key === this.data.businessType) : this.data.contactTradeList.findIndex(i => i.tradeKey === this.data.trade)
-    this.setData({
-      currentType: type,
-      defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
-      valueKey: type === '1' ? 'value' : this.data.language === 'en' ? 'value' : 'valueCn',
-      columns: type === '1' ? this.data.officeList : type === '2' ? this.data.businessScopeList : type === '3' ? this.data.contactTradeList : [],
-      showPopup: true
-    })
+    if (type === '1') {
+      const defaultIndex = this.data.officeList.findIndex(i => i.key === this.data.office)
+      this.setData({
+        currentType: type,
+        defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
+        valueKey: 'value',
+        columns: this.data.officeList || [],
+        showPopup: true
+      })
+    } else if (type === '2') {
+      const defaultIndex = this.data.businessScopeList.findIndex(i => i.key === this.data.businessType)
+      this.setData({
+        currentType: type,
+        defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
+        valueKey: this.data.language === 'zh' ? 'businessName' : 'businessNameEn',
+        columns: this.data.businessScopeList || [],
+        showPopup: true
+      })
+    } else if (type === '3') {
+      const defaultIndex = this.data.contactTradeList.findIndex(i => i.tradeKey === this.data.trade)
+      this.setData({
+        currentType: type,
+        defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
+        valueKey: this.data.language === 'zh' ? 'tradeName' : 'tradeNameEn',
+        columns: this.data.contactTradeList || [],
+        showPopup: true
+      })
+    }
   },
 
   // 关闭弹框
@@ -131,18 +161,20 @@ Page({
           officeName: detail.value,
           showRemind1: false
         })
+        this.getBussinessScopeList()
         break;
       case '2':
         this.setData({
-          businessType: detail.key,
-          businessTypeName: this.data.language === 'en' ? detail.value : detail.valueCn,
+          businessType: detail.businessType,
+          businessTypeName: this.data.language === 'zh' ? detail.businessName : detail.businessNameEn,
           showRemind2: false
         })
+        this.getContactTradeList()
         break;
       case '3':
         this.setData({
-          trade: detail.key,
-          tradeName: this.data.language === 'en' ? detail.value : detail.valueCn,
+          trade: detail.trade,
+          tradeName: this.data.language === 'zh' ? detail.tradeName : detail.tradeNameEn,
           showRemind3: false
         })
         break;
@@ -240,9 +272,9 @@ Page({
             url: '/packageMore/pages/contact/result/index',
           })
         } else {
-          
+
         }
-      }, err=>{
+      }, err => {
         wx.showToast({
           title: languageUtil.languageVersion().lang.page.callMe.noOrder,
           icon: 'none',
@@ -267,6 +299,5 @@ Page({
         })
       })
     }
-
   },
 })
