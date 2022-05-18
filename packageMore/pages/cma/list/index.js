@@ -2,6 +2,7 @@
 import {
   cmaNewsList
 } from '../../../api/modules/more';
+const languageUtil = require('../../../../utils/languageUtils')
 const pageSize = 10;
 Page({
 
@@ -9,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
     list: [],
     loading: true,
     noMore: false,
@@ -20,6 +22,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.empty
+    })
     this.resetList()
   },
 
@@ -55,6 +60,9 @@ Page({
 
   // 获取cma列表
   getCmaNewsList() {
+    this.setData({
+      loading: true
+    })
     this.setData({
       loading: true
     })

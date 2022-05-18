@@ -27,9 +27,6 @@
       </view>
     </view>
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
-    <van-empty
-      wx:if="{{!loading && noData}}"
-      description="暂无相关信息"
-    />
+    <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>
   </view>
 </view>

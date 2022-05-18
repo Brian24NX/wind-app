@@ -12,6 +12,7 @@ Page({
    */
   data: {
     languageContent: {},
+    emptyContent: {},
     language: 'cn',
     keyword: '',
     categoryId: '',
@@ -32,7 +33,8 @@ Page({
     })
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.newsCenter,
-      language: languageUtil.languageVersion().lang.page.langue
+      language: languageUtil.languageVersion().lang.page.langue,
+      emptyContent: languageUtil.languageVersion().lang.page.empty
     })
     this.getCategoryList()
     this.search()
@@ -112,6 +114,9 @@ Page({
       categoryIds: this.data.categoryId,
       keyword: this.data.keyword
     }
+    this.setData({
+      loading: true
+    })
     newsList(params).then(res=>{
       const list = this.data.list.concat(res.data.list)
       if (list.length >= res.data.total) {

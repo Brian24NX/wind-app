@@ -4,7 +4,7 @@
   <view class="topTitles">
     <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400;'}}">{{languageContent.topTitle}}</text>
   </view>
-  <view class="businessLists">
+  <view class="businessLists" wx:if="{{loading || !noData}}">
     <view class="businessList">
       <view class="oneBusiness" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
         <view class="businessTitle">{{item.title}}</view>
@@ -12,9 +12,6 @@
       </view>
     </view>
   <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
-  <van-empty
-    wx:if="{{!loading && noData}}"
-    description="暂无相关信息"
-  />
   </view>
+  <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>
 </view>

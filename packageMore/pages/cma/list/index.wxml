@@ -3,12 +3,12 @@
   <view class="topContainer">
     <text class="text">CMA CGM<text style="color: #E20202;">+</text></text>
   </view>
-  <view class="cmaList">
+  <view class="cmaList" wx:if="{{loading || !noData}}">
     <view class="oneCma" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
       <view class="cmaTitle">{{item.title}}</view>
       <image src="{{item.frontCover ? item.frontCover : 'https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/shipment.png'}}" mode="aspectFill"></image>
     </view>
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
-    <van-empty wx:if="{{!loading && noData}}" description="暂无相关信息" />
   </view>
+  <view class="emptyContainer" wx:if="{{!loading && noData}}">{{languageContent.description}}</view>
 </view>

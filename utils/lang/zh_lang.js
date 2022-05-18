@@ -40,6 +40,9 @@ var Languague = {
       input: '请输入',
       select: '请选择'
     },
+    empty: {
+      description: '暂无相关信息',
+    },
     // 首页
     homeInfo: {
       hometitle: "CMA CGM",

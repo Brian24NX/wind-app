@@ -11,6 +11,7 @@ Page({
    */
   data: {
     languageContent: {},
+    emptyContent: {},
     language: 'zh',
     list: [],
     loading: true,
@@ -53,7 +54,8 @@ Page({
     //获取当前小程序语言版本所对应的字典变量
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.khtg,
-      language: languageUtil.languageVersion().lang.page.langue
+      language: languageUtil.languageVersion().lang.page.langue,
+      emptyContent: languageUtil.languageVersion().lang.page.empty
     })
   },
 
@@ -69,6 +71,9 @@ Page({
   },
 
   getBusiniessOpentionalList() {
+    this.setData({
+      loading: true
+    })
     businiessOpentionalList({
       pageNum: this.data.pageNum,
       pageSize: pageSize

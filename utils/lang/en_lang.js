@@ -39,6 +39,9 @@ var Languague = {
       weeks6: "Saturday",
       weeks0: "Sunday",
     },
+    empty: {
+      description: 'No relevant information',
+    },
     // 首页
     homeInfo: {
       //页面标题
