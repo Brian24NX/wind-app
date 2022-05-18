@@ -6,7 +6,7 @@
   <view class="cmaList" wx:if="{{loading || !noData}}">
     <view class="oneCma" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
       <view class="cmaTitle">{{item.title}}</view>
-      <image src="{{item.frontCover ? item.frontCover : 'https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/shipment.png'}}" mode="aspectFill"></image>
+      <image src="{{item.frontCover ? item.frontCover : 'https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/default.png'}}" mode="aspectFill"></image>
     </view>
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
   </view>
