@@ -1,4 +1,5 @@
 // app.js
+const config = require('./config/config')
 App({
   onLaunch() {
     wx.removeStorageSync('polobject')
@@ -10,20 +11,23 @@ App({
     } else {
       this.globalData.version = 0
     }
+    const antonioBold = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Bold.ttf' + '")'
+    const antonioRegular = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Regular.ttf' + '")'
+    const antonioLight = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Light.ttf' + '")'
     wx.loadFontFace({
       global: true,
       family: 'Antonio-Bold',
-      source: 'url("https://uat.wind.cma-cgm.com/ttf/Antonio-Bold.ttf")'
+      source: antonioBold
     })
     wx.loadFontFace({
       global: true,
       family: 'Antonio-Regular',
-      source: 'url("https://uat.wind.cma-cgm.com/ttf/Antonio-Regular.ttf")'
+      source: antonioRegular
     })
     wx.loadFontFace({
       global: true,
       family: 'Antonio-Light',
-      source: 'url("https://uat.wind.cma-cgm.com/ttf/Antonio-Light.ttf")'
+      source: antonioLight
     })
     // 自定义头部
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
