@@ -1,8 +1,4 @@
 // packageMore/pages/contact/result/index.js
-import {
-  contractInfo,
-  contractInfoByOrderId
-} from '../../../api/modules/more';
 const languageUtil = require('../../../../utils/languageUtils')
 const app = getApp();
 Page({
