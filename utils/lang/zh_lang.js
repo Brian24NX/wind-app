@@ -244,6 +244,10 @@ var Languague = {
       coc: '始发地',
       dest: '最终目的地'
     },
+    // 常用模板与链接
+    useful: {
+      title: '常用模板与链接'
+    },
     popupBtn: {
       confirm: '确定',
       cancel: '取消'

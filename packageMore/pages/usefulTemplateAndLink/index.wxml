@@ -1,0 +1,33 @@
+<!--packageMore/pages/usefulTemplateAndLink/index.wxml-->
+<view class="userfulContainer">
+  <view class="usefulTopContainer">
+    <view class="usefulTopTitle">
+      <view class="titleLine"></view>
+      <view class="usefulTopTitles">
+        <text>Useful </text>
+        <text>Template & Link</text>
+      </view>
+    </view>
+    <view class="inputContainer">
+      <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.keyword}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+      <view class="delete" catchtap="deleteValue">
+        <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+      </view>
+      <view class="search" bindtap="search">
+        <image src="/assets/img/search/search@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="usefulListContainer">
+    <view class="usefulTypes">
+      <view class="oneType typeActived">
+        <view>模版</view>
+        <view class="activedLine"></view>
+      </view>
+      <view class="oneType">
+        <view>模版</view>
+        <view class="activedLine"></view>
+      </view>
+    </view>
+  </view>
+</view>
