@@ -78,7 +78,7 @@ var Languague = {
       // cmacgm
       cma: 'CMA CGM+',
       // 关于我们
-      about: '关于达飞',
+      about: '集团介绍',
       //新闻资讯
       news: "新闻中心",
       // 在线服务

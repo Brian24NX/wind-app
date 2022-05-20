@@ -3,12 +3,16 @@ page {
   background-color: #F0F1F5;
 }
 
+.cmaContainer {
+  padding-top: 30rpx;
+}
+
 .cmaContainer .topContainer {
   width: 690rpx;
   height: 210rpx;
   background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/CMA.png) no-repeat;
   background-size: 100%;
-  margin: 30rpx auto;
+  margin: 0 auto 30rpx;
   padding-left: 50rpx;
   display: flex;
   align-items: center;
@@ -19,8 +23,10 @@ page {
 }
 
 .cmaContainer .cmaList {
+  width: 690rpx;
+  margin: 0 auto 40rpx;
   background-color: #ffffff;
-  padding: 1rpx 48rpx;
+  padding: 1rpx 40rpx;
 }
 
 .cmaContainer .cmaList .oneCma {

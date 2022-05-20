@@ -79,7 +79,7 @@ Page({
     }
     const value2 = (value.substr(value.length - 1, 1) === ',' || value.substr(value.length - 1, 1) === '，') ? value.substr(0, value.length - 1) : value
     if (value2.split(',').length >= 2 && value2.split(',').length <= 3) {
-      const arr = value2.split(',').map(item=>item.trim())
+      const arr = value2.split(',').map(item => item.trim())
       var newArr = arr.filter(function (value, index, self) {
         return self.indexOf(value) === index;
       });
@@ -123,6 +123,15 @@ Page({
         loading: false
       })
       const data = res.data;
+      // console.log(data)
+      // let containers = []
+      // data.forEach(route => {
+      //   route.data.routes.forEach(item => {
+      //     const oneRouteContainers = item.containers.filter(i => i.movements.length)
+      //     containers = containers.concat(oneRouteContainers)
+      //   })
+      // })
+      // console.log(containers)
       if (!data.length || (data.length === 1 && !data[0].data)) {
         this.setData({
           dataLength: 0,

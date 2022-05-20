@@ -2,7 +2,7 @@
 <wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="businessContainer">
   <view class="topTitles">
-    <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400;'}}">{{languageContent.topTitle}}</text>
+    <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</text>
   </view>
   <view class="businessLists" wx:if="{{loading || !noData}}">
     <view class="businessList">

@@ -5,7 +5,7 @@
   </view>
   <image src="/assets/img/more/message@2x.png" class="message" mode="aspectFit"></image>
   <view class="contactTopTitle">
-    <text>CMA CGM </text>
+    <text>CMA CGM</text>
     <text>{{languageContent.fuwu}}</text>
   </view>
 </view>

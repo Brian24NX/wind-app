@@ -69,6 +69,7 @@ Page({
     this.setData({
       keyword: ''
     })
+    this.search()
   },
 
   search() {

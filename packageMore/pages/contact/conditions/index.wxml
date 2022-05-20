@@ -1,6 +1,6 @@
 <!--packageMore/pages/contact/conditions/index.wxml-->
 <view class="contactContainer">
-  <view class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400;'}}">{{languageContent.topTitle}}</view>
+  <view class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</view>
   <view class="blockContainer">
     <view class="oneBlock">
       <view class="contactTitle">{{languageContent.bsc}}</view>

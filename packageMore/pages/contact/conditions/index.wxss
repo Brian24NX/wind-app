@@ -17,7 +17,6 @@ page {
   display: flex;
   align-items: center;
   font-size: 64rpx;
-  font-family: Antonio-Regular;
   color: #071E5D;
 }
 

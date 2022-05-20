@@ -12,7 +12,6 @@ page {
   display: flex;
   align-items: center;
   font-size: 64rpx;
-  font-family: Antonio-Regular;
   color: #071E5D;
 }
 
@@ -54,8 +53,10 @@ page {
 }
 
 .newsContainer .newsLists {
+  width: 690rpx;
+  margin: 0 auto 40rpx;
   background-color: #ffffff;
-  padding: 40rpx 48rpx 1rpx;
+  padding: 40rpx 40rpx 1rpx;
 }
 
 .newsContainer .newsLists .categoryList {

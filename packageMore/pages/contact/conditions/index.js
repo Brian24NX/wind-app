@@ -107,7 +107,13 @@ Page({
   changeProvide(e) {
     const type = e.currentTarget.dataset.type
     this.setData({
-      canProvide: type === '1' ? true : false
+      canProvide: type === '1' ? true : false,
+      bookingReference: '',
+      trade: '',
+      tradeName: '',
+      accountName: '',
+      showRemind3: false,
+      showRemind4: false
     })
   },
 
@@ -263,17 +269,12 @@ Page({
         office: this.data.office,
         businessType: this.data.businessType,
       }).then(res => {
-        console.log(res)
-        if (res.data.length) {
-          this.setData({
-            contractList: res.data
-          })
-          wx.navigateTo({
-            url: '/packageMore/pages/contact/result/index',
-          })
-        } else {
-
-        }
+        this.setData({
+          contractList: res.data
+        })
+        wx.navigateTo({
+          url: '/packageMore/pages/contact/result/index',
+        })
       }, err => {
         wx.showToast({
           title: languageUtil.languageVersion().lang.page.callMe.noOrder,
