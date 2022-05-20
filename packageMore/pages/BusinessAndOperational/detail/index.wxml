@@ -1,8 +1,8 @@
 <!--packageMore/pages/BusinessAndOperational/detail/index.wxml-->
 <wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="topLine"></view>
+<image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/top.png" class="topImg"></image>
 <view class="businessDetails">
-  <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/top.png" mode="widthFix" style="width: 100%;"></image>
   <view class="businessTitle">
     <view class="titleLine"></view>
     <view class="titleContent">{{businessDetail.title}}</view>

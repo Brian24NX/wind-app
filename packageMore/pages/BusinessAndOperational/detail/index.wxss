@@ -1,11 +1,16 @@
 /* packageMore/pages/BusinessAndOperational/detail/index.wxss */
 .businessDetails {
-  padding: 30rpx 54rpx;
+  padding: 50rpx 54rpx 40rpx;
+}
+
+.topImg {
+  width: 690rpx;
+  height: 210rpx;
+  margin: 30rpx 0 0 30rpx;
 }
 
 .businessDetails .businessTitle {
   display: flex;
-  margin-top: 50rpx;
 }
 
 .businessDetails .businessTitle .titleLine {
