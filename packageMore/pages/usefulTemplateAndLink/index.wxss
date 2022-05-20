@@ -42,13 +42,14 @@ page {
 
 .userfulContainer .usefulListContainer {
   background-color: #ffffff;
-  margin: 30rpx 0;
-  padding: 0 46rpx;
+  margin: 30rpx 0 0;
+  padding: 0 46rpx 30rpx;
 }
 
 .userfulContainer .usefulListContainer .usefulTypes {
   height: 94rpx;
   display: flex;
+  border-bottom: 1rpx solid #04246A;
 }
 
 .userfulContainer .usefulListContainer .usefulTypes .oneType {
@@ -77,4 +78,75 @@ page {
   width: 120rpx;
   height: 8rpx;
   background-color: #E20202;
+}
+
+.userfulContainer .usefulListContainer .templateList .oneTemplate {
+  border: 1rpx solid #CFD2DA;
+  padding: 20rpx;
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.userfulContainer .usefulListContainer .templateList .oneTemplate .infoIcon {
+  width: 96rpx;
+  height: 96rpx;
+  margin-right: 10rpx;
+}
+
+.userfulContainer .usefulListContainer .templateList .oneTemplate .templateContent {
+  width: 390rpx;
+  font-weight: 400;
+  color: #6B7790;
+  font-size: 28rpx;
+}
+
+.userfulContainer .usefulListContainer .templateList .oneTemplate .templateContent .templateName {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+}
+
+.userfulContainer .usefulListContainer .templateList .oneTemplate .preview {
+  width: 56rpx;
+  text-align: right;
+  padding-top: 20rpx;
+}
+
+.userfulContainer .usefulListContainer .templateList .oneTemplate .preview image {
+  width: 32rpx;
+  height: 22rpx;
+}
+
+.userfulContainer .usefulListContainer .contentList .oneContent {
+  display: flex;
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #DDDDDD;
+}
+
+.userfulContainer .usefulListContainer .contentList .oneContent .linkIcon {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 10rpx;
+}
+
+.userfulContainer .usefulListContainer .contentList .oneContent .copy {
+  width: 90rpx;
+  color: #6B7790;
+  text-align: right;
+  font-size: 28rpx;
+}
+
+.userfulContainer .usefulListContainer .contentList .oneContent .contentCenter {
+  width: 420rpx;
+  font-size: 20rpx;
+  color: #6B7790;
+}
+
+.userfulContainer .usefulListContainer .contentList .oneContent .contentCenter .useTitle {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+  margin-bottom: 10rpx;
 }

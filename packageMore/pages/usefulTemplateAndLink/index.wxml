@@ -20,13 +20,31 @@
   </view>
   <view class="usefulListContainer">
     <view class="usefulTypes">
-      <view class="oneType typeActived">
-        <view>模版</view>
+      <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
+        <view>{{languageContent[item]}}</view>
         <view class="activedLine"></view>
       </view>
-      <view class="oneType">
-        <view>模版</view>
-        <view class="activedLine"></view>
+    </view>
+    <view class="templateList" wx:if="{{current === 'template'}}">
+      <view class="oneTemplate" wx:for="{{10}}" wx:key="index">
+        <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
+        <view class="templateContent">
+          <view class="templateName">关于海运集装箱非危险品保函细则</view>
+          <view>{{languageContent.send}}</view>
+        </view>
+        <view class="preview">
+          <image src="/assets/img/more/dianzan_1@2x.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="contentList" wx:else>
+      <view class="oneContent" wx:for="{{10}}" wx:key="index">
+        <image src="/assets/img/home/templatelinks@2x.png" class="linkIcon"></image>
+        <view class="contentCenter">
+          <view class="useTitle">eCommerce</view>
+          <view>CMACGM: https://www.cmacgm.com/</view>
+        </view>
+        <view class="copy">{{languageContent.copy}}</view>
       </view>
     </view>
   </view>

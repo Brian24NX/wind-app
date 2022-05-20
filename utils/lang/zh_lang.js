@@ -246,7 +246,12 @@ var Languague = {
     },
     // 常用模板与链接
     useful: {
-      title: '常用模板与链接'
+      title: '常用模板与链接',
+      keyword: '搜索模板或链接名称',
+      template: '模板',
+      link: '链接',
+      copy: '复制',
+      send: '发送'
     },
     popupBtn: {
       confirm: '确定',

@@ -8,7 +8,9 @@ Page({
   data: {
     languageContent: {},
     language: 'zh',
-    keyword: '1'
+    keyword: '',
+    current: 'template',
+    typeList: ['template', 'link']
   },
 
   /**
@@ -36,4 +38,28 @@ Page({
   onReachBottom() {
 
   },
+
+  // 切换类型
+  changeType(e) {
+    this.setData({
+      current: e.currentTarget.dataset.type
+    })
+  },
+
+  // 输入框
+  setInput(e) {
+    this.setData({
+      keyword: e.detail.value
+    })
+  },
+
+  // 删除
+  deleteValue() {
+    this.setData({
+      keyword: ''
+    })
+  },
+
+  // 搜索
+  search() {}
 })
