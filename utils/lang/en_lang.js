@@ -243,12 +243,23 @@ var Languague = {
       // 最终目的地
       dest: 'DEST'
     },
+    // 常用模板与链接
+    useful: {
+      title: 'Useful Template & Link',
+      title1: 'Useful',
+      title2: ' Template & Link',
+      keyword: 'Search Document or Link Name',
+      template: 'Template',
+      link: 'Link',
+      copy: 'Copy',
+      send: 'Send email'
+    },
     popupBtn: {
       confirm: 'confirm',
       cancel: 'cancel'
     },
     copyInfo: {
-      success: '已复制，请前往浏览器打开'
+      success: 'Successfully copied, please open the link in your browser.'
     },
     load: {
       //努力加载中

@@ -138,7 +138,7 @@ page {
 }
 
 .userfulContainer .usefulListContainer .contentList .oneContent .contentCenter {
-  width: 420rpx;
+  width: 430rpx;
   font-size: 20rpx;
   color: #6B7790;
 }

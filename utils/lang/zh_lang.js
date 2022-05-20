@@ -247,6 +247,8 @@ var Languague = {
     // 常用模板与链接
     useful: {
       title: '常用模板与链接',
+      title1: '常用模板',
+      title2: '及链接',
       keyword: '搜索模板或链接名称',
       template: '模板',
       link: '链接',
@@ -258,7 +260,7 @@ var Languague = {
       cancel: '取消'
     },
     copyInfo: {
-      success: '已复制，请前往浏览器打开'
+      success: '复制成功，请前往浏览器打开'
     },
     load: {
       //努力加载中

@@ -10,7 +10,8 @@ Page({
     language: 'zh',
     keyword: '',
     current: 'template',
-    typeList: ['template', 'link']
+    typeList: ['template', 'link'],
+    showEmail: false
   },
 
   /**
@@ -61,5 +62,35 @@ Page({
   },
 
   // 搜索
-  search() {}
+  search() {},
+
+  // 发送邮件
+  sendEmail() {
+    this.setData({
+      showEmail: true
+    })
+  },
+
+  sendEmails() {
+
+  },
+
+  closeEmail() {
+    this.setData({
+      showEmail: false
+    })
+  },
+
+  // 复制
+  copy(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.value,
+      success() {
+        wx.showToast({
+          title: languageUtils.languageVersion().lang.page.copyInfo.success,
+          icon: 'none'
+        })
+      }
+    })
+  }
 })

@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "email": "../../../../components/email/index"
+  }
 }

@@ -4,8 +4,8 @@
     <view class="usefulTopTitle">
       <view class="titleLine"></view>
       <view class="usefulTopTitles">
-        <text>Useful </text>
-        <text>Template & Link</text>
+        <text>{{languageContent.title1}}</text>
+        <text>{{languageContent.title2}}</text>
       </view>
     </view>
     <view class="inputContainer">
@@ -30,7 +30,7 @@
         <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
         <view class="templateContent">
           <view class="templateName">关于海运集装箱非危险品保函细则</view>
-          <view>{{languageContent.send}}</view>
+          <view catchtap="sendEmail">{{languageContent.send}}</view>
         </view>
         <view class="preview">
           <image src="/assets/img/more/dianzan_1@2x.png"></image>
@@ -44,8 +44,10 @@
           <view class="useTitle">eCommerce</view>
           <view>CMACGM: https://www.cmacgm.com/</view>
         </view>
-        <view class="copy">{{languageContent.copy}}</view>
+        <view class="copy" catchtap="copy" data-value="1">{{languageContent.copy}}</view>
       </view>
     </view>
   </view>
 </view>
+
+<email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>
