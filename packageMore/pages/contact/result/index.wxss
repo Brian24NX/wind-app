@@ -53,7 +53,7 @@ page {
 }
 
 .contactDetailContainer {
-  padding: 302rpx 30rpx 40rpx;
+  padding: 332rpx 30rpx 40rpx;
 }
 
 .contactDetailContainer .contactLists .oneContact {
