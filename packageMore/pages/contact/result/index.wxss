@@ -4,7 +4,7 @@ page {
 }
 
 .contactNavbarContainer {
-  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/contactTop.png) no-repeat;
+  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/contactTopBg.png) no-repeat;
   background-size: 100%;
   width: 100%;
   height: 302rpx;
