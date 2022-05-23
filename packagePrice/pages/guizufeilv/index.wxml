@@ -9,15 +9,26 @@
     </view>
   </view>
   <view class="guizuList">
-    <van-collapse value="{{ activeNames }}" bind:change="onChange">
-      <van-collapse-item name="1">
+    <van-collapse accordion value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item content-class="items" name="{{index}}" wx:for="{{3}}" wx:key="index">
         <view slot="title">
           <view class="titles">
             <view class="titleLine"></view>
             <view>Africa</view>
           </view>
         </view>
-        代码是写出来给人看的，附带能在机器上运行
+        <view class="fileList">
+          <view class="oneFile" wx:for="{{3}}" wx:key="index">
+            <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
+            <view class="templateContent">
+              <view class="templateName">关于海运集装箱非危险品保函细则</view>
+              <view catchtap="sendEmail">{{languageContent.send}}</view>
+            </view>
+            <view class="preview">
+              <image src="/assets/img/more/eye@2x.png"></image>
+            </view>
+          </view>
+        </view>
       </van-collapse-item>
     </van-collapse>
 

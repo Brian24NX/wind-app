@@ -10,7 +10,8 @@ Page({
     verifyInfo: {},
     language: 'zh',
     country: '',
-    countryName: ''
+    countryName: '',
+    activeNames: 0
   },
 
   /**
