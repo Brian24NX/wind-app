@@ -80,7 +80,7 @@ Page({
         {
           id: 'gzp',
           icon: '/assets/img/home/controllproduct@2x.png',
-          url: ''
+          url: '/packageMore/pages/sanctionCheck/list/index'
         },
         {
           id: 'callMe',

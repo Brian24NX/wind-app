@@ -255,6 +255,15 @@ var Languague = {
       copy: '复制',
       send: '发送'
     },
+    // 管制品查询
+    sanction: {
+      title: '管制品查询',
+      title1: '管制品',
+      title2: '查询',
+      placeholder: '名称/代码',
+      type: '种类',
+      code: '代码'
+    },
     popupBtn: {
       confirm: '确定',
       cancel: '取消'

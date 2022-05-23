@@ -1,0 +1,31 @@
+/* packageMore/pages/sanctionCheck/list/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.sanctionContainer {
+  padding: 30rpx;
+}
+
+.sanctionList {
+  padding: 30rpx 48rpx;
+  background-color: #ffffff;
+  margin-top: 30rpx;
+}
+
+.sanctionList .oneSanction {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #EEEEEE;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+}
+
+.sanctionList .oneSanction image {
+  width: 16rpx;
+  height: 30rpx;
+}

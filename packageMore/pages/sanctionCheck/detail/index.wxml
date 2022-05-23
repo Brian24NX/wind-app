@@ -1,0 +1,13 @@
+<!--packageMore/pages/sanctionCheck/detail/index.wxml-->
+<view class="sanctionDetail">
+  <view class="topLine"></view>
+  <view class="sanctionTitle">
+    <view class="titleLine"></view>
+    <view class="{{language === 'zh' ? '' : 'en'}}">AGRICULTURAL CHEMICALS</view>
+  </view>
+  <view class="type">{{languageContent.type}}: Prohited</view>
+  <view class="type">{{languageContent.code}}: Prohited</view>
+  <view class="sanctionContent">
+    <rich-text nodes="{{sanctionDetail.content}}"></rich-text>
+  </view>
+</view>

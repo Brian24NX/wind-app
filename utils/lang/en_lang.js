@@ -254,6 +254,15 @@ var Languague = {
       copy: 'Copy',
       send: 'Send email'
     },
+    // 管制品查询
+    sanction: {
+      title: 'Sanction Check',
+      title1: 'Sanction',
+      title2: ' Check',
+      placeholder: 'Name or Ref. No.',
+      type: 'Type',
+      code: 'Reference number'
+    },
     popupBtn: {
       confirm: 'confirm',
       cancel: 'cancel'

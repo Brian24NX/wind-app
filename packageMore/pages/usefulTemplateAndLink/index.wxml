@@ -1,9 +1,9 @@
 <!--packageMore/pages/usefulTemplateAndLink/index.wxml-->
 <view class="userfulContainer">
-  <view class="usefulTopContainer">
-    <view class="usefulTopTitle">
+  <view class="listTopContainer">
+    <view class="listTopTitles">
       <view class="titleLine"></view>
-      <view class="usefulTopTitles">
+      <view class="listTopTitle">
         <text>{{languageContent.title1}}</text>
         <text>{{languageContent.title2}}</text>
       </view>
@@ -33,7 +33,7 @@
           <view catchtap="sendEmail">{{languageContent.send}}</view>
         </view>
         <view class="preview">
-          <image src="/assets/img/more/dianzan_1@2x.png"></image>
+          <image src="/assets/img/more/eye@2x.png"></image>
         </view>
       </view>
     </view>

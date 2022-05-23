@@ -1,0 +1,39 @@
+/* packageMore/pages/sanctionCheck/detail/index.wxss */
+.sanctionDetail {
+  padding: 48rpx 60rpx;
+}
+
+.sanctionDetail .sanctionTitle {
+  display: flex;
+  font-size: 50rpx;
+  font-weight: bolder;
+  color: #04246A;
+  margin-bottom: 20rpx;
+}
+
+.sanctionDetail .sanctionTitle .titleLine {
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+  margin-right: 20rpx;
+  margin-top: 2rpx;
+}
+
+.sanctionDetail .sanctionTitle view {
+  line-height: 50rpx;
+}
+
+.sanctionDetail .sanctionTitle .en {
+  font-family: Antonio-Bold;
+}
+
+.sanctionDetail .type {
+  color: #6B7790;
+  font-size: 24rpx;
+}
+
+.sanctionDetail .sanctionContent {
+  margin-top: 40rpx;
+  color: #071E5D;
+  font-size: 28rpx;
+}

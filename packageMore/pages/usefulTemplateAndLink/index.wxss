@@ -7,39 +7,6 @@ page {
   padding: 30rpx;
 }
 
-.userfulContainer .usefulTopContainer {
-  background-color: #ffffff;
-  padding: 30rpx 48rpx;
-}
-
-.userfulContainer .usefulTopContainer .usefulTopTitle {
-  display: flex;
-  align-items: center;
-  margin-bottom: 30rpx;
-}
-
-.userfulContainer .usefulTopContainer .usefulTopTitle .titleLine {
-  width: 8rpx;
-  height: 50rpx;
-  background-color: #E20202;
-  margin-right: 15rpx;
-}
-
-.userfulContainer .usefulTopContainer .usefulTopTitle .usefulTopTitles {
-  font-size: 56rpx;
-  font-family: Antonio-Bold, Antonio;
-  font-weight: bold;
-  color: #04246A;
-}
-
-.userfulContainer .usefulTopContainer .usefulTopTitle .usefulTopTitles text:nth-of-type(2) {
-  color: #4468BA;
-}
-
-.userfulContainer .usefulTopContainer .inputContainer {
-  border: 1rpx solid #DDDDDD;
-}
-
 .userfulContainer .usefulListContainer {
   background-color: #ffffff;
   margin: 30rpx 0 0;
@@ -114,8 +81,8 @@ page {
 }
 
 .userfulContainer .usefulListContainer .templateList .oneTemplate .preview image {
-  width: 32rpx;
-  height: 22rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .userfulContainer .usefulListContainer .contentList .oneContent {

@@ -188,3 +188,38 @@
   font-size: 24rpx;
   font-style: italic;
 }
+
+/* 列表顶部搜索 */
+.listTopContainer {
+  background-color: #ffffff;
+  padding: 30rpx 48rpx;
+}
+
+.listTopContainer .listTopTitles {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.listTopContainer .listTopTitles .titleLine {
+  width: 8rpx;
+  height: 50rpx;
+  background-color: #E20202;
+  margin-right: 15rpx;
+}
+
+.listTopContainer .listTopTitles .listTopTitle {
+  font-size: 56rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.listTopContainer .listTopTitles .listTopTitle text:nth-of-type(2) {
+  color: #4468BA;
+}
+
+.listTopContainer .inputContainer {
+  border: 1rpx solid #DDDDDD;
+  padding: 0 30rpx 0 20rpx;
+}
