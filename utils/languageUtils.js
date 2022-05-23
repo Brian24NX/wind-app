@@ -6,7 +6,7 @@
 const app = getApp()
 //语言切换
 const languageVersion = function () {
-  if (app.globalData.version == 0) {
+  if (app.globalData.version == 'zh') {
     // 导入我们定义好的中文字典
     var zh_lang = require('../utils/lang/zh_lang')
     return zh_lang
@@ -17,17 +17,10 @@ const languageVersion = function () {
   }
 }
 //切换版本
-const changLanguage = function () {
+const changLanguage = function (language) {
   //修改前面已经定义好的，用于标识小程序的语言版本
-  if (app.globalData.version == 0) {
-    app.globalData.version = 1
-    wx.setStorageSync('language', 'us')
-    //console.log("当前语言版本：英文",app.globalData.version)
-  } else if (app.globalData.version == 1) {
-    app.globalData.version = 0
-    wx.setStorageSync('language', 'cn')
-    // console.log("当前语言版本：中文",app.globalData.version)
-  }
+  app.globalData.version = language
+  wx.setStorageSync('language', language)
 
 }
 //抛出方法

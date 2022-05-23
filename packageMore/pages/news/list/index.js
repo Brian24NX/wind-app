@@ -13,7 +13,7 @@ Page({
   data: {
     languageContent: {},
     emptyContent: {},
-    language: 'cn',
+    language: 'zh',
     keyword: '',
     categoryId: '',
     categoryList: [],

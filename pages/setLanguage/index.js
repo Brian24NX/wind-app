@@ -26,7 +26,7 @@ Page({
   switchLanguage(e) {
     const language = e.currentTarget.dataset.language
     //切换当前版本，即修改公共变量中的version
-    languageUtil.changLanguage()
+    languageUtils.changLanguage(language)
     wx.reLaunch({
       url: '/pages/Home/index',
     })

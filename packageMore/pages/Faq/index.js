@@ -8,7 +8,7 @@ Page({
    */
   data: {
     baseUrl: config[config.dev_env].url,
-    language: 'cn',
+    language: 'zh',
     needBottom: ''
   },
 

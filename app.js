@@ -6,11 +6,7 @@ App({
     wx.removeStorageSync('podobject')
     wx.removeStorageSync('details')
     wx.setStorageSync('setHangXian', false)
-    if (wx.getStorageSync('language') === 'us') {
-      this.globalData.version = 1
-    } else {
-      this.globalData.version = 0
-    }
+    this.globalData.version = wx.getStorageSync('language') ? wx.getStorageSync('language') : 'zh'
     const antonioBold = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Bold.ttf' + '")'
     const antonioRegular = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Regular.ttf' + '")'
     const antonioLight = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Light.ttf' + '")'
@@ -56,7 +52,7 @@ App({
     })
   },
   globalData: {
-    version: 0, // 0中文 1英文
+    version: 'zh',
     isPhoneX: false,
     // 全局的方法, 获取到App的实例就可以拿到方法
     function: {

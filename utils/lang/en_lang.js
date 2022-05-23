@@ -339,7 +339,7 @@ var Languague = {
       },
       {
         "pagePath": "../My/index",
-        "text": "My Account",
+        "text": "My",
         "iconPath": "/assets/img/tabs/mine.png",
         "selectedIconPath": "/assets/img/tabs/mine_selected.png"
       }
