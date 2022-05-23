@@ -31,7 +31,7 @@ Page({
       confirmText: _this.data.changeLanguage.sure,
       success(res) {
         if (res.confirm) {
-          languageUtil.changLanguage()
+          
           wx.reLaunch({
             url: '/pages/Home/index',
           })

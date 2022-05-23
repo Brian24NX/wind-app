@@ -283,6 +283,10 @@ var Languague = {
       email: '邮箱地址',
       exit: '退出'
     },
+    // 设置语言
+    setLanguage: {
+      title: '设置语言'
+    },
     popupBtn: {
       confirm: '确定',
       cancel: '取消'

@@ -1,0 +1,27 @@
+/* pages/setLanguage/index.wxss */
+page {
+  background-color: #f5f5f5;
+}
+
+.languageContainer {
+  padding: 30rpx;
+}
+
+.languageContainer .languageList {
+  padding: 0 48rpx;
+  background-color: #ffffff;
+}
+
+.languageContainer .languageList .oneLanguage {
+  border-bottom: 1rpx solid #EEEEEE;
+  height: 98rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #6B7790;
+  font-size: 28rpx;
+}
+
+.languageContainer .languageList .oneLanguage:nth-last-of-type(1) {
+  border-bottom: none;
+}

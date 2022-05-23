@@ -1,0 +1,13 @@
+<!--pages/setLanguage/index.wxml-->
+<view class="languageContainer">
+  <view class="languageList">
+    <view class="oneLanguage" catchtap="switchLanguage" data-language="zh">
+      <view class="left">中文</view>
+      <van-icon name="success" wx:if="{{language === 'zh'}}" />
+    </view>
+    <view class="oneLanguage" data-language="us">
+      <view class="left">English</view>
+      <van-icon name="success" wx:if="{{language === 'us'}}" />
+    </view>
+  </view>
+</view>

@@ -25,7 +25,7 @@
       </view>
     </view>
   </view>
-  <view class="setting">
+  <view class="setting" catchtap="setLanguage">
     <view class="settingLeft">
       <image src="/assets/img/myAccount/setting@2x.png"></image>
       <text>{{languageContent.setting}}</text>

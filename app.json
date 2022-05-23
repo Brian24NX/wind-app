@@ -11,7 +11,8 @@
     "pages/RouterQuery/index",
     "pages/Shipment/index",
     "pages/Login/index",
-    "pages/baseInfo/index"
+    "pages/baseInfo/index",
+    "pages/setLanguage/index"
   ],
   "subPackages": [
     {

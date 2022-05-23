@@ -282,6 +282,10 @@ var Languague = {
       email: 'Email address',
       exit: 'Log out'
     },
+    // 设置语言
+    setLanguage: {
+      title: 'Set Language'
+    },
     popupBtn: {
       confirm: 'confirm',
       cancel: 'cancel'
