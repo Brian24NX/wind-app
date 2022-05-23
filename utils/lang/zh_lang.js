@@ -295,6 +295,19 @@ var Languague = {
     setLanguage: {
       title: '设置语言'
     },
+    // 文件概览
+    document: {
+      title: '文件概览',
+      title1: '文件',
+      title2: '概览',
+      placeholder: '搜索订舱号或提单号',
+      fileNo: '文件编号',
+      referenceNo: '运输号码',
+      type: '类型',
+      status: '状态',
+      date: '日期',
+      send: '发送至邮箱'
+    },
     popupBtn: {
       confirm: '确定',
       cancel: '取消'

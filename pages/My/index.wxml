@@ -15,13 +15,9 @@
   <view class="myDashboard">
     <view class="myDashboardTitle">{{languageContent.myDashboard}}</view>
     <view class="dashboardList">
-      <view class="oneDashboard">
-        <image src="/assets/img/myAccount/shipment@2x.png"></image>
-        <text>{{languageContent.shipment}}</text>
-      </view>
-      <view class="oneDashboard">
-        <image src="/assets/img/myAccount/documnt@2x.png"></image>
-        <text>{{languageContent.document}}</text>
+      <view class="oneDashboard" wx:for="{{dashboardList}}" wx:key="index" catchtap="toDashboard" data-url="{{item.url}}">
+        <image src="{{item.icon}}"></image>
+        <text>{{languageContent[item.label]}}</text>
       </view>
     </view>
   </view>

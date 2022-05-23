@@ -294,6 +294,19 @@ var Languague = {
     setLanguage: {
       title: 'Set Language'
     },
+    // 文件概览
+    document: {
+      title: 'Document Dashboard',
+      title1: 'Document',
+      title2: ' Dashboard',
+      placeholder: 'Search a Booking & B/L Ref.',
+      fileNo: 'Document ref.',
+      referenceNo: 'Shipment ref.',
+      type: 'Category',
+      status: 'Status',
+      date: 'Date',
+      send: 'Send email'
+    },
     popupBtn: {
       confirm: 'confirm',
       cancel: 'cancel'
