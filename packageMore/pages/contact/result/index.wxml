@@ -1,9 +1,6 @@
 <!--packageMore/pages/contact/result/index.wxml-->
 <view class="contactDetailContainer">
-  <view class="topContainer">
-    <view>CMA CGM</view>
-    <view style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.fuwu}}</view>
-  </view>
+  <view class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.fuwu}}</view>
   <view class="contactLists" wx:if="{{contractList.length}}">
     <view class="oneContact" wx:for="{{contractList}}" wx:key="index">
       <view class="ones">
