@@ -1,15 +1,9 @@
 <!--packageMore/pages/contact/result/index.wxml-->
-<view class="contactNavbarContainer" style="padding-top: {{navTop}}px;">
-  <view class="backIcons" style="height: {{navHeight}}px;" catchtap="back">
-    <van-icon color="#ffffff" size="50rpx" name="arrow-left" />
-  </view>
-  <image src="/assets/img/more/message@2x.png" class="message" mode="aspectFit"></image>
-  <view class="contactTopTitle">
-    <text>CMA CGM</text>
-    <text>{{languageContent.fuwu}}</text>
-  </view>
-</view>
 <view class="contactDetailContainer">
+  <view class="topContainer">
+    <view>CMA CGM</view>
+    <view style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.fuwu}}</view>
+  </view>
   <view class="contactLists" wx:if="{{contractList.length}}">
     <view class="oneContact" wx:for="{{contractList}}" wx:key="index">
       <view class="ones">

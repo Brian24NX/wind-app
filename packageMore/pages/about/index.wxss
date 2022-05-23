@@ -1,6 +1,6 @@
 /* packageMore/pages/about/index.wxss */
 .aboutContainer {
-  padding: 30rpx 50rpx 40rpx;
+  padding: 30rpx 50rpx 60rpx;
 }
 
 .aboutContainer .aboutTitle {
