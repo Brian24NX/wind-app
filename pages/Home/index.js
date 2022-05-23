@@ -75,7 +75,7 @@ Page({
         {
           id: 'template',
           icon: '/assets/img/home/templatelinks@2x.png',
-          url: ''
+          url: '/packageMore/pages/usefulTemplateAndLink/index'
         },
         {
           id: 'gzp',
