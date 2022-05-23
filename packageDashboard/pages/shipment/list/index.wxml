@@ -27,7 +27,7 @@
     </view>
     <!-- 装运视图 -->
     <view class="shipmentList" wx:if="{{current === 'shipment'}}">
-      <view class="oneShipment" wx:for="{{5}}" wx:key="index">
+      <view class="oneShipment" wx:for="{{5}}" wx:key="index" catchtap="toShipmentDetail">
         <view class="topTime">
           <view>EAT</view>
           <view>Mon 28-FEB-2022 21:00</view>
@@ -61,7 +61,7 @@
     </view>
     <!-- 货柜视图 -->
     <view class="huoguoContainer" wx:if="{{current === 'container'}}">
-      <view class="oneOrder" wx:for="{{3}}">
+      <view class="oneOrder" wx:for="{{3}}" catchtap="toDetail">
         <view class="orderTop">
           <view class="topLeft">
             <text>EAT</text>

@@ -159,7 +159,6 @@ page {
 }
 
 /* 货柜视图 */
-/* pages/Orders/More/index.wxss */
 .huoguoContainer .oneOrder {
   background-color: #ffffff;
   margin-bottom: 30rpx;

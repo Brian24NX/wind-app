@@ -49,4 +49,16 @@ Page({
   },
 
   search() {},
+
+  toShipmentDetail() {
+    wx.navigateTo({
+      url: '/packageDashboard/pages/shipment/detail/index',
+    })
+  },
+
+  toDetail() {
+    wx.navigateTo({
+      url: '/pages/OrderDetail/index',
+    })
+  }
 })
