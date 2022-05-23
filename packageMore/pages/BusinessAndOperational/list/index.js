@@ -91,7 +91,7 @@ Page({
     businiessOpentionalList({
       pageNum: this.data.pageNum,
       pageSize: pageSize,
-      keyword: this.data.keyword
+      keyWord: this.data.keyword
     }).then(res => {
       const list = this.data.list.concat(res.data.list)
       if (list.length >= res.data.total) {
