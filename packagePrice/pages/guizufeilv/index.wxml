@@ -1,0 +1,25 @@
+<!--packagePrice/pages/guizufeilv/index.wxml-->
+<view class="guizuContainer">
+  <view class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.title}}</view>
+  <view class="selectContainer">
+    <view class="selectTitle">{{languageContent.selectTitle}}</view>
+    <view class="selects" catchtap="openPopup">
+      <view style="{{country ? 'color: #071E5D;' : 'font-style: italic;'}}">{{countryName || verifyInfo.select}}</view>
+      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+    </view>
+  </view>
+  <view class="guizuList">
+    <van-collapse value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item name="1">
+        <view slot="title">
+          <view class="titles">
+            <view class="titleLine"></view>
+            <view>Africa</view>
+          </view>
+        </view>
+        代码是写出来给人看的，附带能在机器上运行
+      </van-collapse-item>
+    </van-collapse>
+
+  </view>
+</view>

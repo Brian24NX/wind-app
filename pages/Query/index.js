@@ -31,12 +31,12 @@ Page({
       icon: '/assets/img/menu/gzp@2x.png',
       isNew: true,
       label: 'gzp',
-      url: ''
+      url: '/packageMore/pages/sanctionCheck/list/index'
     }, {
       icon: '/assets/img/menu/gzfl@2x.png',
       isNew: false,
       label: 'gzfl',
-      url: ''
+      url: '/packagePrice/pages/guizufeilv/index'
     }, {
       icon: '/assets/img/menu/cxfl@2x.png',
       isNew: false,

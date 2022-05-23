@@ -4,15 +4,7 @@ page {
 }
 
 .newsContainer .topContainer {
-  width: 690rpx;
-  height: 210rpx;
-  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/newBg.png) no-repeat;
-  background-size: 100%;
-  padding-left: 50rpx;
-  display: flex;
-  align-items: center;
-  font-size: 64rpx;
-  color: #071E5D;
+  background-image: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/newBg.png);
 }
 
 .newsContainer .topTitles {

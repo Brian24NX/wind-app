@@ -265,6 +265,11 @@ var Languague = {
       type: '种类',
       code: '代码'
     },
+    // 柜租费率
+    guizufeilv: {
+      title: '柜租费率',
+      selectTitle: '选择国家/地区'
+    },
     // 我的
     userCenter: {
       title: '我的账户',

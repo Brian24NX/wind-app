@@ -16,7 +16,7 @@ page {
 }
 
 .homeContainer .searchContainers .shipTitles .shipLine {
-  width: 6rpx;
+  width: 8rpx;
   height: 50rpx;
   background-color: #E20202;
   margin-right: 15rpx;

@@ -32,6 +32,12 @@
         "pages/sanctionCheck/list/index",
         "pages/sanctionCheck/detail/index"
       ]
+    },
+    {
+      "root": "packagePrice",
+      "pages": [
+        "pages/guizufeilv/index"
+      ]
     }
   ],
   "window": {

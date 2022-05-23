@@ -8,18 +8,10 @@ page {
 }
 
 .cmaContainer .topContainer {
-  width: 690rpx;
-  height: 210rpx;
-  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/CMA.png) no-repeat;
-  background-size: 100%;
+  background-image: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/CMA.png);
   margin: 0 auto 30rpx;
-  padding-left: 50rpx;
-  display: flex;
-  align-items: center;
-  font-size: 64rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #071E5D;
 }
 
 .cmaContainer .cmaList {

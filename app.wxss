@@ -223,3 +223,15 @@
   border: 1rpx solid #DDDDDD;
   padding: 0 30rpx 0 20rpx;
 }
+
+.topContainer {
+  width: 690rpx;
+  height: 210rpx;
+  padding-left: 50rpx;
+  display: flex;
+  align-items: center;
+  font-size: 64rpx;
+  color: #071E5D;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}

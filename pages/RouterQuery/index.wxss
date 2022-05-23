@@ -30,7 +30,7 @@ page {
 }
 
 .queryContainer .redline {
-  width: 6rpx;
+  width: 8rpx;
   height: 50rpx;
   background: #E20202;
   margin: 0 20rpx;
