@@ -1,0 +1,52 @@
+/* pages/baseInfo/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.userInfoContainer {
+  padding: 30rpx;
+}
+
+.userInfoContainer .userInfoContent {
+  padding: 0 48rpx;
+  background-color: #ffffff;
+  margin-bottom: 30rpx;
+}
+
+.userInfoContainer .userInfoContent .oneUserInfo {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.userInfoContainer .userInfoContent .oneUserInfo:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
+.userInfoContainer .userInfoContent .oneUserInfo .infoTitle {
+  color: #6B7790;
+}
+
+.userInfoContainer .userInfoContent .oneUserInfo .infoContent {
+  text-align: right;
+  width: 400rpx;
+  color: #04246A;
+}
+
+.userInfoContainer .exit {
+  width: 100%;
+  height: 88rpx;
+  background-color: #2D75FF;
+  color: #ffffff;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  border: none;
+  border-radius: 0;
+}
+
+.userInfoContainer .exitHover {
+  opacity: 0.8;
+}

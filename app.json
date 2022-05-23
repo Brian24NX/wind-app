@@ -10,7 +10,8 @@
     "pages/OrderDetail/index",
     "pages/RouterQuery/index",
     "pages/Shipment/index",
-    "pages/Login/index"
+    "pages/Login/index",
+    "pages/baseInfo/index"
   ],
   "subPackages": [
     {

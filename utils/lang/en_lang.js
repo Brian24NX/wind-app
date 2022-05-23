@@ -270,7 +270,17 @@ var Languague = {
       login: 'Login',
       myDashboard: 'My Dashboard',
       shipment: 'Shipment\nDashboard',
-      setting: 'Document\nDashboard'
+      document: 'Document\nDashboard',
+      setting: 'Language Setting'
+    },
+    // 基础信息
+    baseInfo: {
+      title: 'User Information',
+      company: 'Company',
+      ming: 'Last name',
+      xing: 'First name',
+      email: 'Email address',
+      exit: 'Log out'
     },
     popupBtn: {
       confirm: 'confirm',

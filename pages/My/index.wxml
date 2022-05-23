@@ -21,7 +21,7 @@
       </view>
       <view class="oneDashboard">
         <image src="/assets/img/myAccount/documnt@2x.png"></image>
-        <text>{{languageContent.shipment}}</text>
+        <text>{{languageContent.document}}</text>
       </view>
     </view>
   </view>

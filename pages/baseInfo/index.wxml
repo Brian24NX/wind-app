@@ -1,0 +1,24 @@
+<!--pages/baseInfo/index.wxml-->
+<view class="userInfoContainer">
+  <view class="userInfoContent">
+    <view class="oneUserInfo">
+      <view class="infoTitle">{{languageContent.company}}</view>
+      <view class="infoContent">CMA CGM (CHINA) SHIPPING CO., LTD</view>
+    </view>
+  </view>
+  <view class="userInfoContent">
+    <view class="oneUserInfo">
+      <view class="infoTitle">{{languageContent.ming}}</view>
+      <view class="infoContent">Chase</view>
+    </view>
+    <view class="oneUserInfo">
+      <view class="infoTitle">{{languageContent.xing}}</view>
+      <view class="infoContent">CAI</view>
+    </view>
+    <view class="oneUserInfo">
+      <view class="infoTitle">{{languageContent.email}}</view>
+      <view class="infoContent">asia_ecommerce@163.com</view>
+    </view>
+  </view>
+  <button class="exit" hover-class="exitHover" catchtap="exit">{{languageContent.exit}}</button>
+</view>

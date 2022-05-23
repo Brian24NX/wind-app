@@ -271,7 +271,17 @@ var Languague = {
       login: '登录',
       myDashboard: '我的概览',
       shipment: '船运概览',
+      document: '文档概览',
       setting: '语言设置'
+    },
+    // 基础信息
+    baseInfo: {
+      title: '用户信息',
+      company: '公司',
+      ming: '名',
+      xing: '姓',
+      email: '邮箱地址',
+      exit: '退出'
     },
     popupBtn: {
       confirm: '确定',
