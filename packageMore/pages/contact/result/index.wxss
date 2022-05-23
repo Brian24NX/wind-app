@@ -19,13 +19,6 @@ page {
   justify-content: center;
   font-size: 64rpx;
   color: #071E5D;
-  font-size: 56rpx;
-  color: #071E5D;
-}
-
-.contactDetailContainer .topContainer view:nth-of-type(1) {
-  font-family: Antonio-Regular;
-  font-weight: 400;
 }
 
 .contactDetailContainer .contactLists {
