@@ -267,9 +267,10 @@ var Languague = {
     },
     // 柜租费率
     guizufeilv: {
-      title: 'Demurrage & Detention Tariffs',
+      navBarTitle: 'D & D',
       topTitle: 'Demurrage &\n Detention Tariffs',
-      selectTitle: 'Search country/region'
+      selectTitle: 'Search country/region',
+      send: 'Send email'
     },
     // 我的
     userCenter: {

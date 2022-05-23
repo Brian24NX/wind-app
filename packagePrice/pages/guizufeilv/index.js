@@ -15,7 +15,9 @@ Page({
     defaultIndex: 0,
     showPopup: false,
     valueKey: '',
-    columns: []
+    columns: [],
+    showEmail: false,
+    sendInfo: {}
   },
 
   /**
@@ -39,19 +41,15 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  },
-
   interLanguage() {
     const language = languageUtils.languageVersion()
     this.setData({
       languageContent: language.lang.page.guizufeilv,
       language: language.lang.page.langue,
       verifyInfo: language.lang.page.verifyInfo
+    })
+    wx.setNavigationBarTitle({
+      title: language.lang.page.guizufeilv.navBarTitle,
     })
   },
 
@@ -75,6 +73,68 @@ Page({
   onClose() {
     this.setData({
       showPopup: false
+    })
+  },
+
+  // 预览
+  preview(e) {
+    const item = e.currentTarget.dataset.item
+    wx.showLoading({
+      title: languageUtils.languageVersion().lang.page.load.loading,
+      mask: true
+    })
+    wx.downloadFile({
+      url: item.filepath,
+      success(filePath) {
+        wx.hideLoading()
+        wx.openDocument({
+          filePath: filePath.tempFilePath,
+          showMenu: true
+        })
+      },
+      fail(err) {
+        wx.hideLoading()
+        wx.showToast({
+          title: err.errMsg,
+          icon: 'none',
+          duration: 3000
+        })
+      }
+    })
+  },
+
+  // 下载
+  sendEmail(e) {
+    this.setData({
+      showEmail: true,
+      sendInfo: e.currentTarget.dataset.item
+    })
+  },
+
+  closeEmail() {
+    this.setData({
+      showEmail: false
+    })
+  },
+
+  sendEmails(e) {
+    const language = languageUtil.languageVersion();
+    wx.showLoading({
+      title: language.lang.page.load.send,
+      mask: true
+    })
+    sendEmail({
+      fileName: this.data.businessDetail.emailPath,
+      receiveMailAccount: e.detail
+    }).then(() => {
+      wx.showToast({
+        title: language.lang.page.load.sendSuccess,
+        icon: 'none',
+        mask: true
+      })
+      this.setData({
+        showEmail: false
+      })
     })
   }
 })

@@ -18,13 +18,13 @@
           </view>
         </view>
         <view class="fileList">
-          <view class="oneFile" wx:for="{{3}}" wx:key="index">
+          <view class="oneFile" wx:for="{{3}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
             <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
             <view class="templateContent">
               <view class="templateName">关于海运集装箱非危险品保函细则</view>
-              <view catchtap="sendEmail">{{languageContent.send}}</view>
+              <view catchtap="sendEmail" data-item="{{items}}">{{languageContent.send}}</view>
             </view>
-            <view class="preview">
+            <view class="preview" catchtap="preview" data-item="{{items}}">
               <image src="/assets/img/more/eye@2x.png"></image>
             </view>
           </view>
@@ -36,3 +36,5 @@
 </view>
 
 <custom-picker columns="{{columns}}" valueKey="{{valueKey}}" showPopup="{{showPopup}}" defaultIndex="{{defaultIndex}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
+
+<email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

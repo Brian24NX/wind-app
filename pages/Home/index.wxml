@@ -75,17 +75,9 @@
     <!-- 价格 -->
     <view class="searchContents" wx:if="{{actived === 'PRICE'}}">
       <view class="priceList">
-        <view class="onePrice" bindtap="toMore">
-          <image src="../../assets/img/home/PRICE_1@2x.png"></image>
-          <view>{{languageContent.instantQuote}}</view>
-        </view>
-        <view class="onePrice" bindtap="toMore">
-          <image src="../../assets/img/home/PRICE_2@2x.png"></image>
-          <view>{{languageContent.ddRate}}</view>
-        </view>
-        <view class="onePrice" bindtap="toMore">
-          <image src="../../assets/img/home/PRICE_3@2x.png"></image>
-          <view>{{languageContent.chargeFinder}}</view>
+        <view class="onePrice" wx:for="{{priceList}}" catchtap="toPirceUrl" data-item="{{item}}" wx:key="index">
+          <image src="{{item.icon}}"></image>
+          <view>{{languageContent[item.label]}}</view>
         </view>
       </view>
     </view>

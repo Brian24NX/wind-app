@@ -1,8 +1,10 @@
 // pages/Home/index.js
 const app = getApp();
 import {
-  fuzzySearch,
-  routingFinder
+  unix
+} from 'dayjs';
+import {
+  fuzzySearch
 } from '../../api/modules/home';
 var languageUtil = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
@@ -45,6 +47,19 @@ Page({
     swiperindex: 0,
     showDelete1: false,
     showDelete2: false,
+    priceList: [{
+      label: 'instantQuote',
+      url: '',
+      icon: '/assets/img/home/PRICE_1@2x.png'
+    }, {
+      label: 'ddRate',
+      url: '/packagePrice/pages/guizufeilv/index',
+      icon: '/assets/img/home/PRICE_2@2x.png'
+    }, {
+      label: 'chargeFinder',
+      url: '',
+      icon: '/assets/img/home/PRICE_3@2x.png'
+    }],
     moreMenuList: [
       [{
           id: 'cma',
@@ -385,11 +400,19 @@ Page({
     })
   },
 
-  toMore() {
-    wx.showToast({
-      title: this.data.load.functionIsUnderDevelopment,
-      icon: 'none'
-    })
+  toPirceUrl(e) {
+    const item = e.currentTarget.dataset.item
+    if (item.url) {
+      wx.navigateTo({
+        url: item.url
+      })
+    } else {
+      wx.showToast({
+        title: this.data.load.functionIsUnderDevelopment,
+        icon: 'none'
+      })
+    }
+
   },
 
   toNav(e) {

@@ -268,9 +268,10 @@ var Languague = {
     },
     // 柜租费率
     guizufeilv: {
-      title: '柜租费率',
+      navBarTitle: '柜租费率',
       topTitle: '柜租费率',
-      selectTitle: '选择国家/地区'
+      selectTitle: '选择国家/地区',
+      send: '发送至邮箱'
     },
     // 我的
     userCenter: {
