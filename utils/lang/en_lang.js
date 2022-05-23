@@ -92,7 +92,8 @@ var Languague = {
     },
     khtg: {
       topTitle: 'Business & Operational Update',
-      send: 'Send Email'
+      send: 'Send Email',
+      keyword: 'Keyword'
     },
     newsCenter: {
       title: 'News Center',

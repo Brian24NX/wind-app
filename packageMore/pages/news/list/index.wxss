@@ -26,12 +26,6 @@ page {
   align-items: center;
 }
 
-.placeholder {
-  color: #7087A1;
-  font-size: 24rpx;
-  font-style: italic;
-}
-
 .newsContainer .topTitles .searchInputs input {
   width: 570rpx;
   height: 100%;
