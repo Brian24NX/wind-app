@@ -28,10 +28,6 @@ page {
   font-weight: 400;
 }
 
-.contactDetailContainer .topContainer view:nth-of-type(2) {
-  color: #E20202;
-}
-
 .contactDetailContainer .contactLists {
   padding-top: 30rpx;
 }
