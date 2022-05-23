@@ -3,6 +3,10 @@ page {
   background-color: #F0F1F5;
 }
 
+.businessContainer {
+  padding: 30rpx;
+}
+
 .businessContainer .topContainer {
   width: 690rpx;
   height: 210rpx;
@@ -25,10 +29,9 @@ page {
 }
 
 .businessContainer .businessLists {
-  width: 690rpx;
-  margin: 0 auto 40rpx;
   background-color: #ffffff;
   padding: 1rpx 40rpx;
+  margin-top: 30rpx;
 }
 
 .businessList .oneBusiness {

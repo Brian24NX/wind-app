@@ -1,8 +1,15 @@
 <!--packageMore/pages/BusinessAndOperational/index.wxml-->
 <wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="businessContainer">
-  <view class="topTitles">
-    <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</text>
+  <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</text>
+  <view class="inputContainer" style="margin-top: 30rpx;">
+    <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.keyword}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="resetList" />
+    <view class="delete" catchtap="deleteValue">
+      <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+    </view>
+    <view class="search" catchtap="resetList">
+      <image src="/assets/img/search/search@2x.png"></image>
+    </view>
   </view>
   <view class="businessLists" wx:if="{{loading || !noData}}">
     <view class="businessList">

@@ -93,7 +93,8 @@ var Languague = {
     },
     khtg: {
       topTitle: '业务及运营\n信息更新',
-      send: '发送至邮箱'
+      send: '发送至邮箱',
+      keyword: '关键词'
     },
     newsCenter: {
       title: '新闻中心',

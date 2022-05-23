@@ -17,7 +17,8 @@ Page({
     loading: true,
     noMore: false,
     noData: false,
-    pageNum: 1
+    pageNum: 1,
+    keyword: ''
   },
 
   /**
@@ -59,6 +60,19 @@ Page({
     })
   },
 
+  setInput(e) {
+    this.setData({
+      keyword: e.detail.value
+    })
+  },
+
+  deleteValue() {
+    this.setData({
+      keyword: ''
+    })
+    this.resetList()
+  },
+
   resetList() {
     this.setData({
       loading: true,
@@ -76,7 +90,8 @@ Page({
     })
     businiessOpentionalList({
       pageNum: this.data.pageNum,
-      pageSize: pageSize
+      pageSize: pageSize,
+      keyword: this.data.keyword
     }).then(res => {
       const list = this.data.list.concat(res.data.list)
       if (list.length >= res.data.total) {

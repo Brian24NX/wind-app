@@ -174,3 +174,9 @@ page{
   text-align: center;
   padding: 30rpx 0;
 }
+
+.placeholder {
+  color: #7087A1;
+  font-size: 24rpx;
+  font-style: italic;
+}
