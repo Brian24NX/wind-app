@@ -264,6 +264,14 @@ var Languague = {
       type: '种类',
       code: '代码'
     },
+    // 我的
+    userCenter: {
+      title: '我的账户',
+      login: '登录',
+      myDashboard: '我的概览',
+      shipment: '船运概览',
+      setting: '语言设置'
+    },
     popupBtn: {
       confirm: '确定',
       cancel: '取消'

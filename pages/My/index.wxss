@@ -3,22 +3,131 @@ page {
   background-color: #f5f5f5;
 }
 
-.qidai {
+.myNavbarContainer {
+  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/myBg.png) no-repeat;
+  background-size: 100%;
   width: 100%;
-  padding-top: 130rpx;
+  height: 380rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myNavbarContainer .myNavbarContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.myNavbarContainer .myNavbarContent .myNavBarTitle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #ffffff;
+}
+
+.myNavbarContainer .myNavbarContent .userInfoContainer {
+  width: 690rpx;
+  height: 162rpx;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 0 46rpx;
+}
+
+.myNavbarContainer .myNavbarContent .userInfoContainer .avatar {
+  width: 88rpx;
+  height: 88rpx;
+}
+
+.myNavbarContainer .myNavbarContent .userInfoContainer .infoCenter {
+  width: 490rpx;
+  padding: 0 40rpx;
+  color: #04246A;
+  font-size: 36rpx;
+}
+
+.myNavbarContainer .myNavbarContent .userInfoContainer .noLogin {
+  text-align: right;
+  font-size: 28rpx;
+}
+
+.myNavbarContainer .myNavbarContent .userInfoContainer .rightIcon {
+  width: 16rpx;
+  height: 28rpx;
+}
+
+.myContainer {
+  padding: 410rpx 30rpx 0;
+}
+
+.myContainer .myDashboard {
+  background-color: #ffffff;
+  padding: 0 46rpx;
+}
+
+.myContainer .myDashboard .myDashboardTitle {
+  height: 110rpx;
+  border-bottom: 1rpx solid #EEEEEE;
+  font-size: 40rpx;
+  color: #04246A;
+  display: flex;
+  align-items: center;
+}
+
+.myContainer .myDashboard .dashboardList {
+  display: flex;
+  height: 190rpx;
+}
+
+.myContainer .myDashboard .dashboardList .oneDashboard {
+  display: flex;
+  flex: 1;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 36rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
+  font-size: 28rpx;
   color: #04246A;
   text-align: center;
 }
 
-.qidai image {
-  width: 454rpx;
-  height: 360rpx;
-  margin-bottom: 58rpx;
+.myContainer .myDashboard .dashboardList .oneDashboard image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-bottom: 10rpx;
+}
+
+.myContainer  .setting {
+  height: 120rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30rpx;
+  padding: 0 40rpx;
+}
+
+.myContainer .setting .settingLeft {
+  font-size: 28rpx;
+  color: #04246A;
+  display: flex;
+  align-items: center;
+}
+
+.myContainer .setting .settingLeft image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
 }

@@ -1,10 +1,35 @@
-<view class="navbarContainer" style="height: calc({{navHeight}}px + 36rpx);">
-  <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit" catchtap="switchLanguage"></image>
+<view class="myNavbarContainer" style="padding-top: {{navTop}}px;">
+ <view class="myNavbarContent">
+  <view class="myNavBarTitle" style="height: {{navHeight}}px;">{{languageContent.title}}</view>
+  <view class="userInfoContainer">
+    <block>
+      <image class="avatar" src="/assets/img/myAccount/avatar@2x.png"></image>
+      <view class="infoCenter noLogin">{{languageContent.login}}</view>
+      <van-icon name="arrow" color="#04246A" />
+    </block>
+  </view>
+ </view>
 </view>
 
-<view class="priceContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
-  <view class="qidai">
-    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/qidai.png"></image>
-    <text style="padding: 0 50rpx;">{{load.functionIsUnderDevelopment}}</text>
+<view class="myContainer">
+  <view class="myDashboard">
+    <view class="myDashboardTitle">{{languageContent.myDashboard}}</view>
+    <view class="dashboardList">
+      <view class="oneDashboard">
+        <image src="/assets/img/myAccount/shipment@2x.png"></image>
+        <text>{{languageContent.shipment}}</text>
+      </view>
+      <view class="oneDashboard">
+        <image src="/assets/img/myAccount/documnt@2x.png"></image>
+        <text>{{languageContent.shipment}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="setting">
+    <view class="settingLeft">
+      <image src="/assets/img/myAccount/setting@2x.png"></image>
+      <text>{{languageContent.setting}}</text>
+    </view>
+    <van-icon name="arrow" color="#04246A" />
   </view>
 </view>

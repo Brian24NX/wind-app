@@ -21,7 +21,7 @@
   <view class="sanctionList">
     <view class="oneSanction" wx:for="{{10}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
       <view>CHARCOAL (VEGETABLE ORIGIN), ACTIVATED CARBON</view>
-      <van-icon name="arrow" />
+      <van-icon name="arrow" color="#04246A" />
     </view>
   </view>
 </view>

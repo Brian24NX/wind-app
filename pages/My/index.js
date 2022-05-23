@@ -7,7 +7,7 @@ Page({
    */
   data: {
     navTop: app.globalData.navTop,
-    navHeight: app.globalData.navHeight,
+    navHeight: app.globalData.navObj,
     languageContent: {}, // 用于保存当前页面所需字典
     changeLanguage: {},
     load: {}

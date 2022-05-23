@@ -263,6 +263,14 @@ var Languague = {
       type: 'Type',
       code: 'Reference number'
     },
+    // 我的
+    userCenter: {
+      title: 'My Account',
+      login: 'Login',
+      myDashboard: 'My Dashboard',
+      shipment: 'Shipment\nDashboard',
+      setting: 'Document\nDashboard'
+    },
     popupBtn: {
       confirm: 'confirm',
       cancel: 'cancel'
