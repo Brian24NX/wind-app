@@ -305,7 +305,8 @@ var Languague = {
       type: 'Category',
       status: 'Status',
       date: 'Date',
-      send: 'Send email'
+      send: 'Send email',
+      noData: 'No document available yet'
     },
     popupBtn: {
       confirm: 'confirm',

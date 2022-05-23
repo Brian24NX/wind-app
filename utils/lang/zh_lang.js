@@ -306,7 +306,8 @@ var Languague = {
       type: '类型',
       status: '状态',
       date: '日期',
-      send: '发送至邮箱'
+      send: '发送至邮箱',
+      noData: '暂无文件'
     },
     popupBtn: {
       confirm: '确定',
