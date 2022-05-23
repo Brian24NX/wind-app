@@ -42,7 +42,8 @@
     {
       "root": "packageDashboard",
       "pages": [
-        "pages/document/index"
+        "pages/document/index",
+        "pages/shipment/list/index"
       ]
     }
   ],

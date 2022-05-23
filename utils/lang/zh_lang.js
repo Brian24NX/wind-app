@@ -309,6 +309,22 @@ var Languague = {
       send: '发送至邮箱',
       noData: '暂无文件'
     },
+    // 船舶概览
+    shipment: {
+      title: '船运概览',
+      title1: '船运',
+      title2: '概览',
+      placeholder: '搜索订舱号或提单号',
+      shipment: '装运视图',
+      container: '货柜视图',
+      huoguihao: '货柜号',
+      dingdans: '货柜号/提单号/订舱号',
+      xiangxing: '箱型',
+      location: '位置',
+      time: '时间',
+      chuanming: '船名',
+      chuanci: '船次',
+    },
     popupBtn: {
       confirm: '确定',
       cancel: '取消'

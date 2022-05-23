@@ -1,0 +1,121 @@
+<!--packageDashboard/pages/shipment/list/index.wxml-->
+<view class="shipmentContainer">
+  <view class="listTopContainer">
+    <view class="listTopTitles">
+      <view class="titleLine"></view>
+      <view class="listTopTitle">
+        <text>{{languageContent.title1}}</text>
+        <text>{{languageContent.title2}}</text>
+      </view>
+    </view>
+    <view class="inputContainer">
+      <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+      <view class="delete" catchtap="deleteValue">
+        <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+      </view>
+      <view class="search" bindtap="search">
+        <image src="/assets/img/search/search@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="shipmentLists">
+    <view class="viewTypes">
+      <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
+        <view>{{languageContent[item]}}</view>
+        <view class="activedLine"></view>
+      </view>
+    </view>
+    <!-- 装运视图 -->
+    <view class="shipmentList" wx:if="{{current === 'shipment'}}">
+      <view class="oneShipment" wx:for="{{5}}" wx:key="index">
+        <view class="topTime">
+          <view>EAT</view>
+          <view>Mon 28-FEB-2022 21:00</view>
+        </view>
+        <view class="shipInfo">
+          <image src="/assets/img/dashboard/shipment@2x.png"></image>
+          <view class="shopInfoRight">
+            <view class="shipInfoName">
+              <view>ERFS6325612</view>
+              <view>Shipment ref</view>
+            </view>
+            <view class="shipStatus">BOOKING IN PROGRESS</view>
+          </view>
+        </view>
+        <view class="stepLists">
+          <view class="oneStep">
+            <view class="leftLines">
+              <view class="leftLineDto"></view>
+              <view class="leftLine"></view>
+            </view>
+            <view class="stepContent">OKALAND, CA, US</view>
+          </view>
+          <view class="oneStep">
+            <view class="leftLines" style="top: 6rpx">
+              <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+            </view>
+            <view class="stepContent">OKALAND, CA, US</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 货柜视图 -->
+    <view class="huoguoContainer" wx:if="{{current === 'container'}}">
+      <view class="oneOrder" wx:for="{{3}}">
+        <view class="orderTop">
+          <view class="topLeft">
+            <text>EAT</text>
+          </view>
+          <view class="topRight">Mon 28-FEB-2022 21:00</view>
+        </view>
+        <view class="orderBottom">
+          <view class="oneBottom">
+            <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
+            <view class="details">
+              <view class="detailLeft">
+                <view class="huogui">ERFS6325612</view>
+                <view>{{languageContent.huoguihao}}</view>
+              </view>
+              <view class="detailRight">
+                <view class="xiangxing">40HC</view>
+                <view>{{languageContent.xiangxing}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="oneBottom">
+            <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
+            <view class="details" style="flex-direction: column;">
+              <view>
+                <view class="status">Discharged in Transhipment</view>
+              </view>
+
+              <view class="details2">
+                <view class="detailLeft">
+                  <view class="address">SHANGHAI</view>
+                  <view>{{languageContent.location}}</view>
+                </view>
+                <view class="detailRight">
+                  <view class="xiangxing time">06-FEB-2022 10:00</view>
+                  <view>{{languageContent.time}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="oneBottom">
+            <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
+            <view class="details">
+              <view class="detailLeft">
+                <view class="huogui chuanming">JIAYONG</view>
+                <view>{{languageContent.chuanming}}</view>
+              </view>
+              <view class="detailRight">
+                <view class="xiangxing">8991WN</view>
+                <view>{{languageContent.chuanci}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -308,6 +308,21 @@ var Languague = {
       send: 'Send email',
       noData: 'No document available yet'
     },
+    shipment: {
+      title: 'Shipment Dashbord',
+      title1: 'Shipment',
+      title2: ' Dashbord',
+      placeholder: 'Shipment or conatiner ref.',
+      shipment: 'Shipment View',
+      container: 'Container View',
+      huoguihao: 'Container (Ref.)',
+      dingdans: 'Container (Ref.)',
+      xiangxing: 'Equipment Type',
+      location: 'Location',
+      time: 'Time',
+      chuanming: 'Vessel',
+      chuanci: 'Voyage',
+    },
     popupBtn: {
       confirm: 'confirm',
       cancel: 'cancel'

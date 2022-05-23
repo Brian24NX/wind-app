@@ -11,7 +11,7 @@ Page({
     languageContent: {}, // 用于保存当前页面所需字典
     dashboardList: [{
       label: 'shipment',
-      url: '',
+      url: '/packageDashboard/pages/shipment/list/index',
       icon: '/assets/img/myAccount/shipment@2x.png'
     }, {
       label: 'document',
