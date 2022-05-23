@@ -11,7 +11,11 @@ Page({
     language: 'zh',
     country: '',
     countryName: '',
-    activeNames: 0
+    activeNames: 0,
+    defaultIndex: 0,
+    showPopup: false,
+    valueKey: '',
+    columns: []
   },
 
   /**
@@ -48,6 +52,29 @@ Page({
       languageContent: language.lang.page.guizufeilv,
       language: language.lang.page.langue,
       verifyInfo: language.lang.page.verifyInfo
+    })
+  },
+
+  // 切换展开数据
+  onChange(e) {
+    this.setData({
+      activeNames: e.detail
+    })
+  },
+
+  openPopup() {
+    this.setData({
+      showPopup: true
+    })
+  },
+
+  onConfirm(e) {
+
+  },
+
+  onClose() {
+    this.setData({
+      showPopup: false
     })
   }
 })

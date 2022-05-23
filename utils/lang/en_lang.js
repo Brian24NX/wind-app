@@ -265,6 +265,12 @@ var Languague = {
       type: 'Type',
       code: 'Reference number'
     },
+    // 柜租费率
+    guizufeilv: {
+      title: 'Demurrage & Detention Tariffs',
+      topTitle: 'Demurrage &\n Detention Tariffs',
+      selectTitle: 'Search country/region'
+    },
     // 我的
     userCenter: {
       title: 'My Account',

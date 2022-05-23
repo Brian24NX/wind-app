@@ -269,6 +269,7 @@ var Languague = {
     // 柜租费率
     guizufeilv: {
       title: '柜租费率',
+      topTitle: '柜租费率',
       selectTitle: '选择国家/地区'
     },
     // 我的

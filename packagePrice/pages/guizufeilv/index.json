@@ -2,6 +2,7 @@
   "navigationBarTitleText": "",
   "usingComponents": {
     "van-collapse": "@vant/weapp/collapse/index",
-    "van-collapse-item": "@vant/weapp/collapse-item/index"
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "custom-picker": "/components/customPicker/index"
   }
 }

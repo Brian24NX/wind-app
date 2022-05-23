@@ -53,7 +53,7 @@ page {
 .guizuContainer .guizuList {
   background-color: #ffffff;
   margin-top: 30rpx;
-  padding: 0 48rpx;
+  padding: 20rpx 48rpx;
 }
 
 .guizuContainer .guizuList .titles {
@@ -77,7 +77,7 @@ page {
 }
 
 .guizuContainer .guizuList .items {
-  padding: 20rpx 0;
+  padding: 0 0 20rpx;
 }
 
 .guizuContainer .guizuList .fileList .oneFile {

@@ -1,6 +1,6 @@
 <!--packagePrice/pages/guizufeilv/index.wxml-->
 <view class="guizuContainer">
-  <view class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.title}}</view>
+  <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</text>
   <view class="selectContainer">
     <view class="selectTitle">{{languageContent.selectTitle}}</view>
     <view class="selects" catchtap="openPopup">
@@ -9,8 +9,8 @@
     </view>
   </view>
   <view class="guizuList">
-    <van-collapse accordion value="{{ activeNames }}" bind:change="onChange">
-      <van-collapse-item content-class="items" name="{{index}}" wx:for="{{3}}" wx:key="index">
+    <van-collapse accordion border="{{false}}" value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item border="{{false}}" content-class="items" name="{{index}}" wx:for="{{3}}" wx:key="index">
         <view slot="title">
           <view class="titles">
             <view class="titleLine"></view>
@@ -34,3 +34,5 @@
 
   </view>
 </view>
+
+<custom-picker columns="{{columns}}" valueKey="{{valueKey}}" showPopup="{{showPopup}}" defaultIndex="{{defaultIndex}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
