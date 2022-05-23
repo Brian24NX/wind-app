@@ -7,9 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    navTop: app.globalData.navTop,
-    navHeight: app.globalData.navObj,
     languageContent: {},
+    language: 'zh',
     contractList: []
   },
 
@@ -29,7 +28,11 @@ Page({
   initLanguage() {
     //获取当前小程序语言版本所对应的字典变量
     this.setData({
-      languageContent: languageUtil.languageVersion().lang.page.callMeResult
+      languageContent: languageUtil.languageVersion().lang.page.callMeResult,
+      language: languageUtil.languageVersion().lang.page.langue
+    })
+    wx.setNavigationBarTitle({
+      title: languageUtil.languageVersion().lang.page.callMeResult.title
     })
   },
 

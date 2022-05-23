@@ -113,6 +113,7 @@ var Languague = {
       noOrder: 'Unable to find the relevant booking number, please provide more information'
     },
     callMeResult: {
+      title: 'Contact Us',
       fuwu: 'Customer Service',
       phone: 'Phone',
       email: 'Email Address',

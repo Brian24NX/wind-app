@@ -114,6 +114,7 @@ var Languague = {
       noOrder: '无法找到相关订舱号，请提供更多信息'
     },
     callMeResult: {
+      title: '联系我们',
       fuwu: '客户服务',
       phone: '联系方式',
       email: '邮箱地址',
