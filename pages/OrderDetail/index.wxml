@@ -1,4 +1,4 @@
 <!--pages/OrderDetail/index.wxml-->
 <view class="moreDetailContainer">
-  <one detail="{{detail}}" list="{{list}}" wx:if="{{!loading}}" languageContent="{{languageContent}}"></one>
+  <one detail="{{detail}}" wx:if="{{!loading}}" languageContent="{{languageContent}}"></one>
 </view>
