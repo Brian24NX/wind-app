@@ -345,6 +345,27 @@ var Languague = {
       noShipmentData: '未找到船运信息',
       noContainersData: '暂无货柜'
     },
+    // 查询费率
+    chargeFinder: {
+      title: '查询费率',
+      title1: '查询',
+      title2: '费率',
+      //卸货港
+      portOfDischarge: "卸货港",
+      //起运港
+      protOfLanding: "起运港",
+      //港口名称/代码
+      name: "名称/代码",
+      type: '集装箱类型',
+      dryNoR: '干货集装箱 & 干冻柜',
+      reefer: '冻柜',
+      date: '模拟日期',
+      search: '搜索',
+      detailTitle: '费率详情',
+      main: '主要费用',
+      other: '其他费用',
+      noChargeData: '未找到相关数据'
+    },
     popupBtn: {
       confirm: '确定',
       cancel: '取消'

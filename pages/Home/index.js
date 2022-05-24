@@ -57,7 +57,7 @@ Page({
       icon: '/assets/img/home/PRICE_2@2x.png'
     }, {
       label: 'chargeFinder',
-      url: '',
+      url: '/packagePrice/pages/chargeFinder/index',
       icon: '/assets/img/home/PRICE_3@2x.png'
     }],
     moreMenuList: [

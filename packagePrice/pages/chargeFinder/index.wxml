@@ -1,0 +1,86 @@
+<!--packagePrice/pages/chargeFinder/index.wxml-->
+<view class="chargeContainer">
+  <view class="searchLists">
+    <view class="routeTitles">
+      <view class="redline"></view>
+      <text class="route1">{{languageContent.title1}}</text>
+      <text class="route2">{{languageContent.title2}}</text>
+    </view>
+    <view class="searchList">
+      <view class="searchTitle">{{languageContent.protOfLanding}}</view>
+      <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
+        <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
+        <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
+        <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+        <view class="noRequest" wx:if="{{showRemind1}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
+        <view class="noRequest" wx:if="{{showRemind2}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.gswx}}</text>
+        </view>
+        <scroll-view class="scroll-view" wx:if='{{pollist.length}}' scroll-y>
+          <view wx:for="{{pollist}}" wx:key="index" class="item" bindtap='changepolname' data-index="{{index}}">
+            <view class="polname">{{item.point}}</view>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="leftIcons">
+        <view class="leftDto"></view>
+        <view class="leftLine"></view>
+        <image class="shipIcon" src="/assets/img/seniorsearch/ship.png"></image>
+        <view class="leftLine"></view>
+        <image class="shipLocation" src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+      </view>
+    </view>
+    <view class="searchList">
+      <view class="searchTitle">{{languageContent.portOfDischarge}}</view>
+      <view class="codeInputs {{showRemind3 || showRemind4 ? 'noRequestBorder' : ''}}">
+        <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
+        <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" bindinput="changepod" />
+        <view class="deleteIcon" wx:if="{{showDelete2}}" catchtap="deleteValue" data-type="2">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+        <view class="noRequest" wx:if="{{showRemind3}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
+        <view class="noRequest" wx:if="{{showRemind4}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.gswx}}</text>
+        </view>
+        <scroll-view class="scroll-view" wx:if='{{podlist.length}}' scroll-y>
+          <view wx:for="{{podlist}}" wx:key="index" class="item" bindtap='changepodname' data-index="{{index}}">
+            <view class="polname">{{item.point}}</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <view class="searchList">
+      <view class="searchTitle">{{languageContent.type}}</view>
+      <view class="radioContainer">
+        <view class="oneRadio" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item.id}}">
+          <view class="statusContainer">
+            <view class="checkedStatus" wx:if="{{currentType === item.id}}"></view>
+          </view>
+          <view>{{languageContent[item.label]}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="searchList">
+      <view class="searchTitle">{{languageContent.date}}</view>
+      <view class="selectContainer" catchtap="openPopup" data-type="2">
+        <view style="{{date ? 'color: #071E5D;' : ''}}">{{date || verifyInfo.select}}</view>
+        <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+      </view>
+    </view>
+    <view class="btn" style="margin-top: 40rpx;">
+      <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search}}</button>
+    </view>
+  </view>
+
+  <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
+</view>

@@ -36,7 +36,9 @@
     {
       "root": "packagePrice",
       "pages": [
-        "pages/guizufeilv/index"
+        "pages/guizufeilv/index",
+        "pages/chargeFinder/index",
+        "pages/chargeFinderResult/index"
       ]
     },
     {

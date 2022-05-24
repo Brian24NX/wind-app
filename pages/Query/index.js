@@ -41,7 +41,7 @@ Page({
       icon: '/assets/img/menu/cxfl@2x.png',
       isNew: false,
       label: 'cxfl',
-      url: ''
+      url: '/packagePrice/pages/chargeFinder/index'
     }]
   },
 

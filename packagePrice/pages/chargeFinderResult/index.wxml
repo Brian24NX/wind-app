@@ -1,0 +1,76 @@
+<!--packagePrice/pages/chargeFinderResult/index.wxml-->
+<view class="chargeDetail">
+  <view class="chargeTops">
+    <view class="stepLists">
+      <view class="oneStep">
+        <view class="leftLines">
+          <view class="leftLineDto"></view>
+          <view class="leftLine"></view>
+        </view>
+        <view class="stepContent">OKALAND, CA, US</view>
+      </view>
+      <view class="oneStep">
+        <view class="leftLines" style="top: 20rpx;">
+          <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+        </view>
+        <view class="stepContent">OKALAND, CA, US</view>
+      </view>
+    </view>
+    <view class="typeLists">
+      <view class="oneTypes">
+        <image src="/assets/img/price/mode@2x.png"></image>
+        <view>干货集装箱</view>
+      </view>
+      <view class="oneTypes">
+        <image src="/assets/img/price/date@2x.png"></image>
+        <view>2022-04-30 星期三</view>
+      </view>
+    </view>
+  </view>
+  <view class="charges">
+    <view class="viewTypes">
+      <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
+        <view>{{languageContent[item]}}</view>
+        <view class="activedLine"></view>
+      </view>
+    </view>
+    <view class="chargesList">
+      <view class="chargesTitle">
+        <view class="chargesTitleLine"></view>
+        <view>ASIA-US GULF USEC</view>
+      </view>
+      <view class="chargesDetail">
+        <view class="oneCharge" wx:for="{{3}}" wx:key="index">
+          <view class="oneChargeTitle">Bunker Surcharge NOS (USD)</view>
+          <view class="priceList">
+            <view class="onePrice">
+              <view>Per BL</view>
+              <view>959.00/UNI</view>
+            </view>
+            <view class="onePrice">
+              <view>20</view>
+              <view>1,006.00/UNI</view>
+            </view>
+            <view class="onePrice">
+              <view>40</view>
+              <view>1,006.00/UNI</view>
+            </view>
+            <view class="onePrice">
+              <view>40HC</view>
+              <view>1,006.00/UNI</view>
+            </view>
+            <view class="onePrice">
+              <view>45</view>
+              <view>1,353.00/UNI</view>
+            </view>
+          </view>
+          <view class="bottomLineContainer" wx:if="{{index !== 2}}">
+            <view class="leftDto"></view>
+            <view class="bottomLine"></view>
+            <view class="rightDto"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

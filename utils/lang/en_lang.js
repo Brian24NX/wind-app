@@ -14,7 +14,7 @@ var Languague = {
     // 校验
     verifyInfo: {
       // 必填
-      required: 'This parameter is required',
+      required: 'Mandatory',
       // 格式无效
       gswx: 'Invalid number, please check format',
       more3: 'Maximum three container states, please re-enter',
@@ -342,6 +342,27 @@ var Languague = {
       Consignee: 'Consignee',
       noShipmentData: 'No shipment found',
       noContainersData: 'No container attributed yet'
+    },
+    // 查询费率
+    chargeFinder: {
+      title: 'Charge Finder',
+      title1: 'Charge',
+      title2: ' Finder',
+      //卸货港
+      portOfDischarge: "Port of Discharge",
+      //起运港
+      protOfLanding: "Port of Loading",
+      //港口名称/代码
+      name: "Name/code",
+      type: 'Mode',
+      dryNoR: 'Dry & NOR',
+      reefer: 'Reefer',
+      date: 'Simulation Date',
+      search: 'Search',
+      detailTitle: 'Charge Detail',
+      main: 'Main Charges',
+      other: 'Other Charges',
+      noChargeData: 'No date found'
     },
     popupBtn: {
       confirm: 'confirm',
