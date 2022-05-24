@@ -18,9 +18,6 @@ Component({
     detail: {
       type: Object
     },
-    list: {
-      type: Array
-    },
     languageContent: {
       type: Object
     }
@@ -70,32 +67,6 @@ Component({
       list.forEach((item, index) => {
         item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
         item.date = utils.substrTime(item.date)
-        // const week = new Date(item.date).getDay()
-        // switch (week) {
-        //   case 0:
-        //     item.week = this.data.languageContent.language === 'en' ? 'Sunday' : '星期日'
-        //     break;
-        //   case 1:
-        //     item.week = this.data.languageContent.language === 'en' ? 'Monday' : '星期一'
-        //     break;
-        //   case 2:
-        //     item.week = this.data.languageContent.language === 'en' ? 'Tuesday' : '星期二'
-        //     break;
-        //   case 3:
-        //     item.week = this.data.languageContent.language === 'en' ? 'Wednesday' : '星期三'
-        //     break;
-        //   case 4:
-        //     item.week = this.data.languageContent.language === 'en' ? 'Thursday' : '星期四'
-        //     break;
-        //   case 5:
-        //     item.week = this.data.languageContent.language === 'en' ? 'Friday' : '星期五'
-        //     break;
-        //   case 6:
-        //     item.week = this.data.languageContent.language === 'en' ? 'Saturday' : '星期六'
-        //     break;
-        //   default:
-        //     break;
-        // }
         item.time = dayjs(item.date).format('HH:mm')
         item.date = dayjs(item.date).format('YYYY-MM-DD')
         const dayStatus = dayjs(item.date).isBefore(dayjs(), 'date')

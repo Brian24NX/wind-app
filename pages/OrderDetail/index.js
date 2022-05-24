@@ -7,11 +7,7 @@ Page({
    */
   data: {
     languageContent: {},
-    index: null,
-    routeIndex: null,
-    indexs: null,
     detail: {},
-    list: [],
     loading: true
   },
 
@@ -20,12 +16,7 @@ Page({
    */
   onLoad: function (options) {
     this.initLanguage()
-    this.setData({
-      index: options.index,
-      routeIndex: options.routeIndex,
-      indexs: options.indexs
-    })
-    this.setOneDetail()
+    this.setOneDetail(options.index)
   },
 
   initLanguage() {
@@ -40,7 +31,7 @@ Page({
     })
   },
 
-  setOneDetail() {
+  setOneDetail(index) {
     this.setData({
       loading: true
     })
@@ -51,12 +42,11 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    // console.log(data)
     this.setData({
-      list: [data.list[this.data.index]],
-      detail: data.list[this.data.index].data.routes[this.data.routeIndex].containers[this.data.indexs],
+      detail: data.list[index],
       loading: false
     })
+    console.log(this.data.detail)
     wx.hideLoading()
   }
 })

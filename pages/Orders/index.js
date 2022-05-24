@@ -12,8 +12,6 @@ Page({
     languageContent: {},
     verifyInfo: {},
     shipmentRef: '',
-    dataLength: null,
-    detail: null,
     showRemind: false,
     loading: true,
     list: []
@@ -116,7 +114,8 @@ Page({
       eqpid: ''
     }
     this.setData({
-      loading: true
+      loading: true,
+      list: []
     })
     shipmentTracking(obj).then(res => {
       this.setData({
@@ -124,41 +123,32 @@ Page({
       })
       const data = res.data;
       // console.log(data)
-      // let containers = []
-      // data.forEach(route => {
-      //   route.data.routes.forEach(item => {
-      //     const oneRouteContainers = item.containers.filter(i => i.movements.length)
-      //     containers = containers.concat(oneRouteContainers)
-      //   })
-      // })
-      // console.log(containers)
-      if (!data.length || (data.length === 1 && !data[0].data)) {
-        this.setData({
-          dataLength: 0,
-          list: data
-        })
-      } else {
-        const dataLength = data.filter(u => u.data).length;
-        if (!dataLength) {
-          this.setData({
-            dataLength: 0,
-            list: data
-          })
-          return
-        }
-        if (data.length === 1 && data[0].data.routes.length === 1 && data[0].data.routes[0].containers.length === 1) {
-          this.setData({
-            dataLength: 1,
-            detail: data[0].data.routes[0].containers[0],
-            list: data
+      let containers = []
+      data.forEach(route => {
+        if (route.data) {
+          route.data.routes.forEach(item => {
+            let oneRouteContainers = item.containers.filter(i => i.movements.length)
+            oneRouteContainers = oneRouteContainers.map(oneRoute=>{
+              oneRoute.portOfLoadingCountryCode = route.data.portOfLoadingCountryCode
+              oneRoute.portOfLoadingCountryName = route.data.portOfLoading.name
+              oneRoute.portOfDischargeCountryCode = route.data.portOfDischargeCountryCode
+              oneRoute.portOfDischargeCountryName = route.data.portOfDischarge.name
+              return oneRoute
+            })
+            containers = containers.concat(oneRouteContainers)
           })
         } else {
-          this.setData({
-            dataLength: 2,
-            list: data
+          containers.push({
+            id: route.shipmentRef,
+            movements: []
           })
         }
-      }
+        
+      })
+      this.setData({
+        list: containers
+      })
+      // console.log(containers)
     })
   }
 })
