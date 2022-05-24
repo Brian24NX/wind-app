@@ -56,7 +56,6 @@
       </view>
     </view>
   </view>
-  <view style="height: 200rpx;"></view>
   <view class="bottomContainer">
     <view class="downloadBtn" bindtap="reportToPDF">{{languageContent.export}}</view>
     <view class="toEmail" catchtap="sendReport">{{languageContent.toEmail}}</view>
