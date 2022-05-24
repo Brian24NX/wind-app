@@ -8,6 +8,10 @@
   margin-bottom: 30rpx;
 }
 
+.componentHuoguoContainer .oneOrder:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
 .componentHuoguoContainer .oneOrder .orderTop {
   display: flex;
   justify-content: space-between;

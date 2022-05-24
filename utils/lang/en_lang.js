@@ -314,6 +314,8 @@ var Languague = {
       title2: ' Dashbord',
       placeholder: 'Shipment or conatiner ref.',
       shipment: 'Shipment View',
+      eat: 'EAT',
+      shipmentRef: 'Shipment ref',
       container: 'Container View',
       huoguihao: 'Container (Ref.)',
       xiangxing: 'Equipment Type',
@@ -337,7 +339,9 @@ var Languague = {
       volume: 'Cargo Volume',
       Commodities: 'Commodities',
       Shipper: 'Shipper',
-      Consignee: 'Consignee'
+      Consignee: 'Consignee',
+      noShipmentData: 'No shipment found',
+      noContainersData: 'No container attributed yet'
     },
     popupBtn: {
       confirm: 'confirm',

@@ -316,6 +316,8 @@ var Languague = {
       title2: '概览',
       placeholder: '搜索订舱号或提单号',
       shipment: '装运视图',
+      shipmentRef: '运输号码',
+      eat: '预计到港时间',
       container: '货柜视图',
       huoguihao: '货柜号',
       xiangxing: '箱型',
@@ -339,7 +341,9 @@ var Languague = {
       volume: '货物体积',
       Commodities: '海关编码',
       Shipper: '发货人',
-      Consignee: '收货方'
+      Consignee: '收货方',
+      noShipmentData: '未找到船运信息',
+      noContainersData: '暂无货柜'
     },
     popupBtn: {
       confirm: '确定',

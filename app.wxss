@@ -235,3 +235,24 @@
   background-size: 100%;
   background-repeat: no-repeat;
 }
+
+/* dashboard缺省样式 */
+.dashboardEmpty {
+  background-color: #ffffff;
+  padding: 80rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 36rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+  text-align: center;
+}
+
+.dashboardEmpty image {
+  width: 438rpx;
+  height: 336rpx;
+  margin-bottom: 40rpx;
+}

@@ -29,8 +29,8 @@
       </view>
     </view>
   </view>
-  <view class="empty" wx:if="{{false}}">
-    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/empty.png"></image>
+  <view class="dashboardEmpty" wx:if="{{false}}">
+    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/empty.png" mode="aspectFit"></image>
     <view>{{documentContent.noData}}</view>
   </view>
 </view>

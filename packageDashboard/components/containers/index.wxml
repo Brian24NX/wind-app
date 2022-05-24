@@ -3,7 +3,7 @@
   <view class="oneOrder" wx:for="{{3}}" catchtap="toDetail">
     <view class="orderTop">
       <view class="topLeft">
-        <text>EAT</text>
+        <text>{{languageContent.eat}}</text>
       </view>
       <view class="topRight">Mon 28-FEB-2022 21:00</view>
     </view>
@@ -54,5 +54,10 @@
         </view>
       </view>
     </view>
+  </view>
+
+  <view class="dashboardEmpty" wx:if="{{false}}">
+    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no.png" mode="aspectFit"></image>
+    <view>{{languageContent.noContainersData}}</view>
   </view>
 </view>

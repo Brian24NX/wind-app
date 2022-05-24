@@ -1,8 +1,8 @@
 <!--packageDashboard/pages/shipment/list/components/shipments/index.wxml-->
 <view class="componentShipmentList">
-  <view class="oneShipment" wx:for="{{5}}" wx:key="index" catchtap="toShipmentDetail">
+  <view class="oneShipment" wx:for="{{3}}" wx:key="index" catchtap="toShipmentDetail">
     <view class="topTime">
-      <view>EAT</view>
+      <view>{{languageContent.eat}}</view>
       <view>Mon 28-FEB-2022 21:00</view>
     </view>
     <view class="shipInfo">
@@ -10,7 +10,7 @@
       <view class="shopInfoRight">
         <view class="shipInfoName">
           <view>ERFS6325612</view>
-          <view>Shipment ref</view>
+          <view>{{languageContent.shipmentRef}}</view>
         </view>
         <view class="shipStatus">BOOKING IN PROGRESS</view>
       </view>
@@ -30,5 +30,9 @@
         <view class="stepContent">OKALAND, CA, US</view>
       </view>
     </view>
+  </view>
+  <view class="dashboardEmpty" wx:if="{{false}}">
+    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no-result-white.png" mode="aspectFit"></image>
+    <view>{{languageContent.noShipmentData}}</view>
   </view>
 </view>

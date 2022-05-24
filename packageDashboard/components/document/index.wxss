@@ -6,6 +6,10 @@
   margin-bottom: 30rpx;
 }
 
+.componentDocumentList .oneDocument:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
 .componentDocumentList .oneDocument .ones {
   display: flex;
   justify-content: space-between;
@@ -51,24 +55,4 @@
   font-weight: 400;
   color: #6B7790;
   margin-top: 10rpx;
-}
-
-.componentDocumentList .empty {
-  background-color: #ffffff;
-  padding: 80rpx 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: 36rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: #04246A;
-  text-align: center;
-}
-
-.componentDocumentList .empty image {
-  width: 436rpx;
-  height: 336rpx;
-  margin-bottom: 40rpx;
 }
