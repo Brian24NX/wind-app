@@ -10,7 +10,7 @@
     </view>
   </view>
   <!-- 结果 -->
-  <one languageContent="{{languageContent}}" detail="{{list[0]}}" list="{{list}}" wx:if="{{list.length === 1 && !loading}}"></one>
-  <more languageContent="{{languageContent}}" list="{{list}}" wx:if="{{list.length > 1 && !loading}}"></more>
-  <no languageContent="{{languageContent}}" lists="{{list}}" wx:if="{{list.length === 0 && !loading}}"></no>
+  <one languageContent="{{languageContent}}" detail="{{list[0]}}" list="{{list}}" wx:if="{{list.length === 1 && !noData && !loading}}"></one>
+  <more languageContent="{{languageContent}}" list="{{list}}" wx:if="{{list.length > 1 && !noData && !loading}}"></more>
+  <no languageContent="{{languageContent}}" lists="{{list}}" wx:if="{{noData && !loading}}"></no>
 </view>

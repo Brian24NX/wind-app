@@ -5,7 +5,7 @@
     <view class="resList">
       <view class="oneRes" wx:for="{{lists}}">
         <image src="/assets/img/search/order@2x.png" mode="aspectFit" class="resIcon"></image>
-        <view class="resContent">{{item.shipmentRef}}</view>
+        <view class="resContent">{{item.id}}</view>
       </view>
     </view>
   </view>
