@@ -1,6 +1,16 @@
 // app.js
 const config = require('./config/config')
-App({
+
+require("./utils/webmonitor.mp.min")
+/**
+ * 初始化用户信息
+ * @param userId 用户唯一性标识 (手机号、用户名、id等)
+ * @param userTag 用于区分同一个项目下，角色的分类（公司A, B, C, D等）
+ * @param projectVersion 应用每次发布的版本号
+ */
+wx.setStorageSync('wmUserInfo', JSON.stringify({userId: "userId1", userTag: "达飞轮船", projectVersion: "1.0.0", env: "pro"}))
+
+App(wx.webfunny({
   onLaunch() {
     wx.removeStorageSync('polobject')
     wx.removeStorageSync('podobject')
@@ -59,4 +69,4 @@ App({
 
     }
   }
-})
+}))
