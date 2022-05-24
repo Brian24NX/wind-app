@@ -8,7 +8,7 @@ require("./utils/webmonitor.mp.min")
  * @param userTag 用于区分同一个项目下，角色的分类（公司A, B, C, D等）
  * @param projectVersion 应用每次发布的版本号
  */
-wx.setStorageSync('wmUserInfo', JSON.stringify({userId: "userId1", userTag: "达飞轮船", projectVersion: "1.0.0", env: "pro"}))
+wx.setStorageSync('wmUserInfo', JSON.stringify({userTag: "达飞轮船", projectVersion: "1.0.0", env: "pro"}))
 
 App(wx.webfunny({
   onLaunch() {

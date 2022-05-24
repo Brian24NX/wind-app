@@ -14,6 +14,7 @@ Page({
     shipmentRef: '',
     showRemind: false,
     loading: true,
+    noData: false,
     list: []
   },
 
@@ -115,6 +116,7 @@ Page({
     }
     this.setData({
       loading: true,
+      noData: false,
       list: []
     })
     shipmentTracking(obj).then(res => {
@@ -122,13 +124,12 @@ Page({
         loading: false
       })
       const data = res.data;
-      // console.log(data)
       let containers = []
       data.forEach(route => {
         if (route.data) {
           route.data.routes.forEach(item => {
             let oneRouteContainers = item.containers.filter(i => i.movements.length)
-            oneRouteContainers = oneRouteContainers.map(oneRoute=>{
+            oneRouteContainers = oneRouteContainers.map(oneRoute => {
               oneRoute.portOfLoadingCountryCode = route.data.portOfLoadingCountryCode
               oneRoute.portOfLoadingCountryName = route.data.portOfLoading.name
               oneRoute.portOfDischargeCountryCode = route.data.portOfDischargeCountryCode
@@ -143,8 +144,13 @@ Page({
             movements: []
           })
         }
-        
       })
+      const length = containers.filter(item => item.movements.length).length
+      if (!length) {
+        this.setData({
+          noData: true
+        })
+      }
       this.setData({
         list: containers
       })
