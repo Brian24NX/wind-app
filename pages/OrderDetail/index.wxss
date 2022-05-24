@@ -3,5 +3,5 @@ page {
   background-color: #F0F1F5;
 }
 .moreDetailContainer {
-  padding: 1rpx 30rpx 0;
+  padding: 1rpx 30rpx;
 }
