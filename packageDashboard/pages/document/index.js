@@ -62,37 +62,4 @@ Page({
   },
 
   search() {},
-
-  sendEmail(e) {
-    this.setData({
-      showEmail: true,
-      sendInfo: e.currentTarget.dataset.item
-    })
-  },
-
-  closeEmail() {
-    this.setData({
-      showEmail: false
-    })
-  },
-
-  sendEmails(e) {
-    wx.showLoading({
-      title: languageUtil.languageVersion().lang.page.load.send,
-      mask: true
-    })
-    sendEmail({
-      fileName: this.data.businessDetail.emailPath,
-      receiveMailAccount: e.detail
-    }).then(() => {
-      wx.showToast({
-        title: languageUtil.languageVersion().lang.page.load.sendSuccess,
-        icon: 'none',
-        mask: true
-      })
-      this.setData({
-        showEmail: false
-      })
-    })
-  }
 })

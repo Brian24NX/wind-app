@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "email": "../../../components/email/index"
+  }
+}

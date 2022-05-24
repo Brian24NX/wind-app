@@ -18,7 +18,7 @@
       </view>
     </view>
   </view>
-  <view class="documentList">
+  <!-- <view class="documentList">
     <view class="oneDocument" wx:for="{{3}}" wx:key="index">
       <view class="ones">
         <view class="oneLeft">{{languageContent.fileNo}}</view>
@@ -49,10 +49,9 @@
       </view>
     </view>
     <view class="empty" wx:if="{{false}}">
-      <image src="/assets/img/dashboard/empty@2x.png"></image>
+      <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/empty.png"></image>
       <view>{{languageContent.noData}}</view>
     </view>
-  </view>
+  </view> -->
+  <document></document>
 </view>
-
-<email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

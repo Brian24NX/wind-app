@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "",
   "usingComponents": {
-    "email": "../../../../components/email/index"
+    "document": "../../components/document/index"
   }
 }

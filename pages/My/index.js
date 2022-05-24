@@ -17,7 +17,8 @@ Page({
       label: 'document',
       url: '/packageDashboard/pages/document/index',
       icon: '/assets/img/myAccount/document@2x.png'
-    }]
+    }],
+    needLogin: false
   },
 
   /**
@@ -53,8 +54,27 @@ Page({
     }
   },
 
+  // 去登录
+  toLogin() {
+    wx.navigateTo({
+      url: '/pages/Login/index',
+    })
+  },
+
+  toBaseInfo() {
+    wx.navigateTo({
+      url: '/pages/baseInfo/index',
+    })
+  },
+
   // 我的概览
   toDashboard(e) {
+    if (this.data.needLogin) {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+      return
+    }
     if (e.currentTarget.dataset.url) {
       wx.navigateTo({
         url: e.currentTarget.dataset.url

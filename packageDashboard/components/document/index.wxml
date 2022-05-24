@@ -1,0 +1,38 @@
+<!--packageDashboard/components/document/index.wxml-->
+<view class="componentDocumentList">
+  <view class="oneDocument" wx:for="{{3}}" wx:key="index">
+    <view class="ones">
+      <view class="oneLeft">{{documentContent.fileNo}}</view>
+      <view class="oneRight">JXTL311981</view>
+    </view>
+    <view class="ones">
+      <view class="oneLeft">{{documentContent.referenceNo}}</view>
+      <view class="oneRight">JXTL311981</view>
+    </view>
+    <view class="ones">
+      <view class="oneLeft">{{documentContent.type}}</view>
+      <view class="oneRight">JXTL311981</view>
+    </view>
+    <view class="ones">
+      <view class="oneLeft">{{documentContent.status}}</view>
+      <view class="oneRight">JXTL311981</view>
+    </view>
+    <view class="ones">
+      <view class="oneLeft">{{documentContent.date}}</view>
+      <view class="oneRight">JXTL311981</view>
+    </view>
+    <view class="fileContent">
+      <image src="/assets/img/more/info@2x.png"></image>
+      <view>
+        <view class="filtTitle">202203190703.pdf</view>
+        <view class="send" catchtap="sendEmail" data-item="{{item}}">{{documentContent.send}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="empty" wx:if="{{false}}">
+    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/empty.png"></image>
+    <view>{{documentContent.noData}}</view>
+  </view>
+</view>
+
+<email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

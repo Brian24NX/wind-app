@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "",
-  "usingComponents": {}
+  "usingComponents": {
+    "shipment": "../../../components/shipments/index",
+    "containers": "../../../components/containers/index"
+  }
 }

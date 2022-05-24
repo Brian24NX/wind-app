@@ -1,0 +1,34 @@
+<!--packageDashboard/pages/shipment/list/components/shipments/index.wxml-->
+<view class="componentShipmentList">
+  <view class="oneShipment" wx:for="{{5}}" wx:key="index" catchtap="toShipmentDetail">
+    <view class="topTime">
+      <view>EAT</view>
+      <view>Mon 28-FEB-2022 21:00</view>
+    </view>
+    <view class="shipInfo">
+      <image src="/assets/img/dashboard/shipment@2x.png"></image>
+      <view class="shopInfoRight">
+        <view class="shipInfoName">
+          <view>ERFS6325612</view>
+          <view>Shipment ref</view>
+        </view>
+        <view class="shipStatus">BOOKING IN PROGRESS</view>
+      </view>
+    </view>
+    <view class="stepLists">
+      <view class="oneStep">
+        <view class="leftLines">
+          <view class="leftLineDto"></view>
+          <view class="leftLine"></view>
+        </view>
+        <view class="stepContent">OKALAND, CA, US</view>
+      </view>
+      <view class="oneStep">
+        <view class="leftLines" style="top: 6rpx">
+          <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+        </view>
+        <view class="stepContent">OKALAND, CA, US</view>
+      </view>
+    </view>
+  </view>
+</view>

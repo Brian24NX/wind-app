@@ -9,11 +9,12 @@ page {
 
 .shipmentLists {
   background-color: #ffffff;
-  padding: 0 48rpx;
   margin-top: 30rpx;
 }
 
 .shipmentLists .viewTypes {
+  width: 630rpx;
+  margin: 0 auto;
   height: 94rpx;
   display: flex;
   border-bottom: 1rpx solid #04246A;
@@ -47,141 +48,26 @@ page {
   background-color: #E20202;
 }
 
-/* 货柜视图 */
-.huoguoContainer .oneOrder {
-  background-color: #ffffff;
-  margin-bottom: 30rpx;
-}
-
-.huoguoContainer .oneOrder .orderTop {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100rpx;
-  border-bottom: 1rpx solid #DDDDDD;
-}
-
-.huoguoContainer .oneOrder .orderTop .topLeft {
-  font-size: 28rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: #071E5D;
-}
-
-.huoguoContainer .oneOrder .orderTop .topRight {
-  font-size: 32rpx;
-  color: #04246A;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-}
-
-.huoguoContainer .oneOrder .orderBottom .noOrderData {
-  width: 404rpx;
-  margin: 20rpx auto;
-  font-size: 24rpx;
-  color: #6F7384;
-  text-align: center;
-  padding-bottom: 40rpx;
-}
-
-.huoguoContainer .oneOrder .orderBottom .noOrderData image {
-  width: 404rpx;
-  height: 254rpx;
-  margin-bottom: 34rpx;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom {
-  padding: 40rpx 0;
-  border-bottom: 1rpx solid #EEEEEE;
-  display: flex;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom:nth-last-of-type(1) {
-  border-bottom: none;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .leftIcon {
-  width: 70rpx;
-  height: 70rpx;
-  margin-right: 30rpx;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .details {
-  display: flex;
-  width: 510rpx;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .details .status {
-  padding: 5rpx 20rpx;
-  border-radius: 18rpx;
-  background-color: #DFF0FE;
-  display: inline-block;
-  color: #235AF6;
-  font-size: 20rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .details .details2 {
-  display: flex;
-  width: 100%;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .details .detailLeft {
-  width: 60%;
-  color: #6F7384;
-  font-size: 24rpx;
-}
-
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .details .detailLeft .address {
-  font-size: 48rpx;
-  font-family: Antonio-Bold;
-  font-weight: bold;
-  color: #04246A;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .details .detailLeft .huogui {
-  color: #4468BA;
-  font-size: 32rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .details .detailLeft .chuanming {
-  color: #071E5D;
-}
-
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .details .detailRight {
-  width: 40%;
-  color: #6F7384;
-  font-size: 24rpx;
-}
-
-.huoguoContainer .oneOrder .orderBottom .oneBottom .details .detailRight .xiangxing {
-  font-size: 32rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: #071E5D;
-}
-
 /* 资讯 */
-.huoGuiInfo .stepLists {
+.zixunInfo {
+  padding: 0 48rpx;
+}
+
+.zixunInfo .stepLists {
   padding-left: 76rpx;
   margin-top: 30rpx;
 }
 
-.huoGuiInfo .stepLists .oneStep {
+.zixunInfo .stepLists .oneStep {
   padding-bottom: 40rpx;
   position: relative;
 }
 
-.huoGuiInfo .stepLists .oneStep:nth-last-of-type(1) {
+.zixunInfo .stepLists .oneStep:nth-last-of-type(1) {
   padding-bottom: 0;
 }
 
-.huoGuiInfo .stepLists .oneStep .leftLines {
+.zixunInfo .stepLists .oneStep .leftLines {
   position: absolute;
   left: -60rpx;
   height: 100%;
@@ -192,25 +78,25 @@ page {
   width: 24rpx;
 }
 
-.huoGuiInfo .stepLists .oneStep .leftLines image {
+.zixunInfo .stepLists .oneStep .leftLines image {
   width: 24rpx;
   height: 30rpx;
 }
 
-.huoGuiInfo .stepLists .oneStep .leftLines .leftLineDto {
+.zixunInfo .stepLists .oneStep .leftLines .leftLineDto {
   background-color: #E20202;
   width: 16rpx;
   height: 16rpx;
   border-radius: 50%;
 }
 
-.huoGuiInfo .stepLists .oneStep .leftLines .leftLine {
+.zixunInfo .stepLists .oneStep .leftLines .leftLine {
   width: 0;
   height: 100%;
   border-left: 1rpx solid #9AA6C4;
 }
 
-.huoGuiInfo .stepLists .oneStep .stepContent .stepContentTop {
+.zixunInfo .stepLists .oneStep .stepContent .stepContentTop {
   display: flex;
   align-items: center;
   font-family: PingFangSC-Semibold, PingFang SC;
@@ -218,7 +104,7 @@ page {
   color: #04246A;
 }
 
-.huoGuiInfo .stepLists .oneStep .stepContent .stepContentTop .code {
+.zixunInfo .stepLists .oneStep .stepContent .stepContentTop .code {
   padding: 0 20rpx;
   height: 36rpx;
   line-height: 36rpx;
@@ -228,126 +114,52 @@ page {
   margin-right: 20rpx;
 }
 
-.huoGuiInfo .stepLists .oneStep .stepContent .stepContentTop .topName {
+.zixunInfo .stepLists .oneStep .stepContent .stepContentTop .topName {
   font-size: 32rpx;
 }
 
-.huoGuiInfo .stepLists .oneStep .stepContent .stepTime {
+.zixunInfo .stepLists .oneStep .stepContent .stepTime {
   font-size: 28rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #6B7790;
 }
 
-.huoGuiInfo .detailList {
+.zixunInfo .detailList {
   margin-top: 44rpx;
 }
 
-.huoGuiInfo .detailList .oneDetail {
+.zixunInfo .detailList .oneDetail {
   border-top: 1rpx solid #EEEEEE;
   padding: 40rpx 0;
   display: flex;
   justify-content: space-between;
 }
 
-.huoGuiInfo .detailList .oneDetail image {
+.zixunInfo .detailList .oneDetail image {
   width: 44rpx;
   height: 44rpx;
 }
 
-.huoGuiInfo .detailList .oneDetail .oneDetailRight {
+.zixunInfo .detailList .oneDetail .oneDetailRight {
   width: 530rpx;
 }
 
-.huoGuiInfo .detailList .oneDetail .oneDetailRight .heng {
+.zixunInfo .detailList .oneDetail .oneDetailRight .heng {
   display: flex;
   justify-content: space-between;
 }
 
-.huoGuiInfo .detailList .oneDetail .oneDetailRight .title {
+.zixunInfo .detailList .oneDetail .oneDetailRight .title {
   font-size: 32rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #6B7790;
 }
 
-.huoGuiInfo .detailList .oneDetail .oneDetailRight .value {
+.zixunInfo .detailList .oneDetail .oneDetailRight .value {
   font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #04246A;
-}
-
-/* 文件 */
-.shipmentDetailContainer .documentList .oneDocument {
-  background-color: #ffffff;
-  padding: 40rpx 0;
-  margin-bottom: 30rpx;
-}
-
-.shipmentDetailContainer .documentList .oneDocument .ones {
-  display: flex;
-  justify-content: space-between;
-  font-size: 32rpx;
-  margin-bottom: 40rpx;
-}
-
-.shipmentDetailContainer .documentList .oneDocument .ones .oneLeft {
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: #6B7790;
-}
-
-.shipmentDetailContainer .documentList .oneDocument .ones .oneRight {
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: #071E5D;
-}
-
-.shipmentDetailContainer .documentList .oneDocument .fileContent {
-  display: flex;
-  align-items: center;
-  border: 1rpx solid #CFD2DA;
-  padding: 12rpx 18rpx;
-}
-
-.shipmentDetailContainer .documentList .oneDocument .fileContent image {
-  width: 116rpx;
-  height: 124rpx;
-  margin-right: 16rpx;
-}
-
-.shipmentDetailContainer .documentList .oneDocument .fileContent .filtTitle {
-  font-size: 32rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: #071E5D;
-}
-
-.shipmentDetailContainer .documentList .oneDocument .fileContent .send {
-  font-size: 28rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: #6B7790;
-  margin-top: 10rpx;
-}
-
-.shipmentDetailContainer .documentList .empty {
-  background-color: #ffffff;
-  padding: 80rpx 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: 36rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: #04246A;
-  text-align: center;
-}
-
-.shipmentDetailContainer .documentList .empty image {
-  width: 436rpx;
-  height: 336rpx;
-  margin-bottom: 40rpx;
 }

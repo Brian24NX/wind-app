@@ -1,0 +1,122 @@
+/* packageDashboard/pages/shipment/list/containers/index.wxss */
+/* 货柜视图 */
+.componentHuoguoContainer {
+  padding: 0 48rpx;
+}
+.componentHuoguoContainer .oneOrder {
+  background-color: #ffffff;
+  margin-bottom: 30rpx;
+}
+
+.componentHuoguoContainer .oneOrder .orderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  border-bottom: 1rpx solid #DDDDDD;
+}
+
+.componentHuoguoContainer .oneOrder .orderTop .topLeft {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+}
+
+.componentHuoguoContainer .oneOrder .orderTop .topRight {
+  font-size: 32rpx;
+  color: #04246A;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .noOrderData {
+  width: 404rpx;
+  margin: 20rpx auto;
+  font-size: 24rpx;
+  color: #6F7384;
+  text-align: center;
+  padding-bottom: 40rpx;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .noOrderData image {
+  width: 404rpx;
+  height: 254rpx;
+  margin-bottom: 34rpx;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom {
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #EEEEEE;
+  display: flex;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .leftIcon {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 30rpx;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details {
+  display: flex;
+  width: 510rpx;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details .status {
+  padding: 5rpx 20rpx;
+  border-radius: 18rpx;
+  background-color: #DFF0FE;
+  display: inline-block;
+  color: #235AF6;
+  font-size: 20rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details .details2 {
+  display: flex;
+  width: 100%;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details .detailLeft {
+  width: 60%;
+  color: #6F7384;
+  font-size: 24rpx;
+}
+
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details .detailLeft .address {
+  font-size: 48rpx;
+  font-family: Antonio-Bold;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details .detailLeft .huogui {
+  color: #4468BA;
+  font-size: 32rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details .detailLeft .chuanming {
+  color: #071E5D;
+}
+
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details .detailRight {
+  width: 40%;
+  color: #6F7384;
+  font-size: 24rpx;
+}
+
+.componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details .detailRight .xiangxing {
+  font-size: 32rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+}
