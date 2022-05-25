@@ -135,6 +135,7 @@ Page({
                 oneRoute.portOfLoadingCountryName = route.data.portOfLoading.name
                 oneRoute.portOfDischargeCountryCode = route.data.portOfDischargeCountryCode
                 oneRoute.portOfDischargeCountryName = route.data.portOfDischarge.name
+                oneRoute.journeyLegs = item.journeyLegs
                 return oneRoute
               })
               containers = containers.concat(oneRouteContainers)
