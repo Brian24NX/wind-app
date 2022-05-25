@@ -100,7 +100,9 @@ Component({
 
     // 获取PDF地址
     getPDFUrl(callback) {
-      reportToPDF(this.data.detail).then(res => {
+      const params = JSON.parse(JSON.stringify(this.data.detail))
+      params.movements = params.movements.reverse()
+      reportToPDF(params).then(res => {
         this.setData({
           path: config[config.dev_env].url + '/api/miniapp/' + res.data
         })
