@@ -129,14 +129,22 @@ Page({
         if (route.data) {
           route.data.routes.forEach(item => {
             let oneRouteContainers = item.containers.filter(i => i.movements.length)
-            oneRouteContainers = oneRouteContainers.map(oneRoute => {
-              oneRoute.portOfLoadingCountryCode = route.data.portOfLoadingCountryCode
-              oneRoute.portOfLoadingCountryName = route.data.portOfLoading.name
-              oneRoute.portOfDischargeCountryCode = route.data.portOfDischargeCountryCode
-              oneRoute.portOfDischargeCountryName = route.data.portOfDischarge.name
-              return oneRoute
-            })
-            containers = containers.concat(oneRouteContainers)
+            if (oneRouteContainers.length) {
+              oneRouteContainers = oneRouteContainers.map(oneRoute => {
+                oneRoute.portOfLoadingCountryCode = route.data.portOfLoadingCountryCode
+                oneRoute.portOfLoadingCountryName = route.data.portOfLoading.name
+                oneRoute.portOfDischargeCountryCode = route.data.portOfDischargeCountryCode
+                oneRoute.portOfDischargeCountryName = route.data.portOfDischarge.name
+                oneRoute.journeyLegs = item.journeyLegs
+                return oneRoute
+              })
+              containers = containers.concat(oneRouteContainers)
+            } else {
+              containers.push({
+                id: route.shipmentRef,
+                movements: []
+              })
+            }
           })
         } else {
           containers.push({
