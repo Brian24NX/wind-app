@@ -265,7 +265,7 @@ Page({
     })
     if (this.data.canProvide) {
       contractInfoByOrderId({
-        bookingReference: this.data.bookingReference,
+        bookingReference: this.data.bookingReference.toUpperCase(),
         office: this.data.office,
         businessType: this.data.businessType,
       }).then(res => {
