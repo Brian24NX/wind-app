@@ -13,6 +13,9 @@ Component({
     list: {
       type: Array
     },
+    results: {
+      type: Array
+    },
     languageContent: {
       type: Object
     }

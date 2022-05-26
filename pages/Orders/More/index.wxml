@@ -4,9 +4,9 @@
   <view class="searchResultContainer">
     <view class="resTitle">{{languageContent.title}}</view>
     <view class="resList">
-      <view class="oneRes" wx:for="{{lists}}">
+      <view class="oneRes" wx:for="{{results}}">
         <image src="/assets/img/search/order@2x.png" mode="aspectFit" class="resIcon"></image>
-        <view class="resContent">{{item.id}}</view>
+        <view class="resContent">{{item}}</view>
       </view>
     </view>
   </view>
@@ -81,7 +81,7 @@
             <view class="details">
               <view class="detailLeft">
                 <view class="huogui">{{item.id}}</view>
-                <view>{{languageContent.dingdans}}</view>
+                <view>{{languageContent.huoguihao}}</view>
               </view>
             </view>
           </view>
