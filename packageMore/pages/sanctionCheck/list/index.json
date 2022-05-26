@@ -2,6 +2,7 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": true,
   "usingComponents": {
+    "loading": "../../../../components/loading/index",
     "van-icon": "@vant/weapp/icon/index"
   }
 }

@@ -3,11 +3,12 @@
   <view class="topLine"></view>
   <view class="sanctionTitle">
     <view class="titleLine"></view>
-    <view class="{{language === 'zh' ? '' : 'en'}}">AGRICULTURAL CHEMICALS</view>
+    <view wx:if="{{language === 'zh'}}">{{sanctionDetail.commodityCn}}</view>
+    <view class="en" wx:else>{{sanctionDetail.commodityEn}}</view>
   </view>
-  <view class="type">{{languageContent.type}}: Prohited</view>
-  <view class="type">{{languageContent.code}}: Prohited</view>
+  <view class="type">{{languageContent.type}}: {{sanctionDetail.type || '-'}}</view>
+  <view class="type">{{languageContent.code}}: {{sanctionDetail.code || '-'}}</view>
   <view class="sanctionContent">
-    <rich-text nodes="{{sanctionDetail.content}}"></rich-text>
+    <rich-text nodes="{{language === 'zh' ? sanctionDetail.remarkCn : sanctionDetail.remarkEn}}"></rich-text>
   </view>
 </view>

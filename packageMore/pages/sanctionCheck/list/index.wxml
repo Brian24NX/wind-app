@@ -19,9 +19,11 @@
     </view>
   </view>
   <view class="sanctionList">
-    <view class="oneSanction" wx:for="{{10}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
-      <view>CHARCOAL (VEGETABLE ORIGIN), ACTIVATED CARBON</view>
+    <view class="oneSanction" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
+      <view>{{language === 'zh' ? item.commodityCn : item.commodityEn}}</view>
       <van-icon name="arrow" color="#04246A" />
     </view>
+    <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+    <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>
   </view>
 </view>

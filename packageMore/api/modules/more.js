@@ -71,3 +71,13 @@ export const contractInfo = (params) => {
 export const contractInfoByOrderId = (params) => {
   return getRequest('/api/miniapp/contactSearchByBooking', params)
 }
+
+// 管制品列表
+export const sanctionCommodityList = (params) => {
+  return getRequest('/api/miniapp/sanctionCommodityList', params)
+}
+
+// 管制品详情
+export const sanctionCommodityDetail = (params) => {
+  return getRequest('/api/miniapp/sanctionCommodityDetail', params)
+}

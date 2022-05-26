@@ -25,6 +25,10 @@ page {
   color: #071E5D;
 }
 
+.sanctionList .oneSanction:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
 .sanctionList .oneSanction image {
   width: 16rpx;
   height: 30rpx;
