@@ -134,7 +134,7 @@ Page({
       mask: true
     })
     templateSendEmail({
-      fileName: this.data.emailPath,
+      fileName: this.data.emailPath.split('wind/')[1],
       receiveMailAccount: e.detail
     }).then(() => {
       wx.showToast({
