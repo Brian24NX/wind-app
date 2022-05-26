@@ -35,7 +35,8 @@ Page({
       title: languageUtils.languageVersion().lang.page.useful.title,
     })
     this.setData({
-      languageContent: languageUtils.languageVersion().lang.page.useful
+      languageContent: languageUtils.languageVersion().lang.page.useful,
+      emptyContent: languageUtils.languageVersion().lang.page.empty
     })
     this.search()
   },
@@ -62,7 +63,8 @@ Page({
   // 切换类型
   changeType(e) {
     this.setData({
-      current: e.currentTarget.dataset.type
+      current: e.currentTarget.dataset.type,
+      keyword: ''
     })
     this.search()
   },
