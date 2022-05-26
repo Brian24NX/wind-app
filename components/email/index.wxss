@@ -45,7 +45,7 @@
 }
 
 .emailContainers .emailContainer .emailInput {
-  width: 494rpx;
+  width: 534rpx;
   height: 80rpx;
   border: 1rpx solid #B7BBC2;
   margin: 45rpx auto 0;

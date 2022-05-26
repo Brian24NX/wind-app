@@ -26,26 +26,30 @@
       </view>
     </view>
     <view class="templateList" wx:if="{{current === 'template'}}">
-      <view class="oneTemplate" wx:for="{{10}}" wx:key="index">
+      <view class="oneTemplate" wx:for="{{list}}" wx:key="index">
         <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
         <view class="templateContent">
-          <view class="templateName">关于海运集装箱非危险品保函细则</view>
-          <view catchtap="sendEmail">{{languageContent.send}}</view>
+          <view class="templateName">{{item.name}}</view>
+          <view catchtap="sendEmail" data-document="{{item.document}}">{{languageContent.send}}</view>
         </view>
         <view class="preview">
           <image src="/assets/img/more/eye@2x.png"></image>
         </view>
       </view>
+      <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+      <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>
     </view>
     <view class="contentList" wx:else>
-      <view class="oneContent" wx:for="{{10}}" wx:key="index">
+      <view class="oneContent" wx:for="{{list}}" wx:key="index">
         <image src="/assets/img/home/templatelinks@2x.png" class="linkIcon"></image>
         <view class="contentCenter">
-          <view class="useTitle">eCommerce</view>
-          <view>CMACGM: https://www.cmacgm.com/</view>
+          <view class="useTitle">{{item.name}}</view>
+          <view>{{item.document}}</view>
         </view>
-        <view class="copy" catchtap="copy" data-value="1">{{languageContent.copy}}</view>
+        <view class="copy" catchtap="copy" data-value="{{item.document}}">{{languageContent.copy}}</view>
       </view>
+      <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+      <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>
     </view>
   </view>
 </view>

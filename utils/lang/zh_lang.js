@@ -255,7 +255,7 @@ var Languague = {
       template: '模板',
       link: '链接',
       copy: '复制',
-      send: '发送'
+      send: '发送至邮箱'
     },
     // 管制品查询
     sanction: {

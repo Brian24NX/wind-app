@@ -91,6 +91,10 @@ page {
   border-bottom: 1rpx solid #DDDDDD;
 }
 
+.userfulContainer .usefulListContainer .contentList .oneContent:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
 .userfulContainer .usefulListContainer .contentList .oneContent .linkIcon {
   width: 70rpx;
   height: 70rpx;
@@ -108,6 +112,10 @@ page {
   width: 430rpx;
   font-size: 20rpx;
   color: #6B7790;
+}
+
+.userfulContainer .usefulListContainer .contentList .oneContent .contentCenter view {
+  word-break: break-all;
 }
 
 .userfulContainer .usefulListContainer .contentList .oneContent .contentCenter .useTitle {
