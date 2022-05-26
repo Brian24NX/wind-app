@@ -8,13 +8,19 @@ Page({
   data: {
     languageContent: {},
     detail: {},
-    loading: true
+    loading: true,
+    showSearch: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.showSearch) {
+      this.setData({
+        showSearch: false
+      })
+    }
     this.initLanguage()
     this.setOneDetail(options.index)
   },

@@ -1,6 +1,6 @@
 <!--pages/Orders/One/index.wxml-->
 <wxs module="filters" src="../../../utils/format.wxs"></wxs>
-<view class="searchResultContainers">
+<view class="searchResultContainers" wx:if="{{showSearch}}">
   <view class="searchResultContainer">
     <view class="resTitle">{{languageContent.title}}</view>
     <view class="resList others">

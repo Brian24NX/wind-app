@@ -20,6 +20,10 @@ Component({
     },
     languageContent: {
       type: Object
+    },
+    showSearch: {
+      type: Boolean,
+      value: true
     }
   },
 

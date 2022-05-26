@@ -71,7 +71,6 @@ Page({
           area: area,
           files: [{
             fileName: item.split('/')[1],
-            emailFile: item,
             filePath: config[config.dev_env].url + '/api/miniapp/' + item
           }]
         })
@@ -82,7 +81,6 @@ Page({
       } else {
         lists[index].files.push({
           fileName: item.split('/')[1],
-          emailFile: item,
           filePath: config[config.dev_env].url + '/api/miniapp/' + item
         })
       }
@@ -185,7 +183,7 @@ Page({
       mask: true
     })
     demurrageSendEmail({
-      fileName: this.data.sendInfo.emailFile,
+      path: this.data.sendInfo.filePath,
       receiveMailAccount: e.detail
     }).then(() => {
       wx.showToast({

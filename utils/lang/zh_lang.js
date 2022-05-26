@@ -279,7 +279,7 @@ var Languague = {
       login: '登录',
       myDashboard: '我的概览',
       shipment: '船运概览',
-      document: '文档概览',
+      document: '文件概览',
       setting: '语言设置'
     },
     // 基础信息

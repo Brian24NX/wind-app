@@ -4,6 +4,7 @@ import {
   templateList,
   templateSendEmail
 } from '../../api/modules/more'
+const config = require('../../../config/config')
 const pageSize = 10
 Page({
 
@@ -151,6 +152,47 @@ Page({
     this.setData({
       showEmail: false
     })
+  },
+
+  preview(e) {
+    const filePath = config[config.dev_env].fileUrl + e.currentTarget.dataset.url
+    const fileType = e.currentTarget.dataset.url.split('.').pop()
+    const imageType = ['png', 'jpg', 'jpeg', 'git']
+    const fileTypes = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf']
+    if (imageType.indexOf(fileType) > -1) {
+      wx.previewImage({
+        urls: [filePath],
+        current: 0
+      })
+    } else if (fileTypes.indexOf(fileType) > -1) {
+      wx.showLoading({
+        title: languageUtils.languageVersion().lang.page.load.loading,
+        mask: true
+      })
+      wx.downloadFile({
+        url: filePath,
+        success(filePath) {
+          wx.hideLoading()
+          wx.openDocument({
+            filePath: filePath.tempFilePath,
+            showMenu: true
+          })
+        },
+        fail(err) {
+          wx.hideLoading()
+          wx.showToast({
+            title: err.errMsg,
+            icon: 'none',
+            duration: 3000
+          })
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '暂不支持此种类型文件的预览',
+        icon: 'none'
+      })
+    }
   },
 
   // 复制
