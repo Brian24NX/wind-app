@@ -7,7 +7,12 @@
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
     </view>
-    <input type="text" bindinput="setEmail" class="emailInput" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" value="{{receiveMailAccount}}" />
+    <view class="emailInput">
+      <input type="text" bindinput="setEmail" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" value="{{receiveMailAccount}}" />
+      <view class="close" wx:if="{{receiveMailAccount}}" catchtap="deleteValue">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
     <view class="noRequest" wx:if="{{showRemind}}">
       <image src="/assets/img/search/error@2x.png"></image>
       <text>{{languageContent.exprise}}</text>

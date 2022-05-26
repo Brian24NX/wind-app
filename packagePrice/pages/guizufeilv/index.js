@@ -1,5 +1,10 @@
 // packagePrice/pages/guizufeilv/index.js
 const languageUtils = require('../../../utils/languageUtils')
+import {
+  demurragePdfList,
+  demurrageSendEmail
+} from '../../api/modules/price'
+const config = require('../../../config/config')
 Page({
 
   /**
@@ -10,14 +15,15 @@ Page({
     verifyInfo: {},
     language: 'zh',
     country: '',
-    countryName: '',
+    area: 'All',
     activeNames: 0,
     defaultIndex: 0,
     showPopup: false,
-    valueKey: '',
-    columns: [],
     showEmail: false,
-    sendInfo: {}
+    sendInfo: {},
+    lists: [],
+    allLists: [],
+    areaList: []
   },
 
   /**
@@ -25,20 +31,7 @@ Page({
    */
   onLoad(options) {
     this.interLanguage()
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
+    this.getDemurragePdfList()
   },
 
   interLanguage() {
@@ -51,6 +44,55 @@ Page({
     wx.setNavigationBarTitle({
       title: language.lang.page.guizufeilv.navBarTitle,
     })
+  },
+
+  getDemurragePdfList() {
+    demurragePdfList().then(res => {
+      console.log(res)
+      this.dealData(res.data)
+    })
+  },
+
+  dealData(list) {
+    wx.showLoading({
+      title: languageUtils.languageVersion().lang.page.load.loading,
+      mask: true
+    })
+    const lists = []
+    const areaList = [{
+      id: 'All',
+      label: 'All'
+    }]
+    list.forEach(item => {
+      const area = item.split('/')[0]
+      const index = lists.findIndex(o => o.area === area)
+      if (index === -1) {
+        lists.push({
+          area: area,
+          files: [{
+            fileName: item.split('/')[1],
+            emailFile: item,
+            filePath: config[config.dev_env].url + '/api/miniapp/' + item
+          }]
+        })
+        areaList.push({
+          id: area,
+          label: area
+        })
+      } else {
+        lists[index].files.push({
+          fileName: item.split('/')[1],
+          emailFile: item,
+          filePath: config[config.dev_env].url + '/api/miniapp/' + item
+        })
+      }
+    })
+    this.setData({
+      allLists: lists,
+      lists,
+      areaList
+    })
+    wx.hideLoading()
   },
 
   // 切换展开数据
@@ -67,7 +109,26 @@ Page({
   },
 
   onConfirm(e) {
-
+    console.log(e)
+    if (e.detail.id === 'All') {
+      this.setData({
+        lists: this.data.allLists
+      })
+    } else {
+      this.setData({
+        lists: [this.data.allLists.find(item=>item.area === e.detail.id)]
+      })
+      setTimeout(()=>{
+        this.setData({
+          activeNames: 0
+        })
+      }, 300)
+    }
+    this.setData({
+      showPopup: false,
+      area: e.detail.label,
+      defaultIndex: this.data.areaList.findIndex(item=>item.id === e.detail.id)
+    })
   },
 
   onClose() {
@@ -78,13 +139,13 @@ Page({
 
   // 预览
   preview(e) {
-    const item = e.currentTarget.dataset.item
+    const filePath = e.currentTarget.dataset.filepath
     wx.showLoading({
       title: languageUtils.languageVersion().lang.page.load.loading,
       mask: true
     })
     wx.downloadFile({
-      url: item.filepath,
+      url: filePath,
       success(filePath) {
         wx.hideLoading()
         wx.openDocument({
@@ -118,13 +179,13 @@ Page({
   },
 
   sendEmails(e) {
-    const language = languageUtil.languageVersion();
+    const language = languageUtils.languageVersion();
     wx.showLoading({
       title: language.lang.page.load.send,
       mask: true
     })
-    sendEmail({
-      fileName: this.data.businessDetail.emailPath,
+    demurrageSendEmail({
+      fileName: this.data.sendInfo.emailFile,
       receiveMailAccount: e.detail
     }).then(() => {
       wx.showToast({

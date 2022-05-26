@@ -49,7 +49,26 @@
   height: 80rpx;
   border: 1rpx solid #B7BBC2;
   margin: 45rpx auto 0;
-  padding: 0 20rpx;
+  display: flex;
+}
+
+.emailContainers .emailContainer .emailInput input {
+  width: calc(100% - 100rpx);
+  height: 100%;
+  padding-left: 20rpx;
+}
+
+.emailContainers .emailContainer .emailInput .close {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emailContainers .emailContainer .emailInput .close image {
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .emailContainers .emailContainer .noRequest {

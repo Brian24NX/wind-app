@@ -21,7 +21,8 @@ Component({
 
   attached() {
     this.setData({
-      languageContent: languageUtil.languageVersion().lang.page.email
+      languageContent: languageUtil.languageVersion().lang.page.email,
+      receiveMailAccount: wx.getStorageSync('email')
     })
   },
 
@@ -32,6 +33,11 @@ Component({
     setEmail(e) {
       this.setData({
         receiveMailAccount: e.detail.value
+      })
+    },
+    deleteValue() {
+      this.setData({
+        receiveMailAccount: ''
       })
     },
     closeEmail() {
@@ -48,6 +54,7 @@ Component({
       this.setData({
         showRemind: false
       })
+      wx.setStorageSync('email', this.data.receiveMailAccount)
       this.triggerEvent("sendEmails", this.data.receiveMailAccount)
     }
   }
