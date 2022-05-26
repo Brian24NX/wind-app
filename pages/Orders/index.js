@@ -15,7 +15,8 @@ Page({
     showRemind: false,
     loading: true,
     noData: false,
-    list: []
+    list: [],
+    results: []
   },
 
   /**
@@ -125,6 +126,9 @@ Page({
       })
       const data = res.data;
       let containers = []
+      this.setData({
+        results: res.data.map(d => d.shipmentRef)
+      })
       data.forEach(route => {
         if (route.data) {
           route.data.routes.forEach(item => {
@@ -141,7 +145,7 @@ Page({
               containers = containers.concat(oneRouteContainers)
             } else {
               containers.push({
-                id: route.shipmentRef,
+                id: item.containers[0].id,
                 movements: []
               })
             }
