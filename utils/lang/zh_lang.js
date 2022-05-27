@@ -275,7 +275,7 @@ var Languague = {
     },
     // 我的
     userCenter: {
-      title: '我的账户',
+      title: '我的',
       login: '登录',
       myDashboard: '我的概览',
       shipment: '船运概览',
