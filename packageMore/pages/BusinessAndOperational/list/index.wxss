@@ -30,8 +30,47 @@ page {
 
 .businessContainer .businessLists {
   background-color: #ffffff;
-  padding: 1rpx 40rpx;
+  padding: 40rpx 40rpx 1rpx;
   margin-top: 30rpx;
+}
+
+.businessContainer .businessLists .categoryList {
+  white-space: nowrap;
+  border-bottom: 1rpx solid #04246A;
+  box-shadow: 2rpx 0 2rpx -2rpx rgba(0, 0, 0, 0.22);
+  padding: 0 4rpx;
+}
+
+.businessContainer .businessLists .categoryList .oneCategory {
+  display: inline-block;
+  padding-bottom: 10rpx;
+  margin-right: 40rpx;
+  font-size: 28rpx;
+  color: #071E5D;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  min-width: 80rpx;
+  text-align: center;
+}
+
+.businessContainer .businessLists .categoryList .oneCategory:nth-last-of-type(1) {
+  margin-right: 0;
+}
+
+.businessContainer .businessLists .categoryList .categoryActived {
+  position: relative;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+}
+
+.businessContainer .businessLists .categoryList .categoryActived .line {
+  width: 80rpx;
+  height: 8rpx;
+  background-color: #E20202;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .businessList .oneBusiness {
