@@ -291,6 +291,11 @@ var Languague = {
       email: '邮箱地址',
       exit: '退出'
     },
+    exit: {
+      title: '确认退出此账号',
+      cancel: '取消',
+      sure: '退出'
+    },
     // 设置语言
     setLanguage: {
       title: '设置语言'

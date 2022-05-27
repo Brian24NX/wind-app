@@ -290,6 +290,12 @@ var Languague = {
       email: 'Email address',
       exit: 'Log out'
     },
+
+    exit: {
+      title: 'Confirm to exit the account',
+      cancel: 'Cancel',
+      sure: 'Logout'
+    },
     // 设置语言
     setLanguage: {
       title: 'Set Language'
