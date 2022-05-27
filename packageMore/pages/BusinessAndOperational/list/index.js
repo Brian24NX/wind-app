@@ -1,5 +1,6 @@
 // packageMore/pages/BusinessAndOperational/index.js
 import {
+  categoryList,
   businiessOpentionalList
 } from '../../../api/modules/more';
 const languageUtil = require('../../../../utils/languageUtils')
@@ -18,7 +19,9 @@ Page({
     noMore: false,
     noData: false,
     pageNum: 1,
-    keyword: ''
+    keyword: '',
+    categoryId: '',
+    categoryList: [],
   },
 
   /**
@@ -26,6 +29,7 @@ Page({
    */
   onLoad() {
     this.initLanguage()
+    this.getCategoryList()
     this.resetList()
   },
 
@@ -73,6 +77,30 @@ Page({
     this.resetList()
   },
 
+  // 分类列表
+  getCategoryList() {
+    categoryList({type: 2}).then(res=>{
+      // console.log(res)
+      const all = [{
+        id: '',
+        category: 'All',
+        categoryCn: '全部'
+      }]
+      this.setData({
+        categoryList: all.concat(res.data)
+      })
+    })
+  },
+
+  // 切换分类
+  changeCategory(e) {
+    const categoryId = e.currentTarget.dataset.id
+    this.setData({
+      categoryId
+    })
+    this.resetList()
+  },
+
   resetList() {
     this.setData({
       loading: true,
@@ -91,7 +119,8 @@ Page({
     businiessOpentionalList({
       pageNum: this.data.pageNum,
       pageSize: pageSize,
-      keyWord: this.data.keyword
+      keyWord: this.data.keyword,
+      categoryId: this.data.categoryId
     }).then(res => {
       const list = this.data.list.concat(res.data.list)
       if (list.length >= res.data.total) {

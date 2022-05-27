@@ -12,13 +12,19 @@
     </view>
   </view>
   <view class="businessLists" wx:if="{{loading || !noData}}">
+    <scroll-view class="categoryList" scroll-x>
+      <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
+        <text>{{language === 'zh' ? item.categoryCn : item.category}}</text>
+        <view class="line"></view>
+      </view>
+    </scroll-view>
     <view class="businessList">
       <view class="oneBusiness" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
         <view class="businessTitle">{{item.title}}</view>
         <view class="businessTime">{{language === 'zh' ? format.formatCnDate2(item.publishDate) : format.formatEnDate2(item.publishDate)}}</view>
       </view>
     </view>
-  <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+    <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+    <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>
   </view>
-  <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>
 </view>
