@@ -145,7 +145,7 @@ page {
   background: #ffffff;
   border: 1rpx solid #00245d;
   top: 86rpx;
-  left: -1rpx;
+  left: -2rpx;
   z-index: 40;
   max-height: 430rpx;
 }

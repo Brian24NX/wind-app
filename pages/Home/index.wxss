@@ -104,6 +104,7 @@ page {
   width: 100%;
   max-height: 600rpx;
   overflow-y: auto;
+  border: 1rpx solid #00245d;
 }
 
 .homeContainer .searchContainers .searchContents .xialaInput .xialaContainer .oneXiala {
@@ -118,7 +119,7 @@ page {
 .oneXiala {
   height: 80rpx;
   background-color: #ffffff;
-  border: 2rpx solid #e2e2e2;
+  border-bottom: 2rpx solid #e2e2e2;
   max-height: 430rpx;
 }
 
