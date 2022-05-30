@@ -35,7 +35,7 @@ Page({
     newsDetail({id: this.data.id}).then(res=>{
       // console.log(res)
       if (res.data.content) {
-        res.data.content = res.data.content.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('\n', '<br>').replaceAll('↵', '<br>')
+        res.data.content = res.data.content.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('\n', '<br>')
       }
       this.setData({
         newsDetail: res.data
