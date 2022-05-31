@@ -12,6 +12,7 @@ Page({
    */
   data: {
     languageContent: {},
+    emptyContent: {},
     verifyInfo: {},
     language: 'zh',
     country: '',
@@ -23,7 +24,8 @@ Page({
     sendInfo: {},
     lists: [],
     allLists: [],
-    areaList: []
+    areaList: [],
+    loading: true
   },
 
   /**
@@ -39,6 +41,7 @@ Page({
     this.setData({
       languageContent: language.lang.page.guizufeilv,
       language: language.lang.page.langue,
+      emptyContent: language.lang.page.empty,
       verifyInfo: language.lang.page.verifyInfo
     })
     wx.setNavigationBarTitle({
@@ -47,8 +50,10 @@ Page({
   },
 
   getDemurragePdfList() {
+    this.setData({
+      loading: true
+    })
     demurragePdfList().then(res => {
-      console.log(res)
       this.dealData(res.data)
     })
   },
@@ -87,6 +92,7 @@ Page({
     })
     this.setData({
       allLists: lists,
+      loading: false,
       lists,
       areaList
     })
@@ -114,9 +120,9 @@ Page({
       })
     } else {
       this.setData({
-        lists: [this.data.allLists.find(item=>item.area === e.detail.id)]
+        lists: [this.data.allLists.find(item => item.area === e.detail.id)]
       })
-      setTimeout(()=>{
+      setTimeout(() => {
         this.setData({
           activeNames: 0
         })
@@ -125,7 +131,7 @@ Page({
     this.setData({
       showPopup: false,
       area: e.detail.label,
-      defaultIndex: this.data.areaList.findIndex(item=>item.id === e.detail.id)
+      defaultIndex: this.data.areaList.findIndex(item => item.id === e.detail.id)
     })
   },
 

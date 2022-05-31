@@ -7,7 +7,7 @@
     <view class="en" wx:else>{{sanctionDetail.commodityEn}}</view>
   </view>
   <view class="type">{{languageContent.type}}: {{sanctionDetail.type || '-'}}</view>
-  <view class="type">{{languageContent.code}}: {{sanctionDetail.code || '-'}}</view>
+  <view class="type">{{languageContent.code}}: {{sanctionDetail.referenceNo || '-'}}</view>
   <view class="sanctionContent">
     <rich-text nodes="{{language === 'zh' ? sanctionDetail.remarkCn : sanctionDetail.remarkEn}}"></rich-text>
   </view>

@@ -8,7 +8,7 @@
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
   </view>
-  <view class="guizuList">
+  <view class="guizuList" wx:if="{{list.length}}">
     <van-collapse accordion border="{{false}}" value="{{ activeNames }}" bind:change="onChange">
       <van-collapse-item border="{{false}}" content-class="items" name="{{index}}" wx:for="{{lists}}" wx:key="index">
         <view slot="title">
@@ -31,8 +31,8 @@
         </view>
       </van-collapse-item>
     </van-collapse>
-
   </view>
+  <view class="emptyContainer" wx:if="{{!loading && !lists.length}}">{{emptyContent.description}}</view>
 </view>
 
 <custom-picker columns="{{areaList}}" valueKey="label" showPopup="{{showPopup}}" defaultIndex="{{defaultIndex}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
