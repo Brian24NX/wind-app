@@ -65,7 +65,7 @@
     <block wx:else>
       <view class="oneBlock">
         <view class="selectContainer {{showRemind4 ? 'noRequestContainer' : ''}}">
-          <input type="text" bindinput="setBookingReference" placeholder="{{languageContent.dingdan}}" placeholder-class="placeholder" />
+          <input type="text" value="{{bookingReference}}" bindinput="setBookingReference" placeholder="{{languageContent.dingdan}}" placeholder-class="placeholder" />
         </view>
         <view class="noRequest" wx:if="{{showRemind4}}">
           <image src="/assets/img/search/error@2x.png"></image>

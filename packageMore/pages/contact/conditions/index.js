@@ -200,9 +200,11 @@ Page({
   },
 
   setBookingReference(e) {
+    let value = e.detail.value.toUpperCase()
+    let regvalue = value.trim()
     this.setData({
-      bookingReference: e.detail.value || '',
-      showRemind4: e.detail.value ? false : true
+      bookingReference: regvalue || '',
+      showRemind4: regvalue ? false : true
     })
   },
 
