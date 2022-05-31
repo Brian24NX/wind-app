@@ -1,9 +1,6 @@
 // pages/Home/index.js
 const app = getApp();
 import {
-  unix
-} from 'dayjs';
-import {
   fuzzySearch
 } from '../../api/modules/home';
 var languageUtil = require('../../utils/languageUtils')
