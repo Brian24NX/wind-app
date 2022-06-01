@@ -376,7 +376,7 @@ var Languague = {
       cancel: '取消'
     },
     copyInfo: {
-      success: '复制成功，请前往浏览器打开'
+      success: '已复制，请前往浏览器打开'
     },
     load: {
       //努力加载中

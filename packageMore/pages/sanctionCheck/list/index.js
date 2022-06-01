@@ -30,6 +30,7 @@ Page({
     })
     this.setData({
       languageContent: languageUtils.languageVersion().lang.page.sanction,
+      language: languageUtils.languageVersion().lang.page.langue,
       emptyContent: languageUtils.languageVersion().lang.page.empty
     })
     this.search()
