@@ -8,17 +8,23 @@ require("./utils/webmonitor.mp.min")
  * @param userTag 用于区分同一个项目下，角色的分类（公司A, B, C, D等）
  * @param projectVersion 应用每次发布的版本号
  */
-wx.setStorageSync('wmUserInfo', JSON.stringify({userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
-wx.login({
-  success(res) {
-    wx.request({
-      url: config[config.dev_env].url + '/api/miniapp/wx/user/' + config[config.dev_env].appId + '/login?code=' + res.code,
-      success(data) {
-        wx.setStorageSync('wmUserInfo', JSON.stringify({userId: data.data.openid, userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
-      }
-    })
-  }
-})
+
+if (wx.getStorageSync('openId')) {
+  wx.setStorageSync('wmUserInfo', JSON.stringify({userId: wx.getStorageSync('openId'), userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
+} else {
+  wx.setStorageSync('wmUserInfo', JSON.stringify({userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
+  wx.login({
+    success(res) {
+      wx.request({
+        url: config[config.dev_env].url + '/api/miniapp/wx/user/' + config[config.dev_env].appId + '/login?code=' + res.code,
+        success(data) {
+          wx.setStorageSync('openId', data.data.openid)
+          wx.setStorageSync('wmUserInfo', JSON.stringify({userId: data.data.openid, userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
+        }
+      })
+    }
+  })
+}
 
 App(wx.webfunny({
   onLaunch() {
