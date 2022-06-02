@@ -54,7 +54,7 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{language === 'zh' ? commonFilters.formatCnDate(item.departuredate, '-') : commonFilters.formatEnDate(item.departuredate, '-')}}</view>
+            <view class="time">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.departuredate, false, true) : commonFilters.formatEnDateLocal(item.departuredate, '-', '', false, true)}}</view>
             <view class="time">{{item.pointfrom}}, {{polCode}}</view>
             <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
@@ -64,7 +64,7 @@
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>
-            <view class="time end">{{language === 'zh' ? commonFilters.formatCnDate(item.arrivaldate, '-') : commonFilters.formatEnDate(item.arrivaldate, '-')}} {{item.pointto}}, {{podCode}}</view>
+            <view class="time end">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivaldate, false, true) : commonFilters.formatEnDateLocal(item.arrivaldate, '-', '', false, true)}} {{item.pointto}}, {{podCode}}</view>
           </view>
           <view class="rightContent">
             <view class="timeDay">{{item.transitTime}} {{item.transitTime == 1 ? languageContent.day : languageContent.days}}</view>

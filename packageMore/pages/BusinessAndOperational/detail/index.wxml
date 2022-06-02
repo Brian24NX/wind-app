@@ -7,7 +7,7 @@
     <view class="titleLine"></view>
     <view class="titleContent">{{businessDetail.title}}</view>
   </view>
-  <view class="businessTime">{{language === 'zh' ? format.formatCnDate2(businessDetail.publishDate) : format.formatEnDate2(businessDetail.publishDate)}}</view>
+  <view class="businessTime">{{language === 'zh' ? format.formatCnDateUtc(businessDetail.publishDate) : format.formatEnDateUtc(businessDetail.publishDate)}}</view>
   <view class="rich">
     <rich-text nodes="{{businessDetail.content}}"></rich-text>
   </view>

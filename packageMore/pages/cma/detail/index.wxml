@@ -4,7 +4,7 @@
 <view class="newsDetail" hidden="{{!newsDetail.hasOwnProperty('historyFlag') && newsDetail.historyFlag}}">
   <view class="newsTitle">{{newsDetail.title}}</view>
   <view class="newsTime">
-    <view>{{language === 'zh' ? format.formatCnDate2(newsDetail.publishDate || newsDetail.createTime) : format.formatEnDate2(newsDetail.publishDate || newsDetail.createTime)}}</view>
+    <view>{{language === 'zh' ? format.formatCnDateUtc(newsDetail.publishDate || newsDetail.createTime) : format.formatEnDateUtc(newsDetail.publishDate || newsDetail.createTime)}}</view>
     <image catchtap="zan" src="{{zanStatus ? '/assets/img/more/dianzan_2@2x.png' : '/assets/img/more/dianzan_1@2x.png'}}"></image>
   </view>
   <rich-text nodes="{{newsDetail.content}}"></rich-text>

@@ -37,7 +37,7 @@
             <view class="gangKouNames">{{item.pointFrom.location.facility.name}}</view>
           </view>
           <view class="yunshuContainer">
-            <view class="timeContainer">{{language === 'zh' ? filters.formatCnDate(item.pointFrom.departureDate) : filters.formatEnDate(item.pointFrom.departureDate)}}</view>
+            <view class="timeContainer">{{language === 'zh' ? filters.formatCnDateLocal(item.pointFrom.departureDate, false, true) : filters.formatEnDateLocal(item.pointFrom.departureDate, '-', '', false, true)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
                 <view class="names">{{item.pointFrom.location.name}}，</view>
@@ -48,11 +48,11 @@
             </block>
             <view class="gangKouTime">
               <text>{{languageContent.vgmCutOff}}：</text>
-              <text class="time">{{language === 'zh' ? filters.formatCnDate(item.pointFrom.vgmCutoffDate) : filters.formatEnDate(item.pointFrom.vgmCutoffDate)}}</text>
+              <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.pointFrom.vgmCutoffDate, false, true) : filters.formatEnDateLocal(item.pointFrom.vgmCutoffDate, '-', '', false, true)}}</text>
             </view>
             <view class="gangKouTime">
               <text>{{languageContent.portCutOff}}：</text>
-              <text class="time">{{language === 'zh' ? filters.formatCnDate(item.pointFrom.portCutoffDate) : filters.formatEnDate(item.pointFrom.portCutoffDate)}}</text>
+              <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.pointFrom.portCutoffDate, false, true) : filters.formatEnDateLocal(item.pointFrom.portCutoffDate, '-', '', false, true)}}</text>
             </view>
             <view class="shipName" style="margin-top: 30rpx;">
               <text>{{languageContent.vessel}}：</text>
@@ -70,7 +70,7 @@
               <text>{{languageContent.vouageRef}}：</text>
               <text>{{item.transportation.voyage.voyageReference || '-'}}</text>
             </view>
-            <view class="timeContainer" style="margin-top: 30rpx;">{{language === 'zh' ? filters.formatCnDate(item.pointTo.arrivalDate) : filters.formatEnDate(item.pointTo.arrivalDate)}}</view>
+            <view class="timeContainer" style="margin-top: 30rpx;">{{language === 'zh' ? filters.formatCnDateLocal(item.pointTo.arrivalDate, false, true) : filters.formatEnDateLocal(item.pointTo.arrivalDate, '-', '', false, true)}}</view>
           </view>
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
@@ -99,7 +99,7 @@
             </view>
           </view>
           <view class="yunshuContainer">
-            <view class="timeContainer">{{language === 'zh' ? filters.formatCnDate(item.pointFrom.departureDate) : filters.formatEnDate(item.pointFrom.departureDate)}}</view>
+            <view class="timeContainer">{{language === 'zh' ? filters.formatCnDateLocal(item.pointFrom.departureDate, false, true) : filters.formatEnDateLocal(item.pointFrom.departureDate, '-', '', false, true)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
                 <view class="names">{{item.pointFrom.location.name}}，</view>
@@ -108,7 +108,7 @@
               </view>
             </block>
             <view class="rails">{{item.transportation.vehicle.vehicleName}}</view>
-            <view class="timeContainer" style="margin-top: 10rpx;">{{language === 'zh' ? filters.formatCnDate(item.pointTo.arrivalDate) : filters.formatEnDate(item.pointTo.arrivalDate)}}</view>
+            <view class="timeContainer" style="margin-top: 10rpx;">{{language === 'zh' ? filters.formatCnDateLocal(item.pointTo.arrivalDate, false, true) : filters.formatEnDateLocal(item.pointTo.arrivalDate, '-', '', false, true)}}</view>
           </view>
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">

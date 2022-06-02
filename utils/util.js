@@ -245,7 +245,7 @@ var judgLand = function (obj) {
   }
 }
 
-function formatEnDate(date) {
+function formatEnDateLocal(date) {
   var dt = new Date(date.split('T')[0].replaceAll('-', '/'));
   var m = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec");
   var week = new Array("Sunday", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday", "Saturday");
@@ -266,5 +266,5 @@ module.exports = {
   getDayList,
   substrTime,
   judgLand,
-  formatEnDate
+  formatEnDateLocal
 }

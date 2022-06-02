@@ -19,7 +19,7 @@
           <view class="topLeft">
             <text>{{item.timeRemaining < 1 ? languageContent.tingbo : languageContent.yuji }}</text>
           </view>
-          <view class="topRight">{{languageContent.language === 'en' ? filters.formatEnDate(item.movements[item.movements.length - 1].date, '-', '') : filters.formatCnDate(item.movements[item.movements.length - 1].date)}} {{item.movements[item.movements.length - 1].time}}</view>
+          <view class="topRight">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.movements[item.movements.length - 1].date, '-', '') : filters.formatCnDateLocal(item.movements[item.movements.length - 1].date)}}</view>
         </view>
         <view class="orderBottom">
           <view class="oneBottom">
@@ -48,7 +48,7 @@
                   <view>{{languageContent.location}}</view>
                 </view>
                 <view class="detailRight">
-                  <view class="xiangxing time">{{languageContent.language === 'en' ? filters.formatEnDate(item.currentStatus.date, '-', '', true) : filters.formatCnDate(item.currentStatus.date, true)}} {{item.currentStatus.time}}</view>
+                  <view class="xiangxing time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.currentStatus.date, '-', '', true) : filters.formatCnDateLocal(item.currentStatus.date, true)}}</view>
                   <view>{{languageContent.time}}</view>
                 </view>
               </view>

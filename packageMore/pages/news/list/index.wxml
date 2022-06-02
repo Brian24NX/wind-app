@@ -23,7 +23,7 @@
     <view class="newsList" wx:if="{{list.length}}">
       <view class="oneNews" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
         <view class="newsTitle">{{item.title}}</view>
-        <view class="newsTime">{{language === 'zh' ? format.formatCnDate2(item.publishDate || item.createTime) : format.formatEnDate2(item.publishDate || item.createTime)}}</view>
+        <view class="newsTime">{{language === 'zh' ? format.formatCnDateUtc(item.publishDate || item.createTime) : format.formatEnDateUtc(item.publishDate || item.createTime)}}</view>
       </view>
     </view>
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>

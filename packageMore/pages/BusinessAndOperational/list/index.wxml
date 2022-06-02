@@ -21,7 +21,7 @@
     <view class="businessList">
       <view class="oneBusiness" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
         <view class="businessTitle">{{item.title}}</view>
-        <view class="businessTime">{{language === 'zh' ? format.formatCnDate2(item.publishDate) : format.formatEnDate2(item.publishDate)}}</view>
+        <view class="businessTime">{{language === 'zh' ? format.formatCnDateUtc(item.publishDate) : format.formatEnDateUtc(item.publishDate)}}</view>
       </view>
     </view>
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>

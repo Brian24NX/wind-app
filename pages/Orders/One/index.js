@@ -72,7 +72,6 @@ Component({
         item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
         item.orginDate = item.date
         item.date = utils.substrTime(item.date)
-        item.time = dayjs(item.date).format('HH:mm')
         item.date = dayjs(item.date).format('YYYY-MM-DD')
         const dayStatus = dayjs(item.date).isBefore(dayjs(), 'date')
         if (dayStatus) {

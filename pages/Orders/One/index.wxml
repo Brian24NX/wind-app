@@ -19,7 +19,7 @@
 <view class="oneOrderContainer" wx:if="{{stepList.length}}">
   <view class="timeContainer">
     <view class="times timeTop">
-      <view class="left">{{languageContent.language === 'en' ? filters.formatEnDate(stepList[stepList.length - 1].date, '-', 'short') : filters.formatCnDate(stepList[stepList.length - 1].date)}} {{stepList[stepList.length - 1].time}}</view>
+      <view class="left">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].orginDate, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].orginDate)}}</view>
       <view class="right">{{timeRemaining}} {{languageContent.tian}}</view>
     </view>
     <view class="times timeBottom">
@@ -52,7 +52,7 @@
       </view>
       <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
         <view class="stepSatus">{{languageContent.language === 'en' ? item.status.name : item.status.statusLabel}}</view>
-        <view class="stepTime">{{languageContent.language === 'en' ? filters.formatEnDate(item.date, '-', 'short') : filters.formatCnDate(item.date)}} {{item.pointLocation.name}}, {{item.countryCode}}</view>
+        <view class="stepTime">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.orginDate, '-', 'short', false, true) : filters.formatCnDateLocal(item.orginDate, false, true)}} {{item.pointLocation.name}}, {{item.countryCode}}</view>
       </view>
     </view>
   </view>

@@ -43,9 +43,9 @@ Component({
           one.movements = one.movements.reverse();
           one.movements.forEach((item, index) => {
             item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
-            item.date = utils.substrTime(item.date)
-            item.time = dayjs(item.date).format('HH:mm')
-            item.date = dayjs(item.date).format('YYYY-MM-DD')
+            // item.date = utils.substrTime(item.date)
+            // item.time = dayjs(item.date).format('HH:mm')
+            // item.date = dayjs(item.date).format('YYYY-MM-DD')
             const dayStatus = dayjs(item.date).isBefore(dayjs(), 'date')
             if (dayStatus) {
               item.stepStatus = 'past'
