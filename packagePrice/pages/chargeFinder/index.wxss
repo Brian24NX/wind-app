@@ -125,6 +125,7 @@ page {
   height: 30rpx;
   border-radius: 50%;
   border: 1rpx solid #071E5D;
+  transform: rotateZ(360deg);
   margin-right: 10rpx;
   display: flex;
   align-items: center;
@@ -177,8 +178,9 @@ page {
   position: absolute;
   background: #ffffff;
   border: 1rpx solid #00245d;
+  transform: rotateZ(360deg);
   top: 86rpx;
-  left: -1rpx;
+  left: -2rpx;
   z-index: 40;
   max-height: 430rpx;
 }

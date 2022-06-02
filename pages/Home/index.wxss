@@ -105,6 +105,7 @@ page {
   max-height: 600rpx;
   overflow-y: auto;
   border: 1rpx solid #00245d;
+  transform: rotateZ(360deg);
 }
 
 .homeContainer .searchContainers .searchContents .xialaInput .xialaContainer .oneXiala {

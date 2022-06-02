@@ -144,6 +144,7 @@ page {
   position: absolute;
   background: #ffffff;
   border: 1rpx solid #00245d;
+  transform: rotateZ(360deg);
   top: 86rpx;
   left: -2rpx;
   z-index: 40;
