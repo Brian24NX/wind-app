@@ -75,7 +75,7 @@ Page({
         lists.push({
           area: area,
           files: [{
-            fileName: item.split('/')[1],
+            fileName: item.split('/')[1].substring(4),
             filePath: config[config.dev_env].url + '/api/miniapp/' + item
           }]
         })
@@ -85,7 +85,7 @@ Page({
         })
       } else {
         lists[index].files.push({
-          fileName: item.split('/')[1],
+          fileName: item.split('/')[1].substring(4),
           filePath: config[config.dev_env].url + '/api/miniapp/' + item
         })
       }

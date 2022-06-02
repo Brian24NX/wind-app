@@ -3,8 +3,10 @@
   <view class="searchLists">
     <view class="routeTitles">
       <view class="redline"></view>
-      <text class="route1">{{languageContent.title1}}</text>
-      <text class="route2">{{languageContent.title2}}</text>
+      <view>
+        <text class="route1">{{languageContent.title1}}</text>
+        <text class="route2">{{languageContent.title2}}</text>
+      </view>
     </view>
     <view class="searchList">
       <view class="searchTitle">{{languageContent.protOfLanding}}</view>

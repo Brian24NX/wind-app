@@ -371,8 +371,8 @@ var Languague = {
       noChargeData: 'No date found'
     },
     popupBtn: {
-      confirm: 'confirm',
-      cancel: 'cancel'
+      confirm: 'Confirm',
+      cancel: 'Cancel'
     },
     copyInfo: {
       success: 'Successfully copied, please open the link in your browser.'
@@ -383,10 +383,10 @@ var Languague = {
       //网络不给力,请稍后刷新
       networkIsNotWorking: "Network is not working, please click and refresh later",
       // 功能升级中,敬请期待
-      functionIsUnderDevelopment: "Function is under development, stay tuned~ ",
+      functionIsUnderDevelopment: "Function is under development, stay tuned",
       chaoshi: 'Request timeout, please try again later',
       // 系统繁忙,请稍后重试
-      systemIsBusyNow: "System is busy now, please try again later ",
+      systemIsBusyNow: "System is busy now, please try again later",
       // 暂无更多数据
       noMoreData: 'No more data available',
       // 发送中
