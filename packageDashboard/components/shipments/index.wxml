@@ -1,18 +1,20 @@
 <!--packageDashboard/pages/shipment/list/components/shipments/index.wxml-->
+<wxs module="filter" src="./format.wxs"></wxs>
+<wxs module="format" src="../../../utils/format.wxs"></wxs>
 <view class="componentShipmentList">
-  <view class="oneShipment" wx:for="{{3}}" wx:key="index" catchtap="toShipmentDetail">
+  <view class="oneShipment" wx:for="{{list}}" wx:key="index" catchtap="toShipmentDetail">
     <view class="topTime">
       <view>{{languageContent.eat}}</view>
-      <view>Mon 28-FEB-2022 21:00</view>
+      <view>{{language === 'zh' ? format.formatCnDateLocal(item.estimatedDateOfArrival) : format.formatEnDateLocal(item.estimatedDateOfArrival, '-', '')}}</view>
     </view>
     <view class="shipInfo">
       <image src="/assets/img/dashboard/shipment@2x.png"></image>
       <view class="shopInfoRight">
         <view class="shipInfoName">
-          <view>ERFS6325612</view>
+          <view>{{item.bookingReference}}</view>
           <view>{{languageContent.shipmentRef}}</view>
         </view>
-        <view class="shipStatus">BOOKING IN PROGRESS</view>
+        <view class="shipStatus">{{filter.toUpperCase(item.status)}}</view>
       </view>
     </view>
     <view class="stepLists">
@@ -21,17 +23,17 @@
           <view class="leftLineDto"></view>
           <view class="leftLine"></view>
         </view>
-        <view class="stepContent">OKALAND, CA, US</view>
+        <view class="stepContent">{{item.from}}</view>
       </view>
       <view class="oneStep">
         <view class="leftLines" style="top: 6rpx">
           <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
         </view>
-        <view class="stepContent">OKALAND, CA, US</view>
+        <view class="stepContent">{{item.to}}</view>
       </view>
     </view>
   </view>
-  <view class="dashboardEmpty" wx:if="{{false}}">
+  <view class="dashboardEmpty" wx:if="{{!list.length}}">
     <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no-result-white.png" mode="aspectFit"></image>
     <view>{{languageContent.noShipmentData}}</view>
   </view>

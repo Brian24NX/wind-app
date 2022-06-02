@@ -8,17 +8,22 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    list: {
+      type: Array,
+      value: []
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    languageContent: {}
+    languageContent: {},
+    language: 'zh'
   },
 
   attached() {
+    console.log(this.data.list)
     this.initLanguage()
   },
 
@@ -28,7 +33,8 @@ Component({
   methods: {
     initLanguage() {
       this.setData({
-        languageContent: languageUtils.languageVersion().lang.page.shipment
+        languageContent: languageUtils.languageVersion().lang.page.shipment,
+        language: languageUtils.languageVersion().lang.page.langue
       })
     },
 

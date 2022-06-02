@@ -1,5 +1,8 @@
 // packageDashboard/pages/shipment/list/index.js
 const languageUtils = require('../../../../utils/languageUtils')
+import {
+  shipmentsList
+} from '../../../api/modules/dashboard'
 Page({
 
   /**
@@ -9,7 +12,9 @@ Page({
     languageContent: {},
     keyword: '',
     typeList: ['shipment', 'container'],
-    current: 'shipment'
+    current: 'shipment',
+    list: [],
+    loading: false
   },
 
   /**
@@ -17,6 +22,7 @@ Page({
    */
   onLoad() {
     this.initLanguage()
+    this.search()
   },
 
   initLanguage() {
@@ -48,5 +54,18 @@ Page({
     })
   },
 
-  search() {},
+  search() {
+    this.setData({
+      loading: true
+    })
+    shipmentsList({
+      ccgId: 'U08101306'
+    }).then(res => {
+      console.log(res)
+      this.setData({
+        list: res.data.slice(0, 10),
+        loading: false
+      })
+    })
+  },
 })

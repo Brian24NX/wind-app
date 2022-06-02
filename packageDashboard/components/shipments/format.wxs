@@ -1,0 +1,8 @@
+function toUpperCase(str) {
+  if (!str) return ''
+  return str.toUpperCase()
+}
+
+module.exports = {
+  toUpperCase: toUpperCase
+}

@@ -6,7 +6,7 @@
       <view class="infoCenter noLogin">{{languageContent.login}}</view>
       <van-icon name="arrow" color="#04246A" />
   </view>
-  <view class="userInfoContainer" wx:else catchtap="toBaseInfo">
+  <view class="userInfoContainer" wx:else catchtap="toLogin">
       <image class="avatar" src="/assets/img/myAccount/avatar@2x.png"></image>
       <view class="infoCenter">xxx</view>
       <van-icon name="arrow" color="#04246A" />
