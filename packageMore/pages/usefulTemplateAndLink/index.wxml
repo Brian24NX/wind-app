@@ -44,7 +44,9 @@
         <image src="/assets/img/home/templatelinks@2x.png" class="linkIcon"></image>
         <view class="contentCenter">
           <view class="useTitle">{{item.name}}</view>
-          <view>{{item.document}}</view>
+          <view>
+            <text>{{item.document}}</text>
+          </view>
         </view>
         <view class="copy" catchtap="copy" data-value="{{item.document}}">{{languageContent.copy}}</view>
       </view>

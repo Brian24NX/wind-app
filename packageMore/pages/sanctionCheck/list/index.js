@@ -86,7 +86,8 @@ Page({
     const params = {
       pageNum: this.data.pageNum,
       pageSize: pageSize,
-      keyword: this.data.keyword
+      keyword: this.data.keyword,
+      type: this.data.language
     }
     this.setData({
       loading: true
