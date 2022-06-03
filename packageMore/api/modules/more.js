@@ -74,7 +74,7 @@ export const contractInfoByOrderId = (params) => {
 
 // 管制品列表
 export const sanctionCommodityList = (params) => {
-  return getRequest('/api/miniapp/sanctionCommodityList', params)
+  return getRequest('/api/miniapp/sanctionCommodityList', params, true)
 }
 
 // 管制品详情
@@ -84,7 +84,7 @@ export const sanctionCommodityDetail = (params) => {
 
 // 获取常用模板与链接列表
 export const templateList = (params) => {
-  return getRequest('/api/miniapp/templateList', params)
+  return getRequest('/api/miniapp/templateList', params, true)
 }
 
 // 常用模板与链接发送邮箱

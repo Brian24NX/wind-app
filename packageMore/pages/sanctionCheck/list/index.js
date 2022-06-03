@@ -3,7 +3,7 @@ const languageUtils = require('../../../../utils/languageUtils')
 import {
   sanctionCommodityList
 } from '../../../api/modules/more';
-const pageSize = 10
+const pageSize = 20
 Page({
 
   /**
