@@ -1,0 +1,103 @@
+<!--packageDashboard/components/info/index.wxml-->
+<wxs module="format" src="../../../utils/format.wxs"></wxs>
+<view class="zixunInfo">
+  <view class="stepLists">
+    <view class="oneStep">
+      <view class="leftLines">
+        <view class="leftLineDto"></view>
+        <view class="leftLine"></view>
+      </view>
+      <view class="stepContent">
+        <view class="stepContentTop">
+          <view class="code">{{languageContent.RECEIPT}}</view>
+          <view class="topName">{{info.from}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="oneStep">
+      <view class="leftLines">
+        <view class="leftLineDto"></view>
+        <view class="leftLine"></view>
+      </view>
+      <view class="stepContent">
+        <view class="stepContentTop">
+          <view class="code">{{languageContent.POL}}</view>
+          <view class="topName">{{info.portOfLoading}}</view>
+        </view>
+        <view class="stepTime">{{language === 'zh' ? format.formatCnDateLocal(info.estimatedDateOfDeparture) : format.formatEnDateLocal(info.estimatedDateOfDeparture, '-', '')}}</view>
+      </view>
+    </view>
+    <view class="oneStep">
+      <view class="leftLines">
+        <view class="leftLineDto"></view>
+        <view class="leftLine"></view>
+      </view>
+      <view class="stepContent">
+        <view class="stepContentTop">
+          <view class="code">{{languageContent.POD}}</view>
+          <view class="topName">{{info.portOfDischarge}}</view>
+        </view>
+        <view class="stepTime" wx:if="{{info.estimatedDateOfArrival}}">{{language === 'zh' ? format.formatCnDateLocal(info.estimatedDateOfArrival) : format.formatEnDateLocal(info.estimatedDateOfArrival, '-', '')}}</view>
+      </view>
+    </view>
+    <view class="oneStep">
+      <view class="leftLines" style="top: 6rpx">
+        <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+      </view>
+      <view class="stepContent">
+        <view class="stepContentTop">
+          <view class="code">{{languageContent.DELIVERY}}</view>
+          <view class="topName">{{info.to}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="detailList">
+    <view class="oneDetail">
+      <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit"></image>
+      <view class="oneDetailRight">
+        <view class="heng">
+          <view>
+            <text class="title">{{languageContent.Contianers}}：</text>
+            <text class="value">{{info.cargoEquipments}}</text>
+          </view>
+          <view>
+            <text class="title">{{languageContent.TEU}}：</text>
+            <text class="value">{{info.totalGrossWeight}}</text>
+          </view>
+        </view>
+        <view>
+          <text class="title">{{languageContent.weight}}：</text>
+          <text class="value">{{info.cwgth}}</text>
+        </view>
+        <view>
+          <text class="title">{{languageContent.volume}}：</text>
+          <text class="value">{{info.volume}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="oneDetail">
+      <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit"></image>
+      <view class="oneDetailRight">
+        <view class="title">{{languageContent.Commodities}}</view>
+        <view class="value">{{info.commodities[0]}}</view>
+      </view>
+    </view>
+
+    <view class="oneDetail">
+      <image src="/assets/img/dashboard/Profile@2x.png" mode="aspectFit"></image>
+      <view class="oneDetailRight">
+        <view class="title">{{languageContent.Shipper}}</view>
+        <view class="value">{{info.shipper}}</view>
+      </view>
+    </view>
+
+    <view class="oneDetail">
+      <image src="/assets/img/dashboard/User@2x.png" mode="aspectFit"></image>
+      <view class="oneDetailRight">
+        <view class="title">{{languageContent.Consignee}}</view>
+        <view class="value">{{info.consignee}}</view>
+      </view>
+    </view>
+  </view>
+</view>

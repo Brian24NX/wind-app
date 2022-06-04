@@ -11,6 +11,10 @@ Component({
     list: {
       type: Array,
       value: []
+    },
+    loading: {
+      type: Boolean,
+      value: true
     }
   },
 
@@ -23,7 +27,6 @@ Component({
   },
 
   attached() {
-    console.log(this.data.list)
     this.initLanguage()
   },
 
@@ -38,9 +41,10 @@ Component({
       })
     },
 
-    toShipmentDetail() {
+    toShipmentDetail(e) {
+      console.log(e)
       wx.navigateTo({
-        url: '/packageDashboard/pages/shipment/detail/index',
+        url: `/packageDashboard/pages/shipment/detail/index?bookingReference=${e.currentTarget.dataset.bookingreference}`,
       })
     },
   }

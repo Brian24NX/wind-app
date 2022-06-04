@@ -1,6 +1,6 @@
 <!--packageDashboard/components/document/index.wxml-->
 <view class="componentDocumentList">
-  <view class="oneDocument" wx:for="{{3}}" wx:key="index">
+  <view class="oneDocument" wx:for="{{list}}" wx:key="index">
     <view class="ones">
       <view class="oneLeft">{{documentContent.fileNo}}</view>
       <view class="oneRight">JXTL311981</view>
@@ -29,7 +29,7 @@
       </view>
     </view>
   </view>
-  <view class="dashboardEmpty" wx:if="{{false}}">
+  <view class="dashboardEmpty" wx:if="{{!list.length && !loading}}">
     <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/empty.png" mode="aspectFit"></image>
     <view>{{documentContent.noData}}</view>
   </view>

@@ -47,3 +47,7 @@ page {
   height: 8rpx;
   background-color: #E20202;
 }
+
+.loadings {
+  padding: 0 48rpx 1rpx;
+}

@@ -1,8 +1,11 @@
 // packageDashboard/pages/shipment/list/index.js
 const languageUtils = require('../../../../utils/languageUtils')
 import {
-  shipmentsList
+  shipmentsList,
+  shipmentsContainerList
 } from '../../../api/modules/dashboard'
+let allList = []
+const size = 10
 Page({
 
   /**
@@ -10,11 +13,13 @@ Page({
    */
   data: {
     languageContent: {},
+    page: 1,
     keyword: '',
     typeList: ['shipment', 'container'],
     current: 'shipment',
     list: [],
-    loading: false
+    loading: false,
+    noMore: false
   },
 
   /**
@@ -23,6 +28,15 @@ Page({
   onLoad() {
     this.initLanguage()
     this.search()
+  },
+
+  onReachBottom() {
+    if (this.data.loading || this.data.noMore) return
+    this.setData({
+      page: this.data.page++,
+      loading: true
+    })
+    this.dealPaging()
   },
 
   initLanguage() {
@@ -52,20 +66,43 @@ Page({
     this.setData({
       current: e.currentTarget.dataset.type
     })
+    this.search()
   },
 
   search() {
     this.setData({
-      loading: true
+      loading: true,
+      page: 1,
+      list: []
     })
-    shipmentsList({
-      ccgId: 'U08101306'
-    }).then(res => {
-      console.log(res)
+    allList = []
+    if (this.data.current === 'shipment') {
+      shipmentsList({
+        ccgId: 'U08101306',
+        bookingReference: ''
+      }).then(res => {
+        console.log(res)
+        allList = res.data
+        this.dealPaging()
+      })
+    } else {
+      shipmentsContainerList({
+        ccgId: 'U08101306',
+        containerOrBookingReference: ''
+      }).then(res => {
+        console.log(res)
+        allList = res.data
+        this.dealPaging()
+      })
+    }
+  },
+
+  dealPaging() {
+    setTimeout(() => {
       this.setData({
-        list: res.data.slice(0, 10),
+        list: this.data.list.concat(allList.slice((this.data.page - 1) * size, size)),
         loading: false
       })
-    })
-  },
+    }, 200);
+  }
 })

@@ -1,22 +1,23 @@
 <!--packageDashboard/pages/shipment/list/containers/index.wxml-->
+<wxs module="format" src="../../../utils/format.wxs"></wxs>
 <view class="componentHuoguoContainer">
-  <view class="oneOrder" wx:for="{{3}}" catchtap="toDetail">
+  <view class="oneOrder" wx:for="{{list}}" catchtap="toDetail" data-index="{{index}}">
     <view class="orderTop">
       <view class="topLeft">
         <text>{{languageContent.eat}}</text>
       </view>
-      <view class="topRight">Mon 28-FEB-2022 21:00</view>
+      <view class="topRight">{{language === 'zh' ? format.formatCnDateLocal(item.dischargeDatePODLocal) : format.formatEnDateLocal(item.dischargeDatePODLocal, '-', '')}}</view>
     </view>
     <view class="orderBottom">
       <view class="oneBottom">
         <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
         <view class="details">
           <view class="detailLeft">
-            <view class="huogui">ERFS6325612</view>
+            <view class="huogui">{{item.containerNumber}}</view>
             <view>{{languageContent.huoguihao}}</view>
           </view>
           <view class="detailRight">
-            <view class="xiangxing">40HC</view>
+            <view class="xiangxing">{{item.containerSizeType}}</view>
             <view>{{languageContent.xiangxing}}</view>
           </view>
         </view>
@@ -25,16 +26,16 @@
         <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
         <view class="details" style="flex-direction: column;">
           <view>
-            <view class="status">Discharged in Transhipment</view>
+            <view class="status">{{item.statusCode}}</view>
           </view>
 
           <view class="details2">
             <view class="detailLeft">
-              <view class="address">SHANGHAI</view>
+              <view class="address">{{item.locationName}}</view>
               <view>{{languageContent.location}}</view>
             </view>
             <view class="detailRight">
-              <view class="xiangxing time">06-FEB-2022 10:00</view>
+              <view class="xiangxing time">{{language === 'zh' ? format.formatCnDateLocal(item.statusDateLocal, true) : format.formatEnDateLocal(item.statusDateLocal, '-', '', true)}}</view>
               <view>{{languageContent.time}}</view>
             </view>
           </view>
@@ -44,11 +45,11 @@
         <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
         <view class="details">
           <view class="detailLeft">
-            <view class="huogui chuanming">JIAYONG</view>
+            <view class="huogui chuanming">{{item.vesselName}}</view>
             <view>{{languageContent.chuanming}}</view>
           </view>
           <view class="detailRight">
-            <view class="xiangxing">8991WN</view>
+            <view class="xiangxing">{{item.voyageReference}}</view>
             <view>{{languageContent.chuanci}}</view>
           </view>
         </view>
@@ -56,7 +57,7 @@
     </view>
   </view>
 
-  <view class="dashboardEmpty" wx:if="{{false}}">
+  <view class="dashboardEmpty" wx:if="{{!list.length && !loading}}">
     <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no.png" mode="aspectFit"></image>
     <view>{{languageContent.noContainersData}}</view>
   </view>

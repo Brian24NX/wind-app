@@ -9,7 +9,7 @@
       <view class="resList others">
         <view class="oneRes">
           <image src="/assets/img/dashboard/shipmentDetail@2x.png" mode="aspectFit" class="resIcon"></image>
-          <view class="resContent">JXTL311981</view>
+          <view class="resContent">{{bookingReference}}</view>
         </view>
       </view>
     </view>
@@ -23,140 +23,10 @@
       </view>
     </view>
     <!-- 货柜视图 -->
-    <containers wx:if="{{current === 'detailContainer'}}"></containers>
+    <containers list="{{containers}}" loading="{{loading}}" wx:if="{{current === 'detailContainer'}}"></containers>
     <!-- 资讯 -->
-    <view class="zixunInfo" wx:if="{{current === 'info'}}">
-      <view class="stepLists">
-        <view class="oneStep">
-          <view class="leftLines">
-            <view class="leftLineDto"></view>
-            <view class="leftLine"></view>
-          </view>
-          <view class="stepContent">
-            <view class="stepContentTop">
-              <view class="code">{{languageContent.RECEIPT}}</view>
-              <view class="topName">HUANGPU, CN</view>
-            </view>
-          </view>
-        </view>
-        <view class="oneStep">
-          <view class="leftLines">
-            <view class="leftLineDto"></view>
-            <view class="leftLine"></view>
-          </view>
-          <view class="stepContent">
-            <view class="stepContentTop">
-              <view class="code">{{languageContent.POL}}</view>
-              <view class="topName">HUANGPU, CN</view>
-            </view>
-            <view class="stepTime">May 6 3:30 AM</view>
-          </view>
-        </view>
-        <view class="oneStep">
-          <view class="leftLines">
-            <view class="leftLineDto"></view>
-            <view class="leftLine"></view>
-          </view>
-          <view class="stepContent">
-            <view class="stepContentTop">
-              <view class="code">{{languageContent.POD}}</view>
-              <view class="topName">HUANGPU, CN</view>
-            </view>
-            <view class="stepTime">May 6 3:30 AM</view>
-          </view>
-        </view>
-        <view class="oneStep">
-          <view class="leftLines" style="top: 6rpx">
-            <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
-          </view>
-          <view class="stepContent">
-            <view class="stepContentTop">
-              <view class="code">{{languageContent.DELIVERY}}</view>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="detailList">
-        <view class="oneDetail">
-          <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit"></image>
-          <view class="oneDetailRight">
-            <view class="heng">
-              <view>
-                <text class="title">{{languageContent.Contianers}}：</text>
-                <text class="value">1</text>
-              </view>
-              <view>
-                <text class="title">{{languageContent.TEU}}：</text>
-                <text class="value">1</text>
-              </view>
-            </view>
-            <view>
-              <text class="title">{{languageContent.weight}}：</text>
-              <text class="value">10,014 KGM (Kilogram)</text>
-            </view>
-            <view>
-              <text class="title">{{languageContent.volume}}：</text>
-              <text class="value">64 M</text>
-            </view>
-          </view>
-        </view>
-        <view class="oneDetail">
-          <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit"></image>
-          <view class="oneDetailRight">
-            <view class="title">{{languageContent.Commodities}}</view>
-            <view class="value">940490 - Articles of bedding and similar furnishing, fitted with spri</view>
-          </view>
-        </view>
-
-        <view class="oneDetail">
-          <image src="/assets/img/dashboard/Profile@2x.png" mode="aspectFit"></image>
-          <view class="oneDetailRight">
-            <view class="title">{{languageContent.Shipper}}</view>
-            <view class="value">940490 - Articles of bedding and similar furnishing, fitted with spri</view>
-          </view>
-        </view>
-
-        <view class="oneDetail">
-          <image src="/assets/img/dashboard/User@2x.png" mode="aspectFit"></image>
-          <view class="oneDetailRight">
-            <view class="title">{{languageContent.Consignee}}</view>
-            <view class="value">940490 - Articles of bedding and similar furnishing, fitted with spri</view>
-          </view>
-        </view>
-      </view>
-    </view>
+    <info info="{{info}}" wx:if="{{current === 'info'}}"></info>
     <!-- 文件视图 -->
-    <document wx:if="{{current === 'document'}}"></document>
-    <!-- <view class="documentList" wx:if="{{current === 'document'}}">
-      <view class="oneDocument" wx:for="{{3}}" wx:key="index">
-        <view class="ones">
-          <view class="oneLeft">{{documentContent.fileNo}}</view>
-          <view class="oneRight">JXTL311981</view>
-        </view>
-        <view class="ones">
-          <view class="oneLeft">{{documentContent.referenceNo}}</view>
-          <view class="oneRight">JXTL311981</view>
-        </view>
-        <view class="ones">
-          <view class="oneLeft">{{documentContent.type}}</view>
-          <view class="oneRight">JXTL311981</view>
-        </view>
-        <view class="ones">
-          <view class="oneLeft">{{documentContent.status}}</view>
-          <view class="oneRight">JXTL311981</view>
-        </view>
-        <view class="ones">
-          <view class="oneLeft">{{documentContent.date}}</view>
-          <view class="oneRight">JXTL311981</view>
-        </view>
-        <view class="fileContent">
-          <image src="/assets/img/more/info@2x.png"></image>
-          <view>
-            <view class="filtTitle">202203190703.pdf</view>
-            <view class="send" catchtap="sendEmail" data-item="{{item}}">{{documentContent.send}}</view>
-          </view>
-        </view>
-      </view>
-    </view> -->
+    <document list="{{list}}" loading="{{loading}}" wx:if="{{current === 'document'}}"></document>
   </view>
 </view>

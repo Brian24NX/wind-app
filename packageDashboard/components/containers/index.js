@@ -8,14 +8,22 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    list: {
+      type: Array,
+      value: []
+    },
+    loading: {
+      type: Boolean,
+      value: true
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    languageContent: {}
+    languageContent: {},
+    language: 'zh'
   },
 
   attached() {
@@ -28,13 +36,15 @@ Component({
   methods: {
     initLanguage() {
       this.setData({
-        languageContent: languageUtils.languageVersion().lang.page.shipment
+        languageContent: languageUtils.languageVersion().lang.page.shipment,
+        language: languageUtils.languageVersion().lang.page.langue
       })
     },
 
-    toDetail() {
+    toDetail(e) {
+      return
       wx.navigateTo({
-        url: '/pages/OrderDetail/index',
+        url: `/pages/OrderDetail/index?index=${e.currentTarget.dataset.index}&showSearch=false`,
       })
     }
   }

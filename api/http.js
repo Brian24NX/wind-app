@@ -38,32 +38,26 @@ const request = ({
               url: '/pages/Login/index'
             })
           } else if (res.data.code == 408) {
-            if (!hideLoading) {
-              wx.showToast({
-                title: languageUtil.languageVersion().lang.page.load.chaoshi,
-                icon: 'none'
-              })
-            }
+            wx.showToast({
+              title: languageUtil.languageVersion().lang.page.load.chaoshi,
+              icon: 'none'
+            })
             reject(res.data)
           } else if (res.data.code == 404) {
             reject(res.data)
           } else {
-            if (!hideLoading) {
-              wx.showToast({
-                title: languageUtil.languageVersion().lang.page.load.systemIsBusyNow,
-                icon: 'none'
-              })
-            }
-            reject(res.data)
-          }
-        } else {
-          // 返回错误提示信息
-          if (!hideLoading) {
             wx.showToast({
               title: languageUtil.languageVersion().lang.page.load.systemIsBusyNow,
               icon: 'none'
             })
+            reject(res.data)
           }
+        } else {
+          // 返回错误提示信息
+          wx.showToast({
+            title: languageUtil.languageVersion().lang.page.load.systemIsBusyNow,
+            icon: 'none'
+          })
           reject(res.data)
         }
       },

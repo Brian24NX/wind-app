@@ -2,7 +2,7 @@
 <wxs module="filter" src="./format.wxs"></wxs>
 <wxs module="format" src="../../../utils/format.wxs"></wxs>
 <view class="componentShipmentList">
-  <view class="oneShipment" wx:for="{{list}}" wx:key="index" catchtap="toShipmentDetail">
+  <view class="oneShipment" wx:for="{{list}}" wx:key="index" catchtap="toShipmentDetail" data-bookingreference="{{item.bookingReference}}">
     <view class="topTime">
       <view>{{languageContent.eat}}</view>
       <view>{{language === 'zh' ? format.formatCnDateLocal(item.estimatedDateOfArrival) : format.formatEnDateLocal(item.estimatedDateOfArrival, '-', '')}}</view>
@@ -33,7 +33,7 @@
       </view>
     </view>
   </view>
-  <view class="dashboardEmpty" wx:if="{{!list.length}}">
+  <view class="dashboardEmpty" wx:if="{{!list.length && !loading}}">
     <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/no-result-white.png" mode="aspectFit"></image>
     <view>{{languageContent.noShipmentData}}</view>
   </view>

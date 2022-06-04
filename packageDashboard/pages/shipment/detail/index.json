@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "containers": "../../../components/containers/index",
-    "document": "../../../components/document/index"
+    "document": "../../../components/document/index",
+    "info": "../../../components/info/index"
   }
 }

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "",
   "usingComponents": {
     "shipment": "../../../components/shipments/index",
-    "containers": "../../../components/containers/index"
+    "containers": "../../../components/containers/index",
+    "loading": "/components/loading/index"
   }
 }

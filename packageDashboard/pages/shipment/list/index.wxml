@@ -25,11 +25,13 @@
         <view class="activedLine"></view>
       </view>
     </view>
-    <block wx:if="{{!loading}}">
-      <!-- 装运视图 -->
-      <shipment list="{{list}}" wx:if="{{current === 'shipment'}}"></shipment>
-      <!-- 货柜视图 -->
-      <containers wx:else></containers>
-    </block>
+    <!-- 装运视图 -->
+    <shipment list="{{list}}" loading="{{loading}}" wx:if="{{current === 'shipment'}}"></shipment>
+    <!-- 货柜视图 -->
+    <containers list="{{list}}" loading="{{loading}}" wx:else></containers>
+    <view class="loadings">
+      <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+    </view>
+    
   </view>
 </view>

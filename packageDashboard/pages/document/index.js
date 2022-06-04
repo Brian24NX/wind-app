@@ -1,5 +1,9 @@
 // packageDashboard/pages/document/index.js
 const languageUtils = require('../../../utils/languageUtils')
+import {
+  documentList
+} from '../../api/modules/dashboard'
+
 Page({
 
   /**
@@ -15,6 +19,7 @@ Page({
    */
   onLoad(options) {
     this.initLanguage()
+    this.search()
   },
 
   /**
@@ -61,5 +66,12 @@ Page({
     this.search()
   },
 
-  search() {},
+  search() {
+    documentList({
+      ccgId: 'U08101306',
+      bookingReference: ''
+    }).then(res=>{
+      console.log(res)
+    })
+  },
 })
