@@ -87,7 +87,7 @@ Page({
       pageNum: this.data.pageNum,
       pageSize: pageSize,
       keyword: this.data.keyword,
-      type: this.data.language
+      languageType: this.data.language
     }
     this.setData({
       loading: true
