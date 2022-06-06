@@ -44,11 +44,12 @@
         <image src="/assets/img/home/templatelinks@2x.png" class="linkIcon"></image>
         <view class="contentCenter">
           <view class="useTitle">{{item.name}}</view>
-          <view>
-            <text>{{item.document}}</text>
+          <view class="link" wx:for="{{item.document}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs" catchtap="copy" data-value="{{items}}">
+            <view>{{items}}</view>
+            <image src="/assets/img/more/copy@2x.png" class="copyIcon"></image>
           </view>
         </view>
-        <view class="copy" catchtap="copy" data-value="{{item.document}}">{{languageContent.copy}}</view>
+        <!-- <view class="copy" catchtap="copy" data-value="{{item.document}}">{{languageContent.copy}}</view> -->
       </view>
       <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
       <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>

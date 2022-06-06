@@ -109,13 +109,9 @@ page {
 }
 
 .userfulContainer .usefulListContainer .contentList .oneContent .contentCenter {
-  width: 430rpx;
-  font-size: 20rpx;
+  width: 520rpx;
+  font-size: 22rpx;
   color: #6B7790;
-}
-
-.userfulContainer .usefulListContainer .contentList .oneContent .contentCenter view {
-  word-break: break-all;
 }
 
 .userfulContainer .usefulListContainer .contentList .oneContent .contentCenter .useTitle {
@@ -124,4 +120,21 @@ page {
   font-weight: 500;
   color: #071E5D;
   margin-bottom: 10rpx;
+}
+
+.userfulContainer .usefulListContainer .contentList .oneContent .contentCenter .link {
+  word-break: break-all;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.userfulContainer .usefulListContainer .contentList .oneContent .contentCenter .link:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.userfulContainer .usefulListContainer .contentList .oneContent .contentCenter .link .copyIcon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 10rpx;
 }

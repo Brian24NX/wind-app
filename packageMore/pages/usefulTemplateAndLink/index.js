@@ -107,6 +107,11 @@ Page({
       loading: true
     })
     templateList(params).then(res=>{
+      if (params.type === 2) {
+        res.data.list.forEach(item=>{
+          item.document = item.document.split('\n')
+        })
+      }
       const list = this.data.list.concat(res.data.list)
       if (list.length >= res.data.total) {
         this.setData({
