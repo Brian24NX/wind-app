@@ -29,7 +29,7 @@ Component({
     documentContent: {},
     language: 'zh',
     showEmail: false,
-    sendInfo: {}
+    documentId: ''
   },
   attached() {
     this.initLanguage()
@@ -49,7 +49,7 @@ Component({
     sendEmail(e) {
       this.setData({
         showEmail: true,
-        sendInfo: e.currentTarget.dataset.documentid
+        documentId: e.currentTarget.dataset.documentid
       })
     },
 
@@ -62,15 +62,16 @@ Component({
     sendEmails(e) {
       documentDetail({
         ccgId: wx.getStorageSync('ccgId'),
-        documentId: this.data.sendInfo
-      }).then(res=>{
+        documentId: this.data.documentId
+      }).then(res => {
         console.log(res)
         wx.showLoading({
           title: languageUtils.languageVersion().lang.page.load.send,
           mask: true
         })
-        sendEmail({
-          path: res.data.fileUrl,
+        documentSendEmail({
+          fileName: res.data.fileName,
+          documentId: this.data.documentId,
           receiveMailAccount: e.detail
         }).then(() => {
           wx.showToast({
@@ -89,13 +90,13 @@ Component({
       documentDetail({
         ccgId: wx.getStorageSync('ccgId'),
         documentId: e.currentTarget.dataset.documentid
-      }).then(res=>{
+      }).then(res => {
         wx.showLoading({
-          title: languageUtil.languageVersion().lang.page.load.loading,
+          title: languageUtils.languageVersion().lang.page.load.loading,
           mask: true
         })
         wx.downloadFile({
-          url: res.data.filePath,
+          url: res.data.fileUrl,
           success(filePath) {
             wx.hideLoading()
             wx.openDocument({

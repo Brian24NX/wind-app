@@ -29,5 +29,5 @@ export const documentDetail = (params) => {
 
 // 发送邮箱
 export const documentSendEmail = (params) => {
-  return postRequest('/api/miniapp/documentSendEmail', params, true, true)
+  return postRequest('/api/miniapp/documentEmail', params, true, true)
 }

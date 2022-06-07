@@ -133,6 +133,10 @@ page {
   margin-bottom: 0;
 }
 
+.userfulContainer .usefulListContainer .contentList .oneContent .contentCenter .link view {
+  max-width: 480rpx;
+}
+
 .userfulContainer .usefulListContainer .contentList .oneContent .contentCenter .link .copyIcon {
   width: 24rpx;
   height: 24rpx;

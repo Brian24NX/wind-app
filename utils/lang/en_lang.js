@@ -192,8 +192,8 @@ var Languague = {
       future3: '3 Weeks',
       // 未来一星期
       future4: '4 Weeks',
-      days: 'days',
-      day: 'day',
+      days: 'DAYS',
+      day: 'DAY',
       // 转运
       zhuanyun: 'transhipment',
       apply: 'apply',
@@ -243,7 +243,7 @@ var Languague = {
       // 始发地
       coc: 'POO',
       // 最终目的地
-      dest: 'DEST'
+      dest: 'FPD'
     },
     // 常用模板与链接
     useful: {
@@ -280,7 +280,7 @@ var Languague = {
       shipment: 'Shipment\nDashboard',
       document: 'Document\nDashboard',
       setting: 'Language Setting',
-      legalTerms: 'Legal Terms'
+      legalTerms: 'Privacy Policy'
     },
     // 基础信息
     baseInfo: {

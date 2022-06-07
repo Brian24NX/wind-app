@@ -27,6 +27,6 @@
     <!-- 资讯 -->
     <info info="{{info}}" wx:if="{{current === 'info'}}"></info>
     <!-- 文件视图 -->
-    <document list="{{list}}" loading="{{loading}}" wx:if="{{current === 'document'}}"></document>
+    <document list="{{documents}}" loading="{{loading}}" wx:if="{{current === 'document'}}"></document>
   </view>
 </view>
