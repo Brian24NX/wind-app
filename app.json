@@ -12,7 +12,8 @@
     "pages/Shipment/index",
     "pages/Login/index",
     "pages/baseInfo/index",
-    "pages/setLanguage/index"
+    "pages/setLanguage/index",
+    "pages/legalTerms/index"
   ],
   "subPackages": [
     {

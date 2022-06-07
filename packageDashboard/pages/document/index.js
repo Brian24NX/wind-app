@@ -3,6 +3,8 @@ const languageUtils = require('../../../utils/languageUtils')
 import {
   documentList
 } from '../../api/modules/dashboard'
+const size = 10
+let allList = []
 
 Page({
 
@@ -11,36 +13,32 @@ Page({
    */
   data: {
     languageContent: {},
-    keyword: ''
+    page: 1,
+    keyword: '',
+    noData: false,
+    loading: true,
+    noMore: false,
+    list: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onLoad() {
     this.initLanguage()
     this.search()
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    if (this.data.loading || this.data.noMore) return
+    this.setData({
+      page: this.data.page++,
+      loading: true
+    })
+    this.dealPaging()
   },
 
   initLanguage() {
@@ -67,11 +65,39 @@ Page({
   },
 
   search() {
+    this.setData({
+      loading: true,
+      noData: false,
+      noMore: false,
+      page: 1,
+      list: []
+    })
+    allList = []
     documentList({
       ccgId: 'U08101306',
-      bookingReference: ''
-    }).then(res=>{
+      bookingReference: this.data.keyword
+    }).then(res => {
       console.log(res)
+      allList = res.data
+      this.dealPaging()
+    }, () => {
+      this.setData({
+        loading: false,
+        noData: true
+      })
     })
   },
+
+  dealPaging() {
+    setTimeout(() => {
+      this.setData({
+        noData: !allList.length ? true : false,
+        list: this.data.list.concat(allList.slice((this.data.page - 1) * size, size)),
+        loading: false,
+      })
+      this.setData({
+        noMore: this.data.list.length >= allList.length ? true : false
+      })
+    }, 2000);
+  }
 })

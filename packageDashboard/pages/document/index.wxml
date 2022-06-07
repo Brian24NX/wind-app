@@ -18,40 +18,8 @@
       </view>
     </view>
   </view>
-  <!-- <view class="documentList">
-    <view class="oneDocument" wx:for="{{3}}" wx:key="index">
-      <view class="ones">
-        <view class="oneLeft">{{languageContent.fileNo}}</view>
-        <view class="oneRight">JXTL311981</view>
-      </view>
-      <view class="ones">
-        <view class="oneLeft">{{languageContent.referenceNo}}</view>
-        <view class="oneRight">JXTL311981</view>
-      </view>
-      <view class="ones">
-        <view class="oneLeft">{{languageContent.type}}</view>
-        <view class="oneRight">JXTL311981</view>
-      </view>
-      <view class="ones">
-        <view class="oneLeft">{{languageContent.status}}</view>
-        <view class="oneRight">JXTL311981</view>
-      </view>
-      <view class="ones">
-        <view class="oneLeft">{{languageContent.date}}</view>
-        <view class="oneRight">JXTL311981</view>
-      </view>
-      <view class="fileContent">
-        <image src="/assets/img/more/info@2x.png"></image>
-        <view>
-          <view class="filtTitle">202203190703.pdf</view>
-          <view class="send" catchtap="sendEmail" data-item="{{item}}">{{languageContent.send}}</view>
-        </view>
-      </view>
-    </view>
-    <view class="empty" wx:if="{{false}}">
-      <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/empty.png"></image>
-      <view>{{languageContent.noData}}</view>
-    </view>
-  </view> -->
-  <document></document>
+  <document list="{{list}}" loading="{{loading}}"></document>
+  <view class="loadings">
+    <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+  </view>
 </view>

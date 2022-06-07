@@ -21,3 +21,13 @@ export const shipmentsContainerList = (params) => {
 export const documentList = (params) => {
   return getRequest('/api/miniapp/documentList', params, true)
 }
+
+// 获取文件概览详情
+export const documentDetail = (params) => {
+  return getRequest('/api/miniapp/documentDetail', params)
+}
+
+// 发送邮箱
+export const documentSendEmail = (params) => {
+  return postRequest('/api/miniapp/documentSendEmail', params, true, true)
+}

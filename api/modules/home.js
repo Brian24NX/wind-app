@@ -28,7 +28,7 @@ export const routingSort = (params) => {
   return postRequest('/api/miniapp/routingSort', params, true)
 }
 
-// 排序
+// 发送邮箱
 export const sendEmail = (params) => {
   return postRequest('/api/miniapp/emailPdf', params, true, true)
 }

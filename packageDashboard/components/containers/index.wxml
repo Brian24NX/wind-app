@@ -1,7 +1,7 @@
 <!--packageDashboard/pages/shipment/list/containers/index.wxml-->
 <wxs module="format" src="../../../utils/format.wxs"></wxs>
 <view class="componentHuoguoContainer">
-  <view class="oneOrder" wx:for="{{list}}" catchtap="toDetail" data-index="{{index}}">
+  <view class="oneOrder" wx:for="{{list}}" catchtap="toDetail" data-shipmentref="{{item.containerNumber}}">
     <view class="orderTop">
       <view class="topLeft">
         <text>{{languageContent.eat}}</text>

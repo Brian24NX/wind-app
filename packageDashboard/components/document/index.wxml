@@ -1,31 +1,32 @@
 <!--packageDashboard/components/document/index.wxml-->
+<wxs module="format" src="../../../utils/format.wxs"></wxs>
 <view class="componentDocumentList">
   <view class="oneDocument" wx:for="{{list}}" wx:key="index">
     <view class="ones">
       <view class="oneLeft">{{documentContent.fileNo}}</view>
-      <view class="oneRight">JXTL311981</view>
+      <view class="oneRight">{{item.documentReference}}</view>
     </view>
     <view class="ones">
       <view class="oneLeft">{{documentContent.referenceNo}}</view>
-      <view class="oneRight">JXTL311981</view>
+      <view class="oneRight">{{item.shipmentReference}}</view>
     </view>
     <view class="ones">
       <view class="oneLeft">{{documentContent.type}}</view>
-      <view class="oneRight">JXTL311981</view>
+      <view class="oneRight">{{item.category}}</view>
     </view>
     <view class="ones">
       <view class="oneLeft">{{documentContent.status}}</view>
-      <view class="oneRight">JXTL311981</view>
+      <view class="oneRight">{{item.blStatus || '-'}}</view>
     </view>
     <view class="ones">
       <view class="oneLeft">{{documentContent.date}}</view>
-      <view class="oneRight">JXTL311981</view>
+      <view class="oneRight">{{language === 'zh' ? format.formatCnDateLocal(item.publicationLocal, true, true) : format.formatEnDateLocal(item.publicationLocal, '-', '', true, true)}}</view>
     </view>
     <view class="fileContent">
       <image src="/assets/img/more/info@2x.png"></image>
       <view>
-        <view class="filtTitle">202203190703.pdf</view>
-        <view class="send" catchtap="sendEmail" data-item="{{item}}">{{documentContent.send}}</view>
+        <view class="filtTitle">{{item.documentReference}}</view>
+        <view class="send" catchtap="sendEmail" data-documentid="{{item.documentId}}">{{documentContent.send}}</view>
       </view>
     </view>
   </view>

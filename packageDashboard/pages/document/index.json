@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "",
   "usingComponents": {
-    "document": "../../components/document/index"
+    "document": "../../components/document/index",
+    "loading": "/components/loading/index"
   }
 }

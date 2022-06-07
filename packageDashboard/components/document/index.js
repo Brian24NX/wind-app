@@ -1,5 +1,9 @@
 // packageDashboard/components/document/index.js
 const languageUtils = require('../../../utils/languageUtils')
+import {
+  documentDetail,
+  documentSendEmail
+} from '../../api/modules/dashboard'
 Component({
   options: {
     addGlobalClass: true
@@ -23,6 +27,7 @@ Component({
    */
   data: {
     documentContent: {},
+    language: 'zh',
     showEmail: false,
     sendInfo: {}
   },
@@ -36,14 +41,15 @@ Component({
   methods: {
     initLanguage() {
       this.setData({
-        documentContent: languageUtils.languageVersion().lang.page.document
+        documentContent: languageUtils.languageVersion().lang.page.document,
+        language: languageUtils.languageVersion().lang.page.langue
       })
     },
 
     sendEmail(e) {
       this.setData({
         showEmail: true,
-        sendInfo: e.currentTarget.dataset.item
+        sendInfo: e.currentTarget.dataset.documentid
       })
     },
 
@@ -54,21 +60,27 @@ Component({
     },
 
     sendEmails(e) {
-      wx.showLoading({
-        title: languageUtil.languageVersion().lang.page.load.send,
-        mask: true
-      })
-      sendEmail({
-        fileName: this.data.businessDetail.emailPath,
-        receiveMailAccount: e.detail
-      }).then(() => {
-        wx.showToast({
-          title: languageUtil.languageVersion().lang.page.load.sendSuccess,
-          icon: 'none',
+      documentDetail({
+        ccgId: 'U08101306',
+        documentId: this.data.sendInfo
+      }).then(res=>{
+        console.log(res)
+        wx.showLoading({
+          title: languageUtils.languageVersion().lang.page.load.send,
           mask: true
         })
-        this.setData({
-          showEmail: false
+        sendEmail({
+          path: res.data.fileUrl,
+          receiveMailAccount: e.detail
+        }).then(() => {
+          wx.showToast({
+            title: languageUtils.languageVersion().lang.page.load.sendSuccess,
+            icon: 'none',
+            mask: true
+          })
+          this.setData({
+            showEmail: false
+          })
         })
       })
     }
