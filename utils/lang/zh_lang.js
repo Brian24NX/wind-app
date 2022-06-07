@@ -280,7 +280,8 @@ var Languague = {
       myDashboard: '我的概览',
       shipment: '船运概览',
       document: '文件概览',
-      setting: '语言设置'
+      setting: '语言设置',
+      legalTerms: '隐私政策'
     },
     // 基础信息
     baseInfo: {

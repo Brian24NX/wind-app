@@ -1,0 +1,4 @@
+/* pages/legalTerms/index.wxss */
+page {
+  background-color: #F0F1F5;
+}

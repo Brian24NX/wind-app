@@ -1,0 +1,2 @@
+<!--pages/legalTerms/index.wxml-->
+<web-view src="{{baseUrl}}/pages/legalTerms/index"></web-view>

@@ -92,5 +92,12 @@ Page({
     wx.navigateTo({
       url: '/pages/setLanguage/index',
     })
+  },
+
+  // 隐私政策
+  legalTerms() {
+    wx.navigateTo({
+      url: '/pages/legalTerms/index',
+    })
   }
 })

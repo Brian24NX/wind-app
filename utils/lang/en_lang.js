@@ -279,7 +279,8 @@ var Languague = {
       myDashboard: 'My Dashboard',
       shipment: 'Shipment\nDashboard',
       document: 'Document\nDashboard',
-      setting: 'Language Setting'
+      setting: 'Language Setting',
+      legalTerms: 'Legal Terms'
     },
     // 基础信息
     baseInfo: {
