@@ -19,7 +19,8 @@ Page({
     current: 'shipment',
     list: [],
     loading: false,
-    noMore: false
+    noMore: false,
+    noData: false
   },
 
   /**
@@ -64,7 +65,10 @@ Page({
 
   changeType(e) {
     this.setData({
-      current: e.currentTarget.dataset.type
+      current: e.currentTarget.dataset.type,
+      noData: false,
+      noMore: false,
+      keyword: ''
     })
     this.search()
   },
@@ -79,7 +83,7 @@ Page({
     if (this.data.current === 'shipment') {
       shipmentsList({
         ccgId: 'U08101306',
-        bookingReference: ''
+        bookingReference: this.data.keyword
       }).then(res => {
         console.log(res)
         allList = res.data
@@ -88,7 +92,7 @@ Page({
     } else {
       shipmentsContainerList({
         ccgId: 'U08101306',
-        containerOrBookingReference: ''
+        containerOrBookingReference: this.data.keyword
       }).then(res => {
         console.log(res)
         allList = res.data
@@ -100,8 +104,12 @@ Page({
   dealPaging() {
     setTimeout(() => {
       this.setData({
+        noData: allList.length ? false : true,
         list: this.data.list.concat(allList.slice((this.data.page - 1) * size, size)),
         loading: false
+      })
+      this.setData({
+        noMore: this.data.list.length >= allList.length ? true : false
       })
     }, 200);
   }
