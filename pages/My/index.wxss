@@ -127,7 +127,7 @@ page {
 }
 
 .myContainer .setting .settingLeft image {
-  width: 70rpx;
-  height: 70rpx;
+  width: 62rpx;
+  height: 62rpx;
   margin-right: 20rpx;
 }

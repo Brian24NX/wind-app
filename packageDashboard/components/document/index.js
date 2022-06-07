@@ -61,7 +61,7 @@ Component({
 
     sendEmails(e) {
       documentDetail({
-        ccgId: 'U08101306',
+        ccgId: wx.getStorageSync('ccgId'),
         documentId: this.data.sendInfo
       }).then(res=>{
         console.log(res)
@@ -81,6 +81,36 @@ Component({
           this.setData({
             showEmail: false
           })
+        })
+      })
+    },
+
+    preview(e) {
+      documentDetail({
+        ccgId: wx.getStorageSync('ccgId'),
+        documentId: e.currentTarget.dataset.documentid
+      }).then(res=>{
+        wx.showLoading({
+          title: languageUtil.languageVersion().lang.page.load.loading,
+          mask: true
+        })
+        wx.downloadFile({
+          url: res.data.filePath,
+          success(filePath) {
+            wx.hideLoading()
+            wx.openDocument({
+              filePath: filePath.tempFilePath,
+              showMenu: true
+            })
+          },
+          fail(err) {
+            wx.hideLoading()
+            wx.showToast({
+              title: err.errMsg,
+              icon: 'none',
+              duration: 3000
+            })
+          }
         })
       })
     }

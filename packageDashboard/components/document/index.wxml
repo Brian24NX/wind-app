@@ -25,7 +25,7 @@
     <view class="fileContent">
       <image src="/assets/img/more/info@2x.png"></image>
       <view>
-        <view class="filtTitle">{{item.documentReference}}</view>
+        <view class="filtTitle" catchtap="preview" data-documentid="{{item.documentId}}">{{item.documentReference}}</view>
         <view class="send" catchtap="sendEmail" data-documentid="{{item.documentId}}">{{documentContent.send}}</view>
       </view>
     </view>

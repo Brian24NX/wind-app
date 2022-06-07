@@ -49,7 +49,7 @@ Page({
 
   getShipmentsDetail() {
     shipmentsDetail({
-      ccgId: 'U08101306',
+      ccgId: wx.getStorageSync('ccgId'),
       bookingReference: this.data.bookingReference
     }).then(res=>{
       console.log(res)

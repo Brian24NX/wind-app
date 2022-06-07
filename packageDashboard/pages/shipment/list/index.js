@@ -82,7 +82,7 @@ Page({
     allList = []
     if (this.data.current === 'shipment') {
       shipmentsList({
-        ccgId: 'U08101306',
+        ccgId: wx.getStorageSync('ccgId'),
         bookingReference: this.data.keyword
       }).then(res => {
         console.log(res)
@@ -91,7 +91,7 @@ Page({
       })
     } else {
       shipmentsContainerList({
-        ccgId: 'U08101306',
+        ccgId: wx.getStorageSync('ccgId'),
         containerOrBookingReference: this.data.keyword
       }).then(res => {
         console.log(res)

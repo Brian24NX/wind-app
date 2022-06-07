@@ -74,7 +74,7 @@ Page({
     })
     allList = []
     documentList({
-      ccgId: 'U08101306',
+      ccgId: wx.getStorageSync('ccgId'),
       bookingReference: this.data.keyword
     }).then(res => {
       console.log(res)

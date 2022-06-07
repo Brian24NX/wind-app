@@ -33,7 +33,7 @@
   </view>
   <view class="setting" catchtap="legalTerms">
     <view class="settingLeft">
-      <image src="/assets/img/myAccount/setting@2x.png"></image>
+      <image src="/assets/img/myAccount/legalTerms@2x.png" mode="aspectFit"></image>
       <text>{{languageContent.legalTerms}}</text>
     </view>
     <van-icon name="arrow" color="#04246A" />
