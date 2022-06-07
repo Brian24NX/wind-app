@@ -1,4 +1,5 @@
 <!--packagePrice/pages/chargeFinderResult/index.wxml-->
+<wxs module="format" src="../../../utils/format.wxs"></wxs>
 <view class="chargeDetail">
   <view class="chargeTops">
     <view class="stepLists">
@@ -7,23 +8,23 @@
           <view class="leftLineDto"></view>
           <view class="leftLine"></view>
         </view>
-        <view class="stepContent">OKALAND, CA, US</view>
+        <view class="stepContent">{{chargeFinderSearchKey.polvalue}}, {{chargeFinderSearchKey.polCode}}</view>
       </view>
       <view class="oneStep">
         <view class="leftLines" style="top: 20rpx;">
           <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
         </view>
-        <view class="stepContent">OKALAND, CA, US</view>
+        <view class="stepContent">{{chargeFinderSearchKey.podvalue}}, {{chargeFinderSearchKey.podCode}}</view>
       </view>
     </view>
     <view class="typeLists">
       <view class="oneTypes">
         <image src="/assets/img/price/mode@2x.png"></image>
-        <view>干货集装箱</view>
+        <view>{{chargeFinderSearchKey.reefer === '1' ? languageContent.dryNoR : languageContent.reefer}}</view>
       </view>
       <view class="oneTypes">
         <image src="/assets/img/price/date@2x.png"></image>
-        <view>2022-04-30 星期三</view>
+        <view>{{language === 'zh' ? format.formatCnDateLocal(chargeFinderSearchKey.simulationDate, false, true) : format.formatEnDateLocal(chargeFinderSearchKey.simulationDate, '-', '', false, true)}}</view>
       </view>
     </view>
   </view>

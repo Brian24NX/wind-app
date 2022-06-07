@@ -21,6 +21,8 @@
   font-size: 48rpx;
   color: #04246A;
   width: 466rpx;
+  /* font-family: Antonio-Bold;
+  font-weight: bold; */
 }
 
 .searchResultTopContainer .searchTop .serchLeft .qiyunStr {
@@ -102,6 +104,8 @@
   color: #070707;
   font-size: 24rpx;
   margin-bottom: 5rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
 }
 
 .searchResultTopContainer .calendarContainer .calendarLeft .current {
@@ -154,6 +158,8 @@
 
 .searchResultTopContainer .tabContainers .oneTab .tabName {
   font-size: 36rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
 }
 
 .searchResultTopContainer .tabContainers .tabActived {
@@ -301,6 +307,11 @@
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #071E5D;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .rightContent .timeDayEn {
+  font-family: Antonio-Bold;
+  font-weight: bold;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent .zhuanrun {

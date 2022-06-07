@@ -11,3 +11,9 @@ export const demurragePdfList = (params) => {
 export const demurrageSendEmail = (params) => {
   return postRequest('/api/miniapp/DemurrageSendEmail', params, true)
 }
+
+
+// 获取费率列表
+export const chargeFinderTariff = (params) => {
+  return getRequest('/api/miniapp/chargeFinderTariff', params)
+}

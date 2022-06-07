@@ -243,9 +243,8 @@ Page({
       placeOfLoading: this.data.polcode,
       polCode: this.data.polvalue.split(';')[1],
       polvalue: this.data.polvalue.split(';')[0],
-      searchRange: this.data.week * 7,
-      search: this.data.search,
-      searchDate: this.data.date
+      reefer: this.data.currentType,
+      simulationDate: this.data.date
     })
     wx.navigateTo({
       url: '/packagePrice/pages/chargeFinderResult/index',

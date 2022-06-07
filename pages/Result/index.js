@@ -14,7 +14,7 @@ Page({
   data: {
     languageContent: {},
     weeksContent: {},
-    language: '',
+    language: 'zh',
     isPhoneX: getApp().globalData.isPhoneX,
     viewactived: false,
     routingLists: [{
