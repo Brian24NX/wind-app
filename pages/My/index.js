@@ -2,6 +2,9 @@
 const app = getApp();
 const languageUtils = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
+import {
+  customerProfile
+} from '../../api/modules/home'
 Page({
   /**
    * 页面的初始数据
@@ -35,26 +38,44 @@ Page({
    */
   onShow: function () {
     if (utils.checkAccessToken()) {
+      let userInfo = wx.getStorageSync('userInfo')
+      if (!userInfo) {
+        customerProfile({
+          token: wx.getStorageSync('access_token')
+        }).then(res => {
+          console.log(res)
+          let userInfo = res.data[0].customer
+          if (userInfo) {
+            wx.setStorageSync('userInfo', userInfo)
+            if (userInfo.lastName && userInfo.firstName) {
+              userInfo.avatar = userInfo.lastName.substr(0, 1) + userInfo.firstName.substr(0, 1)
+            }
+            this.setData({
+              userInfo
+            })
+          }
+        })
+      } else {
+        if (userInfo.lastName && userInfo.firstName) {
+          userInfo.avatar = userInfo.lastName.substr(0, 1) + userInfo.firstName.substr(0, 1)
+        }
+        this.setData({
+          userInfo
+        })
+      }
       this.setData({
-        needLogin: false,
-        userInfo: wx.getStorageSync('userInfo')
+        needLogin: false
       })
     } else {
       this.setData({
         needLogin: true,
         userInfo: {}
       })
-      wx.showToast({
-        title: languageUtils.languageVersion().lang.page.load.noLogin,
-        icon: 'none',
-        mask: true,
-        duration: 3000
+    }
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 3
       })
-      setTimeout(()=>{
-        wx.navigateTo({
-          url: '/pages/Login/index'
-        })
-      }, 3000)
     }
   },
 
@@ -68,8 +89,7 @@ Page({
     })
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        list: lang.lang.toolbar.list, //赋值
-        selected: 3
+        list: lang.lang.toolbar.list //赋值
       })
     }
   },

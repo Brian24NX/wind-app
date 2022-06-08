@@ -40,7 +40,12 @@ export const sendEmail = (params) => {
 
 // 获取用户信息
 export const customerProfile = (params) => {
-  return getRequest('/api/miniapp/customerProfile', params)
+  return getRequest('/api/miniapp/customerProfile', params, false, true)
+}
+
+// 获取用户信息
+export const ccgId = (params) => {
+  return getRequest('/api/miniapp/ccgId', params, false, true)
 }
 
 // 分析上报

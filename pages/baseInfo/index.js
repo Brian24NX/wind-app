@@ -6,7 +6,8 @@ Page({
    */
   data: {
     languageContent: {},
-    exitContent: {}
+    exitContent: {},
+    userInfo: {}
   },
 
   /**
@@ -18,7 +19,8 @@ Page({
     })
     this.setData({
       languageContent: languageUtils.languageVersion().lang.page.baseInfo,
-      exitContent: languageUtils.languageVersion().lang.page.exit
+      exitContent: languageUtils.languageVersion().lang.page.exit,
+      userInfo: wx.getStorageSync('userInfo')
     })
   },
 
@@ -33,6 +35,10 @@ Page({
       confirmText: _this.data.exitContent.sure,
       success(res) {
         if (res.confirm) {
+          wx.removeStorageSync('access_token')
+          wx.removeStorageSync('expires_time')
+          wx.removeStorageSync('userInfo')
+          wx.removeStorageSync('ccgId')
           wx.reLaunch({
             url: '/pages/Home/index',
           })

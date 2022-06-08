@@ -51,6 +51,19 @@ page {
   height: 88rpx;
 }
 
+.myNavbarContainer .myNavbarContent .userInfoContainer .avatar2 {
+  width: 96rpx;
+  height: 96rpx;
+  background-color: #04246A;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
 .myNavbarContainer .myNavbarContent .userInfoContainer .infoCenter {
   width: 490rpx;
   padding: 0 40rpx;

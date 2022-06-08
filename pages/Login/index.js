@@ -1,7 +1,7 @@
 // pages/Login/index.js
 const utils = require('../../utils/util')
 import {
-  customerProfile
+  ccgId
 } from '../../api/modules/home'
 Page({
 
@@ -20,11 +20,10 @@ Page({
     const data = e.detail.data[0]
     wx.setStorageSync('access_token', data.access_token)
     wx.setStorageSync('expires_time', utils.setExpiresTime(data.expires_in))
-    customerProfile({
-      token: wx.getStorageSync('access_token')
-    }).then(res => {
-      console.log(res)
-      wx.setStorageSync('userInfo', res.data)
+    ccgId({
+      token: data.access_token
+    }).then(res=>{
+      wx.setStorageSync('ccgId', res.data)
     })
   }
 })

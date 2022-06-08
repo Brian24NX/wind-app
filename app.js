@@ -32,7 +32,6 @@ App(wx.webfunny({
     wx.removeStorageSync('podobject')
     wx.removeStorageSync('details')
     wx.setStorageSync('setHangXian', false)
-    wx.setStorageSync('ccgId', 'U08101306')
     this.globalData.version = wx.getStorageSync('language') ? wx.getStorageSync('language') : 'zh'
     const antonioBold = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Bold.ttf' + '")'
     const antonioRegular = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Regular.ttf' + '")'

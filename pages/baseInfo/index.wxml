@@ -3,21 +3,21 @@
   <view class="userInfoContent">
     <view class="oneUserInfo">
       <view class="infoTitle">{{languageContent.company}}</view>
-      <view class="infoContent">CMA CGM (CHINA) SHIPPING CO., LTD</view>
+      <view class="infoContent">{{userInfo.company}}</view>
     </view>
   </view>
   <view class="userInfoContent">
     <view class="oneUserInfo">
       <view class="infoTitle">{{languageContent.ming}}</view>
-      <view class="infoContent">Chase</view>
+      <view class="infoContent">{{userInfo.lastName}}</view>
     </view>
     <view class="oneUserInfo">
       <view class="infoTitle">{{languageContent.xing}}</view>
-      <view class="infoContent">CAI</view>
+      <view class="infoContent">{{userInfo.firstName}}</view>
     </view>
     <view class="oneUserInfo">
       <view class="infoTitle">{{languageContent.email}}</view>
-      <view class="infoContent">asia_ecommerce@163.com</view>
+      <view class="infoContent">{{userInfo.email}}</view>
     </view>
   </view>
   <button class="exit" hover-class="exitHover" catchtap="exit">{{languageContent.exit}}</button>
