@@ -1,6 +1,7 @@
 // pages/my/index.js
 const app = getApp();
-var languageUtils = require('../../utils/languageUtils')
+const languageUtils = require('../../utils/languageUtils')
+const utils = require('../../utils/util')
 Page({
   /**
    * 页面的初始数据
@@ -18,7 +19,8 @@ Page({
       url: '/packageDashboard/pages/document/index',
       icon: '/assets/img/myAccount/document@2x.png'
     }],
-    needLogin: false
+    needLogin: false,
+    userInfo: {}
   },
 
   /**
@@ -32,10 +34,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 3
+    if (utils.checkAccessToken()) {
+      this.setData({
+        needLogin: false,
+        userInfo: wx.getStorageSync('userInfo')
       })
+    } else {
+      this.setData({
+        needLogin: true,
+        userInfo: {}
+      })
+      wx.showToast({
+        title: languageUtils.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        mask: true,
+        duration: 3000
+      })
+      setTimeout(()=>{
+        wx.navigateTo({
+          url: '/pages/Login/index'
+        })
+      }, 3000)
     }
   },
 
@@ -49,7 +68,8 @@ Page({
     })
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        list: lang.lang.toolbar.list //赋值
+        list: lang.lang.toolbar.list, //赋值
+        selected: 3
       })
     }
   },

@@ -250,9 +250,35 @@ function formatEnDateLocal(date) {
   var m = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec");
   var week = new Array("Sunday", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday", "Saturday");
   var mn = dt.getMonth(),
-  wn = dt.getDay(),
-  dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
+    wn = dt.getDay(),
+    dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
   return week[wn - 1] + '，' + m[mn] + " " + dn + "，" + dt.getFullYear()
+}
+
+// 校验token
+function checkAccessToken() {
+  if (!wx.getStorageSync('access_token') || !wx.getStorageSync('expires_time')) {
+    return false
+  } else {
+    if (new Date(wx.getStorageSync('expires_time')).getTime() - new Date().getTime() < 0) {
+      return false
+    } else {
+      return true
+    }
+  }
+}
+
+// 格式化过期时间
+function setExpiresTime(expiresIn) {
+  let expiresTime = new Date().getTime() + Number(expiresIn * 1000)
+  var date = new Date(expiresTime),
+    Y = date.getFullYear(),
+    M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1),
+    D = date.getDate() > 9 ? date.getDate() : '0' + date.getDate(),
+    h = date.getHours() > 9 ? date.getHours() : '0' + date.getHours(),
+    m = date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes(),
+    s = date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds()
+  return Y + '/' + M + '/' + D + ' ' + h + ':' + m + ':' + s
 }
 
 module.exports = {
@@ -266,5 +292,7 @@ module.exports = {
   getDayList,
   substrTime,
   judgLand,
-  formatEnDateLocal
+  formatEnDateLocal,
+  checkAccessToken,
+  setExpiresTime
 }

@@ -1,29 +1,48 @@
 const config = require('../config/config')
 const languageUtil = require('../utils/languageUtils')
+const utils = require('../utils/util')
 
 // 请求及拦截封装
 const request = ({
   url,
   data,
   method,
+  needAccessToken,
   contentType,
   hideLoading
 }) => {
-  if (!hideLoading) {
-    wx.showLoading({
-      title: languageUtil.languageVersion().lang.page.load.loading,
-      mask: true
-    });
-  }
+  console.log(needAccessToken)
+  console.log(utils.checkAccessToken())
   return new Promise((resolve, reject) => {
-    // console.log(`${config[config.dev_env].url}${url}`);
+    if (needAccessToken && !utils.checkAccessToken()) {
+      wx.showToast({
+        title: languageUtil.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        mask: true,
+        duration: 3000
+      })
+      wx.removeStorageSync('expires_time')
+      wx.removeStorageSync('access_token')
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/Login/index',
+        })
+      }, 3000)
+      reject()
+      return
+    }
+    if (!hideLoading) {
+      wx.showLoading({
+        title: languageUtil.languageVersion().lang.page.load.loading,
+        mask: true
+      });
+    }
     wx.request({
       url: `${config[config.dev_env].url}${url}`,
       data: data,
       method: method,
       header: {
-        'content-type': contentType || 'application/json',
-        // 'token': getStorage('token')
+        'content-type': contentType || 'application/json'
       },
       success: (res) => {
         // console.log(res)
@@ -34,9 +53,19 @@ const request = ({
           if (res.data.code == 200) {
             resolve(res.data)
           } else if (res.data.code == 401) {
-            wx.redirectTo({
-              url: '/pages/Login/index'
+            wx.showToast({
+              title: languageUtil.languageVersion().lang.page.load.noLogin,
+              icon: 'none',
+              mask: true,
+              duration: 3000
             })
+            wx.removeStorageSync('expires_time')
+            wx.removeStorageSync('access_token')
+            setTimeout(() => {
+              wx.navigateTo({
+                url: '/pages/Login/index'
+              })
+            }, 3000)
           } else if (res.data.code == 408) {
             wx.showToast({
               title: languageUtil.languageVersion().lang.page.load.chaoshi,
@@ -102,21 +131,23 @@ Promise.prototype.finally = function (callback) {
   )
 }
 
-export const getRequest = (url, data, hideLoading) => {
+export const getRequest = (url, data, hideLoading, needAccessToken) => {
   return request({
     url,
     data,
     method: 'GET',
+    needAccessToken,
     contentType: '',
     hideLoading
   })
 }
 
-export const postRequest = (url, data, isJson, hideLoading) => {
+export const postRequest = (url, data, isJson, hideLoading, needAccessToken) => {
   return request({
     url,
     data,
     method: 'POST',
+    needAccessToken,
     contentType: isJson ? 'application/json' : 'application/x-www-form-urlencoded',
     hideLoading
   })

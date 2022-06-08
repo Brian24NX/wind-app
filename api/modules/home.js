@@ -32,3 +32,13 @@ export const routingSort = (params) => {
 export const sendEmail = (params) => {
   return postRequest('/api/miniapp/emailPdf', params, true, true)
 }
+
+// 获取用户信息
+export const customerProfile = (params) => {
+  return getRequest('/api/miniapp/customerProfile', params)
+}
+
+// 分析上报
+export const analysis = (params) => {
+  return postRequest('/api/miniapp/analysisAdd', params, true)
+}

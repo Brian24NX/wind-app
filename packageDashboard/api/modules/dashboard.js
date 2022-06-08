@@ -4,27 +4,27 @@ const {
 
 // 获取船运概览装运视图列表
 export const shipmentsList = (params) => {
-  return getRequest('/api/miniapp/shipmentsView', params, true)
+  return getRequest('/api/miniapp/shipmentsView', params, true, true)
 }
 
 // 获取船运详情
 export const shipmentsDetail = (params) => {
-  return getRequest('/api/miniapp/shipmentsDetail', params)
+  return getRequest('/api/miniapp/shipmentsDetail', params, false, true)
 }
 
 // 获取船运概览货柜视图列表
 export const shipmentsContainerList = (params) => {
-  return getRequest('/api/miniapp/shipmentsContainerView', params, true)
+  return getRequest('/api/miniapp/shipmentsContainerView', params, true, true)
 }
 
 // 获取文件概览列表
 export const documentList = (params) => {
-  return getRequest('/api/miniapp/documentList', params, true)
+  return getRequest('/api/miniapp/documentList', params, true, true)
 }
 
 // 获取文件概览详情
 export const documentDetail = (params) => {
-  return getRequest('/api/miniapp/documentDetail', params)
+  return getRequest('/api/miniapp/documentDetail', params, false, true)
 }
 
 // 发送邮箱

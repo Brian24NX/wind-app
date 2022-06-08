@@ -13,7 +13,11 @@ Page({
     language: 'zh',
     chargeFinderSearchKey: {},
     typeList: ['main', 'other'],
-    current: 'main'
+    current: 'main',
+    tariffDesc: '',
+    mainCharge: [],
+    otherCharge: [],
+    list: []
   },
 
   /**
@@ -44,12 +48,27 @@ Page({
       portOfDischarge: this.data.chargeFinderSearchKey.placeOfDischarge,
       reefer: this.data.chargeFinderSearchKey.reefer === '1' ? false : true,
       simulationDate: this.data.chargeFinderSearchKey.simulationDate
+    }).then(res=>{
+      console.log(res)
+      if (res.data.length) {
+        const data = res.data[0]
+        const tariffDesc = data.tariffDesc
+        const mainCharge = data.tarrifInformation.filter(i=> i.chargeClass === 'MAIC')
+        const otherCharge = data.tarrifInformation.filter(i=> i.chargeClass === 'N')
+        this.setData({
+          tariffDesc,
+          mainCharge,
+          otherCharge,
+          list: mainCharge
+        })
+      }
     })
   },
 
   changeType(e) {
     this.setData({
-      current: e.currentTarget.dataset.type
+      current: e.currentTarget.dataset.type,
+      list: e.currentTarget.dataset.type === 'main' ? this.data.mainCharge : this.data.otherCharge
     })
   }
 })

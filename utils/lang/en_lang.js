@@ -392,7 +392,8 @@ var Languague = {
       noMoreData: 'No more data available',
       // 发送中
       send: 'Sending...',
-      sendSuccess: 'Send successfully, please go to mailbox to check'
+      sendSuccess: 'Send successfully, please go to mailbox to check',
+      noLogin: 'Login failed or invalid. Please log in again'
     },
     email: {
       title: 'Recipient Email Address',

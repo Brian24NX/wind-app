@@ -40,7 +40,7 @@
 }
 
 .componentShipmentList .oneShipment .shipInfo .shopInfoRight {
-  width: 460rpx;
+  width: 470rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,7 +66,7 @@
   font-weight: bold;
   color: #071E5D;
   text-align: right;
-  width: 260rpx;
+  width: 280rpx;
   word-break: break-all;
 }
 
