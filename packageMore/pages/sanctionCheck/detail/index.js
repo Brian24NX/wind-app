@@ -35,7 +35,6 @@ Page({
     sanctionCommodityDetail({
       id: this.data.id
     }).then(res=>{
-      console.log(res)
       if (res.data.remarkCn) {
         res.data.remarkCn = res.data.remarkCn.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('</p>\n<p>', '</p><br><p>')
       }

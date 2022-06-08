@@ -49,7 +49,6 @@ Page({
       reefer: this.data.chargeFinderSearchKey.reefer === '1' ? false : true,
       simulationDate: this.data.chargeFinderSearchKey.simulationDate
     }).then(res=>{
-      console.log(res)
       if (res.data.length) {
         const data = res.data[0]
         const tariffDesc = data.tariffDesc

@@ -159,7 +159,6 @@ Page({
 
   // discover切换swiper
   changeCurrentDto(e) {
-    // console.log(e);
     this.setData({
       swiperindex: e.detail.current
     })
@@ -313,7 +312,6 @@ Page({
 
   // 设置卸货港
   changepodname(e) {
-    // console.log(e);
     let index = e.currentTarget.dataset.index;
     this.setData({
       showRemind3: false,

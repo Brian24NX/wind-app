@@ -168,7 +168,6 @@ Page({
   },
 
   confirmDate(e) {
-    console.log(e)
     this.setData({
       date: dayjs(e.detail).format('YYYY-MM-DD'),
       showDatePopup: false

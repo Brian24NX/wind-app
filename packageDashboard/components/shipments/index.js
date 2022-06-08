@@ -42,7 +42,6 @@ Component({
     },
 
     toShipmentDetail(e) {
-      console.log(e)
       wx.navigateTo({
         url: `/packageDashboard/pages/shipment/detail/index?bookingReference=${e.currentTarget.dataset.bookingreference}`,
       })

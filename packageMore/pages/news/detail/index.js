@@ -41,7 +41,6 @@ Page({
   // 获取新闻详情
   getNewsDetail() {
     newsDetail({id: this.data.id}).then(res=>{
-      // console.log(res)
       if (res.data.content) {
         res.data.content = res.data.content.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('</p>\n<p>', '</p><br><p>')
       }

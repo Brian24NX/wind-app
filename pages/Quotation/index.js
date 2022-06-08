@@ -35,7 +35,6 @@ Page({
     initLanguage() {
       //获取当前小程序语言版本所对应的字典变量
       var lang = languageUtil.languageVersion()
-      // console.log(lang)
       this.setData({
         languageContent: lang.lang.page.quotation,
         load: lang.lang.page.load

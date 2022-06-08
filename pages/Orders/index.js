@@ -166,7 +166,6 @@ Page({
       this.setData({
         list: containers
       })
-      // console.log(containers)
     })
   }
 })

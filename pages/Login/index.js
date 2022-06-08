@@ -16,7 +16,6 @@ Page({
   onLoad() {},
 
   getMessage(e) {
-    // console.log(e)
     const data = e.detail.data[0]
     wx.setStorageSync('access_token', data.access_token)
     wx.setStorageSync('expires_time', utils.setExpiresTime(data.expires_in))

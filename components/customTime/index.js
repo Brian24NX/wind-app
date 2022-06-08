@@ -41,7 +41,6 @@ Component({
       this.triggerEvent('onCancel')
     },
     onConfirm(e) {
-      console.log(e)
       this.triggerEvent('onConfirm', e.detail)
     }
   }

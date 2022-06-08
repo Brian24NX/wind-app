@@ -3,9 +3,7 @@
  * Documentation: https://eslint.org/docs/user-guide/configuring/
  * Install the Eslint extension before using this feature.
  */
-console.log('eslint 文件配置')
 const config = require('../config/config')
-console.log(config.dev_env,'查看环境')
 module.exports = {
   env: {
     es6: true,

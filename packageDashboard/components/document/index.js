@@ -64,7 +64,6 @@ Component({
         ccgId: wx.getStorageSync('ccgId'),
         documentId: this.data.documentId
       }).then(res => {
-        console.log(res)
         wx.showLoading({
           title: languageUtils.languageVersion().lang.page.load.send,
           mask: true

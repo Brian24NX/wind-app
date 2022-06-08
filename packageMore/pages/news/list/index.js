@@ -86,7 +86,6 @@ Page({
   // 分类列表
   getCategoryList() {
     categoryList({type: 1}).then(res=>{
-      // console.log(res)
       const all = [{
         id: '',
         category: 'All',

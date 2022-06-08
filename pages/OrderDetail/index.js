@@ -52,7 +52,6 @@ Page({
       detail: data.list[index],
       loading: false
     })
-    console.log(this.data.detail)
     wx.hideLoading()
   }
 })

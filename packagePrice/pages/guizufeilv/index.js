@@ -113,7 +113,6 @@ Page({
   },
 
   onConfirm(e) {
-    console.log(e)
     if (e.detail.id === 'All') {
       this.setData({
         lists: this.data.allLists

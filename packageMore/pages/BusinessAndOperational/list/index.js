@@ -80,7 +80,6 @@ Page({
   // 分类列表
   getCategoryList() {
     categoryList({type: 2}).then(res=>{
-      // console.log(res)
       const all = [{
         id: '',
         category: 'All',

@@ -52,7 +52,6 @@ Page({
       ccgId: wx.getStorageSync('ccgId'),
       bookingReference: this.data.bookingReference
     }).then(res=>{
-      console.log(res)
       this.setData({
         containers: res.data[0].containers,
         documents: res.data[0].documents,

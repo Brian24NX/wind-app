@@ -72,9 +72,7 @@ App(wx.webfunny({
           this.globalData.isPhoneX = false;
         }
       },
-      fail(err) {
-        // console.log(err);
-      }
+      fail(err) {}
     })
   },
   globalData: {

@@ -159,7 +159,6 @@ Page({
   // 确认选择
   onConfirm(e) {
     const detail = e.detail
-    console.log(detail)
     switch (this.data.currentType) {
       case '1':
         this.setData({

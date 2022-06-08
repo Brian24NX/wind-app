@@ -194,8 +194,6 @@ Component({
             top: systemInfo.statusBarHeight + gap,
             width: width
           };
-          // console.log('error', error);
-          // console.log('rect', rect);
         }
 
         let navBarHeight = '';
@@ -225,7 +223,6 @@ Component({
 
         app.globalSystemInfo = systemInfo; //将信息保存到全局变量中,后边再用就不用重新异步获取了
 
-        //console.log('systemInfo', systemInfo);
         return systemInfo;
       }
     }

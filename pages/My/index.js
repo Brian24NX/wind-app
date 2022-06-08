@@ -43,7 +43,6 @@ Page({
         customerProfile({
           token: wx.getStorageSync('access_token')
         }).then(res => {
-          console.log(res)
           let userInfo = res.data[0].customer
           if (userInfo) {
             wx.setStorageSync('userInfo', userInfo)
@@ -83,7 +82,6 @@ Page({
   initLanguage() {
     //获取当前小程序语言版本所对应的字典变量
     var lang = languageUtils.languageVersion()
-    // console.log(lang)
     this.setData({
       languageContent: lang.lang.page.userCenter,
     })

@@ -106,7 +106,6 @@ Page({
   },
 
   confirmDate(e) {
-    console.log(e)
     this.setData({
       searchDate: dayjs(e.detail).format('YYYY-MM-DD'),
       oneScroll: 0,
@@ -188,7 +187,6 @@ Page({
       shippingCompany: shippingCompany
     }
     routingFinder(params).then(res => {
-      console.log(res)
       if (callback) {
         const index = this.data.routingLists.findIndex(item => item.shippingCompany === shippingCompany)
         if (index > -1) {
@@ -225,7 +223,6 @@ Page({
 
   async getLists() {
     await this.getOneList()
-    console.log(this.data.routingLists)
     this.setData({
       viewactived: true,
       planList: [{
@@ -239,7 +236,6 @@ Page({
         value: this.data.routingLists.find(u => u.id === 'APL').solutionServices ? this.data.routingLists.find(u => u.id === 'APL').solutionServices.length : 0
       }]
     })
-    console.log(this.data.routingLists)
     if (this.data.planList[0].value || this.data.planList[1].value || this.data.planList[2].value) {
       this.setData({
         currentPlan: this.data.planList.find(u => u.value).title,
@@ -260,7 +256,6 @@ Page({
   async getOneList() {
     let response = []
     const searchKey = wx.getStorageSync('searchKey')
-    console.log(searchKey)
     // 循环依次等待上传结果
     for (let i = 1; i < this.data.routingLists.length; i++) {
       const params = {
@@ -337,7 +332,6 @@ Page({
       sortDateType: Number(this.data.sort),
       sortSolutionServices: this.data.plans
     }
-    console.log(params)
     if (this.data.needEarlyFlag) {
       params.needEarlyFlag = true
     }

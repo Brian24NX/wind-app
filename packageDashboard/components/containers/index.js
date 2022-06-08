@@ -51,8 +51,7 @@ Component({
         shipmentRef: e.currentTarget.dataset.shipmentref,
         eqpid: ''
       }
-      shipmentTracking(obj).then(res => {          
-        console.log(res)
+      shipmentTracking(obj).then(res => {
         if (res.data[0].data) {
           wx.navigateTo({
             url: `/pages/OrderDetail/index?index=0&showSearch=false`,

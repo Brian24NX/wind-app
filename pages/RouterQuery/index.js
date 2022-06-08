@@ -282,7 +282,6 @@ Page({
   },
 
   onConfirm(e) {
-    console.log(e)
     if (this.data.popupType === '1') {
       this.setData({
         search: e.detail.id,
@@ -304,7 +303,6 @@ Page({
   },
 
   confirmDate(e) {
-    console.log(e)
     this.setData({
       date: dayjs(e.detail).format('YYYY-MM-DD'),
       showDatePopup: false

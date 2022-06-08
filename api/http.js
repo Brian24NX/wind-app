@@ -11,8 +11,6 @@ const request = ({
   contentType,
   hideLoading
 }) => {
-  console.log(needAccessToken)
-  console.log(utils.checkAccessToken())
   return new Promise((resolve, reject) => {
     if (needAccessToken && !utils.checkAccessToken()) {
       wx.showToast({
@@ -45,7 +43,6 @@ const request = ({
         'content-type': contentType || 'application/json'
       },
       success: (res) => {
-        // console.log(res)
         wx.hideLoading();
         // 返回成功提示信息
         if (res.statusCode === 200) {
@@ -92,7 +89,6 @@ const request = ({
       },
       fail: (err) => {
         wx.hideLoading();
-        console.log(err)
         if (err.errMsg === 'request:fail timeout') {
           wx.showToast({
             title: languageUtil.languageVersion().lang.page.load.chaoshi,

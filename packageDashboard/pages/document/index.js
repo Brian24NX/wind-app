@@ -77,7 +77,6 @@ Page({
       ccgId: wx.getStorageSync('ccgId'),
       bookingReference: this.data.keyword
     }).then(res => {
-      console.log(res)
       allList = res.data
       this.dealPaging()
     }, () => {
