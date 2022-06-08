@@ -282,6 +282,11 @@ var Languague = {
       setting: 'Language Setting',
       legalTerms: 'Privacy Policy'
     },
+    legalTerms: {
+      title: 'Privacy Policy',
+      title1: 'Privacy',
+      title2: ' Policy'
+    },
     // 基础信息
     baseInfo: {
       title: 'User Information',

@@ -1,13 +1,12 @@
 // pages/legalTerms/index.js
 const languageUtils = require('../../utils/languageUtils')
-const config = require("../../config/config")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    baseUrl: config[config.dev_env].url
+    languageContent: {}
   },
 
   /**
@@ -15,7 +14,23 @@ Page({
    */
   onLoad() {
     wx.setNavigationBarTitle({
-      title: languageUtils.languageVersion().lang.page.userCenter.legalTerms
+      title: languageUtils.languageVersion().lang.page.legalTerms.title
+    })
+    this.setData({
+      languageContent: languageUtils.languageVersion().lang.page.legalTerms
+    })
+  },
+
+  copy(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.url,
+      success() {
+        wx.showToast({
+          title: languageUtils.languageVersion().lang.page.copyInfo.success,
+          icon: 'none',
+          duration: 3000
+        })
+      }
     })
   }
 })

@@ -1,4 +1,58 @@
 /* pages/legalTerms/index.wxss */
-page {
-  background-color: #F0F1F5;
+.privacyContainer {
+  padding: 30rpx 54rpx;
+  color: #111111;
+  font-size: 28rpx;
+}
+
+.privacyContainer .topImg {
+  width: 100%;
+  height: 212rpx;
+  margin-bottom: 40rpx;
+}
+
+.privacyTitle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.privacyTitle .lines {
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+  margin-right: 20rpx;
+}
+
+.privacyTitle .title {
+  font-size: 50rpx;
+  font-family: Antonio-Bold;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.content {
+  margin-bottom: 30rpx;
+}
+
+.oneContent {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.oneContent .leftLine {
+  width: 22rpx;
+  height: 8rpx;
+  background-color: #E20202;
+  margin-top: 12rpx;
+}
+
+.oneContent .rightContent {
+  width: 610rpx;
+}
+
+.red {
+  color: #E20202;
+  margin-bottom: 30rpx;
 }
