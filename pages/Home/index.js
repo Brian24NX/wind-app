@@ -1,7 +1,8 @@
 // pages/Home/index.js
 const app = getApp();
 import {
-  fuzzySearch
+  fuzzySearch,
+  analysis
 } from '../../api/modules/home';
 var languageUtil = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
@@ -60,42 +61,50 @@ Page({
     moreMenuList: [
       [{
           id: 'cma',
+          type: 1,
           icon: '/assets/img/home/discover_1@2x.png',
           url: '/packageMore/pages/cma/list/index'
         },
         {
           id: 'about',
+          type: 5,
           icon: '/assets/img/home/discover_2@2x.png',
           url: '/packageMore/pages/about/index'
         },
         {
           id: 'news',
+          type: 2,
           icon: '/assets/img/home/discover_3@2x.png',
           url: '/packageMore/pages/news/list/index'
         },
         {
           id: 'onlineServices',
+          type: 6,
           icon: '/assets/img/home/discover_4@2x.png',
           url: '/packageMore/pages/Faq/index'
         },
       ],
       [{
           id: 'valueAddedService',
+          type: 3,
           icon: '/assets/img/home/customernotice@2x.png',
           url: '/packageMore/pages/BusinessAndOperational/list/index'
         },
         {
           id: 'template',
+          type: 7,
           icon: '/assets/img/home/templatelinks@2x.png',
           url: '/packageMore/pages/usefulTemplateAndLink/index'
         },
         {
           id: 'gzp',
+          type: 4,
           icon: '/assets/img/home/controllproduct@2x.png',
           url: '/packageMore/pages/sanctionCheck/list/index'
         },
         {
           id: 'callMe',
+          type: 8,
           icon: '/assets/img/home/contact@2x.png',
           url: '/packageMore/pages/contact/conditions/index'
         },
@@ -107,6 +116,11 @@ Page({
    */
   onLoad: function () {
     this.initLanguage();
+    analysis({
+      analysisType: 10,
+      operateType: 1,
+      statisti: 1
+    })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -421,6 +435,11 @@ Page({
       })
       return
     }
+    analysis({
+      analysisType: 6,
+      operateType: 1,
+      statisti: item.type
+    })
     wx.navigateTo({
       url: item.url,
     })
@@ -437,5 +456,5 @@ Page({
     this.setData({
       swiperindex: e.currentTarget.dataset.index
     })
-  }
+  },
 })

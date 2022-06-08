@@ -30,9 +30,9 @@
         <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
         <view class="templateContent">
           <view class="templateName">{{item.name}}</view>
-          <view catchtap="sendEmail" data-document="{{item.document}}">{{languageContent.send}}</view>
+          <view catchtap="sendEmail" data-item="{{item}}">{{languageContent.send}}</view>
         </view>
-        <view class="preview" catchtap="preview" data-url="{{item.document}}">
+        <view class="preview" catchtap="preview" data-item="{{item}}">
           <image src="/assets/img/more/eye@2x.png"></image>
         </view>
       </view>

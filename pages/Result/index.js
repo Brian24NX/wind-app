@@ -2,7 +2,8 @@
 const utils = require('../../utils/util')
 import {
   routingFinder,
-  routingSort
+  routingSort,
+  analysis
 } from '../../api/modules/home';
 const dayjs = require("dayjs");
 const languageUtil = require('../../utils/languageUtils')
@@ -82,17 +83,13 @@ Page({
     })
     this.setDayList()
     this.dealData()
+    analysis({
+      analysisType: 1,
+      operateType: 1,
+      loading: this.data.placeOfLoading,
+      discharge: this.data.placeOfDischarge
+    })
   },
-
-  // bindTimeChange(e) {
-  //   this.setData({
-  //     searchDate: e.detail.value,
-  //     oneScroll: 0
-  //   })
-  //   this.setDayList(this.data.searchDate)
-  //   this.resetData()
-  //   this.dealData()
-  // },
 
   openDate() {
     const date = this.data.searchDate.replaceAll('-', '/')

@@ -3,6 +3,9 @@ import {
   newsDetail,
   newsLike
 } from '../../../api/modules/more';
+import {
+  analysis
+} from '../../../../api/modules/home';
 const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
@@ -28,6 +31,11 @@ Page({
       language: languageUtil.languageVersion().lang.page.langue
     })
     this.getNewsDetail()
+    analysis({
+      analysisType: 4,
+      operateType: 1,
+      statisti: options.id
+    })
   },
 
   // 获取新闻详情

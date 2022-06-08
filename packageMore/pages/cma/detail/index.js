@@ -3,6 +3,9 @@ import {
   cmaNewsDetail,
   newsLike
 } from '../../../api/modules/more'
+import {
+  analysis
+} from '../../../../api/modules/home';
 const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
@@ -25,6 +28,11 @@ Page({
       language: languageUtil.languageVersion().lang.page.langue
     })
     this.getDetail()
+    analysis({
+      analysisType: 5,
+      operateType: 1,
+      statisti: options.id
+    })
   },
   // 获取详情
   getDetail() {

@@ -3,6 +3,9 @@ import {
   businiessOpentionalDetail,
   sendEmail
 } from '../../../api/modules/more';
+import {
+  analysis
+} from '../../../../api/modules/home';
 const languageUtil = require('../../../../utils/languageUtils')
 const config = require('../../../../config/config')
 const dayjs = require('dayjs')
@@ -32,6 +35,11 @@ Page({
       languageContent: languageUtil.languageVersion().lang.page.khtg
     })
     this.getBusiniessOpentionalDetail()
+    analysis({
+      analysisType: 2,
+      operateType: 1,
+      statisti: options.id
+    })
   },
 
   getBusiniessOpentionalDetail() {
@@ -124,6 +132,11 @@ Page({
       this.setData({
         showEmail: false
       })
+    })
+    analysis({
+      analysisType: 2,
+      operateType: 2,
+      statisti: this.data.id
     })
   }
 })

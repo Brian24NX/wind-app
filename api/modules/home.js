@@ -23,6 +23,11 @@ export const fuzzySearch = (params, hideLoading) => {
   return getRequest('/api/miniapp/fuzzySearch', params, hideLoading)
 }
 
+// 模糊查询
+export const chargeFuzzySearch = (params, hideLoading) => {
+  return getRequest('/api/miniapp/chargeFuzzySearch', params, hideLoading)
+}
+
 // 排序
 export const routingSort = (params) => {
   return postRequest('/api/miniapp/routingSort', params, true)
@@ -40,5 +45,5 @@ export const customerProfile = (params) => {
 
 // 分析上报
 export const analysis = (params) => {
-  return postRequest('/api/miniapp/analysisAdd', params, true)
+  return postRequest('/api/miniapp/analysisAdd', params, true, true)
 }

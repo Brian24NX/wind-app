@@ -258,9 +258,15 @@ function formatEnDateLocal(date) {
 // 校验token
 function checkAccessToken() {
   if (!wx.getStorageSync('access_token') || !wx.getStorageSync('expires_time')) {
+    wx.removeStorageSync('access_token')
+    wx.removeStorageSync('userInfo')
+    wx.removeStorageSync('expires_time')
     return false
   } else {
     if (new Date(wx.getStorageSync('expires_time')).getTime() - new Date().getTime() < 0) {
+      wx.removeStorageSync('access_token')
+      wx.removeStorageSync('userInfo')
+      wx.removeStorageSync('expires_time')
       return false
     } else {
       return true

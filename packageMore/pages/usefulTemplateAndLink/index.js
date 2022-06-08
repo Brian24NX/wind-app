@@ -4,6 +4,9 @@ import {
   templateList,
   templateSendEmail
 } from '../../api/modules/more'
+import {
+  analysis
+} from '../../../api/modules/home';
 const config = require('../../../config/config')
 const pageSize = 10
 Page({
@@ -130,7 +133,12 @@ Page({
   sendEmail(e) {
     this.setData({
       showEmail: true,
-      emailPath: e.currentTarget.dataset.document
+      emailPath: e.currentTarget.dataset.item.document
+    })
+    analysis({
+      analysisType: 3,
+      operateType: 2,
+      statisti: e.currentTarget.dataset.item.id
     })
   },
 
@@ -162,10 +170,15 @@ Page({
   },
 
   preview(e) {
-    const filePath = config[config.dev_env].fileUrl + e.currentTarget.dataset.url
-    const fileType = e.currentTarget.dataset.url.split('.').pop()
+    const filePath = config[config.dev_env].fileUrl + e.currentTarget.dataset.item.document
+    const fileType = e.currentTarget.dataset.item.document.split('.').pop()
     const imageType = ['png', 'jpg', 'jpeg', 'git']
     const fileTypes = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf']
+    analysis({
+      analysisType: 3,
+      operateType: 1,
+      statisti: e.currentTarget.dataset.item.id
+    })
     if (imageType.indexOf(fileType) > -1) {
       wx.previewImage({
         urls: [filePath],

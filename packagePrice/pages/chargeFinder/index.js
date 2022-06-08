@@ -4,7 +4,7 @@ var languageUtil = require('../../../utils/languageUtils')
 const utils = require('../../../utils/util')
 const dayjs = require("dayjs");
 import {
-  fuzzySearch,
+  chargeFuzzySearch,
 } from '../../../api/modules/home';
 Page({
 
@@ -75,7 +75,7 @@ Page({
       })
       return
     }
-    fuzzySearch({
+    chargeFuzzySearch({
       searchStr: data
     }, true).then(res => {
       if (res.data != '') {
@@ -97,7 +97,7 @@ Page({
         pollist: []
       })
     }
-    fuzzySearch({
+    chargeFuzzySearch({
       searchStr: data
     }, true).then(res => {
       if (res.data != '') {
