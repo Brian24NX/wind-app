@@ -110,9 +110,16 @@ Page({
   // 我的概览
   toDashboard(e) {
     if (this.data.needLogin) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
+      wx.showToast({
+        title: languageUtils.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        duration: 3000
       })
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/Login/index',
+        })
+      }, 3000)
       return
     }
     if (e.currentTarget.dataset.url) {
