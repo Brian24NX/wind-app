@@ -67,6 +67,7 @@
 
 .zixunInfo .stepLists .oneStep .stepContent .stepContentTop .topName {
   font-size: 32rpx;
+  width: 380rpx;
 }
 
 .zixunInfo .stepLists .oneStep .stepContent .stepTime {
