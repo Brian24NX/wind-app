@@ -67,7 +67,9 @@ Page({
   changepod: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete2: data ? true : false
+      showDelete2: data ? true : false,
+      showRemind3: false,
+      showRemind4: false
     })
     if (data.length < 2) {
       this.setData({
@@ -90,7 +92,9 @@ Page({
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete1: data ? true : false
+      showDelete1: data ? true : false,
+      showRemind1: false,
+      showRemind2: false
     })
     if (data.length < 2) {
       this.setData({
@@ -115,14 +119,18 @@ Page({
         polvalue: '',
         polcode: '',
         pollist: [],
-        showDelete1: false
+        showDelete1: false,
+        showRemind1: false,
+        showRemind2: false
       })
     } else {
       this.setData({
         podvalue: '',
         podcode: '',
         podlist: [],
-        showDelete2: false
+        showDelete2: false,
+        showRemind3: false,
+        showRemind4: false
       })
     }
   },
@@ -168,6 +176,7 @@ Page({
   },
 
   confirmDate(e) {
+    console.log(e)
     this.setData({
       date: dayjs(e.detail).format('YYYY-MM-DD'),
       showDatePopup: false
@@ -186,53 +195,58 @@ Page({
 
   // 提交搜索
   submit() {
-    if (!this.data.polvalue || !this.data.podvalue) {
-      if (!this.data.polvalue) {
-        this.setData({
-          showRemind1: true
-        })
+    if (this.data.showDelete1) {
+      this.setData({
+        showRemind1: false
+      })
+      var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
+      if (this.data.polvalue) {
+        if (!reg.test(this.data.polvalue)) {
+          this.setData({
+            showRemind2: true
+          })
+        } else {
+          this.setData({
+            showRemind2: false
+          })
+        }
       } else {
         this.setData({
-          showRemind1: false
-        })
-      }
-      if (!this.data.podvalue) {
-        this.setData({
-          showRemind3: true
-        })
-      } else {
-        this.setData({
-          showRemind3: false
+          showRemind1: false,
+          showRemind2: true
         })
       }
     } else {
       this.setData({
-        showRemind1: false,
-        showRemind3: false
+        showRemind1: true,
+        showRemind2: false
       })
     }
-    var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
-    if (!this.data.showRemind1) {
-      if (!reg.test(this.data.polvalue)) {
-        this.setData({
-          showRemind2: true
-        })
+
+    if (this.data.showDelete2) {
+      this.setData({
+        showRemind3: false
+      })
+      if (this.data.podvalue) {
+        if (!reg.test(this.data.podvalue)) {
+          this.setData({
+            showRemind4: true
+          })
+        } else {
+          this.setData({
+            showRemind4: false
+          })
+        }
       } else {
-        this.setData({
-          showRemind2: false
-        })
-      }
-    }
-    if (!this.data.showRemind3) {
-      if (!reg.test(this.data.podvalue)) {
         this.setData({
           showRemind4: true
         })
-      } else {
-        this.setData({
-          showRemind4: false
-        })
       }
+    } else {
+      this.setData({
+        showRemind3: true,
+        showRemind4: false
+      })
     }
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
     wx.setStorageSync('chargeFinderSearchKey', {

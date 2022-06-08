@@ -257,7 +257,9 @@ Page({
   setQiYun: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete1: data ? true : false
+      showDelete1: data ? true : false,
+      showRemind2: false,
+      showRemind5: false
     })
     if (data.length < 2) {
       this.setData({
@@ -280,7 +282,9 @@ Page({
   setXieHuo: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete2: data ? true : false
+      showDelete2: data ? true : false,
+      showRemind3: false,
+      showRemind4: false
     })
     if (data.length < 2) {
       this.setData({
@@ -324,54 +328,108 @@ Page({
   // 船期搜索
   toChuanQi() {
     // 先判断参数是否为空
-    if (!this.data.qiYunValue || !this.data.xieHuoValue) {
-      if (!this.data.qiYunValue) {
-        this.setData({
-          showRemind2: true
-        })
+    // if (!this.data.qiYunValue || !this.data.xieHuoValue) {
+    //   if (!this.data.qiYunValue) {
+    //     this.setData({
+    //       showRemind2: true
+    //     })
+    //   } else {
+    //     this.setData({
+    //       showRemind2: false
+    //     })
+    //   }
+    //   if (!this.data.xieHuoValue) {
+    //     this.setData({
+    //       showRemind3: true
+    //     })
+    //   } else {
+    //     this.setData({
+    //       showRemind3: false
+    //     })
+    //   }
+    // } else {
+    //   this.setData({
+    //     showRemind2: false,
+    //     showRemind3: false
+    //   })
+    // }
+    // var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
+    // if (!this.data.showRemind2) {
+    //   if (!reg.test(this.data.qiYunValue)) {
+    //     this.setData({
+    //       showRemind5: true
+    //     })
+    //   } else {
+    //     this.setData({
+    //       showRemind5: false
+    //     })
+    //   }
+    // }
+    // if (!this.data.showRemind3) {
+    //   if (!reg.test(this.data.xieHuoValue)) {
+    //     this.setData({
+    //       showRemind4: true
+    //     })
+    //   } else {
+    //     this.setData({
+    //       showRemind4: false
+    //     })
+    //   }
+    // }
+    if (this.data.showDelete1) {
+      this.setData({
+        showRemind2: false
+      })
+      var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
+      if (this.data.qiYunValue) {
+        if (!reg.test(this.data.qiYunValue)) {
+          this.setData({
+            showRemind5: true
+          })
+        } else {
+          this.setData({
+            showRemind5: false
+          })
+        }
       } else {
         this.setData({
-          showRemind2: false
-        })
-      }
-      if (!this.data.xieHuoValue) {
-        this.setData({
-          showRemind3: true
-        })
-      } else {
-        this.setData({
-          showRemind3: false
+          showRemind2: false,
+          showRemind5: true
         })
       }
     } else {
       this.setData({
-        showRemind2: false,
-        showRemind3: false
+        showRemind2: true,
+        showRemind5: false
       })
     }
-    var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
-    if (!this.data.showRemind2) {
-      if (!reg.test(this.data.qiYunValue)) {
-        this.setData({
-          showRemind5: true
-        })
+
+    if (this.data.showDelete2) {
+      this.setData({
+        showRemind3: false
+      })
+      if (this.data.xieHuoValue) {
+        if (!reg.test(this.data.xieHuoValue)) {
+          this.setData({
+            showRemind4: true
+          })
+        } else {
+          this.setData({
+            showRemind4: false
+          })
+        }
       } else {
-        this.setData({
-          showRemind5: false
-        })
-      }
-    }
-    if (!this.data.showRemind3) {
-      if (!reg.test(this.data.xieHuoValue)) {
         this.setData({
           showRemind4: true
         })
-      } else {
-        this.setData({
-          showRemind4: false
-        })
       }
+    } else {
+      this.setData({
+        showRemind3: true,
+        showRemind4: false
+      })
     }
+
     if (this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     wx.setStorageSync('searchKey', {
       placeOfDischarge: this.data.xieHuoCode || this.data.xieHuoValue,
