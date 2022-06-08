@@ -261,8 +261,8 @@ Page({
       const params = {
         placeOfDischarge: searchKey.placeOfDischarge,
         placeOfLoading: searchKey.placeOfLoading,
-        departureDate: searchKey.search === 0 ? searchKey.searchDate : '',
-        arrivalDate: searchKey.search === 1 ? searchKey.searchDate : '',
+        departureDate: searchKey.search === 0 ? this.data.searchDate : '',
+        arrivalDate: searchKey.search === 1 ? this.data.searchDate : '',
         searchRange: searchKey.searchRange,
         specificRoutings: [],
         shippingCompany: this.data.routingLists[i].shippingCompany
