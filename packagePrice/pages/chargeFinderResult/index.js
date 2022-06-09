@@ -15,6 +15,7 @@ Page({
     typeList: ['main', 'other'],
     current: 'main',
     tariffDesc: '',
+    loading: true,
     mainCharge: [],
     otherCharge: [],
     list: []
@@ -61,6 +62,9 @@ Page({
           list: mainCharge
         })
       }
+      this.setData({
+        loading: false
+      })
     })
   },
 

@@ -1,4 +1,5 @@
 <!--pages/RouterQuery/index.wxml-->
+<wxs module="format" src="../../utils/format.wxs"></wxs>
 <view class="queryContainer">
   <view class="searchLists">
     <view class="routeTitles">
@@ -68,7 +69,7 @@
     <view class="searchList">
       <view class="searchTitle">{{languageContent.date}}</view>
       <view class="selectContainer" catchtap="openPopup" data-type="2">
-        <view style="{{date ? 'color: #071E5D;' : ''}}">{{date || verifyInfo.select}}</view>
+        <view style="{{date ? 'color: #071E5D;' : ''}}">{{date ? (language === 'zh' ? format.formatCnDateLocal(date, true, true) : format.formatEnDateLocal(date, '-', '', true, true)) : verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
     </view>

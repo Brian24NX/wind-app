@@ -1,11 +1,11 @@
 // packagePrice/pages/chargeFinder/index.js
-const app = getApp();
 var languageUtil = require('../../../utils/languageUtils')
 const utils = require('../../../utils/util')
 const dayjs = require("dayjs");
 import {
   chargeFuzzySearch,
 } from '../../../api/modules/home';
+import languageUtils from '../../../utils/languageUtils';
 Page({
 
   /**
@@ -38,7 +38,8 @@ Page({
     showDelete1: false,
     showDelete2: false,
     showDatePopup: false,
-    currentDate: null
+    currentDate: null,
+    language: 'zh'
   },
 
 
@@ -56,6 +57,7 @@ Page({
   initLanguage() {
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.chargeFinder,
+      language: languageUtil.languageVersion().lang.page.langue,
       verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
     })
     wx.setNavigationBarTitle({

@@ -399,7 +399,8 @@ var Languague = {
       // 发送中
       send: '发送中...',
       sendSuccess: '发送成功，请前往邮箱查看',
-      noLogin: '未登录或登录失效，请重新登录'
+      noLogin: '未登录或登录失效，请重新登录',
+      notFound: '此文件不可用，请联系您的代理'
     },
     email: {
       title: '请输入收件人邮箱',

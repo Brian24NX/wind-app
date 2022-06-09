@@ -35,7 +35,7 @@
         <view class="activedLine"></view>
       </view>
     </view>
-    <view class="chargesList">
+    <view class="chargesList" wx:if="{{list.length}}">
       <view class="chargesTitle">
         <view class="chargesTitleLine"></view>
         <view>{{tariffDesc}}</view>
@@ -60,6 +60,10 @@
           </view>
         </view>
       </view>
+    </view>
+    <view class="noData" wx:if="{{!list.length && !loading}}">
+      <image src="/assets/img/search/error@2x.png"></image>
+      <text>未找到相关数据</text>
     </view>
   </view>
 </view>

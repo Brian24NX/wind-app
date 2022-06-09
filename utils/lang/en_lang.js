@@ -381,24 +381,25 @@ var Languague = {
       cancel: 'Cancel'
     },
     copyInfo: {
-      success: 'Successfully copied, please open the link in your browser.'
+      success: 'Successfully copied, please view in browser.'
     },
     load: {
       //努力加载中
       loading: "Loading...",
       //网络不给力,请稍后刷新
-      networkIsNotWorking: "Network is not working, please click and refresh later",
+      networkIsNotWorking: "Network unstable, please try later",
       // 功能升级中,敬请期待
-      functionIsUnderDevelopment: "Function is under development, stay tuned",
-      chaoshi: 'Request timeout, please try again later',
+      functionIsUnderDevelopment: "Function coming soon, stay tuned",
+      chaoshi: 'Request timeout, please try later',
       // 系统繁忙,请稍后重试
-      systemIsBusyNow: "System is busy now, please try again later",
+      systemIsBusyNow: "System is busy, please try later",
       // 暂无更多数据
       noMoreData: 'No more data available',
       // 发送中
       send: 'Sending...',
-      sendSuccess: 'Send successfully, please go to mailbox to check',
-      noLogin: 'Login failed or invalid. Please log in again'
+      sendSuccess: 'Email sent successfully',
+      noLogin: 'Login failed or invalid. Please log in again',
+      notFound: 'This file is not available, please contact your agent'
     },
     email: {
       title: 'Recipient Email Address',

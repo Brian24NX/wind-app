@@ -18,7 +18,7 @@
     <scroll-view scroll-x class="calendarLeft" scroll-left="{{scrollLeft}}" scroll-with-animation>
       <view class="oneDay {{item === searchDate ? 'current' : ''}}" wx:for="{{dateList}}" wx:key="index" catchtap="changeDay" data-item="{{item}}">
         <view class="oneDays">
-          <view class="dayValue">{{filters.fmtDate(item)}}</view>
+          <view class="dayValue">{{filters.fmtDate(item, language)}}</view>
           <view>{{weeksContent['week' + filters.weekDay(item)]}}</view>
         </view>
       </view>

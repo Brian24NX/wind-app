@@ -7,6 +7,7 @@ import {
   fuzzySearch,
   // routingFinder
 } from '../../api/modules/home';
+import languageUtils from '../../utils/languageUtils';
 Page({
 
   /**
@@ -14,6 +15,7 @@ Page({
    */
   data: {
     languageContent: {}, // 用于保存当前页面所需字典
+    language: 'zh',
     verifyInfo: {},
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
@@ -66,6 +68,7 @@ Page({
   initLanguage() {
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.scheduleSearching,
+      language: languageUtil.languageVersion().lang.page.langue,
       verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
     })
     wx.setNavigationBarTitle({

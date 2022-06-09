@@ -214,3 +214,18 @@ page {
   background-color: #F0F1F5;
   border-radius: 50%;
 }
+
+.noData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #E2014B;
+  font-size: 24rpx;
+  padding: 80rpx 0 50rpx;
+}
+
+.noData image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 14rpx;
+}
