@@ -92,95 +92,231 @@ function debounce(fn, interval) {
 /**
  * 格式化货运状态
  */
-function formatHuoYunStatus(code) {
+function formatHuoYunStatus(code, language) {
   let codeArr = [{
+      code: 'MAC',
+      labelEn: "Empty at Consignee's yard",
+      labelCn: '空箱在收货人堆场'
+    },
+    {
+      code: 'MAS',
+      labelEn: "Empty at Shipper’s yard",
+      labelCn: '空箱在发货人堆场'
+    },
+    {
+      code: 'MEF',
+      labelEn: "Empty available food grade",
+      labelCn: '食品空集装箱可用'
+    },
+    {
+      code: 'MEG',
+      labelEn: "Empty available general cargo",
+      labelCn: '普通货物空集装箱可用'
+    },
+    {
+      code: 'MEM',
+      labelEn: "Empty available scrap metal",
+      labelCn: '金属货物空集装箱可用'
+    },
+    {
+      code: 'FAC',
+      labelEn: "Full at CEE's Premises",
+      labelCn: '已在CEE装箱'
+    },
+    {
+      code: 'MOH',
+      labelEn: "On Hired empty",
+      labelCn: 'On Hired empty'
+    },
+    {
       code: 'MEA',
-      label: '空集装箱在堆场'
+      labelEn: "Empty In Depot Available",
+      labelCn: '空集装箱在堆场'
     },
     {
-      code: 'MOS',
-      label: '空集装箱已交付托运人'
+      code: 'FCR',
+      labelEn: "Off Hire Full",
+      labelCn: '退租箱已载满'
     },
     {
-      code: 'XRX',
-      label: '准备载货'
+      code: 'FDF',
+      labelEn: "DI From Full",
+      labelCn: 'DI From Full'
     },
     {
-      code: 'XOF',
-      label: '装船'
+      code: 'FRO',
+      labelEn: "Return After SL Out Full",
+      labelCn: 'Return After SL Out Full'
     },
     {
-      code: 'TDF',
-      label: '转运港卸货'
+      code: 'FSO',
+      labelEn: "Sublease Out Full",
+      labelCn: '转租箱已载满'
     },
     {
-      code: 'TOF',
-      label: '装船'
-    },
-    {
-      code: 'IDF',
-      label: '已卸货'
-    },
-    {
-      code: 'IFC',
-      label: '集装箱已送达收货人'
-    },
-    {
-      code: 'TAF',
-      label: ''
-    },
-    {
-      code: 'PSI',
-      label: ''
-    },
-    {
-      code: 'IRA',
-      label: ''
-    },
-    {
-      code: 'IRI',
-      label: ''
+      code: 'IFP',
+      labelEn: "Import Full Quay Unstuffing",
+      labelCn: '进口码头拆箱'
     },
     {
       code: 'IIT',
-      label: '已收到做出口转移'
+      labelEn: "Received Full Exp for Transfer/Received for Export Transfer",
+      labelCn: '已收到做出口转移'
+    },
+    {
+      code: 'IRI',
+      labelEn: "Arrival at dest full import/ReceivedForImportTransfer/Gate in Ramp for Transfer",
+      labelCn: '已收到做进口转移'
+    },
+    {
+      code: 'MCR',
+      labelEn: "Off Hire Empty",
+      labelCn: '退租箱已空箱'
+    },
+    {
+      code: 'MED',
+      labelEn: "Empty Damaged",
+      labelCn: '集装箱破损'
+    },
+    {
+      code: 'MEI',
+      labelEn: "Empty in depot to be inspected",
+      labelCn: '集装箱在堆场待检验'
+    },
+    {
+      code: 'MES',
+      labelEn: "Empty For Quay/CFS Stuffing",
+      labelCn: '集装箱货运站装货'
+    },
+    {
+      code: 'MOS',
+      labelEn: "Deliver Empty to Shipper/Empty to Shipper",
+      labelCn: '空集装箱已交付托运人'
+    },
+    {
+      code: 'MSF',
+      labelEn: "In shipper's owned full",
+      labelCn: "In shipper's owned full"
+    },
+    {
+      code: 'MSO',
+      labelEn: "In shipper's owned empty",
+      labelCn: "In shipper's owned empty"
+    },
+    {
+      code: 'RSF',
+      labelEn: "Out shipper's owned full",
+      labelCn: "Out shipper's owned full"
+    },
+    {
+      code: 'TDF',
+      labelEn: "Tship discharged full/Discharged in Transshipment",
+      labelCn: "转运港卸货"
     },
     {
       code: 'XLR',
-      label: '出口铁路装载'
+      labelEn: "Full Load on rail for export/Loaded on Rail for Export",
+      labelCn: "出口铁路装载"
     },
     {
-      code: 'TPF',
-      label: '集装箱中转出口'
-    },
-    {
-      code: 'PSE',
-      label: '集装箱出口上轨'
+      code: 'XRA',
+      labelEn: "Train arrival for export",
+      labelCn: "出口铁路到达"
     },
     {
       code: 'XUR',
-      label: '出口铁路卸载'
+      labelEn: "Export unload full from rail",
+      labelCn: "出口铁路卸载"
+    },
+    {
+      code: 'ILR',
+      labelEn: "Full Load on rail for import",
+      labelCn: "集装箱已满载做进口"
+    },
+    {
+      code: 'IRA',
+      labelEn: "Train arrival for import/Arrival from Rail for Import",
+      labelCn: "进口铁路到达"
+    },
+    {
+      code: 'IUR',
+      labelEn: "Import unload full from rail",
+      labelCn: "进口铁路卸载"
+    },
+    {
+      code: 'REX',
+      labelEn: "Reused for export",
+      labelCn: "Reused for export"
+    },
+    {
+      code: 'XRX',
+      labelEn: "Ready to be Loaded",
+      labelCn: "准备载货"
+    },
+    {
+      code: 'XOF',
+      labelEn: "Loaded on Board",
+      labelCn: "装船"
+    },
+    {
+      code: 'TOF',
+      labelEn: "",
+      labelCn: ""
+    },
+    {
+      code: 'IDF',
+      labelEn: "Discharged",
+      labelCn: "已卸货"
+    },
+    {
+      code: 'IFC',
+      labelEn: "Container to Consignee",
+      labelCn: "集装箱已送达收货人"
+    },
+    {
+      code: 'TAF',
+      labelEn: "Containerintransitforimport/Gate out from Port terminal to Ramp",
+      labelCn: "集装箱中转进口"
+    },
+    {
+      code: 'PSI',
+      labelEn: "ContainerOnRailForImport/Arrival by Rail at Ramp for Import",
+      labelCn: "集装箱进口上轨"
+    },
+    {
+      code: 'TPF',
+      labelEn: "Container in Transit for Export",
+      labelCn: "集装箱中转出口"
+    },
+    {
+      code: 'PSE',
+      labelEn: "ContainerOnRailForExport/Arrival by Rail at Ramp for Export",
+      labelCn: "集装箱出口上轨"
     },
     {
       code: 'ETA_FINAL_DISCHARGE',
-      label: '到达最终卸货港'
+      labelEn: "Arrival Final Port of",
+      labelCn: "到达最终卸货港"
     },
     {
       code: 'ETA_DISCHARGE',
-      label: '卸货'
+      labelEn: "ETA_DISCHARGE",
+      labelCn: "卸货"
     },
     {
       code: 'ETA_DEPATURE',
-      label: '离港时间'
+      labelEn: "ETA_DEPATURE",
+      labelCn: "离港时间"
     },
     {
       code: 'ETA_LOAD',
-      label: '装货'
-    },
+      labelEn: "ETA_LOAD",
+      labelCn: "装货"
+    }
   ]
   const index = codeArr.findIndex(item => item.code === code)
   if (index > -1) {
-    return codeArr[index].label || codeArr[index].code
+    return language === 'zh' ? codeArr[index].labelCn : codeArr[index].labelEn
   } else {
     return code
   }

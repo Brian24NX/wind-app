@@ -5,6 +5,7 @@ import {
 } from '../../../api/modules/home';
 const utils = require("../../../utils/util")
 const config = require("../../../config/config")
+const languageUtils = require('../../../utils/languageUtils')
 
 // pages/Orders/One/index.js
 Component({
@@ -32,6 +33,7 @@ Component({
    */
   data: {
     originalData: null,
+    language: 'zh',
     stepList: [],
     stepCount: 0,
     timeRemaining: 0,
@@ -41,6 +43,9 @@ Component({
   },
 
   ready: function () {
+    this.setData({
+      language: languageUtils.languageVersion().lang.page.langue
+    })
     this.setStepList();
   },
 
@@ -68,7 +73,7 @@ Component({
       }
       const list = this.data.detail.movements.reverse();
       list.forEach((item, index) => {
-        item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
+        item.status.statusLabel = utils.formatHuoYunStatus(item.status.code, this.data.language)
         item.orginDate = item.date
         item.date = utils.substrTime(item.date)
         item.date = dayjs(item.date).format('YYYY-MM-DD')

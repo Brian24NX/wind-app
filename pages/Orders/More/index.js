@@ -1,6 +1,7 @@
 // pages/Orders/More/index.js
 const dayjs = require("dayjs");
 const utils = require('../../../utils/util')
+const languageUtils = require('../../../utils/languageUtils')
 
 Component({
   options: {
@@ -25,10 +26,14 @@ Component({
    * 组件的初始数据
    */
   data: {
-    lists: []
+    lists: [],
+    language: 'zh',
   },
 
   ready() {
+    this.setData({
+      language: languageUtils.languageVersion().lang.page.langue
+    })
     this.setList()
   },
 
@@ -42,10 +47,7 @@ Component({
         if (one.movements.length) {
           one.movements = one.movements.reverse();
           one.movements.forEach((item, index) => {
-            item.status.statusLabel = utils.formatHuoYunStatus(item.status.code)
-            // item.date = utils.substrTime(item.date)
-            // item.time = dayjs(item.date).format('HH:mm')
-            // item.date = dayjs(item.date).format('YYYY-MM-DD')
+            item.status.statusLabel = utils.formatHuoYunStatus(item.status.code, this.data.language)
             const dayStatus = dayjs(item.date).isBefore(dayjs(), 'date')
             if (dayStatus) {
               item.stepStatus = 'past'

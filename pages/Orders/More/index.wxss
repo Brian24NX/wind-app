@@ -25,8 +25,8 @@
 }
 
 .orderMoreList .oneOrder .orderBottom .noOrderData {
-  width: 404rpx;
-  margin: 20rpx auto;
+  width: 550rpx;
+  margin: 20rpx auto 0;
   font-size: 24rpx;
   color: #6F7384;
   text-align: center;

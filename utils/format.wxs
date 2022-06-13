@@ -1,6 +1,6 @@
 // 不区分时区英文
 function formatEnDateLocal(date, fuhao, type, hideWeek, hideTime) {
-  if(!date) return ''
+  if (!date) return ''
   if (date.indexOf('T') > -1) {
     date = date.split('T')[0].split('-').join('/') + ' ' + (date.split('T')[1]).substring(0, 8)
   }
@@ -9,10 +9,10 @@ function formatEnDateLocal(date, fuhao, type, hideWeek, hideTime) {
   var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var weeks = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
   var mn = dt.getMonth(),
-  wn = dt.getDay(),
-  dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate(),
-  hour = dt.getHours() > 9 ? dt.getHours() : '0' + dt.getHours(),
-  min = dt.getMinutes() > 9 ? dt.getMinutes() : '0' + dt.getMinutes()
+    wn = dt.getDay(),
+    dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate(),
+    hour = dt.getHours() > 9 ? dt.getHours() : '0' + dt.getHours(),
+    min = dt.getMinutes() > 9 ? dt.getMinutes() : '0' + dt.getMinutes()
   var weekStr = (type === 'short' ? weeks[wn] : week[wn])
   if (!fuhao) {
     return (!hideWeek ? weekStr + ', ' : '') + m[mn] + " " + dn + ", " + dt.getFullYear() + (!hideTime ? (' ' + hour + ':' + min) : '')
@@ -23,7 +23,7 @@ function formatEnDateLocal(date, fuhao, type, hideWeek, hideTime) {
 
 // 不区分时区中文
 function formatCnDateLocal(date, hideWeek, hideTime) {
-  if(!date) return ''
+  if (!date) return ''
   if (date.indexOf('T') > -1) {
     date = date.split('T')[0].split('-').join('/') + ' ' + (date.split('T')[1]).substring(0, 8)
   }
@@ -31,23 +31,23 @@ function formatCnDateLocal(date, hideWeek, hideTime) {
   var m = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
   var week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
   var mn = dt.getMonth(),
-  wn = dt.getDay(),
-  dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate(),
-  hour = dt.getHours() > 9 ? dt.getHours() : '0' + dt.getHours(),
-  min = dt.getMinutes() > 9 ? dt.getMinutes() : '0' + dt.getMinutes()
+    wn = dt.getDay(),
+    dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate(),
+    hour = dt.getHours() > 9 ? dt.getHours() : '0' + dt.getHours(),
+    min = dt.getMinutes() > 9 ? dt.getMinutes() : '0' + dt.getMinutes()
   return dt.getFullYear() + '-' + m[mn] + '-' + dn + (!hideWeek ? ' ' + week[wn] : '') + (!hideTime ? (' ' + hour + ':' + min) : '')
 }
 
 // 区分时区英文
 function formatEnDateUtc(date, fuhao, type, hideWeek) {
-  if(!date) return ''
+  if (!date) return ''
   var dt = getDate(date);
   var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec"];
   var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var weeks = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
   var mn = dt.getMonth(),
-  wn = dt.getDay(),
-  dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
+    wn = dt.getDay(),
+    dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
   var weekStr = (type === 'short' ? weeks[wn] : week[wn])
   if (!fuhao) {
     return (!hideWeek ? weekStr + ', ' : '') + m[mn] + " " + dn + ", " + dt.getFullYear()
@@ -58,13 +58,13 @@ function formatEnDateUtc(date, fuhao, type, hideWeek) {
 
 // 区分时区中文
 function formatCnDateUtc(date, hideWeek) {
-  if(!date) return ''
+  if (!date) return ''
   var dt = getDate(date);
   var m = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
   var week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
   var mn = dt.getMonth(),
-  wn = dt.getDay(),
-  dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
+    wn = dt.getDay(),
+    dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
   return dt.getFullYear() + '-' + m[mn] + '-' + dn + (!hideWeek ? ' ' + week[wn] : '')
 }
 
@@ -115,7 +115,7 @@ function getShopName(list) {
     var element = list[index];
     if (checkIsVessel(element.transportation.vehicle.vehicleName)) {
       name = element.transportation.vehicle ? element.transportation.vehicle.vehicleName : ''
-      break 
+      break
     }
   }
   return name
@@ -124,17 +124,17 @@ function getShopName(list) {
 // 格式化金额
 function formatAmount(number, digit) {
   if (!number) number = 0;
-		var str = numToFixed(number, digit);
-		if (digit > 0) {
-			var intSum = str.substring(0, str.indexOf(".")).replace(getRegExp('\B(?=(\d{3})+$)', 'g'), ',') //取到整数部分
-			var dot = str.substring(str.length, str.indexOf(".")) //取到小数部分搜索
-			var ret = intSum + dot;
-			return ret;
-		} else {
-			var intSum = str.replace(getRegExp('\B(?=(\d{3})+$)', 'g'), ','); //取到整数部分
-			var ret = intSum;
-			return ret;
-		}
+  var str = numToFixed(number, digit);
+  if (digit > 0) {
+    var intSum = str.substring(0, str.indexOf(".")).replace(getRegExp('\B(?=(\d{3})+$)', 'g'), ',') //取到整数部分
+    var dot = str.substring(str.length, str.indexOf(".")) //取到小数部分搜索
+    var ret = intSum + dot;
+    return ret;
+  } else {
+    var intSum = str.replace(getRegExp('\B(?=(\d{3})+$)', 'g'), ','); //取到整数部分
+    var ret = intSum;
+    return ret;
+  }
 }
 
 function numToFixed(number, digits) {
