@@ -3,7 +3,7 @@ const languageUtils = require('../../../utils/languageUtils')
 import {
   documentList
 } from '../../api/modules/dashboard'
-const size = 10
+const pageSize = 20
 let allList = []
 
 Page({
@@ -91,7 +91,7 @@ Page({
     setTimeout(() => {
       this.setData({
         noData: !allList.length ? true : false,
-        list: this.data.list.concat(allList.slice((this.data.page - 1) * size, size)),
+        list: this.data.list.concat(allList.slice((this.data.page - 1) * pageSize, pageSize)),
         loading: false,
       })
       this.setData({

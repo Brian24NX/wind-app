@@ -103,6 +103,9 @@ Page({
       this.setData({
         showRemind: true
       })
+      this.getTabBar().setData({
+        show: false
+      })
     }
   },
 
@@ -121,15 +124,7 @@ Page({
         duration: 3000
       })
       setTimeout(() => {
-        if (wx.getStorageSync('allowLegalTerms')) {
-          wx.navigateTo({
-            url: '/pages/Login/index',
-          })
-        } else {
-          this.setData({
-            showRemind: true
-          })
-        }
+        this.toLogin()
       }, 3000)
       return
     }
@@ -162,6 +157,9 @@ Page({
   setRemind(e) {
     this.setData({
       showRemind: false
+    })
+    this.getTabBar().setData({
+      show: true
     })
     if (e.detail) {
       wx.navigateTo({

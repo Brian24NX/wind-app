@@ -8,7 +8,7 @@ import {
   analysis
 } from '../../../api/modules/home';
 const config = require('../../../config/config')
-const pageSize = 10
+const pageSize = 20
 Page({
 
   /**

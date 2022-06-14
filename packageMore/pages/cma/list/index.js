@@ -3,7 +3,7 @@ import {
   cmaNewsList
 } from '../../../api/modules/more';
 const languageUtil = require('../../../../utils/languageUtils')
-const pageSize = 10;
+const pageSize = 20;
 Page({
 
   /**

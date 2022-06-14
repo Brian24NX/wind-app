@@ -3,7 +3,7 @@ import {
   categoryList,
   newsList
 } from '../../../api/modules/more';
-const pageSize = 10
+const pageSize = 20
 const languageUtil = require('../../../../utils/languageUtils')
 Page({
 

@@ -3,21 +3,19 @@
  * date:2022-3-22 14:02
  * desc: 自定义tabbar 底部导航栏
  */
-var app=getApp()
-var languageUtil=require('../utils/languageUtils')
 Component({
   data: {
-    version:0,
+    show: true,
+    version: 0,
     selected: 0,
     color: "#6B7790",
     selectedColor: "#04246A",
-    "list": [
-      {
+    list: [{
         "pagePath": "../Home/index",
         "text": "首页",
         "iconPath": "/assets/img/tabs/home.png",
         "selectedIconPath": "/assets/img/tabs/home_selected.png"
-      }, 
+      },
       {
         "pagePath": "../Query/index",
         "text": "查询",
@@ -39,9 +37,7 @@ Component({
     ]
   },
   attached() {},
-  show(){
-
-  },
+  show() {},
   methods: {
     switchTab(e) {
       const data = e.currentTarget.dataset
@@ -50,8 +46,10 @@ Component({
       this.setData({
         selected: data.index
       })
-    //点击导航栏，跳转到对应页面上
-      wx.switchTab({url:url})
-    }  
+      //点击导航栏，跳转到对应页面上
+      wx.switchTab({
+        url: url
+      })
+    }
   }
 })

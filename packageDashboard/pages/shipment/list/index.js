@@ -5,7 +5,7 @@ import {
   shipmentsContainerList
 } from '../../../api/modules/dashboard'
 let allList = []
-const size = 10
+const pageSize = 20
 Page({
 
   /**
@@ -103,7 +103,7 @@ Page({
     setTimeout(() => {
       this.setData({
         noData: allList.length ? false : true,
-        list: this.data.list.concat(allList.slice((this.data.page - 1) * size, size)),
+        list: this.data.list.concat(allList.slice((this.data.page - 1) * pageSize, pageSize)),
         loading: false
       })
       this.setData({
