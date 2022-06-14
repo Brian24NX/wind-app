@@ -406,6 +406,15 @@ var Languague = {
       placeholder: 'Email Address',
       exprise: 'Please enter the correct email address',
       send: 'Send'
+    },
+    legalTermsRemind: {
+      title: 'Privacy Policy',
+      desc1: 'Dear customer, before you continue to experience CMA CGM Mini-Program, please read ',
+      desc2: 'CMA CGM WeChat Mini-Program Privacy Policy ',
+      desc3: 'carefully.',
+      desc4: 'If you agree to our policy, please click "Agree" to continue.',
+      allow: 'Agree',
+      refuse: 'Disagree, continue to browse'
     }
   },
 

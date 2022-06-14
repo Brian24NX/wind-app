@@ -1,2 +1,2 @@
 <!--pages/Login/index.wxml-->
-<web-view src="https://uat.wind.cma-cgm.com/as/authorization.oauth2?client_id=feapp-wind&response_type=token%20id_token&scope=customerprofile:read:fe%20customershipment:read:fe&redirect_uri=https://uat.wind.cma-cgm.com/api/check-ticket" bindmessage="getMessage"></web-view>
+<web-view src="{{baseUrl}}/as/authorization.oauth2?client_id=feapp-wind&response_type=token%20id_token&scope=customerprofile:read:fe%20customershipment:read:fe&redirect_uri={{baseUrl}}/api/check-ticket" bindmessage="getMessage"></web-view>

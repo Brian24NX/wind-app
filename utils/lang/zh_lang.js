@@ -407,6 +407,15 @@ var Languague = {
       placeholder: '邮箱地址',
       exprise: '请输入正确的邮箱地址',
       send: '发送'
+    },
+    legalTermsRemind: {
+      title: '隐私政策',
+      desc1: '尊敬的客户，在您继续使用达飞轮船小程序之前，请您认真阅读',
+      desc2: '《达飞轮船微信小程序隐私政策》',
+      desc3: '。',
+      desc4: '若您同意我们的政策内容，请点击“同意”并继续。',
+      allow: '同意',
+      refuse: '不同意，继续浏览'
     }
   },
 

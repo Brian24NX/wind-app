@@ -39,3 +39,5 @@
     <van-icon name="arrow" color="#04246A" />
   </view>
 </view>
+
+<legal-terms-remind wx:if="{{showRemind}}" bindsetRemind="setRemind"></legal-terms-remind>

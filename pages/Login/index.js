@@ -1,5 +1,6 @@
 // pages/Login/index.js
 const utils = require('../../utils/util')
+const config = require('../../config/config')
 import {
   ccgId
 } from '../../api/modules/home'
@@ -8,7 +9,9 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    baseUrl: config[config.dev_env].url
+  },
 
   /**
    * 生命周期函数--监听页面加载

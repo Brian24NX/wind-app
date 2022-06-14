@@ -1,0 +1,49 @@
+/* components/legalTermsRemind/index.wxss */
+.remindContainers {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remindContainers .remindContainer {
+  width: 630rpx;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  color: #111111;
+  margin-top: -100rpx;
+  padding: 80rpx 48rpx 60rpx;
+}
+
+.remindContainer .remindTitle {
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.remindContainer .remindDesc {
+  margin-bottom: 40rpx;
+}
+
+.remindContainer .allow {
+  border-radius: 0;
+  background-color: #2D75FF;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.remindContainer .refuse {
+  color: #6B7790;
+  text-align: center;
+  padding: 20rpx 0;
+}

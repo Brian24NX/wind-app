@@ -23,7 +23,8 @@ Page({
       icon: '/assets/img/myAccount/document@2x.png'
     }],
     needLogin: false,
-    userInfo: {}
+    userInfo: {},
+    showRemind: false
   },
 
   /**
@@ -94,9 +95,15 @@ Page({
 
   // 去登录
   toLogin() {
-    wx.navigateTo({
-      url: '/pages/Login/index',
-    })
+    if (wx.getStorageSync('allowLegalTerms')) {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+    } else {
+      this.setData({
+        showRemind: true
+      })
+    }
   },
 
   toBaseInfo() {
@@ -114,9 +121,15 @@ Page({
         duration: 3000
       })
       setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/Login/index',
-        })
+        if (wx.getStorageSync('allowLegalTerms')) {
+          wx.navigateTo({
+            url: '/pages/Login/index',
+          })
+        } else {
+          this.setData({
+            showRemind: true
+          })
+        }
       }, 3000)
       return
     }
@@ -144,5 +157,16 @@ Page({
     wx.navigateTo({
       url: '/pages/legalTerms/index',
     })
+  },
+
+  setRemind(e) {
+    this.setData({
+      showRemind: false
+    })
+    if (e.detail) {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+    }
   }
 })
