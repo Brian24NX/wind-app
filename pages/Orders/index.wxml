@@ -1,6 +1,6 @@
 <!--pages/Orders/index.wxml-->
 <view class="orderContainer">
-  <view class="inputContainer">
+  <view class="inputContainer" wx:if="{{showSearch}}">
     <input value="{{shipmentRef}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="changeHuoguiValue" bindconfirm="searchList" />
     <view class="delete" catchtap="deleteValue">
       <image src="/assets/img/search/close@2x.png" wx:if="{{shipmentRef}}"></image>

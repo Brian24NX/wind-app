@@ -16,7 +16,8 @@ Page({
     loading: true,
     noData: false,
     list: [],
-    results: []
+    results: [],
+    showSearch: true
   },
 
   /**
@@ -24,6 +25,11 @@ Page({
    */
   onLoad: function (options) {
     this.initLanguage()
+    if (options.showSearch) {
+      this.setData({
+        showSearch: false
+      })
+    }
     if (options.str) {
       this.setData({
         shipmentRef: options.str

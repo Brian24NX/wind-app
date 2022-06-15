@@ -1,8 +1,5 @@
 // packageDashboard/pages/shipment/list/containers/index.js
 const languageUtils = require('../../../utils/languageUtils')
-import {
-  shipmentTracking
-} from '../../../api/modules/home';
 Component({
   options: {
     addGlobalClass: true
@@ -26,7 +23,8 @@ Component({
    */
   data: {
     languageContent: {},
-    language: 'zh'
+    language: 'zh',
+    lists: []
   },
 
   attached() {
@@ -44,24 +42,9 @@ Component({
       })
     },
 
-    
-
     toDetail(e) {
-      let obj = {
-        shipmentRef: e.currentTarget.dataset.shipmentref,
-        eqpid: ''
-      }
-      shipmentTracking(obj).then(res => {
-        if (res.data[0].data) {
-          wx.navigateTo({
-            url: `/pages/OrderDetail/index?index=0&showSearch=false`,
-          })
-        } else {
-          wx.showToast({
-            title: languageUtils.languageVersion().lang.page.queryRes.noDataDesc,
-            icon: 'none'
-          })
-        }
+      wx.navigateTo({
+        url: `/pages/Orders/index?str=${e.currentTarget.dataset.shipmentref}&showSearch=false`,
       })
     }
   }

@@ -133,6 +133,7 @@
   height: 72rpx;
   display: flex;
   align-items: center;
+  margin-top: 30rpx;
 }
 
 .placeholder {

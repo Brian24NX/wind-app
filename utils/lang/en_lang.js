@@ -440,7 +440,7 @@ var Languague = {
       },
       {
         "pagePath": "../My/index",
-        "text": "My",
+        "text": "Me",
         "iconPath": "/assets/img/tabs/mine.png",
         "selectedIconPath": "/assets/img/tabs/mine_selected.png"
       }

@@ -10,7 +10,7 @@
       <view class="stepContent">
         <view class="stepContentTop">
           <view class="code">{{languageContent.RECEIPT}}</view>
-          <view class="topName">{{info.from}}</view>
+          <view class="topName">{{info.from || '-'}}</view>
         </view>
       </view>
     </view>
@@ -22,7 +22,7 @@
       <view class="stepContent">
         <view class="stepContentTop">
           <view class="code">{{languageContent.POL}}</view>
-          <view class="topName">{{info.portOfLoading}}</view>
+          <view class="topName">{{info.portOfLoading || '-'}}</view>
         </view>
         <view class="stepTime">{{language === 'zh' ? format.formatCnDateLocal(info.estimatedDateOfDeparture) : format.formatEnDateLocal(info.estimatedDateOfDeparture, '-', '')}}</view>
       </view>
@@ -35,7 +35,7 @@
       <view class="stepContent">
         <view class="stepContentTop">
           <view class="code">{{languageContent.POD}}</view>
-          <view class="topName">{{info.portOfDischarge}}</view>
+          <view class="topName">{{info.portOfDischarge || '-'}}</view>
         </view>
         <view class="stepTime" wx:if="{{info.estimatedDateOfArrival}}">{{language === 'zh' ? format.formatCnDateLocal(info.estimatedDateOfArrival) : format.formatEnDateLocal(info.estimatedDateOfArrival, '-', '')}}</view>
       </view>
@@ -47,7 +47,7 @@
       <view class="stepContent">
         <view class="stepContentTop">
           <view class="code">{{languageContent.DELIVERY}}</view>
-          <view class="topName">{{info.to}}</view>
+          <view class="topName">{{info.to || '-'}}</view>
         </view>
       </view>
     </view>

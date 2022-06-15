@@ -1,5 +1,6 @@
 // packageDashboard/pages/shipment/list/index.js
 const languageUtils = require('../../../../utils/languageUtils')
+const utils = require('../../../../utils/util')
 import {
   shipmentsList,
   shipmentsContainerList
@@ -13,6 +14,7 @@ Page({
    */
   data: {
     languageContent: {},
+    language: 'zh',
     page: 1,
     keyword: '',
     typeList: ['shipment', 'container'],
@@ -43,7 +45,8 @@ Page({
   initLanguage() {
     const language = languageUtils.languageVersion()
     this.setData({
-      languageContent: language.lang.page.shipment
+      languageContent: language.lang.page.shipment,
+      language: language.lang.page.langue
     })
     wx.setNavigationBarTitle({
       title: language.lang.page.shipment.title,
@@ -101,9 +104,13 @@ Page({
 
   dealPaging() {
     setTimeout(() => {
+      const list = allList.slice((this.data.page - 1) * pageSize, pageSize)
+      list.forEach(item=>{
+        item.statusLabel = utils.formatHuoYunStatus(item.statusCode, this.data.language)
+      })
       this.setData({
         noData: allList.length ? false : true,
-        list: this.data.list.concat(allList.slice((this.data.page - 1) * pageSize, pageSize)),
+        list: this.data.list.concat(list),
         loading: false
       })
       this.setData({

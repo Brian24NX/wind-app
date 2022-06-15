@@ -26,7 +26,7 @@
         <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
         <view class="details" style="flex-direction: column;">
           <view>
-            <view class="status">{{item.statusCode}}</view>
+            <view class="status">{{item.statusLabel}}</view>
           </view>
 
           <view class="details2">
