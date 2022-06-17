@@ -41,7 +41,7 @@
         <view>{{tariffDesc}}</view>
       </view>
       <view class="chargesDetail">
-        <view class="oneCharge" wx:for="{{list}}" wx:key="index" wx:if="{{item.packageTariffs[0].fixedCharge.amount}}">
+        <view class="oneCharge" wx:for="{{list}}" wx:key="index">
           <view class="oneChargeTitle">{{item.chargeDescription}}{{item.packageTariffs[0].fixedCharge.currencyCode ? ' (' + item.packageTariffs[0].fixedCharge.currencyCode + ')' : ''}}</view>
           <view class="priceList">
             <view class="onePrice">
@@ -64,6 +64,18 @@
     <view class="noData" wx:if="{{!list.length && !loading}}">
       <image src="/assets/img/search/error@2x.png"></image>
       <text>未找到相关数据</text>
+    </view>
+  </view>
+  <view class="charges" wx:if="{{additionalInformation.length}}">
+    <view class="chargesTitles">
+      <view class="chargesTitleLine"></view>
+      <view>Additional Information</view>
+    </view>
+    <view class="addInfoList">
+      <view class="oneAddInfo" wx:for="{{additionalInformation}}" wx:key="index">
+        <view class="red">{{item.chargeDescription}}</view>
+        <view>{{item.packageTariffs[0].chargeComment}}</view>
+      </view>
     </view>
   </view>
 </view>

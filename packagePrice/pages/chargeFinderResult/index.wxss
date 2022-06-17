@@ -129,7 +129,7 @@ page {
   padding-top: 28rpx;
 }
 
-.charges .chargesList .chargesTitle {
+.charges .chargesTitle {
   display: flex;
   font-size: 36rpx;
   font-family: Antonio-Bold;
@@ -137,11 +137,11 @@ page {
   color: #04246A;
 }
 
-.charges .chargesList .chargesTitle view {
+.charges .chargesTitle view {
   line-height: 42rpx;
 }
 
-.charges .chargesList .chargesTitle .chargesTitleLine {
+.charges .chargesTitle .chargesTitleLine {
   width: 8rpx;
   height: 42rpx;
   background-color: #E20202;
@@ -228,4 +228,38 @@ page {
   width: 32rpx;
   height: 32rpx;
   margin-right: 14rpx;
+}
+
+.charges .chargesTitles {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #04246A;
+  display: flex;
+  align-items: center;
+  font-size: 36rpx;
+  font-family: Antonio-Bold;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.charges .chargesTitles .chargesTitleLine {
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+  margin-right: 16rpx;
+}
+
+.charges .addInfoList {
+  margin-top: 30rpx;
+}
+
+.charges .oneAddInfo {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #04246A;
+  margin-top: 10rpx;
+}
+
+.charges .oneAddInfo .red {
+  color: #E20202;
 }
