@@ -148,7 +148,7 @@ var Languague = {
       chuanming: 'Vessel',
       chuanci: 'Voyage',
       noData: 'No results found',
-      noDataDesc: 'Booking not found,not yet confirmed or container cycle not yet started'
+      noDataDesc: 'Booking not found, not yet confirmed or container cycle not yet started'
     },
     //航线查询
     scheduleSearching: {

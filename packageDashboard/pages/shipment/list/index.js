@@ -90,6 +90,10 @@ Page({
       }).then(res => {
         allList = res.data
         this.dealPaging()
+      }, () => {
+        this.setData({
+          loading: false
+        })
       })
     } else {
       shipmentsContainerList({
@@ -98,6 +102,10 @@ Page({
       }).then(res => {
         allList = res.data
         this.dealPaging()
+      }, () => {
+        this.setData({
+          loading: false
+        })
       })
     }
   },
@@ -105,7 +113,7 @@ Page({
   dealPaging() {
     setTimeout(() => {
       const list = allList.slice((this.data.page - 1) * pageSize, pageSize)
-      list.forEach(item=>{
+      list.forEach(item => {
         item.statusLabel = utils.formatHuoYunStatus(item.statusCode, this.data.language)
       })
       this.setData({
