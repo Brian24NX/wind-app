@@ -9,11 +9,11 @@
   <view class="userInfoContent">
     <view class="oneUserInfo">
       <view class="infoTitle">{{languageContent.ming}}</view>
-      <view class="infoContent">{{userInfo.lastName}}</view>
+      <view class="infoContent">{{userInfo.firstName}}</view>
     </view>
     <view class="oneUserInfo">
       <view class="infoTitle">{{languageContent.xing}}</view>
-      <view class="infoContent">{{userInfo.firstName}}</view>
+      <view class="infoContent">{{userInfo.lastName}}</view>
     </view>
     <view class="oneUserInfo">
       <view class="infoTitle">{{languageContent.email}}</view>

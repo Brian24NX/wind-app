@@ -291,8 +291,8 @@ var Languague = {
     baseInfo: {
       title: 'User Information',
       company: 'Company',
-      ming: 'Last name',
-      xing: 'First name',
+      ming: 'First name',
+      xing: 'Last name',
       email: 'Email address',
       exit: 'Log out'
     },

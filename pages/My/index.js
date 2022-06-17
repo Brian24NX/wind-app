@@ -46,19 +46,17 @@ Page({
         }).then(res => {
           let userInfo = res.data[0].customer
           if (userInfo) {
-            wx.setStorageSync('userInfo', userInfo)
+            userInfo.lastName = userInfo.lastName ? userInfo.lastName.toLocaleUpperCase() : ''
             if (userInfo.lastName && userInfo.firstName) {
-              userInfo.avatar = userInfo.lastName.substr(0, 1) + userInfo.firstName.substr(0, 1)
+              userInfo.avatar = userInfo.firstName.substr(0, 1) + userInfo.lastName.substr(0, 1)
             }
+            wx.setStorageSync('userInfo', userInfo)
             this.setData({
               userInfo
             })
           }
         })
       } else {
-        if (userInfo.lastName && userInfo.firstName) {
-          userInfo.avatar = userInfo.lastName.substr(0, 1) + userInfo.firstName.substr(0, 1)
-        }
         this.setData({
           userInfo
         })

@@ -8,7 +8,7 @@
   </view>
   <view class="userInfoContainer" wx:else catchtap="toBaseInfo">
       <view class="avatar2">{{userInfo.avatar}}</view>
-      <view class="infoCenter">{{userInfo.lastName}} {{userInfo.firstName}}</view>
+      <view class="infoCenter">{{userInfo.firstName}} {{userInfo.lastName}}</view>
       <van-icon name="arrow" color="#04246A" />
   </view>
  </view>
