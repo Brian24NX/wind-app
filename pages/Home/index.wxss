@@ -244,13 +244,13 @@ page {
 }
 
 .homeContainer .discoverContainer .swiper .discoverList .oneDiscover .icon {
-  width: 68rpx;
-  height: 68rpx;
+  width: 60rpx;
+  height: 60rpx;
   margin-right: 8rpx;
 }
 
 .homeContainer .discoverContainer .swiper .discoverList .oneDiscover .discoverRight {
-  width: 218rpx;
+  width: 226rpx;
   color: #999999;
   font-size: 24rpx;
 }

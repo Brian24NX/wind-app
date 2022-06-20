@@ -1,6 +1,6 @@
 <!--packageMore/pages/usefulTemplateAndLink/index.wxml-->
 <view class="userfulContainer">
-  <view class="listTopContainer">
+  <!-- <view class="listTopContainer">
     <view class="listTopTitles">
       <view class="titleLine"></view>
       <view class="listTopTitle">
@@ -9,6 +9,18 @@
       </view>
     </view>
     <view class="inputContainer">
+      <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.keyword}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+      <view class="delete" catchtap="deleteValue">
+        <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+      </view>
+      <view class="search" bindtap="search">
+        <image src="/assets/img/search/search@2x.png"></image>
+      </view>
+    </view>
+  </view> -->
+  <view class="topTitles">
+    <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</text>
+    <view class="inputContainer" style="margin-top: 30rpx;">
       <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.keyword}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
       <view class="delete" catchtap="deleteValue">
         <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>

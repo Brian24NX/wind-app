@@ -119,11 +119,12 @@ Page({
       wx.showToast({
         title: languageUtils.languageVersion().lang.page.load.noLogin,
         icon: 'none',
-        duration: 3000
+        mask: true,
+        duration: 2000
       })
       setTimeout(() => {
         this.toLogin()
-      }, 3000)
+      }, 2000)
       return
     }
     if (e.currentTarget.dataset.url) {

@@ -39,6 +39,7 @@ Page({
     })
     this.setData({
       languageContent: languageUtils.languageVersion().lang.page.useful,
+      language: languageUtils.languageVersion().lang.page.langue,
       emptyContent: languageUtils.languageVersion().lang.page.empty
     })
     this.search()
@@ -109,9 +110,9 @@ Page({
     this.setData({
       loading: true
     })
-    templateList(params).then(res=>{
+    templateList(params).then(res => {
       if (params.type === 2) {
-        res.data.list.forEach(item=>{
+        res.data.list.forEach(item => {
           item.document = item.document.split('\n')
         })
       }

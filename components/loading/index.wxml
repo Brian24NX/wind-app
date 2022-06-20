@@ -1,5 +1,5 @@
 <!--components/loading/index.wxml-->
-<van-divider contentPosition="center" fontSize="24rpx">
+<van-divider contentPosition="center" fontSize="24rpx" custom-style="margin: 10rpx 0;">
   <van-loading size="24rpx" wx:if="{{loading}}">{{loadContent.loading}}</van-loading>
   <block wx:if="{{!loading && noMore}}">{{loadContent.noMoreData}}</block>
 </van-divider>

@@ -249,6 +249,7 @@ var Languague = {
     // 常用模板与链接
     useful: {
       title: '常用模板与链接',
+      topTitle: '常用模板\n及链接',
       title1: '常用模板',
       title2: '及链接',
       keyword: '搜索模板或链接名称',
@@ -260,6 +261,7 @@ var Languague = {
     // 管制品查询
     sanction: {
       title: '管制品查询',
+      topTitle: '管制品查询',
       title1: '管制品',
       title2: '查询',
       placeholder: '名称/编码',

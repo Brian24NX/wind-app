@@ -67,8 +67,8 @@
 }
 
 .emailContainers .emailContainer .emailInput .close image {
-  width: 40rpx;
-  height: 40rpx;
+  width: 26rpx;
+  height: 26rpx;
 }
 
 .emailContainers .emailContainer .noRequest {

@@ -1,1 +1,4 @@
 /* components/loading/index.wxss */
+.custom-class {
+  margin: 0 !important;
+}

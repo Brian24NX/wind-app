@@ -247,7 +247,8 @@ var Languague = {
     },
     // 常用模板与链接
     useful: {
-      title: 'Useful Template & Link',
+      title: 'Template and Link',
+      topTitle: 'Template\n and Link',
       title1: 'Useful',
       title2: ' Template & Link',
       keyword: 'Search Document or Link Name',
@@ -259,6 +260,7 @@ var Languague = {
     // 管制品查询
     sanction: {
       title: 'Sanction Check',
+      topTitle: 'Sanction\n Check',
       title1: 'Sanction',
       title2: ' Check',
       placeholder: 'Name or Ref. No.',

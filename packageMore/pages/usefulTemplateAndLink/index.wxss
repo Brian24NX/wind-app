@@ -7,6 +7,10 @@ page {
   padding: 30rpx;
 }
 
+.userfulContainer .topContainer {
+  background-image: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/userful.png);
+}
+
 .userfulContainer .usefulListContainer {
   background-color: #ffffff;
   margin: 30rpx 0 0;
