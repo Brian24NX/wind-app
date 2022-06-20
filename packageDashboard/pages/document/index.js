@@ -3,6 +3,7 @@ const languageUtils = require('../../../utils/languageUtils')
 import {
   documentList
 } from '../../api/modules/dashboard'
+const utils = require('../../../utils/util')
 const pageSize = 20
 let allList = []
 
@@ -13,6 +14,7 @@ Page({
    */
   data: {
     languageContent: {},
+    language: 'zh',
     page: 1,
     keyword: '',
     noData: false,
@@ -44,7 +46,8 @@ Page({
   initLanguage() {
     const language = languageUtils.languageVersion()
     this.setData({
-      languageContent: language.lang.page.document
+      languageContent: language.lang.page.document,
+      language: language.lang.page.langue
     })
     wx.setNavigationBarTitle({
       title: language.lang.page.document.title,
@@ -89,6 +92,10 @@ Page({
 
   dealPaging() {
     setTimeout(() => {
+      const pageList = allList.slice((this.data.page - 1) * pageSize, pageSize)
+      pageList.forEach(item => {
+        item.statusLabel = utils.formatDocumentStatus(item.blStatus, this.data.language)
+      })
       this.setData({
         noData: !allList.length ? true : false,
         list: this.data.list.concat(allList.slice((this.data.page - 1) * pageSize, pageSize)),
@@ -97,6 +104,6 @@ Page({
       this.setData({
         noMore: this.data.list.length >= allList.length ? true : false
       })
-    }, 2000);
+    }, 600);
   }
 })

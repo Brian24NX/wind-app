@@ -322,6 +322,79 @@ function formatHuoYunStatus(code, language) {
   }
 }
 
+// 格式化文件状态
+function formatDocumentStatus(status, language) {
+  const statusList = [{
+    labelEn: "To be reviewed",
+    labelCn: "等待审核"
+  }, {
+    id: '2',
+    labelEn: "Review Sent",
+    labelCn: "已发送审核"
+  }, {
+    labelEn: "Approved",
+    labelCn: "已确认"
+  }, {
+    labelEn: "Modif. requested",
+    labelCn: "修改请求"
+  }, {
+    labelEn: "Modify requested",
+    labelCn: "修改请求"
+  }, {
+    id: '5',
+    labelEn: "Available",
+    labelCn: "可使用的"
+  }, {
+    id: '6',
+    labelEn: "To be printed",
+    labelCn: "等待打印"
+  }, {
+    labelEn: "Original printed",
+    labelCn: "正本已打印"
+  }, {
+    id: '9',
+    labelEn: "Copy Available",
+    labelCn: "提单副本可打印"
+  }, {
+    labelEn: "Printed By The Carrier",
+    labelCn: "船公司虚拟打印"
+  }, {
+    id: '14',
+    labelEn: "Surrendered",
+    labelCn: "已交付"
+  }, {
+    id: '15',
+    labelEn: "Switched to Paper",
+    labelCn: "转换成纸质"
+  }, {
+    labelEn: "Canceled",
+    labelCn: "取消"
+  }, {
+    labelEn: "Printed & Modif request sent",
+    labelCn: "已打印并已提交修改"
+  }, {
+    labelEn: "Printed & Modify request sent",
+    labelCn: "已打印并已提交修改"
+  }, {
+    labelEn: "Printed & Modif. request sent",
+    labelCn: "已打印并已提交修改"
+  }, {
+    id: '51',
+    labelEn: "Transferred",
+    labelCn: "已移交"
+  }, {
+    id: '52',
+    labelEn: "Owned BL",
+    labelCn: "持有"
+  }]
+  const index = statusList.findIndex(item => item.id === status)
+  if (index > -1) {
+    return language === 'zh' ? statusList[index].labelCn : statusList[index].labelEn
+  } else {
+    return status
+  }
+}
+
 function getDayList(date, time) {
   var myDate = new Date(date);
   myDate.setDate(myDate.getDate() - time);
@@ -436,5 +509,6 @@ module.exports = {
   judgLand,
   formatEnDateLocal,
   checkAccessToken,
-  setExpiresTime
+  setExpiresTime,
+  formatDocumentStatus
 }

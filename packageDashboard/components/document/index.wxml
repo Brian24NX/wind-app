@@ -16,7 +16,7 @@
     </view>
     <view class="ones">
       <view class="oneLeft">{{documentContent.status}}</view>
-      <view class="oneRight">{{item.blStatus || '-'}}</view>
+      <view class="oneRight">{{item.statusLabel || '-'}}</view>
     </view>
     <view class="ones">
       <view class="oneLeft">{{documentContent.date}}</view>
