@@ -355,7 +355,7 @@ var Languague = {
       Commodities: '海关编码',
       Shipper: '发货人',
       Consignee: '收货方',
-      noShipmentData: '未找到船运信息',
+      noShipmentData: '暂无船运信息',
       noContainersData: '暂无货柜'
     },
     // 查询费率

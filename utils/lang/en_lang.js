@@ -69,7 +69,7 @@ var Languague = {
       PRICE: 'PRICE',
       instantQuote: "Instant Quote",
       //柜租费率
-      ddRate: "D&D Rate",
+      ddRate: "D&D Prices",
       //查询费率
       chargeFinder: "Charge Finder",
       // 发现更多
@@ -84,7 +84,7 @@ var Languague = {
       onlineServices: 'Online Services',
       //增值服务
       valueAddedService: "Customer Advisory",
-      template: 'Template and Link',
+      template: 'Template & Link',
       // 管制品
       gzp: 'Sanction Check',
       // 联系我们
@@ -126,7 +126,7 @@ var Languague = {
       chuanqi: 'Routing Finder',
       huowu: 'Shipment Tracking',
       gzp: 'Sanction Check',
-      gzfl: 'D&D Rate',
+      gzfl: 'D&D Prices',
       cxfl: 'Charge Finder'
     },
     // 查询结果
@@ -247,8 +247,8 @@ var Languague = {
     },
     // 常用模板与链接
     useful: {
-      title: 'Template and Link',
-      topTitle: 'Template\n and Link',
+      title: 'Template & Link',
+      topTitle: 'Template & Link',
       title1: 'Useful',
       title2: ' Template & Link',
       keyword: 'Search Document or Link Name',
@@ -269,9 +269,9 @@ var Languague = {
     },
     // 柜租费率
     guizufeilv: {
-      navBarTitle: 'D & D',
-      topTitle: 'Demurrage &\n Detention Tariffs',
-      selectTitle: 'Search country/region',
+      navBarTitle: 'D&D Prices',
+      topTitle: 'Demurrage &\n Detention Prices',
+      selectTitle: 'Search Country/Region',
       send: 'Send email'
     },
     // 我的
