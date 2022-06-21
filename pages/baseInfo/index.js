@@ -35,12 +35,8 @@ Page({
       confirmText: _this.data.exitContent.sure,
       success(res) {
         if (res.confirm) {
-          wx.removeStorageSync('access_token')
-          wx.removeStorageSync('expires_time')
-          wx.removeStorageSync('userInfo')
-          wx.removeStorageSync('ccgId')
-          wx.reLaunch({
-            url: '/pages/Home/index',
+          wx.navigateTo({
+            url: '/pages/Logout/index',
           })
         }
       }

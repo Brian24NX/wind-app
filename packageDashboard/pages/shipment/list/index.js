@@ -92,7 +92,8 @@ Page({
         this.dealPaging()
       }, () => {
         this.setData({
-          loading: false
+          loading: false,
+          noData: true
         })
       })
     } else {
@@ -104,7 +105,8 @@ Page({
         this.dealPaging()
       }, () => {
         this.setData({
-          loading: false
+          loading: false,
+          noData: true
         })
       })
     }

@@ -13,7 +13,8 @@
     "pages/Login/index",
     "pages/baseInfo/index",
     "pages/setLanguage/index",
-    "pages/legalTerms/index"
+    "pages/legalTerms/index",
+    "pages/Logout/index"
   ],
   "subPackages": [
     {

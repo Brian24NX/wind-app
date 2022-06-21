@@ -1,0 +1,2 @@
+<!--pages/logout/index.wxml-->
+<web-view src="{{baseUrl}}//idp/startSLO.ping" bindload="back"></web-view>

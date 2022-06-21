@@ -401,7 +401,8 @@ var Languague = {
       send: 'Sending...',
       sendSuccess: 'Email sent successfully',
       noLogin: 'Login failed or invalid. Please log in again',
-      notFound: 'This file is not available, please contact your agent'
+      notFound: 'This file is not available, please contact your agent',
+      exit: 'exiting...'
     },
     email: {
       title: 'Recipient Email Address',
