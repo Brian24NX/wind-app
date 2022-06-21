@@ -1,7 +1,6 @@
 // packageMore/pages/cma/detail/index.js
 import {
-  cmaNewsDetail,
-  newsLike
+  cmaNewsDetail
 } from '../../../api/modules/more'
 import {
   analysis
@@ -51,9 +50,11 @@ Page({
   // 赞
   zan() {
     if (this.data.zanStatus) return
-    newsLike({
-      id: this.data.id
-    }).then(res => {
+    analysis({
+      analysisType: 5,
+      operateType: 3,
+      statisti: this.data.id
+    }).then(() => {
       this.setData({
         zanStatus: true
       })

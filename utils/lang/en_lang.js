@@ -84,7 +84,7 @@ var Languague = {
       onlineServices: 'Online Services',
       //增值服务
       valueAddedService: "Customer Advisory",
-      template: 'Useful Template and Link',
+      template: 'Template and Link',
       // 管制品
       gzp: 'Sanction Check',
       // 联系我们
@@ -416,7 +416,7 @@ var Languague = {
       desc3: 'carefully.',
       desc4: 'If you agree to our policy, please click "Agree" to continue.',
       allow: 'Agree',
-      refuse: 'Disagree, continue to browse'
+      refuse: 'Disagree'
     }
   },
 

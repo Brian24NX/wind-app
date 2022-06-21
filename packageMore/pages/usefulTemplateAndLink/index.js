@@ -218,8 +218,12 @@ Page({
 
   // 复制
   copy(e) {
+    let url = e.currentTarget.dataset.value
+    if (url.indexOf('http') > -1) {
+      url = 'http' + e.currentTarget.dataset.value.split('http')[1]
+    }
     wx.setClipboardData({
-      data: e.currentTarget.dataset.value,
+      data: url,
       success() {
         wx.showToast({
           title: languageUtils.languageVersion().lang.page.copyInfo.success,

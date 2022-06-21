@@ -335,10 +335,8 @@ function formatDocumentStatus(status, language) {
     labelEn: "Approved",
     labelCn: "已确认"
   }, {
+    id: '4',
     labelEn: "Modif. requested",
-    labelCn: "修改请求"
-  }, {
-    labelEn: "Modify requested",
     labelCn: "修改请求"
   }, {
     id: '5',

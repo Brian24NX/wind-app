@@ -1,7 +1,6 @@
 // packageMore/pages/news/detail/index.js
 import {
-  newsDetail,
-  newsLike
+  newsDetail
 } from '../../../api/modules/more';
 import {
   analysis
@@ -53,7 +52,11 @@ Page({
   // 赞
   zan() {
     if (this.data.zanStatus) return
-    newsLike({id: this.data.id}).then(res=>{
+    analysis({
+      analysisType: 4,
+      operateType: 3,
+      statisti: this.data.id
+    }).then(res=>{
       this.setData({
         zanStatus: true
       })

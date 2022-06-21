@@ -55,8 +55,10 @@ Page({
   },
 
   setInput(e) {
+    let value = e.detail.value.toUpperCase()
+    let regvalue = value.trim()
     this.setData({
-      keyword: e.detail.value
+      keyword: regvalue
     })
   },
 
