@@ -5,7 +5,6 @@ const dayjs = require("dayjs");
 import {
   chargeFuzzySearch,
 } from '../../../api/modules/home';
-import languageUtils from '../../../utils/languageUtils';
 Page({
 
   /**
@@ -39,7 +38,9 @@ Page({
     showDelete2: false,
     showDatePopup: false,
     currentDate: null,
-    language: 'zh'
+    language: 'zh',
+    minDate: new Date().getTime() - 6 * 30 * 24 * 60 * 60 * 1000,
+    maxDate: new Date().getTime() + 1 * 30 * 24 * 60 * 60 * 1000,
   },
 
 

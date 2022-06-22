@@ -20,6 +20,14 @@ Component({
     formatter: {
       type: String,
       value: 'day'
+    },
+    minDate: {
+      type: Number,
+      value: new Date((new Date().getFullYear() - 5), 1, 1).getTime(),
+    },
+    maxDate: {
+      type: Number,
+      value: new Date((new Date().getFullYear() + 5), 11, 31).getTime(),
     }
   },
 
