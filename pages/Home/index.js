@@ -327,55 +327,6 @@ Page({
 
   // 船期搜索
   toChuanQi() {
-    // 先判断参数是否为空
-    // if (!this.data.qiYunValue || !this.data.xieHuoValue) {
-    //   if (!this.data.qiYunValue) {
-    //     this.setData({
-    //       showRemind2: true
-    //     })
-    //   } else {
-    //     this.setData({
-    //       showRemind2: false
-    //     })
-    //   }
-    //   if (!this.data.xieHuoValue) {
-    //     this.setData({
-    //       showRemind3: true
-    //     })
-    //   } else {
-    //     this.setData({
-    //       showRemind3: false
-    //     })
-    //   }
-    // } else {
-    //   this.setData({
-    //     showRemind2: false,
-    //     showRemind3: false
-    //   })
-    // }
-    // var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
-    // if (!this.data.showRemind2) {
-    //   if (!reg.test(this.data.qiYunValue)) {
-    //     this.setData({
-    //       showRemind5: true
-    //     })
-    //   } else {
-    //     this.setData({
-    //       showRemind5: false
-    //     })
-    //   }
-    // }
-    // if (!this.data.showRemind3) {
-    //   if (!reg.test(this.data.xieHuoValue)) {
-    //     this.setData({
-    //       showRemind4: true
-    //     })
-    //   } else {
-    //     this.setData({
-    //       showRemind4: false
-    //     })
-    //   }
-    // }
     if (this.data.showDelete1) {
       this.setData({
         showRemind2: false

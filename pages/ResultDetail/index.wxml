@@ -30,8 +30,8 @@
           </view>
           <view wx:if="{{index}}">
             <view class="diquContainer">
-              <view class="names">{{item.pointFrom.location.name}}，</view>
-              <view class="code">{{filters.strSub(item.pointFrom.location.internalCode)}}</view>
+              <view class="names">{{item.pointFrom.location.name}}</view>
+              <view class="code">{{filters.setChina(item.pointFrom.location.internalCode, true)}}</view>
               <view class="tags tags2" wx:if="{{filters.checkQiYunGangKou(index, routingDetails)}}">{{languageContent.pol}}</view>
             </view>
             <view class="gangKouNames">{{item.pointFrom.location.facility.name}}</view>
@@ -40,8 +40,8 @@
             <view class="timeContainer">{{language === 'zh' ? filters.formatCnDateLocal(item.pointFrom.departureDate, false, true) : filters.formatEnDateLocal(item.pointFrom.departureDate, '-', '', false, true)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
-                <view class="names">{{item.pointFrom.location.name}}，</view>
-                <view class="code">{{filters.strSub(item.pointFrom.location.internalCode)}}</view>
+                <view class="names">{{item.pointFrom.location.name}}</view>
+                <view class="code">{{filters.setChina(item.pointFrom.location.internalCode, true)}}</view>
                 <view class="tags tags2">{{languageContent.pol}}</view>
               </view>
               <view class="gangKouName">{{item.pointFrom.location.facility.name}}</view>
@@ -75,8 +75,8 @@
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
           <view class="diquContainer" style="margin-bottom: 12rpx;">
-            <view class="names">{{item.pointTo.location.name}}，</view>
-            <view class="code">{{filters.strSub(item.pointTo.location.internalCode)}}</view>
+            <view class="names">{{item.pointTo.location.name}}</view>
+            <view class="code">{{filters.setChina(item.pointTo.location.internalCode, true)}}</view>
             <view class="tags tags2">{{languageContent.pod}}</view>
           </view>
           <view class="gangKouNames">{{item.pointTo.location.facility.name}}</view>
@@ -93,8 +93,8 @@
           </view>
           <view wx:if="{{index}}">
             <view class="diquContainer">
-              <view class="names">{{item.pointFrom.location.name}}，</view>
-              <view class="code">{{filters.strSub(item.pointFrom.location.internalCode)}}</view>
+              <view class="names">{{item.pointFrom.location.name}}</view>
+              <view class="code">{{filters.setChina(item.pointFrom.location.internalCode, true)}}</view>
               <view class="tags tags2" wx:if="{{filters.checkXieHuoGangKou(index, routingDetails)}}">{{languageContent.pod}}</view>
             </view>
           </view>
@@ -113,8 +113,8 @@
         </view>
         <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
           <view class="diquContainer">
-            <view class="names">{{item.pointTo.location.name}}，</view>
-            <view class="code">{{filters.strSub(item.pointTo.location.internalCode)}}</view>
+            <view class="names">{{item.pointTo.location.name}}</view>
+            <view class="code">{{filters.setChina(item.pointTo.location.internalCode, true)}}</view>
             <view class="tags tags2">{{languageContent.dest}}</view>
           </view>
         </view>

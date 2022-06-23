@@ -343,7 +343,7 @@ Page({
         routinglist: res.data,
         isLoading: false
       })
-      wx.hideLoading()
+      // wx.hideLoading()
     }, () => {
       this.setData({
         routinglist: [],

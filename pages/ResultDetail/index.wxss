@@ -192,6 +192,7 @@
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #071E5D;
+  margin-left: 2rpx;
 }
 
 .yunshuContainers .yunshuContainer .gangKouName {

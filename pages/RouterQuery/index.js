@@ -7,7 +7,6 @@ import {
   fuzzySearch,
   // routingFinder
 } from '../../api/modules/home';
-import languageUtils from '../../utils/languageUtils';
 Page({
 
   /**
@@ -154,11 +153,11 @@ Page({
 
   getlocation(e) {
     let index = e.currentTarget.dataset.index;
-    let location = this.data.array[index];
+    let location = this.data.array[index].name;
     let pollocation = location.split("-")[0];
     let podlocation = location.split("-")[1];
-    let polcode = pollocation.split(";")[2];
-    let podcode = podlocation.split(";")[2];
+    let polcode = this.data.array[index].polCode;
+    let podcode = this.data.array[index].podCode;
     this.setData({
       podcode: podcode,
       polcode: polcode,
@@ -407,11 +406,15 @@ Page({
     let polpleace = this.data.polvalue;
     let podpleace = this.data.podvalue;
     let str = polpleace + '-' + podpleace;
-    if (history.findIndex(item => item === str) === -1) {
+    if (history.findIndex(item => item.name === str) === -1) {
       if (history.length == 6) {
         history.pop();
       }
-      history.unshift(str);
+      history.unshift({
+        name: str,
+        polCode: this.data.polcode,
+        podCode: this.data.podcode
+      });
       this.setData({
         array: history,
       })

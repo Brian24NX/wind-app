@@ -166,6 +166,16 @@ function deleteStr(str) {
   }
 }
 
+function setChina(code, need) {
+  if (!code) return
+  var two = code.substring(0, 2)
+  if (two === 'HK' || two === 'MO' || two === 'TW') {
+    return ', CHINA'
+  } else {
+    return need ? ', ' + two : ''
+  }
+}
+
 module.exports = {
   formatEnDateLocal: formatEnDateLocal,
   formatCnDateLocal: formatCnDateLocal,
@@ -177,5 +187,6 @@ module.exports = {
   checkXieHuoGangKou: checkXieHuoGangKou,
   getShopName: getShopName,
   formatAmount: formatAmount,
-  deleteStr: deleteStr
+  deleteStr: deleteStr,
+  setChina: setChina
 }

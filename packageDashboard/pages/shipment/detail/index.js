@@ -28,6 +28,9 @@ Page({
     this.setData({
       bookingReference: options.bookingReference
     })
+  },
+
+  onShow() {
     this.getShipmentsDetail()
   },
 

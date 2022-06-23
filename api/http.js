@@ -43,7 +43,9 @@ const request = ({
         'content-type': contentType || 'application/json'
       },
       success: (res) => {
-        wx.hideLoading();
+        if (!hideLoading) {
+          wx.hideLoading();
+        }
         // 返回成功提示信息
         if (res.statusCode === 200) {
           // 未登录拦截
@@ -88,7 +90,9 @@ const request = ({
         }
       },
       fail: (err) => {
-        wx.hideLoading();
+        if (!hideLoading) {
+          wx.hideLoading();
+        }
         if (err.errMsg === 'request:fail timeout') {
           wx.showToast({
             title: languageUtil.languageVersion().lang.page.load.chaoshi,
@@ -97,9 +101,6 @@ const request = ({
         }
         // 返回错误提示信息
         reject('网络请求失败')
-      },
-      complete: () => {
-        // wx.hideLoading();
       }
     })
   })

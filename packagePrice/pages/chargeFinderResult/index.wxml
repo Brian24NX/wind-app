@@ -8,13 +8,13 @@
           <view class="leftLineDto"></view>
           <view class="leftLine"></view>
         </view>
-        <view class="stepContent">{{chargeFinderSearchKey.polvalue}}, {{chargeFinderSearchKey.polCode}}</view>
+        <view class="stepContent">{{chargeFinderSearchKey.polvalue}}, {{chargeFinderSearchKey.polCode}}{{format.setChina(chargeFinderSearchKey.placeOfLoading)}}</view>
       </view>
       <view class="oneStep">
         <view class="leftLines" style="top: 20rpx;">
           <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
         </view>
-        <view class="stepContent">{{chargeFinderSearchKey.podvalue}}, {{chargeFinderSearchKey.podCode}}</view>
+        <view class="stepContent">{{chargeFinderSearchKey.podvalue}}, {{chargeFinderSearchKey.podCode}}{{format.setChina(chargeFinderSearchKey.placeOfDischarge)}}</view>
       </view>
     </view>
     <view class="typeLists">
