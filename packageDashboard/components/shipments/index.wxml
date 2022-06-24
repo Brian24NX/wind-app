@@ -5,7 +5,7 @@
   <view class="oneShipment" wx:for="{{list}}" wx:key="index" catchtap="toShipmentDetail" data-bookingreference="{{item.bookingReference}}">
     <view class="topTime">
       <view>{{format.checkTime(item.estimatedDateOfArrival) < 0 ? languageContent.et : languageContent.eat}}</view>
-      <view>{{language === 'zh' ? format.formatCnDateLocal(item.estimatedDateOfArrival) : format.formatEnDateLocal(item.estimatedDateOfArrival, '-', '')}}</view>
+      <view>{{language === 'zh' ? format.formatCnDateUtc(item.estimatedDateOfArrival, false, true) : format.formatEnDateUtc(item.estimatedDateOfArrival, '-', '', false, true)}}</view>
     </view>
     <view class="shipInfo">
       <image src="/assets/img/dashboard/shipment@2x.png"></image>
