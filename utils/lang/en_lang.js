@@ -328,7 +328,8 @@ var Languague = {
       title2: ' Dashbord',
       placeholder: 'Shipment or Conatiner Ref.',
       shipment: 'Shipment View',
-      eat: 'EAT',
+      et: "Arrival",
+      eat: 'ETA',
       shipmentRef: 'Shipment ref',
       container: 'Container View',
       huoguihao: 'Container (Ref.)',
@@ -393,6 +394,7 @@ var Languague = {
       // 功能升级中,敬请期待
       functionIsUnderDevelopment: "Function coming soon, stay tuned",
       chaoshi: 'Request timeout, please try later',
+      accessDenied: 'Access Denied',
       // 系统繁忙,请稍后重试
       systemIsBusyNow: "System is busy, please try later",
       // 暂无更多数据

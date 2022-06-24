@@ -73,6 +73,12 @@ const request = ({
             reject(res.data)
           } else if (res.data.code == 404) {
             reject(res.data)
+          } else if (res.data.code == 403) {
+            wx.showToast({
+              title: languageUtil.languageVersion().lang.page.load.accessDenied,
+              icon: 'none'
+            })
+            reject(res.data)
           } else {
             wx.showToast({
               title: languageUtil.languageVersion().lang.page.load.systemIsBusyNow,

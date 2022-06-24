@@ -4,7 +4,7 @@
   <view class="oneOrder" wx:for="{{list}}" catchtap="toDetail" data-shipmentref="{{item.containerNumber}}">
     <view class="orderTop">
       <view class="topLeft">
-        <text>{{languageContent.eat}}</text>
+        <text>{{format.checkTime(item.dischargeDatePODLocal) < 0 ? languageContent.et : languageContent.eat}}</text>
       </view>
       <view class="topRight">{{language === 'zh' ? format.formatCnDateLocal(item.dischargeDatePODLocal) : format.formatEnDateLocal(item.dischargeDatePODLocal, '-', '')}}</view>
     </view>
@@ -28,7 +28,6 @@
           <view>
             <view class="status">{{item.statusLabel}}</view>
           </view>
-
           <view class="details2">
             <view class="detailLeft">
               <view class="address">{{item.locationName}}</view>

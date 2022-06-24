@@ -330,6 +330,7 @@ var Languague = {
       placeholder: '搜索订舱号或提单号',
       shipment: '装运视图',
       shipmentRef: '运输号码',
+      et: '到港时间',
       eat: '预计到港时间',
       container: '货柜视图',
       huoguihao: '货柜号',
@@ -394,6 +395,7 @@ var Languague = {
       // 功能升级中,敬请期待
       functionIsUnderDevelopment: "功能升级中，敬请期待",
       chaoshi: '请求超时，请稍后再试',
+      accessDenied: '抱歉，您暂无此页面权限',
       // 系统繁忙,请稍后重试
       systemIsBusyNow: "系统繁忙,请稍后重试",
       // 暂无更多数据

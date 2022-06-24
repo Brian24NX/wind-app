@@ -23,6 +23,6 @@ Page({
       wx.reLaunch({
         url: '/pages/Home/index',
       })
-    }, 1500)
+    }, 500)
   }
 })

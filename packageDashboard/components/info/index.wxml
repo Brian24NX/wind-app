@@ -10,7 +10,7 @@
       <view class="stepContent">
         <view class="stepContentTop">
           <view class="code">{{languageContent.RECEIPT}}</view>
-          <view class="topName">{{info.from || '-'}}</view>
+          <view class="topName">{{info.from !== info.portOfLoading ? info.from : '-'}}</view>
         </view>
       </view>
     </view>
@@ -47,7 +47,7 @@
       <view class="stepContent">
         <view class="stepContentTop">
           <view class="code">{{languageContent.DELIVERY}}</view>
-          <view class="topName">{{info.to || '-'}}</view>
+          <view class="topName">{{info.to !== info.portOfDischarge ? info.to : '-'}}</view>
         </view>
       </view>
     </view>
@@ -70,10 +70,10 @@
           <text class="title">{{languageContent.weight}}：</text>
           <text class="value">{{info.cwgth}}</text>
         </view>
-        <view>
+        <!-- <view>
           <text class="title">{{languageContent.volume}}：</text>
           <text class="value">{{info.volume}}</text>
-        </view>
+        </view> -->
       </view>
     </view>
     <view class="oneDetail">

@@ -1,5 +1,6 @@
 // packageDashboard/pages/shipment/detail/index.js
 const languageUtils = require('../../../../utils/languageUtils')
+const utils = require('../../../../utils/util')
 import {
   shipmentsDetail
 } from '../../../api/modules/dashboard'
@@ -55,6 +56,9 @@ Page({
       ccgId: wx.getStorageSync('ccgId'),
       bookingReference: this.data.bookingReference
     }).then(res=>{
+      res.data[0].containers.forEach(item => {
+        item.statusLabel = utils.formatHuoYunStatus(item.statusCode, this.data.language)
+      })
       this.setData({
         containers: res.data[0].containers,
         documents: res.data[0].documents,

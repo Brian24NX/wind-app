@@ -3,6 +3,21 @@ function toUpperCase(str) {
   return str.toUpperCase()
 }
 
+function formatStatus(status) {
+  if (status === "BOOKINGPROCESSING") {
+    return 'BOOKING PROCESSING   '
+  } else if (status === 'FINALBLISSUED') {
+    return 'FINAL BL ISSUED'
+  } else if (status === 'SIPROCESSING') {
+    return 'SI PROCESSING'
+  } else if (status === 'DRAFTBL') {
+    return 'DRAFT BL'
+  } else {
+    return status
+  }
+}
+
 module.exports = {
-  toUpperCase: toUpperCase
+  toUpperCase: toUpperCase,
+  formatStatus: formatStatus
 }

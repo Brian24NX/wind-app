@@ -176,6 +176,17 @@ function setChina(code, need) {
   }
 }
 
+function checkTime(date) {
+  if (!date) return 1
+  if (date.indexOf('T') > -1) {
+    date = date.split('T')[0].split('-').join('/') + ' ' + (date.split('T')[1]).substring(0, 8)
+  }
+  var dt = getDate(date);
+  var time = dt.getTime();
+  var nowTime = getDate().getTime();
+  return time - nowTime
+}
+
 module.exports = {
   formatEnDateLocal: formatEnDateLocal,
   formatCnDateLocal: formatCnDateLocal,
@@ -188,5 +199,6 @@ module.exports = {
   getShopName: getShopName,
   formatAmount: formatAmount,
   deleteStr: deleteStr,
-  setChina: setChina
+  setChina: setChina,
+  checkTime: checkTime
 }

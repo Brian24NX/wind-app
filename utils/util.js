@@ -476,6 +476,7 @@ function checkAccessToken() {
       wx.removeStorageSync('expires_time')
       return false
     } else {
+      wx.setStorageSync('expires_time', this.setExpiresTime(15 * 60 - 1))
       return true
     }
   }

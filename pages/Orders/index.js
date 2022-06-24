@@ -142,9 +142,9 @@ Page({
             if (oneRouteContainers.length) {
               oneRouteContainers = oneRouteContainers.map(oneRoute => {
                 oneRoute.portOfLoadingCountryCode = route.data.portOfLoadingCountryCode
-                oneRoute.portOfLoadingCountryName = route.data.portOfLoading.name
+                oneRoute.portOfLoadingCountryName = route.data.portOfLoading ? route.data.portOfLoading.name : ''
                 oneRoute.portOfDischargeCountryCode = route.data.portOfDischargeCountryCode
-                oneRoute.portOfDischargeCountryName = route.data.portOfDischarge.name
+                oneRoute.portOfDischargeCountryName = route.data.portOfDischarge ? route.data.portOfDischarge.name : ''
                 oneRoute.journeyLegs = item.journeyLegs
                 return oneRoute
               })
