@@ -39,8 +39,8 @@
       </view>
     </view>
     <view class="stepBottom">
-      <view>{{detail.portOfLoadingCountryName}} ({{detail.portOfLoadingCountryCode}})</view>
-      <view>{{detail.portOfDischargeCountryName}} ({{detail.portOfDischargeCountryCode}})</view>
+      <view>{{detail.portOfLoadingCountryName}}{{detail.portOfLoadingCountryCode ? '(' + detail.portOfLoadingCountryCode + ')' : ''}}</view>
+      <view>{{detail.portOfDischargeCountryName}}{{detail.portOfDischargeCountryCode ? '(' + detail.portOfDischargeCountryCode + ')' : ''}}</view>
     </view>
   </view>
   <view class="stepLists">

@@ -36,7 +36,7 @@ Page({
   onReachBottom() {
     if (this.data.loading || this.data.noMore) return
     this.setData({
-      page: this.data.page++,
+      page: ++this.data.page,
       loading: true
     })
     this.dealPaging()
@@ -54,8 +54,10 @@ Page({
   },
 
   setInput(e) {
+    let value = e.detail.value.toUpperCase()
+    let regvalue = value.trim()
     this.setData({
-      keyword: e.detail.value
+      keyword: regvalue
     })
   },
 
@@ -114,7 +116,7 @@ Page({
 
   dealPaging() {
     setTimeout(() => {
-      const list = allList.slice((this.data.page - 1) * pageSize, pageSize)
+      const list = allList.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
       list.forEach(item => {
         item.statusLabel = utils.formatHuoYunStatus(item.statusCode, this.data.language)
       })

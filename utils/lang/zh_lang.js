@@ -397,7 +397,7 @@ var Languague = {
       chaoshi: '请求超时，请稍后再试',
       accessDenied: '抱歉，您暂无此页面权限',
       // 系统繁忙,请稍后重试
-      systemIsBusyNow: "系统繁忙,请稍后重试",
+      systemIsBusyNow: "系统繁忙，请稍后重试",
       // 暂无更多数据
       noMoreData: '暂无更多数据',
       // 发送中
