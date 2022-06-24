@@ -2,11 +2,12 @@
 /* 资讯 */
 .zixunInfo {
   padding: 0 48rpx;
+  background-color: #ffffff;
 }
 
 .zixunInfo .stepLists {
   padding-left: 76rpx;
-  margin-top: 30rpx;
+  padding-top: 30rpx;
 }
 
 .zixunInfo .stepLists .oneStep {

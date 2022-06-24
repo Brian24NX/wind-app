@@ -1,11 +1,12 @@
 /* packageDashboard/pages/shipment/list/components/shipments/index.wxss */
-.componentShipmentList {
+/* .componentShipmentList {
   padding: 0 48rpx;
-}
+} */
 
 .componentShipmentList .oneShipment {
-  padding: 50rpx 0 20rpx;
-  border-bottom: 1rpx solid #eeeeee;
+  padding: 50rpx 48rpx 30rpx;
+  margin-bottom: 30rpx;
+  background-color: #ffffff;
 }
 
 .componentShipmentList .oneShipment:nth-last-of-type(1) {
@@ -18,12 +19,13 @@
   font-size: 28rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
-  color: #071E5D;
+  color: #6B7790;
   margin-bottom: 30rpx;
 }
 
 .componentShipmentList .oneShipment .topTime view:nth-last-of-type(1) {
   font-size: 32rpx;
+  color: #071E5D;
 }
 
 .componentShipmentList .oneShipment .shipInfo {

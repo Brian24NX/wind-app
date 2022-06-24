@@ -27,6 +27,8 @@
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #071E5D;
+  width: 350rpx;
+  text-align: right;
 }
 
 .componentDocumentList .oneDocument .fileContent {

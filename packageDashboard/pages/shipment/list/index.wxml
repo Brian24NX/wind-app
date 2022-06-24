@@ -19,10 +19,12 @@
     </view>
   </view>
   <view class="shipmentLists">
-    <view class="viewTypes">
-      <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
-        <view>{{languageContent[item]}}</view>
-        <view class="activedLine"></view>
+    <view class="viewTypesContainer">
+      <view class="viewTypes">
+        <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
+          <view>{{languageContent[item]}}</view>
+          <view class="activedLine"></view>
+        </view>
       </view>
     </view>
     <!-- 装运视图 -->

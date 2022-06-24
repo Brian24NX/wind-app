@@ -5,7 +5,9 @@ function toUpperCase(str) {
 
 function formatStatus(status) {
   if (status === "BOOKINGPROCESSING") {
-    return 'BOOKING PROCESSING   '
+    return 'BOOKING PROCESSING'
+  } else if (status === "BOOKINGINPROGRESS") {
+    return 'BOOKING IN PROGRESS'
   } else if (status === 'FINALBLISSUED') {
     return 'FINAL BL ISSUED'
   } else if (status === 'SIPROCESSING') {

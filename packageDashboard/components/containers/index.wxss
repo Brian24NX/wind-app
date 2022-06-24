@@ -1,11 +1,12 @@
 /* packageDashboard/pages/shipment/list/containers/index.wxss */
 /* 货柜视图 */
-.componentHuoguoContainer {
+/* .componentHuoguoContainer {
   padding: 0 48rpx;
-}
+} */
 .componentHuoguoContainer .oneOrder {
   background-color: #ffffff;
   margin-bottom: 30rpx;
+  padding: 0 48rpx;
 }
 
 .componentHuoguoContainer .oneOrder:nth-last-of-type(1) {
@@ -24,7 +25,7 @@
   font-size: 28rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
-  color: #071E5D;
+  color: #6B7790;
 }
 
 .componentHuoguoContainer .oneOrder .orderTop .topRight {
@@ -94,7 +95,7 @@
 
 
 .componentHuoguoContainer .oneOrder .orderBottom .oneBottom .details .detailLeft .address {
-  font-size: 48rpx;
+  font-size: 46rpx;
   font-family: Antonio-Bold;
   font-weight: bold;
   color: #04246A;

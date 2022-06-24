@@ -8,13 +8,15 @@ page {
 }
 
 .shipmentLists {
-  background-color: #ffffff;
   margin-top: 30rpx;
 }
 
+.shipmentLists .viewTypesList {
+  padding: 0 48rpx 10rpx;
+  background-color: #ffffff;
+}
+
 .shipmentLists .viewTypes {
-  width: 630rpx;
-  margin: 0 auto;
   height: 94rpx;
   display: flex;
   border-bottom: 1rpx solid #04246A;

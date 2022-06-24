@@ -50,7 +50,7 @@ function formatEnDateUtc(date, fuhao, type, hideWeek) {
     dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
   var weekStr = (type === 'short' ? weeks[wn] : week[wn])
   if (!fuhao) {
-    return (!hideWeek ? weekStr + ', ' : '') + m[mn] + " " + dn + ", " + dt.getFullYear()
+    return (!hideWeek ? weekStr + ', ' : '') + dn + " " + m[mn] + ", " + dt.getFullYear()
   } else {
     return (!hideWeek ? weekStr + ', ' : '') + dn + fuhao + m[mn] + fuhao + dt.getFullYear()
   }
