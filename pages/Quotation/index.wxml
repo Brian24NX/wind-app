@@ -4,7 +4,7 @@
 
 <view class="priceContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
   <view class="qidai">
-    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/qidai.png"></image>
+    <image src="https://wind.cma-cgm.com/images/qidai.png"></image>
     <text style="padding: 0 50rpx;">{{load.functionIsUnderDevelopment}}</text>
   </view>
 </view>

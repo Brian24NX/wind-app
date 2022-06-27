@@ -32,24 +32,20 @@ App(wx.webfunny({
     wx.removeStorageSync('podobject')
     wx.removeStorageSync('details')
     wx.setStorageSync('setHangXian', false)
-    this.globalData.version = wx.getStorageSync('language') ? wx.getStorageSync('language') : 'zh'
-    const antonioBold = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Bold.ttf' + '")'
-    const antonioRegular = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Regular.ttf' + '")'
-    const antonioLight = 'url("' + config[config.dev_env].url + '/ttf/Antonio-Light.ttf' + '")'
     wx.loadFontFace({
       global: true,
       family: 'Antonio-Bold',
-      source: antonioBold
+      source: 'url("https://wind.cma-cgm.com/ttf/Antonio-Bold.ttf")'
     })
     wx.loadFontFace({
       global: true,
       family: 'Antonio-Regular',
-      source: antonioRegular
+      source: 'url("https://wind.cma-cgm.com/ttf/Antonio-Regular.ttf")'
     })
     wx.loadFontFace({
       global: true,
       family: 'Antonio-Light',
-      source: antonioLight
+      source: 'url("https://wind.cma-cgm.com/ttf/Antonio-Light.ttf")'
     })
     // 自定义头部
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();

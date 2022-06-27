@@ -5,7 +5,7 @@
     <text>About </text>
     <text>CMA CGM</text>
   </view>
-  <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/about.png" class="aboutThumb"></image>
+  <image src="https://wind.cma-cgm.com/images/about.png" class="aboutThumb"></image>
   <view class="oneDuan">达飞，由鲁道夫 • 萨德领导的世界领先航运物流集团，服务覆盖全球五大洲420多个港口。2021年，集团旗下566艘船舶完成了近2200万标准集装箱的运输量。子公司基华物流作为全球顶尖物流提供商，每年处理47.4万吨空运货物和2100万吨陆运货物。凭借基华物流和达飞空运部，达飞集团不断推陈出新，以开创性的海陆空货运和物流解决方案，提供端到端服务，助力客户实现业绩增长。</view>
   <view class="oneDuan">Led by Rodolphe Saadé, the CMA CGM Group, a global leader in shipping and logistics, serves more than 420 ports around the world on five continents. Backed by a fleet of 566 vessels, in 2021 the Group transported 22 million TEU (twenty-foot equivalent units) containers. With its subsidiary CEVA Logistics, a world leader in logistics, which transports 474,000 tons of air freight and more than 21 million tons of land freight each year, and its air freight division CMA CGM AIR CARGO, the CMA CGM Group is continually innovating to offer its customers a complete and increasingly efficient range of new shipping, land, air and logistics solutions. </view>
   <view class="oneDuan">达飞致力于引领航运业能源转型，不仅率先使用替代燃料，还设定了“2050年实现碳中和”的集团目标。</view>

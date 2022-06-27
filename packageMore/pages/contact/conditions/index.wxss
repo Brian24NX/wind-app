@@ -8,7 +8,7 @@ page {
 }
 
 .contactContainer .topContainer {
-  background-image: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/contact.png);
+  background-image: url(https://wind.cma-cgm.com/images/contact.png);
 }
 
 .contactContainer .blockContainer {

@@ -8,7 +8,7 @@ page {
 }
 
 .cmaContainer .topContainer {
-  background-image: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/CMA.png);
+  background-image: url(https://wind.cma-cgm.com/images/CMA.png);
   margin: 0 auto 30rpx;
   font-family: Antonio-Regular;
   font-weight: 400;

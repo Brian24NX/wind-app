@@ -9,7 +9,7 @@ page {
 
 .chargeDetail .chargeTops {
   width: 100%;
-  background: url(https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/chargeFinderBg.png) no-repeat;
+  background: url(https://wind.cma-cgm.com/images/chargeFinderBg.png) no-repeat;
   background-size: 100%;
   padding: 30rpx;
 }

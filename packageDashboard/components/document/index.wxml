@@ -31,7 +31,7 @@
     </view>
   </view>
   <view class="dashboardEmpty" wx:if="{{!list.length && !loading}}">
-    <image src="https://ycyy-db-01.obs.cn-east-3.myhuaweicloud.com/test/empty.png" mode="aspectFit"></image>
+    <image src="https://wind.cma-cgm.com/images/empty.png" mode="aspectFit"></image>
     <view>{{documentContent.noData}}</view>
   </view>
 </view>
