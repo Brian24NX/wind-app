@@ -68,7 +68,8 @@ Page({
   changeType(e) {
     this.setData({
       current: e.currentTarget.dataset.type,
-      keyword: ''
+      keyword: '',
+      list: []
     })
     this.search()
   },

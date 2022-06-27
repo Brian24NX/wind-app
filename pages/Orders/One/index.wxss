@@ -120,6 +120,10 @@
   color: #071E5D;
 }
 
+.oneOrderContainer .stepContainers .stepBottom view:nth-last-of-type(1) {
+  text-align: right;
+}
+
 .oneOrderContainer .stepLists {
   padding-left: 56rpx;
   margin-top: 40rpx;
