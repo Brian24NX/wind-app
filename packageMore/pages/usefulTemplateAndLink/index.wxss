@@ -7,6 +7,71 @@ page {
   padding: 30rpx;
 }
 
+.userfulContainer .inputContainer {
+  padding-left: 0;
+}
+
+.categoryLists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180rpx;
+  height: 100%;
+  border-right: 1rpx solid #e2e2e2;
+  margin-right: 16rpx;
+  color: #04246A;
+  font-size: 24rpx;
+}
+
+.userfulContainer .inputs {
+  width: 310rpx;
+}
+
+.userfulContainer .categoryList {
+  white-space: nowrap;
+  border-bottom: 1rpx solid #04246A;
+  box-shadow: 2rpx 0 2rpx -2rpx rgba(0, 0, 0, 0.22);
+  padding: 0 4rpx;
+}
+
+.userfulContainer .categoryList .oneCategory {
+  display: inline-block;
+  padding-bottom: 10rpx;
+  margin-right: 40rpx;
+  font-size: 28rpx;
+  color: #071E5D;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  min-width: 80rpx;
+  text-align: center;
+}
+
+.userfulContainer .categoryList .oneCategory:nth-last-of-type(1) {
+  margin-right: 0;
+}
+
+.userfulContainer .categoryList .categoryActived {
+  position: relative;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+}
+
+.userfulContainer .categoryList .categoryActived .line {
+  width: 80rpx;
+  height: 8rpx;
+  background-color: #E20202;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.categoryLists image {
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 20rpx;
+}
+
 .userfulContainer .topContainer {
   background-image: url(https://wind.cma-cgm.com/images/userful.png);
 }
@@ -14,41 +79,7 @@ page {
 .userfulContainer .usefulListContainer {
   background-color: #ffffff;
   margin: 30rpx 0 0;
-  padding: 0 46rpx 30rpx;
-}
-
-.userfulContainer .usefulListContainer .usefulTypes {
-  height: 94rpx;
-  display: flex;
-  border-bottom: 1rpx solid #04246A;
-}
-
-.userfulContainer .usefulListContainer .usefulTypes .oneType {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  font-size: 32rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: #04246A;
-}
-
-.userfulContainer .usefulListContainer .usefulTypes .typeActived {
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: #04246A;
-  position: relative;
-}
-
-.userfulContainer .usefulListContainer .usefulTypes .typeActived .activedLine {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120rpx;
-  height: 8rpx;
-  background-color: #E20202;
+  padding: 40rpx 46rpx 30rpx;
 }
 
 .userfulContainer .usefulListContainer .templateList .oneTemplate {

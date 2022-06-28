@@ -3,6 +3,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "loading": "../../../../components/loading/index",
-    "email": "../../../../components/email/index"
+    "email": "../../../../components/email/index",
+    "custom-picker": "../../../components/customPicker/index"
   }
 }

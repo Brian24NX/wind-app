@@ -1,6 +1,7 @@
 // packageMore/pages/usefulTemplateAndLink/index.js
 const languageUtils = require('../../../utils/languageUtils')
 import {
+  categoryList,
   templateList,
   templateSendEmail
 } from '../../api/modules/more'
@@ -19,15 +20,28 @@ Page({
     emptyContent: {},
     language: 'zh',
     keyword: '',
-    current: 'template',
-    typeList: ['template', 'link'],
     emailPath: '',
     showEmail: false,
     pageNum: 1,
     loading: true,
     noMore: false,
     noData: false,
-    list: []
+    categoryId: 0,
+    categoryList: [],
+    list: [],
+    current: 'template',
+    defaultIndex: 0,
+    showPopup: false,
+    valueKey: '',
+    columns: [{
+      id: 'template',
+      labelCn: '模版',
+      labelEn: 'Template'
+    }, {
+      id: 'link',
+      labelCn: '链接',
+      labelEn: 'Link'
+    }]
   },
 
   /**
@@ -42,6 +56,10 @@ Page({
       language: languageUtils.languageVersion().lang.page.langue,
       emptyContent: languageUtils.languageVersion().lang.page.empty
     })
+    this.setData({
+      valueKey: this.data.language === 'zh' ? 'labelCn' : 'labelEn'
+    })
+    this.getCategoryList()
     this.search()
   },
 
@@ -65,13 +83,48 @@ Page({
   },
 
   // 切换类型
-  changeType(e) {
+  changeType() {
+    this.setData({
+      defaultIndex: this.data.columns.findIndex(e => e.id === this.data.current) > -1 ? this.data.columns.findIndex(e => e.id === this.data.current) : 0,
+      showPopup: true
+    })
+  },
+  onConfirm(e) {
+    console.log(e)
+    this.setData({
+      categoryId: 0,
+      current: e.detail.id,
+      showPopup: false
+    })
+    this.getCategoryList()
+    this.search()
+  },
+  onClose() {
+    this.setData({
+      showPopup: false
+    })
+  },
+  changeTypes(e) {
     this.setData({
       current: e.currentTarget.dataset.type,
       keyword: '',
       list: []
     })
     this.search()
+  },
+
+  // 分类列表
+  getCategoryList() {
+    categoryList({type: this.data.current === 'template' ? 6 : 3}).then(res=>{
+      const all = [{
+        id: 0,
+        category: 'All',
+        categoryCn: '全部'
+      }]
+      this.setData({
+        categoryList: all.concat(res.data)
+      })
+    })
   },
 
   // 输入框
@@ -85,6 +138,13 @@ Page({
   deleteValue() {
     this.setData({
       keyword: ''
+    })
+    this.search()
+  },
+
+  changeCategory(e) {
+    this.setData({
+      categoryId: e.currentTarget.dataset.id
     })
     this.search()
   },
@@ -106,6 +166,7 @@ Page({
       pageNum: this.data.pageNum,
       pageSize: pageSize,
       keyWord: this.data.keyword,
+      categoryId: this.data.categoryId,
       type: this.data.current === 'template' ? 1 : 2
     }
     this.setData({
