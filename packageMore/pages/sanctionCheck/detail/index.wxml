@@ -9,6 +9,6 @@
   <view class="type">{{languageContent.type}}: {{sanctionDetail.type || '-'}}</view>
   <view class="type">{{languageContent.code}}: {{sanctionDetail.referenceNo || '-'}}</view>
   <view class="sanctionContent">
-    <rich-text nodes="{{language === 'zh' ? sanctionDetail.remarkCn : sanctionDetail.remarkEn}}"></rich-text>
+    <rich-text style="line-height: 1.6;" nodes="{{language === 'zh' ? sanctionDetail.remarkCn : sanctionDetail.remarkEn}}"></rich-text>
   </view>
 </view>

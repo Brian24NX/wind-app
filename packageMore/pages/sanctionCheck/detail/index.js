@@ -36,10 +36,10 @@ Page({
       id: this.data.id
     }).then(res=>{
       if (res.data.remarkCn) {
-        res.data.remarkCn = res.data.remarkCn.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('</p>\n<p>', '</p><br><p>')
+        res.data.remarkCn = res.data.remarkCn.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('<p>&nbsp;</p>', '</p><br><p>')
       }
       if (res.data.remarkEn) {
-        res.data.remarkEn = res.data.remarkEn.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('</p>\n<p>', '</p><br><p>')
+        res.data.remarkEn = res.data.remarkEn.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('<p>&nbsp;</p>', '</p><br><p>')
       }
       this.setData({
         sanctionDetail: res.data

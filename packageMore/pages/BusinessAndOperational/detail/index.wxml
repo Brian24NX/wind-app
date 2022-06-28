@@ -9,7 +9,7 @@
   </view>
   <view class="businessTime">{{language === 'zh' ? format.formatCnDateUtc(businessDetail.publishDate) : format.formatEnDateUtc(businessDetail.publishDate)}}</view>
   <view class="rich">
-    <rich-text nodes="{{businessDetail.content}}"></rich-text>
+    <rich-text style="line-height: 1.6;" nodes="{{businessDetail.content}}"></rich-text>
   </view>
   <view class="fileLists" wx:if="{{businessDetail.filepath}}" catchtap="preview">
     <image src="/assets/img/more/pdf@2x.png" class="fileIcon"></image>

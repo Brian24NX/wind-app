@@ -196,7 +196,7 @@ function formatHuoYunStatus(code, language) {
     {
       code: 'MSF',
       labelEn: "In shipper's owned full",
-      labelCn: "In shipper's owned full"
+      labelCn: "托运人自有整柜进集装箱堆场"
     },
     {
       code: 'MSO',
@@ -206,7 +206,7 @@ function formatHuoYunStatus(code, language) {
     {
       code: 'RSF',
       labelEn: "Out shipper's owned full",
-      labelCn: "Out shipper's owned full"
+      labelCn: "托运人自有整柜出集装箱堆场"
     },
     {
       code: 'TDF',
@@ -260,8 +260,8 @@ function formatHuoYunStatus(code, language) {
     },
     {
       code: 'TOF',
-      labelEn: "",
-      labelCn: ""
+      labelEn: "Loaded on Board",
+      labelCn: "装船"
     },
     {
       code: 'IDF',
@@ -312,6 +312,16 @@ function formatHuoYunStatus(code, language) {
       code: 'ETA_LOAD',
       labelEn: "ETA_LOAD",
       labelCn: "装货"
+    },
+    {
+      code: 'RSM',
+      labelEn: "Out shipper's owned empty",
+      labelCn: "托运人自有空柜出集装箱堆场"
+    },
+    {
+      code: 'MDE',
+      labelEn: "EMPTY IN DEPOT",
+      labelCn: "集装箱在堆场"
     }
   ]
   const index = codeArr.findIndex(item => item.code === code)

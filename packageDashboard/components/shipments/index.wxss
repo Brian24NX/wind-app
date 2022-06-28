@@ -70,7 +70,6 @@
   color: #071E5D;
   text-align: right;
   width: 280rpx;
-  word-break: break-all;
 }
 
 .componentShipmentList .oneShipment .stepLists {

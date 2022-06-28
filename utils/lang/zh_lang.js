@@ -132,7 +132,7 @@ var Languague = {
     },
     // 查询结果
     queryRes: {
-      topTitle: '查询',
+      topTitle: '追踪结果',
       title: '追踪结果',
       placeholder: '输入货柜号，提单号或订舱号',
       yuji: '目的港预计停泊时间',

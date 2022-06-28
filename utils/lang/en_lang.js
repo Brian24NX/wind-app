@@ -131,7 +131,7 @@ var Languague = {
     },
     // 查询结果
     queryRes: {
-      topTitle: 'query',
+      topTitle: 'Tracking Details',
       title: 'Tracking Details',
       placeholder: 'Container, Bill of lading or Booking Number',
       yuji: 'ETA Berth at POD',
@@ -139,7 +139,7 @@ var Languague = {
       shengyu: 'Remaining',
       tian: 'Days',
       export: 'Export PDF',
-      toEmail: 'Sand to Email',
+      toEmail: 'Send to Email',
       huoguihao: 'Container (Ref.)',
       dingdans: 'Container (Ref.)',
       xiangxing: 'Equipment Type',
@@ -196,7 +196,7 @@ var Languague = {
       day: 'DAY',
       // 转运
       zhuanyun: 'transhipment',
-      apply: 'apply',
+      apply: 'Apply',
       //排序
       sortBy: "Sort by",
       //最快离港
@@ -306,7 +306,7 @@ var Languague = {
     },
     // 设置语言
     setLanguage: {
-      title: 'Set Language'
+      title: 'Language Setting'
     },
     // 文件概览
     document: {
@@ -323,16 +323,16 @@ var Languague = {
       noData: 'No document available yet'
     },
     shipment: {
-      title: 'Shipment Dashbord',
+      title: 'Shipment Dashboard',
       title1: 'Shipment',
-      title2: ' Dashbord',
+      title2: ' Dashboard',
       placeholder: 'Shipment or Conatiner Ref.',
       shipment: 'Shipment View',
       et: "Arrival",
       eat: 'ETA',
-      shipmentRef: 'Shipment ref',
+      shipmentRef: 'Shipment Ref.',
       container: 'Container View',
-      huoguihao: 'Container (Ref.)',
+      huoguihao: 'Container Ref.',
       xiangxing: 'Equipment Type',
       location: 'Location',
       time: 'Time',

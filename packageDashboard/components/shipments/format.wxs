@@ -14,6 +14,8 @@ function formatStatus(status) {
     return 'SI PROCESSING'
   } else if (status === 'DRAFTBL') {
     return 'DRAFT BL'
+  } else if (status === 'SIINPROGRESS') {
+    return 'SI IN PROGRESS'
   } else {
     return status
   }

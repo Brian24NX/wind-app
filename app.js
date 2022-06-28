@@ -32,6 +32,7 @@ App(wx.webfunny({
     wx.removeStorageSync('podobject')
     wx.removeStorageSync('details')
     wx.setStorageSync('setHangXian', false)
+    this.globalData.version = wx.getStorageSync('language') ? wx.getStorageSync('language') : 'zh'
     wx.loadFontFace({
       global: true,
       family: 'Antonio-Bold',
