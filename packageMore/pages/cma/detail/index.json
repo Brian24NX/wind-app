@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "CMA CGM+",
-  "usingComponents": {}
+  "usingComponents": {
+    "mp-html": "mp-html"
+  }
 }
