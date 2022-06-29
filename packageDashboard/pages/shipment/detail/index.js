@@ -55,16 +55,25 @@ Page({
     shipmentsDetail({
       ccgId: wx.getStorageSync('ccgId'),
       bookingReference: this.data.bookingReference
-    }).then(res=>{
-      res.data[0].containers.forEach(item => {
-        item.statusLabel = utils.formatHuoYunStatus(item.statusCode, this.data.language)
-      })
-      this.setData({
-        containers: res.data[0].containers,
-        documents: res.data[0].documents,
-        info: res.data[0].info,
-        loading: false
-      })
+    }).then(res => {
+      if (res.data && res.data.length) {
+        res.data[0].containers.forEach(item => {
+          item.statusLabel = utils.formatHuoYunStatus(item.statusCode, this.data.language)
+        })
+        this.setData({
+          containers: res.data[0].containers,
+          documents: res.data[0].documents,
+          info: res.data[0].info,
+          loading: false
+        })
+      } else {
+        this.setData({
+          containers: [],
+          documents: [],
+          info: {},
+          loading: false
+        })
+      }
     })
   }
 })

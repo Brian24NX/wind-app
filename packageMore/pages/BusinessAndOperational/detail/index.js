@@ -56,7 +56,7 @@ Page({
         res.data.emailPath = res.data.filepath.split('wind/')[1]
       }
       if (res.data.content) {
-        res.data.content = res.data.content.replace(/\<img/gi, '<img style="max-width: 100%;height: auto;" ').replaceAll('<p>&nbsp;</p>', '</p><br><p>')
+        res.data.content = res.data.content.replaceAll('<p>&nbsp;</p>', '</p><br><p>')
       }
       this.setData({
         businessDetail: res.data
