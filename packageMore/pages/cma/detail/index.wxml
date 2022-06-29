@@ -7,6 +7,6 @@
     <view>{{language === 'zh' ? format.formatCnDateUtc(newsDetail.publishDate || newsDetail.createTime) : format.formatEnDateUtc(newsDetail.publishDate || newsDetail.createTime)}}</view>
     <image catchtap="zan" src="{{zanStatus ? '/assets/img/more/dianzan_2@2x.png' : '/assets/img/more/dianzan_1@2x.png'}}"></image>
   </view>
-  <rich-text style="line-height: 1.6;" nodes="{{newsDetail.content}}"></rich-text>
+  <rich-text style="line-height: 1.6;word-break: break-word;" nodes="{{newsDetail.content}}" space="nbsp"></rich-text>
 </view>
 <web-view wx:if="{{newsDetail.historyFlag === 1}}" src="{{newsDetail.originalLink}}"></web-view>

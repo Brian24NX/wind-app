@@ -35,12 +35,6 @@ Page({
     sanctionCommodityDetail({
       id: this.data.id
     }).then(res=>{
-      if (res.data.remarkCn) {
-        res.data.remarkCn = res.data.remarkCn.replaceAll('<p>&nbsp;</p>', '</p><br><p>')
-      }
-      if (res.data.remarkEn) {
-        res.data.remarkEn = res.data.remarkEn.replaceAll('<p>&nbsp;</p>', '</p><br><p>')
-      }
       this.setData({
         sanctionDetail: res.data
       })

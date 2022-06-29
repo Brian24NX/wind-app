@@ -40,9 +40,6 @@ Page({
   // 获取新闻详情
   getNewsDetail() {
     newsDetail({id: this.data.id}).then(res=>{
-      if (res.data.content) {
-        res.data.content = res.data.content.replaceAll('<p>&nbsp;</p>', '</p><br><p>')
-      }
       this.setData({
         newsDetail: res.data
       })

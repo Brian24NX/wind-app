@@ -55,9 +55,6 @@ Page({
         res.data.filepath = config[config.dev_env].fileUrl + res.data.filepath
         res.data.emailPath = res.data.filepath.split('wind/')[1]
       }
-      if (res.data.content) {
-        res.data.content = res.data.content.replaceAll('<p>&nbsp;</p>', '</p><br><p>')
-      }
       this.setData({
         businessDetail: res.data
       })

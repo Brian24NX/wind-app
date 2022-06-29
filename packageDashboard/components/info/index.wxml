@@ -24,7 +24,7 @@
           <view class="code">{{languageContent.POL}}</view>
           <view class="topName">{{info.portOfLoading || '-'}}</view>
         </view>
-        <view class="stepTime">{{language === 'zh' ? format.formatCnDateLocal(info.estimatedDateOfDeparture, false, true) : format.formatEnDateLocal(info.estimatedDateOfDeparture, '-', '', false, true)}}</view>
+        <view class="stepTime">{{language === 'zh' ? format.formatCnDateLocal(info.estimatedDateOfDeparture) : format.formatEnDateLocal(info.estimatedDateOfDeparture, '-', '')}}</view>
       </view>
     </view>
     <view class="oneStep">

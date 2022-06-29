@@ -38,9 +38,6 @@ Page({
     cmaNewsDetail({
       id: this.data.id
     }).then(res => {
-      if (res.data.content) {
-        res.data.content = res.data.content.replaceAll('<p>&nbsp;</p>', '</p><br><p>')
-      }
       this.setData({
         newsDetail: res.data
       })
