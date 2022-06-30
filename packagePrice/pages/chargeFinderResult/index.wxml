@@ -63,7 +63,7 @@
     </view>
     <view class="noData" wx:if="{{!list.length && !loading}}">
       <image src="/assets/img/search/error@2x.png"></image>
-      <text>未找到相关数据</text>
+      <text>{{languageContent.noChargeData}}</text>
     </view>
   </view>
   <view class="charges" wx:if="{{additionalInformation.length}}">
