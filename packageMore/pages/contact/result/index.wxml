@@ -20,7 +20,7 @@
         <image src="/assets/img/more/email@2x.png"></image>
         <view class="oneContent noLine">
           <view>{{languageContent.email}}：</view>
-          <view catchtap="copyEmail" data-email="SHG.LINWANG@cma-cgm.com">{{item.email}}</view>
+          <view catchtap="copyEmail" data-email="{{item.email}}">{{item.email}}</view>
         </view>
       </view>
     </view>
