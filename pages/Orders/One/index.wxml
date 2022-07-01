@@ -51,7 +51,7 @@
         <view class="leftLine {{item.stepStatus === 'past' ? 'past' : ''}}" wx:if="{{index !== stepList.length - 1}}"></view>
       </view>
       <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
-        <view class="stepSatus">{{languageContent.language === 'en' ? item.status.name : item.status.statusLabel}}</view>
+        <view class="stepSatus">{{item.status.statusLabel}}</view>
         <view class="stepTime">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.orginDate, '-', 'short', false, true) : filters.formatCnDateLocal(item.orginDate, false, true)}} {{item.pointLocation.name}}, {{item.countryCode}}</view>
       </view>
     </view>
