@@ -7,7 +7,7 @@ function formatEnDateLocal(date, fuhao, type, hideWeek, hideTime) {
   var dt = getDate(date);
   var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec"];
   var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  var weeks = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+  var weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   var mn = dt.getMonth(),
     wn = dt.getDay(),
     dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate(),
@@ -44,7 +44,7 @@ function formatEnDateUtc(date, fuhao, type, hideWeek, needTime) {
   var dt = getDate(date);
   var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec"];
   var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  var weeks = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+  var weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   var mn = dt.getMonth(),
     wn = dt.getDay(),
     dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()

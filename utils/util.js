@@ -160,12 +160,12 @@ function formatHuoYunStatus(code, language) {
     },
     {
       code: 'IIT',
-      labelEn: "Received Full Exp for Transfer/Received for Export Transfer",
+      labelEn: "Received Full Exp for Transfer",
       labelCn: '已收到做出口转移'
     },
     {
       code: 'IRI',
-      labelEn: "Arrival at dest full import/ReceivedForImportTransfer/Gate in Ramp for Transfer",
+      labelEn: "Arrival at dest full import",
       labelCn: '已收到做进口转移'
     },
     {
@@ -185,7 +185,7 @@ function formatHuoYunStatus(code, language) {
     },
     {
       code: 'MES',
-      labelEn: "Empty For Quay/CFS Stuffing",
+      labelEn: "Empty For Quay",
       labelCn: '集装箱货运站装货'
     },
     {
@@ -210,12 +210,12 @@ function formatHuoYunStatus(code, language) {
     },
     {
       code: 'TDF',
-      labelEn: "Tship discharged full/Discharged in Transshipment",
+      labelEn: "Tship discharged full",
       labelCn: "转运港卸货"
     },
     {
       code: 'XLR',
-      labelEn: "Full Load on rail for export/Loaded on Rail for Export",
+      labelEn: "Full Load on rail for export",
       labelCn: "出口铁路装载"
     },
     {
@@ -235,7 +235,7 @@ function formatHuoYunStatus(code, language) {
     },
     {
       code: 'IRA',
-      labelEn: "Train arrival for import/Arrival from Rail for Import",
+      labelEn: "Train arrival for import",
       labelCn: "进口铁路到达"
     },
     {
@@ -275,12 +275,12 @@ function formatHuoYunStatus(code, language) {
     },
     {
       code: 'TAF',
-      labelEn: "Containerintransitforimport/Gate out from Port terminal to Ramp",
+      labelEn: "Containerintransitforimport",
       labelCn: "集装箱中转进口"
     },
     {
       code: 'PSI',
-      labelEn: "ContainerOnRailForImport/Arrival by Rail at Ramp for Import",
+      labelEn: "ContainerOnRailForImport",
       labelCn: "集装箱进口上轨"
     },
     {
@@ -290,7 +290,7 @@ function formatHuoYunStatus(code, language) {
     },
     {
       code: 'PSE',
-      labelEn: "ContainerOnRailForExport/Arrival by Rail at Ramp for Export",
+      labelEn: "ContainerOnRailForExport",
       labelCn: "集装箱出口上轨"
     },
     {
