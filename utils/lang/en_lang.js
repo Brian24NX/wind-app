@@ -81,7 +81,7 @@ var Languague = {
       //新闻咨询
       news: "News Center",
       // 在线服务
-      onlineServices: 'Online Services',
+      onlineServices: 'Online Service',
       //增值服务
       valueAddedService: "Customer Advisory",
       template: 'Template & Link',
