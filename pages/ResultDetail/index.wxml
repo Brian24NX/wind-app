@@ -102,8 +102,8 @@
             <view class="timeContainer">{{language === 'zh' ? filters.formatCnDateLocal(item.pointFrom.departureDate, false, true) : filters.formatEnDateLocal(item.pointFrom.departureDate, '-', '', false, true)}}</view>
             <block wx:if="{{!index}}">
               <view class="nameContainer">
-                <view class="names">{{item.pointFrom.location.name}}，</view>
-                <view class="code">{{filters.str(item.pointFrom.location.internalCode)}}</view>
+                <view class="names">{{item.pointFrom.location.name}}</view>
+                <view class="code">{{filters.setChina(item.pointFrom.location.internalCode, true)}}</view>
                 <view class="tags tags2">{{languageContent.coc}}</view>
               </view>
             </block>
