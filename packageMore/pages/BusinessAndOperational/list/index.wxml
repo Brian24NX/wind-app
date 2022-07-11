@@ -12,8 +12,8 @@
     </view>
   </view>
   <view class="businessLists">
-    <scroll-view class="categoryList" scroll-x>
-      <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
+    <scroll-view class="categoryList" scroll-x scroll-with-animation scroll-left="{{scrollLeft}}">
+      <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" id="categoryId-{{item.id}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
         <text>{{language === 'zh' ? item.categoryCn : item.category}}</text>
         <view class="line"></view>
       </view>

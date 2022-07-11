@@ -41,13 +41,25 @@ Page({
       id: 'link',
       labelCn: '链接',
       labelEn: 'Link'
-    }]
+    }],
+    scrollLeft: 0,
+    scrollViewWidth: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
+  onLoad(options) {
+    if (options.current) {
+      this.setData({
+        current: options.current
+      })
+    }
+    if (options.categoryId) {
+      this.setData({
+        categoryId: Number(options.categoryId)
+      })
+    }
     wx.setNavigationBarTitle({
       title: languageUtils.languageVersion().lang.page.useful.title,
     })
@@ -124,6 +136,13 @@ Page({
       this.setData({
         categoryList: all.concat(res.data)
       })
+      if (!this.data.scrollViewWidth) {
+        wx.createSelectorQuery().select('.categoryList').boundingClientRect((rect) => {
+          this.setData({
+            scrollViewWidth: Math.round(rect.width),
+          })
+        }).exec()
+      }
     })
   },
 
@@ -143,10 +162,16 @@ Page({
   },
 
   changeCategory(e) {
+    const categoryId = e.currentTarget.dataset.id
     this.setData({
-      categoryId: e.currentTarget.dataset.id
+      categoryId: categoryId
     })
     this.search()
+    wx.createSelectorQuery().select('#categoryId-' + categoryId).boundingClientRect((rect) => {
+      this.setData({
+        scrollLeft: e.currentTarget.offsetLeft - this.data.scrollViewWidth / 2 + rect.width / 2
+      })
+    }).exec()
   },
 
   // 搜索

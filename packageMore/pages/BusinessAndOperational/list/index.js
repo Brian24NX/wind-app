@@ -22,6 +22,8 @@ Page({
     keyword: '',
     categoryId: '',
     categoryList: [],
+    scrollLeft: 0,
+    scrollViewWidth: 0
   },
 
   /**
@@ -88,6 +90,13 @@ Page({
       this.setData({
         categoryList: all.concat(res.data)
       })
+      if (!this.data.scrollViewWidth) {
+        wx.createSelectorQuery().select('.categoryList').boundingClientRect((rect) => {
+          this.setData({
+            scrollViewWidth: Math.round(rect.width),
+          })
+        }).exec()
+      }
     })
   },
 
@@ -98,6 +107,11 @@ Page({
       categoryId
     })
     this.resetList()
+    wx.createSelectorQuery().select('#categoryId-' + categoryId).boundingClientRect((rect) => {
+      this.setData({
+        scrollLeft: e.currentTarget.offsetLeft - this.data.scrollViewWidth / 2 + rect.width / 2
+      })
+    }).exec()
   },
 
   resetList() {
