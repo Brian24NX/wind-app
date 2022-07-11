@@ -13,4 +13,7 @@ $RECYCLE.BIN/
 # Node.js
 node_modules/
 
+# miniProgram
+miniprogram_npm/
+
 .gitkeep
