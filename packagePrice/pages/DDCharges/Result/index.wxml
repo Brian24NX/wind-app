@@ -19,11 +19,11 @@
     </view>
     <view class="typeLists">
       <view class="oneTypes">
-        <image src="/assets/img/price/mode@2x.png"></image>
+        <image src="/assets/img/price/equipmentSize@2x.png"></image>
         <view>{{chargeFinderSearchKey.equipmentSizeName}}</view>
       </view>
       <view class="oneTypes">
-        <image src="/assets/img/price/date@2x.png"></image>
+        <image src="/assets/img/price/specail@2x.png"></image>
         <view>{{languageContent[chargeFinderSearchKey.specialCargo] || '-'}}</view>
       </view>
     </view>
