@@ -127,7 +127,8 @@ var Languague = {
       huowu: 'Shipment Tracking',
       gzp: 'Sanction Check',
       gzfl: 'D & D Prices',
-      cxfl: 'Charge Finder'
+      cxfl: 'Charge Finder',
+      ddCharges: 'D & D Charges'
     },
     // 查询结果
     queryRes: {
@@ -377,6 +378,28 @@ var Languague = {
       detailTitle: 'Charge Detail',
       main: 'Main Charges',
       other: 'Other Charges',
+      noChargeData: 'No date found'
+    },
+    // D&D Charges
+    DDCharges: {
+      title: 'D&D Charges',
+      title1: 'D&D ',
+      title2: 'Charges',
+      //卸货港
+      portOfDischarge: "Port of Discharge",
+      //起运港
+      protOfLanding: "Port of Loading",
+      //港口名称/代码
+      name: "Name/code",
+      type: 'Equipment Size',
+      specialCargo: "Special Cargo",
+      Refrigerated: 'Refrigerated',
+      Hazardous: 'Hazardous',
+      Oversized: 'Oversized',
+      search: 'Search',
+      detailTitle: 'D&D Charges',
+      import: 'Import',
+      export: 'Export',
       noChargeData: 'No date found'
     },
     popupBtn: {

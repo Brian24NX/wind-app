@@ -1,0 +1,241 @@
+/* packagePrice/pages/DDCharges/Search/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.chargeContainer {
+  padding-bottom: 40rpx;
+  padding-top: 30rpx;
+}
+
+.placeholder {
+  font-size: 28rpx;
+  color: #DFDFDF;
+  font-style: italic;
+}
+
+.chargeContainer .routeTitles {
+  font-size: 56rpx;
+  color: #04246A;
+  font-weight: bold;
+  font-family: Antonio-Bold;
+  display: flex;
+  align-items: center;
+  padding-left: 50rpx;
+  margin-bottom: 20rpx;
+}
+
+.chargeContainer .route2 {
+  color: #4468BA;
+}
+
+.chargeContainer .redline {
+  width: 8rpx;
+  height: 50rpx;
+  background: #E20202;
+  margin: 0 20rpx;
+}
+
+.chargeContainer .searchLists {
+  width: 690rpx;
+  background-color: #ffffff;
+  margin: 0 auto 40rpx;
+  padding: 30rpx 0 48rpx;
+}
+
+.chargeContainer .searchList {
+  padding: 0 46rpx 0 120rpx;
+  margin-bottom: 40rpx;
+  position: relative;
+}
+
+.chargeContainer .searchList .leftIcons {
+  position: absolute;
+  left: 44rpx;
+  top: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chargeContainer .searchList .leftIcons .leftDto {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background-color: #E20202;
+}
+
+.chargeContainer .searchList .leftIcons .leftLine {
+  width: 2rpx;
+  height: 84rpx;
+  background-color: #9AA6C4;
+}
+
+.chargeContainer .searchList .leftIcons .shipIcon {
+  width: 52rpx;
+  height: 52rpx;
+}
+
+.chargeContainer .searchList .leftIcons .shipLocation {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.chargeContainer .searchList .noRequest {
+  font-size: 24rpx;
+  color: #E2014B;
+  position: absolute;
+  left: 0;
+  top: 90rpx;
+  display: flex;
+  align-items: center;
+}
+
+.chargeContainer .searchList .noRequest image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
+.chargeContainer .searchList .searchTitle {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246A;
+  margin-bottom: 12rpx;
+}
+
+.chargeContainer .searchList .radioContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.chargeContainer .searchList .radioContainer .oneRadio {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
+  margin-top: 20rpx;
+}
+
+.chargeContainer .searchList .radioContainer .oneRadio:nth-of-type(-n + 2) {
+  margin-top: 0;
+}
+
+.chargeContainer .searchList .radioContainer .oneRadio .statusContainer {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border: 1rpx solid #071E5D;
+  transform: rotateZ(360deg);
+  margin-right: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chargeContainer .searchList .radioContainer .oneRadio .statusContainer .checkedStatus {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background-color: #071E5D;
+}
+
+.chargeContainer .searchList .codeInputs {
+  height: 88rpx;
+  border: 2rpx solid #DFDFDF;
+  margin-top: 10rpx;
+  padding: 0 0 0 10rpx;
+  font-size: 28rpx;
+  color: #04246A;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.chargeContainer .searchList .codeInputs .codeIcon {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.chargeContainer .searchList .codeInputs input {
+  width: 386rpx;
+}
+
+.chargeContainer .searchList .codeInputs .deleteIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80rpx;
+  height: 88rpx;
+}
+
+.chargeContainer .searchList .codeInputs .deleteIcon image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.scroll-view {
+  width: 100%;
+  position: absolute;
+  background: #ffffff;
+  border: 1rpx solid #00245d;
+  transform: rotateZ(360deg);
+  top: 86rpx;
+  left: -2rpx;
+  z-index: 40;
+  max-height: 430rpx;
+}
+
+.scroll-view .item:hover {
+  color: #1c4ebb;
+}
+
+.scroll-view .item {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #e2e2e2;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.chargeContainer .searchLists .selectContainer {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 28rpx;
+}
+
+.chargeContainer .searchLists .selectContainer view {
+  width: 490rpx;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chargeContainer .searchLists .selectContainer image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.noRequestBorder {
+  border: 2rpx solid #E2014B !important;
+}
+
+.chargeContainer .btn {
+  width: 596rpx;
+  margin: 0 auto;
+}

@@ -1,6 +1,7 @@
 // pages/query/index.js
 const app = getApp();
 var languageUtil = require('../../utils/languageUtils')
+const utils = require('../../utils/util')
 
 Page({
 
@@ -13,36 +14,56 @@ Page({
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     menuList: [{
+      style: "330rpx",
       icon: '/assets/img/menu/dc@2x.png',
       isNew: true,
       label: 'dingcang',
-      url: ''
+      url: '',
+      needLogin: true
     }, {
+      style: "330rpx",
       icon: '/assets/img/menu/cqcx@2x.png',
       isNew: false,
       label: 'chuanqi',
-      url: '/pages/RouterQuery/index'
+      url: '/pages/RouterQuery/index',
+      needLogin: false
     }, {
+      style: "330rpx",
       icon: '/assets/img/menu/hwzz@2x.png',
       isNew: false,
       label: 'huowu',
-      url: '/pages/Shipment/index'
+      url: '/pages/Shipment/index',
+      needLogin: false
     }, {
+      style: "330rpx",
       icon: '/assets/img/menu/gzp@2x.png',
       isNew: true,
       label: 'gzp',
-      url: '/packageMore/pages/sanctionCheck/list/index'
+      url: '/packageMore/pages/sanctionCheck/list/index',
+      needLogin: false
     }, {
+      style: "216rpx",
       icon: '/assets/img/menu/gzfl@2x.png',
       isNew: false,
       label: 'gzfl',
-      url: '/packagePrice/pages/guizufeilv/index'
+      url: '/packagePrice/pages/guizufeilv/index',
+      needLogin: false
     }, {
+      style: "216rpx",
       icon: '/assets/img/menu/cxfl@2x.png',
       isNew: false,
       label: 'cxfl',
-      url: '/packagePrice/pages/chargeFinder/index'
-    }]
+      url: '/packagePrice/pages/chargeFinder/index',
+      needLogin: false
+    }, {
+      style: "216rpx",
+      icon: '/assets/img/menu/D&D@2x.png',
+      isNew: false,
+      label: 'ddCharges',
+      url: '/packagePrice/pages/DDCharges/Search/index',
+      needLogin: true
+    }],
+    showRemind: false
   },
 
   onLoad: function() {
@@ -66,9 +87,51 @@ Page({
       })
       return
     }
-    wx.navigateTo({
-      url: this.data.menuList[index].url,
+    if (!this.data.menuList[index].needLogin || (this.data.menuList[index].needLogin && utils.checkAccessToken())) {
+      wx.navigateTo({
+        url: this.data.menuList[index].url,
+      })
+    } else {
+      wx.showToast({
+        title: languageUtil.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        mask: true,
+        duration: 2000
+      })
+      setTimeout(() => {
+        this.toLogin()
+      }, 2000)
+    }
+  },
+
+  // 去登录
+  toLogin() {
+    if (wx.getStorageSync('allowLegalTerms')) {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+    } else {
+      this.setData({
+        showRemind: true
+      })
+      this.getTabBar().setData({
+        show: false
+      })
+    }
+  },
+
+  setRemind(e) {
+    this.setData({
+      showRemind: false
     })
+    this.getTabBar().setData({
+      show: true
+    })
+    if (e.detail) {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+    }
   },
   
   //初始化语言

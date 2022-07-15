@@ -50,6 +50,7 @@ Page({
             if (userInfo.lastName && userInfo.firstName) {
               userInfo.avatar = userInfo.firstName.substr(0, 1) + userInfo.lastName.substr(0, 1)
             }
+            wx.setStorageSync('partnerCode', res.data[0].profilerights[0].partner.code)
             wx.setStorageSync('userInfo', userInfo)
             this.setData({
               userInfo

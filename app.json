@@ -40,7 +40,9 @@
       "pages": [
         "pages/guizufeilv/index",
         "pages/chargeFinder/index",
-        "pages/chargeFinderResult/index"
+        "pages/chargeFinderResult/index",
+        "pages/DDCharges/Search/index",
+        "pages/DDCharges/Result/index"
       ]
     },
     {

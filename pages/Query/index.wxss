@@ -14,8 +14,6 @@ page {
 }
 
 .queryContainer .menuLists .oneMenu {
-  width: 330rpx;
-  height: 330rpx;
   background-color: #ffffff;
   margin-top: 30rpx;
   display: flex;

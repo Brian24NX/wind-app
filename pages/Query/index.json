@@ -1,5 +1,7 @@
 {
   "component": true,
-  "usingComponents": {},
+  "usingComponents": {
+    "legal-terms-remind": "/components/legalTermsRemind/index"
+  },
   "navigationStyle": "custom"
 }

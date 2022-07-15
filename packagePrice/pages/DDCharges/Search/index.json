@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "custom-picker": "/components/customPicker/index"
+  }
+}

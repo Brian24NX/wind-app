@@ -17,3 +17,8 @@ export const demurrageSendEmail = (params) => {
 export const chargeFinderTariff = (params) => {
   return getRequest('/api/miniapp/chargeFinderTariff', params)
 }
+
+// 获取D&D Charges
+export const ddChargeFinder = (params) => {
+  return postRequest('/api/miniapp/ddChargeFinder', params, true, false, true)
+}

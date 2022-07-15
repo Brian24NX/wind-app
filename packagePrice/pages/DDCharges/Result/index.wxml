@@ -1,0 +1,68 @@
+<!--packagePrice/pages/DDCharges/Result/index.wxml-->
+<wxs module="format" src="../../../../utils/format.wxs"></wxs>
+<view class="chargeDetail">
+  <view class="chargeTops">
+    <view class="stepLists">
+      <view class="oneStep">
+        <view class="leftLines">
+          <view class="leftLineDto"></view>
+          <view class="leftLine"></view>
+        </view>
+        <view class="stepContent">{{chargeFinderSearchKey.polvalue}}, {{chargeFinderSearchKey.polCode}}{{format.setChina(chargeFinderSearchKey.placeOfLoading)}}</view>
+      </view>
+      <view class="oneStep">
+        <view class="leftLines" style="top: 20rpx;">
+          <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+        </view>
+        <view class="stepContent">{{chargeFinderSearchKey.podvalue}}, {{chargeFinderSearchKey.podCode}}{{format.setChina(chargeFinderSearchKey.placeOfDischarge)}}</view>
+      </view>
+    </view>
+    <view class="typeLists">
+      <view class="oneTypes">
+        <image src="/assets/img/price/mode@2x.png"></image>
+        <view>{{chargeFinderSearchKey.equipmentSizeName}}</view>
+      </view>
+      <view class="oneTypes">
+        <image src="/assets/img/price/date@2x.png"></image>
+        <view>{{languageContent[chargeFinderSearchKey.specialCargo] || '-'}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="charges">
+    <view class="viewTypes">
+      <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
+        <view>{{languageContent[item]}}</view>
+        <view class="activedLine"></view>
+      </view>
+    </view>
+    <view class="chargesList" wx:if="{{list.length}}">
+      <view class="chargesDetail">
+        <view class="oneCharge" wx:for="{{list}}" wx:key="index">
+          <view class="chargesTitle">
+            <view class="chargesTitleLine"></view>
+            <view>{{item.tariff.name}}</view>
+          </view>
+          <view class="priceList">
+            <view class="onePrice">
+              <view>freeDays</view>
+              <view>{{item.conditionsByEquipment[0].freeDays.number}} {{item.conditionsByEquipment[0].freeDays.type}}</view>
+            </view>
+            <view class="onePrice" wx:for="{{item.conditionsByEquipment[0].afterFreeDaysCharges}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+              <view>From Day {{items.dayFrom}} {{items.dayTo ? "to " + items.dayTo : ''}}</view>
+              <view>{{items.rate}} {{items.currency}}/{{items.type}}</view>
+            </view>
+          </view>
+          <view class="bottomLineContainer" wx:if="{{index !== list.length - 1}}">
+            <view class="leftDto"></view>
+            <view class="bottomLine"></view>
+            <view class="rightDto"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="noData" wx:if="{{!list.length && !loading}}">
+      <image src="/assets/img/search/error@2x.png"></image>
+      <text>{{languageContent.noChargeData}}</text>
+    </view>
+  </view>
+</view>

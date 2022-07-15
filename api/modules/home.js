@@ -52,3 +52,8 @@ export const ccgId = (params) => {
 export const analysis = (params) => {
   return postRequest('/api/miniapp/analysisAdd', params, true, true)
 }
+
+// 获取箱型
+export const equitmentSizeList = (params) => {
+  return getRequest('/api/miniapp/equitmentsizeList', params, false, true)
+}

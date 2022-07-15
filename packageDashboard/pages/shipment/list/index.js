@@ -90,8 +90,16 @@ Page({
         ccgId: wx.getStorageSync('ccgId'),
         bookingReference: this.data.keyword
       }).then(res => {
-        allList = res.data
-        this.dealPaging()
+        if (res.data) {
+          allList = res.data
+          this.dealPaging()
+        } else {
+          this.setData({
+            loading: false,
+            noData: true
+          })
+        }
+        
       }, () => {
         this.setData({
           loading: false,
@@ -103,8 +111,15 @@ Page({
         ccgId: wx.getStorageSync('ccgId'),
         containerOrBookingReference: this.data.keyword
       }).then(res => {
-        allList = res.data
-        this.dealPaging()
+        if (res.data) {
+          allList = res.data
+          this.dealPaging()
+        } else {
+          this.setData({
+            loading: false,
+            noData: true
+          })
+        }
       }, () => {
         this.setData({
           loading: false,

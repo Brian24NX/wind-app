@@ -128,7 +128,8 @@ var Languague = {
       huowu: '货物追踪',
       gzp: '管制品查询',
       gzfl: '柜租费率',
-      cxfl: '查询费率'
+      cxfl: '查询费率',
+      ddCharges: 'D & D Charges'
     },
     // 查询结果
     queryRes: {
@@ -378,6 +379,29 @@ var Languague = {
       detailTitle: '费率详情',
       main: '主要费用',
       other: '其他费用',
+      noChargeData: '未找到相关数据'
+    },
+    // D&D Charges
+    DDCharges: {
+      title: 'D&D Charges',
+      title1: 'D&D ',
+      title2: 'Charges',
+      //卸货港
+      portOfDischarge: "卸货港",
+      //起运港
+      protOfLanding: "起运港",
+      //港口名称/代码
+      name: "名称/代码",
+      type: '集装箱型号',
+      specialCargo: "特殊货物",
+      Refrigerated: '冷藏货物',
+      Hazardous: '危险货物',
+      Oversized: '超大货物',
+      date: '模拟日期',
+      search: '搜索',
+      detailTitle: 'D&D Charges',
+      import: '进口',
+      export: '出口',
       noChargeData: '未找到相关数据'
     },
     popupBtn: {

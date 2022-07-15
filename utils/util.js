@@ -476,14 +476,18 @@ function formatEnDateLocal(date) {
 function checkAccessToken() {
   if (!wx.getStorageSync('access_token') || !wx.getStorageSync('expires_time')) {
     wx.removeStorageSync('access_token')
-    wx.removeStorageSync('userInfo')
     wx.removeStorageSync('expires_time')
+    wx.removeStorageSync('userInfo')
+    wx.removeStorageSync('ccgId')
+    wx.removeStorageSync('partnerCode')
     return false
   } else {
     if (new Date(wx.getStorageSync('expires_time')).getTime() - new Date().getTime() < 0) {
       wx.removeStorageSync('access_token')
-      wx.removeStorageSync('userInfo')
       wx.removeStorageSync('expires_time')
+      wx.removeStorageSync('userInfo')
+      wx.removeStorageSync('ccgId')
+      wx.removeStorageSync('partnerCode')
       return false
     } else {
       wx.setStorageSync('expires_time', this.setExpiresTime(15 * 60 - 1))

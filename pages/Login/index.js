@@ -1,9 +1,6 @@
 // pages/Login/index.js
 const utils = require('../../utils/util')
 const config = require('../../config/config')
-import {
-  ccgId
-} from '../../api/modules/home'
 Page({
 
   /**
@@ -20,12 +17,22 @@ Page({
 
   getMessage(e) {
     const data = e.detail.data[0]
-    wx.setStorageSync('access_token', data.access_token)
-    wx.setStorageSync('expires_time', utils.setExpiresTime(data.expires_in))
-    ccgId({
-      token: data.access_token
-    }).then(res=>{
-      wx.setStorageSync('ccgId', res.data)
-    })
+    console.log(data)
+    if (!data.status) {
+      wx.setStorageSync('access_token', data[0].access_token)
+      wx.setStorageSync('expires_time', utils.setExpiresTime(data[0].expires_in))
+      let userInfo = data[0].customer
+      if (data[0].profilerights && data[0].profilerights.length) {
+        wx.setStorageSync('partnerCode', data[0].profilerights[0].partner.code)
+      }
+      if (userInfo) {
+        wx.setStorageSync('ccgId', userInfo.ccgId)
+        userInfo.lastName = userInfo.lastName ? userInfo.lastName.toLocaleUpperCase() : ''
+        if (userInfo.lastName && userInfo.firstName) {
+          userInfo.avatar = userInfo.firstName.substr(0, 1) + userInfo.lastName.substr(0, 1)
+        }
+        wx.setStorageSync('userInfo', userInfo)
+      }
+    }
   }
 })

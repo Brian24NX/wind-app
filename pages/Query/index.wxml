@@ -3,10 +3,12 @@
 </view>
 <view class="queryContainer" style="padding-top: calc({{navHeight}}px + 36rpx)">
   <view class="menuLists">
-    <view class="oneMenu" wx:for="{{menuList}}" wx:key="index" catchtap="toFunction" data-index="{{index}}">
+    <view class="oneMenu" style="width: {{item.style}};height: {{item.style}};" wx:for="{{menuList}}" wx:key="index" catchtap="toFunction" data-index="{{index}}">
       <!-- <image class="newIcon" src="/assets/img/menu/new@2x.png" wx:if="{{item.isNew}}"></image> -->
       <image class="menuIcon" src="{{item.icon}}"></image>
       <view>{{languageContent[item.label]}}</view>
     </view>
   </view>
 </view>
+
+<legal-terms-remind wx:if="{{showRemind}}" bindsetRemind="setRemind"></legal-terms-remind>
