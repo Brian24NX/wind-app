@@ -188,24 +188,28 @@ Page({
     }
     routingFinder(params).then(res => {
       if (callback) {
-        const index = this.data.routingLists.findIndex(item => item.shippingCompany === shippingCompany)
-        if (index > -1) {
-          this.data.routingLists[index].list = res.data.routings
-          this.setData({
-            routingLists: this.data.routingLists,
-          })
-        }
-        if (shippingCompany === '0001' && !res.data.routings) {
-          callback(true)
+        if (res.data) {
+          const index = this.data.routingLists.findIndex(item => item.shippingCompany === shippingCompany)
+          if (index > -1) {
+            this.data.routingLists[index].list = res.data.routings
+            this.setData({
+              routingLists: this.data.routingLists,
+            })
+          }
+          if (shippingCompany === '0001' && !res.data.routings) {
+            callback(true)
+          } else {
+            this.setData({
+              planList: [],
+              viewactived: false,
+              currentPlan: "CMA",
+              plans: res.data.solutionServices['cma'],
+              routesPlanList: res.data.solutionServices['cma']
+            })
+            callback(false)
+          }
         } else {
-          this.setData({
-            planList: [],
-            viewactived: false,
-            currentPlan: "CMA",
-            plans: res.data.solutionServices['cma'],
-            routesPlanList: res.data.solutionServices['cma']
-          })
-          callback(false)
+          callback(true)
         }
       }
     })
@@ -269,7 +273,7 @@ Page({
       }
       const res = await routingFinder(params)
       const index = this.data.routingLists.findIndex(item => item.shippingCompany === this.data.routingLists[i].shippingCompany)
-      if (res.data.routings) {
+      if (res.data && res.data.routings) {
         if (index > -1) {
           this.data.routingLists[index].list = res.data.routings
           this.data.routingLists[index].solutionServices = res.data.solutionServices[this.data.routingLists[index].id.toLocaleLowerCase()]
