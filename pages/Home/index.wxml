@@ -14,7 +14,7 @@
     <view class="searchContents" wx:if="{{actived === 'TRACKING'}}">
       <view class="remind">{{languageContent.goodsRemind}}</view>
       <view class="inputs {{showRemind ? 'noRequestBorder' : ''}}">
-        <input type="text" placeholder="ex:ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" />
+        <input type="text" placeholder="ex: ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" />
         <view class="delete" catchtap="clearInput" data-type="1" wx:if="{{huoGuiValue}}">
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
