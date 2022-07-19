@@ -223,9 +223,9 @@ page {
   color: #071E5D;
 }
 
-.homeContainer .discoverContainer .swiper {
+/* .homeContainer .discoverContainer .swiper {
   height: 196rpx;
-}
+} */
 
 .homeContainer .discoverContainer .swiper .discoverList {
   display: flex;
@@ -234,12 +234,13 @@ page {
 
 .homeContainer .discoverContainer .swiper .discoverList .oneDiscover {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 25%;
   margin-top: 48rpx;
 }
 
-.homeContainer .discoverContainer .swiper .discoverList .oneDiscover:nth-of-type(-n + 2) {
+.homeContainer .discoverContainer .swiper .oneSwiper:nth-of-type(1) .discoverList .oneDiscover:nth-of-type(-n + 4) {
   margin-top: 0;
 }
 
@@ -250,7 +251,8 @@ page {
 }
 
 .homeContainer .discoverContainer .swiper .discoverList .oneDiscover .discoverRight {
-  width: 226rpx;
+  /* width: 226rpx; */
+  text-align: center;
   color: #999999;
   font-size: 24rpx;
 }

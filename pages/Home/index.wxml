@@ -83,7 +83,7 @@
     </view>
   </view>
   <!-- discover -->
-  <view class="discoverContainer">
+  <!-- <view class="discoverContainer">
     <view class="discoverTitle">{{languageContent.more}}</view>
     <swiper current="{{swiperindex}}" class="swiper" bindchange="changeCurrentDto">
       <swiper-item wx:for="{{moreMenuList}}" wx:key="index">
@@ -92,7 +92,6 @@
             <image class="icon" src="{{items.icon}}"></image>
             <view class="discoverRight">
               <view class="discoverName">{{languageContent[items.id]}}</view>
-              <!-- <view>定制方案</view> -->
             </view>
           </view>
         </view>
@@ -100,6 +99,21 @@
     </swiper>
     <view class="swiperDtos">
       <view class="oneDto {{swiperindex === index ? 'dtoActived' : ''}}" wx:for="{{moreMenuList.length}}" wx:key="index" data-index="{{index}}" bindtap="changeItem"></view>
+    </view>
+  </view> -->
+  <view class="discoverContainer">
+    <view class="discoverTitle">{{languageContent.more}}</view>
+    <view class="swiper">
+      <view class="oneSwiper" wx:for="{{moreMenuList}}" wx:key="index">
+        <view class="discoverList">
+          <view class="oneDiscover" bindtap="toNav" data-item="{{items}}" wx:for="{{item}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+            <image class="icon" src="{{items.icon}}"></image>
+            <view class="discoverRight">
+              <view class="discoverName">{{languageContent[items.id]}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
