@@ -112,5 +112,14 @@ Page({
     wx.navigateTo({
       url: `/packageMore/pages/sanctionCheck/detail/index?id=${e.currentTarget.dataset.id}`
     })
+  },
+
+  copyEmail() {
+    wx.setClipboardData({
+      data: 'SHG.SpecialCargoTEAM@cma-cgm.com',
+      success() {
+        
+      }
+    })
   }
 })

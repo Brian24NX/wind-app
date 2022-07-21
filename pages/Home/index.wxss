@@ -3,6 +3,10 @@ page {
   background-color: #F0F1F5;
 }
 
+.homeContainer {
+  padding-bottom: 140rpx;
+}
+
 .homeContainer .searchContainers {
   width: 690rpx;
   background-color: #ffffff;
@@ -255,12 +259,11 @@ page {
   /* width: 226rpx; */
   text-align: center;
   color: #999999;
-  font-size: 20rpx;
+  font-size: 28rpx;
 }
 
 .homeContainer .discoverContainer .swiper .discoverList .oneDiscover .discoverRight .discoverName {
   color: #04246A;
-  font-size: 20rpx;
 }
 
 .homeContainer .discoverContainer .swiperDtos {
