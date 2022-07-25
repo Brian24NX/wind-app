@@ -85,7 +85,7 @@ var Languague = {
       onlineServices: '在线服务',
       //增值服务
       valueAddedService: "客户通告",
-      template: '模版及链接',
+      template: '模板及链接',
       // 管制品
       gzp: '管制品查询',
       // 联系我们
