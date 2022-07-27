@@ -33,6 +33,13 @@ Page({
       statisti: options.id
     })
   },
+
+  onShareAppMessage: function() {
+    return {
+      path: '/packageMore/pages/cma/detail/index?id=' + this.data.id
+    }
+  },
+
   // 获取详情
   getDetail() {
     cmaNewsDetail({

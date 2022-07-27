@@ -31,6 +31,12 @@ Page({
     this.getSanctionCommodityDetail()
   },
 
+  onShareAppMessage: function() {
+    return {
+      path: '/packageMore/pages/sanctionCheck/detail/index?id=' + this.data.id
+    }
+  },
+
   getSanctionCommodityDetail() {
     sanctionCommodityDetail({
       id: this.data.id

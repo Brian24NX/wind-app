@@ -54,6 +54,8 @@ Page({
     this.getBusiniessOpentionalList()
   },
 
+  onShareAppMessage: function() {},
+
   initLanguage() {
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.homeInfo.valueAddedService

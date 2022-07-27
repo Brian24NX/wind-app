@@ -30,19 +30,22 @@ Page({
       })
     }
   },
+
+
+  onShareAppMessage: function() {},
   
-    //初始化语言
-    initLanguage() {
-      //获取当前小程序语言版本所对应的字典变量
-      var lang = languageUtil.languageVersion()
-      this.setData({
-        languageContent: lang.lang.page.quotation,
-        load: lang.lang.page.load
+  //初始化语言
+  initLanguage() {
+    //获取当前小程序语言版本所对应的字典变量
+    var lang = languageUtil.languageVersion()
+    this.setData({
+      languageContent: lang.lang.page.quotation,
+      load: lang.lang.page.load
+    })
+    if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
+      this.getTabBar().setData({
+        list:lang.lang.toolbar.list //赋值
       })
-      if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
-        this.getTabBar().setData({
-          list:lang.lang.toolbar.list //赋值
-        })
-      }
-    },
+    }
+  },
 })

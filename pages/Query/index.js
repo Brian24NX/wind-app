@@ -77,6 +77,8 @@ Page({
       })
     }
   },
+  
+  onShareAppMessage: function() {},
 
   toFunction(e) {
     const index = e.currentTarget.dataset.index

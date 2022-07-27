@@ -47,6 +47,8 @@ Page({
     this.getOfficeList()
   },
 
+  onShareAppMessage: function() {},
+
   initLanguage() {
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.homeInfo.callMe

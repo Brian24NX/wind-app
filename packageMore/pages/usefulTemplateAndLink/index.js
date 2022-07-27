@@ -94,6 +94,12 @@ Page({
     this.getTemplateList()
   },
 
+  onShareAppMessage: function() {
+    return {
+      path: '/packageMore/pages/usefulTemplateAndLink/index?current=' + this.data.current
+    }
+  },
+
   // 切换类型
   changeType() {
     this.setData({

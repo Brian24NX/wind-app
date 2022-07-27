@@ -53,6 +53,8 @@ Page({
       date: this.getDate()
     })
   },
+
+  onShareAppMessage: function() {},
   
   //初始化语言
   initLanguage() {

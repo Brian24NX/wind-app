@@ -28,4 +28,6 @@ Page({
       })
     }
   },
+
+  onShareAppMessage: function() {},
 })

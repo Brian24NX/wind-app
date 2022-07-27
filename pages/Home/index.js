@@ -134,6 +134,8 @@ Page({
     }
   },
 
+  onShareAppMessage: function() {},
+
   //初始化语言
   initLanguage() {
     //获取当前小程序语言版本所对应的字典变量
