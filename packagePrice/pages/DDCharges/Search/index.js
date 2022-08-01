@@ -46,6 +46,8 @@ Page({
     equipmentSize: '',
     equipmentSizeName: '',
     language: 'zh',
+    showPol: false,
+    showPod: false
   },
 
 
@@ -78,50 +80,61 @@ Page({
     })
   },
 
-  //获取卸货港的接口处理
-  changepod: utils.debounce(function (e) {
-    const data = e['0'].detail.value
-    this.setData({
-      showDelete2: data ? true : false,
-      showRemind3: false,
-      showRemind4: false
-    })
-    if (data.length < 2) {
-      this.setData({
-        podlist: []
-      })
-      return
-    }
-    chargeFuzzySearch({
-      searchStr: data
-    }, true).then(res => {
-      if (res.data != '') {
-        this.setData({
-          podlist: res.data || []
-        })
-      }
-    })
-  }, 800),
-
   //获取起始港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
       showDelete1: data ? true : false,
       showRemind1: false,
-      showRemind2: false
+      showRemind2: false,
+      showPol: false,
+      pollist: []
     })
     if (data.length < 2) {
-      this.setData({
-        pollist: []
-      })
+      return
     }
+    this.setData({
+      showPol: true
+    })
     chargeFuzzySearch({
       searchStr: data
     }, true).then(res => {
+      this.setData({
+        showPol: false
+      })
       if (res.data != '') {
         this.setData({
           pollist: res.data || []
+        })
+      }
+    })
+  }, 800),
+
+  //获取卸货港的接口处理
+  changepod: utils.debounce(function (e) {
+    const data = e['0'].detail.value
+    this.setData({
+      showDelete2: data ? true : false,
+      showRemind3: false,
+      showRemind4: false,
+      showPod: false,
+      podlist: []
+    })
+    if (data.length < 2) {
+      return
+    }
+    this.setData({
+      showPod: true
+    })
+    chargeFuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      this.setData({
+        showPod: false
+      })
+      if (res.data != '') {
+        this.setData({
+          podlist: res.data || []
         })
       }
     })

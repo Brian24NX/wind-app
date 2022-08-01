@@ -40,6 +40,9 @@
         <view class="xialaContainer" wx:if="{{codePolList.length}}">
           <view class="oneXiala" wx:for="{{codePolList}}" wx:key="index" bindtap='changepolname' data-index="{{index}}">{{item.point}}</view>
         </view>
+        <view class="xialaContainer" wx:if="{{showPol}}">
+          <view class="oneXiala">Loading...</view>
+        </view>
       </view>
       <view class="noRequest" wx:if="{{showRemind2}}">
         <image src="/assets/img/search/error@2x.png"></image>
@@ -59,6 +62,9 @@
         </view>
         <view class="xialaContainer" wx:if="{{codePodList.length}}">
           <view class="oneXiala" wx:for="{{codePodList}}" wx:key="index" bindtap='changepodname' data-index="{{index}}">{{item.point}}</view>
+        </view>
+        <view class="xialaContainer" wx:if="{{showPod}}">
+          <view class="oneXiala">Loading...</view>
         </view>
       </view>
       <view class="noRequest" wx:if="{{showRemind3}}">

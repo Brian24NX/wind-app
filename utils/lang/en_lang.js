@@ -380,7 +380,7 @@ var Languague = {
       detailTitle: 'Charge Detail',
       main: 'Main Charges',
       other: 'Other Charges',
-      noChargeData: 'No date found'
+      noChargeData: 'No data found'
     },
     // D&D Charges
     DDCharges: {
@@ -402,7 +402,7 @@ var Languague = {
       detailTitle: 'D&D Charges',
       import: 'Import',
       export: 'Export',
-      noChargeData: 'No date found'
+      noChargeData: 'No data found'
     },
     popupBtn: {
       confirm: 'Confirm',

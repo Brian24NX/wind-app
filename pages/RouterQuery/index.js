@@ -18,8 +18,8 @@ Page({
     verifyInfo: {},
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
-    viewShowedPol: false,
-    viewShowedPod: false,
+    showPol: false,
+    showPod: false,
     // 卸货港
     podvalue: "",
     podcode: "",
@@ -174,50 +174,61 @@ Page({
     })
   },
 
-  //获取卸货港的接口处理
-  changepod: utils.debounce(function (e) {
-    const data = e['0'].detail.value
-    this.setData({
-      showDelete2: data ? true : false,
-      showRemind3: false,
-      showRemind4: false
-    })
-    if (data.length < 2) {
-      this.setData({
-        podlist: []
-      })
-      return
-    }
-    fuzzySearch({
-      searchStr: data
-    }, true).then(res => {
-      if (res.data != '') {
-        this.setData({
-          podlist: res.data || []
-        })
-      }
-    })
-  }, 800),
-
   //获取起始港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
       showDelete1: data ? true : false,
       showRemind1: false,
-      showRemind2: false
+      showRemind2: false,
+      showPol: false,
+      pollist: []
     })
     if (data.length < 2) {
-      this.setData({
-        pollist: []
-      })
+      return
     }
+    this.setData({
+      showPol: true
+    })
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
+      this.setData({
+        showPol: false
+      })
       if (res.data != '') {
         this.setData({
           pollist: res.data || []
+        })
+      }
+    })
+  }, 800),
+
+  //获取卸货港的接口处理
+  changepod: utils.debounce(function (e) {
+    const data = e['0'].detail.value
+    this.setData({
+      showDelete2: data ? true : false,
+      showRemind3: false,
+      showRemind4: false,
+      showPod: false,
+      podlist: []
+    })
+    if (data.length < 2) {
+      return
+    }
+    this.setData({
+      showPod: true
+    })
+    fuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      this.setData({
+        showPod: false
+      })
+      if (res.data != '') {
+        this.setData({
+          podlist: res.data || []
         })
       }
     })

@@ -36,6 +36,8 @@ Page({
     showRemind2: false,
     xieHuoValue: '',
     xieHuoCode: '',
+    showPol: false,
+    showPod: false,
     showRemind3: false,
     showRemind4: false,
     showRemind5: false,
@@ -261,17 +263,22 @@ Page({
     this.setData({
       showDelete1: data ? true : false,
       showRemind2: false,
-      showRemind5: false
+      showRemind5: false,
+      showPol: false,
+      codePolList: []
     })
     if (data.length < 2) {
-      this.setData({
-        codePolList: []
-      })
       return
     }
+    this.setData({
+      showPol: true
+    })
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
+      this.setData({
+        showPol: false
+      })
       if (res.data != '') {
         this.setData({
           codePolList: res.data
@@ -286,17 +293,22 @@ Page({
     this.setData({
       showDelete2: data ? true : false,
       showRemind3: false,
-      showRemind4: false
+      showRemind4: false,
+      showPod: false,
+      codePolList: []
     })
     if (data.length < 2) {
-      this.setData({
-        codePolList: []
-      })
       return
     }
+    this.setData({
+      showPod: true
+    })
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
+      this.setData({
+        showPod: false
+      })
       if (res.data != '') {
         this.setData({
           codePodList: res.data

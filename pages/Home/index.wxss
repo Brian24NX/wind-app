@@ -4,7 +4,7 @@ page {
 }
 
 .homeContainer {
-  padding-bottom: 140rpx;
+  padding-bottom: 190rpx;
 }
 
 .homeContainer .searchContainers {
@@ -118,7 +118,7 @@ page {
   display: flex;
   align-items: center;
   padding: 0 20rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
 }
 
 .oneXiala {
