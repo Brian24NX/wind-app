@@ -116,7 +116,7 @@ Page({
 
   // 我的概览
   toDashboard(e) {
-    if (this.data.needLogin) {
+    if (!utils.checkAccessToken()) {
       wx.showToast({
         title: languageUtils.languageVersion().lang.page.load.noLogin,
         icon: 'none',
