@@ -209,6 +209,10 @@ page{
   justify-content: center;
 }
 
+.queryContainer .containers .disabled {
+  color: #999999;
+}
+
 .queryContainer .containers .number {
   display: flex;
   align-items: center;

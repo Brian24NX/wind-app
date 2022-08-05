@@ -55,5 +55,10 @@ export const analysis = (params) => {
 
 // 获取箱型
 export const equitmentSizeList = (params) => {
-  return getRequest('/api/miniapp/equipmentSizeList', params, false, true)
+  return getRequest('/api/miniapp/equipmentSizeList', params, true, false)
+}
+
+// 获取商品
+export const getCommodityLists = (params) => {
+  return getRequest('/api/miniapp/quotationCommodities', params, true, false)
 }

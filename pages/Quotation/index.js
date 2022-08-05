@@ -5,6 +5,7 @@ const utils = require('../../utils/util')
 const dayjs = require("dayjs");
 import {
   fuzzySearch,
+  getCommodityLists,
   equitmentSizeList
 } from '../../api/modules/home';
 Page({
@@ -33,6 +34,7 @@ Page({
     equipmentTypeName: '',
     equipmentTypeList: [],
     weight: null,
+    containers: 1,
     commodityCode: '',
     commodityName: '',
     commodityList: [],
@@ -40,15 +42,18 @@ Page({
     showRemind2: false,
     showRemind3: false,
     showRemind4: false,
+    showRemind5: false,
     showDelete1: false,
     showDelete2: false,
+    showDelete3: false,
     columns: [],
     valueKey: '',
     showPopup: false,
     popupType: 1,
     defaultIndex: 0,
     showDatePopup: false,
-    currentDate: null
+    currentDate: null,
+    showLegal: false
   },
 
   /**
@@ -71,17 +76,49 @@ Page({
         selected: 2
       })
     }
+    // this.checkAccessToken()
   },
-
 
   onShareAppMessage: function () {},
 
+  checkAccessToken(callback) {
+    if (!utils.checkAccessToken()) {
+      wx.showToast({
+        title: languageUtil.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        mask: true,
+        duration: 2500
+      })
+      setTimeout(() => {
+        if (wx.getStorageSync('allowLegalTerms')) {
+          wx.navigateTo({
+            url: '/pages/Login/index',
+          })
+        } else {
+          this.setData({
+            showLegal: true
+          })
+          this.getTabBar().setData({
+            show: false
+          })
+        }
+      }, 2500)
+    } else {
+      if (callback) {
+        callback()
+      }
+    }
+  },
 
   getEquitmentSizeList() {
     equitmentSizeList().then(res => {
-      this.setData({
-        equipmentTypeList: res.data
-      })
+      if (res.data.length) {
+        this.setData({
+          equipmentTypeList: res.data,
+          equipmentType: res.data[0].code,
+          equipmentTypeName: this.data.language === 'us' ? res.data[0].nameEn : res.data[0].nameCn
+        })
+      }
     })
   },
 
@@ -99,56 +136,6 @@ Page({
         list: lang.lang.toolbar.list //赋值
       })
     }
-  },
-
-  // 设置默认起运卸货港
-  setDefaultLocation() {
-    let location = wx.getStorageSync('location')
-    this.setData({
-      date: this.getDate(),
-      search: 0,
-      searchName: this.data.searchlist[0].method,
-      weekName: this.data.weeklist[2].weeks,
-      array: location,
-      pollist: [],
-      podlist: []
-    })
-    if (wx.getStorageSync('setHangXian')) {
-      let polobject = wx.getStorageSync('polobject')
-      let podobject = wx.getStorageSync('podobject')
-      this.setData({
-        polvalue: polobject.polvalue,
-        podvalue: podobject.podvalue,
-        polcode: polobject.polcode,
-        podcode: podobject.podcode,
-        showDelete1: true,
-        showDelete2: true
-      })
-      wx.setStorageSync('setHangXian', false)
-      wx.removeStorageSync('polobject')
-      wx.removeStorageSync('podobject')
-    }
-  },
-
-  getlocation(e) {
-    let index = e.currentTarget.dataset.index;
-    let location = this.data.array[index].name;
-    let pollocation = location.split("-")[0];
-    let podlocation = location.split("-")[1];
-    let polcode = this.data.array[index].polCode;
-    let podcode = this.data.array[index].podCode;
-    this.setData({
-      podcode: podcode,
-      polcode: polcode,
-      podvalue: podlocation,
-      polvalue: pollocation,
-      showRemind1: false,
-      showRemind2: false,
-      showRemind3: false,
-      showRemind4: false,
-      showDelete1: true,
-      showDelete2: true
-    })
   },
 
   //获取起始港的接口处理
@@ -242,6 +229,7 @@ Page({
       polcode: this.data.pollist[index].pointCode,
       pollist: [],
     })
+    this.getCommodityList()
   },
 
   // 卸货港
@@ -252,11 +240,41 @@ Page({
       podcode: this.data.podlist[index].pointCode,
       podlist: []
     })
+    this.getCommodityList()
+  },
+
+  // 获取商品
+  getCommodityList() {
+    if (!this.data.polcode || !this.data.podcode || !this.data.equipmentType) return
+    getCommodityLists().then(res=>{
+      console.log(res)
+      this.setData({
+        commodityList: res.data
+      })
+    })
+  },
+
+  // 货柜减少
+  reduce() {
+    if (this.data.containers < 2) return
+    this.setData({
+      containers: --this.data.containers
+    })
+  },
+
+  add() {
+    if (this.data.containers > 49) return
+    this.setData({
+      containers: ++this.data.containers
+    })
   },
 
   openPopup(e) {
+    this.getTabBar().setData({
+      show: false
+    })
     if (e.currentTarget.dataset.type === '2') {
-      const date = this.data.date.replaceAll('-', '/')
+      const date = this.data.departureDate.replaceAll('-', '/')
       this.setData({
         currentDate: new Date(date).getTime(),
         showDatePopup: true
@@ -265,8 +283,8 @@ Page({
     }
     this.setData({
       popupType: e.currentTarget.dataset.type,
-      columns: e.currentTarget.dataset.type === '1' ? this.data.searchlist : this.data.weeklist,
-      valueKey: e.currentTarget.dataset.type === '1' ? 'method' : 'weeks',
+      columns: e.currentTarget.dataset.type === '1' ? this.data.equipmentTypeList : this.data.commodityList,
+      valueKey: e.currentTarget.dataset.type === '1' ? 'nameCn' : 'weeks',
       defaultIndex: e.currentTarget.dataset.type === '1' ? this.data.search : this.data.week - 1,
       showPopup: true
     })
@@ -279,18 +297,22 @@ Page({
       valueKey: '',
       showPopup: false
     })
+    this.getTabBar().setData({
+      show: true
+    })
   },
 
   onConfirm(e) {
     if (this.data.popupType === '1') {
       this.setData({
-        search: e.detail.id,
-        searchName: e.detail.method
+        equipmentType: e.detail.id,
+        equipmentTypeName: this.data.language === 'us' ? e.detail.nameEn : e.detail.nameCn
       })
+      this.getCommodityList()
     } else {
       this.setData({
-        week: e.detail.id,
-        weekName: e.detail.weeks
+        commodityCode: e.detail.code,
+        commodityName: this.data.language === 'us' ? e.detail.en : e.detail.zh
       })
     }
     this.onClose()
@@ -299,6 +321,9 @@ Page({
   closeDate() {
     this.setData({
       showDatePopup: false
+    })
+    this.getTabBar().setData({
+      show: true
     })
   },
 
@@ -317,6 +342,20 @@ Page({
     let day = now.getDate();
     day = day < 10 ? ('0' + day) : day
     return year + '-' + month + '-' + day;
+  },
+
+  setRemind(e) {
+    this.setData({
+      showLegal: false
+    })
+    this.getTabBar().setData({
+      show: true
+    })
+    if (e.detail) {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+    }
   },
 
   // 提交搜索
@@ -375,5 +414,10 @@ Page({
       })
     }
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
+    this.checkAccessToken(() => {
+      wx.showToast({
+        title: '去报价',
+      })
+    })
   }
 })
