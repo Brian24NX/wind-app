@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText": "",
-  "usingComponents": {},
+  "usingComponents": {
+    "custom-picker": "/components/customPicker/index",
+    "custom-time": "/components/customTime/index"
+  },
   "navigationStyle": "custom"
 }

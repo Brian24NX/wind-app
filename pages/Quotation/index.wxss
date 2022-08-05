@@ -2,22 +2,231 @@ page{
   background-color: #f5f5f5;
 }
 
-.qidai {
-  width: 100%;
-  padding-top: 130rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 36rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
-  color: #04246A;
-  text-align: center;
+.priceContainer {
+  padding-bottom: calc(130rpx + env(safe-area-inset-bottom));
 }
 
-.qidai image {
-  width: 454rpx;
-  height: 360rpx;
-  margin-bottom: 58rpx;
+.queryContainer {
+  padding-top: 30rpx;
+}
+
+.placeholder {
+  font-size: 28rpx;
+  color: #DFDFDF;
+  font-style: italic;
+}
+
+.queryContainer .routeTitles {
+  font-size: 56rpx;
+  color: #04246A;
+  font-weight: bold;
+  font-family: Antonio-Bold;
+  display: flex;
+  align-items: center;
+  padding-left: 50rpx;
+  margin-bottom: 20rpx;
+}
+
+.queryContainer .route2 {
+  color: #4468BA;
+}
+
+.queryContainer .redline {
+  width: 8rpx;
+  height: 50rpx;
+  background: #E20202;
+  margin: 0 20rpx 0 0;
+}
+
+.queryContainer .searchLists {
+  width: 690rpx;
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding: 30rpx 0 0 20rpx;
+}
+
+.queryContainer .searchList {
+  padding: 0 46rpx 0 120rpx;
+  margin-bottom: 34rpx;
+  position: relative;
+}
+
+.queryContainer .searchList .leftIcons {
+  position: absolute;
+  left: 44rpx;
+  top: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.queryContainer .searchList .leftIcons .leftDto {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background-color: #E20202;
+}
+
+.queryContainer .searchList .leftIcons .leftLine {
+  width: 2rpx;
+  height: 84rpx;
+  background-color: #9AA6C4;
+}
+
+.queryContainer .searchList .leftIcons .shipIcon {
+  width: 52rpx;
+  height: 52rpx;
+}
+
+.queryContainer .searchList .leftIcons .shipLocation {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.queryContainer .searchList .noRequest {
+  font-size: 24rpx;
+  color: #E2014B;
+  position: absolute;
+  left: 0;
+  top: 90rpx;
+  display: flex;
+  align-items: center;
+}
+
+.queryContainer .searchList .noRequest image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
+.queryContainer .searchList .searchTitle {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246A;
+  margin-bottom: 12rpx;
+}
+
+.queryContainer .searchList .codeInputs {
+  height: 88rpx;
+  border: 2rpx solid #DFDFDF;
+  margin-top: 10rpx;
+  padding: 0 0 0 20rpx;
+  font-size: 28rpx;
+  color: #04246A;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.queryContainer .searchList .codeInputs .codeIcon {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.queryContainer .searchList .codeInputs input {
+  width: 376rpx;
+}
+
+.queryContainer .searchList .codeInputs .deleteIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80rpx;
+  height: 88rpx;
+}
+
+.queryContainer .searchList .codeInputs .deleteIcon image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.scroll-view {
+  width: 100%;
+  position: absolute;
+  background: #ffffff;
+  border: 1rpx solid #00245d;
+  transform: rotateZ(360deg);
+  top: 86rpx;
+  left: -2rpx;
+  z-index: 40;
+  max-height: 430rpx;
+}
+
+.scroll-view .item {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #e2e2e2;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.queryContainer .searchLists .selectContainer {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 28rpx;
+}
+
+.queryContainer .searchLists .selectContainer view {
+  width: 490rpx;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.queryContainer .searchLists .selectContainer image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.noRequestBorder {
+  border: 2rpx solid #E2014B !important;
+}
+
+.queryContainer .containers {
+  display: flex;
+  height: 68rpx;
+  border: 2rpx solid #DCDFE6;
+  width: 288rpx;
+  color: #04246A;
+  font-size: 28rpx;
+}
+
+.queryContainer .containers .actionBtn {
+  width: 68rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.queryContainer .containers .number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 155rpx;
+  border-left: 2rpx solid #DCDFE6;
+  border-right: 2rpx solid #DCDFE6;
+}
+
+.queryContainer .btn {
+  width: 596rpx;
+  margin: 0 auto;
+}
+
+.queryContainer .reset {
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #3476FF;
+  font-size: 28rpx;
 }

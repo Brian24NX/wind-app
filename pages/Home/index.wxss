@@ -4,7 +4,7 @@ page {
 }
 
 .homeContainer {
-  padding-bottom: 190rpx;
+  padding-bottom: calc(130rpx + env(safe-area-inset-bottom));
 }
 
 .homeContainer .searchContainers {

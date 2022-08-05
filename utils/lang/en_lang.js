@@ -404,6 +404,28 @@ var Languague = {
       export: 'Export',
       noChargeData: 'No data found'
     },
+    // 报价
+    quotation: {
+      //航线|获取船期
+      getASchedule1: "Instant ",
+      getASchedule2: 'Quote',
+      //卸货港
+      portOfDischarge: "Port of Discharge",
+      //起运港
+      protOfLanding: "Port of Loading",
+      //港口名称/代码
+      name: "Name/Code",
+      //离港时间
+      departure: "Vessel departure from",
+      equipmentType: 'Equipment Type',
+      weight: 'Net Weight（KGM）',
+      weightName: 'EX.10 000 kgm',
+      container: 'Number of container(s)',
+      commodity: "Commodity",
+      //查询
+      search: "Get My Quote",
+      reset: 'Reset'
+    },
     popupBtn: {
       confirm: 'Confirm',
       cancel: 'Cancel'

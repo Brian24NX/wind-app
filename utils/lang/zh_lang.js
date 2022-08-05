@@ -406,6 +406,28 @@ var Languague = {
       export: '出口',
       noChargeData: '未找到相关数据'
     },
+    // 报价
+    quotation: {
+      //航线|获取船期
+      getASchedule1: "即时",
+      getASchedule2: '报价',
+      //卸货港
+      portOfDischarge: "卸货港",
+      //起运港
+      protOfLanding: "起运港",
+      //港口名称/代码
+      name: "名称/代码",
+      //离港时间
+      departure: "离港时间",
+      equipmentType: '箱型',
+      weight: '净重（KGM）',
+      weightName: 'EX.10 000 kgm',
+      container: '货柜数量',
+      commodity: "商品",
+      //查询
+      search: "获取报价",
+      reset: '重置'
+    },
     popupBtn: {
       confirm: '确定',
       cancel: '取消'
