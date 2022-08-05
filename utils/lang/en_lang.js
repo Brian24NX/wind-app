@@ -59,7 +59,7 @@ var Languague = {
       //船期查询
       SCHEDULE: "SCHEDULE",
       // 起运港
-      qyg: 'Place of Loading',
+      qyg: 'Port of Loading',
       // 卸货港
       xhg: 'Port of Discharge',
       gCode: 'Name/Code',
