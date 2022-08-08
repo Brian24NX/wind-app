@@ -116,7 +116,7 @@ Page({
         this.setData({
           equipmentTypeList: res.data,
           equipmentType: res.data[0].code,
-          equipmentTypeName: this.data.language === 'us' ? res.data[0].nameEn : res.data[0].nameCn
+          equipmentTypeName: this.data.language === 'en' ? res.data[0].nameEn : res.data[0].nameCn
         })
       }
     })
@@ -209,7 +209,7 @@ Page({
         showRemind1: false,
         showRemind2: false
       })
-    } else {
+    } else if (type === '2') {
       this.setData({
         podvalue: '',
         podcode: '',
@@ -217,6 +217,11 @@ Page({
         showDelete2: false,
         showRemind3: false,
         showRemind4: false
+      })
+    } else if (type === '3') {
+      this.setData({
+        weight: null,
+        showRemind5: false
       })
     }
   },
@@ -243,11 +248,21 @@ Page({
     this.getCommodityList()
   },
 
+  setWeight(e) {
+    this.setData({
+      weight: e.detail.value
+    })
+  },
+
   // 获取商品
   getCommodityList() {
     if (!this.data.polcode || !this.data.podcode || !this.data.equipmentType) return
-    getCommodityLists().then(res=>{
-      console.log(res)
+    getCommodityLists({
+      equipmentType: this.data.equipmentType,
+      portOfLoading: this.data.polcode,
+      portOfDischarge: this.data.podcode,
+      shippingCompany: '0001'
+    }).then(res => {
       this.setData({
         commodityList: res.data
       })
@@ -281,11 +296,17 @@ Page({
       })
       return
     }
+    let defaultIndex = 0
+    if (e.currentTarget.dataset.type === '1') {
+      defaultIndex = this.data.language === 'zh' ? this.data.equipmentTypeList.findIndex(item => item.nameCn === this.data.equipmentTypeName) : this.data.equipmentTypeList.findIndex(item => item.nameEn === this.data.equipmentTypeName)
+    } else {
+      defaultIndex = this.data.commodityList.findIndex(i => i.code === this.data.commodityCode)
+    }
     this.setData({
       popupType: e.currentTarget.dataset.type,
       columns: e.currentTarget.dataset.type === '1' ? this.data.equipmentTypeList : this.data.commodityList,
-      valueKey: e.currentTarget.dataset.type === '1' ? 'nameCn' : 'weeks',
-      defaultIndex: e.currentTarget.dataset.type === '1' ? this.data.search : this.data.week - 1,
+      valueKey: e.currentTarget.dataset.type === '1' ? (this.data.language === 'zh' ? 'nameCn' : 'nameEn') : (this.data.language === 'zh' ? 'zh' : 'en'),
+      defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
       showPopup: true
     })
   },
@@ -305,14 +326,14 @@ Page({
   onConfirm(e) {
     if (this.data.popupType === '1') {
       this.setData({
-        equipmentType: e.detail.id,
-        equipmentTypeName: this.data.language === 'us' ? e.detail.nameEn : e.detail.nameCn
+        equipmentType: e.detail.code,
+        equipmentTypeName: this.data.language === 'en' ? e.detail.nameEn : e.detail.nameCn
       })
       this.getCommodityList()
     } else {
       this.setData({
         commodityCode: e.detail.code,
-        commodityName: this.data.language === 'us' ? e.detail.en : e.detail.zh
+        commodityName: this.data.language === 'en' ? (e.detail.en || e.detail.zh) : e.detail.zh
       })
     }
     this.onClose()
@@ -329,7 +350,7 @@ Page({
 
   confirmDate(e) {
     this.setData({
-      date: dayjs(e.detail).format('YYYY-MM-DD'),
+      departureDate: dayjs(e.detail).format('YYYY-MM-DD'),
       showDatePopup: false
     })
   },
@@ -418,6 +439,37 @@ Page({
       wx.showToast({
         title: '去报价',
       })
+    })
+  },
+
+  reset() {
+    this.setData({
+      showPol: false,
+      showPod: false,
+      // 卸货港
+      podvalue: "",
+      podcode: "",
+      // 起运港
+      polvalue: "",
+      polcode: "",
+      pollist: [],
+      podlist: [],
+      departureDate: this.getDate(),
+      equipmentType: this.data.equipmentTypeList[0].code,
+      equipmentTypeName: this.data.language === 'zh' ? this.data.equipmentTypeList[0].nameCn : this.data.equipmentTypeList[0].nameEn,
+      weight: null,
+      containers: 1,
+      commodityCode: '',
+      commodityName: '',
+      commodityList: [],
+      showRemind1: false,
+      showRemind2: false,
+      showRemind3: false,
+      showRemind4: false,
+      showRemind5: false,
+      showDelete1: false,
+      showDelete2: false,
+      showDelete3: false,
     })
   }
 })

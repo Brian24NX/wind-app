@@ -86,7 +86,7 @@
       <view class="searchList">
         <view class="searchTitle">{{languageContent.weight}}</view>
         <view class="codeInputs {{showRemind5 ? 'noRequestBorder' : ''}}">
-          <input style="width: 420rpx;" value="{{weight}}" maxlength="8" type="number" placeholder="{{languageContent.weightName}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+          <input style="width: 420rpx;" value="{{weight}}" bindinput="setWeight" maxlength="8" type="number" placeholder="{{languageContent.weightName}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
           <view class="deleteIcon" wx:if="{{weight}}" catchtap="deleteValue" data-type="3">
             <image src="../../assets/img/search/close@2x.png"></image>
           </view>
@@ -113,7 +113,7 @@
       </view>
       <view class="btn" style="margin-top: 40rpx;">
         <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search}}</button>
-        <view class="reset">{{languageContent.reset}}</view>
+        <view class="reset" catchtap="reset">{{languageContent.reset}}</view>
       </view>
     </view>
 
