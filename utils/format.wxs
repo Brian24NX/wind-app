@@ -5,7 +5,7 @@ function formatEnDateLocal(date, fuhao, type, hideWeek, hideTime) {
     date = date.split('T')[0].split('-').join('/') + ' ' + (date.split('T')[1]).substring(0, 8)
   }
   var dt = getDate(date);
-  var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec"];
+  var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
   var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   var mn = dt.getMonth(),
@@ -42,7 +42,7 @@ function formatCnDateLocal(date, hideWeek, hideTime) {
 function formatEnDateUtc(date, fuhao, type, hideWeek, needTime) {
   if (!date) return ''
   var dt = getDate(date);
-  var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec"];
+  var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
   var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   var mn = dt.getMonth(),

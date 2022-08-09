@@ -67,7 +67,7 @@ var Languague = {
       advancedBtn: 'Advanced Search',
       //实时报价
       PRICE: 'PRICE',
-      instantQuote: "Instant Quote",
+      instantQuote: "Instant Quotation",
       //柜租费率
       ddRate: "D & D Prices",
       //查询费率
