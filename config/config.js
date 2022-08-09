@@ -1,6 +1,6 @@
 module.exports = {
   app_name: 'CMA CGM',
-	version: "v4.0.0",
+	version: "v5.0.0",
 	dev_env: 'dev', // 是否开发环境
 	pro: {
     url: 'https://wind.cma-cgm.com',
