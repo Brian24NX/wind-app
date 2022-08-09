@@ -16,10 +16,10 @@ if (wx.getStorageSync('openId')) {
   wx.login({
     success(res) {
       wx.request({
-        url: config[config.dev_env].url + '/api/miniapp/wx/user/' + config[config.dev_env].appId + '/login?code=' + res.code,
+        url: config[config.dev_env].url + '/api/miniapp/wx/user/login?code=' + res.code,
         success(data) {
-          wx.setStorageSync('openId', data.data.openid)
-          wx.setStorageSync('wmUserInfo', JSON.stringify({userId: data.data.openid, userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
+          wx.setStorageSync('openId', data.data.data)
+          wx.setStorageSync('wmUserInfo', JSON.stringify({userId: data.data.data, userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
         }
       })
     }
