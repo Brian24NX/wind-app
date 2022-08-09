@@ -38,3 +38,13 @@ page {
   width: 16rpx;
   height: 30rpx;
 }
+
+.reminds {
+  font-size: 20rpx;
+  color: #6B7790;
+  text-align: center;
+}
+
+.reminds text {
+  color: #071E5D;
+}

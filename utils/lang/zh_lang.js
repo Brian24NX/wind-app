@@ -266,7 +266,9 @@ var Languague = {
       title2: '查询',
       placeholder: '名称/编码',
       type: '种类',
-      code: '编码'
+      code: '编码',
+      remind1: '如需查询CMA CGM是否承运特定危险品UN#, ',
+      remind2: '请联系 '
     },
     // 柜租费率
     guizufeilv: {
@@ -385,7 +387,8 @@ var Languague = {
       cancel: '取消'
     },
     copyInfo: {
-      success: '已复制，请前往浏览器打开'
+      success: '已复制，请前往浏览器打开',
+      success2: '已复制'
     },
     load: {
       //努力加载中

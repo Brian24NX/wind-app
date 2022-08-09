@@ -18,7 +18,8 @@ Page({
     loading: true,
     noMore: false,
     noData: false,
-    list: []
+    list: [],
+    email: 'SHG.SpecialCargoTEAM@cma-cgm.com'
   },
 
   /**
@@ -111,6 +112,19 @@ Page({
   toDetail(e) {
     wx.navigateTo({
       url: `/packageMore/pages/sanctionCheck/detail/index?id=${e.currentTarget.dataset.id}`
+    })
+  },
+
+  copyEmail() {
+    wx.setClipboardData({
+      data: this.data.email,
+      success() {
+        wx.showToast({
+          title: languageUtils.languageVersion().lang.page.copyInfo.success2,
+          mask: true,
+          icon: 'none'
+        })
+      }
     })
   }
 })

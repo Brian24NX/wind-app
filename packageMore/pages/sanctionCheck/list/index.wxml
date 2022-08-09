@@ -38,4 +38,6 @@
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
     <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>
   </view>
+  <view class="reminds" style="padding-top: 20rpx;">{{languageContent.remind1}}</view>
+  <view class="reminds" style="padding-bottom: 20rpx;">{{languageContent.remind2}}<text catchtap="copyEmail">{{email}}</text></view>
 </view>

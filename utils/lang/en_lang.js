@@ -265,7 +265,9 @@ var Languague = {
       title2: ' Check',
       placeholder: 'Name or Ref. No.',
       type: 'Type',
-      code: 'Reference number'
+      code: 'Reference number',
+      remind1: 'Enquiries of specific hazardous commodity UN#, ',
+      remind2: 'please contact '
     },
     // 柜租费率
     guizufeilv: {
@@ -384,7 +386,8 @@ var Languague = {
       cancel: 'Cancel'
     },
     copyInfo: {
-      success: 'Successfully copied, please view in browser.'
+      success: 'Successfully copied, please view in browser.',
+      success: 'Successfully copied.'
     },
     load: {
       //努力加载中

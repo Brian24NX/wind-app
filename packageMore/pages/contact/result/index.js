@@ -54,6 +54,13 @@ Page({
     const email = e.currentTarget.dataset.email
     wx.setClipboardData({
       data: email,
+      success() {
+        wx.showToast({
+          title: languageUtils.languageVersion().lang.page.copyInfo.success2,
+          mask: true,
+          icon: 'none'
+        })
+      }
     })
   }
 })
