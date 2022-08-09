@@ -320,6 +320,7 @@ Page({
       success() {
         wx.showToast({
           title: languageUtils.languageVersion().lang.page.copyInfo.success,
+          mask: true,
           icon: 'none'
         })
       }

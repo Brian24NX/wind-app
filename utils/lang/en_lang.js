@@ -431,7 +431,8 @@ var Languague = {
       cancel: 'Cancel'
     },
     copyInfo: {
-      success: 'Successfully copied, please view in browser.'
+      success: 'Successfully copied, please view in browser.',
+      success: 'Successfully copied.'
     },
     load: {
       //努力加载中
