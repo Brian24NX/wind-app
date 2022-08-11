@@ -37,6 +37,12 @@ Page({
     })
   },
 
+  onShareAppMessage: function() {
+    return {
+      path: '/packageMore/pages/news/detail/index?id=' + this.data.id
+    }
+  },
+
   // 获取新闻详情
   getNewsDetail() {
     newsDetail({id: this.data.id}).then(res=>{

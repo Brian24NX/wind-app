@@ -21,6 +21,8 @@ Page({
     this.initLanguage();
   },
 
+  onShareAppMessage: function() {},
+
   clearInput() {
     this.setData({
       huoGuiValue: '',

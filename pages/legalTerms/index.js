@@ -19,4 +19,6 @@ Page({
       title: languageUtils.languageVersion().lang.page.legalTerms.title
     })
   },
+
+  onShareAppMessage: function() {},
 })

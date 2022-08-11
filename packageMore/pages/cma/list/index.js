@@ -47,6 +47,8 @@ Page({
     this.getCmaNewsList()
   },
 
+  onShareAppMessage: function() {},
+
   resetList() {
     this.setData({
       loading: true,

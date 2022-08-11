@@ -18,6 +18,8 @@ Page({
     })
   },
 
+  onShareAppMessage: function() {},
+
   copy() {
     wx.setClipboardData({
       data: 'https://www.cma-cgm.com/about/the-group',

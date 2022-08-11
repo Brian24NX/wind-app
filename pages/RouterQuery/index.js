@@ -62,6 +62,8 @@ Page({
     this.initLanguage()
     this.setDefaultLocation()
   },
+
+  onShareAppMessage: function() {},
   
   //初始化语言
   initLanguage() {

@@ -42,6 +42,12 @@ Page({
     })
   },
 
+  onShareAppMessage: function() {
+    return {
+      path: '/packageMore/pages/BusinessAndOperational/detail/index?id=' + this.data.id
+    }
+  },
+
   getBusiniessOpentionalDetail() {
     businiessOpentionalDetail({
       id: this.data.id

@@ -61,6 +61,8 @@ Page({
     this.getNewsList()
   },
 
+  onShareAppMessage: function() {},
+
   setInput(e) {
     this.setData({
       keyword: e.detail.value
