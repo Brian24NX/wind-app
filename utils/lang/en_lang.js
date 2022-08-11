@@ -410,7 +410,7 @@ var Languague = {
     },
     copyInfo: {
       success: 'Successfully copied, please view in browser.',
-      success: 'Successfully copied.'
+      success2: 'Successfully copied.'
     },
     load: {
       //努力加载中

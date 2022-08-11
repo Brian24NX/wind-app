@@ -116,8 +116,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
     this.initLanguage();
+    if (options.actived) {
+      this.setData({
+        actived: options.actived
+      })
+    }
     analysis({
       analysisType: 10,
       operateType: 1,

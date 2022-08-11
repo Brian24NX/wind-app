@@ -422,7 +422,7 @@ var Languague = {
       // 功能升级中,敬请期待
       functionIsUnderDevelopment: "功能升级中，敬请期待",
       chaoshi: '请求超时，请稍后再试',
-      accessDenied: '抱歉，您暂无此页面权限',
+      accessDenied: '抱歉，您暂无此权限',
       // 系统繁忙,请稍后重试
       systemIsBusyNow: "系统繁忙，请稍后重试",
       // 暂无更多数据
