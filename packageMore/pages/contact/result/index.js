@@ -56,7 +56,7 @@ Page({
       data: email,
       success() {
         wx.showToast({
-          title: languageUtils.languageVersion().lang.page.copyInfo.success2,
+          title: languageUtil.languageVersion().lang.page.copyInfo.success2,
           mask: true,
           icon: 'none'
         })
