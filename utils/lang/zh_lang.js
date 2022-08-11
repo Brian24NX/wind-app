@@ -283,7 +283,7 @@ var Languague = {
       login: '登录',
       myDashboard: '我的概览',
       shipment: '船运概览',
-      document: '文件概览',
+      document: '单证概览',
       setting: '语言设置',
       legalTerms: '隐私政策'
     },
@@ -310,19 +310,19 @@ var Languague = {
     setLanguage: {
       title: '设置语言'
     },
-    // 文件概览
+    // 单证概览
     document: {
-      title: '文件概览',
-      title1: '文件',
+      title: '单证概览',
+      title1: '单证',
       title2: '概览',
       placeholder: '搜索订舱号或提单号',
-      fileNo: '文件编号',
+      fileNo: '单证编号',
       referenceNo: '运输号码',
       type: '类型',
       status: '状态',
       date: '日期',
       send: '发送至邮箱',
-      noData: '暂无文件'
+      noData: '暂无单证'
     },
     // 船舶概览
     shipment: {
@@ -346,7 +346,7 @@ var Languague = {
       detailTitle2: '详情',
       detailContainer: '货柜',
       info: '资讯',
-      document: '文件',
+      document: '单证',
       RECEIPT: '始发地',
       POL: '起运港',
       POD: '卸货港',
