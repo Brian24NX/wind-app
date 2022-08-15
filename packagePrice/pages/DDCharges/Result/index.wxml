@@ -44,7 +44,7 @@
           </view>
           <view class="priceList">
             <view class="onePrice">
-              <view>freeDays</view>
+              <view>Free Days</view>
               <view>{{item.conditionsByEquipment[0].freeDays.number}} {{item.conditionsByEquipment[0].freeDays.type}}</view>
             </view>
             <view class="onePrice" wx:for="{{item.conditionsByEquipment[0].afterFreeDaysCharges}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
