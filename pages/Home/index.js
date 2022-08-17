@@ -123,11 +123,11 @@ Page({
         actived: options.actived
       })
     }
-    analysis({
-      analysisType: 10,
-      operateType: 1,
-      statisti: 1
-    })
+    // analysis({
+    //   analysisType: 10,
+    //   operateType: 1,
+    //   statisti: 1
+    // })
   },
   /**
    * 生命周期函数--监听页面显示
