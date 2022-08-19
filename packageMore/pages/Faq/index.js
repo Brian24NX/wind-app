@@ -1,6 +1,9 @@
 // packageMore/pages/Faq/index.js
 const config = require("../../../config/config")
 const languageUtil = require('../../../utils/languageUtils')
+import {
+  analysis
+} from '../../../api/modules/home'
 Page({
 
   /**
@@ -27,6 +30,11 @@ Page({
         needBottom: '1'
       })
     }
+    analysis({
+      analysisType: 6,
+      operateType: 1,
+      statisti: 6
+    })
   },
 
   onShareAppMessage: function() {},

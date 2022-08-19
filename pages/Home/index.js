@@ -461,11 +461,11 @@ Page({
       })
       return
     }
-    analysis({
-      analysisType: 6,
-      operateType: 1,
-      statisti: item.type
-    })
+    // analysis({
+    //   analysisType: 6,
+    //   operateType: 1,
+    //   statisti: item.type
+    // })
     wx.navigateTo({
       url: item.url,
     })

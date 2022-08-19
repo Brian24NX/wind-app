@@ -6,6 +6,9 @@ import {
   contractInfo,
   contractInfoByOrderId
 } from '../../../api/modules/more';
+import {
+  analysis
+} from '../../../../api/modules/home'
 const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
@@ -45,6 +48,11 @@ Page({
   onLoad() {
     this.initLanguage()
     this.getOfficeList()
+    analysis({
+      analysisType: 6,
+      operateType: 1,
+      statisti: 8
+    })
   },
 
   onShareAppMessage: function() {},

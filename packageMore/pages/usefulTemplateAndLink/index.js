@@ -73,6 +73,11 @@ Page({
     })
     this.getCategoryList()
     this.search()
+    analysis({
+      analysisType: 6,
+      operateType: 1,
+      statisti: 7
+    })
   },
 
   /**

@@ -3,6 +3,9 @@ const languageUtils = require('../../../../utils/languageUtils')
 import {
   sanctionCommodityList
 } from '../../../api/modules/more';
+import {
+  analysis
+} from '../../../../api/modules/home'
 const pageSize = 20
 Page({
 
@@ -35,6 +38,11 @@ Page({
       emptyContent: languageUtils.languageVersion().lang.page.empty
     })
     this.search()
+    analysis({
+      analysisType: 6,
+      operateType: 1,
+      statisti: 4
+    })
   },
 
   /**

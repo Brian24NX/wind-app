@@ -3,6 +3,9 @@ import {
   categoryList,
   businiessOpentionalList
 } from '../../../api/modules/more';
+import {
+  analysis
+} from '../../../../api/modules/home'
 const languageUtil = require('../../../../utils/languageUtils')
 const pageSize = 20;
 Page({
@@ -33,6 +36,11 @@ Page({
     this.initLanguage()
     this.getCategoryList()
     this.resetList()
+    analysis({
+      analysisType: 6,
+      operateType: 1,
+      statisti: 3
+    })
   },
 
   /**
