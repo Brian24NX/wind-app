@@ -71,12 +71,16 @@ page {
 
 .chargeDetail .chargeTops .typeLists .oneTypes {
   display: flex;
-  flex: 1;
+  width: 60%;
   align-items: center;
   font-size: 24rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #4468BA;
+}
+
+.chargeDetail .chargeTops .typeLists .oneTypes:nth-last-of-type(1) {
+  width: 40%;
 }
 
 .chargeDetail .chargeTops .typeLists .oneTypes image {

@@ -3,6 +3,9 @@ import {
   categoryList,
   newsList
 } from '../../../api/modules/more';
+import {
+  analysis
+} from '../../../../api/modules/home'
 const pageSize = 20
 const languageUtil = require('../../../../utils/languageUtils')
 Page({
@@ -40,6 +43,11 @@ Page({
     })
     this.getCategoryList()
     this.search()
+    analysis({
+      analysisType: 6,
+      operateType: 1,
+      statisti: 2
+    })
   },
 
   /**

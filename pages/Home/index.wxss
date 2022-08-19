@@ -259,7 +259,7 @@ page {
   /* width: 226rpx; */
   text-align: center;
   color: #999999;
-  font-size: 28rpx;
+  font-size: 24rpx;
 }
 
 .homeContainer .discoverContainer .swiper .discoverList .oneDiscover .discoverRight .discoverName {

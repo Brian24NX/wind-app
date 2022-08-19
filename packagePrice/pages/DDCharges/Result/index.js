@@ -12,8 +12,8 @@ Page({
     languageContent: {},
     language: 'zh',
     chargeFinderSearchKey: {},
-    typeList: ['import', 'export'],
-    current: 'import',
+    typeList: ['export', 'import'],
+    current: 'export',
     tariffDesc: '',
     loading: true,
     imports: [],
@@ -62,7 +62,7 @@ Page({
         this.setData({
           imports,
           exports,
-          list: imports,
+          list: exports,
           loading: false
         })
       } else {

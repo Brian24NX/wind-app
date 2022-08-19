@@ -9,24 +9,20 @@ require("./utils/webmonitor.mp.min")
  * @param projectVersion 应用每次发布的版本号
  */
 
-if (wx.getStorageSync('openId')) {
-  wx.setStorageSync('wmUserInfo', JSON.stringify({userId: wx.getStorageSync('openId'), userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
-} else {
-  wx.setStorageSync('wmUserInfo', JSON.stringify({userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
+if (!wx.getStorageSync('openId')) {
   wx.login({
     success(res) {
       wx.request({
         url: config[config.dev_env].url + '/api/miniapp/wx/user/login?code=' + res.code,
         success(data) {
           wx.setStorageSync('openId', data.data.data)
-          wx.setStorageSync('wmUserInfo', JSON.stringify({userId: data.data.data, userTag: config.app_name, projectVersion: config.version, env: config.dev_env}))
         }
       })
     }
   })
 }
 
-App(wx.webfunny({
+App({
   onLaunch() {
     this.autoUpdate()
     wx.removeStorageSync('polobject')
@@ -86,6 +82,8 @@ App(wx.webfunny({
           wx.showModal({
             title: 'Warm prompt',
             content: 'If a new version is detected, determine whether to download the new version and restart the applet?',
+            confirmText: 'Sure',
+            cancelText: "Cancel",
             success: function (res) {
               if (res.confirm) {
                 //2. 用户确定下载更新小程序，小程序下载及更新静默进行
@@ -115,7 +113,9 @@ App(wx.webfunny({
       // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
       wx.showModal({
         title: 'Warm prompt',
-        content: 'The current wechat version is too early to use this function. Please upgrade to the latest wechat version and try again.'
+        content: 'The current wechat version is too early to use this function. Please upgrade to the latest wechat version and try again.',
+        confirmText: 'Sure',
+        cancelText: 'Cancel'
       })
     }
   },
@@ -135,6 +135,7 @@ App(wx.webfunny({
       wx.showModal({
         title: 'There is a new version already',
         content: 'The new version has been online, please delete the current small program, search again open.',
+        confirmText: 'Sure'
       })
       wx.hideLoading()
     })
@@ -147,4 +148,4 @@ App(wx.webfunny({
 
     }
   }
-}))
+})

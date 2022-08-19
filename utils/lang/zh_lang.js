@@ -401,7 +401,7 @@ var Languague = {
       Oversized: '超大货物',
       date: '模拟日期',
       search: '搜索',
-      detailTitle: 'D&D Charges',
+      detailTitle: 'D&D费用',
       import: '进口',
       export: '出口',
       noChargeData: '未找到相关数据'

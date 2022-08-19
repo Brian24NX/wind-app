@@ -1,5 +1,8 @@
 // packageMore/pages/about/index.js
 const languageUtil = require('../../../utils/languageUtils')
+import {
+  analysis
+} from '../../../api/modules/home'
 Page({
 
   /**
@@ -15,6 +18,11 @@ Page({
   onLoad() {
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.homeInfo.about
+    })
+    analysis({
+      analysisType: 6,
+      operateType: 1,
+      statisti: 5
     })
   },
 
