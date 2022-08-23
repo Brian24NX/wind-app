@@ -18,13 +18,15 @@ Page({
       icon: '/assets/img/menu/dc@2x.png',
       isNew: true,
       label: 'dingcang',
-      url: '',
-      needLogin: true
+      type: 1,
+      url: '/pages/Quotation/index',
+      needLogin: false
     }, {
       style: "330rpx",
       icon: '/assets/img/menu/cqcx@2x.png',
       isNew: false,
       label: 'chuanqi',
+      type: 2,
       url: '/pages/RouterQuery/index',
       needLogin: false
     }, {
@@ -32,6 +34,7 @@ Page({
       icon: '/assets/img/menu/hwzz@2x.png',
       isNew: false,
       label: 'huowu',
+      type: 2,
       url: '/pages/Shipment/index',
       needLogin: false
     }, {
@@ -39,6 +42,7 @@ Page({
       icon: '/assets/img/menu/gzp@2x.png',
       isNew: true,
       label: 'gzp',
+      type: 2,
       url: '/packageMore/pages/sanctionCheck/list/index',
       needLogin: false
     }, {
@@ -52,6 +56,7 @@ Page({
       style: "216rpx",
       icon: '/assets/img/menu/cxfl@2x.png',
       isNew: false,
+      type: 2,
       label: 'cxfl',
       url: '/packagePrice/pages/chargeFinder/index',
       needLogin: false
@@ -60,6 +65,7 @@ Page({
       icon: '/assets/img/menu/D&D@2x.png',
       isNew: false,
       label: 'ddCharges',
+      type: 2,
       url: '/packagePrice/pages/DDCharges/Search/index',
       needLogin: true
     }],
@@ -90,9 +96,15 @@ Page({
       return
     }
     if (!this.data.menuList[index].needLogin || (this.data.menuList[index].needLogin && utils.checkAccessToken())) {
-      wx.navigateTo({
-        url: this.data.menuList[index].url,
-      })
+      if (this.data.menuList[index].type === 1) {
+        wx.switchTab({
+          url: this.data.menuList[index].url
+        })
+      } else {
+        wx.navigateTo({
+          url: this.data.menuList[index].url,
+        })
+      }
     } else {
       wx.showToast({
         title: languageUtil.languageVersion().lang.page.load.noLogin,
