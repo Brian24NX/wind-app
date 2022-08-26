@@ -1,0 +1,25 @@
+var fmtDate = function (obj, language) {
+  obj = obj.split('-').join('/')
+  var time = getDate(obj);
+  var month = time.getMonth() + 1;
+  var date = time.getDate();
+
+  month = month < 10 ? "0" + month : month;
+  date = date < 10 ? "0" + date : date;
+  return language === 'zh' ? (month + "." + date) : (date + '.' + month);
+}
+
+var weekDay = function (obj) {
+  if (!obj) return ''
+  if (obj.indexOf('T') > -1) {
+    obj = obj.split('T')[0] + ' ' + obj.split('T')[1].split('+')[0].split('-')[0]
+  }
+  obj = obj.split('-').join('/')
+  var week = getDate(obj).getDay();
+  return week;
+}
+
+module.exports = {
+  fmtDate: fmtDate,
+  weekDay: weekDay
+}

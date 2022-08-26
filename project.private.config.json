@@ -7,7 +7,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/Quotation/index",
+          "pathName": "pages/Quotation/List/index",
           "query": "",
           "launchMode": "default",
           "scene": null

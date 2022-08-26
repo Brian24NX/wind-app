@@ -486,7 +486,7 @@ var Languague = {
         "selectedIconPath": "/assets/img/tabs/query_selected.png"
       },
       {
-        "pagePath": "../Quotation/index",
+        "pagePath": "../Quotation/Search/index",
         "text": "Quotation",
         "iconPath": "/assets/img/tabs/price.png",
         "selectedIconPath": "/assets/img/tabs/price_selected.png"

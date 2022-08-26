@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/Home/index",
-    "pages/Quotation/index",
+    "pages/Quotation/Search/index",
     "pages/Query/index",
     "pages/My/index",
     "pages/Orders/index",
@@ -14,7 +14,8 @@
     "pages/baseInfo/index",
     "pages/setLanguage/index",
     "pages/legalTerms/index",
-    "pages/Logout/index"
+    "pages/Logout/index",
+    "pages/Quotation/List/index"
   ],
   "subPackages": [
     {
@@ -80,7 +81,7 @@
         "selectedIconPath": "/assets/img/tabs/query_selected.png"
       },
       {
-        "pagePath": "pages/Quotation/index",
+        "pagePath": "pages/Quotation/Search/index",
         "text": "",
         "iconPath": "/assets/img/tabs/price.png",
         "selectedIconPath": "/assets/img/tabs/price_selected.png"

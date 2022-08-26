@@ -1,0 +1,76 @@
+.tabBarlayout {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+}
+
+.tabbar-item {
+  height: 140rpx;
+}
+
+.tabbar-item:last-child .tabText {
+  border-right: none
+}
+
+.tabBarImg {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.color-790 {
+  color: #6B7790 !important;
+}
+
+.tabText {
+  display: inline-block;
+  width: 100%;
+  margin-top: 8rpx;
+  color: #04246A;
+  font-size: 24rpx;
+  text-align: center;
+  border-right: 1px solid #E5E5E5;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.sort-menus {
+  height: 100%;
+  position: relative;
+}
+
+.sort-menus .sort-menu {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 80rpx;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.sort-menus .apply {
+  background-color: #ffffff;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+  text-align: right;
+  border-bottom: 1rpx solid rgb(235, 237, 240);
+  color: #2D75FF;
+  font-size: 26rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.value-class {
+  flex: none !important;
+}

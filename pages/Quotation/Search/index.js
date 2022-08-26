@@ -1,13 +1,13 @@
-// pages/quotation/index.js
+// pages/Quotation/Search/index/index.js
 const app = getApp();
-var languageUtil = require('../../utils/languageUtils')
-const utils = require('../../utils/util')
+var languageUtil = require('../../../utils/languageUtils')
+const utils = require('../../../utils/util')
 const dayjs = require("dayjs");
 import {
   fuzzySearch,
   getCommodityLists,
   equitmentSizeList
-} from '../../api/modules/home';
+} from '../../../api/modules/home';
 Page({
 
   /**
@@ -381,6 +381,10 @@ Page({
 
   // 提交搜索
   submit() {
+    wx.navigateTo({
+      url: '/pages/Quotation/List/index',
+    })
+    return
     if (this.data.showDelete1) {
       this.setData({
         showRemind1: false

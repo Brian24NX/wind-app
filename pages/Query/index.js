@@ -19,7 +19,7 @@ Page({
       isNew: true,
       label: 'dingcang',
       type: 1,
-      url: '/pages/Quotation/index',
+      url: '/pages/Quotation/Search/index',
       needLogin: false
     }, {
       style: "330rpx",
