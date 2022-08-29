@@ -28,6 +28,11 @@ export const chargeFuzzySearch = (params, hideLoading) => {
   return getRequest('/api/miniapp/chargeFuzzySearch', params, hideLoading)
 }
 
+// 港口模糊查询
+export const getAllNetworkPoint = (params, hideLoading) => {
+  return getRequest('/api/miniapp/getAllNetworkPoint', params, hideLoading)
+}
+
 // 排序
 export const routingSort = (params) => {
   return postRequest('/api/miniapp/routingSort', params, true)

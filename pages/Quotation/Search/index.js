@@ -5,6 +5,7 @@ const utils = require('../../../utils/util')
 const dayjs = require("dayjs");
 import {
   fuzzySearch,
+  getAllNetworkPoint,
   getCommodityLists,
   equitmentSizeList
 } from '../../../api/modules/home';
@@ -53,7 +54,11 @@ Page({
     defaultIndex: 0,
     showDatePopup: false,
     currentDate: null,
-    showLegal: false
+    showLegal: false,
+    showPlaceOfReceipt: false,
+    showPlaceOfDelivery: false,
+    showPoR: false,
+    placeOfReceiptList: []
   },
 
   /**
@@ -80,6 +85,18 @@ Page({
   },
 
   onShareAppMessage: function () {},
+
+  addPlaceOfReceipt() {
+    this.setData({
+      showPlaceOfReceipt: true
+    })
+  },
+
+  addPlaceOfDelivery() {
+    this.setData({
+      showPlaceOfDelivery: true
+    })
+  },
 
   checkAccessToken(callback) {
     if (!utils.checkAccessToken()) {
@@ -139,6 +156,37 @@ Page({
   },
 
   //获取起始港的接口处理
+  changePlaceOfReceipt: utils.debounce(function (e) {
+    const data = e['0'].detail.value
+    this.setData({
+      showDelete1: data ? true : false,
+      showRemind1: false,
+      showRemind2: false,
+      showPoR: false,
+      placeOfReceiptList: []
+    })
+    if (data.length < 2) {
+      return
+    }
+    this.setData({
+      showPoR: true
+    })
+    getAllNetworkPoint({
+      searchStr: data
+    }, true).then(res => {
+      this.setData({
+        showPoR: false
+      })
+      if (res.data != '') {
+        res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
+        this.setData({
+          placeOfReceiptList: res.data || []
+        })
+      }
+    })
+  }, 800),
+
+  //获取起始港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
@@ -146,7 +194,7 @@ Page({
       showRemind1: false,
       showRemind2: false,
       showPol: false,
-      pollist: []
+      placeOfReceiptList: []
     })
     if (data.length < 2) {
       return
