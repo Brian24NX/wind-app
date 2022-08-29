@@ -1,0 +1,23 @@
+<!--pages/Quotation/Others/LocalCharges/index.wxml-->
+<view class="topLine"></view>
+<view class="localCharges">
+  <view class="topTitle">
+    <view class="topTitleLine"></view>
+    <view>Local charges</view>
+  </view>
+  <view class="localDetail">More details about local charges :</view>
+  <view class="oneLocal">
+    <view class="localLeft">
+      <image src="/assets/img/home/templatelinks@2x.png"></image>
+      <view>Export Local Charge</view>
+    </view>
+    <view class="copy">Copy</view>
+  </view>
+  <view class="oneLocal">
+    <view class="localLeft">
+      <image src="/assets/img/home/templatelinks@2x.png"></image>
+      <view>Export Local Charge</view>
+    </view>
+    <view class="copy">Copy</view>
+  </view>
+</view>

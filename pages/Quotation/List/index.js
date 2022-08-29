@@ -2,8 +2,7 @@
 const utils = require('../../../utils/util')
 import {
   routingFinder,
-  routingSort,
-  analysis
+  routingSort
 } from '../../../api/modules/home';
 const dayjs = require("dayjs");
 const languageUtil = require('../../../utils/languageUtils')
@@ -340,7 +339,7 @@ Page({
     let details = this.data.routinglist[index];
     wx.setStorageSync('details', details);
     wx.navigateTo({
-      url: '/pages/ResultDetail/index',
+      url: '/pages/Quotation/Detail/index',
     })
   }
 })

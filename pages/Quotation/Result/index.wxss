@@ -1,0 +1,234 @@
+/* pages/Quotation/Result/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.resultContainer {
+  padding-bottom: 130rpx;
+}
+
+.resultTopContainer {
+  padding: 50rpx 70rpx 92rpx;
+  border-top: 2rpx solid #EEF0F6;
+  background-color: #F4F8FF;
+  text-align: center;
+}
+
+.resultTopContainer .resSuccess {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00865E;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+.resultTopContainer .successDesc {
+  font-size: 32rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #071E5D;
+  margin: 20rpx 0;
+}
+
+.resultTopContainer .buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.resultTopContainer .buttons .oneBtn {
+  width: 206rpx;
+  height: 64rpx;
+  text-align: center;
+  line-height: 64rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  background-color: #071E5D;
+  margin-right: 40rpx;
+}
+
+.resultTopContainer .buttons .oneBtn:nth-last-of-type(1) {
+  margin-right: 0;
+}
+
+.resultTopContainer .desc {
+  font-size: 24rpx;
+  font-family: ArialMT;
+  color: #6B7790;
+  margin-top: 20rpx;
+}
+
+.results {
+  position: relative;
+  z-index: 1;
+  margin-top: -50rpx;
+  padding: 0 30rpx;
+}
+
+.resultsContainer {
+  background-color: #ffffff;
+  padding: 0 30rpx;
+}
+
+.resultsContainer .reference {
+  padding: 50rpx 0 30rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+
+.resultsContainer .reference .referenceTitle {
+  font-size: 28rpx;
+  font-family: ArialMT;
+  color: #6B7790;
+}
+
+.resultsContainer .reference .referenceNumber {
+  font-size: 48rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #071E5D;
+  display: flex;
+  align-items: flex-start;
+}
+
+.resultsContainer .reference .referenceNumber .copyIcon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.resultsContainer .priceContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #eeeeee;
+  padding: 30rpx 0 18rpx;
+}
+
+.resultsContainer .priceContainer .priceLeft {
+  font-size: 24rpx;
+  font-family: Antonio-Regular;
+  font-weight: 500;
+  color: #04246A;
+}
+
+.resultsContainer .priceContainer .priceLeft .days {
+  margin-bottom: 10rpx;
+  font-size: 48rpx;
+}
+
+.resultsContainer .priceContainer .priceRight {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #E20202;
+}
+
+.resultsContainer .priceContainer .priceRight .price {
+  font-size: 72rpx;
+  color: #04246A;
+  margin-right: 10rpx;
+}
+
+.solutionContainer {
+  width: 640rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26rpx 0;
+}
+
+.solutionContainer .solutionLeft {
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #6B7790;
+}
+
+.solutionContainer .solutionLeft .solutionLeftOne {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+
+.solutionContainer .solutionLeft .solutionLeftOne:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.solutionContainer .solutionLeft image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 10rpx;
+}
+
+.paramContainer {
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30rpx 0;
+  padding: 0 46rpx;
+}
+
+.paramContainer .oneParams {
+  border-top: 1rpx solid #EEEEEE;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  padding: 48rpx 10rpx;
+}
+
+.paramContainer .oneParams:nth-of-type(-n + 2) {
+  border-top: none;
+}
+
+.paramContainer .oneParams image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.paramContainer .oneParams .paramValue {
+  font-size: 32rpx;
+  font-family: Arial-BoldMT, Arial;
+  font-weight: normal;
+  color: #071E5D;
+}
+
+.paramContainer .oneParams .param {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.bottomButtons {
+  padding: 30rpx;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bottomButtons .oneButton {
+  height: 68rpx;
+  padding: 0 22rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  background-color: #E20202;
+  display: flex;
+  align-items: center;
+}
+
+.bottomButtons .oneButton:nth-of-type(1) {
+  background-color: #071E5D;
+  margin-right: 20rpx;
+}

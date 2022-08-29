@@ -1,0 +1,81 @@
+/* pages/Quotation/Others/D&D/index.wxss */
+.DDContainer {
+  padding: 40rpx 48rpx;
+}
+
+.topTitle {
+  display: flex;
+  align-items: center;
+  font-size: 50rpx;
+  font-family: Antonio-Bold;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.topTitle .topTitleLine {
+  margin-right: 20rpx;
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+}
+
+.DDTable {
+  margin-top: 40rpx;
+}
+
+.DDTable .tableTitle {
+  height: 72rpx;
+  background-color: #071E5D;
+  color: #ffffff;
+  padding-left: 20rpx;
+  font-size: 28rpx;
+  font-family: Antonio-Regular;
+  display: flex;
+  align-items: center;
+}
+
+.DDTable .DDDetail {
+  background-color: rgba(246, 250, 255, 0.7);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.DDTable .DDDetail .oneDetail {
+  color: #071E5D;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.DDTable .DDDetail .oneDetail:nth-of-type(1) {
+  width: 30%;
+  text-align: left;
+}
+
+.DDTable .DDDetail .oneDetail:nth-of-type(2) {
+  width: 20%;
+}
+
+.DDTable .DDDetail .oneDetail:nth-of-type(3) {
+  width: 20%;
+}
+
+.DDTable .DDDetail .oneDetail:nth-of-type(4) {
+  width: 30%;
+  text-align: right;
+}
+
+.DDContainer .desc {
+  color: #6B7790;
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.DDContainer .desc image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}

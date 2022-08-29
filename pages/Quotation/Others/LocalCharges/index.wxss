@@ -1,0 +1,55 @@
+/* pages/Quotation/Others/LocalCharges/index.wxss */
+.localCharges {
+  padding: 40rpx 48rpx;
+}
+
+.topTitle {
+  display: flex;
+  align-items: center;
+  font-size: 50rpx;
+  font-family: Antonio-Bold;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.topTitle .topTitleLine {
+  margin-right: 20rpx;
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+}
+
+.localDetail {
+  font-size: 24rpx;
+  color: #6B7790;
+  margin-top: 20rpx;
+  margin-bottom: 42rpx;
+}
+
+.oneLocal {
+  width: 100%;
+  height: 150rpx;
+  border: 1rpx solid #CFD2DA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48rpx 0 24rpx;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.oneLocal image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+
+.oneLocal .localLeft {
+  display: flex;
+  align-items: center;
+  color: #071E5D;
+}
+
+.oneLocal .copy {
+  color: #6B7790;
+}

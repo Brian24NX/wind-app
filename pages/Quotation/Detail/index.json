@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "additional-services": "./components/AdditionalServices/index"
+  }
+}

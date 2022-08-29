@@ -15,7 +15,13 @@
     "pages/setLanguage/index",
     "pages/legalTerms/index",
     "pages/Logout/index",
-    "pages/Quotation/List/index"
+    "pages/Quotation/List/index",
+    "pages/Quotation/Detail/index",
+    "pages/Quotation/Result/index",
+    "pages/Quotation/Others/LocalCharges/index",
+    "pages/Quotation/Others/D&D/index",
+    "pages/Quotation/Others/SpotOn/index",
+    "pages/Quotation/Others/AdditionalInformation/index"
   ],
   "subPackages": [
     {

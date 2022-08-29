@@ -13,7 +13,7 @@
 .searchResultTopContainer .resultCardTops {
   width: 690rpx;
   margin: 0 auto;
-  background: url(https://wind.cma-cgm.com/images/chuanqichaxun.png) no-repeat;
+  background: url(https://wind.cma-cgm.com/images/instantQuote.png) no-repeat;
   background-size: 100% auto;
   padding: 30rpx;
 }

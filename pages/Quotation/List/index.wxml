@@ -23,7 +23,7 @@
 </view>
 <view class="resultContainers" style="padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
   <view wx:if="{{routinglist.length}}">
-    <view class="oneResult" wx:for="{{routinglist}}" wx:key="index" bindtap="toDetail" data-id="{{index}}">
+    <view class="oneResult" wx:for="{{routinglist}}" wx:key="index">
       <view class="tips">
         <view class="oneTip" wx:if="{{item.departureDateFlag}}">{{languageContent.earliestDeparture}}</view>
         <view class="oneTip" wx:if="{{item.arrivalDateFlag}}">{{languageContent.earliestArrival}}</view>
@@ -66,7 +66,7 @@
             <view class="unit2">CONTRAIN</view>
           </view>
         </view>
-        <view class="selects">Select</view>
+        <view class="selects" bindtap="toDetail" data-id="{{index}}">Select</view>
       </view>
     </view>
   </view>

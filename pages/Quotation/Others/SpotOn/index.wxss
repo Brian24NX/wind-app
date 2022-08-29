@@ -1,0 +1,58 @@
+/* pages/Quotation/Others/SpotOn/index.wxss */
+.spotOns {
+  padding: 40rpx 48rpx;
+}
+
+.topTitle {
+  display: flex;
+  align-items: center;
+  font-size: 50rpx;
+  font-family: Antonio-Bold;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.topTitle .topTitleLine {
+  margin-right: 20rpx;
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+}
+
+.spotOnDetail {
+  font-size: 28rpx;
+  color: #071E5D;
+  margin: 20rpx 0;
+}
+
+.spotOnLink {
+  width: 100%;
+  height: 150rpx;
+  border: 1rpx solid #CFD2DA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48rpx 0 24rpx;
+  font-size: 28rpx;
+  margin-top: 40rpx;
+}
+
+.spotOnLink image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+
+.spotOnLink .localLeft {
+  display: flex;
+  align-items: center;
+  color: #071E5D;
+}
+
+.spotOnLink .localLeft view {
+  width: 350rpx;
+}
+
+.spotOnLink .copy {
+  color: #6B7790;
+}

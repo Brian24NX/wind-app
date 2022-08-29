@@ -1,0 +1,68 @@
+<!--pages/Quotation/Detail/components/AdditionalServices/index.wxml-->
+<van-overlay show="{{ showAdditionalService }}" bind:click="onClickHide">
+  <view catchtap="prevent">
+    <view class="additionalServicesPopup">
+      <view class="serviceTitle">SERENITY cargo value guarantee</view>
+      <view class="serviceDesc">In all carriers’ standard contracts, compensation for cargo damage, is based on the weight or the number of parcels, not the cargo value. With Serenity Cargo Value Guarantee, liable or not, we compensate you on the real cargo value. You just need to declare your cargo value and we take care of the rest.
+      </view>
+      <view class="urlStyle">SERENITY cargo value guarantee_ENG Flyer_A4_HD.pdf</view>
+      <scroll-view scroll-x class="serviceList">
+        <view class="oneService serviceChecked" wx:for="{{3}}" wx:key="index">
+          <view class="oneServiceDesc">Guarantee up to EUR 12 500 per container</view>
+          <view class="servicePriceContainer">
+            <view class="servicePirceLeft">
+              <view class="servicePrice">250</view>
+              <view>
+                <view class="servicePriceUnit">EUR</view>
+                <view>/Container</view>
+              </view>
+            </view>
+            <view class="checkbox">
+              <van-icon name="success" color="#ffffff" size="15px" />
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+      <view class="serviceBottom">
+        <view class="serviceBottomLeft">
+          <view class="checkbox">
+            <van-icon name="success" color="#ffffff" size="15px" />
+          </view>
+          <view style="margin-left: 10rpx;" catchtap="onOpen">I agree with Terms and Conditions</view>
+        </view>
+        <view class="subsecribe">Subscribe</view>
+      </view>
+    </view>
+  </view>
+</van-overlay>
+
+<van-popup show="{{ showLegalTerm }}" safe-area-inset-bottom close-icon-position="top-left" position="bottom" custom-style="max-height: 80%;min-height: 50%;" bind:close="onClose">
+  <view class="legalTop">
+    <van-icon class="back" name="arrow-left" color="#6B7790" size="22px" catchtap="onClose" />
+    <view class="termTitle">Terms and Conditions</view>
+  </view>
+  <view class="termContent">
+    CARGO VALUE GUARANTEE
+    General terms and conditions
+    April 26th, 2021
+    PREAMBLE
+    The purpose of Cargo Value Guarantee is to set out a financial compensation for loss of, damage or expenses to or in
+    connection with the Protected Goods during transit, subject to the provisions hereunder, by providing:
+    - deviations to certain provisions of CMA CGM Group’s Carrier Bill of Lading Terms and Conditions, which other terms not
+    contrary shall remain fully applicable.
+    - up to one of the limits of value selected by the Client (see below).
+    - within 30 days (for straightforward request) following the submission of all required documents.
+    Serenity Cargo Value Guarantee is not an insurance and it can only be subscribed with a CMA CGM Group’s Carrier
+    contract of carriage.
+    DEFINITIONS
+    - The Client shall mean the individual or company who purchased the Guarantee described hereunder.
+    - The Beneficiary: The Client or his assignee or any other person, always provided that the claimant under Serenity Cargo
+    Value Guarantee has an interest on the Protected Goods and a title to claim under the bill of lading.
+    - The Force Majeure: Exceptional event beyond the carrier’s control, which could not have been foreseen at the time the
+    contract of carriage was entered and prevent or hinder the performance of the Carrier’s obligation.
+    - The Guarantee is defined as a compensation of the Beneficiary in case of loss or physical damage to the Protected
+    Goods, in application of the provisions set out herein.
+    - The Protected Goods are the goods transported under a CMA CGM Group’s Carrier bill of lading, for which the
+    Guarantee proposed by CMA CGM Group’s Carrier has been purchased by the Client.
+    APPLICATION OF THE GUARANTEE</view>
+</van-popup>
