@@ -474,25 +474,25 @@ var Languague = {
   //底部英文版工具栏，这里是用于自定义tarbar用的
   toolbar: {
     "list": [{
-        "pagePath": "../Home/index",
+        "pagePath": "/pages/Home/index",
         "text": "Home",
         "iconPath": "/assets/img/tabs/home.png",
         "selectedIconPath": "/assets/img/tabs/home_selected.png"
       },
       {
-        "pagePath": "../Query/index",
+        "pagePath": "/pages/Query/index",
         "text": "Query",
         "iconPath": "/assets/img/tabs/query.png",
         "selectedIconPath": "/assets/img/tabs/query_selected.png"
       },
       {
-        "pagePath": "../Quotation/Search/index",
+        "pagePath": "/pages/Quotation/Search/index",
         "text": "Quotation",
         "iconPath": "/assets/img/tabs/price.png",
         "selectedIconPath": "/assets/img/tabs/price_selected.png"
       },
       {
-        "pagePath": "../My/index",
+        "pagePath": "/pages/My/index",
         "text": "Me",
         "iconPath": "/assets/img/tabs/mine.png",
         "selectedIconPath": "/assets/img/tabs/mine_selected.png"

@@ -11,25 +11,25 @@ Component({
     color: "#6B7790",
     selectedColor: "#04246A",
     list: [{
-        "pagePath": "../Home/index",
+        "pagePath": "/pages/Home/index",
         "text": "首页",
         "iconPath": "/assets/img/tabs/home.png",
         "selectedIconPath": "/assets/img/tabs/home_selected.png"
       },
       {
-        "pagePath": "../Query/index",
+        "pagePath": "/pages/Query/index",
         "text": "查询",
         "iconPath": "/assets/img/tabs/query.png",
         "selectedIconPath": "/assets/img/tabs/query_selected.png"
       },
       {
-        "pagePath": "../Quotation/index",
+        "pagePath": "/pages/Quotation/index",
         "text": "报价",
         "iconPath": "/assets/img/tabs/price.png",
         "selectedIconPath": "/assets/img/tabs/price_selected.png"
       },
       {
-        "pagePath": "../My/index",
+        "pagePath": "/pages/My/index",
         "text": "我的",
         "iconPath": "/assets/img/tabs/mine.png",
         "selectedIconPath": "/assets/img/tabs/mine_selected.png"
