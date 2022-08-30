@@ -1,10 +1,7 @@
-// pages/Result/index.js
-const utils = require('../../../utils/util')
+// pages/Quotation/List/index.js
 import {
-  routingFinder,
-  routingSort
-} from '../../../api/modules/home';
-const dayjs = require("dayjs");
+  quotationSort
+} from '../../../api/modules/quotation';
 const languageUtil = require('../../../utils/languageUtils')
 Page({
 
@@ -13,46 +10,21 @@ Page({
    */
   data: {
     languageContent: {},
-    weeksContent: {},
     language: 'zh',
     isPhoneX: getApp().globalData.isPhoneX,
-    viewactived: false,
-    routingLists: [{
-        id: 'CMA',
-        shippingCompany: '0001',
-        list: []
-      },
-      {
-        id: 'ANL',
-        shippingCompany: '0002',
-        list: []
-      },
-      {
-        id: 'CNC',
-        shippingCompany: '0011',
-        list: []
-      },
-      {
-        id: 'APL',
-        shippingCompany: '0015',
-        list: []
-      }
-    ],
-    routinglist: [],
+    oldQuoteLineList: [],
+    quoteLineList: [],
     planList: [],
-    placeOfLoading: '',
-    placeOfDischarge: '',
-    polCode: '',
-    podCode: '',
+    fromLabel: '',
+    toLabel: '',
+    fromCode: '',
+    toCode: '',
     currentPlan: null,
-    searchDate: '',
-    weekNum: '',
-    dateList: [],
-    routesPlanList: [],
     sort: '1',
     plans: [],
     needEarlyFlag: false,
     needDirectFlag: false,
+    sortSolutionServices: [],
     isLoading: true,
     scrollLeft: 0,
     oneScroll: 0,
@@ -65,219 +37,44 @@ Page({
    */
   onLoad: function () {
     wx.setNavigationBarTitle({
-      title: languageUtil.languageVersion().lang.page.searchResultList.title
+      title: languageUtil.languageVersion().lang.page.qutationResult.title
     })
     this.setData({
-      languageContent: languageUtil.languageVersion().lang.page.searchResultList,
-      weeksContent: languageUtil.languageVersion().lang.page.weeks,
+      languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue
     })
-    const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
     this.setData({
-      polCode: "CN",
-      podCode: wx.getStorageSync('searchKey').podCode,
-      placeOfLoading: wx.getStorageSync('searchKey').polvalue,
-      placeOfDischarge: wx.getStorageSync('searchKey').podvalue,
-      weekNum: weekNum,
-      searchDate: wx.getStorageSync('searchKey').simulationDate
+      fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
+      toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
+      fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
+      toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
+      oldQuoteLineList: data.resultResq.nextDepartureQuoteLineAndRoute,
+      sortSolutionServices: [...new Set(data.resultResq.nextDepartureQuoteLineAndRoute.map(obj => {
+        return obj.scheduleDescription
+      }))],
+      plans: [...new Set(data.resultResq.nextDepartureQuoteLineAndRoute.map(obj => {
+        return obj.scheduleDescription
+      }))]
     })
-    this.dealData()
-  },
-
-  openDate() {
-    const date = this.data.searchDate.replaceAll('-', '/')
-    this.setData({
-      currentDate: new Date(date).getTime(),
-      showDatePopup: true
-    })
-  },
-
-  closeDate() {
-    this.setData({
-      showDatePopup: false
-    })
-  },
-
-  confirmDate(e) {
-    this.setData({
-      searchDate: dayjs(e.detail).format('YYYY-MM-DD'),
-      oneScroll: 0,
-      showDatePopup: false
-    })
-    this.resetData()
-    this.dealData()
-  },
-
-  changeDay(e) {
-    const date = e.currentTarget.dataset.item
-    let offsetLeft = e.currentTarget.offsetLeft;
-    this.setData({
-      scrollLeft: offsetLeft - this.data.oneScroll * 2.5
-    })
-    this.setData({
-      searchDate: date
-    })
-    this.resetData()
-    this.dealData()
-  },
-
-  resetData() {
-    this.setData({
-      isLoading: true,
-      viewactived: false,
-      routingLists: [{
-          id: 'CMA',
-          shippingCompany: '0001',
-          list: []
-        },
-        {
-          id: 'ANL',
-          shippingCompany: '0002',
-          list: []
-        },
-        {
-          id: 'CNC',
-          shippingCompany: '0011',
-          list: []
-        },
-        {
-          id: 'APL',
-          shippingCompany: '0015',
-          list: []
-        }
-      ],
-      routinglist: [],
-      planList: []
-    })
-  },
-
-  getList(shippingCompany, callback) {
-    const searchKey = wx.getStorageSync('searchKey')
-    const params = {
-      placeOfDischarge: searchKey.placeOfDischarge,
-      placeOfLoading: searchKey.placeOfLoading,
-      departureDate: '2022-08-25',
-      arrivalDate: '',
-      searchRange: searchKey.searchRange,
-      specificRoutings: [],
-      shippingCompany: shippingCompany
-    }
-    routingFinder(params).then(res => {
-      if (callback) {
-        if (res.data) {
-          const index = this.data.routingLists.findIndex(item => item.shippingCompany === shippingCompany)
-          if (index > -1) {
-            this.data.routingLists[index].list = res.data.routings
-            this.setData({
-              routingLists: this.data.routingLists,
-            })
-          }
-          if (shippingCompany === '0001' && !res.data.routings) {
-            callback(true)
-          } else {
-            this.setData({
-              planList: [],
-              viewactived: false,
-              currentPlan: "CMA",
-              plans: res.data.solutionServices['cma'],
-              routesPlanList: res.data.solutionServices['cma']
-            })
-            callback(false)
-          }
-        } else {
-          callback(true)
-        }
-      }
-    })
+    this.sortData()
   },
 
   dealData() {
-    this.getList(this.data.routingLists[0].shippingCompany, (res) => {
-      if (!res) {
-        this.sortData()
-      } else {
-        this.getLists()
-      }
-    })
-  },
-
-  async getLists() {
-    await this.getOneList()
-    this.setData({
-      viewactived: true,
-      planList: [{
-        title: 'CNC',
-        value: this.data.routingLists.find(u => u.id === 'CNC').solutionServices ? this.data.routingLists.find(u => u.id === 'CNC').solutionServices.length : 0
-      }, {
-        title: 'ANL',
-        value: this.data.routingLists.find(u => u.id === 'ANL').solutionServices ? this.data.routingLists.find(u => u.id === 'ANL').solutionServices.length : 0
-      }, {
-        title: 'APL',
-        value: this.data.routingLists.find(u => u.id === 'APL').solutionServices ? this.data.routingLists.find(u => u.id === 'APL').solutionServices.length : 0
-      }]
-    })
-    if (this.data.planList[0].value || this.data.planList[1].value || this.data.planList[2].value) {
+    quotationSort({
+      routings: this.data.oldQuoteLineList,
+      needDirectFlag: false,
+      needEarlyFlag: false,
+      sortDateType: 1,
+      sortSolutionServices: this.data.plans
+    }).then(res => {
+      console.log(res)
       this.setData({
-        currentPlan: this.data.planList.find(u => u.value).title,
-        routesPlanList: this.data.routingLists.find(u => u.id === this.data.planList.find(u => u.value).title).solutionServices,
-        plans: this.data.routingLists.find(u => u.id === this.data.planList.find(u => u.value).title).solutionServices,
+        quoteLineList: res.data
       })
-      this.sortData()
-    } else {
-      this.setData({
-        routinglist: [],
-        isLoading: false,
-        viewactived: false
-      })
-    }
-    
-  },
-
-  async getOneList() {
-    let response = []
-    const searchKey = wx.getStorageSync('searchKey')
-    // 循环依次等待上传结果
-    for (let i = 1; i < this.data.routingLists.length; i++) {
-      const params = {
-        placeOfDischarge: searchKey.placeOfDischarge,
-        placeOfLoading: searchKey.placeOfLoading,
-        departureDate: '2022-08-25',
-        arrivalDate: '',
-        searchRange: searchKey.searchRange,
-        specificRoutings: [],
-        shippingCompany: this.data.routingLists[i].shippingCompany
-      }
-      const res = await routingFinder(params)
-      const index = this.data.routingLists.findIndex(item => item.shippingCompany === this.data.routingLists[i].shippingCompany)
-      if (res.data && res.data.routings) {
-        if (index > -1) {
-          this.data.routingLists[index].list = res.data.routings
-          this.data.routingLists[index].solutionServices = res.data.solutionServices[this.data.routingLists[index].id.toLocaleLowerCase()]
-        }
-      } else {
-        this.data.routingLists[index].list = []
-        this.data.routingLists[index].solutionServices = []
-      }
-      this.setData({
-        routingLists: this.data.routingLists,
-      })
-      response.push(res)
-    }
-    return response
-  },
-
-  changePlan(e) {
-    const title = e.currentTarget.dataset.title
-    const items = this.data.routingLists.find(item => item.id === title)
-    if (!items.list.length) return
-    this.setData({
-      currentPlan: title,
-      routinglist: [],
-      isLoading: true,
-      plans: items.solutionServices,
-      routesPlanList: items.solutionServices,
     })
-    this.sortData()
   },
 
   // 筛选
@@ -306,9 +103,8 @@ Page({
   },
 
   sortData() {
-    const item = this.data.routingLists.find(u => u.id === this.data.currentPlan)
     let params = {
-      routings: item.list,
+      routings: this.data.oldQuoteLineList,
       sortDateType: Number(this.data.sort),
       sortSolutionServices: this.data.plans
     }
@@ -318,28 +114,24 @@ Page({
     if (this.data.needDirectFlag) {
       params.needDirectFlag = true
     }
-    routingSort(params).then(res => {
+    quotationSort(params).then(res => {
       this.setData({
-        routinglist: res.data,
+        quoteLineList: res.data,
         isLoading: false
       })
-      // wx.hideLoading()
     }, () => {
       this.setData({
-        routinglist: [],
+        quoteLineList: [],
         isLoading: false
       })
-      wx.hideLoading()
     })
   },
 
   // 去详情
   toDetail(e) {
     let index = e.currentTarget.dataset.id;
-    let details = this.data.routinglist[index];
-    wx.setStorageSync('details', details);
     wx.navigateTo({
-      url: '/pages/Quotation/Detail/index',
+      url: `/pages/Quotation/Detail/index?index=${index}`,
     })
   }
 })

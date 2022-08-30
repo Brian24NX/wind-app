@@ -10,20 +10,20 @@
           <view class="leftLineDto"></view>
           <view class="leftLine"></view>
         </view>
-        <view class="stepContent">BOSTON, MA, US</view>
+        <view class="stepContent">{{fromLabel}}, {{fromCode}}</view>
       </view>
       <view class="oneStep">
         <view class="leftLines" style="top: 20rpx;">
           <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
         </view>
-        <view class="stepContent">SHANGHAI, CN</view>
+        <view class="stepContent">{{toLabel}}, {{toCode}}</view>
       </view>
     </view>
   </view>
 </view>
 <view class="resultContainers" style="padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
-  <view wx:if="{{routinglist.length}}">
-    <view class="oneResult" wx:for="{{routinglist}}" wx:key="index">
+  <view wx:if="{{quoteLineList.length}}">
+    <view class="oneResult" wx:for="{{quoteLineList}}" wx:key="index">
       <view class="tips">
         <view class="oneTip" wx:if="{{item.departureDateFlag}}">{{languageContent.earliestDeparture}}</view>
         <view class="oneTip" wx:if="{{item.arrivalDateFlag}}">{{languageContent.earliestArrival}}</view>
@@ -36,23 +36,27 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.departuredate, false, true) : commonFilters.formatEnDateLocal(item.departuredate, '-', '', false, true)}}</view>
-            <view class="time">{{item.pointfrom}}, {{polCode}}{{commonFilters.setChina(item.routingDetails[0].pointFrom.location.internalCode)}}</view>
-            <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
+            <view class="time">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.departureDate, false, true) : commonFilters.formatEnDateLocal(item.departureDate, '-', '', false, true)}}</view>
+            <view class="time">{{fromLabel}}, {{fromCode}}</view>
+            <view class="ship">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{commonFilters.getShopName(item.routingDetails)}}</view>
+              <view>{{item.vesselName}}</view>
             </view>
-            <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
+            <view class="ship">
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{item.service}}</view>
+              <view>{{item.scheduleDescription}}</view>
             </view>
-            <view class="time end">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivaldate, false, true) : commonFilters.formatEnDateLocal(item.arrivaldate, '-', '', false, true)}} {{item.pointto}}, {{podCode}}{{commonFilters.setChina(item.routingDetails[0].pointTo.location.internalCode)}}</view>
+            <view class="time end">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivalDate, false, true) : commonFilters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}} {{toLabel}}, {{toCode}}</view>
           </view>
           <view class="rightContent">
-            <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{item.transitTime}} {{item.transitTime == 1 ? languageContent.day : languageContent.days}}</view>
-            <view class="zhuanrun" wx:if="{{item.transhipment}}">
+            <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{item.transitTime}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
+            <view class="zhuanrun" wx:if="{{item.tranShipment.length}}">
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
-              <view>{{item.transhipment}} {{languageContent.zhuanyun}}</view>
+              <view>{{item.tranShipment.length}} {{languageContent.zhuanyun}}</view>
+            </view>
+            <view class="zhuanrun" wx:if="{{!item.tranShipment.length}}">
+              <image src="/assets/img/result/zhuanyun@2x.png"></image>
+              <view>{{languageContent.zhida}}</view>
             </view>
           </view>
         </view>
@@ -66,12 +70,12 @@
             <view class="unit2">CONTRAIN</view>
           </view>
         </view>
-        <view class="selects" bindtap="toDetail" data-id="{{index}}">Select</view>
+        <view class="selects" bindtap="toDetail" data-id="{{index}}">{{languageContent.select}}</view>
       </view>
     </view>
   </view>
   <!--无结果-->
-  <view wx:if="{{!routinglist.length && !isLoading}}">
+  <view wx:if="{{!quoteLineList.length && !isLoading}}">
     <noresult languageContent="{{languageContent}}"></noresult>
   </view>
 </view>
@@ -79,4 +83,4 @@
 <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
 
 <!-- 底部筛选条件 tabbar -->
-<foot-tab-bar languageContent="{{languageContent}}" radio="{{sort}}" plans="{{plans}}" routesPlanList="{{routesPlanList}}" bind:tabbarchange="onTabbarChange" />
+<foot-tab-bar languageContent="{{languageContent}}" radio="{{sort}}" plans="{{plans}}" routesPlanList="{{sortSolutionServices}}" bind:tabbarchange="onTabbarChange" />

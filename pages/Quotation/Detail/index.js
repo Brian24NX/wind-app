@@ -2,6 +2,7 @@
 import {
   getQuotationSurchargeDetails
 } from '../../../api/modules/quotation'
+const languageUtil = require('../../../utils/languageUtils')
 
 Page({
 
@@ -9,6 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
+    language: 'zh',
     isFirst: true,
     surchargeDetails: {},
     otherList: [{
@@ -27,14 +30,52 @@ Page({
       icon: '/assets/img/instantQuote/other_4@2x.png',
       label: 'Add Info',
       url: "/pages/Quotation/Others/AdditionalInformation/index"
-    }]
+    }],
+    fromLabel: "",
+    fromCode: '',
+    toLabel: '',
+    toCode: '',
+    quotationDetail: {},
+    equipmentTypeName: '',
+    weight: '',
+    containers: '',
+    commodityName: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.quotationSurchargeDetails()
+    // this.quotationSurchargeDetails()
+    wx.setNavigationBarTitle({
+      title: languageUtil.languageVersion().lang.page.qutationResult.title
+    })
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.qutationResult,
+      language: languageUtil.languageVersion().lang.page.langue
+    })
+    this.setDefaultInfo(Number(options.index))
+  },
+
+  setDefaultInfo(index) {
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
+    this.setData({
+      fromLabel: data.fromLabel,
+      fromCode: data.fromCode,
+      toLabel: data.toLabel,
+      toCode: data.toCode,
+      quotationDetail: data.quoteLineList[index]
+    })
+    const currentPage2 = pages[pages.length - 3]
+    const data2 = currentPage2.data
+    this.setData({
+      equipmentTypeName: data2.equipmentTypeName,
+      weight: data2.weight,
+      containers: data2.containers,
+      commodityName: data2.commodityName
+    })
   },
 
   toOther(e) {

@@ -410,11 +410,13 @@ var Languague = {
       getASchedule1: "Instant ",
       getASchedule2: 'Quote',
       placeOfOrigin: "Place of Receipt",
+      addPlaceOfOrigin: "Add a Place of Receipt",
       //起运港
       protOfLoading: "Port of Loading",
       //卸货港
       portOfDischarge: "Port of Discharge",
       placeOfDelivery: "Place of Delivery",
+      addPlaceOfDelivery: 'Add a Place of Delivery',
       //港口名称/代码
       name: "Name/Code",
       //离港时间
@@ -427,6 +429,40 @@ var Languague = {
       //查询
       search: "Get My Quote",
       reset: 'Reset'
+    },
+    // 报价详情
+    qutationResult: {
+      title: 'Instant Quote',
+      select: 'Select',
+      days: 'DAYS',
+      day: 'DAY',
+      // 转运
+      zhuanyun: 'transhipment',
+      zhida: 'Direct',
+      apply: 'Apply',
+      //排序
+      sortBy: "Sort by",
+      //最快离港
+      earliestDeparture: "EARLIEST DEPARTURE",
+      //最快到港
+      earliestArrival: "EARLIEST ARRIVAL",
+      // 最快运输时间
+      earliestTime: 'EARLIEST TRANSPORTATION TIME',
+      //离港
+      depart: "Depart/Departure ",
+      //航线方案，航线方案1
+      routingSolutions: "Routing\nsolutions",
+      //仅看最早到达
+      earliestArrivalOnly: "Earliest\n arrival only",
+      //仅看直达
+      directOnly: "Direct\nonly",
+      //抱歉！未找到此问题的解决方案,在CMA CGM集团内目前暂未能提供处理方案.
+      noFindTips1: "Sorry! No solution has been found for this query.",
+      noFindTips2: "We are currently not able to propose solutions within CMA CGM Group.",
+      equipmentType: 'Equipment Type',
+      weight: 'Net Weight（KGM）',
+      containers: 'Number of container(s)',
+      Commodity: 'Commodity'
     },
     popupBtn: {
       confirm: 'Confirm',

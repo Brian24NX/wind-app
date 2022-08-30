@@ -12,19 +12,11 @@
       </view>
       <view class="searchList" wx:if="{{showPlaceOfReceipt}}">
         <view class="searchTitle">{{languageContent.placeOfOrigin}}</view>
-        <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
+        <view class="codeInputs">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-          <input value="{{portOfLoadingLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfReceipt" />
-          <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
+          <input value="{{placeOfOriginLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfReceipt" />
+          <view class="deleteIcon" wx:if="{{showDelete4}}" catchtap="deleteValue" data-type="4">
             <image src="/assets/img/search/close@2x.png"></image>
-          </view>
-          <view class="noRequest" wx:if="{{showRemind1}}">
-            <image src="/assets/img/search/error@2x.png"></image>
-            <text>{{verifyInfo.required}}</text>
-          </view>
-          <view class="noRequest" wx:if="{{showRemind2}}">
-            <image src="/assets/img/search/error@2x.png"></image>
-            <text>{{verifyInfo.gswx}}</text>
           </view>
           <scroll-view class="scroll-view" wx:if='{{placeOfReceiptList.length}}' scroll-y>
             <view wx:for="{{placeOfReceiptList}}" wx:key="index" class="item" bindtap='choosePlaceOfReceipt' data-index="{{index}}">
@@ -41,7 +33,7 @@
           <view class="leftLine otherLine"></view>
         </view>
       </view>
-      <view class="addBtn" catchtap="addPlaceOfReceipt" wx:if="{{!showPlaceOfReceipt}}">+ Add a Place of Receipt</view>
+      <view class="addBtn" catchtap="addPlaceOfReceipt" wx:if="{{!showPlaceOfReceipt}}">+ {{languageContent.addPlaceOfOrigin}}</view>
       <view class="searchList">
         <view class="searchTitle">{{languageContent.protOfLoading}}</view>
         <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
@@ -109,26 +101,19 @@
       </view>
       <view class="searchList" wx:if="{{showPlaceOfDelivery}}">
         <view class="searchTitle">{{languageContent.placeOfDelivery}}</view>
-        <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
+        <view class="codeInputs">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-          <input value="{{portOfLoadingLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
-          <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
+          <input value="{{finalPlaceOfDeliveryLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfDelivery" />
+          <view class="deleteIcon" wx:if="{{showDelete5}}" catchtap="deleteValue" data-type="5">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>
-          <view class="noRequest" wx:if="{{showRemind1}}">
-            <image src="/assets/img/search/error@2x.png"></image>
-            <text>{{verifyInfo.required}}</text>
-          </view>
-          <view class="noRequest" wx:if="{{showRemind2}}">
-            <image src="/assets/img/search/error@2x.png"></image>
-            <text>{{verifyInfo.gswx}}</text>
-          </view>
-          <scroll-view class="scroll-view" wx:if='{{pollist.length}}' scroll-y>
-            <view wx:for="{{pollist}}" wx:key="index" class="item" bindtap='changepolname' data-index="{{index}}">
-              <view class="polname">{{item.point}}</view>
+          <scroll-view class="scroll-view" wx:if='{{placeOfDeliveryList.length}}' scroll-y>
+            <view wx:for="{{placeOfDeliveryList}}" wx:key="index" class="item" bindtap='choosePlaceOfDelivery' data-index="{{index}}">
+              <view class="polname">{{item.ActualName}}</view>
+              <view>{{item.PlaceType}}</view>
             </view>
           </scroll-view>
-          <view class="scroll-view" wx:if="{{showPol}}">
+          <view class="scroll-view" wx:if="{{showPoDe}}">
             <view class="item">Loading...</view>
           </view>
         </view>
@@ -137,11 +122,11 @@
           <image class="shipLocation" src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
         </view>
       </view>
-      <view class="addBtn" catchtap="addPlaceOfDelivery" wx:if="{{!showPlaceOfDelivery}}">+ Add a Place of Delivery</view>
+      <view class="addBtn" catchtap="addPlaceOfDelivery" wx:if="{{!showPlaceOfDelivery}}">+ {{languageContent.addPlaceOfDelivery}}</view>
       <view class="searchList">
         <view class="searchTitle">{{languageContent.departure}}</view>
         <view class="selectContainer" catchtap="openPopup" data-type="2">
-          <view style="{{departureDate ? 'color: #071E5D;' : ''}}">{{departureDate ? (language === 'zh' ? format.formatCnDateLocal(departureDate, true, true) : format.formatEnDateLocal(departureDate, '-', '', true, true)) : verifyInfo.select}}</view>
+          <view style="{{simulationDate ? 'color: #071E5D;' : ''}}">{{simulationDate ? (language === 'zh' ? format.formatCnDateLocal(simulationDate, true, true) : format.formatEnDateLocal(simulationDate, '-', '', true, true)) : verifyInfo.select}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
       </view>

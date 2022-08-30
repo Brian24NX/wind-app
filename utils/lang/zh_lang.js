@@ -411,12 +411,14 @@ var Languague = {
       //航线|获取船期
       getASchedule1: "即时",
       getASchedule2: '报价',
-      placeOfOrigin: "Place of Receipt",
+      placeOfOrigin: "收货地",
+      addPlaceOfOrigin: '添加收货地',
       //起运港
       protOfLoading: "起运港",
       //卸货港
       portOfDischarge: "卸货港",
-      placeOfDelivery: "Place of Delivery",
+      placeOfDelivery: "目的地",
+      addPlaceOfDelivery: '添加目的地',
       //港口名称/代码
       name: "名称/代码",
       //离港时间
@@ -429,6 +431,40 @@ var Languague = {
       //查询
       search: "获取报价",
       reset: '重置'
+    },
+    // 报价详情
+    qutationResult: {
+      title: '报价列表',
+      select: '选择',
+      days: '天',
+      day: '天',
+      // 转运
+      zhuanyun: '转运',
+      zhida: '直达',
+      apply: '应用',
+      //排序
+      sortBy: "排序",
+      //最快离港
+      earliestDeparture: "最快离港",
+      //最快到港
+      earliestArrival: "最快到港",
+      // 最快运输时间
+      earliestTime: '最快运输时间',
+      //离港
+      depart: "离港",
+      //航线方案
+      routingSolutions: "航线方案",
+      //仅看最早到达
+      earliestArrivalOnly: "仅看最早到达",
+      //仅看直达
+      directOnly: "仅看直达",
+      //抱歉，我们暂未查询到匹配的航线方案.
+      noFindTips1: "抱歉！未找到此问题的解决方案",
+      noFindTips2: "在CMA CGM集团内目前暂未能提供处理方案",
+      equipmentType: '箱型',
+      weight: '净重（KGM）',
+      containers: '货柜数量',
+      Commodity: '商品'
     },
     popupBtn: {
       confirm: '确定',

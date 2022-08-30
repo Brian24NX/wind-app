@@ -9,6 +9,10 @@ import {
   getCommodityLists,
   equitmentSizeList
 } from '../../../api/modules/home';
+import {
+  quotationNextDepartures,
+  nearByPortNextDeparture
+} from '../../../api/modules/quotation';
 Page({
 
   /**
@@ -22,15 +26,25 @@ Page({
     verifyInfo: {},
     showPol: false,
     showPod: false,
-    // 卸货港
-    portOfDischargeLabel: "",
-    portOfDischarge: "",
+    // 收货地
+    placeOfOrigin: '',
+    placeOfOriginLabel: '',
+    receiptHaulage: '',
     // 起运港
     portOfLoadingLabel: "",
     portOfLoading: "",
+    // 卸货港
+    portOfDischargeLabel: "",
+    portOfDischarge: "",
+    // 目的地
+    finalPlaceOfDelivery: '',
+    finalPlaceOfDeliveryLabel: '',
+    deliveryHaulage: '',
+    placeOfReceiptList: [],
     pollist: [],
     podlist: [],
-    departureDate: '',
+    placeOfDeliveryList: [],
+    simulationDate: '',
     equipmentType: '',
     equipmentTypeName: '',
     equipmentTypeList: [],
@@ -38,6 +52,7 @@ Page({
     containers: 1,
     commodityCode: '',
     commodityName: '',
+    shippingCompany: '',
     commodityList: [],
     showRemind1: false,
     showRemind2: false,
@@ -47,6 +62,8 @@ Page({
     showDelete1: false,
     showDelete2: false,
     showDelete3: false,
+    showDelete4: false,
+    showDelete5: false,
     columns: [],
     valueKey: '',
     showPopup: false,
@@ -58,7 +75,10 @@ Page({
     showPlaceOfReceipt: false,
     showPlaceOfDelivery: false,
     showPoR: false,
-    placeOfReceiptList: []
+    showPoDe: false,
+    pricingGroupSetups: [],
+    pricingGroups: [],
+    resultResq: {}
   },
 
   /**
@@ -67,8 +87,9 @@ Page({
   onLoad: function () {
     this.initLanguage();
     this.getEquitmentSizeList()
+    this.initData()
     this.setData({
-      departureDate: this.getDate()
+      simulationDate: this.getDate()
     })
   },
 
@@ -81,10 +102,62 @@ Page({
         selected: 2
       })
     }
-    // this.checkAccessToken()
   },
 
   onShareAppMessage: function () {},
+
+  initData() {
+    this.setData({
+      // 收货地
+      placeOfOrigin: '',
+      placeOfOriginLabel: '',
+      receiptHaulage: '',
+      // 起运港
+      portOfLoadingLabel: "MELBOURNE;AU;AUMEL",
+      portOfLoading: "AUMEL",
+      showDelete1: true,
+      // 卸货港
+      portOfDischargeLabel: "SHANGHAI;CN;CNSHA",
+      portOfDischarge: "CNSHA",
+      showDelete2: true,
+      // 目的地
+      finalPlaceOfDelivery: '',
+      finalPlaceOfDeliveryLabel: '',
+      deliveryHaulage: '',
+      weight: 1000,
+      commodityCode: '220410',
+      commodityName: '葡萄酒',
+      shippingCompany: '0002',
+      pricingGroupSetups: [{
+          "pricingGroupId": 12366,
+          "shippingCompany": "0002",
+          "spotAccess": "spotContract",
+          "withoutOfferDisplay": "infoOnly",
+          "nextDepartureScheduleLimit": 35,
+          "digitalAllocationsCheck": true,
+          "digitalAllocationsDisplay": "infoOnly",
+          "inlandPolicy": "throughRate"
+        },
+        {
+          "pricingGroupId": 12411,
+          "shippingCompany": "0001",
+          "spotAccess": "contract",
+          "withoutOfferDisplay": "infoOnly",
+          "nextDepartureScheduleLimit": 35,
+          "digitalAllocationsCheck": true,
+          "digitalAllocationsDisplay": "infoOnly",
+          "inlandPolicy": "throughRate"
+        }
+      ],
+      pricingGroups: [{
+        "pricingGroupId": "12366",
+        "shippingCompany": "0002"
+      }, {
+        "pricingGroupId": "12411",
+        "shippingCompany": "0001"
+      }]
+    })
+  },
 
   addPlaceOfReceipt() {
     this.setData({
@@ -155,13 +228,11 @@ Page({
     }
   },
 
-  //获取起始港的接口处理
+  //获取收货地的接口处理
   changePlaceOfReceipt: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete1: data ? true : false,
-      showRemind1: false,
-      showRemind2: false,
+      showDelete4: data ? true : false,
       showPoR: false,
       placeOfReceiptList: []
     })
@@ -194,7 +265,7 @@ Page({
       showRemind1: false,
       showRemind2: false,
       showPol: false,
-      placeOfReceiptList: []
+      pollist: []
     })
     if (data.length < 2) {
       return
@@ -246,6 +317,35 @@ Page({
     })
   }, 800),
 
+  //获取目的地的接口处理
+  changePlaceOfDelivery: utils.debounce(function (e) {
+    const data = e['0'].detail.value
+    this.setData({
+      showDelete5: data ? true : false,
+      showPoDe: false,
+      placeOfDeliveryList: []
+    })
+    if (data.length < 2) {
+      return
+    }
+    this.setData({
+      showPoDe: true
+    })
+    getAllNetworkPoint({
+      searchStr: data
+    }, true).then(res => {
+      this.setData({
+        showPoDe: false
+      })
+      if (res.data != '') {
+        res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
+        this.setData({
+          placeOfDeliveryList: res.data || []
+        })
+      }
+    })
+  }, 800),
+
   deleteValue(e) {
     const type = e.currentTarget.dataset.type
     if (type === '1') {
@@ -271,16 +371,31 @@ Page({
         weight: null,
         showRemind5: false
       })
+    } else if (type === '4') {
+      this.setData({
+        placeOfOrigin: '',
+        placeOfOriginLabel: '',
+        receiptHaulage: '',
+        showDelete4: false
+      })
+    } else if (type === '5') {
+      this.setData({
+        finalPlaceOfDelivery: '',
+        finalPlaceOfDeliveryLabel: '',
+        deliveryHaulage: '',
+        showDelete5: false
+      })
     }
   },
 
-  // 
+  // 收货地
   choosePlaceOfReceipt(e) {
     let index = e.currentTarget.dataset.index;
     this.setData({
-      portOfLoadingLabel: this.data.pollist[index].point,
-      portOfLoading: this.data.pollist[index].pointCode,
-      pollist: [],
+      placeOfOriginLabel: this.data.placeOfReceiptList[index].ActualName,
+      placeOfOrigin: this.data.placeOfReceiptList[index].Code,
+      receiptHaulage: this.data.placeOfReceiptList[index].PlaceType,
+      placeOfReceiptList: [],
     })
   },
 
@@ -306,6 +421,17 @@ Page({
     this.getCommodityList()
   },
 
+  // 目的地
+  choosePlaceOfDelivery(e) {
+    let index = e.currentTarget.dataset.index;
+    this.setData({
+      finalPlaceOfDeliveryLabel: this.data.placeOfDeliveryList[index].ActualName,
+      finalPlaceOfDelivery: this.data.placeOfDeliveryList[index].Code,
+      deliveryHaulage: this.data.placeOfDeliveryList[index].PlaceType,
+      placeOfDeliveryList: [],
+    })
+  },
+
   setWeight(e) {
     this.setData({
       weight: e.detail.value
@@ -318,8 +444,7 @@ Page({
     getCommodityLists({
       equipmentType: this.data.equipmentType,
       portOfLoading: this.data.portOfLoading,
-      portOfDischarge: this.data.portOfDischarge,
-      shippingCompany: '0001'
+      portOfDischarge: this.data.portOfDischarge
     }).then(res => {
       this.setData({
         commodityList: res.data
@@ -347,7 +472,7 @@ Page({
       show: false
     })
     if (e.currentTarget.dataset.type === '2') {
-      const date = this.data.departureDate.replaceAll('-', '/')
+      const date = this.data.simulationDate.replaceAll('-', '/')
       this.setData({
         currentDate: new Date(date).getTime(),
         showDatePopup: true
@@ -408,7 +533,7 @@ Page({
 
   confirmDate(e) {
     this.setData({
-      departureDate: dayjs(e.detail).format('YYYY-MM-DD'),
+      simulationDate: dayjs(e.detail).format('YYYY-MM-DD'),
       showDatePopup: false
     })
   },
@@ -439,10 +564,6 @@ Page({
 
   // 提交搜索
   submit() {
-    wx.navigateTo({
-      url: '/pages/Quotation/List/index',
-    })
-    return
     if (this.data.showDelete1) {
       this.setData({
         showRemind1: false
@@ -498,9 +619,46 @@ Page({
     }
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
     this.checkAccessToken(() => {
-      wx.showToast({
-        title: '去报价',
-      })
+      this.getQuotationNextDepartures()
+    })
+  },
+
+  getQuotationNextDepartures() {
+    quotationNextDepartures({
+      "affiliates": [wx.getStorageSync('partnerCode')],
+      "commodityCode": this.data.commodityCode,
+      "deliveryHaulage": this.data.deliveryHaulage,
+      "equipmentSizeType": this.data.equipmentType,
+      "equipmentType": this.data.equipmentType.substr(2),
+      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery,
+      "numberOfContainers": this.data.containers,
+      "placeOfOrigin": this.data.placeOfOrigin,
+      "portOfDischarge": this.data.portOfDischarge,
+      "portOfLoading": this.data.portOfLoading,
+      "pricingGroupSetups": this.data.pricingGroupSetups,
+      "pricingGroups": this.data.pricingGroups,
+      "receiptHaulage": this.data.receiptHaulage,
+      "shippingCompany": this.data.shippingCompany,
+      "simulationDate": this.data.simulationDate,
+      "weightPerContainer": this.data.weight
+    }).then(res => {
+      console.log(res)
+      if (res.data && res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
+        this.setData({
+          resultResq: res.data
+        })
+        wx.navigateTo({
+          url: '/pages/Quotation/List/index',
+        })
+      } else {
+        this.getNearByPortNextDeparture()
+      }
+    })
+  },
+
+  getNearByPortNextDeparture() {
+    nearByPortNextDeparture().then(res=>{
+      console.log(res)
     })
   },
 
@@ -509,16 +667,20 @@ Page({
       showPol: false,
       showPod: false,
       placeOfOrigin: '',
-      placeOfOrigin2: '',
-      // 卸货港
-      portOfDischarge: "",
-      portOfDischargeLabel: "",
+      placeOfOriginLabel: '',
+      receiptHaulage: '',
       // 起运港
       portOfLoading: "",
       portOfLoadingLabel: "",
+      // 卸货港
+      portOfDischarge: "",
+      portOfDischargeLabel: "",
+      finalPlaceOfDelivery: '',
+      finalPlaceOfDeliveryLabel: '',
       pollist: [],
       podlist: [],
-      departureDate: this.getDate(),
+
+      simulationDate: this.getDate(),
       equipmentType: this.data.equipmentTypeList[0].code,
       equipmentTypeName: this.data.language === 'zh' ? this.data.equipmentTypeList[0].nameCn : this.data.equipmentTypeList[0].nameEn,
       weight: null,
