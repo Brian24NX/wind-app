@@ -19,7 +19,7 @@
     "pages/Quotation/Detail/index",
     "pages/Quotation/Result/index",
     "pages/Quotation/Others/LocalCharges/index",
-    "pages/Quotation/Others/D&D/index",
+    "pages/Quotation/Others/DDCharges/index",
     "pages/Quotation/Others/SpotOn/index",
     "pages/Quotation/Others/AdditionalInformation/index"
   ],

@@ -1,11 +1,11 @@
 <!--pages/Quotation/Others/D&D/index.wxml-->
 <view class="topLine"></view>
-<view class="DDContainer">
+<view class="dDContainer">
   <view class="topTitle">
     <view class="topTitleLine"></view>
     <view>D&D</view>
   </view>
-  <view class="DDTable">
+  <view class="dDTable">
     <view class="tableTitle">Export free time</view>
     <view class="DDDetail">
       <view class="oneDetail">Merged</view>
@@ -18,7 +18,7 @@
     <image src="/assets/img/instantQuote/tan@2x.png"></image>
     <view>Valid conditions on 27 Jul 2022, based on SHANGHAI,CN</view>
   </view>
-  <view class="DDTable">
+  <view class="dDTable">
     <view class="tableTitle">Import free time</view>
     <view class="DDDetail">
       <view class="oneDetail">Merged</view>

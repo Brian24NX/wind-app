@@ -21,7 +21,7 @@ Page({
     }, {
       icon: '/assets/img/instantQuote/other_2@2x.png',
       label: 'D&D',
-      url: "/pages/Quotation/Others/D&D/index"
+      url: "/pages/Quotation/Others/DDCharges/index"
     }, {
       icon: '/assets/img/instantQuote/other_3@2x.png',
       label: 'SpotOn',
