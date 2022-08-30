@@ -60,7 +60,7 @@
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{commonFilters.getShopName(item.routingDetails)}}</view>
             </view>
-            <view class="ship" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
+            <view class="ship" style="width: 100%;" wx:if="{{item.startMeanOfTransport === 'Vessel' || item.endMeanOfTransport === 'Vessel'}}">
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>
@@ -68,9 +68,9 @@
           </view>
           <view class="rightContent">
             <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{item.transitTime}} {{item.transitTime == 1 ? languageContent.day : languageContent.days}}</view>
-            <view class="zhuanrun" wx:if="{{item.transhipment}}">
+            <view class="zhuanrun">
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
-              <view>{{item.transhipment}} {{languageContent.zhuanyun}}</view>
+              <view>{{item.transhipment ? item.transhipment + ' ' + languageContent.zhuanyun : languageContent.zhida}}</view>
             </view>
           </view>
         </view>

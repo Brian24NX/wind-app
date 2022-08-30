@@ -199,6 +199,7 @@ var Languague = {
       day: '天',
       // 转运
       zhuanyun: '转运',
+      zhida: '直达',
       apply: '应用',
       //排序
       sortBy: "排序",
@@ -223,10 +224,12 @@ var Languague = {
     //routeDetails航线查询详情
     routeDetails: {
       title: '航线详情',
+      zhida: '直达',
       day: '天',
       days: '天',
       transhipment: '转运',
       transhipments: '转运',
+      zhida: '直达',
       // 船名
       vessel: '船名',
       // 航线方案

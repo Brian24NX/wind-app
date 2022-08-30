@@ -180,8 +180,8 @@
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent .ship view {
-  width: 450rpx;
-  word-break: break-all;
+  width: calc(100% - 46rpx);
+  word-break: break-word;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent {

@@ -42,7 +42,7 @@
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.vesselName}}</view>
             </view>
-            <view class="ship">
+            <view class="ship" style="width: 100%;">
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.scheduleDescription}}</view>
             </view>

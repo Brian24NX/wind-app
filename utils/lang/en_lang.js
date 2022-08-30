@@ -157,9 +157,9 @@ var Languague = {
       getASchedule1: "Routes",
       getASchedule2: 'Get a schedule',
       //卸货港
-      portOfDischarge: "Port of Discharge, POD",
+      portOfDischarge: "Port of Discharge",
       //起运港
-      protOfLoading: "Port of Loading, POL",
+      protOfLoading: "Port of Loading",
       //港口名称/代码
       name: "Name/Code",
       //查询
@@ -197,6 +197,7 @@ var Languague = {
       day: 'DAY',
       // 转运
       zhuanyun: 'transhipment',
+      zhida: 'Direct',
       apply: 'Apply',
       //排序
       sortBy: "Sort by",
@@ -225,6 +226,7 @@ var Languague = {
       days: 'DAYS',
       transhipment: 'transhipment',
       transhipments: 'transhipments',
+      zhida: 'Direct',
       // 船名
       vessel: 'Vessel',
       // 航线方案
