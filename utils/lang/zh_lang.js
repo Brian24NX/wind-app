@@ -70,7 +70,7 @@ var Languague = {
       //实时报价
       instantQuote: "实时报价",
       //柜租费率
-      ddRate: "柜租费率",
+      DDCharges: "D&D费用",
       //查询费率
       chargeFinder: "查询费率",
       // 发现更多

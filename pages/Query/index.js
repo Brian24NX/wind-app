@@ -15,10 +15,10 @@ Page({
     navHeight: app.globalData.navHeight,
     menuList: [{
       style: "330rpx",
-      icon: '/assets/img/menu/dc@2x.png',
+      icon: '/assets/img/menu/D&D@2x.png',
       isNew: true,
-      label: 'dingcang',
-      url: '',
+      label: 'ddCharges',
+      url: '/packagePrice/pages/DDCharges/Search/index',
       needLogin: true
     }, {
       style: "330rpx",
@@ -57,10 +57,10 @@ Page({
       needLogin: false
     }, {
       style: "216rpx",
-      icon: '/assets/img/menu/D&D@2x.png',
+      icon: '/assets/img/menu/dc@2x.png',
       isNew: false,
-      label: 'ddCharges',
-      url: '/packagePrice/pages/DDCharges/Search/index',
+      label: 'dingcang',
+      url: '',
       needLogin: true
     }],
     showRemind: false

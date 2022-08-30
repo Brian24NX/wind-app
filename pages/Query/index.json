@@ -1,5 +1,4 @@
 {
-  "component": true,
   "usingComponents": {
     "legal-terms-remind": "/components/legalTermsRemind/index"
   },

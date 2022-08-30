@@ -50,15 +50,18 @@ Page({
     priceList: [{
       label: 'instantQuote',
       url: '',
-      icon: '/assets/img/home/PRICE_1@2x.png'
+      icon: '/assets/img/home/PRICE_1@2x.png',
+      needLogin: false
     }, {
-      label: 'ddRate',
-      url: '/packagePrice/pages/guizufeilv/index',
-      icon: '/assets/img/home/PRICE_2@2x.png'
+      label: 'DDCharges',
+      url: '/packagePrice/pages/DDCharges/Search/index',
+      icon: '/assets/img/menu/D&D@2x.png',
+      needLogin: true
     }, {
       label: 'chargeFinder',
       url: '/packagePrice/pages/chargeFinder/index',
-      icon: '/assets/img/home/PRICE_3@2x.png'
+      icon: '/assets/img/home/PRICE_3@2x.png',
+      needLogin: false
     }],
     moreMenuList: [
       [{
@@ -111,7 +114,8 @@ Page({
           url: '/packageMore/pages/contact/conditions/index'
         },
       ]
-    ]
+    ],
+    showLegalRemind: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -440,16 +444,57 @@ Page({
   toPirceUrl(e) {
     const item = e.currentTarget.dataset.item
     if (item.url) {
-      wx.navigateTo({
-        url: item.url
-      })
+      if (!item.needLogin || (item.needLogin && utils.checkAccessToken())) {
+        wx.navigateTo({
+          url: item.url
+        })
+      } else {
+        wx.showToast({
+          title: languageUtil.languageVersion().lang.page.load.noLogin,
+          icon: 'none',
+          mask: true,
+          duration: 2000
+        })
+        setTimeout(() => {
+          this.toLogin()
+        }, 2000)
+      }
     } else {
       wx.showToast({
         title: this.data.load.functionIsUnderDevelopment,
         icon: 'none'
       })
     }
+  },
 
+  // 去登录
+  toLogin() {
+    if (wx.getStorageSync('allowLegalTerms')) {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+    } else {
+      this.setData({
+        showLegalRemind: true
+      })
+      this.getTabBar().setData({
+        show: false
+      })
+    }
+  },
+
+  setRemind(e) {
+    this.setData({
+      showLegalRemind: false
+    })
+    this.getTabBar().setData({
+      show: true
+    })
+    if (e.detail) {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+    }
   },
 
   toNav(e) {

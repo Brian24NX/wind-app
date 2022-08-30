@@ -69,7 +69,7 @@ var Languague = {
       PRICE: 'PRICE',
       instantQuote: "Instant Quotation",
       //柜租费率
-      ddRate: "D&D Prices",
+      DDCharges: "D&D Charges",
       //查询费率
       chargeFinder: "Charge Finder",
       // 发现更多
