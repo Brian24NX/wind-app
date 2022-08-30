@@ -159,7 +159,7 @@ var Languague = {
       //卸货港
       portOfDischarge: "Port of Discharge, POD",
       //起运港
-      protOfLanding: "Port of Loading, POL",
+      protOfLoading: "Port of Loading, POL",
       //港口名称/代码
       name: "Name/Code",
       //查询
@@ -369,7 +369,7 @@ var Languague = {
       //卸货港
       portOfDischarge: "Port of Discharge",
       //起运港
-      protOfLanding: "Port of Loading",
+      protOfLoading: "Port of Loading",
       //港口名称/代码
       name: "Name/code",
       type: 'Mode',
@@ -390,7 +390,7 @@ var Languague = {
       //卸货港
       portOfDischarge: "Port of Discharge",
       //起运港
-      protOfLanding: "Port of Loading",
+      protOfLoading: "Port of Loading",
       //港口名称/代码
       name: "Name/code",
       type: 'Equipment Size',
@@ -409,10 +409,12 @@ var Languague = {
       //航线|获取船期
       getASchedule1: "Instant ",
       getASchedule2: 'Quote',
+      placeOfOrigin: "Place of Receipt",
+      //起运港
+      protOfLoading: "Port of Loading",
       //卸货港
       portOfDischarge: "Port of Discharge",
-      //起运港
-      protOfLanding: "Port of Loading",
+      placeOfDelivery: "Place of Delivery",
       //港口名称/代码
       name: "Name/Code",
       //离港时间

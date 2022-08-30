@@ -11,10 +11,10 @@
         <text class="route1">{{languageContent.getASchedule1}}<text class="route2">{{languageContent.getASchedule2}}</text></text>
       </view>
       <view class="searchList" wx:if="{{showPlaceOfReceipt}}">
-        <view class="searchTitle">{{languageContent.protOfLanding}}</view>
+        <view class="searchTitle">{{languageContent.placeOfOrigin}}</view>
         <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-          <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfReceipt" />
+          <input value="{{portOfLoadingLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfReceipt" />
           <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>
@@ -27,7 +27,7 @@
             <text>{{verifyInfo.gswx}}</text>
           </view>
           <scroll-view class="scroll-view" wx:if='{{placeOfReceiptList.length}}' scroll-y>
-            <view wx:for="{{placeOfReceiptList}}" wx:key="index" class="item" bindtap='changepolname' data-index="{{index}}">
+            <view wx:for="{{placeOfReceiptList}}" wx:key="index" class="item" bindtap='choosePlaceOfReceipt' data-index="{{index}}">
               <view class="polname">{{item.ActualName}}</view>
               <view>{{item.PlaceType}}</view>
             </view>
@@ -43,10 +43,10 @@
       </view>
       <view class="addBtn" catchtap="addPlaceOfReceipt" wx:if="{{!showPlaceOfReceipt}}">+ Add a Place of Receipt</view>
       <view class="searchList">
-        <view class="searchTitle">{{languageContent.protOfLanding}}</view>
+        <view class="searchTitle">{{languageContent.protOfLoading}}</view>
         <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-          <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
+          <input value="{{portOfLoadingLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
           <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>
@@ -85,7 +85,7 @@
         <view class="searchTitle">{{languageContent.portOfDischarge}}</view>
         <view class="codeInputs {{showRemind3 || showRemind4 ? 'noRequestBorder' : ''}}">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-          <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" bindinput="changepod" />
+          <input value="{{portOfDischargeLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" bindinput="changepod" />
           <view class="deleteIcon" wx:if="{{showDelete2}}" catchtap="deleteValue" data-type="2">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>
@@ -108,10 +108,10 @@
         </view>
       </view>
       <view class="searchList" wx:if="{{showPlaceOfDelivery}}">
-        <view class="searchTitle">{{languageContent.protOfLanding}}</view>
+        <view class="searchTitle">{{languageContent.placeOfDelivery}}</view>
         <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-          <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
+          <input value="{{portOfLoadingLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
           <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>

@@ -23,11 +23,11 @@ Page({
     showPol: false,
     showPod: false,
     // 卸货港
-    podvalue: "",
-    podcode: "",
+    portOfDischargeLabel: "",
+    portOfDischarge: "",
     // 起运港
-    polvalue: "",
-    polcode: "",
+    portOfLoadingLabel: "",
+    portOfLoading: "",
     pollist: [],
     podlist: [],
     departureDate: '',
@@ -186,7 +186,7 @@ Page({
     })
   }, 800),
 
-  //获取起始港的接口处理
+  //获取起运港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
@@ -250,8 +250,8 @@ Page({
     const type = e.currentTarget.dataset.type
     if (type === '1') {
       this.setData({
-        polvalue: '',
-        polcode: '',
+        portOfLoadingLabel: '',
+        portOfLoading: '',
         pollist: [],
         showDelete1: false,
         showRemind1: false,
@@ -259,8 +259,8 @@ Page({
       })
     } else if (type === '2') {
       this.setData({
-        podvalue: '',
-        podcode: '',
+        portOfDischargeLabel: '',
+        portOfDischarge: '',
         podlist: [],
         showDelete2: false,
         showRemind3: false,
@@ -274,12 +274,22 @@ Page({
     }
   },
 
+  // 
+  choosePlaceOfReceipt(e) {
+    let index = e.currentTarget.dataset.index;
+    this.setData({
+      portOfLoadingLabel: this.data.pollist[index].point,
+      portOfLoading: this.data.pollist[index].pointCode,
+      pollist: [],
+    })
+  },
+
   // 起始港选择
   changepolname(e) {
     let index = e.currentTarget.dataset.index;
     this.setData({
-      polvalue: this.data.pollist[index].point,
-      polcode: this.data.pollist[index].pointCode,
+      portOfLoadingLabel: this.data.pollist[index].point,
+      portOfLoading: this.data.pollist[index].pointCode,
       pollist: [],
     })
     this.getCommodityList()
@@ -289,8 +299,8 @@ Page({
   changepodname(e) {
     let index = e.currentTarget.dataset.index;
     this.setData({
-      podvalue: this.data.podlist[index].point,
-      podcode: this.data.podlist[index].pointCode,
+      portOfDischargeLabel: this.data.podlist[index].point,
+      portOfDischarge: this.data.podlist[index].pointCode,
       podlist: []
     })
     this.getCommodityList()
@@ -304,11 +314,11 @@ Page({
 
   // 获取商品
   getCommodityList() {
-    if (!this.data.polcode || !this.data.podcode || !this.data.equipmentType) return
+    if (!this.data.portOfLoading || !this.data.portOfDischarge || !this.data.equipmentType) return
     getCommodityLists({
       equipmentType: this.data.equipmentType,
-      portOfLoading: this.data.polcode,
-      portOfDischarge: this.data.podcode,
+      portOfLoading: this.data.portOfLoading,
+      portOfDischarge: this.data.portOfDischarge,
       shippingCompany: '0001'
     }).then(res => {
       this.setData({
@@ -438,8 +448,8 @@ Page({
         showRemind1: false
       })
       var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
-      if (this.data.polvalue) {
-        if (!reg.test(this.data.polvalue)) {
+      if (this.data.portOfLoadingLabel) {
+        if (!reg.test(this.data.portOfLoadingLabel)) {
           this.setData({
             showRemind2: true
           })
@@ -465,8 +475,8 @@ Page({
       this.setData({
         showRemind3: false
       })
-      if (this.data.podvalue) {
-        if (!reg.test(this.data.podvalue)) {
+      if (this.data.portOfDischargeLabel) {
+        if (!reg.test(this.data.portOfDischargeLabel)) {
           this.setData({
             showRemind4: true
           })
@@ -498,12 +508,14 @@ Page({
     this.setData({
       showPol: false,
       showPod: false,
+      placeOfOrigin: '',
+      placeOfOrigin2: '',
       // 卸货港
-      podvalue: "",
-      podcode: "",
+      portOfDischarge: "",
+      portOfDischargeLabel: "",
       // 起运港
-      polvalue: "",
-      polcode: "",
+      portOfLoading: "",
+      portOfLoadingLabel: "",
       pollist: [],
       podlist: [],
       departureDate: this.getDate(),

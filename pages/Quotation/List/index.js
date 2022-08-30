@@ -74,7 +74,7 @@ Page({
     })
     const weekNum = Number(wx.getStorageSync('searchKey').searchRange) / 7
     this.setData({
-      polCode: wx.getStorageSync('searchKey').polCode,
+      polCode: "CN",
       podCode: wx.getStorageSync('searchKey').podCode,
       placeOfLoading: wx.getStorageSync('searchKey').polvalue,
       placeOfDischarge: wx.getStorageSync('searchKey').podvalue,

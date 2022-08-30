@@ -160,7 +160,7 @@ var Languague = {
       //卸货港
       portOfDischarge: "卸货港",
       //起运港
-      protOfLanding: "起运港",
+      protOfLoading: "起运港",
       //港口名称/代码
       name: "名称/代码",
       //查询
@@ -370,7 +370,7 @@ var Languague = {
       //卸货港
       portOfDischarge: "卸货港",
       //起运港
-      protOfLanding: "起运港",
+      protOfLoading: "起运港",
       //港口名称/代码
       name: "名称/代码",
       type: '集装箱类型',
@@ -391,7 +391,7 @@ var Languague = {
       //卸货港
       portOfDischarge: "卸货港",
       //起运港
-      protOfLanding: "起运港",
+      protOfLoading: "起运港",
       //港口名称/代码
       name: "名称/代码",
       type: '集装箱型号',
@@ -411,10 +411,12 @@ var Languague = {
       //航线|获取船期
       getASchedule1: "即时",
       getASchedule2: '报价',
+      placeOfOrigin: "Place of Receipt",
+      //起运港
+      protOfLoading: "起运港",
       //卸货港
       portOfDischarge: "卸货港",
-      //起运港
-      protOfLanding: "起运港",
+      placeOfDelivery: "Place of Delivery",
       //港口名称/代码
       name: "名称/代码",
       //离港时间
