@@ -192,7 +192,7 @@ page {
   align-items: center;
   color: #071E5D;
   font-size: 32rpx;
-  width: 128rpx;
+  width: 150rpx;
   text-align: center;
 }
 
