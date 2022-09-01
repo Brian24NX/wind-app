@@ -1,0 +1,21 @@
+<!--packageMore/pages/VideoList/index.wxml-->
+<wxs module="format" src="../../../utils/format.wxs"></wxs>
+<view class="navbarContainers" style="height: {{navTopHeight}}px;"></view>
+<view style="padding-top: {{navTopHeight}}px;">
+  <view class="topContainer">
+    <text>Video</text>
+    <text>Library</text>
+  </view>
+  <view class="videoList">
+    <view class="oneGroupVideo" wx:for="{{list}}" key="index">
+      <view class="groupTop" wx:if="{{index}}"></view>
+      <view wx:for="{{item}}" wx:for-item="child" wx:for-index="childIndex" key="childIndex" class="oneVideo" catchtap="lookDetail" data-url="{{child.linkUrl}}">
+        <image class="frontCover" src="{{child.frontCover}}" mode="aspectFill"></image>
+        <view class="videoTitle">
+          <view>{{ format.formatCnDateUtc(child.publishDate, true) }}</view>
+          <view>{{ child.title }}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -39,7 +39,8 @@
         "pages/Faq/index",
         "pages/usefulTemplateAndLink/index",
         "pages/sanctionCheck/list/index",
-        "pages/sanctionCheck/detail/index"
+        "pages/sanctionCheck/detail/index",
+        "pages/VideoList/index"
       ]
     },
     {

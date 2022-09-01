@@ -1,0 +1,109 @@
+/* packageMore/pages/VideoList/index.wxss */
+page {
+  width: 100%;
+  min-height: calc(100vh - 32rpx);
+  background-color: #f0f1f5;
+  padding-top: 32rpx;
+}
+
+.navbarContainers {
+  width: 100%;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.topContainer {
+  width: 690rpx;
+  height: 210rpx;
+  padding-left: 30rpx;
+  display: flex;
+  align-items: center;
+  font-size: 56rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #071e5d;
+  margin: 0 auto;
+  background-image: url(https://wind.cma-cgm.com/images/videoLibrary.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.topContainer text:nth-of-type(2) {
+  color: #e10202;
+  margin-left: 15rpx;
+}
+
+.videoList {
+  margin-top: 30rpx;
+}
+
+.videoList .oneGroupVideo {
+  display: flex;
+  padding: 0 30rpx;
+  background-image: url("https://wind.cma-cgm.com/images/book@2x.png");
+  background-size: 100% 110rpx;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  padding-top: 40rpx;
+  padding-bottom: 32rpx;
+  position: relative;
+}
+
+.videoList .oneGroupVideo .groupTop {
+  width: 100%;
+  height: 40rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background: linear-gradient(0, rgba(238, 238, 238, 0) 0%, #909090 100%);
+}
+
+.videoList .oneGroupVideo .oneVideo {
+  width: calc((100% - 60rpx) / 3);
+  height: 276rpx;
+  position: relative;
+  margin-right: 30rpx;
+  background-color: #f0f1f5;
+}
+
+.videoList .oneGroupVideo .oneVideo .frontCover {
+  width: 100%;
+  height: 100%;
+}
+
+.videoList .oneGroupVideo .oneVideo .videoTitle {
+  height: 62rpx;
+  background: linear-gradient(180deg, rgba(137, 137, 137, 0) 0%, #201f1f 100%);
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 16rpx;
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 12rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.videoList .oneGroupVideo .oneVideo .videoTitle view {
+  line-height: 22rpx;
+  display: inline-block;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.videoList .oneGroupVideo .oneVideo:nth-last-of-type(1) {
+  margin-right: 0;
+}
+
+.videoList .oneGroupVideo:nth-of-type(1) {
+  padding-top: 0;
+}

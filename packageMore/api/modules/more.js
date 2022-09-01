@@ -91,3 +91,8 @@ export const templateList = (params) => {
 export const templateSendEmail = (params) => {
   return postRequest('/api/miniapp/templateSendEmail', params, true)
 }
+
+// 获取常用模板与链接列表
+export const getVideoLists = (params) => {
+  return getRequest('/api/miniapp/videoLibraryList', params, true)
+}
