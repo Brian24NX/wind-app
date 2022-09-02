@@ -19,7 +19,7 @@ Page({
       isNew: true,
       label: 'ddCharges',
       url: '/packagePrice/pages/DDCharges/Search/index',
-      needLogin: true
+      needLogin: false
     }, {
       style: "330rpx",
       icon: '/assets/img/menu/cqcx@2x.png',

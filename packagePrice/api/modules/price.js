@@ -20,5 +20,5 @@ export const chargeFinderTariff = (params) => {
 
 // 获取D&D Charges
 export const ddChargeFinder = (params) => {
-  return postRequest('/api/miniapp/ddChargeFinder', params, true, false, true)
+  return postRequest('/api/miniapp/ddChargeFinder', params, true, false, false)
 }

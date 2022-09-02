@@ -48,7 +48,7 @@ Page({
       portOfLoading: this.data.chargeFinderSearchKey.placeOfLoading,
       portOfDischarge: this.data.chargeFinderSearchKey.placeOfDischarge,
       equipmentSizeType: [this.data.chargeFinderSearchKey.equipmentSize],
-      partnerCode: wx.getStorageSync('partnerCode')
+      partnerCode: 'partnerCode'
     }
     if (this.data.chargeFinderSearchKey.specialCargo) {
       params.specialCargo = this.data.chargeFinderSearchKey.specialCargo

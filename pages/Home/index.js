@@ -56,7 +56,7 @@ Page({
       label: 'DDCharges',
       url: '/packagePrice/pages/DDCharges/Search/index',
       icon: '/assets/img/menu/D&D@2x.png',
-      needLogin: true
+      needLogin: false
     }, {
       label: 'chargeFinder',
       url: '/packagePrice/pages/chargeFinder/index',
