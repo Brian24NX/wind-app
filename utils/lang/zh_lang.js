@@ -453,6 +453,7 @@ var Languague = {
       earliestArrival: "最快到港",
       // 最快运输时间
       earliestTime: '最快运输时间',
+      spotOn: 'SPOTON',
       //离港
       depart: "离港",
       //航线方案
@@ -467,7 +468,34 @@ var Languague = {
       equipmentType: '箱型',
       weight: '净重（KGM）',
       containers: '货柜数量',
-      Commodity: '商品'
+      Commodity: '商品',
+      title2: '我的合同',
+      book: '下单'
+    },
+    // 我的报价
+    myContract: {
+      title: '我的合同',
+      getASchedule1: "我的",
+      getASchedule2: '合同',
+      placeOfOrigin: "收货地",
+      addPlaceOfOrigin: '添加收货地',
+      //起运港
+      protOfLoading: "起运港",
+      //卸货港
+      portOfDischarge: "卸货港",
+      placeOfDelivery: "目的地",
+      addPlaceOfDelivery: '添加目的地',
+      //港口名称/代码
+      name: "名称/代码",
+      //离港时间
+      departure: "离港时间",
+      equipmentType: '箱型',
+      ST: '干货集装箱',
+      RF: '冻柜',
+      SP: '特殊货柜',
+      //查询
+      search: "查询",
+      reset: '重置'
     },
     popupBtn: {
       confirm: '确定',

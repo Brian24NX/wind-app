@@ -1,0 +1,437 @@
+/* packageBooking/pages/Contract/Detail/index.wxss */
+.resultContainers {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30rpx 30rpx 210rpx;
+  background-color: #F0F1F5;
+}
+
+.resultContainers .resultCardContainers {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.resultContainers .resultCardContainers .resultCardContainer {
+  padding: 40rpx 40rpx 20rpx;
+  background: url(https://wind.cma-cgm.com/images/instantQuote.png) no-repeat;
+  background-position: bottom right;
+  background-size: auto 100%;
+}
+
+.carddate image,
+.cardtranshipment image {
+  width: 40rpx;
+  height: 36rpx;
+}
+
+.stepLists {
+  padding-left: 50rpx;
+}
+
+.stepLists .oneStep {
+  padding-bottom: 10rpx;
+  position: relative;
+}
+
+.stepLists .oneStep:nth-last-of-type(1) {
+  padding-bottom: 0;
+}
+
+.stepLists .oneStep .leftLines {
+  position: absolute;
+  left: -50rpx;
+  height: 100%;
+  top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24rpx;
+}
+
+.stepLists .oneStep .leftLines image {
+  width: 24rpx;
+  height: 30rpx;
+}
+
+.stepLists .oneStep .leftLines .leftLineDto {
+  background-color: #E20202;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+.stepLists .oneStep .leftLines .leftLine {
+  width: 0;
+  height: calc(100% - 16rpx);
+  border-left: 1rpx solid #9AA6C4;
+}
+
+.stepLists .oneStep .stepContent {
+  font-size: 52rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.carddate,
+.cardtranshipment {
+  padding-top: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.carddate text,
+.cardtranshipment text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #4468BA;
+  margin-left: 10rpx;
+}
+
+.solutionContainer {
+  width: 640rpx;
+  border-top: 1rpx solid #eeeeee;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26rpx 0;
+}
+
+.solutionContainer .solutionLeft {
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #6B7790;
+}
+
+.solutionContainer .solutionLeft .solutionLeftOne {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+
+.solutionContainer .solutionLeft .solutionLeftOne:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.solutionContainer .solutionLeft image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 10rpx;
+}
+
+.paramContainer {
+  background-color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30rpx 0;
+  padding: 0 46rpx;
+}
+
+.paramContainer .oneParams {
+  border-top: 1rpx solid #EEEEEE;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  padding: 48rpx 10rpx;
+}
+
+.paramContainer .oneParams:nth-of-type(-n + 2) {
+  border-top: none;
+}
+
+.paramContainer .oneParams image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.paramContainer .oneParams .paramValue {
+  font-size: 32rpx;
+  font-family: Arial-BoldMT, Arial;
+  font-weight: normal;
+  color: #071E5D;
+}
+
+.paramContainer .oneParams .param {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.rateContainer {
+  background-color: #ffffff;
+  padding: 0 48rpx;
+}
+
+.rateTitles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+
+.rateTitles .titleLeft {
+  display: flex;
+  align-items: center;
+  font-size: 48rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+}
+
+.rateTitles .titleLeft .titleLine {
+  width: 6rpx;
+  height: 40rpx;
+  background-color: #E20202;
+  margin-right: 12rpx;
+}
+
+.rateTitles image {
+  width: 146rpx;
+  height: 106rpx;
+  margin-right: -20rpx;
+}
+
+.rateTotal {
+  padding: 40rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+
+.rateTotal .rateTotalLeft {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+}
+
+.rateTotal .rateTotalLeft image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.rateTotal .rateTotalRight {
+  font-size: 32rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #E20202;
+  display: flex;
+  align-items: center;
+}
+
+.rateTotal .rateTotalRight .ratePrice {
+  font-size: 56rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+  margin-right: 12rpx;
+}
+
+.oneRate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #eeeeee;
+  padding: 22rpx 0;
+  min-height: 92rpx;
+}
+
+.oneRate .oneRateLeft {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+}
+
+.oneRate .oneRateLeft .rateCheckBox {
+  width: 30rpx;
+  height: 30rpx;
+  border: 1rpx solid #04246A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #04246A;
+  margin-right: 20rpx;
+}
+
+.oneRate .oneRateRight {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #E20202;
+}
+
+.oneRate .oneRateRight .ratePrice {
+  font-size: 36rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+  margin-right: 12rpx;
+}
+
+.rateDesc {
+  font-weight: 500;
+  color: #6B7790;
+  font-size: 16rpx;
+  padding: 20rpx 0 40rpx;
+}
+
+.otherContainer {
+  display: flex;
+  background-color: #ffffff;
+  padding: 20rpx 30rpx;
+  margin-top: 30rpx;
+}
+
+.otherContainer .oneOther {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.otherContainer .oneOther image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 10rpx;
+}
+
+.additionalServices {
+  background-color: #ffffff;
+  padding: 0 48rpx;
+}
+
+.additionalServices .additionalServiceTitle {
+  padding: 28rpx 0;
+}
+
+.additionalServiceList .oneAdditionalService {
+  border-top: 1rpx solid #eeeeee;
+  padding: 30rpx 0;
+}
+
+.additionalServiceList .oneAdditionalService .additionalServiceTop {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-family: Arial-BoldMT, Arial;
+  font-weight: normal;
+  color: #04246A;
+}
+
+.additionalServiceList .oneAdditionalService .additionalServiceTopTitle {
+  width: 520rpx;
+}
+
+.additionalServiceList .oneAdditionalService .additionalServiceTop .additionalServiceCheck {
+  width: 30rpx;
+  height: 30rpx;
+  background-color: #071e5d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.additionalServiceBottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.additionalServiceBottom .additionalServiceBottomDesc {
+  width: 400rpx;
+  font-size: 24rpx;
+  font-family: ArialMT;
+  color: #6B7790;
+}
+
+.additionalServiceBottom .additionalServiceBottomPrice {
+  display: flex;
+  align-items: center;
+  color: #04246A;
+  font-size: 24rpx;
+  font-family: Antonio-Regular;
+}
+
+.additionalServiceBottom .additionalServiceBottomPrice .bottomPrice {
+  font-size: 48rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+  margin-right: 10rpx;
+}
+
+.additionalServiceBottom .additionalServiceBottomPrice .priceUnit {
+  line-height: 26rpx;
+}
+
+.bottomButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx 48rpx;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bottomButtonContainer .bottomButtonLeft {
+  display: flex;
+  flex-direction: column;
+  font-size: 32rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #E20202;
+  line-height: 32rpx;
+}
+
+.bottomButtonContainer .bottomButtonLeft .bottomPrices {
+  display: flex;
+  align-items: flex-end;
+}
+
+.bottomButtonContainer .bottomButtonLeft .bottomPrice {
+  font-size: 72rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+  margin-right: 14rpx;
+  line-height: 64rpx;
+}
+
+.bottomButtonContainer .bottomButtonLeft .containerNumber {
+  color: #6B7790;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+}
+
+.bottomButtonContainer .buttons {
+  height: 76rpx;
+  background-color: #E20202;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 76rpx;
+  padding: 0 22rpx;
+}

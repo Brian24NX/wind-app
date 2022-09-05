@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "noresult": "./comments/noresult/index"
+  }
+}

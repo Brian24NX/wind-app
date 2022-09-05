@@ -22,3 +22,8 @@ export const getQuotationSurchargeDetails = (params) => {
 export const nearByPortNextDeparture = (params) => {
   return postRequest('/api/miniapp/nearByPortNextDeparture', params, true, false, true)
 }
+
+// 获取我的报价单列表
+export const quotationQuoteLinesSearch = (params) => {
+  return postRequest('/api/miniapp/quotationQuoteLinesSearch', params, true, false, true)
+}

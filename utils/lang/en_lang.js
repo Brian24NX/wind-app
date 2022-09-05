@@ -450,6 +450,7 @@ var Languague = {
       earliestArrival: "EARLIEST ARRIVAL",
       // 最快运输时间
       earliestTime: 'EARLIEST TRANSPORTATION TIME',
+      spotOn: 'SPOTON',
       //离港
       depart: "Depart/Departure ",
       //航线方案，航线方案1
@@ -464,7 +465,34 @@ var Languague = {
       equipmentType: 'Equipment Type',
       weight: 'Net Weight（KGM）',
       containers: 'Number of container(s)',
-      Commodity: 'Commodity'
+      Commodity: 'Commodity',
+      title2: 'My Contracts',
+      book: 'Book'
+    },
+    // 我的报价
+    myContract: {
+      title: 'My Contracts',
+      getASchedule1: "My ",
+      getASchedule2: 'Contracts',
+      placeOfOrigin: "Place of Receipt",
+      addPlaceOfOrigin: "Add a Place of Receipt",
+      //起运港
+      protOfLoading: "Port of Loading",
+      //卸货港
+      portOfDischarge: "Port of Discharge",
+      placeOfDelivery: "Place of Delivery",
+      addPlaceOfDelivery: 'Add a Place of Delivery',
+      //港口名称/代码
+      name: "Name/Code",
+      //离港时间
+      departure: "Vessel departure from",
+      equipmentType: 'Equipment Type',
+      ST: 'Dry',
+      RF: 'Reefer',
+      SP: 'Special',
+      //查询
+      search: "Search",
+      reset: 'Reset'
     },
     popupBtn: {
       confirm: 'Confirm',

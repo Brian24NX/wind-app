@@ -60,6 +60,14 @@
         "pages/shipment/list/index",
         "pages/shipment/detail/index"
       ]
+    },
+    {
+      "root": "packageBooking",
+      "pages": [
+        "pages/Contract/Search/index",
+        "pages/Contract/List/index",
+        "pages/Contract/Detail/index"
+      ]
     }
   ],
   "window": {
