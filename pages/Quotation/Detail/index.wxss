@@ -2,7 +2,7 @@
 .resultContainers {
   width: 100%;
   min-height: 100vh;
-  padding: 30rpx 30rpx 220rpx;
+  padding: 30rpx 30rpx 210rpx;
   background-color: #F0F1F5;
 }
 
@@ -396,11 +396,17 @@
 
 .bottomButtonContainer .bottomButtonLeft {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   font-size: 32rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
   color: #E20202;
+  line-height: 32rpx;
+}
+
+.bottomButtonContainer .bottomButtonLeft .bottomPrices {
+  display: flex;
+  align-items: flex-end;
 }
 
 .bottomButtonContainer .bottomButtonLeft .bottomPrice {
@@ -409,6 +415,13 @@
   font-weight: 400;
   color: #04246A;
   margin-right: 14rpx;
+  line-height: 64rpx;
+}
+
+.bottomButtonContainer .bottomButtonLeft .containerNumber {
+  color: #6B7790;
+  font-size: 24rpx;
+  margin-top: 6rpx;
 }
 
 .bottomButtonContainer .buttons {

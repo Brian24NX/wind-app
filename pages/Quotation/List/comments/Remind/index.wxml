@@ -1,0 +1,17 @@
+<!--pages/Quotation/List/comments/Remind/index.wxml-->
+<van-overlay show="{{ show }}" z-index="10">
+  <view class="containersReminds">
+    <view class="containersRemind">
+      <view class="close" catchtap="onClickHide">
+        <van-icon name="cross" size="24" color="#04246A" />
+      </view>
+      <view class="remindTitle">Few containers available</view>
+      <view class="remindDesc">You have requested {{containers}} containers but only {{hasContainers}} are remaining for this departure</view>
+      <view class="remindDesc">Do you want to continue?</view>
+      <view class="remindBottomButton">
+        <view class="oneButton leftButton" catchtap="continue">Continue</view>
+        <view class="oneButton rightButton" catchtap="onClickHide">Choose another route</view>
+      </view>
+    </view>
+  </view>
+</van-overlay>

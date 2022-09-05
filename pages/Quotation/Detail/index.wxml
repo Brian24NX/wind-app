@@ -144,8 +144,11 @@
 </view>
 <view class="bottomButtonContainer">
   <view class="bottomButtonLeft">
-    <view class="bottomPrice">3900</view>
-    <view>EUR</view>
+    <view class="bottomPrices">
+      <view class="bottomPrice">3900</view>
+      <view>EUR</view>
+    </view>
+    <view class="containerNumber">For 9 container (s)</view>
   </view>
   <view class="buttons" catchtap="submit">{{isFirst ? 'Next' : 'Save quote to book'}}</view>
 </view>

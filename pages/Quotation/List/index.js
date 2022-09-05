@@ -26,10 +26,8 @@ Page({
     needDirectFlag: false,
     sortSolutionServices: [],
     isLoading: true,
-    scrollLeft: 0,
-    oneScroll: 0,
-    showDatePopup: false,
-    currentDate: null
+    showRemind: false,
+    currentIndex: null
   },
 
   /**
@@ -129,9 +127,30 @@ Page({
 
   // 去详情
   toDetail(e) {
-    let index = e.currentTarget.dataset.id;
+    let currentIndex = e.currentTarget.dataset.index;
+    this.setData({
+      currentIndex
+    })
+    if (!this.data.quoteLineList[currentIndex].needRemind) {
+      this.setData({
+        showRemind: true
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/Quotation/Detail/index?index=${currentIndex}`,
+      })
+    }
+  },
+
+  onContinue() {
     wx.navigateTo({
-      url: `/pages/Quotation/Detail/index?index=${index}`,
+      url: `/pages/Quotation/Detail/index?index=${this.data.currentIndex}`,
+    })
+  },
+
+  onClickHide() {
+    this.setData({
+      showRemind: false
     })
   }
 })

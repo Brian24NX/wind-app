@@ -1,0 +1,61 @@
+/* pages/Quotation/List/comments/Remind/index.wxss */
+.containersReminds {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close {
+  text-align: right;
+  margin-bottom: 40rpx;
+}
+
+.containersRemind {
+  width: 630rpx;
+  background-color: #ffffff;
+  padding: 44rpx 30rpx;
+  margin-top: -190rpx;
+}
+
+.remindTitle {
+  font-size: 48rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #071E5D;
+  margin-bottom: 24rpx;
+}
+
+.remindDesc {
+  font-weight: 500;
+  font-size: 24rpx;
+  color: #04246A;
+}
+
+.remindBottomButton {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40rpx;
+}
+
+.remindBottomButton .oneButton {
+  height: 88rpx;
+  border: 2rpx solid #E70D0D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+}
+
+.remindBottomButton .leftButton {
+  width: 190rpx;
+  background-color: #E70D0D;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.remindBottomButton .rightButton {
+  font-weight: 500;
+  color: #E60201;
+  width: 360rpx;
+}

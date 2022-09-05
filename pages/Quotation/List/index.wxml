@@ -63,14 +63,18 @@
       </view>
       <view class="oneBottom">
         <view class="bottomLeft">
-          <image src="/assets/img/home/PRICE_2@2x.png"></image>
+          <image src="/assets/img/instantQuote/cash@2x.png"></image>
           <view class="priceCount">3400</view>
           <view class="priceUnit">
             <view class="unit">EUR</view>
             <view class="unit2">CONTRAIN</view>
           </view>
         </view>
-        <view class="selects" bindtap="toDetail" data-id="{{index}}">{{languageContent.select}}</view>
+        <view class="selects" bindtap="toDetail" data-index="{{index}}">{{languageContent.select}}</view>
+      </view>
+      <view class="warning">
+        <image src="/assets/img/instantQuote/warning@2x.png"></image>
+        <text>9 container (s) remianing</text>
       </view>
     </view>
   </view>
@@ -80,7 +84,7 @@
   </view>
 </view>
 
-<custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
+<remind show="{{showRemind}}" containers="{{50}}" hasContainers="{{9}}" bind:continue="onContinue" bind:hide="onClickHide"></remind>
 
 <!-- 底部筛选条件 tabbar -->
 <foot-tab-bar languageContent="{{languageContent}}" radio="{{sort}}" plans="{{plans}}" routesPlanList="{{sortSolutionServices}}" bind:tabbarchange="onTabbarChange" />

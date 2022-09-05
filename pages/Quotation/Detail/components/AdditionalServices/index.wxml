@@ -8,7 +8,7 @@
       <view class="urlStyle">SERENITY cargo value guarantee_ENG Flyer_A4_HD.pdf</view>
       <scroll-view scroll-x class="serviceList">
         <view class="oneService serviceChecked" wx:for="{{3}}" wx:key="index">
-          <view class="oneServiceDesc">Guarantee up to EUR 12 500 per container</view>
+          <view class="oneServiceDesc">Guarantee up to EUR 12500 per container</view>
           <view class="servicePriceContainer">
             <view class="servicePirceLeft">
               <view class="servicePrice">250</view>
@@ -18,7 +18,7 @@
               </view>
             </view>
             <view class="checkbox">
-              <van-icon name="success" color="#ffffff" size="15px" />
+              <view class="checkedBox"></view>
             </view>
           </view>
         </view>
