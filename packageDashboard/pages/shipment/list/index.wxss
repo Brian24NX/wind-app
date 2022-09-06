@@ -7,6 +7,37 @@ page {
   padding: 30rpx;
 }
 
+.categoryLists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 210rpx;
+  height: 100%;
+  border-right: 1rpx solid #e2e2e2;
+  margin-right: 16rpx;
+  color: #04246A;
+  font-size: 24rpx;
+  padding-right: 16rpx;
+}
+
+.categoryLists image {
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}
+
+.inputContainer .inputs {
+  width: 226rpx;
+}
+
+.inputContainer .delete {
+  width: 40rpx;
+}
+
+.inputContainer .search {
+  width: 50rpx;
+}
+
 .shipmentLists {
   margin-top: 30rpx;
 }

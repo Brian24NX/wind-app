@@ -3,6 +3,7 @@
   "usingComponents": {
     "shipment": "../../../components/shipments/index",
     "containers": "../../../components/containers/index",
-    "loading": "/components/loading/index"
+    "loading": "/components/loading/index",
+    "custom-picker": "/components/customPicker/index"
   }
 }

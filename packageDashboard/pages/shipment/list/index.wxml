@@ -9,6 +9,10 @@
       </view>
     </view>
     <view class="inputContainer">
+      <view class="categoryLists" catchtap="changeCategory">
+        <view>{{ownedLabel}}</view>
+        <image src="/assets/img/more/sanjiao@2x.png"></image>
+      </view>
       <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
       <view class="delete" catchtap="deleteValue">
         <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
@@ -34,6 +38,7 @@
     <view class="loadings">
       <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
     </view>
-    
   </view>
 </view>
+
+<custom-picker columns="{{current === 'shipment' ? shipmentColumns : containerColumns}}" valueKey="{{language === 'zh' ? 'labelCn' : 'labelEn'}}" showPopup="{{showPopup}}" defaultIndex="{{defaultIndex}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>

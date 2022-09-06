@@ -19,10 +19,32 @@ Page({
     keyword: '',
     typeList: ['shipment', 'container'],
     current: 'shipment',
+    ownedId: '',
+    ownedLabel: '',
+    shipmentColumns: [{
+      id: 'AllShipment',
+      labelCn: '全部船运',
+      labelEn: 'All Shipment'
+    }, {
+      id: 'MyShipment',
+      labelCn: '我的船运',
+      labelEn: 'My Shipment'
+    }],
+    containerColumns: [{
+      id: 'AllContainer',
+      labelCn: '全部货柜',
+      labelEn: 'All Container'
+    }, {
+      id: 'MyContainer',
+      labelCn: '我的货柜',
+      labelEn: 'My Container'
+    }],
     list: [],
     loading: false,
     noMore: false,
-    noData: false
+    noData: false,
+    showPopup: false,
+    defaultIndex: null
   },
 
   /**
@@ -51,6 +73,10 @@ Page({
     wx.setNavigationBarTitle({
       title: language.lang.page.shipment.title,
     })
+    this.setData({
+      ownedId: this.data.shipmentColumns[0].id,
+      ownedLabel: this.data.language === 'zh' ? this.data.shipmentColumns[0].labelCn : this.data.shipmentColumns[0].labelEn
+    })
   },
 
   setInput(e) {
@@ -68,12 +94,36 @@ Page({
     this.search()
   },
 
+  changeCategory() {
+    this.setData({
+      showPopup: true
+    })
+  },
+
+  onClose() {
+    this.setData({
+      showPopup: false
+    })
+  },
+
+  onConfirm(e) {
+    console.log(e)
+    this.setData({
+      ownedId: e.detail.id,
+      ownedLabel: this.data.language === 'zh' ? e.detail.labelCn : e.detail.labelEn,
+      showPopup: false
+    })
+    this.search()
+  },
+
   changeType(e) {
     this.setData({
       current: e.currentTarget.dataset.type,
       noData: false,
       noMore: false,
-      keyword: ''
+      keyword: '',
+      ownedId: e.currentTarget.dataset.type === 'shipment' ? this.data.shipmentColumns[0].id : this.data.containerColumns[0].id,
+      ownedLabel: e.currentTarget.dataset.type === 'shipment' ? (this.data.language === 'zh' ? this.data.shipmentColumns[0].labelCn : this.data.shipmentColumns[0].labelEn) : (this.data.language === 'zh' ? this.data.containerColumns[0].labelCn : this.data.containerColumns[0].labelEn)
     })
     this.search()
   },
@@ -88,6 +138,7 @@ Page({
     if (this.data.current === 'shipment') {
       shipmentsList({
         ccgId: wx.getStorageSync('ccgId'),
+        owned: this.data.ownedId !== 'AllShipment',
         bookingReference: this.data.keyword
       }).then(res => {
         if (res.data) {
@@ -109,6 +160,7 @@ Page({
     } else {
       shipmentsContainerList({
         ccgId: wx.getStorageSync('ccgId'),
+        owned: this.data.ownedId !== 'AllContainer',
         containerOrBookingReference: this.data.keyword
       }).then(res => {
         if (res.data) {
