@@ -61,9 +61,8 @@ page {
 }
 
 .sanctionList {
-  padding: 0 48rpx 30rpx;
+  padding: 440rpx 48rpx 30rpx;
   background-color: #ffffff;
-  margin-top: 438rpx;
 }
 
 .sanctionList .oneSanction {

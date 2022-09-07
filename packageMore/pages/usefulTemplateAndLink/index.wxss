@@ -126,8 +126,8 @@ page {
 
 .userfulContainer .usefulListContainer {
   background-color: #ffffff;
-  margin: 438rpx 0 0;
-  padding: 0 46rpx 30rpx;
+  margin: 0;
+  padding: 440rpx 46rpx 30rpx;
 }
 
 .userfulContainer .usefulListContainer .contentList .oneContent {

@@ -46,9 +46,9 @@ page {
 
 .newsContainer .newsLists {
   width: 690rpx;
-  margin: 430rpx auto 40rpx;
+  margin: 0 auto 40rpx;
   background-color: #ffffff;
-  padding: 40rpx 40rpx 1rpx;
+  padding: 470rpx 40rpx 1rpx;
 }
 
 .newsContainer .categoryLists {

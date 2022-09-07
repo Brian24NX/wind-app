@@ -36,8 +36,7 @@ page {
 
 .businessContainer .businessLists {
   background-color: #ffffff;
-  padding: 0 40rpx 1rpx;
-  margin-top: 438rpx;
+  padding: 440rpx 40rpx 1rpx;
 }
 
 .businessContainer .categoryList {
