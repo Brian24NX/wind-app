@@ -18,7 +18,7 @@
           </view>
         </view>
         <view class="fileList">
-          <view class="oneFile" wx:for="{{item.files}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+          <view class="oneTemplate" wx:for="{{item.files}}" wx:for-item="items" wx:for-index="" wx:key="indexs">
             <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
             <view class="templateContent">
               <view class="templateName">{{items.fileName}}</view>

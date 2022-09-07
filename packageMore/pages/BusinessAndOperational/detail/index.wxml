@@ -11,13 +11,15 @@
   <view class="rich">
     <mp-html content="{{businessDetail.content}}" />
   </view>
-  <view class="fileLists" wx:if="{{businessDetail.filepath}}" catchtap="preview">
-    <image src="/assets/img/more/pdf@2x.png" class="fileIcon"></image>
-    <view class="fileCenter">
-      <view>{{businessDetail.fileName}}</view>
-      <view catchtap="download">{{languageContent.send}}</view>
+  <view class="oneTemplate"wx:if="{{businessDetail.filepath}}" catchtap="preview">
+    <image src="/assets/img/more/pdf@2x.png" class="infoIcon"></image>
+    <view class="templateContent">
+      <view class="templateName">{{businessDetail.fileName}}</view>
+      <view catchtap="download" data-item="{{one}}">{{languageContent.send}}</view>
     </view>
-    <!-- <image class="downloadIcon" catchtap="download" src="/assets/img/more/download@2x.png"></image> -->
+    <view class="preview" catchtap="preview">
+      <image src="/assets/img/more/eye@2x.png"></image>
+    </view>
   </view>
 </view>
 <email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

@@ -258,3 +258,46 @@
   height: 336rpx;
   margin-bottom: 40rpx;
 }
+
+/* 文件预览 */
+.oneTemplate {
+  border: 1rpx solid #CFD2DA;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.oneTemplate .infoIcon {
+  width: 96rpx;
+  height: 96rpx;
+  margin-right: 10rpx;
+}
+
+.oneTemplate .templateContent {
+  width: calc(100% - 106rpx - 56rpx);
+  font-weight: 400;
+  color: #6B7790;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.oneTemplate .templateContent .templateName {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+}
+
+.oneTemplate .preview {
+  width: 56rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.oneTemplate .preview image {
+  width: 40rpx;
+  height: 40rpx;
+}

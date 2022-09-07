@@ -43,7 +43,6 @@
                 <image src="/assets/img/more/eye@2x.png"></image>
               </view>
             </view>
-
           </view>
         </van-collapse-item>
       </van-collapse>

@@ -35,39 +35,5 @@
 }
 
 .businessDetails .rich {
-  margin-top: 30rpx;
+  margin: 30rpx 0;
 }
-
-.businessDetails .fileLists {
-  border: 1rpx solid #CFD2DA;
-  padding: 18rpx 30rpx;
-  margin-top: 30rpx;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.businessDetails .fileLists .fileIcon {
-  width: 104rpx;
-  height: 112rpx;
-}
-
-.businessDetails .fileLists .fileCenter {
-  width: 430rpx;
-  font-size: 28rpx;
-  color: #6B7790;
-}
-
-.businessDetails .fileLists .fileCenter view:nth-of-type(1) {
-  font-size: 32rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: #071E5D;
-  margin-bottom: 10rpx;
-  word-break: break-all;
-}
-/* 
-.businessDetails .fileLists .downloadIcon {
-  width: 40rpx;
-  height: 40rpx;
-} */

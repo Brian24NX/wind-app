@@ -22,11 +22,21 @@
       <view class="oneLeft">{{documentContent.date}}</view>
       <view class="oneRight">{{language === 'zh' ? format.formatCnDateLocal(item.publicationLocal, true, true) : format.formatEnDateLocal(item.publicationLocal, '-', '', true, true)}}</view>
     </view>
-    <view class="fileContent">
+    <!-- <view class="fileContent">
       <image src="/assets/img/more/info@2x.png"></image>
       <view>
         <view class="filtTitle" catchtap="preview" data-documentid="{{item.documentId}}">{{item.documentReference}}</view>
         <view class="send" catchtap="sendEmail" data-documentid="{{item.documentId}}">{{documentContent.send}}</view>
+      </view>
+    </view> -->
+    <view class="oneTemplate">
+      <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
+      <view class="templateContent">
+        <view class="templateName">{{item.documentReference}}</view>
+        <view catchtap="sendEmail" data-documentid="{{item.documentId}}">{{documentContent.send}}</view>
+      </view>
+      <view class="preview" catchtap="preview" data-item="{{one}}">
+        <image src="/assets/img/more/eye@2x.png"></image>
       </view>
     </view>
   </view>

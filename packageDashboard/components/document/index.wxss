@@ -30,31 +30,3 @@
   width: 350rpx;
   text-align: right;
 }
-
-.componentDocumentList .oneDocument .fileContent {
-  display: flex;
-  align-items: center;
-  border: 1rpx solid #CFD2DA;
-  padding: 12rpx 18rpx;
-}
-
-.componentDocumentList .oneDocument .fileContent image {
-  width: 116rpx;
-  height: 124rpx;
-  margin-right: 16rpx;
-}
-
-.componentDocumentList .oneDocument .fileContent .filtTitle {
-  font-size: 32rpx;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: #071E5D;
-}
-
-.componentDocumentList .oneDocument .fileContent .send {
-  font-size: 28rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: #6B7790;
-  margin-top: 10rpx;
-}
