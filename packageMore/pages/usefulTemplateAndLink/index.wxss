@@ -76,6 +76,29 @@ page {
   background-image: url(https://wind.cma-cgm.com/images/userful.png);
 }
 
+.titles {
+  display: flex;
+  font-size: 36rpx;
+  font-family: Antonio-Bold;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.userfulContainer .titles .titleLine {
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+  margin-right: 16rpx;
+}
+
+.userfulContainer .van-cell {
+  padding: 20rpx 0 !important;
+}
+
+.userfulContainer .items {
+  padding: 0 !important;
+}
+
 .userfulContainer .usefulListContainer {
   background-color: #ffffff;
   margin: 30rpx 0 0;
@@ -86,7 +109,6 @@ page {
   border: 1rpx solid #CFD2DA;
   padding: 20rpx;
   display: flex;
-  margin-top: 20rpx;
 }
 
 .userfulContainer .usefulListContainer .templateList .oneTemplate .infoIcon {

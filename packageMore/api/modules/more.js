@@ -83,8 +83,13 @@ export const sanctionCommodityDetail = (params) => {
 }
 
 // 获取常用模板与链接列表
-export const templateList = (params) => {
-  return getRequest('/api/miniapp/templateList', params, true)
+export const templateLinkList = (params) => {
+  return getRequest('/api/miniapp/templateLinkList', params, true)
+}
+
+// 获取常用模板与链接列表
+export const templateDocumentList = (params) => {
+  return getRequest('/api/miniapp/templateDocumentList', params, true)
 }
 
 // 常用模板与链接发送邮箱

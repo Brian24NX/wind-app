@@ -4,6 +4,8 @@
   "usingComponents": {
     "loading": "../../../../components/loading/index",
     "email": "../../../../components/email/index",
-    "custom-picker": "../../../components/customPicker/index"
+    "custom-picker": "../../../components/customPicker/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index"
   }
 }

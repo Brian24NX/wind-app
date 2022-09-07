@@ -2,7 +2,8 @@
 const languageUtils = require('../../../utils/languageUtils')
 import {
   categoryList,
-  templateList,
+  templateLinkList,
+  templateDocumentList,
   templateSendEmail
 } from '../../api/modules/more'
 import {
@@ -43,7 +44,8 @@ Page({
       labelEn: 'Link'
     }],
     scrollLeft: 0,
-    scrollViewWidth: 0
+    scrollViewWidth: 0,
+    activeNames: 0
   },
 
   /**
@@ -92,14 +94,15 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
+    if (this.data.current === 'template') return
     if (this.data.loading || this.data.noMore) return
     this.setData({
       pageNum: ++this.data.pageNum
     })
-    this.getTemplateList()
+    this.getTemplateLinkList()
   },
 
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     return {
       path: '/packageMore/pages/usefulTemplateAndLink/index?current=' + this.data.current
     }
@@ -112,6 +115,15 @@ Page({
       showPopup: true
     })
   },
+
+  // 切换展开数据
+  onChange(e) {
+    console.log(e)
+    this.setData({
+      activeNames: e.detail
+    })
+  },
+
   onConfirm(e) {
     console.log(e)
     this.setData({
@@ -138,7 +150,9 @@ Page({
 
   // 分类列表
   getCategoryList() {
-    categoryList({type: this.data.current === 'template' ? 6 : 3}).then(res=>{
+    categoryList({
+      type: this.data.current === 'template' ? 6 : 3
+    }).then(res => {
       const all = [{
         id: 0,
         category: 'All',
@@ -175,7 +189,8 @@ Page({
   changeCategory(e) {
     const categoryId = e.currentTarget.dataset.id
     this.setData({
-      categoryId: categoryId
+      categoryId: categoryId,
+      activeNames: 0
     })
     this.search()
     wx.createSelectorQuery().select('#categoryId-' + categoryId).boundingClientRect((rect) => {
@@ -194,26 +209,42 @@ Page({
       pageNum: 1,
       list: []
     })
-    this.getTemplateList()
+    if (this.data.current === 'template') {
+      this.getTemplateDocumentList()
+    } else {
+      this.getTemplateLinkList()
+    }
   },
 
-  getTemplateList() {
+  getTemplateDocumentList() {
+    templateDocumentList({
+      keyWord: this.data.keyword,
+      categoryId: this.data.categoryId
+    }).then(res => {
+      const list = res.data.filter(i => i.usefulTemplates.length)
+      console.log(list)
+      this.setData({
+        loading: false,
+        noData: list.length ? false : true,
+        list
+      })
+    })
+  },
+
+  getTemplateLinkList() {
     const params = {
       pageNum: this.data.pageNum,
       pageSize: pageSize,
       keyWord: this.data.keyword,
-      categoryId: this.data.categoryId,
-      type: this.data.current === 'template' ? 1 : 2
+      categoryId: this.data.categoryId
     }
     this.setData({
       loading: true
     })
-    templateList(params).then(res => {
-      if (params.type === 2) {
-        res.data.list.forEach(item => {
-          item.document = item.document.split('\n')
-        })
-      }
+    templateLinkList(params).then(res => {
+      res.data.list.forEach(item => {
+        item.document = item.document.split('\n')
+      })
       const list = this.data.list.concat(res.data.list)
       if (list.length >= res.data.total) {
         this.setData({

@@ -23,20 +23,32 @@
         <view class="line"></view>
       </view>
     </scroll-view>
-    <view class="templateList" wx:if="{{current === 'template'}}">
-      <view class="oneTemplate" wx:for="{{list}}" wx:key="index">
-        <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
-        <view class="templateContent">
-          <view class="templateName">{{item.name}}</view>
-          <view catchtap="sendEmail" data-item="{{item}}">{{languageContent.send}}</view>
-        </view>
-        <view class="preview" catchtap="preview" data-item="{{item}}">
-          <image src="/assets/img/more/eye@2x.png"></image>
-        </view>
-      </view>
-      <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+    <block wx:if="{{current === 'template'}}">
+      <van-collapse accordion border="{{false}}" value="{{ activeNames }}" bind:change="onChange">
+        <van-collapse-item border="{{false}}" content-class="items" name="{{index}}" wx:for="{{list}}" wx:key="index">
+          <view slot="title">
+            <view class="titles">
+              <view class="titleLine"></view>
+              <view>{{language === 'zh' ? item.categorySubCnName : item.categorySubEnName}}</view>
+            </view>
+          </view>
+          <view class="templateList">
+            <view class="oneTemplate" wx:for="{{item.usefulTemplates}}" wx:for-item="one" wx:for-index="oneIndex" wx:key="oneIndex">
+              <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
+              <view class="templateContent">
+                <view class="templateName">{{one.name}}</view>
+                <view catchtap="sendEmail" data-item="{{one}}">{{languageContent.send}}</view>
+              </view>
+              <view class="preview" catchtap="preview" data-item="{{one}}">
+                <image src="/assets/img/more/eye@2x.png"></image>
+              </view>
+            </view>
+
+          </view>
+        </van-collapse-item>
+      </van-collapse>
       <view class="emptyContainer" wx:if="{{!loading && noData}}">{{emptyContent.description}}</view>
-    </view>
+    </block>
     <view class="contentList" wx:else>
       <view class="oneContent" wx:for="{{list}}" wx:key="index">
         <image src="/assets/img/home/templatelinks@2x.png" class="linkIcon"></image>
