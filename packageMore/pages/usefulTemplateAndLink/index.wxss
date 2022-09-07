@@ -7,6 +7,23 @@ page {
   padding: 30rpx;
 }
 
+.userfulContainer .topTitles {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx 30rpx 0;
+  background-color: #F0F1F5;
+}
+
+.userfulContainer .topTitles .categoryLists2 {
+  padding: 40rpx 30rpx 0;
+  background-color: #ffffff;
+  margin-top: 30rpx;
+  height: 96rpx;
+}
+
 .userfulContainer .inputContainer {
   padding-left: 0;
 }
@@ -99,10 +116,18 @@ page {
   padding: 0 !important;
 }
 
+.userfulContainer .templateList .oneTemplate {
+  margin-top: 20rpx;
+}
+
+.userfulContainer .templateList .oneTemplate:nth-of-type(1) {
+  margin-top: 0;
+}
+
 .userfulContainer .usefulListContainer {
   background-color: #ffffff;
-  margin: 30rpx 0 0;
-  padding: 40rpx 46rpx 30rpx;
+  margin: 438rpx 0 0;
+  padding: 0 46rpx 30rpx;
 }
 
 .userfulContainer .usefulListContainer .contentList .oneContent {

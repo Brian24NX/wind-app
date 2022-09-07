@@ -1,11 +1,13 @@
 <!--packagePrice/pages/guizufeilv/index.wxml-->
 <view class="guizuContainer">
-  <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</text>
-  <view class="selectContainer">
-    <view class="selectTitle">{{languageContent.selectTitle}}</view>
-    <view class="selects" catchtap="openPopup">
-      <view style="{{area ? 'color: #071E5D;' : 'font-style: italic;'}}">{{area || verifyInfo.select}}</view>
-      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+  <view class="topTitles">
+    <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</text>
+    <view class="selectContainer">
+      <view class="selectTitle">{{languageContent.selectTitle}}</view>
+      <view class="selects" catchtap="openPopup">
+        <view style="{{area ? 'color: #071E5D;' : 'font-style: italic;'}}">{{area || verifyInfo.select}}</view>
+        <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+      </view>
     </view>
   </view>
   <view class="guizuList" wx:if="{{lists.length}}">

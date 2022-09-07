@@ -8,7 +8,13 @@ page {
 }
 
 .newsContainer .topTitles {
-  padding: 30rpx;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx 30rpx 0;
+  background-color: #F0F1F5;
 }
 
 .newsContainer .topTitles .topBg {
@@ -40,19 +46,24 @@ page {
 
 .newsContainer .newsLists {
   width: 690rpx;
-  margin: 0 auto 40rpx;
+  margin: 430rpx auto 40rpx;
   background-color: #ffffff;
   padding: 40rpx 40rpx 1rpx;
 }
 
-.newsContainer .newsLists .categoryList {
+.newsContainer .categoryLists {
+  padding: 40rpx 40rpx 0;
+  background-color: #ffffff;
+  margin-top: 30rpx;
+}
+
+.newsContainer .categoryList {
   white-space: nowrap;
   border-bottom: 1rpx solid #04246A;
   box-shadow: 2rpx 0 2rpx -2rpx rgba(0, 0, 0, 0.22);
-  padding: 0 4rpx;
 }
 
-.newsContainer .newsLists .categoryList .oneCategory {
+.newsContainer .categoryList .oneCategory {
   display: inline-block;
   padding-bottom: 10rpx;
   margin-right: 40rpx;
@@ -64,17 +75,17 @@ page {
   text-align: center;
 }
 
-.newsContainer .newsLists .categoryList .oneCategory:nth-last-of-type(1) {
+.newsContainer .categoryList .oneCategory:nth-last-of-type(1) {
   margin-right: 0;
 }
 
-.newsContainer .newsLists .categoryList .categoryActived {
+.newsContainer .categoryList .categoryActived {
   position: relative;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
 }
 
-.newsContainer .newsLists .categoryList .categoryActived .line {
+.newsContainer .categoryList .categoryActived .line {
   width: 80rpx;
   height: 8rpx;
   background-color: #E20202;

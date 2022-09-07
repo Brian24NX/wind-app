@@ -21,8 +21,8 @@
   font-size: 48rpx;
   color: #04246A;
   width: 466rpx;
-  /* font-family: Antonio-Bold;
-  font-weight: bold; */
+  font-family: Antonio-Bold;
+  font-weight: bold;
 }
 
 .searchResultTopContainer .searchTop .serchLeft .qiyunStr {

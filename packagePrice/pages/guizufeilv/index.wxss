@@ -7,6 +7,16 @@ page {
   padding: 30rpx;
 }
 
+.guizuContainer .topTitles {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx 30rpx 0;
+  background-color: #F0F1F5;
+}
+
 .guizuContainer .topContainer {
   background-image: url(https://wind.cma-cgm.com/images/guizefeilv.png);
 }
@@ -52,7 +62,7 @@ page {
 
 .guizuContainer .guizuList {
   background-color: #ffffff;
-  margin-top: 30rpx;
+  margin-top: 490rpx;
   padding: 20rpx 48rpx;
 }
 

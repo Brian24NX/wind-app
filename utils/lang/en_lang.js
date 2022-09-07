@@ -267,6 +267,8 @@ var Languague = {
       title1: 'Sanction',
       title2: ' Check',
       placeholder: 'Name or Ref. No.',
+      commodity: 'Commodity',
+      country: 'Country/Region',
       type: 'Type',
       code: 'Reference number',
       remind1: 'Enquiries of specific hazardous commodity UN#, ',

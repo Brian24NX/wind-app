@@ -22,7 +22,9 @@ Page({
     noMore: false,
     noData: false,
     list: [],
-    email: 'SHG.SpecialCargoTEAM@cma-cgm.com'
+    email: 'SHG.SpecialCargoTEAM@cma-cgm.com',
+    categoryList: ['commodity', 'country'],
+    category: 'commodity'
   },
 
   /**
@@ -81,6 +83,14 @@ Page({
     this.search()
   },
 
+  changeCategory(e) {
+    console.log(e)
+    this.setData({
+      category: e.currentTarget.dataset.item
+    })
+    this.search()
+  },
+
   // 搜索
   search() {
     this.setData({
@@ -98,7 +108,8 @@ Page({
       pageNum: this.data.pageNum,
       pageSize: pageSize,
       keyword: this.data.keyword,
-      languageType: this.data.language
+      languageType: this.data.language,
+      category: this.data.category === 'commodity' ? 1 : 2
     }
     this.setData({
       loading: true

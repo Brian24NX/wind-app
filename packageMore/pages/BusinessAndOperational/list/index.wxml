@@ -1,23 +1,27 @@
 <!--packageMore/pages/BusinessAndOperational/index.wxml-->
 <wxs module="format" src="../../../../utils/format.wxs"></wxs>
 <view class="businessContainer">
-  <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</text>
-  <view class="inputContainer" style="margin-top: 30rpx;">
-    <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.keyword}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="resetList" />
-    <view class="delete" catchtap="deleteValue">
-      <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+  <view class="topTitles">
+    <text class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">{{languageContent.topTitle}}</text>
+    <view class="inputContainer" style="margin-top: 30rpx;">
+      <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.keyword}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="resetList" />
+      <view class="delete" catchtap="deleteValue">
+        <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+      </view>
+      <view class="search" catchtap="resetList">
+        <image src="/assets/img/search/search@2x.png"></image>
+      </view>
     </view>
-    <view class="search" catchtap="resetList">
-      <image src="/assets/img/search/search@2x.png"></image>
+    <view class="categoryLists">
+      <scroll-view class="categoryList" scroll-x scroll-with-animation scroll-left="{{scrollLeft}}">
+        <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" id="categoryId-{{item.id}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
+          <text>{{language === 'zh' ? item.categoryCn : item.category}}</text>
+          <view class="line"></view>
+        </view>
+      </scroll-view>
     </view>
   </view>
   <view class="businessLists">
-    <scroll-view class="categoryList" scroll-x scroll-with-animation scroll-left="{{scrollLeft}}">
-      <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" id="categoryId-{{item.id}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
-        <text>{{language === 'zh' ? item.categoryCn : item.category}}</text>
-        <view class="line"></view>
-      </view>
-    </scroll-view>
     <view class="businessList">
       <view class="oneBusiness" wx:for="{{list}}" wx:key="index" catchtap="toDetail" data-id="{{item.id}}">
         <view class="businessTitle">{{item.title}}</view>

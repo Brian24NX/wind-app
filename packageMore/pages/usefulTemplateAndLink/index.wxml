@@ -15,14 +15,16 @@
         <image src="/assets/img/search/search@2x.png"></image>
       </view>
     </view>
-  </view>
-  <view class="usefulListContainer">
-    <scroll-view class="categoryList" scroll-x scroll-with-animation scroll-left="{{scrollLeft}}">
+    <view class="categoryLists2">
+      <scroll-view class="categoryList" scroll-x scroll-with-animation scroll-left="{{scrollLeft}}">
       <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" id="categoryId-{{item.id}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
         <text>{{language === 'zh' ? item.categoryCn : item.category}}</text>
         <view class="line"></view>
       </view>
     </scroll-view>
+    </view>
+  </view>
+  <view class="usefulListContainer">
     <block wx:if="{{current === 'template'}}">
       <van-collapse accordion border="{{false}}" value="{{ activeNames }}" bind:change="onChange">
         <van-collapse-item border="{{false}}" content-class="items" name="{{index}}" wx:for="{{list}}" wx:key="index">

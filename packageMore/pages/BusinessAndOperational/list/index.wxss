@@ -7,12 +7,25 @@ page {
   padding: 30rpx;
 }
 
+.topTitles .categoryLists {
+  padding: 40rpx 30rpx 0;
+  background-color: #ffffff;
+  margin-top: 30rpx;
+  height: 96rpx;
+}
+
 .businessContainer .topContainer {
   background-image: url(https://wind.cma-cgm.com/images/yewu.png);
 }
 
 .businessContainer .topTitles {
-  padding: 30rpx;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx 30rpx 0;
+  background-color: #F0F1F5;
 }
 
 .businessContainer .topTitles .topBg {
@@ -20,20 +33,21 @@ page {
   height: 210rpx;
 }
 
+
 .businessContainer .businessLists {
   background-color: #ffffff;
-  padding: 40rpx 40rpx 1rpx;
-  margin-top: 30rpx;
+  padding: 0 40rpx 1rpx;
+  margin-top: 438rpx;
 }
 
-.businessContainer .businessLists .categoryList {
+.businessContainer .categoryList {
   white-space: nowrap;
   border-bottom: 1rpx solid #04246A;
   box-shadow: 2rpx 0 2rpx -2rpx rgba(0, 0, 0, 0.22);
   padding: 0 4rpx;
 }
 
-.businessContainer .businessLists .categoryList .oneCategory {
+.businessContainer .categoryList .oneCategory {
   display: inline-block;
   padding-bottom: 10rpx;
   margin-right: 40rpx;
@@ -45,17 +59,17 @@ page {
   text-align: center;
 }
 
-.businessContainer .businessLists .categoryList .oneCategory:nth-last-of-type(1) {
+.businessContainer .categoryList .oneCategory:nth-last-of-type(1) {
   margin-right: 0;
 }
 
-.businessContainer .businessLists .categoryList .categoryActived {
+.businessContainer .categoryList .categoryActived {
   position: relative;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
 }
 
-.businessContainer .businessLists .categoryList .categoryActived .line {
+.businessContainer .categoryList .categoryActived .line {
   width: 80rpx;
   height: 8rpx;
   background-color: #E20202;

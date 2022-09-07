@@ -269,6 +269,8 @@ var Languague = {
       title1: '管制品',
       title2: '查询',
       placeholder: '名称/编码',
+      commodity: '管制品',
+      country: '国家/地区',
       type: '种类',
       code: '编码',
       remind1: '如需查询CMA CGM是否承运特定危险品UN#, ',
