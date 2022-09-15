@@ -279,7 +279,7 @@ Page({
       mask: true
     })
     templateSendEmail({
-      fileName: this.data.emailPath.split('wind/')[1],
+      fileName: this.data.emailPath,
       receiveMailAccount: e.detail
     }).then(() => {
       wx.showToast({
@@ -339,7 +339,7 @@ Page({
       })
     } else {
       wx.showToast({
-        title: '暂不支持此种类型文件的预览',
+        title: languageUtils.languageVersion().lang.page.preview.disPreview,
         icon: 'none'
       })
     }

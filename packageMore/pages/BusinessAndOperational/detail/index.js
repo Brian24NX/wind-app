@@ -101,7 +101,7 @@ Page({
       })
     } else {
       wx.showToast({
-        title: '暂不支持此种类型文件的预览',
+        title: languageUtil.languageVersion().lang.page.preview.disPreview,
         icon: 'none'
       })
     }

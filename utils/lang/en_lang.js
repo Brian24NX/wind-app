@@ -530,6 +530,9 @@ var Languague = {
       exprise: 'Please enter the correct email address',
       send: 'Send'
     },
+    preview: {
+      disPreview: 'Preview not available, please send template to email'
+    },
     legalTermsRemind: {
       title: 'Privacy Policy',
       desc1: 'Dear customer, before you continue to experience CMA CGM Mini-Program, please read ',

@@ -533,6 +533,9 @@ var Languague = {
       exprise: '请输入正确的邮箱地址',
       send: '发送'
     },
+    preview: {
+      disPreview: '暂不支持此类型文件预览，请发送至邮箱后查看'
+    },
     legalTermsRemind: {
       title: '隐私政策',
       desc1: '尊敬的客户，在您继续使用达飞轮船小程序之前，请您认真阅读',
