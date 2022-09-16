@@ -109,7 +109,7 @@ Page({
       pageSize: pageSize,
       keyword: this.data.keyword,
       languageType: this.data.language,
-      category: this.data.category === 'commodity' ? 1 : 2
+      category: this.data.category === 'commodity' ? "Commodity" : "Country/Region"
     }
     this.setData({
       loading: true
