@@ -21,13 +21,12 @@ Page({
     polcode: "",
     typeList: [{
       label: 'Refrigerated',
-      id: 'Refrigerated'
+      id: 'refrigerated',
+      disabled: true
     }, {
       label: 'Hazardous',
-      id: 'Hazardous'
-    }, {
-      label: 'Oversized',
-      id: 'Oversized'
+      id: 'hazardous',
+      disabled: true
     }],
     pollist: [],
     podlist: [],
@@ -58,7 +57,7 @@ Page({
     this.initLanguage()
     this.getEquitmentSizeList()
   },
-  
+
   //初始化语言
   initLanguage() {
     this.setData({
@@ -72,8 +71,7 @@ Page({
   },
 
   getEquitmentSizeList() {
-    equitmentSizeList().then(res=>{
-      console.log(res)
+    equitmentSizeList().then(res => {
       this.setData({
         columns: res.data
       })
@@ -184,9 +182,9 @@ Page({
   },
 
   changeType(e) {
-    console.log(e)
+    if (e.currentTarget.dataset.item.disabled) return
     this.setData({
-      specialCargo: e.currentTarget.dataset.type === this.data.specialCargo ? '' : e.currentTarget.dataset.type
+      specialCargo: e.currentTarget.dataset.item.id === this.data.specialCargo ? '' : e.currentTarget.dataset.item.id
     })
   },
 
@@ -207,10 +205,15 @@ Page({
   },
 
   onConfirm(e) {
+    let typeList = this.data.typeList
+    typeList[0].disabled = e.detail.specialCargo.indexOf(typeList[0].id) === -1
+    typeList[1].disabled = e.detail.specialCargo.indexOf(typeList[1].id) === -1
     this.setData({
       equipmentSize: e.detail.code,
       equipmentSizeName: this.data.language === 'zh' ? e.detail.nameCn : e.detail.nameEn,
-      showPopup: false
+      showPopup: false,
+      typeList: typeList,
+      specialCargo: e.detail.specialCargoDefault || ''
     })
   },
 
