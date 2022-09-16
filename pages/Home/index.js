@@ -270,7 +270,7 @@ Page({
   setQiYun: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete1: data ? true : false,
+      showDelete1: !!data,
       showRemind2: false,
       showRemind5: false,
       showPol: false,
@@ -300,7 +300,7 @@ Page({
   setXieHuo: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete2: data ? true : false,
+      showDelete2: !!data,
       showRemind3: false,
       showRemind4: false,
       showPod: false,

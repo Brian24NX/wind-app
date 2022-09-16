@@ -72,7 +72,7 @@ Page({
   changepod: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete2: data ? true : false,
+      showDelete2: !!data,
       showRemind3: false,
       showRemind4: false
     })
@@ -97,7 +97,7 @@ Page({
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete1: data ? true : false,
+      showDelete1: !!data,
       showRemind1: false,
       showRemind2: false
     })

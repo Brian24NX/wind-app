@@ -117,7 +117,7 @@ Page({
   changeProvide(e) {
     const type = e.currentTarget.dataset.type
     this.setData({
-      canProvide: type === '1' ? true : false,
+      canProvide: type === '1',
       bookingReference: '',
       trade: '',
       tradeName: '',

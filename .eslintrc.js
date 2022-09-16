@@ -36,8 +36,8 @@ module.exports = {
      * "warn"或者1    //在打开的规则作为警告（不影响退出代码）
      * "error"或者2    //把规则作为一个错误（退出代码触发时为1）
      **/
-    'no-console': config.dev_env === 'pro' ? true : false,
-    'no-debugger': config.dev_env === 'pro' ? true : false,
+    'no-console': config.dev_env === 'pro',
+    'no-debugger': config.dev_env === 'pro',
     // 关闭语句强制分号结尾
     "semi": false,
     // 关闭分号前后空格

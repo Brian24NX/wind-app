@@ -89,7 +89,7 @@ Page({
       }
       this.setData({
         loading: false,
-        noData: list.length ? false : true,
+        noData: !list.length,
         list
       })
     })

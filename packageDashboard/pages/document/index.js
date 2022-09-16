@@ -106,12 +106,12 @@ Page({
         item.statusLabel = utils.formatDocumentStatus(item.blStatus, this.data.language)
       })
       this.setData({
-        noData: !allList.length ? true : false,
+        noData: !allList.length,
         list: this.data.list.concat(allList.slice((this.data.page - 1) * pageSize, pageSize)),
         loading: false,
       })
       this.setData({
-        noMore: this.data.list.length >= allList.length ? true : false
+        noMore: this.data.list.length >= allList.length
       })
     }, 600);
   }

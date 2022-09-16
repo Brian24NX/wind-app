@@ -225,7 +225,7 @@ Page({
       console.log(list)
       this.setData({
         loading: false,
-        noData: list.length ? false : true,
+        noData: !list.length,
         list
       })
     })
@@ -253,7 +253,7 @@ Page({
       }
       this.setData({
         loading: false,
-        noData: list.length ? false : true,
+        noData: !list.length,
         list
       })
     })

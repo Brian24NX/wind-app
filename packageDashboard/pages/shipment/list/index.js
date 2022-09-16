@@ -188,12 +188,12 @@ Page({
         item.statusLabel = utils.formatHuoYunStatus(item.statusCode, this.data.language)
       })
       this.setData({
-        noData: allList.length ? false : true,
+        noData: !allList.length,
         list: this.data.list.concat(list),
         loading: false
       })
       this.setData({
-        noMore: this.data.list.length >= allList.length ? true : false
+        noMore: this.data.list.length >= allList.length
       })
     }, 200);
   }
