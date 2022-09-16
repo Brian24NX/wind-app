@@ -20,11 +20,11 @@ Page({
     polvalue: "",
     polcode: "",
     typeList: [{
-      label: 'Refrigerated',
+      label: 'refrigerated',
       id: 'refrigerated',
       disabled: true
     }, {
-      label: 'Hazardous',
+      label: 'hazardous',
       id: 'hazardous',
       disabled: true
     }],
