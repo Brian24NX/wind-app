@@ -106,7 +106,7 @@ page{
   color: #E2014B;
   position: absolute;
   left: 0;
-  top: 90rpx;
+  top: 86rpx;
   display: flex;
   align-items: center;
 }
@@ -234,9 +234,9 @@ page{
 
 .queryContainer .containers .number {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   width: 155rpx;
+  height: 100%;
   border-left: 2rpx solid #DCDFE6;
   border-right: 2rpx solid #DCDFE6;
 }

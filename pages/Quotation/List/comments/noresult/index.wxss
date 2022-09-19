@@ -18,6 +18,7 @@
   margin-bottom: 30rpx;
   display: block;
 }
+
 .nosolutions{
   font-size: 36rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
@@ -33,4 +34,22 @@
   color: #04246A;
   line-height: 40rpx;
   text-align: center;
+}
+
+.modifySearch {
+  width: 594rpx;
+  height: 88rpx;
+  background-color: #2D75FF;
+  font-weight: 500;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  margin-top: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+}
+
+.hoverClass {
+  opacity: 0.9;
 }

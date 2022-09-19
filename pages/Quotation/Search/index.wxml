@@ -154,8 +154,9 @@
         <view class="searchTitle">{{languageContent.container}}</view>
         <view class="containers">
           <view class="actionBtn {{containers < 2 ? 'disabled' : ''}}" catchtap="reduce">-</view>
-          <view class="number">{{containers}}</view>
-          <view class="actionBtn {{containers > 49 ? 'disabled' : ''}}" catchtap="add">+</view>
+          <!-- <view class="number">{{containers}}</view> -->
+          <input type="number" class="number" value="{{containers}}" maxlength="2" bindblur="setInputValue"/>
+          <view class="actionBtn {{containers > 98 ? 'disabled' : ''}}" catchtap="add">+</view>
         </view>
       </view>
       <view class="searchList">

@@ -14,13 +14,13 @@ export const quotationSort = (params) => {
 }
 
 // 获取报价单详情
-export const getQuotationSurchargeDetails = (params) => {
-  return postRequest('/api/miniapp/quotationSurchargeDetailsSearch', params, true, false, true)
+export const getQuotationSurchargeDetail = (params) => {
+  return postRequest('/api/miniapp/quotationSurchargeDetailsSearch', params, true, true, true)
 }
 
 // 获取附近港口列表
 export const nearByPortNextDeparture = (params) => {
-  return postRequest('/api/miniapp/nearByPortNextDeparture', params, true, false, true)
+  return postRequest('/api/miniapp/quotationNearByPortNextDeparture', params, true, false, true)
 }
 
 // 获取我的报价单列表

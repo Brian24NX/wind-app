@@ -465,8 +465,8 @@ var Languague = {
       //仅看直达
       directOnly: "仅看直达",
       //抱歉，我们暂未查询到匹配的航线方案.
-      noFindTips1: "抱歉！未找到此问题的解决方案",
-      noFindTips2: "在CMA CGM集团内目前暂未能提供处理方案",
+      noFindTips1: "抱歉！未找到相匹配的记录",
+      modifySearch: '修改搜索',
       equipmentType: '箱型',
       weight: '净重（KGM）',
       containers: '货柜数量',

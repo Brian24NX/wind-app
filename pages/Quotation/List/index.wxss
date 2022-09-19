@@ -227,6 +227,12 @@
   margin-top: 28rpx;
 }
 
+.resultContainers .oneResult .right {
+  justify-content: flex-end;
+  color: #6B7790;
+  font-size: 24rpx;
+}
+
 .resultContainers .oneResult .oneBottom .bottomLeft {
   display: flex;
   align-items: center;

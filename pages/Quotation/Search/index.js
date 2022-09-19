@@ -49,7 +49,7 @@ Page({
     equipmentTypeName: '',
     equipmentTypeList: [],
     weight: null,
-    containers: 1,
+    containers: 99,
     commodityCode: '',
     commodityName: '',
     shippingCompany: '',
@@ -87,7 +87,7 @@ Page({
   onLoad: function () {
     this.initLanguage();
     this.getEquitmentSizeList()
-    this.initData()
+    // this.initData()
     this.setData({
       simulationDate: this.getDate()
     })
@@ -109,51 +109,39 @@ Page({
   initData() {
     this.setData({
       // 收货地
-      placeOfOrigin: '',
-      placeOfOriginLabel: '',
-      receiptHaulage: '',
+      placeOfOrigin: null,
+      placeOfOriginLabel: null,
+      receiptHaulage: null,
       // 起运港
       portOfLoadingLabel: "MELBOURNE;AU;AUMEL",
       portOfLoading: "AUMEL",
+      // portOfLoading: "FRFOS",
       showDelete1: true,
       // 卸货港
       portOfDischargeLabel: "SHANGHAI;CN;CNSHA",
       portOfDischarge: "CNSHA",
+      // portOfDischarge: "USLAX",
       showDelete2: true,
       // 目的地
-      finalPlaceOfDelivery: '',
-      finalPlaceOfDeliveryLabel: '',
-      deliveryHaulage: '',
+      finalPlaceOfDelivery: null,
+      finalPlaceOfDeliveryLabel: null,
+      deliveryHaulage: null,
       weight: 1000,
-      commodityCode: '220410',
+      commodityCode: 'FAK',
       commodityName: '葡萄酒',
-      shippingCompany: '0002',
+      shippingCompany: '0001',
       pricingGroupSetups: [{
-          "pricingGroupId": 12366,
-          "shippingCompany": "0002",
-          "spotAccess": "spotContract",
-          "withoutOfferDisplay": "infoOnly",
-          "nextDepartureScheduleLimit": 35,
-          "digitalAllocationsCheck": true,
-          "digitalAllocationsDisplay": "infoOnly",
-          "inlandPolicy": "throughRate"
-        },
-        {
-          "pricingGroupId": 12411,
-          "shippingCompany": "0001",
-          "spotAccess": "contract",
-          "withoutOfferDisplay": "infoOnly",
-          "nextDepartureScheduleLimit": 35,
-          "digitalAllocationsCheck": true,
-          "digitalAllocationsDisplay": "infoOnly",
-          "inlandPolicy": "throughRate"
-        }
-      ],
+        "pricingGroupId": 11972,
+        "shippingCompany": "0001",
+        "spotAccess": "contract",
+        "withoutOfferDisplay": "infoOnly",
+        "nextDepartureScheduleLimit": 35,
+        "digitalAllocationsCheck": true,
+        "digitalAllocationsDisplay": "infoOnly",
+        "inlandPolicy": "throughRate"
+      }],
       pricingGroups: [{
-        "pricingGroupId": "12366",
-        "shippingCompany": "0002"
-      }, {
-        "pricingGroupId": "12411",
+        "pricingGroupId": "11972",
         "shippingCompany": "0001"
       }]
     })
@@ -373,16 +361,16 @@ Page({
       })
     } else if (type === '4') {
       this.setData({
-        placeOfOrigin: '',
+        placeOfOrigin: null,
         placeOfOriginLabel: '',
-        receiptHaulage: '',
+        receiptHaulage: null,
         showDelete4: false
       })
     } else if (type === '5') {
       this.setData({
-        finalPlaceOfDelivery: '',
+        finalPlaceOfDelivery: null,
         finalPlaceOfDeliveryLabel: '',
-        deliveryHaulage: '',
+        deliveryHaulage: null,
         showDelete5: false
       })
     }
@@ -434,7 +422,7 @@ Page({
 
   setWeight(e) {
     this.setData({
-      weight: e.detail.value
+      weight: Number(e.detail.value)
     })
   },
 
@@ -446,9 +434,31 @@ Page({
       portOfLoading: this.data.portOfLoading,
       portOfDischarge: this.data.portOfDischarge
     }).then(res => {
-      this.setData({
-        commodityList: res.data
+      let commodityList = []
+      res.data.forEach(i => {
+        console.log(i)
+        commodityList = commodityList.concat(i.commodityDetails)
       })
+      commodityList = commodityList.filter(i => i.code)
+      commodityList.unshift({
+        code: 'FAK',
+        en: "Freight All Kinds",
+        zh: '所有类型的费用'
+      })
+      this.setData({
+        commodityList: commodityList,
+        pricingGroupSetups: res.data,
+        pricingGroups: res.data.map(i => {
+          return {
+            pricingGroupId: i.pricingGroupId,
+            shippingCompany: i.shippingCompany
+          }
+        })
+      })
+    }, () => {
+      setTimeout(() => {
+        this.getCommodityList()
+      }, 500);
     })
   },
 
@@ -461,9 +471,15 @@ Page({
   },
 
   add() {
-    if (this.data.containers > 49) return
+    if (this.data.containers > 98) return
     this.setData({
       containers: ++this.data.containers
+    })
+  },
+
+  setInputValue(e) {
+    this.setData({
+      containers: !e.detail.value ? 1 : Number(e.detail.value)
     })
   },
 
@@ -516,7 +532,8 @@ Page({
     } else {
       this.setData({
         commodityCode: e.detail.code,
-        commodityName: this.data.language === 'en' ? (e.detail.en || e.detail.zh) : e.detail.zh
+        commodityName: this.data.language === 'en' ? (e.detail.en || e.detail.zh) : e.detail.zh,
+        shippingCompany: e.detail.shipComp ? e.detail.shipComp : '0001'
       })
     }
     this.onClose()
@@ -617,7 +634,16 @@ Page({
         showRemind4: false
       })
     }
-    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
+    if (!this.data.weight) {
+      this.setData({
+        showRemind5: true
+      })
+    } else {
+      this.setData({
+        showRemind5: false
+      })
+    }
+    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     this.checkAccessToken(() => {
       this.getQuotationNextDepartures()
     })
@@ -627,17 +653,17 @@ Page({
     quotationNextDepartures({
       "affiliates": [wx.getStorageSync('partnerCode')],
       "commodityCode": this.data.commodityCode,
-      "deliveryHaulage": this.data.deliveryHaulage,
+      "deliveryHaulage": this.data.deliveryHaulage || null,
       "equipmentSizeType": this.data.equipmentType,
       "equipmentType": this.data.equipmentType.substr(2),
-      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery,
+      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
       "numberOfContainers": this.data.containers,
-      "placeOfOrigin": this.data.placeOfOrigin,
+      "placeOfOrigin": this.data.placeOfOrigin || null,
       "portOfDischarge": this.data.portOfDischarge,
       "portOfLoading": this.data.portOfLoading,
-      "pricingGroupSetups": this.data.pricingGroupSetups,
-      "pricingGroups": this.data.pricingGroups,
-      "receiptHaulage": this.data.receiptHaulage,
+      "pricingGroupSetups": this.data.pricingGroupSetups.filter(i => i.shippingCompany === this.data.shippingCompany),
+      "pricingGroups": this.data.pricingGroups.filter(i => i.shippingCompany === this.data.shippingCompany),
+      "receiptHaulage": this.data.receiptHaulage || null,
       "shippingCompany": this.data.shippingCompany,
       "simulationDate": this.data.simulationDate,
       "weightPerContainer": this.data.weight
@@ -657,8 +683,27 @@ Page({
   },
 
   getNearByPortNextDeparture() {
-    nearByPortNextDeparture().then(res=>{
+    nearByPortNextDeparture({
+      "affiliates": [wx.getStorageSync('partnerCode')],
+      "commodityCode": this.data.commodityCode,
+      "deliveryHaulage": this.data.deliveryHaulage || null,
+      "equipmentSizeType": this.data.equipmentType,
+      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
+      "hasIQExcluded": false,
+      "myPricesContractsExist": false,
+      "numberOfContainers": this.data.containers,
+      "placeOfOrigin": this.data.placeOfOrigin || null,
+      "portOfDischarge": this.data.portOfDischarge,
+      "portOfLoading": this.data.portOfLoading,
+      "receiptHaulage": this.data.receiptHaulage || null,
+      "shippingCompany": this.data.shippingCompany,
+      "simulationDate": this.data.simulationDate,
+      "weightPerContainer": this.data.weight
+    }).then(res => {
       console.log(res)
+      wx.navigateTo({
+        url: '/pages/Quotation/List/index',
+      })
     })
   },
 

@@ -462,8 +462,8 @@ var Languague = {
       //仅看直达
       directOnly: "Direct\nonly",
       //抱歉！未找到此问题的解决方案,在CMA CGM集团内目前暂未能提供处理方案.
-      noFindTips1: "Sorry! No solution has been found for this query.",
-      noFindTips2: "We are currently not able to propose solutions within CMA CGM Group.",
+      noFindTips1: "Sorry! No matching records found.",
+      modifySearch: 'Modify Search',
       equipmentType: 'Equipment Type',
       weight: 'Net Weight（KGM）',
       containers: 'Number of container(s)',

@@ -1,6 +1,7 @@
 // pages/Quotation/List/index.js
 import {
-  quotationSort
+  quotationSort,
+  getQuotationSurchargeDetail
 } from '../../../api/modules/quotation';
 const languageUtil = require('../../../utils/languageUtils')
 Page({
@@ -13,6 +14,9 @@ Page({
     language: 'zh',
     isPhoneX: getApp().globalData.isPhoneX,
     oldQuoteLineList: [],
+    traceId: '',
+    loggedId: '',
+    simulationDate: '',
     quoteLineList: [],
     planList: [],
     fromLabel: '',
@@ -27,7 +31,8 @@ Page({
     sortSolutionServices: [],
     isLoading: true,
     showRemind: false,
-    currentIndex: null
+    currentIndex: null,
+    equipmentSize: ''
   },
 
   /**
@@ -45,34 +50,31 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({
+      equipmentSize: data.equipmentType,
+      simulationDate: data.simulationDate,
       fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
       toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
       fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
-      toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
-      oldQuoteLineList: data.resultResq.nextDepartureQuoteLineAndRoute,
-      sortSolutionServices: [...new Set(data.resultResq.nextDepartureQuoteLineAndRoute.map(obj => {
-        return obj.scheduleDescription
-      }))],
-      plans: [...new Set(data.resultResq.nextDepartureQuoteLineAndRoute.map(obj => {
-        return obj.scheduleDescription
-      }))]
+      toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1]
     })
-    this.sortData()
-  },
-
-  dealData() {
-    quotationSort({
-      routings: this.data.oldQuoteLineList,
-      needDirectFlag: false,
-      needEarlyFlag: false,
-      sortDateType: 1,
-      sortSolutionServices: this.data.plans
-    }).then(res => {
-      console.log(res)
+    if (data.resultResq.traceId) {
       this.setData({
-        quoteLineList: res.data
+        oldQuoteLineList: data.resultResq.nextDepartureQuoteLineAndRoute,
+        traceId: data.resultResq.traceId,
+        loggedId: data.resultResq.loggedId,
+        sortSolutionServices: [...new Set(data.resultResq.nextDepartureQuoteLineAndRoute.map(obj => {
+          return obj.scheduleDescription
+        }))],
+        plans: [...new Set(data.resultResq.nextDepartureQuoteLineAndRoute.map(obj => {
+          return obj.scheduleDescription
+        }))]
       })
-    })
+      this.sortData()
+    } else {
+      this.setData({
+        isLoading: false
+      })
+    }
   },
 
   // 筛选
@@ -114,8 +116,69 @@ Page({
     }
     quotationSort(params).then(res => {
       this.setData({
-        quoteLineList: res.data,
+        quoteLineList: res.data.map((item) => {
+          return {
+            ...item,
+            isLoading: true,
+            canSelect: false
+          }
+        }),
         isLoading: false
+      })
+      this.data.quoteLineList.forEach((item, index) => {
+        if (item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length) {
+          let params = {}
+          if (!item.quoteLines[0].quoteLineId) {
+            params = {
+              "surchargeFromAqua": {
+                "offerId": item.offerId,
+                "traceId": this.data.traceId,
+                "equipmentSizeType": this.data.equipmentType,
+                "currencyCode": item.quoteLines[0].equipments[0].currencyCode,
+                "oceanFreightRate": item.quoteLines[0].equipments[0].oceanFreightRate
+              }
+            }
+          } else {
+            params = {
+              "surchargeFromLara": {
+                "quoteLineId": item.quoteLines[0].quoteLineId,
+                "shippingCompany": item.quoteLines[0].shippingCompany,
+                "equipments": item.quoteLines[0].equipments.filter(i => i.code === this.data.equipmentSize),
+                "simulationDate": this.data.simulationDate,
+                "paymentMethod": null,
+                "usContract": false,
+                "portOfLoading": item.quoteLines[0].portOfLoading,
+                "portOfDischarge": item.quoteLines[0].portOfDischarge,
+                "loggedId": this.data.loggedId,
+                "nextDepartureSolutionNumber": item.solutionNumber,
+                "nextDepartureScheduleNumber": item.scheduleNumber,
+                "quoteLineKey": item.quoteLines[0].qlKey
+              }
+            }
+          }
+          setTimeout(() => {
+            getQuotationSurchargeDetail(params).then(res => {
+              item.isLoading = false
+              item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : {}
+              this.setData({
+                quoteLineList: this.data.quoteLineList
+              })
+            }, () => {
+              item.isLoading = false
+              item.surchargeDetails = {}
+              this.setData({
+                quoteLineList: this.data.quoteLineList
+              })
+            })
+          }, 300 * index);
+        } else {
+          item.isLoading = false
+          item.canSelect = false
+          item.surchargeDetails = {}
+          this.setData({
+            quoteLineList: this.data.quoteLineList
+          })
+        }
       })
     }, () => {
       this.setData({
