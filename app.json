@@ -21,7 +21,8 @@
     "pages/Quotation/Others/LocalCharges/index",
     "pages/Quotation/Others/DDCharges/index",
     "pages/Quotation/Others/SpotOn/index",
-    "pages/Quotation/Others/AdditionalInformation/index"
+    "pages/Quotation/Others/AdditionalInformation/index",
+    "pages/Quotation/NearPort/index"
   ],
   "subPackages": [
     {

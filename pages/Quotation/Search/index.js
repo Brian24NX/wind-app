@@ -49,7 +49,7 @@ Page({
     equipmentTypeName: '',
     equipmentTypeList: [],
     weight: null,
-    containers: 99,
+    containers: 1,
     commodityCode: '',
     commodityName: '',
     shippingCompany: '',
@@ -78,7 +78,8 @@ Page({
     showPoDe: false,
     pricingGroupSetups: [],
     pricingGroups: [],
-    resultResq: {}
+    resultResq: {},
+    nearPort: []
   },
 
   /**
@@ -87,7 +88,6 @@ Page({
   onLoad: function () {
     this.initLanguage();
     this.getEquitmentSizeList()
-    // this.initData()
     this.setData({
       simulationDate: this.getDate()
     })
@@ -105,47 +105,6 @@ Page({
   },
 
   onShareAppMessage: function () {},
-
-  initData() {
-    this.setData({
-      // 收货地
-      placeOfOrigin: null,
-      placeOfOriginLabel: null,
-      receiptHaulage: null,
-      // 起运港
-      portOfLoadingLabel: "MELBOURNE;AU;AUMEL",
-      portOfLoading: "AUMEL",
-      // portOfLoading: "FRFOS",
-      showDelete1: true,
-      // 卸货港
-      portOfDischargeLabel: "SHANGHAI;CN;CNSHA",
-      portOfDischarge: "CNSHA",
-      // portOfDischarge: "USLAX",
-      showDelete2: true,
-      // 目的地
-      finalPlaceOfDelivery: null,
-      finalPlaceOfDeliveryLabel: null,
-      deliveryHaulage: null,
-      weight: 1000,
-      commodityCode: 'FAK',
-      commodityName: '葡萄酒',
-      shippingCompany: '0001',
-      pricingGroupSetups: [{
-        "pricingGroupId": 11972,
-        "shippingCompany": "0001",
-        "spotAccess": "contract",
-        "withoutOfferDisplay": "infoOnly",
-        "nextDepartureScheduleLimit": 35,
-        "digitalAllocationsCheck": true,
-        "digitalAllocationsDisplay": "infoOnly",
-        "inlandPolicy": "throughRate"
-      }],
-      pricingGroups: [{
-        "pricingGroupId": "11972",
-        "shippingCompany": "0001"
-      }]
-    })
-  },
 
   addPlaceOfReceipt() {
     this.setData({
@@ -448,6 +407,8 @@ Page({
       this.setData({
         commodityList: commodityList,
         pricingGroupSetups: res.data,
+        commodityCode: '',
+        commodityName: '',
         pricingGroups: res.data.map(i => {
           return {
             pricingGroupId: i.pricingGroupId,
@@ -701,9 +662,19 @@ Page({
       "weightPerContainer": this.data.weight
     }).then(res => {
       console.log(res)
-      wx.navigateTo({
-        url: '/pages/Quotation/List/index',
-      })
+      if (!res.data || !res.data.length) {
+        wx.navigateTo({
+          url: '/pages/Quotation/List/index',
+        })
+      } else {
+        this.setData({
+          nearPort: res.data
+        })
+        wx.navigateTo({
+          url: '/pages/Quotation/NearPort/index',
+        })
+      }
+      
     })
   },
 

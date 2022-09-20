@@ -27,3 +27,8 @@ export const nearByPortNextDeparture = (params) => {
 export const quotationQuoteLinesSearch = (params) => {
   return postRequest('/api/miniapp/quotationQuoteLinesSearch', params, true, false, true)
 }
+
+// 港口详情
+export const fuzzyPointSearch = (params) => {
+  return getRequest('/api/miniapp/fuzzyPointSearch', params, true)
+}

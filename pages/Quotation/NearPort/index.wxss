@@ -1,0 +1,179 @@
+/* pages/Quotation/NearPort/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.searchResultTopContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 280rpx;
+  padding-top: 30rpx;
+  background-color: #F0F1F5;
+}
+
+.searchResultTopContainer .resultCardTops {
+  width: 690rpx;
+  margin: 0 auto;
+  background: url(https://wind.cma-cgm.com/images/instantQuote.png) no-repeat;
+  background-size: 100% auto;
+  padding: 30rpx;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists {
+  padding-left: 50rpx;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep {
+  padding-bottom: 10rpx;
+  position: relative;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep:nth-last-of-type(1) {
+  padding-bottom: 0;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .leftLines {
+  position: absolute;
+  left: -50rpx;
+  height: 100%;
+  top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24rpx;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .leftLines image {
+  width: 24rpx;
+  height: 30rpx;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .leftLines .leftLineDto {
+  background-color: #E20202;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .leftLines .leftLine {
+  width: 0;
+  height: calc(100% - 16rpx);
+  border-left: 1rpx solid #9AA6C4;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .stepContent {
+  font-size: 52rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.resultContainers {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #F0F1F5;
+  padding: 256rpx 30rpx 40rpx;
+}
+
+.resultContainers .nearTitle {
+  font-size: 52rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+  margin: 46rpx 0 30rpx;
+  padding: 0 16rpx;
+}
+
+.resultContainers .nearDesc {
+  font-size: 28rpx;
+  color: #04246A;
+  margin-bottom: 46rpx;
+  padding: 0 16rpx;
+}
+
+.resultContainers .oneResult {
+  padding: 20rpx 26rpx 20rpx;
+  background-image: url(https://wind.cma-cgm.com/images/NearPort.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-bottom: 30rpx;
+}
+
+.resultContainers .oneResult:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.resultContainers .oneResult .resContents {
+  margin-top: 16rpx;
+  position: relative;
+  padding-left: 36rpx;
+}
+
+.resultContainers .oneResult .resContents .leftStep {
+  width: 24rpx;
+  height: calc(100% - 35rpx);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 30rpx;
+}
+
+.resultContainers .oneResult .resContents .leftStep .leftStepDto {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: #E20202;
+}
+
+.resultContainers .oneResult .resContents .leftStep .leftStepLine {
+  width: 0;
+  height: calc(100% - 70rpx);
+  border-left: 1rpx solid rgba(154, 166, 196, 0.6);
+  margin: 5rpx 0;
+}
+
+.resultContainers .oneResult .resContents .leftStep .leftStepLoaction {
+  width: 24rpx;
+  height: 28rpx;
+}
+
+.resultContainers .oneResult .resContents .rightContainer {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent {
+  width: 100%;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .time {
+  font-size: 52rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .end {
+  margin-top: 16rpx;
+}
+
+.resultContainers .oneResult .resContents .rightButton {
+  width: 156rpx;
+  height: 76rpx;
+  background-color: #E10202;
+  font-size: 32rpx;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 14rpx;
+  transform: translateY(-50%);
+}

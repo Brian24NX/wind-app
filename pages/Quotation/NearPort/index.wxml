@@ -1,0 +1,40 @@
+<!--pages/Quotation/NearPort/index.wxml-->
+<view class="searchResultTopContainer">
+  <view class="resultCardTops">
+    <view class="stepLists">
+      <view class="oneStep">
+        <view class="leftLines">
+          <view class="leftLineDto"></view>
+          <view class="leftLine"></view>
+        </view>
+        <view class="stepContent">{{fromLabel}}, {{fromCode}}</view>
+      </view>
+      <view class="oneStep">
+        <view class="leftLines" style="top: 20rpx;">
+          <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+        </view>
+        <view class="stepContent">{{toLabel}}, {{toCode}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="resultContainers">
+  <view class="nearTitle">Instant quote on nearby ports</view>
+  <view class="nearDesc">Please find nearby ports conbinations for which you can obtaib aninstant quotation. Click on a card to see the offer</view>
+  <view class="oneResult" wx:for="{{nearPortList}}" wx:key="index">
+    <view class="resContents">
+      <view class="leftStep">
+        <view class="leftStepDto"></view>
+        <view class="leftStepLine"></view>
+        <image class="leftStepLoaction" src="/assets/img/result/location@2x.png"></image>
+      </view>
+      <view class="rightContainer">
+        <view class="leftContent">
+          <view class="time">{{item.portOfLoadingLabel || item.portOfLoading}}</view>
+          <view class="time end">{{item.portOfDischargeLabel || item.portOfDischarge}}</view>
+        </view>
+      </view>
+      <view class="rightButton">{{languageContent.select}}</view>
+    </view>
+  </view>
+</view>
