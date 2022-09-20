@@ -403,6 +403,34 @@ function formatDocumentStatus(status, language) {
   }
 }
 
+// 格式化单证类型
+function formatDocumentCategory(category) {
+  console.log(category)
+  const categoryList = [{
+    id: 'BKGCF',
+    label: 'Booking Confirmation'
+  }, {
+    id: 'NOA',
+    label: 'Arrival Notice'
+  }, {
+    id: 'SIREQ',
+    label: 'SI Request'
+  }, {
+    id: 'BL Negotiable',
+    label: 'B/L Negotiable'
+  }, {
+    id: 'BL Waybill',
+    label: 'B/L Waybill'
+  }]
+  const index = categoryList.findIndex(i => i.id === category.trim())
+  console.log(index)
+  if (index > -1) {
+    return categoryList[index].label
+  } else {
+    return category
+  }
+}
+
 function getDayList(date, time) {
   var myDate = new Date(date);
   myDate.setDate(myDate.getDate() - time);
@@ -523,5 +551,6 @@ module.exports = {
   formatEnDateLocal,
   checkAccessToken,
   setExpiresTime,
-  formatDocumentStatus
+  formatDocumentStatus,
+  formatDocumentCategory
 }

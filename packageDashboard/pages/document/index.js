@@ -104,6 +104,7 @@ Page({
       const pageList = allList.slice((this.data.page - 1) * pageSize, pageSize)
       pageList.forEach(item => {
         item.statusLabel = utils.formatDocumentStatus(item.blStatus, this.data.language)
+        item.categoryName = utils.formatDocumentCategory(item.category)
       })
       this.setData({
         noData: !allList.length ? true : false,

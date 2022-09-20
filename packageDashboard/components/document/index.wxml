@@ -12,7 +12,7 @@
     </view>
     <view class="ones">
       <view class="oneLeft">{{documentContent.type}}</view>
-      <view class="oneRight">{{item.category}}</view>
+      <view class="oneRight">{{item.categoryName}}</view>
     </view>
     <view class="ones">
       <view class="oneLeft">{{documentContent.status}}</view>
