@@ -27,6 +27,7 @@
       <view class="tips">
         <view class="oneTip" wx:if="{{item.departureDateFlag}}">{{languageContent.earliestDeparture}}</view>
         <view class="oneTip" wx:if="{{item.arrivalDateFlag}}">{{languageContent.earliestArrival}}</view>
+        <view class="oneTip spotOn" wx:if="{{item.quoteLines.length && item.quoteLines[0].spotOffer}}">SPOTON</view>
       </view>
       <view class="resContents">
         <view class="leftStep">

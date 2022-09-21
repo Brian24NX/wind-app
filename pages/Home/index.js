@@ -49,16 +49,19 @@ Page({
     showDelete2: false,
     priceList: [{
       label: 'instantQuote',
-      url: '',
+      type: 'switch',
+      url: '/pages/Quotation/Search/index',
       icon: '/assets/img/home/PRICE_1@2x.png',
       needLogin: false
     }, {
       label: 'DDCharges',
+      type: 'nav',
       url: '/packagePrice/pages/DDCharges/Search/index',
       icon: '/assets/img/menu/D&D@2x.png',
       needLogin: false
     }, {
       label: 'chargeFinder',
+      type: 'nav',
       url: '/packagePrice/pages/chargeFinder/index',
       icon: '/assets/img/home/PRICE_3@2x.png',
       needLogin: false
@@ -445,9 +448,15 @@ Page({
     const item = e.currentTarget.dataset.item
     if (item.url) {
       if (!item.needLogin || (item.needLogin && utils.checkAccessToken())) {
-        wx.navigateTo({
-          url: item.url
-        })
+        if (item.type === 'nav') {
+          wx.navigateTo({
+            url: item.url
+          })
+        } else {
+          wx.switchTab({
+            url: item.url
+          })
+        }
       } else {
         wx.showToast({
           title: languageUtil.languageVersion().lang.page.load.noLogin,
