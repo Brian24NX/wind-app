@@ -19,40 +19,18 @@
   background-color: #E20202;
 }
 
-.spotOnDetail {
-  font-size: 28rpx;
+.oneInfo {
+  padding: 40rpx;
   color: #071E5D;
-  margin: 20rpx 0;
+  font-size: 24rpx;
+  background-color: rgba(233, 242, 255, 0.8);
+  margin-top: 20rpx;
 }
 
-.spotOnLink {
-  width: 100%;
-  height: 150rpx;
-  border: 1rpx solid #CFD2DA;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 48rpx 0 24rpx;
-  font-size: 28rpx;
-  margin-top: 40rpx;
-}
-
-.spotOnLink image {
-  width: 70rpx;
-  height: 70rpx;
-  margin-right: 20rpx;
-}
-
-.spotOnLink .localLeft {
-  display: flex;
-  align-items: center;
+.oneInfo .infoTitle {
+  font-size: 36rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
   color: #071E5D;
-}
-
-.spotOnLink .localLeft view {
-  width: 350rpx;
-}
-
-.spotOnLink .copy {
-  color: #6B7790;
+  margin-bottom: 10rpx;
 }

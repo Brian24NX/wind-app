@@ -1,0 +1,125 @@
+<!--pages/Quotation/LineDetail/index.wxml-->
+<wxs module="filters" src="../../../utils/format.wxs"></wxs>
+<!--pages/ResultDetail/index.wxml-->
+<view class="resultContainers">
+  <view class="resultCardContainers">
+    <view class="resultCardContainer">
+      <view class="cardContainer">
+        <view>{{detail.pointfrom}} - </view>
+        <view>{{detail.pointto}}</view>
+      </view>
+      <view class="carddate">
+        <image src="/assets/img/result/calendar@2x.png" mode="aspectFit"></image><text>{{detail.transitTime}} {{detail.transitTime > 1 ? languageContent.days : languageContent.day}}</text>
+      </view>
+      <view class="cardtranshipment">
+        <image src="/assets/img/result/zhuanyun@2x.png" mode="aspectFit"></image>
+        <text>{{detail.transhipment ? detail.transhipment + ' ' + (detail.transhipment > 1 ? languageContent.transhipments : languageContent.transhipment) : languageContent.zhida}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="resultDetailContainer" wx:if="{{routingDetails.length}}">
+    <view style="padding-top: 20rpx;" wx:for="{{routingDetails}}" wx:key="index">
+      <!-- 海运 -->
+      <view class="yunshuContainers" wx:if="{{filters.checkIsVessel(item.transportation.vehicle.vehicleName)}}">
+        <view class="contents">
+          <view class="leftIcons {{index === routingDetails.length - 1 ? 'last' : ''}}">
+            <view class="leftLine"></view>
+            <view class="lineDto" wx:if="{{!index || !filters.checkIsVessel(routingDetails[index - 1].transportation.vehicle.vehicleName)}}"></view>
+            <image src="/assets/img/result/zhuanyun@2x.png" mode="aspectFit" wx:else class="zhuanyun"></image>
+            <image wx:if="{{index === routingDetails.length - 1}}" class="location" src="/assets/img/seniorsearch/location_white.png" mode="aspectFit"></image>
+            <image src="/assets/img/seniorsearch/ship.png" class="shipIcon"></image>
+          </view>
+          <view wx:if="{{index}}">
+            <view class="diquContainer">
+              <view class="names">{{item.departureDetails.placeName}}</view>
+              <view class="code">{{filters.setChina(item.departureDetails.placeCode, true)}}</view>
+              <view class="tags tags2" wx:if="{{filters.checkQiYunGangKou(index, routingDetails)}}">{{languageContent.pol}}</view>
+            </view>
+            <view class="gangKouNames">{{item.arrivalDetdepartureDetailsails.terminalName}}</view>
+          </view>
+          <view class="yunshuContainer">
+            <view class="timeContainer">{{language === 'zh' ? filters.formatCnDateLocal(item.departureDate, false, true) : filters.formatEnDateLocal(item.departureDate, '-', '', false, true)}}</view>
+            <block wx:if="{{!index}}">
+              <view class="nameContainer">
+                <view class="names">{{item.departureDetails.placeName}}</view>
+                <view class="code">{{filters.setChina(item.departureDetails.placeCode, true)}}</view>
+                <view class="tags tags2">{{languageContent.pol}}</view>
+              </view>
+              <view class="gangKouName">{{item.departureDetails.terminalName}}</view>
+            </block>
+            <view class="gangKouTime">
+              <text>{{languageContent.vgmCutOff}}：</text>
+              <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.vgmCutOffDate, false, true) : filters.formatEnDateLocal(item.vgmCutOffDate, '-', '', false, true)}}</text>
+            </view>
+            <view class="gangKouTime">
+              <text>{{languageContent.portCutOff}}：</text>
+              <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.cutOffDate, false, true) : filters.formatEnDateLocal(item.cutOffDate, '-', '', false, true)}}</text>
+            </view>
+            <view class="shipName" style="margin-top: 30rpx;">
+              <text>{{languageContent.vessel}}：</text>
+              <text>{{item.vesselName || '-'}}</text>
+            </view>
+            <view class="shipName other">
+              <text>{{languageContent.service}}：</text>
+              <text>{{item.serviceName || '-'}}</text>
+            </view>
+            <view class="shipName other" style="margin-top: 30rpx;">
+              <text>{{languageContent.localVoyageRef}}： </text>
+              <text>{{item.localVoyageRef || '-'}}</text>
+            </view>
+            <view class="shipName other">
+              <text>{{languageContent.vouageRef}}：</text>
+              <text>{{item.voyageRef || '-'}}</text>
+            </view>
+            <view class="timeContainer" style="margin-top: 30rpx;">{{language === 'zh' ? filters.formatCnDateLocal(item.arrivalDate, false, true) : filters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}}</view>
+          </view>
+        </view>
+        <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
+          <view class="diquContainer" style="margin-bottom: 12rpx;">
+            <view class="names">{{item.arrivalDetails.placeName}}</view>
+            <view class="code">{{filters.setChina(item.arrivalDetails.placeCode, true)}}</view>
+            <view class="tags tags2">{{languageContent.pod}}</view>
+          </view>
+          <view class="gangKouNames">{{item.arrivalDetails.terminalName}}</view>
+        </view>
+      </view>
+      <!-- 其他运输 -->
+      <view class="yunshuContainers" wx:else>
+        <view class="contents">
+          <view class="leftIcons {{index === routingDetails.length - 1 ? 'last' : ''}}">
+            <view class="leftLine"></view>
+            <view class="lineDto" wx:if="{{!index || !filters.checkIsVessel(item.transportation.vehicle.vehicleName)}}"></view>
+            <image wx:if="{{index === routingDetails.length - 1}}" class="location" src="/assets/img/seniorsearch/location_white.png" mode="aspectFit"></image>
+            <image src="/assets/img/result/freight@2x.png" class="freight"></image>
+          </view>
+          <view wx:if="{{index}}">
+            <view class="diquContainer">
+              <view class="names">{{item.departureDetails.placeName}}</view>
+              <view class="code">{{filters.setChina(item.pointFrom.location.internalCode, true)}}</view>
+              <view class="tags tags2" wx:if="{{filters.checkXieHuoGangKou(index, routingDetails)}}">{{languageContent.pod}}</view>
+            </view>
+          </view>
+          <view class="yunshuContainer">
+            <view class="timeContainer">{{language === 'zh' ? filters.formatCnDateLocal(item.departureDate, false, true) : filters.formatEnDateLocal(item.departureDate, '-', '', false, true)}}</view>
+            <block wx:if="{{!index}}">
+              <view class="nameContainer">
+                <view class="names">{{item.pointFrom.location.name}}</view>
+                <view class="code">{{filters.setChina(item.departureDetails.placeCode, true)}}</view>
+                <view class="tags tags2">{{languageContent.coc}}</view>
+              </view>
+            </block>
+            <view class="rails">{{item.transportation.vehicle.vehicleName}}</view>
+            <view class="timeContainer" style="margin-top: 10rpx;">{{language === 'zh' ? filters.formatCnDateLocal(item.arrivalDate, false, true) : filters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}}</view>
+          </view>
+        </view>
+        <view class="zuihouContainer" wx:if="{{index === routingDetails.length - 1}}">
+          <view class="diquContainer">
+            <view class="names">{{item.arrivalDetails.placeName}}</view>
+            <view class="code">{{filters.setChina(item.arrivalDetails.placeCode, true)}}</view>
+            <view class="tags tags2">{{languageContent.dest}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -157,19 +157,21 @@ Page({
             }
           }
           setTimeout(() => {
-            getQuotationSurchargeDetail(params).then(res => {
-              item.isLoading = false
-              item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : {}
-              this.setData({
-                quoteLineList: this.data.quoteLineList
+            if (!item.surchargeDetails) {
+              getQuotationSurchargeDetail(params).then(res => {
+                item.isLoading = false
+                item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : {}
+                this.setData({
+                  quoteLineList: this.data.quoteLineList
+                })
+              }, () => {
+                item.isLoading = false
+                item.surchargeDetails = {}
+                this.setData({
+                  quoteLineList: this.data.quoteLineList
+                })
               })
-            }, () => {
-              item.isLoading = false
-              item.surchargeDetails = {}
-              this.setData({
-                quoteLineList: this.data.quoteLineList
-              })
-            })
+            }
           }, 300 * index);
         } else {
           item.isLoading = false
@@ -194,15 +196,15 @@ Page({
     this.setData({
       currentIndex
     })
-    if (!this.data.quoteLineList[currentIndex].needRemind) {
-      this.setData({
-        showRemind: true
-      })
-    } else {
+    // if (!this.data.quoteLineList[currentIndex].needRemind) {
+    //   this.setData({
+    //     showRemind: true
+    //   })
+    // } else {
       wx.navigateTo({
         url: `/pages/Quotation/Detail/index?index=${currentIndex}`,
       })
-    }
+    // }
   },
 
   onContinue() {

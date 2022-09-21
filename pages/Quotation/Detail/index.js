@@ -13,7 +13,6 @@ Page({
     languageContent: {},
     language: 'zh',
     isFirst: true,
-    surchargeDetails: {},
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
       label: 'Local Charges',
@@ -46,7 +45,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // this.quotationSurchargeDetails()
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.qutationResult.title
     })
@@ -76,6 +74,8 @@ Page({
       containers: data2.containers,
       commodityName: data2.commodityName
     })
+    
+
   },
 
   toOther(e) {
@@ -88,6 +88,12 @@ Page({
     this.selectComponent("#additionalServices").onClickOpen()
   },
 
+  toLineDetail() {
+    wx.navigateTo({
+      url: '/pages/Quotation/LineDetail/index',
+    })
+  },
+
   submit() {
     if (this.data.isFirst) {
       this.setData({
@@ -98,35 +104,5 @@ Page({
         url: '/pages/Quotation/Result/index',
       })
     }
-  },
-
-  quotationSurchargeDetails() {
-    getQuotationSurchargeDetails({
-      "surchargeFromLara": {
-        "quoteLineId": "1304458221",
-        "shippingCompany": "0002",
-        "equipments": [{
-          "code": "40ST",
-          "oceanFreightRate": 858.0,
-          "currencyCode": "USD",
-          "netWeight": 1.0,
-          "sizeUnitOfMeasure": "TNE"
-        }],
-        "simulationDate": "2022-09-08",
-        "paymentMethod": null,
-        "usContract": false,
-        "portOfLoading": "AUMEL",
-        "portOfDischarge": "CNSHA",
-        "loggedId": "6306d5d58d42b58f3c6bff84",
-        "nextDepartureSolutionNumber": 0,
-        "nextDepartureScheduleNumber": 0,
-        "quoteLineKey": "1304458221-AUMEL-AUMEL-AUMEL-CNSHA-CNSHA-CNSHA-20220824-20221012-1"
-      }
-    }).then(res => {
-      console.log(res)
-      this.setData({
-        surchargeDetails: res.data.surchargeDetails[0]
-      })
-    })
   }
 })

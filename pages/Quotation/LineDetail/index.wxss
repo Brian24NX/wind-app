@@ -1,0 +1,239 @@
+/* pages/Quotation/LineDetail/index.wxss */
+.resultContainers {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30rpx;
+  background-color: #F0F1F5;
+}
+
+.resultContainers .resultCardContainers {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.resultContainers .resultCardContainers .resultCardContainer {
+  padding: 40rpx 40rpx 20rpx;
+  background: url(https://wind.cma-cgm.com/images/chuanqichaxun.png) no-repeat;
+  background-position: bottom right;
+  background-size: auto 100%;
+}
+
+.carddate image,
+.cardtranshipment image {
+  width: 40rpx;
+  height: 36rpx;
+}
+
+.cardContainer {
+  font-size: 48rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+  line-height: 66rpx;
+  word-break: break-all;
+}
+
+.carddate,
+.cardtranshipment {
+  padding-top: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.carddate text,
+.cardtranshipment text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #4468BA;
+  margin-left: 10rpx;
+}
+
+.resultDetailContainer {
+  width: 100%;
+  margin-top: 30rpx;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx 0;
+}
+
+.yunshuContainers {
+  padding: 0 20rpx 0 80rpx;
+  
+}
+
+.contents {
+  position: relative;
+}
+
+.contents .leftIcons {
+  width: 56rpx;
+  height: calc(100% + 20rpx);
+  position: absolute;
+  left: -60rpx;
+  top: 26rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contents .last {
+  height: calc(100% - 35rpx);
+}
+
+.leftIcons .leftLine {
+  width: 0;
+  height: 100%;
+  border-left: 1rpx solid #A6B2CC;
+}
+
+.leftIcons .lineDto {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: #E20202;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+.leftIcons .location {
+  position: absolute;
+  left: 50%;
+  bottom: -14rpx;
+  transform: translateX(-50%);
+  width: 28rpx;
+  height: 38rpx;
+}
+
+.leftIcons .shipIcon {
+  width: 56rpx;
+  height: 54rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.leftIcons .freight {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.leftIcons .zhuanyun {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: -20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gangKouNames {
+  font-size: 24rpx;
+  color: #2B74FF;
+  margin-bottom: 10rpx;
+}
+
+.yunshuContainers .yunshuContainer .timeContainer {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+  margin-bottom: 12rpx;
+}
+
+.rails {
+  font-size: 24rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #6B7790;
+  margin-top: 20rpx;
+}
+
+.yunshuContainers .yunshuContainer .nameContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.yunshuContainers .tags {
+  height: 32rpx;
+  background-color: #E6EAEF;
+  border-radius: 16rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+  text-align: center;
+  line-height: 32rpx;
+  margin-right: 12rpx;
+  padding: 0 10rpx;
+}
+
+.yunshuContainers .tags2 {
+  margin-left: 12rpx;
+  margin-right: 0;
+}
+
+.names {
+  font-size: 24rpx;
+  color: #2B74FF;
+}
+
+.code {
+  font-size: 24rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+  margin-left: 2rpx;
+}
+
+.yunshuContainers .yunshuContainer .gangKouName {
+  font-size: 24rpx;
+  /* font-family: PingFangSC-Medium, PingFang SC; */
+  /* font-weight: 500; */
+  color: #2B74FF;
+  margin-bottom: 30rpx;
+}
+
+.yunshuContainers .yunshuContainer .gangKouTime {
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #6B7790;
+  padding-left: 36rpx;
+}
+
+.yunshuContainers .yunshuContainer .gangKouTime .time {
+  color: #071E5D;
+}
+
+.yunshuContainers .yunshuContainer .shipName {
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  padding-left: 36rpx;
+  color: #6B7790;
+}
+
+.yunshuContainers .yunshuContainer .shipName text:nth-last-of-type(1) {
+  color: #071E5D;
+  margin-left: 30rpx;
+}
+
+.yunshuContainers .yunshuContainer .other text:nth-last-of-type(1) {
+  color: #2B74FF;
+  margin-left: 30rpx;
+}
+
+.diquContainer {
+  display: flex;
+  align-items: center;
+}
