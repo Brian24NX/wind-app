@@ -54,7 +54,7 @@ page {
 }
 
 .shipmentLists {
-  margin-top: 370rpx;
+  margin-top: 365rpx;
 }
 
 .viewTypesContainer {

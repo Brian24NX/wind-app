@@ -399,7 +399,7 @@ var Languague = {
       name: "Name/code",
       type: 'Equipment Size',
       specialCargo: "Special Cargo",
-      tefrigerated: 'Refrigerated',
+      refrigerated: 'Refrigerated',
       hazardous: 'Hazardous',
       oversized: 'Oversized',
       search: 'Search',
