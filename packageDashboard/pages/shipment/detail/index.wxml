@@ -1,21 +1,20 @@
 <!--packageDashboard/pages/shipment/detail/index.wxml-->
 <view class="shipmentDetailContainer">
-  <view class="searchResultContainers">
-    <view class="searchResultContainer">
-      <view class="resTitle" style="{{language === 'zh' ? '' : 'font-family: Antonio-Bold;font-weight: bold;'}}">
-        <text>{{languageContent.detailTitle1}}</text>
-        <text style="color: #4468BA;">{{languageContent.detailTitle2}}</text>
-      </view>
-      <view class="resList others">
-        <view class="oneRes">
-          <image src="/assets/img/dashboard/shipmentDetail@2x.png" mode="aspectFit" class="resIcon"></image>
-          <view class="resContent">{{bookingReference}}</view>
+  <view class="topTitles">
+    <view class="searchResultContainers">
+      <view class="searchResultContainer">
+        <view class="resTitle" style="{{language === 'zh' ? '' : 'font-family: Antonio-Bold;font-weight: bold;'}}">
+          <text>{{languageContent.detailTitle1}}</text>
+          <text style="color: #4468BA;">{{languageContent.detailTitle2}}</text>
+        </view>
+        <view class="resList others">
+          <view class="oneRes">
+            <image src="/assets/img/dashboard/shipmentDetail@2x.png" mode="aspectFit" class="resIcon"></image>
+            <view class="resContent">{{bookingReference}}</view>
+          </view>
         </view>
       </view>
     </view>
-  </view>
-
-  <view class="shipmentLists">
     <view class="viewTypesList">
       <view class="viewTypes">
         <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
@@ -24,6 +23,10 @@
         </view>
       </view>
     </view>
+  </view>
+
+
+  <view class="shipmentLists">
     <!-- 货柜视图 -->
     <containers list="{{containers}}" loading="{{loading}}" wx:if="{{current === 'detailContainer'}}"></containers>
     <!-- 资讯 -->

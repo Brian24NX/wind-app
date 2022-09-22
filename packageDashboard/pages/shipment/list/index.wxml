@@ -1,28 +1,28 @@
 <!--packageDashboard/pages/shipment/list/index.wxml-->
 <view class="shipmentContainer">
-  <view class="listTopContainer">
-    <view class="listTopTitles">
-      <view class="titleLine"></view>
-      <view class="listTopTitle">
-        <text>{{languageContent.title1}}</text>
-        <text>{{languageContent.title2}}</text>
+  <view class="topTitles">
+    <view class="listTopContainer">
+      <view class="listTopTitles">
+        <view class="titleLine"></view>
+        <view class="listTopTitle">
+          <text>{{languageContent.title1}}</text>
+          <text>{{languageContent.title2}}</text>
+        </view>
+      </view>
+      <view class="inputContainer">
+        <view class="categoryLists" catchtap="changeCategory">
+          <view>{{ownedLabel}}</view>
+          <image src="/assets/img/more/sanjiao@2x.png"></image>
+        </view>
+        <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+        <view class="delete" catchtap="deleteValue">
+          <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+        </view>
+        <view class="search" bindtap="search">
+          <image src="/assets/img/search/search@2x.png"></image>
+        </view>
       </view>
     </view>
-    <view class="inputContainer">
-      <view class="categoryLists" catchtap="changeCategory">
-        <view>{{ownedLabel}}</view>
-        <image src="/assets/img/more/sanjiao@2x.png"></image>
-      </view>
-      <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
-      <view class="delete" catchtap="deleteValue">
-        <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
-      </view>
-      <view class="search" bindtap="search">
-        <image src="/assets/img/search/search@2x.png"></image>
-      </view>
-    </view>
-  </view>
-  <view class="shipmentLists">
     <view class="viewTypesContainer">
       <view class="viewTypes">
         <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
@@ -31,6 +31,10 @@
         </view>
       </view>
     </view>
+  </view>
+
+  <view class="shipmentLists">
+
     <!-- 装运视图 -->
     <shipment list="{{list}}" loading="{{loading}}" wx:if="{{current === 'shipment'}}"></shipment>
     <!-- 货柜视图 -->

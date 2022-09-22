@@ -1,23 +1,26 @@
 <!--packageDashboard/pages/document/index.wxml-->
 <view class="documentContainer">
-  <view class="listTopContainer">
-    <view class="listTopTitles">
-      <view class="titleLine"></view>
-      <view class="listTopTitle">
-        <text>{{languageContent.title1}}</text>
-        <text>{{languageContent.title2}}</text>
+  <view class="listTopContainers">
+    <view class="listTopContainer">
+      <view class="listTopTitles">
+        <view class="titleLine"></view>
+        <view class="listTopTitle">
+          <text>{{languageContent.title1}}</text>
+          <text>{{languageContent.title2}}</text>
+        </view>
       </view>
-    </view>
-    <view class="inputContainer">
-      <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
-      <view class="delete" catchtap="deleteValue">
-        <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
-      </view>
-      <view class="search" bindtap="search">
-        <image src="/assets/img/search/search@2x.png"></image>
+      <view class="inputContainer">
+        <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+        <view class="delete" catchtap="deleteValue">
+          <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+        </view>
+        <view class="search" bindtap="search">
+          <image src="/assets/img/search/search@2x.png"></image>
+        </view>
       </view>
     </view>
   </view>
+
   <document list="{{list}}" loading="{{loading}}"></document>
   <view class="loadings">
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>

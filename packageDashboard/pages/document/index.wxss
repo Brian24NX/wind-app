@@ -1,12 +1,17 @@
 /* packageDashboard/pages/document/index.wxss */
 page {
-  background-color: #f5f5f5;
+  background-color: #F0F1F5;
 }
 
 .documentContainer {
-  padding: 30rpx;
+  padding: 300rpx 30rpx 30rpx;
 }
 
-.documentContainer .listTopContainer {
-  margin-bottom: 30rpx;
+.documentContainer .listTopContainers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx;
+  background-color: #F0F1F5;
 }

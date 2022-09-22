@@ -7,22 +7,32 @@ page {
   padding: 0 30rpx 30rpx;
 }
 
-.shipmentLists {
-  margin-top: 30rpx;
+.shipmentDetailContainer .topTitles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #F0F1F5;
+  padding: 0 30rpx;
 }
 
-.shipmentLists .viewTypesList {
+.shipmentLists {
+  margin-top: 350rpx;
+}
+
+.viewTypesList {
   padding: 0 48rpx 10rpx;
   background-color: #ffffff;
 }
 
-.shipmentLists .viewTypes {
+.viewTypes {
   height: 94rpx;
   display: flex;
   border-bottom: 1rpx solid #04246A;
 }
 
-.shipmentLists .viewTypes .oneType {
+.viewTypes .oneType {
   display: flex;
   flex: 1;
   justify-content: center;
@@ -33,14 +43,14 @@ page {
   color: #04246A;
 }
 
-.shipmentLists .viewTypes .typeActived {
+.viewTypes .typeActived {
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #04246A;
   position: relative;
 }
 
-.shipmentLists .viewTypes .typeActived .activedLine {
+.viewTypes .typeActived .activedLine {
   position: absolute;
   bottom: 0;
   left: 50%;

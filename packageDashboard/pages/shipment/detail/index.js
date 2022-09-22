@@ -64,8 +64,8 @@ Page({
           item.categoryName = utils.formatDocumentCategory(item.category)
         })
         this.setData({
-          containers: res.data[0].containers,
-          documents: res.data[0].documents,
+          containers: res.data[0].containers.concat(res.data[0].containers).concat(res.data[0].containers),
+          documents: res.data[0].documents.concat(res.data[0].documents).concat(res.data[0].documents),
           info: res.data[0].info,
           loading: false
         })
