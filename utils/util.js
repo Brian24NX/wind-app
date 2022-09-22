@@ -410,6 +410,9 @@ function formatDocumentCategory(category) {
     id: 'BKGCF',
     label: 'Booking Confirmation'
   }, {
+    id: 'BKGREQ',
+    label: 'Booking Request'
+  }, {
     id: 'NOA',
     label: 'Arrival Notice'
   }, {
