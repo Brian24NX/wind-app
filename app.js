@@ -1,7 +1,6 @@
 // app.js
 const config = require('./config/config')
 
-require("./utils/webmonitor.mp.min")
 /**
  * 初始化用户信息
  * @param userId 用户唯一性标识 (手机号、用户名、id等)

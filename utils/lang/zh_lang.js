@@ -454,7 +454,7 @@ var Languague = {
       //最快到港
       earliestArrival: "最快到港",
       // 最快运输时间
-      earliestTime: '最快运输时间',
+      earliestTime: '最快运输',
       spotOn: 'SPOTON',
       //离港
       depart: "离港",
