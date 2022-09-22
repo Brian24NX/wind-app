@@ -3,11 +3,7 @@ const config = require('./config/config')
 
 /**
  * 初始化用户信息
- * @param userId 用户唯一性标识 (手机号、用户名、id等)
- * @param userTag 用于区分同一个项目下，角色的分类（公司A, B, C, D等）
- * @param projectVersion 应用每次发布的版本号
  */
-
 if (!wx.getStorageSync('openId')) {
   wx.login({
     success(res) {

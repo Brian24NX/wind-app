@@ -24,6 +24,8 @@ Page({
     languageContent: {}, // 用于保存当前页面所需字典变了
     language: 'zh',
     verifyInfo: {},
+    minDate: new Date().getTime(),
+    maxDate: new Date().getTime() + 1000 * 60 * 60 * 24 * 30,
     showPol: false,
     showPod: false,
     // 收货地
@@ -388,6 +390,10 @@ Page({
   // 获取商品
   getCommodityList() {
     if (!this.data.portOfLoading || !this.data.portOfDischarge || !this.data.equipmentType) return
+    this.setData({
+      commodityCode: '',
+      commodityName: ''
+    })
     getCommodityLists({
       equipmentType: this.data.equipmentType,
       portOfLoading: this.data.portOfLoading,
@@ -395,7 +401,6 @@ Page({
     }).then(res => {
       let commodityList = []
       res.data.forEach(i => {
-        console.log(i)
         commodityList = commodityList.concat(i.commodityDetails)
       })
       commodityList = commodityList.filter(i => i.code)
@@ -407,8 +412,6 @@ Page({
       this.setData({
         commodityList: commodityList,
         pricingGroupSetups: res.data,
-        commodityCode: '',
-        commodityName: '',
         pricingGroups: res.data.map(i => {
           return {
             pricingGroupId: i.pricingGroupId,
