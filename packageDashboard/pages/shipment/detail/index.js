@@ -60,6 +60,9 @@ Page({
         res.data[0].containers.forEach(item => {
           item.statusLabel = utils.formatHuoYunStatus(item.statusCode, this.data.language)
         })
+        res.data[0].documents.forEach(item => {
+          item.categoryName = utils.formatDocumentCategory(item.category)
+        })
         this.setData({
           containers: res.data[0].containers,
           documents: res.data[0].documents,
