@@ -609,41 +609,50 @@ Page({
     }
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     this.checkAccessToken(() => {
-      this.getQuotationNextDepartures()
+      if (this.data.commodityCode === "FAK") {
+        this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
+      } else {
+        this.getQuotationNextDepartures()
+      }
     })
   },
 
-  getQuotationNextDepartures() {
-    quotationNextDepartures({
-      "affiliates": [wx.getStorageSync('partnerCode')],
-      "commodityCode": this.data.commodityCode,
-      "deliveryHaulage": this.data.deliveryHaulage || null,
-      "equipmentSizeType": this.data.equipmentType,
-      "equipmentType": this.data.equipmentType.substr(2),
-      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
-      "numberOfContainers": this.data.containers,
-      "placeOfOrigin": this.data.placeOfOrigin || null,
-      "portOfDischarge": this.data.portOfDischarge,
-      "portOfLoading": this.data.portOfLoading,
-      "pricingGroupSetups": this.data.pricingGroupSetups.filter(i => i.shippingCompany === this.data.shippingCompany),
-      "pricingGroups": this.data.pricingGroups.filter(i => i.shippingCompany === this.data.shippingCompany),
-      "receiptHaulage": this.data.receiptHaulage || null,
-      "shippingCompany": this.data.shippingCompany,
-      "simulationDate": this.data.simulationDate,
-      "weightPerContainer": this.data.weight
-    }).then(res => {
-      console.log(res)
-      if (res.data && res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
-        this.setData({
-          resultResq: res.data
-        })
-        wx.navigateTo({
-          url: '/pages/Quotation/List/index',
-        })
-      } else {
-        this.getNearByPortNextDeparture()
-      }
-    })
+  getQuotationNextDepartures2(shippingCompany, index) {
+    if (index === this.data.pricingGroups.length) {
+      this.getNearByPortNextDeparture()
+    } else {
+      quotationNextDepartures({
+        "affiliates": [wx.getStorageSync('partnerCode')],
+        "commodityCode": this.data.commodityCode,
+        "deliveryHaulage": this.data.deliveryHaulage || null,
+        "equipmentSizeType": this.data.equipmentType,
+        "equipmentType": this.data.equipmentType.substr(2),
+        "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
+        "numberOfContainers": this.data.containers,
+        "placeOfOrigin": this.data.placeOfOrigin || null,
+        "portOfDischarge": this.data.portOfDischarge,
+        "portOfLoading": this.data.portOfLoading,
+        "pricingGroupSetups": this.data.pricingGroupSetups.filter(i => i.shippingCompany === shippingCompany),
+        "pricingGroups": this.data.pricingGroups.filter(i => i.shippingCompany === shippingCompany),
+        "receiptHaulage": this.data.receiptHaulage || null,
+        "shippingCompany": shippingCompany,
+        "simulationDate": this.data.simulationDate,
+        "weightPerContainer": this.data.weight
+      }).then(res => {
+        console.log(res)
+        if (res.data && res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
+          this.setData({
+            resultResq: res.data
+          })
+          wx.navigateTo({
+            url: '/pages/Quotation/List/index',
+          })
+        } else {
+          index++;
+          this.getQuotationNextDepartures2(this.data.pricingGroups[index].shippingCompany, index)
+        }
+      })
+    }
   },
 
   getNearByPortNextDeparture() {
