@@ -18,6 +18,10 @@
     </view>
   </view>
   <view class="resultDetailContainer" wx:if="{{routingDetails.length}}">
+    <image class="logo" wx:if="{{shippingCompany === '0001'}}" src="/assets/img/instantQuote/CMA.svg" mode="aspectFit"></image>
+    <image class="logo" wx:if="{{shippingCompany === '0002'}}" src="/assets/img/instantQuote/ANL.svg" mode="aspectFit"></image>
+    <image class="logo" wx:if="{{shippingCompany === '0011'}}" src="/assets/img/instantQuote/CNC.svg" mode="aspectFit"></image>
+    <image class="logo" wx:if="{{shippingCompany === '0015'}}" src="/assets/img/instantQuote/APL.svg" mode="aspectFit"></image>
     <view style="padding-top: 20rpx;" wx:for="{{routingDetails}}" wx:key="index">
       <!-- 海运 -->
       <view class="yunshuContainers" wx:if="{{filters.checkIsVessel(item.transportation.vehicle.vehicleName)}}">

@@ -116,10 +116,25 @@
   margin-bottom: 0;
 }
 
+.solutionContainer .solutionLeft .solutionLeftOne view {
+  max-width: 460rpx;
+}
+
 .solutionContainer .solutionLeft image {
   width: 34rpx;
   height: 34rpx;
   margin-right: 10rpx;
+}
+
+.solutionContainer .solutionRight {
+  display: flex;
+  align-items: center;
+}
+
+.solutionContainer .solutionRight image {
+  width: 60rpx;
+  height: 44rpx;
+  margin-right: 14rpx;
 }
 
 .paramContainer {

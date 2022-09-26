@@ -8,6 +8,7 @@ Page({
     languageContent: {},
     language: 'zh',
     detail: {},
+    shippingCompany: '',
     routingDetails: []
   },
 
@@ -36,6 +37,7 @@ Page({
         transitTime: Number(data.quotationDetail.transitTime),
         transhipment: data.quotationDetail.tranShipment.length
       },
+      shippingCompany: data.shippingCompany,
       routingDetails: data.quotationDetail.routingLegs
     })
   }

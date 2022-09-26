@@ -1,7 +1,4 @@
 // pages/Quotation/Detail/index.js
-import {
-  getQuotationSurchargeDetails
-} from '../../../api/modules/quotation'
 const languageUtil = require('../../../utils/languageUtils')
 
 Page({
@@ -38,7 +35,8 @@ Page({
     equipmentTypeName: '',
     weight: '',
     containers: '',
-    commodityName: ''
+    commodityName: '',
+    shippingCompany: ''
   },
 
   /**
@@ -64,6 +62,7 @@ Page({
       fromCode: data.fromCode,
       toLabel: data.toLabel,
       toCode: data.toCode,
+      shippingCompany: data.shippingCompany,
       quotationDetail: data.quoteLineList[index]
     })
     const currentPage2 = pages[pages.length - 3]

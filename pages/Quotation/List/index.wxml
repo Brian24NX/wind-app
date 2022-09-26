@@ -73,7 +73,7 @@
               <view class="unit2">CONTRAIN</view>
             </view>
           </view>
-          <view class="selects" bindtap="toDetail" data-index="{{index}}">
+          <view class="selects {{!item.isLoading && item.surchargeDetails ? '' : 'disabled'}}" bindtap="toDetail" data-index="{{index}}">
             <image wx:if="{{item.isLoading}}" style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit"></image>
             <text wx:else>{{languageContent.select}}</text>
           </view>

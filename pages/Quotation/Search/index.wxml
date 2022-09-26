@@ -154,17 +154,17 @@
         <view class="searchTitle">{{languageContent.container}}</view>
         <view class="containers">
           <view class="actionBtn {{containers < 2 ? 'disabled' : ''}}" catchtap="reduce">-</view>
-          <!-- <view class="number">{{containers}}</view> -->
           <input type="number" class="number" value="{{containers}}" maxlength="2" bindblur="setInputValue"/>
           <view class="actionBtn {{containers > 98 ? 'disabled' : ''}}" catchtap="add">+</view>
         </view>
       </view>
       <view class="searchList">
         <view class="searchTitle">{{languageContent.commodity}}</view>
-        <view class="selectContainer" catchtap="openPopup" data-type="3">
+        <view class="selectContainer" catchtap="openPopup" data-type="3" wx:if="{{!commodityLoading}}">
           <view style="{{commodityCode ? 'color: #071E5D;' : ''}}">{{commodityName || verifyInfo.select}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
+        <image class="loadings" src="/assets/img/instantQuote/loading-blue.svg" hidden="{{!commodityLoading}}" mode="aspectFit"></image>
       </view>
       <view class="btn" style="margin-top: 40rpx;">
         <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search}}</button>

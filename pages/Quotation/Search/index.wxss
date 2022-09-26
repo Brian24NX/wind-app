@@ -208,6 +208,12 @@ page{
   height: 32rpx;
 }
 
+.queryContainer .searchLists .loadings {
+  width: 100%;
+  height: 88rpx;
+  border: 2rpx solid #DFDFDF;
+}
+
 .noRequestBorder {
   border: 2rpx solid #E2014B !important;
 }

@@ -81,7 +81,8 @@ Page({
     pricingGroupSetups: [],
     pricingGroups: [],
     resultResq: {},
-    nearPort: []
+    nearPort: [],
+    commodityLoading: false
   },
 
   /**
@@ -392,7 +393,8 @@ Page({
     if (!this.data.portOfLoading || !this.data.portOfDischarge || !this.data.equipmentType) return
     this.setData({
       commodityCode: '',
-      commodityName: ''
+      commodityName: '',
+      commodityLoading: true
     })
     getCommodityLists({
       equipmentType: this.data.equipmentType,
@@ -417,7 +419,8 @@ Page({
             pricingGroupId: i.pricingGroupId,
             shippingCompany: i.shippingCompany
           }
-        })
+        }),
+        commodityLoading: false
       })
     }, () => {
       setTimeout(() => {
@@ -642,7 +645,8 @@ Page({
         console.log(res)
         if (res.data && res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
           this.setData({
-            resultResq: res.data
+            resultResq: res.data,
+            shippingCompany: shippingCompany
           })
           wx.navigateTo({
             url: '/pages/Quotation/List/index',

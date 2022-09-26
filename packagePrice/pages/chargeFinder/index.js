@@ -166,7 +166,7 @@ Page({
     })
   },
 
-  openPopup(e) {
+  openPopup() {
     const date = this.data.date.replaceAll('-', '/')
     this.setData({
       currentDate: new Date(date).getTime(),

@@ -287,6 +287,10 @@
   line-height: 76rpx;
 }
 
+.resultContainers .oneResult .oneBottom .disabled {
+  opacity: 0.5;
+}
+
 .resultContainers .warning {
   display: flex;
   align-items: center;

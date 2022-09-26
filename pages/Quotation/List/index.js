@@ -32,7 +32,8 @@ Page({
     isLoading: true,
     showRemind: false,
     currentIndex: null,
-    equipmentSize: ''
+    equipmentSize: '',
+    shippingCompany: ''
   },
 
   /**
@@ -51,6 +52,7 @@ Page({
     const data = currentPage.data
     this.setData({
       equipmentSize: data.equipmentType,
+      shippingCompany: data.shippingCompany,
       simulationDate: data.simulationDate,
       fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
       toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
@@ -160,13 +162,13 @@ Page({
             if (!item.surchargeDetails) {
               getQuotationSurchargeDetail(params).then(res => {
                 item.isLoading = false
-                item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : {}
+                item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
                 this.setData({
                   quoteLineList: this.data.quoteLineList
                 })
               }, () => {
                 item.isLoading = false
-                item.surchargeDetails = {}
+                item.surchargeDetails = null
                 this.setData({
                   quoteLineList: this.data.quoteLineList
                 })
@@ -176,7 +178,7 @@ Page({
         } else {
           item.isLoading = false
           item.canSelect = false
-          item.surchargeDetails = {}
+          item.surchargeDetails = null
           this.setData({
             quoteLineList: this.data.quoteLineList
           })
@@ -196,6 +198,7 @@ Page({
     this.setData({
       currentIndex
     })
+    if (this.data.quoteLineList[currentIndex].isLoading || !this.data.quoteLineList[currentIndex].surchargeDetails) return
     // if (!this.data.quoteLineList[currentIndex].needRemind) {
     //   this.setData({
     //     showRemind: true

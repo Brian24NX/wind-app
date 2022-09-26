@@ -37,7 +37,13 @@
           <view>{{quotationDetail.scheduleDescription}}</view>
         </view>
       </view>
-      <van-icon name="arrow" color="#6B7790" />
+      <view class="solutionRight">
+        <image wx:if="{{shippingCompany === '0001'}}" src="/assets/img/instantQuote/CMA.svg" mode="aspectFit"></image>
+        <image wx:if="{{shippingCompany === '0002'}}" src="/assets/img/instantQuote/ANL.svg" mode="aspectFit"></image>
+        <image wx:if="{{shippingCompany === '0011'}}" src="/assets/img/instantQuote/CNC.svg" mode="aspectFit"></image>
+        <image wx:if="{{shippingCompany === '0015'}}" src="/assets/img/instantQuote/APL.svg" mode="aspectFit"></image>
+        <van-icon name="arrow" color="#6B7790" />
+      </view>
     </view>
   </view>
   <view class="paramContainer">
