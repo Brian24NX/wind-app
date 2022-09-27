@@ -76,7 +76,7 @@ var Languague = {
       // 发现更多
       more: '发现更多',
       // cmacgm
-      cma: 'CMA CGM+',
+      cma: '增值服务',
       // 关于我们
       about: '集团介绍',
       //新闻资讯

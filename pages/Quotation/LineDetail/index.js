@@ -9,6 +9,7 @@ Page({
     language: 'zh',
     detail: {},
     shippingCompany: '',
+    totalCO2: 0,
     routingDetails: []
   },
 
@@ -38,6 +39,7 @@ Page({
         transhipment: data.quotationDetail.tranShipment.length
       },
       shippingCompany: data.shippingCompany,
+      totalCO2: data.quotationDetail.totalCO2,
       routingDetails: data.quotationDetail.routingLegs
     })
   }

@@ -75,7 +75,7 @@ var Languague = {
       // 发现更多
       more: 'More to Discover',
       // cmacgm
-      cma: 'CMA CGM+',
+      cma: 'CMA CGM+ (VAS)',
       // 关于我们
       about: 'About CMA CGM',
       //新闻咨询

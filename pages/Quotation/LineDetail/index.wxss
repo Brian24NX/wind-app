@@ -69,7 +69,7 @@
 
 .yunshuContainers {
   padding: 0 20rpx 0 80rpx;
-  
+
 }
 
 .contents {
@@ -245,4 +245,29 @@
 .diquContainer {
   display: flex;
   align-items: center;
+}
+
+.co2 {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+  padding: 40rpx 10rpx;
+  border-top: 1rpx solid #EEEEEE;
+  margin: 50rpx auto 0;
+  width: 594rpx;
+}
+
+.co2 image {
+  width: 48rpx;
+  height: 54rpx;
+}
+
+.co2 .co2Num {
+  font-size: 48rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  margin: 0 16rpx 0 26rpx;
 }
