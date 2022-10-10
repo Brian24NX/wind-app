@@ -17,11 +17,11 @@
     </view>
     <view class="categoryLists2">
       <scroll-view class="categoryList" scroll-x scroll-with-animation scroll-left="{{scrollLeft}}">
-      <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" id="categoryId-{{item.id}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
-        <text>{{language === 'zh' ? item.categoryCn : item.category}}</text>
-        <view class="line"></view>
-      </view>
-    </scroll-view>
+        <view class="oneCategory {{categoryId === item.id ? 'categoryActived' : ''}}" id="categoryId-{{item.id}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.id}}">
+          <text>{{language === 'zh' ? item.categoryCn : item.category}}</text>
+          <view class="line"></view>
+        </view>
+      </scroll-view>
     </view>
   </view>
   <view class="usefulListContainer">

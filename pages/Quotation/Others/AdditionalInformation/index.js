@@ -12,7 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-        const pages = getCurrentPages()
+    const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({

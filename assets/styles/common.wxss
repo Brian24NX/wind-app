@@ -1,9 +1,16 @@
 /* 通配置样式 */
-page,view,text,swiper,swiper-item,image,navigator{
+page,
+view,
+text,
+swiper,
+swiper-item,
+image,
+navigator {
   padding: 0;
-  margin:0;
+  margin: 0;
   box-sizing: border-box;
 }
+
 /* 超出... */
 .text-ellipsis {
   display: inline-block;
@@ -11,41 +18,51 @@ page,view,text,swiper,swiper-item,image,navigator{
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 /* width, height */
 .w-100 {
   width: 100%;
 }
+
 .h-100 {
   height: 100%;
 }
+
 /* flex 布局常用的 */
 .flex {
   display: flex;
 }
+
 .flex-column {
   flex-direction: column;
 }
+
 .flex-wrap {
   flex-wrap: wrap;
 }
+
 .ai-center {
   align-items: center;
 }
+
 .jc-center {
   justify-content: center;
 }
-.jc-between{
+
+.jc-between {
   justify-content: space-between;
 }
-.jc-around{
+
+.jc-around {
   justify-content: space-around;
 }
+
 .flex-1 {
   flex: 1;
 }
 
 /* 清楚浮动 */
-.clearfix:after{
+.clearfix:after {
   visibility: hidden;
   display: block;
   font-size: 0;
@@ -53,6 +70,7 @@ page,view,text,swiper,swiper-item,image,navigator{
   clear: both;
   height: 0;
 }
+
 .clearfix {
   zoom: 1;
 }

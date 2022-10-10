@@ -119,7 +119,7 @@ Component({
             icon: 'none'
           })
         }
-        
+
       })
     }
   }

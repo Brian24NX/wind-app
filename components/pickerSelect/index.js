@@ -5,7 +5,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    list: {//下拉框数据来源
+    list: { //下拉框数据来源
       type: [Array, Object],
       value: [],
       description: '数据源',
@@ -14,14 +14,14 @@ Component({
           list: newVal,
           list2: newVal
         })
-     
+
       }
     },
-    _width: {//组件宽度
+    _width: { //组件宽度
       type: String,
       value: "100rpx"
     },
-    _height: {//组件高度
+    _height: { //组件高度
       type: String,
       value: "100rpx"
     },
@@ -39,9 +39,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    picker_value: '',//输入框值
-    index: 0,//下拉框下标
-    list2: []//下拉框数据
+    picker_value: '', //输入框值
+    index: 0, //下拉框下标
+    list2: [] //下拉框数据
   },
   ready() {
     _self = this;

@@ -21,7 +21,7 @@ Page({
     this.initLanguage();
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function () {},
 
   clearInput() {
     this.setData({

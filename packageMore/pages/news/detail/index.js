@@ -37,7 +37,7 @@ Page({
     })
   },
 
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     return {
       path: '/packageMore/pages/news/detail/index?id=' + this.data.id
     }
@@ -45,7 +45,9 @@ Page({
 
   // 获取新闻详情
   getNewsDetail() {
-    newsDetail({id: this.data.id}).then(res=>{
+    newsDetail({
+      id: this.data.id
+    }).then(res => {
       this.setData({
         newsDetail: res.data
       })
@@ -59,7 +61,7 @@ Page({
       analysisType: 4,
       operateType: 3,
       statisti: this.data.id
-    }).then(res=>{
+    }).then(res => {
       this.setData({
         zanStatus: true
       })

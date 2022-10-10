@@ -48,7 +48,7 @@ function formatEnDateUtc(date, fuhao, type, hideWeek, needTime) {
   var mn = dt.getMonth(),
     wn = dt.getDay(),
     dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
-    hour = dt.getHours() > 9 ? dt.getHours() : '0' + dt.getHours(),
+  hour = dt.getHours() > 9 ? dt.getHours() : '0' + dt.getHours(),
     min = dt.getMinutes() > 9 ? dt.getMinutes() : '0' + dt.getMinutes()
   var weekStr = (type === 'short' ? weeks[wn] : week[wn])
   if (!fuhao) {

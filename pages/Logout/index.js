@@ -20,7 +20,7 @@ Page({
     wx.removeStorageSync('userInfo')
     wx.removeStorageSync('ccgId')
     wx.removeStorageSync('partnerCode')
-    setTimeout(()=>{
+    setTimeout(() => {
       wx.reLaunch({
         url: '/pages/Home/index',
       })

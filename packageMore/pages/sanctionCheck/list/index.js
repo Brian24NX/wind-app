@@ -66,7 +66,7 @@ Page({
     this.getSanctionCommodityList()
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function () {},
 
   // 输入框
   setInput(e) {

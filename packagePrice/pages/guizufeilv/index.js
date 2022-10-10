@@ -36,7 +36,7 @@ Page({
     this.getDemurragePdfList()
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function () {},
 
   interLanguage() {
     const language = languageUtils.languageVersion()

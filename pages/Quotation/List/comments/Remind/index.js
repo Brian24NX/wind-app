@@ -25,7 +25,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    continue() {
+    continue () {
       this.triggerEvent('continue')
     },
     onClickHide() {

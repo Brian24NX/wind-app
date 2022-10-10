@@ -73,7 +73,7 @@ Page({
       containers: data2.containers,
       commodityName: data2.commodityName
     })
-    
+
 
   },
 

@@ -55,7 +55,7 @@ Page({
     })
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function () {},
 
   initLanguage() {
     wx.setNavigationBarTitle({

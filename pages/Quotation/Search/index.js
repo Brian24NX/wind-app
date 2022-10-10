@@ -724,7 +724,7 @@ Page({
           url: '/pages/Quotation/NearPort/index',
         })
       }
-      
+
     })
   },
 

@@ -63,8 +63,8 @@ Page({
     this.setDefaultLocation()
   },
 
-  onShareAppMessage: function() {},
-  
+  onShareAppMessage: function () {},
+
   //初始化语言
   initLanguage() {
     this.setData({

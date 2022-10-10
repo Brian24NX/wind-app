@@ -25,10 +25,10 @@
     </scroll-view>
     <image class="calendarCenter" src="/assets/img/result/shadow@2x.png"></image>
     <!-- <picker mode="date" value="{{searchDate}}" start="1970-09-01" end="2079-09-01" bindchange="bindTimeChange"> -->
-      <view class="calendarRight" catchtap="openDate">
-        <image src="/assets/img/result/calendar@2x.png"></image>
-        <view>{{languageContent.calendar}}</view>
-      </view>
+    <view class="calendarRight" catchtap="openDate">
+      <image src="/assets/img/result/calendar@2x.png"></image>
+      <view>{{languageContent.calendar}}</view>
+    </view>
     <!-- </picker> -->
   </view>
   <view wx:if="{{viewactived}}" class="tabContainers">

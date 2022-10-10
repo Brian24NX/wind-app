@@ -1,17 +1,17 @@
 <view class="myNavbarContainer" style="padding-top: {{navTop}}px;">
- <view class="myNavbarContent">
-  <view class="myNavBarTitle" style="height: {{navHeight}}px;">{{languageContent.title}}</view>
-  <view class="userInfoContainer" wx:if="{{needLogin}}" catchtap="toLogin">
+  <view class="myNavbarContent">
+    <view class="myNavBarTitle" style="height: {{navHeight}}px;">{{languageContent.title}}</view>
+    <view class="userInfoContainer" wx:if="{{needLogin}}" catchtap="toLogin">
       <image class="avatar" src="/assets/img/myAccount/avatar@2x.png"></image>
       <view class="infoCenter noLogin">{{languageContent.login}}</view>
       <van-icon name="arrow" color="#04246A" />
-  </view>
-  <view class="userInfoContainer" wx:else catchtap="toBaseInfo">
+    </view>
+    <view class="userInfoContainer" wx:else catchtap="toBaseInfo">
       <view class="avatar2">{{userInfo.avatar}}</view>
       <view class="infoCenter">{{userInfo.firstName}} {{userInfo.lastName}}</view>
       <van-icon name="arrow" color="#04246A" />
+    </view>
   </view>
- </view>
 </view>
 
 <view class="myContainer">

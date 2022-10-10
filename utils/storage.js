@@ -1,16 +1,16 @@
-const config  = require('./config')
+const config = require('./config')
 
 export const getStorageInfo = () => {
   return wx.getStorageInfoSync()
 }
 
 export const setStorage = (k, v) => {
-	const key = getStorageKey(k)
+  const key = getStorageKey(k)
   wx.setStorageSync(key, v)
 }
 
 export const getStorage = (k) => {
-	const key = getStorageKey(k)
+  const key = getStorageKey(k)
   return wx.getStorageSync(key)
 }
 
@@ -24,5 +24,5 @@ export const clearStorage = () => {
 }
 
 const getStorageKey = (k) => {
-	return `${config['version']}_${k}`.toUpperCase()
+  return `${config['version']}_${k}`.toUpperCase()
 }

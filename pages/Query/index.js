@@ -70,19 +70,19 @@ Page({
     showRemind: false
   },
 
-  onLoad: function() {
+  onLoad: function () {
     this.initLanguage();
   },
 
-  onShow: function() {
+  onShow: function () {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: 1
       })
     }
   },
-  
-  onShareAppMessage: function() {},
+
+  onShareAppMessage: function () {},
 
   toFunction(e) {
     const index = e.currentTarget.dataset.index
@@ -145,7 +145,7 @@ Page({
       })
     }
   },
-  
+
   //初始化语言
   initLanguage() {
     //获取当前小程序语言版本所对应的字典变量

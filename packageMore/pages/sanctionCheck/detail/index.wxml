@@ -9,6 +9,6 @@
   <view class="type">{{languageContent.type}}: {{sanctionDetail.type || '-'}}</view>
   <view class="type">{{languageContent.code}}: {{sanctionDetail.referenceNo || '-'}}</view>
   <view class="sanctionContent">
-  <mp-html content="{{language === 'zh' ? sanctionDetail.remarkCn : sanctionDetail.remarkEn}}" />
+    <mp-html content="{{language === 'zh' ? sanctionDetail.remarkCn : sanctionDetail.remarkEn}}" />
   </view>
 </view>

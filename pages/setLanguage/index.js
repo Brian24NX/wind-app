@@ -21,7 +21,7 @@ Page({
     })
   },
 
-  
+
   //中英文切换
   switchLanguage(e) {
     const language = e.currentTarget.dataset.language

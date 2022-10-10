@@ -25,5 +25,5 @@
 .img {
   width: 60rpx;
   height: 60rpx;
-  margin-right:10rpx; 
+  margin-right: 10rpx;
 }

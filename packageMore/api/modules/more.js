@@ -1,5 +1,6 @@
 const {
-  getRequest, postRequest
+  getRequest,
+  postRequest
 } = require('../../../api/http')
 
 // 获取列表

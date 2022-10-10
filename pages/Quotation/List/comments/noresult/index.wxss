@@ -19,7 +19,7 @@
   display: block;
 }
 
-.nosolutions{
+.nosolutions {
   font-size: 36rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
@@ -27,7 +27,8 @@
   line-height: 50rpx;
   text-align: center;
 }
-.settlesolutions{
+
+.settlesolutions {
   font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;

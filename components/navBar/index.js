@@ -65,24 +65,24 @@ Component({
       value: 1
     }
   },
-  created: function() {
+  created: function () {
     this.getSystemInfo();
   },
-  attached: function() {
+  attached: function () {
     this.setStyle(); //设置样式
   },
   data: {},
   pageLifetimes: {
-    show: function() {
+    show: function () {
       if (getApp().globalSystemInfo.ios) {
         this.getSystemInfo();
         this.setStyle(); //设置样式1
       }
     },
-    hide: function() {}
+    hide: function () {}
   },
   methods: {
-    setStyle: function(life) {
+    setStyle: function (life) {
       const {
         statusBarHeight,
         navBarHeight,
@@ -91,7 +91,11 @@ Component({
         ios,
         windowWidth
       } = getApp().globalSystemInfo;
-      const { back, home, title } = this.data;
+      const {
+        back,
+        home,
+        title
+      } = this.data;
       let rightDistance = windowWidth - capsulePosition.right; //胶囊按钮右侧到屏幕右侧的边距
       let leftWidth = windowWidth - capsulePosition.left; //胶囊按钮左侧到屏幕右侧的边距
 
@@ -135,17 +139,19 @@ Component({
         });
       }
     },
-    _showChange: function(value) {
+    _showChange: function (value) {
       this.setStyle();
     },
     // 返回事件
-    back: function() {
-      this.triggerEvent('back', { delta: this.data.delta });
+    back: function () {
+      this.triggerEvent('back', {
+        delta: this.data.delta
+      });
     },
-    home: function() {
+    home: function () {
       this.triggerEvent('home', {});
     },
-    search: function() {
+    search: function () {
       this.triggerEvent('search', {});
     },
     getSystemInfo() {
@@ -199,7 +205,7 @@ Component({
         let navBarHeight = '';
         if (!systemInfo.statusBarHeight) {
           systemInfo.statusBarHeight = systemInfo.screenHeight - systemInfo.windowHeight - 20;
-          navBarHeight = (function() {
+          navBarHeight = (function () {
             let gap = rect.top - systemInfo.statusBarHeight;
             return 2 * gap + rect.height;
           })();
@@ -207,7 +213,7 @@ Component({
           systemInfo.statusBarHeight = 0;
           systemInfo.navBarExtendHeight = 0; //下方扩展4像素高度 防止下方边距太小
         } else {
-          navBarHeight = (function() {
+          navBarHeight = (function () {
             let gap = rect.top - systemInfo.statusBarHeight;
             return systemInfo.statusBarHeight + 2 * gap + rect.height;
           })();

@@ -204,9 +204,9 @@ Page({
     //     showRemind: true
     //   })
     // } else {
-      wx.navigateTo({
-        url: `/pages/Quotation/Detail/index?index=${currentIndex}`,
-      })
+    wx.navigateTo({
+      url: `/pages/Quotation/Detail/index?index=${currentIndex}`,
+    })
     // }
   },
 

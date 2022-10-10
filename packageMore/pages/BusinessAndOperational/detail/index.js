@@ -42,7 +42,7 @@ Page({
     })
   },
 
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     return {
       path: '/packageMore/pages/BusinessAndOperational/detail/index?id=' + this.data.id
     }

@@ -89,8 +89,8 @@ App({
                 wx.showModal({
                   title: 'Warm prompt',
                   content: 'This version update involves the addition of new functions, and the old version cannot be accessed',
-                  showCancel: false,//隐藏取消按钮
-                  confirmText: "Confirm",//只保留确定更新按钮
+                  showCancel: false, //隐藏取消按钮
+                  confirmText: "Confirm", //只保留确定更新按钮
                   success: function (res) {
                     if (res.confirm) {
                       //下载新版本，并重新应用

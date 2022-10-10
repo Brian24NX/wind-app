@@ -69,7 +69,7 @@ Page({
     this.getNewsList()
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function () {},
 
   setInput(e) {
     this.setData({

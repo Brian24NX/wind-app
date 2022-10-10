@@ -62,7 +62,7 @@ Page({
     this.getBusiniessOpentionalList()
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function () {},
 
   initLanguage() {
     wx.setNavigationBarTitle({
@@ -91,7 +91,9 @@ Page({
 
   // 分类列表
   getCategoryList() {
-    categoryList({type: 2}).then(res=>{
+    categoryList({
+      type: 2
+    }).then(res => {
       const all = [{
         id: '',
         category: 'All',

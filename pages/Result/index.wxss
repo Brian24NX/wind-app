@@ -32,10 +32,10 @@
 
 .searchResultTopContainer .searchTop .serchLeft .qiyunStr view {
   display: inline-block;
-  white-space: nowrap; 
-  max-width: 430rpx; 
+  white-space: nowrap;
+  max-width: 430rpx;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 
 .searchResultTopContainer .searchTop .serchLeft .qiyunStr text {
@@ -44,10 +44,10 @@
 
 .searchResultTopContainer .searchTop .serchLeft .qiyunStr2 {
   display: inline-block;
-  white-space: nowrap; 
-  width: 100%; 
+  white-space: nowrap;
+  width: 100%;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 
 .searchResultTopContainer .searchTop .searchLine {

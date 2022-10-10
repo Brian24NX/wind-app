@@ -150,7 +150,7 @@ Page({
             noData: true
           })
         }
-        
+
       }, () => {
         this.setData({
           loading: false,

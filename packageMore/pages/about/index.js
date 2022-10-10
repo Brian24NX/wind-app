@@ -26,7 +26,7 @@ Page({
     })
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function () {},
 
   copy() {
     wx.setClipboardData({

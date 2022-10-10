@@ -148,7 +148,7 @@ Page({
     }
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function () {},
 
   //初始化语言
   initLanguage() {

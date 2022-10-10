@@ -254,7 +254,7 @@ Page({
         viewactived: false
       })
     }
-    
+
   },
 
   async getOneList() {

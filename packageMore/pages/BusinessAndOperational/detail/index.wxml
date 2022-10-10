@@ -11,7 +11,7 @@
   <view class="rich">
     <mp-html content="{{businessDetail.content}}" />
   </view>
-  <view class="oneTemplate"wx:if="{{businessDetail.filepath}}" catchtap="preview">
+  <view class="oneTemplate" wx:if="{{businessDetail.filepath}}" catchtap="preview">
     <image src="/assets/img/more/pdf@2x.png" class="infoIcon"></image>
     <view class="templateContent">
       <view class="templateName">{{businessDetail.fileName}}</view>

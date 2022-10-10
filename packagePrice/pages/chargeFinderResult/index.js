@@ -50,13 +50,13 @@ Page({
       portOfDischarge: this.data.chargeFinderSearchKey.placeOfDischarge,
       reefer: this.data.chargeFinderSearchKey.reefer === '1' ? false : true,
       simulationDate: this.data.chargeFinderSearchKey.simulationDate
-    }).then(res=>{
+    }).then(res => {
       if (res.data.length) {
         const data = res.data[0]
         const tariffDesc = data.tariffDesc
-        const mainCharge = data.tarrifInformation.filter(i=> (i.chargeClass === 'MAIC' && i.packageTariffs[0].fixedCharge.amount))
-        const otherCharge = data.tarrifInformation.filter(i=> (i.chargeClass === 'N' && i.packageTariffs[0].fixedCharge.amount))
-        const additionalInformation = data.tarrifInformation.filter(i=> i.packageTariffs[0].fixedCharge.amount === 0)
+        const mainCharge = data.tarrifInformation.filter(i => (i.chargeClass === 'MAIC' && i.packageTariffs[0].fixedCharge.amount))
+        const otherCharge = data.tarrifInformation.filter(i => (i.chargeClass === 'N' && i.packageTariffs[0].fixedCharge.amount))
+        const additionalInformation = data.tarrifInformation.filter(i => i.packageTariffs[0].fixedCharge.amount === 0)
         this.setData({
           tariffDesc,
           mainCharge,

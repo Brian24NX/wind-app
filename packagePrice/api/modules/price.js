@@ -1,5 +1,6 @@
 const {
-  getRequest, postRequest
+  getRequest,
+  postRequest
 } = require('../../../api/http')
 
 // 获取柜租费率列表
