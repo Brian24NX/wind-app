@@ -165,6 +165,10 @@
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
         <image class="loadings" src="/assets/img/instantQuote/loading-blue.svg" hidden="{{!commodityLoading}}" mode="aspectFit"></image>
+        <view class="noRequest commodityRequest" wx:if="{{showRemind6}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
       </view>
       <view class="btn" style="margin-top: 40rpx;">
         <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search}}</button>

@@ -111,6 +111,11 @@ page {
   align-items: center;
 }
 
+.queryContainer .searchList .commodityRequest {
+  left: 122rpx;
+  top: 134rpx;
+}
+
 .queryContainer .searchList .noRequest image {
   width: 28rpx;
   height: 28rpx;

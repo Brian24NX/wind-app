@@ -61,6 +61,7 @@ Page({
     showRemind3: false,
     showRemind4: false,
     showRemind5: false,
+    showRemind6: false,
     showDelete1: false,
     showDelete2: false,
     showDelete3: false,
@@ -390,10 +391,13 @@ Page({
 
   // 获取商品
   getCommodityList() {
-    if (!this.data.portOfLoading || !this.data.portOfDischarge || !this.data.equipmentType) return
     this.setData({
       commodityCode: '',
       commodityName: '',
+      commodityList: []
+    })
+    if (!this.data.portOfLoading || !this.data.portOfDischarge || !this.data.equipmentType) return
+    this.setData({
       commodityLoading: true
     })
     getCommodityLists({
@@ -500,7 +504,8 @@ Page({
       this.setData({
         commodityCode: e.detail.code,
         commodityName: this.data.language === 'en' ? (e.detail.en || e.detail.zh) : e.detail.zh,
-        shippingCompany: e.detail.shipComp ? e.detail.shipComp : '0001'
+        shippingCompany: e.detail.shipComp ? e.detail.shipComp : '0001',
+        showRemind6: false
       })
     }
     this.onClose()
@@ -610,7 +615,16 @@ Page({
         showRemind5: false
       })
     }
-    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
+    if (!this.data.commodityCode) {
+      this.setData({
+        showRemind6: true
+      })
+    } else {
+      this.setData({
+        showRemind6: false
+      })
+    }
+    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6) return
     this.checkAccessToken(() => {
       if (this.data.commodityCode === "FAK") {
         this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
@@ -745,7 +759,6 @@ Page({
       finalPlaceOfDeliveryLabel: '',
       pollist: [],
       podlist: [],
-
       simulationDate: this.getDate(),
       equipmentType: this.data.equipmentTypeList[0].code,
       equipmentTypeName: this.data.language === 'zh' ? this.data.equipmentTypeList[0].nameCn : this.data.equipmentTypeList[0].nameEn,
@@ -759,6 +772,7 @@ Page({
       showRemind3: false,
       showRemind4: false,
       showRemind5: false,
+      showRemind6: false,
       showDelete1: false,
       showDelete2: false,
       showDelete3: false,
