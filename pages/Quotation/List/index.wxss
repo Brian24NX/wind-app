@@ -1,12 +1,11 @@
 /* pages/Result/index.wxss */
 .searchResultTopContainer {
   background-color: #F0F1F5;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 3;
-  height: 280rpx;
   padding-top: 30rpx;
 }
 
@@ -73,7 +72,6 @@
   background-color: #F0F1F5;
   padding-left: 30rpx;
   padding-right: 30rpx;
-  padding-top: 280rpx;
 }
 
 .resultContainers .oneResult {

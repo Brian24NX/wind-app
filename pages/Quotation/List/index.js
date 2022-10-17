@@ -15,6 +15,8 @@ Page({
     isPhoneX: getApp().globalData.isPhoneX,
     oldQuoteLineList: [],
     traceId: '',
+    containers: 0,
+    hasContainers: 0,
     loggedId: '',
     simulationDate: '',
     quoteLineList: [],
@@ -53,6 +55,7 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({
+      containers: data.containers,
       equipmentSize: data.equipmentType,
       shippingCompany: data.shippingCompany,
       simulationDate: data.simulationDate,
@@ -139,9 +142,11 @@ Page({
               "surchargeFromAqua": {
                 "offerId": item.offerId,
                 "traceId": this.data.traceId,
-                "equipmentSizeType": this.data.equipmentType,
+                "equipmentSizeType": this.data.equipmentSize,
                 "currencyCode": item.quoteLines[0].equipments[0].currencyCode,
-                "oceanFreightRate": item.quoteLines[0].equipments[0].oceanFreightRate
+                "oceanFreightRate": item.quoteLines[0].equipments[0].oceanFreightRate,
+                "nextDepartureScheduleNumber": item.scheduleNumber,
+                "nextDepartureSolutionNumber": item.solutionNumber
               }
             }
           } else {
@@ -164,8 +169,9 @@ Page({
           }
           setTimeout(() => {
             if (!item.surchargeDetails) {
-              getQuotationSurchargeDetail(params).then(res => {
+              getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(res => {
                 item.isLoading = false
+                item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
                 item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
                 this.setData({
                   quoteLineList: this.data.quoteLineList
@@ -203,20 +209,24 @@ Page({
       currentIndex
     })
     if (this.data.quoteLineList[currentIndex].isLoading || !this.data.quoteLineList[currentIndex].surchargeDetails) return
-    // if (!this.data.quoteLineList[currentIndex].needRemind) {
-    //   this.setData({
-    //     showRemind: true
-    //   })
-    // } else {
-    wx.navigateTo({
-      url: `/pages/Quotation/Detail/index?index=${currentIndex}`,
-    })
-    // }
+    if (this.data.quoteLineList[currentIndex].noOfContainersAvailable) {
+      this.setData({
+        showRemind: true,
+        hasContainers: this.data.quoteLineList[currentIndex].noOfContainersAvailable
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/Quotation/Detail/index?index=${currentIndex}`,
+      })
+    }
   },
 
   onContinue() {
+    this.setData({
+      showRemind: false
+    })
     wx.navigateTo({
-      url: `/pages/Quotation/Detail/index?index=${this.data.currentIndex}`,
+      url: `/pages/Quotation/Detail/index?index=${this.data.currentIndex}&containers=${this.data.hasContainers}`,
     })
   },
 

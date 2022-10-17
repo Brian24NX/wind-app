@@ -91,14 +91,14 @@
           <view>Total per container</view>
         </view>
         <view class="rateTotalRight">
-          <text class="ratePrice">3900</text>
-          <text>EUR</text>
+          <text class="ratePrice">{{totalChargeAmount}}</text>
+          <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
         </view>
       </view>
       <view class="oneRates">
         <view class="oneRate">
-          <view class="oneRateLeft">
-            <view class="rateCheckBox">
+          <view class="oneRateLeft" catchtap="changeCheck" data-id="oceanFreight">
+            <view class="rateCheckBox {{quotationDetail.surchargeDetails.oceanFreight.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
             <text>Ocean Freight</text>
@@ -112,8 +112,8 @@
       </view>
       <view class="oneRates">
         <view class="oneRate">
-          <view class="oneRateLeft">
-            <view class="rateCheckBox">
+          <view class="oneRateLeft" catchtap="changeCheck" data-id="freightCharges">
+            <view class="rateCheckBox {{quotationDetail.surchargeDetails.freightCharges.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
             <text>Charges payable as per freight</text>
@@ -132,8 +132,8 @@
       </view>
       <view class="oneRates">
         <view class="oneRate">
-          <view class="oneRateLeft">
-            <view class="rateCheckBox">
+          <view class="oneRateLeft" catchtap="changeCheck" data-id="prepaidCharges">
+            <view class="rateCheckBox {{quotationDetail.surchargeDetails.prepaidCharges.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
             <text>Charges payable at export (prepaid)</text>
@@ -152,8 +152,8 @@
       </view>
       <view class="oneRates">
         <view class="oneRate">
-          <view class="oneRateLeft">
-            <view class="rateCheckBox">
+          <view class="oneRateLeft" catchtap="changeCheck" data-id="collectCharges">
+            <view class="rateCheckBox {{quotationDetail.surchargeDetails.collectCharges.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
             <text>Charges payable at import (Collect)</text>
@@ -243,12 +243,12 @@
 <view class="bottomButtonContainer">
   <view class="bottomButtonLeft">
     <view class="bottomPrices">
-      <view class="bottomPrice">3900</view>
-      <view>EUR</view>
+      <view class="bottomPrice">{{totalChargeAmount * containers}}</view>
+      <view>{{quotationDetail.surchargeDetails.perBLCharges.currency.code}}</view>
     </view>
-    <view class="containerNumber">For 9 container (s)</view>
+    <view class="containerNumber">For {{containers}} container (s)</view>
   </view>
-  <view class="buttons" catchtap="submit">{{isFirst ? 'Next' : 'Save quote to book'}}</view>
+  <view class="buttons" catchtap="submit">{{'Save quote to book'}}</view>
 </view>
 
 <additional-services id="additionalServices"></additional-services>

@@ -6,15 +6,41 @@ Page({
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
+    language: 'zh',
     showEmail: false,
-    reference: 'QSPPOT342782'
+    reference: '',
+    quotationDetail: {},
+    equipmentTypeName: '',
+    weight: '',
+    containers: '',
+    commodityName: '',
+    shippingCompany: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    wx.setNavigationBarTitle({
+      title: languageUtils.languageVersion().lang.page.qutationResult.title
+    })
+    this.setData({
+      languageContent: languageUtils.languageVersion().lang.page.qutationResult,
+      language: languageUtils.languageVersion().lang.page.langue
+    })
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
+    this.setData({
+      reference: options.quotationId,
+      quotationDetail: data.quotationDetail,
+      equipmentTypeName: data.equipmentTypeName,
+      weight: data.weight,
+      containers: data.containers,
+      commodityName: data.commodityName,
+      shippingCompany: data.shippingCompany
+    })
   },
 
   copyReference() {

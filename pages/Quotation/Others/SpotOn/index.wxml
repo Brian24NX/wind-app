@@ -25,6 +25,6 @@
       <image src="/assets/img/home/templatelinks@2x.png"></image>
       <view>Consult detailed spotOn terms & conditions</view>
     </view>
-    <view class="copy">Copy</view>
+    <view class="copy" catchtap="copy">Copy</view>
   </view>
 </view>

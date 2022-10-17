@@ -277,8 +277,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #04246A;
+  background-color: #ffffff;
   margin-right: 20rpx;
+}
+
+.oneRate .oneRateLeft .rateChecked {
+  background-color: #04246A;
 }
 
 .oneRate .oneRateRight {

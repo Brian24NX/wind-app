@@ -1,5 +1,8 @@
 // pages/Quotation/Detail/index.js
 const languageUtil = require('../../../utils/languageUtils')
+import {
+  createQuotationQuotation
+} from '../../../api/modules/quotation';
 
 Page({
 
@@ -32,11 +35,15 @@ Page({
     toLabel: '',
     toCode: '',
     quotationDetail: {},
+    totalChargeAmount: 0,
+    equipmentTypeSize: '',
     equipmentTypeName: '',
     weight: '',
     containers: '',
     commodityName: '',
-    shippingCompany: ''
+    shippingCompany: '',
+    simulationDate: '',
+    traceId: ''
   },
 
   /**
@@ -50,13 +57,18 @@ Page({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue
     })
-    this.setDefaultInfo(Number(options.index))
+    this.setDefaultInfo(Number(options.index), Number(options.containers))
   },
 
-  setDefaultInfo(index) {
+  setDefaultInfo(index, containers) {
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
+    let quotationDetail = data.quoteLineList[index]
+    quotationDetail.surchargeDetails.oceanFreight.isChecked = true
+    quotationDetail.surchargeDetails.freightCharges.isChecked = true
+    quotationDetail.surchargeDetails.prepaidCharges.isChecked = true
+    quotationDetail.surchargeDetails.collectCharges.isChecked = true
     this.setData({
       fromLabel: data.fromLabel,
       fromCode: data.fromCode,
@@ -65,18 +77,48 @@ Page({
       receiptHaulage: data.receiptHaulage,
       deliveryHaulage: data.deliveryHaulage,
       shippingCompany: data.shippingCompany,
-      quotationDetail: data.quoteLineList[index]
+      quotationDetail,
+      simulationDate: data.simulationDate,
+      traceId: data.traceId
     })
+    this.calculatedCharges()
     const currentPage2 = pages[pages.length - 3]
     const data2 = currentPage2.data
     this.setData({
+      equipmentTypeSize: data2.equipmentType,
       equipmentTypeName: data2.equipmentTypeName,
       weight: data2.weight,
-      containers: data2.containers,
+      containers: containers || data2.containers,
       commodityName: data2.commodityName
     })
+  },
 
+  calculatedCharges() {
+    const surchargeDetails = this.data.quotationDetail.surchargeDetails
+    let totalChargeAmount = 0
+    if (surchargeDetails.oceanFreight.isChecked) {
+      totalChargeAmount = totalChargeAmount + surchargeDetails.oceanFreight.price.amount
+    }
+    if (surchargeDetails.freightCharges.isChecked) {
+      totalChargeAmount = totalChargeAmount + surchargeDetails.freightCharges.amount
+    }
+    if (surchargeDetails.prepaidCharges.isChecked) {
+      totalChargeAmount = totalChargeAmount + surchargeDetails.prepaidCharges.amount
+    }
+    if (surchargeDetails.collectCharges.isChecked) {
+      totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
+    }
+    this.setData({
+      totalChargeAmount: totalChargeAmount || this.quotationDetail.surchargeDetails.totalCharge.amount
+    })
+  },
 
+  changeCheck(e) {
+    this.data.quotationDetail.surchargeDetails[e.currentTarget.dataset.id].isChecked = !this.data.quotationDetail.surchargeDetails[e.currentTarget.dataset.id].isChecked
+    this.setData({
+      quotationDetail: this.data.quotationDetail
+    })
+    this.calculatedCharges()
   },
 
   toOther(e) {
@@ -96,14 +138,31 @@ Page({
   },
 
   submit() {
-    if (this.data.isFirst) {
-      this.setData({
-        isFirst: false
-      })
+    // if (this.data.isFirst) {
+    // this.setData({
+    // isFirst: false
+    // })
+    // } else {
+    let params = {}
+    if (this.data.quotationDetail.quoteLines[0].quoteLineId) {
+
     } else {
-      wx.navigateTo({
-        url: '/pages/Quotation/Result/index',
-      })
+      params = {
+        "createAquaSpecialQuotation": {
+          "affiliates": [wx.getStorageSync('partnerCode')],
+          "simulationDate": this.data.simulationDate,
+          "equipmentSizeType": this.data.equipmentTypeSize,
+          "offerId": this.data.quotationDetail.offerId,
+          "traceId": this.data.traceId,
+          "shippingCompany": this.data.shippingCompany
+        }
+      }
     }
+    createQuotationQuotation(params, wx.getStorageSync('ccgId')).then(res => {
+      wx.navigateTo({
+        url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
+      })
+    })
+    // }
   }
 })

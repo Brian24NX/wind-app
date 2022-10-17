@@ -14,8 +14,8 @@ export const quotationSort = (params) => {
 }
 
 // 获取报价单详情
-export const getQuotationSurchargeDetail = (params) => {
-  return postRequest('/api/miniapp/quotationSurchargeDetailsSearch', params, true, true, true)
+export const getQuotationSurchargeDetail = (params, ccgId) => {
+  return postRequest(`/api/miniapp/${ccgId}/quotationSurchargeDetailsSearch`, params, true, true, true)
 }
 
 // 获取附近港口列表
@@ -31,4 +31,9 @@ export const quotationQuoteLinesSearch = (params) => {
 // 港口详情
 export const fuzzyPointSearch = (params) => {
   return getRequest('/api/miniapp/fuzzyPointSearch', params, true)
+}
+
+// 获取我的报价单列表
+export const createQuotationQuotation = (params, ccgId) => {
+  return postRequest(`/api/miniapp/${ccgId}/quotationQuotationCreate`, params, true, false, true)
 }

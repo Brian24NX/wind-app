@@ -451,6 +451,14 @@ Page({
         en: "Freight All Kinds",
         zh: '所有类型的费用'
       })
+      res.data.forEach(item => {
+        if (item.iQexcludedPartners) {
+          item.iQexcludedPartners = item.iQexcludedPartners.map(i => {
+            return i.code
+          })
+        }
+        delete item.iqexcludedPartners
+      })
       this.setData({
         commodityList: commodityList,
         pricingGroupSetups: res.data,
@@ -593,7 +601,8 @@ Page({
       this.setData({
         showRemind1: false
       })
-      var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
+      // ISTANBUL, AMBARLI PORT E. SIDE;TR;TRAVC
+      var reg = /^([ ]*[A-z0-9]+([\,\.\;]*)){2,}$/;
       if (this.data.portOfLoadingLabel) {
         if (!reg.test(this.data.portOfLoadingLabel)) {
           this.setData({

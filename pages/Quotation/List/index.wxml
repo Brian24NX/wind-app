@@ -39,7 +39,7 @@
         <view class="rightContainer">
           <view class="leftContent">
             <view class="time">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.departureDate, false, true) : commonFilters.formatEnDateLocal(item.departureDate, '-', '', false, true)}}</view>
-            <view class="time">{{fromLabel}}, {{fromCode}}</view>
+            <view class="time" style="max-width: 380rpx;">{{fromLabel}}, {{fromCode}}</view>
             <view class="ship">
               <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.vesselName}}</view>
@@ -78,9 +78,9 @@
             <text wx:else>{{languageContent.select}}</text>
           </view>
         </view>
-        <view class="warning" wx:if="{{item.isRemind}}">
+        <view class="warning" wx:if="{{item.noOfContainersAvailable}}">
           <image src="/assets/img/instantQuote/warning@2x.png"></image>
-          <text>9 container(s) remianing</text>
+          <text>{{item.noOfContainersAvailable}} container(s) remianing</text>
         </view>
       </block>
       <block wx:else>
@@ -94,7 +94,7 @@
   </view>
 </view>
 
-<remind show="{{showRemind}}" containers="{{50}}" hasContainers="{{9}}" bind:continue="onContinue" bind:hide="onClickHide"></remind>
+<remind show="{{showRemind}}" containers="{{containers}}" hasContainers="{{hasContainers}}" bind:continue="onContinue" bind:hide="onClickHide"></remind>
 
 <!-- 底部筛选条件 tabbar -->
 <foot-tab-bar wx:if="{{oldQuoteLineList.length}}" languageContent="{{languageContent}}" radio="{{sort}}" plans="{{plans}}" routesPlanList="{{sortSolutionServices}}" bind:tabbarchange="onTabbarChange" />

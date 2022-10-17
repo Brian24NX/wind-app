@@ -22,54 +22,60 @@
       </view>
       <view class="priceContainer">
         <view class="priceLeft">
-          <view class="days">32 DAYS</view>
-          <view>3 Transshipments</view>
+          <view class="days">{{quotationDetail.transitTime}} {{Number(quotationDetail.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
+          <view>{{quotationDetail.tranShipment.length ? quotationDetail.tranShipment.length + ' ' + languageContent.zhuanyun : languageContent.zhida}}</view>
         </view>
         <view class="priceRight">
           <text class="price">1000</text>
           <text>EUR</text>
         </view>
       </view>
-      <view class="solutionContainer">
+      <view class="solutionContainer" catchtap="toLineDetail">
         <view class="solutionLeft">
           <view class="solutionLeftOne">
             <image src="/assets/img/result/huolunhao@2x.png"></image>
-            <view>CMA CGM LA SCALA</view>
+            <view>{{quotationDetail.vesselName}}</view>
           </view>
           <view class="solutionLeftOne">
             <image src="/assets/img/result/hangxian@2x.png"></image>
-            <view>Service Pacific Express 3 / Service FEASIA9 via BUSAN, KOREA</view>
+            <view>{{quotationDetail.scheduleDescription}}</view>
           </view>
         </view>
+        <view class="solutionRight">
+        <image wx:if="{{shippingCompany === '0001'}}" src="/assets/img/instantQuote/CMA.svg" mode="aspectFit"></image>
+        <image wx:if="{{shippingCompany === '0002'}}" src="/assets/img/instantQuote/ANL.svg" mode="aspectFit"></image>
+        <image wx:if="{{shippingCompany === '0011'}}" src="/assets/img/instantQuote/CNC.svg" mode="aspectFit"></image>
+        <image wx:if="{{shippingCompany === '0015'}}" src="/assets/img/instantQuote/APL.svg" mode="aspectFit"></image>
         <van-icon name="arrow" color="#6B7790" />
+      </view>
       </view>
     </view>
     <view class="paramContainer">
       <view class="oneParams">
         <image src="/assets/img/instantQuote/param_1@2x.png"></image>
         <view>
-          <view class="paramValue">20' Dry St</view>
+          <view class="paramValue">{{equipmentTypeName}}</view>
           <view class="param">Equipment Type</view>
         </view>
       </view>
       <view class="oneParams">
         <image src="/assets/img/instantQuote/param_2@2x.png"></image>
         <view>
-          <view class="paramValue">10000</view>
+          <view class="paramValue">{{weight}}</view>
           <view class="param">Net Weight</view>
         </view>
       </view>
       <view class="oneParams">
         <image src="/assets/img/instantQuote/param_3@2x.png"></image>
         <view>
-          <view class="paramValue">2</view>
+          <view class="paramValue">{{containers}}</view>
           <view class="param">Number of container</view>
         </view>
       </view>
       <view class="oneParams">
         <image src="/assets/img/instantQuote/param_4@2x.png"></image>
         <view>
-          <view class="paramValue">Freight</view>
+          <view class="paramValue">{{commodityName}}</view>
           <view class="param">Commodity</view>
         </view>
       </view>
