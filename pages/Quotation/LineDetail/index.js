@@ -36,7 +36,9 @@ Page({
         pointfrom: data.fromLabel,
         pointto: data.toLabel,
         transitTime: Number(data.quotationDetail.transitTime),
-        transhipment: data.quotationDetail.tranShipment.length
+        transhipment: data.quotationDetail.tranShipment.length,
+        receiptHaulage: data.receiptHaulage.toLocaleUpperCase(),
+        deliveryHaulage: data.deliveryHaulage.toLocaleUpperCase()
       },
       shippingCompany: data.shippingCompany,
       totalCO2: data.quotationDetail.totalCO2,

@@ -188,8 +188,15 @@ Page({
       placeOfReceiptList: []
     })
     if (data.length < 2) {
+      this.setData({
+        placeOfReceiptList: []
+      })
       return
     }
+    this.getPorData(data)
+  }, 800),
+
+  getPorData(data) {
     this.setData({
       showPoR: true
     })
@@ -205,8 +212,10 @@ Page({
           placeOfReceiptList: res.data || []
         })
       }
+    }, () => {
+      this.getPorData(data)
     })
-  }, 800),
+  },
 
   //获取起运港的接口处理
   changepol: utils.debounce(function (e) {
@@ -219,8 +228,15 @@ Page({
       pollist: []
     })
     if (data.length < 2) {
+      this.setData({
+        pollist: []
+      })
       return
     }
+    this.getPolData(data)
+  }, 800),
+
+  getPolData(data) {
     this.setData({
       showPol: true
     })
@@ -235,8 +251,10 @@ Page({
           pollist: res.data || []
         })
       }
+    }, () => {
+      this.getPolData(data)
     })
-  }, 800),
+  },
 
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
@@ -249,8 +267,15 @@ Page({
       podlist: []
     })
     if (data.length < 2) {
+      this.setData({
+        podlist: []
+      })
       return
     }
+    this.getPodData(data)
+  }, 800),
+
+  getPodData(data) {
     this.setData({
       showPod: true
     })
@@ -265,8 +290,10 @@ Page({
           podlist: res.data || []
         })
       }
+    }, () => {
+      this.getPodData(data)
     })
-  }, 800),
+  },
 
   //获取目的地的接口处理
   changePlaceOfDelivery: utils.debounce(function (e) {
@@ -277,8 +304,15 @@ Page({
       placeOfDeliveryList: []
     })
     if (data.length < 2) {
+      this.setData({
+        placeOfDeliveryList: []
+      })
       return
     }
+    this.getPooData(data)
+  }, 800),
+
+  getPooData(data) {
     this.setData({
       showPoDe: true
     })
@@ -294,8 +328,10 @@ Page({
           placeOfDeliveryList: res.data || []
         })
       }
+    }, () => {
+      this.getPooData(data)
     })
-  }, 800),
+  },
 
   deleteValue(e) {
     const type = e.currentTarget.dataset.type

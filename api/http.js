@@ -9,7 +9,8 @@ const request = ({
   method,
   needAccessToken,
   contentType,
-  hideLoading
+  hideLoading,
+  needError
 }) => {
   return new Promise((resolve, reject) => {
     if (needAccessToken && !utils.checkAccessToken()) {
@@ -66,32 +67,40 @@ const request = ({
               })
             }, 3000)
           } else if (res.data.code == 408) {
-            wx.showToast({
-              title: languageUtil.languageVersion().lang.page.load.chaoshi,
-              icon: 'none'
-            })
+            if (!needError) {
+              wx.showToast({
+                title: languageUtil.languageVersion().lang.page.load.chaoshi,
+                icon: 'none'
+              })
+            }
             reject(res.data)
           } else if (res.data.code == 404) {
             reject(res.data)
           } else if (res.data.code == 403) {
-            wx.showToast({
-              title: languageUtil.languageVersion().lang.page.load.accessDenied,
-              icon: 'none'
-            })
+            if (!needError) {
+              wx.showToast({
+                title: languageUtil.languageVersion().lang.page.load.accessDenied,
+                icon: 'none'
+              })
+            }
             reject(res.data)
           } else {
+            if (!needError) {
+              wx.showToast({
+                title: languageUtil.languageVersion().lang.page.load.systemIsBusyNow,
+                icon: 'none'
+              })
+            }
+            reject(res.data)
+          }
+        } else {
+          if (!needError) {
+            // 返回错误提示信息
             wx.showToast({
               title: languageUtil.languageVersion().lang.page.load.systemIsBusyNow,
               icon: 'none'
             })
-            reject(res.data)
           }
-        } else {
-          // 返回错误提示信息
-          wx.showToast({
-            title: languageUtil.languageVersion().lang.page.load.systemIsBusyNow,
-            icon: 'none'
-          })
           reject(res.data)
         }
       },
@@ -134,25 +143,27 @@ Promise.prototype.finally = function (callback) {
   )
 }
 
-export const getRequest = (url, data, hideLoading, needAccessToken) => {
+export const getRequest = (url, data, hideLoading, needAccessToken, needError) => {
   return request({
     url,
     data,
     method: 'GET',
     needAccessToken,
     contentType: '',
-    hideLoading
+    hideLoading,
+    needError
   })
 }
 
-export const postRequest = (url, data, isJson, hideLoading, needAccessToken) => {
+export const postRequest = (url, data, isJson, hideLoading, needAccessToken, needError) => {
   return request({
     url,
     data,
     method: 'POST',
     needAccessToken,
     contentType: isJson ? 'application/json' : 'application/x-www-form-urlencoded',
-    hideLoading
+    hideLoading,
+    needError
   })
 }
 

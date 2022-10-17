@@ -23,6 +23,8 @@ Page({
     toLabel: '',
     fromCode: '',
     toCode: '',
+    receiptHaulage: '',
+    deliveryHaulage: '',
     currentPlan: null,
     sort: '1',
     plans: [],
@@ -57,7 +59,9 @@ Page({
       fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
       toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
       fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
-      toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1]
+      toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
+      receiptHaulage: data.receiptHaulage || '',
+      deliveryHaulage: data.deliveryHaulage || ''
     })
     if (data.resultResq.traceId) {
       this.setData({

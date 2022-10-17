@@ -125,6 +125,35 @@ function getShopName(list) {
   return name
 }
 
+// ======== Instant Quote Route Detail start ========
+var checkIsVessel2 = function (type) {
+  return type
+}
+
+var checkQiYunGangKou2 = function (index, list) {
+  var newList = list.slice(0, index)
+  var res = true
+  for (var i = 0; i < newList.length; i++) {
+    var element = newList[i];
+    if (checkIsVessel2(element.voyageRef)) {
+      res = false
+      break
+    }
+  }
+  return res
+}
+
+var checkXieHuoGangKou2 = function (index, list) {
+  var res = false
+  var element = list[index];
+  var element2 = list[index - 1];
+  if (!checkIsVessel2(element.voyageRef) && checkIsVessel2(element2.voyageRef)) {
+    res = true
+  }
+  return res
+}
+// ======== Instant Quote Route Detail end ========
+
 // 格式化金额
 function formatAmount(number, digit) {
   if (!number) number = 0;
@@ -201,6 +230,9 @@ module.exports = {
   checkQiYunGangKou: checkQiYunGangKou,
   checkXieHuoGangKou: checkXieHuoGangKou,
   getShopName: getShopName,
+  checkIsVessel2: checkIsVessel2,
+  checkQiYunGangKou2: checkQiYunGangKou2,
+  checkXieHuoGangKou2: checkXieHuoGangKou2,
   formatAmount: formatAmount,
   deleteStr: deleteStr,
   setChina: setChina,

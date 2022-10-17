@@ -28,7 +28,9 @@ Page({
     }],
     currentType: '1',
     pollist: [],
+    showPol: false,
     podlist: [],
+    showPod: false,
     date: '',
     showRemind1: false,
     showRemind2: false,
@@ -68,6 +70,42 @@ Page({
     })
   },
 
+  //获取起始港的接口处理
+  changepol: utils.debounce(function (e) {
+    const data = e['0'].detail.value
+    this.setData({
+      showDelete1: !!data,
+      showRemind1: false,
+      showRemind2: false
+    })
+    if (data.length < 2) {
+      this.setData({
+        pollist: []
+      })
+    }
+    this.getPolData(data)
+  }, 800),
+
+  getPolData(data) {
+    this.setData({
+      showPol: true
+    })
+    chargeFuzzySearch({
+      searchStr: data
+    }, true).then(res => {
+      this.setData({
+        showPol: false
+      })
+      if (res.data != '') {
+        this.setData({
+          pollist: res.data || []
+        })
+      }
+    }, () => {
+      this.getPolData(data)
+    })
+  },
+
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
     const data = e['0'].detail.value
@@ -82,40 +120,28 @@ Page({
       })
       return
     }
+    this.getPodData(data)
+  }, 800),
+
+  getPodData(data) {
+    this.setData({
+      showPod: true
+    })
     chargeFuzzySearch({
       searchStr: data
     }, true).then(res => {
+      this.setData({
+        showPod: false
+      })
       if (res.data != '') {
         this.setData({
           podlist: res.data || []
         })
       }
+    }, () => {
+      this.getPodData(data)
     })
-  }, 800),
-
-  //获取起始港的接口处理
-  changepol: utils.debounce(function (e) {
-    const data = e['0'].detail.value
-    this.setData({
-      showDelete1: !!data,
-      showRemind1: false,
-      showRemind2: false
-    })
-    if (data.length < 2) {
-      this.setData({
-        pollist: []
-      })
-    }
-    chargeFuzzySearch({
-      searchStr: data
-    }, true).then(res => {
-      if (res.data != '') {
-        this.setData({
-          pollist: res.data || []
-        })
-      }
-    })
-  }, 800),
+  },
 
   deleteValue(e) {
     const type = e.currentTarget.dataset.type

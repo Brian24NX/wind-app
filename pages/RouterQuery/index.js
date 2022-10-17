@@ -144,8 +144,8 @@ Page({
         podvalue: podobject.podvalue,
         polcode: polobject.polcode,
         podcode: podobject.podcode,
-        showDelete1: true,
-        showDelete2: true
+        showDelete1: polobject.polvalue ? true : false,
+        showDelete2: podobject.podvalue ? true : false
       })
       wx.setStorageSync('setHangXian', false)
       wx.removeStorageSync('polobject')
@@ -185,8 +185,15 @@ Page({
       pollist: []
     })
     if (data.length < 2) {
+      this.setData({
+        pollist: []
+      })
       return
     }
+    this.getPolData(data)
+  }, 800),
+
+  getPolData(data) {
     this.setData({
       showPol: true
     })
@@ -201,8 +208,10 @@ Page({
           pollist: res.data || []
         })
       }
+    }, () => {
+      this.getPolData(data)
     })
-  }, 800),
+  },
 
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
@@ -215,8 +224,15 @@ Page({
       podlist: []
     })
     if (data.length < 2) {
+      this.setData({
+        podlist: []
+      })
       return
     }
+    this.getPodData(data)
+  }, 800),
+
+  getPodData(data) {
     this.setData({
       showPod: true
     })
@@ -231,8 +247,10 @@ Page({
           podlist: res.data || []
         })
       }
+    }, () => {
+      this.getPodData(data)
     })
-  }, 800),
+  },
 
   deleteValue(e) {
     const type = e.currentTarget.dataset.type

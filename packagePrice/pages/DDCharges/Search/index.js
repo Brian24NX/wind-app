@@ -89,8 +89,15 @@ Page({
       pollist: []
     })
     if (data.length < 2) {
+      this.setData({
+        pollist: []
+      })
       return
     }
+    this.getPolData(data)
+  }, 800),
+
+  getPolData(data) {
     this.setData({
       showPol: true
     })
@@ -105,8 +112,10 @@ Page({
           pollist: res.data || []
         })
       }
+    }, () => {
+      this.getPolData(data)
     })
-  }, 800),
+  },
 
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
@@ -119,8 +128,15 @@ Page({
       podlist: []
     })
     if (data.length < 2) {
+      this.setData({
+        podlist: []
+      })
       return
     }
+    this.getPodData(data)
+  }, 800),
+
+  getPodData(data) {
     this.setData({
       showPod: true
     })
@@ -135,8 +151,10 @@ Page({
           podlist: res.data || []
         })
       }
+    }, () => {
+      this.getPodData(data)
     })
-  }, 800),
+  },
 
   deleteValue(e) {
     const type = e.currentTarget.dataset.type

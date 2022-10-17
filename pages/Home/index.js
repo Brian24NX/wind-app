@@ -1,8 +1,7 @@
 // pages/Home/index.js
 const app = getApp();
 import {
-  fuzzySearch,
-  analysis
+  fuzzySearch
 } from '../../api/modules/home';
 var languageUtil = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
@@ -130,11 +129,6 @@ Page({
         actived: options.actived
       })
     }
-    // analysis({
-    //   analysisType: 10,
-    //   operateType: 1,
-    //   statisti: 1
-    // })
   },
   /**
    * 生命周期函数--监听页面显示
@@ -280,8 +274,15 @@ Page({
       codePolList: []
     })
     if (data.length < 2) {
+      this.setData({
+        codePolList: []
+      })
       return
     }
+    this.getPolData(data)
+  }, 800),
+
+  getPolData(data) {
     this.setData({
       showPol: true
     })
@@ -296,8 +297,10 @@ Page({
           codePolList: res.data
         })
       }
+    }, () => {
+      this.getPolData(data)
     })
-  }, 800),
+  },
 
   // 设置卸货港
   setXieHuo: utils.debounce(function (e) {
@@ -307,11 +310,18 @@ Page({
       showRemind3: false,
       showRemind4: false,
       showPod: false,
-      codePolList: []
+      codePodList: []
     })
     if (data.length < 2) {
+      this.setData({
+        codePodList: []
+      })
       return
     }
+    this.getPodData(data)
+  }, 800),
+
+  getPodData(data) {
     this.setData({
       showPod: true
     })
@@ -326,8 +336,10 @@ Page({
           codePodList: res.data
         })
       }
+    }, () => {
+      this.getPodData(data)
     })
-  }, 800),
+  },
 
   // 设置启运港
   changepolname(e) {
@@ -426,12 +438,15 @@ Page({
 
   // 高级查询
   toAdvancedSearch() {
-    if (this.data.qiYunCode && this.data.xieHuoCode) {
+    if (this.data.qiYunCode) {
       let polobject = {
         polvalue: this.data.qiYunValue,
         polcode: this.data.qiYunCode
       }
       wx.setStorageSync('polobject', polobject);
+      wx.setStorageSync('setHangXian', true)
+    }
+    if (this.data.xieHuoCode) {
       let podobject = {
         podvalue: this.data.xieHuoValue,
         podcode: this.data.xieHuoCode

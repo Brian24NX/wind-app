@@ -20,17 +20,17 @@ export const reportToPDF = (params) => {
 
 // 模糊查询
 export const fuzzySearch = (params, hideLoading) => {
-  return getRequest('/api/miniapp/fuzzySearch', params, hideLoading)
+  return getRequest('/api/miniapp/fuzzySearch', params, hideLoading, false, true)
 }
 
 // 模糊查询
 export const chargeFuzzySearch = (params, hideLoading) => {
-  return getRequest('/api/miniapp/chargeFuzzySearch', params, hideLoading)
+  return getRequest('/api/miniapp/chargeFuzzySearch', params, hideLoading, false, true)
 }
 
 // 港口模糊查询
 export const getAllNetworkPoint = (params, hideLoading) => {
-  return getRequest('/api/miniapp/getAllNetworkPoint', params, hideLoading)
+  return getRequest('/api/miniapp/getAllNetworkPoint', params, hideLoading, false, true)
 }
 
 // 排序

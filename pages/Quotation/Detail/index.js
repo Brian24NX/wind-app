@@ -62,6 +62,8 @@ Page({
       fromCode: data.fromCode,
       toLabel: data.toLabel,
       toCode: data.toCode,
+      receiptHaulage: data.receiptHaulage,
+      deliveryHaulage: data.deliveryHaulage,
       shippingCompany: data.shippingCompany,
       quotationDetail: data.quoteLineList[index]
     })
