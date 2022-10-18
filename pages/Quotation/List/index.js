@@ -78,7 +78,7 @@ Page({
           return obj.scheduleDescription
         }))]
       })
-      this.sortData()
+      this.sortData(true)
     } else {
       this.setData({
         isLoading: false
@@ -111,7 +111,7 @@ Page({
     this.sortData()
   },
 
-  sortData() {
+  sortData(isFirst) {
     let params = {
       routings: this.data.oldQuoteLineList,
       sortDateType: Number(this.data.sort),
@@ -124,15 +124,23 @@ Page({
       params.needDirectFlag = true
     }
     quotationSort(params).then(res => {
+      if (isFirst) {
+        this.setData({
+          quoteLineList: res.data.map((item) => {
+            return {
+              ...item,
+              isLoading: true,
+              canSelect: false
+            }
+          })
+        })
+      }
       this.setData({
-        quoteLineList: res.data.map((item) => {
-          return {
-            ...item,
-            isLoading: true,
-            canSelect: false
-          }
-        }),
         isLoading: false
+      })
+      wx.pageScrollTo({
+        duration: 500,
+        scrollTop: 0
       })
       this.data.quoteLineList.forEach((item, index) => {
         if (item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length) {
@@ -169,20 +177,7 @@ Page({
           }
           setTimeout(() => {
             if (!item.surchargeDetails) {
-              getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(res => {
-                item.isLoading = false
-                item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
-                item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
-                this.setData({
-                  quoteLineList: this.data.quoteLineList
-                })
-              }, () => {
-                item.isLoading = false
-                item.surchargeDetails = null
-                this.setData({
-                  quoteLineList: this.data.quoteLineList
-                })
-              })
+              this.getQuotationSurchargeDetailFn(item, params, isFirst)
             }
           }, 300 * index);
         } else {
@@ -199,6 +194,24 @@ Page({
         quoteLineList: [],
         isLoading: false
       })
+    })
+  },
+
+  getQuotationSurchargeDetailFn(item, params, isFirst) {
+    getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(res => {
+      item.isLoading = false
+      item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
+      item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
+      this.setData({
+        quoteLineList: this.data.quoteLineList
+      })
+      if (isFirst) {
+        this.setData({
+          oldQuoteLineList: this.data.quoteLineList
+        })
+      }
+    }, () => {
+      this.getQuotationSurchargeDetailFn(item, params, isFirst)
     })
   },
 

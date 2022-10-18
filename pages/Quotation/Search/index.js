@@ -602,7 +602,7 @@ Page({
         showRemind1: false
       })
       // ISTANBUL, AMBARLI PORT E. SIDE;TR;TRAVC
-      var reg = /^([ ]*[A-z0-9]+([\,\.\;]*)){2,}$/;
+      var reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
       if (this.data.portOfLoadingLabel) {
         if (!reg.test(this.data.portOfLoadingLabel)) {
           this.setData({
@@ -746,7 +746,7 @@ Page({
           })
         } else {
           index++;
-          this.getQuotationNextDepartures2(this.data.pricingGroups[index].shippingCompany, index)
+          this.getQuotationNextDepartures2(index === this.data.pricingGroups.length ? '' : this.data.pricingGroups[index].shippingCompany, index)
         }
       })
     }

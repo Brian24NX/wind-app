@@ -4,13 +4,12 @@ page {
 }
 
 .searchResultTopContainer {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 3;
-  height: 280rpx;
-  padding-top: 30rpx;
+  padding: 30rpx 0;
   background-color: #F0F1F5;
 }
 
@@ -72,10 +71,9 @@ page {
 }
 
 .resultContainers {
-  min-height: 100vh;
   width: 100%;
   background-color: #F0F1F5;
-  padding: 256rpx 30rpx 40rpx;
+  padding: 0 30rpx 40rpx;
 }
 
 .resultContainers .nearTitle {
@@ -83,7 +81,7 @@ page {
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #071E5D;
-  margin: 46rpx 0 30rpx;
+  margin: 0 0 30rpx;
   padding: 0 16rpx;
 }
 

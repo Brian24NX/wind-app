@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   z-index: 3;
-  padding-top: 30rpx;
+  padding: 30rpx 0;
 }
 
 .searchResultTopContainer .resultCardTops {

@@ -34,7 +34,7 @@
           <view class="time end">{{item.portOfDischargeLabel || item.portOfDischarge}}</view>
         </view>
       </view>
-      <view class="rightButton">{{languageContent.select}}</view>
+      <view class="rightButton" catchtap="chooseNearPort" data-index="{{index}}">{{languageContent.select}}</view>
     </view>
   </view>
 </view>

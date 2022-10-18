@@ -15,7 +15,7 @@ export const quotationSort = (params) => {
 
 // 获取报价单详情
 export const getQuotationSurchargeDetail = (params, ccgId) => {
-  return postRequest(`/api/miniapp/${ccgId}/quotationSurchargeDetailsSearch`, params, true, true, true)
+  return postRequest(`/api/miniapp/${ccgId}/quotationSurchargeDetailsSearch`, params, true, true, true, true)
 }
 
 // 获取附近港口列表

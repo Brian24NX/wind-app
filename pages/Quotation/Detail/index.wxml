@@ -171,7 +171,7 @@
         </view>
       </view>
     </view>
-    <view class="rateContainer">
+    <view class="rateContainer" wx:if="{{quotationDetail.surchargeDetails.perBLCharges}}">
       <view class="rateTitles">
         <view class="titleLeft">
           <view class="titleLine"></view>

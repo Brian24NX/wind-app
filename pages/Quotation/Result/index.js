@@ -39,7 +39,9 @@ Page({
       weight: data.weight,
       containers: data.containers,
       commodityName: data.commodityName,
-      shippingCompany: data.shippingCompany
+      shippingCompany: data.shippingCompany,
+      receiptHaulage: data.receiptHaulage,
+      deliveryHaulage: data.deliveryHaulage
     })
   },
 
