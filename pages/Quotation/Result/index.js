@@ -15,7 +15,9 @@ Page({
     weight: '',
     containers: '',
     commodityName: '',
-    shippingCompany: ''
+    shippingCompany: '',
+    fromLabel: '',
+    toLabel: ''
   },
 
   /**
@@ -41,7 +43,9 @@ Page({
       commodityName: data.commodityName,
       shippingCompany: data.shippingCompany,
       receiptHaulage: data.receiptHaulage,
-      deliveryHaulage: data.deliveryHaulage
+      deliveryHaulage: data.deliveryHaulage,
+      fromLabel: data.fromLabel,
+      toLabel: data.toLabel
     })
   },
 
@@ -91,5 +95,11 @@ Page({
       mask: true,
       duration: 2000
     })
-  }
+  },
+
+  toLineDetail() {
+    wx.navigateTo({
+      url: '/pages/Quotation/LineDetail/index',
+    })
+  },
 })

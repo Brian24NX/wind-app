@@ -413,6 +413,8 @@ var Languague = {
       //航线|获取船期
       getASchedule1: "Instant ",
       getASchedule2: 'Quote',
+      type1: 'Instant Quote',
+      type2: 'My Contracts',
       placeOfOrigin: "Place of Receipt",
       addPlaceOfOrigin: "Add a Place of Receipt",
       //起运港
@@ -432,6 +434,7 @@ var Languague = {
       commodity: "Commodity",
       //查询
       search: "Get My Quote",
+      search2: 'Search',
       reset: 'Reset'
     },
     // 报价详情

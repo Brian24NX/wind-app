@@ -42,11 +42,10 @@ page {
   width: 690rpx;
   background-color: #ffffff;
   margin: 0 auto;
-  padding: 30rpx 0 0 20rpx;
+  padding: 30rpx 48rpx 0;
 }
 
 .queryContainer .addBtn {
-  width: 504rpx;
   height: 88rpx;
   display: flex;
   align-items: center;
@@ -58,7 +57,7 @@ page {
 }
 
 .queryContainer .searchList {
-  padding: 0 46rpx 0 120rpx;
+  padding: 0 0 0 120rpx;
   margin-bottom: 34rpx;
   position: relative;
 }
@@ -263,4 +262,36 @@ page {
   line-height: 80rpx;
   color: #3476FF;
   font-size: 28rpx;
+}
+
+.searchTopTypes {
+  display: flex;
+  height: 80rpx;
+  border-bottom: 1px solid #04246A;
+  margin-bottom: 30rpx;
+  color: #071E5D;
+  font-size: 32rpx;
+}
+
+.searchTopTypes .oneTabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+}
+
+.searchTopTypes .checked {
+  font-weight: bold;
+  position: relative;
+}
+
+.searchTopTypes .checked .line {
+  background-color: #E20202;
+  width: 168rpx;
+  height: 8rpx;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }

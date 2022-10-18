@@ -11,7 +11,8 @@ import {
 } from '../../../api/modules/home';
 import {
   quotationNextDepartures,
-  nearByPortNextDeparture
+  nearByPortNextDeparture,
+  quotationQuoteLinesSearch
 } from '../../../api/modules/quotation';
 Page({
 
@@ -83,7 +84,24 @@ Page({
     pricingGroups: [],
     resultResq: {},
     nearPort: [],
-    commodityLoading: false
+    commodityLoading: false,
+    currentType: 'instation',
+    commonEquipmentTypeList: [{
+      nameCn: '干柜',
+      nameEn: 'Dry',
+      code: 'ST'
+    }, {
+      nameCn: '冷藏柜',
+      nameEn: 'Reefer',
+      code: 'RF'
+    }, {
+      nameCn: '特殊柜',
+      nameEn: 'Special',
+      code: 'SP'
+    }],
+    commonEquipmentType: '',
+    commonEquipmentTypeName: '',
+    contractResq: {}
   },
 
   /**
@@ -109,6 +127,13 @@ Page({
   },
 
   onShareAppMessage: function () {},
+
+  changeCurrentType(e) {
+    this.setData({
+      currentType: e.currentTarget.dataset.type
+    })
+    this.reset()
+  },
 
   addPlaceOfReceipt() {
     this.setData({
@@ -394,7 +419,9 @@ Page({
       portOfLoading: this.data.pollist[index].pointCode,
       pollist: [],
     })
-    this.getCommodityList()
+    if (this.data.currentType === 'instation') {
+      this.getCommodityList()
+    }
   },
 
   // 卸货港
@@ -405,7 +432,9 @@ Page({
       portOfDischarge: this.data.podlist[index].pointCode,
       podlist: []
     })
-    this.getCommodityList()
+    if (this.data.currentType === 'instation') {
+      this.getCommodityList()
+    }
   },
 
   // 目的地
@@ -421,7 +450,8 @@ Page({
 
   setWeight(e) {
     this.setData({
-      weight: Number(e.detail.value)
+      weight: Number(e.detail.value),
+      showRemind5: false
     })
   },
 
@@ -486,7 +516,7 @@ Page({
   },
 
   add() {
-    if (this.data.containers > 98) return
+    if (this.data.containers > 99) return
     this.setData({
       containers: ++this.data.containers
     })
@@ -494,7 +524,7 @@ Page({
 
   setInputValue(e) {
     this.setData({
-      containers: !e.detail.value ? 1 : Number(e.detail.value)
+      containers: !e.detail.value ? 1 : (Number(e.detail.value) > 100 ? 100 : Number(e.detail.value))
     })
   },
 
@@ -513,13 +543,15 @@ Page({
     let defaultIndex = 0
     if (e.currentTarget.dataset.type === '1') {
       defaultIndex = this.data.language === 'zh' ? this.data.equipmentTypeList.findIndex(item => item.nameCn === this.data.equipmentTypeName) : this.data.equipmentTypeList.findIndex(item => item.nameEn === this.data.equipmentTypeName)
-    } else {
+    } else if (e.currentTarget.dataset.type === '3') {
       defaultIndex = this.data.commodityList.findIndex(i => i.code === this.data.commodityCode)
+    } else if (e.currentTarget.dataset.type === '4') {
+      defaultIndex = this.data.commonEquipmentTypeList.findIndex(i => i.code === this.data.commonEquipmentType)
     }
     this.setData({
       popupType: e.currentTarget.dataset.type,
-      columns: e.currentTarget.dataset.type === '1' ? this.data.equipmentTypeList : this.data.commodityList,
-      valueKey: e.currentTarget.dataset.type === '1' ? (this.data.language === 'zh' ? 'nameCn' : 'nameEn') : (this.data.language === 'zh' ? 'zh' : 'en'),
+      columns: e.currentTarget.dataset.type === '1' ? this.data.equipmentTypeList : e.currentTarget.dataset.type === '3' ? this.data.commodityList : this.data.commonEquipmentTypeList,
+      valueKey: (e.currentTarget.dataset.type === '1' || e.currentTarget.dataset.type === '4') ? (this.data.language === 'zh' ? 'nameCn' : 'nameEn') : (this.data.language === 'zh' ? 'zh' : 'en'),
       defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
       showPopup: true
     })
@@ -544,12 +576,17 @@ Page({
         equipmentTypeName: this.data.language === 'en' ? e.detail.nameEn : e.detail.nameCn
       })
       this.getCommodityList()
-    } else {
+    } else if (this.data.popupType === '3') {
       this.setData({
         commodityCode: e.detail.code,
         commodityName: this.data.language === 'en' ? (e.detail.en || e.detail.zh) : e.detail.zh,
         shippingCompany: e.detail.shipComp ? e.detail.shipComp : '0001',
         showRemind6: false
+      })
+    } else if (this.data.popupType === '4') {
+      this.setData({
+        commonEquipmentType: e.detail.code,
+        commonEquipmentTypeName: this.data.language === 'en' ? e.detail.nameEn : e.detail.nameCn
       })
     }
     this.onClose()
@@ -601,7 +638,6 @@ Page({
       this.setData({
         showRemind1: false
       })
-      // ISTANBUL, AMBARLI PORT E. SIDE;TR;TRAVC
       var reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
       if (this.data.portOfLoadingLabel) {
         if (!reg.test(this.data.portOfLoadingLabel)) {
@@ -651,32 +687,39 @@ Page({
         showRemind4: false
       })
     }
-    if (!this.data.weight) {
-      this.setData({
-        showRemind5: true
-      })
-    } else {
-      this.setData({
-        showRemind5: false
-      })
-    }
-    if (!this.data.commodityCode) {
-      this.setData({
-        showRemind6: true
-      })
-    } else {
-      this.setData({
-        showRemind6: false
-      })
-    }
-    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6) return
-    this.checkAccessToken(() => {
-      if (this.data.commodityCode === "FAK") {
-        this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
+    if (this.data.currentType === 'instation') {
+      if (!this.data.weight) {
+        this.setData({
+          showRemind5: true
+        })
       } else {
-        this.getQuotationNextDepartures()
+        this.setData({
+          showRemind5: false
+        })
       }
-    })
+      if (!this.data.commodityCode) {
+        this.setData({
+          showRemind6: true
+        })
+      } else {
+        this.setData({
+          showRemind6: false
+        })
+      }
+      if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6) return
+      this.checkAccessToken(() => {
+        if (this.data.commodityCode === "FAK") {
+          this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
+        } else {
+          this.getQuotationNextDepartures()
+        }
+      })
+    } else {
+      if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
+      this.checkAccessToken(() => {
+        this.getContractList()
+      })
+    }
   },
 
   getQuotationNextDepartures() {
@@ -787,6 +830,29 @@ Page({
     })
   },
 
+  getContractList() {
+    quotationQuoteLinesSearch({
+      "affiliates": [wx.getStorageSync('partnerCode')],
+      "deliveryHaulage": this.data.deliveryHaulage || null,
+      "equipmentType": this.data.commonEquipmentType,
+      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
+      "placeOfOrigin": this.data.placeOfOrigin || null,
+      "portOfDischarge": this.data.portOfDischarge,
+      "portOfLoading": this.data.portOfLoading,
+      "receiptHaulage": this.data.receiptHaulage || null,
+      "shippingCompany": "0001",
+      "simulationDate": this.data.simulationDate
+    }).then(res => {
+      console.log(res)
+      this.setData({
+        contractResq: res.data
+      })
+      wx.navigateTo({
+        url: '/packageBooking/pages/Contract/List/index',
+      })
+    })
+  },
+
   reset() {
     this.setData({
       showPol: false,
@@ -807,6 +873,8 @@ Page({
       simulationDate: this.getDate(),
       equipmentType: this.data.equipmentTypeList[0].code,
       equipmentTypeName: this.data.language === 'zh' ? this.data.equipmentTypeList[0].nameCn : this.data.equipmentTypeList[0].nameEn,
+      commonEquipmentType: this.data.commonEquipmentTypeList[0].code,
+      commonEquipmentTypeName: this.data.language === 'zh' ? this.data.commonEquipmentTypeList[0].nameCn : this.data.commonEquipmentTypeList[0].nameEn,
       weight: null,
       containers: 1,
       commodityCode: '',

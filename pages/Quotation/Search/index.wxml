@@ -6,9 +6,15 @@
   <wxs module="format" src="/utils/format.wxs"></wxs>
   <view class="queryContainer">
     <view class="searchLists">
-      <view class="routeTitles">
-        <view class="redline"></view>
-        <text class="route1">{{languageContent.getASchedule1}}<text class="route2">{{languageContent.getASchedule2}}</text></text>
+      <view class="searchTopTypes">
+        <view class="oneTabs {{currentType === 'instation' ? 'checked' : ''}}" catchtap="changeCurrentType" data-type="instation">
+          <text>{{languageContent.type1}}</text>
+          <view class="line"></view>
+        </view>
+        <view class="oneTabs {{currentType === 'contracts' ? 'checked' : ''}}" catchtap="changeCurrentType" data-type="contracts">
+          <text>{{languageContent.type2}}</text>
+          <view class="line"></view>
+        </view>
       </view>
       <view class="searchList" wx:if="{{showPlaceOfReceipt}}">
         <view class="searchTitle">{{languageContent.placeOfOrigin}}</view>
@@ -130,50 +136,65 @@
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
       </view>
-      <view class="searchList">
-        <view class="searchTitle">{{languageContent.equipmentType}}</view>
-        <view class="selectContainer" catchtap="openPopup" data-type="1">
-          <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
-          <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
-        </view>
-      </view>
-      <view class="searchList">
-        <view class="searchTitle">{{languageContent.weight}}</view>
-        <view class="codeInputs {{showRemind5 ? 'noRequestBorder' : ''}}">
-          <input style="width: 420rpx;" value="{{weight}}" bindinput="setWeight" maxlength="8" type="number" placeholder="{{languageContent.weightName}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
-          <view class="deleteIcon" wx:if="{{weight}}" catchtap="deleteValue" data-type="3">
-            <image src="/assets/img/search/close@2x.png"></image>
+      <block wx:if="{{currentType === 'instation'}}">
+        <view class="searchList">
+          <view class="searchTitle">{{languageContent.equipmentType}}</view>
+          <view class="selectContainer" catchtap="openPopup" data-type="1">
+            <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
+            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
-          <view class="noRequest" wx:if="{{showRemind5}}">
+        </view>
+        <view class="searchList">
+          <view class="searchTitle">{{languageContent.weight}}</view>
+          <view class="codeInputs {{showRemind5 ? 'noRequestBorder' : ''}}">
+            <input style="width: 420rpx;" value="{{weight}}" bindinput="setWeight" maxlength="8" type="number" placeholder="{{languageContent.weightName}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+            <view class="deleteIcon" wx:if="{{weight}}" catchtap="deleteValue" data-type="3">
+              <image src="/assets/img/search/close@2x.png"></image>
+            </view>
+            <view class="noRequest" wx:if="{{showRemind5}}">
+              <image src="/assets/img/search/error@2x.png"></image>
+              <text>{{verifyInfo.required}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="searchList">
+          <view class="searchTitle">{{languageContent.container}}</view>
+          <view class="containers">
+            <view class="actionBtn {{containers < 2 ? 'disabled' : ''}}" catchtap="reduce">-</view>
+            <input type="number" class="number" value="{{containers}}" maxlength="3" bindblur="setInputValue" />
+            <view class="actionBtn {{containers > 99 ? 'disabled' : ''}}" catchtap="add">+</view>
+          </view>
+        </view>
+        <view class="searchList">
+          <view class="searchTitle">{{languageContent.commodity}}</view>
+          <view class="selectContainer" catchtap="openPopup" data-type="3" wx:if="{{!commodityLoading}}">
+            <view style="{{commodityCode ? 'color: #071E5D;' : ''}}">{{commodityName || verifyInfo.select}}</view>
+            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          </view>
+          <image class="loadings" src="/assets/img/instantQuote/loading-blue.svg" hidden="{{!commodityLoading}}" mode="aspectFit"></image>
+          <view class="noRequest commodityRequest" wx:if="{{showRemind6}}">
             <image src="/assets/img/search/error@2x.png"></image>
             <text>{{verifyInfo.required}}</text>
           </view>
         </view>
-      </view>
-      <view class="searchList">
-        <view class="searchTitle">{{languageContent.container}}</view>
-        <view class="containers">
-          <view class="actionBtn {{containers < 2 ? 'disabled' : ''}}" catchtap="reduce">-</view>
-          <input type="number" class="number" value="{{containers}}" maxlength="2" bindblur="setInputValue" />
-          <view class="actionBtn {{containers > 98 ? 'disabled' : ''}}" catchtap="add">+</view>
+        <view class="btn" style="margin-top: 40rpx;">
+          <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search}}</button>
+          <view class="reset" catchtap="reset">{{languageContent.reset}}</view>
         </view>
-      </view>
-      <view class="searchList">
-        <view class="searchTitle">{{languageContent.commodity}}</view>
-        <view class="selectContainer" catchtap="openPopup" data-type="3" wx:if="{{!commodityLoading}}">
-          <view style="{{commodityCode ? 'color: #071E5D;' : ''}}">{{commodityName || verifyInfo.select}}</view>
+      </block>
+      <block wx:else>
+        <view class="searchList">
+        <view class="searchTitle">{{languageContent.equipmentType}}</view>
+        <view class="selectContainer" catchtap="openPopup" data-type="4">
+          <view style="{{commonEquipmentType !== '' ? 'color: #071E5D;' : ''}}">{{commonEquipmentTypeName || verifyInfo.select}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
-        </view>
-        <image class="loadings" src="/assets/img/instantQuote/loading-blue.svg" hidden="{{!commodityLoading}}" mode="aspectFit"></image>
-        <view class="noRequest commodityRequest" wx:if="{{showRemind6}}">
-          <image src="/assets/img/search/error@2x.png"></image>
-          <text>{{verifyInfo.required}}</text>
         </view>
       </view>
       <view class="btn" style="margin-top: 40rpx;">
-        <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search}}</button>
+        <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search2}}</button>
         <view class="reset" catchtap="reset">{{languageContent.reset}}</view>
       </view>
+      </block>
     </view>
 
     <custom-picker columns="{{columns}}" valueKey="{{valueKey}}" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>

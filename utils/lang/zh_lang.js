@@ -416,6 +416,8 @@ var Languague = {
       //航线|获取船期
       getASchedule1: "即时",
       getASchedule2: '报价',
+      type1: '即时报价',
+      type2: '我的价格',
       placeOfOrigin: "收货地",
       addPlaceOfOrigin: '添加收货地',
       //起运港
@@ -435,6 +437,7 @@ var Languague = {
       commodity: "商品",
       //查询
       search: "获取报价",
+      search2: "查找价格",
       reset: '重置'
     },
     // 报价详情

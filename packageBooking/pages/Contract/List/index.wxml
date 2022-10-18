@@ -23,21 +23,19 @@
 </view>
 <view class="resultContainers">
   <view wx:if="{{true}}">
-    <view class="oneResult" wx:for="{{5}}" wx:key="index">
+    <view class="oneResult" wx:for="{{contractList}}" wx:key="index">
       <view class="quotationIds">
         <view class="quotationLeft">
           <image src="/assets/img/instantQuote/quotationId@2x.png"></image>
           <view>
-            <view class="quotationId">QSPOY180826</view>
+            <view class="quotationId">{{item.quotationReference}}</view>
             <view>Quotation</view>
           </view>
         </view>
-        <view class="quotationRight">VALID</view>
+        <view class="quotationRight">{{filters.checkValidDate(item.validityTo) ? 'VALID' : 'OVERDUE'}}</view>
       </view>
       <view class="tips">
-        <!-- <view class="oneTip">{{languageContent.earliestDeparture}}</view> -->
-        <!-- <view class="oneTip">{{languageContent.earliestArrival}}</view> -->
-        <view class="oneTip oneTip2">{{languageContent.spotOn}}</view>
+        <view class="oneTip oneTip2" wx:if="{{item.spotOffer}}">{{languageContent.spotOn}}</view>
       </view>
       <view class="resContents">
         <view class="leftStep">

@@ -64,20 +64,39 @@
         </view>
       </view>
       <block wx:if="{{item.offerId !== 'No-Offer-Found'}}">
-        <view class="oneBottom">
-          <view class="bottomLeft">
-            <image src="/assets/img/instantQuote/cash@2x.png"></image>
-            <view class="priceCount">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.amount : '-'}}</view>
-            <view class="priceUnit">
-              <view class="unit">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.currency.code : ''}}</view>
-              <view class="unit2">CONTRAIN</view>
+        <block wx:if="{{item.isLoading}}">
+          <view class="oneBottom">
+            <view class="bottomLeft">
+              <image src="/assets/img/instantQuote/cash@2x.png"></image>
+              <view class="priceCount">-</view>
+              <view class="priceUnit">
+                <view class="unit"></view>
+                <view class="unit2">CONTRAIN</view>
+              </view>
+            </view>
+            <view class="selects">
+              <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit"></image>
             </view>
           </view>
-          <view class="selects {{!item.isLoading && item.surchargeDetails ? '' : 'disabled'}}" bindtap="toDetail" data-index="{{index}}">
-            <image wx:if="{{item.isLoading}}" style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit"></image>
-            <text wx:else>{{languageContent.select}}</text>
-          </view>
-        </view>
+        </block>
+        <block wx:else>
+          <block wx:if="{{item.surchargeDetails && item.surchargeDetails.allocation}}">
+            <view class="oneBottom">
+              <view class="bottomLeft">
+                <image src="/assets/img/instantQuote/cash@2x.png"></image>
+                <view class="priceCount">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.amount : '-'}}</view>
+                <view class="priceUnit">
+                  <view class="unit">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.currency.code : ''}}</view>
+                  <view class="unit2">CONTRAIN</view>
+                </view>
+              </view>
+              <view class="selects {{item.surchargeDetails ? '' : 'disabled'}}" bindtap="toDetail" data-index="{{index}}">
+                <text>{{languageContent.select}}</text>
+              </view>
+            </view>
+          </block>
+          <view class="oneBottom right" wx:else>Spot allocation sold out.</view>
+        </block>
         <view class="warning" wx:if="{{item.noOfContainersAvailable}}">
           <image src="/assets/img/instantQuote/warning@2x.png"></image>
           <text>{{item.noOfContainersAvailable}} container(s) remianing</text>

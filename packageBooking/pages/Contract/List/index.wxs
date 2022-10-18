@@ -19,7 +19,17 @@ var weekDay = function (obj) {
   return week;
 }
 
+var checkValidDate = function(obj) {
+  if (!obj) return ''
+  if (obj.indexOf('T') > -1) {
+    obj = obj.split('T')[0] + ' 23:59:59'
+  }
+  obj = obj.split('-').join('/')
+  return getDate() - getDate(obj) > 0 ? false : true
+}
+
 module.exports = {
   fmtDate: fmtDate,
-  weekDay: weekDay
+  weekDay: weekDay,
+  checkValidDate: checkValidDate
 }
