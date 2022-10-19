@@ -101,7 +101,7 @@ Page({
     }],
     commonEquipmentType: '',
     commonEquipmentTypeName: '',
-    contractResq: {}
+    contractResq: null
   },
 
   /**
@@ -857,7 +857,7 @@ Page({
     }).then(res => {
       console.log(res)
       this.setData({
-        contractResq: res.data
+        contractResq: res.data || null
       })
       wx.navigateTo({
         url: '/packageBooking/pages/Contract/List/index',

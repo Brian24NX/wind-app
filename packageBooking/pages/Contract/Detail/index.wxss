@@ -126,6 +126,20 @@
   background-color: #ffffff;
   padding: 0 30rpx;
   margin-top: 30rpx;
+  position: relative;
+}
+
+.resultsContainer .logos {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}
+
+.resultsContainer .logos image {
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .resultsContainer .reference {

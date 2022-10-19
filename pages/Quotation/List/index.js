@@ -202,7 +202,7 @@ Page({
       item.isLoading = false
       item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
       item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
-      item.surchargeDetails.allocation = res.data.allocationDetails.allocation
+      item.surchargeDetails.allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
       this.setData({
         quoteLineList: this.data.quoteLineList
       })

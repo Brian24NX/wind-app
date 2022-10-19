@@ -5,10 +5,10 @@
       <van-icon name="success" size="26px" />
     </view>
     <view class="successDesc">Your offer {{reference}} has been successfully created</view>
-    <view class="buttons">
+    <!-- <view class="buttons">
       <view class="oneBtn">Preview</view>
       <view class="oneBtn" catchtap="sendEmail">Send to Email</view>
-    </view>
+    </view> -->
     <view class="desc">Please copy the reference code or export the quotation for check before booking</view>
   </view>
   <view class="results">
@@ -26,8 +26,8 @@
           <view>{{quotationDetail.tranShipment.length ? quotationDetail.tranShipment.length + ' ' + languageContent.zhuanyun : languageContent.zhida}}</view>
         </view>
         <view class="priceRight">
-          <text class="price">1000</text>
-          <text>EUR</text>
+          <text class="price">{{quotationDetail.totalCharge.amount}}</text>
+          <text>{{quotationDetail.totalCharge.currency.code}}</text>
         </view>
       </view>
       <view class="solutionContainer" catchtap="toLineDetail">

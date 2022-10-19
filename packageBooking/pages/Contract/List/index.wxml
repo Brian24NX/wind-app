@@ -38,7 +38,7 @@
             <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityFrom, true, true) : commonFilters.formatEnDateLocal(item.validityFrom, '-', '', true, true)}}</text>
             <text> > </text>
             <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityTo, true, true) : commonFilters.formatEnDateLocal(item.validityTo, '-', '', true, true)}}</text>
-          </view>  
+          </view>
         </view>
       </view>
       <view class="tips">
@@ -73,6 +73,12 @@
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
               <view>{{languageContent.zhida}}</view>
             </view>
+            <view class="logos">
+              <image wx:if="{{item.shippingCompany === '0001'}}" src="/assets/img/instantQuote/CMA.svg" mode="aspectFit"></image>
+              <image wx:if="{{item.shippingCompany === '0002'}}" src="/assets/img/instantQuote/ANL.svg" mode="aspectFit"></image>
+              <image wx:if="{{item.shippingCompany === '0011'}}" src="/assets/img/instantQuote/CNC.svg" mode="aspectFit"></image>
+              <image wx:if="{{item.shippingCompany === '0015'}}" src="/assets/img/instantQuote/APL.svg" mode="aspectFit"></image>
+            </view>
           </view>
         </view>
       </view>
@@ -90,7 +96,7 @@
     </view>
   </view>
   <!--无结果-->
-  <view wx:if="{{false && !isLoading}}">
+  <view wx:if="{{!contractList.length}}">
     <noresult languageContent="{{languageContent}}"></noresult>
   </view>
 </view>
