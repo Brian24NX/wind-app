@@ -159,7 +159,7 @@ Page({
       }
     }
     createQuotationQuotation(params, wx.getStorageSync('ccgId')).then(res => {
-      wx.redirectTo({
+      wx.navigateTo({
         url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
       })
     })

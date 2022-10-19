@@ -133,6 +133,15 @@ Page({
       currentType: e.currentTarget.dataset.type
     })
     this.reset()
+    if (this.data.currentType === 'instation') {
+      this.setData({
+        minDate: new Date().getTime()
+      })
+    } else {
+      this.setData({
+        minDate: null
+      })
+    }
   },
 
   addPlaceOfReceipt() {
@@ -606,6 +615,9 @@ Page({
       simulationDate: dayjs(e.detail).format('YYYY-MM-DD'),
       showDatePopup: false
     })
+    this.getTabBar().setData({
+      show: true
+    })
   },
 
   getDate() {
@@ -855,6 +867,8 @@ Page({
 
   reset() {
     this.setData({
+      showPlaceOfDelivery: false,
+      showPlaceOfReceipt: false,
       showPol: false,
       showPod: false,
       placeOfOrigin: '',
@@ -889,6 +903,8 @@ Page({
       showDelete1: false,
       showDelete2: false,
       showDelete3: false,
+      showDelete4: false,
+      showDelete5: false,
     })
   }
 })

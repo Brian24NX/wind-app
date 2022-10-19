@@ -1,5 +1,8 @@
 // packageBooking/pages/Contract/Detail/index.js
 const languageUtil = require('../../../../utils/languageUtils')
+import {
+  equitmentSizeList
+} from '../../../../api/modules/home';
 
 Page({
 
@@ -8,9 +11,8 @@ Page({
    */
   data: {
     languageContent: {},
+    load: {},
     language: 'zh',
-    isFirst: true,
-    surchargeDetails: {},
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
       label: 'Local Charges',
@@ -28,28 +30,90 @@ Page({
       label: 'Add Info',
       url: "/pages/Quotation/Others/AdditionalInformation/index"
     }],
-    fromLabel: 'BOSTON, NA',
-    fromCode: 'US',
-    toLabel: 'SHANGHAI',
-    toCode: 'CN',
+    fromLabel: '',
+    toLabel: '',
     quotationDetail: {},
-    equipmentTypeName: '',
-    weight: '',
-    containers: '',
-    commodityName: ''
+    currentType: 'charge'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // this.quotationSurchargeDetails()
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.qutationResult.title2
     })
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
-      language: languageUtil.languageVersion().lang.page.langue
+      load: languageUtil.languageVersion().lang.page.load,
+      language: languageUtil.languageVersion().lang.page.langue,
+      fromLabel: data.contractList[Number(options.index)].portOfLoadingLabel,
+      toLabel: data.contractList[Number(options.index)].portOfDischargeLabel,
+      quotationDetail: data.contractList[Number(options.index)]
+    })
+    this.calculatedCharges()
+    this.dealEquipmentSize()
+  },
+
+  calculatedCharges() {
+    const surchargeDetails = this.data.quotationDetail.surchargeDetails
+    let totalChargeAmount = 0
+    if (surchargeDetails.oceanFreight.isChecked) {
+      totalChargeAmount = totalChargeAmount + surchargeDetails.oceanFreight.price.amount
+    }
+    if (surchargeDetails.freightCharges.isChecked) {
+      totalChargeAmount = totalChargeAmount + surchargeDetails.freightCharges.amount
+    }
+    if (surchargeDetails.prepaidCharges.isChecked) {
+      totalChargeAmount = totalChargeAmount + surchargeDetails.prepaidCharges.amount
+    }
+    if (surchargeDetails.collectCharges.isChecked) {
+      totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
+    }
+    this.setData({
+      totalChargeAmount: totalChargeAmount || this.quotationDetail.surchargeDetails.totalCharge.amount
+    })
+  },
+
+  changeType(e) {
+    this.setData({
+      currentType: e.currentTarget.dataset.type
+    })
+  },
+
+  changeCheck(e) {
+    this.data.quotationDetail.surchargeDetails[e.currentTarget.dataset.id].isChecked = !this.data.quotationDetail.surchargeDetails[e.currentTarget.dataset.id].isChecked
+    this.setData({
+      quotationDetail: this.data.quotationDetail
+    })
+    this.calculatedCharges()
+  },
+
+  dealEquipmentSize() {
+    equitmentSizeList().then(res=>{
+      console.log(res)
+      const index = res.data.findIndex(i => i.code === this.data.quotationDetail.equipments[0].code)
+      this.data.quotationDetail.equitmentSizeType = index === -1 ? this.data.quotationDetail.equipments[0].code : res.data[index].nameEn
+      this.setData({
+        quotationDetail: this.data.quotationDetail
+      })
+    })
+  },
+
+  copyReference() {
+    wx.setClipboardData({
+      data: this.data.quotationDetail.quotationReference,
+      success() {
+        wx.showToast({
+          title: languageUtil.languageVersion().lang.page.copyInfo.success2,
+          icon: 'none',
+          mask: true,
+          duration: 2000
+        })
+      }
     })
   },
 
@@ -60,44 +124,9 @@ Page({
   },
 
   submit() {
-    if (this.data.isFirst) {
-      this.setData({
-        isFirst: false
-      })
-    } else {
-      wx.navigateTo({
-        url: '/pages/Quotation/Result/index',
-      })
-    }
-  },
-
-  quotationSurchargeDetails() {
-    getQuotationSurchargeDetails({
-      "surchargeFromLara": {
-        "quoteLineId": "1304458221",
-        "shippingCompany": "0002",
-        "equipments": [{
-          "code": "40ST",
-          "oceanFreightRate": 858.0,
-          "currencyCode": "USD",
-          "netWeight": 1.0,
-          "sizeUnitOfMeasure": "TNE"
-        }],
-        "simulationDate": "2022-09-08",
-        "paymentMethod": null,
-        "usContract": false,
-        "portOfLoading": "AUMEL",
-        "portOfDischarge": "CNSHA",
-        "loggedId": "6306d5d58d42b58f3c6bff84",
-        "nextDepartureSolutionNumber": 0,
-        "nextDepartureScheduleNumber": 0,
-        "quoteLineKey": "1304458221-AUMEL-AUMEL-AUMEL-CNSHA-CNSHA-CNSHA-20220824-20221012-1"
-      }
-    }).then(res => {
-      console.log(res)
-      this.setData({
-        surchargeDetails: res.data.surchargeDetails[0]
-      })
+    wx.showToast({
+      title: this.data.load.functionIsUnderDevelopment,
+      icon: 'none'
     })
   }
 })

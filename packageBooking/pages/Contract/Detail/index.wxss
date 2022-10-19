@@ -122,6 +122,37 @@
   margin-right: 10rpx;
 }
 
+.resultsContainer {
+  background-color: #ffffff;
+  padding: 0 30rpx;
+  margin-top: 30rpx;
+}
+
+.resultsContainer .reference {
+  padding: 50rpx 0 30rpx;
+  border-bottom: 1rpx solid #eeeeee;
+}
+
+.resultsContainer .reference .referenceTitle {
+  font-size: 28rpx;
+  font-family: ArialMT;
+  color: #6B7790;
+}
+
+.resultsContainer .reference .referenceNumber {
+  font-size: 48rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #071E5D;
+  display: flex;
+  align-items: flex-start;
+}
+
+.resultsContainer .reference .referenceNumber .copyIcon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
 .paramContainer {
   background-color: #ffffff;
   display: flex;
@@ -165,35 +196,42 @@
 .rateContainer {
   background-color: #ffffff;
   padding: 0 48rpx;
+  margin-bottom: 30rpx;
 }
 
-.rateTitles {
+.rateTypeContainers {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1rpx solid #eeeeee;
+  height: 100rpx;
+  background-color: #ffffff;
+  padding: 0 48rpx;
 }
 
-.rateTitles .titleLeft {
+.rateTypeContainers .oneRateType {
+  border-bottom: 1rpx solid #EEEEEE;
   display: flex;
+  flex: 1;
+  justify-content: center;
   align-items: center;
-  font-size: 48rpx;
-  font-family: Antonio-Regular;
-  font-weight: 400;
+  height: 100%;
+  color: #6B7790;
+  font-size: 36rpx;
+  font-family: Antonio-Regular, Antonio;
+}
+
+.rateTypeContainers .typeChecked {
   color: #04246A;
+  font-weight: bold;
+  position: relative;
 }
 
-.rateTitles .titleLeft .titleLine {
-  width: 6rpx;
-  height: 40rpx;
-  background-color: #E20202;
-  margin-right: 12rpx;
-}
-
-.rateTitles image {
-  width: 146rpx;
-  height: 106rpx;
-  margin-right: -20rpx;
+.rateTypeContainers .typeChecked .line {
+  width: 168rpx;
+  height: 8rpx;
+  background-color: #E10202;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .rateTotal {
@@ -240,8 +278,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1rpx solid #eeeeee;
-  padding: 22rpx 0;
+  background-color: #d9deea;
+  padding: 22rpx;
   min-height: 92rpx;
 }
 
@@ -261,8 +299,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #04246A;
+  background-color: #ffffff;
   margin-right: 20rpx;
+}
+
+.oneRate .oneRateLeft .rateChecked {
+  background-color: #04246A;
 }
 
 .oneRate .oneRateRight {
@@ -286,7 +328,25 @@
   font-weight: 500;
   color: #6B7790;
   font-size: 16rpx;
-  padding: 20rpx 0 40rpx;
+  padding: 10rpx 20rpx 30rpx;
+}
+
+.rateDetails {
+  padding: 0 10rpx 30rpx;
+}
+
+.rateDetails .oneRateDetail {
+  height: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #6B7790;
+  padding: 0 10rpx;
+  font-size: 16rpx;
+}
+
+.rateDetails .oneRateDetail:nth-of-type(2n) {
+  background-color: rgb(217, 222, 234, 0.3);
 }
 
 .otherContainer {
@@ -434,4 +494,31 @@
   text-align: center;
   line-height: 76rpx;
   padding: 0 22rpx;
+}
+
+.quoteDetails {
+  background-color: #ffffff;
+  padding: 28rpx 48rpx 0;
+}
+
+.quoteDetails .oneQuoteDetail .oneQuoteTitle {
+  background-color: #DBDFE8;
+  height: 64rpx;
+  padding: 0 26rpx;
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  color: #071E5D;
+  display: flex;
+  align-items: center;
+}
+
+.quoteDetails .oneQuoteDetail .oneQuoteValue {
+  padding: 30rpx 26rpx 40rpx;
+  color: #6B7790;
+  font-size: 24rpx;
+}
+
+.quoteDetails .bold {
+  font-weight: bold;
+  color: #071E5D;
 }

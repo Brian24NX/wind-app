@@ -89,7 +89,7 @@
   background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
   font-size: 24rpx;
   color: #6F7384;
-  padding: 0 30rpx 0 18rpx;
+  padding: 0 20rpx 0 18rpx;
 }
 
 .quotationIds .quotationLeft {
@@ -111,10 +111,22 @@
 }
 
 .quotationIds .quotationRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.quotationIds .quotationRight view:nth-of-type(1) {
   font-size: 36rpx;
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #071E5D;
+}
+
+.quotationIds .quotationRight view:nth-of-type(2) {
+  font-size: 22rpx;
+  font-family: Antonio-Regular, Antonio;
+  color: #6F7384;
 }
 
 .resultContainers .oneResult:nth-last-of-type(1) {
@@ -318,4 +330,10 @@
   color: #FFFFFF;
   text-align: center;
   line-height: 76rpx;
+  margin: 0;
+  border-radius: 0;
+}
+
+.resultContainers .oneResult .oneBottom .notSelect {
+  opacity: 0.3;
 }

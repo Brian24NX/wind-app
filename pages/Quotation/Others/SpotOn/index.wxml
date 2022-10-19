@@ -5,7 +5,8 @@
     <view class="topTitleLine"></view>
     <view>SpotOn - Specific conditions</view>
   </view>
-  <text class="spotOnDetail">Use this quote to make your booking for the applicable port pair within the next 24 hours to enjoy:
+  <text class="spotOnDetail">
+    Use this quote to make your booking for the applicable port pair within the next 24 hours to enjoy:
     - Priority booking confirmation within 2 hours
     - Priority equipment release
     - Priority loading
@@ -15,11 +16,11 @@
     - Only 1 booking per quotation SpotOn for the number of equipements mentionned in this quotation.
     - Only 1 Shipper authorized per booking. No Merge of BL allowed.
     - Conditions of this quotation SpotOn are guaranteed as from confirmation of the booking.
-    - This quote is not valid for booking Hazardous cargo, Military Cargo, SOC, empty container, flexitank or any Special equipment. Sensitive or high value cargo may be subject to special conditions at time of booking.
+    - This quote is not valid for certain commodities (Hazardous, Military, Pharmaceuticals) nor kind of equipment : Shipper Owned Container (SOC), empty container, flexitank. magnum, magnum+, Super-freezer, control atmosphere and cold treatment or any Special equipment. Sensitive or high value cargo may be subject to special conditions at time of booking.
+    - Intermodal : Offer subject to transport capacity availability at time of booking. Rates are subject to local intermodal surcharges valid at time of transport.
 
-    Specific fees are applicable in the event of cancellation, no show or amendment of booking SpotOn.
-    Rates are subject to local intermodal surcharges valid at time of transport.
-    Intermodal activity subject to transport capacity availability</text>
+    Specific fees may be applicable in the event of cancellation, no show or amendment of booking SpotOn. These fees depends of the Trade.
+  </text>
   <view class="spotOnLink">
     <view class="localLeft">
       <image src="/assets/img/home/templatelinks@2x.png"></image>

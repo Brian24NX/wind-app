@@ -30,10 +30,15 @@ export const quotationQuoteLinesSearch = (params) => {
 
 // 港口详情
 export const fuzzyPointSearch = (params) => {
-  return getRequest('/api/miniapp/fuzzyPointSearch', params, true)
+  return getRequest('/api/miniapp/fuzzyPointSearch', params, true, false, true)
 }
 
 // 获取我的报价单列表
 export const createQuotationQuotation = (params, ccgId) => {
   return postRequest(`/api/miniapp/${ccgId}/quotationQuotationCreate`, params, true, false, true)
+}
+
+// 保存报价单详情
+export const saveQuotationDetail = (params) => {
+  return postRequest('/api/miniapp/saveQuotationDetail', params, true, true, true, true)
 }

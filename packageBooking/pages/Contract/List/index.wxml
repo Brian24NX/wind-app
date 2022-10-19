@@ -32,7 +32,14 @@
             <view>Quotation</view>
           </view>
         </view>
-        <view class="quotationRight">{{filters.checkValidDate(item.validityTo) ? 'VALID' : 'OVERDUE'}}</view>
+        <view class="quotationRight">
+          <view>{{filters.checkValidDate(item.validityTo) ? 'VALID' : 'EXPIRED'}}</view>
+          <view>
+            <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityFrom, true, true) : commonFilters.formatEnDateLocal(item.validityFrom, '-', '', true, true)}}</text>
+            <text> > </text>
+            <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityTo, true, true) : commonFilters.formatEnDateLocal(item.validityTo, '-', '', true, true)}}</text>
+          </view>  
+        </view>
       </view>
       <view class="tips">
         <view class="oneTip oneTip2" wx:if="{{item.spotOffer}}">{{languageContent.spotOn}}</view>
@@ -45,17 +52,16 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{language === 'zh' ? commonFilters.formatCnDateLocal("2022-09-05T10:00:00Z", false, true) : commonFilters.formatEnDateLocal("2022-09-05T10:00:00Z", '-', '', false, true)}}</view>
-            <view class="time">{{fromLabel}}, {{fromCode}}</view>
+            <view class="time">{{item.portOfLoadingLabel || item.initialPortOfLoading}}</view>
             <view class="ship">
               <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{'Freight ALL Kinds'}}</view>
+              <view>{{item.commodities[0].name}}</view>
             </view>
             <view class="ship" style="width: 100%;">
               <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{'Dry 40 ST'}}</view>
+              <view>{{equipmentType}} {{item.equipments[0].code}}</view>
             </view>
-            <view class="time end">{{language === 'zh' ? commonFilters.formatCnDateLocal("2022-09-05T10:00:00Z", false, true) : commonFilters.formatEnDateLocal("2022-09-05T10:00:00Z", '-', '', false, true)}} {{toLabel}}, {{toCode}}</view>
+            <view class="time end">{{item.portOfDischargeLabel || item.initalPortOfDischarge}}</view>
           </view>
           <view class="rightContent">
             <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{7}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
@@ -73,13 +79,13 @@
       <view class="oneBottom">
         <view class="bottomLeft">
           <image src="/assets/img/instantQuote/cash@2x.png"></image>
-          <view class="priceCount">3400</view>
+          <view class="priceCount">{{item.surchargeDetails.totalCharge.amount}}</view>
           <view class="priceUnit">
-            <view class="unit">EUR</view>
+            <view class="unit">{{item.surchargeDetails.totalCharge.currency.code}}</view>
             <view class="unit2">ALL IN RATE</view>
           </view>
         </view>
-        <view class="selects" bindtap="toDetail" data-index="{{index}}">{{languageContent.book}}</view>
+        <button class="selects {{!filters.checkValidDate(item.validityTo) ? 'notSelect' : ''}}" disabled="{{!filters.checkValidDate(item.validityTo)}}" bindtap="toDetail" data-index="{{index}}">{{languageContent.book}}</button>
       </view>
     </view>
   </view>
