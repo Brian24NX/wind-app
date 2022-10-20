@@ -163,7 +163,7 @@ Page({
                 "quoteLineId": item.quoteLines[0].quoteLineId,
                 "shippingCompany": item.quoteLines[0].shippingCompany,
                 "equipments": item.quoteLines[0].equipments.filter(i => i.code === this.data.equipmentSize),
-                "simulationDate": this.data.simulationDate,
+                "simulationDate": item.departureDate,
                 "paymentMethod": null,
                 "usContract": false,
                 "portOfLoading": item.quoteLines[0].portOfLoading,

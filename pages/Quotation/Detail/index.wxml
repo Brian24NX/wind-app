@@ -95,7 +95,7 @@
           <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
         </view>
       </view>
-      <view class="oneRates">
+      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.oceanFreight.price.amount}}">
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="oceanFreight">
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.oceanFreight.isChecked ? 'rateChecked' : ''}}">
@@ -110,7 +110,7 @@
         </view>
         <view class="rateDesc">{{quotationDetail.surchargeDetails.oceanFreightDetails}}</view>
       </view>
-      <view class="oneRates">
+      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.freightCharges.amount}}">
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="freightCharges">
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.freightCharges.isChecked ? 'rateChecked' : ''}}">
@@ -130,7 +130,7 @@
           </view>
         </view>
       </view>
-      <view class="oneRates">
+      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.prepaidCharges.amount}}">
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="prepaidCharges">
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.prepaidCharges.isChecked ? 'rateChecked' : ''}}">
@@ -150,7 +150,7 @@
           </view>
         </view>
       </view>
-      <view class="oneRates">
+      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.collectCharges.amount}}">
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="collectCharges">
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.collectCharges.isChecked ? 'rateChecked' : ''}}">

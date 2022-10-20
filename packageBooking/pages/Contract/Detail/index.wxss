@@ -134,7 +134,7 @@
   justify-content: flex-end;
   position: absolute;
   top: 20rpx;
-  right: 20rpx;
+  right: 30rpx;
 }
 
 .resultsContainer .logos image {
@@ -171,7 +171,7 @@
   background-color: #ffffff;
   display: flex;
   flex-wrap: wrap;
-  margin: 30rpx 0;
+  margin: 0 0 30rpx;
   padding: 0 46rpx;
 }
 
@@ -211,6 +211,35 @@
   background-color: #ffffff;
   padding: 0 48rpx;
   margin-bottom: 30rpx;
+}
+
+.rateTitles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eeeeee;
+}
+
+.rateTitles .titleLeft {
+  display: flex;
+  align-items: center;
+  font-size: 48rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+}
+
+.rateTitles .titleLeft .titleLine {
+  width: 6rpx;
+  height: 40rpx;
+  background-color: #E20202;
+  margin-right: 12rpx;
+}
+
+.rateTitles image {
+  width: 146rpx;
+  height: 106rpx;
+  margin-right: -20rpx;
 }
 
 .rateTypeContainers {

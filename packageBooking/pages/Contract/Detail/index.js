@@ -33,6 +33,7 @@ Page({
     fromLabel: '',
     toLabel: '',
     quotationDetail: {},
+    simulationDate: '',
     currentType: 'charge'
   },
 
@@ -46,13 +47,19 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
+    let quotationDetail = data.contractList[Number(options.index)]
+    quotationDetail.surchargeDetails.oceanFreight.isChecked = true
+    quotationDetail.surchargeDetails.freightCharges.isChecked = true
+    quotationDetail.surchargeDetails.prepaidCharges.isChecked = true
+    quotationDetail.surchargeDetails.collectCharges.isChecked = true
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       load: languageUtil.languageVersion().lang.page.load,
       language: languageUtil.languageVersion().lang.page.langue,
       fromLabel: data.contractList[Number(options.index)].portOfLoadingLabel,
       toLabel: data.contractList[Number(options.index)].portOfDischargeLabel,
-      quotationDetail: data.contractList[Number(options.index)]
+      simulationDate: data.simulationDate,
+      quotationDetail: quotationDetail
     })
     this.calculatedCharges()
     this.dealEquipmentSize()
@@ -73,8 +80,9 @@ Page({
     if (surchargeDetails.collectCharges.isChecked) {
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
+    console.log(surchargeDetails)
     this.setData({
-      totalChargeAmount: totalChargeAmount || this.quotationDetail.surchargeDetails.totalCharge.amount
+      totalChargeAmount: totalChargeAmount || surchargeDetails.totalCharge.amount
     })
   },
 

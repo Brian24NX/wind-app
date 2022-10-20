@@ -1,12 +1,9 @@
 // packageBooking/pages/Contract/List/index.js
 const languageUtil = require('../../../../utils/languageUtils')
 import {
-  fuzzyPointSearch
+  fuzzyPointSearch,
+  getQuotationSurchargeDetail
 } from '../../../../api/modules/quotation'
-
-import {
-  getQuotationDetail
-} from '../../../api/modules/booking'
 
 Page({
 
@@ -19,6 +16,7 @@ Page({
     toLabel: '',
     toCode: '',
     equipmentType: '',
+    simulationDate: '',
     contractList: []
   },
 
@@ -36,6 +34,7 @@ Page({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue,
       equipmentType: data.commonEquipmentTypeName,
+      simulationDate: data.simulationDate,
       fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
       fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
       toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
@@ -46,6 +45,14 @@ Page({
   },
 
   dealData() {
+    this.setData({
+      contractList: this.data.contractList.map((item) => {
+        return {
+          ...item,
+          isLoading: true
+        }
+      })
+    })
     this.data.contractList.forEach((item, index) => {
       setTimeout(() => {
         if (!item.surchargeDetails) {
@@ -88,23 +95,31 @@ Page({
   },
 
   getQuotationDetailFn(item) {
-    getQuotationDetail({
-      quotationReference: item.quotationReference
-    }).then(res => {
-      if (res.data) {
-        item.weight = res.data.weight
-        let surchargeDetails = JSON.parse(res.data.quotationDetail)
-        surchargeDetails.oceanFreight.isChecked = true
-        surchargeDetails.freightCharges.isChecked = true
-        surchargeDetails.prepaidCharges.isChecked = true
-        surchargeDetails.collectCharges.isChecked = true
-        item.surchargeDetails = surchargeDetails
-        this.setData({
-          contractList: this.data.contractList
-        })
+    getQuotationSurchargeDetail({
+      "surchargeFromLara": {
+        "quoteLineId": item.quoteLineId,
+        "shippingCompany": item.shippingCompany,
+        "equipments": item.equipments,
+        "simulationDate": this.data.simulationDate,
+        "paymentMethod": null,
+        "usContract": false,
+        "portOfLoading": item.initialPortOfLoading,
+        "portOfDischarge": item.initalPortOfDischarge,
+        "loggedId": this.data.loggedId,
+        "nextDepartureSolutionNumber": item.solutionNumber,
+        "nextDepartureScheduleNumber": item.scheduleNumber,
+        "quoteLineKey": item.qlKey
       }
+    }, wx.getStorageSync('ccgId')).then(res => {
+      item.isLoading = false
+      item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
+      item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
+      item.surchargeDetails.allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
+      this.setData({
+        contractList: this.data.contractList
+      })
     }, () => {
-      this.getQuotationDetail(item)
+      this.getQuotationDetailFn(item)
     })
   },
 

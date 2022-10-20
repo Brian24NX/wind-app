@@ -109,7 +109,7 @@
               <view class="nameContainer">
                 <view class="names">{{item.departureDetails.placeName}}</view>
                 <view class="code">{{filters.setChina(item.departureDetails.placeCode, true)}}</view>
-                <view class="tags tags2">{{detail.receiptHaulage}}</view>
+                <view class="tags tags2" wx:if="{{detail.receiptHaulage}}">{{detail.receiptHaulage}}</view>
               </view>
             </block>
             <view class="rails">Others</view>
@@ -120,7 +120,7 @@
           <view class="diquContainer">
             <view class="names">{{item.arrivalDetails.placeName}}</view>
             <view class="code">{{filters.setChina(item.arrivalDetails.placeCode, true)}}</view>
-            <view class="tags tags2">{{detail.deliveryHaulage}}</view>
+            <view class="tags tags2" wx:if="{{detail.deliveryHaulage}}">{{detail.deliveryHaulage}}</view>
           </view>
         </view>
       </view>
