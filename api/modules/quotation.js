@@ -42,3 +42,8 @@ export const createQuotationQuotation = (params, ccgId) => {
 export const saveQuotationDetail = (params) => {
   return postRequest('/api/miniapp/saveQuotationDetail', params, true, true, true, true)
 }
+
+// 获取D&D Charges
+export const ddCharge = (params) => {
+  return postRequest('/api/miniapp/ddChargeFinder', params, true, false, false)
+}

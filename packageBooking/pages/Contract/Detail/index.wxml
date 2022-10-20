@@ -18,14 +18,14 @@
           <view class="stepContent">{{toLabel}}</view>
         </view>
       </view>
-      <view class="carddate">
+      <!-- <view class="carddate">
         <image src="/assets/img/result/calendar@2x.png" mode="aspectFit"></image>
         <text>{{7}} {{Number(quotationDetail.transitTime) == 1 ? languageContent.day : languageContent.days}}</text>
       </view>
       <view class="cardtranshipment">
         <image src="/assets/img/result/zhuanyun@2x.png" mode="aspectFit"></image>
         <text>{{quotationDetail.tranShipment.length ? quotationDetail.tranShipment.length + ' ' + languageContent.zhuanyun : languageContent.zhida}}</text>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="resultsContainer">
@@ -227,7 +227,7 @@
           </view>
         </view>
       </view>
-      <view class="oneQuoteDetail">
+      <view class="oneQuoteDetail" wx:if="{{quotationDetail.commentToCustomer || quotationDetail.routingComment}}">
         <view class="oneQuoteTitle">Comments</view>
         <view class="oneQuoteValue">
           <view class="bold">{{quotationDetail.commentToCustomer}}</view>
@@ -249,7 +249,7 @@
           </view>
           <view>
             <text>Booking Pre carriage </text>
-            <text class="bold">Allowed</text>
+            <text class="bold">{{quotationDetail.exportConstruction ? 'Allowed' : 'Refused'}}</text>
           </view>
         </view>
       </view>
@@ -262,12 +262,15 @@
           </view>
           <view>
             <text>Booking On carriage </text>
-            <text class="bold">Allowed</text>
+            <text class="bold">{{quotationDetail.importConstruction ? 'Allowed' : 'Refused'}}</text>
           </view>
         </view>
       </view>
       <view class="oneQuoteDetail">
-        <view class="oneQuoteTitle">Weight and Dimensions</view>
+        <view class="oneQuoteTitle">
+          <text>Weight and Dimensions</text>
+          <text class="perContainer">per container</text>
+        </view>
         <view class="oneQuoteValue">
           <view>
             <text>Max Weight per container </text>

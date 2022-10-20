@@ -34,3 +34,8 @@
   color: #071E5D;
   margin-bottom: 10rpx;
 }
+
+.desc {
+  color: #071E5D;
+  font-size: 24rpx;
+}

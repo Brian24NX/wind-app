@@ -9,4 +9,11 @@
     <view class="infoTitle">{{item.chargeName}}</view>
     <view>{{item.chargeDescription}}</view>
   </view>
+  <text class="desc">
+    The breakdown of payment surcharges shipper / consignee will be determined at time of booking.
+    All surcharges are applicable for the selected departure date and will be recalculated at time of shipment unless rate is fixed.
+    Additional charges such as contingency, transhipments, over weight surcharges and local charges may be applicable depending on the requested service, local regulations and type of cargo (Food Grade, Heavy Cargo, High value, Sensitive) at the time of booking.
+    Offer and booking confirmation remains subject to equipment and space availability.
+    The Transit Time mentioned is based on Estimated Time
+  </text>
 </view>

@@ -12,6 +12,7 @@ Page({
   data: {
     languageContent: {},
     language: 'zh',
+    todayDate: '',
     isFirst: true,
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
@@ -43,7 +44,9 @@ Page({
     commodityName: '',
     shippingCompany: '',
     simulationDate: '',
-    traceId: ''
+    traceId: '',
+    portOfLoading: '',
+    portOfDischarge: ''
   },
 
   /**
@@ -53,9 +56,15 @@ Page({
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.qutationResult.title
     })
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
-      language: languageUtil.languageVersion().lang.page.langue
+      language: languageUtil.languageVersion().lang.page.langue,
+      todayDate: this.getDate(),
+      portOfLoading: data.portOfLoading,
+      portOfDischarge: data.portOfDischarge,
     })
     this.setDefaultInfo(Number(options.index), Number(options.containers))
   },
@@ -164,5 +173,15 @@ Page({
       })
     })
     // }
-  }
+  },
+
+  getDate() {
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    month = month < 10 ? ('0' + month) : month;
+    let day = now.getDate();
+    day = day < 10 ? ('0' + day) : day
+    return year + '-' + month + '-' + day;
+  },
 })

@@ -1,4 +1,5 @@
 <!--pages/Quotation/Others/D&D/index.wxml-->
+<wxs module="commonFilters" src="/utils/format.wxs"></wxs>
 <view class="topLine"></view>
 <view class="dDContainer">
   <view class="topTitle">
@@ -7,28 +8,28 @@
   </view>
   <view class="dDTable">
     <view class="tableTitle">Export free time</view>
-    <view class="DDDetail">
-      <view class="oneDetail">Merged</view>
-      <view class="oneDetail">20ST</view>
-      <view class="oneDetail">8</view>
-      <view class="oneDetail">Calendar Days</view>
+    <view class="DDDetail" wx:for="{{exports}}">
+      <view class="oneDetail">{{item.tariff.name}}</view>
+      <view class="oneDetail">{{item.conditionsByEquipment[0].equipmentSizeType}}</view>
+      <view class="oneDetail">{{item.conditionsByEquipment[0].freeDays.number}}</view>
+      <view class="oneDetail">{{item.conditionsByEquipment[0].freeDays.type}}</view>
     </view>
   </view>
   <view class="desc">
     <image src="/assets/img/instantQuote/tan@2x.png"></image>
-    <view>Valid conditions on 27 Jul 2022, based on SHANGHAI,CN</view>
+    <view>Valid conditions on {{commonFilters.formatEnDateLocal(exportDate, ' ', '', true, true)}}, based on {{portOfLoadingLabel}}</view>
   </view>
   <view class="dDTable">
     <view class="tableTitle">Import free time</view>
-    <view class="DDDetail">
-      <view class="oneDetail">Merged</view>
-      <view class="oneDetail">20ST</view>
-      <view class="oneDetail">8</view>
-      <view class="oneDetail">Calendar Days</view>
+    <view class="DDDetail" wx:for="{{imports}}">
+      <view class="oneDetail">{{item.tariff.name}}</view>
+      <view class="oneDetail">{{item.conditionsByEquipment[0].equipmentSizeType}}</view>
+      <view class="oneDetail">{{item.conditionsByEquipment[0].freeDays.number}}</view>
+      <view class="oneDetail">{{item.conditionsByEquipment[0].freeDays.type}}</view>
     </view>
   </view>
   <view class="desc">
     <image src="/assets/img/instantQuote/tan@2x.png"></image>
-    <view>Valid conditions on 27 Jul 2022, based on SHANGHAI,CN</view>
+    <view>Valid conditions on {{commonFilters.formatEnDateLocal(importDate, ' ', '', true, true)}}, based on {{portOfDischargeLabel}}</view>
   </view>
 </view>

@@ -1,4 +1,5 @@
 <!--pages/Quotation/Detail/index.wxml-->
+<wxs module="format" src="/utils/format.wxs"></wxs>
 <view class="resultContainers">
   <view class="resultCardContainers">
     <view class="resultCardContainer">
@@ -199,7 +200,10 @@
             <text>{{item.currency}}</text>
           </view>
         </view>
-        <view class="rateDesc">Surcharges calculation was simulated with surcharges valid on 03 Oct 2022</view>
+        <view class="rateDesc">
+          <view>Surcharges calculation was simulated with surcharges valid on {{format.formatEnDateLocal(quotationDetail.departureDate, ' ', '', true, true)}}</view>
+          <view>All rates are based on Reuters rate of exchange of {{format.formatEnDateLocal(todayDate, ' ', '', true, true)}}</view>
+        </view>
       </view>
     </view>
     <view class="otherContainer">

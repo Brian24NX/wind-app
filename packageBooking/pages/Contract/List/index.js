@@ -17,7 +17,9 @@ Page({
     toCode: '',
     equipmentType: '',
     simulationDate: '',
-    contractList: []
+    contractList: [],
+    portOfLoading: '',
+    portOfDischarge: ''
   },
 
   /**
@@ -35,6 +37,8 @@ Page({
       language: languageUtil.languageVersion().lang.page.langue,
       equipmentType: data.commonEquipmentTypeName,
       simulationDate: data.simulationDate,
+      portOfLoading: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
+      portOfDischarge: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1],
       fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
       fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
       toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],

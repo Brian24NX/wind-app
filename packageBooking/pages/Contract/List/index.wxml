@@ -64,7 +64,7 @@
             <view class="time end">{{item.portOfDischargeLabel || item.initalPortOfDischarge}}</view>
           </view>
           <view class="rightContent">
-            <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{7}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
+            <!-- <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{7}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
             <view class="zhuanrun" wx:if="{{item.tranShipment.length}}">
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
               <view>{{item.tranShipment.length}} {{languageContent.zhuanyun}}</view>
@@ -72,7 +72,7 @@
             <view class="zhuanrun" wx:if="{{!item.tranShipment.length}}">
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
               <view>{{languageContent.zhida}}</view>
-            </view>
+            </view> -->
             <view class="logos">
               <image wx:if="{{item.shippingCompany === '0001'}}" src="/assets/img/instantQuote/CMA.svg" mode="aspectFit"></image>
               <image wx:if="{{item.shippingCompany === '0002'}}" src="/assets/img/instantQuote/ANL.svg" mode="aspectFit"></image>

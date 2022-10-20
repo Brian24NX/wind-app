@@ -20,7 +20,7 @@ Page({
     }, {
       icon: '/assets/img/instantQuote/other_2@2x.png',
       label: 'D&D',
-      url: "/pages/Quotation/Others/DDCharges/index"
+      url: "/pages/Quotation/Others/DDCharges/index?from=myContracts"
     }, {
       icon: '/assets/img/instantQuote/other_3@2x.png',
       label: 'SpotOn',
@@ -34,7 +34,9 @@ Page({
     toLabel: '',
     quotationDetail: {},
     simulationDate: '',
-    currentType: 'charge'
+    currentType: 'charge',
+    portOfLoading: '',
+    portOfDischarge: ''
   },
 
   /**
@@ -56,6 +58,8 @@ Page({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       load: languageUtil.languageVersion().lang.page.load,
       language: languageUtil.languageVersion().lang.page.langue,
+      portOfLoading: data.portOfLoading,
+      portOfDischarge: data.portOfDischarge,
       fromLabel: data.contractList[Number(options.index)].portOfLoadingLabel,
       toLabel: data.contractList[Number(options.index)].portOfDischargeLabel,
       simulationDate: data.simulationDate,

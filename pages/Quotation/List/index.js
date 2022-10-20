@@ -37,7 +37,9 @@ Page({
     showRemind: false,
     currentIndex: null,
     equipmentSize: '',
-    shippingCompany: ''
+    shippingCompany: '',
+    portOfLoading: '',
+    portOfDischarge: ''
   },
 
   /**
@@ -55,6 +57,8 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({
+      portOfLoading: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
+      portOfDischarge: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1],
       containers: data.containers,
       equipmentSize: data.equipmentType,
       shippingCompany: data.shippingCompany,
