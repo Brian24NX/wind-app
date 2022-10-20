@@ -130,65 +130,69 @@ Page({
             return {
               ...item,
               isLoading: true,
-              canSelect: false
+              canSelect: true
             }
           })
         })
-      }
-      this.setData({
-        isLoading: false
-      })
-      wx.pageScrollTo({
-        duration: 500,
-        scrollTop: 0
-      })
-      this.data.quoteLineList.forEach((item, index) => {
-        if (item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length) {
-          let params = {}
-          if (!item.quoteLines[0].quoteLineId) {
-            params = {
-              "surchargeFromAqua": {
-                "offerId": item.offerId,
-                "traceId": this.data.traceId,
-                "equipmentSizeType": this.data.equipmentSize,
-                "currencyCode": item.quoteLines[0].equipments[0].currencyCode,
-                "oceanFreightRate": item.quoteLines[0].equipments[0].oceanFreightRate,
-                "nextDepartureScheduleNumber": item.scheduleNumber,
-                "nextDepartureSolutionNumber": item.solutionNumber
+        this.setData({
+          isLoading: false
+        })
+        wx.pageScrollTo({
+          duration: 500,
+          scrollTop: 0
+        })
+        this.data.quoteLineList.forEach((item, index) => {
+          if (item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length) {
+            let params = {}
+            if (!item.quoteLines[0].quoteLineId) {
+              params = {
+                "surchargeFromAqua": {
+                  "offerId": item.offerId,
+                  "traceId": this.data.traceId,
+                  "equipmentSizeType": this.data.equipmentSize,
+                  "currencyCode": item.quoteLines[0].equipments[0].currencyCode,
+                  "oceanFreightRate": item.quoteLines[0].equipments[0].oceanFreightRate,
+                  "nextDepartureScheduleNumber": item.scheduleNumber,
+                  "nextDepartureSolutionNumber": item.solutionNumber
+                }
+              }
+            } else {
+              params = {
+                "surchargeFromLara": {
+                  "quoteLineId": item.quoteLines[0].quoteLineId,
+                  "shippingCompany": item.quoteLines[0].shippingCompany,
+                  "equipments": item.quoteLines[0].equipments.filter(i => i.code === this.data.equipmentSize),
+                  "simulationDate": item.departureDate,
+                  "paymentMethod": null,
+                  "usContract": false,
+                  "portOfLoading": item.quoteLines[0].portOfLoading,
+                  "portOfDischarge": item.quoteLines[0].portOfDischarge,
+                  "loggedId": this.data.loggedId,
+                  "nextDepartureSolutionNumber": item.solutionNumber,
+                  "nextDepartureScheduleNumber": item.scheduleNumber,
+                  "quoteLineKey": item.quoteLines[0].qlKey
+                }
               }
             }
+            setTimeout(() => {
+              if (!item.surchargeDetails && item.canSelect) {
+                this.getQuotationSurchargeDetailFn(item, params, isFirst)
+              }
+            }, 300 * index);
           } else {
-            params = {
-              "surchargeFromLara": {
-                "quoteLineId": item.quoteLines[0].quoteLineId,
-                "shippingCompany": item.quoteLines[0].shippingCompany,
-                "equipments": item.quoteLines[0].equipments.filter(i => i.code === this.data.equipmentSize),
-                "simulationDate": item.departureDate,
-                "paymentMethod": null,
-                "usContract": false,
-                "portOfLoading": item.quoteLines[0].portOfLoading,
-                "portOfDischarge": item.quoteLines[0].portOfDischarge,
-                "loggedId": this.data.loggedId,
-                "nextDepartureSolutionNumber": item.solutionNumber,
-                "nextDepartureScheduleNumber": item.scheduleNumber,
-                "quoteLineKey": item.quoteLines[0].qlKey
-              }
-            }
+            item.isLoading = false
+            item.canSelect = false
+            item.surchargeDetails = null
+            this.setData({
+              quoteLineList: this.data.quoteLineList
+            })
           }
-          setTimeout(() => {
-            if (!item.surchargeDetails) {
-              this.getQuotationSurchargeDetailFn(item, params, isFirst)
-            }
-          }, 300 * index);
-        } else {
-          item.isLoading = false
-          item.canSelect = false
-          item.surchargeDetails = null
-          this.setData({
-            quoteLineList: this.data.quoteLineList
-          })
-        }
-      })
+        })
+      } else {
+        this.setData({
+          quoteLineList: res.data
+        })
+      }
     }, () => {
       this.setData({
         quoteLineList: [],
@@ -201,8 +205,15 @@ Page({
     getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(res => {
       item.isLoading = false
       item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
-      item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
-      item.surchargeDetails.allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
+      const allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
+      if (allocation) {
+        item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
+        item.surchargeDetails.allocation = allocation
+        item.canSelect = true
+      } else {
+        item.surchargeDetails = null
+        item.canSelect = false
+      }
       this.setData({
         quoteLineList: this.data.quoteLineList
       })
