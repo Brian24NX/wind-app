@@ -775,6 +775,9 @@ Page({
 
   getQuotationNextDepartures2(shippingCompany, index) {
     if (index === this.data.pricingGroups.length) {
+      this.setData({
+        resultResq: {}
+      })
       this.getNearByPortNextDeparture()
     } else {
       quotationNextDepartures({
@@ -830,7 +833,6 @@ Page({
       "simulationDate": this.data.simulationDate,
       "weightPerContainer": this.data.weight
     }).then(res => {
-      console.log(res)
       if (!res.data || !res.data.length) {
         wx.navigateTo({
           url: '/pages/Quotation/List/index',
