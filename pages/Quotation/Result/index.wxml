@@ -26,8 +26,8 @@
           <view>{{quotationDetail.tranShipment.length ? quotationDetail.tranShipment.length + ' ' + languageContent.zhuanyun : languageContent.zhida}}</view>
         </view>
         <view class="priceRight">
-          <text class="price">{{quotationDetail.totalCharge.amount}}</text>
-          <text>{{quotationDetail.totalCharge.currency.code}}</text>
+          <text class="price">{{quotationDetail.surchargeDetails.totalCharge.amount}}</text>
+          <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
         </view>
       </view>
       <view class="solutionContainer" catchtap="toLineDetail">

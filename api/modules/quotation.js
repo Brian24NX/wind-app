@@ -43,7 +43,7 @@ export const saveQuotationDetail = (params) => {
   return postRequest('/api/miniapp/saveQuotationDetail', params, true, true, true, true)
 }
 
-// 获取D&D Charges
-export const ddCharge = (params) => {
-  return postRequest('/api/miniapp/ddChargeFinder', params, true, false, false)
+// 获取D&D
+export const detentionDemurrages = (params) => {
+  return postRequest('/api/miniapp/detentionDemurrages', params, true, false, false)
 }

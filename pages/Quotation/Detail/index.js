@@ -46,7 +46,9 @@ Page({
     simulationDate: '',
     traceId: '',
     portOfLoading: '',
-    portOfDischarge: ''
+    portOfDischarge: '',
+    placeOfOrigin: '',
+    finalPlaceOfDelivery: ''
   },
 
   /**
@@ -65,6 +67,8 @@ Page({
       todayDate: this.getDate(),
       portOfLoading: data.portOfLoading,
       portOfDischarge: data.portOfDischarge,
+      placeOfOrigin: data.placeOfOrigin,
+      finalPlaceOfDelivery: data.finalPlaceOfDelivery
     })
     this.setDefaultInfo(Number(options.index), Number(options.containers))
   },
@@ -160,7 +164,18 @@ Page({
         "createAquaSpecialQuotation": {
           "affiliates": [wx.getStorageSync('partnerCode')],
           "simulationDate": this.data.simulationDate,
+          "numberOfContainers": this.data.containers,
+          "weightPerContainer": this.data.weight,
           "equipmentSizeType": this.data.equipmentTypeSize,
+          "polCountryCode": this.data.portOfLoading.split(';')[1].substring(0, 2),
+          "podCountryCode": this.data.portOfDischarge.split(';')[1].substring(0, 2),
+          "allowSpecialQuotation": this.data.quotationDetail.quoteLines[0].allowSpecialQuotation,
+          "spotValidityInDays": this.data.quotationDetail.quoteLines[0].spotValidityInDays,
+          "routingComment": this.data.quotationDetail.quoteLines[0].routingComment,
+          "arrivalDate": this.data.quotationDetail.arrivalDate,
+          "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
+          "placeOfOrigin": this.data.placeOfOrigin || null,
+          "voyageRef": this.data.quotationDetail.voyage,
           "offerId": this.data.quotationDetail.offerId,
           "traceId": this.data.traceId,
           "shippingCompany": this.data.shippingCompany

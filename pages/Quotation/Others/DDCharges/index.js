@@ -1,6 +1,6 @@
 // pages/Quotation/Others/D&D/index.js
 import {
-  ddCharge
+  detentionDemurrages
 } from '../../../../api/modules/quotation'
 Page({
 
@@ -28,41 +28,90 @@ Page({
       this.setData({
         exportDate: data.simulationDate,
         importDate: data.simulationDate,
-        portOfLoadingLabel: data.portOfLoading,
-        portOfDischargeLabel: data.portOfDischarge
+        portOfLoadingLabel: data.portOfLoading.split(';')[0],
+        portOfDischargeLabel: data.portOfDischarge.split(';')[0]
       })
       params = {
-        portOfLoading: data.quotationDetail.initialPortOfLoading,
-        portOfDischarge: data.quotationDetail.initalPortOfDischarge,
-        equipmentSizeType: [data.quotationDetail.equipments[0].code],
-        partnerCode: 'partnerCode'
+        "portOfLoading": data.portOfLoading.split(';')[1],
+        "portOfDischarge": data.portOfDischarge.split(';')[1],
+        "shippingCompany": data.shippingCompany,
+        "tariffCodes": ["DET", "DEM", "MER"],
+        "placeOfOrigin": data.placeOfOrigin || null,
+        "finalPlaceOfDelivery": data.finalPlaceOfDelivery || null,
+        "commodity": data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
+        "equipmentSizeTypes": [data.quotationDetail.equipments[0].code],
+        "businessPartner": wx.getStorageSync('partnerCode'),
+        "simulationDate": this.data.importDate,
       }
+      detentionDemurrages({
+        ...params,
+        "directions": ["E"]
+      }).then(res => {
+        console.log(res)
+        if (res.data && res.data.length) {
+          this.setData({
+            exports: res.data
+          })
+        }
+      })
+      detentionDemurrages({
+        ...params,
+        "directions": ["I"]
+      }).then(res => {
+        console.log(res)
+        if (res.data && res.data.length) {
+          const data = res.data
+          this.setData({
+            imports: res.data
+          })
+        }
+      })
     } else {
       this.setData({
         exportDate: data.quotationDetail.departureDate,
         importDate: data.quotationDetail.arrivalDate,
-        portOfLoadingLabel: data.portOfLoading,
-        portOfDischargeLabel: data.portOfDischarge,
+        portOfLoadingLabel: data.portOfLoading.split(';')[0],
+        portOfDischargeLabel: data.portOfDischarge.split(';')[0],
       })
       params = {
-        portOfLoading: data.quotationDetail.quoteLines[0].portOfLoading,
-        portOfDischarge: data.quotationDetail.quoteLines[0].portOfDischarge,
-        equipmentSizeType: [data.equipmentTypeSize],
-        partnerCode: 'partnerCode'
+        "portOfLoading": data.portOfLoading.split(';')[1],
+        "portOfDischarge": data.portOfDischarge.split(';')[1],
+        "shippingCompany": data.shippingCompany,
+        "tariffCodes": ["DET", "DEM", "MER"],
+        "placeOfOrigin": data.placeOfOrigin || null,
+        "finalPlaceOfDelivery": data.finalPlaceOfDelivery || null,
+        "commodity": data.commodityCode,
+        "equipmentSizeTypes": [data.equipmentTypeSize],
+        "refrigerated": data.quotationDetail.quoteLines[0].refrigerated,
+        "hazardous": data.quotationDetail.quoteLines[0].hazardous,
+        "oversize": data.quotationDetail.quoteLines[0].oversize,
+        "businessPartner": wx.getStorageSync('partnerCode')
       }
+      detentionDemurrages({
+        ...params,
+        "directions": ["E"],
+        "simulationDate": data.quotationDetail.departureDate,
+      }).then(res => {
+        console.log(res)
+        if (res.data && res.data.length) {
+          this.setData({
+            exports: res.data
+          })
+        }
+      })
+      detentionDemurrages({
+        ...params,
+        "directions": ["I"],
+        "simulationDate": data.quotationDetail.arrivalDate,
+      }).then(res => {
+        console.log(res)
+        if (res.data && res.data.length) {
+          const data = res.data
+          this.setData({
+            imports: res.data
+          })
+        }
+      })
     }
-    
-    ddCharge(params).then(res=>{
-      console.log(res)
-      if (res.data && res.data.length) {
-        const data = res.data
-        const imports = data.filter(i => (i.direction.code === 'I'))
-        const exports = data.filter(i => (i.direction.code === 'E'))
-        this.setData({
-          imports,
-          exports
-        })
-      }
-    })
   }
 })

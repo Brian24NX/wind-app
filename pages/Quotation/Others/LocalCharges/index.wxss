@@ -50,6 +50,12 @@
   color: #071E5D;
 }
 
+.oneLocal .localLeft .bold {
+  font-weight: bold;
+  font-family: Antonio-Regular, Antonio;
+  font-size: 32rpx;
+}
+
 .oneLocal .copy {
   color: #6B7790;
 }

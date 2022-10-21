@@ -480,40 +480,49 @@ Page({
       portOfLoading: this.data.portOfLoading,
       portOfDischarge: this.data.portOfDischarge
     }).then(res => {
-      let commodityList = []
-      res.data.forEach(i => {
-        commodityList = commodityList.concat(i.commodityDetails.map(c => {
-          return {
-            ...c,
-            zh: c.zh || c.en
+      if (res.data) {
+        let commodityList = []
+        res.data.forEach(i => {
+          commodityList = commodityList.concat(i.commodityDetails.map(c => {
+            return {
+              ...c,
+              zh: c.zh || c.en
+            }
+          }))
+        })
+        commodityList = commodityList.filter(i => i.code)
+        commodityList.unshift({
+          code: 'FAK',
+          en: "Freight All Kinds",
+          zh: '所有类型的费用'
+        })
+        res.data.forEach(item => {
+          if (item.iQexcludedPartners) {
+            item.iQexcludedPartners = item.iQexcludedPartners.map(i => {
+              return i.code
+            })
           }
-        }))
-      })
-      commodityList = commodityList.filter(i => i.code)
-      commodityList.unshift({
-        code: 'FAK',
-        en: "Freight All Kinds",
-        zh: '所有类型的费用'
-      })
-      res.data.forEach(item => {
-        if (item.iQexcludedPartners) {
-          item.iQexcludedPartners = item.iQexcludedPartners.map(i => {
-            return i.code
-          })
-        }
-        delete item.iqexcludedPartners
-      })
-      this.setData({
-        commodityList: commodityList,
-        pricingGroupSetups: res.data,
-        pricingGroups: res.data.map(i => {
-          return {
-            pricingGroupId: i.pricingGroupId,
-            shippingCompany: i.shippingCompany
-          }
-        }),
-        commodityLoading: false
-      })
+          delete item.iqexcludedPartners
+        })
+        this.setData({
+          commodityList: commodityList,
+          pricingGroupSetups: res.data,
+          pricingGroups: res.data.map(i => {
+            return {
+              pricingGroupId: i.pricingGroupId,
+              shippingCompany: i.shippingCompany
+            }
+          }),
+          commodityLoading: false
+        })
+      } else {
+        this.setData({
+          commodityList: [],
+          pricingGroupSetups: null,
+          pricingGroups: null,
+          commodityLoading: false
+        })
+      }
     }, () => {
       setTimeout(() => {
         this.getCommodityList()

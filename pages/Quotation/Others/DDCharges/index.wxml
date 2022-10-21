@@ -9,10 +9,10 @@
   <view class="dDTable">
     <view class="tableTitle">Export free time</view>
     <view class="DDDetail" wx:for="{{exports}}">
-      <view class="oneDetail">{{item.tariff.name}}</view>
-      <view class="oneDetail">{{item.conditionsByEquipment[0].equipmentSizeType}}</view>
-      <view class="oneDetail">{{item.conditionsByEquipment[0].freeDays.number}}</view>
-      <view class="oneDetail">{{item.conditionsByEquipment[0].freeDays.type}}</view>
+      <view class="oneDetail">{{item.tariff.tariffName}}</view>
+      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].equipmentSizeType}}</view>
+      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.noOfFreeDays}}</view>
+      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.freeDaystype}}</view>
     </view>
   </view>
   <view class="desc">
@@ -22,10 +22,10 @@
   <view class="dDTable">
     <view class="tableTitle">Import free time</view>
     <view class="DDDetail" wx:for="{{imports}}">
-      <view class="oneDetail">{{item.tariff.name}}</view>
-      <view class="oneDetail">{{item.conditionsByEquipment[0].equipmentSizeType}}</view>
-      <view class="oneDetail">{{item.conditionsByEquipment[0].freeDays.number}}</view>
-      <view class="oneDetail">{{item.conditionsByEquipment[0].freeDays.type}}</view>
+      <view class="oneDetail">{{item.tariff.tariffName}}</view>
+      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].equipmentSizeType}}</view>
+      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.noOfFreeDays}}</view>
+      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.freeDaystype}}</view>
     </view>
   </view>
   <view class="desc">

@@ -1,8 +1,5 @@
 // pages/Quotation/Result/index.js
 const languageUtils = require('../../../utils/languageUtils')
-import {
-  saveQuotationDetail
-} from '../../../api/modules/quotation'
 Page({
 
   /**
@@ -51,11 +48,6 @@ Page({
       fromLabel: data.fromLabel,
       toLabel: data.toLabel,
       surchargeDetails: data.quotationDetail.surchargeDetails
-    })
-    saveQuotationDetail({
-      quotationReference: this.data.reference,
-      quotationDetail: JSON.stringify(this.data.surchargeDetails),
-      weight: this.data.weight
     })
   },
 
