@@ -82,14 +82,14 @@
       <view class="rateTitles">
         <view class="titleLeft">
           <view class="titleLine"></view>
-          <view>Rate per container</view>
+          <view>{{languageContent.perRate}}</view>
         </view>
         <image src="/assets/img/instantQuote/person@2x.png"></image>
       </view>
       <view class="rateTotal">
         <view class="rateTotalLeft">
           <image src="/assets/img/search/jzxh@2x.png"></image>
-          <view>Total per container</view>
+          <view>{{languageContent.totalPer}}</view>
         </view>
         <view class="rateTotalRight">
           <text class="ratePrice">{{totalChargeAmount}}</text>
@@ -102,7 +102,7 @@
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.oceanFreight.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
-            <text>Ocean Freight</text>
+            <text>{{languageContent.oceanFeight}}</text>
           </view>
           <view class="oneRateRight">
             <text class="ratePrice">{{quotationDetail.surchargeDetails.oceanFreight.price.amount}}</text>
@@ -117,7 +117,7 @@
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.freightCharges.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
-            <text>Charges payable as per freight</text>
+            <text>{{languageContent.perFeight}}</text>
           </view>
           <view class="oneRateRight">
             <text class="ratePrice">{{quotationDetail.surchargeDetails.freightCharges.amount}}</text>
@@ -137,7 +137,7 @@
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.prepaidCharges.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
-            <text>Charges payable at export (prepaid)</text>
+            <text>{{languageContent.prepaid}}</text>
           </view>
           <view class="oneRateRight">
             <text class="ratePrice">{{quotationDetail.surchargeDetails.prepaidCharges.amount}}</text>
@@ -157,7 +157,7 @@
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.collectCharges.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
-            <text>Charges payable at import (Collect)</text>
+            <text>{{languageContent.collect}}</text>
           </view>
           <view class="oneRateRight">
             <text class="ratePrice">{{quotationDetail.surchargeDetails.collectCharges.amount}}</text>
@@ -176,14 +176,14 @@
       <view class="rateTitles">
         <view class="titleLeft">
           <view class="titleLine"></view>
-          <view>Rate per B/L</view>
+          <view>{{languageContent.perBL}}</view>
         </view>
         <image src="/assets/img/instantQuote/person@2x.png"></image>
       </view>
       <view class="rateTotal">
         <view class="rateTotalLeft">
           <image src="/assets/img/search/jzxh@2x.png"></image>
-          <view>Total per B/L</view>
+          <view>{{languageContent.totalBL}}</view>
         </view>
         <view class="rateTotalRight">
           <text class="ratePrice">{{quotationDetail.surchargeDetails.perBLCharges.amount}}</text>
@@ -235,7 +235,7 @@
               <view class="bottomPrice">25</view>
               <view class="priceUnit">
                 <view>EUR</view>
-                <view>/container</view>
+                <view>/{{languageContent.container}}</view>
               </view>
             </view>
           </view>
@@ -250,9 +250,9 @@
       <view class="bottomPrice">{{totalChargeAmount * containers}}</view>
       <view>{{quotationDetail.surchargeDetails.perBLCharges.currency.code}}</view>
     </view>
-    <view class="containerNumber">For {{containers}} container (s)</view>
+    <view class="containerNumber">{{languageContent.forContainer}}</view>
   </view>
-  <view class="buttons" catchtap="submit">{{'Save quote to book'}}</view>
+  <view class="buttons" catchtap="submit">{{languageContent.saveQuotation}}</view>
 </view>
 
 <additional-services id="additionalServices"></additional-services>

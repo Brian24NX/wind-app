@@ -439,6 +439,9 @@ var Languague = {
     },
     // 报价详情
     qutationResult: {
+      noOffer: 'No offer currently available',
+      spotOut: 'Spot allocation sold out',
+      container: 'CONTRAIN',
       title: 'Instant Quote',
       select: 'Select',
       days: 'DAYS',
@@ -446,6 +449,17 @@ var Languague = {
       // 转运
       zhuanyun: 'transhipment',
       zhida: 'Direct',
+      perRate: 'Rate per container',
+      totalPer: 'Total per container',
+      oceanFeight: 'Ocean Freight',
+      perFeight: 'Charges payable as per freight',
+      prepaid: 'Charges payable at export (prepaid)',
+      collect: 'Charges payable at import (Collect)',
+      perBL: 'Rate per B/L',
+      totalBL: 'Total per B/L',
+      forContainer: 'For num container(s)',
+      container: 'container',
+      saveQuotation: 'Save quote to book',
       apply: 'Apply',
       //排序
       sortBy: "Sort by",

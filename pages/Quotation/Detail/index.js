@@ -61,8 +61,10 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
+    let languageContent = languageUtil.languageVersion().lang.page.qutationResult
+    languageContent.forContainer.replace('num', ' ' + Number(options.containers))
     this.setData({
-      languageContent: languageUtil.languageVersion().lang.page.qutationResult,
+      languageContent,
       language: languageUtil.languageVersion().lang.page.langue,
       todayDate: this.getDate(),
       portOfLoading: data.portOfLoading,

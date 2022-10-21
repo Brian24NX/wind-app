@@ -87,7 +87,7 @@
                 <view class="priceCount">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.amount : '-'}}</view>
                 <view class="priceUnit">
                   <view class="unit">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.currency.code : ''}}</view>
-                  <view class="unit2">CONTRAIN</view>
+                  <view class="unit2">{{languageContent.container}}</view>
                 </view>
               </view>
               <view class="selects {{item.surchargeDetails ? '' : 'disabled'}}" bindtap="toDetail" data-index="{{index}}">
@@ -95,7 +95,7 @@
               </view>
             </view>
           </block>
-          <view class="oneBottom right" wx:else>Spot allocation sold out.</view>
+          <view class="oneBottom right" wx:else>{{languageContent.spotOut}}</view>
         </block>
         <view class="warning" wx:if="{{item.noOfContainersAvailable}}">
           <image src="/assets/img/instantQuote/warning@2x.png"></image>
@@ -103,7 +103,7 @@
         </view>
       </block>
       <block wx:else>
-        <view class="oneBottom right">No offer currently available</view>
+        <view class="oneBottom right">{{languageContent.noOffer}}</view>
       </block>
     </view>
   </view>

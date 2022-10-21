@@ -417,7 +417,7 @@ var Languague = {
       getASchedule1: "即时",
       getASchedule2: '报价',
       type1: '实时报价',
-      type2: '我的价格',
+      type2: '我的合同',
       placeOfOrigin: "收货地",
       addPlaceOfOrigin: '添加收货地',
       //起运港
@@ -434,7 +434,7 @@ var Languague = {
       weight: '净重（KGM）',
       weightName: 'EX.10 000 kgm',
       container: '货柜数量',
-      commodity: "商品",
+      commodity: "品名/海关编码",
       //查询
       search: "获取报价",
       search2: "查找价格",
@@ -442,6 +442,9 @@ var Languague = {
     },
     // 报价详情
     qutationResult: {
+      noOffer: '目前没有报价可供选择',
+      spotOut: 'Spot舱位已满',
+      container: '货柜',
       title: '报价列表',
       select: '选择',
       days: '天',
@@ -449,6 +452,17 @@ var Languague = {
       // 转运
       zhuanyun: '转运',
       zhida: '直达',
+      perRate: '每柜费用',
+      totalPer: '每柜总价',
+      oceanFeight: '海运费',
+      perFeight: '运费附加费',
+      prepaid: '出口附加费（预付）',
+      collect: '进口附加费（到付）',
+      perBL: '每单费用',
+      totalBL: '按单总计',
+      container: '货柜',
+      saveQuotation: '获取报价',
+      forContainer: '集装箱总数num',
       apply: '应用',
       //排序
       sortBy: "排序",

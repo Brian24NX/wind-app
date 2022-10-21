@@ -277,7 +277,7 @@
             <text class="bold">{{quotationDetail.equipments[0].code}}</text>
           </view>
           <view>
-            <text>Tons excltare </text>
+            <text>Tons excl.tare </text>
             <text class="bold">1</text>
           </view>
         </view>
