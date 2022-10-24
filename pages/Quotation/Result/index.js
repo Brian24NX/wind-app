@@ -29,7 +29,7 @@ Page({
       title: languageUtils.languageVersion().lang.page.qutationResult.title
     })
     let languageContent = languageUtils.languageVersion().lang.page.qutationResult;
-    languageContent.referenceSuccess = languageContent.referenceSuccess.replace('', options.quotationId)
+    languageContent.referenceSuccess = languageContent.referenceSuccess.replace('{{reference}}', options.quotationId)
     this.setData({
       languageContent,
       language: languageUtils.languageVersion().lang.page.langue

@@ -55,28 +55,28 @@
         <image src="/assets/img/instantQuote/param_1@2x.png"></image>
         <view>
           <view class="paramValue">{{equipmentTypeName}}</view>
-          <view class="param">Equipment Type</view>
+          <view class="param">{{languageContent.equipmentType}}</view>
         </view>
       </view>
       <view class="oneParams">
         <image src="/assets/img/instantQuote/param_2@2x.png"></image>
         <view>
           <view class="paramValue">{{weight}}</view>
-          <view class="param">Net Weight</view>
+          <view class="param">{{languageContent.weight}}</view>
         </view>
       </view>
       <view class="oneParams">
         <image src="/assets/img/instantQuote/param_3@2x.png"></image>
         <view>
           <view class="paramValue">{{containers}}</view>
-          <view class="param">Number of container</view>
+          <view class="param">{{languageContent.containers}}</view>
         </view>
       </view>
       <view class="oneParams">
         <image src="/assets/img/instantQuote/param_4@2x.png"></image>
         <view>
           <view class="paramValue">{{commodityName}}</view>
-          <view class="param">Commodity</view>
+          <view class="param">{{languageContent.Commodity}}</view>
         </view>
       </view>
     </view>
