@@ -199,8 +199,9 @@ page {
 
 .placeType {
   color: #04246a;
+  font-family: Antonio-Regular, Antonio;
   background-color: #e6e9f0;
-  font-size: 20rpx;
+  font-size: 24rpx;
   border-radius: 20rpx;
   width: 80rpx;
   height: 40rpx;
