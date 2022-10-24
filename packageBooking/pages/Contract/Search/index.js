@@ -475,7 +475,7 @@ Page({
       this.setData({
         showRemind1: false
       })
-      var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
+      var reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
       if (this.data.portOfLoadingLabel) {
         if (!reg.test(this.data.portOfLoadingLabel)) {
           this.setData({

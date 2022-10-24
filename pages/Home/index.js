@@ -369,7 +369,7 @@ Page({
       this.setData({
         showRemind2: false
       })
-      var reg = /^([ ]*[A-z0-9]+([\,\;]*)){2,}$/;
+      var reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
       if (this.data.qiYunValue) {
         if (!reg.test(this.data.qiYunValue)) {
           this.setData({
