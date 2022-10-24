@@ -220,6 +220,11 @@ function checkTime(date) {
   return time - nowTime
 }
 
+function localeUpperCase(str) {
+  console.log(str)
+  return !str ? '' : str.toLocaleUpperCase()
+}
+
 module.exports = {
   formatEnDateLocal: formatEnDateLocal,
   formatCnDateLocal: formatCnDateLocal,
@@ -236,5 +241,6 @@ module.exports = {
   formatAmount: formatAmount,
   deleteStr: deleteStr,
   setChina: setChina,
-  checkTime: checkTime
+  checkTime: checkTime,
+  localeUpperCase: localeUpperCase
 }

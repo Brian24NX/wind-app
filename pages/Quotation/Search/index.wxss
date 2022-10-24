@@ -197,6 +197,18 @@ page {
   overflow: hidden;
 }
 
+.placeType {
+  color: #04246a;
+  background-color: #e6e9f0;
+  font-size: 20rpx;
+  border-radius: 20rpx;
+  width: 80rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .scroll-view .item .polname2 {
   width: 340rpx;
 }
