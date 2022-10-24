@@ -81,30 +81,42 @@ Page({
       nearPortList: list
     })
     list.forEach(item => {
-      fuzzyPointSearch({
-        pointCode: item.portOfLoading
-      }).then(data => {
-        item.portOfLoadingLabel = data.data.point.name + ', ' + data.data.country.code
-        item.portOfLoadingLabel2 = data.data.point.name + ';' + data.data.country.code
-        this.setData({
-          nearPortList: list
-        })
+      this.getPolData(item)
+      this.getPodData(item)
+    })
+  },
+
+  getPolData(item) {
+    fuzzyPointSearch({
+      pointCode: item.portOfLoading
+    }).then(data => {
+      item.portOfLoadingLabel = data.data.point.name + ', ' + data.data.country.code
+      item.portOfLoadingLabel2 = data.data.point.name + ';' + data.data.country.code
+      this.setData({
+        nearPortList: this.data.nearPortList
       })
-      fuzzyPointSearch({
-        pointCode: item.portOfDischarge
-      }).then(data => {
-        item.portOfDischargeLabel = data.data.point.name + ', ' + data.data.country.code
-        item.portOfDischargeLabel2 = data.data.point.name + ';' + data.data.country.code
-        this.setData({
-          nearPortList: list
-        })
+    }, () => {
+      this.getPolData(item)
+    })
+  },
+
+  getPodData(item) {
+    fuzzyPointSearch({
+      pointCode: item.portOfDischarge
+    }).then(data => {
+      item.portOfDischargeLabel = data.data.point.name + ', ' + data.data.country.code
+      item.portOfDischargeLabel2 = data.data.point.name + ';' + data.data.country.code
+      this.setData({
+        nearPortList: this.data.nearPortList
       })
+    }, () => {
+      this.getPodData(item)
     })
   },
 
   chooseNearPort(e) {
     const index = e.currentTarget.dataset.index
-    console.log(index)
+    if (!this.data.nearPortList[index].portOfLoadingLabel || !this.data.nearPortList[index].portOfDischargeLabel) return
     this.setData({
       portOfLoadingLabel: this.data.nearPortList[index].portOfLoadingLabel2,
       portOfDischargeLabel: this.data.nearPortList[index].portOfDischargeLabel2

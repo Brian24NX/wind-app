@@ -433,6 +433,7 @@ var Languague = {
       weightName: 'EX.10 000 kgm',
       container: 'Number of container(s)',
       commodity: "Commodity",
+      namedAccount: 'Named Account (if you have)',
       //查询
       search: "Get My Quote",
       search2: 'Search',

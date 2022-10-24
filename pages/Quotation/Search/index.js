@@ -12,7 +12,8 @@ import {
 } from '../../../api/modules/home';
 import {
   quotationNextDepartures,
-  nearByPortNextDeparture
+  nearByPortNextDeparture,
+  namedAccountsSearch
 } from '../../../api/modules/quotation';
 Page({
 
@@ -85,6 +86,10 @@ Page({
     resultResq: {},
     nearPort: [],
     commodityLoading: false,
+    namedAccountLoading: false,
+    namedAccountCode: '',
+    namedAccountLabel: '',
+    namedAccountList: [],
     currentType: 'instation',
     commonEquipmentTypeList: [{
       nameCn: '干柜',
@@ -124,6 +129,7 @@ Page({
         selected: 2
       })
     }
+    this.checkAccessToken(() => {})
   },
 
   onShareAppMessage: function () {},
@@ -486,6 +492,8 @@ Page({
     })
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
+    } else {
+      this.getNamedAccountsSearch()
     }
   },
 
@@ -499,6 +507,8 @@ Page({
     })
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
+    } else {
+      this.getNamedAccountsSearch()
     }
   },
 
@@ -586,6 +596,34 @@ Page({
     })
   },
 
+  getNamedAccountsSearch() {
+    this.checkAccessToken(() => {
+      this.setData({
+        namedAccountCode: '',
+        namedAccountLabel: '',
+        namedAccountList: []
+      })
+      if (!this.data.portOfLoading || !this.data.portOfDischarge) return
+      this.setData({
+        namedAccountLoading: true
+      })
+      namedAccountsSearch({
+        portOfLoading: this.data.portOfLoading,
+        portOfDischarge: this.data.portOfDischarge,
+        affiliates: [wx.getStorageSync('partnerCode')]
+      }).then(res => {
+          this.setData({
+            namedAccountList: res.data || [],
+            namedAccountLoading: false
+          })
+      }, () => {
+        setTimeout(() => {
+          this.getNamedAccountsSearch()
+        }, 500);
+      })
+    })
+  },
+
   // 货柜减少
   reduce() {
     if (this.data.containers < 2) return
@@ -608,6 +646,12 @@ Page({
   },
 
   openPopup(e) {
+    if (e.currentTarget.dataset.type === '3' && !this.data.commodityList.length) {
+      return
+    }
+    if (e.currentTarget.dataset.type === '5' && !this.data.namedAccountList.length) {
+      return
+    }
     this.getTabBar().setData({
       show: false
     })
@@ -626,11 +670,13 @@ Page({
       defaultIndex = this.data.commodityList.findIndex(i => i.code === this.data.commodityCode)
     } else if (e.currentTarget.dataset.type === '4') {
       defaultIndex = this.data.commonEquipmentTypeList.findIndex(i => i.code === this.data.commonEquipmentType)
+    } else if (e.currentTarget.dataset.type === '5') {
+      defaultIndex = this.data.namedAccountList.findIndex(i => i.code === this.data.namedAccountCode)
     }
     this.setData({
       popupType: e.currentTarget.dataset.type,
-      columns: e.currentTarget.dataset.type === '1' ? this.data.equipmentTypeList : e.currentTarget.dataset.type === '3' ? this.data.commodityList : this.data.commonEquipmentTypeList,
-      valueKey: (e.currentTarget.dataset.type === '1' || e.currentTarget.dataset.type === '4') ? (this.data.language === 'zh' ? 'nameCn' : 'nameEn') : (this.data.language === 'zh' ? 'zh' : 'en'),
+      columns: e.currentTarget.dataset.type === '1' ? this.data.equipmentTypeList : e.currentTarget.dataset.type === '3' ? this.data.commodityList : e.currentTarget.dataset.type === '4' ? this.data.commonEquipmentTypeList : this.data.namedAccountList,
+      valueKey: (e.currentTarget.dataset.type === '1' || e.currentTarget.dataset.type === '4') ? (this.data.language === 'zh' ? 'nameCn' : 'nameEn') : e.currentTarget.dataset.type === '3' ? (this.data.language === 'zh' ? 'zh' : 'en') : 'name',
       defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
       showPopup: true
     })
@@ -666,6 +712,11 @@ Page({
       this.setData({
         commonEquipmentType: e.detail.code,
         commonEquipmentTypeName: this.data.language === 'en' ? e.detail.nameEn : e.detail.nameCn
+      })
+    } else if (this.data.popupType === '5') {
+      this.setData({
+        namedAccountCode: e.detail.code,
+        namedAccountLabel: e.detail.name
       })
     }
     this.onClose()

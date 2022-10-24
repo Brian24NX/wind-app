@@ -47,3 +47,8 @@ export const saveQuotationDetail = (params) => {
 export const detentionDemurrages = (params) => {
   return postRequest('/api/miniapp/detentionDemurrages', params, true, false, false)
 }
+
+// 获取nameAndAccounts
+export const namedAccountsSearch = (params) => {
+  return postRequest('/api/miniapp/namedAccountsSearch', params, true, true, true, true)
+}

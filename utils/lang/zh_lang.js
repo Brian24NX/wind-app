@@ -436,6 +436,7 @@ var Languague = {
       weightName: 'EX.10 000 kgm',
       container: '货柜数量',
       commodity: "品名/海关编码",
+      namedAccount: '指定账号（NAC）',
       //查询
       search: "获取报价",
       search2: "查找价格",

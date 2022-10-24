@@ -167,7 +167,7 @@
         </view>
         <view class="searchList">
           <view class="searchTitle">{{languageContent.commodity}}</view>
-          <view class="selectContainer" catchtap="openPopup" data-type="3" wx:if="{{!commodityLoading}}">
+          <view class="selectContainer" style="{{!commodityLoading && !commodityList.length ? 'background-color: #F0F1F5' : ''}}" catchtap="openPopup" data-type="3" wx:if="{{!commodityLoading}}">
             <view style="{{commodityCode ? 'color: #071E5D;' : ''}}">{{commodityName || verifyInfo.select}}</view>
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
@@ -184,16 +184,24 @@
       </block>
       <block wx:else>
         <view class="searchList">
-        <view class="searchTitle">{{languageContent.equipmentType}}</view>
-        <view class="selectContainer" catchtap="openPopup" data-type="4">
-          <view style="{{commonEquipmentType !== '' ? 'color: #071E5D;' : ''}}">{{commonEquipmentTypeName || verifyInfo.select}}</view>
-          <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          <view class="searchTitle">{{languageContent.equipmentType}}</view>
+          <view class="selectContainer" catchtap="openPopup" data-type="4">
+            <view style="{{commonEquipmentType !== '' ? 'color: #071E5D;' : ''}}">{{commonEquipmentTypeName || verifyInfo.select}}</view>
+            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          </view>
         </view>
-      </view>
-      <view class="btn" style="margin-top: 40rpx;">
-        <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search2}}</button>
-        <view class="reset" catchtap="reset">{{languageContent.reset}}</view>
-      </view>
+        <view class="searchList">
+          <view class="searchTitle">{{languageContent.namedAccount}}</view>
+          <view class="selectContainer" style="{{!namedAccountLoading && !namedAccountList.length ? 'background-color: #F0F1F5' : ''}}" catchtap="openPopup" data-type="5" wx:if="{{!namedAccountLoading}}">
+            <view style="{{namedAccountCode ? 'color: #071E5D;' : ''}}">{{namedAccountLabel || verifyInfo.select}}</view>
+            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          </view>
+          <image class="loadings" src="/assets/img/instantQuote/loading-blue.svg" hidden="{{!namedAccountLoading}}" mode="aspectFit"></image>
+        </view>
+        <view class="btn" style="margin-top: 40rpx;">
+          <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search2}}</button>
+          <view class="reset" catchtap="reset">{{languageContent.reset}}</view>
+        </view>
       </block>
     </view>
 

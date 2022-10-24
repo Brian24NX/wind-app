@@ -32,7 +32,7 @@ Page({
     finalPlaceOfDelivery: '',
     currentType: 0,
     typeList: [{
-      label: 'CMA CGM',
+      label: 'CMA',
       shippingCompany: '0001'
     }, {
       label: 'ANL',
@@ -99,7 +99,7 @@ Page({
     }).then(res => {
       if (res.data) {
         this.setData({
-          contractList: res.data.perfectMatches || [],
+          contractList: res.data.perfectMatches.length ? res.data.perfectMatches : res.data.partialMatches.length ? res.data.partialMatches : [],
           loggedId: res.data.loggedId,
           isLoading: false
         })
@@ -146,7 +146,7 @@ Page({
 
   getInitialPortOfLoading(item) {
     fuzzyPointSearch({
-      pointCode: item.initialPortOfLoading
+      pointCode: item.origin || item.portOfLoading
     }).then(data => {
       item.portOfLoadingLabel = data.data.point.name + ', ' + data.data.country.code
       this.setData({
@@ -159,7 +159,7 @@ Page({
 
   getInitialPortOfDischarge(item) {
     fuzzyPointSearch({
-      pointCode: item.initalPortOfDischarge
+      pointCode: item.portOfDischarge
     }).then(data => {
       item.portOfDischargeLabel = data.data.point.name + ', ' + data.data.country.code
       this.setData({

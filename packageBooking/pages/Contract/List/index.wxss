@@ -74,27 +74,29 @@ page {
   height: 80rpx;
   background-color: #ffffff;
   width: 690rpx;
-  margin: 30rpx auto 0;
-  padding: 0 48rpx;
+  margin: 0 auto 30rpx;
+  height: 130rpx;
 }
 
 .searchResultTopContainer .typeContainer .oneType {
   font-size: 28rpx;
-  color: #071E5D;
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 1;
-  border-bottom: 1rpx solid #04246A;
+}
+
+.searchResultTopContainer .typeContainer .oneType image {
+  width: 120rpx;
+  height: 90rpx;
 }
 
 .searchResultTopContainer .typeContainer .typeCheck {
-  font-weight: bold;
   position: relative;
 }
 
 .searchResultTopContainer .typeContainer .typeCheck .typeLine {
-  width: 120rpx;
+  width: 40rpx;
   height: 8rpx;
   background-color: #E20202;
   position: absolute;

@@ -22,7 +22,7 @@
   </view>
   <view class="typeContainer">
     <view class="oneType {{currentType === index ? 'typeCheck' : ''}}" wx:for="{{typeList}}" catchtap="changeType" data-index="{{index}}">
-      <text>{{item.label}}</text>
+      <image src="/assets/img/myContracts/{{item.label}}_{{currentType === index ? '2' : '1'}}@2x.png" mode="aspectFit"></image>
       <view class="typeLine"></view>
     </view>
   </view>
@@ -91,7 +91,7 @@
       <view class="oneBottom">
         <view class="bottomLeft">
           <image src="/assets/img/instantQuote/cash@2x.png"></image>
-          <view class="priceCount">{{item.surchargeDetails.totalCharge.amount}}</view>
+          <view class="priceCount">{{item.surchargeDetails.totalCharge.amount || '-'}}</view>
           <view class="priceUnit">
             <view class="unit">{{item.surchargeDetails.totalCharge.currency.code}}</view>
             <view class="unit2">{{languageContent.allInRate}}</view>
