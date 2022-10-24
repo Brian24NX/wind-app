@@ -531,7 +531,9 @@ var Languague = {
       referenceSuccess: '您的报价 {{reference}} 已成功创建',
       copyReference: '请将报价单编号复制，以便预订前核对',
       backHome: '返回首页',
-      bookNow: '立即下单'
+      bookNow: '立即下单',
+      nearPortInstantQuote: '附近港口的即时报价',
+      clickCard: '请找到附近港口以便获取即时报价。 请点击卡片并查看结果。'
     },
     // 我的报价
     myContract: {

@@ -19,8 +19,8 @@
   </view>
 </view>
 <view class="resultContainers">
-  <view class="nearTitle">Instant quote on nearby ports</view>
-  <view class="nearDesc">Please find nearby ports conbinations for which you can obtaib aninstant quotation. Click on a card to see the offer</view>
+  <view class="nearTitle">{{languageContent.nearPortInstantQuote}}</view>
+  <view class="nearDesc">{{languageContent.clickCard}}</view>
   <view class="oneResult" wx:for="{{nearPortList}}" wx:key="index">
     <view class="resContents">
       <view class="leftStep">

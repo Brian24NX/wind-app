@@ -1,6 +1,9 @@
 /* pages/Result/index.wxss */
-.searchResultTopContainer {
+page {
   background-color: #F0F1F5;
+}
+
+.searchResultTopContainer {
   position: sticky;
   top: 0;
   left: 0;
@@ -67,7 +70,6 @@
 }
 
 .resultContainers {
-  min-height: 100vh;
   width: 100%;
   background-color: #F0F1F5;
   padding-left: 30rpx;

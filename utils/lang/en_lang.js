@@ -529,7 +529,9 @@ var Languague = {
       referenceSuccess: 'Your offer {{reference}} has been successfully created',
       copyReference: 'Please copy the reference code for check before booking',
       backHome: 'Back to home',
-      bookNow: 'Book Now'
+      bookNow: 'Book Now',
+      nearPortInstantQuote: 'Instant quote on nearby ports',
+      clickCard: 'Please find nearby ports conbinations for which you can obtaib aninstant quotation. Click on a card to see the offer'
     },
     // 我的报价
     myContract: {

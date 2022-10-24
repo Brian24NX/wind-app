@@ -124,7 +124,7 @@ Page({
     if (this.data.commodityCode === "FAK") {
       this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0, this.data.nearPortList[index].portOfLoading, this.data.nearPortList[index].portOfDischarge)
     } else {
-      this.getQuotationNextDepartures()
+      this.getQuotationNextDepartures(this.data.nearPortList[index].portOfLoading, this.data.nearPortList[index].portOfDischarge)
     }
   },
 
@@ -173,7 +173,7 @@ Page({
     })
   },
 
-  getQuotationNextDepartures() {
+  getQuotationNextDepartures(portOfLoading, portOfDischarge) {
     quotationNextDepartures({
       "affiliates": [wx.getStorageSync('partnerCode')],
       "commodityCode": this.data.commodityCode,
@@ -183,8 +183,8 @@ Page({
       "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
       "numberOfContainers": this.data.containers,
       "placeOfOrigin": this.data.placeOfOrigin || null,
-      "portOfDischarge": this.data.portOfDischarge,
-      "portOfLoading": this.data.portOfLoading,
+      "portOfDischarge": portOfDischarge,
+      "portOfLoading": portOfLoading,
       "pricingGroupSetups": this.data.pricingGroupSetups.filter(i => i.shippingCompany === this.data.shippingCompany),
       "pricingGroups": this.data.pricingGroups.filter(i => i.shippingCompany === this.data.shippingCompany),
       "receiptHaulage": this.data.receiptHaulage || null,
@@ -193,7 +193,7 @@ Page({
       "weightPerContainer": this.data.weight
     }).then(res => {
       this.setData({
-        resultResq: res.data,
+        resultResq: res.data || {},
         shippingCompany: this.data.shippingCompany
       })
       wx.navigateTo({
