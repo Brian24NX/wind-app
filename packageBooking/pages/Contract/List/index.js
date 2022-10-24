@@ -30,6 +30,7 @@ Page({
     portOfLoadingCode: '',
     portOfDischargeCode: '',
     finalPlaceOfDelivery: '',
+    namedAccountCode: '',
     currentType: 0,
     typeList: [{
       label: 'CMA',
@@ -61,6 +62,7 @@ Page({
       language: languageUtil.languageVersion().lang.page.langue,
       equipmentType: data.commonEquipmentTypeName,
       simulationDate: data.simulationDate,
+      namedAccountCode: data.namedAccountCode,
       portOfLoading: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1] + ';' + data.portOfLoadingLabel.split(';')[2],
       portOfDischarge: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1] + ';' + data.portOfDischargeLabel.split(';')[2],
       fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
@@ -95,7 +97,8 @@ Page({
       "portOfDischarge": this.data.portOfDischargeCode,
       "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
       "shippingCompany": this.data.typeList[this.data.currentType].shippingCompany,
-      "simulationDate": this.data.simulationDate
+      "simulationDate": this.data.simulationDate,
+      "namedAccount": this.data.namedAccountCode || null
     }).then(res => {
       if (res.data) {
         this.setData({

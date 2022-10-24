@@ -2,6 +2,7 @@
 page {
   background-color: #F0F1F5;
 }
+
 .searchResultTopContainer {
   background-color: #F0F1F5;
   position: sticky;

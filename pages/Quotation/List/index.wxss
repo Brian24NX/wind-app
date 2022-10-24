@@ -4,6 +4,7 @@ page {
 }
 
 .searchResultTopContainer {
+  background-color: #F0F1F5;
   position: sticky;
   top: 0;
   left: 0;
