@@ -29,6 +29,11 @@ export const chargeFuzzySearch = (params, hideLoading) => {
 }
 
 // 港口模糊查询
+export const getPortPlaceInfo = (params, hideLoading) => {
+  return getRequest('/api/miniapp/getPortPlaceInfo', params, hideLoading, false, true)
+}
+
+// 港口模糊查询
 export const getAllNetworkPoint = (params, hideLoading) => {
   return getRequest('/api/miniapp/getAllNetworkPoint', params, hideLoading, false, true)
 }

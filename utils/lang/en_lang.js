@@ -246,7 +246,8 @@ var Languague = {
       // 始发地
       coc: 'POO',
       // 最终目的地
-      dest: 'FPD'
+      dest: 'FPD',
+      perTEU: 'per TEU'
     },
     // 常用模板与链接
     useful: {
@@ -487,7 +488,47 @@ var Languague = {
       containers: 'Number of container(s)',
       Commodity: 'Commodity',
       title2: 'My Contracts',
-      book: 'Book'
+      book: 'Book',
+      localCharge: 'Local Charges',
+      DDSM: 'D&D',
+      SpotOn: 'SpotOn',
+      addInfo: 'Add Info',
+      localChargeDetail: 'More details about local charges',
+      exportLocalCharge: 'Export local charges',
+      importLocalCharge: 'Import local charges',
+      copy: 'Copy',
+      exportFreeTime: 'Export free time',
+      importFreeTime: 'Import free time',
+      spotOnDetail: 'SpotOn - Specific conditions',
+      consult: 'Consult detailed spotOn terms & conditions',
+      additionalInformation: 'Additional Information',
+      quotation: 'Quotation',
+      valid: 'VALID',
+      expired: 'EXPIRED',
+      allInRate: 'ALL IN RATE',
+      reference: 'Reference',
+      chargeDetails: 'Charge Details',
+      quoteDetails: 'Quote Details',
+      totalPerContainer: 'Total per container',
+      validity: 'Validity',
+      validityFrom: 'From',
+      validityTo: 'To',
+      comments: 'Comments',
+      commoditys: 'Commodity',
+      import: 'Import',
+      export: 'Export',
+      movementType: 'Movement Type',
+      bookPreCarriage: 'Booking Pre carriage',
+      bookOnCarriage: 'Booking on Carriage',
+      weightAndDimensions: 'Weight and Dimensions',
+      perContainer: 'per container',
+      maxWeight: 'Max Weight per container',
+      allowed: 'Allowed',
+      refused: 'Refused',
+      referenceSuccess: 'Your offer {{reference}} has been successfully created',
+      copyReference: 'Please copy the reference code for check before booking',
+      backHome: 'Back to home',
+      bookNow: 'Book Now'
     },
     // 我的报价
     myContract: {

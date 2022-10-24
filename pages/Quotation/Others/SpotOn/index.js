@@ -1,12 +1,21 @@
 // pages/Quotation/Others/SpotOn/index.js
-const languageUtils = require('../../../../utils/languageUtils')
+const languageUtil = require('../../../../utils/languageUtils')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    link: 'https://www.cma-cgm.com/my-cma-cgm/prices/instant-quote-spoton'
+    link: 'https://www.cma-cgm.com/my-cma-cgm/prices/instant-quote-spoton',
+    languageContent: {},
+    language: 'zh'
+  },
+
+  onLoad(options) {
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.qutationResult,
+      language: languageUtil.languageVersion().lang.page.langue
+    })
   },
 
   copy() {
@@ -14,7 +23,7 @@ Page({
       data: this.data.link,
       success() {
         wx.showToast({
-          title: languageUtils.languageVersion().lang.page.copyInfo.success,
+          title: languageUtil.languageVersion().lang.page.copyInfo.success,
           mask: true,
           icon: 'none'
         })

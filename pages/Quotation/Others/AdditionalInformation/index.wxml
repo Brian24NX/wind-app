@@ -3,17 +3,24 @@
 <view class="spotOns">
   <view class="topTitle">
     <view class="topTitleLine"></view>
-    <view>Additional Information</view>
+    <view>{{languageContent.additionalInformation}}</view>
   </view>
   <view class="oneInfo" wx:for="{{infoList}}" wx:key="index">
     <view class="infoTitle">{{item.chargeName}}</view>
     <view>{{item.chargeDescription}}</view>
   </view>
-  <text class="desc">
+  <text class="desc" wx:if="{{language === 'en'}}">
     The breakdown of payment surcharges shipper / consignee will be determined at time of booking.
     All surcharges are applicable for the selected departure date and will be recalculated at time of shipment unless rate is fixed.
     Additional charges such as contingency, transhipments, over weight surcharges and local charges may be applicable depending on the requested service, local regulations and type of cargo (Food Grade, Heavy Cargo, High value, Sensitive) at the time of booking.
     Offer and booking confirmation remains subject to equipment and space availability.
-    The Transit Time mentioned is based on Estimated Time
+    The Transit Time mentioned is based on Estimated Time.
+  </text>
+  <text class="desc" wx:else>
+    托运人/收货人的附加费用明细将在订舱时确定。
+    所有附加费适用于所选启程日期，除非费率固定，否则将在装运时重新计算。
+    在订舱过程中，其他费用如额外费用，转运费和本地费用应根据当地法规，所定服务，以及货物类型（危险品、食品级、重型货物、贵重物品、敏感物品）来显示。
+    报价和订舱的确认将取决于货柜以及可用舱位。
+    显示的运输时间是基于预计时间。
   </text>
 </view>

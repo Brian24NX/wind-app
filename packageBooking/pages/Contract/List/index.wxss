@@ -1,12 +1,14 @@
 /* packageBooking/pages/Contract/List/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
 .searchResultTopContainer {
   background-color: #F0F1F5;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 3;
-  height: 280rpx;
   padding-top: 30rpx;
 }
 
@@ -67,11 +69,43 @@
   color: #071E5D;
 }
 
+.searchResultTopContainer .typeContainer {
+  display: flex;
+  height: 80rpx;
+  background-color: #ffffff;
+  width: 690rpx;
+  margin: 30rpx auto 0;
+  padding: 0 48rpx;
+}
+
+.searchResultTopContainer .typeContainer .oneType {
+  font-size: 28rpx;
+  color: #071E5D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  border-bottom: 1rpx solid #04246A;
+}
+
+.searchResultTopContainer .typeContainer .typeCheck {
+  font-weight: bold;
+  position: relative;
+}
+
+.searchResultTopContainer .typeContainer .typeCheck .typeLine {
+  width: 120rpx;
+  height: 8rpx;
+  background-color: #E20202;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .resultContainers {
-  min-height: 100vh;
   width: 100%;
-  background-color: #F0F1F5;
-  padding: 280rpx 30rpx 30rpx;
+  padding: 0 30rpx 30rpx;
 }
 
 .resultContainers .oneResult {

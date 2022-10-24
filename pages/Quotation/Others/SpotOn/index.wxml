@@ -3,9 +3,9 @@
 <view class="spotOns">
   <view class="topTitle">
     <view class="topTitleLine"></view>
-    <view>SpotOn - Specific conditions</view>
+    <view>{{languageContent.spotOnDetail}}</view>
   </view>
-  <text class="spotOnDetail">
+  <text class="spotOnDetail" wx:if="{{language === 'en'}}">
     Use this quote to make your booking for the applicable port pair within the next 24 hours to enjoy:
     - Priority booking confirmation within 2 hours
     - Priority equipment release
@@ -21,11 +21,30 @@
 
     Specific fees may be applicable in the event of cancellation, no show or amendment of booking SpotOn. These fees depends of the Trade.
   </text>
+  <text class="spotOnDetail" wx:else>
+    使用这个合约号 在24小时内订舱可享受以下优惠：
+    - 2小时内，优先放舱
+    - 优先提柜
+    - 优先配载
+    请留意合约号产生后，如果没有及时订舱，合约将在24小时后失效。
+
+    订舱条件：
+    - 一个合约号只适用于一份订舱
+    - 每份订舱仅限单一发货人,不接受并单
+    - 使用SpotOn 合约号的订舱，需要订舱被确认后才可以享受相关权益
+    - 该报价不适用于于危险品，军事货物，货主自备箱,空箱，液袋集装箱或其他任何特种箱。敏感货物或高价值货物，在订舱时可能会受到特别条件限制。
+
+
+    多式联运：报价以订舱时的运输承载力而定。费率以运输时生效的当地多式联运附加费为准。
+
+
+    特定费用限于在SpotOn订舱时发生的取消，改配以及亏舱情况下适用
+  </text>
   <view class="spotOnLink">
     <view class="localLeft">
       <image src="/assets/img/home/templatelinks@2x.png"></image>
-      <view>Consult detailed spotOn terms & conditions</view>
+      <view>{{languageContent.consult}}</view>
     </view>
-    <view class="copy" catchtap="copy">Copy</view>
+    <view class="copy" catchtap="copy">{{languageContent.copy}}</view>
   </view>
 </view>

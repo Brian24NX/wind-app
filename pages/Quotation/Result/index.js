@@ -28,8 +28,10 @@ Page({
     wx.setNavigationBarTitle({
       title: languageUtils.languageVersion().lang.page.qutationResult.title
     })
+    let languageContent = languageUtils.languageVersion().lang.page.qutationResult;
+    languageContent.referenceSuccess = languageContent.referenceSuccess.replace('', options.quotationId)
     this.setData({
-      languageContent: languageUtils.languageVersion().lang.page.qutationResult,
+      languageContent,
       language: languageUtils.languageVersion().lang.page.langue
     })
     const pages = getCurrentPages()

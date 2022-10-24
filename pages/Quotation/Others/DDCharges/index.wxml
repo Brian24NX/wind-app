@@ -7,7 +7,7 @@
     <view>D&D</view>
   </view>
   <view class="dDTable">
-    <view class="tableTitle">Export free time</view>
+    <view class="tableTitle">{{languageContent.exportFreeTime}}</view>
     <view class="DDDetail" wx:for="{{exports}}">
       <view class="oneDetail">{{item.tariff.tariffName}}</view>
       <view class="oneDetail">{{item.detentionDemurrageEquipments[0].equipmentSizeType}}</view>
@@ -17,10 +17,11 @@
   </view>
   <view class="desc">
     <image src="/assets/img/instantQuote/tan@2x.png"></image>
-    <view>Valid conditions on {{commonFilters.formatEnDateLocal(exportDate, ' ', '', true, true)}}, based on {{portOfLoadingLabel}}</view>
+    <view wx:if="{{language === 'en'}}">Valid conditions on {{commonFilters.formatEnDateLocal(exportDate, ' ', '', true, true)}}, based on {{portOfLoadingLabel}}</view>
+    <view wx:else>在 {{commonFilters.formatCnDateLocal(exportDate, true, true)}}, {{portOfLoadingLabel}}有效</view>
   </view>
   <view class="dDTable">
-    <view class="tableTitle">Import free time</view>
+    <view class="tableTitle">{{languageContent.importFreeTime}}</view>
     <view class="DDDetail" wx:for="{{imports}}">
       <view class="oneDetail">{{item.tariff.tariffName}}</view>
       <view class="oneDetail">{{item.detentionDemurrageEquipments[0].equipmentSizeType}}</view>
@@ -30,6 +31,7 @@
   </view>
   <view class="desc">
     <image src="/assets/img/instantQuote/tan@2x.png"></image>
-    <view>Valid conditions on {{commonFilters.formatEnDateLocal(importDate, ' ', '', true, true)}}, based on {{portOfDischargeLabel}}</view>
+    <view wx:if="{{language === 'en'}}">Valid conditions on {{commonFilters.formatEnDateLocal(importDate, ' ', '', true, true)}}, based on {{portOfDischargeLabel}}</view>
+    <view wx:else>在 {{commonFilters.formatCnDateLocal(importDate, true, true)}}, {{portOfDischargeLabel}}有效</view>
   </view>
 </view>

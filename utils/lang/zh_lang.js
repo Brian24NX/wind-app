@@ -248,7 +248,8 @@ var Languague = {
       pod: "卸货港",
       // 始发地
       coc: '始发地',
-      dest: '最终目的地'
+      dest: '最终目的地',
+      perTEU: '每标准箱(TEU)'
     },
     // 常用模板与链接
     useful: {
@@ -483,14 +484,53 @@ var Languague = {
       //仅看直达
       directOnly: "仅看直达",
       //抱歉，我们暂未查询到匹配的航线方案.
-      noFindTips1: "抱歉！未找到相匹配的记录",
+      noFindTips1: "抱歉！未在您的合约中找到符合您搜索的价格",
       modifySearch: '修改搜索',
       equipmentType: '箱型',
       weight: '净重（KGM）',
       containers: '货柜数量',
       Commodity: '商品',
       title2: '我的合同',
-      book: '下单'
+      book: '下单',
+      localCharge: '本地费用',
+      DDSM: 'D&D',
+      SpotOn: 'SpotOn',
+      addInfo: '其他信息',
+      localChargeDetail: '有关本地费用的详细信息',
+      exportLocalCharge: '出口本地费用',
+      importLocalCharge: '进口本地费用',
+      copy: '复制',
+      exportFreeTime: '出口免租期',
+      importFreeTime: '进口免租期',
+      spotOnDetail: 'SpotOn - 具体条款',
+      consult: '请参阅详细的现货条款和条件',
+      additionalInformation: '其他信息',
+      quotation: '报价单',
+      valid: '有效',
+      expired: '无效',
+      allInRate: '综合利率',
+      reference: '报价单',
+      chargeDetails: '费用详情',
+      quoteDetails: '报价详情',
+      totalPerContainer: '按柜总计',
+      validity: '有效期',
+      validityFrom: '从',
+      validityTo: '至',
+      comments: '备注',
+      commoditys: '品名/海关编码',
+      import: '进口',
+      export: '出口',
+      movementType: '运输类型',
+      bookPreCarriage: '预多式联运',
+      bookOnCarriage: '预多式联运',
+      perContainer: '每个货柜',
+      maxWeight: '每只货柜最大重量',
+      allowed: '已获准',
+      refused: '已拒绝',
+      referenceSuccess: '您的报价 {{reference}} 已成功创建',
+      copyReference: '请将报价单编号复制，以便预订前核对',
+      backHome: '返回首页',
+      bookNow: '立即下单'
     },
     // 我的报价
     myContract: {

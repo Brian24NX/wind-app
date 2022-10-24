@@ -200,16 +200,20 @@
             <text>{{item.currency}}</text>
           </view>
         </view>
-        <view class="rateDesc">
+        <view class="rateDesc" wx:if="{{language === 'en'}}">
           <view>Surcharges calculation was simulated with surcharges valid on {{format.formatEnDateLocal(quotationDetail.departureDate, ' ', '', true, true)}}</view>
           <view>All rates are based on Reuters rate of exchange of {{format.formatEnDateLocal(todayDate, ' ', '', true, true)}}</view>
+        </view>
+        <view class="rateDesc" wx:else>
+          <view>已估算附加费，附加费有效期为 {{format.formatCnDateLocal(quotationDetail.departureDate, true, true)}}</view>
+          <view>所有汇率均以路透社的汇率 {{format.formatCnDateLocal(todayDate, true, true)}} 为基础</view>
         </view>
       </view>
     </view>
     <view class="otherContainer">
       <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}">
         <image src="{{item.icon}}"></image>
-        <view>{{item.label}}</view>
+        <view>{{languageContent[item.label]}}</view>
       </view>
     </view>
   </block>

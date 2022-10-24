@@ -20,20 +20,26 @@
       </view>
     </view>
   </view>
+  <view class="typeContainer">
+    <view class="oneType {{currentType === index ? 'typeCheck' : ''}}" wx:for="{{typeList}}" catchtap="changeType" data-index="{{index}}">
+      <text>{{item.label}}</text>
+      <view class="typeLine"></view>
+    </view>
+  </view>
 </view>
 <view class="resultContainers">
-  <view wx:if="{{true}}">
+  <view wx:if="{{contractList.length}}">
     <view class="oneResult" wx:for="{{contractList}}" wx:key="index">
       <view class="quotationIds">
         <view class="quotationLeft">
           <image src="/assets/img/instantQuote/quotationId@2x.png"></image>
           <view>
             <view class="quotationId">{{item.quotationReference}}</view>
-            <view>Quotation</view>
+            <view>{{languageContent.quotation}}</view>
           </view>
         </view>
         <view class="quotationRight">
-          <view>{{filters.checkValidDate(item.validityTo) ? 'VALID' : 'EXPIRED'}}</view>
+          <view>{{filters.checkValidDate(item.validityTo) ? languageContent.valid : languageContent.expired}}</view>
           <view>
             <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityFrom, true, true) : commonFilters.formatEnDateLocal(item.validityFrom, '-', '', true, true)}}</text>
             <text> > </text>
@@ -73,12 +79,12 @@
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
               <view>{{languageContent.zhida}}</view>
             </view> -->
-            <view class="logos">
+            <!-- <view class="logos">
               <image wx:if="{{item.shippingCompany === '0001'}}" src="/assets/img/instantQuote/CMA.svg" mode="aspectFit"></image>
               <image wx:if="{{item.shippingCompany === '0002'}}" src="/assets/img/instantQuote/ANL.svg" mode="aspectFit"></image>
               <image wx:if="{{item.shippingCompany === '0011'}}" src="/assets/img/instantQuote/CNC.svg" mode="aspectFit"></image>
               <image wx:if="{{item.shippingCompany === '0015'}}" src="/assets/img/instantQuote/APL.svg" mode="aspectFit"></image>
-            </view>
+            </view> -->
           </view>
         </view>
       </view>
@@ -88,7 +94,7 @@
           <view class="priceCount">{{item.surchargeDetails.totalCharge.amount}}</view>
           <view class="priceUnit">
             <view class="unit">{{item.surchargeDetails.totalCharge.currency.code}}</view>
-            <view class="unit2">ALL IN RATE</view>
+            <view class="unit2">{{languageContent.allInRate}}</view>
           </view>
         </view>
         <button class="selects {{!filters.checkValidDate(item.validityTo) ? 'notSelect' : ''}}" disabled="{{!filters.checkValidDate(item.validityTo) || item.isLoading}}" bindtap="toDetail" data-index="{{index}}">
@@ -99,7 +105,7 @@
     </view>
   </view>
   <!--无结果-->
-  <view wx:if="{{!contractList.length}}">
+  <view wx:if="{{!isLoading && !contractList.length}}">
     <noresult languageContent="{{languageContent}}"></noresult>
   </view>
 </view>

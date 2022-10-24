@@ -5,14 +5,14 @@ const utils = require('../../../utils/util')
 const dayjs = require("dayjs");
 import {
   fuzzySearch,
+  getPortPlaceInfo,
   getAllNetworkPoint,
   getCommodityLists,
   equitmentSizeList
 } from '../../../api/modules/home';
 import {
   quotationNextDepartures,
-  nearByPortNextDeparture,
-  quotationQuoteLinesSearch
+  nearByPortNextDeparture
 } from '../../../api/modules/quotation';
 Page({
 
@@ -234,21 +234,49 @@ Page({
     this.setData({
       showPoR: true
     })
-    getAllNetworkPoint({
-      searchStr: data
-    }, true).then(res => {
-      this.setData({
-        showPoR: false
-      })
-      if (res.data != '') {
-        res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
+    if (this.data.currentType === 'instation') {
+      getAllNetworkPoint({
+        searchStr: data
+      }, true).then(res => {
         this.setData({
-          placeOfReceiptList: res.data || []
+          showPoR: false
         })
-      }
-    }, () => {
-      this.getPorData(data)
-    })
+        if (res.data != '') {
+          res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
+          this.setData({
+            placeOfReceiptList: res.data || []
+          })
+        }
+      }, () => {
+        this.getPorData(data)
+      })
+    } else {
+      getPortPlaceInfo({
+        searchStr: data
+      }, true).then(res => {
+        this.setData({
+          showPoR: false
+        })
+        let placeOfReceiptList = []
+        if (res.data && res.data.length) {
+          res.data.forEach(item => {
+            if (item.point) {
+              console.log('item', item)
+              placeOfReceiptList.push({
+                ActualName: item.point.name + ';' + item.country.code + ';' + item.point.code,
+                Code: item.point.code,
+                PlaceType: ''
+              })
+            }
+          })
+        }
+        this.setData({
+          placeOfReceiptList
+        })
+      }, () => {
+        this.getPorData(data)
+      })
+    }
   },
 
   //获取起运港的接口处理
@@ -350,21 +378,49 @@ Page({
     this.setData({
       showPoDe: true
     })
-    getAllNetworkPoint({
-      searchStr: data
-    }, true).then(res => {
-      this.setData({
-        showPoDe: false
-      })
-      if (res.data != '') {
-        res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
+    if (this.data.currentType === 'instation') {
+      getAllNetworkPoint({
+        searchStr: data
+      }, true).then(res => {
         this.setData({
-          placeOfDeliveryList: res.data || []
+          showPoDe: false
         })
-      }
-    }, () => {
-      this.getPooData(data)
-    })
+        if (res.data != '') {
+          res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
+          this.setData({
+            placeOfDeliveryList: res.data || []
+          })
+        }
+      }, () => {
+        this.getPorData(data)
+      })
+    } else {
+      getPortPlaceInfo({
+        searchStr: data
+      }, true).then(res => {
+        this.setData({
+          showPoDe: false
+        })
+        if (res.data && res.data.length) {
+          let placeOfDeliveryList = []
+          res.data.forEach(item => {
+            if (item.point) {
+              console.log('item', item)
+              placeOfDeliveryList.push({
+                ActualName: item.point.name + ';' + item.country.code + ';' + item.point.code,
+                Code: item.point.code,
+                PlaceType: ''
+              })
+            }
+          })
+        }
+        this.setData({
+          placeOfDeliveryList
+        })
+      }, () => {
+        this.getPorData(data)
+      })
+    }
   },
 
   deleteValue(e) {
@@ -743,7 +799,9 @@ Page({
     } else {
       if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
       this.checkAccessToken(() => {
-        this.getContractList()
+        wx.navigateTo({
+          url: '/packageBooking/pages/Contract/List/index',
+        })
       })
     }
   },
@@ -855,29 +913,6 @@ Page({
         })
       }
 
-    })
-  },
-
-  getContractList() {
-    quotationQuoteLinesSearch({
-      "affiliates": [wx.getStorageSync('partnerCode')],
-      "deliveryHaulage": this.data.deliveryHaulage || null,
-      "equipmentType": this.data.commonEquipmentType,
-      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
-      "placeOfOrigin": this.data.placeOfOrigin || null,
-      "portOfDischarge": this.data.portOfDischarge,
-      "portOfLoading": this.data.portOfLoading,
-      "receiptHaulage": this.data.receiptHaulage || null,
-      "shippingCompany": "0001",
-      "simulationDate": this.data.simulationDate
-    }).then(res => {
-      console.log(res)
-      this.setData({
-        contractResq: res.data || null
-      })
-      wx.navigateTo({
-        url: '/packageBooking/pages/Contract/List/index',
-      })
     })
   },
 

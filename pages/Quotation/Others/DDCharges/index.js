@@ -1,4 +1,5 @@
 // pages/Quotation/Others/D&D/index.js
+const languageUtil = require('../../../../utils/languageUtils')
 import {
   detentionDemurrages
 } from '../../../../api/modules/quotation'
@@ -8,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
+    language: 'zh',
     exportDate: '',
     importDate: '',
     portOfLoadingLabel: '',
@@ -20,6 +23,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      languageContent: languageUtil.languageVersion().lang.page.qutationResult,
+      language: languageUtil.languageVersion().lang.page.langue
+    })
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data

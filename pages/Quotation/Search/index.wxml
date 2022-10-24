@@ -26,8 +26,8 @@
           </view>
           <scroll-view class="scroll-view" wx:if='{{placeOfReceiptList.length}}' scroll-y>
             <view wx:for="{{placeOfReceiptList}}" wx:key="index" class="item" bindtap='choosePlaceOfReceipt' data-index="{{index}}">
-              <view class="polname polname2">{{item.ActualName}}</view>
-              <view>{{item.PlaceType}}</view>
+              <view class="polname" style="{{item.PlaceType ? 'width: 340rpx;' : 'width: 100%;'}}">{{item.ActualName}}</view>
+              <view wx:if="{{item.PlaceType}}">{{item.PlaceType}}</view>
             </view>
           </scroll-view>
           <view class="scroll-view" wx:if="{{showPoR}}">
@@ -115,8 +115,8 @@
           </view>
           <scroll-view class="scroll-view" wx:if='{{placeOfDeliveryList.length}}' scroll-y>
             <view wx:for="{{placeOfDeliveryList}}" wx:key="index" class="item" bindtap='choosePlaceOfDelivery' data-index="{{index}}">
-              <view class="polname polname2">{{item.ActualName}}</view>
-              <view>{{item.PlaceType}}</view>
+              <view class="polname" style="{{item.PlaceType ? 'width: 340rpx;' : 'width: 100%;'}}">{{item.ActualName}}</view>
+              <view wx:if="{{item.PlaceType}}">{{item.PlaceType}}</view>
             </view>
           </scroll-view>
           <view class="scroll-view" wx:if="{{showPoDe}}">

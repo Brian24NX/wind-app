@@ -4,12 +4,12 @@
     <view class="resSuccess">
       <van-icon name="success" size="26px" />
     </view>
-    <view class="successDesc">Your offer {{reference}} has been successfully created</view>
+    <view class="successDesc">{{languageContent.referenceSuccess}}</view>
     <!-- <view class="buttons">
       <view class="oneBtn">Preview</view>
       <view class="oneBtn" catchtap="sendEmail">Send to Email</view>
     </view> -->
-    <view class="desc">Please copy the reference code or export the quotation for check before booking</view>
+    <view class="desc">{{languageContent.copyReference}}</view>
   </view>
   <view class="results">
     <view class="resultsContainer">
@@ -84,8 +84,8 @@
 </view>
 
 <view class="bottomButtons">
-  <view class="oneButton" catchtap="toHome">Back to Home</view>
-  <view class="oneButton" catchtap="toBook">Book Now</view>
+  <view class="oneButton" catchtap="toHome">{{languageContent.backHome}}</view>
+  <view class="oneButton" catchtap="toBook">{{languageContent.bookNow}}</view>
 </view>
 
 <email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

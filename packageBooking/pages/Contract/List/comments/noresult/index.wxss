@@ -1,7 +1,7 @@
 /* pages/Orders/No/index.wxss */
 .noOrderData {
   width: 100%;
-  margin-top: 74rpx;
+  padding-top: 74rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;

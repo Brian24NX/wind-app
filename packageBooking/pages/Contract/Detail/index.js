@@ -15,11 +15,11 @@ Page({
     language: 'zh',
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
-      label: 'Local Charges',
+      label: 'localCharge',
       url: "/pages/Quotation/Others/LocalCharges/index"
     }, {
       icon: '/assets/img/instantQuote/other_2@2x.png',
-      label: 'D&D',
+      label: 'DDSM',
       url: "/pages/Quotation/Others/DDCharges/index?from=myContracts"
     }, {
       icon: '/assets/img/instantQuote/other_3@2x.png',
@@ -27,7 +27,7 @@ Page({
       url: "/pages/Quotation/Others/SpotOn/index"
     }, {
       icon: '/assets/img/instantQuote/other_4@2x.png',
-      label: 'Add Info',
+      label: 'addInfo',
       url: "/pages/Quotation/Others/AdditionalInformation/index"
     }],
     fromLabel: '',

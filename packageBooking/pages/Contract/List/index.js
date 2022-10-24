@@ -2,6 +2,7 @@
 const languageUtil = require('../../../../utils/languageUtils')
 import {
   fuzzyPointSearch,
+  quotationQuoteLinesSearch,
   getQuotationSurchargeDetail
 } from '../../../../api/modules/quotation'
 
@@ -11,6 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
+    language: 'zh',
     fromLabel: '',
     fromCode: '',
     toLabel: '',
@@ -18,8 +21,29 @@ Page({
     equipmentType: '',
     simulationDate: '',
     contractList: [],
+    loggedId: '',
+    isLoading: true,
     portOfLoading: '',
-    portOfDischarge: ''
+    portOfDischarge: '',
+    commonEquipmentType: '',
+    placeOfOrigin: '',
+    portOfLoadingCode: '',
+    portOfDischargeCode: '',
+    finalPlaceOfDelivery: '',
+    currentType: 0,
+    typeList: [{
+      label: 'CMA CGM',
+      shippingCompany: '0001'
+    }, {
+      label: 'ANL',
+      shippingCompany: '0002'
+    }, {
+      label: 'CNC',
+      shippingCompany: '0011'
+    }, {
+      label: 'APL',
+      shippingCompany: '0015'
+    }]
   },
 
   /**
@@ -43,9 +67,57 @@ Page({
       fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
       toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
       toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
-      contractList: data.contractResq ? data.contractResq.perfectMatches : []
+      commonEquipmentType: data.commonEquipmentType,
+      placeOfOrigin: data.placeOfOrigin,
+      portOfLoadingCode: data.portOfLoading,
+      portOfDischargeCode: data.portOfDischarge,
+      finalPlaceOfDelivery: data.finalPlaceOfDelivery
     })
-    this.dealData()
+    this.getContractList()
+  },
+
+  changeType(e) {
+    this.setData({
+      currentType: Number(e.currentTarget.dataset.index)
+    })
+    this.getContractList()
+  },
+
+  getContractList() {
+    this.setData({
+      isLoading: true
+    })
+    quotationQuoteLinesSearch({
+      "affiliates": [wx.getStorageSync('partnerCode')],
+      "equipmentType": this.data.commonEquipmentType,
+      "placeOfOrigin": this.data.placeOfOrigin || null,
+      "portOfLoading": this.data.portOfLoadingCode,
+      "portOfDischarge": this.data.portOfDischargeCode,
+      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
+      "shippingCompany": this.data.typeList[this.data.currentType].shippingCompany,
+      "simulationDate": this.data.simulationDate
+    }).then(res => {
+      if (res.data) {
+        this.setData({
+          contractList: res.data.perfectMatches || [],
+          loggedId: res.data.loggedId,
+          isLoading: false
+        })
+        this.dealData()
+      } else {
+        this.setData({
+          contractList: [],
+          loggedId: '',
+          isLoading: false
+        })
+      }
+    }, () => {
+      this.setData({
+        contractList: [],
+        loggedId: '',
+        isLoading: false
+      })
+    })
   },
 
   dealData() {

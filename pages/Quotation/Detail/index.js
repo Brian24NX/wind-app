@@ -16,11 +16,11 @@ Page({
     isFirst: true,
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
-      label: 'Local Charges',
+      label: 'localCharge',
       url: "/pages/Quotation/Others/LocalCharges/index"
     }, {
       icon: '/assets/img/instantQuote/other_2@2x.png',
-      label: 'D&D',
+      label: 'DDSM',
       url: "/pages/Quotation/Others/DDCharges/index"
     }, {
       icon: '/assets/img/instantQuote/other_3@2x.png',
@@ -28,7 +28,7 @@ Page({
       url: "/pages/Quotation/Others/SpotOn/index"
     }, {
       icon: '/assets/img/instantQuote/other_4@2x.png',
-      label: 'Add Info',
+      label: 'addInfo',
       url: "/pages/Quotation/Others/AdditionalInformation/index"
     }],
     fromLabel: "",
@@ -62,7 +62,6 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     let languageContent = languageUtil.languageVersion().lang.page.qutationResult
-    languageContent.forContainer.replace('num', ' ' + Number(options.containers))
     this.setData({
       languageContent,
       language: languageUtil.languageVersion().lang.page.langue,
@@ -105,6 +104,10 @@ Page({
       weight: data2.weight,
       containers: containers || data2.containers,
       commodityName: data2.commodityName
+    })
+    this.data.languageContent.forContainer = this.data.languageContent.forContainer.replace('num', ' ' + Number(this.data.containers))
+    this.setData({
+      languageContent: this.data.languageContent
     })
   },
 

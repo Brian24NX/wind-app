@@ -128,7 +128,7 @@
     <view class="co2" wx:if="{{totalCO2}}">
       <image src="/assets/img/instantQuote/co@2x.png" mode="aspectFit"></image>
       <text class="co2Num">{{totalCO2}}</text>
-      <text>CO2(T) per TEU</text>
+      <text>CO2(T) {{languageContent.perTEU}}</text>
     </view>
   </view>
 </view>
