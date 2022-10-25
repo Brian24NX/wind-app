@@ -36,7 +36,9 @@ Page({
     simulationDate: '',
     currentType: 'charge',
     portOfLoading: '',
-    portOfDischarge: ''
+    portOfLoadingLabel: '',
+    portOfDischarge: '',
+    portOfDischargeLabel: ''
   },
 
   /**
@@ -58,8 +60,10 @@ Page({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       load: languageUtil.languageVersion().lang.page.load,
       language: languageUtil.languageVersion().lang.page.langue,
-      portOfLoading: data.portOfLoading,
-      portOfDischarge: data.portOfDischarge,
+      portOfLoading: data.portOfLoadingCode,
+      portOfLoadingLabel: data.portOfLoading,
+      portOfDischarge: data.portOfDischargeCode,
+      portOfDischargeLabel: data.portOfDischarge,
       fromLabel: data.contractList[Number(options.index)].portOfLoadingLabel,
       toLabel: data.contractList[Number(options.index)].portOfDischargeLabel,
       simulationDate: data.simulationDate,

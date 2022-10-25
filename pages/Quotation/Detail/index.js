@@ -46,7 +46,9 @@ Page({
     simulationDate: '',
     traceId: '',
     portOfLoading: '',
+    portOfLoadingLabel: '',
     portOfDischarge: '',
+    portOfDischargeLabel: '',
     placeOfOrigin: '',
     finalPlaceOfDelivery: ''
   },
@@ -67,7 +69,9 @@ Page({
       language: languageUtil.languageVersion().lang.page.langue,
       todayDate: this.getDate(),
       portOfLoading: data.portOfLoading,
+      portOfLoadingLabel: data.portOfLoadingLabel,
       portOfDischarge: data.portOfDischarge,
+      portOfDischargeLabel: data.portOfDischargeLabel,
       placeOfOrigin: data.placeOfOrigin,
       finalPlaceOfDelivery: data.finalPlaceOfDelivery
     })
@@ -127,7 +131,7 @@ Page({
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
     this.setData({
-      totalChargeAmount: totalChargeAmount || this.quotationDetail.surchargeDetails.totalCharge.amount
+      totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount
     })
   },
 
@@ -163,7 +167,30 @@ Page({
     // } else {
     let params = {}
     if (this.data.quotationDetail.quoteLines[0].quoteLineId) {
-
+      params = {
+        "createLaraSpecialQuotation": {
+          "affiliates": [wx.getStorageSync('partnerCode')],
+          "simulationDate": this.data.simulationDate,
+          "equipmentSizeType": this.data.equipmentTypeSize,
+          "numberOfContainers": this.data.containers,
+          "weightPerContainer": this.data.weight,
+          "polCountryCode": this.data.portOfLoading.substring(0, 2),
+          "podCountryCode": this.data.portOfDischarge.substring(0, 2),
+          "allowSpecialQuotation": this.data.quotationDetail.quoteLines[0].allowSpecialQuotation,
+          "spotValidityInDays": this.data.quotationDetail.quoteLines[0].spotValidityInDays,
+          "routingComment": this.data.quotationDetail.quoteLines[0].routingComment,
+          "voyageRef": this.data.quotationDetail.voyage,
+          "arrivalDate": this.data.quotationDetail.arrivalDate,
+          "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
+          "placeOfOrigin": this.data.placeOfOrigin || null,
+          "quoteLineId": "string",
+          "portOfLoading": this.data.portOfLoading,
+          "portOfDischarge": this.data.portOfDischarge,
+          "initialPortOfLoading": this.data.portOfLoading,
+          "initalPortOfDischarge": this.data.portOfDischarge,
+          "traceId": this.data.quotationDetail.traceId
+        }
+      }
     } else {
       params = {
         "createAquaSpecialQuotation": {
@@ -172,8 +199,8 @@ Page({
           "numberOfContainers": this.data.containers,
           "weightPerContainer": this.data.weight,
           "equipmentSizeType": this.data.equipmentTypeSize,
-          "polCountryCode": this.data.portOfLoading.split(';')[1].substring(0, 2),
-          "podCountryCode": this.data.portOfDischarge.split(';')[1].substring(0, 2),
+          "polCountryCode": this.data.portOfLoading.substring(0, 2),
+          "podCountryCode": this.data.portOfDischarge.substring(0, 2),
           "allowSpecialQuotation": this.data.quotationDetail.quoteLines[0].allowSpecialQuotation,
           "spotValidityInDays": this.data.quotationDetail.quoteLines[0].spotValidityInDays,
           "routingComment": this.data.quotationDetail.quoteLines[0].routingComment,

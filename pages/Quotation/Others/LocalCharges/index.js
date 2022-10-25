@@ -25,19 +25,17 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({
-      languageContent: languageUtil.languageVersion().lang.page.qutationResult,
-      exportLocation: data.portOfLoading.split(';')[1],
-      importLocation: data.portOfDischarge.split(';')[1],
+      languageContent: languageUtil.languageVersion().lang.page.qutationResult
     })
     fuzzyPointSearch({
-      pointCode: data.portOfLoading.split(';')[1]
+      pointCode: data.portOfLoading
     }).then(res => {
       this.setData({
         exportLocation: res.data.country.name.toLocaleUpperCase()
       })
     })
     fuzzyPointSearch({
-      pointCode: data.portOfDischarge.split(';')[1]
+      pointCode: data.portOfDischarge
     }).then(res => {
       this.setData({
         importLocation: res.data.country.name.toLocaleUpperCase()

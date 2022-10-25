@@ -39,7 +39,9 @@ Page({
     equipmentSize: '',
     shippingCompany: '',
     portOfLoading: '',
+    portOfLoadingLabel: '',
     portOfDischarge: '',
+    portOfDischargeLabel: '',
     placeOfOrigin: '',
     finalPlaceOfDelivery: '',
     commodityCode: ''
@@ -60,8 +62,10 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({
-      portOfLoading: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1] + ';' + data.portOfLoadingLabel.split(';')[2],
-      portOfDischarge: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1] + ';' + data.portOfDischargeLabel.split(';')[2],
+      portOfLoading: data.portOfLoading,
+      portOfLoadingLabel: data.portOfLoadingLabel,
+      portOfDischarge: data.portOfDischarge,
+      portOfDischargeLabel: data.portOfDischargeLabel,
       finalPlaceOfDelivery: data.finalPlaceOfDelivery,
       placeOfOrigin: data.placeOfOrigin,
       commodityCode: data.commodityCode,

@@ -13,7 +13,9 @@ Page({
     language: 'zh',
     exportDate: '',
     importDate: '',
+    portOfLoading: '',
     portOfLoadingLabel: '',
+    portOfDischarge: '',
     portOfDischargeLabel: '',
     exports: [],
     imports: []
@@ -35,13 +37,14 @@ Page({
       this.setData({
         exportDate: data.simulationDate,
         importDate: data.simulationDate,
-        portOfLoadingLabel: data.portOfLoading.split(';')[0],
-        portOfDischargeLabel: data.portOfDischarge.split(';')[0]
+        portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
+        portOfDischarge: data.portOfDischarge,
+        portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1]
       })
       params = {
-        "portOfLoading": data.portOfLoading.split(';')[1],
-        "portOfDischarge": data.portOfDischarge.split(';')[1],
-        "shippingCompany": data.shippingCompany,
+        "portOfLoading": data.portOfLoading,
+        "portOfDischarge": data.portOfDischarge,
+        "shippingCompany": data.quotationDetail.shippingCompany,
         "tariffCodes": ["DET", "DEM", "MER"],
         "placeOfOrigin": data.placeOfOrigin || null,
         "finalPlaceOfDelivery": data.finalPlaceOfDelivery || null,
@@ -77,12 +80,14 @@ Page({
       this.setData({
         exportDate: data.quotationDetail.departureDate,
         importDate: data.quotationDetail.arrivalDate,
-        portOfLoadingLabel: data.portOfLoading.split(';')[0],
-        portOfDischargeLabel: data.portOfDischarge.split(';')[0],
+        portOfLoading: data.portOfLoading,
+        portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
+        portOfDischarge: data.portOfDischarge,
+        portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1]
       })
       params = {
-        "portOfLoading": data.portOfLoading.split(';')[1],
-        "portOfDischarge": data.portOfDischarge.split(';')[1],
+        "portOfLoading": data.portOfLoading,
+        "portOfDischarge": data.portOfDischarge,
         "shippingCompany": data.shippingCompany,
         "tariffCodes": ["DET", "DEM", "MER"],
         "placeOfOrigin": data.placeOfOrigin || null,
