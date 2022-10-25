@@ -22,7 +22,7 @@
   </view>
   <view class="typeContainer">
     <view class="oneType {{currentType === index ? 'typeCheck' : ''}}" wx:for="{{typeList}}" catchtap="changeType" data-index="{{index}}">
-      <image src="/assets/img/myContracts/{{item.label}}_{{currentType === index ? '2' : '1'}}@2x.png" mode="aspectFit"></image>
+      <image src="/assets/img/myContracts/{{item.label}}_{{currentType === index ? '2' : '1'}}.svg" mode="aspectFit"></image>
       <view class="typeLine"></view>
     </view>
   </view>

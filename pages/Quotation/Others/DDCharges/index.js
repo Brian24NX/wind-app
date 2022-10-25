@@ -38,7 +38,6 @@ Page({
         exportDate: data.simulationDate,
         importDate: data.simulationDate,
         portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
-        portOfDischarge: data.portOfDischarge,
         portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1]
       })
       params = {
