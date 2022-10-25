@@ -18,7 +18,7 @@
   <view class="desc">
     <image src="/assets/img/instantQuote/tan@2x.png"></image>
     <view wx:if="{{language === 'en'}}">Valid conditions on {{commonFilters.formatEnDateLocal(exportDate, ' ', '', true, true)}}, based on {{portOfLoadingLabel}}</view>
-    <view wx:else>在 {{commonFilters.formatCnDateLocal(exportDate, true, true)}}, {{portOfLoadingLabel}}有效</view>
+    <view wx:else>有效期为 {{commonFilters.formatCnDateLocal(exportDate, true, true)}}，基于 {{portOfLoadingLabel}} 有效</view>
   </view>
   <view class="dDTable">
     <view class="tableTitle">{{languageContent.importFreeTime}}</view>
@@ -32,6 +32,6 @@
   <view class="desc">
     <image src="/assets/img/instantQuote/tan@2x.png"></image>
     <view wx:if="{{language === 'en'}}">Valid conditions on {{commonFilters.formatEnDateLocal(importDate, ' ', '', true, true)}}, based on {{portOfDischargeLabel}}</view>
-    <view wx:else>在 {{commonFilters.formatCnDateLocal(importDate, true, true)}}, {{portOfDischargeLabel}}有效</view>
+    <view wx:else>有效期为 {{commonFilters.formatCnDateLocal(importDate, true, true)}}，基于 {{portOfDischargeLabel}} 有效</view>
   </view>
 </view>

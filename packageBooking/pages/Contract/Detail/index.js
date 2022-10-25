@@ -112,7 +112,7 @@ Page({
     equitmentSizeList().then(res=>{
       console.log(res)
       const index = res.data.findIndex(i => i.code === this.data.quotationDetail.equipments[0].code)
-      this.data.quotationDetail.equitmentSizeType = index === -1 ? this.data.quotationDetail.equipments[0].code : res.data[index].nameEn
+      this.data.quotationDetail.equitmentSizeType = index === -1 ? this.data.quotationDetail.equipments[0].code : (this.data.language === 'en' ? res.data[index].nameEn : res.data[index].nameCn)
       this.setData({
         quotationDetail: this.data.quotationDetail
       })

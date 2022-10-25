@@ -584,8 +584,10 @@ Page({
       } else {
         this.setData({
           commodityList: [],
-          pricingGroupSetups: null,
-          pricingGroups: null,
+          commodityCode: 'FAK',
+          commodityName: this.data.language === 'en' ? 'Freight All Kinds' : '所有类型的费用',
+          pricingGroupSetups: [],
+          pricingGroups: [],
           commodityLoading: false
         })
       }
@@ -646,7 +648,7 @@ Page({
   },
 
   openPopup(e) {
-    if (e.currentTarget.dataset.type === '3' && !this.data.commodityList.length) {
+    if (e.currentTarget.dataset.type === '3' && (!this.data.commodityList.length || !this.data.pricingGroups.length)) {
       return
     }
     if (e.currentTarget.dataset.type === '5' && !this.data.namedAccountList.length) {
@@ -841,10 +843,19 @@ Page({
       }
       if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6) return
       this.checkAccessToken(() => {
-        if (this.data.commodityCode === "FAK") {
-          this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
+        if (this.data.pricingGroups.length) {
+          if (this.data.commodityCode === "FAK") {
+            this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
+          } else {
+            this.getQuotationNextDepartures()
+          }
         } else {
-          this.getQuotationNextDepartures()
+          this.setData({
+            resultResq: {}
+          })
+          wx.navigateTo({
+            url: '/pages/Quotation/List/index',
+          })
         }
       })
     } else {

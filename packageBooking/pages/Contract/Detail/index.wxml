@@ -54,7 +54,7 @@
     <view class="oneParams">
       <image src="/assets/img/instantQuote/param_2@2x.png"></image>
       <view>
-        <view class="paramValue">{{quotationDetail.weight}}</view>
+        <view class="paramValue">{{quotationDetail.weight || '-'}}</view>
         <view class="param">{{languageContent.weight}}</view>
       </view>
     </view>
@@ -205,7 +205,7 @@
         </view>
         <view class="rateDesc" wx:else>
           <view>已估算附加费，附加费有效期为 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}}</view>
-          <view>所有汇率均以路透社的汇率 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}} 为基础</view>
+          <view>所有汇率均以 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}} 标准费率为基础</view>
         </view>
       </view>
     </view>

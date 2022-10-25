@@ -170,7 +170,7 @@
         <view class="searchList">
           <view class="searchTitle">{{languageContent.commodity}}</view>
           <view class="selectContainer" style="{{!commodityLoading && !commodityList.length ? 'background-color: #F0F1F5' : ''}}" catchtap="openPopup" data-type="3" wx:if="{{!commodityLoading}}">
-            <view style="{{commodityCode ? 'color: #071E5D;' : ''}}">{{commodityName || verifyInfo.select}}</view>
+            <view style="{{pricingGroups.length && commodityCode ? 'color: #071E5D;' : ''}}">{{commodityName || verifyInfo.select}}</view>
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
           <image class="loadings" src="/assets/img/instantQuote/loading-blue.svg" hidden="{{!commodityLoading}}" mode="aspectFit"></image>

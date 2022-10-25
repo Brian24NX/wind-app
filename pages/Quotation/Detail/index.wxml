@@ -206,7 +206,7 @@
         </view>
         <view class="rateDesc" wx:else>
           <view>已估算附加费，附加费有效期为 {{format.formatCnDateLocal(quotationDetail.departureDate, true, true)}}</view>
-          <view>所有汇率均以路透社的汇率 {{format.formatCnDateLocal(todayDate, true, true)}} 为基础</view>
+          <view>所有汇率均以 {{format.formatCnDateLocal(todayDate, true, true)}} 标准费率为基础</view>
         </view>
       </view>
     </view>

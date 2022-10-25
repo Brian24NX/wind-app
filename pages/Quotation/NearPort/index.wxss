@@ -155,6 +155,9 @@ page {
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #071E5D;
+  width: 410rpx;
+  line-height: 60rpx;
+  word-break: break-all;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent .end {

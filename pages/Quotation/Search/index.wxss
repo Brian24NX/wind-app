@@ -111,7 +111,7 @@ page {
 }
 
 .queryContainer .searchList .commodityRequest {
-  left: 122rpx;
+  left: 80rpx;
   top: 134rpx;
 }
 
