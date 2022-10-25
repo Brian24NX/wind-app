@@ -38,7 +38,8 @@ Page({
     portOfLoading: '',
     portOfLoadingLabel: '',
     portOfDischarge: '',
-    portOfDischargeLabel: ''
+    portOfDischargeLabel: '',
+    partnerCode: []
   },
 
   /**
@@ -67,7 +68,8 @@ Page({
       fromLabel: data.contractList[Number(options.index)].portOfLoadingLabel,
       toLabel: data.contractList[Number(options.index)].portOfDischargeLabel,
       simulationDate: data.simulationDate,
-      quotationDetail: quotationDetail
+      quotationDetail: quotationDetail,
+      partnerCode: data.partnerCode
     })
     this.calculatedCharges()
     this.dealEquipmentSize()

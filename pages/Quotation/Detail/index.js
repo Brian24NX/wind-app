@@ -50,7 +50,8 @@ Page({
     portOfDischarge: '',
     portOfDischargeLabel: '',
     placeOfOrigin: '',
-    finalPlaceOfDelivery: ''
+    finalPlaceOfDelivery: '',
+    partnerCode: []
   },
 
   /**
@@ -67,6 +68,7 @@ Page({
     this.setData({
       languageContent,
       language: languageUtil.languageVersion().lang.page.langue,
+      partnerCode: data.partnerCode,
       todayDate: this.getDate(),
       portOfLoading: data.portOfLoading,
       portOfLoadingLabel: data.portOfLoadingLabel,
@@ -169,7 +171,7 @@ Page({
     if (this.data.quotationDetail.quoteLines[0].quoteLineId) {
       params = {
         "createLaraSpecialQuotation": {
-          "affiliates": [wx.getStorageSync('partnerCode')],
+          "affiliates": this.data.partnerCode,
           "simulationDate": this.data.simulationDate,
           "equipmentSizeType": this.data.equipmentTypeSize,
           "numberOfContainers": this.data.containers,
@@ -194,7 +196,7 @@ Page({
     } else {
       params = {
         "createAquaSpecialQuotation": {
-          "affiliates": [wx.getStorageSync('partnerCode')],
+          "affiliates": this.data.partnerCode,
           "simulationDate": this.data.simulationDate,
           "numberOfContainers": this.data.containers,
           "weightPerContainer": this.data.weight,

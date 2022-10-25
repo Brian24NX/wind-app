@@ -106,7 +106,9 @@ Page({
     }],
     commonEquipmentType: '',
     commonEquipmentTypeName: '',
-    contractResq: null
+    contractResq: null,
+    partnerList: wx.getStorageSync('partnerCode') || [],
+    partnerCode: [],
   },
 
   /**
@@ -612,7 +614,7 @@ Page({
       namedAccountsSearch({
         portOfLoading: this.data.portOfLoading,
         portOfDischarge: this.data.portOfDischarge,
-        affiliates: [wx.getStorageSync('partnerCode')]
+        affiliates: this.data.partnerCode
       }).then(res => {
           this.setData({
             namedAccountList: res.data || [],
@@ -841,6 +843,11 @@ Page({
           showRemind6: false
         })
       }
+      if (this.data.partnerList.length === 1) {
+        this.setData({
+          partnerCode: [this.data.partnerList[0].code]
+        })
+      }
       if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6) return
       this.checkAccessToken(() => {
         if (this.data.pricingGroups.length) {
@@ -861,6 +868,11 @@ Page({
     } else {
       if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
       this.checkAccessToken(() => {
+        if (this.data.partnerList.length === 1) {
+          this.setData({
+            partnerCode: [this.data.partnerList[0].code]
+          })
+        }
         wx.navigateTo({
           url: '/packageBooking/pages/Contract/List/index',
         })
@@ -870,7 +882,7 @@ Page({
 
   getQuotationNextDepartures() {
     quotationNextDepartures({
-      "affiliates": [wx.getStorageSync('partnerCode')],
+      "affiliates": this.data.partnerCode,
       "commodityCode": this.data.commodityCode,
       "deliveryHaulage": this.data.deliveryHaulage || null,
       "equipmentSizeType": this.data.equipmentType,
@@ -910,7 +922,7 @@ Page({
       this.getNearByPortNextDeparture()
     } else {
       quotationNextDepartures({
-        "affiliates": [wx.getStorageSync('partnerCode')],
+        "affiliates": this.data.partnerCode,
         "commodityCode": this.data.commodityCode,
         "deliveryHaulage": this.data.deliveryHaulage || null,
         "equipmentSizeType": this.data.equipmentType,
@@ -946,7 +958,7 @@ Page({
 
   getNearByPortNextDeparture() {
     nearByPortNextDeparture({
-      "affiliates": [wx.getStorageSync('partnerCode')],
+      "affiliates": this.data.partnerCode,
       "commodityCode": this.data.commodityCode,
       "deliveryHaulage": this.data.deliveryHaulage || null,
       "equipmentSizeType": this.data.equipmentType,

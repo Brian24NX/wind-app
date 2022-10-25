@@ -44,7 +44,8 @@ Page({
     }, {
       label: 'APL',
       shippingCompany: '0015'
-    }]
+    }],
+    partnerCode: []
   },
 
   /**
@@ -61,6 +62,7 @@ Page({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue,
       equipmentType: data.commonEquipmentTypeName,
+      partnerCode: data.partnerCode,
       simulationDate: data.simulationDate,
       namedAccountCode: data.namedAccountCode,
       portOfLoading: data.portOfLoadingLabel,
@@ -90,7 +92,7 @@ Page({
       isLoading: true
     })
     quotationQuoteLinesSearch({
-      "affiliates": [wx.getStorageSync('partnerCode')],
+      "affiliates": this.data.partnerCode,
       "equipmentType": this.data.commonEquipmentType,
       "placeOfOrigin": this.data.placeOfOrigin || null,
       "portOfLoading": this.data.portOfLoadingCode,

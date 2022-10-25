@@ -53,6 +53,11 @@ export const customerProfile = (params) => {
   return getRequest('/api/miniapp/customerProfile', params, false, true)
 }
 
+// 获取用户Parnters
+export const customerPartners = (params) => {
+  return postRequest('/api/miniapp/customerPartners', params, true, true)
+}
+
 // 获取用户信息
 export const ccgId = (params) => {
   return getRequest('/api/miniapp/ccgId', params, false, true)

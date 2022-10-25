@@ -440,7 +440,8 @@ var Languague = {
       //查询
       search: "获取报价",
       search2: "查找价格",
-      reset: '重置'
+      reset: '重置',
+      partners: '您的网络账号已连接至此单位'
     },
     // 报价详情
     qutationResult: {

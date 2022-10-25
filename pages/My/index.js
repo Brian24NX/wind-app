@@ -3,7 +3,8 @@ const app = getApp();
 const languageUtils = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
 import {
-  customerProfile
+  customerProfile,
+  customerPartners
 } from '../../api/modules/home'
 Page({
   /**
@@ -50,10 +51,28 @@ Page({
             if (userInfo.lastName && userInfo.firstName) {
               userInfo.avatar = userInfo.firstName.substr(0, 1) + userInfo.lastName.substr(0, 1)
             }
-            wx.setStorageSync('partnerCode', res.data[0].profilerights[0].partner.code)
             wx.setStorageSync('userInfo', userInfo)
             this.setData({
               userInfo
+            })
+            let partners = []
+            partners = res.data[0].profilerights.map(i => {
+              return i.partner.code
+            })
+            var newPartners = Array.from(new Set(partners))
+            customerPartners({
+              "partners": newPartners,
+              "token": wx.getStorageSync('access_token')
+            }).then(result => {
+              console.log(result)
+              let partnerLists = []
+              result.data.forEach(i => {
+                partnerLists.push({
+                  code: i.partnerDetails.code,
+                  name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city
+                })
+              })
+              wx.setStorageSync('partnerCode', partnerLists)
             })
           }
         })

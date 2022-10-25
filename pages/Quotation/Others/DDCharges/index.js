@@ -18,7 +18,8 @@ Page({
     portOfDischarge: '',
     portOfDischargeLabel: '',
     exports: [],
-    imports: []
+    imports: [],
+    partnerCode: []
   },
 
   /**
@@ -49,7 +50,7 @@ Page({
         "finalPlaceOfDelivery": data.finalPlaceOfDelivery || null,
         "commodity": data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
         "equipmentSizeTypes": [data.quotationDetail.equipments[0].code],
-        "businessPartner": wx.getStorageSync('partnerCode'),
+        "businessPartner": data.partnerCode[0],
         "simulationDate": this.data.importDate,
       }
       detentionDemurrages({
@@ -79,10 +80,8 @@ Page({
       this.setData({
         exportDate: data.quotationDetail.departureDate,
         importDate: data.quotationDetail.arrivalDate,
-        portOfLoading: data.portOfLoading,
         portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
-        portOfDischarge: data.portOfDischarge,
-        portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1]
+        portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1],
       })
       params = {
         "portOfLoading": data.portOfLoading,
@@ -96,7 +95,7 @@ Page({
         "refrigerated": data.quotationDetail.quoteLines[0].refrigerated,
         "hazardous": data.quotationDetail.quoteLines[0].hazardous,
         "oversize": data.quotationDetail.quoteLines[0].oversize,
-        "businessPartner": wx.getStorageSync('partnerCode')
+        "businessPartner": data.partnerCode[0]
       }
       detentionDemurrages({
         ...params,

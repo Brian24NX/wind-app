@@ -179,6 +179,18 @@
             <text>{{verifyInfo.required}}</text>
           </view>
         </view>
+        <view class="searchList" wx:if="{{partnerList.length > 1}}">
+          <view class="searchTitle">{{languageContent.partners}}</view>
+          <view class="selectContainer" style="{{!commodityLoading && !commodityList.length ? 'background-color: #F0F1F5' : ''}}" catchtap="openPopup" data-type="3" wx:if="{{!commodityLoading}}">
+            <view style="{{pricingGroups.length && commodityCode ? 'color: #071E5D;' : ''}}">{{commodityName || verifyInfo.select}}</view>
+            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          </view>
+          <image class="loadings" src="/assets/img/instantQuote/loading-blue.svg" hidden="{{!commodityLoading}}" mode="aspectFit"></image>
+          <view class="noRequest commodityRequest" wx:if="{{showRemind6}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
         <view class="btn" style="margin-top: 40rpx;">
           <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search}}</button>
           <view class="reset" catchtap="reset">{{languageContent.reset}}</view>

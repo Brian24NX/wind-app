@@ -44,7 +44,8 @@ Page({
     portOfDischargeLabel: '',
     placeOfOrigin: '',
     finalPlaceOfDelivery: '',
-    commodityCode: ''
+    commodityCode: '',
+    partnerCode: []
   },
 
   /**
@@ -62,6 +63,7 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({
+      partnerCode: data.partnerCode,
       portOfLoading: data.portOfLoading,
       portOfLoadingLabel: data.portOfLoadingLabel,
       portOfDischarge: data.portOfDischarge,

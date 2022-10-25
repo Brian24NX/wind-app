@@ -532,7 +532,7 @@ Page({
 
   getQuotationNextDepartures() {
     quotationQuoteLinesSearch({
-      "affiliates": [wx.getStorageSync('partnerCode')],
+      "affiliates": this.data.partnerCode,
       "deliveryHaulage": this.data.deliveryHaulage,
       "equipmentType": this.data.equipmentType,
       "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery,

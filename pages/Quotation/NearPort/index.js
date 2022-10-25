@@ -29,7 +29,8 @@ Page({
     portOfDischargeLabel: '',
     equipmentTypeName: '',
     commodityName: '',
-    nearPortList: []
+    nearPortList: [],
+    partnerCode: []
   },
 
   /**
@@ -68,7 +69,8 @@ Page({
       simulationDate: data.simulationDate,
       weight: data.weight,
       equipmentTypeName: data.equipmentTypeName,
-      commodityName: data.commodityName
+      commodityName: data.commodityName,
+      partnerCode: data.partnerCode
     })
     const res = data.nearPort
     const list = [...new Set(res.map(i => i.portOfLoading + '-' + i.portOfDischarge))].map(i => {
@@ -130,7 +132,7 @@ Page({
 
   getQuotationNextDepartures2(shippingCompany, index, portOfLoading, portOfDischarge) {
     quotationNextDepartures({
-      "affiliates": [wx.getStorageSync('partnerCode')],
+      "affiliates": this.data.partnerCode,
       "commodityCode": this.data.commodityCode,
       "deliveryHaulage": this.data.deliveryHaulage || null,
       "equipmentSizeType": this.data.equipmentType,
@@ -175,7 +177,7 @@ Page({
 
   getQuotationNextDepartures(portOfLoading, portOfDischarge) {
     quotationNextDepartures({
-      "affiliates": [wx.getStorageSync('partnerCode')],
+      "affiliates": this.data.partnerCode,
       "commodityCode": this.data.commodityCode,
       "deliveryHaulage": this.data.deliveryHaulage || null,
       "equipmentSizeType": this.data.equipmentType,

@@ -437,7 +437,8 @@ var Languague = {
       //查询
       search: "Get My Quote",
       search2: 'Search',
-      reset: 'Reset'
+      reset: 'Reset',
+      partners: 'Partner(s) linked to your web account'
     },
     // 报价详情
     qutationResult: {
