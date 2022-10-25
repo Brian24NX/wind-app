@@ -64,6 +64,7 @@ Page({
     showRemind4: false,
     showRemind5: false,
     showRemind6: false,
+    showRemind7: false,
     showDelete1: false,
     showDelete2: false,
     showDelete3: false,
@@ -108,7 +109,9 @@ Page({
     commonEquipmentTypeName: '',
     contractResq: null,
     partnerList: wx.getStorageSync('partnerCode') || [],
+    checkPartnerList: [],
     partnerCode: [],
+    showPartner: false
   },
 
   /**
@@ -198,7 +201,7 @@ Page({
       if (res.data.length) {
         this.setData({
           equipmentTypeList: res.data,
-          equipmentType: res.data[0].code,
+          equipmentType: res.data[0].instantCode,
           equipmentTypeName: this.data.language === 'en' ? res.data[0].nameEn : res.data[0].nameCn
         })
       }
@@ -562,7 +565,7 @@ Page({
         commodityList.unshift({
           code: 'FAK',
           en: "Freight All Kinds",
-          zh: '所有类型的费用'
+          zh: '不分货种运费'
         })
         res.data.forEach(item => {
           if (item.iQexcludedPartners) {
@@ -587,7 +590,7 @@ Page({
         this.setData({
           commodityList: [],
           commodityCode: 'FAK',
-          commodityName: this.data.language === 'en' ? 'Freight All Kinds' : '所有类型的费用',
+          commodityName: this.data.language === 'en' ? 'Freight All Kinds' : '不分货种运费',
           pricingGroupSetups: [],
           pricingGroups: [],
           commodityLoading: false
@@ -616,10 +619,10 @@ Page({
         portOfDischarge: this.data.portOfDischarge,
         affiliates: this.data.partnerCode
       }).then(res => {
-          this.setData({
-            namedAccountList: res.data || [],
-            namedAccountLoading: false
-          })
+        this.setData({
+          namedAccountList: res.data || [],
+          namedAccountLoading: false
+        })
       }, () => {
         setTimeout(() => {
           this.getNamedAccountsSearch()
@@ -701,7 +704,7 @@ Page({
   onConfirm(e) {
     if (this.data.popupType === '1') {
       this.setData({
-        equipmentType: e.detail.code,
+        equipmentType: e.detail.instantCode,
         equipmentTypeName: this.data.language === 'en' ? e.detail.nameEn : e.detail.nameCn
       })
       this.getCommodityList()
@@ -769,6 +772,43 @@ Page({
     }
   },
 
+  choosePartner() {
+    this.setData({
+      showPartner: !this.data.showPartner,
+      showRemind7: false
+    })
+  },
+
+  choosePartners(e) {
+    const index = e.currentTarget.dataset.index
+    this.data.partnerList[index].checked = !this.data.partnerList[index].checked
+    this.setData({
+      partnerList: this.data.partnerList
+    })
+    const index2 = this.data.checkPartnerList.findIndex(i => i.code === this.data.partnerList[index].code)
+    console.log(index2)
+    if (index2 === -1) {
+      this.data.checkPartnerList.push(this.data.partnerList[index])
+    } else {
+      this.data.checkPartnerList.splice(index2, 1)
+    }
+    this.setData({
+      checkPartnerList: this.data.checkPartnerList
+    })
+  },
+
+  deletePartner(e) {
+    const index = e.currentTarget.dataset.index
+    const index2 = this.data.partnerList.findIndex(i => i.code === this.data.checkPartnerList[index].code)
+    console.log(index2)
+    this.data.partnerList[index2].checked = false
+    this.data.checkPartnerList.splice(index, 1)
+    this.setData({
+      checkPartnerList: this.data.checkPartnerList,
+      partnerList: this.data.partnerList
+    })
+  },
+
   // 提交搜索
   submit() {
     if (this.data.showDelete1) {
@@ -824,6 +864,22 @@ Page({
         showRemind4: false
       })
     }
+    if (this.data.partnerList.length === 1) {
+      this.setData({
+        partnerCode: [this.data.partnerList[0].code]
+      })
+    } else {
+      if (!this.data.checkPartnerList.length) {
+        this.setData({
+          showRemind7: true
+        })
+      } else {
+        this.setData({
+          showRemind7: false,
+          partnerCode: this.data.checkPartnerList.map(i => {return i.code})
+        })
+      }
+    }
     if (this.data.currentType === 'instation') {
       if (!this.data.weight) {
         this.setData({
@@ -843,12 +899,7 @@ Page({
           showRemind6: false
         })
       }
-      if (this.data.partnerList.length === 1) {
-        this.setData({
-          partnerCode: [this.data.partnerList[0].code]
-        })
-      }
-      if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6) return
+      if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6 || (this.data.partnerList.length > 1 && this.data.showRemind7)) return
       this.checkAccessToken(() => {
         if (this.data.pricingGroups.length) {
           if (this.data.commodityCode === "FAK") {
@@ -866,7 +917,7 @@ Page({
         }
       })
     } else {
-      if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
+      if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || (this.data.partnerList.length > 1 && this.data.showRemind7)) return
       this.checkAccessToken(() => {
         if (this.data.partnerList.length === 1) {
           this.setData({
@@ -1010,7 +1061,7 @@ Page({
       pollist: [],
       podlist: [],
       simulationDate: this.getDate(),
-      equipmentType: this.data.equipmentTypeList[0].code,
+      equipmentType: this.data.equipmentTypeList[0].instantCode,
       equipmentTypeName: this.data.language === 'zh' ? this.data.equipmentTypeList[0].nameCn : this.data.equipmentTypeList[0].nameEn,
       commonEquipmentType: this.data.commonEquipmentTypeList[0].code,
       commonEquipmentTypeName: this.data.language === 'zh' ? this.data.commonEquipmentTypeList[0].nameCn : this.data.commonEquipmentTypeList[0].nameEn,

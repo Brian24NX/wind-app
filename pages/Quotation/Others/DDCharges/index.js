@@ -50,7 +50,6 @@ Page({
         "finalPlaceOfDelivery": data.finalPlaceOfDelivery || null,
         "commodity": data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
         "equipmentSizeTypes": [data.quotationDetail.equipments[0].code],
-        "businessPartner": data.partnerCode[0],
         "simulationDate": this.data.importDate,
       }
       detentionDemurrages({
@@ -94,8 +93,7 @@ Page({
         "equipmentSizeTypes": [data.equipmentTypeSize],
         "refrigerated": data.quotationDetail.quoteLines[0].refrigerated,
         "hazardous": data.quotationDetail.quoteLines[0].hazardous,
-        "oversize": data.quotationDetail.quoteLines[0].oversize,
-        "businessPartner": data.partnerCode[0]
+        "oversize": data.quotationDetail.quoteLines[0].oversize
       }
       detentionDemurrages({
         ...params,

@@ -109,7 +109,7 @@
             <text>{{quotationDetail.surchargeDetails.oceanFreight.price.currency.code}}</text>
           </view>
         </view>
-        <view class="rateDesc">{{quotationDetail.surchargeDetails.oceanFreightDetails.join(' / ')}}</view>
+        <view class="rateDesc">{{quotationDetail.surchargeDetails.oceanFreightDetails}}</view>
       </view>
       <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.freightCharges.amount}}">
         <view class="oneRate">
@@ -254,7 +254,7 @@
       <view class="bottomPrice">{{totalChargeAmount * containers}}</view>
       <view>{{quotationDetail.surchargeDetails.perBLCharges.currency.code}}</view>
     </view>
-    <view class="containerNumber">{{languageContent.forContainer}}</view>
+    <view class="containerNumber">{{languageContent.forContainer1 + containers + languageContent.forContainer2}}</view>
   </view>
   <view class="buttons" catchtap="submit">{{languageContent.saveQuotation}}</view>
 </view>

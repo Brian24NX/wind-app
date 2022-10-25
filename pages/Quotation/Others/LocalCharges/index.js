@@ -11,7 +11,8 @@ Page({
   data: {
     languageContent: {},
     exportLocation: '',
-    importLocation: ''
+    importLocation: '',
+    shippingCompany: ''
   },
 
   /**
@@ -25,7 +26,8 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({
-      languageContent: languageUtil.languageVersion().lang.page.qutationResult
+      languageContent: languageUtil.languageVersion().lang.page.qutationResult,
+      shippingCompany: data.quotationDetail.shippingCompany || data.quotationDetail.quoteLines[0].shippingCompany
     })
     fuzzyPointSearch({
       pointCode: data.portOfLoading
@@ -43,5 +45,18 @@ Page({
     })
   },
 
-  copy() {}
+  copy() {
+    const url = this.data.shippingCompany === '0001' ? 'https://www.cma-cgm.com/local-offices' : this.data.shippingCompany === '0002' ? 'https://www.apl.com/latest-news/customer-advisory-rates-tariffs' : this.data.shippingCompany === '0011' ? 'https://www.cnc-line.com/local-offices' : 'https://www.anl.com.au/local-offices'
+    wx.setClipboardData({
+      data: url,
+      success() {
+        wx.showToast({
+          title: languageUtil.languageVersion().lang.page.copyInfo.success,
+          icon: 'none',
+          mask: true,
+          duration: 2000
+        })
+      }
+    })
+  }
 })

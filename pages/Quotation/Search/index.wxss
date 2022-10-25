@@ -322,3 +322,91 @@ page {
   left: 50%;
   transform: translateX(-50%);
 }
+
+.queryContainer .searchLists .selectContainer2 {
+  width: 100%;
+  min-height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 28rpx;
+}
+
+.queryContainer .searchLists .selectContainer2 .noSelect {
+  width: 490rpx;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.queryContainer .searchLists .selectContainer2 .xiala {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.partnerCodeList {
+  width: 400rpx;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20rpx;
+}
+
+.partnerCodeList .checkPartner {
+  background-color: #EDF1F9;
+  display: flex;
+  align-items: center;
+  padding: 10rpx 20rpx;
+  color: #04246A;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+}
+
+.partnerCodeList .checkPartner .partnerName {
+  display: inline-block;
+  white-space: nowrap; 
+  max-width: 330rpx; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.partnerCodeList .checkPartner image {
+  width: 18rpx;
+  height: 18rpx;
+  margin-left: 28rpx;
+}
+
+.scroll-view2 {
+  width: calc(100% - 2rpx);
+  background: #ffffff;
+  border: 1rpx solid #00245d;
+  transform: rotateZ(360deg);
+  max-height: 430rpx;
+}
+
+.scroll-view2 .item {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #e2e2e2;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.scroll-view2 .item .polname {
+  width: 100%;
+  line-height: 30rpx;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #04246A;
+}

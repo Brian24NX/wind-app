@@ -463,9 +463,9 @@ var Languague = {
       collect: '进口附加费（到付）',
       perBL: '每单费用',
       totalBL: '按单总计',
-      container: '货柜',
       saveQuotation: '获取报价',
-      forContainer: '集装箱总数num',
+      forContainer1: '集装箱总数',
+      forContainer2: '',
       apply: '应用',
       //排序
       sortBy: "排序",
@@ -486,6 +486,7 @@ var Languague = {
       //仅看直达
       directOnly: "仅看直达",
       //抱歉，我们暂未查询到匹配的航线方案.
+      noFindQuteTips1: '抱歉，未找到相匹配的记录',
       noFindTips1: "抱歉！未在您的合约中找到符合您搜索的价格",
       modifySearch: '修改搜索',
       equipmentType: '箱型',
@@ -540,7 +541,9 @@ var Languague = {
       continue: '继续获取报价?',
       continueBtn: '继续',
       chooseOther: '选择其他航线',
-      containerRemind: '个剩余货柜'
+      containerRemind: '个剩余货柜',
+      exportPDF: '导出PDF',
+      contractDetail: '详情'
     },
     // 我的报价
     myContract: {

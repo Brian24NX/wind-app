@@ -297,5 +297,10 @@
     </view>
     <view class="containerNumber">{{languageContent.totalPerContainer}}</view>
   </view>
-  <view class="buttons" catchtap="submit">{{languageContent.book}}</view>
+  <view class="buttonContainer">
+    <view class="buttons" catchtap="clickExportPDF">{{languageContent.exportPDF}}</view>
+    <view class="buttons" catchtap="submit">{{languageContent.book}}</view>
+  </view>
 </view>
+
+<email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

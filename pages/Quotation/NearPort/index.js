@@ -164,7 +164,7 @@ Page({
           this.getQuotationNextDepartures2(this.data.pricingGroups[index].shippingCompany, index, portOfLoading, portOfDischarge)
         } else {
           this.setData({
-            resultResq: res.data,
+            resultResq: {},
             shippingCompany: shippingCompany
           })
           wx.navigateTo({

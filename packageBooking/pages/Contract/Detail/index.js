@@ -1,8 +1,13 @@
 // packageBooking/pages/Contract/Detail/index.js
 const languageUtil = require('../../../../utils/languageUtils')
 import {
-  equitmentSizeList
+  equitmentSizeList,
+  fuzzyPointSearch
 } from '../../../../api/modules/home';
+import {
+  detentionDemurrages,
+  exportPDF
+} from '../../../../api/modules/quotation'
 
 Page({
 
@@ -39,7 +44,12 @@ Page({
     portOfLoadingLabel: '',
     portOfDischarge: '',
     portOfDischargeLabel: '',
-    partnerCode: []
+    partnerCode: [],
+    exports: [],
+    imports: [],
+    exportLocation: '',
+    importLocation: '',
+    showEmail: false
   },
 
   /**
@@ -73,6 +83,7 @@ Page({
     })
     this.calculatedCharges()
     this.dealEquipmentSize()
+    this.getDDCharges()
   },
 
   calculatedCharges() {
@@ -96,6 +107,59 @@ Page({
     })
   },
 
+  getDDCharges() {
+    let params = {
+      "portOfLoading": this.data.portOfLoading,
+      "portOfDischarge": this.data.portOfDischarge,
+      "shippingCompany": this.data.quotationDetail.shippingCompany,
+      "tariffCodes": ["DET", "DEM", "MER"],
+      "placeOfOrigin": this.data.placeOfOrigin || null,
+      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
+      "commodity": this.data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
+      "equipmentSizeTypes": [this.data.quotationDetail.equipments[0].code],
+      "simulationDate": this.data.importDate
+    }
+    detentionDemurrages({
+      ...params,
+      "directions": ["E"]
+    }).then(res => {
+      console.log(res)
+      if (res.data && res.data.length) {
+        this.setData({
+          exports: res.data
+        })
+      }
+    })
+    detentionDemurrages({
+      ...params,
+      "directions": ["I"]
+    }).then(res => {
+      console.log(res)
+      if (res.data && res.data.length) {
+        this.setData({
+          imports: res.data
+        })
+      }
+    })
+  },
+
+  getLocalCharge() {
+    fuzzyPointSearch({
+      pointCode: this.data.portOfLoading
+    }).then(res => {
+      this.setData({
+        exportLocation: res.data.country.name.toLocaleUpperCase()
+      })
+    })
+    fuzzyPointSearch({
+      pointCode: this.data.portOfDischarge
+    }).then(res => {
+      this.setData({
+        importLocation: res.data.country.name.toLocaleUpperCase()
+      })
+    })
+  },
+
   changeType(e) {
     this.setData({
       currentType: e.currentTarget.dataset.type
@@ -111,7 +175,7 @@ Page({
   },
 
   dealEquipmentSize() {
-    equitmentSizeList().then(res=>{
+    equitmentSizeList().then(res => {
       console.log(res)
       const index = res.data.findIndex(i => i.code === this.data.quotationDetail.equipments[0].code)
       this.data.quotationDetail.equitmentSizeType = index === -1 ? this.data.quotationDetail.equipments[0].code : (this.data.language === 'en' ? res.data[index].nameEn : res.data[index].nameCn)
@@ -145,6 +209,46 @@ Page({
     wx.showToast({
       title: this.data.load.functionIsUnderDevelopment,
       icon: 'none'
+    })
+  },
+
+  closeEmail() {
+    this.setData({
+      showEmail: false
+    })
+  },
+
+  sendEmails(e) {
+    console.log(e)
+    exportPDF({
+      "email": e.detail,
+      "ddCharges": {
+        "exportDate": this.data.simulationDate,
+        "exports": this.data.exports,
+        "importDate": this.data.simulationDate,
+        "imports": this.data.imports
+      },
+      "localCharges": {
+        "exportLocation": this.data.exportLocation,
+        "importLocation": this.data.importLocation
+      },
+      "quotationDetail": this.data.quotationDetail
+    }).then(res => {
+      console.log(res)
+      wx.showToast({
+        title: languageUtil.languageVersion().lang.page.load.sendSuccess,
+        icon: 'none',
+        mask: true
+      })
+      this.setData({
+        showEmail: false
+      })
+    })
+  },
+
+  clickExportPDF() {
+    this.setData({
+      showEmail: true
     })
   }
 })

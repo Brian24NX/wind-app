@@ -2,9 +2,9 @@
 <van-overlay show="{{ show }}" z-index="10">
   <view class="containersReminds">
     <view class="containersRemind">
-      <view class="close" catchtap="onClickHide">
+      <!-- <view class="close" catchtap="onClickHide">
         <van-icon name="cross" size="24" color="#04246A" />
-      </view>
+      </view> -->
       <view class="remindTitle">{{languageContents.fewContainer}}</view>
       <view class="remindDesc">{{languageContents.ferContainerDesc}}</view>
       <view class="remindDesc">{{languageContents.continue}}</view>

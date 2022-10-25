@@ -52,3 +52,8 @@ export const detentionDemurrages = (params) => {
 export const namedAccountsSearch = (params) => {
   return postRequest('/api/miniapp/namedAccountsSearch', params, true, true, true, true)
 }
+
+// 导出PDF
+export const exportPDF = (params) => {
+  return postRequest('/api/miniapp/downloadQuotationPdf', params, true, false, true)
+}

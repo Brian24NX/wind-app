@@ -12,7 +12,7 @@
       <view class="oneDetail">{{item.tariff.tariffName}}</view>
       <view class="oneDetail">{{item.detentionDemurrageEquipments[0].equipmentSizeType}}</view>
       <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.noOfFreeDays}}</view>
-      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.freeDaystype}}</view>
+      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.freeDaystype}} Days</view>
     </view>
   </view>
   <view class="desc">
@@ -26,7 +26,7 @@
       <view class="oneDetail">{{item.tariff.tariffName}}</view>
       <view class="oneDetail">{{item.detentionDemurrageEquipments[0].equipmentSizeType}}</view>
       <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.noOfFreeDays}}</view>
-      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.freeDaystype}}</view>
+      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.freeDaystype}} Days</view>
     </view>
   </view>
   <view class="desc">

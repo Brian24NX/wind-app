@@ -429,7 +429,7 @@ var Languague = {
       //离港时间
       departure: "Vessel departure from",
       equipmentType: 'Equipment Type',
-      weight: 'Net Weight（KGM）',
+      weight: 'Net Weight(KGM)',
       weightName: 'EX.10 000 kgm',
       container: 'Number of container(s)',
       commodity: "Commodity",
@@ -444,7 +444,7 @@ var Languague = {
     qutationResult: {
       noOffer: 'No offer currently available',
       spotOut: 'Spot allocation sold out',
-      container: 'CONTRAIN',
+      container: 'CONTAINER',
       title: 'Instant Quote',
       select: 'Select',
       days: 'DAYS',
@@ -460,8 +460,8 @@ var Languague = {
       collect: 'Charges payable at import (Collect)',
       perBL: 'Rate per B/L',
       totalBL: 'Total per B/L',
-      forContainer: 'For num container(s)',
-      container: 'container',
+      forContainer1: 'For ',
+      forContainer2: ' container(s)',
       saveQuotation: 'Save quote to book',
       apply: 'Apply',
       //排序
@@ -483,6 +483,7 @@ var Languague = {
       //仅看直达
       directOnly: "Direct\nonly",
       //抱歉！未找到此问题的解决方案,在CMA CGM集团内目前暂未能提供处理方案.
+      noFindQuteTips1: "Sorry! No matching records found.",
       noFindTips1: "Sorry! No matching records found.",
       modifySearch: 'Modify Search',
       equipmentType: 'Equipment Type',
@@ -501,7 +502,7 @@ var Languague = {
       copy: 'Copy',
       exportFreeTime: 'Export free time',
       importFreeTime: 'Import free time',
-      spotOnDetail: 'SpotOn - Specific conditions',
+      spotOnDetail: 'SpotOn - Specific Conditions',
       consult: 'Consult detailed spotOn terms & conditions',
       additionalInformation: 'Additional Information',
       quotation: 'Quotation',
@@ -529,16 +530,18 @@ var Languague = {
       refused: 'Refused',
       referenceSuccess: 'Your offer {{reference}} has been successfully created',
       copyReference: 'Please copy the reference code for check before booking',
-      backHome: 'Back to home',
+      backHome: 'Back to Home',
       bookNow: 'Book Now',
       nearPortInstantQuote: 'Instant quote on nearby ports',
-      clickCard: 'Please find nearby ports conbinations for which you can obtaib aninstant quotation. Click on a card to see the offer',
+      clickCard: 'Please find nearby ports combinations for which you can obtain an instant quotation. Click on a card to see the offer.',
       fewContainer: 'Few containers available',
       ferContainerDesc: 'You have requested {{containers}} container(s) but only {{hasContainers}} are remaining for this departure.',
       continue: 'Do you want to continue?',
       continueBtn: 'Continue',
       chooseOther: 'Choose another route',
-      containerRemind: 'container(s) remianing'
+      containerRemind: 'container(s) remianing',
+      exportPDF: 'export PDF',
+      contractDetail: 'Detail'
     },
     // 我的报价
     myContract: {

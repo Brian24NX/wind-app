@@ -527,7 +527,11 @@
   margin-top: 6rpx;
 }
 
-.bottomButtonContainer .buttons {
+.bottomButtonContainer .buttonContainer {
+  display: flex;
+}
+
+.bottomButtonContainer .buttonContainer .buttons {
   height: 76rpx;
   background-color: #E20202;
   font-size: 32rpx;
@@ -537,6 +541,7 @@
   text-align: center;
   line-height: 76rpx;
   padding: 0 22rpx;
+  margin-left: 30rpx;
 }
 
 .quoteDetails {

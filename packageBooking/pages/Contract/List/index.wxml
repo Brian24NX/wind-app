@@ -99,7 +99,7 @@
         </view>
         <button class="selects {{!filters.checkValidDate(item.validityTo) ? 'notSelect' : ''}}" disabled="{{!filters.checkValidDate(item.validityTo) || item.isLoading}}" bindtap="toDetail" data-index="{{index}}">
           <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{filters.checkValidDate(item.validityTo) && item.isLoading}}"></image>
-          <text wx:if="{{filters.checkValidDate(item.validityTo) && !item.isLoading}}">{{languageContent.book}}</text>
+          <text wx:if="{{filters.checkValidDate(item.validityTo) && !item.isLoading}}">{{languageContent.contractDetail}}</text>
         </button>
       </view>
     </view>

@@ -76,7 +76,7 @@
           </block>
           <block wx:else>
             <view class="leftDto"></view>
-            <view class="leftLine" style="height: 96rpx;"></view>
+            <view class="leftLine" style="height: 104rpx;"></view>
           </block>
         </view>
       </view>
@@ -181,12 +181,22 @@
         </view>
         <view class="searchList" wx:if="{{partnerList.length > 1}}">
           <view class="searchTitle">{{languageContent.partners}}</view>
-          <view class="selectContainer" style="{{!commodityLoading && !commodityList.length ? 'background-color: #F0F1F5' : ''}}" catchtap="openPopup" data-type="3" wx:if="{{!commodityLoading}}">
-            <view style="{{pricingGroups.length && commodityCode ? 'color: #071E5D;' : ''}}">{{commodityName || verifyInfo.select}}</view>
-            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          <view class="selectContainer2" catchtap="choosePartner">
+            <view class="noSelect" wx:if="{{!checkPartnerList.length}}">{{verifyInfo.select}}</view>
+            <view class="partnerCodeList" wx:else>
+              <view class="checkPartner" wx:for="{{checkPartnerList}}">
+                <view class="partnerName">{{item.name}}</view>
+                <image catchtap="deletePartner" data-index="{{index}}" src="/assets/img/search/close@2x.png"></image>
+              </view>
+            </view>
+            <image class="xiala" src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
-          <image class="loadings" src="/assets/img/instantQuote/loading-blue.svg" hidden="{{!commodityLoading}}" mode="aspectFit"></image>
-          <view class="noRequest commodityRequest" wx:if="{{showRemind6}}">
+          <scroll-view class="scroll-view2" scroll-y wx:if="{{showPartner}}">
+            <view wx:for="{{partnerList}}" wx:key="index" class="item" bindtap='choosePartners' data-index="{{index}}" style="{{item.checked ? 'background-color: #EDF1F9' : ''}}">
+              <view class="polname" style="width: 100%;">{{item.name}}</view>
+            </view>
+          </scroll-view>
+          <view class="noRequest commodityRequest" wx:if="{{showRemind7}}">
             <image src="/assets/img/search/error@2x.png"></image>
             <text>{{verifyInfo.required}}</text>
           </view>
@@ -211,6 +221,28 @@
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
           <image class="loadings" src="/assets/img/instantQuote/loading-blue.svg" hidden="{{!namedAccountLoading}}" mode="aspectFit"></image>
+        </view>
+        <view class="searchList" wx:if="{{partnerList.length > 1}}">
+          <view class="searchTitle">{{languageContent.partners}}</view>
+          <view class="selectContainer2" catchtap="choosePartner">
+            <view class="noSelect" wx:if="{{!checkPartnerList.length}}">{{verifyInfo.select}}</view>
+            <view class="partnerCodeList" wx:else>
+              <view class="checkPartner" wx:for="{{checkPartnerList}}">
+                <view class="partnerName">{{item.name}}</view>
+                <image catchtap="deletePartner" data-index="{{index}}" src="/assets/img/search/close@2x.png"></image>
+              </view>
+            </view>
+            <image class="xiala" src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          </view>
+          <scroll-view class="scroll-view2" scroll-y wx:if="{{showPartner}}">
+            <view wx:for="{{partnerList}}" wx:key="index" class="item" bindtap='choosePartners' data-index="{{index}}" style="{{item.checked ? 'background-color: #EDF1F9' : ''}}">
+              <view class="polname" style="width: 100%;">{{item.name}}</view>
+            </view>
+          </scroll-view>
+          <view class="noRequest commodityRequest" wx:if="{{showRemind7}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
         </view>
         <view class="btn" style="margin-top: 40rpx;">
           <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search2}}</button>

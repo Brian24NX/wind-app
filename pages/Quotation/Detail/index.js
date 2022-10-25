@@ -85,6 +85,7 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     let quotationDetail = data.quoteLineList[index]
+    quotationDetail.surchargeDetails.oceanFreightDetails = quotationDetail.surchargeDetails.oceanFreightDetails.join(' / ')
     quotationDetail.surchargeDetails.oceanFreight.isChecked = true
     quotationDetail.surchargeDetails.freightCharges.isChecked = true
     quotationDetail.surchargeDetails.prepaidCharges.isChecked = true
@@ -111,10 +112,7 @@ Page({
       containers: containers || data2.containers,
       commodityName: data2.commodityName
     })
-    this.data.languageContent.forContainer = this.data.languageContent.forContainer.replace('num', ' ' + Number(this.data.containers))
-    this.setData({
-      languageContent: this.data.languageContent
-    })
+    console.log(this.data.quotationDetail.surchargeDetails.oceanFreightDetails)
   },
 
   calculatedCharges() {
