@@ -67,7 +67,7 @@
         <block wx:if="{{item.isLoading}}">
           <view class="oneBottom">
             <view class="bottomLeft">
-              <image src="/assets/img/instantQuote/cash@2x.png"></image>
+              <image src="/assets/img/instantQuote/cash.svg"></image>
               <view class="priceCount">-</view>
               <view class="priceUnit">
                 <view class="unit"></view>
@@ -83,7 +83,7 @@
           <block wx:if="{{item.surchargeDetails && item.surchargeDetails.allocation}}">
             <view class="oneBottom">
               <view class="bottomLeft">
-                <image src="/assets/img/instantQuote/cash@2x.png"></image>
+                <image src="/assets/img/instantQuote/cash.svg"></image>
                 <view class="priceCount">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.amount : '-'}}</view>
                 <view class="priceUnit">
                   <view class="unit">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.currency.code : ''}}</view>
@@ -99,7 +99,7 @@
         </block>
         <view class="warning" wx:if="{{item.noOfContainersAvailable}}">
           <image src="/assets/img/instantQuote/warning@2x.png"></image>
-          <text>{{item.noOfContainersAvailable}} container(s) remianing</text>
+          <text>{{item.noOfContainersAvailable}} {{languageContent.containerRemind}}</text>
         </view>
       </block>
       <block wx:else>
@@ -113,7 +113,7 @@
   </view>
 </view>
 
-<remind show="{{showRemind}}" containers="{{containers}}" hasContainers="{{hasContainers}}" bind:continue="onContinue" bind:hide="onClickHide"></remind>
+<remind show="{{showRemind}}" containers="{{containers}}" hasContainers="{{hasContainers}}" languageContent="{{languageContent}}" bind:continue="onContinue" bind:hide="onClickHide"></remind>
 
 <!-- 底部筛选条件 tabbar -->
 <foot-tab-bar wx:if="{{oldQuoteLineList.length}}" languageContent="{{languageContent}}" radio="{{sort}}" plans="{{plans}}" routesPlanList="{{sortSolutionServices}}" bind:tabbarchange="onTabbarChange" />

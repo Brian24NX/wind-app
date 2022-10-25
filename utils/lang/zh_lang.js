@@ -504,7 +504,7 @@ var Languague = {
       exportFreeTime: '出口免租期',
       importFreeTime: '进口免租期',
       spotOnDetail: 'SpotOn - 具体条款',
-      consult: '请参阅详细的现货条款和条件',
+      consult: '请参阅更多条款细则',
       additionalInformation: '其他信息',
       quotation: '报价单',
       valid: '有效',
@@ -533,7 +533,13 @@ var Languague = {
       backHome: '返回首页',
       bookNow: '立即下单',
       nearPortInstantQuote: '附近港口的即时报价',
-      clickCard: '请找到附近港口以便获取即时报价。 请点击卡片并查看结果。'
+      clickCard: '请找到附近港口以便获取即时报价。 请点击卡片并查看结果。',
+      fewContainer: '仅剩少量货柜',
+      ferContainerDesc: '您需要 {{containers}} 个货柜，该方案仅剩余 {{hasContainers}} 个货柜。',
+      continue: '继续获取报价?',
+      continueBtn: '继续',
+      chooseOther: '选择其他航线',
+      containerRemind: '个剩余货柜'
     },
     // 我的报价
     myContract: {

@@ -531,7 +531,13 @@ var Languague = {
       backHome: 'Back to home',
       bookNow: 'Book Now',
       nearPortInstantQuote: 'Instant quote on nearby ports',
-      clickCard: 'Please find nearby ports conbinations for which you can obtaib aninstant quotation. Click on a card to see the offer'
+      clickCard: 'Please find nearby ports conbinations for which you can obtaib aninstant quotation. Click on a card to see the offer',
+      fewContainer: 'Few containers available',
+      ferContainerDesc: 'You have requested {{containers}} container(s) but only {{hasContainers}} are remaining for this departure.',
+      continue: 'Do you want to continue?',
+      continueBtn: 'Continue',
+      chooseOther: 'Choose another route',
+      containerRemind: 'container(s) remianing'
     },
     // 我的报价
     myContract: {
