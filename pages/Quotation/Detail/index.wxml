@@ -211,7 +211,7 @@
       </view>
     </view>
     <view class="otherContainer">
-      <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}">
+      <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}" wx:if="{{item.show}}">
         <image src="{{item.icon}}"></image>
         <view>{{languageContent[item.label]}}</view>
       </view>
@@ -256,7 +256,8 @@
     </view>
     <view class="containerNumber">{{languageContent.forContainer1 + containers + languageContent.forContainer2}}</view>
   </view>
-  <view class="buttons" catchtap="submit">{{languageContent.saveQuotation}}</view>
+  <view class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation}}" catchtap="booking">{{languageContent.book}}</view>
+  <view class="buttons" wx:else catchtap="submit">{{languageContent.saveQuotation}}</view>
 </view>
 
 <additional-services id="additionalServices"></additional-services>

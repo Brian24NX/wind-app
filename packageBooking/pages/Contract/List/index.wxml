@@ -29,7 +29,10 @@
 </view>
 <view class="resultContainers">
   <view wx:if="{{perfectContractList.length}}">
-    <view>Current valid offers</view>
+    <view class="typeTitles">
+      <view class="typeLineTitle"></view>
+      <view>{{languageContent.currentVaild}}</view>
+    </view>
     <view class="oneResult" wx:for="{{perfectContractList}}" wx:key="index">
       <view class="quotationIds">
         <view class="quotationLeft">
@@ -41,11 +44,11 @@
         </view>
         <view class="quotationRight">
           <view>{{filters.checkValidDate(item.validityTo) ? languageContent.valid : languageContent.expired}}</view>
-          <view>
+          <!-- <view>
             <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityFrom, true, true) : commonFilters.formatEnDateLocal(item.validityFrom, '-', '', true, true)}}</text>
             <text> > </text>
             <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityTo, true, true) : commonFilters.formatEnDateLocal(item.validityTo, '-', '', true, true)}}</text>
-          </view>
+          </view> -->
         </view>
       </view>
       <view class="tips">
@@ -100,7 +103,10 @@
     </view>
   </view>
   <view wx:if="{{partialContractList.length}}">
-    <view>Additional results close to your search</view>
+    <view class="typeTitles">
+      <view class="typeLineTitle"></view>
+      <view>{{languageContent.additionalResults}}</view>
+    </view>
     <view class="oneResult" wx:for="{{partialContractList}}" wx:key="index">
       <view class="quotationIds">
         <view class="quotationLeft">
@@ -112,11 +118,11 @@
         </view>
         <view class="quotationRight">
           <view>{{filters.checkValidDate(item.validityTo) ? languageContent.valid : languageContent.expired}}</view>
-          <view>
+          <!-- <view>
             <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityFrom, true, true) : commonFilters.formatEnDateLocal(item.validityFrom, '-', '', true, true)}}</text>
             <text> > </text>
             <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityTo, true, true) : commonFilters.formatEnDateLocal(item.validityTo, '-', '', true, true)}}</text>
-          </view>
+          </view> -->
         </view>
       </view>
       <view class="tips">

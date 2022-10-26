@@ -21,19 +21,23 @@ Page({
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
       label: 'localCharge',
-      url: "/pages/Quotation/Others/LocalCharges/index"
+      url: "/pages/Quotation/Others/LocalCharges/index",
+      show: true
     }, {
       icon: '/assets/img/instantQuote/other_2@2x.png',
       label: 'DDSM',
-      url: "/pages/Quotation/Others/DDCharges/index?from=myContracts"
+      url: "/pages/Quotation/Others/DDCharges/index?from=myContracts",
+      show: true
     }, {
       icon: '/assets/img/instantQuote/other_3@2x.png',
       label: 'SpotOn',
-      url: "/pages/Quotation/Others/SpotOn/index"
+      url: "/pages/Quotation/Others/SpotOn/index",
+      show: true
     }, {
       icon: '/assets/img/instantQuote/other_4@2x.png',
       label: 'addInfo',
-      url: "/pages/Quotation/Others/AdditionalInformation/index"
+      url: "/pages/Quotation/Others/AdditionalInformation/index",
+      show: true
     }],
     fromLabel: '',
     toLabel: '',
@@ -69,6 +73,7 @@ Page({
     quotationDetail.surchargeDetails.freightCharges.isChecked = true
     quotationDetail.surchargeDetails.prepaidCharges.isChecked = true
     quotationDetail.surchargeDetails.collectCharges.isChecked = true
+    this.data.otherList[2].show = quotationDetail.spotOffer
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       load: languageUtil.languageVersion().lang.page.load,
@@ -86,6 +91,13 @@ Page({
     this.calculatedCharges()
     this.dealEquipmentSize()
     this.getDDCharges()
+    this.getLocalCharge()
+    if (this.data.quotationDetail.exportInlandPointCode) {
+      this.getExportInlandPoint()
+    }
+    if (this.data.quotationDetail.importInlandPointCode) {
+      this.getImportInlandPoint()
+    }
   },
 
   calculatedCharges() {
@@ -162,6 +174,19 @@ Page({
     this.getImportLocation()
   },
 
+  getExportInlandPoint() {
+    fuzzyPointSearch({
+      pointCode: this.data.quotationDetail.exportInlandPointCode
+    }).then(res => {
+      this.data.quotationDetail.exportInlandPoint = res.data.point.name.toLocaleUpperCase() + ', ' + res.data.country.code
+      this.setData({
+        quotationDetail: this.data.quotationDetail
+      })
+    }, () => {
+      this.getExportInlandPoint()
+    })
+  },
+
   getExportLocation() {
     fuzzyPointSearch({
       pointCode: this.data.portOfLoading
@@ -183,6 +208,19 @@ Page({
       })
     }, () => {
       this.getImportLocation()
+    })
+  },
+
+  getImportInlandPoint() {
+    fuzzyPointSearch({
+      pointCode: this.data.quotationDetail.importInlandPointCode
+    }).then(res => {
+      this.data.quotationDetail.importInlandPoint = res.data.point.name.toLocaleUpperCase() + ', ' + res.data.country.code
+      this.setData({
+        quotationDetail: this.data.quotationDetail
+      })
+    }, () => {
+      this.getImportInlandPoint()
     })
   },
 
@@ -233,7 +271,7 @@ Page({
 
   submit() {
     wx.showToast({
-      title: this.data.load.functionIsUnderDevelopment,
+      title: languageUtil.languageVersion().lang.load.functionIsUnderDevelopment,
       icon: 'none'
     })
   },

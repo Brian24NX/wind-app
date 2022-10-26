@@ -546,7 +546,12 @@ var Languague = {
       chooseOther: 'Choose another route',
       containerRemind: 'container(s) remianing',
       exportPDF: 'Export PDF',
-      contractDetail: 'Detail'
+      contractDetail: 'Detail',
+      currentVaild: 'Current valid offers',
+      additionalResults: 'Additional results close to your search',
+      placeOfOrigin: "Place of Receipt",
+      placeOfDelivery: "Place of Delivery",
+      transType: 'Transportation mode'
     },
     // 我的报价
     myContract: {

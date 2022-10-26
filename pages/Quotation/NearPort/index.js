@@ -120,7 +120,9 @@ Page({
     const index = e.currentTarget.dataset.index
     if (!this.data.nearPortList[index].portOfLoadingLabel || !this.data.nearPortList[index].portOfDischargeLabel) return
     this.setData({
+      portOfLoading: this.data.nearPortList[index].portOfLoading,
       portOfLoadingLabel: this.data.nearPortList[index].portOfLoadingLabel2,
+      portOfDischarge: this.data.nearPortList[index].portOfDischarge,
       portOfDischargeLabel: this.data.nearPortList[index].portOfDischargeLabel2
     })
     if (this.data.commodityCode === "FAK") {

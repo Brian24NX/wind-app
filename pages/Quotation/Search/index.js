@@ -416,8 +416,8 @@ Page({
         this.setData({
           showPoDe: false
         })
+        let placeOfDeliveryList = []
         if (res.data && res.data.length) {
-          let placeOfDeliveryList = []
           res.data.forEach(item => {
             if (item.point) {
               console.log('item', item)

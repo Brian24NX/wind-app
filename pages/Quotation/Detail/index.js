@@ -17,19 +17,23 @@ Page({
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
       label: 'localCharge',
-      url: "/pages/Quotation/Others/LocalCharges/index"
+      url: "/pages/Quotation/Others/LocalCharges/index",
+      show: true
     }, {
       icon: '/assets/img/instantQuote/other_2@2x.png',
       label: 'DDSM',
-      url: "/pages/Quotation/Others/DDCharges/index"
+      url: "/pages/Quotation/Others/DDCharges/index",
+      show: true
     }, {
       icon: '/assets/img/instantQuote/other_3@2x.png',
       label: 'SpotOn',
-      url: "/pages/Quotation/Others/SpotOn/index"
+      url: "/pages/Quotation/Others/SpotOn/index",
+      show: true
     }, {
       icon: '/assets/img/instantQuote/other_4@2x.png',
       label: 'addInfo',
-      url: "/pages/Quotation/Others/AdditionalInformation/index"
+      url: "/pages/Quotation/Others/AdditionalInformation/index",
+      show: true
     }],
     fromLabel: "",
     fromCode: '',
@@ -90,6 +94,7 @@ Page({
     quotationDetail.surchargeDetails.freightCharges.isChecked = true
     quotationDetail.surchargeDetails.prepaidCharges.isChecked = true
     quotationDetail.surchargeDetails.collectCharges.isChecked = true
+    this.data.otherList[2].show = quotationDetail.quoteLines[0].spotOffer
     this.setData({
       fromLabel: data.fromLabel,
       fromCode: data.fromCode,
@@ -100,7 +105,8 @@ Page({
       shippingCompany: data.shippingCompany,
       quotationDetail,
       simulationDate: data.simulationDate,
-      traceId: data.traceId
+      traceId: data.traceId,
+      otherList: this.data.otherList
     })
     this.calculatedCharges()
     const currentPage2 = pages[pages.length - 3]
@@ -220,6 +226,13 @@ Page({
       })
     })
     // }
+  },
+
+  booking() {
+    wx.showToast({
+      title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
+      icon: 'none'
+    })
   },
 
   getDate() {

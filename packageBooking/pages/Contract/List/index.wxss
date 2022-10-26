@@ -107,7 +107,7 @@ page {
 
 .resultContainers {
   width: 100%;
-  padding: 30rpx;
+  padding: 0 30rpx 40rpx;
 }
 
 .resultContainers .oneResult {
@@ -382,4 +382,24 @@ page {
 
 .resultContainers .oneResult .oneBottom .notSelect {
   opacity: 0.3;
+}
+
+.resultContainers .typeTitles {
+  display: flex;
+  align-items: center;
+  height: 118rpx;
+  background-color: #ffffff;
+  font-size: 36rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+  padding: 0 20rpx;
+  margin: 30rpx 0;
+}
+
+.resultContainers .typeTitles .typeLineTitle {
+  width: 6rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+  background-color: #E20202;
 }

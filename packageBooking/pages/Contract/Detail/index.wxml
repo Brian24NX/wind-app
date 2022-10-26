@@ -210,7 +210,7 @@
       </view>
     </view>
     <view class="otherContainer">
-      <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}">
+      <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}" wx:if="{{item.show}}">
         <image src="{{item.icon}}"></image>
         <view>{{languageContent[item.label]}}</view>
       </view>
@@ -218,7 +218,7 @@
   </block>
   <block wx:else>
     <view class="quoteDetails">
-      <view class="oneQuoteDetail">
+      <!-- <view class="oneQuoteDetail">
         <view class="oneQuoteTitle">{{languageContent.validity}}</view>
         <view class="oneQuoteValue">
           <view>
@@ -230,7 +230,7 @@
             <text class="bold">{{language === 'zh' ? commonFilters.formatCnDateLocal(quotationDetail.validityTo, true, true) : commonFilters.formatEnDateLocal(quotationDetail.validityTo, ' ', '', true, true)}}</text>
           </view>
         </view>
-      </view>
+      </view> -->
       <view class="oneQuoteDetail" wx:if="{{quotationDetail.commentToCustomer || quotationDetail.routingComment}}">
         <view class="oneQuoteTitle">{{languageContent.comments}}</view>
         <view class="oneQuoteValue">
@@ -247,26 +247,42 @@
       <view class="oneQuoteDetail">
         <view class="oneQuoteTitle">{{languageContent.export}}</view>
         <view class="oneQuoteValue">
+          <view wx:if="{{quotationDetail.exportInlandPointCode}}">
+            <text>{{languageContent.placeOfOrigin}} </text>
+            <text class="bold">{{quotationDetail.exportInlandPoint}}</text>
+          </view>
           <view>
             <text>{{languageContent.movementType}} </text>
             <text class="bold">{{quotationDetail.exportMovementType}}</text>
           </view>
-          <view>
+          <view wx:if="{{!quotationDetail.exportInlandPointCode}}">
             <text>{{languageContent.bookPreCarriage}} </text>
             <text class="bold">{{quotationDetail.exportConstruction ? languageContent.allowed : languageContent.refused}}</text>
+          </view>
+          <view wx:else>
+            <text>{{languageContent.transType}} </text>
+            <text class="bold">Intermodal</text>
           </view>
         </view>
       </view>
       <view class="oneQuoteDetail">
         <view class="oneQuoteTitle">{{languageContent.import}}</view>
         <view class="oneQuoteValue">
+          <view wx:if="{{quotationDetail.importInlandPointCode}}">
+            <text>{{languageContent.placeOfOrigin}} </text>
+            <text class="bold">{{quotationDetail.importInlandPoint}}</text>
+          </view>
           <view>
             <text>{{languageContent.movementType}} </text>
             <text class="bold">{{quotationDetail.importMovementType}}</text>
           </view>
-          <view>
+          <view wx:if="{{!quotationDetail.importInlandPoint}}">
             <text>{{languageContent.bookOnCarriage}} </text>
             <text class="bold">{{quotationDetail.importConstruction ? languageContent.allowed : languageContent.refused}}</text>
+          </view>
+          <view wx:else>
+            <text>{{languageContent.transType}} </text>
+            <text class="bold">Intermodal</text>
           </view>
         </view>
       </view>

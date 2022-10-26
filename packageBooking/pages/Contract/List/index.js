@@ -113,14 +113,16 @@ Page({
         this.dealData()
       } else {
         this.setData({
-          contractList: [],
+          perfectContractList: [],
+          partialContractList: [],
           loggedId: '',
           isLoading: false
         })
       }
     }, () => {
       this.setData({
-        contractList: [],
+        perfectContractList: [],
+        partialContractList: [],
         loggedId: '',
         isLoading: false
       })

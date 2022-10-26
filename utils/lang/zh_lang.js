@@ -495,7 +495,7 @@ var Languague = {
       containers: '货柜数量',
       Commodity: '商品',
       title2: '我的合同',
-      book: '下单',
+      book: '立即订舱',
       localCharge: '本地费用',
       DDSM: 'D&D',
       SpotOn: 'SpotOn',
@@ -535,9 +535,9 @@ var Languague = {
       refused: '已拒绝',
       referenceSuccess1: '您的报价 ',
       referenceSuccess2: ' 已成功创建',
-      copyReference: '请将报价单编号复制，以便预订前核对',
+      copyReference: '请惠存报价单号，并在订舱前进行核对',
       backHome: '返回首页',
-      bookNow: '立即下单',
+      bookNow: '立即订舱',
       nearPortInstantQuote: '附近港口的即时报价',
       clickCard: '请找到附近港口以便获取即时报价。 请点击卡片并查看结果。',
       fewContainer: '仅剩少量货柜',
@@ -549,7 +549,12 @@ var Languague = {
       chooseOther: '选择其他航线',
       containerRemind: '个剩余货柜',
       exportPDF: '导出PDF',
-      contractDetail: '详情'
+      contractDetail: '详情',
+      currentVaild: '有效报价 - 完全匹配',
+      additionalResults: '与您搜索相关的其他结果',
+      placeOfOrigin: "收货地",
+      placeOfDelivery: "目的地",
+      transType: '运输方式'
     },
     // 我的报价
     myContract: {
