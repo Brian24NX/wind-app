@@ -52,29 +52,8 @@ Page({
         "equipmentSizeTypes": [data.quotationDetail.equipments[0].code],
         "simulationDate": this.data.importDate,
       }
-      detentionDemurrages({
-        ...params,
-        "directions": ["E"]
-      }).then(res => {
-        console.log(res)
-        if (res.data && res.data.length) {
-          this.setData({
-            exports: res.data
-          })
-        }
-      })
-      detentionDemurrages({
-        ...params,
-        "directions": ["I"]
-      }).then(res => {
-        console.log(res)
-        if (res.data && res.data.length) {
-          const data = res.data
-          this.setData({
-            imports: res.data
-          })
-        }
-      })
+      this.getExportDDCharge(params)
+      this.getImportDDCharge(params)
     } else {
       this.setData({
         exportDate: data.quotationDetail.departureDate,
@@ -95,31 +74,38 @@ Page({
         "hazardous": data.quotationDetail.quoteLines[0].hazardous,
         "oversize": data.quotationDetail.quoteLines[0].oversize
       }
-      detentionDemurrages({
-        ...params,
-        "directions": ["E"],
-        "simulationDate": data.quotationDetail.departureDate,
-      }).then(res => {
-        console.log(res)
-        if (res.data && res.data.length) {
-          this.setData({
-            exports: res.data
-          })
-        }
-      })
-      detentionDemurrages({
-        ...params,
-        "directions": ["I"],
-        "simulationDate": data.quotationDetail.arrivalDate,
-      }).then(res => {
-        console.log(res)
-        if (res.data && res.data.length) {
-          const data = res.data
-          this.setData({
-            imports: res.data
-          })
-        }
-      })
+      this.getExportDDCharge(params)
+      this.getImportDDCharge(params)
     }
+  },
+
+  getExportDDCharge(params) {
+    detentionDemurrages({
+      ...params,
+      "directions": ["E"]
+    }).then(res => {
+      if (res.data && res.data.length) {
+        this.setData({
+          exports: res.data
+        })
+      }
+    }, () => {
+      this.getExportDDCharge(params)
+    })
+  },
+
+  getImportDDCharge(params) {
+    detentionDemurrages({
+      ...params,
+      "directions": ["I"]
+    }).then(res => {
+      if (res.data && res.data.length) {
+        this.setData({
+          imports: res.data
+        })
+      }
+    }, () => {
+      this.getImportDDCharge(params)
+    })
   }
 })

@@ -54,7 +54,7 @@
             <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{item.transitTime}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
             <view class="zhuanrun" wx:if="{{item.tranShipment.length}}">
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
-              <view>{{item.tranShipment.length}} {{languageContent.zhuanyun}}</view>
+              <view>{{item.tranShipment.length}} {{item.tranShipment.length > 1 ? languageContent.zhuanyuns : languageContent.zhuanyun}}</view>
             </view>
             <view class="zhuanrun" wx:if="{{!item.tranShipment.length}}">
               <image src="/assets/img/result/zhuanyun@2x.png"></image>

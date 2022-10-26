@@ -108,7 +108,7 @@ Page({
     commonEquipmentType: '',
     commonEquipmentTypeName: '',
     contractResq: null,
-    partnerList: wx.getStorageSync('partnerCode') || [],
+    partnerList: [],
     checkPartnerList: [],
     partnerCode: [],
     showPartner: false
@@ -134,7 +134,11 @@ Page({
         selected: 2
       })
     }
-    this.checkAccessToken(() => {})
+    this.checkAccessToken(() => {
+      this.setData({
+        partnerList: wx.getStorageSync('partnerCode') || []
+      })
+    })
   },
 
   onShareAppMessage: function () {},
@@ -498,7 +502,7 @@ Page({
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
     } else {
-      this.getNamedAccountsSearch()
+      // this.getNamedAccountsSearch()
     }
   },
 
@@ -513,7 +517,7 @@ Page({
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
     } else {
-      this.getNamedAccountsSearch()
+      // this.getNamedAccountsSearch()
     }
   },
 
@@ -1076,11 +1080,21 @@ Page({
       showRemind4: false,
       showRemind5: false,
       showRemind6: false,
+      showRemind7: false,
       showDelete1: false,
       showDelete2: false,
       showDelete3: false,
       showDelete4: false,
       showDelete5: false,
+      checkPartnerList: [],
+      partnerCode: [],
+      partnerList: wx.getStorageSync('partnerCode') || []
+    })
+  },
+
+  closeSelect() {
+    this.setData({
+      showPartner: false
     })
   }
 })

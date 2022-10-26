@@ -5,12 +5,12 @@
       <!-- <view class="close" catchtap="onClickHide">
         <van-icon name="cross" size="24" color="#04246A" />
       </view> -->
-      <view class="remindTitle">{{languageContents.fewContainer}}</view>
-      <view class="remindDesc">{{languageContents.ferContainerDesc}}</view>
-      <view class="remindDesc">{{languageContents.continue}}</view>
+      <view class="remindTitle">{{languageContent.fewContainer}}</view>
+      <view class="remindDesc">{{languageContent.ferContainerDesc1 + containers + languageContent.ferContainerDesc2 + hasContainers + languageContent.ferContainerDesc3}}</view>
+      <view class="remindDesc">{{languageContent.continue}}</view>
       <view class="remindBottomButton">
-        <view class="oneButton leftButton" catchtap="continue">{{languageContents.continueBtn}}</view>
-        <view class="oneButton rightButton" catchtap="onClickHide">{{languageContents.chooseOther}}</view>
+        <view class="oneButton leftButton" catchtap="continue">{{languageContent.continueBtn}}</view>
+        <view class="oneButton rightButton" catchtap="onClickHide">{{languageContent.chooseOther}}</view>
       </view>
     </view>
   </view>

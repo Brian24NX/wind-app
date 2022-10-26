@@ -85,7 +85,7 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     let quotationDetail = data.quoteLineList[index]
-    quotationDetail.surchargeDetails.oceanFreightDetails = quotationDetail.surchargeDetails.oceanFreightDetails.join(' / ')
+    quotationDetail.surchargeDetails.oceanFreightDetailsLabel = quotationDetail.surchargeDetails.oceanFreightDetails.join(' / ')
     quotationDetail.surchargeDetails.oceanFreight.isChecked = true
     quotationDetail.surchargeDetails.freightCharges.isChecked = true
     quotationDetail.surchargeDetails.prepaidCharges.isChecked = true

@@ -108,7 +108,7 @@
             <text>{{quotationDetail.surchargeDetails.oceanFreight.price.currency.code}}</text>
           </view>
         </view>
-        <view class="rateDesc">{{quotationDetail.surchargeDetails.oceanFreightDetails}}</view>
+        <view class="rateDesc" wx:if="{{quotationDetail.surchargeDetails.oceanFreightDetails.length}}">{{languageContent.incluedLabel}} {{quotationDetail.surchargeDetails.oceanFreightDetailsLabel}}</view>
       </view>
       <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.freightCharges.amount}}">
         <view class="oneRate">
@@ -282,7 +282,7 @@
           </view>
           <view>
             <text>Tons excl.tare </text>
-            <text class="bold">1</text>
+            <text class="bold">{{quotationDetail.equipments[0].netWeight}}</text>
           </view>
         </view>
       </view>

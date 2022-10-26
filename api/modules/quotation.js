@@ -45,7 +45,7 @@ export const saveQuotationDetail = (params) => {
 
 // 获取D&D
 export const detentionDemurrages = (params) => {
-  return postRequest('/api/miniapp/detentionDemurrages', params, true, false, false)
+  return postRequest('/api/miniapp/detentionDemurrages', params, true, false, true)
 }
 
 // 获取nameAndAccounts

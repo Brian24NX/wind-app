@@ -112,7 +112,7 @@
                 <view class="tags tags2" wx:if="{{detail.receiptHaulage}}">{{detail.receiptHaulage}}</view>
               </view>
             </block>
-            <view class="rails">Intermodal</view>
+            <view class="rails">{{item.vesselName}}</view>
             <view class="timeContainer" style="margin-top: 10rpx;" wx:if="{{item.arrivalDate}}">{{language === 'zh' ? filters.formatCnDateLocal(item.arrivalDate, false, true) : filters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}}</view>
           </view>
         </view>

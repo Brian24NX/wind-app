@@ -191,7 +191,7 @@ page {
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent {
-  width: 220rpx;
+  width: 240rpx;
   position: absolute;
   right: 0;
 }

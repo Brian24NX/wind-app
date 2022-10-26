@@ -72,10 +72,9 @@ page {
 
 .searchResultTopContainer .typeContainer {
   display: flex;
-  height: 80rpx;
   background-color: #ffffff;
   width: 690rpx;
-  margin: 0 auto 30rpx;
+  margin: 0 auto;
   height: 130rpx;
 }
 
@@ -108,7 +107,7 @@ page {
 
 .resultContainers {
   width: 100%;
-  padding: 0 30rpx 30rpx;
+  padding: 30rpx;
 }
 
 .resultContainers .oneResult {

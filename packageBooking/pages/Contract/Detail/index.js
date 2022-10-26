@@ -1,10 +1,10 @@
 // packageBooking/pages/Contract/Detail/index.js
 const languageUtil = require('../../../../utils/languageUtils')
 import {
-  equitmentSizeList,
-  fuzzyPointSearch
+  equitmentSizeList
 } from '../../../../api/modules/home';
 import {
+  fuzzyPointSearch,
   detentionDemurrages,
   exportPDF
 } from '../../../../api/modules/quotation'
@@ -62,7 +62,9 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    let quotationDetail = data.contractList[Number(options.index)]
+    const contractList = options.from === 'perfect' ? data.perfectContractList : data.partialContractList
+    let quotationDetail = contractList[Number(options.index)]
+    quotationDetail.surchargeDetails.oceanFreightDetailsLabel = quotationDetail.surchargeDetails.oceanFreightDetails.join(' / ')
     quotationDetail.surchargeDetails.oceanFreight.isChecked = true
     quotationDetail.surchargeDetails.freightCharges.isChecked = true
     quotationDetail.surchargeDetails.prepaidCharges.isChecked = true
@@ -75,8 +77,8 @@ Page({
       portOfLoadingLabel: data.portOfLoading,
       portOfDischarge: data.portOfDischargeCode,
       portOfDischargeLabel: data.portOfDischarge,
-      fromLabel: data.contractList[Number(options.index)].portOfLoadingLabel,
-      toLabel: data.contractList[Number(options.index)].portOfDischargeLabel,
+      fromLabel: contractList[Number(options.index)].portOfLoadingLabel,
+      toLabel: contractList[Number(options.index)].portOfDischargeLabel,
       simulationDate: data.simulationDate,
       quotationDetail: quotationDetail,
       partnerCode: data.partnerCode
@@ -119,6 +121,11 @@ Page({
       "equipmentSizeTypes": [this.data.quotationDetail.equipments[0].code],
       "simulationDate": this.data.importDate
     }
+    this.getExportDDCharge(params)
+    this.getImportDDCharge(params)
+  },
+
+  getExportDDCharge(params) {
     detentionDemurrages({
       ...params,
       "directions": ["E"]
@@ -129,7 +136,12 @@ Page({
           exports: res.data
         })
       }
+    }, () => {
+      this.getExportDDCharge(params)
     })
+  },
+
+  getImportDDCharge(params) {
     detentionDemurrages({
       ...params,
       "directions": ["I"]
@@ -140,23 +152,37 @@ Page({
           imports: res.data
         })
       }
+    }, () => {
+      this.getImportDDCharge(params)
     })
   },
 
   getLocalCharge() {
+    this.getExportLocation()
+    this.getImportLocation()
+  },
+
+  getExportLocation() {
     fuzzyPointSearch({
       pointCode: this.data.portOfLoading
     }).then(res => {
       this.setData({
         exportLocation: res.data.country.name.toLocaleUpperCase()
       })
+    }, () => {
+      this.getExportLocation()
     })
+  },
+
+  getImportLocation() {
     fuzzyPointSearch({
       pointCode: this.data.portOfDischarge
     }).then(res => {
       this.setData({
         importLocation: res.data.country.name.toLocaleUpperCase()
       })
+    }, () => {
+      this.getImportLocation()
     })
   },
 

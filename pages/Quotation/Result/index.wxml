@@ -4,7 +4,7 @@
     <view class="resSuccess">
       <van-icon name="success" size="26px" />
     </view>
-    <view class="successDesc">{{languageContent.referenceSuccess}}</view>
+    <view class="successDesc">{{languageContent.referenceSuccess1 + reference + languageContent.referenceSuccess2}}</view>
     <!-- <view class="buttons">
       <view class="oneBtn">Preview</view>
       <view class="oneBtn" catchtap="sendEmail">Send to Email</view>

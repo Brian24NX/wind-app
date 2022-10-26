@@ -20,7 +20,8 @@ Page({
     toCode: '',
     equipmentType: '',
     simulationDate: '',
-    contractList: [],
+    perfectContractList: [],
+    partialContractList: [],
     loggedId: '',
     isLoading: true,
     portOfLoading: '',
@@ -104,7 +105,8 @@ Page({
     }).then(res => {
       if (res.data) {
         this.setData({
-          contractList: res.data.perfectMatches.length ? res.data.perfectMatches : res.data.partialMatches.length ? res.data.partialMatches : [],
+          perfectContractList: res.data.perfectMatches || [],
+          partialContractList: res.data.partialMatches || [],
           loggedId: res.data.loggedId,
           isLoading: false
         })
@@ -127,14 +129,28 @@ Page({
 
   dealData() {
     this.setData({
-      contractList: this.data.contractList.map((item) => {
+      perfectContractList: this.data.perfectContractList.map((item) => {
+        return {
+          ...item,
+          isLoading: true
+        }
+      }),
+      partialContractList: this.data.partialContractList.map((item) => {
         return {
           ...item,
           isLoading: true
         }
       })
     })
-    this.data.contractList.forEach((item, index) => {
+    this.data.perfectContractList.forEach((item, index) => {
+      setTimeout(() => {
+        if (!item.surchargeDetails) {
+          this.getQuotationDetailFn(item)
+          this.getPointData(item)
+        }
+      }, 300 * index);
+    })
+    this.data.partialContractList.forEach((item, index) => {
       setTimeout(() => {
         if (!item.surchargeDetails) {
           this.getQuotationDetailFn(item)
@@ -155,7 +171,8 @@ Page({
     }).then(data => {
       item.portOfLoadingLabel = data.data.point.name + ', ' + data.data.country.code
       this.setData({
-        contractList: this.data.contractList
+        perfectContractList: this.data.perfectContractList,
+        partialContractList: this.data.partialContractList
       })
     }, () => {
       this.getInitialPortOfLoading(item)
@@ -168,7 +185,8 @@ Page({
     }).then(data => {
       item.portOfDischargeLabel = data.data.point.name + ', ' + data.data.country.code
       this.setData({
-        contractList: this.data.contractList
+        perfectContractList: this.data.perfectContractList,
+        partialContractList: this.data.partialContractList
       })
     }, () => {
       this.getInitialPortOfDischarge(item)
@@ -197,7 +215,8 @@ Page({
       item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
       item.surchargeDetails.allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
       this.setData({
-        contractList: this.data.contractList
+        perfectContractList: this.data.perfectContractList,
+        partialContractList: this.data.partialContractList
       })
     }, () => {
       this.getQuotationDetailFn(item)
@@ -206,7 +225,7 @@ Page({
 
   toDetail(e) {
     wx.navigateTo({
-      url: `/packageBooking/pages/Contract/Detail/index?index=${e.currentTarget.dataset.index}`,
+      url: `/packageBooking/pages/Contract/Detail/index?index=${e.currentTarget.dataset.index}&from=${e.currentTarget.dataset.from}`,
     })
   }
 })
