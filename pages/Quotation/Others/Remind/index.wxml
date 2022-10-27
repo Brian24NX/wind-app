@@ -1,0 +1,18 @@
+<!--pages/Quotation/Others/Remind/index.wxml-->
+<text wx:if="{{language === 'en'}}">
+  TOTAL PER CONTAINER SELECTED ELEMENTS
+
+  - Total indicated here reflects pricing components selected.
+  - By default, all pricing components for a container are selected: ocean freight, surcharges related to freight, to export (prepaid), to import (collect).
+  - B/L surcharges are on top.
+  - You can simulate the total per container you will have to pay by selecting the different elements.
+  - The breakdown of payment surcharges shipper/consignee will be determined at time of booking.</text>
+
+<text wx:else>
+  勾选的货柜费用总计
+
+  此处显示的总价反映了所选价格组成部分。
+  默认情况下，将会选择集装箱所有价格组成部分：海运费，运费附加费，出口费（预付），进口费（到付）。文件费另计。
+  您可以通过选择不同的价格组成部分来模拟每个集装箱的总费用。
+  订舱时将确定承运人/收货人的支付附加费明细。
+</text>

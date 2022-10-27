@@ -1,0 +1,6 @@
+/* pages/Quotation/Others/Remind/index.wxss */
+page {
+  padding: 0 46rpx;
+  color: #071E5D;
+  font-size: 28rpx;
+}

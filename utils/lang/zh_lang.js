@@ -488,6 +488,7 @@ var Languague = {
       directOnly: "仅看直达",
       //抱歉，我们暂未查询到匹配的航线方案.
       noFindQuteTips1: '抱歉，未找到相匹配的记录',
+      noUsFindQuteTips1: '抱歉，我们目前不能为您在FMC范围内的需求提供在线报价。我们的团队正在不断提出新的解决方案，以满足您的需求。请修改您的搜索。',
       noFindTips1: "抱歉！未在您的合约中找到符合您搜索的价格",
       modifySearch: '修改搜索',
       equipmentType: '箱型',

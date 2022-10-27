@@ -569,7 +569,7 @@ Page({
         commodityList.unshift({
           code: 'FAK',
           en: "Freight All Kinds",
-          zh: '不分货种运费'
+          zh: '所有类型的费用'
         })
         res.data.forEach(item => {
           if (item.iQexcludedPartners) {
@@ -594,7 +594,7 @@ Page({
         this.setData({
           commodityList: [],
           commodityCode: 'FAK',
-          commodityName: this.data.language === 'en' ? 'Freight All Kinds' : '不分货种运费',
+          commodityName: this.data.language === 'en' ? 'Freight All Kinds' : '所有类型的费用',
           pricingGroupSetups: [],
           pricingGroups: [],
           commodityLoading: false

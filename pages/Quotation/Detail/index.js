@@ -13,7 +13,7 @@ Page({
     languageContent: {},
     language: 'zh',
     todayDate: '',
-    isFirst: true,
+    isFirst: false,
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
       label: 'localCharge',
@@ -165,67 +165,73 @@ Page({
     })
   },
 
-  submit() {
-    // if (this.data.isFirst) {
-    // this.setData({
-    // isFirst: false
-    // })
-    // } else {
-    let params = {}
-    if (this.data.quotationDetail.quoteLines[0].quoteLineId) {
-      params = {
-        "createLaraSpecialQuotation": {
-          "affiliates": this.data.partnerCode,
-          "simulationDate": this.data.simulationDate,
-          "equipmentSizeType": this.data.equipmentTypeSize,
-          "numberOfContainers": this.data.containers,
-          "weightPerContainer": this.data.weight,
-          "polCountryCode": this.data.portOfLoading.substring(0, 2),
-          "podCountryCode": this.data.portOfDischarge.substring(0, 2),
-          "allowSpecialQuotation": this.data.quotationDetail.quoteLines[0].allowSpecialQuotation,
-          "spotValidityInDays": this.data.quotationDetail.quoteLines[0].spotValidityInDays,
-          "routingComment": this.data.quotationDetail.quoteLines[0].routingComment,
-          "voyageRef": this.data.quotationDetail.voyage,
-          "arrivalDate": this.data.quotationDetail.arrivalDate,
-          "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
-          "placeOfOrigin": this.data.placeOfOrigin || null,
-          "quoteLineId": "string",
-          "portOfLoading": this.data.portOfLoading,
-          "portOfDischarge": this.data.portOfDischarge,
-          "initialPortOfLoading": this.data.portOfLoading,
-          "initalPortOfDischarge": this.data.portOfDischarge,
-          "traceId": this.data.quotationDetail.traceId
-        }
-      }
-    } else {
-      params = {
-        "createAquaSpecialQuotation": {
-          "affiliates": this.data.partnerCode,
-          "simulationDate": this.data.simulationDate,
-          "numberOfContainers": this.data.containers,
-          "weightPerContainer": this.data.weight,
-          "equipmentSizeType": this.data.equipmentTypeSize,
-          "polCountryCode": this.data.portOfLoading.substring(0, 2),
-          "podCountryCode": this.data.portOfDischarge.substring(0, 2),
-          "allowSpecialQuotation": this.data.quotationDetail.quoteLines[0].allowSpecialQuotation,
-          "spotValidityInDays": this.data.quotationDetail.quoteLines[0].spotValidityInDays,
-          "routingComment": this.data.quotationDetail.quoteLines[0].routingComment,
-          "arrivalDate": this.data.quotationDetail.arrivalDate,
-          "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
-          "placeOfOrigin": this.data.placeOfOrigin || null,
-          "voyageRef": this.data.quotationDetail.voyage,
-          "offerId": this.data.quotationDetail.offerId,
-          "traceId": this.data.traceId,
-          "shippingCompany": this.data.shippingCompany
-        }
-      }
-    }
-    createQuotationQuotation(params, wx.getStorageSync('ccgId')).then(res => {
-      wx.navigateTo({
-        url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
-      })
+  toRemind() {
+    wx.navigateTo({
+      url: '/pages/Quotation/Others/Remind/index',
     })
-    // }
+  },
+
+  submit() {
+    if (this.data.isFirst) {
+      this.setData({
+        isFirst: false
+      })
+    } else {
+      let params = {}
+      if (this.data.quotationDetail.quoteLines[0].quoteLineId) {
+        params = {
+          "createLaraSpecialQuotation": {
+            "affiliates": this.data.partnerCode,
+            "simulationDate": this.data.simulationDate,
+            "equipmentSizeType": this.data.equipmentTypeSize,
+            "numberOfContainers": this.data.containers,
+            "weightPerContainer": this.data.weight,
+            "polCountryCode": this.data.portOfLoading.substring(0, 2),
+            "podCountryCode": this.data.portOfDischarge.substring(0, 2),
+            "allowSpecialQuotation": this.data.quotationDetail.quoteLines[0].allowSpecialQuotation,
+            "spotValidityInDays": this.data.quotationDetail.quoteLines[0].spotValidityInDays,
+            "routingComment": this.data.quotationDetail.quoteLines[0].routingComment,
+            "voyageRef": this.data.quotationDetail.voyage,
+            "arrivalDate": this.data.quotationDetail.arrivalDate,
+            "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
+            "placeOfOrigin": this.data.placeOfOrigin || null,
+            "quoteLineId": "string",
+            "portOfLoading": this.data.portOfLoading,
+            "portOfDischarge": this.data.portOfDischarge,
+            "initialPortOfLoading": this.data.portOfLoading,
+            "initalPortOfDischarge": this.data.portOfDischarge,
+            "traceId": this.data.quotationDetail.traceId
+          }
+        }
+      } else {
+        params = {
+          "createAquaSpecialQuotation": {
+            "affiliates": this.data.partnerCode,
+            "simulationDate": this.data.simulationDate,
+            "numberOfContainers": this.data.containers,
+            "weightPerContainer": this.data.weight,
+            "equipmentSizeType": this.data.equipmentTypeSize,
+            "polCountryCode": this.data.portOfLoading.substring(0, 2),
+            "podCountryCode": this.data.portOfDischarge.substring(0, 2),
+            "allowSpecialQuotation": this.data.quotationDetail.quoteLines[0].allowSpecialQuotation,
+            "spotValidityInDays": this.data.quotationDetail.quoteLines[0].spotValidityInDays,
+            "routingComment": this.data.quotationDetail.quoteLines[0].routingComment,
+            "arrivalDate": this.data.quotationDetail.arrivalDate,
+            "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
+            "placeOfOrigin": this.data.placeOfOrigin || null,
+            "voyageRef": this.data.quotationDetail.voyage,
+            "offerId": this.data.quotationDetail.offerId,
+            "traceId": this.data.traceId,
+            "shippingCompany": this.data.shippingCompany
+          }
+        }
+      }
+      createQuotationQuotation(params, wx.getStorageSync('ccgId')).then(res => {
+        wx.navigateTo({
+          url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
+        })
+      })
+    }
   },
 
   booking() {

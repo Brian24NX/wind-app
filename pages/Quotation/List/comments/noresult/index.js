@@ -6,6 +6,9 @@ Component({
   properties: {
     languageContent: {
       type: Object
+    },
+    isUs: {
+      type: Boolean
     }
   },
 

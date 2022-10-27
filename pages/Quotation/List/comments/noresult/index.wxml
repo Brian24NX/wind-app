@@ -1,7 +1,7 @@
 <!--没有结果页面-->
 <view class="noOrderData">
   <image src="https://wind.cma-cgm.com/images/noData.png"></image>
-  <text class="nosolutions">{{languageContent.noFindQuteTips1}}</text>
-  <text class="settlesolutions">{{languageContent.noFindQuteTips2}}</text>
+  <text class="nosolutions">{{isUs ? languageContent.noUsFindQuteTips1 : languageContent.noFindQuteTips1}}</text>
+  <text class="settlesolutions">{{isUs ? languageContent.noUsFindQuteTips2 : languageContent.noFindQuteTips2}}</text>
   <button hover-class="hoverClass" class="modifySearch" catchtap="back">{{languageContent.modifySearch}}</button>
 </view>

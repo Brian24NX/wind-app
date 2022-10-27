@@ -485,6 +485,7 @@ var Languague = {
       directOnly: "Direct\nonly",
       //抱歉！未找到此问题的解决方案,在CMA CGM集团内目前暂未能提供处理方案.
       noFindQuteTips1: "Sorry! No matching records found.",
+      noUsFindQuteTips1: 'We apologize. We are currently not able to propose online offer for your request on FMC scope. Our team is consistently proposing new solutions to fit your needs. Please modify your search.',
       noFindTips1: "Sorry! No matching records found.",
       modifySearch: 'Modify Search',
       equipmentType: 'Equipment Type',

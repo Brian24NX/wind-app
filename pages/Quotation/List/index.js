@@ -45,7 +45,8 @@ Page({
     placeOfOrigin: '',
     finalPlaceOfDelivery: '',
     commodityCode: '',
-    partnerCode: []
+    partnerCode: [],
+    isUs: false
   },
 
   /**
@@ -82,6 +83,15 @@ Page({
       receiptHaulage: data.receiptHaulage || '',
       deliveryHaulage: data.deliveryHaulage || ''
     })
+    if (this.data.portOfLoading.substr(0, 2) === 'US' || this.data.portOfDischarge.substr(0, 2) === 'US') {
+      this.setData({
+        isUs: true
+      })
+    } else {
+      this.setData({
+        isUs: false
+      })
+    }
     if (data.resultResq.traceId) {
       this.setData({
         oldQuoteLineList: data.resultResq.nextDepartureQuoteLineAndRoute,

@@ -109,7 +109,7 @@
   </view>
   <!--无结果-->
   <view wx:if="{{(!oldQuoteLineList.length || !quoteLineList.length) && !isLoading}}">
-    <noresult languageContent="{{languageContent}}"></noresult>
+    <noresult languageContent="{{languageContent}}" isUs="{{isUs}}"></noresult>
   </view>
 </view>
 

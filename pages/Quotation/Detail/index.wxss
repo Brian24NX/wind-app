@@ -206,7 +206,14 @@
   margin-right: 12rpx;
 }
 
-.rateTitles image {
+.rateTitles .titleLeft .info {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+  margin-top: -20rpx;
+}
+
+.rateTitles > image {
   width: 146rpx;
   height: 106rpx;
   margin-right: -20rpx;
@@ -472,4 +479,24 @@
   text-align: center;
   line-height: 76rpx;
   padding: 0 22rpx;
+}
+
+.surchargeDesc {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 30rpx 36rpx;
+}
+
+.surchargeDesc image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+  margin-top: 10rpx;
+}
+
+.surchargeDesc .surchargeDescRight {
+  width: 550rpx;
+  font-size: 24rpx;
+  color: #6B7790;
 }
