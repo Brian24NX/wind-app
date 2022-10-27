@@ -55,7 +55,20 @@ Page({
     portOfDischargeLabel: '',
     placeOfOrigin: '',
     finalPlaceOfDelivery: '',
-    partnerCode: []
+    partnerCode: [],
+    vasList: [{
+      iconUrl: '',
+      vasTitle: 'ACT with CMA CGM+',
+      vasDesc: 'Reduce and offset your environmental footprint.'
+    }, {
+      iconUrl: '',
+      vasTitle: 'ACT with CMA CGM+',
+      vasDesc: 'Reduce and offset your environmental footprint.'
+    }, {
+      iconUrl: '',
+      vasTitle: 'ACT with CMA CGM+',
+      vasDesc: 'Reduce and offset your environmental footprint.'
+    }]
   },
 
   /**

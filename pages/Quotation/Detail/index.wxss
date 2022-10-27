@@ -213,7 +213,7 @@
   margin-top: -20rpx;
 }
 
-.rateTitles > image {
+.rateTitles>image {
   width: 146rpx;
   height: 106rpx;
   margin-right: -20rpx;
@@ -499,4 +499,85 @@
   width: 550rpx;
   font-size: 24rpx;
   color: #6B7790;
+}
+
+.additionServicesContainers {
+  padding: 28rpx 30rpx 140rpx;
+  background-color: #F0F1F5;
+}
+
+.topWarningContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30rpx 96rpx;
+  font-size: 28rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+  text-align: center;
+}
+
+.topWarningContainer .warningIcon {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.topWarningContainer .warningTitle {
+  margin: 30rpx 0;
+}
+
+.additionContainers {
+  background-color: #ffffff;
+  padding: 30rpx;
+  color: #071E5D;
+  font-size: 28rpx;
+}
+
+.additionContainers .additionContainer {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #04246A;
+  margin-bottom: 10rpx;
+}
+
+.additionContainers .additionContainer .additionTitleLine {
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+  margin-right: 16rpx;
+}
+
+.additionContainers .additionDesc {
+  padding-left: 20rpx;
+}
+
+.additionList .oneAddition {
+  padding: 30rpx;
+  background-color: #ffffff;
+  margin-top: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.additionList .oneAddition image {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 38rpx;
+}
+
+.additionList .additionDetail {
+  width: 430rpx;
+  color: #071E5D;
+  font-size: 20rpx;
+}
+
+.additionList .additionDetail .additionDetailTitle {
+  font-size: 32rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #071E5D;
 }

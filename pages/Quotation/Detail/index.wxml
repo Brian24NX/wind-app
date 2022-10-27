@@ -260,7 +260,30 @@
   </view>
 </block>
 <block wx:else>
-  
+  <view class="additionServicesContainers">
+    <view class="topWarningContainer">
+      <image class="warningIcon" src="/assets/img/instantQuote/warning@3x.png"></image>
+      <view class="warningTitle">ADDITIONAL SERVICES FUNCTION COMING SOON</view>
+      <view>Please add additional services during booking on eCommerce website for now</view>
+    </view>
+    <view class="additionContainers">
+      <view class="additionContainer">
+        <view class="additionTitleLine"></view>
+        <view>Additional Services</view>
+      </view>
+      <view class="additionDesc">Protect your cargo I Expand your business I Act towards carbon neutrality</view>
+    </view>
+    <view class="additionList">
+      <view class="oneAddition" wx:for="{{vasList}}">
+        <image src="/assets/img/instantQuote/warning@2x.png"></image>
+        <view class="additionDetail">
+          <view class="additionDetailTitle">ACT WITH CMA CGM+</view>
+          <view>Reduce and offset your environmental footprint</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
 </block>
 <view class="bottomButtonContainer">
   <view class="bottomButtonLeft">
