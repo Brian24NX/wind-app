@@ -196,7 +196,7 @@ var Languague = {
       days: 'DAYS',
       day: 'DAY',
       // 转运
-      zhuanyun: 'transhipment',
+      zhuanyun: 'Transhipment',
       zhida: 'Direct',
       apply: 'Apply',
       //排序
@@ -224,8 +224,8 @@ var Languague = {
       title: 'Route Detail',
       day: 'DAY',
       days: 'DAYS',
-      transhipment: 'transhipment',
-      transhipments: 'transhipments',
+      transhipment: 'Transhipment',
+      transhipments: 'Transhipments',
       zhida: 'Direct',
       // 船名
       vessel: 'Vessel',
@@ -450,8 +450,8 @@ var Languague = {
       days: 'DAYS',
       day: 'DAY',
       // 转运
-      zhuanyun: 'transhipment',
-      zhuanyuns: 'transhipments',
+      zhuanyun: 'Transhipment',
+      zhuanyuns: 'Transhipments',
       zhida: 'Direct',
       perRate: 'Rate per container',
       totalPer: 'Total per container',
@@ -472,7 +472,7 @@ var Languague = {
       //最快到港
       earliestArrival: "EARLIEST ARRIVAL",
       // 最快运输时间
-      earliestTime: 'FASTEST TRANSIT TIME',
+      earliestTime: 'BEST TRANSIT TIME',
       price: 'PRICE',
       spotOn: 'SPOTON',
       //离港
