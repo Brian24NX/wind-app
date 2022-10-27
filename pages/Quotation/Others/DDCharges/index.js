@@ -33,7 +33,7 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    let params = {}
+    // let params = {}
     if (options.from === 'myContracts') {
       this.setData({
         exportDate: data.simulationDate,
@@ -41,7 +41,7 @@ Page({
         portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
         portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1]
       })
-      params = {
+      const params = {
         "portOfLoading": data.portOfLoading,
         "portOfDischarge": data.portOfDischarge,
         "shippingCompany": data.quotationDetail.shippingCompany,
@@ -51,6 +51,7 @@ Page({
         "commodity": data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
         "equipmentSizeTypes": [data.quotationDetail.equipments[0].code],
         "simulationDate": this.data.importDate,
+        "contractReference": data.quotationDetail.quotationReference || null
       }
       this.getExportDDCharge(params)
       this.getImportDDCharge(params)
@@ -61,7 +62,7 @@ Page({
         portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
         portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1],
       })
-      params = {
+      const params = {
         "portOfLoading": data.portOfLoading,
         "portOfDischarge": data.portOfDischarge,
         "shippingCompany": data.shippingCompany,
@@ -72,10 +73,18 @@ Page({
         "equipmentSizeTypes": [data.equipmentTypeSize],
         "refrigerated": data.quotationDetail.quoteLines[0].refrigerated,
         "hazardous": data.quotationDetail.quoteLines[0].hazardous,
-        "oversize": data.quotationDetail.quoteLines[0].oversize
+        "oversize": data.quotationDetail.quoteLines[0].oversize,
+        "contractReference": data.quotationDetail.quoteLines[0].quotationReference || null,
+        "quoteLineType": data.quotationDetail.quoteLines[0].quoteLineType
       }
-      this.getExportDDCharge(params)
-      this.getImportDDCharge(params)
+      this.getExportDDCharge({
+        ...params,
+        simulationDate: this.data.exportDate
+      })
+      this.getImportDDCharge({
+        ...params,
+        simulationDate: this.data.importDate
+      })
     }
   },
 
@@ -86,7 +95,7 @@ Page({
     }).then(res => {
       if (res.data && res.data.length) {
         this.setData({
-          exports: res.data
+          exports: this.unique(res.data)
         })
       }
     }, () => {
@@ -101,11 +110,21 @@ Page({
     }).then(res => {
       if (res.data && res.data.length) {
         this.setData({
-          imports: res.data
+          imports: this.unique(res.data)
         })
       }
     }, () => {
       this.getImportDDCharge(params)
     })
+  },
+
+  unique(arr) {
+    let map = new Map()
+    arr.forEach(item => {
+      if (!map.has(item.tariff.tariffCode)) {
+        map.set(item.tariff.tariffCode, item)
+      }
+    })
+    return [...map.values()]
   }
 })

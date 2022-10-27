@@ -311,6 +311,12 @@ Page({
   },
 
   clickExportPDF() {
+    if (!this.data.exportLocation || !this.data.importLocation || !this.data.imports.length || !this.data.exports.length) {
+      wx.showToast({
+        title: languageUtil.languageVersion().lang.page.load.waitData,
+      })
+      return
+    }
     this.setData({
       showEmail: true
     })

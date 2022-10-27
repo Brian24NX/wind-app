@@ -109,7 +109,7 @@
             <text>{{quotationDetail.surchargeDetails.oceanFreight.price.currency.code}}</text>
           </view>
         </view>
-        <view class="rateDesc" wx:if="{{quotationDetail.surchargeDetails.oceanFreightDetails.length}}">{{languageContent.incluedLabel}} {{quotationDetail.surchargeDetails.oceanFreightDetailsLabel}}</view>
+        <view class="rateDesc"><block wx:if="{{quotationDetail.surchargeDetails.oceanFreightDetails.length}}">{{languageContent.incluedLabel}} {{quotationDetail.surchargeDetails.oceanFreightDetailsLabel}}</block></view>
       </view>
       <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.freightCharges.amount}}">
         <view class="oneRate">
@@ -193,7 +193,7 @@
       <view class="oneRates">
         <view class="oneRate" wx:for="{{quotationDetail.surchargeDetails.perBLChargeDetails}}">
           <view class="oneRateLeft">
-            <text>{{item.description}}</text>
+            <text>{{item.description}}<block wx:if="{{item.paymentMethod}}"> · {{item.paymentMethod === "C" ? 'COLLECT' : 'PREPAID'}} ·</block></text>
           </view>
           <view class="oneRateRight">
             <text class="ratePrice">{{item.convertedRate}}</text>
@@ -256,7 +256,7 @@
     </view>
     <view class="containerNumber">{{languageContent.forContainer1 + containers + languageContent.forContainer2}}</view>
   </view>
-  <view class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation}}" catchtap="booking">{{languageContent.book}}</view>
+  <view class="buttons" wx:if="{{quotationDetail.quoteLines[0].allowSpecialQuotation || !quotationDetail.quoteLines[0].spotOffer}}" catchtap="booking">{{languageContent.book}}</view>
   <view class="buttons" wx:else catchtap="submit">{{languageContent.saveQuotation}}</view>
 </view>
 
