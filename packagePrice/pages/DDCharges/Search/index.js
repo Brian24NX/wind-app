@@ -22,15 +22,20 @@ Page({
     typeList: [{
       label: 'refrigerated',
       id: 'refrigerated',
-      disabled: true
+      disabled: true,
+      isDefault: false,
+      isChecked: false
     }, {
       label: 'hazardous',
       id: 'hazardous',
-      disabled: true
+      disabled: true,
+      isDefault: false,
+      isChecked: false
     }],
     pollist: [],
     podlist: [],
-    specialCargo: '',
+    specialCargoDefault: '',
+    specialCargo: [],
     showRemind1: false,
     showRemind2: false,
     showRemind3: false,
@@ -200,13 +205,23 @@ Page({
   },
 
   changeType(e) {
-    if (e.currentTarget.dataset.item.disabled) return
+    if (e.currentTarget.dataset.item.disabled || e.currentTarget.dataset.item.isDefault) return
+    const id = e.currentTarget.dataset.item.id
+    const index = this.data.specialCargo.findIndex(i => i === id)
+    if (index > -1) {
+      this.data.specialCargo.splice(index, 1)
+      this.data.typeList[this.data.typeList.findIndex(i => i.id === id)].isChecked = false
+    } else {
+      this.data.specialCargo.push(id)
+      this.data.typeList[this.data.typeList.findIndex(i => i.id === id)].isChecked = true
+    }
     this.setData({
-      specialCargo: e.currentTarget.dataset.item.id === this.data.specialCargo ? '' : e.currentTarget.dataset.item.id
+      specialCargo: this.data.specialCargo,
+      typeList: this.data.typeList
     })
   },
 
-  openPopup(e) {
+  openPopup() {
     const index = this.data.language === 'zh' ? this.data.columns.findIndex(i => i.nameCn === this.data.equipmentSizeName) : this.data.columns.findIndex(i => i.nameEn === this.data.equipmentSizeName)
     this.setData({
       defaultIndex: index > -1 ? index : 0,
@@ -226,12 +241,25 @@ Page({
     let typeList = this.data.typeList
     typeList[0].disabled = e.detail.specialCargo.indexOf(typeList[0].id) === -1
     typeList[1].disabled = e.detail.specialCargo.indexOf(typeList[1].id) === -1
+    typeList[0].isDefault = false
+    typeList[0].isChecked = false
+    typeList[1].isDefault = false
+    typeList[1].isChecked = false
+    if (e.detail.specialCargoDefault) {
+      if (e.detail.specialCargoDefault === 'refrigerated') {
+        typeList[0].isDefault = true
+        typeList[0].isChecked = true
+      } else if (e.detail.specialCargoDefault === 'hazardous') {
+        typeList[1].isDefault = true
+        typeList[1].isChecked = true
+      }
+    }
     this.setData({
       equipmentSize: e.detail.code,
       equipmentSizeName: this.data.language === 'zh' ? e.detail.nameCn : e.detail.nameEn,
       showPopup: false,
-      typeList: typeList,
-      specialCargo: e.detail.specialCargoDefault || ''
+      typeList,
+      specialCargo: e.detail.specialCargoDefault ? [e.detail.specialCargoDefault] : []
     })
   },
 

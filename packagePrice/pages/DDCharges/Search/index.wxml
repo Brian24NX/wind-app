@@ -83,7 +83,7 @@
       <view class="radioContainer">
         <view class="oneRadio {{item.disabled ? 'disabled' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-item="{{item}}">
           <view class="statusContainer">
-            <view class="checkedStatus" wx:if="{{specialCargo === item.id}}"></view>
+            <view class="checkedStatus" wx:if="{{item.isChecked}}"></view>
           </view>
           <view>{{languageContent[item.label]}}</view>
         </view>
