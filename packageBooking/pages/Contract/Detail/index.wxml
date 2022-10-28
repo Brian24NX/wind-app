@@ -68,7 +68,7 @@
     <view class="oneParams">
       <image src="/assets/img/instantQuote/param_4@2x.png"></image>
       <view>
-        <view class="paramValue">{{quotationDetail.commodities[0].name}}</view>
+        <view class="paramValue">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
         <view class="param">{{languageContent.Commodity}}</view>
       </view>
     </view>
@@ -85,6 +85,14 @@
   </view>
   <block wx:if="{{currentType === 'charge'}}">
     <view class="rateContainer">
+      <view class="rateTitles">
+        <view class="titleLeft">
+          <view class="titleLine"></view>
+          <view>{{languageContent.perRate}}</view>
+          <image src="/assets/img/instantQuote/info@2x.png" class="info" catchtap="toRemind"></image>
+        </view>
+        <image src="/assets/img/instantQuote/person@2x.png"></image>
+      </view>
       <view class="rateTotal">
         <view class="rateTotalLeft">
           <image src="/assets/img/search/jzxh@2x.png"></image>
@@ -241,7 +249,7 @@
       <view class="oneQuoteDetail">
         <view class="oneQuoteTitle">{{languageContent.commoditys}}</view>
         <view class="oneQuoteValue">
-          <view class="bold">{{quotationDetail.commodities[0].name}}</view>
+          <view class="bold">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
         </view>
       </view>
       <view class="oneQuoteDetail">

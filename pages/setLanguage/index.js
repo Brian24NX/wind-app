@@ -25,6 +25,7 @@ Page({
   //中英文切换
   switchLanguage(e) {
     const language = e.currentTarget.dataset.language
+    if (language === this.data.language) return
     //切换当前版本，即修改公共变量中的version
     languageUtils.changLanguage(language)
     wx.reLaunch({

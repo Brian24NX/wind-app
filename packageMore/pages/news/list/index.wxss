@@ -8,7 +8,7 @@ page {
 }
 
 .newsContainer .topTitles {
-  position: fixed;
+  position: sticky;
   z-index: 10;
   top: 0;
   left: 0;
@@ -48,7 +48,7 @@ page {
   width: 690rpx;
   margin: 0 auto 40rpx;
   background-color: #ffffff;
-  padding: 470rpx 40rpx 1rpx;
+  padding: 0 40rpx 1rpx;
 }
 
 .newsContainer .categoryLists {

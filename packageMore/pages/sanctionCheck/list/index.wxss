@@ -4,16 +4,16 @@ page {
 }
 
 .sanctionContainer {
-  padding: 30rpx;
+  padding: 0 30rpx 40rpx;
 }
 
 .sanctionContainer .topTitles {
-  position: fixed;
+  position: sticky;
   z-index: 10;
   top: 0;
   left: 0;
   right: 0;
-  padding: 30rpx 30rpx 0;
+  padding: 30rpx 0 0;
   background-color: #F0F1F5;
 }
 
@@ -61,7 +61,7 @@ page {
 }
 
 .sanctionList {
-  padding: 440rpx 48rpx 30rpx;
+  padding: 0 48rpx 30rpx;
   background-color: #ffffff;
 }
 

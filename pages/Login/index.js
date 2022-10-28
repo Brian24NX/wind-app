@@ -17,7 +17,6 @@ Page({
 
   getMessage(e) {
     const data = e.detail.data[0]
-    console.log(data)
     if (!data.status) {
       wx.setStorageSync('access_token', data.access_token)
       wx.setStorageSync('expires_time', utils.setExpiresTime(data.expires_in))
@@ -40,7 +39,7 @@ Page({
               name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city
             })
           })
-          wx.setStorageSync('partnerCode', partnerLists)
+          wx.setStorageSync('partnerList', partnerLists)
         }
       }
     }

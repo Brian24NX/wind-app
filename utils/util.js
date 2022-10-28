@@ -405,7 +405,6 @@ function formatDocumentStatus(status, language) {
 
 // 格式化单证类型
 function formatDocumentCategory(category) {
-  // console.log(category)
   const categoryList = [{
     id: 'BKGCF',
     label: 'Booking Confirmation'
@@ -426,7 +425,6 @@ function formatDocumentCategory(category) {
     label: 'B/L Waybill'
   }]
   const index = categoryList.findIndex(i => i.id === category.trim())
-  // console.log(index)
   if (index > -1) {
     return categoryList[index].label
   } else {

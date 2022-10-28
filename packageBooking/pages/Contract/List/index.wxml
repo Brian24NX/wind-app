@@ -65,7 +65,7 @@
             <view class="time">{{item.portOfLoadingLabel || item.initialPortOfLoading}}</view>
             <view class="ship">
               <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{item.commodities[0].name}}</view>
+              <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
             </view>
             <view class="ship" style="width: 100%;">
               <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
@@ -139,7 +139,7 @@
             <view class="time">{{item.portOfLoadingLabel || item.initialPortOfLoading}}</view>
             <view class="ship">
               <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{item.commodities[0].name}}</view>
+              <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
             </view>
             <view class="ship" style="width: 100%;">
               <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>

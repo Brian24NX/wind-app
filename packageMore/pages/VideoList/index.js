@@ -39,14 +39,11 @@ Page({
   },
 
   lookDetail(e) {
-    console.log(e)
     const url = e.currentTarget.dataset.url
     wx.openChannelsActivity({
       finderUserName: "sphxc9HXnVD9wP3",
       feedId: url,
-      fail(err) {
-        console.log(err)
-      }
+      fail(err) {}
     })
   }
 })

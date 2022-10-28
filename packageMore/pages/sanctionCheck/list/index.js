@@ -84,7 +84,6 @@ Page({
   },
 
   changeCategory(e) {
-    console.log(e)
     this.setData({
       category: e.currentTarget.dataset.item
     })

@@ -115,7 +115,6 @@ Page({
     if (surchargeDetails.collectCharges.isChecked) {
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
-    console.log(surchargeDetails)
     this.setData({
       totalChargeAmount: totalChargeAmount || surchargeDetails.totalCharge.amount
     })
@@ -142,7 +141,6 @@ Page({
       ...params,
       "directions": ["E"]
     }).then(res => {
-      console.log(res)
       if (res.data && res.data.length) {
         this.setData({
           exports: res.data
@@ -158,7 +156,6 @@ Page({
       ...params,
       "directions": ["I"]
     }).then(res => {
-      console.log(res)
       if (res.data && res.data.length) {
         this.setData({
           imports: res.data
@@ -240,7 +237,6 @@ Page({
 
   dealEquipmentSize() {
     equitmentSizeList().then(res => {
-      console.log(res)
       const index = res.data.findIndex(i => i.code === this.data.quotationDetail.equipments[0].code)
       this.data.quotationDetail.equitmentSizeType = index === -1 ? this.data.quotationDetail.equipments[0].code : (this.data.language === 'en' ? res.data[index].nameEn : res.data[index].nameCn)
       this.setData({
@@ -269,6 +265,12 @@ Page({
     })
   },
 
+  toRemind() {
+    wx.navigateTo({
+      url: '/pages/Quotation/Others/Remind/index',
+    })
+  },
+
   submit() {
     wx.showToast({
       title: languageUtil.languageVersion().lang.load.functionIsUnderDevelopment,
@@ -283,7 +285,6 @@ Page({
   },
 
   sendEmails(e) {
-    console.log(e)
     exportPDF({
       "email": e.detail,
       "ddCharges": {
@@ -298,7 +299,6 @@ Page({
       },
       "quotationDetail": this.data.quotationDetail
     }).then(res => {
-      console.log(res)
       wx.showToast({
         title: languageUtil.languageVersion().lang.page.load.sendSuccess,
         icon: 'none',

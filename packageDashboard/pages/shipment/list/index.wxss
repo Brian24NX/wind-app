@@ -4,17 +4,17 @@ page {
 }
 
 .shipmentContainer {
-  padding: 30rpx;
+  padding: 0 30rpx 40rpx;
 }
 
 .shipmentContainer .topTitles {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 10;
   background-color: #F0F1F5;
-  padding: 30rpx 30rpx 0;
+  padding: 30rpx 0 0;
 }
 
 .shipmentContainer .topTitles .listTopContainer {
@@ -53,13 +53,9 @@ page {
   width: 50rpx;
 }
 
-.shipmentLists {
-  margin-top: 365rpx;
-}
-
 .viewTypesContainer {
   background-color: #ffffff;
-  padding: 0 48rpx 10rpx;
+  padding: 0 48rpx;
 }
 
 .viewTypes {

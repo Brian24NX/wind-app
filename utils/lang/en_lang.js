@@ -446,6 +446,7 @@ var Languague = {
       spotOut: 'Spot allocation sold out',
       container: 'CONTAINER',
       title: 'Instant Quote',
+      title2: 'Instant Quote',
       select: 'Select',
       days: 'DAYS',
       day: 'DAY',
@@ -552,7 +553,13 @@ var Languague = {
       additionalResults: 'Additional results close to your search',
       placeOfOrigin: "Place of Receipt",
       placeOfDelivery: "Place of Delivery",
-      transType: 'Transportation mode'
+      transType: 'Transportation mode',
+      comingSoon: 'ADDITIONAL SERVICES FUNCTION COMING SOON',
+      bookInWeb: 'Please add additional services during booking on eCommerce website for now',
+      additionalServices: 'Additional Services',
+      additionalServicesDesc: 'Protect your cargo | Expand your business | Act towards carbon neutrality',
+      back: 'Back',
+      next: 'Next'
     },
     // 我的报价
     myContract: {

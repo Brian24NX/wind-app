@@ -193,7 +193,6 @@ Page({
       language: languageUtil.languageVersion().lang.page.langue,
       verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
     })
-    console.log(zh_lang)
     this.data.equipmentTypeList.forEach(i => {
       i.labelCn = zh_lang.lang.page.myContract[i.label]
     })
@@ -543,7 +542,6 @@ Page({
       "shippingCompany": this.data.shippingCompany,
       "simulationDate": this.data.simulationDate
     }).then(res => {
-      console.log(res)
       this.setData({
         resultResq: res.data || []
       })

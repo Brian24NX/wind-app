@@ -151,7 +151,6 @@ Page({
       "simulationDate": this.data.simulationDate,
       "weightPerContainer": this.data.weight
     }).then(res => {
-      console.log(res)
       if (res.data && res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
         this.setData({
           resultResq: res.data,

@@ -263,22 +263,22 @@
   <view class="additionServicesContainers">
     <view class="topWarningContainer">
       <image class="warningIcon" src="/assets/img/instantQuote/warning@3x.png"></image>
-      <view class="warningTitle">ADDITIONAL SERVICES FUNCTION COMING SOON</view>
-      <view>Please add additional services during booking on eCommerce website for now</view>
+      <view class="warningTitle">{{languageContent.comingSoon}}</view>
+      <view>{{languageContent.bookInWeb}}</view>
     </view>
     <view class="additionContainers">
       <view class="additionContainer">
         <view class="additionTitleLine"></view>
-        <view>Additional Services</view>
+        <view>{{languageContent.additionalServices}}</view>
       </view>
-      <view class="additionDesc">Protect your cargo I Expand your business I Act towards carbon neutrality</view>
+      <view class="additionDesc">{{languageContent.additionalServicesDesc}}</view>
     </view>
     <view class="additionList">
       <view class="oneAddition" wx:for="{{vasList}}">
-        <image src="/assets/img/instantQuote/warning@2x.png"></image>
+        <image src="{{item.iconUrl}}" mode="aspectFit"></image>
         <view class="additionDetail">
-          <view class="additionDetailTitle">ACT WITH CMA CGM+</view>
-          <view>Reduce and offset your environmental footprint</view>
+          <view class="additionDetailTitle">{{item.vasTitle}}</view>
+          <view>{{language === 'zh' ? item.vasDescCn : item.vasDescEn}}</view>
         </view>
       </view>
     </view>
@@ -293,8 +293,11 @@
     </view>
     <view class="containerNumber">{{languageContent.forContainer1 + containers + languageContent.forContainer2}}</view>
   </view>
-  <view class="buttons" wx:if="{{quotationDetail.quoteLines[0].allowSpecialQuotation || !quotationDetail.quoteLines[0].spotOffer}}" catchtap="booking">{{languageContent.book}}</view>
-  <view class="buttons" wx:else catchtap="submit">{{languageContent.saveQuotation}}</view>
+  <view class="bottomButtonRight">
+    <button class="buttons" wx:if="{{quotationDetail.quoteLines[0].allowSpecialQuotation || !quotationDetail.quoteLines[0].spotOffer}}" catchtap="booking">{{languageContent.book}}</button>
+    <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && quotationDetail.quoteLines[0].spotOffer && !isFirst}}" catchtap="back">{{languageContent.back}}</button>
+    <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && quotationDetail.quoteLines[0].spotOffer}}" catchtap="submit">{{isFirst ? languageContent.next : languageContent.saveQuotation}}</button>
+  </view>
 </view>
 
 <additional-services id="additionalServices"></additional-services>

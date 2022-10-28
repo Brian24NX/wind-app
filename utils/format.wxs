@@ -221,8 +221,15 @@ function checkTime(date) {
 }
 
 function localeUpperCase(str) {
-  console.log(str)
   return !str ? '' : str.toLocaleUpperCase()
+}
+
+var formatCommodityName = function(name) {
+  if (!name) return ''
+  if (name.indexOf('FAK') > -1) {
+    return 'Freight ALL Kinds'
+  }
+  return name
 }
 
 module.exports = {
@@ -242,5 +249,6 @@ module.exports = {
   deleteStr: deleteStr,
   setChina: setChina,
   checkTime: checkTime,
-  localeUpperCase: localeUpperCase
+  localeUpperCase: localeUpperCase,
+  formatCommodityName: formatCommodityName
 }

@@ -118,14 +118,12 @@ Page({
 
   // 切换展开数据
   onChange(e) {
-    console.log(e)
     this.setData({
       activeNames: e.detail
     })
   },
 
   onConfirm(e) {
-    console.log(e)
     this.setData({
       categoryId: 0,
       current: e.detail.id,
@@ -222,7 +220,6 @@ Page({
       categoryId: this.data.categoryId
     }).then(res => {
       const list = res.data.filter(i => i.usefulTemplates.length)
-      console.log(list)
       this.setData({
         loading: false,
         noData: !list.length,

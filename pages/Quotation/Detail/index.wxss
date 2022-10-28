@@ -213,7 +213,7 @@
   margin-top: -20rpx;
 }
 
-.rateTitles>image {
+.rateTitles > image {
   width: 146rpx;
   height: 106rpx;
   margin-right: -20rpx;
@@ -469,7 +469,11 @@
   margin-top: 6rpx;
 }
 
-.bottomButtonContainer .buttons {
+.bottomButtonContainer .bottomButtonRight {
+  display: flex;
+}
+
+.bottomButtonContainer .bottomButtonRight .buttons {
   height: 76rpx;
   background-color: #E20202;
   font-size: 32rpx;
@@ -479,6 +483,8 @@
   text-align: center;
   line-height: 76rpx;
   padding: 0 22rpx;
+  border-radius: 0;
+  margin-left: 20rpx;
 }
 
 .surchargeDesc {
@@ -502,7 +508,7 @@
 }
 
 .additionServicesContainers {
-  padding: 28rpx 30rpx 140rpx;
+  padding: 28rpx 30rpx 220rpx;
   background-color: #F0F1F5;
 }
 
@@ -510,7 +516,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 30rpx 96rpx;
+  padding: 0 30rpx 60rpx;
   font-size: 28rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;

@@ -64,7 +64,6 @@ Page({
               "partners": newPartners,
               "token": wx.getStorageSync('access_token')
             }).then(result => {
-              console.log(result)
               let partnerLists = []
               result.data.forEach(i => {
                 partnerLists.push({
@@ -72,7 +71,7 @@ Page({
                   name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city
                 })
               })
-              wx.setStorageSync('partnerCode', partnerLists)
+              wx.setStorageSync('partnerList', partnerLists)
             })
           }
         })

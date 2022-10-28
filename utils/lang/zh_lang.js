@@ -449,6 +449,7 @@ var Languague = {
       spotOut: 'Spot舱位已满',
       container: '货柜',
       title: '报价列表',
+      title2: '报价详情',
       select: '选择',
       days: '天',
       day: '天',
@@ -555,7 +556,13 @@ var Languague = {
       additionalResults: '与您搜索相关的其他结果',
       placeOfOrigin: "收货地",
       placeOfDelivery: "目的地",
-      transType: '运输方式'
+      transType: '运输方式',
+      comingSoon: '增值服务功能升级中，敬请期待',
+      bookInWeb: '请至官网订舱时添加增值服务产品',
+      additionalServices: '增值服务',
+      additionalServicesDesc: '保护您的货物 · 拓展业务 · 争取实现碳中和',
+      back: '上一步',
+      next: '下一步'
     },
     // 我的报价
     myContract: {

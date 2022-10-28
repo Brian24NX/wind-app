@@ -13,7 +13,7 @@ Page({
     languageContent: {},
     language: 'zh',
     todayDate: '',
-    isFirst: false,
+    isFirst: true,
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
       label: 'localCharge',
@@ -57,17 +57,45 @@ Page({
     finalPlaceOfDelivery: '',
     partnerCode: [],
     vasList: [{
-      iconUrl: '',
+      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_1.png',
       vasTitle: 'ACT with CMA CGM+',
-      vasDesc: 'Reduce and offset your environmental footprint.'
+      vasDescEn: 'Reduce and offset your environmental footprint.',
+      vasDescCn: '携手ACT with CMA CGM+实现碳中和！现在，您可以减少和抵消您的环境足迹！'
     }, {
-      iconUrl: '',
-      vasTitle: 'ACT with CMA CGM+',
-      vasDesc: 'Reduce and offset your environmental footprint.'
+      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_2.png',
+      vasTitle: 'SERENITY cargo value guarantee',
+      vasDescEn: 'Enjoy full compensation in case of cargo damage.',
+      vasDescCn: '一旦您的货物受损，将享受完整快捷的赔付'
     }, {
-      iconUrl: '',
-      vasTitle: 'ACT with CMA CGM+',
-      vasDesc: 'Reduce and offset your environmental footprint.'
+      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_3.png',
+      vasTitle: 'SEAPRIORITY go',
+      vasDescEn: 'Enjoy a priority status at loading and transloading terminal.',
+      vasDescCn: '在起运港和准运港享受优先放柜及装载'
+    }, {
+      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
+      vasTitle: 'FREETIME extended (Detention)',
+      vasDescEn: 'Extend your Detention freetime at destination.',
+      vasDescCn: 'Extend your Detention Free Time at destination'
+    }, {
+      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
+      vasTitle: 'FREETIME extended (Demurrage only)',
+      vasDescEn: 'Extend your Demurrage freetime at destination.',
+      vasDescCn: 'Extend your Demurrage Free Time at destination'
+    }, {
+      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_5.png',
+      vasTitle: 'BARLOCK security device',
+      vasDescEn: 'Add extra protection to keep your cargo safe.',
+      vasDescCn: '增加额外的保护以确保您的货物安全'
+    }, {
+      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_6.png',
+      vasTitle: 'SERENITY container guarantee (export)',
+      vasDescEn: 'Avoid costs in case of damage to our containers.',
+      vasDescCn: '避免因集装箱损坏而产生的额外费用-出口'
+    }, {
+      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_6.png',
+      vasTitle: 'SERENITY container guarantee (import)',
+      vasDescEn: 'Avoid costs in case of damage to our containers.',
+      vasDescCn: '避免因集装箱损坏而产生的额外费用-进口'
     }]
   },
 
@@ -76,7 +104,7 @@ Page({
    */
   onLoad(options) {
     wx.setNavigationBarTitle({
-      title: languageUtil.languageVersion().lang.page.qutationResult.title
+      title: languageUtil.languageVersion().lang.page.qutationResult.title2
     })
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
@@ -131,7 +159,6 @@ Page({
       containers: containers || data2.containers,
       commodityName: data2.commodityName
     })
-    console.log(this.data.quotationDetail.surchargeDetails.oceanFreightDetails)
   },
 
   calculatedCharges() {
@@ -184,10 +211,24 @@ Page({
     })
   },
 
+  back() {
+    this.setData({
+      isFirst: true
+    })
+    wx.pageScrollTo({
+      duration: 300,
+      scrollTop: 0
+    })
+  },
+
   submit() {
     if (this.data.isFirst) {
       this.setData({
         isFirst: false
+      })
+      wx.pageScrollTo({
+        duration: 300,
+        scrollTop: 0
       })
     } else {
       let params = {}

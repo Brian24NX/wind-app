@@ -4,7 +4,7 @@ page {
 }
 
 .businessContainer {
-  padding: 30rpx;
+  padding: 0 30rpx 40rpx;
 }
 
 .topTitles .categoryLists {
@@ -19,12 +19,12 @@ page {
 }
 
 .businessContainer .topTitles {
-  position: fixed;
+  position: sticky;
   z-index: 10;
   top: 0;
   left: 0;
   right: 0;
-  padding: 30rpx 30rpx 0;
+  padding: 30rpx 0 0;
   background-color: #F0F1F5;
 }
 
@@ -36,7 +36,7 @@ page {
 
 .businessContainer .businessLists {
   background-color: #ffffff;
-  padding: 440rpx 40rpx 1rpx;
+  padding: 0 40rpx 1rpx;
 }
 
 .businessContainer .categoryList {

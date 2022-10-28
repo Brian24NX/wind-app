@@ -134,11 +134,11 @@ Page({
         selected: 2
       })
     }
-    this.checkAccessToken(() => {
+    // this.checkAccessToken(() => {
       this.setData({
-        partnerList: wx.getStorageSync('partnerCode') || []
+        partnerList: wx.getStorageSync('partnerList') || []
       })
-    })
+    // })
   },
 
   onShareAppMessage: function () {},
@@ -276,7 +276,6 @@ Page({
         if (res.data && res.data.length) {
           res.data.forEach(item => {
             if (item.point) {
-              console.log('item', item)
               placeOfReceiptList.push({
                 ActualName: item.point.name + ';' + item.country.code + ';' + item.point.code,
                 Code: item.point.code,
@@ -420,7 +419,6 @@ Page({
         if (res.data && res.data.length) {
           res.data.forEach(item => {
             if (item.point) {
-              console.log('item', item)
               placeOfDeliveryList.push({
                 ActualName: item.point.name + ';' + item.country.code + ';' + item.point.code,
                 Code: item.point.code,
@@ -790,7 +788,6 @@ Page({
       partnerList: this.data.partnerList
     })
     const index2 = this.data.checkPartnerList.findIndex(i => i.code === this.data.partnerList[index].code)
-    console.log(index2)
     if (index2 === -1) {
       this.data.checkPartnerList.push(this.data.partnerList[index])
     } else {
@@ -804,7 +801,7 @@ Page({
   deletePartner(e) {
     const index = e.currentTarget.dataset.index
     const index2 = this.data.partnerList.findIndex(i => i.code === this.data.checkPartnerList[index].code)
-    console.log(index2)
+
     this.data.partnerList[index2].checked = false
     this.data.checkPartnerList.splice(index, 1)
     this.setData({
@@ -954,7 +951,6 @@ Page({
       "simulationDate": this.data.simulationDate,
       "weightPerContainer": this.data.weight
     }).then(res => {
-      console.log(res)
       if (res.data && res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
         this.setData({
           resultResq: res.data,
@@ -994,7 +990,6 @@ Page({
         "simulationDate": this.data.simulationDate,
         "weightPerContainer": this.data.weight
       }).then(res => {
-        console.log(res)
         if (res.data && res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
           this.setData({
             resultResq: res.data,
@@ -1088,7 +1083,7 @@ Page({
       showDelete5: false,
       checkPartnerList: [],
       partnerCode: [],
-      partnerList: wx.getStorageSync('partnerCode') || []
+      partnerList: wx.getStorageSync('partnerList') || []
     })
   },
 

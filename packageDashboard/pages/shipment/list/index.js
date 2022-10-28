@@ -107,7 +107,6 @@ Page({
   },
 
   onConfirm(e) {
-    console.log(e)
     this.setData({
       ownedId: e.detail.id,
       ownedLabel: this.data.language === 'zh' ? e.detail.labelCn : e.detail.labelEn,
