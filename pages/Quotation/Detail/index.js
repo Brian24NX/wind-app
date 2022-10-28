@@ -82,6 +82,11 @@ Page({
       vasDescEn: 'Extend your Demurrage freetime at destination.',
       vasDescCn: 'Extend your Demurrage Free Time at destination'
     }, {
+      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
+      vasTitle: 'FREETIME extended (Detention & Demurrage)',
+      vasDescEn: 'Extend your merged D&D freetime at destination.',
+      vasDescCn: '延长目的地免滞箱费&滞港费（D&D）'
+    }, {
       iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_5.png',
       vasTitle: 'BARLOCK security device',
       vasDescEn: 'Add extra protection to keep your cargo safe.',

@@ -273,7 +273,7 @@ Page({
 
   submit() {
     wx.showToast({
-      title: languageUtil.languageVersion().lang.load.functionIsUnderDevelopment,
+      title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
       icon: 'none'
     })
   },
