@@ -84,7 +84,7 @@
           <view class="titleLeft">
             <view class="titleLine"></view>
             <view>{{languageContent.perRate}}</view>
-            <image src="/assets/img/instantQuote/info@2x.png" class="info" catchtap="toRemind"></image>
+            <image src="/assets/img/instantQuote/info.svg" class="info" catchtap="toRemind"></image>
           </view>
           <image src="/assets/img/instantQuote/person@2x.png"></image>
         </view>
@@ -207,7 +207,7 @@
         </view>
       </view>
       <view class="surchargeDesc">
-        <image src="/assets/img/instantQuote/error@3x.png"></image>
+        <image src="/assets/img/instantQuote/error.svg"></image>
         <view class="surchargeDescRight">
           <block wx:if="{{language === 'en'}}">
             <view>Surcharges calculation was simulated with surcharges valid on {{format.formatEnDateLocal(quotationDetail.departureDate, ' ', '', true, true)}}</view>

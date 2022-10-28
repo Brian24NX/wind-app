@@ -18,15 +18,20 @@ Page({
     loading: true,
     imports: [],
     exports: [],
-    list: []
+    list: [],
+    refriger: '',
+    hazardous: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    const ddChargeSearchKey = wx.getStorageSync('ddChargeSearchKey')
     this.setData({
-      chargeFinderSearchKey: wx.getStorageSync('ddChargeSearchKey')
+      chargeFinderSearchKey: ddChargeSearchKey,
+      refriger: (ddChargeSearchKey.specialCargo.indexOf('refrigerated') > -1 ? 'refrigerated' : ''),
+      hazardous: ddChargeSearchKey.specialCargo.indexOf('hazardous') > -1 ? 'hazardous' : ''
     })
     this.initLanguage()
     this.getChargeFinderTariff()

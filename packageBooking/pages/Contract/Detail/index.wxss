@@ -170,27 +170,21 @@
 .paramContainer {
   background-color: #ffffff;
   display: flex;
-  flex-wrap: wrap;
   margin: 0 0 30rpx;
-  padding: 0 46rpx;
 }
 
 .paramContainer .oneParams {
-  border-top: 1rpx solid #EEEEEE;
   display: flex;
-  width: 50%;
+  flex: 1;
+  flex-direction: column;
   align-items: center;
   padding: 48rpx 10rpx;
-}
-
-.paramContainer .oneParams:nth-of-type(-n + 2) {
-  border-top: none;
 }
 
 .paramContainer .oneParams image {
   width: 60rpx;
   height: 60rpx;
-  margin-right: 20rpx;
+  margin-bottom: 10rpx;
 }
 
 .paramContainer .oneParams .paramValue {
@@ -198,6 +192,7 @@
   font-family: Arial-BoldMT, Arial;
   font-weight: normal;
   color: #071E5D;
+  text-align: center;
 }
 
 .paramContainer .oneParams .param {
@@ -205,6 +200,7 @@
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #071E5D;
+  text-align: center;
 }
 
 .rateContainer {

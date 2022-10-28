@@ -46,31 +46,25 @@
   <view class="paramContainer">
     <view class="oneParams">
       <image src="/assets/img/instantQuote/param_1@2x.png"></image>
-      <view>
-        <view class="paramValue">{{quotationDetail.equitmentSizeType}}</view>
-        <view class="param">{{languageContent.equipmentType}}</view>
-      </view>
+      <view class="paramValue">{{quotationDetail.equitmentSizeType}}</view>
+      <view class="param">{{languageContent.equipmentType}}</view>
     </view>
-    <view class="oneParams">
+    <!-- <view class="oneParams">
       <image src="/assets/img/instantQuote/param_2@2x.png"></image>
       <view>
         <view class="paramValue">{{quotationDetail.weight || '-'}}</view>
         <view class="param">{{languageContent.weight}}</view>
       </view>
+    </view> -->
+    <view class="oneParams">
+      <image src="/assets/img/instantQuote/param_4@2x.png"></image>
+      <view class="paramValue">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
+      <view class="param">{{languageContent.Commodity}}</view>
     </view>
     <view class="oneParams">
       <image src="/assets/img/instantQuote/param_3@2x.png"></image>
-      <view>
-        <view class="paramValue">{{quotationDetail.numberOfContainer}}</view>
-        <view class="param">{{languageContent.containers}}</view>
-      </view>
-    </view>
-    <view class="oneParams">
-      <image src="/assets/img/instantQuote/param_4@2x.png"></image>
-      <view>
-        <view class="paramValue">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
-        <view class="param">{{languageContent.Commodity}}</view>
-      </view>
+      <view class="paramValue">{{quotationDetail.numberOfContainer}}</view>
+      <view class="param">{{languageContent.containers}}</view>
     </view>
   </view>
   <view class="rateTypeContainers">
@@ -89,7 +83,7 @@
         <view class="titleLeft">
           <view class="titleLine"></view>
           <view>{{languageContent.perRate}}</view>
-          <image src="/assets/img/instantQuote/info@2x.png" class="info" catchtap="toRemind"></image>
+          <image src="/assets/img/instantQuote/info.svg" class="info" catchtap="toRemind"></image>
         </view>
         <image src="/assets/img/instantQuote/person@2x.png"></image>
       </view>
@@ -116,7 +110,9 @@
             <text>{{quotationDetail.surchargeDetails.oceanFreight.price.currency.code}}</text>
           </view>
         </view>
-        <view class="rateDesc"><block wx:if="{{quotationDetail.surchargeDetails.oceanFreightDetails.length}}">{{languageContent.incluedLabel}} {{quotationDetail.surchargeDetails.oceanFreightDetailsLabel}}</block></view>
+        <view class="rateDesc">
+          <block wx:if="{{quotationDetail.surchargeDetails.oceanFreightDetails.length}}">{{languageContent.incluedLabel}} {{quotationDetail.surchargeDetails.oceanFreightDetailsLabel}}</block>
+        </view>
       </view>
       <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.freightCharges.amount}}">
         <view class="oneRate">
