@@ -31,32 +31,55 @@
         <view class="oneTip spotOn" wx:if="{{item.quoteLines.length && item.quoteLines[0].spotOffer}}">SPOTON</view>
       </view>
       <view class="resContents">
-        <view class="leftStep">
-          <view class="leftStepDto"></view>
-          <view class="leftStepLine"></view>
-          <image class="leftStepLoaction" src="/assets/img/result/location@2x.png"></image>
-        </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.departureDate, false, true) : commonFilters.formatEnDateLocal(item.departureDate, '-', '', false, true)}}</view>
-            <view class="time" style="max-width: 380rpx;">{{fromLabel}}, {{fromCode}}</view>
-            <view class="ship">
-              <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{item.vesselName}}</view>
+            <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="max-width: 380rpx;padding-bottom: 30rpx;" wx:if="{{item.placeOfReceiptLabel}}">
+              <text>{{item.placeOfReceiptLabel}}</text>
+              <view class="leftLines">
+                <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+                <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+              </view>
             </view>
-            <view class="ship" style="width: 100%;">
-              <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{item.scheduleDescription}}</view>
+            <view style="position: relative;">
+              <view class="time {{!item.canSelect ? 'disabledColor' : ''}}">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.departureDate, false, true) : commonFilters.formatEnDateLocal(item.departureDate, '-', '', false, true)}}</view>
+              <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="max-width: 380rpx;">{{item.placeOfLoadingLabel}}</view>
+              <view class="ship {{!item.canSelect ? 'disabledColor' : ''}}">
+                <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
+                <view>{{item.vesselName}}</view>
+              </view>
+              <view class="ship {{!item.canSelect ? 'disabledColor' : ''}}" style="width: 100%;padding-bottom: 20rpx;">
+                <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
+                <view>{{item.scheduleDescription}}</view>
+              </view>
+              <view class="leftLines">
+                <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+                <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+              </view>
             </view>
-            <view class="time end">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivalDate, false, true) : commonFilters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}} {{toLabel}}, {{toCode}}</view>
+            <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="{{item.placeOfDeliveryLabel ? 'padding-bottom: 30rpx;' : ''}}">
+              <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivalDate, false, true) : commonFilters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}} {{item.placeOfDischargeLabel}}</text>
+              <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
+                <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+                <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+              </view>
+              <view class="leftLines endLine" wx:else>
+                <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+              </view>
+            </view>
+            <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{item.placeOfDeliveryLabel}}">
+              <text>{{item.placeOfDeliveryLabel}}</text>
+              <view class="leftLines endLine">
+                <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+              </view>
+            </view>
           </view>
           <view class="rightContent">
-            <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{item.transitTime}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
-            <view class="zhuanrun" wx:if="{{item.tranShipment.length}}">
+            <view class="timeDay {{!item.canSelect ? 'disabledColor' : ''}} {{language === 'zh' ? '' : 'timeDayEn'}}">{{item.transitTime}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
+            <view class="zhuanrun {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{item.tranShipment.length}}">
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
               <view>{{item.tranShipment.length}} {{item.tranShipment.length > 1 ? languageContent.zhuanyuns : languageContent.zhuanyun}}</view>
             </view>
-            <view class="zhuanrun" wx:if="{{!item.tranShipment.length}}">
+            <view class="zhuanrun {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{!item.tranShipment.length}}">
               <image src="/assets/img/result/zhuanyun@2x.png"></image>
               <view>{{languageContent.zhida}}</view>
             </view>

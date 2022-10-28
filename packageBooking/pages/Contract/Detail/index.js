@@ -143,7 +143,7 @@ Page({
     }).then(res => {
       if (res.data && res.data.length) {
         this.setData({
-          exports: res.data
+          exports: this.unique(res.data)
         })
       }
     }, () => {
@@ -158,12 +158,22 @@ Page({
     }).then(res => {
       if (res.data && res.data.length) {
         this.setData({
-          imports: res.data
+          imports: this.unique(res.data)
         })
       }
     }, () => {
       this.getImportDDCharge(params)
     })
+  },
+
+  unique(arr) {
+    let map = new Map()
+    arr.forEach(item => {
+      if (!map.has(item.tariff.tariffCode) && item.tariff.tariffCode !== 'STO') {
+        map.set(item.tariff.tariffCode, item)
+      }
+    })
+    return [...map.values()]
   },
 
   getLocalCharge() {

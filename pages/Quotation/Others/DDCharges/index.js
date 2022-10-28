@@ -121,7 +121,7 @@ Page({
   unique(arr) {
     let map = new Map()
     arr.forEach(item => {
-      if (!map.has(item.tariff.tariffCode)) {
+      if (!map.has(item.tariff.tariffCode) && item.tariff.tariffCode !== 'STO') {
         map.set(item.tariff.tariffCode, item)
       }
     })

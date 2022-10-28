@@ -1,7 +1,8 @@
 // pages/Quotation/List/index.js
 import {
   quotationSort,
-  getQuotationSurchargeDetail
+  getQuotationSurchargeDetail,
+  fuzzyPointSearch
 } from '../../../api/modules/quotation';
 const languageUtil = require('../../../utils/languageUtils')
 Page({
@@ -168,6 +169,20 @@ Page({
           scrollTop: 0
         })
         this.data.quoteLineList.forEach((item, index) => {
+          if (item.quoteLines) {
+            // 收货地
+            if (item.quoteLines[0].origin) {
+              this.getPlacePoint(item.quoteLines[0].origin, item, 'placeOfReceiptLabel')
+            }
+            // 起运港
+            this.getPlacePoint(item.quoteLines[0].portOfLoading, item, 'placeOfLoadingLabel')
+            // 卸货港
+            this.getPlacePoint(item.quoteLines[0].portOfDischarge, item, 'placeOfDischargeLabel')
+            // 目的地
+            if (item.quoteLines[0].destination) {
+              this.getPlacePoint(item.quoteLines[0].destination, item, 'placeOfDeliveryLabel')
+            }
+          }
           if (item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length) {
             let params = {}
             if (!item.quoteLines[0].quoteLineId) {
@@ -224,6 +239,22 @@ Page({
         quoteLineList: [],
         isLoading: false
       })
+    })
+  },
+
+  getPlacePoint(pointCode, item, type) {
+    fuzzyPointSearch({
+      pointCode
+    }).then(data => {
+      item[type] = data.data.point.name + ', ' + data.data.country.code
+      this.setData({
+        quoteLineList: this.data.quoteLineList
+      })
+      this.setData({
+        oldQuoteLineList: this.data.quoteLineList
+      })
+    }, () => {
+      this.getPlacePoint(pointCode, item, type)
     })
   },
 

@@ -547,7 +547,7 @@ var Languague = {
       continue: 'Do you want to continue?',
       continueBtn: 'Continue',
       chooseOther: 'Choose another route',
-      containerRemind: 'container(s) remianing',
+      containerRemind: 'container(s) remaining',
       exportPDF: 'Export PDF',
       contractDetail: 'Detail',
       currentVaild: 'Current valid offers',

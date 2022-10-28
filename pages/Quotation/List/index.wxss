@@ -162,6 +162,41 @@ page {
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #04246A;
+  position: relative;
+}
+
+.leftContent .leftLines {
+  position: absolute;
+  left: -35rpx;
+  height: 100%;
+  top: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 16rpx;
+}
+
+.leftContent .endLine {
+  top: 4rpx;
+}
+
+.leftContent .leftLines image {
+  width: 24rpx;
+  height: 30rpx;
+}
+
+.leftContent .leftLines .leftLineDto {
+  background-color: #E20202;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+.leftContent .leftLines .leftLine {
+  width: 1rpx;
+  height: calc(100% - 26rpx);
+  margin: 5rpx 0;
+  background-color:  #9AA6C4;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent .end {
@@ -235,7 +270,7 @@ page {
 
 .resultContainers .oneResult .right {
   justify-content: flex-end;
-  color: #6B7790;
+  color: #cccccc;
   font-size: 24rpx;
 }
 
@@ -304,4 +339,12 @@ page {
   width: 32rpx;
   height: 32rpx;
   margin-right: 10rpx;
+}
+
+.disabledColor {
+  color: #cccccc !important;
+}
+
+.disabledBg {
+  background-color: #cccccc !important;
 }
