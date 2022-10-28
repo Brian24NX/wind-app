@@ -1,6 +1,25 @@
 /* pages/Quotation/Others/Remind/index.wxss */
-page {
-  padding: 0 46rpx;
+.spotOns {
+  padding: 40rpx 48rpx;
+}
+
+.topTitle {
+  display: flex;
+  align-items: center;
+  font-size: 50rpx;
+  font-family: Antonio-Bold;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.topTitle .topTitleLine {
+  margin-right: 20rpx;
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+}
+
+.desc {
   color: #071E5D;
-  font-size: 28rpx;
+  font-size: 24rpx;
 }

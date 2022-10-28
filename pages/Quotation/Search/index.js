@@ -960,6 +960,9 @@ Page({
           url: '/pages/Quotation/List/index',
         })
       } else {
+        this.setData({
+          resultResq: {}
+        })
         this.getNearByPortNextDeparture()
       }
     })

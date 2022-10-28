@@ -176,7 +176,7 @@
           </view>
         </view>
       </view>
-      <view class="rateContainer" wx:if="{{quotationDetail.surchargeDetails.perBLCharges}}">
+      <view class="rateContainer" style="padding-bottom: 30rpx;" wx:if="{{quotationDetail.surchargeDetails.perBLCharges}}">
         <view class="rateTitles">
           <view class="titleLeft">
             <view class="titleLine"></view>
@@ -200,7 +200,7 @@
               <text>{{item.description}}<block wx:if="{{item.paymentMethod}}"> · {{item.paymentMethod === "C" ? 'COLLECT' : 'PREPAID'}} ·</block></text>
             </view>
             <view class="oneRateRight">
-              <text class="ratePrice">{{item.convertedRate}}</text>
+              <text class="ratePrice">{{item.rate}}</text>
               <text>{{item.currency}}</text>
             </view>
           </view>
@@ -262,7 +262,7 @@
 <block wx:else>
   <view class="additionServicesContainers">
     <view class="topWarningContainer">
-      <image class="warningIcon" src="/assets/img/instantQuote/warning@3x.png"></image>
+      <image class="warningIcon" src="/assets/img/instantQuote/warning.svg"></image>
       <view class="warningTitle">{{languageContent.comingSoon}}</view>
       <view>{{languageContent.bookInWeb}}</view>
     </view>

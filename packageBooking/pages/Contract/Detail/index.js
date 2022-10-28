@@ -61,7 +61,7 @@ Page({
    */
   onLoad(options) {
     wx.setNavigationBarTitle({
-      title: languageUtil.languageVersion().lang.page.qutationResult.title2
+      title: languageUtil.languageVersion().lang.page.qutationResult.title4
     })
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]

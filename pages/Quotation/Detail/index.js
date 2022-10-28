@@ -70,7 +70,7 @@ Page({
       iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_3.png',
       vasTitle: 'SEAPRIORITY go',
       vasDescEn: 'Enjoy a priority status at loading and transloading terminal.',
-      vasDescCn: '在起运港和准运港享受优先放柜及装载'
+      vasDescCn: '在起运港和转运港享受优先放柜及装载'
     }, {
       iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
       vasTitle: 'FREETIME extended (Detention)',

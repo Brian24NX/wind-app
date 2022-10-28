@@ -62,7 +62,7 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{item.portOfLoadingLabel || item.initialPortOfLoading}}</view>
+            <view class="time">{{item.portOfLoadingLabel}}</view>
             <view class="ship">
               <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
@@ -71,7 +71,7 @@
               <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{equipmentType}} {{item.equipments[0].code}}</view>
             </view>
-            <view class="time end">{{item.portOfDischargeLabel || item.initalPortOfDischarge}}</view>
+            <view class="time end">{{item.portOfDischargeLabel}}</view>
           </view>
           <view class="rightContent">
             <!-- <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{7}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>

@@ -54,7 +54,7 @@ Page({
    */
   onLoad() {
     wx.setNavigationBarTitle({
-      title: languageUtil.languageVersion().lang.page.qutationResult.title2
+      title: languageUtil.languageVersion().lang.page.qutationResult.title3
     })
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
@@ -169,7 +169,7 @@ Page({
 
   getInitialPortOfLoading(item) {
     fuzzyPointSearch({
-      pointCode: item.origin || item.portOfLoading
+      pointCode: item.exportInlandPointCode || item.portOfLoading
     }).then(data => {
       item.portOfLoadingLabel = data.data.point.name + ', ' + data.data.country.code
       this.setData({
@@ -183,7 +183,7 @@ Page({
 
   getInitialPortOfDischarge(item) {
     fuzzyPointSearch({
-      pointCode: item.portOfDischarge
+      pointCode: item.importInlandPointCode || item.portOfDischarge
     }).then(data => {
       item.portOfDischargeLabel = data.data.point.name + ', ' + data.data.country.code
       this.setData({

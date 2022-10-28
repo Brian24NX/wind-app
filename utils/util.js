@@ -509,6 +509,7 @@ function checkAccessToken() {
     wx.removeStorageSync('userInfo')
     wx.removeStorageSync('ccgId')
     wx.removeStorageSync('partnerCode')
+    wx.removeStorageSync('partnerList')
     return false
   } else {
     if (new Date(wx.getStorageSync('expires_time')).getTime() - new Date().getTime() < 0) {
