@@ -174,7 +174,6 @@ page {
   flex-wrap: wrap;
   border-top: 1rpx solid #DDDDDD;
   margin-top: 24rpx;
-  padding: 0 18rpx;
 }
 
 .resultContainers .oneResult .tips .oneTip {
@@ -248,10 +247,46 @@ page {
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #04246A;
+  position: relative;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent .end {
   margin-top: 16rpx;
+}
+
+.leftContent .leftLines {
+  position: absolute;
+  left: -35rpx;
+  height: 100%;
+  top: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 16rpx;
+}
+
+.leftContent .endLine {
+  top: 4rpx;
+}
+
+.leftContent .leftLines image {
+  width: 18rpx;
+  height: 24rpx;
+  margin-top: 4rpx;
+}
+
+.leftContent .leftLines .leftLineDto {
+  background-color: #E20202;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+.leftContent .leftLines .leftLine {
+  width: 1rpx;
+  height: calc(100% - 26rpx);
+  margin: 5rpx 0;
+  background-color:  #9AA6C4;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent .ship {
@@ -402,4 +437,18 @@ page {
   height: 50rpx;
   margin-right: 20rpx;
   background-color: #E20202;
+}
+
+.placeType {
+  color: #04246a;
+  font-family: Antonio-Regular, Antonio;
+  background-color: #e6e9f0;
+  font-size: 24rpx;
+  border-radius: 20rpx;
+  width: 70rpx;
+  height: 40rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 40rpx;
+  margin-right: 16rpx;
 }

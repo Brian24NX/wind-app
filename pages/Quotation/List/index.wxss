@@ -181,8 +181,9 @@ page {
 }
 
 .leftContent .leftLines image {
-  width: 24rpx;
-  height: 30rpx;
+  width: 18rpx;
+  height: 24rpx;
+  margin-top: 4rpx;
 }
 
 .leftContent .leftLines .leftLineDto {
@@ -255,8 +256,9 @@ page {
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent .zhuanrun image {
-  width: 40rpx;
-  height: 40rpx;
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 10rpx;
 }
 
 .resultContainers .oneResult .oneBottom {
@@ -347,4 +349,18 @@ page {
 
 .disabledBg {
   background-color: #cccccc !important;
+}
+
+.placeType {
+  color: #04246a;
+  font-family: Antonio-Regular, Antonio;
+  background-color: #e6e9f0;
+  font-size: 24rpx;
+  border-radius: 20rpx;
+  width: 70rpx;
+  height: 40rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 40rpx;
+  margin-left: 20rpx;
 }

@@ -576,6 +576,10 @@
   font-size: 24rpx;
 }
 
+.quoteDetails .oneQuoteDetail .oneQuoteValue view {
+  word-break: break-word;
+}
+
 .quoteDetails .bold {
   font-weight: bold;
   color: #071E5D;

@@ -218,7 +218,54 @@
             <view>所有汇率均以路透社的汇率 {{format.formatCnDateLocal(todayDate, true, true)}} 为基础</view>
           </block>
         </view>
-
+      </view>
+      <view class="quoteDetails">
+        <view class="quoteTopTitle">
+          <view class="quoteTopLine"></view>
+          <view>{{languageContent.quoteDetails}}</view>
+        </view>
+        <view class="oneQuoteDetail">
+          <view class="oneQuoteTitle">{{languageContent.export}}</view>
+          <view class="oneQuoteValue">
+            <view wx:if="{{quotationDetail.quoteLines[0].origin}}">
+              <text>{{languageContent.placeOfOrigin}} </text>
+              <text class="bold">{{quotationDetail.placeOfReceiptLabel}}</text>
+            </view>
+            <view>
+              <text>{{languageContent.movementType}} </text>
+              <text class="bold">{{quotationDetail.quoteLines[0].exportMovementType}}</text>
+            </view>
+            <view wx:if="{{!quotationDetail.quoteLines[0].origin}}">
+              <text>{{languageContent.bookPreCarriage}} </text>
+              <text class="bold">{{quotationDetail.quoteLines[0].exportConstruction ? languageContent.allowed : languageContent.refused}}</text>
+            </view>
+            <view wx:else>
+              <text>{{languageContent.transType}} </text>
+              <text class="bold">Intermodal</text>
+            </view>
+          </view>
+        </view>
+        <view class="oneQuoteDetail">
+          <view class="oneQuoteTitle">{{languageContent.import}}</view>
+          <view class="oneQuoteValue">
+            <view wx:if="{{quotationDetail.quoteLines[0].destination}}">
+              <text>{{languageContent.placeOfOrigin}} </text>
+              <text class="bold">{{quotationDetail.placeOfDeliveryLabel}}</text>
+            </view>
+            <view>
+              <text>{{languageContent.movementType}} </text>
+              <text class="bold">{{quotationDetail.quoteLines[0].importMovementType}}</text>
+            </view>
+            <view wx:if="{{!quotationDetail.quoteLines[0].destination}}">
+              <text>{{languageContent.bookOnCarriage}} </text>
+              <text class="bold">{{quotationDetail.quoteLines[0].importConstruction ? languageContent.allowed : languageContent.refused}}</text>
+            </view>
+            <view wx:else>
+              <text>{{languageContent.transType}} </text>
+              <text class="bold">Intermodal</text>
+            </view>
+          </view>
+        </view>
       </view>
       <view class="otherContainer">
         <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}" wx:if="{{item.show}}">

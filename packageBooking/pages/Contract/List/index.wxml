@@ -44,34 +44,58 @@
         </view>
         <view class="quotationRight">
           <view>{{filters.checkValidDate(item.validityTo) ? languageContent.valid : languageContent.expired}}</view>
-          <!-- <view>
-            <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityFrom, true, true) : commonFilters.formatEnDateLocal(item.validityFrom, '-', '', true, true)}}</text>
-            <text> > </text>
-            <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityTo, true, true) : commonFilters.formatEnDateLocal(item.validityTo, '-', '', true, true)}}</text>
-          </view> -->
         </view>
       </view>
       <view class="tips">
         <view class="oneTip oneTip2" wx:if="{{item.spotOffer}}">{{languageContent.spotOn}}</view>
       </view>
       <view class="resContents">
-        <view class="leftStep">
-          <view class="leftStepDto"></view>
-          <view class="leftStepLine"></view>
-          <image class="leftStepLoaction" src="/assets/img/result/location@2x.png"></image>
-        </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{item.portOfLoadingLabel}}</view>
-            <view class="ship">
-              <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
+            <view class="time" style="padding-bottom: 30rpx;" wx:if="{{item.placeOfReceiptLabel}}">
+              <text class="placeType">{{commonFilters.localeUpperCase(item.exportMovementType)}}</text>
+              <text>{{item.placeOfReceiptLabel}}</text>
+              <view class="leftLines">
+                <view class="leftLineDto"></view>
+                <view class="leftLine"></view>
+              </view>
             </view>
-            <view class="ship" style="width: 100%;">
-              <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{equipmentType}} {{item.equipments[0].code}}</view>
+            <view style="position: relative;">
+              <view class="time" style="max-width: 380rpx;">  
+                <text class="placeType">PORT</text>
+                <text>{{item.portOfLoadingLabel}}</text>
+              </view>
+              <view class="ship">
+                <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
+                <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
+              </view>
+              <view class="ship" style="width: 100%;padding-bottom: 20rpx;">
+                <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
+                <view>{{equipmentType}} {{item.equipments[0].code}}</view>
+              </view>
+              <view class="leftLines">
+                <view class="leftLineDto"></view>
+                <view class="leftLine"></view>
+              </view>
             </view>
-            <view class="time end">{{item.portOfDischargeLabel}}</view>
+            <view class="time" style="{{item.placeOfDeliveryLabel ? 'padding-bottom: 30rpx;' : ''}}">
+              <text class="placeType">PORT</text>
+              <text>{{item.portOfDischargeLabel}}</text>
+              <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
+                <view class="leftLineDto"></view>
+                <view class="leftLine"></view>
+              </view>
+              <view class="leftLines endLine" wx:else>
+                <image src="/assets/img/instantQuote/location-red.svg" mode="aspectFit"></image>
+              </view>
+            </view>
+            <view class="time" wx:if="{{item.placeOfDeliveryLabel}}">
+              <text class="placeType">{{commonFilters.localeUpperCase(item.importMovementType)}}</text>
+              <text>{{item.placeOfDeliveryLabel}}</text>
+              <view class="leftLines endLine">
+                <image src="/assets/img/instantQuote/location-red.svg" mode="aspectFit"></image>
+              </view>
+            </view>
           </view>
           <view class="rightContent">
             <!-- <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{7}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
@@ -118,11 +142,6 @@
         </view>
         <view class="quotationRight">
           <view>{{filters.checkValidDate(item.validityTo) ? languageContent.valid : languageContent.expired}}</view>
-          <!-- <view>
-            <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityFrom, true, true) : commonFilters.formatEnDateLocal(item.validityFrom, '-', '', true, true)}}</text>
-            <text> > </text>
-            <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityTo, true, true) : commonFilters.formatEnDateLocal(item.validityTo, '-', '', true, true)}}</text>
-          </view> -->
         </view>
       </view>
       <view class="tips">
@@ -136,16 +155,51 @@
         </view>
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time">{{item.portOfLoadingLabel || item.initialPortOfLoading}}</view>
-            <view class="ship">
-              <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
+            <!-- <view class="time">{{item.portOfLoadingLabel}}</view> -->
+            <view class="time" style="padding-bottom: 30rpx;" wx:if="{{item.placeOfReceiptLabel}}">
+              <text class="placeType">{{commonFilters.localeUpperCase(item.exportMovementType)}}</text>
+              <text>{{item.placeOfReceiptLabel}}</text>
+              <view class="leftLines">
+                <view class="leftLineDto"></view>
+                <view class="leftLine"></view>
+              </view>
             </view>
-            <view class="ship" style="width: 100%;">
-              <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
-              <view>{{equipmentType}} {{item.equipments[0].code}}</view>
+            <view style="position: relative;">
+              <view class="time" style="max-width: 380rpx;">  
+                <text class="placeType">PORT</text>
+                <text>{{item.portOfLoadingLabel}}</text>
+              </view>
+              <view class="ship">
+                <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
+                <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
+              </view>
+              <view class="ship" style="width: 100%;padding-bottom: 20rpx;">
+                <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
+                <view>{{equipmentType}} {{item.equipments[0].code}}</view>
+              </view>
+              <view class="leftLines">
+                <view class="leftLineDto"></view>
+                <view class="leftLine"></view>
+              </view>
             </view>
-            <view class="time end">{{item.portOfDischargeLabel || item.initalPortOfDischarge}}</view>
+            <view class="time" style="{{item.placeOfDeliveryLabel ? 'padding-bottom: 30rpx;' : ''}}">
+              <text class="placeType">PORT</text>
+              <text>{{item.portOfDischargeLabel}}</text>
+              <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
+                <view class="leftLineDto"></view>
+                <view class="leftLine"></view>
+              </view>
+              <view class="leftLines endLine" wx:else>
+                <image src="/assets/img/instantQuote/location-red.svg" mode="aspectFit"></image>
+              </view>
+            </view>
+            <view class="time" wx:if="{{item.placeOfDeliveryLabel}}">
+              <text class="placeType">{{commonFilters.localeUpperCase(item.importMovementType)}}</text>
+              <text>{{item.placeOfDeliveryLabel}}</text>
+              <view class="leftLines endLine">
+                <image src="/assets/img/instantQuote/location-red.svg" mode="aspectFit"></image>
+              </view>
+            </view>
           </view>
           <view class="rightContent">
             <!-- <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{7}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>

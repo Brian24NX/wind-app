@@ -163,8 +163,25 @@ Page({
   },
 
   getPointData(item) {
+    this.getInitialPlaceOfReceiptLabel(item)
     this.getInitialPortOfLoading(item)
     this.getInitialPortOfDischarge(item)
+    this.getPortOfDelivery(item)
+  },
+
+  getInitialPlaceOfReceiptLabel(item) {
+    if (!item.exportInlandPointCode) return
+    fuzzyPointSearch({
+      pointCode: item.exportInlandPointCode
+    }).then(data => {
+      item.placeOfReceiptLabel = data.data.point.name + ', ' + data.data.country.code
+      this.setData({
+        perfectContractList: this.data.perfectContractList,
+        partialContractList: this.data.partialContractList
+      })
+    }, () => {
+      this.getInitialPlaceOfReceiptLabel(item)
+    })
   },
 
   getInitialPortOfLoading(item) {
@@ -183,7 +200,7 @@ Page({
 
   getInitialPortOfDischarge(item) {
     fuzzyPointSearch({
-      pointCode: item.importInlandPointCode || item.portOfDischarge
+      pointCode: item.portOfDischarge
     }).then(data => {
       item.portOfDischargeLabel = data.data.point.name + ', ' + data.data.country.code
       this.setData({
@@ -192,6 +209,21 @@ Page({
       })
     }, () => {
       this.getInitialPortOfDischarge(item)
+    })
+  },
+
+  getPortOfDelivery(item) {
+    if (!item.importInlandPointCode) return
+    fuzzyPointSearch({
+      pointCode: item.importInlandPointCode
+    }).then(data => {
+      item.placeOfDeliveryLabel = data.data.point.name + ', ' + data.data.country.code
+      this.setData({
+        perfectContractList: this.data.perfectContractList,
+        partialContractList: this.data.partialContractList
+      })
+    }, () => {
+      this.getPortOfDelivery(item)
     })
   },
 

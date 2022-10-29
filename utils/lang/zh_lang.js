@@ -466,7 +466,7 @@ var Languague = {
       perBL: '每单费用',
       totalBL: '按单总计',
       saveQuotation: '获取报价',
-      forContainer1: '集装箱总数',
+      forContainer1: '集装箱总数 ',
       forContainer2: '',
       apply: '应用',
       //排序
