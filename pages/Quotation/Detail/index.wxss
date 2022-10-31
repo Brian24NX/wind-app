@@ -598,8 +598,8 @@
   display: flex;
   align-items: center;
   font-size: 50rpx;
-  font-family: Antonio-Bold, Antonio;
-  font-weight: bold;
+  font-family: Antonio-Regular;
+  font-weight: 400;
   color: #04246A;
   margin-bottom: 50rpx;
 }

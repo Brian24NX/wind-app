@@ -82,8 +82,8 @@ Page({
       portOfLoadingLabel: data.portOfLoading,
       portOfDischarge: data.portOfDischargeCode,
       portOfDischargeLabel: data.portOfDischarge,
-      fromLabel: contractList[Number(options.index)].portOfLoadingLabel,
-      toLabel: contractList[Number(options.index)].portOfDischargeLabel,
+      fromLabel: contractList[Number(options.index)].placeOfReceiptLabel || contractList[Number(options.index)].portOfLoadingLabel,
+      toLabel: contractList[Number(options.index)].placeOfDeliveryLabel || contractList[Number(options.index)].portOfDischargeLabel,
       simulationDate: data.simulationDate,
       quotationDetail: quotationDetail,
       partnerCode: data.partnerCode

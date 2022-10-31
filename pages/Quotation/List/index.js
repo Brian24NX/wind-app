@@ -264,9 +264,14 @@ Page({
       item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
       const allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
       if (allocation) {
-        item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
-        item.surchargeDetails.allocation = allocation
-        item.canSelect = true
+        if (res.data && res.data.surchargeDetails) {
+          item.surchargeDetails = res.data && res.data.surchargeDetails ? res.data.surchargeDetails[0] : null
+          item.surchargeDetails.allocation = allocation
+          item.canSelect = true
+        } else {
+          item.surchargeDetails = null
+          item.canSelect = false
+        }
       } else {
         item.surchargeDetails = null
         item.canSelect = false

@@ -526,7 +526,7 @@ var Languague = {
       import: 'Import',
       export: 'Export',
       movementType: 'Movement Type',
-      bookPreCarriage: 'Booking Pre carriage',
+      bookPreCarriage: 'Booking Pre Carriage',
       bookOnCarriage: 'Booking on Carriage',
       weightAndDimensions: 'Weight and Dimensions',
       perContainer: 'per container',

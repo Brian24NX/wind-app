@@ -186,7 +186,7 @@ Page({
 
   getInitialPortOfLoading(item) {
     fuzzyPointSearch({
-      pointCode: item.exportInlandPointCode || item.portOfLoading
+      pointCode: item.portOfLoading
     }).then(data => {
       item.portOfLoadingLabel = data.data.point.name + ', ' + data.data.country.code
       this.setData({

@@ -21,7 +21,7 @@
     </view>
   </view>
 </view>
-<view class="resultContainers" style="padding-bottom: {{isPhoneX ? '210rpx' : '170rpx'}};">
+<view class="resultContainers">
   <view wx:if="{{quoteLineList.length}}">
     <view class="oneResult" wx:for="{{quoteLineList}}" wx:key="index">
       <view class="tips">
@@ -35,7 +35,7 @@
           <view class="leftContent">
             <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="max-width: 380rpx;padding-bottom: 30rpx;" wx:if="{{item.quoteLines && item.quoteLines[0].origin}}">
               <text>{{item.placeOfReceiptLabel}}</text>
-              <text class="placeType">{{commonFilters.localeUpperCase(item.quoteLines[0].exportMovementType)}}</text>
+              <text class="placeType {{!item.canSelect ? 'disabledColor' : ''}}">{{commonFilters.localeUpperCase(item.quoteLines[0].exportMovementType)}}</text>
               <view class="leftLines">
                 <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
                 <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
@@ -69,7 +69,7 @@
             </view>
             <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{item.quoteLines && item.quoteLines[0].destination}}">
               <text>{{item.placeOfDeliveryLabel}}</text>
-              <text class="placeType">{{commonFilters.localeUpperCase(item.quoteLines[0].importMovementType)}}</text>
+              <text class="placeType {{!item.canSelect ? 'disabledColor' : ''}}">{{commonFilters.localeUpperCase(item.quoteLines[0].importMovementType)}}</text>
               <view class="leftLines endLine">
                 <image src="/assets/img/instantQuote/location-{{!item.canSelect ? 'grey' : 'red'}}.svg" mode="aspectFit"></image>
               </view>
