@@ -442,6 +442,7 @@ page {
 .placeType {
   color: #04246a;
   font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
   background-color: #e6e9f0;
   font-size: 24rpx;
   border-radius: 20rpx;

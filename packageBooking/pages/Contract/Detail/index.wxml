@@ -315,7 +315,7 @@
       <view class="bottomPrice">{{totalChargeAmount * quotationDetail.numberOfContainer}}</view>
       <view>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</view>
     </view>
-    <view class="containerNumber">{{languageContent.totalPerContainer}}</view>
+    <view class="containerNumber">{{languageContent.forContainer1 + quotationDetail.numberOfContainer + languageContent.forContainer2}}</view>
   </view>
   <view class="buttonContainer">
     <view class="buttons" catchtap="clickExportPDF">{{languageContent.exportPDF}}</view>

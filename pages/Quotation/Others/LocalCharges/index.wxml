@@ -5,7 +5,7 @@
     <view class="topTitleLine"></view>
     <view>{{languageContent.localCharge}}</view>
   </view>
-  <view class="localDetail">{{languageContent.localChargeDetail}} :</view>
+  <view class="localDetail">{{languageContent.localChargeDetail}}</view>
   <view class="oneLocal">
     <view class="localLeft">
       <image src="/assets/img/home/templatelinks@2x.png"></image>

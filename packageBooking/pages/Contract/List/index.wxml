@@ -148,11 +148,11 @@
         <view class="oneTip oneTip2" wx:if="{{item.spotOffer}}">{{languageContent.spotOn}}</view>
       </view>
       <view class="resContents">
-        <view class="leftStep">
+        <!-- <view class="leftStep">
           <view class="leftStepDto"></view>
           <view class="leftStepLine"></view>
           <image class="leftStepLoaction" src="/assets/img/result/location@2x.png"></image>
-        </view>
+        </view> -->
         <view class="rightContainer">
           <view class="leftContent">
             <!-- <view class="time">{{item.portOfLoadingLabel}}</view> -->

@@ -503,7 +503,7 @@ var Languague = {
       DDSM: 'D&D',
       SpotOn: 'SpotOn',
       addInfo: '其他信息',
-      localChargeDetail: '有关本地费用的详细信息',
+      localChargeDetail: '有关本地费用的详细信息：',
       exportLocalCharge: '出口本地费用',
       importLocalCharge: '进口本地费用',
       copy: '复制',
