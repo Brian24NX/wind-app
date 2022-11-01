@@ -358,7 +358,7 @@ var Languague = {
       POL: '起运港',
       POD: '卸货港',
       DELIVERY: '目的地',
-      Contianers: '货柜数量',
+      containers: '货柜数量',
       TEU: '总计TEU',
       weight: '货物重量',
       volume: '货物体积',

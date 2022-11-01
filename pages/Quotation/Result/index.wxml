@@ -14,7 +14,7 @@
   <view class="results">
     <view class="resultsContainer">
       <view class="reference">
-        <view class="referenceTitle">Reference</view>
+        <view class="referenceTitle">{{languageContent.reference}}</view>
         <view class="referenceNumber" catchtap="copyReference">
           <text>{{reference}}</text>
           <image class="copyIcon" src="/assets/img/instantQuote/copy@2x.png"></image>
@@ -23,7 +23,7 @@
       <view class="priceContainer">
         <view class="priceLeft">
           <view class="days">{{quotationDetail.transitTime}} {{Number(quotationDetail.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
-          <view>{{quotationDetail.tranShipment.length ? quotationDetail.tranShipment.length + ' ' + languageContent.zhuanyun : languageContent.zhida}}</view>
+          <view>{{quotationDetail.tranShipment.length ? (quotationDetail.tranShipment.length + ' ' + (quotationDetail.tranShipment.length > 1 ? languageContent.zhuanyuns : languageContent.zhuanyun)) : languageContent.zhida}}</view>
         </view>
         <view class="priceRight">
           <text class="price">{{quotationDetail.surchargeDetails.totalCharge.amount}}</text>

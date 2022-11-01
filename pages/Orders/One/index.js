@@ -178,7 +178,7 @@ Component({
         receiveMailAccount: receiveMailAccount
       }).then(() => {
         wx.showToast({
-          title: '发送成功，请前往邮箱查看',
+          title: languageUtils.languageVersion().lang.page.load.sendSuccess,
           icon: 'none',
           mask: true
         })

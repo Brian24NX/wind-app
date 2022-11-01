@@ -334,7 +334,7 @@ var Languague = {
       title: 'Shipment Dashboard',
       title1: 'Shipment',
       title2: ' Dashboard',
-      placeholder: 'Shipment or Conatiner Ref.',
+      placeholder: 'Reference',
       shipment: 'Shipment View',
       et: "Arrival",
       eat: 'ETA',
@@ -356,7 +356,7 @@ var Languague = {
       POL: 'POL',
       POD: 'POD',
       DELIVERY: 'DELIVERY',
-      Contianers: 'Contianers',
+      containers: 'Containers',
       TEU: 'Total TEU',
       weight: 'Cargo Weight',
       volume: 'Cargo Volume',
@@ -554,7 +554,7 @@ var Languague = {
       additionalResults: 'Additional results close to your search',
       placeOfOrigin: "Place of Receipt",
       placeOfDelivery: "Place of Delivery",
-      transType: 'Transportation mode',
+      transType: 'Transportation Mode',
       comingSoon: 'ADDITIONAL SERVICES FUNCTION COMING SOON',
       bookInWeb: 'Please add additional services during booking on eCommerce website for now',
       additionalServices: 'Additional Services',
@@ -623,7 +623,7 @@ var Languague = {
       send: 'Send'
     },
     preview: {
-      disPreview: 'Preview not available, please send template to email'
+      disPreview: 'Preview not available, please send to email'
     },
     legalTermsRemind: {
       title: 'Privacy Policy',

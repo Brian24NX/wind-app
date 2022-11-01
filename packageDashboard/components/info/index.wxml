@@ -58,7 +58,7 @@
       <view class="oneDetailRight">
         <view class="heng">
           <view>
-            <text class="title">{{languageContent.Contianers}}：</text>
+            <text class="title">{{languageContent.containers}}：</text>
             <text class="value">{{info.cargoEquipments}}</text>
           </view>
           <view>
