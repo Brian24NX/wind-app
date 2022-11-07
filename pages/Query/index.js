@@ -64,7 +64,7 @@ Page({
       icon: '/assets/img/menu/dc@2x.png',
       isNew: false,
       label: 'dingcang',
-      url: '',
+      url: '/packageBooking/pages/Search/index',
       needLogin: true
     }],
     showRemind: false

@@ -1,15 +1,14 @@
 // packageBooking/pages/Contract/Search/index.js
-var languageUtil = require('../../../../utils/languageUtils')
-const utils = require('../../../../utils/util')
-const zh_lang = require('../../../../utils/lang/zh_lang')
+var languageUtil = require('../../../utils/languageUtils')
+const utils = require('../../../utils/util')
 const dayjs = require("dayjs");
 import {
   fuzzySearch,
   getAllNetworkPoint
-} from '../../../../api/modules/home';
+} from '../../../api/modules/home';
 import {
-  quotationQuoteLinesSearch
-} from '../../../../api/modules/quotation';
+  bookingQuotationList
+} from '../../api/modules/booking';
 Page({
 
   /**
@@ -39,15 +38,11 @@ Page({
     pollist: [],
     podlist: [],
     placeOfDeliveryList: [],
+    searchOn: '',
+    searchOnLabel: '',
+    searchList: [],
     simulationDate: '',
-    equipmentType: 'ST',
-    equipmentTypeList: [{
-      label: 'ST'
-    }, {
-      label: 'RF'
-    }, {
-      label: 'SP'
-    }],
+    reference: '',
     shippingCompany: '',
     showRemind1: false,
     showRemind2: false,
@@ -56,22 +51,16 @@ Page({
     showRemind5: false,
     showDelete1: false,
     showDelete2: false,
+    showDelete3: false,
     showDelete4: false,
-    showDelete5: false,
-    columns: [],
-    valueKey: '',
     showPopup: false,
     defaultIndex: 0,
     showDatePopup: false,
     currentDate: null,
-    showLegal: false,
     showPlaceOfReceipt: false,
     showPlaceOfDelivery: false,
     showPoR: false,
-    showPoDe: false,
-    pricingGroupSetups: [],
-    pricingGroups: [],
-    resultResq: []
+    showPoDe: false
   },
 
   /**
@@ -79,7 +68,6 @@ Page({
    */
   onLoad: function () {
     this.initLanguage();
-    this.initData()
     this.setData({
       simulationDate: this.getDate()
     })
@@ -89,59 +77,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {},
-
-  initData() {
-    this.setData({
-      // 收货地
-      placeOfOrigin: '',
-      placeOfOriginLabel: '',
-      receiptHaulage: '',
-      // 起运港
-      portOfLoadingLabel: "MELBOURNE;AU;AUMEL",
-      portOfLoading: "AUMEL",
-      showDelete1: true,
-      // 卸货港
-      portOfDischargeLabel: "SHANGHAI;CN;CNSHA",
-      portOfDischarge: "CNSHA",
-      showDelete2: true,
-      // 目的地
-      finalPlaceOfDelivery: '',
-      finalPlaceOfDeliveryLabel: '',
-      deliveryHaulage: '',
-      weight: 1000,
-      commodityCode: '220410',
-      commodityName: '葡萄酒',
-      shippingCompany: '0002',
-      pricingGroupSetups: [{
-          "pricingGroupId": 12366,
-          "shippingCompany": "0002",
-          "spotAccess": "spotContract",
-          "withoutOfferDisplay": "infoOnly",
-          "nextDepartureScheduleLimit": 35,
-          "digitalAllocationsCheck": true,
-          "digitalAllocationsDisplay": "infoOnly",
-          "inlandPolicy": "throughRate"
-        },
-        {
-          "pricingGroupId": 12411,
-          "shippingCompany": "0001",
-          "spotAccess": "contract",
-          "withoutOfferDisplay": "infoOnly",
-          "nextDepartureScheduleLimit": 35,
-          "digitalAllocationsCheck": true,
-          "digitalAllocationsDisplay": "infoOnly",
-          "inlandPolicy": "throughRate"
-        }
-      ],
-      pricingGroups: [{
-        "pricingGroupId": "12366",
-        "shippingCompany": "0002"
-      }, {
-        "pricingGroupId": "12411",
-        "shippingCompany": "0001"
-      }]
-    })
-  },
 
   addPlaceOfReceipt() {
     this.setData({
@@ -164,15 +99,9 @@ Page({
         duration: 2500
       })
       setTimeout(() => {
-        if (wx.getStorageSync('allowLegalTerms')) {
-          wx.navigateTo({
-            url: '/pages/Login/index',
-          })
-        } else {
-          this.setData({
-            showLegal: true
-          })
-        }
+        wx.navigateTo({
+          url: '/pages/Login/index',
+        })
       }, 2500)
     } else {
       if (callback) {
@@ -186,29 +115,55 @@ Page({
     //获取当前小程序语言版本所对应的字典变量
     var lang = languageUtil.languageVersion()
     wx.setNavigationBarTitle({
-      title: lang.lang.page.myContract.title,
+      title: lang.lang.page.booking.title,
     })
     this.setData({
-      languageContent: lang.lang.page.myContract,
+      languageContent: lang.lang.page.booking,
       language: languageUtil.languageVersion().lang.page.langue,
       verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
     })
-    this.data.equipmentTypeList.forEach(i => {
-      i.labelCn = zh_lang.lang.page.myContract[i.label]
-    })
+    if (languageUtil.languageVersion().lang.page.langue === 'en') {
+      this.setData({
+        searchList: [{
+          id: 1,
+          method: "Departure"
+        }, {
+          id: 2,
+          method: "Arrival"
+        }],
+        searchOn: 1,
+        searchOnLabel: 'Departure'
+      })
+    } else {
+      this.setData({
+        searchList: [{
+          id: 1,
+          method: "离港"
+        }, {
+          id: 2,
+          method: "到港"
+        }],
+        searchOn: 1,
+        searchOnLabel: '离港'
+      })
+    }
   },
 
   //获取收货地的接口处理
   changePlaceOfReceipt: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete4: !!data,
+      showDelete1: !!data,
       showPoR: false,
       placeOfReceiptList: []
     })
     if (data.length < 2) {
       return
     }
+    this.getPorData(data)
+  }, 800),
+
+  getPorData(data) {
     this.setData({
       showPoR: true
     })
@@ -224,14 +179,16 @@ Page({
           placeOfReceiptList: res.data || []
         })
       }
+    }, () => {
+      this.getPorData(data)
     })
-  }, 800),
+  },
 
   //获取起运港的接口处理
   changepol: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete1: !!data,
+      showDelete2: !!data,
       showRemind1: false,
       showRemind2: false,
       showPol: false,
@@ -240,6 +197,10 @@ Page({
     if (data.length < 2) {
       return
     }
+    this.getPolData(data)
+  }, 800),
+
+  getPolData(data) {
     this.setData({
       showPol: true
     })
@@ -254,14 +215,16 @@ Page({
           pollist: res.data || []
         })
       }
+    }, () => {
+      this.getPolData(data)
     })
-  }, 800),
+  },
 
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete2: !!data,
+      showDelete3: !!data,
       showRemind3: false,
       showRemind4: false,
       showPod: false,
@@ -270,6 +233,10 @@ Page({
     if (data.length < 2) {
       return
     }
+    this.getPodData(data)
+  }, 800),
+
+  getPodData(data) {
     this.setData({
       showPod: true
     })
@@ -284,20 +251,26 @@ Page({
           podlist: res.data || []
         })
       }
+    }, () => {
+      this.getPodData(data)
     })
-  }, 800),
+  },
 
   //获取目的地的接口处理
   changePlaceOfDelivery: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showDelete5: !!data,
+      showDelete4: !!data,
       showPoDe: false,
       placeOfDeliveryList: []
     })
     if (data.length < 2) {
       return
     }
+    this.getPooData(data)
+  }, 800),
+
+  getPooData(data) {
     this.setData({
       showPoDe: true
     })
@@ -313,47 +286,48 @@ Page({
           placeOfDeliveryList: res.data || []
         })
       }
+    }, () => {
+      this.getPorData(data)
     })
-  }, 800),
+  },
 
   deleteValue(e) {
     const type = e.currentTarget.dataset.type
     if (type === '1') {
       this.setData({
+        placeOfOrigin: '',
+        placeOfOriginLabel: '',
+        receiptHaulage: '',
+        showDelete1: false
+      })
+    } else if (type === '2') {
+      this.setData({
         portOfLoadingLabel: '',
         portOfLoading: '',
         pollist: [],
-        showDelete1: false,
+        showDelete2: false,
         showRemind1: false,
         showRemind2: false
       })
-    } else if (type === '2') {
+    } else if (type === '3') {
       this.setData({
         portOfDischargeLabel: '',
         portOfDischarge: '',
         podlist: [],
-        showDelete2: false,
+        showDelete3: false,
         showRemind3: false,
         showRemind4: false
       })
-    } else if (type === '3') {
-      this.setData({
-        weight: null,
-        showRemind5: false
-      })
     } else if (type === '4') {
-      this.setData({
-        placeOfOrigin: '',
-        placeOfOriginLabel: '',
-        receiptHaulage: '',
-        showDelete4: false
-      })
-    } else if (type === '5') {
       this.setData({
         finalPlaceOfDelivery: '',
         finalPlaceOfDeliveryLabel: '',
         deliveryHaulage: '',
-        showDelete5: false
+        showDelete4: false
+      })
+    } else if (type === '4') {
+      this.setData({
+        reference: ''
       })
     }
   },
@@ -407,12 +381,9 @@ Page({
         currentDate: new Date(date).getTime(),
         showDatePopup: true
       })
-      return
     } else if (e.currentTarget.dataset.type === '1') {
-      const defaultIndex = this.data.equipmentTypeList.findIndex(item => item.label === this.data.equipmentType)
+      const defaultIndex = this.data.searchList.findIndex(item => item.id === this.data.searchOn)
       this.setData({
-        columns: this.data.equipmentTypeList,
-        valueKey: this.data.language === 'zh' ? 'labelCn' : 'label',
         defaultIndex: defaultIndex > -1 ? defaultIndex : 0,
         showPopup: true
       })
@@ -429,7 +400,8 @@ Page({
 
   onConfirm(e) {
     this.setData({
-      equipmentType: e.detail.label
+      searchOn: e.detail.id,
+      searchOnLabel: e.detail.method
     })
     this.onClose()
   },
@@ -457,20 +429,16 @@ Page({
     return year + '-' + month + '-' + day;
   },
 
-  setRemind(e) {
+  setReference(e) {
     this.setData({
-      showLegal: false
+      reference: e.detail.value,
+      showRemind5: false
     })
-    if (e.detail) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
-    }
   },
 
   // 提交搜索
   submit() {
-    if (this.data.showDelete1) {
+    if (this.data.showDelete2) {
       this.setData({
         showRemind1: false
       })
@@ -498,7 +466,7 @@ Page({
       })
     }
 
-    if (this.data.showDelete2) {
+    if (this.data.showDelete3) {
       this.setData({
         showRemind3: false
       })
@@ -523,31 +491,24 @@ Page({
         showRemind4: false
       })
     }
-    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4) return
+    if (!this.data.reference) {
+      this.setData({
+        showRemind5: true
+      })
+    } else {
+      this.setData({
+        showRemind5: false
+      })
+    }
+    if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     this.checkAccessToken(() => {
-      this.getQuotationNextDepartures()
+      this.getQuotationList()
     })
   },
 
-  getQuotationNextDepartures() {
-    quotationQuoteLinesSearch({
-      "affiliates": this.data.partnerCode,
-      "deliveryHaulage": this.data.deliveryHaulage,
-      "equipmentType": this.data.equipmentType,
-      "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery,
-      "placeOfOrigin": this.data.placeOfOrigin,
-      "portOfDischarge": this.data.portOfDischarge,
-      "portOfLoading": this.data.portOfLoading,
-      "receiptHaulage": this.data.receiptHaulage,
-      "shippingCompany": this.data.shippingCompany,
-      "simulationDate": this.data.simulationDate
-    }).then(res => {
-      this.setData({
-        resultResq: res.data || []
-      })
-      wx.navigateTo({
-        url: '/packageBooking/pages/Contract/List/index',
-      })
+  getQuotationList() {
+    bookingQuotationList().then(res => {
+      console.log(res)
     })
   },
 
@@ -569,7 +530,8 @@ Page({
       pollist: [],
       podlist: [],
       simulationDate: this.getDate(),
-      equipmentType: this.data.equipmentTypeList[0].label,
+      searchOn: 1,
+      searchOnLabel: this.data.searchList[0].method,
       showRemind1: false,
       showRemind2: false,
       showRemind3: false,
@@ -577,6 +539,9 @@ Page({
       showRemind5: false,
       showDelete1: false,
       showDelete2: false,
+      showDelete3: false,
+      showDelete4: false,
+      reference: ''
     })
   }
 })

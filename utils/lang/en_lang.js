@@ -562,11 +562,11 @@ var Languague = {
       back: 'Back',
       next: 'Next'
     },
-    // 我的报价
-    myContract: {
-      title: 'My Contracts',
-      getASchedule1: "My ",
-      getASchedule2: 'Contracts',
+    // 订舱
+    booking: {
+      title: 'Click & Book',
+      getASchedule1: "Click ",
+      getASchedule2: '& Book',
       placeOfOrigin: "Place of Receipt",
       addPlaceOfOrigin: "Add a Place of Receipt",
       //起运港
@@ -577,12 +577,10 @@ var Languague = {
       addPlaceOfDelivery: 'Add a Place of Delivery',
       //港口名称/代码
       name: "Name/Code",
-      //离港时间
-      departure: "Vessel departure from",
-      equipmentType: 'Equipment Type',
-      ST: 'Dry',
-      RF: 'Reefer',
-      SP: 'Special',
+      searchOn: 'Search On',
+      //时间
+      date: "Date",
+      reference: 'Quotation / Contract Number',
       //查询
       search: "Search",
       reset: 'Reset'

@@ -43,11 +43,11 @@ page{
   width: 690rpx;
   background-color: #ffffff;
   margin: 0 auto;
-  padding: 30rpx 0 0 20rpx;
+  padding: 30rpx 0 0 0;
 }
 
 .queryContainer .addBtn {
-  width: 504rpx;
+  width: calc(100% - 120rpx - 46rpx);
   height: 88rpx;
   display: flex;
   align-items: center;
@@ -184,6 +184,16 @@ page{
   color: #333333;
 }
 
+.scroll-view .item .polname {
+  width: 100%;
+  line-height: 30rpx;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .queryContainer .searchLists .selectContainer {
   width: 100%;
   height: 80rpx;
@@ -253,4 +263,17 @@ page{
   line-height: 80rpx;
   color: #3476FF;
   font-size: 28rpx;
+}
+
+.placeType {
+  color: #04246a;
+  font-family: Antonio-Regular, Antonio;
+  background-color: #e6e9f0;
+  font-size: 24rpx;
+  border-radius: 20rpx;
+  width: 80rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

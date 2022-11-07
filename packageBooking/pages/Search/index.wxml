@@ -11,14 +11,15 @@
         <view class="searchTitle">{{languageContent.placeOfOrigin}}</view>
         <view class="codeInputs">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-          <input value="{{placeOfOriginLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfReceipt" />
-          <view class="deleteIcon" wx:if="{{showDelete4}}" catchtap="deleteValue" data-type="4">
+          <input value="{{placeOfOriginLabel}}" style="{{receiptHaulage ? 'width: 290rpx' : ''}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfReceipt" />
+          <view class="placeType" wx:if="{{receiptHaulage}}">{{format.localeUpperCase(receiptHaulage)}}</view>
+          <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>
           <scroll-view class="scroll-view" wx:if='{{placeOfReceiptList.length}}' scroll-y>
             <view wx:for="{{placeOfReceiptList}}" wx:key="index" class="item" bindtap='choosePlaceOfReceipt' data-index="{{index}}">
-              <view class="polname">{{item.ActualName}}</view>
-              <view>{{item.PlaceType}}</view>
+              <view class="polname" style="{{item.PlaceType ? 'width: 340rpx;' : 'width: 100%;'}}">{{item.ActualName}}</view>
+              <view class="placeType" wx:if="{{item.PlaceType}}">{{format.localeUpperCase(item.PlaceType)}}</view>
             </view>
           </scroll-view>
           <view class="scroll-view" wx:if="{{showPoR}}">
@@ -33,10 +34,10 @@
       <view class="addBtn" catchtap="addPlaceOfReceipt" wx:if="{{!showPlaceOfReceipt}}">+ {{languageContent.addPlaceOfOrigin}}</view>
       <view class="searchList">
         <view class="searchTitle">{{languageContent.protOfLoading}}</view>
-        <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
+        <view class="codeInputs {{showRemind1 || showRemind2 ? 'noRequestBorder' : ''}}">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
           <input value="{{portOfLoadingLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
-          <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
+          <view class="deleteIcon" wx:if="{{showDelete2}}" catchtap="deleteValue" data-type="2">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>
           <view class="noRequest" wx:if="{{showRemind1}}">
@@ -75,7 +76,7 @@
         <view class="codeInputs {{showRemind3 || showRemind4 ? 'noRequestBorder' : ''}}">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
           <input value="{{portOfDischargeLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" bindinput="changepod" />
-          <view class="deleteIcon" wx:if="{{showDelete2}}" catchtap="deleteValue" data-type="2">
+          <view class="deleteIcon" wx:if="{{showDelete3}}" catchtap="deleteValue" data-type="3">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>
           <view class="noRequest" wx:if="{{showRemind3}}">
@@ -100,14 +101,15 @@
         <view class="searchTitle">{{languageContent.placeOfDelivery}}</view>
         <view class="codeInputs">
           <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-          <input value="{{finalPlaceOfDeliveryLabel}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfDelivery" />
-          <view class="deleteIcon" wx:if="{{showDelete5}}" catchtap="deleteValue" data-type="5">
+          <input value="{{finalPlaceOfDeliveryLabel}}"  style="{{deliveryHaulage ? 'width: 290rpx' : ''}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfDelivery" />
+          <view class="placeType" wx:if="{{deliveryHaulage}}">{{format.localeUpperCase(deliveryHaulage)}}</view>
+          <view class="deleteIcon" wx:if="{{showDelete4}}" catchtap="deleteValue" data-type="4">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>
           <scroll-view class="scroll-view" wx:if='{{placeOfDeliveryList.length}}' scroll-y>
             <view wx:for="{{placeOfDeliveryList}}" wx:key="index" class="item" bindtap='choosePlaceOfDelivery' data-index="{{index}}">
-              <view class="polname">{{item.ActualName}}</view>
-              <view>{{item.PlaceType}}</view>
+              <view class="polname" style="{{item.PlaceType ? 'width: 340rpx;' : 'width: 100%;'}}">{{item.ActualName}}</view>
+              <view class="placeType" wx:if="{{item.PlaceType}}">{{format.localeUpperCase(item.PlaceType)}}</view>
             </view>
           </scroll-view>
           <view class="scroll-view" wx:if="{{showPoDe}}">
@@ -119,19 +121,32 @@
           <image class="shipLocation" src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
         </view>
       </view>
-      <view class="addBtn" catchtap="addPlaceOfDelivery" wx:if="{{!showPlaceOfDelivery}}">+ {{languageContent.addPlaceOfDelivery}}</view>
+      <view class="addBtn" style="margin-top: 40rpx;" catchtap="addPlaceOfDelivery" wx:if="{{!showPlaceOfDelivery}}">+ {{languageContent.addPlaceOfDelivery}}</view>
       <view class="searchList">
-        <view class="searchTitle">{{languageContent.departure}}</view>
+        <view class="searchTitle">{{languageContent.searchOn}}</view>
+        <view class="selectContainer" catchtap="openPopup" data-type="1">
+          <view style="{{searchOn ? 'color: #071E5D;' : ''}}">{{searchOn ? searchOnLabel : verifyInfo.select}}</view>
+          <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+        </view>
+      </view>
+      <view class="searchList">
+        <view class="searchTitle">{{languageContent.date}}</view>
         <view class="selectContainer" catchtap="openPopup" data-type="2">
           <view style="{{simulationDate ? 'color: #071E5D;' : ''}}">{{simulationDate ? (language === 'zh' ? format.formatCnDateLocal(simulationDate, true, true) : format.formatEnDateLocal(simulationDate, '-', '', true, true)) : verifyInfo.select}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
       </view>
       <view class="searchList">
-        <view class="searchTitle">{{languageContent.equipmentType}}</view>
-        <view class="selectContainer" catchtap="openPopup" data-type="1">
-          <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentType ? languageContent[equipmentType] : verifyInfo.select}}</view>
-          <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+        <view class="searchTitle">{{languageContent.reference}}</view>
+        <view class="codeInputs {{showRemind5 ? 'noRequestBorder' : ''}}">
+          <input style="width: 420rpx;" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+          <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+            <image src="/assets/img/search/close@2x.png"></image>
+          </view>
+          <view class="noRequest" wx:if="{{showRemind5}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
         </view>
       </view>
       <view class="btn" style="margin-top: 40rpx;">
@@ -140,7 +155,7 @@
       </view>
     </view>
 
-    <custom-picker columns="{{columns}}" valueKey="{{valueKey}}" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
+    <custom-picker columns="{{searchList}}" valueKey="method" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
 
     <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
   </view>

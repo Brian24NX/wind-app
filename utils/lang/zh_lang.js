@@ -565,11 +565,11 @@ var Languague = {
       back: '上一步',
       next: '下一步'
     },
-    // 我的报价
-    myContract: {
-      title: '我的合同',
-      getASchedule1: "我的",
-      getASchedule2: '合同',
+    // 订舱
+    booking: {
+      title: 'Click & Book',
+      getASchedule1: "Click ",
+      getASchedule2: '& Book',
       placeOfOrigin: "收货地",
       addPlaceOfOrigin: '添加收货地',
       //起运港
@@ -580,12 +580,10 @@ var Languague = {
       addPlaceOfDelivery: '添加目的地',
       //港口名称/代码
       name: "名称/代码",
+      searchOn: '搜索',
       //离港时间
-      departure: "离港时间",
-      equipmentType: '箱型',
-      ST: '干货集装箱',
-      RF: '冻柜',
-      SP: '特殊货柜',
+      date: "日期",
+      reference: '合约号',
       //查询
       search: "查询",
       reset: '重置'

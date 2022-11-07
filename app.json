@@ -67,7 +67,7 @@
     {
       "root": "packageBooking",
       "pages": [
-        "pages/Contract/Search/index",
+        "pages/Search/index",
         "pages/Contract/List/index",
         "pages/Contract/Detail/index"
       ]
