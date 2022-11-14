@@ -1,0 +1,271 @@
+/* packageBooking/pages/List/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.searchResultTopContainer {
+  background-color: #F0F1F5;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 30rpx 0;
+}
+
+.searchResultTopContainer .resultCardTops {
+  width: 690rpx;
+  margin: 0 auto;
+  background: url(https://wind.cma-cgm.com/images/instantQuote.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 30rpx;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists {
+  padding-left: 50rpx;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep {
+  padding-bottom: 10rpx;
+  position: relative;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep:nth-last-of-type(1) {
+  padding-bottom: 0;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .leftLines {
+  position: absolute;
+  left: -50rpx;
+  height: 100%;
+  top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24rpx;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .leftLines image {
+  width: 24rpx;
+  height: 30rpx;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .leftLines .leftLineDto {
+  background-color: #E20202;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .leftLines .leftLine {
+  width: 0;
+  height: calc(100% - 16rpx);
+  border-left: 1rpx solid #9AA6C4;
+}
+
+.searchResultTopContainer .resultCardTops .stepLists .oneStep .stepContent {
+  font-size: 52rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.resultContainers {
+  width: 100%;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.oneResult {
+  padding: 40rpx 24rpx;
+  background-color: #ffffff;
+  margin-bottom: 30rpx;
+}
+
+.oneResult .resultTop {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #F4F4F4;
+  padding: 0 0 20rpx 10rpx;
+}
+
+.oneResult .resultTop .tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400rpx;
+}
+
+.oneResult .resultTop .tagContainer .oneTag {
+  padding: 0 20rpx;
+  background-color: #E6EAEF;
+  border-radius: 26rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+  margin-right: 20rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+}
+
+.oneResult .resultTop .days {
+  font-size: 40rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #E20202;
+  padding-right: 30rpx;
+}
+
+.portTimeContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22rpx 40rpx 22rpx 10rpx;
+  border-bottom: 1rpx solid #F4F4F4;
+}
+
+.portTimeContainer .portTimes {
+  color: #04246A;
+  font-size: 24rpx;
+}
+
+.portTimeContainer .portTimes .portTime {
+  font-size: 40rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.cutTimeContainers {
+  padding: 30rpx 6rpx;
+  border-bottom: 1rpx solid #F4F4F4;
+}
+
+.cutTimeContainers .cutTimeContainer {
+  background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
+  padding: 26rpx 34rpx;
+}
+
+.cutTimeContainers .cutTimeContainer .oneCutTime {
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  font-weight: 500;
+  font-size: 24rpx;
+  color: #6B7790;
+}
+
+.cutTimeContainers .cutTimeContainer .oneCutTime view:nth-last-of-type(1) {
+  color: #071E5D;
+}
+
+.lineContainers {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #F4F4F4;
+}
+
+.lineContainers .lineContainer {
+  padding-left: 82rpx;
+  position: relative;
+}
+
+.lineLeftIcon {
+  position: absolute;
+  top: 0;
+  left: 6rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 0;
+}
+
+.lineLeftIcon .locationDto {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: #E20202;
+}
+
+.lineLeftIcon .shipIcon {
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.lineLeftIcon .locationLine {
+  width: 1rpx;
+  height: 32%;
+  background-color: #9AA6C4;
+}
+
+.lineLeftIcon .locationIcon {
+  width: 24rpx;
+  height: 30rpx;
+}
+
+.lineTimes {
+  font-size: 28rpx;
+  color: #04246A;
+}
+
+.lineTimes .bold {
+  font-weight: bold;
+}
+
+.lineTimes .portLocation {
+  display: flex;
+  align-items: center;
+}
+
+.lineTimes .portTag {
+  height: 32rpx;
+  line-height: 32rpx;
+  padding: 0 12rpx;
+  background-color: #E6EAEF;
+  border-radius: 16rpx;
+  font-weight: 600;
+  color: #04246A;
+  font-size: 20rpx;
+  margin-left: 30rpx;
+}
+
+.vesselContainer {
+  font-size: 20rpx;
+  color: #6B7790;
+  padding: 20rpx 0 20rpx 28rpx;
+  font-weight: 500;
+}
+
+.vesselContainer .oneVessel {
+  margin-bottom: 10rpx;
+}
+
+.vesselContainer .oneVessel:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.vesselContainer .oneVessel text:nth-last-of-type(1) {
+  margin-left: 30rpx;
+  color: #071E5D;
+}
+
+.resultBottoms {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 30rpx;
+  padding-right: 6rpx;
+}
+
+.resultBottoms .oneButtom {
+  height: 76rpx;
+  background-color: #E10202;
+  padding: 0 32rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  line-height: 76rpx;
+}

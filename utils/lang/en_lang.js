@@ -585,6 +585,44 @@ var Languague = {
       search: "Search",
       reset: 'Reset'
     },
+    // 订舱详情
+    bookingDetail: {
+      title: 'Booking',
+      bookingDetail: 'Booking Detail',
+      routeSelected: 'Route Selected',
+      cargoDetail: 'Cargo Detail',
+      commodity: 'Commodity',
+      contaier: 'Contaier',
+      vas: 'Additional Services',
+      parties: 'Parties',
+      partyName: 'Party Name',
+      role: 'Role',
+      payment: 'Payment',
+      freightPayment: 'Freight Payment',
+      freightPayer: 'Freight Payer',
+      paymentLocation: 'Payment Location',
+      bookingOffice: 'Preferred booking office',
+      freeComments: 'Free comments to the booking agent',
+      freeCommentsPlaceHolder: 'Example Release Order Date, Customer Broker ...',
+      save: 'Place my Booking'
+    },
+    modifyParty: {
+      address: 'Address',
+      partyName: 'Party Name',
+      additionalAddress: 'Additional Address Details',
+      city: 'City',
+      zipCode: 'Zip Code',
+      country: 'Country / Region',
+      state: 'State',
+      contactDetail: 'Contact Details',
+      name: 'Name',
+      email: 'Email',
+      phoneNumber: 'Phone number',
+      fax: 'Fax',
+      localLegalNumber: 'Local legal identifier number',
+      reference: 'Reference',
+      save: 'Save'
+    },
     popupBtn: {
       confirm: 'Confirm',
       cancel: 'Cancel'

@@ -106,7 +106,3 @@
   margin: 45rpx auto;
   border-radius: 0;
 }
-
-.emailContainers .emailContainer .hoverClass {
-  opacity: 0.9;
-}

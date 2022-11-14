@@ -1,0 +1,128 @@
+<!--packageBooking/pages/ModifyParty/index.wxml-->
+<view class="modifyContainer">
+  <view class="modifyTitles">
+    <view class="modifyTitleLine"></view>
+    <view>{{languageContent.address}}</view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.partyName}}</text>
+      <text class="red">*</text>
+    </view>
+    <view class="inputContainers">
+      <view>CMA CGM (CHINA) SHIPPING CO., LTD</view>
+    </view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.address}}</text>
+    </view>
+    <view class="inputContainers">
+      <view>27/F PORTMAN TOWER</view>
+    </view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.additionalAddress}}</text>
+    </view>
+    <view class="inputContainers">
+      <view>48 CAIHONG ROAD (N)</view>
+    </view>
+  </view>
+  <view class="twoModify">
+    <view class="modify">
+      <view class="title">
+        <text>{{languageContent.city}}</text>
+      </view>
+      <view class="inputContainers">
+        <view>NINGBO</view>
+      </view>
+    </view>
+    <view class="modify">
+      <view class="title">
+        <text>{{languageContent.zipCode}}</text>
+      </view>
+      <view class="inputContainers">
+        <view>315040</view>
+      </view>
+    </view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.country}}</text>
+    </view>
+    <view class="inputContainers">
+      <view>CHINA</view>
+    </view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.state}}</text>
+    </view>
+    <view class="inputContainers">
+      <view>STATE</view>
+    </view>
+  </view>
+</view>
+
+<view class="modifyContainer">
+  <view class="modifyTitles">
+    <view class="modifyTitleLine"></view>
+    <view>{{languageContent.contactDetail}}</view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.name}}</text>
+    </view>
+    <view class="inputs">
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+      <image src="/assets/img/search/close@2x.png"/>
+    </view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.email}}</text>
+    </view>
+    <view class="inputs">
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+      <image src="/assets/img/search/close@2x.png"/>
+    </view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.phoneNumber}}</text>
+    </view>
+    <view class="inputs">
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+      <image src="/assets/img/search/close@2x.png"/>
+    </view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.fax}}</text>
+    </view>
+    <view class="inputs">
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+      <image src="/assets/img/search/close@2x.png"/>
+    </view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.localLegalNumber}}</text>
+    </view>
+    <view class="inputs">
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+      <image src="/assets/img/search/close@2x.png"/>
+    </view>
+  </view>
+  <view class="oneModify">
+    <view class="title">
+      <text>{{languageContent.reference}}</text>
+    </view>
+    <view class="inputs">
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+      <image src="/assets/img/search/close@2x.png"/>
+    </view>
+  </view>
+</view>
+<button class="sureBtn" hover-class="hoverClass">{{languageContent.save}}</button>

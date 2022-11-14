@@ -1,0 +1,172 @@
+<!--packageBooking/pages/Detail/index.wxml-->
+<view class="oneDetails">
+  <view class="detailTops">
+    <view class="detailTopLeft">
+      <image src="/assets/img/booking/ship.png" mode="aspectFit"/>
+      <view>{{languageContent.routeSelected}}</view>
+    </view>
+    <image class="editIcon" src="/assets/img/booking/edit.png"/>
+  </view>
+  <view class="routeContainer">
+    <view class="stepLists">
+      <view class="oneStep">
+        <view class="leftLines">
+          <view class="leftLineDto"></view>
+          <view class="leftLine"></view>
+        </view>
+        <view class="stepContent">SHANGHAI, CN</view>
+      </view>
+      <view class="oneStep">
+        <view class="leftLines" style="top: 20rpx;">
+          <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+        </view>
+        <view class="stepContent">TOKYO, JP</view>
+      </view>
+    </view>
+    <view class="portTimeContainer">
+      <view class="portTimes">
+        <view>PORT</view>
+        <view class="portTime">19-NOV-22</view>
+      </view>
+      <van-icon name="arrow" color="#04246A" />
+      <view class="portTimes">
+        <view>PORT</view>
+        <view class="portTime">19-NOV-22</view>
+      </view>
+    </view>
+    <view class="cutTimeContainers">
+      <view class="cutTimeContainer">
+        <view class="oneCutTime">
+          <view>Special BKG Cut-off</view>
+          <view>15-NOV-22, 15:00</view>
+        </view>
+        <view class="oneCutTime">
+          <view>Standard BKG Cut-off</view>
+          <view style="color: #2B74FF;">17-NOV-22, 15:00</view>
+        </view>
+        <view class="oneCutTime">
+          <view>Port Cut-off</view>
+          <view>18-NOV-22, 15:00</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="oneDetails">
+  <view class="detailTops">
+    <view class="detailTopLeft">
+      <image src="/assets/img/booking/cargo.png" mode="aspectFit"/>
+      <view>{{languageContent.cargoDetail}}</view>
+    </view>
+    <image class="editIcon" src="/assets/img/booking/edit.png"/>
+  </view>
+  <view class="oneCargo" wx:for="{{2}}" wx:key="index">
+    <view class="cargoTitle">{{languageContent.commodity}}</view>
+    <view class="cargoValue">Twine nesoi,cordage,rope and cables of synthetic synthetic fibers. 0562345</view>
+    <view class="cargoTitle">{{languageContent.contaier}}</view>
+    <view class="cargoValue">132x20’Dry Standard.
+Total net weight ( sum of all containers weights)
+Hazardous information ( 1 UN numbers)</view>
+  </view>
+</view>
+
+<view class="oneDetails">
+  <view class="detailTops">
+    <view class="detailTopLeft">
+      <image src="/assets/img/booking/parties.png" mode="aspectFit"/>
+      <view>{{languageContent.parties}}</view>
+    </view>
+    <image class="editIcon" src="/assets/img/booking/edit.png"/>
+  </view>
+  <view class="oneCargo" wx:for="{{2}}" wx:key="index">
+    <view class="cargoTitle">{{languageContent.partyName}}</view>
+    <view class="cargoValue">Twine nesoi,cordage,rope and cables of synthetic synthetic fibers. 0562345</view>
+    <view class="cargoTitle">{{languageContent.role}}</view>
+    <view class="cargoValue">Shipper、Forwarder</view>
+  </view>
+</view>
+
+<view class="oneDetails">
+  <view class="detailTops">
+    <view class="detailTopLeft">
+      <image src="/assets/img/booking/payment.png" mode="aspectFit"/>
+      <view>{{languageContent.payment}}</view>
+    </view>
+  </view>
+  <view class="paymentTitle">{{languageContent.freightPayment}}</view>
+  <view class="paymentType">
+    <view class="onePaymentType">
+      <view class="paymentCheck">
+        <view class="checked"></view>
+      </view>
+      <view>Prepaid</view>
+    </view>
+    <view class="onePaymentType">
+      <view class="paymentCheck">
+        <view class="checked"></view>
+      </view>
+      <view>Collect</view>
+    </view>
+  </view>
+  <view class="paymentTitle mar"><text>{{languageContent.paymentLocation}}<text class="red">*</text></text></view>
+  <view class="inputContainers">
+    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+  </view>
+  <view class="paymentTitle mar">
+    <text>{{languageContent.freightPayer}}<text class="red">*</text></text>
+    <image src="/assets/img/booking/modify.png"/>
+  </view>
+  <view class="inputContainers">
+    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+  </view>
+</view>
+
+<view class="oneDetails">
+  <view class="detailTops">
+    <view class="detailTopLeft">
+      <image src="/assets/img/booking/vas.png" mode="aspectFit"/>
+      <view>{{languageContent.vas}}</view>
+    </view>
+    <image class="editIcon" src="/assets/img/booking/edit.png"/>
+  </view>
+  <view class="additionContainer">
+    <view class="oneAddition" wx:for="{{4}}" wx:key="index">
+      <view class="vasTitle">SERENITY cargo value guarantee</view>
+      <view class="vasBottom">
+        <view class="vasBottomLeft">Enjoy a full and quick compensation in case your cargo is damaged</view>
+        <view class="vasBottomRight">
+          <view class="totalAmount">100</view>
+          <view class="amountDesc">
+            <view>EUR in total</view>
+            <view>/ 4 Containers</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="oneDetails">
+  <view class="detailTops">
+    <view class="detailTopLeft">
+      <view>{{languageContent.bookingOffice}}</view>
+    </view>
+  </view>
+  <view class="inputContainers">
+    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+  </view>
+</view>
+
+<view class="oneDetails">
+  <view class="detailTops">
+    <view class="detailTopLeft">
+      <view>{{languageContent.freeComments}}</view>
+    </view>
+  </view>
+  <view class="textareaContainers">
+    <textarea placeholder="{{languageContent.freeCommentsPlaceHolder}}" placeholder-class="placeholder"></textarea>
+  </view>
+</view>
+
+<button class="sureBtn" hover-class="hoverClass">{{languageContent.save}}</button>

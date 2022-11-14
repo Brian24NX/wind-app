@@ -1,0 +1,102 @@
+<!--packageBooking/pages/List/index.wxml-->
+<view class="searchResultTopContainer">
+  <view class="resultCardTops">
+    <view class="stepLists">
+      <view class="oneStep">
+        <view class="leftLines">
+          <view class="leftLineDto"></view>
+          <view class="leftLine"></view>
+        </view>
+        <view class="stepContent">{{fromLabel}}</view>
+      </view>
+      <view class="oneStep">
+        <view class="leftLines" style="top: 20rpx;">
+          <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+        </view>
+        <view class="stepContent">{{toLabel}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="resultContainers">
+  <view class="oneResult" wx:for="{{10}}" wx:key="index">
+    <view class="resultTop">
+      <view class="tagContainer">
+        <view class="oneTag">DIRECT</view>
+        <view class="oneTag">Late Booking</view>
+      </view>
+      <view class="days">4 Days</view>
+    </view>
+    <view class="portTimeContainer">
+      <view class="portTimes">
+        <view>PORT</view>
+        <view class="portTime">19-NOV-22</view>
+      </view>
+      <van-icon name="arrow" color="#04246A" />
+      <view class="portTimes">
+        <view>PORT</view>
+        <view class="portTime">19-NOV-22</view>
+      </view>
+    </view>
+    <view class="cutTimeContainers">
+      <view class="cutTimeContainer">
+        <view class="oneCutTime">
+          <view>Special BKG Cut-off</view>
+          <view>15-NOV-22, 15:00</view>
+        </view>
+        <view class="oneCutTime">
+          <view>Special BKG Cut-off</view>
+          <view style="color: #2B74FF;">17-NOV-22, 15:00</view>
+        </view>
+        <view class="oneCutTime">
+          <view>Special BKG Cut-off</view>
+          <view>18-NOV-22, 15:00</view>
+        </view>
+      </view>
+    </view>
+    <view class="lineContainers">
+      <view class="lineContainer">
+        <view class="lineLeftIcon">
+          <view class="locationDto"></view>
+          <view class="locationLine"></view>
+          <image class="shipIcon" src="/assets/img/seniorsearch/ship.png"/>
+          <view class="locationLine"></view>
+          <image class="locationIcon" src="/assets/img/seniorsearch/location_white.png"/>
+        </view>
+        <view class="lineTimes">
+          <view>Thursday, 19-NOV-2022</view>
+          <view class="portLocation">
+            <text class="bold">SHANGHAI, CN</text>
+            <text class="portTag">POL</text>
+          </view>
+          <view class="bold">Wai Gao Terminal Phase 2</view>
+        </view>
+        <view class="vesselContainer">
+          <view class="oneVessel">
+            <text>Vessel</text>
+            <text>CMA CGM SCALA</text>
+          </view>
+          <view class="oneVessel">
+            <text>Voyage Ref</text>
+            <text>OBYCPSINC</text>
+          </view>
+          <view class="oneVessel">
+            <text>Service</text>
+            <text>KCM2 Service</text>
+          </view>
+        </view>
+        <view class="lineTimes">
+          <view>Thursday, 28-NOV-2022</view>
+          <view class="portLocation">
+            <text class="bold">SINGAPORE, SG</text>
+            <text class="portTag">POD</text>
+          </view>
+          <view class="bold">Psa Terminal</view>
+        </view>
+      </view>
+    </view>
+    <view class="resultBottoms">
+      <view class="oneButtom">Select</view>
+    </view>
+  </view>
+</view>

@@ -142,10 +142,6 @@ page {
   border-radius: 0;
 }
 
-.homeContainer .searchContainers .searchContents .hoverClass {
-  opacity: 0.9;
-}
-
 .homeContainer .searchContainers .searchContents .searchBtn2 {
   margin-top: 20rpx;
   color: #071E5D;

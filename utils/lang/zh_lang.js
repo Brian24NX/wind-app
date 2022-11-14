@@ -567,7 +567,7 @@ var Languague = {
     },
     // 订舱
     booking: {
-      title: 'Click & Book',
+      title: '订舱',
       getASchedule1: "Click ",
       getASchedule2: '& Book',
       placeOfOrigin: "收货地",
@@ -587,6 +587,44 @@ var Languague = {
       //查询
       search: "查询",
       reset: '重置'
+    },
+    // 订舱详情
+    bookingDetail: {
+      title: '订舱',
+      bookingDetail: '订舱详情',
+      routeSelected: '已选好的线路',
+      cargoDetail: '货物详情',
+      commodity: '商品',
+      contaier: '柜子',
+      vas: '增值服务',
+      parties: '相关方',
+      partyName: '相关方名称',
+      role: '角色',
+      payment: '付款',
+      freightPayment: '运费支付方式',
+      paymentLocation: '付款地',
+      freightPayer: '费用付款方',
+      bookingOffice: '首选订舱办事处',
+      freeComments: '备注',
+      freeCommentsPlaceHolder: '附加备注（到付的本地费用付款方，首选仓库等。）。',
+      save: '制作我的订舱'
+    },
+    modifyParty: {
+      address: '地址',
+      partyName: '相关方名称',
+      additionalAddress: '其他地址详情',
+      city: '城市',
+      zipCode: '邮政编码',
+      country: '国家/地区',
+      state: '说明',
+      contactDetail: '联系详情',
+      name: '名称',
+      email: '邮件',
+      phoneNumber: '电话号码',
+      fax: '传真',
+      localLegalNumber: '本地法律编号',
+      reference: '参考号',
+      save: '保存'
     },
     popupBtn: {
       confirm: '确定',

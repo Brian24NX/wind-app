@@ -50,7 +50,3 @@
   justify-content: center;
   border-radius: 0;
 }
-
-.hoverClass {
-  opacity: 0.9;
-}

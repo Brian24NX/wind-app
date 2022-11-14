@@ -141,10 +141,6 @@
   margin-top: 30rpx;
 }
 
-.placeholder {
-  color: #7087A1;
-  font-size: 24rpx;
-}
 
 .inputContainer .inputs {
   width: 520rpx;
@@ -300,4 +296,8 @@
 .oneTemplate .preview image {
   width: 40rpx;
   height: 40rpx;
+}
+
+.hoverClass {
+  opacity: 0.9;
 }

@@ -69,7 +69,10 @@
       "pages": [
         "pages/Search/index",
         "pages/Contract/List/index",
-        "pages/Contract/Detail/index"
+        "pages/Contract/Detail/index",
+        "pages/List/index",
+        "pages/Detail/index",
+        "pages/ModifyParty/index"
       ]
     }
   ],
