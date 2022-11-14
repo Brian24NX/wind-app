@@ -507,8 +507,8 @@ Page({
   },
 
   getQuotationList() {
-    bookingQuotationList().then(res => {
-      console.log(res)
+    wx.navigateTo({
+      url: '/packageBooking/pages/List/index',
     })
   },
 

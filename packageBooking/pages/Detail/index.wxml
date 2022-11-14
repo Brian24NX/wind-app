@@ -115,7 +115,7 @@ Hazardous information ( 1 UN numbers)</view>
   </view>
   <view class="paymentTitle mar">
     <text>{{languageContent.freightPayer}}<text class="red">*</text></text>
-    <image src="/assets/img/booking/modify.png"/>
+    <image src="/assets/img/booking/modify.png" catchtap="toModifyParty"/>
   </view>
   <view class="inputContainers">
     <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>

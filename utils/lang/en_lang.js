@@ -623,6 +623,10 @@ var Languague = {
       reference: 'Reference',
       save: 'Save'
     },
+    bookingResult: {
+      title: 'Booking Result',
+      processing: 'PROCESSING'
+    },
     popupBtn: {
       confirm: 'Confirm',
       cancel: 'Cancel'

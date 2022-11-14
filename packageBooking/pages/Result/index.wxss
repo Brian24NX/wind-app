@@ -1,0 +1,27 @@
+/* packageBooking/pages/Result/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.bookingResultTop {
+  padding: 50rpx 140rpx 80rpx;
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+  text-align: center;
+  background-color: #F4F8FF;
+}
+
+.bookingResultTop image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 50rpx;
+}
+
+.resultContainer {
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 36rpx 48rpx;
+}

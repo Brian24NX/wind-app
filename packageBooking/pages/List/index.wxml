@@ -96,7 +96,7 @@
       </view>
     </view>
     <view class="resultBottoms">
-      <view class="oneButtom">Select</view>
+      <view class="oneButtom" catchtap="selectLine">Select</view>
     </view>
   </view>
 </view>

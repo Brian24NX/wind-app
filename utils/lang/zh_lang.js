@@ -626,6 +626,10 @@ var Languague = {
       reference: '参考号',
       save: '保存'
     },
+    bookingResult: {
+      title: '订舱结果',
+      processing: 'PROCESSING'
+    },
     popupBtn: {
       confirm: '确定',
       cancel: '取消'

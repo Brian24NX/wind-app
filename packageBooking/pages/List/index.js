@@ -36,4 +36,10 @@ Page({
   onShow() {
 
   },
+
+  selectLine() {
+    wx.navigateTo({
+      url: '/packageBooking/pages/Detail/index',
+    })
+  }
 })

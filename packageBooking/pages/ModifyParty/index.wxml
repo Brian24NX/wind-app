@@ -125,4 +125,4 @@
     </view>
   </view>
 </view>
-<button class="sureBtn" hover-class="hoverClass">{{languageContent.save}}</button>
+<button class="sureBtn" catchtap="save" hover-class="hoverClass">{{languageContent.save}}</button>
