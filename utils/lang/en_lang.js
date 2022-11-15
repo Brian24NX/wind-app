@@ -625,7 +625,9 @@ var Languague = {
     },
     bookingResult: {
       title: 'Booking Result',
-      processing: 'PROCESSING'
+      processing: 'PROCESSING',
+      export: 'Export PDF',
+      toEmail: 'Send to Email',
     },
     popupBtn: {
       confirm: 'Confirm',

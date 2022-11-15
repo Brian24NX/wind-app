@@ -628,7 +628,9 @@ var Languague = {
     },
     bookingResult: {
       title: '订舱结果',
-      processing: 'PROCESSING'
+      processing: 'PROCESSING',
+      export: '导出PDF',
+      toEmail: '以附件形式发送至邮箱'
     },
     popupBtn: {
       confirm: '确定',

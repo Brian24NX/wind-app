@@ -19,9 +19,49 @@ page {
   margin-bottom: 50rpx;
 }
 
-.resultContainer {
+.resultContainers {
   width: 690rpx;
   margin: 0 auto;
   background-color: #ffffff;
-  padding: 36rpx 48rpx;
+  padding: 0 48rpx 36rpx;
+}
+
+.resultContainers .resultContainer {
+  border-bottom: 1rpx solid #EEEEEE;
+  padding: 30rpx 0;
+}
+
+.resultContainers .resultContainer:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
+.resultContainer .status {
+  font-size: 28rpx;
+  font-family: ArialMT;
+  color: #6B7790;
+}
+
+.resultContainer .bookingId {
+  font-size: 48rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+  margin: 10rpx 0;
+}
+
+.exportBtn {
+  background-color: #2D75FF;
+  border-radius: 0;
+  border: none;
+  font-weight: 500;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  margin-top: 30rpx;
+}
+
+.sendToEmail {
+  padding: 20rpx 0;
+  text-align: center;
+  color: #0173E2;
+  font-size: 28rpx;
 }

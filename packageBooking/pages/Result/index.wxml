@@ -4,6 +4,18 @@
   <view>Your request is received but not confirmed yet. It will be processed by your local agent and you will be notified once we have confirmed your booking.</view>
 </view>
 
-<view class="resultContainer">
-  <view class=""></view>
+<view class="resultContainers">
+  <view class="resultContainer">
+    <view class="status">PROCESSING</view>
+    <view class="bookingId">WBMOD1234567</view>
+    <view class="status">Submitted 11/3/2022 7:54:38 AM (UTC)</view>
+  </view>
+  <view class="resultContainer">
+    <view class="status">PROCESSING</view>
+    <view class="bookingId">WBMOD1234567</view>
+    <view class="status">Submitted 11/3/2022 7:54:38 AM (UTC)</view>
+  </view>
+  <button class="exportBtn">{{languageContent.export}}</button>
+
+  <view class="sendToEmail">{{languageContent.toEmail}}</view>
 </view>
