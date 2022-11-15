@@ -111,7 +111,9 @@ Page({
     partnerList: [],
     checkPartnerList: [],
     partnerCode: [],
-    showPartner: false
+    showPartner: false,
+    needLogin: null,
+    hasPermission: null
   },
 
   /**
@@ -134,11 +136,15 @@ Page({
         selected: 2
       })
     }
-    // this.checkAccessToken(() => {
+    this.setData({
+      partnerList: wx.getStorageSync('partnerList') || [],
+      needLogin: !utils.checkAccessToken()
+    })
+    if (this.data.needLogin === false) {
       this.setData({
-        partnerList: wx.getStorageSync('partnerList') || []
+        hasPermission: utils.checkPermission('requestQuo')
       })
-    // })
+    }
   },
 
   onShareAppMessage: function () {},
@@ -169,6 +175,21 @@ Page({
     this.setData({
       showPlaceOfDelivery: true
     })
+  },
+
+  toLogin() {
+    if (wx.getStorageSync('allowLegalTerms')) {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+    } else {
+      this.setData({
+        showLegal: true
+      })
+      this.getTabBar().setData({
+        show: false
+      })
+    }
   },
 
   checkAccessToken(callback) {

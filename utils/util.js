@@ -509,6 +509,8 @@ function checkAccessToken() {
     wx.removeStorageSync('userInfo')
     wx.removeStorageSync('ccgId')
     wx.removeStorageSync('partnerCode')
+    wx.removeStorageSync('shipCompanyList')
+    wx.removeStorageSync('rights')
     wx.removeStorageSync('partnerList')
     return false
   } else {
@@ -518,6 +520,9 @@ function checkAccessToken() {
       wx.removeStorageSync('userInfo')
       wx.removeStorageSync('ccgId')
       wx.removeStorageSync('partnerCode')
+      wx.removeStorageSync('shipCompanyList')
+      wx.removeStorageSync('rights')
+      wx.removeStorageSync('partnerList')
       return false
     } else {
       wx.setStorageSync('expires_time', this.setExpiresTime(15 * 60 - 1))
@@ -539,6 +544,14 @@ function setExpiresTime(expiresIn) {
   return Y + '/' + M + '/' + D + ' ' + h + ':' + m + ':' + s
 }
 
+// 判断权限
+function checkPermission(permission) {
+  if (!permission) return false
+  const rights = wx.getStorageSync('rights')
+  return rights.indexOf(permission) > -1 ? true : false
+
+}
+
 module.exports = {
   formatTime,
   skipNulls,
@@ -554,5 +567,6 @@ module.exports = {
   checkAccessToken,
   setExpiresTime,
   formatDocumentStatus,
-  formatDocumentCategory
+  formatDocumentCategory,
+  checkPermission
 }

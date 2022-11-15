@@ -3,7 +3,9 @@
   "usingComponents": {
     "custom-picker": "/components/customPicker/index",
     "custom-time": "/components/customTime/index",
-    "legal-terms-remind": "/components/legalTermsRemind/index"
+    "legal-terms-remind": "/components/legalTermsRemind/index",
+    "need-login": "/components/needLogin/index",
+    "no-permission": "/components/noPermission/index"
   },
   "navigationStyle": "custom"
 }

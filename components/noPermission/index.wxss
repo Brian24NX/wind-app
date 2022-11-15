@@ -1,0 +1,22 @@
+/* components/noPermission/index.wxss */
+.loginContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginContainer image {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 40rpx;
+}
+
+.loginRemind {
+  font-size: 36rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
