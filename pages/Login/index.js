@@ -22,7 +22,9 @@ Page({
       wx.setStorageSync('expires_time', utils.setExpiresTime(data.expires_in))
       if (data.data && data.data.length) {
         let userInfo = data.data[0].customer
-        let partnerList = data.partnerList
+        const partnerList = data.partnerList
+        const profileRights = data.data[0].profilerights
+        console.log(profileRights)
         if (userInfo) {
           wx.setStorageSync('ccgId', userInfo.ccgId)
           userInfo.lastName = userInfo.lastName ? userInfo.lastName.toLocaleUpperCase() : ''
@@ -30,6 +32,19 @@ Page({
             userInfo.avatar = userInfo.firstName.substr(0, 1) + userInfo.lastName.substr(0, 1)
           }
           wx.setStorageSync('userInfo', userInfo)
+        }
+        if (profileRights && profileRights.length) {
+          const shipCompanyList = profileRights.map(item => (item.shipcomp))
+          const rights = []
+          profileRights.forEach(i => {
+            i.rights.forEach(r => {
+              if (rights.indexOf(r.code) === -1) {
+                rights.push(r.code)
+              }
+            })
+          })
+          wx.setStorageSync('shipCompanyList', shipCompanyList)
+          wx.setStorageSync('rights', rights)
         }
         if (partnerList && partnerList.length) {
           let partnerLists = []

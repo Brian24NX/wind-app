@@ -1,0 +1,5 @@
+<!--components/needLogin/index.wxml-->
+<view class="loginContainer">
+  <view class="loginRemind">{{languageContent.noLogin}}</view>
+  <button class="loginBtn" catchtap="toLogin">{{languageContent.toLogin}}</button>
+</view>

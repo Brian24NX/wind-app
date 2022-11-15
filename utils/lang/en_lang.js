@@ -655,7 +655,8 @@ var Languague = {
       sendSuccess: 'Email sent successfully',
       noLogin: 'Login failed or invalid. Please log in again',
       notFound: 'This file is not available, please contact your agent',
-      exit: 'exiting...',
+      toLogin: 'Login',
+      exit: 'Exiting...',
       waitData: 'The data is being prepared, please try again later'
     },
     email: {
