@@ -604,6 +604,7 @@ var Languague = {
       functionIsUnderDevelopment: "Function coming soon, stay tuned",
       chaoshi: 'Request timeout, please try later',
       accessDenied: 'Access Denied',
+      noPermission: 'Sorry, you do not have sufficient privileges to access this page',
       // 系统繁忙,请稍后重试
       systemIsBusyNow: "System is busy, please try later",
       // 暂无更多数据

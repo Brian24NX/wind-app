@@ -607,6 +607,7 @@ var Languague = {
       functionIsUnderDevelopment: "功能升级中，敬请期待",
       chaoshi: '请求超时，请稍后再试',
       accessDenied: '抱歉，您暂无此权限',
+      noPermission: '对不起，您没有足够的权限显示此页',
       // 系统繁忙,请稍后重试
       systemIsBusyNow: "系统繁忙，请稍后重试",
       // 暂无更多数据

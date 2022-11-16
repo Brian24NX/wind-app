@@ -1,5 +1,5 @@
 <!--components/noPermission/index.wxml-->
 <view class="loginContainer">
   <image src="/assets/img/401.png" mode="aspectFit"/>
-  <view class="loginRemind">{{languageContent.accessDenied}}</view>
+  <view class="loginRemind">{{languageContent.noPermission}}</view>
 </view>
