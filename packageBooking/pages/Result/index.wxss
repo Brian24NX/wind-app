@@ -1,6 +1,7 @@
 /* packageBooking/pages/Result/index.wxss */
 page {
   background-color: #F0F1F5;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .bookingResultTop {
