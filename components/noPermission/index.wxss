@@ -19,4 +19,6 @@
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #04246A;
+  text-align: center;
+  padding: 0 40rpx;
 }
