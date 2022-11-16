@@ -23,6 +23,9 @@ App({
     wx.removeStorageSync('polobject')
     wx.removeStorageSync('podobject')
     wx.removeStorageSync('details')
+    wx.removeStorageSync('ddChargeSearchKey')
+    wx.removeStorageSync('searchKey')
+    wx.removeStorageSync('chargeFinderSearchKey')
     wx.setStorageSync('setHangXian', false)
     this.globalData.version = wx.getStorageSync('language') ? wx.getStorageSync('language') : 'zh'
     wx.loadFontFace({
