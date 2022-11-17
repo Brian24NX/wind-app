@@ -31,8 +31,8 @@ var checkValidDate = function(startDate, endDate) {
   endDate = endDate.split('-').join('/')
   // valid : expired : coming
   if (getDate() - getDate(startDate) > 0 && getDate(endDate) - getDate() > 0) return 'valid'
-  if (getDate - getDate(startDate) < 0) return 'coming'
-  if (getDate - getDate(endDate) > 0) return 'expired'
+  if (getDate() - getDate(startDate) < 0) return 'coming'
+  if (getDate() - getDate(endDate) > 0) return 'expired'
 }
 
 module.exports = {

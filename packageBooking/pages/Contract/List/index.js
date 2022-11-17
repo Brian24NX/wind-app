@@ -56,55 +56,27 @@ Page({
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.qutationResult.title3
     })
-    // const pages = getCurrentPages()
-    // const currentPage = pages[pages.length - 2]
-    // const data = currentPage.data
-    // this.setData({
-    //   languageContent: languageUtil.languageVersion().lang.page.qutationResult,
-    //   language: languageUtil.languageVersion().lang.page.langue,
-    //   equipmentType: data.commonEquipmentTypeName,
-    //   partnerCode: data.partnerCode,
-    //   simulationDate: data.simulationDate,
-    //   namedAccountCode: data.namedAccountCode,
-    //   portOfLoading: data.portOfLoadingLabel,
-    //   portOfDischarge: data.portOfDischargeLabel,
-    //   fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
-    //   fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
-    //   toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
-    //   toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
-    //   commonEquipmentType: data.commonEquipmentType,
-    //   placeOfOrigin: data.placeOfOrigin,
-    //   portOfLoadingCode: data.portOfLoading,
-    //   portOfDischargeCode: data.portOfDischarge,
-    //   finalPlaceOfDelivery: data.finalPlaceOfDelivery
-    // })
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue,
-      "commonEquipmentType": "ST",
-      "currentType": 0,
-      "equipmentType": "Dry",
-      "finalPlaceOfDelivery": "",
-      "fromCode": "CN",
-      "fromLabel": "YANTIAN",
-      "isLoading": true,
-      "loggedId": "",
-      "namedAccountCode": "",
-      "partialContractList": [],
-      "partnerCode": [
-        "0005175078",
-        "0005175074",
-        "0004859072"
-      ],
-      "perfectContractList": [],
-      "placeOfOrigin": "",
-      "portOfDischarge": "LOS ANGELES, CA;US;USLAX",
-      "portOfDischargeCode": "USHOU",
-      "portOfLoading": "YANTIAN;CN;CNYTN",
-      "portOfLoadingCode": "CNSHA",
-      "simulationDate": "2022-11-17",
-      "toCode": "US",
-      "toLabel": "LOS ANGELES, CA",
+      equipmentType: data.commonEquipmentTypeName,
+      partnerCode: data.partnerCode,
+      simulationDate: data.simulationDate,
+      namedAccountCode: data.namedAccountCode,
+      portOfLoading: data.portOfLoadingLabel,
+      portOfDischarge: data.portOfDischargeLabel,
+      fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
+      fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
+      toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
+      toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
+      commonEquipmentType: data.commonEquipmentType,
+      placeOfOrigin: data.placeOfOrigin,
+      portOfLoadingCode: data.portOfLoading,
+      portOfDischargeCode: data.portOfDischarge,
+      finalPlaceOfDelivery: data.finalPlaceOfDelivery
     })
     this.getContractList()
   },
@@ -172,10 +144,15 @@ Page({
         }
       })
     })
+    const equipmentTypes = ["20ST", "40ST", "40HC", "45HC", "20RF", "40RF", "40RH", "45RH", "20NOR", "40NOR"]
     this.data.perfectContractList.forEach((item, index) => {
       setTimeout(() => {
         const usContract = (item.portOfLoading.indexOf('US') > -1 || item.portOfDischarge.indexOf('US') > -1) ? true : false
         item.usContract = usContract
+        item.equipments.sort((a, b) => {
+          return equipmentTypes.indexOf(a.code) - equipmentTypes.indexOf(b.code);
+        });
+        item.equipmentTypeLabel = item.equipments.map(i => i.code).join(' | ')
         if (!item.surchargeDetails) {
           this.getQuotationDetailFn(item)
           this.getPointData(item)
@@ -186,6 +163,10 @@ Page({
       setTimeout(() => {
         const usContract = (item.portOfLoading.indexOf('US') > -1 || item.portOfDischarge.indexOf('US') > -1) ? true : false
         item.usContract = usContract
+        item.equipments.sort((a, b) => {
+          return equipmentTypes.indexOf(a.code) - equipmentTypes.indexOf(b.code);
+        });
+        item.equipmentTypeLabel = item.equipments.map(i => i.code).join(' | ')
         if (!item.surchargeDetails) {
           this.getQuotationDetailFn(item)
           this.getPointData(item)
@@ -280,7 +261,6 @@ Page({
       if (res.data) {
         item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
         item.surchargeDetails = res.data ? res.data.surchargeDetails : null
-        item.equipmentTypeLabel = res.data.surchargeDetails.map(i => i.sizeType).join(' | ')
         // item.surchargeDetails.allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
       }
       this.setData({

@@ -8,12 +8,14 @@
   </view>
   <view class="dDTable">
     <view class="tableTitle">{{languageContent.exportFreeTime}}</view>
-    <view class="DDDetail" wx:for="{{exports}}">
-      <view class="oneDetail">{{item.tariff.tariffName}}</view>
-      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].equipmentSizeType}}</view>
-      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.noOfFreeDays}}</view>
-      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.freeDaystype}} Days</view>
-    </view>
+    <block wx:for="{{exports}}" wx:key="index">
+      <view class="DDDetail" wx:for="{{item.detentionDemurrageEquipments}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+        <view class="oneDetail">{{item.tariff.tariffName}}</view>
+        <view class="oneDetail">{{items.equipmentSizeType}}</view>
+        <view class="oneDetail">{{items.freeDays.noOfFreeDays}}</view>
+        <view class="oneDetail">{{items.freeDays.freeDaystype}} Days</view>
+      </view>
+    </block>
   </view>
   <view class="desc">
     <image src="/assets/img/instantQuote/tan@2x.png"></image>
@@ -22,12 +24,14 @@
   </view>
   <view class="dDTable">
     <view class="tableTitle">{{languageContent.importFreeTime}}</view>
-    <view class="DDDetail" wx:for="{{imports}}">
-      <view class="oneDetail">{{item.tariff.tariffName}}</view>
-      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].equipmentSizeType}}</view>
-      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.noOfFreeDays}}</view>
-      <view class="oneDetail">{{item.detentionDemurrageEquipments[0].freeDays.freeDaystype}} Days</view>
-    </view>
+    <block wx:for="{{imports}}" wx:key="index">
+      <view class="DDDetail" wx:for="{{item.detentionDemurrageEquipments}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+        <view class="oneDetail">{{item.tariff.tariffName}}</view>
+        <view class="oneDetail">{{items.equipmentSizeType}}</view>
+        <view class="oneDetail">{{items.freeDays.noOfFreeDays}}</view>
+        <view class="oneDetail">{{items.freeDays.freeDaystype}} Days</view>
+      </view>
+    </block>
   </view>
   <view class="desc">
     <image src="/assets/img/instantQuote/tan@2x.png"></image>

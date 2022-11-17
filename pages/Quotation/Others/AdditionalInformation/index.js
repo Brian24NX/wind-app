@@ -24,7 +24,7 @@ Page({
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue,
-      infoList: data.quotationDetail.surchargeDetails.additionalInformation
+      infoList: data.surchargeDetail ? data.surchargeDetail.additionalInformation : data.quotationDetail.surchargeDetails.additionalInformation
     })
   }
 })

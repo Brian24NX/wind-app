@@ -48,7 +48,7 @@ Page({
         "tariffCodes": ["DET", "DEM", "MER"],
         "placeOfOrigin": data.placeOfOrigin || null,
         "finalPlaceOfDelivery": data.finalPlaceOfDelivery || null,
-        "commodity": data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
+        "commodity": data.quotationDetail.freightOfAllKinds ? 'FAK' : data.quotationDetail.commodities[0].code,
         "equipmentSizeTypes": data.quotationDetail.equipmentTypeLabel.split(' | '),
         "simulationDate": this.data.importDate,
         "contractReference": data.quotationDetail.quotationReference || null

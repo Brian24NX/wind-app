@@ -512,6 +512,7 @@ var Languague = {
       quotation: 'Quotation',
       valid: 'VALID',
       expired: 'EXPIRED',
+      coming: 'COMING',
       allInRate: 'ALL IN RATE',
       reference: 'Reference',
       chargeDetails: 'Charge Details',

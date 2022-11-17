@@ -152,7 +152,7 @@ Page({
       "tariffCodes": ["DET", "DEM", "MER"],
       "placeOfOrigin": this.data.placeOfOrigin || null,
       "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
-      "commodity": this.data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
+      "commodity": this.data.quotationDetail.freightOfAllKinds ? 'FAK' : this.data.quotationDetail.commodities[0].code,
       "equipmentSizeTypes": [this.data.quotationDetail.equipments[0].code],
       "simulationDate": this.data.importDate
     }
