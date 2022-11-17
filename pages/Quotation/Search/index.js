@@ -136,8 +136,15 @@ Page({
         selected: 2
       })
     }
+    const partnerList = (wx.getStorageSync('partnerList') || []).map(item => {
+      return {
+        ...item,
+        checked: true
+      }
+    })
     this.setData({
-      partnerList: wx.getStorageSync('partnerList') || [],
+      partnerList: JSON.parse(JSON.stringify(partnerList)),
+      checkPartnerList: JSON.parse(JSON.stringify(partnerList)),
       needLogin: !utils.checkAccessToken()
     })
     if (this.data.needLogin === false) {
@@ -1106,9 +1113,8 @@ Page({
       showDelete3: false,
       showDelete4: false,
       showDelete5: false,
-      checkPartnerList: [],
-      partnerCode: [],
-      partnerList: wx.getStorageSync('partnerList') || []
+      checkPartnerList: JSON.parse(JSON.stringify(this.data.partnerList)),
+      partnerCode: []
     })
   },
 
