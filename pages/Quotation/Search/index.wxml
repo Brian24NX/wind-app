@@ -235,7 +235,7 @@
               <image class="xiala" src="/assets/img/seniorsearch/bottomarrow.png"></image>
             </view>
             <scroll-view class="scroll-view2" scroll-y wx:if="{{showPartner}}">
-              <view wx:for="{{partnerList}}" wx:key="index" class="item" bindtap='choosePartners' data-index="{{index}}" style="{{item.checked ? 'background-color: #EDF1F9' : ''}}">
+              <view wx:for="{{partnerList}}" wx:key="index" class="item" catchtap='choosePartners' data-index="{{index}}" style="{{item.checked ? 'background-color: #EDF1F9' : ''}}">
                 <view class="polname" style="width: 100%;">{{item.name}}</view>
               </view>
             </scroll-view>

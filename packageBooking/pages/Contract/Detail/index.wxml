@@ -36,7 +36,7 @@
       <image wx:if="{{quotationDetail.shippingCompany === '0015'}}" src="/assets/img/instantQuote/APL.svg" mode="aspectFit"></image>
     </view>
     <view class="reference">
-      <view class="referenceTitle">{{languageContent.reference}}</view>
+      <view class="referenceTitle">{{quotationDetail.usContract ? languageContent.usContract : languageContent.reference}}</view>
       <view class="referenceNumber" catchtap="copyReference">
         <text>{{quotationDetail.quotationReference}}</text>
         <image class="copyIcon" src="/assets/img/instantQuote/copy@2x.png"></image>
@@ -44,11 +44,11 @@
     </view>
   </view>
   <view class="paramContainer">
-    <view class="oneParams">
+    <!-- <view class="oneParams">
       <image src="/assets/img/instantQuote/param_1@2x.png"></image>
       <view class="paramValue">{{quotationDetail.equitmentSizeType}}</view>
       <view class="param">{{languageContent.equipmentType}}</view>
-    </view>
+    </view> -->
     <!-- <view class="oneParams">
       <image src="/assets/img/instantQuote/param_2@2x.png"></image>
       <view>
@@ -58,13 +58,17 @@
     </view> -->
     <view class="oneParams">
       <image src="/assets/img/instantQuote/param_4@2x.png"></image>
-      <view class="paramValue">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
-      <view class="param">{{languageContent.Commodity}}</view>
+      <view class="paramValueContainer">
+        <view class="paramValue">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
+        <view class="param">{{languageContent.Commodity}}</view>
+      </view>   
     </view>
-    <view class="oneParams">
+    <view class="oneParams" wx:if="{{quotationDetail.spotOffer}}">
       <image src="/assets/img/instantQuote/param_3@2x.png"></image>
-      <view class="paramValue">{{quotationDetail.numberOfContainer}}</view>
-      <view class="param">{{languageContent.containers}}</view>
+      <view class="paramValueContainer">
+        <view class="paramValue">{{quotationDetail.numberOfContainer}}</view>
+        <view class="param">{{languageContent.containers}}</view>
+      </view>
     </view>
   </view>
   <view class="rateTypeContainers">
@@ -87,6 +91,9 @@
         </view>
         <image src="/assets/img/instantQuote/person@2x.png"></image>
       </view>
+      <view class="equipmentTypeList">
+        <view class="oneEquipment" wx:for="{{quotationDetail.surchargeDetails}}" wx:key="index" catchtap="changeCurrentEquipmentType" data-index="{{index}}">{{item.sizeType}}</view>
+      </view>
       <view class="rateTotal">
         <view class="rateTotalLeft">
           <image src="/assets/img/search/jzxh@2x.png"></image>
@@ -94,88 +101,88 @@
         </view>
         <view class="rateTotalRight">
           <text class="ratePrice">{{totalChargeAmount}}</text>
-          <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
+          <text>{{surchargeDetail.totalCharge.currency.code}}</text>
         </view>
       </view>
-      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.oceanFreight.price.amount}}">
+      <view class="oneRates" wx:if="{{surchargeDetail.oceanFreight.price.amount}}">
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="oceanFreight">
-            <view class="rateCheckBox {{quotationDetail.surchargeDetails.oceanFreight.isChecked ? 'rateChecked' : ''}}">
+            <view class="rateCheckBox {{surchargeDetail.oceanFreight.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
             <text>{{languageContent.oceanFeight}}</text>
           </view>
           <view class="oneRateRight">
-            <text class="ratePrice">{{quotationDetail.surchargeDetails.oceanFreight.price.amount}}</text>
-            <text>{{quotationDetail.surchargeDetails.oceanFreight.price.currency.code}}</text>
+            <text class="ratePrice">{{surchargeDetail.oceanFreight.price.amount}}</text>
+            <text>{{surchargeDetail.oceanFreight.price.currency.code}}</text>
           </view>
         </view>
         <view class="rateDesc">
-          <block wx:if="{{quotationDetail.surchargeDetails.oceanFreightDetails.length}}">{{languageContent.incluedLabel}} {{quotationDetail.surchargeDetails.oceanFreightDetailsLabel}}</block>
+          <block wx:if="{{surchargeDetail.oceanFreightDetails.length}}">{{languageContent.incluedLabel}} {{surchargeDetail.oceanFreightDetailsLabel}}</block>
         </view>
       </view>
-      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.freightCharges.amount}}">
+      <view class="oneRates" wx:if="{{surchargeDetail.freightCharges.amount}}">
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="freightCharges">
-            <view class="rateCheckBox {{quotationDetail.surchargeDetails.freightCharges.isChecked ? 'rateChecked' : ''}}">
+            <view class="rateCheckBox {{surchargeDetail.freightCharges.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
             <text>{{languageContent.perFeight}}</text>
           </view>
           <view class="oneRateRight">
-            <text class="ratePrice">{{quotationDetail.surchargeDetails.freightCharges.amount}}</text>
-            <text>{{quotationDetail.surchargeDetails.freightCharges.currency.code}}</text>
+            <text class="ratePrice">{{surchargeDetail.freightCharges.amount}}</text>
+            <text>{{surchargeDetail.freightCharges.currency.code}}</text>
           </view>
         </view>
         <view class="rateDetails">
-          <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.freightChargeDetails}}" wx:key="index">
+          <view class="oneRateDetail" wx:for="{{surchargeDetail.freightChargeDetails}}" wx:key="index">
             <view>{{item.chargeName}}</view>
             <view>{{item.price.amount}} {{item.price.currency.code}}</view>
           </view>
         </view>
       </view>
-      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.prepaidCharges.amount}}">
+      <view class="oneRates" wx:if="{{surchargeDetail.prepaidCharges.amount}}">
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="prepaidCharges">
-            <view class="rateCheckBox {{quotationDetail.surchargeDetails.prepaidCharges.isChecked ? 'rateChecked' : ''}}">
+            <view class="rateCheckBox {{surchargeDetail.prepaidCharges.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
             <text>{{languageContent.prepaid}}</text>
           </view>
           <view class="oneRateRight">
-            <text class="ratePrice">{{quotationDetail.surchargeDetails.prepaidCharges.amount}}</text>
-            <text>{{quotationDetail.surchargeDetails.prepaidCharges.currency.code}}</text>
+            <text class="ratePrice">{{surchargeDetail.prepaidCharges.amount}}</text>
+            <text>{{surchargeDetail.prepaidCharges.currency.code}}</text>
           </view>
         </view>
         <view class="rateDetails">
-          <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.prepaidChargeDetails}}" wx:key="index">
+          <view class="oneRateDetail" wx:for="{{surchargeDetail.prepaidChargeDetails}}" wx:key="index">
             <view>{{item.chargeName}}</view>
             <view>{{item.price.amount}} {{item.price.currency.code}}</view>
           </view>
         </view>
       </view>
-      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.collectCharges.amount}}">
+      <view class="oneRates" wx:if="{{surchargeDetail.collectCharges.amount}}">
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="collectCharges">
-            <view class="rateCheckBox {{quotationDetail.surchargeDetails.collectCharges.isChecked ? 'rateChecked' : ''}}">
+            <view class="rateCheckBox {{surchargeDetail.collectCharges.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="15px" />
             </view>
             <text>{{languageContent.collect}}</text>
           </view>
           <view class="oneRateRight">
-            <text class="ratePrice">{{quotationDetail.surchargeDetails.collectCharges.amount}}</text>
-            <text>{{quotationDetail.surchargeDetails.collectCharges.currency.code}}</text>
+            <text class="ratePrice">{{surchargeDetail.collectCharges.amount}}</text>
+            <text>{{surchargeDetail.collectCharges.currency.code}}</text>
           </view>
         </view>
         <view class="rateDetails">
-          <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.collectChargeDetails}}" wx:key="index">
+          <view class="oneRateDetail" wx:for="{{surchargeDetail.collectChargeDetails}}" wx:key="index">
             <view>{{item.chargeName}}</view>
             <view>{{item.price.amount}} {{item.price.currency.code}}</view>
           </view>
         </view>
       </view>
     </view>
-    <view class="rateContainer" wx:if="{{quotationDetail.surchargeDetails.perBLCharges}}">
+    <view class="rateContainer" style="padding-bottom: 30rpx;" wx:if="{{surchargeDetail.perBLCharges}}">
       <view class="rateTitles">
         <view class="titleLeft">
           <view class="titleLine"></view>
@@ -189,12 +196,12 @@
           <view>{{languageContent.totalBL}}</view>
         </view>
         <view class="rateTotalRight">
-          <text class="ratePrice">{{quotationDetail.surchargeDetails.perBLCharges.amount}}</text>
-          <text>{{quotationDetail.surchargeDetails.perBLCharges.currency.code}}</text>
+          <text class="ratePrice">{{surchargeDetail.perBLCharges.amount}}</text>
+          <text>{{surchargeDetail.perBLCharges.currency.code}}</text>
         </view>
       </view>
       <view class="oneRates">
-        <view class="oneRate" wx:for="{{quotationDetail.surchargeDetails.perBLChargeDetails}}">
+        <view class="oneRate" wx:for="{{surchargeDetail.perBLChargeDetails}}">
           <view class="oneRateLeft">
             <text>{{item.description}}<block wx:if="{{item.paymentMethod}}"> · {{item.paymentMethod === "C" ? 'COLLECT' : 'PREPAID'}} ·</block></text>
           </view>
@@ -203,16 +210,21 @@
             <text>{{item.currency}}</text>
           </view>
         </view>
-        <view class="rateDesc" wx:if="{{language === 'en'}}">
-          <view>Surcharges calculation was simulated with surcharges valid on {{commonFilters.formatEnDateLocal(simulationDate, ' ', '', true, true)}}</view>
-          <view>All rates are based on Reuters rate of exchange of {{commonFilters.formatEnDateLocal(simulationDate, ' ', '', true, true)}}</view>
-        </view>
-        <view class="rateDesc" wx:else>
-          <view>已估算附加费，附加费有效期为 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}}</view>
-          <view>所有汇率均以 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}} 标准费率为基础</view>
-        </view>
       </view>
     </view>
+    <view class="surchargeDesc">
+        <image src="/assets/img/instantQuote/error.svg"></image>
+        <view class="surchargeDescRight">
+          <block wx:if="{{language === 'en'}}">
+            <view>Surcharges calculation was simulated with surcharges valid on {{commonFilters.formatEnDateLocal(simulationDate, ' ', '', true, true)}}</view>
+          <view>All rates are based on Reuters rate of exchange of {{commonFilters.formatEnDateLocal(simulationDate, ' ', '', true, true)}}</view>
+          </block>
+          <block wx:else>
+            <view>已估算附加费，附加费有效期为 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}}</view>
+          <view>所有汇率均以 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}} 标准费率为基础</view>
+          </block>
+        </view>
+      </view>
     <view class="otherContainer">
       <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}" wx:if="{{item.show}}">
         <image src="{{item.icon}}"></image>
@@ -222,7 +234,7 @@
   </block>
   <block wx:else>
     <view class="quoteDetails">
-      <!-- <view class="oneQuoteDetail">
+      <view class="oneQuoteDetail" wx:if="{{!quotationDetail.spotOffer}}">
         <view class="oneQuoteTitle">{{languageContent.validity}}</view>
         <view class="oneQuoteValue">
           <view>
@@ -234,7 +246,7 @@
             <text class="bold">{{language === 'zh' ? commonFilters.formatCnDateLocal(quotationDetail.validityTo, true, true) : commonFilters.formatEnDateLocal(quotationDetail.validityTo, ' ', '', true, true)}}</text>
           </view>
         </view>
-      </view> -->
+      </view>
       <view class="oneQuoteDetail" wx:if="{{quotationDetail.commentToCustomer || quotationDetail.routingComment}}">
         <view class="oneQuoteTitle">{{languageContent.comments}}</view>
         <view class="oneQuoteValue">
@@ -290,6 +302,27 @@
           </view>
         </view>
       </view>
+      <view class="oneQuoteDetail" wx:if="{{quotationDetail.usContract}}">
+        <view class="oneQuoteTitle">{{languageContent.usContract}}</view>
+        <view class="oneQuoteValue">
+          <view>
+            <text>{{languageContent.amendment}} </text>
+            <text class="bold">{{quotationDetail.quoteLineAmendementNumber}}</text>
+          </view>
+          <view>
+            <text>{{languageContent.governingTariff}} </text>
+            <text class="bold">{{quotationDetail.trade.governingTariffCode}}</text>
+          </view>
+          <view>
+            <text>{{languageContent.trade}} </text>
+            <text class="bold">{{quotationDetail.trade.name}} ({{quotationDetail.trade.appendixCode}})</text>
+          </view>
+          <view>
+            <text>{{languageContent.bulletCode}} </text>
+            <text class="bold">{{quotationDetail.bulletCode}}</text>
+          </view>
+        </view>
+      </view>
       <view class="oneQuoteDetail">
         <view class="oneQuoteTitle">
           <text>{{languageContent.weightAndDimensions}}</text>
@@ -306,16 +339,22 @@
           </view>
         </view>
       </view>
+      <view class="oneQuoteDetail" wx:if="{{quotationDetail.shipperOwnedContainer}}">
+        <view class="oneQuoteTitle">{{languageContent.additionalAttributes}}</view>
+        <view class="oneQuoteValue">
+          <view class="bold">{{languageContent.socLabel}}</view>
+        </view>
+      </view>
     </view>
   </block>
 </view>
 <view class="bottomButtonContainer">
   <view class="bottomButtonLeft">
-    <view class="bottomPrices">
+    <!-- <view class="bottomPrices">
       <view class="bottomPrice">{{totalChargeAmount * quotationDetail.numberOfContainer}}</view>
-      <view>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</view>
+      <view>{{surchargeDetail.totalCharge.currency.code}}</view>
     </view>
-    <view class="containerNumber">{{languageContent.forContainer1 + quotationDetail.numberOfContainer + languageContent.forContainer2}}</view>
+    <view class="containerNumber">{{languageContent.forContainer1 + quotationDetail.numberOfContainer + languageContent.forContainer2}}</view> -->
   </view>
   <view class="buttonContainer">
     <view class="buttons" catchtap="clickExportPDF">{{languageContent.exportPDF}}</view>

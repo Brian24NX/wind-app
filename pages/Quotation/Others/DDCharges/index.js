@@ -49,7 +49,7 @@ Page({
         "placeOfOrigin": data.placeOfOrigin || null,
         "finalPlaceOfDelivery": data.finalPlaceOfDelivery || null,
         "commodity": data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
-        "equipmentSizeTypes": [data.quotationDetail.equipments[0].code],
+        "equipmentSizeTypes": data.quotationDetail.equipmentTypeLabel.split(' | '),
         "simulationDate": this.data.importDate,
         "contractReference": data.quotationDetail.quotationReference || null
       }

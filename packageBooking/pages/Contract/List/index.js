@@ -56,27 +56,55 @@ Page({
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.qutationResult.title3
     })
-    const pages = getCurrentPages()
-    const currentPage = pages[pages.length - 2]
-    const data = currentPage.data
+    // const pages = getCurrentPages()
+    // const currentPage = pages[pages.length - 2]
+    // const data = currentPage.data
+    // this.setData({
+    //   languageContent: languageUtil.languageVersion().lang.page.qutationResult,
+    //   language: languageUtil.languageVersion().lang.page.langue,
+    //   equipmentType: data.commonEquipmentTypeName,
+    //   partnerCode: data.partnerCode,
+    //   simulationDate: data.simulationDate,
+    //   namedAccountCode: data.namedAccountCode,
+    //   portOfLoading: data.portOfLoadingLabel,
+    //   portOfDischarge: data.portOfDischargeLabel,
+    //   fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
+    //   fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
+    //   toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
+    //   toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
+    //   commonEquipmentType: data.commonEquipmentType,
+    //   placeOfOrigin: data.placeOfOrigin,
+    //   portOfLoadingCode: data.portOfLoading,
+    //   portOfDischargeCode: data.portOfDischarge,
+    //   finalPlaceOfDelivery: data.finalPlaceOfDelivery
+    // })
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue,
-      equipmentType: data.commonEquipmentTypeName,
-      partnerCode: data.partnerCode,
-      simulationDate: data.simulationDate,
-      namedAccountCode: data.namedAccountCode,
-      portOfLoading: data.portOfLoadingLabel,
-      portOfDischarge: data.portOfDischargeLabel,
-      fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
-      fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
-      toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
-      toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
-      commonEquipmentType: data.commonEquipmentType,
-      placeOfOrigin: data.placeOfOrigin,
-      portOfLoadingCode: data.portOfLoading,
-      portOfDischargeCode: data.portOfDischarge,
-      finalPlaceOfDelivery: data.finalPlaceOfDelivery
+      "commonEquipmentType": "ST",
+      "currentType": 0,
+      "equipmentType": "Dry",
+      "finalPlaceOfDelivery": "",
+      "fromCode": "CN",
+      "fromLabel": "YANTIAN",
+      "isLoading": true,
+      "loggedId": "",
+      "namedAccountCode": "",
+      "partialContractList": [],
+      "partnerCode": [
+        "0005175078",
+        "0005175074",
+        "0004859072"
+      ],
+      "perfectContractList": [],
+      "placeOfOrigin": "",
+      "portOfDischarge": "LOS ANGELES, CA;US;USLAX",
+      "portOfDischargeCode": "USHOU",
+      "portOfLoading": "YANTIAN;CN;CNYTN",
+      "portOfLoadingCode": "CNSHA",
+      "simulationDate": "2022-11-17",
+      "toCode": "US",
+      "toLabel": "LOS ANGELES, CA",
     })
     this.getContractList()
   },
@@ -146,6 +174,8 @@ Page({
     })
     this.data.perfectContractList.forEach((item, index) => {
       setTimeout(() => {
+        const usContract = (item.portOfLoading.indexOf('US') > -1 || item.portOfDischarge.indexOf('US') > -1) ? true : false
+        item.usContract = usContract
         if (!item.surchargeDetails) {
           this.getQuotationDetailFn(item)
           this.getPointData(item)
@@ -154,6 +184,8 @@ Page({
     })
     this.data.partialContractList.forEach((item, index) => {
       setTimeout(() => {
+        const usContract = (item.portOfLoading.indexOf('US') > -1 || item.portOfDischarge.indexOf('US') > -1) ? true : false
+        item.usContract = usContract
         if (!item.surchargeDetails) {
           this.getQuotationDetailFn(item)
           this.getPointData(item)
@@ -230,24 +262,27 @@ Page({
   getQuotationDetailFn(item) {
     getQuotationSurchargeDetail({
       "surchargeFromLara": {
-        "quoteLineId": item.quoteLineId,
-        "shippingCompany": item.shippingCompany,
-        "equipments": item.equipments,
-        "simulationDate": this.data.simulationDate,
-        "paymentMethod": null,
-        "usContract": false,
-        "portOfLoading": item.initialPortOfLoading,
-        "portOfDischarge": item.initalPortOfDischarge,
-        "loggedId": this.data.loggedId,
-        "nextDepartureSolutionNumber": item.solutionNumber,
-        "nextDepartureScheduleNumber": item.scheduleNumber,
-        "quoteLineKey": item.qlKey
+        quoteLineId: item.quoteLineId,
+        shippingCompany: item.shippingCompany,
+        equipments: item.equipments,
+        simulationDate: this.data.simulationDate,
+        paymentMethod: null,
+        usContract: item.usContract,
+        portOfLoading: item.portOfLoading,
+        portOfDischarge: item.portOfDischarge,
+        loggedId: this.data.loggedId,
+        nextDepartureSolutionNumber: item.solutionNumber,
+        nextDepartureScheduleNumber: item.scheduleNumber,
+        quoteLineKey: item.qlKey
       }
     }, wx.getStorageSync('ccgId')).then(res => {
       item.isLoading = false
-      item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
-      item.surchargeDetails = res.data ? res.data.surchargeDetails[0] : null
-      item.surchargeDetails.allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
+      if (res.data) {
+        item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
+        item.surchargeDetails = res.data ? res.data.surchargeDetails : null
+        item.equipmentTypeLabel = res.data.surchargeDetails.map(i => i.sizeType).join(' | ')
+        // item.surchargeDetails.allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
+      }
       this.setData({
         perfectContractList: this.data.perfectContractList,
         partialContractList: this.data.partialContractList

@@ -160,7 +160,7 @@ Page({
       })
     } else {
       this.setData({
-        minDate: null
+        minDate: new Date().setFullYear(new Date().getFullYear() - 2)
       })
     }
   },

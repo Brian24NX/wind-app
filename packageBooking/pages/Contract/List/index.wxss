@@ -153,7 +153,7 @@ page {
 }
 
 .quotationIds .quotationRight view:nth-of-type(1) {
-  font-size: 36rpx;
+  font-size: 32rpx;
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #071E5D;
@@ -452,4 +452,50 @@ page {
   text-align: center;
   line-height: 40rpx;
   margin-right: 16rpx;
+}
+
+.equipmentTypeContainer {
+  margin-top: 20rpx;
+  border-top: 1rpx solid #DDDDDD;
+  padding-top: 20rpx;
+}
+
+.equipmentTypeContainer .allInRate {
+  text-align: center;
+  font-size: 24rpx;
+  color: #6b7790;
+}
+
+.equipmentTypeList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.equipmentTypeList .oneEquipmentType {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.equipmentTypeList .oneEquipmentType .priceCount {
+  font-size: 72rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+  margin: 0 20rpx;
+}
+
+.equipmentTypeList .oneEquipmentType  .priceUnit .unit {
+  font-size: 30rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #E20202;
+}
+
+.equipmentTypeList .oneEquipmentType  .priceUnit .unit2 {
+  padding: 8rpx 0;
+  font-size: 24rpx;
+  font-family: Arial-BoldMT, Arial;
+  font-weight: bold;
+  color: #235af6;
 }
