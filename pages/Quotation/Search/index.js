@@ -584,12 +584,14 @@ Page({
       if (res.data) {
         let commodityList = []
         res.data.forEach(i => {
-          commodityList = commodityList.concat(i.commodityDetails.map(c => {
-            return {
-              ...c,
-              zh: c.zh || c.en
-            }
-          }))
+          if (i.commodityDetails) {
+            commodityList = commodityList.concat(i.commodityDetails.map(c => {
+              return {
+                ...c,
+                zh: c.zh || c.en
+              }
+            }))
+          }
         })
         commodityList = commodityList.filter(i => i.code)
         commodityList.unshift({
