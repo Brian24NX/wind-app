@@ -39,11 +39,12 @@
           <image src="/assets/img/instantQuote/quotationId.svg"></image>
           <view>
             <view class="quotationId">{{item.quotationReference}}</view>
-            <view>{{languageContent.quotation}}</view>
+            <view>{{item.usContract ? languageContent.usContract : languageContent.reference}}</view>
           </view>
         </view>
         <view class="quotationRight">
-          <view>{{filters.checkValidDate(item.validityTo) ? languageContent.valid : languageContent.expired}}</view>
+          <view wx:if="{{!item.spotOffer}}">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityFrom, true, true) : commonFilters.formatEnDateLocal(item.validityFrom, ' ', '', true, true)}} > {{language === 'zh' ? commonFilters.formatCnDateLocal(item.validityTo, true, true) : commonFilters.formatEnDateLocal(item.validityTo, ' ', '', true, true)}}</view>
+          <view>{{languageContent[filters.checkValidDate(item.validityFrom, item.validityTo)]}}</view>
         </view>
       </view>
       <view class="tips">
@@ -71,7 +72,10 @@
               </view>
               <view class="ship" style="width: 100%;padding-bottom: 20rpx;">
                 <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
-                <view>{{equipmentType}} {{item.equipments[0].code}}</view>
+                <view>
+                  <view>{{equipmentType}} {{item.equipmentTypeLabel}}</view>
+                  <view wx:if="{{item.shipperOwnedContainer}}">{{languageContent.SOC}}</view>
+                </view>
               </view>
               <view class="leftLines">
                 <view class="leftLineDto"></view>
@@ -110,18 +114,31 @@
           </view>
         </view>
       </view>
+      <view class="equipmentTypeContainer">
+        <view class="allInRate">{{languageContent.allInRate}}</view>
+        <view class="equipmentTypeList">
+        <view class="oneEquipmentType" wx:for="{{item.surchargeDetails}}" wx:key="index">
+          <view class="priceCount">{{item.totalCharge.amount || '-'}}</view>
+          <view class="priceUnit">
+            <view class="unit">{{item.totalCharge.currency.code}}</view>
+            <view class="unit2">/{{item.sizeType}}</view>
+          </view>
+        </view>
+      </view>
+      </view>
+      
       <view class="oneBottom">
         <view class="bottomLeft">
-          <image src="/assets/img/instantQuote/cash.svg"></image>
+          <!-- <image src="/assets/img/instantQuote/cash.svg"></image>
           <view class="priceCount">{{item.surchargeDetails.totalCharge.amount || '-'}}</view>
           <view class="priceUnit">
             <view class="unit">{{item.surchargeDetails.totalCharge.currency.code}}</view>
             <view class="unit2">{{languageContent.allInRate}}</view>
-          </view>
+          </view> -->
         </view>
-        <button class="selects {{!filters.checkValidDate(item.validityTo) ? 'notSelect' : ''}}" disabled="{{!filters.checkValidDate(item.validityTo) || item.isLoading}}" bindtap="toDetail" data-index="{{index}}" data-from="perfect">
-          <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{filters.checkValidDate(item.validityTo) && item.isLoading}}"></image>
-          <text wx:if="{{filters.checkValidDate(item.validityTo) && !item.isLoading}}">{{languageContent.contractDetail}}</text>
+        <button class="selects {{filters.checkValidDate(item.validityFrom, item.validityTo) === 'expired' ? 'notSelect' : ''}}" disabled="{{filters.checkValidDate(item.validityTo) === 'expired' || item.isLoading}}" bindtap="toDetail" data-index="{{index}}" data-from="perfect">
+          <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{filters.checkValidDate(item.validityFrom, item.validityTo) && item.isLoading}}"></image>
+          <text wx:if="{{filters.checkValidDate(item.validityFrom, item.validityTo) !== 'expired' && !item.isLoading}}">{{languageContent.contractDetail}}</text>
         </button>
       </view>
     </view>

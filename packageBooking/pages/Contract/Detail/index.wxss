@@ -171,12 +171,13 @@
   background-color: #ffffff;
   display: flex;
   margin: 0 0 30rpx;
+  padding: 0 30rpx;
 }
 
 .paramContainer .oneParams {
   display: flex;
   flex: 1;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   padding: 48rpx 10rpx;
 }
@@ -184,7 +185,7 @@
 .paramContainer .oneParams image {
   width: 60rpx;
   height: 60rpx;
-  margin-bottom: 10rpx;
+  margin-right: 10rpx;
 }
 
 .paramContainer .oneParams .paramValue {
@@ -192,7 +193,6 @@
   font-family: Arial-BoldMT, Arial;
   font-weight: normal;
   color: #071E5D;
-  text-align: center;
 }
 
 .paramContainer .oneParams .param {
@@ -200,7 +200,6 @@
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #071E5D;
-  text-align: center;
 }
 
 .rateContainer {
@@ -583,4 +582,37 @@
 .quoteDetails .bold {
   font-weight: bold;
   color: #071E5D;
+}
+
+.surchargeDesc {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 30rpx 36rpx;
+}
+
+.surchargeDesc image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+  margin-top: 10rpx;
+}
+
+.surchargeDesc .surchargeDescRight {
+  width: 550rpx;
+  font-size: 24rpx;
+  color: #6B7790;
+}
+
+.equipmentTypeList {
+  display: flex;
+  padding: 20rpx 0 0;
+}
+
+.equipmentTypeList .oneEquipment {
+  margin-right: 40rpx;
+}
+
+.equipmentTypeList .oneEquipment:nth-last-of-type(1) {
+  margin-right: 0;
 }

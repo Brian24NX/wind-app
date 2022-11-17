@@ -42,6 +42,8 @@ Page({
     fromLabel: '',
     toLabel: '',
     quotationDetail: {},
+    currentEquipmentType: 0,
+    surchargeDetail: {},
     simulationDate: '',
     currentType: 'charge',
     portOfLoading: '',
@@ -68,11 +70,12 @@ Page({
     const data = currentPage.data
     const contractList = options.from === 'perfect' ? data.perfectContractList : data.partialContractList
     let quotationDetail = contractList[Number(options.index)]
-    quotationDetail.surchargeDetails.oceanFreightDetailsLabel = quotationDetail.surchargeDetails.oceanFreightDetails.join(' / ')
-    quotationDetail.surchargeDetails.oceanFreight.isChecked = true
-    quotationDetail.surchargeDetails.freightCharges.isChecked = true
-    quotationDetail.surchargeDetails.prepaidCharges.isChecked = true
-    quotationDetail.surchargeDetails.collectCharges.isChecked = true
+    let surchargeDetail = quotationDetail.surchargeDetails[this.data.currentEquipmentType]
+    surchargeDetail.oceanFreightDetailsLabel = surchargeDetail.oceanFreightDetails.join(' / ')
+    surchargeDetail.oceanFreight.isChecked = true
+    surchargeDetail.freightCharges.isChecked = true
+    surchargeDetail.prepaidCharges.isChecked = true
+    surchargeDetail.collectCharges.isChecked = true
     this.data.otherList[2].show = quotationDetail.spotOffer
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
@@ -85,10 +88,10 @@ Page({
       fromLabel: contractList[Number(options.index)].placeOfReceiptLabel || contractList[Number(options.index)].portOfLoadingLabel,
       toLabel: contractList[Number(options.index)].placeOfDeliveryLabel || contractList[Number(options.index)].portOfDischargeLabel,
       simulationDate: data.simulationDate,
-      quotationDetail: quotationDetail,
-      partnerCode: data.partnerCode
+      partnerCode: data.partnerCode,
+      quotationDetail: quotationDetail
     })
-    this.calculatedCharges()
+    this.setChargeDetail()
     this.dealEquipmentSize()
     this.getDDCharges()
     this.getLocalCharge()
@@ -100,8 +103,29 @@ Page({
     }
   },
 
+  changeCurrentEquipmentType(e) {
+    if (e.currentTarget.dataset.index === this.data.currentEquipmentType) return
+    this.setData({
+      currentEquipmentType: e.currentTarget.dataset.index
+    })
+    this.setChargeDetail()
+  },
+
+  setChargeDetail() {
+    let surchargeDetail = this.data.quotationDetail.surchargeDetails[this.data.currentEquipmentType]
+    surchargeDetail.oceanFreightDetailsLabel = surchargeDetail.oceanFreightDetails.join(' / ')
+    surchargeDetail.oceanFreight.isChecked = true
+    surchargeDetail.freightCharges.isChecked = true
+    surchargeDetail.prepaidCharges.isChecked = true
+    surchargeDetail.collectCharges.isChecked = true
+    this.setData({
+      surchargeDetail
+    })
+    this.calculatedCharges()
+  },
+
   calculatedCharges() {
-    const surchargeDetails = this.data.quotationDetail.surchargeDetails
+    const surchargeDetails = this.data.surchargeDetail
     let totalChargeAmount = 0
     if (surchargeDetails.oceanFreight.isChecked) {
       totalChargeAmount = totalChargeAmount + surchargeDetails.oceanFreight.price.amount
@@ -238,9 +262,9 @@ Page({
   },
 
   changeCheck(e) {
-    this.data.quotationDetail.surchargeDetails[e.currentTarget.dataset.id].isChecked = !this.data.quotationDetail.surchargeDetails[e.currentTarget.dataset.id].isChecked
+    this.data.surchargeDetail[e.currentTarget.dataset.id].isChecked = !this.data.surchargeDetail[e.currentTarget.dataset.id].isChecked
     this.setData({
-      quotationDetail: this.data.quotationDetail
+      surchargeDetail: this.data.surchargeDetail
     })
     this.calculatedCharges()
   },
