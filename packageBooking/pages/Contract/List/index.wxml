@@ -53,7 +53,7 @@
       <view class="resContents">
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time" style="padding-bottom: 30rpx;" wx:if="{{item.placeOfReceiptLabel}}">
+            <view class="time" style="padding-bottom: 30rpx;" wx:if="{{item.exportInlandPointCode}}">
               <text class="placeType">{{commonFilters.localeUpperCase(item.exportMovementType)}}</text>
               <text>{{item.placeOfReceiptLabel}}</text>
               <view class="leftLines">
@@ -82,10 +82,10 @@
                 <view class="leftLine"></view>
               </view>
             </view>
-            <view class="time" style="{{item.placeOfDeliveryLabel ? 'padding-bottom: 30rpx;' : ''}}">
+            <view class="time" style="{{item.importInlandPointCode ? 'padding-bottom: 30rpx;' : ''}}">
               <text class="placeType">PORT</text>
               <text>{{item.portOfDischargeLabel}}</text>
-              <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
+              <view class="leftLines" wx:if="{{item.importInlandPointCode}}">
                 <view class="leftLineDto"></view>
                 <view class="leftLine"></view>
               </view>
@@ -93,7 +93,7 @@
                 <image src="/assets/img/instantQuote/location-red.svg" mode="aspectFit"></image>
               </view>
             </view>
-            <view class="time" wx:if="{{item.placeOfDeliveryLabel}}">
+            <view class="time" wx:if="{{item.importInlandPointCode}}">
               <text class="placeType">{{commonFilters.localeUpperCase(item.importMovementType)}}</text>
               <text>{{item.placeOfDeliveryLabel}}</text>
               <view class="leftLines endLine">
@@ -168,7 +168,7 @@
       <view class="resContents">
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time" style="padding-bottom: 30rpx;" wx:if="{{item.placeOfReceiptLabel}}">
+            <view class="time" style="padding-bottom: 30rpx;" wx:if="{{item.exportInlandPointCode}}">
               <text class="placeType">{{commonFilters.localeUpperCase(item.exportMovementType)}}</text>
               <text>{{item.placeOfReceiptLabel}}</text>
               <view class="leftLines">
@@ -197,10 +197,10 @@
                 <view class="leftLine"></view>
               </view>
             </view>
-            <view class="time" style="{{item.placeOfDeliveryLabel ? 'padding-bottom: 30rpx;' : ''}}">
+            <view class="time" style="{{item.importInlandPointCode ? 'padding-bottom: 30rpx;' : ''}}">
               <text class="placeType">PORT</text>
               <text>{{item.portOfDischargeLabel}}</text>
-              <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
+              <view class="leftLines" wx:if="{{item.importInlandPointCode}}">
                 <view class="leftLineDto"></view>
                 <view class="leftLine"></view>
               </view>
@@ -208,7 +208,7 @@
                 <image src="/assets/img/instantQuote/location-red.svg" mode="aspectFit"></image>
               </view>
             </view>
-            <view class="time" wx:if="{{item.placeOfDeliveryLabel}}">
+            <view class="time" wx:if="{{item.importInlandPointCode}}">
               <text class="placeType">{{commonFilters.localeUpperCase(item.importMovementType)}}</text>
               <text>{{item.placeOfDeliveryLabel}}</text>
               <view class="leftLines endLine">
@@ -251,7 +251,7 @@
             <view class="unit2">{{languageContent.allInRate}}</view>
           </view> -->
         </view>
-        <button class="selects {{filters.checkValidDate(item.validityFrom, item.validityTo) === 'expired' ? 'notSelect' : ''}}" disabled="{{filters.checkValidDate(item.validityTo) === 'expired' || item.isLoading}}" bindtap="toDetail" data-index="{{index}}" data-from="perfect">
+        <button class="selects {{filters.checkValidDate(item.validityFrom, item.validityTo) === 'expired' ? 'notSelect' : ''}}" disabled="{{filters.checkValidDate(item.validityTo) === 'expired' || item.isLoading}}" bindtap="toDetail" data-index="{{index}}" data-from="partial">
           <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{item.isLoading}}"></image>
           <text wx:if="{{filters.checkValidDate(item.validityFrom, item.validityTo) !== 'expired' && !item.isLoading}}">{{languageContent.contractDetail}}</text>
         </button>
