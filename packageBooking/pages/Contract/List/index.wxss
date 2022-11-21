@@ -16,7 +16,7 @@ page {
 .searchResultTopContainer .resultCardTops {
   width: 690rpx;
   margin: 0 auto;
-  background: url(https://wind.cma-cgm.com/images/instantQuote.png) no-repeat;
+  background: url(https://wind.cma-cgm.com/images/chargeFinderBg.png) no-repeat;
   background-size: 100% auto;
   padding: 30rpx;
 }
@@ -515,4 +515,58 @@ page {
   font-family: Arial-BoldMT, Arial;
   font-weight: bold;
   color: #235af6;
+}
+
+.typeLists {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24rpx;
+}
+
+.typeLists .oneTypes {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #4468BA;
+}
+
+.typeLists .oneTypes image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+
+.selectContainers {
+  width: 690rpx;
+  margin: 30rpx auto;
+  background-color: #ffffff;
+  padding: 30rpx 48rpx;
+}
+
+.selectContainer {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 24rpx;
+  color: #071E5D;
+}
+
+.selectContainer view {
+  width: 490rpx;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selectContainer image {
+  width: 32rpx;
+  height: 32rpx;
 }

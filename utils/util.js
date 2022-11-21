@@ -549,7 +549,22 @@ function checkPermission(permission) {
   if (!permission) return false
   const rights = wx.getStorageSync('rights')
   return rights.indexOf(permission) > -1 ? true : false
+}
 
+function checkValidDate(startDate, endDate) {
+  if (!startDate || !endDate) return ''
+  if (startDate.indexOf('T') > -1) {
+    startDate = startDate.split('T')[0] + ' 00:00:00'
+  }
+  if (endDate.indexOf('T') > -1) {
+    endDate = endDate.split('T')[0] + ' 23:59:59'
+  }
+  startDate = startDate.split('-').join('/')
+  endDate = endDate.split('-').join('/')
+  // valid : expired : coming
+  if (new Date().getTime() - new Date(startDate).getTime() > 0 && new Date(endDate).getTime() - new Date().getTime() > 0) return 'valid'
+  if (new Date().getTime() - new Date(startDate).getTime() < 0) return 'coming'
+  if (new Date().getTime() - new Date(endDate).getTime() > 0) return 'expired'
 }
 
 module.exports = {
@@ -568,5 +583,6 @@ module.exports = {
   setExpiresTime,
   formatDocumentStatus,
   formatDocumentCategory,
-  checkPermission
+  checkPermission,
+  checkValidDate
 }

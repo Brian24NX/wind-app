@@ -113,8 +113,8 @@
     ]
   },
   "networkTimeout": {
-    "request": 30000,
-    "downloadFile": 30000
+    "request": 60000,
+    "downloadFile": 60000
   },
   "debug": true,
   "sitemapLocation": "sitemap.json",

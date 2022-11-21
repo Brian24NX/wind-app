@@ -68,8 +68,7 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    const contractList = options.from === 'perfect' ? data.perfectContractList : data.partialContractList
-    let quotationDetail = contractList[Number(options.index)]
+    let quotationDetail = JSON.parse(JSON.stringify(data.contractList[Number(options.index)]))
     quotationDetail.equipments = quotationDetail.equipments.filter(i => i.netWeight)
     quotationDetail.namedAccounts = quotationDetail.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + ', ' + i.city)
     let surchargeDetail = quotationDetail.surchargeDetails[this.data.currentEquipmentType]
@@ -87,8 +86,8 @@ Page({
       portOfLoadingLabel: data.portOfLoading,
       portOfDischarge: data.portOfDischargeCode,
       portOfDischargeLabel: data.portOfDischarge,
-      fromLabel: contractList[Number(options.index)].placeOfReceiptLabel || contractList[Number(options.index)].portOfLoadingLabel,
-      toLabel: contractList[Number(options.index)].placeOfDeliveryLabel || contractList[Number(options.index)].portOfDischargeLabel,
+      fromLabel: quotationDetail.placeOfReceiptLabel || quotationDetail.portOfLoadingLabel,
+      toLabel: quotationDetail.placeOfDeliveryLabel || quotationDetail.portOfDischargeLabel,
       simulationDate: data.simulationDate,
       partnerCode: data.partnerCode,
       quotationDetail,
