@@ -151,9 +151,9 @@ Page({
         }
         if (this.data.perfectComingContractList.length) {
           this.data.contractTypeList.push({
-            id: '',
-            labelCn: '',
-            labelEn: ''
+            id: 'comingValid',
+            labelCn: '未来报价 - 完全匹配',
+            labelEn: 'Coming valid offers'
           })
         }
         if (this.data.partialCurrentContractList.length) {
@@ -165,9 +165,9 @@ Page({
         }
         if (this.data.partialComingContractList.length) {
           this.data.contractTypeList.push({
-            id: '',
-            labelCn: '',
-            labelEn: ''
+            id: 'additionalComing',
+            labelCn: '未来与您搜索相关的其他结果',
+            labelEn: 'Coming additional results close to your search'
           })
         }
         this.setData({
@@ -222,13 +222,13 @@ Page({
       case "currentValid":
         contractLists = JSON.parse(JSON.stringify(this.data.perfectCurrentContractList))
         break;
-      case "currentValid":
+      case "comingValid":
         contractLists = JSON.parse(JSON.stringify(this.data.perfectComingContractList))
         break;
       case "additionalValid":
         contractLists = JSON.parse(JSON.stringify(this.data.partialCurrentContractList))
         break;
-      case "currentValid":
+      case "additionalComing":
         contractLists = JSON.parse(JSON.stringify(this.data.partialComingContractList))
         break;
       default:
