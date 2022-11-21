@@ -290,34 +290,6 @@ Page({
         }
       }, 300 * (index - this.data.page * size));
     }
-    // this.data.contractList.forEach((item, index) => {
-    //   setTimeout(() => {
-    //     const usContract = item.portOfDischarge.indexOf('US') > -1 ? true : false
-    //     item.usContract = usContract
-    //     item.equipments.sort((a, b) => {
-    //       return equipmentTypes.indexOf(a.code) - equipmentTypes.indexOf(b.code);
-    //     });
-    //     item.equipmentTypeLabel = item.equipments.map(i => i.code).join(' | ')
-    //     item.specialTags = []
-    //     if (item.hazardous) {
-    //       item.specialTags.push('HAZ')
-    //     }
-    //     if (item.overHeight || item.overLength || item.overWidth) {
-    //       item.specialTags.push('OOG')
-    //     }
-    //     if (item.shipperOwnedContainer) {
-    //       item.specialTags.push('SOC')
-    //     }
-    //     if (item.nonOperatingReefer) {
-    //       item.specialTags.push('NOR')
-    //     }
-    //     item.nacLabel = item.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name).join(', ')
-    //     if (!item.surchargeDetails) {
-    //       this.getQuotationDetailFn(item)
-    //       this.getPointData(item)
-    //     }
-    //   }, 300 * index);
-    // })
   },
 
   getPointData(item) {
