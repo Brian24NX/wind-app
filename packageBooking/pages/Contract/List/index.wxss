@@ -141,7 +141,7 @@ page {
 
 .quotationIds .quotationLeft .quotationId {
   font-size: 32rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
+  font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #4468BA;
 }
@@ -306,9 +306,26 @@ page {
   margin-right: 16rpx;
 }
 
-.resultContainers .oneResult .resContents .rightContainer .leftContent .ship view {
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship > view {
   width: calc(100% - 46rpx);
   word-break: break-word;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship .specialTag {
+  display: flex;
+  align-items: center;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship .specialTag .greenDto {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background-color: #00865d;
+  margin-right: 10rpx;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship .specialTag .specialDetail {
+  margin-right: 10rpx;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent {

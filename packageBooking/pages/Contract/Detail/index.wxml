@@ -137,7 +137,10 @@
         <view class="rateDetails">
           <view class="oneRateDetail" wx:for="{{surchargeDetail.freightChargeDetails}}" wx:key="index">
             <view>{{item.chargeName}}</view>
-            <view>{{item.price.amount}} {{item.price.currency.code}}</view>
+            <view class="rateDetailRight">
+              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit"/>
+              <text>{{item.price.amount}} {{item.price.currency.code}}</text>
+            </view>
           </view>
         </view>
       </view>
@@ -157,7 +160,10 @@
         <view class="rateDetails">
           <view class="oneRateDetail" wx:for="{{surchargeDetail.prepaidChargeDetails}}" wx:key="index">
             <view>{{item.chargeName}}</view>
-            <view>{{item.price.amount}} {{item.price.currency.code}}</view>
+            <view class="rateDetailRight">
+              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit"/>
+              <text>{{item.price.amount}} {{item.price.currency.code}}</text>
+            </view>
           </view>
         </view>
       </view>
@@ -177,7 +183,10 @@
         <view class="rateDetails">
           <view class="oneRateDetail" wx:for="{{surchargeDetail.collectChargeDetails}}" wx:key="index">
             <view>{{item.chargeName}}</view>
-            <view>{{item.price.amount}} {{item.price.currency.code}}</view>
+            <view class="rateDetailRight">
+              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit"/>
+              <text>{{item.price.amount}} {{item.price.currency.code}}</text>
+            </view>
           </view>
         </view>
       </view>
@@ -260,12 +269,18 @@
           <view class="bold">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
         </view>
       </view>
+      <view class="oneQuoteDetail" wx:if="{{quotationDetail.namedAccounts.length}}">
+        <view class="oneQuoteTitle">{{languageContent.namedAccounts}}</view>
+        <view class="oneQuoteValue">
+          <view class="bold" wx:for="{{quotationDetail.namedAccounts}}" wx:key="index">{{item}}</view>
+        </view>
+      </view>
       <view class="oneQuoteDetail">
         <view class="oneQuoteTitle">{{languageContent.export}}</view>
         <view class="oneQuoteValue">
           <view wx:if="{{quotationDetail.exportInlandPointCode}}">
             <text>{{languageContent.placeOfOrigin}} </text>
-            <text class="bold">{{quotationDetail.exportInlandPoint}}</text>
+            <text class="bold">{{quotationDetail.placeOfReceiptLabel}}</text>
           </view>
           <view>
             <text>{{languageContent.movementType}} </text>
@@ -286,13 +301,13 @@
         <view class="oneQuoteValue">
           <view wx:if="{{quotationDetail.importInlandPointCode}}">
             <text>{{languageContent.placeOfOrigin}} </text>
-            <text class="bold">{{quotationDetail.importInlandPoint}}</text>
+            <text class="bold">{{quotationDetail.placeOfDeliveryLabel}}</text>
           </view>
           <view>
             <text>{{languageContent.movementType}} </text>
             <text class="bold">{{quotationDetail.importMovementType}}</text>
           </view>
-          <view wx:if="{{!quotationDetail.importInlandPoint}}">
+          <view wx:if="{{!quotationDetail.importInlandPointCode}}">
             <text>{{languageContent.bookOnCarriage}} </text>
             <text class="bold">{{quotationDetail.importConstruction ? languageContent.allowed : languageContent.refused}}</text>
           </view>
@@ -323,12 +338,24 @@
           </view>
         </view>
       </view>
-      <view class="oneQuoteDetail">
+      <view class="oneQuoteDetail" style="padding-bottom: 40rpx;" wx:if="{{quotationDetail.equipments.length}}">
         <view class="oneQuoteTitle">
           <text>{{languageContent.weightAndDimensions}}</text>
           <text class="perContainer">{{languageContent.perContainer}}</text>
         </view>
-        <view class="oneQuoteValue">
+        <view class="EquipmentContainer">
+          <view class="EquipmentContainerTitle">
+            <view>{{languageContent.maxWeight}}</view>
+            <view>Tons excl.tare</view>
+            <view>{{languageContent.length}}</view>
+          </view>
+          <view class="oneEquipmentContainer" wx:for="{{quotationDetail.equipments}}" wx:key="index">
+            <view>{{item.code}}</view>
+            <view>{{item.netWeight}}</view>
+            <view>{{item.length || '-'}}</view>
+          </view>
+        </view>
+        <!-- <view class="oneQuoteValue">
           <view>
             <text>{{languageContent.maxWeight}} </text>
             <text class="bold">{{quotationDetail.equipments[0].code}}</text>
@@ -337,12 +364,40 @@
             <text>Tons excl.tare </text>
             <text class="bold">{{quotationDetail.equipments[0].netWeight}}</text>
           </view>
-        </view>
+        </view> -->
       </view>
-      <view class="oneQuoteDetail" wx:if="{{quotationDetail.shipperOwnedContainer}}">
+      <view class="oneQuoteDetail" wx:if="{{quotationDetail.shipperOwnedContainer || quotationDetail.nonOperatingReefer || quotationDetail.reefer || quotationDetail.hazardous || quotationDetail.oversize}}" style="padding-bottom: 30rpx;">
         <view class="oneQuoteTitle">{{languageContent.additionalAttributes}}</view>
-        <view class="oneQuoteValue">
-          <view class="bold">{{languageContent.socLabel}}</view>
+        <view class="oneQuoteValue paddBottom" wx:if="{{quotationDetail.shipperOwnedContainer}}">
+          <view class="bold underLine">{{languageContent.socLabel}}</view>
+        </view>
+        <view class="oneQuoteValue paddBottom" wx:if="{{quotationDetail.hazardous}}">
+          <view class="bold underLine">{{languageContent.hazLabel}}</view>
+        </view>
+        <view class="oneQuoteValue paddBottom" wx:if="{{quotationDetail.nonOperatingReefer}}">
+          <view class="bold underLine">{{languageContent.norLabel}}</view>
+        </view>
+        <view class="oneQuoteValue paddBottom" wx:if="{{quotationDetail.reefer}}">
+          <view class="bold underLine">{{languageContent.reeferLabel}}</view>
+          <view>
+            <text>{{languageContent.temperature}} </text>
+            <text class="bold">{{quotationDetail.temperature}}℃</text>
+          </view>
+          <view>
+            <text>{{languageContent.ventilation}} </text>
+            <text class="bold" wx:if="{{quotationDetail.ventilation}}">{{quotationDetail.ventilation}} m³/h</text>
+          </view>
+        </view>
+        <view class="oneQuoteValue paddBottom" wx:if="{{quotationDetail.oversize}}">
+          <view class="bold underLine">{{languageContent.oogLabel}}</view>
+          <view>
+            <text>{{languageContent.overDimensions}} </text>
+            <text class="bold">
+              <block wx:if="{{quotationDetail.overLength}}">Length </block>
+              <block wx:if="{{quotationDetail.overWidth}}">Width </block>
+              <block wx:if="{{quotationDetail.overHeight}}">Height </block>
+            </text>
+          </view>
         </view>
       </view>
     </view>
@@ -357,7 +412,7 @@
     <view class="containerNumber">{{languageContent.forContainer1 + quotationDetail.numberOfContainer + languageContent.forContainer2}}</view> -->
   </view>
   <view class="buttonContainer">
-    <view class="buttons" catchtap="clickExportPDF">{{languageContent.exportPDF}}</view>
+    <!-- <view class="buttons" catchtap="clickExportPDF">{{languageContent.exportPDF}}</view> -->
     <view class="buttons" catchtap="submit">{{languageContent.book}}</view>
   </view>
 </view>

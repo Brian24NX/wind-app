@@ -70,6 +70,8 @@ Page({
     const data = currentPage.data
     const contractList = options.from === 'perfect' ? data.perfectContractList : data.partialContractList
     let quotationDetail = contractList[Number(options.index)]
+    quotationDetail.equipments = quotationDetail.equipments.filter(i => i.netWeight)
+    quotationDetail.namedAccounts = quotationDetail.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + ', ' + i.city)
     let surchargeDetail = quotationDetail.surchargeDetails[this.data.currentEquipmentType]
     surchargeDetail.oceanFreightDetailsLabel = surchargeDetail.oceanFreightDetails.join(' / ')
     surchargeDetail.oceanFreight.isChecked = true
@@ -89,18 +91,19 @@ Page({
       toLabel: contractList[Number(options.index)].placeOfDeliveryLabel || contractList[Number(options.index)].portOfDischargeLabel,
       simulationDate: data.simulationDate,
       partnerCode: data.partnerCode,
-      quotationDetail: quotationDetail
+      quotationDetail,
+      otherList: this.data.otherList
     })
     this.setChargeDetail()
-    this.dealEquipmentSize()
-    this.getDDCharges()
-    this.getLocalCharge()
-    if (this.data.quotationDetail.exportInlandPointCode) {
-      this.getExportInlandPoint()
-    }
-    if (this.data.quotationDetail.importInlandPointCode) {
-      this.getImportInlandPoint()
-    }
+    // this.dealEquipmentSize()
+    // this.getDDCharges()
+    // this.getLocalCharge()
+    // if (this.data.quotationDetail.exportInlandPointCode) {
+    //   this.getExportInlandPoint()
+    // }
+    // if (this.data.quotationDetail.importInlandPointCode) {
+    //   this.getImportInlandPoint()
+    // }
   },
 
   changeCurrentEquipmentType(e) {

@@ -528,7 +528,7 @@ Page({
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
     } else {
-      // this.getNamedAccountsSearch()
+      this.getNamedAccountsSearch()
     }
   },
 
@@ -543,7 +543,7 @@ Page({
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
     } else {
-      // this.getNamedAccountsSearch()
+      this.getNamedAccountsSearch()
     }
   },
 
@@ -649,10 +649,18 @@ Page({
       namedAccountsSearch({
         portOfLoading: this.data.portOfLoading,
         portOfDischarge: this.data.portOfDischarge,
-        affiliates: this.data.partnerCode
+        affiliates: wx.getStorageSync('partnerList').map(i => i.code)
       }).then(res => {
+        let data = []
+        if (res.data) {
+          data = res.data
+          data.unshift({
+            code: '',
+            name: 'All Named Account'
+          })
+        }
         this.setData({
-          namedAccountList: res.data || [],
+          namedAccountList: data,
           namedAccountLoading: false
         })
       }, () => {

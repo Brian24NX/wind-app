@@ -62,7 +62,7 @@
               </view>
             </view>
             <view style="position: relative;">
-              <view class="time" style="max-width: 380rpx;">  
+              <view class="time" style="max-width: 380rpx;">
                 <text class="placeType">PORT</text>
                 <text>{{item.portOfLoadingLabel}}</text>
               </view>
@@ -70,12 +70,21 @@
                 <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
                 <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
               </view>
-              <view class="ship" style="width: 100%;padding-bottom: 20rpx;">
+              <view class="ship" style="width: 100%;{{!item.nacLabel ? 'padding-bottom: 20rpx;' : ''}}">
                 <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
                 <view>
                   <view>{{equipmentType}} {{item.equipmentTypeLabel}}</view>
-                  <view wx:if="{{item.shipperOwnedContainer}}">{{languageContent.SOC}}</view>
+                  <view class="specialTag" wx:if="{{item.specialTags.length}}">
+                    <block wx:for="{{item.specialTags}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+                      <view class="greenDto"></view>
+                      <view class="specialDetail">{{items}}</view>
+                    </block>
+                  </view>
                 </view>
+              </view>
+              <view class="ship" style="width: 100%;padding-bottom: 20rpx;" wx:if="{{item.nacLabel}}">
+                <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
+                <view>{{item.nacLabel}}</view>
               </view>
               <view class="leftLines">
                 <view class="leftLineDto"></view>
@@ -117,16 +126,16 @@
       <view class="equipmentTypeContainer">
         <view class="allInRate">{{languageContent.allInRate}}</view>
         <view class="equipmentTypeList">
-        <view class="oneEquipmentType" wx:for="{{item.surchargeDetails}}" wx:key="index">
-          <view class="priceCount">{{item.totalCharge.amount || '-'}}</view>
-          <view class="priceUnit">
-            <view class="unit">{{item.totalCharge.currency.code}}</view>
-            <view class="unit2">/{{item.sizeType}}</view>
+          <view class="oneEquipmentType" wx:for="{{item.surchargeDetails}}" wx:key="index">
+            <view class="priceCount">{{item.totalCharge.amount || '-'}}</view>
+            <view class="priceUnit">
+              <view class="unit">{{item.totalCharge.currency.code}}</view>
+              <view class="unit2">/{{item.sizeType}}</view>
+            </view>
           </view>
         </view>
       </view>
-      </view>
-      
+
       <view class="oneBottom">
         <view class="bottomLeft">
           <!-- <image src="/assets/img/instantQuote/cash.svg"></image>
@@ -177,7 +186,7 @@
               </view>
             </view>
             <view style="position: relative;">
-              <view class="time" style="max-width: 380rpx;">  
+              <view class="time" style="max-width: 380rpx;">
                 <text class="placeType">PORT</text>
                 <text>{{item.portOfLoadingLabel}}</text>
               </view>
@@ -232,16 +241,16 @@
       <view class="equipmentTypeContainer">
         <view class="allInRate">{{languageContent.allInRate}}</view>
         <view class="equipmentTypeList">
-        <view class="oneEquipmentType" wx:for="{{item.surchargeDetails}}" wx:key="index">
-          <view class="priceCount">{{item.totalCharge.amount || '-'}}</view>
-          <view class="priceUnit">
-            <view class="unit">{{item.totalCharge.currency.code}}</view>
-            <view class="unit2">/{{item.sizeType}}</view>
+          <view class="oneEquipmentType" wx:for="{{item.surchargeDetails}}" wx:key="index">
+            <view class="priceCount">{{item.totalCharge.amount || '-'}}</view>
+            <view class="priceUnit">
+              <view class="unit">{{item.totalCharge.currency.code}}</view>
+              <view class="unit2">/{{item.sizeType}}</view>
+            </view>
           </view>
         </view>
       </view>
-      </view>
-      
+
       <view class="oneBottom">
         <view class="bottomLeft">
           <!-- <image src="/assets/img/instantQuote/cash.svg"></image>

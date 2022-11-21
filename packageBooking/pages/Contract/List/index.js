@@ -147,12 +147,26 @@ Page({
     const equipmentTypes = ["20ST", "40ST", "40HC", "45HC", "20RF", "40RF", "40RH", "45RH", "20NOR", "40NOR"]
     this.data.perfectContractList.forEach((item, index) => {
       setTimeout(() => {
-        const usContract = (item.portOfLoading.indexOf('US') > -1 || item.portOfDischarge.indexOf('US') > -1) ? true : false
+        const usContract = item.portOfDischarge.indexOf('US') > -1 ? true : false
         item.usContract = usContract
         item.equipments.sort((a, b) => {
           return equipmentTypes.indexOf(a.code) - equipmentTypes.indexOf(b.code);
         });
         item.equipmentTypeLabel = item.equipments.map(i => i.code).join(' | ')
+        item.specialTags = []
+        if (item.hazardous) {
+          item.specialTags.push('HAZ')
+        }
+        if (item.overHeight || item.overLength || item.overWidth) {
+          item.specialTags.push('OOG')
+        }
+        if (item.shipperOwnedContainer) {
+          item.specialTags.push('SOC')
+        }
+        if (item.nonOperatingReefer) {
+          item.specialTags.push('NOR')
+        }
+        item.nacLabel = item.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name).join(', ')
         if (!item.surchargeDetails) {
           this.getQuotationDetailFn(item)
           this.getPointData(item)
