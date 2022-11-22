@@ -171,11 +171,21 @@ Page({
             labelEn: 'Coming additional results close to your search'
           })
         }
+        let contractLists = []
+        if (this.data.perfectCurrentContractList.length) {
+          contractLists = this.data.perfectCurrentContractList
+        } else if (this.data.perfectComingContractList.length) {
+          contractLists = this.data.perfectComingContractList
+        } else if (this.data.partialCurrentContractList.length) {
+          contractLists = this.data.partialCurrentContractList
+        } else if (this.data.partialComingContractList.length) {
+          contractLists = this.data.partialComingContractList
+        }
         this.setData({
           contractTypeList: this.data.contractTypeList,
           contractTypeId: this.data.contractTypeList[0].id,
           contractType: this.data.language === 'zh' ? this.data.contractTypeList[0].labelCn : this.data.contractTypeList[0].labelEn,
-          contractLists: this.data.perfectCurrentContractList || this.data.perfectComingContractList || this.data.partialCurrentContractList || this.data.partialComingContractList,
+          contractLists,
           isLoading: false,
         })
         this.getPageData()

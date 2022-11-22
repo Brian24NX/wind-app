@@ -45,6 +45,7 @@ Page({
     currentEquipmentType: 0,
     surchargeDetail: {},
     simulationDate: '',
+    todayDate: '',
     currentType: 'charge',
     portOfLoading: '',
     portOfLoadingLabel: '',
@@ -83,6 +84,7 @@ Page({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       load: languageUtil.languageVersion().lang.page.load,
       language: languageUtil.languageVersion().lang.page.langue,
+      todayDate: this.getDate(),
       portOfLoading: data.portOfLoadingCode,
       portOfLoadingLabel: data.portOfLoading,
       portOfDischarge: data.portOfDischargeCode,
@@ -358,5 +360,15 @@ Page({
     this.setData({
       showEmail: true
     })
+  },
+
+  getDate() {
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    month = month < 10 ? ('0' + month) : month;
+    let day = now.getDate();
+    day = day < 10 ? ('0' + day) : day
+    return year + '-' + month + '-' + day;
   }
 })

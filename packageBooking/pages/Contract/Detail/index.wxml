@@ -61,7 +61,7 @@
       <view class="paramValueContainer">
         <view class="paramValue">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
         <view class="param">{{languageContent.Commodity}}</view>
-      </view>   
+      </view>
     </view>
     <view class="oneParams" wx:if="{{quotationDetail.spotOffer}}">
       <image src="/assets/img/instantQuote/param_3@2x.png"></image>
@@ -138,7 +138,7 @@
           <view class="oneRateDetail" wx:for="{{surchargeDetail.freightChargeDetails}}" wx:key="index">
             <view>{{item.chargeName}}</view>
             <view class="rateDetailRight">
-              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit"/>
+              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
               <text>{{item.price.amount}} {{item.price.currency.code}}</text>
             </view>
           </view>
@@ -161,7 +161,7 @@
           <view class="oneRateDetail" wx:for="{{surchargeDetail.prepaidChargeDetails}}" wx:key="index">
             <view>{{item.chargeName}}</view>
             <view class="rateDetailRight">
-              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit"/>
+              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
               <text>{{item.price.amount}} {{item.price.currency.code}}</text>
             </view>
           </view>
@@ -184,7 +184,7 @@
           <view class="oneRateDetail" wx:for="{{surchargeDetail.collectChargeDetails}}" wx:key="index">
             <view>{{item.chargeName}}</view>
             <view class="rateDetailRight">
-              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit"/>
+              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
               <text>{{item.price.amount}} {{item.price.currency.code}}</text>
             </view>
           </view>
@@ -215,7 +215,7 @@
             <text>{{item.description}}<block wx:if="{{item.paymentMethod}}"> · {{commonFilters.localeUpperCase(item.paymentMethod)}} ·</block></text>
           </view>
           <view class="oneRateRight">
-            <image wx:if="{{item.hasFixed}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit"/>
+            <image wx:if="{{item.hasFixed}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
             <text class="ratePrice">{{item.convertedRate}}</text>
             <text>{{item.currency}}</text>
           </view>
@@ -223,18 +223,18 @@
       </view>
     </view>
     <view class="surchargeDesc">
-        <image src="/assets/img/instantQuote/error.svg"></image>
-        <view class="surchargeDescRight">
-          <block wx:if="{{language === 'en'}}">
-            <view>Surcharges calculation was simulated with surcharges valid on {{commonFilters.formatEnDateLocal(simulationDate, ' ', '', true, true)}}</view>
-          <view>All rates are based on Reuters rate of exchange of {{commonFilters.formatEnDateLocal(simulationDate, ' ', '', true, true)}}</view>
-          </block>
-          <block wx:else>
-            <view>已估算附加费，附加费有效期为 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}}</view>
-          <view>所有汇率均以 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}} 标准费率为基础</view>
-          </block>
-        </view>
+      <image src="/assets/img/instantQuote/error.svg"></image>
+      <view class="surchargeDescRight">
+        <block wx:if="{{language === 'en'}}">
+          <view>Surcharges calculation was simulated with surcharges valid on {{commonFilters.formatEnDateLocal(simulationDate, ' ', '', true, true)}}</view>
+          <view>All rates are based on Reuters rate of exchange of {{commonFilters.formatEnDateLocal(todayDate, ' ', '', true, true)}}</view>
+        </block>
+        <block wx:else>
+          <view>已估算附加费，附加费有效期为 {{commonFilters.formatCnDateLocal(simulationDate, true, true)}}</view>
+          <view>所有汇率均以 {{commonFilters.formatCnDateLocal(todayDate, true, true)}} 标准费率为基础</view>
+        </block>
       </view>
+    </view>
     <view class="otherContainer">
       <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}" wx:if="{{item.show}}">
         <image src="{{item.icon}}"></image>
@@ -386,9 +386,9 @@
             <text>{{languageContent.temperature}} </text>
             <text class="bold">{{quotationDetail.temperature}}℃</text>
           </view>
-          <view>
+          <view wx:if="{{quotationDetail.ventilation}}">
             <text>{{languageContent.ventilation}} </text>
-            <text class="bold" wx:if="{{quotationDetail.ventilation}}">{{quotationDetail.ventilation}} m³/h</text>
+            <text class="bold">{{quotationDetail.ventilation}} m³/h</text>
           </view>
         </view>
         <view class="oneQuoteValue paddBottom" wx:if="{{quotationDetail.oversize}}">
