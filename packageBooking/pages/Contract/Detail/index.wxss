@@ -397,7 +397,7 @@
 }
 
 .rateDetails .oneRateDetail:nth-of-type(2n) {
-  background-color: rgb(217, 222, 234, 0.3);
+  background-color: rgba(217, 222, 234, 0.3);
 }
 
 .rateDetails .oneRateDetail .rateDetailRight {

@@ -131,7 +131,9 @@
           <view class="rateDetails">
             <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.freightChargeDetails}}" wx:key="index">
               <view>{{item.chargeName}}</view>
-              <view>{{item.price.amount}} {{item.price.currency.code}}</view>
+              <view class="rateDetailRight">
+                <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
+              {{item.price.amount}} {{item.price.currency.code}}</view>
             </view>
           </view>
         </view>
@@ -151,7 +153,10 @@
           <view class="rateDetails">
             <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.prepaidChargeDetails}}" wx:key="index">
               <view>{{item.chargeName}}</view>
-              <view>{{item.price.amount}} {{item.price.currency.code}}</view>
+              <view class="rateDetailRight">
+                <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
+                <text>{{item.price.amount}} {{item.price.currency.code}}</text>
+              </view>
             </view>
           </view>
         </view>
@@ -171,7 +176,10 @@
           <view class="rateDetails">
             <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.collectChargeDetails}}" wx:key="index">
               <view>{{item.chargeName}}</view>
-              <view>{{item.price.amount}} {{item.price.currency.code}}</view>
+              <view class="rateDetailRight">
+                <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
+                <text>{{item.price.amount}} {{item.price.currency.code}}</text>
+              </view>
             </view>
           </view>
         </view>
@@ -200,6 +208,7 @@
               <text>{{item.description}}<block wx:if="{{item.paymentMethod}}"> · {{item.paymentMethod === "C" ? 'COLLECT' : 'PREPAID'}} ·</block></text>
             </view>
             <view class="oneRateRight">
+              <image wx:if="{{item.hasFixed}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
               <text class="ratePrice">{{item.rate}}</text>
               <text>{{item.currency}}</text>
             </view>

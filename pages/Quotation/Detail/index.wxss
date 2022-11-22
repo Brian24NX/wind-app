@@ -301,6 +301,12 @@
   color: #E20202;
 }
 
+.oneRate .oneRateRight image {
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 10rpx;
+}
+
 .oneRate .oneRateRight .ratePrice {
   font-size: 36rpx;
   font-family: Antonio-Regular;
@@ -331,7 +337,18 @@
 }
 
 .rateDetails .oneRateDetail:nth-of-type(2n) {
-  background-color: rgb(217, 222, 234, 0.3);
+  background-color: rgba(217, 222, 234, 0.3);
+}
+
+.rateDetails .oneRateDetail .rateDetailRight {
+  display: flex;
+  align-items: center;
+}
+
+.rateDetails .oneRateDetail .rateDetailRight image {
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 10rpx;
 }
 
 .otherContainer {
