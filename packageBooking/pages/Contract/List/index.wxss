@@ -373,12 +373,12 @@ page {
 }
 
 .resultContainers .oneResult .oneBottom {
-  padding: 12rpx 10rpx 0;
+  padding: 34rpx 10rpx 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-top: 1rpx solid #DDDDDD;
-  margin-top: 28rpx;
+  margin-top: 42rpx;
 }
 
 .resultContainers .oneResult .oneBottom .bottomLeft {
@@ -386,7 +386,11 @@ page {
   align-items: center;
 }
 
-.resultContainers .oneResult .oneBottom .bottomLeft image {
+.resultContainers .oneResult .oneBottom .bottomLeft .oneEquipmentType {
+  border: none;
+}
+
+/* .resultContainers .oneResult .oneBottom .bottomLeft image {
   width: 56rpx;
   height: 56rpx;
 }
@@ -415,7 +419,7 @@ page {
   background-color: #E6EAEF;
   border-radius: 18rpx;
   margin-top: 8rpx;
-}
+} */
 
 .resultContainers .oneResult .oneBottom .selects {
   width: 156rpx;
@@ -474,24 +478,42 @@ page {
 .equipmentTypeContainer {
   margin-top: 20rpx;
   border-top: 1rpx solid #DDDDDD;
-  padding-top: 20rpx;
 }
 
 .equipmentTypeContainer .allInRate {
-  text-align: center;
-  font-size: 24rpx;
-  color: #6b7790;
+  font-size: 36rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+  display: flex;
+  align-items: center;
+  padding: 50rpx 0;
+}
+
+.equipmentTypeContainer .allInRate .allInRateLine {
+  width: 6rpx;
+  height: 50rpx;
+  background-color: #E20202;
+  margin-right: 20rpx;
 }
 
 .equipmentTypeList {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  padding: 0 20rpx;
 }
 
 .equipmentTypeList .oneEquipmentType {
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 280rpx;
+  border: 1rpx solid #DCDCDC;
+  margin-top: 30rpx;
+}
+
+.equipmentTypeList .oneEquipmentType:nth-of-type(-n + 2) {
+  margin-top: 0;
 }
 
 .equipmentTypeList .oneEquipmentType .priceCount {
@@ -514,7 +536,7 @@ page {
   font-size: 24rpx;
   font-family: Arial-BoldMT, Arial;
   font-weight: bold;
-  color: #235af6;
+  color: #04246A;
 }
 
 .typeLists {

@@ -95,7 +95,7 @@
                 </view>
               </view>
               <view class="ship" style="width: 100%;padding-bottom: 20rpx;" wx:if="{{item.nacLabel}}">
-                <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
+                <image src="/assets/img/instantQuote/partners.svg" mode="aspectFit" class="shipIcon"></image>
                 <view>{{item.nacLabel}}</view>
               </view>
               <view class="leftLines">
@@ -136,8 +136,11 @@
         </view>
       </view>
       <view class="equipmentTypeContainer">
-        <view class="allInRate">{{languageContent.allInRate}}</view>
-        <view class="equipmentTypeList">
+        <view class="allInRate">
+          <view class="allInRateLine"></view>
+          <view>{{languageContent.allInRate}}</view>
+        </view>
+        <view class="equipmentTypeList" wx:if="{{!item.isLoading && item.surchargeDetails.length > 1}}">
           <view class="oneEquipmentType" wx:for="{{item.surchargeDetails}}" wx:key="index">
             <view class="priceCount">{{item.totalCharge.amount || '-'}}</view>
             <view class="priceUnit">
@@ -147,12 +150,21 @@
           </view>
         </view>
       </view>
-      <view class="oneBottom">
+      <view class="oneBottom" style="{{!item.isLoading && item.surchargeDetails.length === 1 ? 'border: none;padding: 0 10rpx 0;margin-top: 0;' : ''}}">
         <view class="bottomLeft">
+          <view class="equipmentTypeList" wx:if="{{!item.isLoading && item.surchargeDetails.length === 1}}">
+            <view class="oneEquipmentType">
+              <view class="priceCount">{{item.surchargeDetails[0].totalCharge.amount || '-'}}</view>
+              <view class="priceUnit">
+                <view class="unit">{{item.surchargeDetails[0].totalCharge.currency.code}}</view>
+                <view class="unit2">/{{item.surchargeDetails[0].sizeType}}</view>
+              </view>
+            </view>
+          </view>
         </view>
-        <button class="selects {{filters.checkValidDate(item.validityFrom, item.validityTo) === 'expired' ? 'notSelect' : ''}}" disabled="{{filters.checkValidDate(item.validityTo) === 'expired' || item.isLoading}}" bindtap="toDetail" data-index="{{index}}">
+        <button class="selects {{(filters.checkValidDate(item.validityFrom, item.validityTo) === 'expired' || (!item.isLoading && !item.surchargeDetails.length)) ? 'notSelect' : ''}}" disabled="{{filters.checkValidDate(item.validityTo) === 'expired' || item.isLoading || !item.surchargeDetails.length}}" bindtap="toDetail" data-index="{{index}}">
           <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{item.isLoading}}"></image>
-          <text wx:if="{{filters.checkValidDate(item.validityFrom, item.validityTo) !== 'expired' && !item.isLoading}}">{{languageContent.contractDetail}}</text>
+          <text wx:if="{{!item.isLoading}}">{{languageContent.contractDetail}}</text>
         </button>
       </view>
     </view>
@@ -163,4 +175,4 @@
   </view>
 </view>
 
-<custom-picker columns="{{contractTypeList}}" valueKey="{{valueKey}}" defaultIndex="{{contractType}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
+<custom-picker columns="{{contractTypeList}}" valueKey="{{valueKey}}" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>

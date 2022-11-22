@@ -361,6 +361,12 @@
   color: #E20202;
 }
 
+.oneRate .oneRateRight image {
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 10rpx;
+}
+
 .oneRate .oneRateRight .ratePrice {
   font-size: 36rpx;
   font-family: Antonio-Regular;
@@ -621,15 +627,29 @@
 
 .equipmentTypeList {
   display: flex;
-  padding: 20rpx 0 0;
+  padding: 30rpx 0 0;
 }
 
 .equipmentTypeList .oneEquipment {
+  height: 42rpx;
+  border: 1rpx solid #9AA7C3;
+  width: 90rpx;
+  line-height: 42rpx;
+  text-align: center;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
   margin-right: 40rpx;
 }
 
 .equipmentTypeList .oneEquipment:nth-last-of-type(1) {
   margin-right: 0;
+}
+
+.equipmentTypeList .oneEquipmentChecked {
+  background-color: #E6EAEF;
+  border: 1rpx solid #E6EAEF;
 }
 
 .EquipmentContainer {
@@ -658,6 +678,15 @@
   width: 50%;
 }
 
+.EquipmentContainer .title2 view {
+  width: 40%;
+  text-align: center;
+}
+
+.EquipmentContainer .title2 view:nth-of-type(1) {
+  width: 60%;
+}
+
 .EquipmentContainer .oneEquipmentContainer {
   display: flex;
   align-items: center;
@@ -678,6 +707,14 @@
 
 .EquipmentContainer .oneEquipmentContainer view:nth-of-type(1) {
   width: 50%;
+}
+
+.EquipmentContainer .container2 view {
+  width: 40%;
+}
+
+.EquipmentContainer .container2 view:nth-of-type(1) {
+  width: 60%;
 }
 
 .paddBottom {

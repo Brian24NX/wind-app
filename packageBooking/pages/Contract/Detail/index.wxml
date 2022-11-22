@@ -92,7 +92,7 @@
         <image src="/assets/img/instantQuote/person@2x.png"></image>
       </view>
       <view class="equipmentTypeList">
-        <view class="oneEquipment" wx:for="{{quotationDetail.surchargeDetails}}" wx:key="index" catchtap="changeCurrentEquipmentType" data-index="{{index}}">{{item.sizeType}}</view>
+        <view class="oneEquipment {{currentEquipmentType === index ? 'oneEquipmentChecked' : ''}}" wx:for="{{quotationDetail.surchargeDetails}}" wx:key="index" catchtap="changeCurrentEquipmentType" data-index="{{index}}">{{item.sizeType}}</view>
       </view>
       <view class="rateTotal">
         <view class="rateTotalLeft">
@@ -212,9 +212,10 @@
       <view class="oneRates">
         <view class="oneRate" wx:for="{{surchargeDetail.perBLChargeDetails}}">
           <view class="oneRateLeft">
-            <text>{{item.description}}<block wx:if="{{item.paymentMethod}}"> · {{item.paymentMethod === "C" ? 'COLLECT' : 'PREPAID'}} ·</block></text>
+            <text>{{item.description}}<block wx:if="{{item.paymentMethod}}"> · {{commonFilters.localeUpperCase(item.paymentMethod)}} ·</block></text>
           </view>
           <view class="oneRateRight">
+            <image wx:if="{{item.hasFixed}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit"/>
             <text class="ratePrice">{{item.convertedRate}}</text>
             <text>{{item.currency}}</text>
           </view>
@@ -344,27 +345,29 @@
           <text class="perContainer">{{languageContent.perContainer}}</text>
         </view>
         <view class="EquipmentContainer">
-          <view class="EquipmentContainerTitle">
-            <view>{{languageContent.maxWeight}}</view>
-            <view>Tons excl.tare</view>
-            <view>{{languageContent.length}}</view>
-          </view>
-          <view class="oneEquipmentContainer" wx:for="{{quotationDetail.equipments}}" wx:key="index">
-            <view>{{item.code}}</view>
-            <view>{{item.netWeight}}</view>
-            <view>{{item.length || '-'}}</view>
-          </view>
+          <block wx:if="{{commonEquipmentType === 'SP'}}">
+            <view class="EquipmentContainerTitle">
+              <view>{{languageContent.maxWeight}}</view>
+              <view>Tons excl.tare</view>
+              <view>{{languageContent.length}}</view>
+            </view>
+            <view class="oneEquipmentContainer" wx:for="{{quotationDetail.equipments}}" wx:key="index">
+              <view>{{item.code}}</view>
+              <view>{{item.netWeight}}</view>
+              <view>{{item.length || '-'}}</view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="EquipmentContainerTitle title2">
+              <view>{{languageContent.maxWeight}}</view>
+              <view>Tons excl.tare</view>
+            </view>
+            <view class="oneEquipmentContainer container2" wx:for="{{quotationDetail.equipments}}" wx:key="index">
+              <view>{{item.code}}</view>
+              <view>{{item.netWeight}}</view>
+            </view>
+          </block>
         </view>
-        <!-- <view class="oneQuoteValue">
-          <view>
-            <text>{{languageContent.maxWeight}} </text>
-            <text class="bold">{{quotationDetail.equipments[0].code}}</text>
-          </view>
-          <view>
-            <text>Tons excl.tare </text>
-            <text class="bold">{{quotationDetail.equipments[0].netWeight}}</text>
-          </view>
-        </view> -->
       </view>
       <view class="oneQuoteDetail" wx:if="{{quotationDetail.shipperOwnedContainer || quotationDetail.nonOperatingReefer || quotationDetail.reefer || quotationDetail.hazardous || quotationDetail.oversize}}" style="padding-bottom: 30rpx;">
         <view class="oneQuoteTitle">{{languageContent.additionalAttributes}}</view>

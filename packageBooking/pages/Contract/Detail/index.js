@@ -55,7 +55,8 @@ Page({
     imports: [],
     exportLocation: '',
     importLocation: '',
-    showEmail: false
+    showEmail: false,
+    commonEquipmentType: ''
   },
 
   /**
@@ -89,6 +90,7 @@ Page({
       fromLabel: quotationDetail.placeOfReceiptLabel || quotationDetail.portOfLoadingLabel,
       toLabel: quotationDetail.placeOfDeliveryLabel || quotationDetail.portOfDischargeLabel,
       simulationDate: data.simulationDate,
+      commonEquipmentType: data.commonEquipmentType,
       partnerCode: data.partnerCode,
       quotationDetail,
       otherList: this.data.otherList

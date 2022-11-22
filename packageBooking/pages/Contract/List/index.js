@@ -54,6 +54,7 @@ Page({
     }],
     partnerCode: [],
     contractType: '',
+    contractTypeId: '',
     contractTypeList: [],
     valueKey: '',
     defaultIndex: 0,
@@ -172,6 +173,7 @@ Page({
         }
         this.setData({
           contractTypeList: this.data.contractTypeList,
+          contractTypeId: this.data.contractTypeList[0].id,
           contractType: this.data.language === 'zh' ? this.data.contractTypeList[0].labelCn : this.data.contractTypeList[0].labelEn,
           contractLists: this.data.perfectCurrentContractList || this.data.perfectComingContractList || this.data.partialCurrentContractList || this.data.partialComingContractList,
           isLoading: false,
@@ -204,8 +206,10 @@ Page({
   },
 
   openPopup() {
+    const index = this.data.contractTypeList.findIndex(i=>i.id === this.data.contractTypeId)
     this.setData({
       valueKey: this.data.language === 'zh' ? 'labelCn' : 'labelEn',
+      defaultIndex: index > -1 ? index : 0,
       showPopup: true
     })
   },
@@ -237,6 +241,7 @@ Page({
     this.setData({
       showPopup: false,
       page: 0,
+      contractTypeId: e.detail.id,
       contractType: this.data.language === 'zh' ? e.detail.labelCn : e.detail.labelEn,
       contractLists,
       contractList: []
@@ -283,7 +288,7 @@ Page({
         if (item.nonOperatingReefer) {
           item.specialTags.push('NOR')
         }
-        item.nacLabel = item.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name).join(', ')
+        item.nacLabel = (item.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + ', ' + i.city)).length ? item.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + ', ' + i.city)[0] : ''
         if (!item.surchargeDetails) {
           this.getQuotationDetailFn(item)
           this.getPointData(item)
