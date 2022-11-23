@@ -298,7 +298,7 @@ Page({
         if (item.nonOperatingReefer) {
           item.specialTags.push('NOR')
         }
-        item.nacLabel = (item.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + ', ' + i.city)).length ? item.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + ', ' + i.city)[0] : ''
+        item.nacLabel = (item.affiliates.filter(i => i.affiliatesType === 'NAC')).length ? item.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + (i.city ? ', ' + i.city : ''))[0] : ''
         if (!item.surchargeDetails) {
           this.getQuotationDetailFn(item)
           this.getPointData(item)

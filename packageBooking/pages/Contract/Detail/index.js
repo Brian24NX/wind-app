@@ -72,7 +72,7 @@ Page({
     const data = currentPage.data
     let quotationDetail = JSON.parse(JSON.stringify(data.contractList[Number(options.index)]))
     quotationDetail.equipments = quotationDetail.equipments.filter(i => i.netWeight)
-    quotationDetail.namedAccounts = quotationDetail.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + ', ' + i.city)
+    quotationDetail.namedAccounts = quotationDetail.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + (i.city ? ', ' + i.city : ''))
     let surchargeDetail = quotationDetail.surchargeDetails[this.data.currentEquipmentType]
     surchargeDetail.oceanFreightDetailsLabel = surchargeDetail.oceanFreightDetails.join(' / ')
     surchargeDetail.oceanFreight.isChecked = true
