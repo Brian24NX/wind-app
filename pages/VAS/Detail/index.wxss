@@ -1,0 +1,159 @@
+/* pages/VAS/Detail/index.wxss */
+page {
+  background-color: #F0F1F5;
+  padding: 30rpx;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 30rpx);
+}
+
+.vasTops {
+  background-color: #ffffff;
+  padding: 20rpx 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 54rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.vasTops view {
+  max-width: 350rpx;
+}
+
+.vasTops image {
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.vasDescContainer {
+  background-color: #ffffff;
+  margin-top: 30rpx;
+  padding: 30rpx;
+}
+
+.vasDescContainer .vasDesc {
+  padding: 20rpx;
+  background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
+  color: #071E5D;
+  font-size: 28rpx;
+}
+
+.vasDescContainer .oneTemplate {
+  margin-top: 20rpx;
+}
+
+.warning {
+  display: flex;
+  align-items: center;
+}
+
+.warning image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 36rpx;
+}
+
+.warning view {
+  max-width: 550rpx;
+  font-weight: 600;
+  color: #6B7790;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+
+.chargeDetails {
+  background-color: #ffffff;
+  margin-top: 30rpx;
+  padding: 0 48rpx 80rpx;
+}
+
+.chargeList .oneCharge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 10rpx;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.chargeList .oneCharge .chargeLeft {
+  display: flex;
+  align-items: center;
+}
+
+.chargeList .oneCharge .chargeLeft .checkBox {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border: 1rpx solid #04246A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chargeList .oneCharge .chargeLeft .checkBox .checked {
+  width: 18rpx;
+  height: 18rpx;
+  background-color: #04246A;
+  border-radius: 50%;
+}
+
+.chargeList .oneCharge .chargeLeft .chargeName {
+  max-width: 300rpx;
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #04246A;
+  margin-left: 20rpx;
+}
+
+.chargeList .oneCharge .chargeRight {
+  display: flex;
+  align-items: center;
+}
+
+.chargeList .oneCharge .chargeRight .chargePrice {
+  font-size: 60rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #04246A;
+  margin-right: 10rpx;
+}
+
+.chargeList .oneCharge .chargeRight .chargeUnit {
+  font-size: 20rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.chargeList .oneCharge .chargeRight .chargeUnit view:nth-of-type(1) {
+  color: #E20202;
+}
+
+.termsConditions {
+  display: flex;
+  align-items: center;
+  color: #6B7790;
+  font-size: 24rpx;
+  margin-top: 80rpx;
+}
+
+.termsConditions .termChecked {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+  border: 1rpx solid #071E5D;
+}
+
+.subscribeBtn {
+  margin-top: 30rpx;
+  border-radius: 0;
+  background-color: #2D75FF;
+  color: #ffffff;
+  font-size: 36rpx;
+}
+
+.hoverClass {
+  opacity: 0.9;
+}

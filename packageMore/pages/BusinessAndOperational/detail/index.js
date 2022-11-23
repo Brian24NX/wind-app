@@ -69,7 +69,7 @@ Page({
 
   // 预览
   preview() {
-    const imageType = ['png', 'jpg', 'jpeg', 'git']
+    const imageType = ['png', 'jpg', 'jpeg', 'gif']
     const fileTypes = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf']
     if (imageType.indexOf(this.data.businessDetail.fileType) > -1) {
       wx.previewImage({

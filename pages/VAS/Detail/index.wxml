@@ -1,0 +1,53 @@
+<!--pages/VAS/Detail/index.wxml-->
+<view>
+  <view class="vasTops">
+    <view>{{vasDetail.productName}}</view>
+    <image src="{{vasDetail.productMainImage}}" mode="aspectFill"/>
+  </view>
+  <view class="vasDescContainer">
+    <view class="vasDesc">{{vasDetail.productDescription}}</view>
+    <view class="oneTemplate">
+      <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
+      <view class="templateContent">
+        <view class="templateName">{{vasDetail.fileName}}</view>
+        <view catchtap="sendEmail">{{languageContent.send}}</view>
+      </view>
+      <view class="preview" catchtap="preview">
+        <image src="/assets/img/more/eye@2x.png"></image>
+      </view>
+    </view>
+    <view class="warning" wx:if="{{vasDetail.confirmationNeeded}}">
+      <image src="/assets/img/instantQuote/warning@2x.png"/>
+      <view>{{languageContent.warningRemind}}</view>
+    </view>
+  </view>
+  <view class="chargeDetails">
+    <view class="chargeList">
+      <view class="oneCharge" wx:for="{{vasDetail.chargeDetails}}">
+        <view class="chargeLeft">
+          <view class="checkBox" catchtap="chooseCharge" data-index="{{index}}">
+            <view class="checked" wx:if="{{checkIndex === index}}"></view>
+          </view>
+          <view class="chargeName">{{item.chargeName}}</view>
+        </view>
+        <view class="chargeRight" wx:if="{{item.levelOfCharge === 'Per Container'}}">
+          <view class="chargePrice">{{item.rateFrom}}</view>
+          <view class="chargeUnit">
+            <view>{{item.currency}}</view>
+            <view>/CONTAINER</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="termsConditions">
+      <view class="termChecked" style="{{isAgree ? 'background-color: #071E5D;' : ''}}" catchtap="clickAgree">
+        <van-icon name="success" color="#ffffff" size="15px" />
+      </view>
+      <view>I agree with <text style="color: #2D75FF;text-decoration: underline;" catchtap="previewTeams">Terms an Conditions *</text></view>
+    </view>
+  </view>
+  <button class="subscribeBtn" hover-class="hoverClass" catchtap="subscribeSubmit">{{languageContent.subscribe}}</button>
+</view>
+
+
+<email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

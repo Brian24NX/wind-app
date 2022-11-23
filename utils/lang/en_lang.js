@@ -578,10 +578,17 @@ var Languague = {
       transType: 'Transportation Mode',
       comingSoon: 'ADDITIONAL SERVICES FUNCTION COMING SOON',
       bookInWeb: 'Please add additional services during booking on eCommerce website for now',
-      additionalServices: 'Additional Services',
-      additionalServicesDesc: 'Protect your cargo | Expand your business | Act towards carbon neutrality',
       back: 'Back',
       next: 'Next'
+    },
+    vas: {
+      warningRemind: 'This service is subject to the agent validation after booking submission.',
+      additionalServicesChoosed: 'Subscribed Services',
+      noChoosedAdditionalServices: 'No services subscribed yet. Please discover additional services available for your quote.',
+      additionalServices: 'Additional Services',
+      additionalServicesDesc: 'Protect your cargo | Expand your business | Act towards carbon neutrality',
+      send: 'Send to Email',
+      subscribe: 'Subscribe'
     },
     // 我的报价
     myContract: {

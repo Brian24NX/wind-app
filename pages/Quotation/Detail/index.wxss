@@ -494,7 +494,7 @@
   height: 76rpx;
   background-color: #E20202;
   font-size: 32rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
+  font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #FFFFFF;
   text-align: center;
@@ -524,7 +524,7 @@
   color: #6B7790;
 }
 
-.additionServicesContainers {
+/* .additionServicesContainers {
   padding: 28rpx 30rpx 220rpx;
   background-color: #F0F1F5;
 }
@@ -603,7 +603,7 @@
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #071E5D;
-}
+} */
 
 .quoteDetails {
   background-color: #ffffff;

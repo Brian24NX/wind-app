@@ -48,6 +48,20 @@ export const namedAccountsSearch = (params) => {
   return postRequest('/api/miniapp/namedAccountsSearch', params, true, true, true, true)
 }
 
+// 获取VAS
+export const vasLists = (params) => {
+  return postRequest('/api/miniapp/quotation/quotationValueAddedServices', params, true, false, true, true)
+}
+
+export const vasFileDetail = (params) => {
+  return getRequest('/api/miniapp/saveFileFromUrl', params, false, true)
+}
+
+// 发送VAS文件
+export const vasFileSendEmail = (params) => {
+  return postRequest('/api/miniapp/emailVasPdf', params, true)
+}
+
 // 导出PDF
 export const exportPDF = (params) => {
   return postRequest('/api/miniapp/downloadQuotationPdf', params, true, false, true)

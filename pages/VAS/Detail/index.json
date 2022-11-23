@@ -2,6 +2,6 @@
   "navigationBarTitleText": "",
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
-    "vas": "/components/vas/index"
+    "email": "../../../../components/email/index"
   }
 }

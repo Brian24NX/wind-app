@@ -316,29 +316,7 @@
   </view>
 </block>
 <block wx:else>
-  <view class="additionServicesContainers">
-    <view class="topWarningContainer">
-      <image class="warningIcon" src="/assets/img/instantQuote/warning.svg"></image>
-      <view class="warningTitle">{{languageContent.comingSoon}}</view>
-      <view>{{languageContent.bookInWeb}}</view>
-    </view>
-    <view class="additionContainers">
-      <view class="additionContainer">
-        <view class="additionTitleLine"></view>
-        <view>{{languageContent.additionalServices}}</view>
-      </view>
-      <view class="additionDesc">{{languageContent.additionalServicesDesc}}</view>
-    </view>
-    <view class="additionList">
-      <view class="oneAddition" wx:for="{{vasList}}">
-        <image src="{{item.iconUrl}}" mode="aspectFit"></image>
-        <view class="additionDetail">
-          <view class="additionDetailTitle">{{item.vasTitle}}</view>
-          <view>{{language === 'zh' ? item.vasDescCn : item.vasDescEn}}</view>
-        </view>
-      </view>
-    </view>
-  </view>
+  <vas vasParams="{{vasParams}}" subscribedServices="{{subscribedServices}}"></vas>
 </block>
 <view class="bottomButtonContainer">
   <view class="bottomButtonLeft">
@@ -354,5 +332,3 @@
     <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && quotationDetail.quoteLines[0].spotOffer}}" catchtap="submit">{{isFirst ? languageContent.next : languageContent.saveQuotation}}</button>
   </view>
 </view>
-
-<additional-services id="additionalServices"></additional-services>

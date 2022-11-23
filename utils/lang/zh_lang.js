@@ -581,10 +581,17 @@ var Languague = {
       transType: '运输方式',
       comingSoon: '增值服务功能升级中，敬请期待',
       bookInWeb: '请至官网订舱时添加增值服务产品',
-      additionalServices: '增值服务',
-      additionalServicesDesc: '保护您的货物 · 拓展业务 · 争取实现碳中和',
       back: '上一步',
       next: '下一步'
+    },
+    vas: {
+      warningRemind: '',
+      send: '发送至邮箱',
+      additionalServicesChoosed: '已订阅的服务',
+      noChoosedAdditionalServices: '尚未选购增值服务，请选择下列适配您的报价的增值服务.',
+      additionalServices: '增值服务',
+      additionalServicesDesc: '保护您的货物 · 拓展业务 · 争取实现碳中和',
+      subscribe: '订阅'
     },
     // 我的报价
     myContract: {

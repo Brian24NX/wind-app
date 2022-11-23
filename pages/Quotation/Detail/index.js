@@ -13,7 +13,7 @@ Page({
     languageContent: {},
     language: 'zh',
     todayDate: '',
-    isFirst: true,
+    isFirst: false,
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
       label: 'localCharge',
@@ -56,52 +56,42 @@ Page({
     placeOfOrigin: '',
     finalPlaceOfDelivery: '',
     partnerCode: [],
-    vasList: [{
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_1.png',
-      vasTitle: 'ACT with CMA CGM+',
-      vasDescEn: 'Reduce and offset your environmental footprint.',
-      vasDescCn: '携手ACT with CMA CGM+实现碳中和！现在，您可以减少和抵消您的环境足迹！'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_2.png',
-      vasTitle: 'SERENITY cargo value guarantee',
-      vasDescEn: 'Enjoy full compensation in case of cargo damage.',
-      vasDescCn: '一旦您的货物受损，将享受完整快捷的赔付'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_3.png',
-      vasTitle: 'SEAPRIORITY go',
-      vasDescEn: 'Enjoy a priority status at loading and transloading terminal.',
-      vasDescCn: '在起运港和转运港享受优先放柜及装载'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
-      vasTitle: 'FREETIME extended (Detention)',
-      vasDescEn: 'Extend your Detention freetime at destination.',
-      vasDescCn: 'Extend your Detention Free Time at destination'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
-      vasTitle: 'FREETIME extended (Demurrage only)',
-      vasDescEn: 'Extend your Demurrage freetime at destination.',
-      vasDescCn: 'Extend your Demurrage Free Time at destination'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
-      vasTitle: 'FREETIME extended (Detention & Demurrage)',
-      vasDescEn: 'Extend your merged D&D freetime at destination.',
-      vasDescCn: '延长目的地免滞箱费&滞港费（D&D）'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_5.png',
-      vasTitle: 'BARLOCK security device',
-      vasDescEn: 'Add extra protection to keep your cargo safe.',
-      vasDescCn: '增加额外的保护以确保您的货物安全'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_6.png',
-      vasTitle: 'SERENITY container guarantee (export)',
-      vasDescEn: 'Avoid costs in case of damage to our containers.',
-      vasDescCn: '避免因集装箱损坏而产生的额外费用-出口'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_6.png',
-      vasTitle: 'SERENITY container guarantee (import)',
-      vasDescEn: 'Avoid costs in case of damage to our containers.',
-      vasDescCn: '避免因集装箱损坏而产生的额外费用-进口'
-    }]
+    subscribedServices: [],
+    vasParams: {
+      "shippingCompany": "CMACGM",
+      "placeReceipt": "",
+      "portLoading": "CNSHA",
+      "portDischarge": "NLRTM",
+      "placeDelivery": "",
+      "placeOfPayment": "NLRTM",
+      "importMovementType": "PORT",
+      "importHaulageMode": "MERCHANT",
+      "exportMovementType": "PORT",
+      "exportHaulageMode": "MERCHANT",
+      "applicationDate": "2022-12-01T17:10:25.054-07:00",
+      "channel": "PRI",
+      "typeOfBl": "Negotiable",
+      "bookingParties": [{
+        "partnerCode": "0000000176",
+        "bookingParty": true,
+        "role": "BKG",
+        "name": ""
+      }],
+      "cargoes": [{
+        "cargoNumber": 1,
+        "packageCode": "20ST",
+        "packageBookedQuantity": 1,
+        "commodityCode": "FAK",
+        "commodityName": "FAK",
+        "totalNetWeight": 1,
+        "uomWeight": "TNE",
+        "hazardous": false,
+        "oversize": false,
+        "refrigerated": false,
+        "shipperOwned": false
+      }],
+      "subscribedCharges": []
+    }
   },
 
   /**
@@ -111,23 +101,23 @@ Page({
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.qutationResult.title2
     })
-    const pages = getCurrentPages()
-    const currentPage = pages[pages.length - 2]
-    const data = currentPage.data
-    let languageContent = languageUtil.languageVersion().lang.page.qutationResult
-    this.setData({
-      languageContent,
-      language: languageUtil.languageVersion().lang.page.langue,
-      partnerCode: data.partnerCode,
-      todayDate: this.getDate(),
-      portOfLoading: data.portOfLoading,
-      portOfLoadingLabel: data.portOfLoadingLabel,
-      portOfDischarge: data.portOfDischarge,
-      portOfDischargeLabel: data.portOfDischargeLabel,
-      placeOfOrigin: data.placeOfOrigin,
-      finalPlaceOfDelivery: data.finalPlaceOfDelivery
-    })
-    this.setDefaultInfo(Number(options.index), Number(options.containers))
+    // const pages = getCurrentPages()
+    // const currentPage = pages[pages.length - 2]
+    // const data = currentPage.data
+    // let languageContent = languageUtil.languageVersion().lang.page.qutationResult
+    // this.setData({
+    //   languageContent,
+    //   language: languageUtil.languageVersion().lang.page.langue,
+    //   partnerCode: data.partnerCode,
+    //   todayDate: this.getDate(),
+    //   portOfLoading: data.portOfLoading,
+    //   portOfLoadingLabel: data.portOfLoadingLabel,
+    //   portOfDischarge: data.portOfDischarge,
+    //   portOfDischargeLabel: data.portOfDischargeLabel,
+    //   placeOfOrigin: data.placeOfOrigin,
+    //   finalPlaceOfDelivery: data.finalPlaceOfDelivery
+    // })
+    // this.setDefaultInfo(Number(options.index), Number(options.containers))
   },
 
   setDefaultInfo(index, containers) {
@@ -164,6 +154,10 @@ Page({
       containers: containers || data2.containers,
       commodityName: data2.commodityName
     })
+  },
+
+  setSubscribedServices() {
+
   },
 
   calculatedCharges() {
