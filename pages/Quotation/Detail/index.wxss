@@ -213,7 +213,7 @@
   margin-top: -20rpx;
 }
 
-.rateTitles > image {
+.rateTitles>image {
   width: 146rpx;
   height: 106rpx;
   margin-right: -20rpx;
@@ -444,16 +444,113 @@
   line-height: 26rpx;
 }
 
-.bottomButtonContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40rpx 48rpx;
+.bottomButtonContainers {
   background-color: #ffffff;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 10;
+}
+
+.bottomButtonContainers .subscribedContainers {
+  padding: 0 48rpx;
+}
+
+.bottomButtonContainers .subscribedTitle {
+  display: flex;
+  align-items: center;
+  font-size: 48rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #04246A;
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #F4F4F4;
+}
+
+.bottomButtonContainers .subscribedList {
+  max-height: calc(100vh - 480rpx);
+  overflow-y: auto;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #F4F4F4;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft {
+  display: flex;
+  align-items: center;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 30rpx;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productName {
+  font-size: 32rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #071E5D;
+  display: inline-block;
+  white-space: nowrap;
+  width: 310rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productPrices {
+  display: flex;
+  align-items: center;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productPrices .productPrice {
+  font-size: 48rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #E10202;
+  margin-right: 20rpx;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productUnit {
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeRight {
+  display: flex;
+  align-items: center;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeRight image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: 30rpx;
+}
+
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeRight image:nth-of-type(1) {
+  margin-left: 0;
+}
+
+.bottomButtonContainers .subscribedTitle .subscribedTitleLine {
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+  margin-right: 20rpx;
+}
+
+.bottomButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx 30rpx;
 }
 
 .bottomButtonContainer .bottomButtonLeft {
@@ -484,6 +581,63 @@
   color: #6B7790;
   font-size: 24rpx;
   margin-top: 6rpx;
+}
+
+.bottomButtonContainer .bottomLeft {
+  display: flex;
+  align-items: center;
+}
+
+.bottomButtonContainer .bottomLeft .cashIcon {
+  position: relative;
+}
+
+.bottomButtonContainer .bottomLeft .cashIcon image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.bottomButtonContainer .bottomLeft .cashIcon .vasCount {
+  line-height: 32rpx;
+  height: 32rpx;
+  min-width: 32rpx;
+  text-align: center;
+  background-color: #E20202;
+  border-radius: 16rpx;
+  padding: 0 10rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  z-index: 2;
+}
+
+.bottomButtonContainer .bottomLeft .totalPrice {
+  font-size: 72rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #04246A;
+  margin: 0 10rpx 0 20rpx;
+}
+
+.bottomButtonContainer .bottomLeft .priceUnit .unit {
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #E20202;
+}
+
+.bottomButtonContainer .bottomLeft .priceUnit .total {
+  height: 32rpx;
+  line-height: 32rpx;
+  border-radius: 18rpx;
+  padding: 0 10rpx;
+  font-size: 16rpx;
+  font-family: Arial-BoldMT, Arial;
+  font-weight: 400;
+  color: #071E5D;
+  background-color: #E6EAEF;
 }
 
 .bottomButtonContainer .bottomButtonRight {
@@ -699,4 +853,14 @@
   padding: 0;
   margin: 0;
   line-height: 60rpx;
+}
+
+.subscribedBg {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }

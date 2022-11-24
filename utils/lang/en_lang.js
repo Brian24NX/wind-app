@@ -579,7 +579,8 @@ var Languague = {
       comingSoon: 'ADDITIONAL SERVICES FUNCTION COMING SOON',
       bookInWeb: 'Please add additional services during booking on eCommerce website for now',
       back: 'Back',
-      next: 'Next'
+      next: 'Next',
+      total: 'TOTAL'
     },
     vas: {
       containers: 'Container',
@@ -590,7 +591,8 @@ var Languague = {
       additionalServices: 'Additional Services',
       additionalServicesDesc: 'Protect your cargo | Expand your business | Act towards carbon neutrality',
       send: 'Send to Email',
-      subscribe: 'Subscribe'
+      subscribe: 'Subscribe',
+      calculate: 'Calculate'
     },
     // 我的报价
     myContract: {

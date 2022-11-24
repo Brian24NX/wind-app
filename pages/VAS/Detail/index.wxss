@@ -157,3 +157,71 @@ page {
 .hoverClass {
   opacity: 0.9;
 }
+
+.calculatedContainer .calculatedTitle {
+  padding: 18rpx 0 38rpx;
+  font-size: 24rpx;
+  color: #04246A;
+}
+
+.calculatedContainer .calculatedInput {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #dfdfdf;
+  padding-bottom: 38rpx;
+}
+
+.calculatedContainer .calculatedInput input {
+  width: 370rpx;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #071E5D;
+}
+
+.calculatedContainer .calculatedInput button {
+  width: 156rpx;
+  height: 80rpx;
+  background-color: #071E5D;
+  color: #ffffff;
+  font-size: 32rpx;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.calculatedContainer .calculateResult {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #dfdfdf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calculatedContainer .calculateResult .calculateResultLeft {
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #04246A;
+}
+
+.calculatedContainer .calculateResult .calculateResultRight {
+  display: flex;
+  align-items: center;
+  font-size: 20rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.calculateResultRight .resultPrice {
+  font-size: 60rpx;
+  color: #04246A;
+  margin-right: 10rpx;
+}
+
+.calculateResultRight .resultUnit {
+  color: #E20202;
+}

@@ -17,7 +17,7 @@ Page({
     baseUrl: '',
     languageCode: '',
     todayDate: '',
-    isFirst: false,
+    isFirst: true,
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
       label: 'localCharge',
@@ -62,7 +62,8 @@ Page({
     partnerCode: [],
     vasList: [],
     subscribedServices: [],
-    noSelectVasList: []
+    noSelectVasList: [],
+    showVas: false
   },
 
   /**
@@ -72,9 +73,9 @@ Page({
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.qutationResult.title2
     })
-    // const pages = getCurrentPages()
-    // const currentPage = pages[pages.length - 2]
-    // const data = currentPage.data
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
     const languages = languageUtil.languageVersion().lang.page
     this.setData({
       languageContent: languages.qutationResult,
@@ -82,16 +83,16 @@ Page({
       language: languages.langue,
       languageCode: languages.langue === 'zh' ? 'zh_CN' : 'en_US',
       baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
-      // partnerCode: data.partnerCode,
+      partnerCode: data.partnerCode,
       todayDate: this.getDate(),
-      // portOfLoading: data.portOfLoading,
-      // portOfLoadingLabel: data.portOfLoadingLabel,
-      // portOfDischarge: data.portOfDischarge,
-      // portOfDischargeLabel: data.portOfDischargeLabel,
-      // placeOfOrigin: data.placeOfOrigin,
-      // finalPlaceOfDelivery: data.finalPlaceOfDelivery
+      portOfLoading: data.portOfLoading,
+      portOfLoadingLabel: data.portOfLoadingLabel,
+      portOfDischarge: data.portOfDischarge,
+      portOfDischargeLabel: data.portOfDischargeLabel,
+      placeOfOrigin: data.placeOfOrigin,
+      finalPlaceOfDelivery: data.finalPlaceOfDelivery
     })
-    // this.setDefaultInfo(Number(options.index), Number(options.containers))
+    this.setDefaultInfo(options.index, options.containers)
     this.getVasList()
   },
 
@@ -131,11 +132,21 @@ Page({
     })
   },
 
-  setSubscribedServices(detail, index) {
+  setSubscribedServices(detail) {
+    const index = this.data.vasList.findIndex(i => i.parentProductId === detail.parentProductId)
     this.data.vasList[index] = detail
     this.setData({
       vasList: this.data.vasList,
-      subscribedServices: this.data.vasList.filter(i => i.isProductSelected)
+      subscribedServices: this.data.vasList.filter(i => i.isProductSelected),
+      noSelectVasList: this.data.vasList.filter(i => !i.isProductSelected)
+    })
+    this.calculatedCharges()
+  },
+
+  previewVas() {
+    if (!this.data.subscribedServices.length) return
+    this.setData({
+      showVas: !this.data.showVas
     })
   },
 
@@ -154,6 +165,11 @@ Page({
     if (surchargeDetails.collectCharges.isChecked) {
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
+    this.data.subscribedServices.forEach(i => {
+      if (i.levelOfCharge === 'Per Container') {
+        totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
+      }
+    })
     this.setData({
       totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount
     })
@@ -274,33 +290,39 @@ Page({
   },
 
   getVasList() {
-    vasLists({
-      "shippingCompany": "CMACGM",
-      "placeReceipt": "",
-      "portLoading": "CNSHA",
-      "portDischarge": "NLRTM",
-      "placeDelivery": "",
-      "placeOfPayment": "NLRTM",
-      "importMovementType": "PORT",
-      "importHaulageMode": "MERCHANT",
-      "exportMovementType": "PORT",
-      "exportHaulageMode": "MERCHANT",
-      "applicationDate": "2022-12-01T17:10:25.054-07:00",
-      "locale": this.data.languageCode,
-      "channel": "PRI",
-      "typeOfBl": "Negotiable",
-      "bookingParties": [{
-        "partnerCode": "0000000176",
+    const quoteLine = this.data.quotationDetail.quoteLines[0]
+    const shippingCompany = quoteLine.shippingCompany
+    const bookingParties = []
+    this.data.partnerCode.forEach(i => {
+      bookingParties.push({
+        "partnerCode": i,
         "bookingParty": true,
         "role": "BKG",
         "name": ""
-      }],
+      })
+    })
+    vasLists({
+      "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CNC' : 'APL',
+      "placeReceipt": this.data.placeOfOrigin,
+      "portLoading": this.data.portOfLoading,
+      "portDischarge": this.data.portOfDischarge,
+      "placeDelivery": this.data.finalPlaceOfDelivery,
+      "placeOfPayment": this.data.portOfDischarge,
+      "importMovementType": quoteLine.importMovementType.toLocaleUpperCase(),
+      "importHaulageMode": "MERCHANT",
+      "exportMovementType": quoteLine.exportMovementType.toLocaleUpperCase(),
+      "exportHaulageMode": "MERCHANT",
+      "applicationDate": this.data.quotationDetail.departureDate,
+      "locale": this.data.languageCode,
+      "channel": "PRI",
+      "typeOfBl": "Negotiable",
+      "bookingParties": bookingParties,
       "cargoes": [{
         "cargoNumber": 1,
-        "packageCode": "20ST",
-        "packageBookedQuantity": 1,
-        "commodityCode": "FAK",
-        "commodityName": "FAK",
+        "packageCode": this.data.equipmentTypeSize,
+        "packageBookedQuantity": this.data.containers,
+        "commodityCode": quoteLine.commodities[0].code,
+        "commodityName": quoteLine.commodities[0].name,
         "totalNetWeight": 1,
         "uomWeight": "TNE",
         "hazardous": false,
@@ -310,10 +332,14 @@ Page({
       }],
       "subscribedCharges": []
     }).then(res => {
+    // vasLists({"shippingCompany":"CMACGM","placeReceipt":"FIKEM","portLoading":"FIKEM","portDischarge":"EGALY","placeDelivery":"EGALY","placeOfPayment":"EGALY","importMovementType":"DOOR","importHaulageMode":"MERCHANT","exportMovementType":"DOOR","exportHaulageMode":"MERCHANT","applicationDate":"2022-12-01T10:00:00+00:00","locale":"zh_CN","channel":"PRI","typeOfBl":"Negotiable","bookingParties":[{"partnerCode":"0000000176","bookingParty":true,"role":"BKG","name":""}],"cargoes":[{"cargoNumber":1,"packageCode":"20ST","packageBookedQuantity":10,"commodityCode":"FAK LISA (UPA)","commodityName":"Freight All Kind","totalNetWeight":1,"uomWeight":"TNE","hazardous":false,"oversize":false,"refrigerated":false,"shipperOwned":false}],"subscribedCharges":[]}).then(res=> {
       res.data.forEach(one => {
-        one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i=>i.levelOfCharge === 'Per Container').map(item => {
+        one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i => i.levelOfCharge === one.levelOfCharge).map(item => {
           return item.rateFrom
         }))
+        if (one.levelOfCharge === 'Per BL' && one.chargeDetails[0].calculationType !== 'FIX') {
+          one.minPrice = '%'
+        }
       })
       this.setData({
         vasList: res.data,
@@ -337,4 +363,8 @@ Page({
     day = day < 10 ? ('0' + day) : day
     return year + '-' + month + '-' + day;
   },
+
+  prevent() {
+    return
+  }
 })

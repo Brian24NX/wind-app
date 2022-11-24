@@ -2,14 +2,14 @@
 <view>
   <view class="vasTops">
     <view>{{vasDetail.productName}}</view>
-    <image src="{{vasDetail.productMainImage}}" mode="aspectFill"/>
+    <image src="{{baseUrl + vasDetail.productMainImage}}" mode="aspectFill"/>
   </view>
   <view class="vasDescContainer">
     <view class="vasDesc">{{vasDetail.productDescription}}</view>
     <view class="oneTemplate">
       <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
       <view class="templateContent">
-        <view class="templateName">{{vasDetail.fileName}}</view>
+        <view class="templateName">{{vasDetail.productSheet}}</view>
         <view catchtap="sendEmail">{{languageContent.send}}</view>
       </view>
       <view class="preview" catchtap="preview">
@@ -23,18 +23,37 @@
   </view>
   <view class="chargeDetails">
     <view class="chargeList">
-      <view class="oneCharge" wx:for="{{vasDetail.chargeDetails}}">
-        <view class="chargeLeft" catchtap="chooseCharge" data-index="{{index}}">
-          <view class="checkBox">
-            <view class="checked" wx:if="{{checkIndex === index}}"></view>
+      <view wx:for="{{vasDetail.chargeDetails}}" wx:key="index">
+        <view class="oneCharge">
+          <view class="chargeLeft" catchtap="chooseCharge" data-index="{{index}}">
+            <view class="checkBox">
+              <view class="checked" wx:if="{{checkIndex === index}}"></view>
+            </view>
+            <view class="chargeName">{{item.chargeName}}</view>
           </view>
-          <view class="chargeName">{{item.chargeName}}</view>
+          <view class="chargeRight" wx:if="{{item.levelOfCharge === 'Per Container'}}">
+            <view class="chargePrice">{{item.rateFrom}}</view>
+            <view class="chargeUnit">
+              <view>{{item.currency}}</view>
+              <view>/{{languageContent.containers}}</view>
+            </view>
+          </view>
         </view>
-        <view class="chargeRight" wx:if="{{item.levelOfCharge === 'Per Container'}}">
-          <view class="chargePrice">{{item.rateFrom}}</view>
-          <view class="chargeUnit">
-            <view>{{item.currency}}</view>
-            <view>/CONTAINER</view>
+        <view class="calculatedContainer" wx:if="{{checkIndex === index}}">
+          <view class="calculatedTitle">{{item.personalizedValueLabel}}</view>
+          <view class="calculatedInput">
+            <input type="number"/>
+            <button hover-class="hoverClass">{{languageContent.calculate}}</button>
+          </view>
+          <view class="calculateResult">
+            <view class="calculateResultLeft">FOR A VALUE OF 10000 USD</view>
+            <view class="calculateResultRight">
+              <view class="resultPrice">40</view>
+              <view>
+                <view class="resultUnit">EUR</view>
+                <view>/BL</view>
+              </view>
+            </view>
           </view>
         </view>
       </view>

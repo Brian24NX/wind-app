@@ -55,10 +55,11 @@ Page({
     if (this.data.vasDetail.termsandConditions && !this.data.isAgree) return
     this.data.vasDetail.isProductSelected = true
     this.data.vasDetail.selectProductIndex = this.data.checkIndex
-    this.data.vasDetail.amount = this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom
+    this.data.vasDetail.seletcedProduct = this.data.vasDetail.chargeDetails[this.data.checkIndex]
+    this.data.vasDetail.seletcedProduct.amount = this.data.vasDetail.seletcedProduct.rateFrom
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
-    currentPage.setSubscribedServices(this.data.vasDetail, this.data.currentVasIndex)
+    currentPage.setSubscribedServices(this.data.vasDetail)
     wx.navigateBack()
   },
 

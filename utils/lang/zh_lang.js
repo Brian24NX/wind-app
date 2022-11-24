@@ -582,7 +582,8 @@ var Languague = {
       comingSoon: '增值服务功能升级中，敬请期待',
       bookInWeb: '请至官网订舱时添加增值服务产品',
       back: '上一步',
-      next: '下一步'
+      next: '下一步',
+      total: '总计'
     },
     vas: {
       containers: '柜号',
@@ -593,7 +594,8 @@ var Languague = {
       additionalServices: '增值服务',
       additionalServicesDesc: '保护您的货物 · 拓展业务 · 争取实现碳中和',
       send: '发送至邮箱',
-      subscribe: '订阅'
+      subscribe: '订阅',
+      calculate: '计算'
     },
     // 我的报价
     myContract: {

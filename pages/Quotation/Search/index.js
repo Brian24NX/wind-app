@@ -652,7 +652,7 @@ Page({
         affiliates: wx.getStorageSync('partnerList').map(i => i.code)
       }).then(res => {
         let data = []
-        if (res.data) {
+        if (res.data && res.data.length) {
           data = res.data
           data.unshift({
             code: '',
