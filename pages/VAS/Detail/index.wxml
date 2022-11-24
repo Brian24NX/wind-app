@@ -24,8 +24,8 @@
   <view class="chargeDetails">
     <view class="chargeList">
       <view class="oneCharge" wx:for="{{vasDetail.chargeDetails}}">
-        <view class="chargeLeft">
-          <view class="checkBox" catchtap="chooseCharge" data-index="{{index}}">
+        <view class="chargeLeft" catchtap="chooseCharge" data-index="{{index}}">
+          <view class="checkBox">
             <view class="checked" wx:if="{{checkIndex === index}}"></view>
           </view>
           <view class="chargeName">{{item.chargeName}}</view>

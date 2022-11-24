@@ -1,6 +1,7 @@
 // pages/Quotation/Detail/index.js
 const languageUtil = require('../../../utils/languageUtils')
 import {
+  vasLists,
   createQuotationQuotation
 } from '../../../api/modules/quotation';
 
@@ -11,7 +12,10 @@ Page({
    */
   data: {
     languageContent: {},
+    vasLanguageContent: {},
     language: 'zh',
+    baseUrl: '',
+    languageCode: '',
     todayDate: '',
     isFirst: false,
     otherList: [{
@@ -56,42 +60,9 @@ Page({
     placeOfOrigin: '',
     finalPlaceOfDelivery: '',
     partnerCode: [],
+    vasList: [],
     subscribedServices: [],
-    vasParams: {
-      "shippingCompany": "CMACGM",
-      "placeReceipt": "",
-      "portLoading": "CNSHA",
-      "portDischarge": "NLRTM",
-      "placeDelivery": "",
-      "placeOfPayment": "NLRTM",
-      "importMovementType": "PORT",
-      "importHaulageMode": "MERCHANT",
-      "exportMovementType": "PORT",
-      "exportHaulageMode": "MERCHANT",
-      "applicationDate": "2022-12-01T17:10:25.054-07:00",
-      "channel": "PRI",
-      "typeOfBl": "Negotiable",
-      "bookingParties": [{
-        "partnerCode": "0000000176",
-        "bookingParty": true,
-        "role": "BKG",
-        "name": ""
-      }],
-      "cargoes": [{
-        "cargoNumber": 1,
-        "packageCode": "20ST",
-        "packageBookedQuantity": 1,
-        "commodityCode": "FAK",
-        "commodityName": "FAK",
-        "totalNetWeight": 1,
-        "uomWeight": "TNE",
-        "hazardous": false,
-        "oversize": false,
-        "refrigerated": false,
-        "shipperOwned": false
-      }],
-      "subscribedCharges": []
-    }
+    noSelectVasList: []
   },
 
   /**
@@ -104,20 +75,24 @@ Page({
     // const pages = getCurrentPages()
     // const currentPage = pages[pages.length - 2]
     // const data = currentPage.data
-    // let languageContent = languageUtil.languageVersion().lang.page.qutationResult
-    // this.setData({
-    //   languageContent,
-    //   language: languageUtil.languageVersion().lang.page.langue,
-    //   partnerCode: data.partnerCode,
-    //   todayDate: this.getDate(),
-    //   portOfLoading: data.portOfLoading,
-    //   portOfLoadingLabel: data.portOfLoadingLabel,
-    //   portOfDischarge: data.portOfDischarge,
-    //   portOfDischargeLabel: data.portOfDischargeLabel,
-    //   placeOfOrigin: data.placeOfOrigin,
-    //   finalPlaceOfDelivery: data.finalPlaceOfDelivery
-    // })
+    const languages = languageUtil.languageVersion().lang.page
+    this.setData({
+      languageContent: languages.qutationResult,
+      vasLanguageContent: languages.vas,
+      language: languages.langue,
+      languageCode: languages.langue === 'zh' ? 'zh_CN' : 'en_US',
+      baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
+      // partnerCode: data.partnerCode,
+      todayDate: this.getDate(),
+      // portOfLoading: data.portOfLoading,
+      // portOfLoadingLabel: data.portOfLoadingLabel,
+      // portOfDischarge: data.portOfDischarge,
+      // portOfDischargeLabel: data.portOfDischargeLabel,
+      // placeOfOrigin: data.placeOfOrigin,
+      // finalPlaceOfDelivery: data.finalPlaceOfDelivery
+    })
     // this.setDefaultInfo(Number(options.index), Number(options.containers))
+    this.getVasList()
   },
 
   setDefaultInfo(index, containers) {
@@ -156,8 +131,12 @@ Page({
     })
   },
 
-  setSubscribedServices() {
-
+  setSubscribedServices(detail, index) {
+    this.data.vasList[index] = detail
+    this.setData({
+      vasList: this.data.vasList,
+      subscribedServices: this.data.vasList.filter(i => i.isProductSelected)
+    })
   },
 
   calculatedCharges() {
@@ -291,6 +270,61 @@ Page({
     wx.showToast({
       title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
       icon: 'none'
+    })
+  },
+
+  getVasList() {
+    vasLists({
+      "shippingCompany": "CMACGM",
+      "placeReceipt": "",
+      "portLoading": "CNSHA",
+      "portDischarge": "NLRTM",
+      "placeDelivery": "",
+      "placeOfPayment": "NLRTM",
+      "importMovementType": "PORT",
+      "importHaulageMode": "MERCHANT",
+      "exportMovementType": "PORT",
+      "exportHaulageMode": "MERCHANT",
+      "applicationDate": "2022-12-01T17:10:25.054-07:00",
+      "locale": this.data.languageCode,
+      "channel": "PRI",
+      "typeOfBl": "Negotiable",
+      "bookingParties": [{
+        "partnerCode": "0000000176",
+        "bookingParty": true,
+        "role": "BKG",
+        "name": ""
+      }],
+      "cargoes": [{
+        "cargoNumber": 1,
+        "packageCode": "20ST",
+        "packageBookedQuantity": 1,
+        "commodityCode": "FAK",
+        "commodityName": "FAK",
+        "totalNetWeight": 1,
+        "uomWeight": "TNE",
+        "hazardous": false,
+        "oversize": false,
+        "refrigerated": false,
+        "shipperOwned": false
+      }],
+      "subscribedCharges": []
+    }).then(res => {
+      res.data.forEach(one => {
+        one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i=>i.levelOfCharge === 'Per Container').map(item => {
+          return item.rateFrom
+        }))
+      })
+      this.setData({
+        vasList: res.data,
+        noSelectVasList: res.data,
+        subscribedServices: []
+      })
+    })
+  },
+  toSelect(e) {
+    wx.navigateTo({
+      url: '/pages/VAS/Detail/index?index=' + e.currentTarget.dataset.index,
     })
   },
 

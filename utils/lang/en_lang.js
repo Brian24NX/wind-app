@@ -582,6 +582,8 @@ var Languague = {
       next: 'Next'
     },
     vas: {
+      containers: 'Container',
+      perBL: 'BL',
       warningRemind: 'This service is subject to the agent validation after booking submission.',
       additionalServicesChoosed: 'Subscribed Services',
       noChoosedAdditionalServices: 'No services subscribed yet. Please discover additional services available for your quote.',

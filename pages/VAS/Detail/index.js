@@ -12,20 +12,27 @@ Page({
   data: {
     languageContent: {},
     vasDetail: {},
+    currentVasIndex: null,
     checkIndex: null,
     showEmail: false,
-    isAgree: false
+    isAgree: false,
+    baseUrl: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-    let vasDetail = wx.getStorageSync('vasDetail')
-    vasDetail.fileName = vasDetail.productSheet ? vasDetail.productSheet.split('/').pop() : ''
+  onLoad(options) {
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
+    let vasDetail = data.noSelectVasList[options.index]
+    const languages = languageUtil.languageVersion().lang.page
     this.setData({
+      currentVasIndex: options.index,
       vasDetail: vasDetail,
-      languageContent: languageUtil.languageVersion().lang.page.vas
+      languageContent: languages.vas,
+      baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
     })
     wx.setNavigationBarTitle({
       title: vasDetail.productName,
@@ -46,7 +53,13 @@ Page({
 
   subscribeSubmit() {
     if (this.data.vasDetail.termsandConditions && !this.data.isAgree) return
-
+    this.data.vasDetail.isProductSelected = true
+    this.data.vasDetail.selectProductIndex = this.data.checkIndex
+    this.data.vasDetail.amount = this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    currentPage.setSubscribedServices(this.data.vasDetail, this.data.currentVasIndex)
+    wx.navigateBack()
   },
 
   preview() {
@@ -55,8 +68,8 @@ Page({
       return
     }
     vasFileDetail({
-      url: this.data.vasDetail.productSheet
-    }).then(res=>{
+      url: this.data.baseUrl + this.data.vasDetail.productSheet
+    }).then(res => {
       this.data.vasDetail.productSheetByWind = res.data
       this.setData({
         vasDetail: this.data.vasDetail
@@ -72,7 +85,7 @@ Page({
     }
     vasFileDetail({
       url: this.data.vasDetail.termsandConditions
-    }).then(res=>{
+    }).then(res => {
       this.data.vasDetail.termsandConditionsByWind = res.data
       this.setData({
         vasDetail: this.data.vasDetail
@@ -80,7 +93,7 @@ Page({
       this.previewFile(this.data.vasDetail.termsandConditionsByWind)
     })
   },
-  
+
   previewFile(filePath) {
     console.log(filePath)
     const fileType = filePath.split('.').pop()
@@ -134,8 +147,8 @@ Page({
       this.sends(e)
     } else {
       vasFileDetail({
-        url: this.data.vasDetail.productSheet
-      }).then(res=>{
+        url: this.data.baseUrl + this.data.vasDetail.productSheet
+      }).then(res => {
         this.data.vasDetail.productSheetByWind = res.data
         this.setData({
           vasDetail: this.data.vasDetail

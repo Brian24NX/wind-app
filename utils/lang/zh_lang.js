@@ -585,12 +585,14 @@ var Languague = {
       next: '下一步'
     },
     vas: {
-      warningRemind: '',
-      send: '发送至邮箱',
+      containers: '柜号',
+      perBL: '提单',
+      warningRemind: '订舱提交后须经代理确认',
       additionalServicesChoosed: '已订阅的服务',
       noChoosedAdditionalServices: '尚未选购增值服务，请选择下列适配您的报价的增值服务.',
       additionalServices: '增值服务',
       additionalServicesDesc: '保护您的货物 · 拓展业务 · 争取实现碳中和',
+      send: '发送至邮箱',
       subscribe: '订阅'
     },
     // 我的报价

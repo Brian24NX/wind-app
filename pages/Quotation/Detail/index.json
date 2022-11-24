@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "",
   "usingComponents": {
-    "van-icon": "@vant/weapp/icon/index",
-    "vas": "/components/vas/index"
+    "van-icon": "@vant/weapp/icon/index"
   }
 }

@@ -316,7 +316,46 @@
   </view>
 </block>
 <block wx:else>
-  <vas vasParams="{{vasParams}}" subscribedServices="{{subscribedServices}}"></vas>
+  <!-- ============= VAS start ================ -->
+  <view class="additionServicesContainers">
+    <view class="additionContainers">
+      <view class="additionContainer">
+        <view class="additionTitleLine"></view>
+        <view>{{vasLanguageContent.additionalServicesChoosed}}</view>
+      </view>
+    </view>
+    <view class="noVasRemind" wx:if="{{!subscribedServices.length}}">{{vasLanguageContent.noChoosedAdditionalServices}}</view>
+    <view wx:else>
+      <view wx:for="{{subscribedServices}}" wx:key="index">{{item.chargeDetails.productName}}</view>
+    </view>
+    <view class="additionContainers">
+      <view class="additionContainer">
+        <view class="additionTitleLine"></view>
+        <view>{{vasLanguageContent.additionalServices}}</view>
+      </view>
+      <view class="additionDesc">{{vasLanguageContent.additionalServicesDesc}}</view>
+    </view>
+    <view class="additionList">
+      <view class="oneAddition" wx:for="{{noSelectVasList}}">
+        <image src="{{baseUrl + item.productMainImage}}" mode="aspectFill"></image>
+        <view class="additionDetail">
+          <view class="additionDetailTitle">{{item.productName}}</view>
+          <view class="vasDesc">{{item.productShortDescription}}</view>
+          <view class="vasBottom">
+            <view class="vasBottomLeft">
+              <view class="vasPrice">{{item.minPrice}}</view>
+              <view class="vasUnit">
+                <view>{{item.currency}}</view>
+                <view>/{{item.levelOfCharge === 'Per Container' ? vasLanguageContent.containers : vasLanguageContent.perBL}}</view>
+              </view>
+            </view>
+            <button class="vasBtn" catchtap="toSelect" data-index="{{index}}">Select</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+<!-- ============= VAS end ================ -->
 </block>
 <view class="bottomButtonContainer">
   <view class="bottomButtonLeft">
