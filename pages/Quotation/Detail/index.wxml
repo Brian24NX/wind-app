@@ -308,7 +308,7 @@
                 <view>/{{item.levelOfCharge === 'Per Container' ? vasLanguageContent.containers : vasLanguageContent.perBL}}</view>
               </view>
             </view>
-            <button class="vasBtn" catchtap="toSelect" data-index="{{index}}">Select</button>
+            <button class="vasBtn" catchtap="toSelect" data-productid="{{item.productName}}">Select</button>
           </view>
         </view>
       </view>
@@ -316,7 +316,7 @@
   </view>
   <!-- ============= VAS end ================ -->
 </block>
-<view class="bottomButtonContainers">
+<view class="bottomButtonContainers" catchtap="prevent">
   <view class="subscribedContainers" wx:if="{{showVas}}">
     <view class="subscribedTitle">
       <view class="subscribedTitleLine"></view>
@@ -338,8 +338,8 @@
           </view>
         </view>
         <view class="subscribeRight">
-          <image src="/assets/img/instantQuote/edit.png"></image>
-          <image src="/assets/img/instantQuote/delete.png"></image>
+          <image src="/assets/img/instantQuote/edit.png" catchtap="editSubscribe" data-productid="{{item.productName}}"></image>
+          <image src="/assets/img/instantQuote/delete.png" catchtap="deleteSubscribe" data-productid="{{item.productName}}"></image>
         </view>
       </view>
     </view>
@@ -365,4 +365,4 @@
 </view>
 
 
-<view class="subscribedBg" catchtouchmove="prevent" wx:if="{{showVas}}"></view>
+<view class="subscribedBg" catchtap="closeBg" catchtouchmove="prevent" wx:if="{{showVas}}"></view>

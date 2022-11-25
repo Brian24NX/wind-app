@@ -25,7 +25,6 @@
     "pages/Quotation/NearPort/index",
     "pages/Quotation/LineDetail/index",
     "pages/Quotation/Others/Remind/index",
-    "pages/VAS/List/index",
     "pages/VAS/Detail/index"
   ],
   "subPackages": [

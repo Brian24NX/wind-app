@@ -592,7 +592,9 @@ var Languague = {
       additionalServicesDesc: 'Protect your cargo | Expand your business | Act towards carbon neutrality',
       send: 'Send to Email',
       subscribe: 'Subscribe',
-      calculate: 'Calculate'
+      calculate: 'Calculate',
+      agree: 'I agree with',
+      terms: 'Terms an Conditions'
     },
     // 我的报价
     myContract: {

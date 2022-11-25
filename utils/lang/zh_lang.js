@@ -595,7 +595,9 @@ var Languague = {
       additionalServicesDesc: '保护您的货物 · 拓展业务 · 争取实现碳中和',
       send: '发送至邮箱',
       subscribe: '订阅',
-      calculate: '计算'
+      calculate: '计算',
+      agree: '我同意',
+      terms: '条件与条款'
     },
     // 我的报价
     myContract: {

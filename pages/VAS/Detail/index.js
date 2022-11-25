@@ -12,10 +12,11 @@ Page({
   data: {
     languageContent: {},
     vasDetail: {},
-    currentVasIndex: null,
     checkIndex: null,
     showEmail: false,
     isAgree: false,
+    amount: '',
+    calculteResult: '',
     baseUrl: ''
   },
 
@@ -26,10 +27,18 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    let vasDetail = data.noSelectVasList[options.index]
+    let vasDetail = data.vasList.find(i => i.productName === decodeURIComponent(options.productId))
+    console.log(vasDetail)
+    if (vasDetail.seletcedProduct) {
+      this.setData({
+        isAgree: true,
+        checkIndex: vasDetail.chargeDetails.findIndex(i => i.chargeCode === vasDetail.seletcedProduct.chargeCode),
+        amount: vasDetail.seletcedProduct.inputAmount || '',
+        calculteResult: vasDetail.seletcedProduct.amount || ''
+      })
+    }
     const languages = languageUtil.languageVersion().lang.page
     this.setData({
-      currentVasIndex: options.index,
       vasDetail: vasDetail,
       languageContent: languages.vas,
       baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
@@ -41,7 +50,30 @@ Page({
 
   chooseCharge(e) {
     this.setData({
-      checkIndex: e.currentTarget.dataset.index
+      checkIndex: e.currentTarget.dataset.index,
+      amount: '',
+      calculteResult: ''
+    })
+  },
+
+  setAmount(e) {
+    this.setData({
+      amount: e.detail.value,
+      calculteResult: ''
+    })
+  },
+
+  calculte() {
+    let res = Number(this.data.amount) * this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom / 100
+    let calculteResult = res
+    if (Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].minimumChargeableAmount) !== 0 && res < Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].minimumChargeableAmount)) {
+      calculteResult = Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].minimumChargeableAmount)
+    }
+    if (Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].maximumChargeableAmount) !== 0 && res > Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].maximumChargeableAmount)) {
+      calculteResult = Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].maximumChargeableAmount)
+    }
+    this.setData({
+      calculteResult
     })
   },
 
@@ -52,14 +84,28 @@ Page({
   },
 
   subscribeSubmit() {
-    if (this.data.vasDetail.termsandConditions && !this.data.isAgree) return
-    this.data.vasDetail.isProductSelected = true
-    this.data.vasDetail.selectProductIndex = this.data.checkIndex
-    this.data.vasDetail.seletcedProduct = this.data.vasDetail.chargeDetails[this.data.checkIndex]
-    this.data.vasDetail.seletcedProduct.amount = this.data.vasDetail.seletcedProduct.rateFrom
+    let vasDetail = this.data.vasDetail
+    if (vasDetail.termsandConditions && !this.data.isAgree) {
+      return
+    }
+    if (this.data.checkIndex === null) {
+      return
+    }
+    if ((vasDetail.chargeDetails[this.data.checkIndex].levelOfCharge === 'Per BL' && vasDetail.chargeDetails[this.data.checkIndex].calculationType !== 'FIX' && (!this.data.amount || this.data.calculteResult === ''))) {
+      return
+    }
+    vasDetail.isProductSelected = true
+    vasDetail.selectProductIndex = this.data.checkIndex
+    vasDetail.seletcedProduct = vasDetail.chargeDetails[this.data.checkIndex]
+    if (vasDetail.seletcedProduct.levelOfCharge === 'Per BL' && vasDetail.seletcedProduct.calculationType !== 'FIX') {
+      vasDetail.seletcedProduct.amount = this.data.calculteResult
+      vasDetail.seletcedProduct.inputAmount = this.data.amount
+    } else {
+      vasDetail.seletcedProduct.amount = vasDetail.seletcedProduct.rateFrom
+    }
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
-    currentPage.setSubscribedServices(this.data.vasDetail)
+    currentPage.setSubscribedServices(vasDetail)
     wx.navigateBack()
   },
 
@@ -137,7 +183,7 @@ Page({
   },
 
   // 发送邮件
-  sendEmail(e) {
+  sendEmail() {
     this.setData({
       showEmail: true
     })

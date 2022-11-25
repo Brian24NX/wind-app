@@ -132,17 +132,6 @@ Page({
     })
   },
 
-  setSubscribedServices(detail) {
-    const index = this.data.vasList.findIndex(i => i.parentProductId === detail.parentProductId)
-    this.data.vasList[index] = detail
-    this.setData({
-      vasList: this.data.vasList,
-      subscribedServices: this.data.vasList.filter(i => i.isProductSelected),
-      noSelectVasList: this.data.vasList.filter(i => !i.isProductSelected)
-    })
-    this.calculatedCharges()
-  },
-
   previewVas() {
     if (!this.data.subscribedServices.length) return
     this.setData({
@@ -166,7 +155,7 @@ Page({
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
     this.data.subscribedServices.forEach(i => {
-      if (i.levelOfCharge === 'Per Container') {
+      if (i.seletcedProduct.levelOfCharge === 'Per Container') {
         totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
       }
     })
@@ -301,6 +290,41 @@ Page({
         "name": ""
       })
     })
+    let subscribedCharges = []
+    const surchargeDetails = this.data.quotationDetail.surchargeDetails
+    const a = surchargeDetails.collectChargeDetails.filter(i => i.fixedByThePricer).map(i => {
+      return {
+        code: i.chargeCode,
+        currency: surchargeDetails.collectCharges.currency.code,
+        rateFrom: i.convertedRate
+      }
+    })
+    console.log(a)
+    const b = surchargeDetails.freightChargeDetails.filter(i => i.fixedByThePricer).map(i => {
+      return {
+        code: i.chargeCode,
+        currency: surchargeDetails.freightCharges.currency.code,
+        rateFrom: i.convertedRate
+      }
+    })
+    console.log(b)
+    const c = surchargeDetails.oceanFreightChargeDetails.filter(i => i.fixedByThePricer).map(i => {
+      return {
+        code: i.chargeCode,
+        currency: surchargeDetails.oceanFreight.price.currency.code,
+        rateFrom: i.convertedRate
+      }
+    })
+    console.log(c)
+    const d = surchargeDetails.prepaidChargeDetails.filter(i => i.fixedByThePricer).map(i => {
+      return {
+        code: i.chargeCode,
+        currency: surchargeDetails.prepaidCharges.currency.code,
+        rateFrom: i.convertedRate
+      }
+    })
+    console.log(d)
+    subscribedCharges = subscribedCharges.concat(a).concat(b).concat(c).concat(d)
     vasLists({
       "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CNC' : 'APL',
       "placeReceipt": this.data.placeOfOrigin,
@@ -330,10 +354,21 @@ Page({
         "refrigerated": false,
         "shipperOwned": false
       }],
-      "subscribedCharges": []
+      subscribedCharges: subscribedCharges.map(i => i.code)
     }).then(res => {
-    // vasLists({"shippingCompany":"CMACGM","placeReceipt":"FIKEM","portLoading":"FIKEM","portDischarge":"EGALY","placeDelivery":"EGALY","placeOfPayment":"EGALY","importMovementType":"DOOR","importHaulageMode":"MERCHANT","exportMovementType":"DOOR","exportHaulageMode":"MERCHANT","applicationDate":"2022-12-01T10:00:00+00:00","locale":"zh_CN","channel":"PRI","typeOfBl":"Negotiable","bookingParties":[{"partnerCode":"0000000176","bookingParty":true,"role":"BKG","name":""}],"cargoes":[{"cargoNumber":1,"packageCode":"20ST","packageBookedQuantity":10,"commodityCode":"FAK LISA (UPA)","commodityName":"Freight All Kind","totalNetWeight":1,"uomWeight":"TNE","hazardous":false,"oversize":false,"refrigerated":false,"shipperOwned":false}],"subscribedCharges":[]}).then(res=> {
+      // vasLists({"shippingCompany":"CMACGM","placeReceipt":"FIKEM","portLoading":"FIKEM","portDischarge":"EGALY","placeDelivery":"EGALY","placeOfPayment":"EGALY","importMovementType":"DOOR","importHaulageMode":"MERCHANT","exportMovementType":"DOOR","exportHaulageMode":"MERCHANT","applicationDate":"2022-12-01T10:00:00+00:00","locale":"zh_CN","channel":"PRI","typeOfBl":"Negotiable","bookingParties":[{"partnerCode":"0000000176","bookingParty":true,"role":"BKG","name":""}],"cargoes":[{"cargoNumber":1,"packageCode":"20ST","packageBookedQuantity":10,"commodityCode":"FAK LISA (UPA)","commodityName":"Freight All Kind","totalNetWeight":1,"uomWeight":"TNE","hazardous":false,"oversize":false,"refrigerated":false,"shipperOwned":false}],"subscribedCharges":[]}).then(res=> {
       res.data.forEach(one => {
+        if (one.isProductSelected) {
+          console.log(subscribedCharges)
+          const index = subscribedCharges.findIndex(i => one.chargeDetails[0].chargeCode === i.code)
+          one.levelOfCharge = 'Per Container'
+          one.currency = subscribedCharges[index].currency
+          one.chargeDetails[0].currency = subscribedCharges[index].currency
+          one.chargeDetails[0].rateFrom = subscribedCharges[index].rateFrom
+          one.chargeDetails[0].amount = subscribedCharges[index].rateFrom
+          one.chargeDetails[0].levelOfCharge = 'Per Container'
+          one.seletcedProduct = one.chargeDetails[0]
+        }
         one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i => i.levelOfCharge === one.levelOfCharge).map(item => {
           return item.rateFrom
         }))
@@ -343,14 +378,56 @@ Page({
       })
       this.setData({
         vasList: res.data,
-        noSelectVasList: res.data,
-        subscribedServices: []
+        noSelectVasList: res.data.filter(i => !i.isProductSelected),
+        subscribedServices: res.data.filter(i => i.isProductSelected)
       })
+      this.calculatedCharges()
     })
   },
   toSelect(e) {
     wx.navigateTo({
-      url: '/pages/VAS/Detail/index?index=' + e.currentTarget.dataset.index,
+      url: '/pages/VAS/Detail/index?productId=' + encodeURIComponent(e.currentTarget.dataset.productid),
+    })
+  },
+
+  setSubscribedServices(detail) {
+    const index = this.data.vasList.findIndex(i => i.parentProductId === detail.parentProductId)
+    this.data.vasList[index] = detail
+    this.setData({
+      vasList: this.data.vasList,
+      subscribedServices: this.data.vasList.filter(i => i.isProductSelected),
+      noSelectVasList: this.data.vasList.filter(i => !i.isProductSelected)
+    })
+    this.calculatedCharges()
+  },
+
+
+  editSubscribe(e) {
+    wx.navigateTo({
+      url: '/pages/VAS/Detail/index?productId=' + encodeURIComponent(e.currentTarget.dataset.productid),
+    })
+  },
+
+  deleteSubscribe(e) {
+    const index = this.data.vasList.findIndex(i => i.productName === e.currentTarget.dataset.productid)
+    this.data.vasList[index].isProductSelected = false
+    delete this.data.vasList[index].seletcedProduct
+    this.setData({
+      vasList: this.data.vasList,
+      subscribedServices: this.data.vasList.filter(i => i.isProductSelected),
+      noSelectVasList: this.data.vasList.filter(i => !i.isProductSelected)
+    })
+    if (!this.data.subscribedServices.length) {
+      this.setData({
+        showVas: false
+      })
+    }
+    this.calculatedCharges()
+  },
+
+  closeBg() {
+    this.setData({
+      showVas: false
     })
   },
 

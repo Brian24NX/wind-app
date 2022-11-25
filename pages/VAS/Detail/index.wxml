@@ -31,38 +31,38 @@
             </view>
             <view class="chargeName">{{item.chargeName}}</view>
           </view>
-          <view class="chargeRight" wx:if="{{item.levelOfCharge === 'Per Container'}}">
+          <view class="chargeRight" wx:if="{{item.levelOfCharge === 'Per Container' || (item.levelOfCharge === 'Per BL' && item.calculationType === 'FIX')}}">
             <view class="chargePrice">{{item.rateFrom}}</view>
             <view class="chargeUnit">
               <view>{{item.currency}}</view>
-              <view>/{{languageContent.containers}}</view>
+              <view>/{{item.levelOfCharge === 'Per Container' ? languageContent.perBL : languageContent.containers}}</view>
             </view>
           </view>
         </view>
-        <view class="calculatedContainer" wx:if="{{checkIndex === index}}">
+        <view class="calculatedContainer" wx:if="{{checkIndex === index && item.levelOfCharge === 'Per BL' && item.calculationType !== 'FIX'}}">
           <view class="calculatedTitle">{{item.personalizedValueLabel}}</view>
           <view class="calculatedInput">
-            <input type="number"/>
-            <button hover-class="hoverClass">{{languageContent.calculate}}</button>
+            <input type="number" value="{{amount}}" bindinput="setAmount"/>
+            <button hover-class="hoverClass" catchtap="calculte" style="{{!amount ? 'opacity: 0.7;' : ''}}" disabled="{{!amount}}">{{languageContent.calculate}}</button>
           </view>
           <view class="calculateResult">
-            <view class="calculateResultLeft">FOR A VALUE OF 10000 USD</view>
+            <view class="calculateResultLeft">FOR A VALUE OF {{amount}} {{item.currency}}</view>
             <view class="calculateResultRight">
-              <view class="resultPrice">40</view>
+              <view class="resultPrice">{{calculteResult}}</view>
               <view>
-                <view class="resultUnit">EUR</view>
-                <view>/BL</view>
+                <view class="resultUnit">{{item.currency}}</view>
+                <view>/{{languageContent.perBL}}</view>
               </view>
             </view>
           </view>
         </view>
       </view>
     </view>
-    <view class="termsConditions">
-      <view class="termChecked" style="{{isAgree ? 'background-color: #071E5D;' : ''}}" catchtap="clickAgree">
+    <view class="termsConditions" catchtap="clickAgree">
+      <view class="termChecked" style="{{isAgree ? 'background-color: #071E5D;' : ''}}">
         <van-icon name="success" color="#ffffff" size="15px" />
       </view>
-      <view>I agree with <text style="color: #2D75FF;text-decoration: underline;" catchtap="previewTeams">Terms an Conditions *</text></view>
+      <view>{{languageContent.agree}} <text style="color: #2D75FF;text-decoration: underline;" catchtap="previewTeams">{{languageContent.terms}} *</text></view>
     </view>
   </view>
   <button class="subscribeBtn" hover-class="hoverClass" catchtap="subscribeSubmit">{{languageContent.subscribe}}</button>
