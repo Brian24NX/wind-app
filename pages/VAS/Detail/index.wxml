@@ -35,7 +35,7 @@
             <view class="chargePrice">{{item.rateFrom}}</view>
             <view class="chargeUnit">
               <view>{{item.currency}}</view>
-              <view>/{{item.levelOfCharge === 'Per Container' ? languageContent.perBL : languageContent.containers}}</view>
+              <view>/{{item.levelOfCharge === 'Per BL' ? languageContent.perBL : languageContent.containers}}</view>
             </view>
           </view>
         </view>
@@ -62,7 +62,7 @@
       <view class="termChecked" style="{{isAgree ? 'background-color: #071E5D;' : ''}}">
         <van-icon name="success" color="#ffffff" size="15px" />
       </view>
-      <view>{{languageContent.agree}} <text style="color: #2D75FF;text-decoration: underline;" catchtap="previewTeams">{{languageContent.terms}} *</text></view>
+      <view>{{languageContent.agree}} <text style="color: #2D75FF;text-decoration: underline;" catchtap="previewTeams">{{languageContent.terms}}*</text></view>
     </view>
   </view>
   <button class="subscribeBtn" hover-class="hoverClass" catchtap="subscribeSubmit">{{languageContent.subscribe}}</button>
