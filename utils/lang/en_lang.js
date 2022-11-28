@@ -594,7 +594,8 @@ var Languague = {
       subscribe: 'Subscribe',
       calculate: 'Calculate',
       agree: 'I agree with',
-      terms: 'Terms an Conditions'
+      terms: 'Terms an Conditions',
+      createFail: 'Failed to create quotation, please contact your agent'
     },
     // 我的报价
     myContract: {

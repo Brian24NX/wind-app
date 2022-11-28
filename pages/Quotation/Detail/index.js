@@ -215,6 +215,26 @@ Page({
       })
     } else {
       let params = {}
+      let vasChargeDetails = []
+      this.data.subscribedServices.forEach(item => {
+        vasChargeDetails.push({
+          "calculationType": item.seletcedProduct.calculationType || '',
+          "cargoLines": item.seletcedProduct.cargoLines,
+          "chargeCode": item.seletcedProduct.chargeCode,
+          "chargeName": item.seletcedProduct.chargeName,
+          "currency": item.seletcedProduct.currency,
+          "description": item.seletcedProduct.subscriptionMode || '',
+          "expectedActions": item.expectedActions,
+          "hasChargeSelected": true,
+          "levelOfCharge": item.levelOfCharge,
+          "maximumChargeableAmount": item.seletcedProduct.minimumChargeableAmount || '',
+          "minimumChargeableAmount": item.seletcedProduct.maximumChargeableAmount || '',
+          "rateFrom": item.seletcedProduct.amount,
+          "subscribedAmount": this.data.containers,
+          "subscriptionMode": item.seletcedProduct.subscriptionMode || ''
+        })
+      })
+      console.log(vasChargeDetails)
       if (this.data.quotationDetail.quoteLines[0].quoteLineId) {
         params = {
           "createLaraSpecialQuotation": {
@@ -237,7 +257,8 @@ Page({
             "portOfDischarge": this.data.portOfDischarge,
             "initialPortOfLoading": this.data.portOfLoading,
             "initalPortOfDischarge": this.data.portOfDischarge,
-            "traceId": this.data.quotationDetail.traceId
+            "traceId": this.data.quotationDetail.traceId,
+            vasChargeDetails
           }
         }
       } else {
@@ -259,14 +280,21 @@ Page({
             "voyageRef": this.data.quotationDetail.voyage,
             "offerId": this.data.quotationDetail.offerId,
             "traceId": this.data.traceId,
-            "shippingCompany": this.data.shippingCompany
+            "shippingCompany": this.data.shippingCompany,
+            vasChargeDetails
           }
         }
       }
       createQuotationQuotation(params, wx.getStorageSync('ccgId')).then(res => {
-        wx.navigateTo({
-          url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
-        })
+        if (res.data) {
+          wx.navigateTo({
+            url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
+          })
+        } else {
+          wx.showToast({
+            title: this.data.languageContent.createFail,
+          })
+        }
       })
     }
   },

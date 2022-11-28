@@ -583,7 +583,8 @@ var Languague = {
       bookInWeb: '请至官网订舱时添加增值服务产品',
       back: '上一步',
       next: '下一步',
-      total: '总计'
+      total: '总计',
+      createFail: '创建报价单失败，请联系您的代理'
     },
     vas: {
       containers: '柜号',
