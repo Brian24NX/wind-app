@@ -584,6 +584,7 @@ var Languague = {
       back: '上一步',
       next: '下一步',
       total: '总计',
+      include: '包含在报价里',
       createFail: '创建报价单失败，请联系您的代理'
     },
     vas: {

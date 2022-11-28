@@ -504,6 +504,11 @@
   text-overflow: ellipsis;
 }
 
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productInclude {
+  color: #00865d;
+  font-size: 24rpx;
+}
+
 .bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productPrices {
   display: flex;
   align-items: center;

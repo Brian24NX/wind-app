@@ -328,6 +328,7 @@
           <image src="{{baseUrl + item.productMainImage}}" mode="aspectFill"></image>
           <view>
             <view class="productName">{{item.productName}}</view>
+            <view class="productInclude" wx:if="{{item.seletcedProduct.isInclude}}">{{languageContent.include}}</view>
             <view class="productPrices">
               <view class="productPrice">{{item.seletcedProduct.amount}}</view>
               <view class="productUnit">

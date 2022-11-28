@@ -155,7 +155,7 @@ Page({
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
     this.data.subscribedServices.forEach(i => {
-      if (i.seletcedProduct.levelOfCharge === 'Per Container') {
+      if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
         totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
       }
     })
@@ -229,8 +229,8 @@ Page({
           "levelOfCharge": item.levelOfCharge,
           "maximumChargeableAmount": item.seletcedProduct.minimumChargeableAmount || '',
           "minimumChargeableAmount": item.seletcedProduct.maximumChargeableAmount || '',
-          "rateFrom": item.seletcedProduct.amount,
-          "subscribedAmount": this.data.containers,
+          "rateFrom": item.seletcedProduct.rateFrom,
+          "subscribedAmount": item.seletcedProduct.amount,
           "subscriptionMode": item.seletcedProduct.subscriptionMode || ''
         })
       })
@@ -395,6 +395,7 @@ Page({
           one.chargeDetails[0].rateFrom = subscribedCharges[index].rateFrom
           one.chargeDetails[0].amount = subscribedCharges[index].rateFrom
           one.chargeDetails[0].levelOfCharge = 'Per Container'
+          one.chargeDetails[0].isInclude = true
           one.seletcedProduct = one.chargeDetails[0]
         }
         one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i => i.levelOfCharge === one.levelOfCharge).map(item => {
@@ -410,6 +411,8 @@ Page({
         subscribedServices: res.data.filter(i => i.isProductSelected)
       })
       this.calculatedCharges()
+    }, () => {
+      this.getVasList()
     })
   },
   toSelect(e) {

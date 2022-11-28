@@ -595,6 +595,7 @@ var Languague = {
       calculate: 'Calculate',
       agree: 'I agree with',
       terms: 'Terms an Conditions',
+      include: 'INCLUDED IN OFFER',
       createFail: 'Failed to create quotation, please contact your agent'
     },
     // 我的报价

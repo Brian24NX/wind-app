@@ -98,10 +98,11 @@ Page({
     vasDetail.selectProductIndex = this.data.checkIndex
     vasDetail.seletcedProduct = vasDetail.chargeDetails[this.data.checkIndex]
     if (vasDetail.seletcedProduct.levelOfCharge === 'Per BL' && vasDetail.seletcedProduct.calculationType !== 'FIX') {
-      vasDetail.seletcedProduct.amount = this.data.calculteResult
+      vasDetail.seletcedProduct.amount = parseInt(this.data.calculteResult)
       vasDetail.seletcedProduct.inputAmount = this.data.amount
     } else {
-      vasDetail.seletcedProduct.amount = vasDetail.seletcedProduct.rateFrom
+      // vasDetail.seletcedProduct.amount = parseInt(vasDetail.seletcedProduct.rateFrom * vasDetail.seletcedProduct.conversionRate)
+      vasDetail.seletcedProduct.amount = parseInt(vasDetail.seletcedProduct.rateFrom)
     }
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
