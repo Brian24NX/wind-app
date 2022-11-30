@@ -28,7 +28,7 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     let vasDetail = data.vasList.find(i => i.productName === decodeURIComponent(options.productId))
-    console.log(vasDetail)
+    // console.log(vasDetail)
     if (vasDetail.seletcedProduct) {
       this.setData({
         isAgree: true,
@@ -73,7 +73,7 @@ Page({
       calculteResult = Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].maximumChargeableAmount)
     }
     this.setData({
-      calculteResult
+      calculteResult: Math.round(calculteResult)
     })
   },
 
@@ -98,11 +98,11 @@ Page({
     vasDetail.selectProductIndex = this.data.checkIndex
     vasDetail.seletcedProduct = vasDetail.chargeDetails[this.data.checkIndex]
     if (vasDetail.seletcedProduct.levelOfCharge === 'Per BL' && vasDetail.seletcedProduct.calculationType !== 'FIX') {
-      vasDetail.seletcedProduct.amount = parseInt(this.data.calculteResult)
+      vasDetail.seletcedProduct.amount = Math.round(this.data.calculteResult)
       vasDetail.seletcedProduct.inputAmount = this.data.amount
     } else {
-      // vasDetail.seletcedProduct.amount = parseInt(vasDetail.seletcedProduct.rateFrom * vasDetail.seletcedProduct.conversionRate)
-      vasDetail.seletcedProduct.amount = parseInt(vasDetail.seletcedProduct.rateFrom)
+      // vasDetail.seletcedProduct.amount = Math.round(vasDetail.seletcedProduct.rateFrom * vasDetail.seletcedProduct.conversionRate)
+      vasDetail.seletcedProduct.amount = vasDetail.seletcedProduct.rateFrom
     }
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
@@ -132,7 +132,7 @@ Page({
       return
     }
     vasFileDetail({
-      url: this.data.vasDetail.termsandConditions
+      url: this.data.baseUrl + this.data.vasDetail.termsandConditions
     }).then(res => {
       this.data.vasDetail.termsandConditionsByWind = res.data
       this.setData({
@@ -143,7 +143,7 @@ Page({
   },
 
   previewFile(filePath) {
-    console.log(filePath)
+    // console.log(filePath)
     const fileType = filePath.split('.').pop()
     const imageType = ['png', 'jpg', 'jpeg', 'gif']
     const fileTypes = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf']

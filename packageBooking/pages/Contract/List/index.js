@@ -261,7 +261,7 @@ Page({
 
   getPageData() {
     let lists = this.data.contractLists.slice(this.data.page * size, (this.data.page + 1) * size)
-    console.log(lists)
+    // console.log(lists)
     lists = lists.map((item) => {
       return {
         ...item,

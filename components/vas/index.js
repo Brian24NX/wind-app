@@ -48,7 +48,7 @@ Component({
         ...this.data.vasParams,
         locale: this.data.languageCode
       }).then(res => {
-        console.log(res)
+        // console.log(res)
         res.data.forEach(one => {
           if (one.termsandConditions) {
             one.termsandConditions = this.data.baseUrl + one.termsandConditions

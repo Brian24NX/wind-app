@@ -234,7 +234,7 @@ Page({
           "subscriptionMode": item.seletcedProduct.subscriptionMode || ''
         })
       })
-      console.log(vasChargeDetails)
+      // console.log(vasChargeDetails)
       if (this.data.quotationDetail.quoteLines[0].quoteLineId) {
         params = {
           "createLaraSpecialQuotation": {
@@ -327,7 +327,6 @@ Page({
         rateFrom: i.convertedRate
       }
     })
-    console.log(a)
     const b = surchargeDetails.freightChargeDetails.filter(i => i.fixedByThePricer).map(i => {
       return {
         code: i.chargeCode,
@@ -335,7 +334,6 @@ Page({
         rateFrom: i.convertedRate
       }
     })
-    console.log(b)
     const c = surchargeDetails.oceanFreightChargeDetails.filter(i => i.fixedByThePricer).map(i => {
       return {
         code: i.chargeCode,
@@ -343,7 +341,6 @@ Page({
         rateFrom: i.convertedRate
       }
     })
-    console.log(c)
     const d = surchargeDetails.prepaidChargeDetails.filter(i => i.fixedByThePricer).map(i => {
       return {
         code: i.chargeCode,
@@ -351,7 +348,6 @@ Page({
         rateFrom: i.convertedRate
       }
     })
-    console.log(d)
     subscribedCharges = subscribedCharges.concat(a).concat(b).concat(c).concat(d)
     vasLists({
       "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CNC' : 'APL',
@@ -387,7 +383,7 @@ Page({
       // vasLists({"shippingCompany":"CMACGM","placeReceipt":"FIKEM","portLoading":"FIKEM","portDischarge":"EGALY","placeDelivery":"EGALY","placeOfPayment":"EGALY","importMovementType":"DOOR","importHaulageMode":"MERCHANT","exportMovementType":"DOOR","exportHaulageMode":"MERCHANT","applicationDate":"2022-12-01T10:00:00+00:00","locale":"zh_CN","channel":"PRI","typeOfBl":"Negotiable","bookingParties":[{"partnerCode":"0000000176","bookingParty":true,"role":"BKG","name":""}],"cargoes":[{"cargoNumber":1,"packageCode":"20ST","packageBookedQuantity":10,"commodityCode":"FAK LISA (UPA)","commodityName":"Freight All Kind","totalNetWeight":1,"uomWeight":"TNE","hazardous":false,"oversize":false,"refrigerated":false,"shipperOwned":false}],"subscribedCharges":[]}).then(res=> {
       res.data.forEach(one => {
         if (one.isProductSelected) {
-          console.log(subscribedCharges)
+          // console.log(subscribedCharges)
           const index = subscribedCharges.findIndex(i => one.chargeDetails[0].chargeCode === i.code)
           one.levelOfCharge = 'Per Container'
           one.currency = subscribedCharges[index].currency

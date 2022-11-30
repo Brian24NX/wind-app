@@ -58,7 +58,7 @@
         </view>
       </view>
     </view>
-    <view class="termsConditions" catchtap="clickAgree">
+    <view class="termsConditions" catchtap="clickAgree" wx:if="{{vasDetail.termsandConditions}}">
       <view class="termChecked" style="{{isAgree ? 'background-color: #071E5D;' : ''}}">
         <van-icon name="success" color="#ffffff" size="15px" />
       </view>
