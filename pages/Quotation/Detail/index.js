@@ -63,7 +63,8 @@ Page({
     vasList: [],
     subscribedServices: [],
     noSelectVasList: [],
-    showVas: false
+    showVas: false,
+    isUs: false
   },
 
   /**
@@ -81,6 +82,7 @@ Page({
       languageContent: languages.qutationResult,
       vasLanguageContent: languages.vas,
       language: languages.langue,
+      isUs: data.isUs,
       languageCode: languages.langue === 'zh' ? 'zh_CN' : 'en_US',
       baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
       partnerCode: data.partnerCode,
@@ -93,7 +95,9 @@ Page({
       finalPlaceOfDelivery: data.finalPlaceOfDelivery
     })
     this.setDefaultInfo(options.index, options.containers)
-    this.getVasList()
+    if (!this.data.isUs) {
+      this.getVasList()
+    }
   },
 
   setDefaultInfo(index, containers) {

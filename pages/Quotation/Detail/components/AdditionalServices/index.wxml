@@ -26,7 +26,7 @@
       <view class="serviceBottom">
         <view class="serviceBottomLeft">
           <view class="checkbox">
-            <van-icon name="success" color="#ffffff" size="15px" />
+            <van-icon name="success" color="#ffffff" size="14px" />
           </view>
           <view style="margin-left: 10rpx;" catchtap="onOpen">I agree with Terms and Conditions</view>
         </view>

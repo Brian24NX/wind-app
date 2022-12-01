@@ -599,6 +599,9 @@ var Languague = {
       subscribe: '订阅',
       calculate: '计算',
       agree: '我同意',
+      required: '您必须接受条款',
+      needProduct: '请选择产品',
+      inputAmount: '请输入金额并计算',
       terms: '条件与条款'
     },
     // 我的报价

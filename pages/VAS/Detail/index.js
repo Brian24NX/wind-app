@@ -15,6 +15,7 @@ Page({
     checkIndex: null,
     showEmail: false,
     isAgree: false,
+    showRemind: false,
     amount: '',
     calculteResult: '',
     baseUrl: ''
@@ -52,8 +53,17 @@ Page({
     this.setData({
       checkIndex: e.currentTarget.dataset.index,
       amount: '',
-      calculteResult: ''
     })
+    if (this.data.vasDetail.chargeDetails[this.data.checkIndex].levelOfCharge === 'Per BL' && this.data.vasDetail.chargeDetails[this.data.checkIndex].calculationType !== 'FIX') {
+      this.setData({
+        calculteResult: ''
+      })
+    } else {
+      // vasDetail.seletcedProduct.amount = Math.round(vasDetail.seletcedProduct.rateFrom * vasDetail.seletcedProduct.conversionRate)
+      this.setData({
+        calculteResult: this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom
+      })
+    }
   },
 
   setAmount(e) {
@@ -79,19 +89,31 @@ Page({
 
   clickAgree() {
     this.setData({
-      isAgree: !this.data.isAgree
+      isAgree: !this.data.isAgree,
+      showRemind: false
     })
   },
 
   subscribeSubmit() {
     let vasDetail = this.data.vasDetail
-    if (vasDetail.termsandConditions && !this.data.isAgree) {
-      return
-    }
     if (this.data.checkIndex === null) {
+      wx.showToast({
+        title: this.data.languageContent.needProduct,
+        icon: 'none'
+      })
       return
     }
     if ((vasDetail.chargeDetails[this.data.checkIndex].levelOfCharge === 'Per BL' && vasDetail.chargeDetails[this.data.checkIndex].calculationType !== 'FIX' && (!this.data.amount || this.data.calculteResult === ''))) {
+      wx.showToast({
+        title: this.data.languageContent.inputAmount,
+        icon: 'none'
+      })
+      return
+    }
+    if (vasDetail.termsandConditions && !this.data.isAgree) {
+      this.setData({
+        showRemind: true
+      })
       return
     }
     vasDetail.isProductSelected = true

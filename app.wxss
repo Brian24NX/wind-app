@@ -6,6 +6,10 @@
   height: auto;
 }
 
+button::after {
+  border: none;
+}
+
 .navbarContainer {
   width: 100%;
   position: fixed;

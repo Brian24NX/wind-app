@@ -495,7 +495,6 @@
 .bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productName {
   font-size: 32rpx;
   font-family: Antonio-Bold, Antonio;
-  font-weight: bold;
   color: #071E5D;
   display: inline-block;
   white-space: nowrap;
@@ -658,9 +657,14 @@
   color: #FFFFFF;
   text-align: center;
   line-height: 76rpx;
-  padding: 0 22rpx;
+  padding: 0 16rpx;
   border-radius: 0;
   margin-left: 20rpx;
+  min-width: 100rpx;
+}
+
+.bottomButtonContainer .bottomButtonRight .buttons:nth-of-type(1) {
+  margin-left: 0;
 }
 
 .surchargeDesc {
@@ -805,7 +809,6 @@
 .additionList .additionDetail .additionDetailTitle {
   font-size: 32rpx;
   font-family: Antonio-Bold, Antonio;
-  font-weight: bold;
   color: #071E5D;
 }
 

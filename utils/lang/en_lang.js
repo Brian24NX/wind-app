@@ -580,7 +580,9 @@ var Languague = {
       bookInWeb: 'Please add additional services during booking on eCommerce website for now',
       back: 'Back',
       next: 'Next',
-      total: 'TOTAL'
+      total: 'TOTAL',
+      include: 'INCLUDED IN OFFER',
+      createFail: 'Failed to create quotation, please contact your agent'
     },
     vas: {
       containers: 'Container',
@@ -595,8 +597,9 @@ var Languague = {
       calculate: 'Calculate',
       agree: 'I agree with',
       terms: 'Terms an Conditions',
-      include: 'INCLUDED IN OFFER',
-      createFail: 'Failed to create quotation, please contact your agent'
+      required: 'You must accept the terms and conditions',
+      needProduct: 'Please select the product',
+      inputAmount: 'Please input the amount and calculate',
     },
     // 我的报价
     myContract: {

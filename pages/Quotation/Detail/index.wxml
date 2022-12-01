@@ -101,7 +101,7 @@
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="oceanFreight">
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.oceanFreight.isChecked ? 'rateChecked' : ''}}">
-              <van-icon name="success" color="#ffffff" size="15px" />
+              <van-icon name="success" color="#ffffff" size="14px" />
             </view>
             <text>{{languageContent.oceanFeight}}</text>
           </view>
@@ -118,7 +118,7 @@
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="freightCharges">
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.freightCharges.isChecked ? 'rateChecked' : ''}}">
-              <van-icon name="success" color="#ffffff" size="15px" />
+              <van-icon name="success" color="#ffffff" size="14px" />
             </view>
             <text>{{languageContent.perFeight}}</text>
           </view>
@@ -141,7 +141,7 @@
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="prepaidCharges">
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.prepaidCharges.isChecked ? 'rateChecked' : ''}}">
-              <van-icon name="success" color="#ffffff" size="15px" />
+              <van-icon name="success" color="#ffffff" size="14px" />
             </view>
             <text>{{languageContent.prepaid}}</text>
           </view>
@@ -164,7 +164,7 @@
         <view class="oneRate">
           <view class="oneRateLeft" catchtap="changeCheck" data-id="collectCharges">
             <view class="rateCheckBox {{quotationDetail.surchargeDetails.collectCharges.isChecked ? 'rateChecked' : ''}}">
-              <van-icon name="success" color="#ffffff" size="15px" />
+              <van-icon name="success" color="#ffffff" size="14px" />
             </view>
             <text>{{languageContent.collect}}</text>
           </view>
@@ -358,9 +358,9 @@
       </view>
     </view>
     <view class="bottomButtonRight">
-      <button class="buttons" wx:if="{{quotationDetail.quoteLines[0].allowSpecialQuotation || !quotationDetail.quoteLines[0].spotOffer}}" catchtap="booking">{{languageContent.book}}</button>
-      <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && quotationDetail.quoteLines[0].spotOffer && !isFirst}}" catchtap="back">{{languageContent.back}}</button>
-      <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && quotationDetail.quoteLines[0].spotOffer}}" catchtap="submit">{{isFirst ? languageContent.next : languageContent.saveQuotation}}</button>
+      <button class="buttons" wx:if="{{quotationDetail.quoteLines[0].allowSpecialQuotation || isUs}}" catchtap="booking">{{languageContent.book}}</button>
+      <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && !isUs && !isFirst}}" catchtap="back">{{languageContent.back}}</button>
+      <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && !isUs}}" catchtap="submit">{{isFirst ? languageContent.next : languageContent.saveQuotation}}</button>
     </view>
   </view>
 </view>

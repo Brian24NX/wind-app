@@ -46,12 +46,13 @@ page {
 .warning {
   display: flex;
   align-items: center;
+  margin-top: 20rpx;
 }
 
 .warning image {
   width: 32rpx;
   height: 32rpx;
-  margin-right: 36rpx;
+  margin-right: 30rpx;
 }
 
 .warning view {
@@ -59,7 +60,6 @@ page {
   font-weight: 600;
   color: #6B7790;
   font-size: 24rpx;
-  margin-top: 20rpx;
 }
 
 .chargeDetails {
@@ -131,12 +131,39 @@ page {
   color: #E20202;
 }
 
+.totalAmount {
+  display: flex;
+  align-items: center;
+  margin-top: 60rpx;
+}
+
+.totalAmount image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+}
+
+.totalAmount .amounts {
+  font-size: 72rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #04246A;
+  margin-right: 10rpx;
+}
+
+.totalAmount .units {
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
 .termsConditions {
   display: flex;
   align-items: center;
   color: #6B7790;
   font-size: 24rpx;
-  margin-top: 80rpx;
+  margin-top: 20rpx;
 }
 
 .termsConditions .termChecked {
@@ -144,6 +171,20 @@ page {
   height: 30rpx;
   margin-right: 20rpx;
   border: 1rpx solid #071E5D;
+}
+
+.noRequest {
+  font-size: 24rpx;
+  color: #E2014B;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.noRequest image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
 }
 
 .subscribeBtn {
