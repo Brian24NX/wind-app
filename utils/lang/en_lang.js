@@ -595,6 +595,7 @@ var Languague = {
       send: 'Send to Email',
       subscribe: 'Subscribe',
       calculate: 'Calculate',
+      value: 'FOR A VALUE OF',
       agree: 'I agree with',
       terms: 'Terms an Conditions',
       required: 'You must accept the terms and conditions',

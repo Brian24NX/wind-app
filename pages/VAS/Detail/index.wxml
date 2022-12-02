@@ -46,7 +46,7 @@
             <button hover-class="hoverClass" catchtap="calculte" style="{{!amount ? 'opacity: 0.7;' : ''}}" disabled="{{!amount}}">{{languageContent.calculate}}</button>
           </view>
           <view class="calculateResult">
-            <view class="calculateResultLeft">FOR A VALUE OF {{amount}} {{item.currency}}</view>
+            <view class="calculateResultLeft">{{languageContent.value}} {{amount}} {{item.currency}}</view>
             <view class="calculateResultRight">
               <view class="resultPrice">{{calculteResult}}</view>
               <view>

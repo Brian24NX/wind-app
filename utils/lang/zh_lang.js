@@ -598,6 +598,7 @@ var Languague = {
       send: '发送至邮箱',
       subscribe: '订阅',
       calculate: '计算',
+      value: '值',
       agree: '我同意',
       required: '您必须接受条款',
       needProduct: '请选择产品',
