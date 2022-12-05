@@ -582,7 +582,8 @@ var Languague = {
       next: 'Next',
       total: 'TOTAL',
       include: 'INCLUDED IN OFFER',
-      createFail: 'Failed to create quotation, please contact your agent'
+      createFail: 'Failed to create quotation, please contact your agent',
+      getAgain: 'Get Instant Quote'
     },
     vas: {
       containers: 'Container',

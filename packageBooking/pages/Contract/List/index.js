@@ -59,7 +59,8 @@ Page({
     valueKey: '',
     defaultIndex: 0,
     showPopup: false,
-    page: 0
+    page: 0,
+    isFirst: true
   },
 
   /**
@@ -182,6 +183,7 @@ Page({
           contractLists = this.data.partialComingContractList
         }
         this.setData({
+          isFirst: false,
           contractTypeList: this.data.contractTypeList,
           contractTypeId: this.data.contractTypeList[0].id,
           contractType: this.data.language === 'zh' ? this.data.contractTypeList[0].labelCn : this.data.contractTypeList[0].labelEn,
@@ -190,16 +192,38 @@ Page({
         })
         this.getPageData()
       } else {
-        this.setData({
-          perfectCurrentContractList: [],
-          perfectComingContractList: [],
-          partialCurrentContractList: [],
-          partialComingContractList: [],
-          contractLists: [],
-          contractList: [],
-          loggedId: '',
-          isLoading: false
-        })
+        if (this.data.isFirst) {
+          this.setData({
+            currentType: ++this.data.currentType
+          })
+          if (this.data.currentType === this.data.typeList.length) {
+            this.setData({
+              isFirst: false,
+              currentType: 0,
+              perfectCurrentContractList: [],
+              perfectComingContractList: [],
+              partialCurrentContractList: [],
+              partialComingContractList: [],
+              contractLists: [],
+              contractList: [],
+              loggedId: '',
+              isLoading: false
+            })
+            return
+          }
+          this.getContractList()
+        } else {
+          this.setData({
+            perfectCurrentContractList: [],
+            perfectComingContractList: [],
+            partialCurrentContractList: [],
+            partialComingContractList: [],
+            contractLists: [],
+            contractList: [],
+            loggedId: '',
+            isLoading: false
+          })
+        }
       }
     }, () => {
       this.setData({

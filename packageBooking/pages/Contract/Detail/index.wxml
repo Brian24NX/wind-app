@@ -1,4 +1,5 @@
 <!--packageBooking/pages/Contract/Detail/index.wxml-->
+<wxs module="filters" src="./index.wxs"></wxs>
 <wxs module="commonFilters" src="/utils/format.wxs"></wxs>
 <view class="resultContainers">
   <view class="resultCardContainers">
@@ -37,10 +38,17 @@
     </view>
     <view class="reference">
       <view class="referenceTitle">{{quotationDetail.usContract ? languageContent.usContract : languageContent.reference}}</view>
-      <view class="referenceNumber" catchtap="copyReference">
-        <text>{{quotationDetail.quotationReference}}</text>
-        <image class="copyIcon" src="/assets/img/instantQuote/copy@2x.png"></image>
+      <view class="referenceTop">
+        <view class="referenceNumber" catchtap="copyReference">
+          <text>{{quotationDetail.quotationReference}}</text>
+          <image class="copyIcon" src="/assets/img/instantQuote/copy@2x.png"></image>
+        </view>
+        <view class="referenceRight" wx:if="{{!quotationDetail.spotOffer}}">
+          <view class="validityDate">{{language === 'zh' ? commonFilters.formatCnDateLocal(quotationDetail.validityFrom, true, true) : commonFilters.formatEnDateLocal(quotationDetail.validityFrom, ' ', '', true, true)}} ~ {{language === 'zh' ? commonFilters.formatCnDateLocal(quotationDetail.validityTo, true, true) : commonFilters.formatEnDateLocal(quotationDetail.validityTo, ' ', '', true, true)}}</view>
+          <view style="text-align: right;">{{languageContent[filters.checkValidDate(quotationDetail.validityFrom, quotationDetail.validityTo)]}}</view>
+        </view>
       </view>
+      
     </view>
   </view>
   <view class="paramContainer">

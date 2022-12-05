@@ -1,0 +1,42 @@
+var fmtDate = function (obj, language) {
+  obj = obj.split('-').join('/')
+  var time = getDate(obj);
+  var month = time.getMonth() + 1;
+  var date = time.getDate();
+
+  month = month < 10 ? "0" + month : month;
+  date = date < 10 ? "0" + date : date;
+  return language === 'zh' ? (month + "." + date) : (date + '.' + month);
+}
+
+var weekDay = function (obj) {
+  if (!obj) return ''
+  if (obj.indexOf('T') > -1) {
+    obj = obj.split('T')[0] + ' ' + obj.split('T')[1].split('+')[0].split('-')[0]
+  }
+  obj = obj.split('-').join('/')
+  var week = getDate(obj).getDay();
+  return week;
+}
+
+var checkValidDate = function(startDate, endDate) {
+  if (!startDate || !endDate) return ''
+  if (startDate.indexOf('T') > -1) {
+    startDate = startDate.split('T')[0] + ' 00:00:00'
+  }
+  if (endDate.indexOf('T') > -1) {
+    endDate = endDate.split('T')[0] + ' 23:59:59'
+  }
+  startDate = startDate.split('-').join('/')
+  endDate = endDate.split('-').join('/')
+  // valid : expired : coming
+  if (getDate() - getDate(startDate) > 0 && getDate(endDate) - getDate() > 0) return 'valid'
+  if (getDate() - getDate(startDate) < 0) return 'coming'
+  if (getDate() - getDate(endDate) > 0) return 'expired'
+}
+
+module.exports = {
+  fmtDate: fmtDate,
+  weekDay: weekDay,
+  checkValidDate: checkValidDate
+}

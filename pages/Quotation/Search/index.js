@@ -172,6 +172,13 @@ Page({
     }
   },
 
+  setBackData() {
+    this.setData({
+      currentType: 'instation'
+    })
+    this.getCommodityList()
+  },
+
   addPlaceOfReceipt() {
     this.setData({
       showPlaceOfReceipt: true

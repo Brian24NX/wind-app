@@ -20,6 +20,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    toSet() {
+      const pages = getCurrentPages()
+      const currentPage = pages[pages.length - 2]
+      currentPage.setBackData()
+      wx.navigateBack()
+    }
   }
 })

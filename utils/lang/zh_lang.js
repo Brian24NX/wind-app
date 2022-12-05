@@ -585,7 +585,8 @@ var Languague = {
       next: '下一步',
       total: '总计',
       include: '包含在报价里',
-      createFail: '创建报价单失败，请联系您的代理'
+      createFail: '创建报价单失败，请联系您的代理',
+      getAgain: '获取报价'
     },
     vas: {
       containers: '柜号',

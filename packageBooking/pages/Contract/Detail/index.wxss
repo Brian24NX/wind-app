@@ -153,6 +153,24 @@
   color: #6B7790;
 }
 
+.referenceTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.referenceTop .referenceRight {
+  font-size: 22rpx;
+  font-family: Antonio-Regular, Antonio;
+  color: #6F7384;
+}
+
+.referenceTop .validityDate {
+  font-size: 32rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #071E5D;
+}
+
 .resultsContainer .reference .referenceNumber {
   font-size: 48rpx;
   font-family: Antonio-Regular;
