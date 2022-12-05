@@ -15,8 +15,10 @@ Page({
     importDate: '',
     portOfLoading: '',
     portOfLoadingLabel: '',
+    portOfLoadingCountry: '',
     portOfDischarge: '',
     portOfDischargeLabel: '',
+    portOfDischargeCountry: '',
     exports: [],
     imports: [],
     partnerCode: []
@@ -39,7 +41,9 @@ Page({
         exportDate: data.simulationDate,
         importDate: data.simulationDate,
         portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
-        portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1]
+        portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1],
+        portOfLoadingCountry: data.quotationDetail.portofLoadingCountry.toLocaleUpperCase(),
+        portOfDischargeCountry: data.quotationDetail.portofDichargeCountry.toLocaleUpperCase()
       })
       const params = {
         "portOfLoading": data.portOfLoading,
@@ -126,5 +130,11 @@ Page({
       }
     })
     return [...map.values()]
+  },
+
+  toDD() {
+    wx.navigateTo({
+      url: '/packagePrice/pages/guizufeilv/index',
+    })
   }
 })

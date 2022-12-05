@@ -38,4 +38,5 @@
     <view wx:if="{{language === 'en'}}">Valid conditions on {{commonFilters.formatEnDateLocal(importDate, ' ', '', true, true)}}, based on {{portOfDischargeLabel}}</view>
     <view wx:else>有效期为 {{commonFilters.formatCnDateLocal(importDate, true, true)}}，基于 {{portOfDischargeLabel}} 有效</view>
   </view>
+  <view class="ddDesc">{{language === 'zh' ? '关于滞箱费和滞港费的条款信息如下：' : 'Information on Detention and Demurrage general conditions:'}} <text style="color: #235af6;" catchtap="toDD">{{portOfLoadingCountry}}</text> {{language === 'zh' ? '和' : 'and'}} <text style="color: #235af6;" catchtap="toDD">{{portOfDischargeCountry}}</text></view>
 </view>

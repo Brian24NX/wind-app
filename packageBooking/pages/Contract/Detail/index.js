@@ -119,6 +119,9 @@ Page({
 
   setChargeDetail() {
     let surchargeDetail = this.data.quotationDetail.surchargeDetails[this.data.currentEquipmentType]
+    surchargeDetail.freightChargeDetails = surchargeDetail.freightChargeDetails.sort(this.sortArray)
+    surchargeDetail.prepaidChargeDetails = surchargeDetail.prepaidChargeDetails.sort(this.sortArray)
+    surchargeDetail.collectChargeDetails = surchargeDetail.collectChargeDetails.sort(this.sortArray)
     surchargeDetail.oceanFreightDetailsLabel = surchargeDetail.oceanFreightDetails.join(' / ')
     surchargeDetail.oceanFreight.isChecked = true
     surchargeDetail.freightCharges.isChecked = true
@@ -128,6 +131,10 @@ Page({
       surchargeDetail
     })
     this.calculatedCharges()
+  },
+
+  sortArray(x, y) {
+    return x.chargeName.localeCompare(y.chargeName);
   },
 
   calculatedCharges() {

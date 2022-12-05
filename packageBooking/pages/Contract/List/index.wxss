@@ -421,6 +421,10 @@ page {
   margin-top: 8rpx;
 } */
 
+.btns {
+  display: flex;
+}
+
 .resultContainers .oneResult .oneBottom .selects {
   width: 156rpx;
   height: 76rpx;
@@ -432,7 +436,7 @@ page {
   color: #FFFFFF;
   text-align: center;
   line-height: 76rpx;
-  margin: 0;
+  margin: 0 0 0 20rpx;
   border-radius: 0;
 }
 
@@ -501,7 +505,7 @@ page {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 0 20rpx;
+  /* padding: 0 20rpx; */
 }
 
 .equipmentTypeList .oneEquipmentType {

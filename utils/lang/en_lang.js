@@ -598,7 +598,7 @@ var Languague = {
       calculate: 'Calculate',
       value: 'FOR A VALUE OF',
       agree: 'I agree with',
-      terms: 'Terms an Conditions',
+      terms: 'Terms and Conditions',
       required: 'You must accept the terms and conditions',
       needProduct: 'Please select the product',
       inputAmount: 'Please input the amount and calculate',

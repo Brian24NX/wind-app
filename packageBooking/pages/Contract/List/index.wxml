@@ -162,10 +162,16 @@
             </view>
           </view>
         </view>
+        <view class="btns">
+          <button class="selects {{(filters.checkValidDate(item.validityFrom, item.validityTo) === 'expired' || (!item.isLoading && !item.surchargeDetails.length)) ? 'notSelect' : ''}}" disabled="{{filters.checkValidDate(item.validityTo) === 'expired' || item.isLoading || !item.surchargeDetails.length}}" bindtap="toBook" data-index="{{index}}">
+          <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{item.isLoading}}"></image>
+          <text wx:if="{{!item.isLoading}}">{{languageContent.book}}</text>
+        </button>
         <button class="selects {{(filters.checkValidDate(item.validityFrom, item.validityTo) === 'expired' || (!item.isLoading && !item.surchargeDetails.length)) ? 'notSelect' : ''}}" disabled="{{filters.checkValidDate(item.validityTo) === 'expired' || item.isLoading || !item.surchargeDetails.length}}" bindtap="toDetail" data-index="{{index}}">
           <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{item.isLoading}}"></image>
           <text wx:if="{{!item.isLoading}}">{{languageContent.contractDetail}}</text>
         </button>
+        </view>
       </view>
     </view>
   </view>

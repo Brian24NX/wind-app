@@ -357,6 +357,7 @@ Page({
       pointCode: item.portOfLoading
     }).then(data => {
       item.portOfLoadingLabel = data.data.point.name + ', ' + data.data.country.code
+      item.portofLoadingCountry = data.data.country.name
       this.setData({
         contractList: this.data.contractList
       })
@@ -370,6 +371,7 @@ Page({
       pointCode: item.portOfDischarge
     }).then(data => {
       item.portOfDischargeLabel = data.data.point.name + ', ' + data.data.country.code
+      item.portofDichargeCountry = data.data.country.name
       this.setData({
         contractList: this.data.contractList
       })
@@ -426,6 +428,13 @@ Page({
   toDetail(e) {
     wx.navigateTo({
       url: `/packageBooking/pages/Contract/Detail/index?index=${e.currentTarget.dataset.index}`,
+    })
+  },
+
+  toBook() {
+    wx.showToast({
+      title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
+      icon: 'none'
     })
   }
 })
