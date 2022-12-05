@@ -28,6 +28,8 @@ Page({
     perfectComingContractList: [],
     partialCurrentContractList: [],
     partialComingContractList: [],
+    perfectExpiredContractList: [],
+    partialExpiredContractList: [],
     loggedId: '',
     isLoading: true,
     portOfLoading: '',
@@ -140,8 +142,10 @@ Page({
         this.setData({
           perfectCurrentContractList: res.data.perfectMatches.filter(i => i.contractStatus === 'valid'),
           perfectComingContractList: res.data.perfectMatches.filter(i => i.contractStatus === 'coming'),
+          perfectExpiredContractList: res.data.perfectMatches.filter(i => i.contractStatus === 'expired'),
           partialCurrentContractList: res.data.partialMatches.filter(i => i.contractStatus === 'valid'),
           partialComingContractList: res.data.partialMatches.filter(i => i.contractStatus === 'coming'),
+          partialExpiredContractList: res.data.partialMatches.filter(i => i.contractStatus === 'expired'),
           loggedId: res.data.loggedId
         })
         if (this.data.perfectCurrentContractList.length) {
@@ -172,6 +176,20 @@ Page({
             labelEn: 'Coming additional results close to your search'
           })
         }
+        if (this.data.perfectExpiredContractList.length) {
+          this.data.contractTypeList.push({
+            id: 'expiredOffers',
+            labelCn: '失效 - 完全匹配',
+            labelEn: 'Expired offers'
+          })
+        }
+        if (this.data.partialExpiredContractList.length) {
+          this.data.contractTypeList.push({
+            id: 'expiredOffers',
+            labelCn: '失效与您搜索相关的其他结果',
+            labelEn: 'Expired offers'
+          })
+        }
         let contractLists = []
         if (this.data.perfectCurrentContractList.length) {
           contractLists = this.data.perfectCurrentContractList
@@ -181,6 +199,10 @@ Page({
           contractLists = this.data.partialCurrentContractList
         } else if (this.data.partialComingContractList.length) {
           contractLists = this.data.partialComingContractList
+        } else if (this.data.perfectExpiredContractList.length) {
+          contractLists = this.data.perfectExpiredContractList
+        } else if (this.data.partialExpiredContractList.length) {
+          contractLists = this.data.partialExpiredContractList
         }
         this.setData({
           isFirst: false,
