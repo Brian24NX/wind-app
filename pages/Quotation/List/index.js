@@ -251,6 +251,7 @@ Page({
       pointCode
     }).then(data => {
       item[type] = data.data.point.name + ', ' + data.data.country.code
+      item[type + 'Country'] = data.data.country.name
       this.setData({
         quoteLineList: this.data.quoteLineList
       })

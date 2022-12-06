@@ -65,6 +65,8 @@ Page({
         importDate: data.quotationDetail.arrivalDate,
         portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
         portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1],
+        portOfLoadingCountry: data.quotationDetail.placeOfLoadingLabelCountry.toLocaleUpperCase(),
+        portOfDischargeCountry: data.quotationDetail.placeOfDischargeLabelCountry.toLocaleUpperCase()
       })
       const params = {
         "portOfLoading": data.portOfLoading,

@@ -83,7 +83,7 @@
 .carddate text,
 .cardtranshipment text {
   font-size: 28rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
+  font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #4468BA;
   margin-left: 10rpx;
