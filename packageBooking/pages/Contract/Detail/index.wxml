@@ -118,7 +118,10 @@
             <view class="rateCheckBox {{surchargeDetail.oceanFreight.isChecked ? 'rateChecked' : ''}}">
               <van-icon name="success" color="#ffffff" size="14px" />
             </view>
-            <text>{{languageContent.oceanFeight}}</text>
+            <view>
+              <text>{{languageContent.oceanFeight}}</text>
+              <block wx:if="{{surchargeDetail.oceanFreight.paymentMethod}}"> · {{commonFilters.localeUpperCase(surchargeDetail.oceanFreight.paymentMethod)}} ·</block>
+            </view>
           </view>
           <view class="oneRateRight">
             <text class="ratePrice">{{surchargeDetail.oceanFreight.price.amount}}</text>

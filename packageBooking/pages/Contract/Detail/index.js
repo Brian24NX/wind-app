@@ -75,10 +75,6 @@ Page({
     quotationDetail.namedAccounts = quotationDetail.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + (i.city ? ', ' + i.city : ''))
     let surchargeDetail = quotationDetail.surchargeDetails[this.data.currentEquipmentType]
     surchargeDetail.oceanFreightDetailsLabel = surchargeDetail.oceanFreightDetails.join(' / ')
-    surchargeDetail.oceanFreight.isChecked = true
-    surchargeDetail.freightCharges.isChecked = true
-    surchargeDetail.prepaidCharges.isChecked = true
-    surchargeDetail.collectCharges.isChecked = true
     this.data.otherList[2].show = quotationDetail.spotOffer
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
@@ -119,6 +115,12 @@ Page({
 
   setChargeDetail() {
     let surchargeDetail = this.data.quotationDetail.surchargeDetails[this.data.currentEquipmentType]
+    if (surchargeDetail.oceanFreight.paymentMethod === 'Collect') {
+      surchargeDetail.collectChargeDetails = surchargeDetail.collectChargeDetails.concat(surchargeDetail.freightChargeDetails)
+      surchargeDetail.freightChargeDetails = []
+      surchargeDetail.collectCharges.amount += surchargeDetail.freightCharges.amount
+      surchargeDetail.freightCharges.amount = 0
+    }
     surchargeDetail.freightChargeDetails = surchargeDetail.freightChargeDetails.sort(this.sortArray)
     surchargeDetail.prepaidChargeDetails = surchargeDetail.prepaidChargeDetails.sort(this.sortArray)
     surchargeDetail.collectChargeDetails = surchargeDetail.collectChargeDetails.sort(this.sortArray)
