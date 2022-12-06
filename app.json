@@ -73,7 +73,9 @@
         "pages/List/index",
         "pages/Detail/index",
         "pages/ModifyParty/index",
-        "pages/Result/index"
+        "pages/Result/index",
+        "pages/Commodity/index",
+        "pages/UNNumber/index"
       ]
     }
   ],

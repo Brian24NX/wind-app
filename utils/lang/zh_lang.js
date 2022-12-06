@@ -615,7 +615,7 @@ var Languague = {
       freightPayer: '费用付款方',
       bookingOffice: '首选订舱办事处',
       freeComments: '备注',
-      freeCommentsPlaceHolder: '附加备注（到付的本地费用付款方，首选仓库等。）。',
+      freeCommentsPlaceHolder: '附加备注（到付的本地费用付款方，首选仓库等）',
       save: '制作我的订舱'
     },
     modifyParty: {

@@ -7,8 +7,10 @@ Page({
    */
   data: {
     languageContent: {},
+    language: 'zh',
     fromLabel: 'SHANGHAI, CN',
-    toLabel: 'SINGAPORE, SG'
+    toLabel: 'SINGAPORE, SG',
+    routings: []
   },
 
   /**
@@ -19,27 +21,15 @@ Page({
       title: languageUtils.languageVersion().lang.page.bookingDetail.title,
     })
     this.setData({
-      languageContent: languageUtils.languageVersion().lang.page.bookingDetail
+      languageContent: languageUtils.languageVersion().lang.page.bookingDetail,
+      language: languageUtils.languageVersion().lang.page.langue,
+      routings: wx.getStorageSync('bookingRoutings')
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  selectLine() {
+  selectLine(e) {
     wx.navigateTo({
-      url: '/packageBooking/pages/Detail/index',
+      url: '/packageBooking/pages/Detail/index?index=' + e.currentTarget.dataset.index,
     })
   }
 })

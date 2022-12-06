@@ -1,0 +1,173 @@
+<!--packageBooking/pages/UNNumber/index.wxml-->
+<view class="oneContainer">
+  <view class="containerTitle">
+    <view class="titleLine"></view>
+    <view>Global Details</view>
+  </view>
+  <view>
+    <view class="title">UN Number or Proper Shipping Name <text class="red">*</text></view>
+    <view class="inputContainers">
+      <view class="inputsContainer">
+        <input type="text" bindinput="enterUNNumber" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{unNumberName}}" />
+        <view class="deleteIcon" wx:if="{{showUNNumberDelete}}" catchtap="deleteValue" data-type="showOfficeDelete">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+      </view>
+      <scroll-view class="scroll-view" wx:if='{{UNNumberLists.length}}' scroll-y>
+        <view wx:for="{{UNNumberLists}}" wx:key="index" class="item" bindtap='chooseUNNumber' data-index="{{index}}">
+          <view class="polname">{{item.unNumber + ' - ' + item.unName}}</view>
+        </view>
+      </scroll-view>
+      <view class="scroll-view" wx:if="{{showCommodity}}">
+        <view class="item">Loading...</view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="title">Chemical Name <text class="red">*</text></view>
+    <view class="inputs">
+      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="title">Packing Group <text class="red">*</text></view>
+    <view class="selectContainer" catchtap="openPopup" data-type="1">
+      <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
+      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+    </view>
+  </view>
+  <view>
+    <view class="title">Class <text class="red">*</text></view>
+    <view class="inputs">
+      100
+    </view>
+  </view>
+  <view>
+    <view class="title">Emergency procedure <text class="red">*</text></view>
+    <view class="inputs">
+      100
+    </view>
+  </view>
+  <view>
+    <view class="title">Unit <text class="red">*</text></view>
+    <view class="selectContainer" catchtap="openPopup" data-type="1">
+      <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
+      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+    </view>
+  </view>
+  <view>
+    <view class="title">Flash Point <text class="red">*</text></view>
+    <view class="inputs">
+      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="shipOwner">
+    <view class="checked">
+      <van-icon name="success" size="14px" color="#ffffff" />
+    </view>
+    <view>Include Hazardous</view>
+  </view>
+</view>
+
+<view class="oneContainer">
+  <view class="containerTitle">
+    <view class="titleLine"></view>
+    <view>Hazardous cargo weight Per Container</view>
+  </view>
+  <view>
+    <view class="title">Net Weight <text class="red">*</text></view>
+    <view class="inputs">
+      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="title">Gross Weight <text class="red">*</text></view>
+    <view class="inputs">
+      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="title">Unit <text class="red">*</text></view>
+    <view class="selectContainer" catchtap="openPopup" data-type="1">
+      <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
+      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+    </view>
+  </view>
+</view>
+
+<view class="oneContainer">
+  <view class="containerTitle">
+    <view class="titleLine"></view>
+    <view>Packing Details</view>
+  </view>
+  <view>
+    <view class="title">Packaging Description <text class="red">*</text></view>
+    <view class="selectContainer" catchtap="openPopup" data-type="1">
+      <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
+      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+    </view>
+  </view>
+  <view>
+    <view class="title">Quantity <text class="red">*</text></view>
+    <view class="inputs">
+      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="shipOwner">
+    <view class="checked">
+      <van-icon name="success" size="14px" color="#ffffff" />
+    </view>
+    <view>Transport of dangerous goods in limited quantities</view>
+  </view>
+</view>
+
+<view class="oneContainer">
+  <view class="containerTitle">
+    <view class="titleLine"></view>
+    <view>Emergency Details</view>
+  </view>
+  <view>
+    <view class="title">Emergency Contact Name <text class="red">*</text></view>
+    <view class="inputs">
+      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="title">Emergency Number <text class="red">*</text></view>
+    <view class="inputs">
+      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="title">Comment<text class="kexuan">(Optional)</text></view>
+    <view class="textareaContainer">
+      <textarea></textarea>
+      <view class="fontCount">0/150</view>
+    </view>
+  </view>
+
+  <view class="bottomRemind">Please note that validation regarding the hazardous details provided will be done by our technical experts who could revert to you for any further information that could be helpful for hazardous approval on the voyage selected. Thanks for your understanding.</view>
+
+  <button class="confirmBtn" hover-class="buttonClick">Save</button>
+</view>

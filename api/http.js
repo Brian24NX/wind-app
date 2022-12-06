@@ -36,13 +36,17 @@ const request = ({
         mask: true
       });
     }
+    let header = {
+      'content-type': contentType || 'application/json'
+    }
+    if (needAccessToken) {
+      header['Authorization'] = wx.getStorageSync('access_token')
+    }
     wx.request({
       url: `${config[config.dev_env].url}${url}`,
       data: data,
       method: method,
-      header: {
-        'content-type': contentType || 'application/json'
-      },
+      header,
       success: (res) => {
         if (!hideLoading) {
           wx.hideLoading();
@@ -75,6 +79,19 @@ const request = ({
             }
             reject(res.data)
           } else if (res.data.code == 404) {
+            reject(res.data)
+          } else if (res.data.code == 401) {
+            if (!needError) {
+              wx.showToast({
+                title: languageUtil.languageVersion().lang.page.load.noLogin,
+                icon: 'none'
+              })
+              setTimeout(() => {
+                wx.navigateTo({
+                  url: '/pages/Login/index',
+                })
+              }, 2000);
+            }
             reject(res.data)
           } else if (res.data.code == 403) {
             if (!needError) {
@@ -109,10 +126,12 @@ const request = ({
           wx.hideLoading();
         }
         if (err.errMsg === 'request:fail timeout') {
-          wx.showToast({
-            title: languageUtil.languageVersion().lang.page.load.chaoshi,
-            icon: 'none'
-          })
+          if (!needError) {
+            wx.showToast({
+              title: languageUtil.languageVersion().lang.page.load.chaoshi,
+              icon: 'none'
+            })
+          }
         }
         // 返回错误提示信息
         reject('网络请求失败')

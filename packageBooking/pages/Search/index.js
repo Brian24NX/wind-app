@@ -507,8 +507,24 @@ Page({
   },
 
   getQuotationList() {
-    wx.navigateTo({
-      url: '/packageBooking/pages/List/index',
+    bookingQuotationList({
+      portOfLoading: this.data.portOfLoading,
+      portOfDischarge: this.data.portOfDischarge,
+      placeOfDelivery: this.data.placeOfOrigin || '',
+      placeOfReceipt: this.data.finalPlaceOfDelivery || '',
+      journeyDate: this.data.simulationDate,
+      journeyType: this.data.searchOn === 1 ? "True" : "False",
+      agreementReference: this.data.reference,
+      shippingCompany: '0001'
+    }).then(res => {
+      console.log(res)
+      if (res.data && res.data.routings && res.data.routings.length) {
+        wx.setStorageSync('bookingRoutings', res.data.routings)
+        wx.setStorageSync('containers', res.data.commodities.preferedContainerTypes.concat(res.data.commodities.containerTypes))
+      }
+      wx.redirectTo({
+        url: '/packageBooking/pages/List/index',
+      })
     })
   },
 

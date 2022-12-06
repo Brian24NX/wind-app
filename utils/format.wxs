@@ -209,6 +209,16 @@ function setChina(code, need) {
   }
 }
 
+function substrs(code, count) {
+  if (!count) count = 2
+  if (!code) return
+  var two = code.substring(0, count)
+  if (two === 'HK' || two === 'MO' || two === 'TW') {
+    return 'CN'
+  }
+  return two
+}
+
 function checkTime(date) {
   if (!date) return 1
   if (date.indexOf('T') > -1) {
@@ -248,6 +258,7 @@ module.exports = {
   formatAmount: formatAmount,
   deleteStr: deleteStr,
   setChina: setChina,
+  substrs: substrs,
   checkTime: checkTime,
   localeUpperCase: localeUpperCase,
   formatCommodityName: formatCommodityName

@@ -114,14 +114,13 @@ page {
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #E20202;
-  padding-right: 30rpx;
 }
 
 .portTimeContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22rpx 40rpx 22rpx 10rpx;
+  padding: 22rpx 22rpx 22rpx 10rpx;
   border-bottom: 1rpx solid #F4F4F4;
 }
 

@@ -1,11 +1,12 @@
 <!--packageBooking/pages/Detail/index.wxml-->
+<wxs module="commonFilters" src="/utils/format.wxs"></wxs>
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/ship.png" mode="aspectFit"/>
+      <image src="/assets/img/booking/ship.png" mode="aspectFit" />
       <view>{{languageContent.routeSelected}}</view>
     </view>
-    <image class="editIcon" src="/assets/img/booking/edit.png"/>
+    <image class="editIcon" src="/assets/img/booking/edit.png" />
   </view>
   <view class="routeContainer">
     <view class="stepLists">
@@ -14,39 +15,39 @@
           <view class="leftLineDto"></view>
           <view class="leftLine"></view>
         </view>
-        <view class="stepContent">SHANGHAI, CN</view>
+        <view class="stepContent">{{routeSelected.journeyLegs[0].departureLocation.name + ', ' + commonFilters.substrs(routeSelected.journeyLegs[0].departureLocation.code)}}</view>
       </view>
       <view class="oneStep">
         <view class="leftLines" style="top: 20rpx;">
           <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
         </view>
-        <view class="stepContent">TOKYO, JP</view>
+        <view class="stepContent">{{routeSelected.journeyLegs[routeSelected.journeyLegs.length - 1].arrivalLocation.name + ', ' + commonFilters.substrs(routeSelected.journeyLegs[0].arrivalLocation.code)}}</view>
       </view>
     </view>
     <view class="portTimeContainer">
       <view class="portTimes">
         <view>PORT</view>
-        <view class="portTime">19-NOV-22</view>
+        <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].departureDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].departureDate.utc, '-', '', true, true)}}</view>
       </view>
       <van-icon name="arrow" color="#04246A" />
       <view class="portTimes">
         <view>PORT</view>
-        <view class="portTime">19-NOV-22</view>
+        <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].arrivalDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].arrivalDate.utc, '-', '', true, true)}}</view>
       </view>
     </view>
     <view class="cutTimeContainers">
       <view class="cutTimeContainer">
         <view class="oneCutTime">
           <view>Special BKG Cut-off</view>
-          <view>15-NOV-22, 15:00</view>
+          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].specialCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].specialCutOffDate.utc, '-', '', true)}}</view>
         </view>
         <view class="oneCutTime">
           <view>Standard BKG Cut-off</view>
-          <view style="color: #2B74FF;">17-NOV-22, 15:00</view>
+          <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].standardCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].standardCutOffDate.utc, '-', '', true)}}</view>
         </view>
         <view class="oneCutTime">
           <view>Port Cut-off</view>
-          <view>18-NOV-22, 15:00</view>
+          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.cutOffPortDateTime.utc, true) : commonFilters.formatEnDateLocal(routeSelected.cutOffPortDateTime.utc, '-', '', true)}}</view>
         </view>
       </view>
     </view>
@@ -56,28 +57,45 @@
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/cargo.png" mode="aspectFit"/>
+      <image src="/assets/img/booking/cargo.png" mode="aspectFit" />
       <view>{{languageContent.cargoDetail}}</view>
     </view>
-    <image class="editIcon" src="/assets/img/booking/edit.png"/>
+    <view class="addIcon">
+      <image src="/assets/img/booking/add.png"/>
+    </view>
   </view>
-  <view class="oneCargo" wx:for="{{2}}" wx:key="index">
-    <view class="cargoTitle">{{languageContent.commodity}}</view>
-    <view class="cargoValue">Twine nesoi,cordage,rope and cables of synthetic synthetic fibers. 0562345</view>
-    <view class="cargoTitle">{{languageContent.contaier}}</view>
-    <view class="cargoValue">132x20’Dry Standard.
-Total net weight ( sum of all containers weights)
-Hazardous information ( 1 UN numbers)</view>
+  <view class="oneCommodity" wx:for="{{2}}" wx:key="index">
+    <view class="commodityTop">
+      <view class="topLeft">
+        <view class="leftLine"></view>
+        <view>Commodity {{index + 1}}</view>
+      </view>
+      <view class="topRight">
+        <image src="/assets/img/booking/modify.png"/>
+        <image src="/assets/img/booking/delete.png"/>
+      </view>
+    </view>
+    <view class="commodityDetail">
+      <image src="/assets/img/booking/commodity.png"/>
+      <view class="commodityRight">
+        <view class="commodityName">Twine nesoi,cordage, rope and cables of synt…5678</view>
+        <view>20’Dry Standard 132 x 100=13200 TNE</view>
+      </view>
+    </view>
+  </view>
+  <view class="commodityRemind">
+    <image src="/assets/img/instantQuote/warning@2x.png"/>
+    <view>This booking has passed booking acceptance Cutoff and will be subject to validation</view>
   </view>
 </view>
 
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/parties.png" mode="aspectFit"/>
+      <image src="/assets/img/booking/parties.png" mode="aspectFit" />
       <view>{{languageContent.parties}}</view>
     </view>
-    <image class="editIcon" src="/assets/img/booking/edit.png"/>
+    <image class="editIcon" src="/assets/img/booking/edit.png" />
   </view>
   <view class="oneCargo" wx:for="{{2}}" wx:key="index">
     <view class="cargoTitle">{{languageContent.partyName}}</view>
@@ -90,7 +108,7 @@ Hazardous information ( 1 UN numbers)</view>
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/payment.png" mode="aspectFit"/>
+      <image src="/assets/img/booking/payment.png" mode="aspectFit" />
       <view>{{languageContent.payment}}</view>
     </view>
   </view>
@@ -111,24 +129,24 @@ Hazardous information ( 1 UN numbers)</view>
   </view>
   <view class="paymentTitle mar"><text>{{languageContent.paymentLocation}}<text class="red">*</text></text></view>
   <view class="inputContainers">
-    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" />
   </view>
   <view class="paymentTitle mar">
     <text>{{languageContent.freightPayer}}<text class="red">*</text></text>
-    <image src="/assets/img/booking/modify.png" catchtap="toModifyParty"/>
+    <image src="/assets/img/booking/modify.png" catchtap="toModifyParty" />
   </view>
   <view class="inputContainers">
-    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" />
   </view>
 </view>
 
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/vas.png" mode="aspectFit"/>
+      <image src="/assets/img/booking/vas.png" mode="aspectFit" />
       <view>{{languageContent.vas}}</view>
     </view>
-    <image class="editIcon" src="/assets/img/booking/edit.png"/>
+    <image class="editIcon" src="/assets/img/booking/edit.png" />
   </view>
   <view class="additionContainer">
     <view class="oneAddition" wx:for="{{4}}" wx:key="index">
@@ -154,7 +172,20 @@ Hazardous information ( 1 UN numbers)</view>
     </view>
   </view>
   <view class="inputContainers">
-    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
+    <view class="inputsContainer">
+      <input type="text" bindinput="changeOffice" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{preferredBookingOffice.name}}" />
+      <view class="deleteIcon" wx:if="{{showOfficeDelete}}" catchtap="deleteValue" data-type="showOfficeDelete">
+        <image src="/assets/img/search/close@2x.png"></image>
+      </view>
+    </view>
+    <scroll-view class="scroll-view" wx:if='{{officeList.length}}' scroll-y>
+      <view wx:for="{{officeList}}" wx:key="index" class="item" bindtap='chooseOffice' data-index="{{index}}">
+        <view class="polname">{{item.agency.name + ';' + item.city.name + ';' + item.city.code}}</view>
+      </view>
+    </scroll-view>
+    <view class="scroll-view" wx:if="{{showOffice}}">
+      <view class="item">Loading...</view>
+    </view>
   </view>
 </view>
 

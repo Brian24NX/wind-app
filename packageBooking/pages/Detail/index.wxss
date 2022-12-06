@@ -36,9 +36,24 @@ page {
   height: 70rpx;
 }
 
+.detailTops .addIcon {
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F7FAFF;
+  border-radius: 50%;
+}
+
+.detailTops .addIcon image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
 .routeContainer {
   background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
-  padding: 18rpx;
+  padding: 18rpx 18rpx 0;
 }
 
 .routeContainer .stepLists {
@@ -140,6 +155,93 @@ page {
   color: #071E5D;
 }
 
+.oneCommodity {
+  background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+}
+
+.oneCommodity:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.oneCommodity .commodityTop {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 10rpx;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.oneCommodity .commodityTop .topLeft {
+  display: flex;
+  align-items: center;
+  font-size: 56rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.oneCommodity .commodityTop .topLeft .leftLine {
+  width: 6rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+  background-color: #E20202;
+}
+
+.oneCommodity .commodityTop .topRight {
+  display: flex;
+  align-items: center;
+}
+
+.oneCommodity .commodityTop .topRight image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+}
+
+.oneCommodity .commodityDetail {
+  display: flex;
+  align-items: center;
+  margin-top: 26rpx;
+}
+
+.oneCommodity .commodityDetail image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+
+.oneCommodity .commodityDetail .commodityRight {
+  font-size: 24rpx;
+  color: #04246A;
+}
+
+.oneCommodity .commodityDetail .commodityRight .commodityName {
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.commodityRemind {
+  margin-top: 40rpx;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #6B7790;
+  font-size: 24rpx;
+  padding: 0 20rpx;
+}
+
+.commodityRemind view {
+  width: 600rpx;
+}
+
+.commodityRemind image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 12rpx;
+}
+
 .oneCargo {
   margin-bottom: 30rpx;
   background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
@@ -212,6 +314,34 @@ page {
   border: 1rpx solid #DFDFDF;
   width: 100%;
   height: 80rpx;
+  position: relative;
+  font-size: 28rpx;
+  color: #04246A;
+}
+
+.inputsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.inputsContainer input {
+  width: calc(100% - 100rpx);
+  height: 100%;
+}
+
+.inputsContainer .deleteIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.inputsContainer .deleteIcon image {
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .mar {
@@ -220,7 +350,7 @@ page {
 
 .inputContainers input {
   height: 100%;
-  padding: 0 20rpx;
+  padding: 0 0 0 20rpx;
 }
 
 .textareaContainers {
@@ -295,4 +425,38 @@ page {
 
 .additionContainer .oneAddition .vasBottom .vasBottomRight .amountDesc view:nth-of-type(1) {
   margin-bottom: 10rpx;
+}
+
+.scroll-view {
+  width: 100%;
+  position: absolute;
+  background: #ffffff;
+  border: 1rpx solid #00245d;
+  transform: rotateZ(360deg);
+  top: 78rpx;
+  left: -2rpx;
+  z-index: 40;
+  max-height: 430rpx;
+}
+
+.scroll-view .item {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #e2e2e2;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.scroll-view .item .polname {
+  width: 100%;
+  line-height: 30rpx;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
