@@ -499,6 +499,7 @@ var Languague = {
       title3: '我的合同',
       title4: '合同详情',
       book: '立即订舱',
+      books: '订舱',
       localCharge: '本地费用',
       DDSM: 'D&D',
       SpotOn: 'SpotOn',

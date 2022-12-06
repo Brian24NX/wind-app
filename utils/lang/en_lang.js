@@ -496,6 +496,7 @@ var Languague = {
       title3: 'My Contracts',
       title4: 'Contract Detail',
       book: 'Book Now',
+      books: 'Book',
       localCharge: 'Local Charges',
       DDSM: 'D&D',
       SpotOn: 'SpotOn',
