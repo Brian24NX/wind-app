@@ -28,7 +28,7 @@
     <view>Container</view>
   </view>
   <view class="shipOwner">
-    <view class="checked" catchtap="checkBoxToggle" data-keys="isUserContainer">
+    <view class="checked {{isUserContainer?'bg':''}}" catchtap="checkBoxToggle" data-keys="isUserContainer">
       <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isUserContainer}}" />
     </view>
     <view class="text" catchtap="checkBoxToggle" data-keys="isUserContainer">Shipper Owned Container</view>

@@ -110,8 +110,10 @@ page {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #04246A;
   /* margin-right: 20rpx; */
+}
+.shipOwner .checked.bg {
+  background-color: #04246A;
 }
 .shipOwner .text {
   padding-left: 20rpx;
