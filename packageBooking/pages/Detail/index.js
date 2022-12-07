@@ -16,6 +16,8 @@ Page({
     officeList: [],
     showOfficeDelete: false,
     routeSelected: null,
+    commodityList: [],
+    vasList: [],
     preferredBookingOffice: null
   },
 
@@ -30,6 +32,12 @@ Page({
       languageContent: languageUtils.languageVersion().lang.page.bookingDetail,
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
       routeSelected: wx.getStorageSync('bookingRoutings')[options.index]
+    })
+  },
+
+  addCommodity() {
+    wx.navigateTo({
+      url: '/packageBooking/pages/Commodity/index',
     })
   },
 

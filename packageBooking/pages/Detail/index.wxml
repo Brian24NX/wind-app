@@ -60,11 +60,11 @@
       <image src="/assets/img/booking/cargo.png" mode="aspectFit" />
       <view>{{languageContent.cargoDetail}}</view>
     </view>
-    <view class="addIcon">
+    <view class="addIcon" catchtap="addCommodity">
       <image src="/assets/img/booking/add.png"/>
     </view>
   </view>
-  <view class="oneCommodity" wx:for="{{2}}" wx:key="index">
+  <view class="oneCommodity" wx:for="{{commodityList}}" wx:key="index">
     <view class="commodityTop">
       <view class="topLeft">
         <view class="leftLine"></view>
@@ -149,7 +149,7 @@
     <image class="editIcon" src="/assets/img/booking/edit.png" />
   </view>
   <view class="additionContainer">
-    <view class="oneAddition" wx:for="{{4}}" wx:key="index">
+    <view class="oneAddition" wx:for="{{vasList}}" wx:key="index">
       <view class="vasTitle">SERENITY cargo value guarantee</view>
       <view class="vasBottom">
         <view class="vasBottomLeft">Enjoy a full and quick compensation in case your cargo is damaged</view>

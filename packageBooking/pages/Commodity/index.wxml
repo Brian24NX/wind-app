@@ -93,7 +93,7 @@
       </view>
     </view>
   </view>
-  <view class="addUn">
+  <view class="addUn" catchtap="addUNNumber">
     <image src="/assets/img/booking/add.png"/>
     <view>Add Another UN Number</view>
   </view>

@@ -76,5 +76,11 @@ Page({
       },
       commodityList: []
     })
+  },
+
+  addUNNumber() {
+    wx.navigateTo({
+      url: '/packageBooking/pages/UNNumber/index',
+    })
   }
 })
