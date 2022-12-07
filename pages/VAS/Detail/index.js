@@ -18,7 +18,8 @@ Page({
     showRemind: false,
     amount: '',
     calculteResult: '',
-    baseUrl: ''
+    baseUrl: '',
+    equipmentTypeSize: ''
   },
 
   /**
@@ -35,7 +36,7 @@ Page({
         isAgree: true,
         checkIndex: vasDetail.chargeDetails.findIndex(i => i.chargeCode === vasDetail.seletcedProduct.chargeCode),
         amount: vasDetail.seletcedProduct.inputAmount || '',
-        calculteResult: vasDetail.seletcedProduct.amount || ''
+        calculteResult: vasDetail.seletcedProduct.amount || '',
       })
     }
     const languages = languageUtil.languageVersion().lang.page
@@ -43,6 +44,7 @@ Page({
       vasDetail: vasDetail,
       languageContent: languages.vas,
       baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
+      equipmentTypeSize: data.equipmentTypeSize
     })
     wx.setNavigationBarTitle({
       title: vasDetail.productName,
@@ -119,6 +121,9 @@ Page({
     vasDetail.isProductSelected = true
     vasDetail.selectProductIndex = this.data.checkIndex
     vasDetail.seletcedProduct = vasDetail.chargeDetails[this.data.checkIndex]
+    vasDetail.seletcedProduct.cargoLines.forEach(i => {
+      i.equipmentSize = this.data.equipmentTypeSize
+    })
     if (vasDetail.seletcedProduct.levelOfCharge === 'Per BL' && vasDetail.seletcedProduct.calculationType !== 'FIX') {
       vasDetail.seletcedProduct.amount = Math.round(this.data.calculteResult)
       vasDetail.seletcedProduct.inputAmount = this.data.amount

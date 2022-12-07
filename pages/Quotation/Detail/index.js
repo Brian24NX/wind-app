@@ -354,7 +354,7 @@ Page({
     })
     subscribedCharges = subscribedCharges.concat(a).concat(b).concat(c).concat(d)
     vasLists({
-      "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CNC' : 'APL',
+      "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CHENGLIE' : 'APL',
       "placeReceipt": this.data.placeOfOrigin,
       "portLoading": this.data.portOfLoading,
       "portDischarge": this.data.portOfDischarge,
