@@ -69,6 +69,8 @@ page {
 .oneModify .inputs input {
   width: calc(100% - 60rpx);
   height: 100%;
+  color: #071E5D;
+  font-size: 28rpx;
 }
 
 .oneModify .inputs image {

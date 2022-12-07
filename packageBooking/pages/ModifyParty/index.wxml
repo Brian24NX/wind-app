@@ -10,7 +10,7 @@
       <text class="red">*</text>
     </view>
     <view class="inputContainers">
-      <view>CMA CGM (CHINA) SHIPPING CO., LTD</view>
+      <view>{{contractDetail.contactName}}</view>
     </view>
   </view>
   <view class="oneModify">
@@ -18,7 +18,7 @@
       <text>{{languageContent.address}}</text>
     </view>
     <view class="inputContainers">
-      <view>27/F PORTMAN TOWER</view>
+      <view>{{contractDetail.address1}}</view>
     </view>
   </view>
   <view class="oneModify">
@@ -26,7 +26,7 @@
       <text>{{languageContent.additionalAddress}}</text>
     </view>
     <view class="inputContainers">
-      <view>48 CAIHONG ROAD (N)</view>
+      <view>{{contractDetail.address2}}</view>
     </view>
   </view>
   <view class="twoModify">
@@ -35,7 +35,7 @@
         <text>{{languageContent.city}}</text>
       </view>
       <view class="inputContainers">
-        <view>NINGBO</view>
+        <view>{{contractDetail.city}}</view>
       </view>
     </view>
     <view class="modify">
@@ -43,7 +43,7 @@
         <text>{{languageContent.zipCode}}</text>
       </view>
       <view class="inputContainers">
-        <view>315040</view>
+        <view>{{contractDetail.zipCode}}</view>
       </view>
     </view>
   </view>
@@ -52,7 +52,7 @@
       <text>{{languageContent.country}}</text>
     </view>
     <view class="inputContainers">
-      <view>CHINA</view>
+      <view>{{contractDetail.countryName}}</view>
     </view>
   </view>
   <view class="oneModify">
@@ -60,7 +60,7 @@
       <text>{{languageContent.state}}</text>
     </view>
     <view class="inputContainers">
-      <view>STATE</view>
+      <view>{{contractDetail.stateName}}</view>
     </view>
   </view>
 </view>
@@ -75,8 +75,8 @@
       <text>{{languageContent.name}}</text>
     </view>
     <view class="inputs">
-      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
-      <image src="/assets/img/search/close@2x.png"/>
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="name" value="{{contractDetail.name}}"/>
+      <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.name}}" catchtap="deleteValue" data-type="name"/>
     </view>
   </view>
   <view class="oneModify">
@@ -84,8 +84,8 @@
       <text>{{languageContent.email}}</text>
     </view>
     <view class="inputs">
-      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
-      <image src="/assets/img/search/close@2x.png"/>
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="email" value="{{contractDetail.email}}"/>
+      <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.email}}" catchtap="deleteValue" data-type="email"/>
     </view>
   </view>
   <view class="oneModify">
@@ -93,8 +93,8 @@
       <text>{{languageContent.phoneNumber}}</text>
     </view>
     <view class="inputs">
-      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
-      <image src="/assets/img/search/close@2x.png"/>
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="phone" value="{{contractDetail.phone}}"/>
+      <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.phone}}" catchtap="deleteValue" data-type="phone"/>
     </view>
   </view>
   <view class="oneModify">
@@ -102,8 +102,8 @@
       <text>{{languageContent.fax}}</text>
     </view>
     <view class="inputs">
-      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
-      <image src="/assets/img/search/close@2x.png"/>
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="fax" value="{{contractDetail.fax}}"/>
+      <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.fax}}" catchtap="deleteValue" data-type="fax"/>
     </view>
   </view>
   <view class="oneModify">
@@ -111,8 +111,8 @@
       <text>{{languageContent.localLegalNumber}}</text>
     </view>
     <view class="inputs">
-      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
-      <image src="/assets/img/search/close@2x.png"/>
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="localLegalNumber" value="{{contractDetail.localLegalNumber}}"/>
+      <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.localLegalNumber}}" catchtap="deleteValue" data-type="localLegalNumber"/>
     </view>
   </view>
   <view class="oneModify">
@@ -120,8 +120,8 @@
       <text>{{languageContent.reference}}</text>
     </view>
     <view class="inputs">
-      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder"/>
-      <image src="/assets/img/search/close@2x.png"/>
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="reference" value="{{contractDetail.reference}}"/>
+      <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.reference}}" catchtap="deleteValue" data-type="reference"/>
     </view>
   </view>
 </view>

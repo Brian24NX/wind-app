@@ -95,11 +95,11 @@
       <image src="/assets/img/booking/parties.png" mode="aspectFit" />
       <view>{{languageContent.parties}}</view>
     </view>
-    <image class="editIcon" src="/assets/img/booking/edit.png" />
+    <image class="editIcon" src="/assets/img/booking/edit.png" catchtap="addParty" />
   </view>
-  <view class="oneCargo" wx:for="{{2}}" wx:key="index">
+  <view class="oneCargo" wx:for="{{partyList}}" wx:key="index">
     <view class="cargoTitle">{{languageContent.partyName}}</view>
-    <view class="cargoValue">Twine nesoi,cordage,rope and cables of synthetic synthetic fibers. 0562345</view>
+    <view class="cargoValue">{{item.name}}</view>
     <view class="cargoTitle">{{languageContent.role}}</view>
     <view class="cargoValue">Shipper、Forwarder</view>
   </view>

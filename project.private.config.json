@@ -46,6 +46,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packageBooking/pages/Party/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packageBooking/pages/ModifyParty/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

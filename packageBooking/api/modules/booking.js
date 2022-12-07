@@ -27,3 +27,9 @@ export const UNNumberList = (params) => {
 export const packageList = (params) => {
   return getRequest("/api/miniapp/cdrPackage", params, true, true)
 }
+
+
+// Party搜索
+export const bookPartyList = (params) => {
+  return getRequest("/api/miniapp/bookingPartnersSearch", params, true, true)
+}

@@ -1,0 +1,66 @@
+<!--packageBooking/pages/Party/index.wxml-->
+<wxs module="filters" src="./format.wxs"></wxs>
+<view class="topTitleContainer">
+  <view class="titleLine"></view>
+  <view>Booking Party</view>
+</view>
+<view class="partyList">
+  <view class="oneParty" wx:for="{{partiesList}}" wx:key="index">
+    <view class="editContainer" wx:if="{{index}}">
+      <image src="/assets/img/booking/modify.png" wx:if="{{item.code}}" catchtap="editParty" data-index="{{index}}" />
+      <image src="/assets/img/booking/delete.png" catchtap="deleteParty" data-index="{{index}}" />
+    </view>
+    <view wx:if="{{!index}}">
+      <view class="title">Party Name <text class="red">*</text></view>
+      <view class="selectContainer" catchtap="openPopup" data-type="1">
+        <view style="{{item.code ? 'color: #071E5D;' : ''}}">{{item.name || verifyInfo.select}}</view>
+        <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+      </view>
+    </view>
+    <view wx:if="{{index}}">
+      <view class="title">Party Name <text class="red">*</text></view>
+      <view class="inputContainers">
+        <view class="inputsContainer">
+          <input type="text" bindinput="enterParty" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" data-index="{{index}}" value="{{item.name}}" />
+          <view class="deleteIcon" wx:if="{{item.showPartyDelete}}" catchtap="deleteValue" data-type="showOfficeDelete">
+            <image src="/assets/img/search/close@2x.png"></image>
+          </view>
+        </view>
+        <scroll-view class="scroll-view" wx:if='{{item.partyList.length}}' scroll-y>
+          <view wx:for="{{item.partyList}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs" class="item" bindtap='chooseParty' data-item="{{items}}" data-index="{{index}}">
+            <view class="polname">{{items.text}}</view>
+          </view>
+        </scroll-view>
+        <view class="scroll-view" wx:if="{{item.showParty}}">
+          <view class="item">Loading...</view>
+        </view>
+      </view>
+    </view>
+    <view>
+      <view class="title">Address</view>
+      <view class="desc" wx:if="{{item.address.address1}}">{{item.address.address1}}, {{item.address.address2}}</view>
+    </view>
+    <view wx:if="{{!index}}">
+      <view class="title">My reference (Optional)</view>
+      <view class="inputs">
+        <input type="number" value="{{item.reference}}" bindinput="setReference" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+        <view class="deleteIcon" wx:if="{{item.reference}}" catchtap="deleteValue">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+      </view>
+    </view>
+    <view>
+      <view class="title">Role <text class="red">*</text></view>
+      <view class="roleList">
+        <view class="oneRole" wx:for="{{!index ? roleList : otherRoleList}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs" catchtap="chooseRole" data-index="{{index}}" data-roleid="{{items.id}}">
+          <view class="checked" style="{{!filters.hasRole(item.roleIds, items.id) ? 'background-color: #ffffff' : ''}}">
+            <van-icon name="success" size="14px" color="#ffffff" />
+          </view>
+          <view>{{items.label}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button hover-class="buttonClick" class="addBtn" catchtap="addParty">+ Add Party</button>
+</view>
+<button class="bottomBtn" hover-class="buttonClick" catchtap="saveParty">Save</button>

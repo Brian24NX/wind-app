@@ -17,6 +17,12 @@ Page({
     showOfficeDelete: false,
     routeSelected: null,
     commodityList: [],
+    partyList: [{
+      code: '0000000044',
+      name: 'ANTONIO MARIA DELFINO S A N Y C, BUENOS AIRES',
+      address: {},
+      roleIds: []
+    }],
     vasList: [],
     preferredBookingOffice: null
   },
@@ -38,6 +44,12 @@ Page({
   addCommodity() {
     wx.navigateTo({
       url: '/packageBooking/pages/Commodity/index',
+    })
+  },
+
+  addParty() {
+    wx.navigateTo({
+      url: '/packageBooking/pages/Party/index',
     })
   },
 

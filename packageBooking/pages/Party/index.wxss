@@ -1,0 +1,225 @@
+/* packageBooking/pages/Party/index.wxss */
+page {
+  background-color: #F0F1F5;
+  padding: 30rpx;
+}
+
+.topTitleContainer {
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  font-size: 56rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+  background-color: #ffffff;
+  padding: 0 48rpx;
+}
+
+.topTitleContainer .titleLine {
+  width: 6rpx;
+  height: 50rpx;
+  margin-right: 12rpx;
+  background-color: #E20202;
+}
+
+.oneParty {
+  background-color: #ffffff;
+  padding: 18rpx 48rpx 68rpx;
+  border-top: 10rpx solid #E20202;
+  margin-top: 30rpx;
+  position: relative;
+}
+
+.oneParty .editContainer {
+  position: absolute;
+  right: 30rpx;
+  top: 20rpx;
+}
+
+.oneParty .editContainer image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+}
+
+.inputContainers {
+  border: 1rpx solid #DFDFDF;
+  width: 100%;
+  height: 80rpx;
+  position: relative;
+  font-size: 28rpx;
+  color: #04246A;
+}
+
+.inputsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.inputsContainer input {
+  width: calc(100% - 100rpx);
+  height: 100%;
+}
+
+.inputsContainer .deleteIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.inputsContainer .deleteIcon image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.inputContainers input {
+  height: 100%;
+  padding: 0 0 0 20rpx;
+}
+
+.scroll-view {
+  width: 100%;
+  background: #ffffff;
+  border: 1rpx solid #00245d;
+  max-height: 430rpx;
+}
+
+.scroll-view .item {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #e2e2e2;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.scroll-view .item .polname {
+  width: 100%;
+  line-height: 30rpx;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #04246A;
+  margin-bottom: 12rpx;
+  margin-top: 30rpx;
+}
+
+.desc {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #04246A;
+  margin-bottom: 12rpx;
+  margin-top: 20rpx;
+}
+
+.selectContainer {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 28rpx;
+}
+
+.selectContainer view {
+  /* width: 490rpx; */
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selectContainer image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.inputs {
+  border: 1rpx solid #DFDFDF;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #04246A;
+  padding: 0 0 0 20rpx;
+}
+
+.inputs input {
+  height: 100%;
+  width: calc(100% - 80rpx);
+}
+
+.roleList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.roleList .oneRole {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  color: #04246A;
+  margin-top: 20rpx;
+}
+
+.roleList .oneRole:nth-of-type(-n + 2) {
+  margin-top: 0;
+}
+
+.roleList .oneRole .checked {
+  width: 30rpx;
+  height: 30rpx;
+  border: 1rpx solid #04246A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #04246A;
+  margin-right: 20rpx;
+}
+
+.addBtn {
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #2D75FF;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 0;
+  margin-top: 30rpx;
+}
+
+.bottomBtn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding-bottom: env(safe-area-inset-bottom);
+  background-color: #2D75FF;
+  height: calc(env(safe-area-inset-bottom) + 80rpx);
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 0;
+  line-height: 80rpx;
+}

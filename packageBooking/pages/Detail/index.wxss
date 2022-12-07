@@ -226,6 +226,7 @@ page {
   margin-top: 40rpx;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-weight: 500;
   color: #6B7790;
   font-size: 24rpx;
@@ -233,13 +234,12 @@ page {
 }
 
 .commodityRemind view {
-  width: 600rpx;
+  width: 530rpx;
 }
 
 .commodityRemind image {
   width: 40rpx;
   height: 40rpx;
-  margin-right: 12rpx;
 }
 
 .oneCargo {
