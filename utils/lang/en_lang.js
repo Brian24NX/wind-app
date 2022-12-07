@@ -613,6 +613,8 @@ var Languague = {
       freeComments: 'Free comments to the booking agent',
       freeCommentsPlaceHolder: 'Example Release Order Date, Customer Broker ...',
       save: 'Place my Booking',
+      save1: 'Place ',
+      save2: ' Booking',
       partyRole: {
         SHP: 'Shipper',
         FOR: 'Forwarder',

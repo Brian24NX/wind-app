@@ -460,3 +460,45 @@ page {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.numContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.totalTitle {
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+  font-size: 32rpx;
+}
+
+.containers {
+  display: flex;
+  height: 68rpx;
+  border: 2rpx solid #DCDFE6;
+  width: 288rpx;
+  color: #04246A;
+  font-size: 28rpx;
+}
+
+.containers .actionBtn {
+  width: 68rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containers .disabled {
+  color: #999999;
+}
+
+.containers .number {
+  display: flex;
+  text-align: center;
+  width: 155rpx;
+  height: 100%;
+  border-left: 2rpx solid #DCDFE6;
+  border-right: 2rpx solid #DCDFE6;
+}

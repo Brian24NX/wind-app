@@ -19,7 +19,8 @@ Page({
     commodityList: [],
     partyList: [],
     vasList: [],
-    preferredBookingOffice: null
+    preferredBookingOffice: null,
+    bookingNumber: 1
   },
 
   /**
@@ -112,6 +113,26 @@ Page({
   toModifyParty() {
     wx.navigateTo({
       url: '/packageBooking/pages/ModifyParty/index',
+    })
+  },
+
+  reduce() {
+    if (this.data.bookingNumber < 2) return
+    this.setData({
+      bookingNumber: --this.data.bookingNumber
+    })
+  },
+
+  add() {
+    if (this.data.bookingNumber > 98) return
+    this.setData({
+      bookingNumber: ++this.data.bookingNumber
+    })
+  },
+
+  setInputValue(e) {
+    this.setData({
+      bookingNumber: Number(e.detail.value) || 1
     })
   }
 })

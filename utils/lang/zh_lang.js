@@ -617,6 +617,8 @@ var Languague = {
       freeComments: '备注',
       freeCommentsPlaceHolder: '附加备注（到付的本地费用付款方，首选仓库等）',
       save: '制作我的订舱',
+      save1: '制作 ',
+      save2: ' 订舱',
       partyRole: {
         SHP: 'Shipper',
         FOR: 'Forwarder',

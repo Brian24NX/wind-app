@@ -671,7 +671,7 @@ Page({
 
   setInputValue(e) {
     this.setData({
-      containers: !e.detail.value ? 1 : (Number(e.detail.value) > 100 ? 100 : Number(e.detail.value))
+      containers: !Number(e.detail.value) ? 1 : (Number(e.detail.value) > 100 ? 100 : Number(e.detail.value))
     })
   },
 
