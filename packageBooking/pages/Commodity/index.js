@@ -17,7 +17,7 @@ Page({
     commodity: null,
     // equipmentType: '',
     // equipmentTypeName: '',
-    isUserContainer: true,
+    isUserContainer: false,
     // Picker
     columnsList: [],
     isShowPicker: false,
