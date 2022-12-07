@@ -616,7 +616,18 @@ var Languague = {
       bookingOffice: '首选订舱办事处',
       freeComments: '备注',
       freeCommentsPlaceHolder: '附加备注（到付的本地费用付款方，首选仓库等）',
-      save: '制作我的订舱'
+      save: '制作我的订舱',
+      partyRole: {
+        SHP: 'Shipper',
+        FOR: 'Forwarder',
+        CEE: 'Consignee',
+        NOT: 'Notify',
+        NO2: 'Second Notify party',
+        DCD: 'Deciding party',
+        NAC: 'Named Account',
+        '3BA': 'Third Party booking agent',
+        CUS: 'Customs Broker'
+      }
     },
     modifyParty: {
       address: '地址',

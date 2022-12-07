@@ -612,7 +612,18 @@ var Languague = {
       bookingOffice: 'Preferred booking office',
       freeComments: 'Free comments to the booking agent',
       freeCommentsPlaceHolder: 'Example Release Order Date, Customer Broker ...',
-      save: 'Place my Booking'
+      save: 'Place my Booking',
+      partyRole: {
+        SHP: 'Shipper',
+        FOR: 'Forwarder',
+        CEE: 'Consignee',
+        NOT: 'Notify',
+        NO2: 'Second Notify party',
+        DCD: 'Deciding party',
+        NAC: 'Named Account',
+        '3BA': 'Third Party booking agent',
+        CUS: 'Customs Broker'
+      }
     },
     modifyParty: {
       address: 'Address',

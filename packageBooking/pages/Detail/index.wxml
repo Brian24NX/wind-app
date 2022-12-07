@@ -101,7 +101,12 @@
     <view class="cargoTitle">{{languageContent.partyName}}</view>
     <view class="cargoValue">{{item.name}}</view>
     <view class="cargoTitle">{{languageContent.role}}</view>
-    <view class="cargoValue">Shipper、Forwarder</view>
+    <view class="cargoValue">
+      <block wx:for="{{item.roleIds}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+        <text>{{languageContent.partyRole[items]}}</text>
+        <text wx:if="{{indexs !== item.roleIds.length - 1}}">、</text>
+      </block>
+    </view>
   </view>
 </view>
 

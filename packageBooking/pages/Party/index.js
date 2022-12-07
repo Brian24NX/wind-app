@@ -13,34 +13,10 @@ Page({
     languageContent: {},
     language: 'zh',
     verifyInfo: {},
-    roleList: [{
-      id: 'SHP',
-      label: 'Shipper'
-    }, {
-      id: 'FOR',
-      label: 'Forwarder'
-    }, {
-      id: 'CEE',
-      label: 'Consignee'
-    }, {
-      id: 'NOT',
-      label: 'Notify'
-    }, {
-      id: 'NO2',
-      label: 'Second Notify party'
-    }, {
-      id: 'DCD',
-      label: 'Deciding party'
-    }, {
-      id: 'NAC',
-      label: 'Named Account'
-    }, {
-      id: '3BA',
-      label: 'Third Party booking agent'
-    }, {
-      id: 'CUS',
-      label: 'Customs Broker'
-    }],
+    partnerList: wx.getStorageSync('partnerList'),
+    isShowPicker: false,
+    defaultIndex: 0,
+    roleList: ['SHP', 'FOR', 'CEE', 'NOT', 'NO2', 'DCD', 'NAC', '3BA', 'CUS'],
     otherRoleList: [],
     partiesList: []
   },
@@ -53,11 +29,44 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
+    let partiesList =  JSON.parse(JSON.stringify(data.partyList))
+    if (!partiesList.length) {
+      partiesList.push({
+        code: this.data.partnerList[0].code,
+        name: this.data.partnerList[0].name,
+        address: this.data.partnerList[0].address,
+        roleIds: []
+      })
+    }
     this.setData({
       languageContent: language.bookingDetail,
       language: language.langue,
       verifyInfo: language.verifyInfo,
-      partiesList: data.partyList
+      partiesList
+    })
+  },
+
+  openPopup() {
+    this.setData({
+      defaultIndex: this.data.partnerList.findIndex(i => i.code === this.data.partiesList[0].code),
+      isShowPicker: true
+    })
+  },
+
+  onPickerConfirm(e) {
+    console.log(e)
+    this.data.partiesList[0].code = e.detail.code
+    this.data.partiesList[0].name = e.detail.name
+    this.data.partiesList[0].address = e.detail.address
+    this.setData({
+      isShowPicker: false,
+      partiesList: this.data.partiesList
+    })
+  },
+
+  onPickerClose() {
+    this.setData({
+      isShowPicker: false
     })
   },
 
@@ -157,7 +166,7 @@ Page({
 
   setOtherParty() {
     const roleIds = this.data.partiesList[0].roleIds
-    const otherRoleList = this.data.roleList.filter(i => roleIds.indexOf(i.id) === -1)
+    const otherRoleList = this.data.roleList.filter(i => roleIds.indexOf(i) === -1)
     this.setData({
       otherRoleList
     })
@@ -187,6 +196,9 @@ Page({
   },
 
   saveParty() {
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    currentPage.setPartyData(this.data.partiesList)
     wx.navigateBack()
   }
 })

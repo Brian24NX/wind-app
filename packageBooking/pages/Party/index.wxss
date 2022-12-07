@@ -23,6 +23,10 @@ page {
   background-color: #E20202;
 }
 
+.partyList {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 120rpx);
+}
+
 .oneParty {
   background-color: #ffffff;
   padding: 18rpx 48rpx 68rpx;

@@ -12,7 +12,7 @@
     </view>
     <view wx:if="{{!index}}">
       <view class="title">Party Name <text class="red">*</text></view>
-      <view class="selectContainer" catchtap="openPopup" data-type="1">
+      <view class="selectContainer" catchtap="openPopup">
         <view style="{{item.code ? 'color: #071E5D;' : ''}}">{{item.name || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
@@ -52,11 +52,11 @@
     <view>
       <view class="title">Role <text class="red">*</text></view>
       <view class="roleList">
-        <view class="oneRole" wx:for="{{!index ? roleList : otherRoleList}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs" catchtap="chooseRole" data-index="{{index}}" data-roleid="{{items.id}}">
-          <view class="checked" style="{{!filters.hasRole(item.roleIds, items.id) ? 'background-color: #ffffff' : ''}}">
+        <view class="oneRole" wx:for="{{!index ? roleList : otherRoleList}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs" catchtap="chooseRole" data-index="{{index}}" data-roleid="{{items}}">
+          <view class="checked" style="{{!filters.hasRole(item.roleIds, items) ? 'background-color: #ffffff' : ''}}">
             <van-icon name="success" size="14px" color="#ffffff" />
           </view>
-          <view>{{items.label}}</view>
+          <view>{{languageContent.partyRole[items]}}</view>
         </view>
       </view>
     </view>
@@ -64,3 +64,11 @@
   <button hover-class="buttonClick" class="addBtn" catchtap="addParty">+ Add Party</button>
 </view>
 <button class="bottomBtn" hover-class="buttonClick" catchtap="saveParty">Save</button>
+
+<custom-picker
+  columns="{{partnerList}}"
+  valueKey="name"
+  defaultIndex="{{defaultIndex}}"
+  showPopup="{{isShowPicker}}"
+  bindonClose="onPickerClose"
+  bind:onConfirm="onPickerConfirm"></custom-picker>
