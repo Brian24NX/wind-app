@@ -382,6 +382,7 @@ Page({
         "refrigerated": false,
         "shipperOwned": false
       }],
+      "currency": surchargeDetails.totalCharge.currency.code,
       subscribedCharges: subscribedCharges.map(i => i.code)
     }).then(res => {
       // vasLists({"shippingCompany":"CMACGM","placeReceipt":"FIKEM","portLoading":"FIKEM","portDischarge":"EGALY","placeDelivery":"EGALY","placeOfPayment":"EGALY","importMovementType":"DOOR","importHaulageMode":"MERCHANT","exportMovementType":"DOOR","exportHaulageMode":"MERCHANT","applicationDate":"2022-12-01T10:00:00+00:00","locale":"zh_CN","channel":"PRI","typeOfBl":"Negotiable","bookingParties":[{"partnerCode":"0000000176","bookingParty":true,"role":"BKG","name":""}],"cargoes":[{"cargoNumber":1,"packageCode":"20ST","packageBookedQuantity":10,"commodityCode":"FAK LISA (UPA)","commodityName":"Freight All Kind","totalNetWeight":1,"uomWeight":"TNE","hazardous":false,"oversize":false,"refrigerated":false,"shipperOwned":false}],"subscribedCharges":[]}).then(res=> {

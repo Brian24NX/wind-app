@@ -61,9 +61,14 @@ Page({
         calculteResult: ''
       })
     } else {
-      // vasDetail.seletcedProduct.amount = Math.round(vasDetail.seletcedProduct.rateFrom * vasDetail.seletcedProduct.conversionRate)
+      let calculteResult = ''
+      if (this.data.vasDetail.chargeDetails[this.data.checkIndex].conversionRate) {
+        calculteResult = Math.round(this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom * this.data.vasDetail.chargeDetails[this.data.checkIndex].conversionRate)
+      } else {
+        calculteResult = this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom
+      }
       this.setData({
-        calculteResult: this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom
+        calculteResult
       })
     }
   },
@@ -128,8 +133,11 @@ Page({
       vasDetail.seletcedProduct.amount = Math.round(this.data.calculteResult)
       vasDetail.seletcedProduct.inputAmount = this.data.amount
     } else {
-      // vasDetail.seletcedProduct.amount = Math.round(vasDetail.seletcedProduct.rateFrom * vasDetail.seletcedProduct.conversionRate)
-      vasDetail.seletcedProduct.amount = vasDetail.seletcedProduct.rateFrom
+      if (vasDetail.seletcedProduct.conversionRate) {
+        vasDetail.seletcedProduct.amount = Math.round(vasDetail.seletcedProduct.rateFrom * vasDetail.seletcedProduct.conversionRate)
+      } else {
+        vasDetail.seletcedProduct.amount = vasDetail.seletcedProduct.rateFrom
+      }
     }
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
