@@ -52,13 +52,6 @@
     </view>
   </view>
   <view>
-    <view class="title">Unit <text class="red">*</text></view>
-    <view class="selectContainer" catchtap="openPopup" data-type="1">
-      <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
-      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
-    </view>
-  </view>
-  <view>
     <view class="title">Flash Point <text class="red">*</text></view>
     <view class="inputs">
       <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
