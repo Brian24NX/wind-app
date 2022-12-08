@@ -29,33 +29,34 @@ Page({
       1: {
         value: '',
         text: '',
-        index: 0,
+        index: 0
       },
       // Unit
       2: {
         value: '',
         text: '',
-        index: 0,
-      },
+        index: 0
+      }
     },
     // Constant - Unit Data
     unitData: {
       'en': [
-        { value: 'KGM', text: 'KGM (Kilogram)'},
-        { value: 'TNE', text: 'TNE (Metric Ton)'},
-        { value: 'LB', text: 'LB'},
-        { value: 'TON', text: 'TON (US Ton)'}
+        { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
+        { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
+        { value: 'LB', text: 'LB', index: 2},
+        { value: 'TON', text: 'TON (US Ton)', index: 3}
       ],
       'zh': [
-        { value: 'KGM', text: 'KGM (Kilogram)'},
-        { value: 'TNE', text: 'TNE (Metric Ton)'},
-        { value: 'LB', text: 'LB'},
-        { value: 'TON', text: 'TON (US Ton)'}
+        { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
+        { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
+        { value: 'LB', text: 'LB', index: 2},
+        { value: 'TON', text: 'TON (US Ton)', index: 3}
       ],
     },
     quantityValue: '',
     weightValue: '',
-    totalWeightValue: ''
+    totalWeightValue: '',
+    isIncludeHazardous: false
   },
 
   /**
@@ -130,8 +131,14 @@ Page({
 
     // Size/Type
     if (type === 1) {
-      const columnsList = wx.getStorageSync('containers') || [];
+      const List = wx.getStorageSync('containers') || [];
+      const columnsList = JSON.parse(JSON.stringify(List));
+
       if (columnsList.length < 1) {
+        columnsList.map( (val, index) => {
+          val.index = index;
+          val.value = val.code;
+        });
         wx.showToast({
           title: languageUtils.languageVersion().lang.page.load.systemIsBusyNow,
           icon: 'none',
@@ -180,37 +187,13 @@ Page({
   // onPickerConfirm
   onPickerConfirm({detail}) {
     const _t = this;
+    // 1 => Size/Type, 2 => Unit
     const type = _t.data.pickerValueKeyFlag;
-    // Size/Type
-    const {code, text, value} = detail;
-    if (type === 1) {
-      const index = _t.data.columnsList.findIndex( val => val.code === code);
-      const res = {
-        value: code,
-        text,
-        index
-      };
-      _t.setData({
-        [`pickerChooseReault.${type}`]: res,
-        pickerValueKeyFlag: type,
-        isShowPicker: !1
-      })
-    };
-
-    // Unit
-    if (type === 2) {
-      const index = _t.data.columnsList.findIndex( val => val.value === value);
-      const res = {
-        value,
-        text,
-        index
-      };
-      _t.setData({
-        [`pickerChooseReault.${type}`]: res,
-        pickerValueKeyFlag: type,
-        isShowPicker: !1
-      })
-    };
+    _t.setData({
+      [`pickerChooseReault.${type}`]: detail,
+      pickerValueKeyFlag: type,
+      isShowPicker: !1
+    })
   },
 
   // input - setNumberData

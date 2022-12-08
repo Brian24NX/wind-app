@@ -77,10 +77,10 @@
     <view>Special Attributes</view>
   </view>
   <view class="shipOwner">
-    <view class="checked">
-      <van-icon name="success" size="14px" color="#ffffff" />
+    <view class="checked {{isIncludeHazardous?'bg':''}}" catchtap="checkBoxToggle" data-keys="isIncludeHazardous">
+      <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isIncludeHazardous}}" />
     </view>
-    <view>Include Hazardous</view>
+    <view class="text" catchtap="checkBoxToggle" data-keys="isIncludeHazardous">Include Hazardous</view>
   </view>
   <view class="unList">
     <view class="oneUn">
@@ -100,7 +100,7 @@
 <button class="confirmBtn" hover-class="buttonClick">Confirm</button>
 
 
-<!-- Size/Type - picker -->
+<!-- picker -->
 <custom-picker
   columns="{{columnsList}}"
   valueKey="{{pickerValueKey}}"
