@@ -13,6 +13,16 @@ export const bookOfficeList = (params) => {
   return getRequest('/api/miniapp/agencyOffice', params, true, true)
 }
 
+// 获取国家列表
+export const countryList = (params) => {
+  return getRequest('/api/miniapp/cdrCodifiedsCountry', params, true, true)
+}
+
+// 获取国家列表
+export const stateList = (params) => {
+  return getRequest('/api/miniapp/cdrRegion', params, true, true)
+}
+
 // 商品搜索
 export const bookCommodityList = (params) => {
   return getRequest("/api/miniapp/cdrCommodityFuzzy", params, true, true)

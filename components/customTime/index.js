@@ -9,10 +9,7 @@ Component({
       type: String,
       value: 'date'
     },
-    currentDate: {
-      type: Number,
-      value: new Date().getTime()
-    },
+    currentDate: {},
     showPopup: {
       type: Boolean,
       value: false
