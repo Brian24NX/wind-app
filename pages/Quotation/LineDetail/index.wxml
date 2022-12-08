@@ -51,6 +51,14 @@
               </view>
               <view class="gangKouName">{{item.departureDetails.terminalName}}</view>
             </block>
+            <view class="gangKouTime" wx:if="{{item.specialBookingAcceptance}}">
+              <text>Special Booking Cut-off：</text>
+              <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.specialBookingAcceptance, false, true) : filters.formatEnDateLocal(item.specialBookingAcceptance, '-', '', false, true)}}</text>
+            </view>
+            <view class="gangKouTime" wx:if="{{item.standardBookingAcceptance}}">
+              <text>Standard Booking Cut-off：</text>
+              <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.standardBookingAcceptance, false, true) : filters.formatEnDateLocal(item.standardBookingAcceptance, '-', '', false, true)}}</text>
+            </view>
             <view class="gangKouTime">
               <text>{{languageContent.vgmCutOff}}：</text>
               <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.vgmCutOffDate, false, true) : filters.formatEnDateLocal(item.vgmCutOffDate, '-', '', false, true)}}</text>
@@ -59,21 +67,25 @@
               <text>{{languageContent.portCutOff}}：</text>
               <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.cutOffDate, false, true) : filters.formatEnDateLocal(item.cutOffDate, '-', '', false, true)}}</text>
             </view>
-            <view class="shipName" style="margin-top: 30rpx;">
-              <text>{{languageContent.vessel}}：</text>
-              <text>{{item.vesselName || '-'}}</text>
+            <view style="margin-top: 30rpx;">
+              <view class="shipName">
+                <text>{{languageContent.vessel}}：</text>
+                <text>{{item.vesselName || '-'}}</text>
+              </view>
+              <view class="shipName other">
+                <text>{{languageContent.service}}：</text>
+                <text>{{item.serviceName || '-'}}</text>
+              </view>
             </view>
-            <view class="shipName other">
-              <text>{{languageContent.service}}：</text>
-              <text>{{item.serviceName || '-'}}</text>
-            </view>
-            <view class="shipName other" style="margin-top: 30rpx;">
-              <text>{{languageContent.localVoyageRef}}： </text>
-              <text>{{item.localVoyageRef || '-'}}</text>
-            </view>
-            <view class="shipName other">
-              <text>{{languageContent.vouageRef}}：</text>
-              <text>{{item.voyageRef || '-'}}</text>
+            <view style="margin-top: 30rpx;">
+              <view class="shipName other" wx:if="{{item.localVoyageRef}}">
+                <text>{{languageContent.localVoyageRef}}： </text>
+                <text>{{item.localVoyageRef}}</text>
+              </view>
+              <view class="shipName other">
+                <text>{{languageContent.vouageRef}}：</text>
+                <text>{{item.voyageRef || '-'}}</text>
+              </view>
             </view>
             <view class="timeContainer" style="margin-top: 30rpx;">{{language === 'zh' ? filters.formatCnDateLocal(item.arrivalDate, false, true) : filters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}}</view>
           </view>

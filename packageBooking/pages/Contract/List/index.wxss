@@ -16,7 +16,7 @@ page {
 .searchResultTopContainer .resultCardTops {
   width: 690rpx;
   margin: 0 auto;
-  background: url(https://wind.cma-cgm.com/images/instantQuote.png) no-repeat;
+  background: url(https://wind.cma-cgm.com/images/chargeFinderBg.png) no-repeat;
   background-size: 100% auto;
   padding: 30rpx;
 }
@@ -141,7 +141,7 @@ page {
 
 .quotationIds .quotationLeft .quotationId {
   font-size: 32rpx;
-  font-family: PingFangSC-Semibold, PingFang SC;
+  font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #4468BA;
 }
@@ -306,9 +306,26 @@ page {
   margin-right: 16rpx;
 }
 
-.resultContainers .oneResult .resContents .rightContainer .leftContent .ship view {
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship > view {
   width: calc(100% - 46rpx);
   word-break: break-word;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship .specialTag {
+  display: flex;
+  align-items: center;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship .specialTag .greenDto {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background-color: #00865d;
+  margin-right: 10rpx;
+}
+
+.resultContainers .oneResult .resContents .rightContainer .leftContent .ship .specialTag .specialDetail {
+  margin-right: 10rpx;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent {
@@ -356,12 +373,12 @@ page {
 }
 
 .resultContainers .oneResult .oneBottom {
-  padding: 12rpx 10rpx 0;
+  padding: 34rpx 10rpx 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-top: 1rpx solid #DDDDDD;
-  margin-top: 28rpx;
+  margin-top: 42rpx;
 }
 
 .resultContainers .oneResult .oneBottom .bottomLeft {
@@ -369,7 +386,11 @@ page {
   align-items: center;
 }
 
-.resultContainers .oneResult .oneBottom .bottomLeft image {
+.resultContainers .oneResult .oneBottom .bottomLeft .oneEquipmentType {
+  border: none;
+}
+
+/* .resultContainers .oneResult .oneBottom .bottomLeft image {
   width: 56rpx;
   height: 56rpx;
 }
@@ -398,6 +419,10 @@ page {
   background-color: #E6EAEF;
   border-radius: 18rpx;
   margin-top: 8rpx;
+} */
+
+.btns {
+  display: flex;
 }
 
 .resultContainers .oneResult .oneBottom .selects {
@@ -411,7 +436,7 @@ page {
   color: #FFFFFF;
   text-align: center;
   line-height: 76rpx;
-  margin: 0;
+  margin: 0 0 0 20rpx;
   border-radius: 0;
 }
 
@@ -457,24 +482,42 @@ page {
 .equipmentTypeContainer {
   margin-top: 20rpx;
   border-top: 1rpx solid #DDDDDD;
-  padding-top: 20rpx;
 }
 
 .equipmentTypeContainer .allInRate {
-  text-align: center;
-  font-size: 24rpx;
-  color: #6b7790;
+  font-size: 36rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+  display: flex;
+  align-items: center;
+  padding: 50rpx 0;
+}
+
+.equipmentTypeContainer .allInRate .allInRateLine {
+  width: 6rpx;
+  height: 50rpx;
+  background-color: #E20202;
+  margin-right: 20rpx;
 }
 
 .equipmentTypeList {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  /* padding: 0 20rpx; */
 }
 
 .equipmentTypeList .oneEquipmentType {
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 280rpx;
+  border: 1rpx solid #DCDCDC;
+  margin-top: 30rpx;
+}
+
+.equipmentTypeList .oneEquipmentType:nth-of-type(-n + 2) {
+  margin-top: 0;
 }
 
 .equipmentTypeList .oneEquipmentType .priceCount {
@@ -497,5 +540,59 @@ page {
   font-size: 24rpx;
   font-family: Arial-BoldMT, Arial;
   font-weight: bold;
-  color: #235af6;
+  color: #04246A;
+}
+
+.typeLists {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24rpx;
+}
+
+.typeLists .oneTypes {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #4468BA;
+}
+
+.typeLists .oneTypes image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+
+.selectContainers {
+  width: 690rpx;
+  margin: 30rpx auto;
+  background-color: #ffffff;
+  padding: 30rpx 48rpx;
+}
+
+.selectContainer {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 24rpx;
+  color: #071E5D;
+}
+
+.selectContainer view {
+  width: 490rpx;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selectContainer image {
+  width: 32rpx;
+  height: 32rpx;
 }

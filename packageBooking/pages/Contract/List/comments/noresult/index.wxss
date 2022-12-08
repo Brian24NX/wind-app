@@ -25,6 +25,7 @@
   color: #04246A;
   line-height: 50rpx;
   text-align: center;
+  padding: 0 40rpx;
 }
 .settlesolutions{
   font-size: 28rpx;
@@ -33,4 +34,16 @@
   color: #04246A;
   line-height: 40rpx;
   text-align: center;
+}
+
+.btn {
+  width: 590rpx;
+  height: 88rpx;
+  background-color: #2D75FF;
+  border: none;
+  border-radius: 0;
+  margin-top: 58rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #FFFFFF;
 }

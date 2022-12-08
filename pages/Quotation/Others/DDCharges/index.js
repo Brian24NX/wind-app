@@ -15,8 +15,10 @@ Page({
     importDate: '',
     portOfLoading: '',
     portOfLoadingLabel: '',
+    portOfLoadingCountry: '',
     portOfDischarge: '',
     portOfDischargeLabel: '',
+    portOfDischargeCountry: '',
     exports: [],
     imports: [],
     partnerCode: []
@@ -39,7 +41,9 @@ Page({
         exportDate: data.simulationDate,
         importDate: data.simulationDate,
         portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
-        portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1]
+        portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1],
+        portOfLoadingCountry: data.quotationDetail.portofLoadingCountry.toLocaleUpperCase(),
+        portOfDischargeCountry: data.quotationDetail.portofDichargeCountry.toLocaleUpperCase()
       })
       const params = {
         "portOfLoading": data.portOfLoading,
@@ -48,7 +52,7 @@ Page({
         "tariffCodes": ["DET", "DEM", "MER"],
         "placeOfOrigin": data.placeOfOrigin || null,
         "finalPlaceOfDelivery": data.finalPlaceOfDelivery || null,
-        "commodity": data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
+        "commodity": data.quotationDetail.freightOfAllKinds ? 'FAK' : data.quotationDetail.commodities[0].code,
         "equipmentSizeTypes": data.quotationDetail.equipmentTypeLabel.split(' | '),
         "simulationDate": this.data.importDate,
         "contractReference": data.quotationDetail.quotationReference || null
@@ -61,6 +65,8 @@ Page({
         importDate: data.quotationDetail.arrivalDate,
         portOfLoadingLabel: data.portOfLoadingLabel.split(';')[0] + ', ' + data.portOfLoadingLabel.split(';')[1],
         portOfDischargeLabel: data.portOfDischargeLabel.split(';')[0] + ', ' + data.portOfDischargeLabel.split(';')[1],
+        portOfLoadingCountry: data.quotationDetail.placeOfLoadingLabelCountry.toLocaleUpperCase(),
+        portOfDischargeCountry: data.quotationDetail.placeOfDischargeLabelCountry.toLocaleUpperCase()
       })
       const params = {
         "portOfLoading": data.portOfLoading,
@@ -126,5 +132,11 @@ Page({
       }
     })
     return [...map.values()]
+  },
+
+  toDD() {
+    wx.navigateTo({
+      url: '/packagePrice/pages/guizufeilv/index',
+    })
   }
 })

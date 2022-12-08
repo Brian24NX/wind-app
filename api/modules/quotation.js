@@ -5,27 +5,27 @@ const {
 
 // 获取报价单列表
 export const quotationNextDepartures = (params) => {
-  return postRequest('/api/miniapp/quotationNextDeparturesSearch', params, true, false, true)
+  return postRequest('/api/miniapp/quotation/quotationNextDeparturesSearch', params, true, false, true)
 }
 
 // 获取报价单排序
 export const quotationSort = (params) => {
-  return postRequest('/api/miniapp/quotationSort', params, true, false, true)
+  return postRequest('/api/miniapp/quotation/quotationSort', params, true, false, true)
 }
 
 // 获取报价单详情
-export const getQuotationSurchargeDetail = (params, ccgId) => {
-  return postRequest(`/api/miniapp/${ccgId}/quotationSurchargeDetailsSearch`, params, true, true, true, true)
+export const getQuotationSurchargeDetail = (params) => {
+  return postRequest(`/api/miniapp/quotation/quotationSurchargeDetailsSearch`, params, true, true, true, true)
 }
 
 // 获取附近港口列表
 export const nearByPortNextDeparture = (params) => {
-  return postRequest('/api/miniapp/quotationNearByPortNextDeparture', params, true, false, true)
+  return postRequest('/api/miniapp/quotation/quotationNearByPortNextDeparture', params, true, false, true)
 }
 
 // 获取我的报价单列表
 export const quotationQuoteLinesSearch = (params) => {
-  return postRequest('/api/miniapp/quotationQuoteLinesSearch', params, true, false, true)
+  return postRequest('/api/miniapp/quotation/quotationQuoteLinesSearch', params, true, false, true)
 }
 
 // 港口详情
@@ -34,13 +34,8 @@ export const fuzzyPointSearch = (params) => {
 }
 
 // 获取我的报价单列表
-export const createQuotationQuotation = (params, ccgId) => {
-  return postRequest(`/api/miniapp/${ccgId}/quotationQuotationCreate`, params, true, false, true)
-}
-
-// 保存报价单详情
-export const saveQuotationDetail = (params) => {
-  return postRequest('/api/miniapp/saveQuotationDetail', params, true, true, true, true)
+export const createQuotationQuotation = (params) => {
+  return postRequest(`/api/miniapp/quotation/quotationQuotationCreate`, params, true, false, true)
 }
 
 // 获取D&D
@@ -51,6 +46,20 @@ export const detentionDemurrages = (params) => {
 // 获取nameAndAccounts
 export const namedAccountsSearch = (params) => {
   return postRequest('/api/miniapp/namedAccountsSearch', params, true, true, true, true)
+}
+
+// 获取VAS
+export const vasLists = (params) => {
+  return postRequest('/api/miniapp/quotation/quotationValueAddedServices', params, true, false, true, true)
+}
+
+export const vasFileDetail = (params) => {
+  return getRequest('/api/miniapp/saveFileFromUrl', params, false, true)
+}
+
+// 发送VAS文件
+export const vasFileSendEmail = (params) => {
+  return postRequest('/api/miniapp/emailVasPdf', params, true)
 }
 
 // 导出PDF

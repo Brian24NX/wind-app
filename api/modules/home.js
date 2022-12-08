@@ -75,5 +75,5 @@ export const equitmentSizeList = (params) => {
 
 // 获取商品
 export const getCommodityLists = (params) => {
-  return getRequest('/api/miniapp/quotationCommodities', params, true, false, true)
+  return getRequest('/api/miniapp/quotation/quotationCommodities', params, true, true, true)
 }

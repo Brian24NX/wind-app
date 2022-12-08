@@ -19,6 +19,16 @@
         <view class="stepContent">{{toLabel}}, {{toCode}}</view>
       </view>
     </view>
+    <view class="typeLists">
+      <view class="oneTypes">
+        <image src="/assets/img/price/mode@2x.png"></image>
+        <view>{{equipmentType}}</view>
+      </view>
+      <view class="oneTypes">
+        <image src="/assets/img/price/date@2x.png"></image>
+        <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(simulationDate, false, true) : commonFilters.formatEnDateLocal(simulationDate, '-', '', false, true)}}</view>
+      </view>
+    </view>
   </view>
   <view class="typeContainer">
     <view class="oneType {{currentType === index ? 'typeCheck' : ''}}" wx:for="{{typeList}}" catchtap="changeType" data-index="{{index}}">
@@ -26,14 +36,16 @@
       <view class="typeLine"></view>
     </view>
   </view>
+  <view class="selectContainers" wx:if="{{contractTypeList.length}}">
+    <view class="selectContainer" catchtap="openPopup">
+      <view>{{contractType}}</view>
+      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+    </view>
+  </view>
 </view>
 <view class="resultContainers">
-  <view wx:if="{{perfectContractList.length}}">
-    <view class="typeTitles">
-      <view class="typeLineTitle"></view>
-      <view>{{languageContent.currentVaild}}</view>
-    </view>
-    <view class="oneResult" wx:for="{{perfectContractList}}" wx:key="index">
+  <view wx:if="{{contractList.length}}">
+    <view class="oneResult" wx:for="{{contractList}}" wx:key="index">
       <view class="quotationIds">
         <view class="quotationLeft">
           <image src="/assets/img/instantQuote/quotationId.svg"></image>
@@ -53,7 +65,7 @@
       <view class="resContents">
         <view class="rightContainer">
           <view class="leftContent">
-            <view class="time" style="padding-bottom: 30rpx;" wx:if="{{item.placeOfReceiptLabel}}">
+            <view class="time" style="padding-bottom: 30rpx;" wx:if="{{item.exportInlandPointCode}}">
               <text class="placeType">{{commonFilters.localeUpperCase(item.exportMovementType)}}</text>
               <text>{{item.placeOfReceiptLabel}}</text>
               <view class="leftLines">
@@ -62,7 +74,7 @@
               </view>
             </view>
             <view style="position: relative;">
-              <view class="time" style="max-width: 380rpx;">  
+              <view class="time" style="max-width: 380rpx;">
                 <text class="placeType">PORT</text>
                 <text>{{item.portOfLoadingLabel}}</text>
               </view>
@@ -70,22 +82,31 @@
                 <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
                 <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
               </view>
-              <view class="ship" style="width: 100%;padding-bottom: 20rpx;">
+              <view class="ship" style="width: 100%;{{!item.nacLabel ? 'padding-bottom: 20rpx;' : ''}}">
                 <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
                 <view>
                   <view>{{equipmentType}} {{item.equipmentTypeLabel}}</view>
-                  <view wx:if="{{item.shipperOwnedContainer}}">{{languageContent.SOC}}</view>
+                  <view class="specialTag" wx:if="{{item.specialTags.length}}">
+                    <block wx:for="{{item.specialTags}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+                      <view class="greenDto"></view>
+                      <view class="specialDetail">{{items}}</view>
+                    </block>
+                  </view>
                 </view>
+              </view>
+              <view class="ship" style="width: 100%;padding-bottom: 20rpx;" wx:if="{{item.nacLabel}}">
+                <image src="/assets/img/instantQuote/partners.svg" mode="aspectFit" class="shipIcon"></image>
+                <view>{{item.nacLabel}}</view>
               </view>
               <view class="leftLines">
                 <view class="leftLineDto"></view>
                 <view class="leftLine"></view>
               </view>
             </view>
-            <view class="time" style="{{item.placeOfDeliveryLabel ? 'padding-bottom: 30rpx;' : ''}}">
+            <view class="time" style="{{item.importInlandPointCode ? 'padding-bottom: 30rpx;' : ''}}">
               <text class="placeType">PORT</text>
               <text>{{item.portOfDischargeLabel}}</text>
-              <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
+              <view class="leftLines" wx:if="{{item.importInlandPointCode}}">
                 <view class="leftLineDto"></view>
                 <view class="leftLine"></view>
               </view>
@@ -93,7 +114,7 @@
                 <image src="/assets/img/instantQuote/location-red.svg" mode="aspectFit"></image>
               </view>
             </view>
-            <view class="time" wx:if="{{item.placeOfDeliveryLabel}}">
+            <view class="time" wx:if="{{item.importInlandPointCode}}">
               <text class="placeType">{{commonFilters.localeUpperCase(item.importMovementType)}}</text>
               <text>{{item.placeOfDeliveryLabel}}</text>
               <view class="leftLines endLine">
@@ -115,140 +136,49 @@
         </view>
       </view>
       <view class="equipmentTypeContainer">
-        <view class="allInRate">{{languageContent.allInRate}}</view>
-        <view class="equipmentTypeList">
-        <view class="oneEquipmentType" wx:for="{{item.surchargeDetails}}" wx:key="index">
-          <view class="priceCount">{{item.totalCharge.amount || '-'}}</view>
-          <view class="priceUnit">
-            <view class="unit">{{item.totalCharge.currency.code}}</view>
-            <view class="unit2">/{{item.sizeType}}</view>
+        <view class="allInRate">
+          <view class="allInRateLine"></view>
+          <view>{{languageContent.allInRate}}</view>
+        </view>
+        <view class="equipmentTypeList" wx:if="{{!item.isLoading && item.surchargeDetails.length > 1}}">
+          <view class="oneEquipmentType" wx:for="{{item.surchargeDetails}}" wx:key="index">
+            <view class="priceCount">{{item.totalCharge.amount || '-'}}</view>
+            <view class="priceUnit">
+              <view class="unit">{{item.totalCharge.currency.code}}</view>
+              <view class="unit2">/{{item.sizeType}}</view>
+            </view>
           </view>
         </view>
       </view>
-      </view>
-      
-      <view class="oneBottom">
+      <view class="oneBottom" style="{{!item.isLoading && item.surchargeDetails.length === 1 ? 'border: none;padding: 0 10rpx 0;margin-top: 0;' : ''}}">
         <view class="bottomLeft">
-          <!-- <image src="/assets/img/instantQuote/cash.svg"></image>
-          <view class="priceCount">{{item.surchargeDetails.totalCharge.amount || '-'}}</view>
-          <view class="priceUnit">
-            <view class="unit">{{item.surchargeDetails.totalCharge.currency.code}}</view>
-            <view class="unit2">{{languageContent.allInRate}}</view>
-          </view> -->
+          <view class="equipmentTypeList" wx:if="{{!item.isLoading && item.surchargeDetails.length === 1}}">
+            <view class="oneEquipmentType">
+              <view class="priceCount">{{item.surchargeDetails[0].totalCharge.amount || '-'}}</view>
+              <view class="priceUnit">
+                <view class="unit">{{item.surchargeDetails[0].totalCharge.currency.code}}</view>
+                <view class="unit2">/{{item.surchargeDetails[0].sizeType}}</view>
+              </view>
+            </view>
+          </view>
         </view>
-        <button class="selects {{filters.checkValidDate(item.validityFrom, item.validityTo) === 'expired' ? 'notSelect' : ''}}" disabled="{{filters.checkValidDate(item.validityTo) === 'expired' || item.isLoading}}" bindtap="toDetail" data-index="{{index}}" data-from="perfect">
-          <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{filters.checkValidDate(item.validityFrom, item.validityTo) && item.isLoading}}"></image>
-          <text wx:if="{{filters.checkValidDate(item.validityFrom, item.validityTo) !== 'expired' && !item.isLoading}}">{{languageContent.contractDetail}}</text>
+        <view class="btns">
+          <button class="selects {{(!item.isLoading && !item.surchargeDetails.length) ? 'notSelect' : ''}}" disabled="{{item.isLoading || !item.surchargeDetails.length}}" bindtap="toBook" data-index="{{index}}">
+          <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{item.isLoading}}"></image>
+          <text wx:if="{{!item.isLoading}}">{{languageContent.books}}</text>
         </button>
-      </view>
-    </view>
-  </view>
-  <view wx:if="{{partialContractList.length}}">
-    <view class="typeTitles">
-      <view class="typeLineTitle"></view>
-      <view>{{languageContent.additionalResults}}</view>
-    </view>
-    <view class="oneResult" wx:for="{{partialContractList}}" wx:key="index">
-      <view class="quotationIds">
-        <view class="quotationLeft">
-          <image src="/assets/img/instantQuote/quotationId.svg"></image>
-          <view>
-            <view class="quotationId">{{item.quotationReference}}</view>
-            <view>{{languageContent.quotation}}</view>
-          </view>
-        </view>
-        <view class="quotationRight">
-          <view>{{filters.checkValidDate(item.validityTo) ? languageContent.valid : languageContent.expired}}</view>
-        </view>
-      </view>
-      <view class="tips">
-        <view class="oneTip oneTip2" wx:if="{{item.spotOffer}}">{{languageContent.spotOn}}</view>
-      </view>
-      <view class="resContents">
-        <!-- <view class="leftStep">
-          <view class="leftStepDto"></view>
-          <view class="leftStepLine"></view>
-          <image class="leftStepLoaction" src="/assets/img/result/location@2x.png"></image>
-        </view> -->
-        <view class="rightContainer">
-          <view class="leftContent">
-            <!-- <view class="time">{{item.portOfLoadingLabel}}</view> -->
-            <view class="time" style="padding-bottom: 30rpx;" wx:if="{{item.placeOfReceiptLabel}}">
-              <text class="placeType">{{commonFilters.localeUpperCase(item.exportMovementType)}}</text>
-              <text>{{item.placeOfReceiptLabel}}</text>
-              <view class="leftLines">
-                <view class="leftLineDto"></view>
-                <view class="leftLine"></view>
-              </view>
-            </view>
-            <view style="position: relative;">
-              <view class="time" style="max-width: 380rpx;">  
-                <text class="placeType">PORT</text>
-                <text>{{item.portOfLoadingLabel}}</text>
-              </view>
-              <view class="ship">
-                <image src="/assets/img/dashboard/Box@2x.png" mode="aspectFit" class="shipIcon"></image>
-                <view>{{commonFilters.formatCommodityName(item.commodities[0].name)}}</view>
-              </view>
-              <view class="ship" style="width: 100%;padding-bottom: 20rpx;">
-                <image src="/assets/img/dashboard/Container@2x.png" mode="aspectFit" class="shipIcon"></image>
-                <view>{{equipmentType}} {{item.equipments[0].code}}</view>
-              </view>
-              <view class="leftLines">
-                <view class="leftLineDto"></view>
-                <view class="leftLine"></view>
-              </view>
-            </view>
-            <view class="time" style="{{item.placeOfDeliveryLabel ? 'padding-bottom: 30rpx;' : ''}}">
-              <text class="placeType">PORT</text>
-              <text>{{item.portOfDischargeLabel}}</text>
-              <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
-                <view class="leftLineDto"></view>
-                <view class="leftLine"></view>
-              </view>
-              <view class="leftLines endLine" wx:else>
-                <image src="/assets/img/instantQuote/location-red.svg" mode="aspectFit"></image>
-              </view>
-            </view>
-            <view class="time" wx:if="{{item.placeOfDeliveryLabel}}">
-              <text class="placeType">{{commonFilters.localeUpperCase(item.importMovementType)}}</text>
-              <text>{{item.placeOfDeliveryLabel}}</text>
-              <view class="leftLines endLine">
-                <image src="/assets/img/instantQuote/location-red.svg" mode="aspectFit"></image>
-              </view>
-            </view>
-          </view>
-          <view class="rightContent">
-            <!-- <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{7}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
-            <view class="zhuanrun" wx:if="{{item.tranShipment.length}}">
-              <image src="/assets/img/result/zhuanyun@2x.png"></image>
-              <view>{{item.tranShipment.length}} {{languageContent.zhuanyun}}</view>
-            </view>
-            <view class="zhuanrun" wx:if="{{!item.tranShipment.length}}">
-              <image src="/assets/img/result/zhuanyun@2x.png"></image>
-              <view>{{languageContent.zhida}}</view>
-            </view> -->
-          </view>
-        </view>
-      </view>
-      <view class="oneBottom">
-        <view class="bottomLeft">
-          <image src="/assets/img/instantQuote/cash.svg"></image>
-          <view class="priceCount">{{item.surchargeDetails.totalCharge.amount || '-'}}</view>
-          <view class="priceUnit">
-            <view class="unit">{{item.surchargeDetails.totalCharge.currency.code}}</view>
-            <view class="unit2">{{languageContent.allInRate}}</view>
-          </view>
-        </view>
-        <button class="selects {{!filters.checkValidDate(item.validityTo) ? 'notSelect' : ''}}" disabled="{{!filters.checkValidDate(item.validityTo) || item.isLoading}}" bindtap="toDetail" data-index="{{index}}" data-from="partial">
-          <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{filters.checkValidDate(item.validityTo) && item.isLoading}}"></image>
-          <text wx:if="{{filters.checkValidDate(item.validityTo) && !item.isLoading}}">{{languageContent.contractDetail}}</text>
+        <button class="selects {{(!item.isLoading && !item.surchargeDetails.length) ? 'notSelect' : ''}}" disabled="{{item.isLoading || !item.surchargeDetails.length}}" bindtap="toDetail" data-index="{{index}}">
+          <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{item.isLoading}}"></image>
+          <text wx:if="{{!item.isLoading}}">{{languageContent.contractDetail}}</text>
         </button>
+        </view>
       </view>
     </view>
   </view>
   <!--无结果-->
-  <view wx:if="{{!isLoading && !partialContractList.length && !perfectContractList.length}}">
+  <view wx:if="{{!isLoading && !contractList.length}}">
     <noresult languageContent="{{languageContent}}"></noresult>
   </view>
 </view>
+
+<custom-picker columns="{{contractTypeList}}" valueKey="{{valueKey}}" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>

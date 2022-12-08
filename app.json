@@ -24,7 +24,8 @@
     "pages/Quotation/Others/AdditionalInformation/index",
     "pages/Quotation/NearPort/index",
     "pages/Quotation/LineDetail/index",
-    "pages/Quotation/Others/Remind/index"
+    "pages/Quotation/Others/Remind/index",
+    "pages/VAS/Detail/index"
   ],
   "subPackages": [
     {
@@ -120,8 +121,8 @@
     ]
   },
   "networkTimeout": {
-    "request": 30000,
-    "downloadFile": 30000
+    "request": 60000,
+    "downloadFile": 60000
   },
   "debug": true,
   "sitemapLocation": "sitemap.json",

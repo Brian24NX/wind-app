@@ -3,4 +3,5 @@
   <image src="https://wind.cma-cgm.com/images/no-result.png"></image>
   <text class="nosolutions">{{languageContent.noFindTips1}}</text>
   <text class="settlesolutions">{{languageContent.noFindTips2}}</text>
+  <button class="btn" catchtap="toSet">{{languageContent.getAgain}}</button>
 </view>

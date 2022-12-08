@@ -79,3 +79,11 @@
   height: 32rpx;
   margin-right: 20rpx;
 }
+
+.ddDesc {
+  background-color: #d9deea;
+  padding: 20rpx;
+  font-size: 24rpx;
+  color: #04246A;
+  margin-top: 60rpx;
+}

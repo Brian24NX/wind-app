@@ -1,0 +1,84 @@
+<!--pages/VAS/Detail/index.wxml-->
+<view>
+  <view class="vasTops">
+    <view>{{vasDetail.productName}}</view>
+    <image src="{{baseUrl + vasDetail.productMainImage}}" mode="aspectFill"/>
+  </view>
+  <view class="vasDescContainer">
+    <view class="vasDesc">{{vasDetail.productDescription}}</view>
+    <view class="oneTemplate">
+      <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
+      <view class="templateContent">
+        <view class="templateName">{{vasDetail.productSheet}}</view>
+        <view catchtap="sendEmail">{{languageContent.send}}</view>
+      </view>
+      <view class="preview" catchtap="preview">
+        <image src="/assets/img/more/eye@2x.png"></image>
+      </view>
+    </view>
+    <view class="warning" wx:if="{{vasDetail.confirmationNeeded}}">
+      <image src="/assets/img/instantQuote/warning@2x.png"/>
+      <view>{{languageContent.warningRemind}}</view>
+    </view>
+  </view>
+  <view class="chargeDetails">
+    <view class="chargeList">
+      <view wx:for="{{vasDetail.chargeDetails}}" wx:key="index">
+        <view class="oneCharge">
+          <view class="chargeLeft" catchtap="chooseCharge" data-index="{{index}}">
+            <view class="checkBox">
+              <view class="checked" wx:if="{{checkIndex === index}}"></view>
+            </view>
+            <view class="chargeName">{{item.chargeName}}</view>
+          </view>
+          <view class="chargeRight" wx:if="{{item.levelOfCharge === 'Per Container' || (item.levelOfCharge === 'Per BL' && item.calculationType === 'FIX')}}">
+            <view class="chargePrice">{{item.rateFrom}}</view>
+            <view class="chargeUnit">
+              <view>{{item.currency}}</view>
+              <view>/{{item.levelOfCharge === 'Per BL' ? languageContent.perBL : languageContent.containers}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="calculatedContainer" wx:if="{{checkIndex === index && item.levelOfCharge === 'Per BL' && item.calculationType !== 'FIX'}}">
+          <view class="calculatedTitle">{{item.personalizedValueLabel}}</view>
+          <view class="calculatedInput">
+            <input type="number" maxlength="8" value="{{amount}}" bindinput="setAmount"/>
+            <button hover-class="hoverClass" catchtap="calculte" style="{{!amount ? 'opacity: 0.7;' : ''}}" disabled="{{!amount}}">{{languageContent.calculate}}</button>
+          </view>
+          <view class="calculateResult">
+            <view class="calculateResultLeft">{{languageContent.value}} {{amount}} {{item.currency}}</view>
+            <view class="calculateResultRight">
+              <view class="resultPrice">{{calculteResult}}</view>
+              <view>
+                <view class="resultUnit">{{item.currency}}</view>
+                <view>/{{languageContent.perBL}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="totalAmount" wx:if="{{checkIndex !== null}}">
+      <image src="/assets/img/instantQuote/cash.svg"/>
+      <view class="amounts">{{calculteResult}}</view>
+      <view class="units">
+        <view style="color: #E20202;">{{vasDetail.chargeDetails[checkIndex].currency}}</view>
+        <view>/ {{vasDetail.chargeDetails[checkIndex].levelOfCharge === 'Per BL' ? languageContent.perBL : languageContent.containers}}</view>
+      </view>
+    </view>
+    <view class="termsConditions" catchtap="clickAgree" wx:if="{{vasDetail.termsandConditions}}">
+      <view class="termChecked" style="{{isAgree ? 'background-color: #071E5D;' : ''}}">
+        <van-icon name="success" color="#ffffff" size="14px" />
+      </view>
+      <view>{{languageContent.agree}} <text style="color: #2D75FF;text-decoration: underline;" catchtap="previewTeams">{{languageContent.terms}}*</text></view>
+    </view>
+    <view class="noRequest" wx:if="{{showRemind}}">
+      <image src="/assets/img/search/error@2x.png"></image>
+      <text>{{languageContent.required}}</text>
+    </view>
+  </view>
+  <button class="subscribeBtn" hover-class="hoverClass" catchtap="subscribeSubmit">{{languageContent.subscribe}}</button>
+</view>
+
+
+<email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

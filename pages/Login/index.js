@@ -24,7 +24,7 @@ Page({
         let userInfo = data.data[0].customer
         const partnerList = data.partnerList
         const profileRights = data.data[0].profilerights
-        console.log(profileRights)
+        // console.log(profileRights)
         if (userInfo) {
           wx.setStorageSync('ccgId', userInfo.ccgId)
           userInfo.lastName = userInfo.lastName ? userInfo.lastName.toLocaleUpperCase() : ''

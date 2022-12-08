@@ -1,6 +1,7 @@
 // pages/Quotation/Detail/index.js
 const languageUtil = require('../../../utils/languageUtils')
 import {
+  vasLists,
   createQuotationQuotation
 } from '../../../api/modules/quotation';
 
@@ -11,7 +12,10 @@ Page({
    */
   data: {
     languageContent: {},
+    vasLanguageContent: {},
     language: 'zh',
+    baseUrl: '',
+    languageCode: '',
     todayDate: '',
     isFirst: true,
     otherList: [{
@@ -56,52 +60,11 @@ Page({
     placeOfOrigin: '',
     finalPlaceOfDelivery: '',
     partnerCode: [],
-    vasList: [{
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_1.png',
-      vasTitle: 'ACT with CMA CGM+',
-      vasDescEn: 'Reduce and offset your environmental footprint.',
-      vasDescCn: '携手ACT with CMA CGM+实现碳中和！现在，您可以减少和抵消您的环境足迹！'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_2.png',
-      vasTitle: 'SERENITY cargo value guarantee',
-      vasDescEn: 'Enjoy full compensation in case of cargo damage.',
-      vasDescCn: '一旦您的货物受损，将享受完整快捷的赔付'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_3.png',
-      vasTitle: 'SEAPRIORITY go',
-      vasDescEn: 'Enjoy a priority status at loading and transloading terminal.',
-      vasDescCn: '在起运港和转运港享受优先放柜及装载'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
-      vasTitle: 'FREETIME extended (Detention)',
-      vasDescEn: 'Extend your Detention freetime at destination.',
-      vasDescCn: 'Extend your Detention Free Time at destination'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
-      vasTitle: 'FREETIME extended (Demurrage only)',
-      vasDescEn: 'Extend your Demurrage freetime at destination.',
-      vasDescCn: 'Extend your Demurrage Free Time at destination'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_4.png',
-      vasTitle: 'FREETIME extended (Detention & Demurrage)',
-      vasDescEn: 'Extend your merged D&D freetime at destination.',
-      vasDescCn: '延长目的地免滞箱费&滞港费（D&D）'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_5.png',
-      vasTitle: 'BARLOCK security device',
-      vasDescEn: 'Add extra protection to keep your cargo safe.',
-      vasDescCn: '增加额外的保护以确保您的货物安全'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_6.png',
-      vasTitle: 'SERENITY container guarantee (export)',
-      vasDescEn: 'Avoid costs in case of damage to our containers.',
-      vasDescCn: '避免因集装箱损坏而产生的额外费用-出口'
-    }, {
-      iconUrl: 'https://wind.cma-cgm.com/images/VAS/VAS_6.png',
-      vasTitle: 'SERENITY container guarantee (import)',
-      vasDescEn: 'Avoid costs in case of damage to our containers.',
-      vasDescCn: '避免因集装箱损坏而产生的额外费用-进口'
-    }]
+    vasList: [],
+    subscribedServices: [],
+    noSelectVasList: [],
+    showVas: false,
+    isUs: false
   },
 
   /**
@@ -114,10 +77,14 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    let languageContent = languageUtil.languageVersion().lang.page.qutationResult
+    const languages = languageUtil.languageVersion().lang.page
     this.setData({
-      languageContent,
-      language: languageUtil.languageVersion().lang.page.langue,
+      languageContent: languages.qutationResult,
+      vasLanguageContent: languages.vas,
+      language: languages.langue,
+      isUs: data.isUs,
+      languageCode: languages.langue === 'zh' ? 'zh_CN' : 'en_US',
+      baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
       partnerCode: data.partnerCode,
       todayDate: this.getDate(),
       portOfLoading: data.portOfLoading,
@@ -127,7 +94,10 @@ Page({
       placeOfOrigin: data.placeOfOrigin,
       finalPlaceOfDelivery: data.finalPlaceOfDelivery
     })
-    this.setDefaultInfo(Number(options.index), Number(options.containers))
+    this.setDefaultInfo(options.index, options.containers)
+    if (!this.data.isUs) {
+      this.getVasList()
+    }
   },
 
   setDefaultInfo(index, containers) {
@@ -166,6 +136,13 @@ Page({
     })
   },
 
+  previewVas() {
+    if (!this.data.subscribedServices.length) return
+    this.setData({
+      showVas: !this.data.showVas
+    })
+  },
+
   calculatedCharges() {
     const surchargeDetails = this.data.quotationDetail.surchargeDetails
     let totalChargeAmount = 0
@@ -181,6 +158,11 @@ Page({
     if (surchargeDetails.collectCharges.isChecked) {
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
+    this.data.subscribedServices.forEach(i => {
+      if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
+        totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
+      }
+    })
     this.setData({
       totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount
     })
@@ -237,6 +219,26 @@ Page({
       })
     } else {
       let params = {}
+      let vasChargeDetails = []
+      this.data.subscribedServices.forEach(item => {
+        vasChargeDetails.push({
+          "calculationType": item.seletcedProduct.calculationType || '',
+          "cargoLines": item.seletcedProduct.cargoLines,
+          "chargeCode": item.seletcedProduct.chargeCode,
+          "chargeName": item.seletcedProduct.chargeName,
+          "currency": item.seletcedProduct.currency,
+          "description": item.seletcedProduct.subscriptionMode || '',
+          "expectedActions": item.expectedActions,
+          "hasChargeSelected": true,
+          "levelOfCharge": item.levelOfCharge,
+          "maximumChargeableAmount": item.seletcedProduct.minimumChargeableAmount || '',
+          "minimumChargeableAmount": item.seletcedProduct.maximumChargeableAmount || '',
+          "rateFrom": item.seletcedProduct.rateFrom,
+          "subscribedAmount": item.seletcedProduct.amount,
+          "subscriptionMode": item.seletcedProduct.subscriptionMode || ''
+        })
+      })
+      // console.log(vasChargeDetails)
       if (this.data.quotationDetail.quoteLines[0].quoteLineId) {
         params = {
           "createLaraSpecialQuotation": {
@@ -259,7 +261,8 @@ Page({
             "portOfDischarge": this.data.portOfDischarge,
             "initialPortOfLoading": this.data.portOfLoading,
             "initalPortOfDischarge": this.data.portOfDischarge,
-            "traceId": this.data.quotationDetail.traceId
+            "traceId": this.data.quotationDetail.traceId,
+            vasChargeDetails
           }
         }
       } else {
@@ -281,14 +284,21 @@ Page({
             "voyageRef": this.data.quotationDetail.voyage,
             "offerId": this.data.quotationDetail.offerId,
             "traceId": this.data.traceId,
-            "shippingCompany": this.data.shippingCompany
+            "shippingCompany": this.data.shippingCompany,
+            vasChargeDetails
           }
         }
       }
       createQuotationQuotation(params, wx.getStorageSync('ccgId')).then(res => {
-        wx.navigateTo({
-          url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
-        })
+        if (res.data) {
+          wx.navigateTo({
+            url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
+          })
+        } else {
+          wx.showToast({
+            title: this.data.languageContent.createFail,
+          })
+        }
       })
     }
   },
@@ -297,6 +307,159 @@ Page({
     wx.showToast({
       title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
       icon: 'none'
+    })
+  },
+
+  getVasList() {
+    const quoteLine = this.data.quotationDetail.quoteLines[0]
+    const shippingCompany = quoteLine.shippingCompany
+    const bookingParties = []
+    this.data.partnerCode.forEach(i => {
+      bookingParties.push({
+        "partnerCode": i,
+        "bookingParty": true,
+        "role": "BKG",
+        "name": ""
+      })
+    })
+    let subscribedCharges = []
+    const surchargeDetails = this.data.quotationDetail.surchargeDetails
+    const a = surchargeDetails.collectChargeDetails.filter(i => i.fixedByThePricer).map(i => {
+      return {
+        code: i.chargeCode,
+        currency: surchargeDetails.collectCharges.currency.code,
+        rateFrom: i.convertedRate
+      }
+    })
+    const b = surchargeDetails.freightChargeDetails.filter(i => i.fixedByThePricer).map(i => {
+      return {
+        code: i.chargeCode,
+        currency: surchargeDetails.freightCharges.currency.code,
+        rateFrom: i.convertedRate
+      }
+    })
+    const c = surchargeDetails.oceanFreightChargeDetails.filter(i => i.fixedByThePricer).map(i => {
+      return {
+        code: i.chargeCode,
+        currency: surchargeDetails.oceanFreight.price.currency.code,
+        rateFrom: i.convertedRate
+      }
+    })
+    const d = surchargeDetails.prepaidChargeDetails.filter(i => i.fixedByThePricer).map(i => {
+      return {
+        code: i.chargeCode,
+        currency: surchargeDetails.prepaidCharges.currency.code,
+        rateFrom: i.convertedRate
+      }
+    })
+    subscribedCharges = subscribedCharges.concat(a).concat(b).concat(c).concat(d)
+    vasLists({
+      "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CHENGLIE' : 'APL',
+      "placeReceipt": this.data.placeOfOrigin,
+      "portLoading": this.data.portOfLoading,
+      "portDischarge": this.data.portOfDischarge,
+      "placeDelivery": this.data.finalPlaceOfDelivery,
+      "placeOfPayment": this.data.portOfDischarge,
+      "importMovementType": quoteLine.importMovementType.toLocaleUpperCase(),
+      "importHaulageMode": "MERCHANT",
+      "exportMovementType": quoteLine.exportMovementType.toLocaleUpperCase(),
+      "exportHaulageMode": "MERCHANT",
+      "applicationDate": this.data.quotationDetail.departureDate,
+      "locale": this.data.languageCode,
+      "channel": "PRI",
+      "typeOfBl": "Negotiable",
+      "bookingParties": bookingParties,
+      "cargoes": [{
+        "cargoNumber": 1,
+        "packageCode": this.data.equipmentTypeSize,
+        "packageBookedQuantity": this.data.containers,
+        "commodityCode": quoteLine.commodities[0].code,
+        "commodityName": quoteLine.commodities[0].name,
+        "totalNetWeight": 1,
+        "uomWeight": "TNE",
+        "hazardous": false,
+        "oversize": false,
+        "refrigerated": false,
+        "shipperOwned": false
+      }],
+      "currency": surchargeDetails.totalCharge.currency.code,
+      subscribedCharges: subscribedCharges.map(i => i.code)
+    }).then(res => {
+      // vasLists({"shippingCompany":"CMACGM","placeReceipt":"FIKEM","portLoading":"FIKEM","portDischarge":"EGALY","placeDelivery":"EGALY","placeOfPayment":"EGALY","importMovementType":"DOOR","importHaulageMode":"MERCHANT","exportMovementType":"DOOR","exportHaulageMode":"MERCHANT","applicationDate":"2022-12-01T10:00:00+00:00","locale":"zh_CN","channel":"PRI","typeOfBl":"Negotiable","bookingParties":[{"partnerCode":"0000000176","bookingParty":true,"role":"BKG","name":""}],"cargoes":[{"cargoNumber":1,"packageCode":"20ST","packageBookedQuantity":10,"commodityCode":"FAK LISA (UPA)","commodityName":"Freight All Kind","totalNetWeight":1,"uomWeight":"TNE","hazardous":false,"oversize":false,"refrigerated":false,"shipperOwned":false}],"subscribedCharges":[]}).then(res=> {
+      res.data.forEach(one => {
+        if (one.isProductSelected) {
+          // console.log(subscribedCharges)
+          const index = subscribedCharges.findIndex(i => one.chargeDetails[0].chargeCode === i.code)
+          one.levelOfCharge = 'Per Container'
+          one.currency = subscribedCharges[index].currency
+          one.chargeDetails[0].currency = subscribedCharges[index].currency
+          one.chargeDetails[0].rateFrom = subscribedCharges[index].rateFrom
+          one.chargeDetails[0].amount = subscribedCharges[index].rateFrom
+          one.chargeDetails[0].levelOfCharge = 'Per Container'
+          one.chargeDetails[0].isInclude = true
+          one.seletcedProduct = one.chargeDetails[0]
+        }
+        one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i => i.levelOfCharge === one.levelOfCharge).map(item => {
+          return item.rateFrom
+        }))
+        if (one.levelOfCharge === 'Per BL' && one.chargeDetails[0].calculationType !== 'FIX') {
+          one.minPrice = '%'
+        }
+      })
+      this.setData({
+        vasList: res.data,
+        noSelectVasList: res.data.filter(i => !i.isProductSelected),
+        subscribedServices: res.data.filter(i => i.isProductSelected)
+      })
+      this.calculatedCharges()
+    }, () => {
+      this.getVasList()
+    })
+  },
+  toSelect(e) {
+    wx.navigateTo({
+      url: '/pages/VAS/Detail/index?productId=' + encodeURIComponent(e.currentTarget.dataset.productid),
+    })
+  },
+
+  setSubscribedServices(detail) {
+    const index = this.data.vasList.findIndex(i => i.parentProductId === detail.parentProductId)
+    this.data.vasList[index] = detail
+    this.setData({
+      vasList: this.data.vasList,
+      subscribedServices: this.data.vasList.filter(i => i.isProductSelected),
+      noSelectVasList: this.data.vasList.filter(i => !i.isProductSelected)
+    })
+    this.calculatedCharges()
+  },
+
+
+  editSubscribe(e) {
+    wx.navigateTo({
+      url: '/pages/VAS/Detail/index?productId=' + encodeURIComponent(e.currentTarget.dataset.productid),
+    })
+  },
+
+  deleteSubscribe(e) {
+    const index = this.data.vasList.findIndex(i => i.productName === e.currentTarget.dataset.productid)
+    this.data.vasList[index].isProductSelected = false
+    delete this.data.vasList[index].seletcedProduct
+    this.setData({
+      vasList: this.data.vasList,
+      subscribedServices: this.data.vasList.filter(i => i.isProductSelected),
+      noSelectVasList: this.data.vasList.filter(i => !i.isProductSelected)
+    })
+    if (!this.data.subscribedServices.length) {
+      this.setData({
+        showVas: false
+      })
+    }
+    this.calculatedCharges()
+  },
+
+  closeBg() {
+    this.setData({
+      showVas: false
     })
   },
 
@@ -309,4 +472,8 @@ Page({
     day = day < 10 ? ('0' + day) : day
     return year + '-' + month + '-' + day;
   },
+
+  prevent() {
+    return
+  }
 })

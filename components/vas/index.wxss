@@ -1,0 +1,120 @@
+/* components/vas/index.wxss */
+.additionServicesContainers {
+  padding: 30rpx;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 150rpx);
+  background-color: #F0F1F5;
+  min-height: calc(100vh - 30rpx - env(safe-area-inset-bottom) + 150rpx);
+}
+
+.noVasRemind {
+  font-size: 32rpx;
+  color: #071E5D;
+  padding: 30rpx 60rpx;
+  text-align: center;
+}
+
+.additionContainers {
+  background-color: #ffffff;
+  padding: 30rpx;
+  color: #071E5D;
+  font-size: 28rpx;
+}
+
+.additionContainers .additionContainer {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: bold;
+  color: #04246A;
+  margin-bottom: 10rpx;
+}
+
+.additionContainers .additionContainer .additionTitleLine {
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+  margin-right: 16rpx;
+}
+
+.additionContainers .additionDesc {
+  padding-left: 20rpx;
+}
+
+.additionList .oneAddition {
+  padding: 30rpx;
+  background-color: #ffffff;
+  margin-top: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.additionList .oneAddition image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 38rpx;
+}
+
+.additionList .additionDetail {
+  width: 390rpx;
+  color: #071E5D;
+  font-size: 20rpx;
+}
+
+.additionList .additionDetail .additionDetailTitle {
+  font-size: 32rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #071E5D;
+}
+
+.additionList .additionDetail .vasDesc {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.additionList .additionDetail .vasBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid #EEEEEE;
+  padding-top: 20rpx;
+  margin-top: 20rpx;
+}
+
+.additionList .additionDetail .vasBottom .vasBottomLeft {
+  display: flex;
+  align-items: center;
+}
+
+.additionList .additionDetail .vasBottom .vasBottomLeft .vasPrice {
+  font-size: 48rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #E10202;
+  margin-right: 10rpx;
+}
+
+.additionList .additionDetail .vasBottom .vasBottomLeft .vasUnit {
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.additionList .additionDetail .vasBottom .vasBtn {
+  width: 156rpx;
+  height: 60rpx;
+  border-radius: 0;
+  background-color: #071E5D;
+  color: #ffffff;
+  font-size: 32rpx;
+  padding: 0;
+  margin: 0;
+  line-height: 60rpx;
+}

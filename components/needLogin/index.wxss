@@ -8,6 +8,12 @@
   align-items: center;
 }
 
+.loginContainer image {
+  width: 534rpx;
+  height: 426rpx;
+  margin-bottom: 56rpx;
+}
+
 .loginRemind {
   font-size: 36rpx;
   font-family: Antonio-Bold, Antonio;
@@ -23,7 +29,7 @@
   background-color: #2D75FF;
   border: none;
   border-radius: 0;
-  margin-top: 30rpx;
+  margin-top: 58rpx;
   font-size: 36rpx;
   font-weight: 500;
   color: #FFFFFF;

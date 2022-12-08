@@ -1,5 +1,6 @@
 <!--components/needLogin/index.wxml-->
 <view class="loginContainer">
+<image src="https://wind.cma-cgm.com/images/noLogin.png" mode=""/>
   <view class="loginRemind">{{languageContent.noLogin}}</view>
   <button class="loginBtn" catchtap="toLogin">{{languageContent.toLogin}}</button>
 </view>
