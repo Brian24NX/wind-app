@@ -18,9 +18,31 @@ Page({
     routeSelected: null,
     commodityList: [],
     partyList: [],
+    currentPaymentType: 'Prepaid',
     vasList: [],
     preferredBookingOffice: null,
-    bookingNumber: 1
+    bookingNumber: 1,
+    currentStep: 'first',
+    haulageType: 'door',
+    transportModeList: [{
+      id: 'Road',
+      icon: '/assets/img/booking/truck.png'
+    }, {
+      id: 'Rail',
+      icon: '/assets/img/booking/rail.png'
+    }, {
+      id: 'RailRoad',
+      icon: '/assets/img/booking/railTruck.png'
+    }, {
+      id: 'Barge',
+      icon: '/assets/img/booking/barge.png'
+    }, {
+      id: 'BargeRoad',
+      icon: '/assets/img/booking/brageTruck.png'
+    }, {
+      id: 'RailBarge',
+      icon: '/assets/img/booking/trainBarge.png'
+    }]
   },
 
   /**
@@ -133,6 +155,22 @@ Page({
   setInputValue(e) {
     this.setData({
       bookingNumber: Number(e.detail.value) || 1
+    })
+  },
+
+  changePaymentType(e) {
+    this.setData({
+      currentPaymentType: e.currentTarget.dataset.type
+    })
+  },
+
+  confirmLuXian() {
+    this.setData({
+      currentStep: 'second'
+    })
+    wx.pageScrollTo({
+      duration: 300,
+      scrollTop: 0
     })
   }
 })

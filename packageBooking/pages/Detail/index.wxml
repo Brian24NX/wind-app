@@ -1,218 +1,393 @@
 <!--packageBooking/pages/Detail/index.wxml-->
 <wxs module="commonFilters" src="/utils/format.wxs"></wxs>
-<view class="oneDetails">
-  <view class="detailTops">
-    <view class="detailTopLeft">
-      <image src="/assets/img/booking/ship.png" mode="aspectFit" />
-      <view>{{languageContent.routeSelected}}</view>
-    </view>
-    <image class="editIcon" src="/assets/img/booking/edit.png" />
-  </view>
-  <view class="routeContainer">
-    <view class="stepLists">
-      <view class="oneStep">
-        <view class="leftLines">
-          <view class="leftLineDto"></view>
-          <view class="leftLine"></view>
-        </view>
-        <view class="stepContent">{{routeSelected.journeyLegs[0].departureLocation.name + ', ' + commonFilters.substrs(routeSelected.journeyLegs[0].departureLocation.code)}}</view>
-      </view>
-      <view class="oneStep">
-        <view class="leftLines" style="top: 20rpx;">
-          <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
-        </view>
-        <view class="stepContent">{{routeSelected.journeyLegs[routeSelected.journeyLegs.length - 1].arrivalLocation.name + ', ' + commonFilters.substrs(routeSelected.journeyLegs[0].arrivalLocation.code)}}</view>
+<block wx:if="{{currentStep === 'first'}}">
+  <view class="oneDetails">
+    <view class="detailTops2">
+      <view class="detailTopLeft">
+        <text>Haulage Request</text>
+        <view class="topTitleLine"></view>
+        <text style="color: #4468BA;">Export Door Details</text>
       </view>
     </view>
-    <view class="portTimeContainer">
-      <view class="portTimes">
-        <view>PORT</view>
-        <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].departureDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].departureDate.utc, '-', '', true, true)}}</view>
-      </view>
-      <van-icon name="arrow" color="#04246A" />
-      <view class="portTimes">
-        <view>PORT</view>
-        <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].arrivalDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].arrivalDate.utc, '-', '', true, true)}}</view>
-      </view>
-    </view>
-    <view class="cutTimeContainers">
-      <view class="cutTimeContainer">
-        <view class="oneCutTime">
-          <view>Special BKG Cut-off</view>
-          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].specialCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].specialCutOffDate.utc, '-', '', true)}}</view>
+    <view class="point">Location point</view>
+    <view class="pointValue">Kemi ; FI ; FIKEM</view>
+    <block wx:if="{{haulageType === 'door'}}">
+      <view>
+        <view class="key">Appointment Date</view>
+        <view class="keyValue">
+          <view>YYYY-MM-DD</view>
+          <image src="/assets/img/booking/date.png"></image>
         </view>
-        <view class="oneCutTime">
-          <view>Standard BKG Cut-off</view>
-          <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].standardCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].standardCutOffDate.utc, '-', '', true)}}</view>
+      </view>
+      <view>
+        <view class="key">Appointment Date</view>
+        <view class="keyValue">
+          <view>hh:mm</view>
+          <image src="/assets/img/booking/time.png"></image>
         </view>
-        <view class="oneCutTime">
-          <view>Port Cut-off</view>
-          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.cutOffPortDateTime.utc, true) : commonFilters.formatEnDateLocal(routeSelected.cutOffPortDateTime.utc, '-', '', true)}}</view>
+      </view>
+    </block>
+    <view>
+      <view class="key">Transport Mode</view>
+      <view class="transportMode">
+        <view class="oneMode" wx:for="{{transportModeList}}" wx:key="index">
+          <image src="{{item.icon}}" mode="aspectFit"></image>
+          <view>{{item.id}}</view>
         </view>
       </view>
     </view>
   </view>
-</view>
+  <block wx:if="{{haulageType === 'door'}}">
+    <view class="modifyContainer">
+      <view class="modifyTitles">
+        <view class="modifyTitleLine"></view>
+        <view>Address</view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Contact Company</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="name" value="{{contractDetail.name}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.name}}" catchtap="deleteValue" data-type="name" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>City</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="phone" value="{{contractDetail.phone}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.phone}}" catchtap="deleteValue" data-type="phone" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Country / Region</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="fax" value="{{contractDetail.fax}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.fax}}" catchtap="deleteValue" data-type="fax" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>State</text>
+          <text class="optional">(optional)</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="localLegalNumber" value="{{contractDetail.localLegalNumber}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.localLegalNumber}}" catchtap="deleteValue" data-type="localLegalNumber" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Address</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="reference" value="{{contractDetail.reference}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.reference}}" catchtap="deleteValue" data-type="reference" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Addittional Address Details</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="reference" value="{{contractDetail.reference}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.reference}}" catchtap="deleteValue" data-type="reference" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Addittional Address Details</text>
+          <text class="optional">(optional)</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="reference" value="{{contractDetail.reference}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.reference}}" catchtap="deleteValue" data-type="reference" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Zip Code </text>
+          <text class="optional">(optional)</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="reference" value="{{contractDetail.reference}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.reference}}" catchtap="deleteValue" data-type="reference" />
+        </view>
+      </view>
+    </view>
 
-<view class="oneDetails">
-  <view class="detailTops">
-    <view class="detailTopLeft">
-      <image src="/assets/img/booking/cargo.png" mode="aspectFit" />
-      <view>{{languageContent.cargoDetail}}</view>
-    </view>
-    <view class="addIcon" catchtap="addCommodity">
-      <image src="/assets/img/booking/add.png"/>
-    </view>
-  </view>
-  <view class="oneCommodity" wx:for="{{commodityList}}" wx:key="index">
-    <view class="commodityTop">
-      <view class="topLeft">
-        <view class="leftLine"></view>
-        <view>Commodity {{index + 1}}</view>
+    <view class="modifyContainer">
+      <view class="modifyTitles">
+        <view class="modifyTitleLine"></view>
+        <view>Contact</view>
       </view>
-      <view class="topRight">
-        <image src="/assets/img/booking/modify.png"/>
-        <image src="/assets/img/booking/delete.png"/>
+      <view class="oneModify">
+        <view class="title">
+          <text>Contact Name</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="name" value="{{contractDetail.name}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.name}}" catchtap="deleteValue" data-type="name" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Phone Number</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="phone" value="{{contractDetail.phone}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.phone}}" catchtap="deleteValue" data-type="phone" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Email</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="fax" value="{{contractDetail.fax}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.fax}}" catchtap="deleteValue" data-type="fax" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Loading Reference</text>
+          <text class="optional">(optional)</text>
+        </view>
+        <view class="inputs">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="localLegalNumber" value="{{contractDetail.localLegalNumber}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{contractDetail.localLegalNumber}}" catchtap="deleteValue" data-type="localLegalNumber" />
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
+          <text>Transport Comment</text>
+          <text class="optional">(optional)</text>
+        </view>
+        <textarea class="textarea"></textarea>
       </view>
     </view>
-    <view class="commodityDetail">
-      <image src="/assets/img/booking/commodity.png"/>
-      <view class="commodityRight">
-        <view class="commodityName">Twine nesoi,cordage, rope and cables of synt…5678</view>
-        <view>20’Dry Standard 132 x 100=13200 TNE</view>
+  </block>
+  <button class="haulageBtn" catchtap="confirmLuXian">Confirm</button>
+</block>
+<block wx:if="{{currentStep === 'second'}}">
+  <view class="oneDetails">
+    <view class="detailTops">
+      <view class="detailTopLeft">
+        <image src="/assets/img/booking/ship.png" mode="aspectFit" />
+        <view>{{languageContent.routeSelected}}</view>
       </view>
+      <image class="editIcon" src="/assets/img/booking/edit.png" />
     </view>
-  </view>
-  <view class="commodityRemind">
-    <image src="/assets/img/instantQuote/warning@2x.png"/>
-    <view>This booking has passed booking acceptance Cutoff and will be subject to validation</view>
-  </view>
-</view>
-
-<view class="oneDetails">
-  <view class="detailTops">
-    <view class="detailTopLeft">
-      <image src="/assets/img/booking/parties.png" mode="aspectFit" />
-      <view>{{languageContent.parties}}</view>
-    </view>
-    <image class="editIcon" src="/assets/img/booking/edit.png" catchtap="addParty" />
-  </view>
-  <view class="oneCargo" wx:for="{{partyList}}" wx:key="index">
-    <view class="cargoTitle">{{languageContent.partyName}}</view>
-    <view class="cargoValue">{{item.name}}</view>
-    <view class="cargoTitle">{{languageContent.role}}</view>
-    <view class="cargoValue">
-      <block wx:for="{{item.roleIds}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
-        <text>{{languageContent.partyRole[items]}}</text>
-        <text wx:if="{{indexs !== item.roleIds.length - 1}}">、</text>
-      </block>
-    </view>
-  </view>
-</view>
-
-<view class="oneDetails">
-  <view class="detailTops">
-    <view class="detailTopLeft">
-      <image src="/assets/img/booking/payment.png" mode="aspectFit" />
-      <view>{{languageContent.payment}}</view>
-    </view>
-  </view>
-  <view class="paymentTitle">{{languageContent.freightPayment}}</view>
-  <view class="paymentType">
-    <view class="onePaymentType">
-      <view class="paymentCheck">
-        <view class="checked"></view>
+    <view class="routeContainer">
+      <view class="stepLists">
+        <view class="oneStep">
+          <view class="leftLines">
+            <view class="leftLineDto"></view>
+            <view class="leftLine"></view>
+          </view>
+          <view class="stepContent">{{routeSelected.journeyLegs[0].departureLocation.name + ', ' + commonFilters.substrs(routeSelected.journeyLegs[0].departureLocation.code)}}</view>
+        </view>
+        <view class="oneStep">
+          <view class="leftLines" style="top: 20rpx;">
+            <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+          </view>
+          <view class="stepContent">{{routeSelected.journeyLegs[routeSelected.journeyLegs.length - 1].arrivalLocation.name + ', ' + commonFilters.substrs(routeSelected.journeyLegs[0].arrivalLocation.code)}}</view>
+        </view>
       </view>
-      <view>Prepaid</view>
-    </view>
-    <view class="onePaymentType">
-      <view class="paymentCheck">
-        <view class="checked"></view>
+      <view class="portTimeContainer">
+        <view class="portTimes">
+          <view>PORT</view>
+          <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].departureDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].departureDate.utc, '-', '', true, true)}}</view>
+        </view>
+        <van-icon name="arrow" color="#04246A" />
+        <view class="portTimes">
+          <view>PORT</view>
+          <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].arrivalDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].arrivalDate.utc, '-', '', true, true)}}</view>
+        </view>
       </view>
-      <view>Collect</view>
-    </view>
-  </view>
-  <view class="paymentTitle mar"><text>{{languageContent.paymentLocation}}<text class="red">*</text></text></view>
-  <view class="inputContainers">
-    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" />
-  </view>
-  <view class="paymentTitle mar">
-    <text>{{languageContent.freightPayer}}<text class="red">*</text></text>
-    <image src="/assets/img/booking/modify.png" catchtap="toModifyParty" />
-  </view>
-  <view class="inputContainers">
-    <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" />
-  </view>
-</view>
-
-<view class="oneDetails">
-  <view class="detailTops">
-    <view class="detailTopLeft">
-      <image src="/assets/img/booking/vas.png" mode="aspectFit" />
-      <view>{{languageContent.vas}}</view>
-    </view>
-    <image class="editIcon" src="/assets/img/booking/edit.png" />
-  </view>
-  <view class="additionContainer">
-    <view class="oneAddition" wx:for="{{vasList}}" wx:key="index">
-      <view class="vasTitle">SERENITY cargo value guarantee</view>
-      <view class="vasBottom">
-        <view class="vasBottomLeft">Enjoy a full and quick compensation in case your cargo is damaged</view>
-        <view class="vasBottomRight">
-          <view class="totalAmount">100</view>
-          <view class="amountDesc">
-            <view>EUR in total</view>
-            <view>/ 4 Containers</view>
+      <view class="cutTimeContainers">
+        <view class="cutTimeContainer">
+          <view class="oneCutTime">
+            <view>Special BKG Cut-off</view>
+            <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].specialCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].specialCutOffDate.utc, '-', '', true)}}</view>
+          </view>
+          <view class="oneCutTime">
+            <view>Standard BKG Cut-off</view>
+            <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].standardCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].standardCutOffDate.utc, '-', '', true)}}</view>
+          </view>
+          <view class="oneCutTime">
+            <view>Port Cut-off</view>
+            <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.cutOffPortDateTime.utc, true) : commonFilters.formatEnDateLocal(routeSelected.cutOffPortDateTime.utc, '-', '', true)}}</view>
           </view>
         </view>
       </view>
     </view>
   </view>
-</view>
 
-<view class="oneDetails">
-  <view class="detailTops">
-    <view class="detailTopLeft">
-      <view>{{languageContent.bookingOffice}}</view>
-    </view>
-  </view>
-  <view class="inputContainers">
-    <view class="inputsContainer">
-      <input type="text" bindinput="changeOffice" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{preferredBookingOffice.name}}" />
-      <view class="deleteIcon" wx:if="{{showOfficeDelete}}" catchtap="deleteValue" data-type="showOfficeDelete">
-        <image src="/assets/img/search/close@2x.png"></image>
+  <view class="oneDetails">
+    <view class="detailTops">
+      <view class="detailTopLeft">
+        <image src="/assets/img/booking/cargo.png" mode="aspectFit" />
+        <view>{{languageContent.cargoDetail}}</view>
+      </view>
+      <view class="addIcon" catchtap="addCommodity">
+        <image src="/assets/img/booking/add.png" />
       </view>
     </view>
-    <scroll-view class="scroll-view" wx:if='{{officeList.length}}' scroll-y>
-      <view wx:for="{{officeList}}" wx:key="index" class="item" bindtap='chooseOffice' data-index="{{index}}">
-        <view class="polname">{{item.agency.name + ';' + item.city.name + ';' + item.city.code}}</view>
+    <view class="oneCommodity" wx:for="{{commodityList}}" wx:key="index">
+      <view class="commodityTop">
+        <view class="topLeft">
+          <view class="leftLine"></view>
+          <view>Commodity {{index + 1}}</view>
+        </view>
+        <view class="topRight">
+          <image src="/assets/img/booking/modify.png" />
+          <image src="/assets/img/booking/delete.png" />
+        </view>
       </view>
-    </scroll-view>
-    <view class="scroll-view" wx:if="{{showOffice}}">
-      <view class="item">Loading...</view>
+      <view class="commodityDetail">
+        <image src="/assets/img/booking/commodity.png" />
+        <view class="commodityRight">
+          <view class="commodityName">Twine nesoi,cordage, rope and cables of synt…5678</view>
+          <view>20’Dry Standard 132 x 100=13200 TNE</view>
+        </view>
+      </view>
+    </view>
+    <view class="commodityRemind">
+      <image src="/assets/img/instantQuote/warning@2x.png" />
+      <view>This booking has passed booking acceptance Cutoff and will be subject to validation</view>
     </view>
   </view>
-</view>
 
-<view class="oneDetails">
-  <view class="detailTops">
-    <view class="detailTopLeft">
-      <view>{{languageContent.freeComments}}</view>
+  <view class="oneDetails">
+    <view class="detailTops">
+      <view class="detailTopLeft">
+        <image src="/assets/img/booking/parties.png" mode="aspectFit" />
+        <view>{{languageContent.parties}}</view>
+      </view>
+      <image class="editIcon" src="/assets/img/booking/edit.png" catchtap="addParty" />
+    </view>
+    <view class="oneCargo" wx:for="{{partyList}}" wx:key="index">
+      <view class="cargoTitle">{{languageContent.partyName}}</view>
+      <view class="cargoValue">{{item.name}}</view>
+      <view class="cargoTitle">{{languageContent.role}}</view>
+      <view class="cargoValue">
+        <block wx:for="{{item.roleIds}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
+          <text>{{languageContent.partyRole[items]}}</text>
+          <text wx:if="{{indexs !== item.roleIds.length - 1}}">、</text>
+        </block>
+      </view>
     </view>
   </view>
-  <view class="textareaContainers">
-    <textarea placeholder="{{languageContent.freeCommentsPlaceHolder}}" placeholder-class="placeholder"></textarea>
-  </view>
-</view>
 
-<view class="oneDetails numContainer">
-  <view class="totalTitle">Total Number</view>
-  <view class="containers">
-    <view class="actionBtn {{bookingNumber < 2 ? 'disabled' : ''}}" catchtap="reduce">-</view>
-    <input type="number" class="number" value="{{bookingNumber}}" maxlength="2" bindinput="setInputValue" />
-    <view class="actionBtn {{bookingNumber >= 99 ? 'disabled' : ''}}" catchtap="add">+</view>
+  <view class="oneDetails">
+    <view class="detailTops">
+      <view class="detailTopLeft">
+        <image src="/assets/img/booking/payment.png" mode="aspectFit" />
+        <view>{{languageContent.payment}}</view>
+      </view>
+    </view>
+    <view class="paymentTitle">{{languageContent.freightPayment}}</view>
+    <view class="paymentType">
+      <view class="onePaymentType" catchtap="changePaymentType" data-type="Prepaid">
+        <view class="paymentCheck">
+          <view class="checked" wx:if="{{currentPaymentType === 'Prepaid'}}"></view>
+        </view>
+        <view>Prepaid</view>
+      </view>
+      <view class="onePaymentType" catchtap="changePaymentType" data-type="Collect">
+        <view class="paymentCheck">
+          <view class="checked" wx:if="{{currentPaymentType === 'Collect'}}"></view>
+        </view>
+        <view>Collect</view>
+      </view>
+    </view>
+    <view class="paymentTitle mar"><text>{{languageContent.paymentLocation}}<text class="red">*</text></text></view>
+    <view class="inputContainers">
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" />
+    </view>
+    <view class="paymentTitle mar">
+      <text>{{languageContent.freightPayer}}<text class="red">*</text></text>
+      <image src="/assets/img/booking/modify.png" catchtap="toModifyParty" />
+    </view>
+    <view class="inputContainers">
+      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" />
+    </view>
   </view>
-</view>
 
-<button class="sureBtn" hover-class="hoverClass" wx:if="{{bookingNumber === 1}}">{{languageContent.save}}</button>
-<button class="sureBtn" hover-class="hoverClass" wx:if="{{bookingNumber > 1}}">{{languageContent.save1 + bookingNumber + languageContent.save2}}</button>
+  <view class="oneDetails">
+    <view class="detailTops">
+      <view class="detailTopLeft">
+        <image src="/assets/img/booking/vas.png" mode="aspectFit" />
+        <view>{{languageContent.vas}}</view>
+      </view>
+      <image class="editIcon" src="/assets/img/booking/edit.png" />
+    </view>
+    <view class="additionContainer">
+      <view class="oneAddition" wx:for="{{vasList}}" wx:key="index">
+        <view class="vasTitle">SERENITY cargo value guarantee</view>
+        <view class="vasBottom">
+          <view class="vasBottomLeft">Enjoy a full and quick compensation in case your cargo is damaged</view>
+          <view class="vasBottomRight">
+            <view class="totalAmount">100</view>
+            <view class="amountDesc">
+              <view>EUR in total</view>
+              <view>/ 4 Containers</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="oneDetails">
+    <view class="detailTops">
+      <view class="detailTopLeft">
+        <view>{{languageContent.bookingOffice}}</view>
+      </view>
+    </view>
+    <view class="inputContainers">
+      <view class="inputsContainer">
+        <input type="text" bindinput="changeOffice" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{preferredBookingOffice.name}}" />
+        <view class="deleteIcon" wx:if="{{showOfficeDelete}}" catchtap="deleteValue" data-type="showOfficeDelete">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+      </view>
+      <scroll-view class="scroll-view" wx:if='{{officeList.length}}' scroll-y>
+        <view wx:for="{{officeList}}" wx:key="index" class="item" bindtap='chooseOffice' data-index="{{index}}">
+          <view class="polname">{{item.agency.name + ';' + item.city.name + ';' + item.city.code}}</view>
+        </view>
+      </scroll-view>
+      <view class="scroll-view" wx:if="{{showOffice}}">
+        <view class="item">Loading...</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="oneDetails">
+    <view class="detailTops">
+      <view class="detailTopLeft">
+        <view>{{languageContent.freeComments}}</view>
+      </view>
+    </view>
+    <view class="textareaContainers">
+      <textarea placeholder="{{languageContent.freeCommentsPlaceHolder}}" placeholder-class="placeholder"></textarea>
+    </view>
+  </view>
+
+  <view class="oneDetails numContainer">
+    <view class="totalTitle">Total Number</view>
+    <view class="containers">
+      <view class="actionBtn {{bookingNumber < 2 ? 'disabled' : ''}}" catchtap="reduce">-</view>
+      <input type="number" class="number" value="{{bookingNumber}}" maxlength="2" bindinput="setInputValue" />
+      <view class="actionBtn {{bookingNumber >= 99 ? 'disabled' : ''}}" catchtap="add">+</view>
+    </view>
+  </view>
+
+  <button class="sureBtn" hover-class="hoverClass" wx:if="{{bookingNumber === 1}}">{{languageContent.save}}</button>
+  <button class="sureBtn" hover-class="hoverClass" wx:if="{{bookingNumber > 1}}">{{languageContent.save1 + bookingNumber + languageContent.save2}}</button>
+</block>
