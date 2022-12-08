@@ -25,7 +25,12 @@ export const UNNumberList = (params) => {
 
 // Package搜索
 export const packageList = (params) => {
-  return getRequest("/api/miniapp/cdrPackage", params, true, true)
+  return getRequest("/api/miniapp/cdrPackageGroup", params, true, true)
+}
+
+// 搜索Package描述信息
+export const packageDescription = (params) => {
+  return getRequest("/api/miniapp/cdrPackageDescription", params, true, true)
 }
 
 

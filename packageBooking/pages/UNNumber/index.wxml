@@ -9,7 +9,7 @@
     <view class="inputContainers">
       <view class="inputsContainer">
         <input type="text" bindinput="enterUNNumber" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{unNumberName}}" />
-        <view class="deleteIcon" wx:if="{{showUNNumberDelete}}" catchtap="deleteValue" data-type="showOfficeDelete">
+        <view class="deleteIcon" wx:if="{{unNumberName}}" catchtap="clearValue" data-keys="unNumberName">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
       </view>
@@ -18,53 +18,54 @@
           <view class="polname">{{item.unNumber + ' - ' + item.unName}}</view>
         </view>
       </scroll-view>
-      <view class="scroll-view" wx:if="{{showCommodity}}">
+      <view class="scroll-view" wx:if="{{showUnNumberLoading}}">
         <view class="item">Loading...</view>
       </view>
     </view>
   </view>
   <view>
     <view class="title">Chemical Name <text class="red">*</text></view>
-    <view class="inputs">
-      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
-      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+    <view class="inputs number">
+      <input type="text" value="{{chemicalName}}" bindinput="setValues" data-keys="chemicalName" data-isrequired="true" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{chemicalName}}" catchtap="clearValue" data-keys="chemicalName" data-isrequired="true" >
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
+    </view>
+
+    <view class="error-tips" wx:if="{{tips.chemicalName}}">
+      <image src="/assets/img/search/error@2x.png"></image>
+      <text>{{tips.chemicalName}}</text>
     </view>
   </view>
   <view>
     <view class="title">Packing Group <text class="red">*</text></view>
-    <view class="selectContainer" catchtap="openPopup" data-type="1">
-      <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
+    <view class="selectContainer" catchtap="clickPackingGroup" data-type="1">
+      <view style="{{pickerChooseReault[1].text !== '' ? 'color: #071E5D;' : ''}}">{{pickerChooseReault[1].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
   </view>
   <view>
     <view class="title">Class <text class="red">*</text></view>
-    <view class="inputs">
-      100
-    </view>
+    <view class="inputs">{{classNumber}}</view>
   </view>
   <view>
     <view class="title">Emergency procedure <text class="red">*</text></view>
-    <view class="inputs">
-      100
-    </view>
+    <view class="inputs">{{emsCode}}</view>
   </view>
   <view>
     <view class="title">Flash Point <text class="red">*</text></view>
-    <view class="inputs">
-      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
-      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+    <view class="inputs number">
+      <input type="digit" value="{{flashPoint}}" maxlength="9" bindinput="setFlashPoint" data-keys="flashPoint" bindblur="recordFloatBlur" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{flashPoint}}" catchtap="clearValue" data-keys="flashPoint">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
     </view>
   </view>
   <view class="shipOwner">
-    <view class="checked">
-      <van-icon name="success" size="14px" color="#ffffff" />
+    <view class="checked {{isIncludeHazardous?'bg':''}}" catchtap="checkBoxToggle" data-keys="isIncludeHazardous">
+      <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isIncludeHazardous}}" />
     </view>
-    <view>Include Hazardous</view>
+    <view class="text" catchtap="checkBoxToggle" data-keys="isIncludeHazardous">Include Hazardous</view>
   </view>
 </view>
 
@@ -75,26 +76,36 @@
   </view>
   <view>
     <view class="title">Net Weight <text class="red">*</text></view>
-    <view class="inputs">
-      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
-      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+    <view class="inputs number">
+      <input type="number" maxlength="9" value="{{netWeight}}" bindinput="setValues" data-keys="netWeight" data-isrequired="true" data-keystype="number" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{netWeight}}" catchtap="clearValue" data-keys="netWeight" data-isrequired="true">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
+    </view>
+
+    <view class="error-tips" wx:if="{{tips.netWeight}}">
+      <image src="/assets/img/search/error@2x.png"></image>
+      <text>{{tips.netWeight}}</text>
     </view>
   </view>
   <view>
     <view class="title">Gross Weight <text class="red">*</text></view>
-    <view class="inputs">
-      <input type="number" value="{{reference}}" bindinput="setReference" placeholder="ex: ABCD1234567" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
-      <view class="deleteIcon" wx:if="{{reference}}" catchtap="deleteValue" data-type="5">
+    <view class="inputs number">
+      <input type="number" maxlength="9" value="{{grossWeight}}" bindinput="setNumberValues" data-keys="grossWeight" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+      <view class="deleteIcon" wx:if="{{grossWeight}}" catchtap="clearValue" data-keys="grossWeight" data-isrequired="true">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
+    </view>
+
+    <view class="error-tips" wx:if="{{tips.grossWeight}}">
+      <image src="/assets/img/search/error@2x.png"></image>
+      <text>{{tips.grossWeight}}</text>
     </view>
   </view>
   <view>
     <view class="title">Unit <text class="red">*</text></view>
-    <view class="selectContainer" catchtap="openPopup" data-type="1">
-      <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
+    <view class="selectContainer" catchtap="openPicker" data-type="2">
+      <view style="{{pickerChooseReault[2].text !== '' ? 'color: #071E5D;' : ''}}">{{pickerChooseReault[2].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
   </view>
@@ -107,9 +118,21 @@
   </view>
   <view>
     <view class="title">Packaging Description <text class="red">*</text></view>
-    <view class="selectContainer" catchtap="openPopup" data-type="1">
-      <view style="{{equipmentType !== '' ? 'color: #071E5D;' : ''}}">{{equipmentTypeName || verifyInfo.select}}</view>
-      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+    <view class="inputContainers">
+      <view class="inputsContainer">
+        <input type="text" bindinput="enterPackagingDescription" disabled="{{!pickerChooseReault[1].text}}" catchtap="clickPackagingDescription" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{packageDescriptionName}}" />
+        <view class="deleteIcon" wx:if="{{packageDescriptionName}}" catchtap="clearValue" data-keys="packageDescriptionName">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+      </view>
+      <scroll-view class="scroll-view" wx:if='{{packageDescriptionLists.length}}' scroll-y>
+        <view wx:for="{{packageDescriptionLists}}" wx:key="index" class="item" bindtap="choosePackagingDescription" data-item="{{item}}" data-index="{{index}}">
+          <view class="polname">{{item.packingRef + ' - ' + item.packagingDescription}}</view>
+        </view>
+      </scroll-view>
+      <view class="scroll-view" wx:if="{{packageDescriptionLoading}}">
+        <view class="item">Loading...</view>
+      </view>
     </view>
   </view>
   <view>
@@ -122,10 +145,10 @@
     </view>
   </view>
   <view class="shipOwner">
-    <view class="checked">
-      <van-icon name="success" size="14px" color="#ffffff" />
+    <view class="checked {{isTransport?'bg':''}}" catchtap="checkBoxToggle" data-keys="isTransport">
+      <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isTransport}}" />
     </view>
-    <view>Transport of dangerous goods in limited quantities</view>
+    <view class="text" catchtap="checkBoxToggle" data-keys="isTransport">Transport of dangerous goods in limited quantities</view>
   </view>
 </view>
 
@@ -164,3 +187,12 @@
 
   <button class="confirmBtn" hover-class="buttonClick">Save</button>
 </view>
+
+<!-- picker -->
+<custom-picker
+  columns="{{columnsList}}"
+  valueKey="{{pickerValueKey}}"
+  defaultIndex="{{pickerChooseReault[pickerValueKeyFlag].index}}"
+  showPopup="{{isShowPicker}}"
+  bindonClose="onPickerClose"
+  bind:onConfirm="onPickerConfirm"></custom-picker>
