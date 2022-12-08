@@ -227,6 +227,8 @@ page {
   border: 1rpx solid #DFDFDF;
   height: 190rpx;
   position: relative;
+  padding: 8rpx 10rpx 55rpx 10rpx;
+  box-sizing: border-box;
 }
 
 .textareaContainer textarea {

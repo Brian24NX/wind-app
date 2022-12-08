@@ -67,15 +67,36 @@ Page({
     netWeight: '',
     grossWeight: '',
     tips: {
+      unNumberName: '',
+      packingGroup: '',
+      classNumber: '',
+      emsCode: '',
       chemicalName: '',
       netWeight: '',
-      grossWeight: ''
+      grossWeight: '',
+      flashPoint: '',
+      emergencyContactName: '',
+      emergencyNumber: '',
+      quantityValue: '',
+      unit: '',
+      packageDescriptionName: '',
+      quantityValue: '',
+      emergencyContactName: '',
+      emergencyNumber: ''
     },
     // Packaging Description
     packageDescriptionLoading: !1,
     packageDescriptionLists: [],
     packageDescriptionCode: '',
-    packageDescriptionName: ''
+    packageDescriptionName: '',
+    quantityValue: '',
+    emergencyContactName: '',
+    emergencyNumber: '',
+    commentOptional: '',
+    commentOptionalLength: 0,
+    scrollEmelemt: '', // 定位元素
+    requiredEmelemt: [], // 是否存在验证为空的元素
+    scrollToElement: ['unnumber', 'chemical-name', 'packing-group', 'class', 'emergency-procedure', 'flash-point', 'net-weight', 'gross-weight', 'unit', 'packaging-description', 'quantity', 'emergency-contact-name', 'emergency-number']
   },
 
   /**
@@ -88,14 +109,19 @@ Page({
   },
 
   enterUNNumber: utils.debounce(function (e) {
-    const data = e['0'].detail.value
+    const data = e['0'].detail.value;
+
     this.setData({
-      showUnNumberLoading: !0,
+      unNumberName: data,
+      [`tips.unNumberName`]: !data? `${this.data.verifyInfo.required}` : '',
+      showUnNumberLoading: !1,
       UNNumberLists: []
     })
-    if (data.length < 2) {
-      return
-    }
+    if (data.length < 2)  return false;
+
+    this.setData({
+      showUnNumberLoading: !0,
+    })
     this.getUNNumber(data)
   }, 800),
 
@@ -217,7 +243,6 @@ Page({
   onPickerConfirm({detail}) {
     const _t = this;
     const type = _t.data.pickerValueKeyFlag;
-
     // set select data
     _t.setData({
       [`pickerChooseReault.${type}`]: detail,
@@ -229,8 +254,16 @@ Page({
     console.log('detail', detail)
     if (type === 1) {
       _t.setData({
+        [`tips.packingGroup`]: '',
+        [`tips.classNumber`]: '',
+        [`tips.emsCode`]: '',
         classNumber: detail.imdgClass,
         emsCode: detail.emsCode
+      });
+    }
+    if (type === 2) {
+      _t.setData({
+        [`tips.unit`]: ''
       });
     }
   },
@@ -299,12 +332,19 @@ Page({
   },
 
   // setFlashPoint
-  setFlashPoint({detail}) {
+  setFlashPoint({detail, currentTarget}) {
+    const isrequired = currentTarget.dataset.isrequired;
     const flashPoint = this.recordFloat(detail.value);
+    let msg = '';
+    if (isrequired && !flashPoint) {
+      msg = `${this.data.verifyInfo.required}`;
+    } else {
+      msg = ``;
+    }
     this.setData({
-      flashPoint
+      flashPoint,
+      [`tips.flashPoint`]: msg
     })
-    console.log('setFlashPoint', flashPoint)
   },
 
   // setValues
@@ -321,8 +361,8 @@ Page({
 
       if (keys === 'netWeight') {
         const grossWeight = this.data.grossWeight;
-        let msg ='毛重必须小于净重';
-        if (grossWeight && (parseInt(value) > parseInt(grossWeight))) {
+        let msg ='毛重必须大于净重';
+        if (grossWeight && ( parseInt(grossWeight) > parseInt(value) )) {
           msg = '';
         };
         this.setData({
@@ -345,8 +385,8 @@ Page({
     let msg = '';
     console.log('value', value, netWeight , parseInt(value) , parseInt(netWeight))
     if (!value) msg = `${verifyInfo.required}`;
-    if (value && !netWeight) msg = `毛重必须小于净重`;
-    if (value && netWeight && parseInt(value) >= parseInt(netWeight)) msg = `毛重必须小于净重`;
+    if (value && !netWeight) msg = `毛重必须大于净重`;
+    if (value && netWeight && parseInt(netWeight) >= parseInt(value)) msg = `毛重必须大于净重`;
     _t.setData({
       [`tips.${keys}`]: msg
     })
@@ -395,9 +435,11 @@ Page({
       })
       return false
     };
-    const data = e[0].detail.value
+    const data = e[0].detail.value;
+
     this.setData({
       // showUNNumberDelete: !!data,
+      [`tips.packageDescriptionName`]: !data? `${this.data.verifyInfo.required}` : '',
       packageDescriptionLoading: !0,
       packageDescriptionLists: []
     })
@@ -416,4 +458,154 @@ Page({
       packageDescriptionLists: []
     })
   },
+
+  // setCommentOptionalLength
+  setCommentOptionalLength({detail}) {
+    this.setData({
+      commentOptionalLength: detail.value.length || 0
+    })
+  },
+
+  // scrollTo
+  scrollTo({element, duration=200, offsetTop=0}) {
+    // 使用wx.createSelectorQuery()查询到需要滚动到的元素位置
+    // console.log('element', element)
+    const query = wx.createSelectorQuery().in(this)
+    if (!element) return false;
+    query.select(`.scroll-${element}`).boundingClientRect(res => {
+      // console.log('res', res)
+      // 使用wx.getSysTemInfo()获取设备及页面高度windowHeight（px）
+      wx.getSystemInfo({
+        success(ress) {
+          // console.log('ress', ress)
+          wx.pageScrollTo({
+            scrollTop: res.top + 1250,
+            duration
+          })
+        }
+      })
+    }).exec()
+  },
+
+  // verify
+  // keys 为判断的keys
+  // tipkey 为输出判断的key
+  // scrollElement 为校验滚动点元素
+  verify(keys='', tipkey='', scrollElement='', nativeData='') {
+    const _t = this;
+    const data = _t.data;
+    const dataKeys = keys.split(',');
+    let isFlag = false;
+    let requiredEmelemt = '';
+    if (data.requiredEmelemt.length < 1) {
+      requiredEmelemt = Array(data.scrollToElement.length)
+    } else {
+      requiredEmelemt = data.requiredEmelemt
+    }
+
+    dataKeys.forEach(v => {
+      let msg = '';
+      if (!data[v] && !nativeData) {
+        msg = `${data.verifyInfo.required}`;
+        isFlag = true;
+      }
+      this.setData({
+        [`tips.${tipkey}`]: msg
+      })
+    });
+
+    const isFind = requiredEmelemt.findIndex(v => v === scrollElement);
+    const index = data.scrollToElement.findIndex(v => v === scrollElement);
+    if (isFlag) {
+      isFind === -1 && (requiredEmelemt[index] = scrollElement);
+    } else {
+      if (isFind !== -1) {
+        requiredEmelemt[index] = ''
+      }
+    };
+    this.setData({ requiredEmelemt });
+    return isFlag;
+  },
+
+  // onSave
+  onSave() {
+    const _t = this;
+    const scrollToElement = _t.data.scrollToElement;
+
+
+    // UN Number or Proper Shipping Name
+    if (_t.verify('unNumberCode,unNumberName', 'unNumberName', scrollToElement[0])) {
+      console.log('UN Number or Proper Shipping Name - 为空')
+    }
+
+    // Chemical Name
+    if (_t.verify('chemicalName', 'chemicalName', scrollToElement[1])) {
+      console.log('chemicalName - 为空')
+    }
+
+    // Packing Group
+    if (_t.verify('pickerChooseReault[1]text', 'packingGroup', scrollToElement[2], _t.data.pickerChooseReault[1].text)) {
+      console.log('chemicalName - 为空')
+    }
+
+    // Class - classNumber
+    if (_t.verify('classNumber', 'classNumber', scrollToElement[3])) {
+      console.log('classNumber - 为空')
+    }
+
+    // Emergency procedure - emsCode
+    if (_t.verify('emsCode', 'emsCode', scrollToElement[4])) {
+      console.log('emsCode - 为空')
+    }
+
+    // Flash Point - flashPoint
+    if (_t.verify('flashPoint', 'flashPoint', scrollToElement[5])) {
+      console.log('flashPoint - 为空')
+    }
+
+    // Net Weight - netWeight
+    if (_t.verify('netWeight', 'netWeight', scrollToElement[6])) {
+      console.log('netWeight - 为空')
+    }
+
+    // Gross Weight - grossWeight
+    if (_t.verify('grossWeight', 'grossWeight', scrollToElement[7])) {
+      console.log('grossWeight - 为空')
+    }
+
+    // Unit - grossWeight
+    if (_t.verify('pickerChooseReault[2].text', 'unit', scrollToElement[8], _t.data.pickerChooseReault[2].text)) {
+      console.log('grossWeight - 为空')
+    }
+
+    // Packaging Description - packageDescriptionName
+    if (_t.verify('packageDescriptionCode,packageDescriptionName', 'packageDescriptionName', scrollToElement[9])) {
+      console.log('grossWeight - 为空')
+    }
+
+    // Quantity - quantityValue
+    if (_t.verify('quantityValue', 'quantityValue', scrollToElement[10])) {
+      console.log('quantityValue - 为空')
+    }
+
+    // Emergency Contact Name - emergencyContactName
+    if (_t.verify('emergencyContactName', 'emergencyContactName', scrollToElement[11])) {
+      console.log('emergencyContactName - 为空')
+    }
+
+    // Emergency Number - emergencyNumber
+    if (_t.verify('emergencyNumber', 'emergencyNumber', scrollToElement[12])) {
+      console.log('emergencyNumber - 为空')
+    }
+
+    // scrollTo
+    _t.scrollTo({element: _t.data.requiredEmelemt.find( v => !!v )})
+
+    if (_t.data.requiredEmelemt.findIndex( v => !!v ) !== -1) {
+      console.log('存在必填为空', _t.data.requiredEmelemt, _t.data.requiredEmelemt.findIndex( v => !!v ))
+      return false
+    }
+
+    // do something...
+  }
 })
