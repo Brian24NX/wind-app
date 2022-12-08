@@ -350,14 +350,40 @@
     </view>
     <view class="paymentTitle mar"><text>{{languageContent.paymentLocation}}<text class="red">*</text></text></view>
     <view class="inputContainers">
-      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" />
+      <view class="inputsContainer">
+        <input type="text" bindinput="changepaymentLocation" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{payment.paymentLocation.name}}" />
+        <view class="deleteIcon" wx:if="{{showPaymentLocationDelete}}" catchtap="deleteValue2" data-type="showPaymentLocationDelete">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+      </view>
+      <scroll-view class="scroll-view" wx:if='{{paymentLocationList.length}}' scroll-y>
+        <view wx:for="{{paymentLocationList}}" wx:key="index" class="item" bindtap='choosePaymentLocation' data-index="{{index}}">
+          <view class="polname">{{item.pointName}}</view>
+        </view>
+      </scroll-view>
+      <view class="scroll-view" wx:if="{{showPaymentLocation}}">
+        <view class="item">Loading...</view>
+      </view>
     </view>
     <view class="paymentTitle mar">
       <text>{{languageContent.freightPayer}}<text class="red">*</text></text>
       <!-- <image src="/assets/img/booking/modify.png" catchtap="toModifyParty" /> -->
     </view>
     <view class="inputContainers">
-      <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" />
+      <view class="inputsContainer">
+        <input type="text" bindinput="changefreightPayer" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{payment.freightPayerName}}" />
+        <view class="deleteIcon" wx:if="{{payment.freightPayerName}}" catchtap="deleteValue2" data-type="showFreightPayerDelete">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+      </view>
+      <scroll-view class="scroll-view" wx:if='{{freightPayerList.length}}' scroll-y>
+        <view wx:for="{{freightPayerList}}" wx:key="index" class="item" bindtap='chooseFreightPayer' data-index="{{index}}">
+          <view class="polname">{{item.agency.name + ';' + item.city.name + ';' + item.city.code}}</view>
+        </view>
+      </scroll-view>
+      <view class="scroll-view" wx:if="{{showFreightPayer}}">
+        <view class="item">Loading...</view>
+      </view>
     </view>
   </view>
 
@@ -395,7 +421,7 @@
     <view class="inputContainers">
       <view class="inputsContainer">
         <input type="text" bindinput="changeOffice" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{preferredBookingOffice.name}}" />
-        <view class="deleteIcon" wx:if="{{showOfficeDelete}}" catchtap="deleteValue" data-type="showOfficeDelete">
+        <view class="deleteIcon" wx:if="{{showOfficeDelete}}" catchtap="deleteValue2" data-type="showOfficeDelete">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
       </view>

@@ -18,7 +18,7 @@ export const countryList = (params) => {
   return getRequest('/api/miniapp/cdrCodifiedsCountry', params, true, true)
 }
 
-// 获取国家列表
+// 获取地区列表
 export const stateList = (params) => {
   return getRequest('/api/miniapp/cdrRegion', params, true, true)
 }
@@ -47,4 +47,14 @@ export const packageDescription = (params) => {
 // Party搜索
 export const bookPartyList = (params) => {
   return getRequest("/api/miniapp/bookingPartnersSearch", params, true, true)
+}
+
+// paymentLocationLists
+export const paymentLocationLists = (params) => {
+  return getRequest('/api/miniapp/placesOfPayment', params, true)
+}
+
+// 港口详情
+export const fuzzyPointSearch = (params) => {
+  return getRequest('/api/miniapp/fuzzyPointSearch', params, true, false, true)
 }

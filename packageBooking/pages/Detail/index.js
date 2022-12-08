@@ -5,7 +5,9 @@ const dayjs = require("dayjs");
 import {
   bookOfficeList,
   countryList,
-  stateList
+  stateList,
+  paymentLocationLists,
+  fuzzyPointSearch
 } from '../../api/modules/booking';
 Page({
 
@@ -18,6 +20,12 @@ Page({
     showOffice: false,
     officeList: [],
     showOfficeDelete: false,
+    showFreightPayer: false,
+    freightPayerList: [],
+    showFreightPayerDelete: false,
+    showPaymentLocation: false,
+    paymentLocationList: [],
+    showPaymentLocationDelete: false,
     routeSelected: null,
     commodityList: [],
     partyList: [],
@@ -68,7 +76,16 @@ Page({
       transportComment: ""
     },
     payment: {
-      freightPayment: 'Prepaid'
+      freightPayment: 'Prepaid',
+      freightPayerCode: '',
+      freightPayerName: '',
+      paymentLocation: {
+        code: "",
+        name: "",
+        countryCode: "",
+        countryName: "",
+        placeType: ""
+      }
     },
     bookingComment: '',
     currentPopup: '',
@@ -104,10 +121,14 @@ Page({
     wx.setNavigationBarTitle({
       title: languageUtils.languageVersion().lang.page.bookingDetail.bookingDetail,
     })
+    this.data.payment.freightPayerCode = wx.getStorageSync('partnerList')[0].code
+    this.data.payment.freightPayerName = wx.getStorageSync('partnerList')[0].name
     this.setData({
       languageContent: languageUtils.languageVersion().lang.page.bookingDetail,
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
-      routeSelected: wx.getStorageSync('bookingRoutings')[options.index]
+      routeSelected: wx.getStorageSync('bookingRoutings')[options.index],
+      payment: this.data.payment,
+      showFreightPayerDelete: true
     })
     this.getCountryList()
   },
@@ -267,7 +288,7 @@ Page({
     bookOfficeList({
       agencyName: data,
       shippingCompany: '0001'
-    }, true).then(res => {
+    }).then(res => {
       this.setData({
         showOffice: false
       })
@@ -292,12 +313,134 @@ Page({
     })
   },
 
-  deleteValue(e) {
+  changefreightPayer: utils.debounce(function (e) {
+    const data = e['0'].detail.value
+    this.setData({
+      showFreightPayerDelete: !!data,
+      showFreightPayer: false,
+      freightPayerList: []
+    })
+    if (data.length < 2) {
+      return
+    }
+    this.getFreightPayer(data)
+  }, 800),
+
+  getFreightPayer(data) {
+    this.setData({
+      showFreightPayer: true
+    })
+    bookOfficeList({
+      agencyName: data,
+      shippingCompany: '0001'
+    }).then(res => {
+      this.setData({
+        showFreightPayer: false
+      })
+      if (res.data.length) {
+        this.setData({
+          freightPayerList: res.data || []
+        })
+      }
+    }, () => {
+      this.getFreightPayer(data)
+    })
+  },
+
+  chooseFreightPayer(e) {
+    const index = e.currentTarget.dataset.index
+    this.data.payment.freightPayerCode = this.data.freightPayerList[index].agency.code
+    this.data.payment.freightPayerName = this.data.freightPayerList[index].agency.name + ';' + this.data.freightPayerList[index].city.name + ';' + this.data.freightPayerList[index].city.code
+    this.setData({
+      freightPayerList: [],
+      payment: this.data.payment
+    })
+  },
+
+  changepaymentLocation: utils.debounce(function (e) {
+    const data = e['0'].detail.value
+    this.setData({
+      showPaymentLocationDelete: !!data,
+      showPaymentLocation: false,
+      paymentLocationList: []
+    })
+    if (data.length < 2) {
+      return
+    }
+    this.getPaymentLocation(data)
+  }, 800),
+
+  getPaymentLocation(data) {
+    this.setData({
+      showPaymentLocation: true
+    })
+    paymentLocationLists({
+      searchStr: data,
+      shippingCompany: '0001'
+    }).then(res => {
+      this.setData({
+        showPaymentLocation: false
+      })
+      if (res.data.length) {
+        this.setData({
+          paymentLocationList: res.data || []
+        })
+      }
+    }, () => {
+      this.getPaymentLocation(data)
+    })
+  },
+
+  choosePaymentLocation(e) {
+    const index = e.currentTarget.dataset.index
+    this.data.payment.paymentLocation.code = this.data.paymentLocationList[index].pointCode
+    this.data.payment.paymentLocation.name = this.data.paymentLocationList[index].pointName
+    this.setData({
+      paymentLocationList: [],
+      payment: this.data.payment
+    })
+    this.getPlaceInfo()
+  },
+
+  getPlaceInfo() {
+    fuzzyPointSearch({
+      pointCode: this.data.payment.paymentLocation.code
+    }).then(res => {
+      this.data.payment.paymentLocation.countryCode = res.data.country.code
+      this.data.payment.paymentLocation.countryName = res.data.country.name
+      this.setData({
+        payment: this.data.payment
+      })
+    }, () => {
+      this.getPlaceInfo()
+    })
+  },
+
+  deleteValue2(e) {
     const type = e.currentTarget.dataset.type
     if (type === 'showOfficeDelete') {
       this.setData({
         showOfficeDelete: false,
         preferredBookingOffice: null
+      })
+    } else if (type === 'showFreightPayerDelete') {
+      this.data.payment.freightPayerCode = ''
+      this.data.payment.freightPayerName = ''
+      this.setData({
+        showFreightPayerDelete: false,
+        payment: this.data.payment
+      })
+    } else if (type === 'showPaymentLocationDelete') {
+      this.data.payment.paymentLocation = {
+        code: "",
+        name: "",
+        countryCode: "",
+        countryName: "",
+        placeType: ""
+      }
+      this.setData({
+        showPaymentLocationDelete: false,
+        payment: this.data.payment
       })
     }
   },
