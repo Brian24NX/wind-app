@@ -24,7 +24,7 @@ Page({
     vasList: [],
     preferredBookingOffice: null,
     noOfBooking: 1,
-    currentStep: 'first',
+    currentStep: 'second',
     haulageType: 'door',
     transportModeList: [{
       id: 'Road',
