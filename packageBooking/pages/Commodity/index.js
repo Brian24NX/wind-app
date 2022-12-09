@@ -525,6 +525,7 @@ Page({
 
     let unListData = JSON.parse(JSON.stringify(unList));
     let hazardousDetails = unListData.map(v => {
+      console.log('unListData', v)
       return  {
         // hazardousId: 0,
         unNumber: v.unNumberCode,
@@ -534,7 +535,7 @@ Page({
         ems: v.emsCode,
         flashPoint: v.flashPoint,
         flashPointUnit: 'C',
-        marinePollutant: true,
+        // marinePollutant: true,
         netWeight: v.netWeight,
         grossWeight: v.grossWeight,
         unit: v.pickerChooseReault[2].value,
