@@ -56,7 +56,8 @@ Page({
     quantityValue: '',
     weightValue: '',
     totalWeightValue: '',
-    isIncludeHazardous: false
+    isIncludeHazardous: false,
+    unList: []
   },
 
   /**
@@ -70,6 +71,23 @@ Page({
       languageContent: languageUtils.languageVersion().lang.page.bookingDetail,
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
     })
+  },
+
+  onShow() {
+    let unList = wx.getStorageSync('unNumberUpdate')
+
+    // console.log('unList', unList)
+    // 提交数据设置
+    if(unList){
+      this.setData({
+        unList
+      },()=>{
+        wx.removeStorageSync('unNumberUpdate')
+      })
+    };
+
+    // remove cache
+    wx.removeStorageSync('unNumberCache')
   },
 
   enterCommodity: utils.debounce(function (e) {
@@ -97,11 +115,9 @@ Page({
       this.setData({
         showCommodity: false
       })
-      if (res.data.length) {
-        this.setData({
-          commodityList: res.data || []
-        })
-      }
+      this.setData({
+        commodityList: res.data || []
+      })
     }, () => {
       this.getCommodities(data)
     })
@@ -120,10 +136,35 @@ Page({
 
   addUNNumber() {
     wx.navigateTo({
-      url: '/packageBooking/pages/UNNumber/index',
+      url: '/packageBooking/pages/UNNumber/index'
     })
   },
 
+  // updateUNNumber
+  updateUNNumber({currentTarget}) {
+    const id = parseInt(currentTarget.dataset.id)
+    wx.navigateTo({
+      url: `/packageBooking/pages/UNNumber/index?id=${id}`,
+      // success: (res) => {
+      //   // 通过 eventChannel 向被打开页面传送数据
+      //   res.eventChannel.emit('test-data', { data: 'test' })
+      //   // res.eventChannel.emit 第二个参数是要传递的数据 **第二个参数只能是key-value形式的对象**
+      // }
+    });
+
+    wx.setStorageSync('unNumberCache', this.data.unList);
+  },
+
+  // deleteUNNumber
+  deleteUNNumber({currentTarget}) {
+    const id = parseInt(currentTarget.dataset.id);
+    const unList = JSON.parse(JSON.stringify(this.data.unList));
+    const index = unList.findIndex( v => v.id === id);
+    unList.splice(index, 1);
+    this.setData({
+      unList
+    })
+  },
   // openPicker
   openPicker({currentTarget}) {
     const _t = this;

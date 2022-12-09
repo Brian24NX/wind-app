@@ -6,12 +6,15 @@ import {
 } from '../../api/modules/booking'
 const languageUtils = require("../../../utils/languageUtils")
 const utils = require('../../../utils/util')
+// 获取全部页面
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id: '',
     verifyInfo: {},
     // showUNNumberDelete: false,
     showUnNumberLoading: false,
@@ -19,7 +22,6 @@ Page({
     unNumberCode: '',
     unNumberName: '',
     // picker
-    columnsList: [],
     columnsList: [],
     isShowPicker: false,
     pickerValueKeyFlag: 1, // 1 => Packing Group , 2 => Unit, 3 => Packaging Description
@@ -106,6 +108,59 @@ Page({
     this.setData({
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
     })
+
+    // 数据回显设置
+    if (options?.id) {
+      const prevData = JSON.parse(JSON.stringify(wx.getStorageSync('unNumberCache') || []));
+
+      console.log('prevData', prevData)
+      if (prevData.length > 0) {
+        const index = prevData.findIndex(v => parseInt(v.id) === parseInt(options.id));
+        const {
+          id,
+          unNumberCode,
+          unNumberName,
+          chemicalName,
+          pickerChooseReault,
+          classNumber,
+          emsCode,
+          flashPoint,
+          netWeight,
+          grossWeight,
+          packageDescriptionCode,
+          packageDescriptionName,
+          quantityValue,
+          emergencyContactName,
+          emergencyNumber,
+          isIncludeHazardous,
+          isTransport,
+          commentOptional,
+          commentOptionalLength,
+          cacheData } = prevData[index];
+        this.setData({
+          id,
+          unNumberCode,
+          unNumberName,
+          chemicalName,
+          pickerChooseReault,
+          classNumber,
+          emsCode,
+          flashPoint,
+          netWeight,
+          grossWeight,
+          packageDescriptionCode,
+          packageDescriptionName,
+          quantityValue,
+          emergencyContactName,
+          emergencyNumber,
+          isIncludeHazardous,
+          isTransport,
+          commentOptional,
+          commentOptionalLength,
+          cacheData
+        })
+      }
+    }
   },
 
   enterUNNumber: utils.debounce(function (e) {
@@ -113,10 +168,21 @@ Page({
 
     this.setData({
       unNumberName: data,
+      unNumberCode: '',
+      classNumber: '',
+      emsCode: '',
+      [`pickerChooseReault.1.text`]: '',
+      [`pickerChooseReault.1.value`]: '',
       [`tips.unNumberName`]: !data? `${this.data.verifyInfo.required}` : '',
+      [`cacheData.packingGroup`]: [],
+      packageDescriptionLists: [],
+      packageDescriptionCode: '',
+      packageDescriptionName: '',
       showUnNumberLoading: !1,
       UNNumberLists: []
     })
+
+    console.log('enterUNNumber', this.data)
     if (data.length < 2)  return false;
 
     this.setData({
@@ -161,7 +227,7 @@ Page({
           const Data = JSON.parse(JSON.stringify(res.data));
           Data.map( (val, index) => {
             val.value = val.packingInsCode;
-            val.text = `${val.packingGroup}${val.variation? (' - '+val.variation) : ''}`;
+            val.text = `${val.packingGroup || val.unNumber || ''}${val.variation? (' - '+val.variation) : ''}`;
             val.index = index;
           });
           this.setData({
@@ -184,7 +250,7 @@ Page({
   clickPackingGroup(e) {
     if (!this.data.unNumberCode) {
       wx.showToast({
-        title: `请输入 UN Number or Proper Shipping Name`,
+        title: `请输入并获取正确的 UN Number or Proper Shipping Name`,
         icon: 'none'
       })
     } else {
@@ -274,10 +340,23 @@ Page({
     const isrequired = currentTarget.dataset.isrequired;
     keys.forEach(v => {
       let msg = '';
+      let _val = '';
       if (isrequired) msg = `${this.data.verifyInfo.required}`;
+
+      if (v.includes('pickerChooseReault.1')) {
+        var _g = v.split('.');
+        _val = this.data[_g[0]][_g[1]][_g[2]]
+      } else {
+        _val = this.data[v]
+      }
+      // 先设置提示语，再清数据
+      if (_val) {
+        this.setData({
+          [`tips.${v.includes('pickerChooseReault.1')? 'packingGroup': v}`]: msg
+        })
+      };
       this.setData({
         [v]: '',
-        [`tips.${v}`]: msg
       })
     })
   },
@@ -407,7 +486,7 @@ Page({
         packageDescriptionLists: res.data || []
       })
     }, () => {
-      // this.getPackageDescription(keyword)
+      this.getPackageDescription(keyword)
     })
   },
   // clickPackagingDescription
@@ -418,7 +497,8 @@ Page({
         icon: 'none'
       })
       this.setData({
-        packageDescriptionName: ''
+        packageDescriptionName: '',
+        packageDescriptionCode: ''
       })
     };
   },
@@ -431,21 +511,27 @@ Page({
         icon: 'none'
       })
       this.setData({
-        packageDescriptionName: ''
+        packageDescriptionName: '',
+        packageDescriptionCode: ''
       })
       return false
     };
     const data = e[0].detail.value;
 
     this.setData({
-      // showUNNumberDelete: !!data,
+      packageDescriptionName: data,
+      packageDescriptionCode: '',
       [`tips.packageDescriptionName`]: !data? `${this.data.verifyInfo.required}` : '',
-      packageDescriptionLoading: !0,
+      packageDescriptionLoading: !1,
       packageDescriptionLists: []
     })
     if (data.length < 2) {
       return false
     };
+
+    this.setData({
+      packageDescriptionLoading: !0,
+    })
     this.getPackageDescription(data)
   }, 800),
 
@@ -459,9 +545,10 @@ Page({
     })
   },
 
-  // setCommentOptionalLength
-  setCommentOptionalLength({detail}) {
+  // setCommentOptional
+  setCommentOptional({detail}) {
     this.setData({
+      commentOptional: detail.value,
       commentOptionalLength: detail.value.length || 0
     })
   },
@@ -534,7 +621,7 @@ Page({
 
 
     // UN Number or Proper Shipping Name
-    if (_t.verify('unNumberCode,unNumberName', 'unNumberName', scrollToElement[0])) {
+    if (_t.verify('unNumberName', 'unNumberName', scrollToElement[0])) {
       console.log('UN Number or Proper Shipping Name - 为空')
     }
 
@@ -573,14 +660,14 @@ Page({
       console.log('grossWeight - 为空')
     }
 
-    // Unit - grossWeight
+    // Unit - unit
     if (_t.verify('pickerChooseReault[2].text', 'unit', scrollToElement[8], _t.data.pickerChooseReault[2].text)) {
-      console.log('grossWeight - 为空')
+      console.log('unit - 为空')
     }
 
     // Packaging Description - packageDescriptionName
-    if (_t.verify('packageDescriptionCode,packageDescriptionName', 'packageDescriptionName', scrollToElement[9])) {
-      console.log('grossWeight - 为空')
+    if (_t.verify('packageDescriptionName', 'packageDescriptionName', scrollToElement[9])) {
+      console.log('packageDescriptionName - 为空')
     }
 
     // Quantity - quantityValue
@@ -606,6 +693,78 @@ Page({
       return false
     }
 
+    if (!_t.data.packageDescriptionCode) {
+      this.setData({
+        [`tips.packageDescriptionName`]: `请输入并获取正确的 Packaging Description`
+      })
+      _t.scrollTo({element: 'packaging-description'})
+      return false
+    }
+
+    // 上层页面数据设置
+    const prevData = JSON.parse(JSON.stringify(wx.getStorageSync('unNumberCache') || []));
+
+    console.log('prevData', prevData)
+    const { unNumberCode,
+      unNumberName,
+      chemicalName,
+      pickerChooseReault,
+      classNumber,
+      emsCode,
+      flashPoint,
+      netWeight,
+      grossWeight,
+      packageDescriptionCode,
+      packageDescriptionName,
+      quantityValue,
+      emergencyContactName,
+      emergencyNumber,
+      isIncludeHazardous,
+      isTransport,
+      commentOptional,
+      commentOptionalLength,
+      cacheData} = _t.data;
+    const newsData = {
+      id: prevData.length + 1,
+      unNumberCode,
+      unNumberName,
+      chemicalName,
+      pickerChooseReault,
+      classNumber,
+      emsCode,
+      flashPoint,
+      netWeight,
+      grossWeight,
+      packageDescriptionCode,
+      packageDescriptionName,
+      quantityValue,
+      emergencyContactName,
+      emergencyNumber,
+      isIncludeHazardous,
+      isTransport,
+      commentOptional,
+      cacheData
+    };
+    if (_t.data.id) {
+      const index = prevData.findIndex(v => parseInt(v.id) === parseInt(_t.data.id));
+      prevData[index] = newsData;
+    } else {
+      prevData.push(newsData);
+    };
+
+    wx.setStorageSync('unNumberUpdate', prevData);
+    wx.removeStorageSync('unNumberCache')
+
+    wx.showToast({
+      title: `保存成功`,
+      icon: 'none',
+      mask: true,
+      duration: 1000
+    })
+
+    setTimeout(() => {
+      wx.navigateBack()
+    }, 1000)
     // do something...
   }
 })
