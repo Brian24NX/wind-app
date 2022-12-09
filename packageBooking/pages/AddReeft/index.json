@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "van-switch": "@vant/weapp/switch/index",
+    "custom-picker": "/components/customPicker/index"
+  }
+}
