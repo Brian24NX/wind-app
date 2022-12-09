@@ -20,9 +20,9 @@
     <view wx:if="{{index}}">
       <view class="title">Party Name <text class="red">*</text></view>
       <view class="inputContainers">
-        <view class="inputsContainer">
+        <view class="inputsContainer {{item.required1 ? 'noRequestBorder' : ''}}">
           <input type="text" bindinput="enterParty" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" data-index="{{index}}" value="{{item.name}}" />
-          <view class="deleteIcon" wx:if="{{item.showPartyDelete}}" catchtap="deleteValue" data-type="showOfficeDelete">
+          <view class="deleteIcon" wx:if="{{item.showPartyDelete}}" catchtap="deletePartyValue" data-index="{{index}}">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>
         </view>
@@ -34,6 +34,10 @@
         <view class="scroll-view" wx:if="{{item.showParty}}">
           <view class="item">Loading...</view>
         </view>
+        <view class="noRequest" wx:if="{{item.required1}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
       </view>
     </view>
     <view>
@@ -41,15 +45,17 @@
       <view class="desc" wx:if="{{item.address.address1}}">{{item.address.address1}}, {{item.address.address2}}</view>
     </view>
     <view wx:if="{{!index}}">
-      <view class="title">My reference (Optional)</view>
+      <view class="title">My reference
+        <text class="optional">(optional)</text>
+      </view>
       <view class="inputs">
-        <input type="number" value="{{item.reference}}" bindinput="setReference" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
-        <view class="deleteIcon" wx:if="{{item.reference}}" catchtap="deleteValue">
+        <input type="number" value="{{item.bookingPartyReference}}" bindinput="setReference" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+        <view class="deleteIcon" wx:if="{{item.bookingPartyReference}}" catchtap="deleteValue">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
       </view>
     </view>
-    <view>
+    <view style="position: relative;">
       <view class="title">Role <text class="red">*</text></view>
       <view class="roleList">
         <view class="oneRole" wx:for="{{!index ? roleList : otherRoleList}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs" catchtap="chooseRole" data-index="{{index}}" data-roleid="{{items}}">
@@ -59,16 +65,14 @@
           <view>{{languageContent.partyRole[items]}}</view>
         </view>
       </view>
+      <view class="noRequest" wx:if="{{item.required2}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
     </view>
   </view>
   <button hover-class="buttonClick" class="addBtn" catchtap="addParty">+ Add Party</button>
 </view>
 <button class="bottomBtn" hover-class="buttonClick" catchtap="saveParty">Save</button>
 
-<custom-picker
-  columns="{{partnerList}}"
-  valueKey="name"
-  defaultIndex="{{defaultIndex}}"
-  showPopup="{{isShowPicker}}"
-  bindonClose="onPickerClose"
-  bind:onConfirm="onPickerConfirm"></custom-picker>
+<custom-picker columns="{{partnerList}}" valueKey="name" defaultIndex="{{defaultIndex}}" showPopup="{{isShowPicker}}" bindonClose="onPickerClose" bind:onConfirm="onPickerConfirm"></custom-picker>

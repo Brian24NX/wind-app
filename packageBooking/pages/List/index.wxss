@@ -86,14 +86,14 @@ page {
 .oneResult .resultTop {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1rpx solid #F4F4F4;
   padding: 0 0 20rpx 10rpx;
 }
 
 .oneResult .resultTop .tagContainer {
   display: flex;
-  flex-wrap: wrap;
-  width: 400rpx;
+  width: 420rpx;
 }
 
 .oneResult .resultTop .tagContainer .oneTag {
@@ -107,6 +107,12 @@ page {
   margin-right: 20rpx;
   height: 34rpx;
   line-height: 34rpx;
+}
+
+.oneTag2 {
+  background-color: #fff0db !important;
+  color: #d2740f !important;
+  margin-right: 0 !important;
 }
 
 .oneResult .resultTop .days {
@@ -167,6 +173,8 @@ page {
   justify-content: flex-end;
   padding-top: 30rpx;
   padding-right: 6rpx;
+  border-top: 1rpx solid #F4F4F4;
+  margin-top: 30rpx;
 }
 
 .resultBottoms .oneButtom {

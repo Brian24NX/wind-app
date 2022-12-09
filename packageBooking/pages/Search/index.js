@@ -517,11 +517,24 @@ Page({
       agreementReference: this.data.reference,
       shippingCompany: '0001'
     }).then(res => {
-      console.log(res)
       if (res.data && res.data.routings && res.data.routings.length) {
         wx.setStorageSync('bookingRoutings', res.data.routings)
         wx.setStorageSync('containers', res.data.commodities.preferedContainerTypes.concat(res.data.commodities.containerTypes))
+      } else {
+        wx.removeStorageSync('bookingRoutings')
+        wx.removeStorageSync('containers')
       }
+      const bookingSearchKey = {
+        portOfLoading: this.data.portOfLoadingLabel,
+        portOfDischarge: this.data.portOfDischargeLabel,
+        placeOfDelivery: this.data.placeOfOriginLabel || '',
+        deliveryHaulage: this.data.deliveryHaulage || '',
+        placeOfReceipt: this.data.finalPlaceOfDeliveryLabel || '',
+        receiptHaulage: this.data.receiptHaulage || '',
+        quotationReference: this.data.reference,
+        shippingCompany: '0001'
+      }
+      wx.setStorageSync('bookingSearchKey', bookingSearchKey)
       wx.redirectTo({
         url: '/packageBooking/pages/List/index',
       })

@@ -23,35 +23,36 @@
   <view class="oneResult" wx:for="{{routings}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
     <view class="resultTop">
       <view class="tagContainer">
-        <view class="oneTag">DIRECT</view>
-        <view class="oneTag">Late Booking</view>
+        <view class="oneTag" wx:if="{{!items.zhuanyun}}">DIRECT</view>
+        <view class="oneTag" wx:if="{{items.zhuanyun}}">TRANSHIPMENT</view>
+        <!-- <view class="oneTag oneTag2">LATE BOOKING</view> -->
       </view>
       <view class="days">{{items.transitDuration}} Days</view>
     </view>
     <view class="portTimeContainer">
       <view class="portTimes">
         <view>PORT</view>
-        <!-- <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.journeyLegs[0].departureDate.utc, true, true) : commonFilters.formatEnDateLocal(items.journeyLegs[0].departureDate.utc, '-', '', true, true)}}</view> -->
+        <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.departureDate.utc, true, true) : commonFilters.formatEnDateLocal(items.departureDate.utc, '-', '', true, true)}}</view>
       </view>
       <van-icon name="arrow" color="#04246A" />
       <view class="portTimes">
         <view>PORT</view>
-        <!-- <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.journeyLegs[0].arrivalDate.utc, true, true) : commonFilters.formatEnDateLocal(items.journeyLegs[0].arrivalDate.utc, '-', '', true, true)}}</view> -->
+        <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.arrivalDate.utc, true, true) : commonFilters.formatEnDateLocal(items.arrivalDate.utc, '-', '', true, true)}}</view>
       </view>
     </view>
     <view class="cutTimeContainers">
       <view class="cutTimeContainer">
-        <view class="oneCutTime">
+        <view class="oneCutTime" wx:if="{{items.specialCutOffDate}}">
           <view>Special BKG Cut-off</view>
-          <!-- <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(items.journeyLegs[0].specialCutOffDate.utc, true) : commonFilters.formatEnDateLocal(items.journeyLegs[0].specialCutOffDate.utc, '-', '', true)}}</view> -->
+          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(items.specialCutOffDate.utc, true) : commonFilters.formatEnDateLocal(items.specialCutOffDate.utc, '-', '', true)}}</view>
         </view>
-        <view class="oneCutTime">
+        <view class="oneCutTime" wx:if="{{items.standardCutOffDate}}">
           <view>Standard BKG Cut-off</view>
-          <!-- <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.journeyLegs[0].standardCutOffDate.utc, true) : commonFilters.formatEnDateLocal(items.journeyLegs[0].standardCutOffDate.utc, '-', '', true)}}</view> -->
+          <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.standardCutOffDate.utc, true) : commonFilters.formatEnDateLocal(items.standardCutOffDate.utc, '-', '', true)}}</view>
         </view>
         <view class="oneCutTime">
           <view>Port Cut-off</view>
-          <!-- <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(items.cutOffPortDateTime.utc, true) : commonFilters.formatEnDateLocal(items.cutOffPortDateTime.utc, '-', '', true)}}</view> -->
+          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(items.cutOffPortDateTime.utc, true) : commonFilters.formatEnDateLocal(items.cutOffPortDateTime.utc, '-', '', true)}}</view>
         </view>
       </view>
     </view>

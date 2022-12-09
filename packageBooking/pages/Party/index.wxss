@@ -91,6 +91,8 @@ page {
   background: #ffffff;
   border: 1rpx solid #00245d;
   max-height: 430rpx;
+  z-index: 10;
+  position: absolute;
 }
 
 .scroll-view .item {
@@ -160,6 +162,7 @@ page {
   border: 1rpx solid #DFDFDF;
   height: 80rpx;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   font-size: 28rpx;
   color: #04246A;
@@ -169,6 +172,19 @@ page {
 .inputs input {
   height: 100%;
   width: calc(100% - 80rpx);
+}
+
+.inputs .deleteIcon {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputs .deleteIcon image {
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .roleList {
@@ -226,4 +242,28 @@ page {
   font-weight: 500;
   border-radius: 0;
   line-height: 80rpx;
+}
+
+.optional {
+  color: #6B7790;
+}
+
+.noRequest {
+  font-size: 24rpx;
+  color: #E2014B;
+  position: absolute;
+  left: 0;
+  bottom: -34rpx;
+  display: flex;
+  align-items: center;
+}
+
+.noRequest image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
+.noRequestBorder {
+  border: 2rpx solid #E2014B !important;
 }

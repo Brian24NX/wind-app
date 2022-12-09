@@ -32,8 +32,9 @@ Page({
     vasList: [],
     preferredBookingOffice: null,
     noOfBooking: 1,
-    currentStep: 'second',
-    haulageType: 'door',
+    currentStep: '',
+    haulageDirectionType: '',
+    haulageType: '',
     transportModeList: [{
       id: 'Road',
       icon: '/assets/img/booking/mode/truck.png'
@@ -56,25 +57,7 @@ Page({
     appointmentDate: '',
     appointmentTime: '',
     transportMode: '',
-    haulageAddress: {
-      haulageAddress: {
-        contactName: "",
-        address1: "",
-        address2: "",
-        address3: "",
-        countryName: "",
-        countryCode: "",
-        stateCode: "",
-        stateName: "",
-        city: "",
-        zipCode: "",
-        email: "",
-        phoneNumber: ""
-      },
-      companyName: "",
-      customerReference: "",
-      transportComment: ""
-    },
+    haulageAddress: null,
     payment: {
       freightPayment: 'Prepaid',
       freightPayerCode: '',
@@ -110,14 +93,25 @@ Page({
     address2Remind: false,
     contactNameRemind: false,
     phoneNumberRemind: false,
-    emailRemind: false
+    emailRemind: false,
     // haulage错误提示结束
+    bookingSearchKey: null,
+    // =================请求数据start=================
+    portOfLoading: null,
+    portOfDischarge: null,
+    placeOfReceipt: null,
+    finalPlaceOfDelivery: null,
+    quotationReference: '',
+    exportHaulage: null,
+    importHaulage: null,
+    cargoes: []
+    // =================请求数据end=================
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onLoad() {
     wx.setNavigationBarTitle({
       title: languageUtils.languageVersion().lang.page.bookingDetail.bookingDetail,
     })
@@ -126,11 +120,93 @@ Page({
     this.setData({
       languageContent: languageUtils.languageVersion().lang.page.bookingDetail,
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
-      routeSelected: wx.getStorageSync('bookingRoutings')[options.index],
+      routeSelected: wx.getStorageSync('routeSelected'),
+      bookingSearchKey: wx.getStorageSync('bookingSearchKey'),
+      currentStep: (wx.getStorageSync('bookingSearchKey').placeOfDelivery || wx.getStorageSync('bookingSearchKey').placeOfReceipt) ? 'first' : 'second',
+      haulageDirectionType: wx.getStorageSync('bookingSearchKey').placeOfDelivery ? 'Export' : 'Import',
+      haulageType: wx.getStorageSync('bookingSearchKey').deliveryHaulage || wx.getStorageSync('bookingSearchKey').receiptHaulage,
       payment: this.data.payment,
+      quotationReference: wx.getStorageSync('bookingSearchKey').quotationReference,
       showFreightPayerDelete: true
     })
+    this.resetHaulageAddress()
+    this.setPortOfLoading()
+    this.setPortOfDischarge()
+    this.setPlaceOfReceipt()
+    this.setFinalPlaceOfDelivery()
     this.getCountryList()
+  },
+
+  setPortOfLoading() {
+    const bookingSearchKey = wx.getStorageSync('bookingSearchKey')
+    this.setData({
+      portOfLoading: {
+        code: bookingSearchKey.portOfLoading.split(';').pop(),
+        name: bookingSearchKey.portOfLoading.split(';')[0],
+        countryCode: "",
+        countryName: "",
+        placeType: ""
+      }
+    })
+    this.getCountryData(this.data.portOfLoading.code, 'portOfLoading')
+  },
+
+  setPortOfDischarge() {
+    const bookingSearchKey = wx.getStorageSync('bookingSearchKey')
+    this.setData({
+      portOfDischarge: {
+        code: bookingSearchKey.portOfDischarge.split(';').pop(),
+        name: bookingSearchKey.portOfDischarge.split(';')[0],
+        countryCode: "",
+        countryName: "",
+        placeType: ""
+      }
+    })
+    this.getCountryData(this.data.portOfDischarge.code, 'portOfDischarge')
+  },
+
+  setPlaceOfReceipt() {
+    const bookingSearchKey = wx.getStorageSync('bookingSearchKey')
+    if (bookingSearchKey.placeOfReceipt) {
+      this.setData({
+        placeOfReceipt: {
+          code: bookingSearchKey.portOfDischarge.split(';').pop(),
+          name: bookingSearchKey.portOfDischarge.split(';')[0],
+          countryCode: "",
+          countryName: "",
+          placeType: bookingSearchKey.receiptHaulage
+        }
+      })
+      this.getCountryData(this.data.placeOfReceipt.code, 'placeOfReceipt')
+    }
+  },
+
+  setFinalPlaceOfDelivery() {
+    const bookingSearchKey = wx.getStorageSync('bookingSearchKey')
+    if (bookingSearchKey.placeOfDelivery) {
+      this.setData({
+        finalPlaceOfDelivery: {
+          code: bookingSearchKey.placeOfDelivery.split(';').pop(),
+          name: bookingSearchKey.placeOfDelivery.split(';')[0],
+          countryCode: "",
+          countryName: "",
+          placeType: bookingSearchKey.deliveryHaulage
+        }
+      })
+      this.getCountryData(this.data.finalPlaceOfDelivery.code, 'finalPlaceOfDelivery')
+    }
+  },
+
+  getCountryData(pointCode, data) {
+    fuzzyPointSearch({
+      pointCode
+    }).then(res => {
+      console.log(res)
+      this.data[data].countryCode = res.data.country.code
+      this.data[data].countryName = res.data.country.name
+    }, () => {
+      this.getCountryData(pointCode, data)
+    })
   },
 
   getCountryList() {
@@ -204,7 +280,7 @@ Page({
   },
 
   confirmHaulage() {
-    if (this.data.haulageType === 'door') {
+    if (this.data.haulageType === 'Door') {
       if (!this.data.appointmentDate) {
         this.setData({
           appointmentDateRemind: true
@@ -256,10 +332,59 @@ Page({
         transportModeRemind: true
       })
     }
-    if (this.data.haulageType === 'door' && !(this.data.appointmentDateRemind || this.data.appointmentTimeRemind || this.data.transportModeRemind || this.data.companyNameRemind || this.data.cityRemind || this.data.countryRemind || this.data.address2Remind || this.data.contactNameRemind || this.data.phoneNumberRemind || this.data.emailRemind)) {
-      this.setData({
-        currentStep: 'second'
-      })
+    if (this.data.haulageType === 'Door' && !(this.data.appointmentDateRemind || this.data.appointmentTimeRemind || this.data.transportModeRemind || this.data.companyNameRemind || this.data.cityRemind || this.data.countryRemind || this.data.address2Remind || this.data.contactNameRemind || this.data.phoneNumberRemind || this.data.emailRemind)) {
+      if (this.data.haulageDirectionType === 'Export' && this.data.placeOfReceipt) {
+        let exportHaulage = {
+          appointmentInfo: {
+            haulageLocation: this.data.finalPlaceOfDelivery,
+            appointmentTime: this.data.appointmentTime,
+            appointmentDate: {
+              local: this.data.appointmentDate,
+              utc: this.data.appointmentDate
+            },
+            transportMode: this.data.transportMode
+          },
+          haulageAddress: JSON.parse(JSON.stringify(this.data.haulageAddress))
+        }
+        this.setData({
+          haulageDirectionType: 'Import',
+          exportHaulage
+        })
+        this.resetHaulageAddress()
+        wx.pageScrollTo({
+          scrollTop: 0,
+          duration: 300
+        })
+        return
+      }
+      if (this.data.haulageDirectionType === 'Import') {
+        let importHaulage = {
+          appointmentInfo: {
+            haulageLocation: this.data.finalPlaceOfDelivery,
+            appointmentTime: this.data.appointmentTime,
+            appointmentDate: {
+              local: this.data.appointmentDate,
+              utc: this.data.appointmentDate
+            },
+            transportMode: this.data.transportMode
+          },
+          haulageAddress: JSON.parse(JSON.stringify(this.data.haulageAddress))
+        }
+        this.setData({
+          haulageDirectionType: 'Import',
+          importHaulage,
+          currentStep: 'second'
+        })
+
+
+
+        this.resetHaulageAddress()
+        wx.pageScrollTo({
+          scrollTop: 0,
+          duration: 300
+        })
+        return
+      }
     }
     if (this.data.haulageType === 'ramp' && !this.data.transportModeRemind) {
       this.setData({
@@ -293,6 +418,9 @@ Page({
         showOffice: false
       })
       if (res.data.length) {
+        res.data.forEach(item => {
+          item.label = (item.agency.name + ' - ' + item.city.name).toLocaleUpperCase()
+        })
         this.setData({
           officeList: res.data || []
         })
@@ -338,6 +466,9 @@ Page({
         showFreightPayer: false
       })
       if (res.data.length) {
+        res.data.forEach(item => {
+          item.label = (item.agency.name + ' - ' + item.city.name).toLocaleUpperCase()
+        })
         this.setData({
           freightPayerList: res.data || []
         })
@@ -350,7 +481,7 @@ Page({
   chooseFreightPayer(e) {
     const index = e.currentTarget.dataset.index
     this.data.payment.freightPayerCode = this.data.freightPayerList[index].agency.code
-    this.data.payment.freightPayerName = this.data.freightPayerList[index].agency.name + ';' + this.data.freightPayerList[index].city.name + ';' + this.data.freightPayerList[index].city.code
+    this.data.payment.freightPayerName = this.data.freightPayerList[index].label
     this.setData({
       freightPayerList: [],
       payment: this.data.payment
@@ -479,16 +610,6 @@ Page({
     })
   },
 
-  confirmLuXian() {
-    this.setData({
-      currentStep: 'second'
-    })
-    wx.pageScrollTo({
-      duration: 300,
-      scrollTop: 0
-    })
-  },
-
   chooseMode(e) {
     this.setData({
       transportMode: e.currentTarget.dataset.id,
@@ -603,5 +724,72 @@ Page({
     this.setData({
       bookingComment: e.detail.value
     })
+  },
+
+  resetHaulageAddress() {
+    this.setData({
+      appointmentDate: '',
+      appointmentTime: '',
+      transportMode: '',
+      haulageAddress: {
+        haulageAddress: {
+          contactName: "",
+          address1: "",
+          address2: "",
+          address3: "",
+          countryName: "",
+          countryCode: "",
+          stateCode: "",
+          stateName: "",
+          city: "",
+          zipCode: "",
+          email: "",
+          phoneNumber: ""
+        },
+        companyName: "",
+        customerReference: "",
+        transportComment: ""
+      }
+    })
+  },
+
+  submitBooking() {
+    if (!this.data.cargoes.length) {
+      // wx.show
+    }
+    let partners = []
+    this.data.partyList.forEach(party => {
+      party.roleIds.forEach(role => {
+        partners.push({
+          ...party,
+          role
+        })
+      })
+    })
+    const params = {
+      portOfLoading: this.data.portOfLoading,
+      portOfDischarge: this.data.portOfDischarge,
+      exportShippingType: 'FCL',
+      importShippingType: 'FCL',
+      exportMovementType: 'Port',
+      importMovementType: 'Port',
+      quotationReference: this.data.quotationReference,
+      placeOfReceipt: this.data.placeOfReceipt,
+      finalPlaceOfDelivery: this.data.finalPlaceOfDelivery,
+      exportHaulage: this.data.exportHaulage,
+      route: this.data.routeSelected,
+      importHaulage: this.data.importHaulage,
+      cargoes: this.data.cargoes,
+      bookingPartyReference: this.data.partyList[0].bookingPartyReference || '',
+      partners,
+      vasProducts: [],
+      payment: this.data.payment,
+      preferredBookingOffice: this.data.preferredBookingOffice,
+      bookingComment: this.data.bookingComment,
+      military: true,
+      communicationChannel: 'BKG_INSTANT',
+      noOfBooking: this.data.noOfBooking
+    }
+    console.log(params)
   }
 })

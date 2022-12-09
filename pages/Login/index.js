@@ -50,9 +50,15 @@ Page({
         if (partnerList && partnerList.length) {
           let partnerLists = []
           partnerList.forEach(i => {
+            i.partnerDetails.address1 = i.partnerDetails.addressLine1
+            i.partnerDetails.address2 = i.partnerDetails.addressLine2
+            i.partnerDetails.address3 = i.partnerDetails.addressLine3
+            delete i.partnerDetails.addressLine1
+            delete i.partnerDetails.addressLine2
+            delete i.partnerDetails.addressLine3
             partnerLists.push({
               code: i.partnerDetails.code,
-              name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city,
+              name: i.partnerDetails.fullName + ' - ' + i.partnerDetails.city,
               address: i.partnerDetails
             })
           })

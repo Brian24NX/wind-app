@@ -24,7 +24,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  onLoad() {
     const language = languageUtils.languageVersion().lang.page
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
@@ -35,6 +35,7 @@ Page({
         code: this.data.partnerList[0].code,
         name: this.data.partnerList[0].name,
         address: this.data.partnerList[0].address,
+        bookingPartyReference: '',
         roleIds: []
       })
     }
@@ -98,6 +99,7 @@ Page({
     this.data.partiesList[index].showParty = false
     this.data.partiesList[index].partyList = []
     this.data.partiesList[index].name = data
+    this.data.partiesList[index].required1 = false
     this.setData({
       partiesList: this.data.partiesList
     })
@@ -118,11 +120,9 @@ Page({
     }).then(res => {
       this.data.partiesList[index].showParty = false
       this.data.partiesList[index].partyList = res.data || []
-      if (res.data.length) {
-        this.setData({
-          partiesList: this.data.partiesList
-        })
-      }
+      this.setData({
+        partiesList: this.data.partiesList
+      })
     }, () => {
       this.getPartyList(data, index)
     })
@@ -158,6 +158,7 @@ Page({
         }
       }
     }
+    this.data.partiesList[index].required2 = false
     this.setData({
       partiesList: this.data.partiesList
     })
@@ -189,13 +190,50 @@ Page({
   },
 
   deleteValue() {
-    this.data.partiesList[0].reference = ''
+    this.data.partiesList[0].bookingPartyReference = ''
+    this.setData({
+      partiesList: this.data.partiesList
+    })
+  },
+
+  deletePartyValue(e) {
+    this.data.partiesList[e.currentTarget.dataset.index].code = ''
+    this.data.partiesList[e.currentTarget.dataset.index].name = ''
+    this.data.partiesList[e.currentTarget.dataset.index].required1 = false
+    this.data.partiesList[e.currentTarget.dataset.index].showPartyDelete = false
+    this.setData({
+      partiesList: this.data.partiesList
+    })
+  },
+
+  setReference(e) {
+    let partiesList = this.data.partiesList
+    partiesList[0].bookingPartyReference = e.detail.value
     this.setData({
       partiesList: this.data.partiesList
     })
   },
 
   saveParty() {
+    let arr = []
+    this.data.partiesList.forEach(i => {
+      if (!i.code) {
+        i.required1 = true
+        arr.push(1)
+      } else {
+        i.required1 = false
+      }
+      if (!i.roleIds.length) {
+        i.required2 = true
+        arr.push(2)
+      } else {
+        i.required2 = false
+      }
+    })
+    this.setData({
+      partiesList: this.data.partiesList
+    })
+    if (arr.length) return
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     currentPage.setPartyData(this.data.partiesList)

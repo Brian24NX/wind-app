@@ -6,12 +6,12 @@
       <view class="detailTopLeft">
         <text>Haulage Request</text>
         <view class="topTitleLine"></view>
-        <text style="color: #4468BA;">Export Door Details</text>
+        <text style="color: #4468BA;">{{haulageDirectionType}} {{haulageType}} Details</text>
       </view>
     </view>
     <view class="point">Location point</view>
-    <view class="pointValue">Kemi ; FI ; FIKEM</view>
-    <block wx:if="{{haulageType === 'door'}}">
+    <view class="pointValue">{{haulageDirectionType === 'Export' ? bookingSearchKey.placeOfDelivery : bookingSearchKey.placeOfReceipt}}</view>
+    <block wx:if="{{haulageType === 'Door'}}">
       <view style="position: relative;">
         <view class="key">Appointment Date</view>
         <view class="keyValue {{appointmentDateRemind ? 'noRequestBorder' : ''}}" catchtap="chooseDate">
@@ -50,7 +50,7 @@
       </view>
     </view>
   </view>
-  <block wx:if="{{haulageType === 'door'}}">
+  <block wx:if="{{haulageType === 'Door'}}">
     <view class="modifyContainer">
       <view class="modifyTitles">
         <view class="modifyTitleLine"></view>
@@ -213,7 +213,7 @@
       </view>
     </view>
   </block>
-  <button class="haulageBtn" catchtap="confirmLuXian" catchtap="confirmHaulage">Confirm</button>
+  <button class="haulageBtn" catchtap="confirmHaulage">Confirm</button>
 </block>
 <block wx:if="{{currentStep === 'second'}}">
   <view class="oneDetails">
@@ -222,7 +222,7 @@
         <image src="/assets/img/booking/ship.png" mode="aspectFit" />
         <view>{{languageContent.routeSelected}}</view>
       </view>
-      <image class="editIcon" src="/assets/img/booking/edit.png" />
+      <!-- <image class="editIcon" src="/assets/img/booking/edit.png" /> -->
     </view>
     <view class="routeContainer">
       <view class="stepLists">
@@ -237,29 +237,29 @@
           <view class="leftLines" style="top: 20rpx;">
             <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
           </view>
-          <view class="stepContent">{{routeSelected.journeyLegs[routeSelected.journeyLegs.length - 1].arrivalLocation.name + ', ' + commonFilters.substrs(routeSelected.journeyLegs[0].arrivalLocation.code)}}</view>
+          <view class="stepContent">{{routeSelected.journeyLegs[routeSelected.journeyLegs.length - 1].arrivalLocation.name + ', ' + commonFilters.substrs(routeSelected.journeyLegs[routeSelected.journeyLegs.length - 1].arrivalLocation.code)}}</view>
         </view>
       </view>
       <view class="portTimeContainer">
         <view class="portTimes">
           <view>PORT</view>
-          <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].departureDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].departureDate.utc, '-', '', true, true)}}</view>
+          <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.departureDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.departureDate.utc, '-', '', true, true)}}</view>
         </view>
         <van-icon name="arrow" color="#04246A" />
         <view class="portTimes">
           <view>PORT</view>
-          <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].arrivalDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].arrivalDate.utc, '-', '', true, true)}}</view>
+          <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.arrivalDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.arrivalDate.utc, '-', '', true, true)}}</view>
         </view>
       </view>
       <view class="cutTimeContainers">
         <view class="cutTimeContainer">
-          <view class="oneCutTime">
+          <view class="oneCutTime" wx:if="{{routeSelected.specialCutOffDate}}">
             <view>Special BKG Cut-off</view>
-            <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].specialCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].specialCutOffDate.utc, '-', '', true)}}</view>
+            <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.specialCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.specialCutOffDate.utc, '-', '', true)}}</view>
           </view>
-          <view class="oneCutTime">
+          <view class="oneCutTime" wx:if="{{routeSelected.standardCutOffDate}}">
             <view>Standard BKG Cut-off</view>
-            <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.journeyLegs[0].standardCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.journeyLegs[0].standardCutOffDate.utc, '-', '', true)}}</view>
+            <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.standardCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.standardCutOffDate.utc, '-', '', true)}}</view>
           </view>
           <view class="oneCutTime">
             <view>Port Cut-off</view>
@@ -378,7 +378,7 @@
       </view>
       <scroll-view class="scroll-view" wx:if='{{freightPayerList.length}}' scroll-y>
         <view wx:for="{{freightPayerList}}" wx:key="index" class="item" bindtap='chooseFreightPayer' data-index="{{index}}">
-          <view class="polname">{{item.agency.name + ';' + item.city.name + ';' + item.city.code}}</view>
+          <view class="polname">{{item.label}}</view>
         </view>
       </scroll-view>
       <view class="scroll-view" wx:if="{{showFreightPayer}}">
@@ -387,7 +387,7 @@
     </view>
   </view>
 
-  <view class="oneDetails">
+  <!-- <view class="oneDetails">
     <view class="detailTops">
       <view class="detailTopLeft">
         <image src="/assets/img/booking/vas.png" mode="aspectFit" />
@@ -410,7 +410,7 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
 
   <view class="oneDetails">
     <view class="detailTops">
@@ -427,7 +427,7 @@
       </view>
       <scroll-view class="scroll-view" wx:if='{{officeList.length}}' scroll-y>
         <view wx:for="{{officeList}}" wx:key="index" class="item" bindtap='chooseOffice' data-index="{{index}}">
-          <view class="polname">{{item.agency.name + ';' + item.city.name + ';' + item.city.code}}</view>
+          <view class="polname">{{item.label}}</view>
         </view>
       </scroll-view>
       <view class="scroll-view" wx:if="{{showOffice}}">
@@ -456,8 +456,8 @@
     </view>
   </view>
 
-  <button class="sureBtn" hover-class="hoverClass" wx:if="{{noOfBooking === 1}}">{{languageContent.save}}</button>
-  <button class="sureBtn" hover-class="hoverClass" wx:if="{{noOfBooking > 1}}">{{languageContent.save1 + noOfBooking + languageContent.save2}}</button>
+  <button class="sureBtn" hover-class="hoverClass" wx:if="{{noOfBooking === 1}}" catchtap="submitBooking">{{languageContent.save}}</button>
+  <button class="sureBtn" hover-class="hoverClass" wx:if="{{noOfBooking > 1}}" catchtap="submitBooking">{{languageContent.save1 + noOfBooking + languageContent.save2}}</button>
 </block>
 
 <custom-picker columns="{{columns}}" valueKey="{{valueKey}}" defaultIndex="{{defaultIndex}}" showPopup="{{isShowPicker}}" bindonClose="onPickerClose" bind:onConfirm="onPickerConfirm"></custom-picker>
