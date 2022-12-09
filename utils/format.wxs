@@ -154,6 +154,33 @@ var checkXieHuoGangKou2 = function (index, list) {
 }
 // ======== Instant Quote Route Detail end ========
 
+var checkIsVessel3 = function (type) {
+  return type
+}
+
+var checkQiYunGangKou3 = function (index, list) {
+  var newList = list.slice(0, index)
+  var res = true
+  for (var i = 0; i < newList.length; i++) {
+    var element = newList[i];
+    if (checkIsVessel3(element.voyageReference)) {
+      res = false
+      break
+    }
+  }
+  return res
+}
+
+var checkXieHuoGangKou3 = function (index, list) {
+  var res = false
+  var element = list[index];
+  var element2 = list[index - 1];
+  if (!checkIsVessel3(element.voyageReference) && checkIsVessel3(element2.voyageReference)) {
+    res = true
+  }
+  return res
+}
+
 // 格式化金额
 function formatAmount(number, digit) {
   if (!number) number = 0;
@@ -255,6 +282,9 @@ module.exports = {
   checkIsVessel2: checkIsVessel2,
   checkQiYunGangKou2: checkQiYunGangKou2,
   checkXieHuoGangKou2: checkXieHuoGangKou2,
+  checkIsVessel3: checkIsVessel3,
+  checkQiYunGangKou3: checkQiYunGangKou3,
+  checkXieHuoGangKou3: checkXieHuoGangKou3,
   formatAmount: formatAmount,
   deleteStr: deleteStr,
   setChina: setChina,
