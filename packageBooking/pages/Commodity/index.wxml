@@ -82,12 +82,12 @@
     </view>
     <view class="text" catchtap="checkBoxToggle" data-keys="isIncludeHazardous">Include Hazardous</view>
   </view>
-  <view class="unList">
-    <view class="oneUn">
-      <view>UN Number 11</view>
+  <view class="unList" wx:if="{{unList.length > 0}}">
+    <view class="oneUn" wx:for="{{unList}}" wx:key="index">
+      <view>{{item.unNumberName}}</view>
       <view class="unIcon">
-        <image src="/assets/img/booking/modify.png"/>
-        <image src="/assets/img/booking/delete.png"/>
+        <image src="/assets/img/booking/modify.png" catchtap="updateUNNumber" data-id="{{item.id}}" />
+        <image src="/assets/img/booking/delete.png" catchtap="deleteUNNumber" data-id="{{item.id}}"/>
       </view>
     </view>
   </view>

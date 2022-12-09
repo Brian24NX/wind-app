@@ -9,7 +9,7 @@
     <view class="inputContainers">
       <view class="inputsContainer number">
         <input type="text" bindinput="enterUNNumber" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{unNumberName}}" />
-        <view class="deleteIcon" wx:if="{{unNumberName}}" catchtap="clearValue" data-keys="unNumberName,UNNumberLists" data-isrequired="true">
+        <view class="deleteIcon" wx:if="{{unNumberName}}" catchtap="clearValue" data-keys="unNumberName,UNNumberLists,classNumber,emsCode,pickerChooseReault.1.text,pickerChooseReault.1.value,packageDescriptionLists,packageDescriptionCode,packageDescriptionName" data-isrequired="true">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
       </view>
@@ -224,7 +224,7 @@
   <view>
     <view class="title">Comment<text class="kexuan">(Optional)</text></view>
     <view class="textareaContainer">
-      <textarea maxlength="150" value="{{commentOptional}}" bindinput="setCommentOptionalLength"></textarea>
+      <textarea maxlength="150" value="{{commentOptional}}" bindinput="setCommentOptional"></textarea>
       <view class="fontCount">{{commentOptionalLength}}/150</view>
     </view>
   </view>
