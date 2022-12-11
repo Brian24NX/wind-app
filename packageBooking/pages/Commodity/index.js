@@ -43,13 +43,13 @@ Page({
       'en': [
         { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
         { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB', index: 2},
+        { value: 'LB', text: 'LB (Pound)', index: 2},
         { value: 'TON', text: 'TON (US Ton)', index: 3}
       ],
       'zh': [
         { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
         { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB', index: 2},
+        { value: 'LB', text: 'LB (Pound)', index: 2},
         { value: 'TON', text: 'TON (US Ton)', index: 3}
       ],
     },
@@ -105,9 +105,8 @@ Page({
     // remove cache
     wx.removeStorageSync('unNumberCache')
 
-    let isIncludeHazardous = this.data.isIncludeHazardous;
     this.setData({
-      isIncludeHazardous: isIncludeHazardous || (this.data.unList.length > 0? true: false)
+      isIncludeHazardous: (this.data.unList.length > 0? true: false)
     });
 
     // addReeft ----- start
