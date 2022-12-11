@@ -89,7 +89,7 @@ Page({
     companyNameRemind: false,
     cityRemind: false,
     countryRemind: false,
-    address2Remind: false,
+    address1Remind: false,
     contactNameRemind: false,
     phoneNumberRemind: false,
     emailRemind: false,
@@ -305,9 +305,9 @@ Page({
           countryRemind: true
         })
       }
-      if (!this.data.haulageAddress.haulageAddress.address2) {
+      if (!this.data.haulageAddress.haulageAddress.address1) {
         this.setData({
-          address2Remind: true
+          address1Remind: true
         })
       }
       if (!this.data.haulageAddress.haulageAddress.contactName) {
@@ -331,7 +331,7 @@ Page({
         transportModeRemind: true
       })
     }
-    if (this.data.haulageType === 'Door' && !(this.data.appointmentDateRemind || this.data.appointmentTimeRemind || this.data.transportModeRemind || this.data.companyNameRemind || this.data.cityRemind || this.data.countryRemind || this.data.address2Remind || this.data.contactNameRemind || this.data.phoneNumberRemind || this.data.emailRemind)) {
+    if (this.data.haulageType === 'Door' && !(this.data.appointmentDateRemind || this.data.appointmentTimeRemind || this.data.transportModeRemind || this.data.companyNameRemind || this.data.cityRemind || this.data.countryRemind || this.data.address1Remind || this.data.contactNameRemind || this.data.phoneNumberRemind || this.data.emailRemind)) {
       if (this.data.haulageDirectionType === 'Export' && this.data.placeOfReceipt) {
         let exportHaulage = {
           appointmentInfo: {

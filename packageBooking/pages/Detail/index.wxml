@@ -26,7 +26,7 @@
       <view style="position: relative;">
         <view class="key">Appointment Time</view>
         <view class="keyValue {{appointmentTimeRemind ? 'noRequestBorder' : ''}}" catchtap="chooseTime">
-          <view style="{{!appointmentTime ? 'color: #B9BFCA;' : ''}}">{{appointmentTime || 'hh:mm'}}</view>
+          <view style="{{!appointmentTime ? 'color: #B9BFCA;' : ''}}">{{appointmentTime || 'HH:MM'}}</view>
           <image src="/assets/img/booking/time.png"></image>
         </view>
         <view class="noRequest" wx:if="{{appointmentTimeRemind}}">
@@ -71,12 +71,25 @@
       </view>
       <view class="oneModify">
         <view class="title">
+          <text>Address</text>
+        </view>
+        <view class="inputs {{address2Remind ? 'noRequestBorder' : ''}}">
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="address1" value="{{haulageAddress.haulageAddress.address1}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.address1}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="address2" />
+        </view>
+        <view class="noRequest" wx:if="{{address1Remind}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
+      </view>
+      <view class="oneModify">
+        <view class="title">
           <text>Addittional Address Details</text>
           <text class="optional">(optional)</text>
         </view>
         <view class="inputs">
-          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="address1" value="{{haulageAddress.haulageAddress.address1}}" />
-          <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.address1}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="address1" />
+          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="address2" value="{{haulageAddress.haulageAddress.address2}}" />
+          <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.address2}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="address2" />
         </view>
       </view>
       <view class="oneModify">
@@ -113,19 +126,6 @@
         <view class="selectContainer" catchtap="openPopup" data-type="state">
           <view style="{{haulageAddress.haulageAddress.stateCode ? 'color: #071E5D;' : ''}}">{{haulageAddress.haulageAddress.stateName || verifyInfo.select}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
-        </view>
-      </view>
-      <view class="oneModify">
-        <view class="title">
-          <text>Address</text>
-        </view>
-        <view class="inputs {{address2Remind ? 'noRequestBorder' : ''}}">
-          <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="address2" value="{{haulageAddress.haulageAddress.address2}}" />
-          <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.address2}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="address2" />
-        </view>
-        <view class="noRequest" wx:if="{{address2Remind}}">
-          <image src="/assets/img/search/error@2x.png"></image>
-          <text>{{verifyInfo.required}}</text>
         </view>
       </view>
       <view class="oneModify">

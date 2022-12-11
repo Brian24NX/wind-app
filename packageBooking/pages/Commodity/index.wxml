@@ -116,7 +116,7 @@
       <view class="checked {{isAddReeft?'bg':''}}">
         <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isAddReeft}}" />
       </view>
-      <view class="text" data-keys="isAddReeft">Add Reeft<text class="red">*</text></view>
+      <view class="text" data-keys="isAddReeft">Add Reefer<text class="red">*</text></view>
       <image class="arrow-right" src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
     <!-- error-tips -->

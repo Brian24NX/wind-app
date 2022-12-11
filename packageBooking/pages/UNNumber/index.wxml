@@ -45,7 +45,7 @@
   <view class="scroll-packing-group">
     <view class="title">Packing Group <text class="red">*</text></view>
     <view class="selectContainer" catchtap="clickPackingGroup" data-type="1">
-      <view class="font-style-italic" style="{{pickerChooseReault[1].text !== '' ? 'color: #071E5D;' : ''}}">{{pickerChooseReault[1].text || verifyInfo.select}}</view>
+      <view style="{{pickerChooseReault[1].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[1].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
 
@@ -127,7 +127,7 @@
   <view class="scroll-unit">
     <view class="title">Unit <text class="red">*</text></view>
     <view class="selectContainer" catchtap="openPicker" data-type="2">
-      <view class="font-style-italic" style="{{pickerChooseReault[2].text !== '' ? 'color: #071E5D;' : ''}}">{{pickerChooseReault[2].text || verifyInfo.select}}</view>
+      <view style="{{pickerChooseReault[2].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[2].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
 
