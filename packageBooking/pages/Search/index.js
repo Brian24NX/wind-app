@@ -60,17 +60,35 @@ Page({
     showPlaceOfReceipt: false,
     showPlaceOfDelivery: false,
     showPoR: false,
-    showPoDe: false
+    showPoDe: false,
+    minDate: new Date().getTime(),
+    warmPrompt: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    const lag = languageUtil.languageVersion().lang.page.langue;
     this.initLanguage();
     this.setData({
       simulationDate: this.getDate()
-    })
+    });
+
+    //设置最小日期
+    const today = new Date() // 当前
+    this.setData({
+      minDate: today.setMonth(today.getMonth()-3)
+    });
+
+    // 提示提示语
+    const warmPrompt = {
+      zh: `增值服务功能升级中，敬请期待。如需添加增值服务产品，请移步至官网进行操作`,
+      en: `Value-added service (VAS) function coming soon. Please add additional services during booking on eCommerce website for now`
+    }
+    this.setData({
+      warmPrompt: warmPrompt[lag]
+    });
   },
 
   /**

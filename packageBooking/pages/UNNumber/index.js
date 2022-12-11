@@ -36,8 +36,8 @@ Page({
       },
       // Unit
       2: {
-        value: '',
-        text: '',
+        value: 'KGM',
+        text: 'KGM (Kilogram)',
         index: 0
       }
     },
@@ -405,6 +405,7 @@ Page({
     // if(varLen.length === 1) {
     //   value = `${value.toString()}.00`;
     // };
+
     if (varLen.length > 1) {
       if ( varLen[1] === '') {
         value = `${value.toString()}00`;
@@ -413,9 +414,9 @@ Page({
         value = `${value.toString()}0`;
       }
     };
-
     this.setData({
-      [keys]: value
+      [`tips.${keys}`]: ((value && parseInt(value) <= 0 )?`${this.data.verifyInfo.required}` : ''),
+      [keys]: ((value && parseInt(value) <= 0 )? '': value)
     })
   },
 
@@ -450,7 +451,7 @@ Page({
 
     if (isrequired && !value) msg = `${this.data.verifyInfo.required}`;
     if (keystype && keystype === 'number') {
-      value = value.replace(/[^\d.]/g,'');
+      value = this.recordFloat(detail.value) || '';
 
       if (keys === 'netWeight') {
         const grossWeight = this.data.grossWeight;

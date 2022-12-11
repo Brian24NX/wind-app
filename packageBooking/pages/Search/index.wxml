@@ -153,10 +153,14 @@
         <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search}}</button>
         <view class="reset" catchtap="reset">{{languageContent.reset}}</view>
       </view>
+
     </view>
+
+    <!-- tips -->
+    <view class="warm-prompt">{{warmPrompt}}</view>
 
     <custom-picker columns="{{searchList}}" valueKey="method" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
 
-    <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
+    <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate" minDate="{{minDate}}"></custom-time>
   </view>
 </view>
