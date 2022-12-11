@@ -54,7 +54,7 @@
   <view class="scroll-quantity">
     <view class="title">Quantity <text class="red">*</text></view>
     <view class="inputs number">
-      <input type="number" maxlength="9" value="{{quantityValue}}" data-keys="quantityValue" data-addkeys="weightValue" data-resultkeys="totalWeightValue" bindinput="setNumberData" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" data-tipkeys="quantity" data-isrequired="true" />
+      <input type="number" maxlength="9" value="{{quantityValue}}" data-keys="quantityValue" data-addkeys="weightValue" data-resultkeys="totalWeightValue" bindinput="setNumberData" bindblur="resetNumber" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" data-tipkeys="quantity" data-isrequired="true" />
       <view class="deleteIcon" wx:if="{{quantityValue}}" catchtap="clearValue" data-keys="quantityValue,totalWeightValue" data-tipkeys="quantity" data-isrequired="true">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
@@ -69,7 +69,7 @@
   <view class="scroll-weightPerContaine">
     <view class="title">Weight Per Container <text class="red">*</text></view>
     <view class="inputs number">
-      <input type="number" maxlength="9" value="{{weightValue}}" data-keys="weightValue" data-addkeys="quantityValue" data-resultkeys="totalWeightValue" bindinput="setNumberData" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" data-tipkeys="weightPerContaine" data-isrequired="true" />
+      <input type="number" maxlength="9" value="{{weightValue}}" data-keys="weightValue" data-addkeys="quantityValue" data-resultkeys="totalWeightValue" bindinput="setFloatNumber" bindblur="resetNumber" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" data-tipkeys="weightPerContaine" data-isrequired="true" />
       <view class="deleteIcon" wx:if="{{weightValue}}" catchtap="clearValue" data-keys="weightValue,totalWeightValue" data-tipkeys="weightPerContaine" data-isrequired="true">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>

@@ -33,24 +33,54 @@ Page({
       },
       // Unit
       2: {
-        value: '',
-        text: '',
+        value: 'KGM',
+        text: 'KGM (Kilogram)',
         index: 0
       }
     },
     // Constant - Unit Data
     unitData: {
-      'en': [
-        { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
-        { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB (Pound)', index: 2},
-        { value: 'TON', text: 'TON (US Ton)', index: 3}
+      'en': [{
+          value: 'KGM',
+          text: 'KGM (Kilogram)',
+          index: 0
+        },
+        {
+          value: 'TNE',
+          text: 'TNE (Metric Ton)',
+          index: 1
+        },
+        {
+          value: 'LB',
+          text: 'LB (Pound)',
+          index: 2
+        },
+        {
+          value: 'TON',
+          text: 'TON (US Ton)',
+          index: 3
+        }
       ],
-      'zh': [
-        { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
-        { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB (Pound)', index: 2},
-        { value: 'TON', text: 'TON (US Ton)', index: 3}
+      'zh': [{
+          value: 'KGM',
+          text: 'KGM (Kilogram)',
+          index: 0
+        },
+        {
+          value: 'TNE',
+          text: 'TNE (Metric Ton)',
+          index: 1
+        },
+        {
+          value: 'LB',
+          text: 'LB (Pound)',
+          index: 2
+        },
+        {
+          value: 'TON',
+          text: 'TON (US Ton)',
+          index: 3
+        }
       ],
     },
     quantityValue: '',
@@ -119,7 +149,7 @@ Page({
     wx.removeStorageSync('unNumberCache')
 
     this.setData({
-      isIncludeHazardous: (this.data.unList.length > 0? true: false)
+      isIncludeHazardous: (this.data.unList.length > 0 ? true : false)
     });
 
     // addReeft ----- start
@@ -336,7 +366,13 @@ Page({
     const addkeys = currentTarget.dataset.addkeys;
     const resultkeys = currentTarget.dataset.resultkeys;
     const tipkeys = currentTarget.dataset.tipkeys;
-    const value = (detail.value).replace(/[^\d.]/g, '') || '';
+    let valueDetail = detail.value;
+    if (valueDetail[0] == 0) {
+      if (valueDetail[1] != '.' && valueDetail[1] != undefined) {
+        valueDetail = valueDetail.substr(1, -1);
+      }
+    };
+    const value = valueDetail.replace(/[^\d]/g, '') || '';
     const addkeysValue = this.data[addkeys];
     this.setData({
       [`tips.${tipkeys}`]: (value ? '' : `${this.data.verifyInfo.required}`),
@@ -344,6 +380,72 @@ Page({
       [keys]: value,
       [resultkeys]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? (parseInt(value) * parseInt(addkeysValue)) : ''
     });
+  },
+
+  // FloatNumber
+  recordFloat(val) {
+    const _t = this;
+    const decimalReg = /^\d{0,8}\.{0,1}(\d{1,2})?$/;
+    let value = val.replace(/^\./g, "");
+    let num = '';
+
+    if (!value) {
+      _t.setData({
+        cacheNumber: ''
+      })
+      return '';
+    };
+    if (value && parseInt(value[0]) === 0) {
+      if (typeof value[1] !== 'undefined' && value[1] && value[1] !== '.') {
+        value = value.substr(1, -1);
+      }
+    };
+
+    if (value && decimalReg.test(value)) {
+      _t.setData({
+        cacheNumber: value
+      })
+    } else {
+      if (value) value = _t.data.cacheNumber;
+    };
+
+
+    return value
+  },
+
+
+  // setFlashPoint
+  setFloatNumber({
+    detail,
+    currentTarget
+  }) {
+    const keys = currentTarget.dataset.keys;
+    const addkeys = currentTarget.dataset.addkeys;
+    const resultkeys = currentTarget.dataset.resultkeys;
+    const tipkeys = currentTarget.dataset.tipkeys;
+    const value = this.recordFloat(detail.value) || '';
+    const addkeysValue = this.data[addkeys];
+    this.setData({
+      [`tips.${tipkeys}`]: (value ? '' : `${this.data.verifyInfo.required}`),
+      [`tips.${resultkeys}`]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? '' : `${this.data.verifyInfo.required}`,
+      [keys]: value,
+      [resultkeys]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? (parseInt(value) * parseInt(addkeysValue)) : ''
+    });
+  },
+
+  resetNumber({
+    detail,
+    currentTarget
+  }) {
+    const keys = currentTarget.dataset.keys;
+    const tipkeys = currentTarget.dataset.tipkeys;
+    let valueDetail = detail.value;
+    if (valueDetail && parseInt(valueDetail) <= 0) {
+      this.setData({
+        [`tips.${tipkeys}`]: `${this.data.verifyInfo.required}`,
+        [keys]: ''
+      });
+    }
   },
 
   // clearValue
