@@ -46,13 +46,13 @@ Page({
       'en': [
         { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
         { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB', index: 2},
+        { value: 'LB', text: 'LB (Pound)', index: 2},
         { value: 'TON', text: 'TON (US Ton)', index: 3}
       ],
       'zh': [
         { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
         { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB', index: 2},
+        { value: 'LB', text: 'LB (Pound)', index: 2},
         { value: 'TON', text: 'TON (US Ton)', index: 3}
       ],
     },
@@ -98,7 +98,7 @@ Page({
     commentOptionalLength: 0,
     scrollEmelemt: '', // 定位元素
     requiredEmelemt: [], // 是否存在验证为空的元素
-    scrollToElement: ['unnumber', 'chemical-name', 'packing-group', 'class', 'emergency-procedure', 'flash-point', 'net-weight', 'gross-weight', 'unit', 'packaging-description', 'quantity', 'emergency-contact-name', 'emergency-number']
+    scrollToElement: ['unnumber', 'packing-group', 'class', 'emergency-procedure', 'net-weight', 'gross-weight', 'unit', 'packaging-description', 'quantity', 'emergency-contact-name', 'emergency-number']
   },
 
   /**
@@ -203,7 +203,7 @@ Page({
         UNNumberLists: res.data || []
       })
     }, () => {
-      this.getUNNumber(data)
+      // this.getUNNumber(data)
     })
   },
 
@@ -251,9 +251,15 @@ Page({
 
   // clickPackingGroup
   clickPackingGroup(e) {
+    const lag = languageUtils.languageVersion().lang.page.langue;
+    const tips = {
+      zh: `请输入并获取正确的 UN Number or Proper Shipping Name`,
+      en: `The UN Number or Proper Shipping Name field is required.`
+    };
+
     if (!this.data.unNumberCode) {
       wx.showToast({
-        title: `请输入并获取正确的 UN Number or Proper Shipping Name`,
+        title: tips[lag],
         icon: 'none'
       })
     } else {
@@ -434,6 +440,11 @@ Page({
     const keys = currentTarget.dataset.keys;
     const keystype = currentTarget.dataset.keystype;
     const isrequired = currentTarget.dataset.isrequired;
+    const lag = languageUtils.languageVersion().lang.page.langue;
+    const tips = {
+      zh: `毛重必须大于净重`,
+      en: `Gross weight must be greater than net weight.`
+    };
     let {value} = detail;
     let msg = '';
 
@@ -443,7 +454,7 @@ Page({
 
       if (keys === 'netWeight') {
         const grossWeight = this.data.grossWeight;
-        let msg ='毛重必须大于净重';
+        let msg = tips[lag];
         if (grossWeight && ( parseInt(grossWeight) > parseInt(value) )) {
           msg = '';
         };
@@ -463,12 +474,17 @@ Page({
     const _t = this;
     const value = (detail.value).replace(/[^\d.]/g,'');
     const keys = currentTarget.dataset.keys;
+    const lag = languageUtils.languageVersion().lang.page.langue;
+    const tips = {
+      zh: `毛重必须大于净重`,
+      en: `Gross weight should be greater than Net weight.`
+    };
     let { netWeight, grossWeight, verifyInfo } = _t.data;
     let msg = '';
     console.log('value', value, netWeight , parseInt(value) , parseInt(netWeight))
     if (!value) msg = `${verifyInfo.required}`;
-    if (value && !netWeight) msg = `毛重必须大于净重`;
-    if (value && netWeight && parseInt(netWeight) >= parseInt(value)) msg = `毛重必须大于净重`;
+    if (value && !netWeight) msg = tips[lag];
+    if (value && netWeight && parseInt(netWeight) >= parseInt(value)) msg = tips[lag];
     _t.setData({
       [`tips.${keys}`]: msg
     })
@@ -489,14 +505,22 @@ Page({
         packageDescriptionLists: res.data || []
       })
     }, () => {
-      this.getPackageDescription(keyword)
+      this.setData({
+        packageDescriptionLoading: !1,
+      })
+      // this.getPackageDescription(keyword)
     })
   },
   // clickPackagingDescription
   clickPackagingDescription() {
+    const lag = languageUtils.languageVersion().lang.page.langue;
+    const tips = {
+      zh: `请选择 Packing Group`,
+      en: `Please select Packing Group.`
+    };
     if (!this.data.pickerChooseReault[1]?.packingInsCode) {
       wx.showToast({
-        title: `请选择 Packing Group`,
+        title: tips[lag],
         icon: 'none'
       })
       this.setData({
@@ -508,9 +532,14 @@ Page({
 
   // enterPackagingDescription
   enterPackagingDescription: utils.debounce(function (e) {
+    const lag = languageUtils.languageVersion().lang.page.langue;
+    const tips = {
+      zh: `请选择 Packing Group`,
+      en: `Please select Packing Group.`
+    };
     if (!this.data.pickerChooseReault[1]?.packingInsCode) {
       wx.showToast({
-        title: `请选择 Packing Group`,
+        title: tips[lag],
         icon: 'none'
       })
       this.setData({
@@ -621,70 +650,60 @@ Page({
   onSave() {
     const _t = this;
     const scrollToElement = _t.data.scrollToElement;
-
+    const lag = languageUtils.languageVersion().lang.page.langue;
 
     // UN Number or Proper Shipping Name
     if (_t.verify('unNumberName', 'unNumberName', scrollToElement[0])) {
       console.log('UN Number or Proper Shipping Name - 为空')
     }
 
-    // Chemical Name
-    if (_t.verify('chemicalName', 'chemicalName', scrollToElement[1])) {
-      console.log('chemicalName - 为空')
-    }
-
     // Packing Group
-    if (_t.verify('pickerChooseReault[1]text', 'packingGroup', scrollToElement[2], _t.data.pickerChooseReault[1].text)) {
+    if (_t.verify('pickerChooseReault[1]text', 'packingGroup', scrollToElement[1], _t.data.pickerChooseReault[1].text)) {
       console.log('chemicalName - 为空')
     }
 
     // Class - classNumber
-    if (_t.verify('classNumber', 'classNumber', scrollToElement[3])) {
+    if (_t.verify('classNumber', 'classNumber', scrollToElement[2])) {
       console.log('classNumber - 为空')
     }
 
     // Emergency procedure - emsCode
-    if (_t.verify('emsCode', 'emsCode', scrollToElement[4])) {
+    if (_t.verify('emsCode', 'emsCode', scrollToElement[3])) {
       console.log('emsCode - 为空')
     }
 
-    // Flash Point - flashPoint
-    if (_t.verify('flashPoint', 'flashPoint', scrollToElement[5])) {
-      console.log('flashPoint - 为空')
-    }
-
     // Net Weight - netWeight
-    if (_t.verify('netWeight', 'netWeight', scrollToElement[6])) {
+    if (_t.verify('netWeight', 'netWeight', scrollToElement[4])) {
       console.log('netWeight - 为空')
     }
 
     // Gross Weight - grossWeight
-    if (_t.verify('grossWeight', 'grossWeight', scrollToElement[7])) {
+    if (_t.verify('grossWeight', 'grossWeight', scrollToElement[5])) {
       console.log('grossWeight - 为空')
     }
 
     // Unit - unit
-    if (_t.verify('pickerChooseReault[2].text', 'unit', scrollToElement[8], _t.data.pickerChooseReault[2].text)) {
+    if (_t.verify('pickerChooseReault[2].text', 'unit', scrollToElement[6], _t.data.pickerChooseReault[2].text)) {
       console.log('unit - 为空')
     }
 
     // Packaging Description - packageDescriptionName
-    if (_t.verify('packageDescriptionName', 'packageDescriptionName', scrollToElement[9])) {
+    if (_t.verify('packageDescriptionName', 'packageDescriptionName', scrollToElement[7])) {
       console.log('packageDescriptionName - 为空')
     }
 
     // Quantity - quantityValue
-    if (_t.verify('quantityValue', 'quantityValue', scrollToElement[10])) {
+    if (_t.verify('quantityValue', 'quantityValue', scrollToElement[8])) {
       console.log('quantityValue - 为空')
     }
 
     // Emergency Contact Name - emergencyContactName
-    if (_t.verify('emergencyContactName', 'emergencyContactName', scrollToElement[11])) {
+    if (_t.verify('emergencyContactName', 'emergencyContactName', scrollToElement[9])) {
       console.log('emergencyContactName - 为空')
     }
 
     // Emergency Number - emergencyNumber
-    if (_t.verify('emergencyNumber', 'emergencyNumber', scrollToElement[12])) {
+    if (_t.verify('emergencyNumber', 'emergencyNumber', scrollToElement[10])) {
       console.log('emergencyNumber - 为空')
     }
 
@@ -697,8 +716,13 @@ Page({
     }
 
     if (!_t.data.packageDescriptionCode) {
+      const tips = {
+        zh: `请输入并获取正确的 Packaging Description`,
+        en: `Enter and obtain the correct Packaging Description`
+      };
+
       this.setData({
-        [`tips.packageDescriptionName`]: `请输入并获取正确的 Packaging Description`
+        [`tips.packageDescriptionName`]: tips[lag]
       })
       _t.scrollTo({element: 'packaging-description'})
       return false
@@ -762,8 +786,13 @@ Page({
     wx.setStorageSync('unNumberUpdate', prevData);
     wx.removeStorageSync('unNumberCache')
 
+    const saveTips = {
+      zh: `保存成功`,
+      en: `Saved successfully.`
+    };
+
     wx.showToast({
-      title: `保存成功`,
+      title: saveTips[lag],
       icon: 'none',
       mask: true,
       duration: 1000

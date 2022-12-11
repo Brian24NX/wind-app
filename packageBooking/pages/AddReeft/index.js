@@ -1,5 +1,5 @@
 // packageBooking/pages/AddReeft/index.js
-// const languageUtils = require("../../../utils/languageUtils")
+const languageUtils = require("../../../utils/languageUtils")
 Page({
 
   /**
@@ -240,6 +240,11 @@ Page({
   onSave() {
     const _t = this;
     const _errorArr = [];
+    const lag = languageUtils.languageVersion().lang.page.langue;
+    const saveTips = {
+      zh: `保存成功`,
+      en: `Saved successfully.`
+    };
     // regExp
     // Reefer Mode
     if (_t.data.switchReeferMode && !_t.data.switchReeferModeValue) {
@@ -307,7 +312,7 @@ Page({
     wx.removeStorageSync('addReeftCache')
 
     wx.showToast({
-      title: `保存成功`,
+      title: saveTips[lag],
       icon: 'none',
       mask: true,
       duration: 1000
