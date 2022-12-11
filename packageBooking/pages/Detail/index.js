@@ -27,7 +27,6 @@ Page({
     paymentLocationList: [],
     showPaymentLocationDelete: false,
     routeSelected: null,
-    commodityList: [],
     partyList: [],
     vasList: [],
     preferredBookingOffice: null,
@@ -753,6 +752,19 @@ Page({
     })
   },
 
+  setCorgoData(data, index) {
+    console.log(data)
+    console.log(index)
+    if (index !== undefined) {
+      this.data.cargoes[index] = data
+    } else {
+      this.data.cargoes.push(data)
+    }
+    this.setData({
+      cargoes: this.data.cargoes
+    })
+  },
+
   submitBooking() {
     if (!this.data.cargoes.length) {
       // wx.show
@@ -790,6 +802,6 @@ Page({
       communicationChannel: 'BKG_INSTANT',
       noOfBooking: this.data.noOfBooking
     }
-    console.log(params)
+    console.log(JSON.stringify(params))
   }
 })

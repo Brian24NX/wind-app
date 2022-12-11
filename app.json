@@ -77,7 +77,8 @@
         "pages/Result/index",
         "pages/Commodity/index",
         "pages/UNNumber/index",
-        "pages/Party/index"
+        "pages/Party/index",
+        "pages/AddReeft/index"
       ]
     }
   ],

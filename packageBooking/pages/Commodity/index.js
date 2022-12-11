@@ -40,17 +40,47 @@ Page({
     },
     // Constant - Unit Data
     unitData: {
-      'en': [
-        { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
-        { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB', index: 2},
-        { value: 'TON', text: 'TON (US Ton)', index: 3}
+      'en': [{
+          value: 'KGM',
+          text: 'KGM (Kilogram)',
+          index: 0
+        },
+        {
+          value: 'TNE',
+          text: 'TNE (Metric Ton)',
+          index: 1
+        },
+        {
+          value: 'LB',
+          text: 'LB（Pound）',
+          index: 2
+        },
+        {
+          value: 'TON',
+          text: 'TON (US Ton)',
+          index: 3
+        }
       ],
-      'zh': [
-        { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
-        { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB', index: 2},
-        { value: 'TON', text: 'TON (US Ton)', index: 3}
+      'zh': [{
+          value: 'KGM',
+          text: 'KGM (Kilogram)',
+          index: 0
+        },
+        {
+          value: 'TNE',
+          text: 'TNE (Metric Ton)',
+          index: 1
+        },
+        {
+          value: 'LB',
+          text: 'LB（Pound）',
+          index: 2
+        },
+        {
+          value: 'TON',
+          text: 'TON (US Ton)',
+          index: 3
+        }
       ],
     },
     quantityValue: '',
@@ -63,27 +93,40 @@ Page({
     tips: {
       commodityName: '',
       sizeType: '',
-      weightPerContaine : '',
-      totalWeightValue : '',
-      unit : '',
-      addReeft : '',
-      includeHazardous : ''
+      weightPerContaine: '',
+      totalWeightValue: '',
+      unit: '',
+      addReeft: '',
+      includeHazardous: ''
     },
     scrollEmelemt: '', // 定位元素
     requiredEmelemt: [], // 是否存在验证为空的元素
-    scrollToElement: ['commodityName', 'sizeType', 'quantity', 'weightPerContaine', 'totalWeightValue', 'unit', 'addReeft', 'includeHazardous']
+    scrollToElement: ['commodityName', 'sizeType', 'quantity', 'weightPerContaine', 'totalWeightValue', 'unit', 'addReeft', 'includeHazardous'],
+    agreementReference: '',
+    index: undefined
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    if (options.index) {
+      this.setData({
+        index: options.index
+      })
+    }
     wx.setNavigationBarTitle({
       title: languageUtils.languageVersion().lang.page.bookingDetail.bookingDetail,
     })
     this.setData({
       languageContent: languageUtils.languageVersion().lang.page.bookingDetail,
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
+    })
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
+    this.setData({
+      agreementReference: data.quotationReference
     })
   },
 
@@ -94,10 +137,10 @@ Page({
 
     // console.log('unList', unList)
     // 提交数据设置
-    if(unList){
+    if (unList) {
       this.setData({
         unList
-      },()=>{
+      }, () => {
         wx.removeStorageSync('unNumberUpdate')
       })
     };
@@ -107,7 +150,7 @@ Page({
 
     let isIncludeHazardous = this.data.isIncludeHazardous;
     this.setData({
-      isIncludeHazardous: isIncludeHazardous || (this.data.unList.length > 0? true: false)
+      isIncludeHazardous: isIncludeHazardous || (this.data.unList.length > 0 ? true : false)
     });
 
     // addReeft ----- start
@@ -115,11 +158,11 @@ Page({
 
     // console.log('unList', unList)
     // 提交数据设置
-    if(addReeft){
+    if (addReeft) {
       this.setData({
         addReeft,
         ['tips.addReeft']: ''
-      },()=>{
+      }, () => {
         wx.removeStorageSync('addReeft')
       })
     };
@@ -128,7 +171,7 @@ Page({
     wx.removeStorageSync('addReeftCache')
 
     this.setData({
-      isAddReeft: (Object.keys(this.data.addReeft).length > 0? true: false)
+      isAddReeft: (Object.keys(this.data.addReeft).length > 0 ? true : false)
     });
     // addReeft ----- end
   },
@@ -136,7 +179,7 @@ Page({
   enterCommodity: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      [`tips.commodityName`]: !data? `${this.data.verifyInfo.required}` : '',
+      [`tips.commodityName`]: !data ? `${this.data.verifyInfo.required}` : '',
       ['commodity.commodityName']: data,
       showCommodity: false,
       commodityList: []
@@ -152,7 +195,7 @@ Page({
       showCommodity: true
     })
     bookCommodityList({
-      agreementReference: 'QTWEB2506790',
+      agreementReference: this.data.agreementReference,
       keyword: data
     }).then(res => {
       console.log(res)
@@ -183,7 +226,9 @@ Page({
   },
 
   // updateUNNumber
-  updateUNNumber({currentTarget}) {
+  updateUNNumber({
+    currentTarget
+  }) {
     const id = parseInt(currentTarget.dataset.id)
     wx.navigateTo({
       url: `/packageBooking/pages/UNNumber/index?id=${id}`,
@@ -198,21 +243,23 @@ Page({
   },
 
   // deleteUNNumber
-  deleteUNNumber({currentTarget}) {
+  deleteUNNumber({
+    currentTarget
+  }) {
 
     wx.showModal({
       title: '是否要删除此 UN Number？',
       // content: '是否要删除此 UN Number？',
-      success (res) {
+      success(res) {
         if (res.confirm) {
           console.log('用户点击确定');
           const id = parseInt(currentTarget.dataset.id);
           const unList = JSON.parse(JSON.stringify(this.data.unList));
-          const index = unList.findIndex( v => v.id === id);
+          const index = unList.findIndex(v => v.id === id);
           unList.splice(index, 1);
           this.setData({
             unList,
-            isIncludeHazardous: (unList.length > 0? true: false)
+            isIncludeHazardous: (unList.length > 0 ? true : false)
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
@@ -222,7 +269,9 @@ Page({
 
   },
   // openPicker
-  openPicker({currentTarget}) {
+  openPicker({
+    currentTarget
+  }) {
     const _t = this;
     const type = parseInt(currentTarget.dataset.type);
 
@@ -232,7 +281,7 @@ Page({
       const columnsList = JSON.parse(JSON.stringify(List));
 
       if (columnsList.length < 1) {
-        columnsList.map( (val, index) => {
+        columnsList.map((val, index) => {
           val.index = index;
           val.value = val.code;
         });
@@ -266,7 +315,9 @@ Page({
   },
 
   // checkBoxToggle
-  checkBoxToggle({currentTarget}) {
+  checkBoxToggle({
+    currentTarget
+  }) {
     const keys = currentTarget.dataset.keys;
     this.setData({
       [keys]: !this.data[keys]
@@ -282,7 +333,9 @@ Page({
   },
 
   // onPickerConfirm
-  onPickerConfirm({detail}) {
+  onPickerConfirm({
+    detail
+  }) {
     const _t = this;
 
     // 1 => Size/Type, 2 => Unit
@@ -306,23 +359,28 @@ Page({
   },
 
   // input - setNumberData
-  setNumberData({currentTarget, detail}) {
+  setNumberData({
+    currentTarget,
+    detail
+  }) {
     const keys = currentTarget.dataset.keys;
     const addkeys = currentTarget.dataset.addkeys;
     const resultkeys = currentTarget.dataset.resultkeys;
     const tipkeys = currentTarget.dataset.tipkeys;
-    const value = (detail.value).replace(/[^\d.]/g,'') || '';
+    const value = (detail.value).replace(/[^\d.]/g, '') || '';
     const addkeysValue = this.data[addkeys];
     this.setData({
-      [`tips.${tipkeys}`]: (value? '': `${this.data.verifyInfo.required}`),
-      [`tips.${resultkeys}`]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? '': `${this.data.verifyInfo.required}`,
+      [`tips.${tipkeys}`]: (value ? '' : `${this.data.verifyInfo.required}`),
+      [`tips.${resultkeys}`]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? '' : `${this.data.verifyInfo.required}`,
       [keys]: value,
-      [resultkeys]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? (parseInt(value) * parseInt(addkeysValue)): ''
+      [resultkeys]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? (parseInt(value) * parseInt(addkeysValue)) : ''
     });
   },
 
   // clearValue
-  clearValue({currentTarget}) {
+  clearValue({
+    currentTarget
+  }) {
     const keys = currentTarget.dataset.keys.split(',');
     const isrequired = currentTarget.dataset.isrequired;
     const tipkey = currentTarget.dataset.tipkeys;
@@ -368,7 +426,7 @@ Page({
   // keys 为判断的keys
   // tipkey 为输出判断的key
   // scrollElement 为校验滚动点元素
-  verify(keys='', tipkey='', scrollElement='', nativeData='') {
+  verify(keys = '', tipkey = '', scrollElement = '', nativeData = '') {
     const _t = this;
     const data = _t.data;
     const dataKeys = keys.split(',');
@@ -416,12 +474,18 @@ Page({
         requiredEmelemt[index] = ''
       }
     };
-    this.setData({ requiredEmelemt });
+    this.setData({
+      requiredEmelemt
+    });
     return isFlag;
   },
 
   // scrollTo
-  scrollTo({element, duration=200, offsetTop=0}) {
+  scrollTo({
+    element,
+    duration = 200,
+    offsetTop = 0
+  }) {
     // 使用wx.createSelectorQuery()查询到需要滚动到的元素位置
     // console.log('element', element)
     const query = wx.createSelectorQuery().in(this)
@@ -479,15 +543,17 @@ Page({
     }
 
     // addReeft
-    if (_t.verify('isAddReeft', 'addReeft', scrollToElement[6])) {
-      console.log('addReeft - 为空')
-    }
+    // if (_t.verify('isAddReeft', 'addReeft', scrollToElement[6])) {
+    //   console.log('addReeft - 为空')
+    // }
 
     // scrollTo
-    _t.scrollTo({element: _t.data.requiredEmelemt.find( v => !!v )})
+    _t.scrollTo({
+      element: _t.data.requiredEmelemt.find(v => !!v)
+    })
 
-    if (_t.data.requiredEmelemt.findIndex( v => !!v ) !== -1) {
-      console.log('存在必填为空', _t.data.requiredEmelemt, _t.data.requiredEmelemt.findIndex( v => !!v ))
+    if (_t.data.requiredEmelemt.findIndex(v => !!v) !== -1) {
+      console.log('存在必填为空', _t.data.requiredEmelemt, _t.data.requiredEmelemt.findIndex(v => !!v))
       return false
     }
 
@@ -495,7 +561,9 @@ Page({
       this.setData({
         [`tips.commodityName`]: `请输入并获取正确的 Commodity`
       })
-      _t.scrollTo({element: 'commodityName'})
+      _t.scrollTo({
+        element: 'commodityName'
+      })
       return false
     }
 
@@ -503,7 +571,9 @@ Page({
       this.setData({
         [`tips.includeHazardous`]: `请添加 UN Number`
       })
-      _t.scrollTo({element: 'includeHazardous'})
+      _t.scrollTo({
+        element: 'includeHazardous'
+      })
       return false
     }
 
@@ -526,39 +596,41 @@ Page({
     let unListData = JSON.parse(JSON.stringify(unList));
     let hazardousDetails = unListData.map(v => {
       console.log('unListData', v)
-      return  {
-        // hazardousId: 0,
-        unNumber: v.unNumberCode,
-        properShippingName: v.unNumberName,
-        packingGroup: v.pickerChooseReault[1].value,
-        imdgClass: v.classNumber,
-        ems: v.emsCode,
-        flashPoint: v.flashPoint,
-        flashPointUnit: 'C',
-        // marinePollutant: true,
-        netWeight: v.netWeight,
-        grossWeight: v.grossWeight,
-        unit: v.pickerChooseReault[2].value,
-        emergencyContactName: v.emergencyContactName,
-        emergencyContactNumber: v.emergencyNumber,
-        comment: v.commentOptional,
-        chemicalName: v.chemicalName,
-        limitedQuantity: v.isTransport,
-        unVariant: v.chooseUNNumber.unVariant,
-        // outerPackaging: {
-        //   packagingDesc: 4H1 Expanded plastics boxes,
-        //   packagingQuantity: 15,
-        //   packagingTypes: O
-        // },
-        // innerPackaging: {
-        //   packagingDesc: 4H1 Expanded plastics boxes,
-        //   packagingQuantity: 15,
-        //   packagingTypes: O
-        // },
-        // variation: Packaging group I.,
-        // pins: string
-      };
-      // return news;
+      return {
+        imdgNumber: v.unNumberCode,
+        hazardousDetails: [{
+          // hazardousId: 0,
+          unNumber: v.unNumberCode,
+          properShippingName: v.unNumberName,
+          packingGroup: v.pickerChooseReault[1].value,
+          imdgClass: v.classNumber,
+          ems: v.emsCode,
+          flashPoint: v.flashPoint,
+          flashPointUnit: 'C',
+          // marinePollutant: true,
+          netWeight: v.netWeight,
+          grossWeight: v.grossWeight,
+          unit: v.pickerChooseReault[2].value,
+          emergencyContactName: v.emergencyContactName,
+          emergencyContactNumber: v.emergencyNumber,
+          comment: v.commentOptional,
+          chemicalName: v.chemicalName,
+          limitedQuantity: v.isTransport,
+          unVariant: v.chooseUNNumber.unVariant,
+          // outerPackaging: {
+          //   packagingDesc: 4H1 Expanded plastics boxes,
+          //   packagingQuantity: 15,
+          //   packagingTypes: O
+          // },
+          // innerPackaging: {
+          //   packagingDesc: 4H1 Expanded plastics boxes,
+          //   packagingQuantity: 15,
+          //   packagingTypes: O
+          // },
+          // variation: Packaging group I.,
+          // pins: string
+        }]
+      }
     })
 
     const submitData = {
@@ -569,9 +641,9 @@ Page({
       sizeTypeName: pickerChooseReault[1].text,
       sizeTypeCode: pickerChooseReault[1].value,
       shipperOwnedContainer: isUserContainer,
-      // numberOfContainer: 1,
-      tareWeightUom: pickerChooseReault[2].value,
-      // tareWeight: totalWeightValue,
+      numberOfContainer: this.data.quantityValue,
+      tareWeightUom: 'KGM',
+      tareWeight: totalWeightValue,
       netWeight: weightValue,
       netWeightUom: pickerChooseReault[2].value,
       hazardous: isIncludeHazardous,
@@ -588,31 +660,30 @@ Page({
       //   overHeightUnit: cm,
       //   overWidthUnit: cm
       // },
-      hazardousDetails: [
-        {
-          // imdgNumber: 1009,
-          hazardousDetails
-        }
-      ],
-      reeferDetail: {
-        operatingMode: addReeft.switchReeferMode,
-        temperature: addReeft.switchReeferModeValue,
-        temperatureUnit: addReeft.switchReeferModeUnit.value,
-        ventilationOpen: addReeft.switchVentilation,
-        ventilation: addReeft.switchVentilation,
-        ventilationUnit: 'CBM/HR',
-        ventilationValue: addReeft.switchVentilationValue,
-        dehumified: addReeft.switchDehumified,
-        dehumifiedPercentage: addReeft.switchDehumifiedValue,
-        controlledAtmosphere: addReeft.switchControlledAtmosphere,
-        o2Percentage: addReeft.switchControlledAtmosphereValue,
-        co2Percentage: addReeft.switchControlledAtmosphereValue,
-        nitrogenPercent: addReeft.switchControlledAtmosphereValue,
-        gensetRequired: addReeft.switchGensetRequired,
-        additionalComments: ''
-      }
+      hazardousDetails,
+      // reeferDetail: {
+      //   operatingMode: addReeft.switchReeferMode,
+      //   temperature: addReeft.switchReeferModeValue,
+      //   temperatureUnit: addReeft.switchReeferModeUnit.value,
+      //   ventilationOpen: addReeft.switchVentilation,
+      //   ventilation: addReeft.switchVentilation,
+      //   ventilationUnit: 'CBM/HR',
+      //   ventilationValue: addReeft.switchVentilationValue,
+      //   dehumified: addReeft.switchDehumified,
+      //   dehumifiedPercentage: addReeft.switchDehumifiedValue,
+      //   controlledAtmosphere: addReeft.switchControlledAtmosphere,
+      //   o2Percentage: addReeft.switchControlledAtmosphereValue,
+      //   co2Percentage: addReeft.switchControlledAtmosphereValue,
+      //   nitrogenPercent: addReeft.switchControlledAtmosphereValue,
+      //   gensetRequired: addReeft.switchGensetRequired,
+      //   additionalComments: ''
+      // }
     };
 
     console.log('submitData', submitData)
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    currentPage.setCorgoData(submitData, this.data.index)
+    wx.navigateBack()
   }
 })

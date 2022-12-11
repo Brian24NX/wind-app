@@ -280,7 +280,7 @@
         <image src="/assets/img/booking/add.png" />
       </view>
     </view>
-    <view class="oneCommodity" wx:for="{{commodityList}}" wx:key="index">
+    <view class="oneCommodity" wx:for="{{cargoes}}" wx:key="index">
       <view class="commodityTop">
         <view class="topLeft">
           <view class="leftLine"></view>
@@ -294,15 +294,15 @@
       <view class="commodityDetail">
         <image src="/assets/img/booking/commodity.png" />
         <view class="commodityRight">
-          <view class="commodityName">Twine nesoi,cordage, rope and cables of synt…5678</view>
-          <view>20’Dry Standard 132 x 100=13200 TNE</view>
+          <view class="commodityName">{{item.commodity.commodityName + ' - ' + item.commodity.commodityCode}}</view>
+          <view>{{item.sizeTypeName}} 132 x {{item.netWeight}} = 13200 {{item.netWeightUom}}</view>
         </view>
       </view>
     </view>
-    <view class="commodityRemind">
+    <!-- <view class="commodityRemind">
       <image src="/assets/img/instantQuote/warning@2x.png" />
       <view>This booking has passed booking acceptance Cutoff and will be subject to validation</view>
-    </view>
+    </view> -->
   </view>
 
   <view class="oneDetails">

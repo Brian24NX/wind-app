@@ -231,6 +231,7 @@ page {
 .oneCommodity .commodityDetail .commodityRight {
   font-size: 24rpx;
   color: #04246A;
+  width: 550rpx;
 }
 
 .oneCommodity .commodityDetail .commodityRight .commodityName {
