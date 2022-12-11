@@ -379,6 +379,7 @@ Page({
       pointCode: item.portOfLoading
     }).then(data => {
       item.portOfLoadingLabel = data.data.point.name + ', ' + data.data.country.code
+      item.portOfLoadingLabel2 = data.data.point.name + ';' + data.data.country.code + ';' + data.data.point.code
       item.portofLoadingCountry = data.data.country.name
       this.setData({
         contractList: this.data.contractList
@@ -393,6 +394,7 @@ Page({
       pointCode: item.portOfDischarge
     }).then(data => {
       item.portOfDischargeLabel = data.data.point.name + ', ' + data.data.country.code
+      item.portOfDischargeLabel2 = data.data.point.name + ';' + data.data.country.code + ';' + data.data.point.code
       item.portofDichargeCountry = data.data.country.name
       this.setData({
         contractList: this.data.contractList
@@ -453,10 +455,10 @@ Page({
     })
   },
 
-  toBook() {
-    wx.showToast({
-      title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
-      icon: 'none'
+  toBook(e) {
+    const detail = e.currentTarget.dataset.detail
+    wx.navigateTo({
+      url: `/packageBooking/pages/Search/index?pol=${detail.portOfLoading}&polLabel=${detail.portOfLoadingLabel2}&pod=${detail.portOfDischarge}&podLabel=${detail.portOfDischargeLabel2}&quotationReference=${detail.quotationReference}`,
     })
   }
 })

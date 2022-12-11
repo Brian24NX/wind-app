@@ -321,9 +321,8 @@ Page({
   },
 
   submit() {
-    wx.showToast({
-      title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
-      icon: 'none'
+    wx.navigateTo({
+      url: `/packageBooking/pages/Search/index?pol=${this.data.quotationDetail.portOfLoading}&polLabel=${this.data.quotationDetail.portOfLoadingLabel2}&pod=${this.data.quotationDetail.portOfDischarge}&podLabel=${this.data.quotationDetail.portOfDischargeLabel2}&quotationReference=${this.data.quotationDetail.quotationReference}`,
     })
   },
 

@@ -67,11 +67,22 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
     this.initLanguage();
     this.setData({
       simulationDate: this.getDate()
     })
+    if (options.pol && options.pod) {
+      this.setData({
+        portOfLoading: options.pol,
+        portOfLoadingLabel: options.polLabel,
+        portOfDischarge: options.pod,
+        portOfDischargeLabel: options.podLabel,
+        reference: options.quotationReference,
+        showDelete2: true,
+        showDelete3: true
+      })
+    }
   },
 
   /**
@@ -555,7 +566,7 @@ Page({
         shippingCompany: this.data.shippingCompanyList[index]
       }
       wx.setStorageSync('bookingSearchKey', bookingSearchKey)
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/packageBooking/pages/List/index',
       })
     })

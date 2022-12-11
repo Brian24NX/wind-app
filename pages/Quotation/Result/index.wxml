@@ -85,7 +85,7 @@
 
 <view class="bottomButtons">
   <view class="oneButton" catchtap="toHome">{{languageContent.backHome}}</view>
-  <view class="oneButton" catchtap="toBook">{{languageContent.bookNow}}</view>
+  <!-- <view class="oneButton" catchtap="toBook">{{languageContent.bookNow}}</view> -->
 </view>
 
 <email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

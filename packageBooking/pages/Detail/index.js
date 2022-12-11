@@ -766,18 +766,6 @@ Page({
   },
 
   submitBooking() {
-    if (!this.data.cargoes.length) {
-      // wx.show
-    }
-    let partners = []
-    this.data.partyList.forEach(party => {
-      party.roleIds.forEach(role => {
-        partners.push({
-          ...party,
-          role
-        })
-      })
-    })
     const params = {
       portOfLoading: this.data.portOfLoading,
       portOfDischarge: this.data.portOfDischarge,
@@ -793,7 +781,7 @@ Page({
       importHaulage: this.data.importHaulage,
       cargoes: this.data.cargoes,
       bookingPartyReference: this.data.partyList[0].bookingPartyReference || '',
-      partners,
+      partners: this.data.partyList,
       vasProducts: [],
       payment: this.data.payment,
       preferredBookingOffice: this.data.preferredBookingOffice,
