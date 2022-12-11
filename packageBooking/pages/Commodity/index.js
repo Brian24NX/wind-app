@@ -12,9 +12,9 @@ Page({
   data: {
     verifyInfo: {},
     showCommodity: false,
-    showCommodityDelete: false,
     commodityList: [],
-    commodity: null,
+    commodityCode: '',
+    commodityName: '',
     // equipmentType: '',
     // equipmentTypeName: '',
     isUserContainer: false,
@@ -57,7 +57,21 @@ Page({
     weightValue: '',
     totalWeightValue: '',
     isIncludeHazardous: false,
-    unList: []
+    isAddReeft: false,
+    unList: [],
+    addReeft: {},
+    tips: {
+      commodityName: '',
+      sizeType: '',
+      weightPerContaine : '',
+      totalWeightValue : '',
+      unit : '',
+      addReeft : '',
+      includeHazardous : ''
+    },
+    scrollEmelemt: '', // 定位元素
+    requiredEmelemt: [], // 是否存在验证为空的元素
+    scrollToElement: ['commodityName', 'sizeType', 'quantity', 'weightPerContaine', 'totalWeightValue', 'unit', 'addReeft', 'includeHazardous']
   },
 
   /**
@@ -74,6 +88,8 @@ Page({
   },
 
   onShow() {
+
+    // unNumber ----- start
     let unList = wx.getStorageSync('unNumberUpdate')
 
     // console.log('unList', unList)
@@ -88,12 +104,40 @@ Page({
 
     // remove cache
     wx.removeStorageSync('unNumberCache')
+
+    let isIncludeHazardous = this.data.isIncludeHazardous;
+    this.setData({
+      isIncludeHazardous: isIncludeHazardous || (this.data.unList.length > 0? true: false)
+    });
+
+    // addReeft ----- start
+    let addReeft = wx.getStorageSync('addReeft')
+
+    // console.log('unList', unList)
+    // 提交数据设置
+    if(addReeft){
+      this.setData({
+        addReeft,
+        ['tips.addReeft']: ''
+      },()=>{
+        wx.removeStorageSync('addReeft')
+      })
+    };
+
+    // remove cache
+    wx.removeStorageSync('addReeftCache')
+
+    this.setData({
+      isAddReeft: (Object.keys(this.data.addReeft).length > 0? true: false)
+    });
+    // addReeft ----- end
   },
 
   enterCommodity: utils.debounce(function (e) {
     const data = e['0'].detail.value
     this.setData({
-      showCommodityDelete: !!data,
+      [`tips.commodityName`]: !data? `${this.data.verifyInfo.required}` : '',
+      ['commodity.commodityName']: data,
       showCommodity: false,
       commodityList: []
     })
@@ -108,7 +152,7 @@ Page({
       showCommodity: true
     })
     bookCommodityList({
-      agreementReference: 'QHOF287175',
+      agreementReference: 'QTWEB2506790',
       keyword: data
     }).then(res => {
       console.log(res)
@@ -126,10 +170,8 @@ Page({
   chooseCommodity(e) {
     const index = e.currentTarget.dataset.index
     this.setData({
-      commodity: {
-        commodityCode: this.data.commodityList[index].commodityCode,
-        commodityName: this.data.commodityList[index].description + ' - ' + this.data.commodityList[index].commodityCode
-      },
+      commodityCode: this.data.commodityList[index].commodityCode,
+      commodityName: this.data.commodityList[index].description + ' - ' + this.data.commodityList[index].commodityCode,
       commodityList: []
     })
   },
@@ -157,13 +199,27 @@ Page({
 
   // deleteUNNumber
   deleteUNNumber({currentTarget}) {
-    const id = parseInt(currentTarget.dataset.id);
-    const unList = JSON.parse(JSON.stringify(this.data.unList));
-    const index = unList.findIndex( v => v.id === id);
-    unList.splice(index, 1);
-    this.setData({
-      unList
+
+    wx.showModal({
+      title: '是否要删除此 UN Number？',
+      // content: '是否要删除此 UN Number？',
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定');
+          const id = parseInt(currentTarget.dataset.id);
+          const unList = JSON.parse(JSON.stringify(this.data.unList));
+          const index = unList.findIndex( v => v.id === id);
+          unList.splice(index, 1);
+          this.setData({
+            unList,
+            isIncludeHazardous: (unList.length > 0? true: false)
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
+
   },
   // openPicker
   openPicker({currentTarget}) {
@@ -228,8 +284,20 @@ Page({
   // onPickerConfirm
   onPickerConfirm({detail}) {
     const _t = this;
+
     // 1 => Size/Type, 2 => Unit
     const type = _t.data.pickerValueKeyFlag;
+    if (type === 1) {
+      detail.value = detail.code;
+      _t.setData({
+        [`tips.sizeType`]: '',
+      })
+    }
+    if (type === 2) {
+      _t.setData({
+        [`tips.unit`]: '',
+      })
+    }
     _t.setData({
       [`pickerChooseReault.${type}`]: detail,
       pickerValueKeyFlag: type,
@@ -242,9 +310,12 @@ Page({
     const keys = currentTarget.dataset.keys;
     const addkeys = currentTarget.dataset.addkeys;
     const resultkeys = currentTarget.dataset.resultkeys;
-    const value = (detail.value).replace(/[^\d.]/g,'');
+    const tipkeys = currentTarget.dataset.tipkeys;
+    const value = (detail.value).replace(/[^\d.]/g,'') || '';
     const addkeysValue = this.data[addkeys];
     this.setData({
+      [`tips.${tipkeys}`]: (value? '': `${this.data.verifyInfo.required}`),
+      [`tips.${resultkeys}`]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? '': `${this.data.verifyInfo.required}`,
       [keys]: value,
       [resultkeys]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? (parseInt(value) * parseInt(addkeysValue)): ''
     });
@@ -253,10 +324,295 @@ Page({
   // clearValue
   clearValue({currentTarget}) {
     const keys = currentTarget.dataset.keys.split(',');
+    const isrequired = currentTarget.dataset.isrequired;
+    const tipkey = currentTarget.dataset.tipkeys;
     keys.forEach(v => {
+      let msg = '';
+      let _val = '';
+      if (isrequired) msg = `${this.data.verifyInfo.required}`;
+
+      if (v.includes('.')) {
+        var _g = v.split('.');
+        if (_g.length === 2) {
+          _val = this.data[_g[0]][_g[1]]
+        }
+        if (_g.length === 3) {
+          _val = this.data[_g[0]][_g[1]][_g[2]]
+        }
+        if (_g.length === 4) {
+          _val = this.data[_g[0]][_g[1]][_g[2]][_g[3]]
+        }
+      } else {
+        _val = this.data[v]
+      }
+      console.log('tipkey', tipkey, msg)
       this.setData({
+        [`tips.${tipkey}`]: msg,
         [v]: ''
       })
     })
+  },
+
+  // toAddReeft
+  toAddReeft() {
+    wx.navigateTo({
+      url: `/packageBooking/pages/AddReeft/index${(Object.keys(this.data.addReeft).length > 0? '?update=true': '')}`
+    })
+
+    if (Object.keys(this.data.addReeft).length > 0) {
+      wx.setStorageSync('addReeftCache', this.data.addReeft);
+    }
+  },
+
+  // verify
+  // keys 为判断的keys
+  // tipkey 为输出判断的key
+  // scrollElement 为校验滚动点元素
+  verify(keys='', tipkey='', scrollElement='', nativeData='') {
+    const _t = this;
+    const data = _t.data;
+    const dataKeys = keys.split(',');
+    let isFlag = false;
+    let requiredEmelemt = '';
+    if (data.requiredEmelemt.length < 1) {
+      requiredEmelemt = Array(data.scrollToElement.length)
+    } else {
+      requiredEmelemt = data.requiredEmelemt
+    }
+
+    dataKeys.forEach(v => {
+      let msg = '';
+      let _val = ''
+      if (v.includes('.')) {
+        var _g = v.split('.');
+        if (_g.length === 2) {
+          _val = this.data[_g[0]][_g[1]]
+        }
+        if (_g.length === 3) {
+          _val = this.data[_g[0]][_g[1]][_g[2]]
+        }
+        if (_g.length === 4) {
+          _val = this.data[_g[0]][_g[1]][_g[2]][_g[3]]
+        }
+      } else {
+        _val = this.data[v]
+      }
+
+      if (!_val && !nativeData) {
+        msg = `${data.verifyInfo.required}`;
+        isFlag = true;
+      }
+      this.setData({
+        [`tips.${tipkey}`]: msg
+      })
+    });
+
+    const isFind = requiredEmelemt.findIndex(v => v === scrollElement);
+    const index = data.scrollToElement.findIndex(v => v === scrollElement);
+    if (isFlag) {
+      isFind === -1 && (requiredEmelemt[index] = scrollElement);
+    } else {
+      if (isFind !== -1) {
+        requiredEmelemt[index] = ''
+      }
+    };
+    this.setData({ requiredEmelemt });
+    return isFlag;
+  },
+
+  // scrollTo
+  scrollTo({element, duration=200, offsetTop=0}) {
+    // 使用wx.createSelectorQuery()查询到需要滚动到的元素位置
+    // console.log('element', element)
+    const query = wx.createSelectorQuery().in(this)
+    if (!element) return false;
+    query.select(`.scroll-${element}`).boundingClientRect(res => {
+      // console.log('res', res)
+      // 使用wx.getSysTemInfo()获取设备及页面高度windowHeight（px）
+      wx.getSystemInfo({
+        success(ress) {
+          // console.log('ress', ress)
+          wx.pageScrollTo({
+            scrollTop: res.top + 357,
+            // scrollTop: res.top,
+            duration
+          })
+        }
+      })
+    }).exec()
+  },
+
+  // onConfirm
+  onConfirm() {
+    const _t = this;
+    const scrollToElement = _t.data.scrollToElement;
+
+
+    // commodityName
+    if (_t.verify('commodityName', 'commodityName', scrollToElement[0])) {
+      console.log('commodityName - 为空')
+    }
+
+    // sizeType
+    if (_t.verify('pickerChooseReault.1.value', 'sizeType', scrollToElement[1])) {
+      console.log('sizeType - 为空')
+    }
+
+    // quantityValue
+    if (_t.verify('quantityValue', 'quantity', scrollToElement[2])) {
+      console.log('quantityValue - 为空')
+    }
+
+    // weightValue
+    if (_t.verify('weightValue', 'weightPerContaine', scrollToElement[3])) {
+      console.log('weightValue - 为空')
+    }
+
+    // totalWeightValue
+    if (_t.verify('totalWeightValue', 'totalWeightValue', scrollToElement[4])) {
+      console.log('totalWeightValue - 为空')
+    }
+
+    // unit
+    if (_t.verify('pickerChooseReault.2.value', 'unit', scrollToElement[5])) {
+      console.log('unit - 为空')
+    }
+
+    // addReeft
+    if (_t.verify('isAddReeft', 'addReeft', scrollToElement[6])) {
+      console.log('addReeft - 为空')
+    }
+
+    // scrollTo
+    _t.scrollTo({element: _t.data.requiredEmelemt.find( v => !!v )})
+
+    if (_t.data.requiredEmelemt.findIndex( v => !!v ) !== -1) {
+      console.log('存在必填为空', _t.data.requiredEmelemt, _t.data.requiredEmelemt.findIndex( v => !!v ))
+      return false
+    }
+
+    if (!_t.data.commodityCode) {
+      this.setData({
+        [`tips.commodityName`]: `请输入并获取正确的 Commodity`
+      })
+      _t.scrollTo({element: 'commodityName'})
+      return false
+    }
+
+    if (_t.data.isIncludeHazardous && _t.data.unList.length < 1) {
+      this.setData({
+        [`tips.includeHazardous`]: `请添加 UN Number`
+      })
+      _t.scrollTo({element: 'includeHazardous'})
+      return false
+    }
+
+    console.log('验证通过')
+    // sumbit
+    // do something...
+    const {
+      commodityName,
+      commodityCode,
+      pickerChooseReault,
+      isUserContainer,
+      weightValue,
+      totalWeightValue,
+      isIncludeHazardous,
+      unList,
+      isAddReeft,
+      addReeft
+    } = _t.data;
+
+    let unListData = JSON.parse(JSON.stringify(unList));
+    let hazardousDetails = unListData.map(v => {
+      console.log('unListData', v)
+      return  {
+        // hazardousId: 0,
+        unNumber: v.unNumberCode,
+        properShippingName: v.unNumberName,
+        packingGroup: v.pickerChooseReault[1].value,
+        imdgClass: v.classNumber,
+        ems: v.emsCode,
+        flashPoint: v.flashPoint,
+        flashPointUnit: 'C',
+        // marinePollutant: true,
+        netWeight: v.netWeight,
+        grossWeight: v.grossWeight,
+        unit: v.pickerChooseReault[2].value,
+        emergencyContactName: v.emergencyContactName,
+        emergencyContactNumber: v.emergencyNumber,
+        comment: v.commentOptional,
+        chemicalName: v.chemicalName,
+        limitedQuantity: v.isTransport,
+        unVariant: v.chooseUNNumber.unVariant,
+        // outerPackaging: {
+        //   packagingDesc: 4H1 Expanded plastics boxes,
+        //   packagingQuantity: 15,
+        //   packagingTypes: O
+        // },
+        // innerPackaging: {
+        //   packagingDesc: 4H1 Expanded plastics boxes,
+        //   packagingQuantity: 15,
+        //   packagingTypes: O
+        // },
+        // variation: Packaging group I.,
+        // pins: string
+      };
+      // return news;
+    })
+
+    const submitData = {
+      commodity: {
+        commodityName,
+        commodityCode
+      },
+      sizeTypeName: pickerChooseReault[1].text,
+      sizeTypeCode: pickerChooseReault[1].value,
+      shipperOwnedContainer: isUserContainer,
+      // numberOfContainer: 1,
+      tareWeightUom: pickerChooseReault[2].value,
+      // tareWeight: totalWeightValue,
+      netWeight: weightValue,
+      netWeightUom: pickerChooseReault[2].value,
+      hazardous: isIncludeHazardous,
+      // outOfGauge: true,
+      // multipleCargo: true,
+      reefer: isAddReeft,
+      // outOfGaugeDetail: {
+      //   back: 10,
+      //   front: 20,
+      //   height: 30,
+      //   left: 20,
+      //   right: 30,
+      //   overLengthUnit: cm,
+      //   overHeightUnit: cm,
+      //   overWidthUnit: cm
+      // },
+      hazardousDetails: [
+        {
+          // imdgNumber: 1009,
+          hazardousDetails
+        }
+      ],
+      reeferDetail: {
+        operatingMode: addReeft.switchReeferMode,
+        temperature: addReeft.switchReeferModeValue,
+        temperatureUnit: addReeft.switchReeferModeUnit.value,
+        ventilationOpen: addReeft.switchVentilation,
+        ventilation: addReeft.switchVentilation,
+        ventilationUnit: 'CBM/HR',
+        ventilationValue: addReeft.switchVentilationValue,
+        dehumified: addReeft.switchDehumified,
+        dehumifiedPercentage: addReeft.switchDehumifiedValue,
+        controlledAtmosphere: addReeft.switchControlledAtmosphere,
+        o2Percentage: addReeft.switchControlledAtmosphereValue,
+        co2Percentage: addReeft.switchControlledAtmosphereValue,
+        nitrogenPercent: addReeft.switchControlledAtmosphereValue,
+        gensetRequired: addReeft.switchGensetRequired,
+        additionalComments: ''
+      }
+    };
+
+    console.log('submitData', submitData)
   }
 })

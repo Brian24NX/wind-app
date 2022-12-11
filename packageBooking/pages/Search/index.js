@@ -60,7 +60,8 @@ Page({
     showPlaceOfReceipt: false,
     showPlaceOfDelivery: false,
     showPoR: false,
-    showPoDe: false
+    showPoDe: false,
+    shippingCompanyList: ['0001', '0002', '0011', '0015']
   },
 
   /**
@@ -502,11 +503,28 @@ Page({
     }
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     this.checkAccessToken(() => {
-      this.getQuotationList()
+      this.getQuotationList(0)
     })
   },
 
-  getQuotationList() {
+  getQuotationList(index) {
+    if (index === this.data.shippingCompanyList.length) {
+      const bookingSearchKey = {
+        portOfLoading: this.data.portOfLoadingLabel,
+        portOfDischarge: this.data.portOfDischargeLabel,
+        placeOfDelivery: this.data.placeOfOriginLabel || '',
+        deliveryHaulage: this.data.deliveryHaulage || '',
+        placeOfReceipt: this.data.finalPlaceOfDeliveryLabel || '',
+        receiptHaulage: this.data.receiptHaulage || '',
+        quotationReference: this.data.reference,
+        shippingCompany: this.data.shippingCompanyList[index]
+      }
+      wx.setStorageSync('bookingSearchKey', bookingSearchKey)
+      wx.redirectTo({
+        url: '/packageBooking/pages/List/index',
+      })
+      return
+    }
     bookingQuotationList({
       portOfLoading: this.data.portOfLoading,
       portOfDischarge: this.data.portOfDischarge,
@@ -515,14 +533,16 @@ Page({
       journeyDate: this.data.simulationDate,
       journeyType: this.data.searchOn === 1 ? "True" : "False",
       agreementReference: this.data.reference,
-      shippingCompany: '0001'
+      shippingCompany: this.data.shippingCompanyList[index]
     }).then(res => {
-      if (res.data && res.data.routings && res.data.routings.length) {
+      if (res.data && res.data.routings && res.data.routings.length && res.data.commodities.quotationCommodities.length) {
         wx.setStorageSync('bookingRoutings', res.data.routings)
         wx.setStorageSync('containers', res.data.commodities.preferedContainerTypes.concat(res.data.commodities.containerTypes))
       } else {
         wx.removeStorageSync('bookingRoutings')
         wx.removeStorageSync('containers')
+        this.getQuotationList(++index)
+        return
       }
       const bookingSearchKey = {
         portOfLoading: this.data.portOfLoadingLabel,
@@ -532,7 +552,7 @@ Page({
         placeOfReceipt: this.data.finalPlaceOfDeliveryLabel || '',
         receiptHaulage: this.data.receiptHaulage || '',
         quotationReference: this.data.reference,
-        shippingCompany: '0001'
+        shippingCompany: this.data.shippingCompanyList[index]
       }
       wx.setStorageSync('bookingSearchKey', bookingSearchKey)
       wx.redirectTo({

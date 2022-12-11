@@ -6,7 +6,6 @@ import {
 } from '../../api/modules/booking'
 const languageUtils = require("../../../utils/languageUtils")
 const utils = require('../../../utils/util')
-// 获取全部页面
 
 Page({
 
@@ -19,6 +18,7 @@ Page({
     // showUNNumberDelete: false,
     showUnNumberLoading: false,
     UNNumberLists: [],
+    chooseUNNumber: '',
     unNumberCode: '',
     unNumberName: '',
     // picker
@@ -118,6 +118,7 @@ Page({
         const index = prevData.findIndex(v => parseInt(v.id) === parseInt(options.id));
         const {
           id,
+          chooseUNNumber,
           unNumberCode,
           unNumberName,
           chemicalName,
@@ -139,6 +140,7 @@ Page({
           cacheData } = prevData[index];
         this.setData({
           id,
+          chooseUNNumber,
           unNumberCode,
           unNumberName,
           chemicalName,
@@ -212,6 +214,7 @@ Page({
     this.setData({
       unNumberCode: this.data.UNNumberLists[index].unNumber,
       unNumberName: this.data.UNNumberLists[index].unNumber + ' - ' + this.data.UNNumberLists[index].unName,
+      chooseUNNumber: this.data.UNNumberLists[index],
       UNNumberLists: []
     })
     this.getPackageList(unNumber)
@@ -413,7 +416,7 @@ Page({
   // setFlashPoint
   setFlashPoint({detail, currentTarget}) {
     const isrequired = currentTarget.dataset.isrequired;
-    const flashPoint = this.recordFloat(detail.value);
+    const flashPoint = this.recordFloat(detail.value) || '';
     let msg = '';
     if (isrequired && !flashPoint) {
       msg = `${this.data.verifyInfo.required}`;
@@ -705,7 +708,9 @@ Page({
     const prevData = JSON.parse(JSON.stringify(wx.getStorageSync('unNumberCache') || []));
 
     console.log('prevData', prevData)
-    const { unNumberCode,
+    const {
+      chooseUNNumber,
+      unNumberCode,
       unNumberName,
       chemicalName,
       pickerChooseReault,
@@ -723,9 +728,11 @@ Page({
       isTransport,
       commentOptional,
       commentOptionalLength,
-      cacheData} = _t.data;
+      cacheData
+    } = _t.data;
     const newsData = {
       id: prevData.length + 1,
+      chooseUNNumber,
       unNumberCode,
       unNumberName,
       chemicalName,
@@ -764,7 +771,7 @@ Page({
 
     setTimeout(() => {
       wx.navigateBack()
-    }, 1000)
+    }, 800)
     // do something...
   }
 })

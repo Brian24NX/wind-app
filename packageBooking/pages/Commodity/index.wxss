@@ -4,6 +4,13 @@ page {
   padding: 30rpx;
 }
 
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
 .oneContainer {
   background-color: #FFFFFF;
   padding: 40rpx 48rpx 30rpx;
@@ -94,7 +101,22 @@ page {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
+.add-reeft-outbox {
+  margin-bottom: 20rpx;
+}
+.add-reeft {
+  position: relative;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.add-reeft .arrow-right {
+  position: absolute;
+  width: 32rpx;
+  height: 32rpx;
+  top: 50%;
+  right: 0;
+  transform: translate3d(0, -50%, 0) rotate(-90deg);
+}
 .shipOwner {
   font-size: 24rpx;
   font-family: Antonio-Regular, Antonio;
@@ -208,6 +230,11 @@ page {
   align-items: center;
 }
 
+.unList .oneUn .unList-title {
+  box-sizing: border-box;
+  padding-right: 10px;
+}
+
 .unList .oneUn .unIcon image {
   width: 40rpx;
   height: 40rpx;
@@ -246,4 +273,21 @@ page {
   color: #FFFFFF;
   line-height: 88rpx;
   border-radius: 0;
+}
+
+.error-tips {
+  font-size: 24rpx;
+  color: #E2014B;
+  /* position: absolute; */
+  /* left: 0; */
+  /* top: 90rpx; */
+  display: flex;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.error-tips image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
 }
