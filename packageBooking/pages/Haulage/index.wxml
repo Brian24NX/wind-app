@@ -38,7 +38,7 @@
     <view class="transportMode">
       <view class="oneMode" wx:for="{{transportModeList}}" wx:key="index" catchtap="chooseMode" data-id="{{item.id}}">
         <image class="image" src="{{item.icon}}" mode="aspectFit"></image>
-        <view>{{item.id}}</view>
+        <view>{{languageContent.transportMode[item.id]}}</view>
         <image src="/assets/img/booking/mode/checked.png" class="modeChecked" wx:if="{{transportMode === item.id}}"></image>
       </view>
     </view>

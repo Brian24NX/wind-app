@@ -39,11 +39,11 @@
       <view class="cutTimeContainer">
         <view class="oneCutTime" wx:if="{{routeSelected.specialCutOffDate}}">
           <view>Special BKG Cut-off</view>
-          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.specialCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.specialCutOffDate.utc, '-', '', true)}}</view>
+          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.specialCutOffDate.local, true) : commonFilters.formatEnDateLocal(routeSelected.specialCutOffDate.local, '-', '', true)}}</view>
         </view>
         <view class="oneCutTime" wx:if="{{routeSelected.standardCutOffDate}}">
           <view>Standard BKG Cut-off</view>
-          <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.standardCutOffDate.utc, true) : commonFilters.formatEnDateLocal(routeSelected.standardCutOffDate.utc, '-', '', true)}}</view>
+          <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.standardCutOffDate.local, true) : commonFilters.formatEnDateLocal(routeSelected.standardCutOffDate.local, '-', '', true)}}</view>
         </view>
         <view class="oneCutTime">
           <view>Port Cut-off</view>
@@ -54,7 +54,7 @@
   </view>
 </view>
 
-<view class="oneDetails">
+<view class="oneDetails" wx:if="{{bookingSearchKey.deliveryHaulage}}">
   <view class="detailTops">
     <view class="detailTopLeft">
       <image src="/assets/img/booking/cargo.png" mode="aspectFit" />
@@ -66,7 +66,7 @@
   </view>
 </view>
 
-<view class="oneDetails">
+<view class="oneDetails" wx:if="{{bookingSearchKey.receiptHaulage}}">
   <view class="detailTops">
     <view class="detailTopLeft">
       <image src="/assets/img/booking/cargo.png" mode="aspectFit" />

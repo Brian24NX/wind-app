@@ -25,22 +25,22 @@ export const stateList = (params) => {
 
 // 商品搜索
 export const bookCommodityList = (params) => {
-  return getRequest("/api/miniapp/cdrCommodityFuzzy", params, true, true)
+  return getRequest("/api/miniapp/cdrCommodityFuzzy", params, true)
 }
 
 // UNNumber搜索
 export const UNNumberList = (params) => {
-  return getRequest("/api/miniapp/cdrUnNumber", params, true, true)
+  return getRequest("/api/miniapp/cdrUnNumber", params, true)
 }
 
 // Package搜索
 export const packageList = (params) => {
-  return getRequest("/api/miniapp/cdrPackageGroup", params, true, true)
+  return getRequest("/api/miniapp/cdrPackageGroup", params, true)
 }
 
 // 搜索Package描述信息
 export const packageDescription = (params) => {
-  return getRequest("/api/miniapp/cdrPackageDescription", params, true, true)
+  return getRequest("/api/miniapp/cdrPackageDescription", params, true)
 }
 
 

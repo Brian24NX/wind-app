@@ -44,11 +44,11 @@
       <view class="cutTimeContainer">
         <view class="oneCutTime" wx:if="{{items.specialCutOffDate}}">
           <view>Special BKG Cut-off</view>
-          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(items.specialCutOffDate.utc, true) : commonFilters.formatEnDateLocal(items.specialCutOffDate.utc, '-', '', true)}}</view>
+          <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(items.specialCutOffDate.local, true) : commonFilters.formatEnDateLocal(items.specialCutOffDate.local, '-', '', true)}}</view>
         </view>
         <view class="oneCutTime" wx:if="{{items.standardCutOffDate}}">
           <view>Standard BKG Cut-off</view>
-          <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.standardCutOffDate.utc, true) : commonFilters.formatEnDateLocal(items.standardCutOffDate.utc, '-', '', true)}}</view>
+          <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.standardCutOffDate.local, true) : commonFilters.formatEnDateLocal(items.standardCutOffDate.local, '-', '', true)}}</view>
         </view>
         <view class="oneCutTime">
           <view>Port Cut-off</view>

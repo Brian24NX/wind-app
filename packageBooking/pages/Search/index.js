@@ -627,6 +627,7 @@ Page({
       portOfDischargeLabel: "",
       finalPlaceOfDelivery: '',
       finalPlaceOfDeliveryLabel: '',
+      deliveryHaulage: '',
       pollist: [],
       podlist: [],
       simulationDate: this.getDate(),

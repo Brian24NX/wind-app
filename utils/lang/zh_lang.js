@@ -662,6 +662,14 @@ var Languague = {
         NAC: 'Named Account',
         '3BA': 'Third Party booking agent',
         CUS: 'Customs Broker'
+      },
+      transportMode: {
+        Road: 'Truck',
+        Rail: 'Rail',
+        RailRoad: 'Rail + Truck',
+        Barge: 'Barge',
+        BargeRoad: 'Barge + Truck',
+        RailBarge: 'Train + Barge'
       }
     },
     modifyParty: {

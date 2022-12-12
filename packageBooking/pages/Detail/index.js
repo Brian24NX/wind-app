@@ -29,8 +29,6 @@ Page({
     preferredBookingOffice: null,
     noOfBooking: 1,
     currentStep: '',
-    haulageDirectionType: '',
-    haulageType: '',
     payment: {
       freightPayment: 'Prepaid',
       freightPayerCode: '',
@@ -76,8 +74,6 @@ Page({
       routeSelected: wx.getStorageSync('routeSelected'),
       bookingSearchKey: wx.getStorageSync('bookingSearchKey'),
       currentStep: (wx.getStorageSync('bookingSearchKey').placeOfDelivery || wx.getStorageSync('bookingSearchKey').placeOfReceipt) ? 'first' : 'second',
-      haulageDirectionType: wx.getStorageSync('bookingSearchKey').placeOfDelivery ? 'Export' : 'Import',
-      haulageType: wx.getStorageSync('bookingSearchKey').deliveryHaulage || wx.getStorageSync('bookingSearchKey').receiptHaulage,
       payment: this.data.payment,
       quotationReference: wx.getStorageSync('bookingSearchKey').quotationReference,
       showFreightPayerDelete: true
