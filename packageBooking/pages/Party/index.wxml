@@ -70,9 +70,12 @@
         <text>{{verifyInfo.required}}</text>
       </view>
     </view>
+    <view class="addParty" catchtap="addParty" wx:if="{{index === partiesList.length - 1}}">
+      <image src="/assets/img/booking/add_2.svg"></image>
+      <view>Add Party</view>
+    </view>
   </view>
-  <button hover-class="buttonClick" class="addBtn" catchtap="addParty">+ Add Party</button>
+  <button hover-class="buttonClick" class="addBtn" catchtap="saveParty">Save</button>
 </view>
-<button class="bottomBtn" hover-class="buttonClick" catchtap="saveParty">Save</button>
 
 <custom-picker columns="{{partnerList}}" valueKey="name" defaultIndex="{{defaultIndex}}" showPopup="{{isShowPicker}}" bindonClose="onPickerClose" bind:onConfirm="onPickerConfirm"></custom-picker>

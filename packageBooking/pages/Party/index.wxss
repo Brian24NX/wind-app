@@ -24,12 +24,12 @@ page {
 }
 
 .partyList {
-  padding-bottom: calc(env(safe-area-inset-bottom) + 120rpx);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 30rpx);
 }
 
 .oneParty {
   background-color: #ffffff;
-  padding: 18rpx 48rpx 68rpx;
+  padding: 18rpx 48rpx 48rpx;
   border-top: 10rpx solid #E20202;
   margin-top: 30rpx;
   position: relative;
@@ -266,4 +266,19 @@ page {
 
 .noRequestBorder {
   border: 2rpx solid #E2014B !important;
+}
+
+.addParty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #04246A;
+  font-size: 26rpx;
+  margin-top: 40rpx;
+}
+
+.addParty image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
 }

@@ -3,10 +3,10 @@
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/ship.png" mode="aspectFit" />
+      <image src="/assets/img/booking/1.svg" mode="aspectFit" />
       <view>{{languageContent.routeSelected}}</view>
     </view>
-    <!-- <image class="editIcon" src="/assets/img/booking/edit.png" /> -->
+    <!-- <image class="editIcon" src="/assets/img/booking/edit.svg" /> -->
   </view>
   <view class="routeContainer">
     <view class="stepLists">
@@ -57,7 +57,7 @@
 <view class="oneDetails" wx:if="{{bookingSearchKey.deliveryHaulage}}">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/cargo.png" mode="aspectFit" />
+      <image src="/assets/img/booking/7.svg" mode="aspectFit" />
       <view>Haulage Export</view>
     </view>
     <view class="addIcon" catchtap="modifyHaulage" data-type="Export">
@@ -69,7 +69,7 @@
 <view class="oneDetails" wx:if="{{bookingSearchKey.receiptHaulage}}">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/cargo.png" mode="aspectFit" />
+      <image src="/assets/img/booking/7.svg" mode="aspectFit" />
       <view>Haulage Import</view>
     </view>
     <view class="addIcon" catchtap="modifyHaulage" data-type="Import">
@@ -81,7 +81,7 @@
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/cargo.png" mode="aspectFit" />
+      <image src="/assets/img/booking/2.svg" mode="aspectFit" />
       <view>{{languageContent.cargoDetail}}</view>
     </view>
     <view class="addIcon" catchtap="addCommodity">
@@ -100,7 +100,7 @@
       </view>
     </view>
     <view class="commodityDetail">
-      <image src="/assets/img/booking/commodity.png" />
+      <image src="/assets/img/booking/2.svg" />
       <view class="commodityRight">
         <view class="commodityName">{{item.commodity.commodityName + ' - ' + item.commodity.commodityCode}}</view>
         <view>{{item.sizeTypeName}} 132 x {{item.netWeight}} = 13200 {{item.netWeightUom}}</view>
@@ -116,10 +116,10 @@
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/parties.png" mode="aspectFit" />
+      <image src="/assets/img/booking/3.svg" mode="aspectFit" />
       <view>{{languageContent.parties}}</view>
     </view>
-    <image class="editIcon" src="/assets/img/booking/edit.png" catchtap="addParty" />
+    <image class="editIcon" src="/assets/img/booking/edit.svg" catchtap="addParty" />
   </view>
   <view class="oneCargo" wx:for="{{partyList}}" wx:key="index">
     <view class="cargoTitle">{{languageContent.partyName}}</view>
@@ -137,7 +137,7 @@
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/payment.png" mode="aspectFit" />
+      <image src="/assets/img/booking/4.svg" mode="aspectFit" />
       <view>{{languageContent.payment}}</view>
     </view>
   </view>
@@ -198,10 +198,10 @@
 <!-- <view class="oneDetails">
     <view class="detailTops">
       <view class="detailTopLeft">
-        <image src="/assets/img/booking/vas.png" mode="aspectFit" />
+        <image src="/assets/img/booking/6.svg" mode="aspectFit" />
         <view>{{languageContent.vas}}</view>
       </view>
-      <image class="editIcon" src="/assets/img/booking/edit.png" />
+      <image class="editIcon" src="/assets/img/booking/edit.svg" />
     </view>
     <view class="additionContainer">
       <view class="oneAddition" wx:for="{{vasList}}" wx:key="index">
@@ -223,6 +223,7 @@
 <view class="oneDetails">
   <view class="detailTops">
     <view class="detailTopLeft">
+      <image src="/assets/img/booking/5.svg" mode="aspectFit" />
       <view>{{languageContent.bookingOffice}}</view>
     </view>
   </view>
