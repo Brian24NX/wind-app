@@ -30,7 +30,7 @@ Page({
   },
 
   setRouting() {
-    let routings = wx.getStorageSync('bookingRoutings')
+    let routings = wx.getStorageSync('bookingRoutings') || []
     const bookingSearchKey = wx.getStorageSync('bookingSearchKey')
     let fromLabel = bookingSearchKey.portOfLoading.split(';')[0] + ', ' + bookingSearchKey.portOfLoading.split(';')[1]
     if (bookingSearchKey.placeOfDelivery) {
@@ -44,53 +44,54 @@ Page({
       fromLabel,
       toLabel,
     })
-    routings.forEach(element => {
-      element.zhuanyun = element.journeyLegs.length - 1
-      if (bookingSearchKey.placeOfDelivery) {
-        element.journeyLegs.unshift({
-          departureLocation: {
-            name: bookingSearchKey.placeOfDelivery.split(';')[0],
-            code: bookingSearchKey.placeOfDelivery.split(';').pop()
-          },
-          placeType: bookingSearchKey.deliveryHaulage
-        })
-      }
-      if (bookingSearchKey.placeOfReceipt) {
-        element.journeyLegs.push({
-          departureLocation: element.journeyLegs[element.journeyLegs.length - 1],
-          arrivalLocation: {
-            name: bookingSearchKey.placeOfReceipt.split(';')[0],
-            code: bookingSearchKey.placeOfReceipt.split(';').pop()
-          },
-          placeType: bookingSearchKey.receiptHaulage
-        })
-      }
-      element.journeyLegs.forEach(item => {
-        if (!item.voyageReference && item.vesselName === 'FEEDER') {
-          item.voyageReference = item.vesselName
-          item.serviceName = item.vesselName
+    if (routings.length) {
+      routings.forEach(element => {
+        element.zhuanyun = element.journeyLegs.length - 1
+        if (bookingSearchKey.placeOfDelivery) {
+          element.journeyLegs.unshift({
+            departureLocation: {
+              name: bookingSearchKey.placeOfDelivery.split(';')[0],
+              code: bookingSearchKey.placeOfDelivery.split(';').pop()
+            },
+            placeType: bookingSearchKey.deliveryHaulage
+          })
         }
-        if (!element.departureDate && (item.departureDate && item.departureDate.utc) && item.voyageReference) {
-          element.departureDate = item.departureDate
+        if (bookingSearchKey.placeOfReceipt) {
+          element.journeyLegs.push({
+            departureLocation: element.journeyLegs[element.journeyLegs.length - 1],
+            arrivalLocation: {
+              name: bookingSearchKey.placeOfReceipt.split(';')[0],
+              code: bookingSearchKey.placeOfReceipt.split(';').pop()
+            },
+            placeType: bookingSearchKey.receiptHaulage
+          })
         }
+        element.journeyLegs.forEach(item => {
+          if (!item.voyageReference && item.vesselName === 'FEEDER') {
+            item.voyageReference = item.vesselName
+            item.serviceName = item.vesselName
+          }
+          if (!element.departureDate && (item.departureDate && item.departureDate.utc) && item.voyageReference) {
+            element.departureDate = item.departureDate
+          }
+        })
+        if (element.journeyLegs[0].voyageReference) {
+          element.specialCutOffDate = (element.journeyLegs[0].specialCutOffDate && element.journeyLegs[0].specialCutOffDate.utc) ? element.journeyLegs[0].specialCutOffDate : null
+          element.standardCutOffDate = (element.journeyLegs[0].standardCutOffDate && element.journeyLegs[0].standardCutOffDate.utc) ? element.journeyLegs[0].standardCutOffDate : null
+        } else {
+          element.specialCutOffDate = (element.journeyLegs[1].specialCutOffDate && element.journeyLegs[1].specialCutOffDate.utc) ? element.journeyLegs[1].specialCutOffDate : null
+          element.standardCutOffDate = (element.journeyLegs[1].standardCutOffDate && element.journeyLegs[1].standardCutOffDate.utc) ? element.journeyLegs[1].standardCutOffDate : null
+        }
+        if (element.journeyLegs[element.journeyLegs.length - 1].arrivalDate) {
+          element.arrivalDate = element.journeyLegs[element.journeyLegs.length - 1].arrivalDate
+        } else {
+          element.arrivalDate = element.journeyLegs[element.journeyLegs.length - 2].arrivalDate
+        }
+      });
+      this.setData({
+        routings
       })
-      if (element.journeyLegs[0].voyageReference) {
-        element.specialCutOffDate = (element.journeyLegs[0].specialCutOffDate && element.journeyLegs[0].specialCutOffDate.utc) ? element.journeyLegs[0].specialCutOffDate : null
-        element.standardCutOffDate = (element.journeyLegs[0].standardCutOffDate && element.journeyLegs[0].standardCutOffDate.utc) ? element.journeyLegs[0].standardCutOffDate : null
-      } else {
-        element.specialCutOffDate = (element.journeyLegs[1].specialCutOffDate && element.journeyLegs[1].specialCutOffDate.utc) ? element.journeyLegs[1].specialCutOffDate : null
-        element.standardCutOffDate = (element.journeyLegs[1].standardCutOffDate && element.journeyLegs[1].standardCutOffDate.utc) ? element.journeyLegs[1].standardCutOffDate : null
-      }
-      if (element.journeyLegs[element.journeyLegs.length - 1].arrivalDate) {
-        element.arrivalDate = element.journeyLegs[element.journeyLegs.length - 1].arrivalDate
-      } else {
-        element.arrivalDate = element.journeyLegs[element.journeyLegs.length - 2].arrivalDate
-      }
-    });
-    this.setData({
-      routings
-    })
-    
+    }
   },
 
   selectLine(e) {

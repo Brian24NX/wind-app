@@ -105,7 +105,7 @@
       </view>
 
       <view class="input-boxs right" wx:if="{{ switchControlledAtmosphere }}">
-        <text class="input-txt header">Operating at 0<text class="text-sup">2</text></text>
+        <text class="input-txt header">Operating at O<text class="text-sup">2</text></text>
         <view class="inputs">
           <input type="number" maxlength="6" bindinput="setNumberValues" data-keys="switchControlledAtmosphereValue" class="input-ipt" value="{{switchControlledAtmosphereValue}}" data-clearkeys="controlledAtmosphere" />
         </view>

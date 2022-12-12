@@ -64,6 +64,7 @@ Page({
     shippingCompanyList: ['0001', '0002', '0011', '0015'],
     minDate: new Date().getTime(),
     warmPrompt: '',
+    hasPermission: null
   },
 
   /**
@@ -73,19 +74,21 @@ Page({
     const lag = languageUtil.languageVersion().lang.page.langue;
     this.initLanguage();
     this.setData({
-      simulationDate: this.getDate()
+      simulationDate: this.getDate(),
+      hasPermission: utils.checkPermission('manageBkg')
     });
 
     //设置最小日期
     const today = new Date() // 当前
     this.setData({
-      minDate: today.setMonth(today.getMonth()-3)
+      minDate: today.setMonth(today.getMonth() - 3)
     });
 
     // 提示提示语
     const warmPrompt = {
-      zh: `增值服务功能升级中，敬请期待。如需添加增值服务产品，请移步至官网进行操作`,
-      en: `Value-added service (VAS) function coming soon. Please add additional services during booking on eCommerce website for now`
+      zh: `增值服务功能升级中，敬请期待。
+      \n如需添加增值服务产品，请移步至官网进行操作`,
+      en: `Value-added service (VAS) function coming soon.\n Please add additional services during booking on eCommerce website for now`
     }
     this.setData({
       warmPrompt: warmPrompt[lag]
@@ -97,9 +100,27 @@ Page({
         portOfLoadingLabel: options.polLabel,
         portOfDischarge: options.pod,
         portOfDischargeLabel: options.podLabel,
-        reference: options.quotationReference,
+        reference: options.quotationReference || '',
         showDelete2: true,
         showDelete3: true
+      })
+    }
+    if (options.placeOfOrigin) {
+      this.setData({
+        placeOfOrigin: options.placeOfOrigin,
+        placeOfOriginLabel: options.placeOfOriginLabel,
+        receiptHaulage: options.receiptHaulage,
+        showPlaceOfReceipt: true,
+        showDelete1: true
+      })
+    }
+    if (options.finalPlaceOfDelivery) {
+      this.setData({
+        finalPlaceOfDelivery: options.finalPlaceOfDelivery,
+        finalPlaceOfDeliveryLabel: options.finalPlaceOfDeliveryLabel,
+        deliveryHaulage: options.deliveryHaulage,
+        showPlaceOfDelivery: true,
+        showDelete4: true
       })
     }
   },
@@ -550,7 +571,7 @@ Page({
         shippingCompany: this.data.shippingCompanyList[index]
       }
       wx.setStorageSync('bookingSearchKey', bookingSearchKey)
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/packageBooking/pages/List/index',
       })
       return
@@ -565,7 +586,7 @@ Page({
       agreementReference: this.data.reference,
       shippingCompany: this.data.shippingCompanyList[index]
     }).then(res => {
-      if (res.data && res.data.routings && res.data.routings.length && res.data.commodities.quotationCommodities.length) {
+      if (res.data && res.data.routings && res.data.routings.length) {
         wx.setStorageSync('bookingRoutings', res.data.routings)
         wx.setStorageSync('containers', res.data.commodities.preferedContainerTypes.concat(res.data.commodities.containerTypes))
       } else {

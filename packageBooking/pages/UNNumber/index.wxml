@@ -32,7 +32,7 @@
     <view class="title">Chemical Name</view>
     <view class="inputs number">
       <input type="text" value="{{chemicalName}}" bindinput="setValues" data-keys="chemicalName" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
-      <view class="deleteIcon" wx:if="{{chemicalName}}" catchtap="clearValue" data-keys="chemicalName" data-isrequired="true" >
+      <view class="deleteIcon" wx:if="{{chemicalName}}" catchtap="clearValue" data-keys="chemicalName" data-isrequired="true">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
     </view>
@@ -72,11 +72,14 @@
   </view>
   <view>
     <view class="title">Flashpoint</view>
-    <view class="inputs number">
-      <input type="digit" value="{{flashPoint}}" maxlength="9" bindinput="setFlashPoint" data-keys="flashPoint" bindblur="recordFloatBlur" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
-      <view class="deleteIcon" wx:if="{{flashPoint}}" catchtap="clearValue" data-keys="flashPoint" data-isrequired="true">
-        <image src="/assets/img/search/close@2x.png"></image>
+    <view class="flashPoint">
+      <view class="inputs number" style="width: 550rpx;">
+        <input type="digit" value="{{flashPoint}}" maxlength="9" bindinput="setFlashPoint" data-keys="flashPoint" bindblur="recordFloatBlur" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+        <view class="deleteIcon" wx:if="{{flashPoint}}" catchtap="clearValue" data-keys="flashPoint" data-isrequired="true">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
       </view>
+      <text>C</text>
     </view>
     <view class="error-tips" wx:if="{{tips.flashPoint}}">
       <image src="/assets/img/search/error@2x.png"></image>
@@ -99,7 +102,7 @@
   <view class="scroll-net-weight">
     <view class="title">Net Weight <text class="red">*</text></view>
     <view class="inputs number">
-      <input type="number" maxlength="9" value="{{netWeight}}" bindinput="setValues" data-keys="netWeight" data-isrequired="true" data-keystype="number" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindblur="recordFloatBlur" />
+      <input type="digit" maxlength="9" value="{{netWeight}}" bindinput="setValues" data-keys="netWeight" data-isrequired="true" data-keystype="number" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindblur="recordFloatBlur" />
       <view class="deleteIcon" wx:if="{{netWeight}}" catchtap="clearValue" data-keys="netWeight" data-isrequired="true">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
@@ -235,10 +238,4 @@
 </view>
 
 <!-- picker -->
-<custom-picker
-  columns="{{columnsList}}"
-  valueKey="{{pickerValueKey}}"
-  defaultIndex="{{pickerChooseReault[pickerValueKeyFlag].index}}"
-  showPopup="{{isShowPicker}}"
-  bindonClose="onPickerClose"
-  bind:onConfirm="onPickerConfirm"></custom-picker>
+<custom-picker columns="{{columnsList}}" valueKey="{{pickerValueKey}}" defaultIndex="{{pickerChooseReault[pickerValueKeyFlag].index}}" showPopup="{{isShowPicker}}" bindonClose="onPickerClose" bind:onConfirm="onPickerConfirm"></custom-picker>

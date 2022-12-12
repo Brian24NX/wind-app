@@ -12,6 +12,7 @@
   width: 534rpx;
   height: 426rpx;
   margin-bottom: 56rpx;
+  margin-top: -120rpx;
 }
 
 .loginRemind {

@@ -6,7 +6,7 @@
   </view>
   <view class="inputContainers">
     <view class="inputsContainer">
-      <input type="text" bindinput="enterCommodity" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{commodityName}}" />
+      <input type="text" bindinput="enterCommodity" placeholder="Type Your Commodity" placeholder-class="placeholder" value="{{commodityName}}" />
       <view class="deleteIcon" wx:if="{{commodityName}}" catchtap="clearValue" data-keys="commodityName,showCommodity" data-isrequired="true" data-tipkeys="commodityName">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>

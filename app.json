@@ -78,7 +78,8 @@
         "pages/Commodity/index",
         "pages/UNNumber/index",
         "pages/Party/index",
-        "pages/AddReeft/index"
+        "pages/AddReeft/index",
+        "pages/Haulage/index"
       ]
     }
   ],

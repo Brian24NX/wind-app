@@ -78,21 +78,21 @@ Page({
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue,
-        equipmentType: data.commonEquipmentTypeName,
-        partnerCode: data.partnerCode,
-        simulationDate: data.simulationDate,
-        namedAccountCode: data.namedAccountCode,
-        portOfLoading: data.portOfLoadingLabel,
-        portOfDischarge: data.portOfDischargeLabel,
-        fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
-        fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
-        toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
-        toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
-        commonEquipmentType: data.commonEquipmentType,
-        placeOfOrigin: data.placeOfOrigin,
-        portOfLoadingCode: data.portOfLoading,
-        portOfDischargeCode: data.portOfDischarge,
-        finalPlaceOfDelivery: data.finalPlaceOfDelivery
+      equipmentType: data.commonEquipmentTypeName,
+      partnerCode: data.partnerCode,
+      simulationDate: data.simulationDate,
+      namedAccountCode: data.namedAccountCode,
+      portOfLoading: data.portOfLoadingLabel,
+      portOfDischarge: data.portOfDischargeLabel,
+      fromLabel: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[0] : data.portOfLoadingLabel.split(';')[0],
+      fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
+      toLabel: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[0] : data.portOfDischargeLabel.split(';')[0],
+      toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
+      commonEquipmentType: data.commonEquipmentType,
+      placeOfOrigin: data.placeOfOrigin,
+      portOfLoadingCode: data.portOfLoading,
+      portOfDischargeCode: data.portOfDischarge,
+      finalPlaceOfDelivery: data.finalPlaceOfDelivery
     })
     this.getContractList()
   },
@@ -250,11 +250,11 @@ Page({
     }, () => {
       this.setData({
         perfectCurrentContractList: [],
-          perfectComingContractList: [],
-          partialCurrentContractList: [],
-          partialComingContractList: [],
-          contractLists: [],
-          contractList: [],
+        perfectComingContractList: [],
+        partialCurrentContractList: [],
+        partialComingContractList: [],
+        contractLists: [],
+        contractList: [],
         loggedId: '',
         isLoading: false
       })
@@ -262,7 +262,7 @@ Page({
   },
 
   openPopup() {
-    const index = this.data.contractTypeList.findIndex(i=>i.id === this.data.contractTypeId)
+    const index = this.data.contractTypeList.findIndex(i => i.id === this.data.contractTypeId)
     this.setData({
       valueKey: this.data.language === 'zh' ? 'labelCn' : 'labelEn',
       defaultIndex: index > -1 ? index : 0,
@@ -309,14 +309,14 @@ Page({
     let lists = this.data.contractLists.slice(this.data.page * size, (this.data.page + 1) * size)
     // console.log(lists)
     lists = lists.map((item) => {
-      return {
-        ...item,
-        isLoading: true
-      }
-    }),
-    this.setData({
-      contractList: this.data.contractList.concat(lists)
-    })
+        return {
+          ...item,
+          isLoading: true
+        }
+      }),
+      this.setData({
+        contractList: this.data.contractList.concat(lists)
+      })
     this.dealData()
   },
 
@@ -366,6 +366,7 @@ Page({
       pointCode: item.exportInlandPointCode
     }).then(data => {
       item.placeOfReceiptLabel = data.data.point.name + ', ' + data.data.country.code
+      item.placeOfReceiptLabel2 = data.data.point.name + ';' + data.data.country.code + ';' + data.data.point.code
       this.setData({
         contractList: this.data.contractList
       })
@@ -410,6 +411,7 @@ Page({
       pointCode: item.importInlandPointCode
     }).then(data => {
       item.placeOfDeliveryLabel = data.data.point.name + ', ' + data.data.country.code
+      item.placeOfDeliveryLabel2 = data.data.point.name + ';' + data.data.country.code + ';' + data.data.point.code
       this.setData({
         contractList: this.data.contractList
       })
@@ -458,7 +460,18 @@ Page({
   toBook(e) {
     const detail = e.currentTarget.dataset.detail
     wx.navigateTo({
-      url: `/packageBooking/pages/Search/index?pol=${detail.portOfLoading}&polLabel=${detail.portOfLoadingLabel2}&pod=${detail.portOfDischarge}&podLabel=${detail.portOfDischargeLabel2}&quotationReference=${detail.quotationReference}`,
+      url: '/packageBooking/pages/Search/index?'
+      + `pol=${detail.portOfLoading}`
+      + `&polLabel=${detail.portOfLoadingLabel2}`
+      + `&pod=${detail.portOfDischarge}`
+      + `&podLabel=${detail.portOfDischargeLabel2}`
+      + `&quotationReference=${detail.quotationReference}`
+      + `&placeOfOrigin=${detail.origin || ''}`
+      + `&placeOfOriginLabel=${detail.placeOfReceiptLabel2 || ''}`
+      + `&receiptHaulage=${detail.exportMovementType || ''}`
+      + `&finalPlaceOfDelivery=${detail.importInlandPointCode || ''}`
+      + `&finalPlaceOfDeliveryLabel=${detail.placeOfDeliveryLabel2 || ''}`
+      + `&deliveryHaulage=${detail.importMovementType || ''}`,
     })
   }
 })

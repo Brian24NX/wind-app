@@ -60,6 +60,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packageBooking/pages/Haulage/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

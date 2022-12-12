@@ -305,7 +305,7 @@ Page({
 
   booking() {
     wx.navigateTo({
-      url: `/packageBooking/pages/Search/index?pol=${this.data.portOfLoading}&polLabel=${this.data.portOfLoadingLabel2}&pod=${this.data.portOfDischarge}&podLabel=${this.data.portOfDischargeLabel2}&quotationReference=${this.data.quotationReference}`,
+      url: `/packageBooking/pages/Search/index?pol=${this.data.portOfLoading}&polLabel=${this.data.portOfLoadingLabel}&pod=${this.data.portOfDischarge}&podLabel=${this.data.portOfDischargeLabel}&quotationReference=${this.data.quotationDetail.quoteLines[0].quotationReference || ''}`,
     })
   },
 

@@ -15,12 +15,12 @@ export const bookOfficeList = (params) => {
 
 // 获取国家列表
 export const countryList = (params) => {
-  return getRequest('/api/miniapp/cdrCodifiedsCountry', params, true, true)
+  return getRequest('/api/miniapp/cdrCodifiedsCountry', params, true)
 }
 
 // 获取地区列表
 export const stateList = (params) => {
-  return getRequest('/api/miniapp/cdrRegion', params, true, true)
+  return getRequest('/api/miniapp/cdrRegion', params, true)
 }
 
 // 商品搜索
