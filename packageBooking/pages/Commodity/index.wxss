@@ -4,6 +4,10 @@ page {
   padding: 30rpx;
 }
 
+.font-style-italic {
+  font-style: italic;
+}
+
 .text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
