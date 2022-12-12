@@ -15,18 +15,17 @@ Page({
     navHeight: app.globalData.navHeight,
     menuList: [{
       style: "330rpx",
+      icon: '/assets/img/menu/dc@2x.png',
+      isNew: false,
+      label: 'dingcang',
+      url: '/packageBooking/pages/Search/index',
+      needLogin: true
+    }, {
+      style: "330rpx",
       icon: '/assets/img/menu/D&D@2x.png',
       isNew: true,
       label: 'ddCharges',
       url: '/packagePrice/pages/DDCharges/Search/index',
-      needLogin: false
-    }, {
-      style: "330rpx",
-      icon: '/assets/img/menu/cqcx@2x.png',
-      isNew: false,
-      label: 'chuanqi',
-      type: 2,
-      url: '/pages/RouterQuery/index',
       needLogin: false
     }, {
       style: "330rpx",
@@ -61,11 +60,12 @@ Page({
       needLogin: false
     }, {
       style: "216rpx",
-      icon: '/assets/img/menu/dc@2x.png',
+      icon: '/assets/img/menu/cqcx@2x.png',
       isNew: false,
-      label: 'dingcang',
-      url: '/packageBooking/pages/Search/index',
-      needLogin: true
+      label: 'chuanqi',
+      type: 2,
+      url: '/pages/RouterQuery/index',
+      needLogin: false
     }],
     showRemind: false
   },

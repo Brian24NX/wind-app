@@ -84,7 +84,7 @@
       </view>
       <view class="oneModify">
         <view class="title">
-          <text>Addittional Address Details</text>
+          <text>Addittional Address Details </text>
           <text class="optional">(optional)</text>
         </view>
         <view class="inputs">
@@ -120,7 +120,7 @@
       </view>
       <view class="oneModify">
         <view class="title">
-          <text>State</text>
+          <text>State </text>
           <text class="optional">(optional)</text>
         </view>
         <view class="selectContainer" catchtap="openPopup" data-type="state">
@@ -196,7 +196,7 @@
       </view>
       <view class="oneModify">
         <view class="title">
-          <text>Loading Reference</text>
+          <text>Loading Reference </text>
           <text class="optional">(optional)</text>
         </view>
         <view class="inputs">
@@ -206,7 +206,7 @@
       </view>
       <view class="oneModify">
         <view class="title">
-          <text>Transport Comment</text>
+          <text>Transport Comment </text>
           <text class="optional">(optional)</text>
         </view>
         <textarea class="textarea" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="transportComment" value="{{haulageAddress.transportComment}}"></textarea>
