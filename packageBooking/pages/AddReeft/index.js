@@ -217,6 +217,32 @@ Page({
     })
   },
 
+  dehumifiedBBlur({detail}) {
+    let value = detail.value || 0;
+
+    if (value) {
+      if (parseInt(value) < 55) value = 55
+      if (parseInt(value) > 100) value = 100
+    }
+
+    this.setData({
+      switchDehumifiedValue: value
+    })
+  },
+
+  maxNumberBlur({detail, currentTarget}) {
+    let value = detail.value || 0;
+    const key = currentTarget.dataset.keys;
+
+    if (value && parseInt(value) > 20) {
+      value = 20
+    }
+
+    this.setData({
+      [key]: value
+    })
+  },
+
   // setNumberValues
   setFloatNumberValues({detail, currentTarget}) {
     const key = currentTarget.dataset.keys;

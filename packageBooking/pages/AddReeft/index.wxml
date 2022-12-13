@@ -15,7 +15,7 @@
 
       <view class="input-boxs right" wx:if="{{ switchReeferMode }}">
         <view class="inputs">
-          <input type="digit" maxlength="6" bindinput="setFloatNumberValues" bindblur="recordFloatBlur" data-keys="switchReeferModeValue" class="input-ipt" value="{{switchReeferModeValue}}" data-clearkeys="reeferMode" />
+          <input type="text" maxlength="6" bindinput="setFloatNumberValues" bindblur="recordFloatBlur" data-keys="switchReeferModeValue" class="input-ipt" value="{{switchReeferModeValue}}" data-clearkeys="reeferMode" />
         </view>
         <view class="inputs selects" catchtap="openPicker">
           {{switchReeferModeUnit.text}}
@@ -77,7 +77,7 @@
         <view class="input-boxs right" wx:if="{{ switchDehumified }}">
           <text class="input-txt header">Yes at</text>
           <view class="inputs">
-            <input type="number" maxlength="6" bindinput="setNumberValues" data-keys="switchDehumifiedValue" data-clearkeys="dehumified" class="input-ipt" value="{{switchDehumifiedValue}}" />
+            <input type="number" maxlength="3" bindinput="setNumberValues" bindblur="dehumifiedBBlur" data-keys="switchDehumifiedValue" data-clearkeys="dehumified" class="input-ipt" value="{{switchDehumifiedValue}}" />
           </view>
         </view>
       </view>
@@ -107,7 +107,7 @@
       <view class="input-boxs right" wx:if="{{ switchControlledAtmosphere }}">
         <text class="input-txt header">Operating at O<text class="text-sup">2</text></text>
         <view class="inputs">
-          <input type="number" maxlength="6" bindinput="setNumberValues" data-keys="switchControlledAtmosphereValue" class="input-ipt" value="{{switchControlledAtmosphereValue}}" data-clearkeys="controlledAtmosphere" />
+          <input type="number" maxlength="2" bindinput="setNumberValues" data-keys="switchControlledAtmosphereValue" class="input-ipt" value="{{switchControlledAtmosphereValue}}" data-clearkeys="controlledAtmosphere" bindblur="maxNumberBlur" />
         </view>
       </view>
 
@@ -124,7 +124,7 @@
       <view class="input-boxs right" wx:if="{{ switchControlledAtmosphere }}">
         <text class="input-txt header">and CO<text class="text-sup">2</text></text>
         <view class="inputs">
-          <input type="number" maxlength="6" class="input-ipt" bindinput="setNumberValues" data-keys="switchControlledAtmosphereValue1" value="{{switchControlledAtmosphereValue1}}" data-clearkeys="controlledAtmosphere1" />
+          <input type="number" maxlength="2" class="input-ipt" bindinput="setNumberValues" data-keys="switchControlledAtmosphereValue1" value="{{switchControlledAtmosphereValue1}}" data-clearkeys="controlledAtmosphere1" bindblur="maxNumberBlur" />
         </view>
       </view>
 
