@@ -486,8 +486,8 @@ Page({
       }
     };
     this.setData({
-      [`tips.${keys}`]: ((value && parseInt(value) <= 0) ? `${this.data.verifyInfo.required}` : ''),
-      [keys]: ((value && parseInt(value) <= 0) ? '' : value)
+      [`tips.${keys}`]: ((value && parseFloat(value) <= 0) ? `${this.data.verifyInfo.required}` : ''),
+      [keys]: ((value && parseFloat(value) <= 0) ? '' : value)
     })
   },
 
@@ -535,7 +535,7 @@ Page({
       if (keys === 'netWeight') {
         const grossWeight = this.data.grossWeight;
         let msg = tips[lag];
-        if (grossWeight && (parseInt(grossWeight) > parseInt(value))) {
+        if (grossWeight && (parseFloat(grossWeight) > parseFloat(value))) {
           msg = '';
         };
         this.setData({
@@ -555,23 +555,24 @@ Page({
     currentTarget
   }) {
     const _t = this;
-    const value = (detail.value).replace(/[^\d.]/g, '');
     const keys = currentTarget.dataset.keys;
     const lag = languageUtils.languageVersion().lang.page.langue;
     const tips = {
       zh: `毛重必须大于净重`,
       en: `Gross weight should be greater than Net weight.`
     };
+    let value = (detail.value).replace(/[^\d.]/g, '');
+    value = this.recordFloat(detail.value) || '';
     let {
       netWeight,
       grossWeight,
       verifyInfo
     } = _t.data;
     let msg = '';
-    console.log('value', value, netWeight, parseInt(value), parseInt(netWeight))
+    console.log('value', value, netWeight, parseFloat(value), parseFloat(netWeight))
     if (!value) msg = `${verifyInfo.required}`;
     if (value && !netWeight) msg = tips[lag];
-    if (value && netWeight && parseInt(netWeight) >= parseInt(value)) msg = tips[lag];
+    if (value && netWeight && parseFloat(netWeight) >= parseFloat(value)) msg = tips[lag];
     _t.setData({
       [`tips.${keys}`]: msg
     })
