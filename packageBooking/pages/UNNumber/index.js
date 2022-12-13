@@ -393,9 +393,10 @@ Page({
       });
     }
     if (type === 3) {
-      this.data.requiredEmelemt[7] = null
-      console.log(detail)
+      // this.data.requiredEmelemt[7] = null
       this.setData({
+        packageDescriptionCode: detail.value,
+        packageDescriptionName: detail.text,
         [`tips.packageDescriptionName`]: '',
         requiredEmelemt: this.data.requiredEmelemt
       })
@@ -653,19 +654,19 @@ Page({
     this.getPackageDescription(data)
   }, 800),
 
-  // choosePackagingDescription
-  choosePackagingDescription({
-    currentTarget
-  }) {
-    const {
-      item
-    } = currentTarget.dataset;
-    this.setData({
-      packageDescriptionCode: item.packingRef,
-      packageDescriptionName: `${item.packingRef} - ${item.packagingDescription}`,
-      packageDescriptionLists: []
-    })
-  },
+  // // choosePackagingDescription
+  // choosePackagingDescription({
+  //   currentTarget
+  // }) {
+  //   const {
+  //     item
+  //   } = currentTarget.dataset;
+  //   this.setData({
+  //     packageDescriptionCode: item.packingRef,
+  //     packageDescriptionName: `${item.packingRef} - ${item.packagingDescription}`,
+  //     packageDescriptionLists: []
+  //   })
+  // },
 
   // setCommentOptional
   setCommentOptional({
@@ -720,7 +721,23 @@ Page({
 
     dataKeys.forEach(v => {
       let msg = '';
-      if (!data[v] && !nativeData) {
+      let _val = ''
+      if (v.includes('.')) {
+        var _g = v.split('.');
+        if (_g.length === 2) {
+          _val = this.data[_g[0]][_g[1]]
+        }
+        if (_g.length === 3) {
+          _val = this.data[_g[0]][_g[1]][_g[2]]
+        }
+        if (_g.length === 4) {
+          _val = this.data[_g[0]][_g[1]][_g[2]][_g[3]]
+        }
+      } else {
+        _val = this.data[v]
+      }
+      console.log('v', _val)
+      if (!_val && !nativeData) {
         msg = `${data.verifyInfo.required}`;
         isFlag = true;
       }
@@ -756,7 +773,7 @@ Page({
     }
 
     // Packing Group
-    if (_t.verify('pickerChooseReault[1]text', 'packingGroup', scrollToElement[1], _t.data.pickerChooseReault[1].text)) {
+    if (_t.verify('pickerChooseReault.1.text', 'packingGroup', scrollToElement[1], _t.data.pickerChooseReault[1].text)) {
       console.log('chemicalName - 为空')
     }
 
@@ -781,12 +798,12 @@ Page({
     }
 
     // Unit - unit
-    if (_t.verify('pickerChooseReault[2].text', 'unit', scrollToElement[6], _t.data.pickerChooseReault[2].text)) {
+    if (_t.verify('pickerChooseReault.2.text', 'unit', scrollToElement[6], _t.data.pickerChooseReault[2].text)) {
       console.log('unit - 为空')
     }
 
     // Packaging Description - packageDescriptionName
-    if (_t.verify('pickerChooseReault[3].text', 'packageDescriptionName', _t.data.pickerChooseReault[3].text)) {
+    if (_t.verify('pickerChooseReault.3.text', 'packageDescriptionName', _t.data.pickerChooseReault[3].text)) {
       console.log('packageDescriptionName - 为空')
     }
 
@@ -884,6 +901,8 @@ Page({
     } else {
       prevData.push(newsData);
     };
+
+    console.log('Save data', prevData)
 
     wx.setStorageSync('unNumberUpdate', prevData);
     wx.removeStorageSync('unNumberCache')
