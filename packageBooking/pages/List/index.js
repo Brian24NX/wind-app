@@ -33,12 +33,12 @@ Page({
     let routings = wx.getStorageSync('bookingRoutings') || []
     const bookingSearchKey = wx.getStorageSync('bookingSearchKey')
     let fromLabel = bookingSearchKey.portOfLoading.split(';')[0] + ', ' + bookingSearchKey.portOfLoading.split(';')[1]
-    if (bookingSearchKey.placeOfDelivery) {
-      fromLabel = bookingSearchKey.placeOfDelivery.split(';')[0] + ', ' + bookingSearchKey.placeOfDelivery.split(';')[1]
+    if (bookingSearchKey.placeOfReceipt) {
+      fromLabel = bookingSearchKey.placeOfReceipt.split(';')[0] + ', ' + bookingSearchKey.placeOfReceipt.split(';')[1]
     }
     let toLabel = bookingSearchKey.portOfDischarge.split(';')[0] + ', ' + bookingSearchKey.portOfDischarge.split(';')[1]
-    if (bookingSearchKey.placeOfReceipt) {
-      toLabel = bookingSearchKey.placeOfReceipt.split(';')[0] + ', ' + bookingSearchKey.placeOfReceipt.split(';')[1]
+    if (bookingSearchKey.placeOfDelivery) {
+      toLabel = bookingSearchKey.placeOfDelivery.split(';')[0] + ', ' + bookingSearchKey.placeOfDelivery.split(';')[1]
     }
     this.setData({
       fromLabel,
@@ -47,23 +47,23 @@ Page({
     if (routings.length) {
       routings.forEach(element => {
         element.zhuanyun = element.journeyLegs.length - 1
-        if (bookingSearchKey.placeOfDelivery) {
+        if (bookingSearchKey.placeOfReceipt) {
           element.journeyLegs.unshift({
             departureLocation: {
-              name: bookingSearchKey.placeOfDelivery.split(';')[0],
-              code: bookingSearchKey.placeOfDelivery.split(';').pop()
-            },
-            placeType: bookingSearchKey.deliveryHaulage
-          })
-        }
-        if (bookingSearchKey.placeOfReceipt) {
-          element.journeyLegs.push({
-            departureLocation: element.journeyLegs[element.journeyLegs.length - 1],
-            arrivalLocation: {
               name: bookingSearchKey.placeOfReceipt.split(';')[0],
               code: bookingSearchKey.placeOfReceipt.split(';').pop()
             },
             placeType: bookingSearchKey.receiptHaulage
+          })
+        }
+        if (bookingSearchKey.placeOfDelivery) {
+          element.journeyLegs.push({
+            departureLocation: element.journeyLegs[element.journeyLegs.length - 1],
+            arrivalLocation: {
+              name: bookingSearchKey.placeOfDelivery.split(';')[0],
+              code: bookingSearchKey.placeOfDelivery.split(';').pop()
+            },
+            placeType: bookingSearchKey.deliveryHaulage
           })
         }
         element.journeyLegs.forEach(item => {

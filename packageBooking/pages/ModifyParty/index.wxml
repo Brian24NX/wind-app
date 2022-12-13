@@ -41,6 +41,7 @@
     <view class="modify">
       <view class="title">
         <text>{{languageContent.zipCode}}</text>
+        <text class="optional"> (optional)</text>
       </view>
       <view class="inputContainers">
         <view>{{contractDetail.zipCode}}</view>
@@ -58,6 +59,7 @@
   <view class="oneModify">
     <view class="title">
       <text>{{languageContent.state}}</text>
+      <text class="optional"> (optional)</text>
     </view>
     <view class="inputContainers">
       <view>{{contractDetail.stateName}}</view>
@@ -73,6 +75,7 @@
   <view class="oneModify">
     <view class="title">
       <text>{{languageContent.name}}</text>
+      <text class="optional"> (optional)</text>
     </view>
     <view class="inputs">
       <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="name" value="{{contractDetail.name}}"/>
@@ -82,6 +85,7 @@
   <view class="oneModify">
     <view class="title">
       <text>{{languageContent.email}}</text>
+      <text class="optional"> (optional)</text>
     </view>
     <view class="inputs">
       <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="email" value="{{contractDetail.email}}"/>
@@ -91,6 +95,7 @@
   <view class="oneModify">
     <view class="title">
       <text>{{languageContent.phoneNumber}}</text>
+      <text class="optional"> (optional)</text>
     </view>
     <view class="inputs">
       <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="phone" value="{{contractDetail.phone}}"/>
@@ -100,6 +105,7 @@
   <view class="oneModify">
     <view class="title">
       <text>{{languageContent.fax}}</text>
+      <text class="optional"> (optional)</text>
     </view>
     <view class="inputs">
       <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="fax" value="{{contractDetail.fax}}"/>
@@ -109,6 +115,7 @@
   <view class="oneModify">
     <view class="title">
       <text>{{languageContent.localLegalNumber}}</text>
+      <text class="optional"> (optional)</text>
     </view>
     <view class="inputs">
       <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="localLegalNumber" value="{{contractDetail.localLegalNumber}}"/>
@@ -118,6 +125,7 @@
   <view class="oneModify">
     <view class="title">
       <text>{{languageContent.reference}}</text>
+      <text class="optional"> (optional)</text>
     </view>
     <view class="inputs">
       <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="reference" value="{{contractDetail.reference}}"/>

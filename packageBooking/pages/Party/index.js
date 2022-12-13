@@ -4,6 +4,9 @@ const utils = require('../../../utils/util')
 import {
   bookPartyList
 } from '../../api/modules/booking'
+import {
+  customerPartners
+} from '../../../api/modules/home'
 Page({
 
   /**
@@ -29,7 +32,7 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    let partiesList =  JSON.parse(JSON.stringify(data.partyList))
+    let partiesList = JSON.parse(JSON.stringify(data.partyList))
     if (!partiesList.length) {
       partiesList.push({
         code: this.data.partnerList[0].code,
@@ -134,10 +137,30 @@ Page({
     const item = e.currentTarget.dataset.item
     this.data.partiesList[index].code = item.code
     this.data.partiesList[index].name = item.text
-    this.data.partiesList[index].address = item.address
     this.data.partiesList[index].partyList = []
     this.setData({
       partiesList: this.data.partiesList
+    })
+    this.getPartnerAddress(index)
+  },
+
+  getPartnerAddress(index) {
+    customerPartners({
+      partners: [this.data.partiesList[index].code],
+      token: wx.getStorageSync('access_token')
+    }).then(res => {
+      console.log(res)
+      let partnerDetails = res.data[0].partnerDetails
+      partnerDetails.address1 = partnerDetails.addressLine1
+      partnerDetails.address2 = partnerDetails.addressLine2
+      partnerDetails.address3 = partnerDetails.addressLine3
+      delete partnerDetails.addressLine1
+      delete partnerDetails.addressLine2
+      delete partnerDetails.addressLine3
+      this.data.partiesList[index].address = partnerDetails
+      this.setData({
+        partiesList: this.data.partiesList
+      })
     })
   },
 
@@ -168,7 +191,7 @@ Page({
 
   setOtherParty() {
     const roleIds = this.data.partiesList[0].roleIds
-    const otherRoleList = this.data.roleList.filter(i => roleIds.indexOf(i) === -1)
+    const otherRoleList = this.data.roleList.filter(i => roleIds.indexOf(i) === -1 || i === 'NO2' || i === 'CUS')
     this.setData({
       otherRoleList
     })

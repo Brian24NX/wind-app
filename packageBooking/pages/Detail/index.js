@@ -73,7 +73,6 @@ Page({
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
       routeSelected: wx.getStorageSync('routeSelected'),
       bookingSearchKey: wx.getStorageSync('bookingSearchKey'),
-      currentStep: (wx.getStorageSync('bookingSearchKey').placeOfDelivery || wx.getStorageSync('bookingSearchKey').placeOfReceipt) ? 'first' : 'second',
       payment: this.data.payment,
       quotationReference: wx.getStorageSync('bookingSearchKey').quotationReference,
       showFreightPayerDelete: true
@@ -117,8 +116,8 @@ Page({
     if (bookingSearchKey.placeOfReceipt) {
       this.setData({
         placeOfReceipt: {
-          code: bookingSearchKey.portOfDischarge.split(';').pop(),
-          name: bookingSearchKey.portOfDischarge.split(';')[0],
+          code: bookingSearchKey.placeOfReceipt.split(';').pop(),
+          name: bookingSearchKey.placeOfReceipt.split(';')[0],
           countryCode: "",
           countryName: "",
           placeType: bookingSearchKey.receiptHaulage
@@ -153,12 +152,12 @@ Page({
   setHaulage(detail, from) {
     console.log(detail)
     if (from === 'Export') {
-      detail.haulageLocation = this.data.finalPlaceOfDelivery
+      detail.haulageLocation = this.data.placeOfReceipt
       this.setData({
         exportHaulage: detail
       })
     } else if (from === 'Import') {
-      detail.haulageLocation = this.data.placeOfReceipt
+      detail.haulageLocation = this.data.finalPlaceOfDelivery
       this.setData({
         importHaulage: detail
       })

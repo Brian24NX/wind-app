@@ -1,7 +1,7 @@
 /* packageBooking/pages/ModifyParty/index.wxss */
 page {
   background-color: #F0F1F5;
-  padding: 30rpx 30rpx env(safe-area-inset-bottom);
+  padding: 30rpx 30rpx calc(env(safe-area-inset-bottom) + 30rpx);
 }
 
 .modifyContainer {
@@ -31,6 +31,10 @@ page {
   margin-bottom: 10rpx;
   color: #04246A;
   font-size: 28rpx;
+}
+
+.title .optional {
+  color: #6B7790;
 }
 
 .inputContainers {

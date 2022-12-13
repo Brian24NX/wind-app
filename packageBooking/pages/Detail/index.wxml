@@ -54,7 +54,7 @@
   </view>
 </view>
 
-<view class="oneDetails" wx:if="{{bookingSearchKey.deliveryHaulage}}">
+<view class="oneDetails" wx:if="{{bookingSearchKey.receiptHaulage}}">
   <view class="detailTops">
     <view class="detailTopLeft">
       <image src="/assets/img/booking/7.svg" mode="aspectFit" />
@@ -66,7 +66,7 @@
   </view>
 </view>
 
-<view class="oneDetails" wx:if="{{bookingSearchKey.receiptHaulage}}">
+<view class="oneDetails" wx:if="{{bookingSearchKey.deliveryHaulage}}">
   <view class="detailTops">
     <view class="detailTopLeft">
       <image src="/assets/img/booking/7.svg" mode="aspectFit" />

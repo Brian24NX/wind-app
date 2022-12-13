@@ -87,7 +87,7 @@ Page({
     const warmPrompt = {
       zh: `增值服务功能升级中，敬请期待。
       \n如需添加增值服务产品，请移步至官网进行操作`,
-      en: `Value-added service (VAS) function coming soon.\n Please add additional services during booking on eCommerce website for now`
+      en: `Value-added service (VAS) function coming soon.\n Please add additional services during booking on eCommerce website for now.`
     }
     this.setData({
       warmPrompt: warmPrompt[lag]
@@ -578,8 +578,8 @@ Page({
     bookingQuotationList({
       portOfLoading: this.data.portOfLoading,
       portOfDischarge: this.data.portOfDischarge,
-      placeOfDelivery: this.data.placeOfOrigin || '',
-      placeOfReceipt: this.data.finalPlaceOfDelivery || '',
+      placeOfReceipt: this.data.placeOfOrigin || '',
+      placeOfDelivery: this.data.finalPlaceOfDelivery || '',
       journeyDate: this.data.simulationDate,
       journeyType: this.data.searchOn === 1 ? "True" : "False",
       agreementReference: this.data.reference,
@@ -597,9 +597,9 @@ Page({
       const bookingSearchKey = {
         portOfLoading: this.data.portOfLoadingLabel,
         portOfDischarge: this.data.portOfDischargeLabel,
-        placeOfDelivery: this.data.placeOfOriginLabel || '',
+        placeOfReceipt: this.data.placeOfOriginLabel || '',
         deliveryHaulage: this.data.deliveryHaulage || '',
-        placeOfReceipt: this.data.finalPlaceOfDeliveryLabel || '',
+        placeOfDelivery: this.data.finalPlaceOfDeliveryLabel || '',
         receiptHaulage: this.data.receiptHaulage || '',
         quotationReference: this.data.reference,
         shippingCompany: this.data.shippingCompanyList[index]

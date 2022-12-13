@@ -41,7 +41,7 @@
   <view class="scroll-sizeType">
     <view class="title">Size/Type <text class="red">*</text></view>
     <view class="selectContainer" catchtap="openPicker" data-type="1">
-      <view style="{{pickerChooseReault[1].text !== '' ? 'color: #071E5D;' : ''}}">{{pickerChooseReault[1].text || verifyInfo.select}}</view>
+      <view style="{{pickerChooseReault[1].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[1].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
 
@@ -137,12 +137,12 @@
       <view class="unList-title text-ellipsis">{{item.unNumberName}}</view>
       <view class="unIcon">
         <image src="/assets/img/booking/modify.png" catchtap="updateUNNumber" data-id="{{item.id}}" />
-        <image src="/assets/img/booking/delete.png" catchtap="deleteUNNumber" data-id="{{item.id}}"/>
+        <image src="/assets/img/booking/delete.png" catchtap="deleteUNNumber" data-id="{{item.id}}" />
       </view>
     </view>
   </view>
   <view class="addUn" catchtap="addUNNumber">
-    <image src="/assets/img/booking/add.png"/>
+    <image src="/assets/img/booking/add.png" />
     <view>Add Another UN Number</view>
   </view>
 </view>
@@ -151,10 +151,4 @@
 
 
 <!-- picker -->
-<custom-picker
-  columns="{{columnsList}}"
-  valueKey="{{pickerValueKey}}"
-  defaultIndex="{{pickerChooseReault[pickerValueKeyFlag].index}}"
-  showPopup="{{isShowPicker}}"
-  bindonClose="onPickerClose"
-  bind:onConfirm="onPickerConfirm"></custom-picker>
+<custom-picker columns="{{columnsList}}" valueKey="{{pickerValueKey}}" defaultIndex="{{pickerChooseReault[pickerValueKeyFlag].index}}" showPopup="{{isShowPicker}}" bindonClose="onPickerClose" bind:onConfirm="onPickerConfirm"></custom-picker>

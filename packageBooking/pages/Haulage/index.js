@@ -75,8 +75,8 @@ Page({
     countryList: [],
     stateList: [],
     timeType: 'date',
-    minDate: new Date().getTime(),
-    maxDate: new Date().getTime() + 1000 * 60 * 60 * 24 * 30,
+    minDate: null,
+    maxDate: null,
     currentDate: new Date().getTime(),
     showDatePopup: false,
     locationPoint: ''
@@ -99,13 +99,17 @@ Page({
     const data = currentPage.data
     if (options.from === 'Export') {
       this.setData({
-        locationPoint: data.finalPlaceOfDelivery.name + ';' + data.finalPlaceOfDelivery.countryCode + ';' + data.finalPlaceOfDelivery.code,
-        haulageType: data.bookingSearchKey.deliveryHaulage
+        locationPoint: data.placeOfReceipt.name + ';' + data.placeOfReceipt.countryCode + ';' + data.placeOfReceipt.code,
+        haulageType: data.bookingSearchKey.receiptHaulage,
+        minDate: new Date().getTime(),
+        maxDate: new Date().setDate(new Date(data.routeSelected.departureDate.utc).getDate() - 1),
       })
     } else {
       this.setData({
-        locationPoint: data.placeOfReceipt.name + ';' + data.placeOfReceipt.countryCode + ';' + data.placeOfReceipt.code,
-        haulageType: data.bookingSearchKey.receiptHaulage
+        locationPoint: data.finalPlaceOfDelivery.name + ';' + data.finalPlaceOfDelivery.countryCode + ';' + data.finalPlaceOfDelivery.code,
+        haulageType: data.bookingSearchKey.deliveryHaulage,
+        minDate: new Date(data.routeSelected.arrivalDate.utc).getTime(),
+        maxDate: new Date().setFullYear(new Date(data.routeSelected.arrivalDate.utc).getFullYear() + 20),
       })
     }
     this.setHaulageAddress()

@@ -128,7 +128,7 @@
         <text>Country / Region</text>
       </view>
       <view class="selectContainer {{countryRemind ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="country">
-        <view style="{{haulageAddress.haulageAddress.countryCode ? 'color: #071E5D;' : ''}}">{{haulageAddress.haulageAddress.countryName || verifyInfo.select}}</view>
+        <view style="{{haulageAddress.haulageAddress.countryCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{haulageAddress.haulageAddress.countryName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
       <view class="noRequest" wx:if="{{countryRemind}}">
@@ -142,7 +142,7 @@
         <text class="optional">(optional)</text>
       </view>
       <view class="selectContainer" catchtap="openPopup" data-type="state">
-        <view style="{{haulageAddress.haulageAddress.stateCode ? 'color: #071E5D;' : ''}}">{{haulageAddress.haulageAddress.stateName || verifyInfo.select}}</view>
+        <view style="{{haulageAddress.haulageAddress.stateCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{haulageAddress.haulageAddress.stateName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
     </view>
