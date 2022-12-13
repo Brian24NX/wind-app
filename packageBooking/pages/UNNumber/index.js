@@ -906,22 +906,7 @@ Page({
 
     wx.setStorageSync('unNumberUpdate', prevData);
     wx.removeStorageSync('unNumberCache')
-
-    const saveTips = {
-      zh: `保存成功`,
-      en: `Saved successfully.`
-    };
-
-    wx.showToast({
-      title: saveTips[lag],
-      icon: 'none',
-      mask: true,
-      duration: 1000
-    })
-
-    setTimeout(() => {
-      wx.navigateBack()
-    }, 800)
+    wx.navigateBack()
     // do something...
   }
 })
