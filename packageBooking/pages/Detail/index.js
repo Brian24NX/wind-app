@@ -238,7 +238,7 @@ Page({
     })
     bookOfficeList({
       agencyName: data,
-      shippingCompany: this.data.shippingCompany
+      shippingCompany: this.data.bookingSearchKey.shippingCompany
     }).then(res => {
       this.setData({
         showOffice: false
@@ -286,7 +286,7 @@ Page({
     })
     bookOfficeList({
       agencyName: data,
-      shippingCompany: this.data.shippingCompany
+      shippingCompany: this.data.bookingSearchKey.shippingCompany
     }).then(res => {
       this.setData({
         showFreightPayer: false
@@ -333,7 +333,7 @@ Page({
     })
     paymentLocationLists({
       searchStr: data,
-      shippingCompany: this.data.shippingCompany
+      shippingCompany: this.data.bookingSearchKey.shippingCompany
     }).then(res => {
       this.setData({
         showPaymentLocation: false

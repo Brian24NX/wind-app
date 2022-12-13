@@ -45,6 +45,7 @@ Page({
       verifyInfo: language.verifyInfo,
       partiesList
     })
+    this.setOtherParty()
   },
 
   openPopup() {
