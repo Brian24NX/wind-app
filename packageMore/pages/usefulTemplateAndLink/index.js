@@ -299,7 +299,7 @@ Page({
   preview(e) {
     const filePath = config[config.dev_env].fileUrl + 'wind/' + e.currentTarget.dataset.item.document
     const fileType = e.currentTarget.dataset.item.document.split('.').pop()
-    const imageType = ['png', 'jpg', 'jpeg', 'git']
+    const imageType = ['png', 'jpg', 'jpeg', 'gif']
     const fileTypes = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf']
     analysis({
       analysisType: 3,

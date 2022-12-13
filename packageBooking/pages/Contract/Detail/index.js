@@ -45,6 +45,7 @@ Page({
     currentEquipmentType: 0,
     surchargeDetail: {},
     simulationDate: '',
+    todayDate: '',
     currentType: 'charge',
     portOfLoading: '',
     portOfLoadingLabel: '',
@@ -55,7 +56,8 @@ Page({
     imports: [],
     exportLocation: '',
     importLocation: '',
-    showEmail: false
+    showEmail: false,
+    commonEquipmentType: ''
   },
 
   /**
@@ -68,39 +70,39 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    const contractList = options.from === 'perfect' ? data.perfectContractList : data.partialContractList
-    let quotationDetail = contractList[Number(options.index)]
+    let quotationDetail = JSON.parse(JSON.stringify(data.contractList[Number(options.index)]))
+    quotationDetail.equipments = quotationDetail.equipments.filter(i => i.netWeight)
+    quotationDetail.namedAccounts = quotationDetail.affiliates.filter(i => i.affiliatesType === 'NAC').map(i => i.name + (i.city ? ', ' + i.city : ''))
     let surchargeDetail = quotationDetail.surchargeDetails[this.data.currentEquipmentType]
     surchargeDetail.oceanFreightDetailsLabel = surchargeDetail.oceanFreightDetails.join(' / ')
-    surchargeDetail.oceanFreight.isChecked = true
-    surchargeDetail.freightCharges.isChecked = true
-    surchargeDetail.prepaidCharges.isChecked = true
-    surchargeDetail.collectCharges.isChecked = true
     this.data.otherList[2].show = quotationDetail.spotOffer
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       load: languageUtil.languageVersion().lang.page.load,
       language: languageUtil.languageVersion().lang.page.langue,
+      todayDate: this.getDate(),
       portOfLoading: data.portOfLoadingCode,
       portOfLoadingLabel: data.portOfLoading,
       portOfDischarge: data.portOfDischargeCode,
       portOfDischargeLabel: data.portOfDischarge,
-      fromLabel: contractList[Number(options.index)].placeOfReceiptLabel || contractList[Number(options.index)].portOfLoadingLabel,
-      toLabel: contractList[Number(options.index)].placeOfDeliveryLabel || contractList[Number(options.index)].portOfDischargeLabel,
+      fromLabel: quotationDetail.placeOfReceiptLabel || quotationDetail.portOfLoadingLabel,
+      toLabel: quotationDetail.placeOfDeliveryLabel || quotationDetail.portOfDischargeLabel,
       simulationDate: data.simulationDate,
+      commonEquipmentType: data.commonEquipmentType,
       partnerCode: data.partnerCode,
-      quotationDetail: quotationDetail
+      quotationDetail,
+      otherList: this.data.otherList
     })
     this.setChargeDetail()
-    this.dealEquipmentSize()
-    this.getDDCharges()
-    this.getLocalCharge()
-    if (this.data.quotationDetail.exportInlandPointCode) {
-      this.getExportInlandPoint()
-    }
-    if (this.data.quotationDetail.importInlandPointCode) {
-      this.getImportInlandPoint()
-    }
+    // this.dealEquipmentSize()
+    // this.getDDCharges()
+    // this.getLocalCharge()
+    // if (this.data.quotationDetail.exportInlandPointCode) {
+    //   this.getExportInlandPoint()
+    // }
+    // if (this.data.quotationDetail.importInlandPointCode) {
+    //   this.getImportInlandPoint()
+    // }
   },
 
   changeCurrentEquipmentType(e) {
@@ -113,6 +115,15 @@ Page({
 
   setChargeDetail() {
     let surchargeDetail = this.data.quotationDetail.surchargeDetails[this.data.currentEquipmentType]
+    if (surchargeDetail.oceanFreight.paymentMethod === 'Collect') {
+      surchargeDetail.collectChargeDetails = surchargeDetail.collectChargeDetails.concat(surchargeDetail.freightChargeDetails)
+      surchargeDetail.freightChargeDetails = []
+      surchargeDetail.collectCharges.amount += surchargeDetail.freightCharges.amount
+      surchargeDetail.freightCharges.amount = 0
+    }
+    surchargeDetail.freightChargeDetails = surchargeDetail.freightChargeDetails.sort(this.sortArray)
+    surchargeDetail.prepaidChargeDetails = surchargeDetail.prepaidChargeDetails.sort(this.sortArray)
+    surchargeDetail.collectChargeDetails = surchargeDetail.collectChargeDetails.sort(this.sortArray)
     surchargeDetail.oceanFreightDetailsLabel = surchargeDetail.oceanFreightDetails.join(' / ')
     surchargeDetail.oceanFreight.isChecked = true
     surchargeDetail.freightCharges.isChecked = true
@@ -122,6 +133,10 @@ Page({
       surchargeDetail
     })
     this.calculatedCharges()
+  },
+
+  sortArray(x, y) {
+    return x.chargeName.localeCompare(y.chargeName);
   },
 
   calculatedCharges() {
@@ -152,7 +167,7 @@ Page({
       "tariffCodes": ["DET", "DEM", "MER"],
       "placeOfOrigin": this.data.placeOfOrigin || null,
       "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
-      "commodity": this.data.quotationDetail.freightOfAllKinds ? 'FAK' : data.commodities.code,
+      "commodity": this.data.quotationDetail.freightOfAllKinds ? 'FAK' : this.data.quotationDetail.commodities[0].code,
       "equipmentSizeTypes": [this.data.quotationDetail.equipments[0].code],
       "simulationDate": this.data.importDate
     }
@@ -306,9 +321,8 @@ Page({
   },
 
   submit() {
-    wx.showToast({
-      title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
-      icon: 'none'
+    wx.navigateTo({
+      url: `/packageBooking/pages/Search/index?pol=${this.data.quotationDetail.portOfLoading}&polLabel=${this.data.quotationDetail.portOfLoadingLabel2}&pod=${this.data.quotationDetail.portOfDischarge}&podLabel=${this.data.quotationDetail.portOfDischargeLabel2}&quotationReference=${this.data.quotationDetail.quotationReference}`,
     })
   },
 
@@ -354,5 +368,15 @@ Page({
     this.setData({
       showEmail: true
     })
+  },
+
+  getDate() {
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    month = month < 10 ? ('0' + month) : month;
+    let day = now.getDate();
+    day = day < 10 ? ('0' + day) : day
+    return year + '-' + month + '-' + day;
   }
 })

@@ -18,7 +18,8 @@ Page({
     shippingCompany: '',
     fromLabel: '',
     toLabel: '',
-    surchargeDetails: {}
+    surchargeDetails: {},
+    totalChargeAmount: 0
   },
 
   /**
@@ -48,7 +49,8 @@ Page({
       deliveryHaulage: data.deliveryHaulage,
       fromLabel: data.fromLabel,
       toLabel: data.toLabel,
-      surchargeDetails: data.quotationDetail.surchargeDetails
+      surchargeDetails: data.quotationDetail.surchargeDetails,
+      totalChargeAmount: data.totalChargeAmount
     })
   },
 

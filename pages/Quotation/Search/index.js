@@ -136,8 +136,15 @@ Page({
         selected: 2
       })
     }
+    const partnerList = (wx.getStorageSync('partnerList') || []).map(item => {
+      return {
+        ...item,
+        checked: true
+      }
+    })
     this.setData({
-      partnerList: wx.getStorageSync('partnerList') || [],
+      partnerList: JSON.parse(JSON.stringify(partnerList)),
+      checkPartnerList: JSON.parse(JSON.stringify(partnerList)),
       needLogin: !utils.checkAccessToken()
     })
     if (this.data.needLogin === false) {
@@ -163,6 +170,13 @@ Page({
         minDate: new Date().setFullYear(new Date().getFullYear() - 2)
       })
     }
+  },
+
+  setBackData() {
+    this.setData({
+      currentType: 'instation'
+    })
+    this.getCommodityList()
   },
 
   addPlaceOfReceipt() {
@@ -521,7 +535,7 @@ Page({
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
     } else {
-      // this.getNamedAccountsSearch()
+      this.getNamedAccountsSearch()
     }
   },
 
@@ -536,7 +550,7 @@ Page({
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
     } else {
-      // this.getNamedAccountsSearch()
+      this.getNamedAccountsSearch()
     }
   },
 
@@ -577,12 +591,14 @@ Page({
       if (res.data) {
         let commodityList = []
         res.data.forEach(i => {
-          commodityList = commodityList.concat(i.commodityDetails.map(c => {
-            return {
-              ...c,
-              zh: c.zh || c.en
-            }
-          }))
+          if (i.commodityDetails) {
+            commodityList = commodityList.concat(i.commodityDetails.map(c => {
+              return {
+                ...c,
+                zh: c.zh || c.en
+              }
+            }))
+          }
         })
         commodityList = commodityList.filter(i => i.code)
         commodityList.unshift({
@@ -640,10 +656,18 @@ Page({
       namedAccountsSearch({
         portOfLoading: this.data.portOfLoading,
         portOfDischarge: this.data.portOfDischarge,
-        affiliates: this.data.partnerCode
+        affiliates: wx.getStorageSync('partnerList').map(i => i.code)
       }).then(res => {
+        let data = []
+        if (res.data && res.data.length) {
+          data = res.data
+          data.unshift({
+            code: '',
+            name: 'All Named Account'
+          })
+        }
         this.setData({
-          namedAccountList: res.data || [],
+          namedAccountList: data,
           namedAccountLoading: false
         })
       }, () => {
@@ -671,7 +695,7 @@ Page({
 
   setInputValue(e) {
     this.setData({
-      containers: !e.detail.value ? 1 : (Number(e.detail.value) > 100 ? 100 : Number(e.detail.value))
+      containers: !Number(e.detail.value) ? 1 : (Number(e.detail.value) > 100 ? 100 : Number(e.detail.value))
     })
   },
 
@@ -1106,9 +1130,8 @@ Page({
       showDelete3: false,
       showDelete4: false,
       showDelete5: false,
-      checkPartnerList: [],
-      partnerCode: [],
-      partnerList: wx.getStorageSync('partnerList') || []
+      checkPartnerList: JSON.parse(JSON.stringify(this.data.partnerList)),
+      partnerCode: []
     })
   },
 

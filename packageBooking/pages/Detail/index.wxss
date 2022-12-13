@@ -1,7 +1,7 @@
 /* packageBooking/pages/Detail/index.wxss */
 page {
   background-color: #F0F1F5;
-  padding: 30rpx 30rpx env(safe-area-inset-bottom);
+  padding: 30rpx 30rpx calc(env(safe-area-inset-bottom) + 40rpx);
 }
 
 .oneDetails {
@@ -49,6 +49,23 @@ page {
 .detailTops .addIcon image {
   width: 30rpx;
   height: 30rpx;
+}
+
+.detailTops2 .detailTopLeft {
+  font-size: 42rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+  display: flex;
+  align-items: center;
+}
+
+.detailTops2 .detailTopLeft view {
+  display: inline-block;
+  width: 6rpx;
+  height: 40rpx;
+  background-color: #E20202;
+  margin: 0 10rpx;
 }
 
 .routeContainer {
@@ -214,6 +231,7 @@ page {
 .oneCommodity .commodityDetail .commodityRight {
   font-size: 24rpx;
   color: #04246A;
+  width: 550rpx;
 }
 
 .oneCommodity .commodityDetail .commodityRight .commodityName {
@@ -362,6 +380,8 @@ page {
 .textareaContainers textarea {
   height: 100%;
   padding: 20rpx;
+  font-size: 28rpx;
+  color: #04246A;
 }
 
 .sureBtn {
@@ -459,4 +479,181 @@ page {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.numContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.totalTitle {
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+  font-size: 32rpx;
+}
+
+.containers {
+  display: flex;
+  height: 68rpx;
+  border: 2rpx solid #DCDFE6;
+  width: 288rpx;
+  color: #04246A;
+  font-size: 28rpx;
+}
+
+.containers .actionBtn {
+  width: 68rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containers .disabled {
+  color: #999999;
+}
+
+.containers .number {
+  display: flex;
+  text-align: center;
+  width: 155rpx;
+  height: 100%;
+  border-left: 2rpx solid #DCDFE6;
+  border-right: 2rpx solid #DCDFE6;
+}
+
+/* Haulage */
+.modifyContainer {
+  padding: 40rpx 48rpx;
+  background-color: #ffffff;
+  margin-bottom: 30rpx;
+}
+
+.modifyContainer .modifyTitles {
+  display: flex;
+  align-items: center;
+  font-size: 56rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.modifyContainer .modifyTitles .modifyTitleLine {
+  width: 6rpx;
+  height: 50rpx;
+  background-color: #E20202;
+  margin-right: 12rpx;
+}
+
+.title {
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  color: #04246A;
+  font-size: 28rpx;
+}
+
+.twoModify {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.twoModify .modify {
+  width: 48%;
+}
+
+.oneModify {
+  position: relative;
+}
+
+.oneModify .inputs {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #DFDFDF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+}
+
+.oneModify .inputs input {
+  width: calc(100% - 60rpx);
+  height: 100%;
+  color: #071E5D;
+  font-size: 28rpx;
+}
+
+.oneModify .inputs image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.oneModify .textarea {
+  width: calc(100% - 40rpx);
+  height: 180rpx;
+  padding: 20rpx;
+  color: #071E5D;
+  font-size: 28rpx;
+  border: 1rpx solid #DFDFDF;
+}
+
+.optional {
+  color: #6B7790;
+}
+
+.haulageBtn {
+  height: 88rpx;
+  background-color: #2D75FF;
+  line-height: 88rpx;
+  color: #ffffff;
+  font-weight: 500;
+  color: #FFFFFF;
+  border-radius: 0;
+  font-size: 32rpx;
+}
+
+.selectContainer {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 28rpx;
+}
+
+.selectContainer view {
+  /* width: 490rpx; */
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selectContainer image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.noRequest {
+  font-size: 24rpx;
+  color: #E2014B;
+  position: absolute;
+  left: 0;
+  bottom: -34rpx;
+  display: flex;
+  align-items: center;
+}
+
+.noRequest image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
+.noRequestBorder {
+  border: 2rpx solid #E2014B !important;
 }

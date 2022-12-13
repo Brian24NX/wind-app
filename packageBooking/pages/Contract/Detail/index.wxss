@@ -153,6 +153,24 @@
   color: #6B7790;
 }
 
+.referenceTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.referenceTop .referenceRight {
+  font-size: 22rpx;
+  font-family: Antonio-Regular, Antonio;
+  color: #6F7384;
+}
+
+.referenceTop .validityDate {
+  font-size: 32rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #071E5D;
+}
+
 .resultsContainer .reference .referenceNumber {
   font-size: 48rpx;
   font-family: Antonio-Regular;
@@ -361,6 +379,12 @@
   color: #E20202;
 }
 
+.oneRate .oneRateRight image {
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 10rpx;
+}
+
 .oneRate .oneRateRight .ratePrice {
   font-size: 36rpx;
   font-family: Antonio-Regular;
@@ -391,7 +415,18 @@
 }
 
 .rateDetails .oneRateDetail:nth-of-type(2n) {
-  background-color: rgb(217, 222, 234, 0.3);
+  background-color: rgba(217, 222, 234, 0.3);
+}
+
+.rateDetails .oneRateDetail .rateDetailRight {
+  display: flex;
+  align-items: center;
+}
+
+.rateDetails .oneRateDetail .rateDetailRight image {
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 10rpx;
 }
 
 .otherContainer {
@@ -579,6 +614,10 @@
   word-break: break-word;
 }
 
+.underLine {
+  text-decoration: underline;
+}
+
 .quoteDetails .bold {
   font-weight: bold;
   color: #071E5D;
@@ -606,13 +645,96 @@
 
 .equipmentTypeList {
   display: flex;
-  padding: 20rpx 0 0;
+  padding: 30rpx 0 0;
 }
 
 .equipmentTypeList .oneEquipment {
+  height: 42rpx;
+  border: 1rpx solid #9AA7C3;
+  width: 90rpx;
+  line-height: 42rpx;
+  text-align: center;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
   margin-right: 40rpx;
 }
 
 .equipmentTypeList .oneEquipment:nth-last-of-type(1) {
   margin-right: 0;
+}
+
+.equipmentTypeList .oneEquipmentChecked {
+  background-color: #E6EAEF;
+  border: 1rpx solid #E6EAEF;
+}
+
+.EquipmentContainer {
+  margin: 30rpx auto 0;
+  width: 570rpx;
+  border: 1rpx solid rgba(217, 222, 234, 0.3);
+}
+
+.EquipmentContainer .EquipmentContainerTitle {
+  display: flex;
+  align-items: center;
+  background-color: #d9deea;
+  height: 60rpx;
+  font-size: 24rpx;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246A;
+}
+
+.EquipmentContainer .EquipmentContainerTitle view {
+  width: 25%;
+  text-align: center;
+}
+
+.EquipmentContainer .EquipmentContainerTitle view:nth-of-type(1) {
+  width: 50%;
+}
+
+.EquipmentContainer .title2 view {
+  width: 40%;
+  text-align: center;
+}
+
+.EquipmentContainer .title2 view:nth-of-type(1) {
+  width: 60%;
+}
+
+.EquipmentContainer .oneEquipmentContainer {
+  display: flex;
+  align-items: center;
+  color: #6B7790;
+  padding: 0 4rpx;
+  font-size: 16rpx;
+  height: 60rpx;
+}
+
+.EquipmentContainer .oneEquipmentContainer:nth-of-type(2n) {
+  background-color: rgba(217, 222, 234, 0.3);
+}
+
+.EquipmentContainer .oneEquipmentContainer view {
+  width: 25%;
+  text-align: center;
+}
+
+.EquipmentContainer .oneEquipmentContainer view:nth-of-type(1) {
+  width: 50%;
+}
+
+.EquipmentContainer .container2 view {
+  width: 40%;
+}
+
+.EquipmentContainer .container2 view:nth-of-type(1) {
+  width: 60%;
+}
+
+.paddBottom {
+  padding-bottom: 10rpx !important;
 }

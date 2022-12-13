@@ -169,6 +169,12 @@ page {
   height: 32rpx;
 }
 
+.flashPoint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .inputs {
   border: 1rpx solid #DFDFDF;
   height: 80rpx;

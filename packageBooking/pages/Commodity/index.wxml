@@ -6,7 +6,7 @@
   </view>
   <view class="inputContainers">
     <view class="inputsContainer">
-      <input type="text" bindinput="enterCommodity" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" placeholder-class="placeholder" value="{{commodityName}}" />
+      <input type="text" bindinput="enterCommodity" placeholder="Type Your Commodity" placeholder-class="placeholder" value="{{commodityName}}" />
       <view class="deleteIcon" wx:if="{{commodityName}}" catchtap="clearValue" data-keys="commodityName,showCommodity" data-isrequired="true" data-tipkeys="commodityName">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
@@ -41,7 +41,7 @@
   <view class="scroll-sizeType">
     <view class="title">Size/Type <text class="red">*</text></view>
     <view class="selectContainer" catchtap="openPicker" data-type="1">
-      <view class="font-style-italic" style="{{pickerChooseReault[1].text !== '' ? 'color: #071E5D;' : ''}}">{{pickerChooseReault[1].text || verifyInfo.select}}</view>
+      <view style="{{pickerChooseReault[1].text !== '' ? 'color: #071E5D;' : ''}}">{{pickerChooseReault[1].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
 
@@ -67,7 +67,7 @@
     </view>
   </view>
   <view class="scroll-weightPerContaine">
-    <view class="title">Weight Per Containe <text class="red">*</text></view>
+    <view class="title">Weight Per Container <text class="red">*</text></view>
     <view class="inputs number">
       <input type="number" maxlength="9" value="{{weightValue}}" data-keys="weightValue" data-addkeys="quantityValue" data-resultkeys="totalWeightValue" bindinput="setFloatNumber" bindblur="resetNumber" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" data-tipkeys="weightPerContaine" data-isrequired="true" />
       <view class="deleteIcon" wx:if="{{weightValue}}" catchtap="clearValue" data-keys="weightValue,totalWeightValue" data-tipkeys="weightPerContaine" data-isrequired="true">
@@ -111,12 +111,10 @@
     <view class="titleLine"></view>
     <view>Special Attributes</view>
   </view>
-  <view class="add-reeft-outbox">
+  <view class="add-reeft-outbox" wx:if="{{pickerChooseReault[1].value === '20RE' || pickerChooseReault[1].value === '40RH' || pickerChooseReault[1].value === '45RH'}}">
     <view class="shipOwner add-reeft" catchtap="toAddReeft">
-      <view class="checked {{isAddReeft?'bg':''}}">
-        <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isAddReeft}}" />
-      </view>
-      <view class="text" data-keys="isAddReeft">Add Reeft<text class="red">*</text></view>
+      <image src="/assets/img/booking/Reefer.svg" class="refferIcon"></image>
+      <view class="text" data-keys="isAddReeft">Add Reefer<text class="red">*</text></view>
       <image class="arrow-right" src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
     <!-- error-tips -->
@@ -126,9 +124,7 @@
     </view>
   </view>
   <view class="shipOwner scroll-includeHazardous">
-    <view class="checked {{isIncludeHazardous?'bg':''}}">
-      <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isIncludeHazardous}}" />
-    </view>
+    <image src="/assets/img/booking/Hazardous.svg" class="refferIcon"></image>
     <view class="text">Include Hazardous</view>
   </view>
   <!-- error-tips -->

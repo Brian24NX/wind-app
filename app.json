@@ -24,7 +24,8 @@
     "pages/Quotation/Others/AdditionalInformation/index",
     "pages/Quotation/NearPort/index",
     "pages/Quotation/LineDetail/index",
-    "pages/Quotation/Others/Remind/index"
+    "pages/Quotation/Others/Remind/index",
+    "pages/VAS/Detail/index"
   ],
   "subPackages": [
     {
@@ -77,7 +78,8 @@
         "pages/Commodity/index",
         "pages/UNNumber/index",
         "pages/Party/index",
-        "pages/AddReeft/index"
+        "pages/AddReeft/index",
+        "pages/Haulage/index"
       ]
     }
   ],
@@ -121,8 +123,8 @@
     ]
   },
   "networkTimeout": {
-    "request": 30000,
-    "downloadFile": 30000
+    "request": 60000,
+    "downloadFile": 60000
   },
   "debug": true,
   "sitemapLocation": "sitemap.json",

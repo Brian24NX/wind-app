@@ -61,34 +61,68 @@ Page({
     showPlaceOfDelivery: false,
     showPoR: false,
     showPoDe: false,
+    shippingCompanyList: ['0001', '0002', '0011', '0015'],
     minDate: new Date().getTime(),
     warmPrompt: '',
+    hasPermission: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
     const lag = languageUtil.languageVersion().lang.page.langue;
     this.initLanguage();
     this.setData({
-      simulationDate: this.getDate()
+      simulationDate: this.getDate(),
+      hasPermission: utils.checkPermission('manageBkg')
     });
 
     //设置最小日期
     const today = new Date() // 当前
     this.setData({
-      minDate: today.setMonth(today.getMonth()-3)
+      minDate: today.setMonth(today.getMonth() - 3)
     });
 
     // 提示提示语
     const warmPrompt = {
-      zh: `增值服务功能升级中，敬请期待。如需添加增值服务产品，请移步至官网进行操作`,
-      en: `Value-added service (VAS) function coming soon. Please add additional services during booking on eCommerce website for now`
+      zh: `增值服务功能升级中，敬请期待。
+      \n如需添加增值服务产品，请移步至官网进行操作`,
+      en: `Value-added service (VAS) function coming soon.\n Please add additional services during booking on eCommerce website for now`
     }
     this.setData({
       warmPrompt: warmPrompt[lag]
     });
+
+    if (options.pol && options.pod) {
+      this.setData({
+        portOfLoading: options.pol,
+        portOfLoadingLabel: options.polLabel,
+        portOfDischarge: options.pod,
+        portOfDischargeLabel: options.podLabel,
+        reference: options.quotationReference || '',
+        showDelete2: true,
+        showDelete3: true
+      })
+    }
+    if (options.placeOfOrigin) {
+      this.setData({
+        placeOfOrigin: options.placeOfOrigin,
+        placeOfOriginLabel: options.placeOfOriginLabel,
+        receiptHaulage: options.receiptHaulage,
+        showPlaceOfReceipt: true,
+        showDelete1: true
+      })
+    }
+    if (options.finalPlaceOfDelivery) {
+      this.setData({
+        finalPlaceOfDelivery: options.finalPlaceOfDelivery,
+        finalPlaceOfDeliveryLabel: options.finalPlaceOfDeliveryLabel,
+        deliveryHaulage: options.deliveryHaulage,
+        showPlaceOfDelivery: true,
+        showDelete4: true
+      })
+    }
   },
 
   /**
@@ -520,11 +554,28 @@ Page({
     }
     if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5) return
     this.checkAccessToken(() => {
-      this.getQuotationList()
+      this.getQuotationList(0)
     })
   },
 
-  getQuotationList() {
+  getQuotationList(index) {
+    if (index === this.data.shippingCompanyList.length) {
+      const bookingSearchKey = {
+        portOfLoading: this.data.portOfLoadingLabel,
+        portOfDischarge: this.data.portOfDischargeLabel,
+        placeOfDelivery: this.data.placeOfOriginLabel || '',
+        deliveryHaulage: this.data.deliveryHaulage || '',
+        placeOfReceipt: this.data.finalPlaceOfDeliveryLabel || '',
+        receiptHaulage: this.data.receiptHaulage || '',
+        quotationReference: this.data.reference,
+        shippingCompany: this.data.shippingCompanyList[index]
+      }
+      wx.setStorageSync('bookingSearchKey', bookingSearchKey)
+      wx.navigateTo({
+        url: '/packageBooking/pages/List/index',
+      })
+      return
+    }
     bookingQuotationList({
       portOfLoading: this.data.portOfLoading,
       portOfDischarge: this.data.portOfDischarge,
@@ -533,14 +584,29 @@ Page({
       journeyDate: this.data.simulationDate,
       journeyType: this.data.searchOn === 1 ? "True" : "False",
       agreementReference: this.data.reference,
-      shippingCompany: '0001'
+      shippingCompany: this.data.shippingCompanyList[index]
     }).then(res => {
-      console.log(res)
       if (res.data && res.data.routings && res.data.routings.length) {
         wx.setStorageSync('bookingRoutings', res.data.routings)
         wx.setStorageSync('containers', res.data.commodities.preferedContainerTypes.concat(res.data.commodities.containerTypes))
+      } else {
+        wx.removeStorageSync('bookingRoutings')
+        wx.removeStorageSync('containers')
+        this.getQuotationList(++index)
+        return
       }
-      wx.redirectTo({
+      const bookingSearchKey = {
+        portOfLoading: this.data.portOfLoadingLabel,
+        portOfDischarge: this.data.portOfDischargeLabel,
+        placeOfDelivery: this.data.placeOfOriginLabel || '',
+        deliveryHaulage: this.data.deliveryHaulage || '',
+        placeOfReceipt: this.data.finalPlaceOfDeliveryLabel || '',
+        receiptHaulage: this.data.receiptHaulage || '',
+        quotationReference: this.data.reference,
+        shippingCompany: this.data.shippingCompanyList[index]
+      }
+      wx.setStorageSync('bookingSearchKey', bookingSearchKey)
+      wx.navigateTo({
         url: '/packageBooking/pages/List/index',
       })
     })
@@ -561,6 +627,7 @@ Page({
       portOfDischargeLabel: "",
       finalPlaceOfDelivery: '',
       finalPlaceOfDeliveryLabel: '',
+      deliveryHaulage: '',
       pollist: [],
       podlist: [],
       simulationDate: this.getDate(),

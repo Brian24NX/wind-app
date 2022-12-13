@@ -1,0 +1,222 @@
+<!--packageBooking/pages/Haulage/index.wxml-->
+<view class="oneDetails">
+  <view class="detailTops2">
+    <view class="detailTopLeft">
+      <text>Haulage Request</text>
+      <view class="topTitleLine"></view>
+      <text style="color: #4468BA;">{{haulageDirectionType}} {{haulageType}} Details</text>
+    </view>
+  </view>
+  <view class="point">Location point</view>
+  <view class="pointValue">{{locationPoint}}</view>
+  <block wx:if="{{haulageType === 'Door'}}">
+    <view style="position: relative;">
+      <view class="key">Appointment Date</view>
+      <view class="keyValue {{appointmentDateRemind ? 'noRequestBorder' : ''}}" catchtap="chooseDate">
+        <view style="{{!appointmentDate ? 'color: #B9BFCA;' : ''}}">{{appointmentDate || 'YYYY-MM-DD'}}</view>
+        <image src="/assets/img/booking/date.png"></image>
+      </view>
+      <view class="noRequest" wx:if="{{appointmentDateRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+    </view>
+    <view style="position: relative;">
+      <view class="key">Appointment Time</view>
+      <view class="keyValue {{appointmentTimeRemind ? 'noRequestBorder' : ''}}" catchtap="chooseTime">
+        <view style="{{!appointmentTime ? 'color: #B9BFCA;' : ''}}">{{appointmentTime || 'HH:MM'}}</view>
+        <image src="/assets/img/booking/time.png"></image>
+      </view>
+      <view class="noRequest" wx:if="{{appointmentTimeRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+    </view>
+  </block>
+  <view style="position: relative;">
+    <view class="key">Transport Mode</view>
+    <view class="transportMode">
+      <view class="oneMode" wx:for="{{transportModeList}}" wx:key="index" catchtap="chooseMode" data-id="{{item.id}}">
+        <image class="image" src="{{item.icon}}" mode="aspectFit"></image>
+        <view>{{languageContent.transportMode[item.id]}}</view>
+        <image src="/assets/img/booking/mode/checked.png" class="modeChecked" wx:if="{{transportMode === item.id}}"></image>
+      </view>
+    </view>
+    <view class="noRequest" wx:if="{{transportModeRemind}}">
+      <image src="/assets/img/search/error@2x.png"></image>
+      <text>{{verifyInfo.required}}</text>
+    </view>
+  </view>
+</view>
+<block wx:if="{{haulageType === 'Door'}}">
+  <view class="modifyContainer">
+    <view class="modifyTitles">
+      <view class="modifyTitleLine"></view>
+      <view>Address</view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Contact Company</text>
+      </view>
+      <view class="inputs {{companyNameRemind ? 'noRequestBorder' : ''}}">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="companyName" value="{{haulageAddress.companyName}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.companyName}}" catchtap="deleteValue" data-type="companyName" />
+      </view>
+      <view class="noRequest" wx:if="{{companyNameRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Address</text>
+      </view>
+      <view class="inputs {{address2Remind ? 'noRequestBorder' : ''}}">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="address1" value="{{haulageAddress.haulageAddress.address1}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.address1}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="address2" />
+      </view>
+      <view class="noRequest" wx:if="{{address1Remind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Additional Address Details </text>
+        <text class="optional">(optional)</text>
+      </view>
+      <view class="inputs">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="address2" value="{{haulageAddress.haulageAddress.address2}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.address2}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="address2" />
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Additional Address Details </text>
+        <text class="optional">(optional)</text>
+      </view>
+      <view class="inputs">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="address3" value="{{haulageAddress.haulageAddress.address3}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.address3}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="address3" />
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>City</text>
+      </view>
+      <view class="inputs {{cityRemind ? 'noRequestBorder' : ''}}">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="city" value="{{haulageAddress.haulageAddress.city}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.city}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="city" />
+      </view>
+      <view class="noRequest" wx:if="{{cityRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Zip Code </text>
+        <text class="optional">(optional)</text>
+      </view>
+      <view class="inputs">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="zipCode" value="{{haulageAddress.haulageAddress.zipCode}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.zipCode}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="zipCode" />
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Country / Region</text>
+      </view>
+      <view class="selectContainer {{countryRemind ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="country">
+        <view style="{{haulageAddress.haulageAddress.countryCode ? 'color: #071E5D;' : ''}}">{{haulageAddress.haulageAddress.countryName || verifyInfo.select}}</view>
+        <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+      </view>
+      <view class="noRequest" wx:if="{{countryRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>State </text>
+        <text class="optional">(optional)</text>
+      </view>
+      <view class="selectContainer" catchtap="openPopup" data-type="state">
+        <view style="{{haulageAddress.haulageAddress.stateCode ? 'color: #071E5D;' : ''}}">{{haulageAddress.haulageAddress.stateName || verifyInfo.select}}</view>
+        <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="modifyContainer">
+    <view class="modifyTitles">
+      <view class="modifyTitleLine"></view>
+      <view>Contact</view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Contact Name</text>
+      </view>
+      <view class="inputs {{contactNameRemind ? 'noRequestBorder' : ''}}">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="contactName" value="{{haulageAddress.haulageAddress.contactName}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.contactName}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="contactName" />
+      </view>
+      <view class="noRequest" wx:if="{{contactNameRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Phone Number</text>
+      </view>
+      <view class="inputs {{phoneNumberRemind ? 'noRequestBorder' : ''}}">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="phoneNumber" value="{{haulageAddress.haulageAddress.phoneNumber}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.phoneNumber}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="phoneNumber" />
+      </view>
+      <view class="noRequest" wx:if="{{phoneNumberRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Email</text>
+      </view>
+      <view class="inputs {{emailRemind || emailRemind2 ? 'noRequestBorder' : ''}}">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="haulageAddress" data-type2="email" value="{{haulageAddress.haulageAddress.email}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.haulageAddress.email}}" catchtap="deleteValue" data-type="haulageAddress" data-type2="email" />
+      </view>
+      <view class="noRequest" wx:if="{{emailRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
+      <view class="noRequest" wx:if="{{emailRemind2}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>The Email field must be a valid email</text>
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Loading Reference </text>
+        <text class="optional">(optional)</text>
+      </view>
+      <view class="inputs">
+        <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="customerReference" value="{{haulageAddress.customerReference}}" />
+        <image src="/assets/img/search/close@2x.png" wx:if="{{haulageAddress.customerReference}}" catchtap="deleteValue" data-type="customerReference" />
+      </view>
+    </view>
+    <view class="oneModify">
+      <view class="title">
+        <text>Transport Comment </text>
+        <text class="optional">(optional)</text>
+      </view>
+      <textarea class="textarea" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setInputValue" data-type="transportComment" value="{{haulageAddress.transportComment}}"></textarea>
+    </view>
+  </view>
+</block>
+<button class="haulageBtn" catchtap="confirmHaulage">Confirm</button>
+
+<custom-picker columns="{{columns}}" valueKey="{{valueKey}}" defaultIndex="{{defaultIndex}}" showPopup="{{isShowPicker}}" bindonClose="onPickerClose" bind:onConfirm="onPickerConfirm"></custom-picker>
+
+<custom-time type="{{timeType}}" minDate="{{minDate}}" maxDate="{{maxDate}}" showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>

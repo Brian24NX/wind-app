@@ -26,7 +26,7 @@
           <view>{{quotationDetail.tranShipment.length ? (quotationDetail.tranShipment.length + ' ' + (quotationDetail.tranShipment.length > 1 ? languageContent.zhuanyuns : languageContent.zhuanyun)) : languageContent.zhida}}</view>
         </view>
         <view class="priceRight">
-          <text class="price">{{quotationDetail.surchargeDetails.totalCharge.amount}}</text>
+          <text class="price">{{totalChargeAmount * containers}}</text>
           <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
         </view>
       </view>
@@ -85,7 +85,7 @@
 
 <view class="bottomButtons">
   <view class="oneButton" catchtap="toHome">{{languageContent.backHome}}</view>
-  <view class="oneButton" catchtap="toBook">{{languageContent.bookNow}}</view>
+  <!-- <view class="oneButton" catchtap="toBook">{{languageContent.bookNow}}</view> -->
 </view>
 
 <email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

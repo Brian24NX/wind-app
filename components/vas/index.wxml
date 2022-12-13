@@ -1,0 +1,36 @@
+<!--components/vas/index.wxml-->
+<view class="additionServicesContainers">
+  <view class="additionContainers">
+    <view class="additionContainer">
+      <view class="additionTitleLine"></view>
+      <view>{{languageContent.additionalServicesChoosed}}</view>
+    </view>
+  </view>
+  <view class="noVasRemind" wx:if="{{!subscribedServices.length}}">{{languageContent.noChoosedAdditionalServices}}</view>
+  <view class="additionContainers">
+    <view class="additionContainer">
+      <view class="additionTitleLine"></view>
+      <view>{{languageContent.additionalServices}}</view>
+    </view>
+    <view class="additionDesc">{{languageContent.additionalServicesDesc}}</view>
+  </view>
+  <view class="additionList">
+    <view class="oneAddition" wx:for="{{vasList}}">
+      <image src="{{item.productMainImage}}" mode="aspectFill"></image>
+      <view class="additionDetail">
+        <view class="additionDetailTitle">{{item.productName}}</view>
+        <view class="vasDesc">{{item.productShortDescription}}</view>
+        <view class="vasBottom">
+          <view class="vasBottomLeft">
+            <view class="vasPrice">{{item.minPrice}}</view>
+            <view class="vasUnit">
+              <view>{{item.currency}}</view>
+              <view>/container</view>
+            </view>
+          </view>
+          <button class="vasBtn" catchtap="toSelect" data-index="{{index}}">Select</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

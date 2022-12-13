@@ -129,6 +129,11 @@ page {
   align-items: center;
 }
 
+.shipOwner .refferIcon {
+  width: 25rpx;
+  height: 25rpx;
+}
+
 .shipOwner .checked {
   width: 30rpx;
   height: 30rpx;
@@ -142,7 +147,7 @@ page {
   background-color: #04246A;
 }
 .shipOwner .text {
-  padding-left: 20rpx;
+  padding-left: 10rpx;
 }
 
 .title {

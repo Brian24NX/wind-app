@@ -24,7 +24,7 @@ Page({
         let userInfo = data.data[0].customer
         const partnerList = data.partnerList
         const profileRights = data.data[0].profilerights
-        console.log(profileRights)
+        // console.log(profileRights)
         if (userInfo) {
           wx.setStorageSync('ccgId', userInfo.ccgId)
           userInfo.lastName = userInfo.lastName ? userInfo.lastName.toLocaleUpperCase() : ''
@@ -46,12 +46,20 @@ Page({
           wx.setStorageSync('shipCompanyList', shipCompanyList)
           wx.setStorageSync('rights', rights)
         }
+        console.log(partnerList)
         if (partnerList && partnerList.length) {
           let partnerLists = []
           partnerList.forEach(i => {
+            i.partnerDetails.address1 = i.partnerDetails.addressLine1
+            i.partnerDetails.address2 = i.partnerDetails.addressLine2
+            i.partnerDetails.address3 = i.partnerDetails.addressLine3
+            delete i.partnerDetails.addressLine1
+            delete i.partnerDetails.addressLine2
+            delete i.partnerDetails.addressLine3
             partnerLists.push({
               code: i.partnerDetails.code,
-              name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city
+              name: i.partnerDetails.fullName + ' - ' + i.partnerDetails.city,
+              address: i.partnerDetails
             })
           })
           wx.setStorageSync('partnerList', partnerLists)

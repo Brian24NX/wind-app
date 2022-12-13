@@ -39,21 +39,57 @@ Page({
         value: 'KGM',
         text: 'KGM (Kilogram)',
         index: 0
+      },
+      // Packaging Description
+      3: {
+        value: '',
+        text: '',
+        index: 0
       }
     },
     // Constant - Unit Data
     unitData: {
-      'en': [
-        { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
-        { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB (Pound)', index: 2},
-        { value: 'TON', text: 'TON (US Ton)', index: 3}
+      'en': [{
+          value: 'KGM',
+          text: 'KGM (Kilogram)',
+          index: 0
+        },
+        {
+          value: 'TNE',
+          text: 'TNE (Metric Ton)',
+          index: 1
+        },
+        {
+          value: 'LB',
+          text: 'LB (Pound)',
+          index: 2
+        },
+        {
+          value: 'TON',
+          text: 'TON (US Ton)',
+          index: 3
+        }
       ],
-      'zh': [
-        { value: 'KGM', text: 'KGM (Kilogram)', index: 0},
-        { value: 'TNE', text: 'TNE (Metric Ton)', index: 1},
-        { value: 'LB', text: 'LB (Pound)', index: 2},
-        { value: 'TON', text: 'TON (US Ton)', index: 3}
+      'zh': [{
+          value: 'KGM',
+          text: 'KGM (Kilogram)',
+          index: 0
+        },
+        {
+          value: 'TNE',
+          text: 'TNE (Metric Ton)',
+          index: 1
+        },
+        {
+          value: 'LB',
+          text: 'LB (Pound)',
+          index: 2
+        },
+        {
+          value: 'TON',
+          text: 'TON (US Ton)',
+          index: 3
+        }
       ],
     },
     cacheData: {
@@ -137,7 +173,8 @@ Page({
           isTransport,
           commentOptional,
           commentOptionalLength,
-          cacheData } = prevData[index];
+          cacheData
+        } = prevData[index];
         this.setData({
           id,
           chooseUNNumber,
@@ -175,7 +212,7 @@ Page({
       emsCode: '',
       [`pickerChooseReault.1.text`]: '',
       [`pickerChooseReault.1.value`]: '',
-      [`tips.unNumberName`]: !data? `${this.data.verifyInfo.required}` : '',
+      [`tips.unNumberName`]: !data ? `${this.data.verifyInfo.required}` : '',
       [`cacheData.packingGroup`]: [],
       packageDescriptionLists: [],
       packageDescriptionCode: '',
@@ -185,7 +222,7 @@ Page({
     })
 
     console.log('enterUNNumber', this.data)
-    if (data.length < 2)  return false;
+    if (data.length < 2) return false;
 
     this.setData({
       showUnNumberLoading: !0,
@@ -196,21 +233,23 @@ Page({
   getUNNumber(data) {
     UNNumberList({
       keyword: data
-    }).then(res=>{
+    }).then(res => {
       console.log(res)
       this.setData({
         showUnNumberLoading: !1,
         UNNumberLists: res.data || []
       })
     }, () => {
-      // this.getUNNumber(data)
+      this.getUNNumber(data)
     })
   },
 
   // choose UNNumber
   chooseUNNumber(e) {
     const index = e.currentTarget.dataset.index
-    const {unNumber} = this.data.UNNumberLists[index];
+    const {
+      unNumber
+    } = this.data.UNNumberLists[index];
     this.setData({
       unNumberCode: this.data.UNNumberLists[index].unNumber,
       unNumberName: this.data.UNNumberLists[index].unNumber + ' - ' + this.data.UNNumberLists[index].unName,
@@ -224,25 +263,25 @@ Page({
   getPackageList(unNumber) {
     packageList({
       unNumber
-    }).then(res=>{
-      if (res && parseInt(res.code) === 200 && res.data) {
-        if (res.data.length > 0) {
+    }).then(res => {
+        if (res.data.length) {
           const Data = JSON.parse(JSON.stringify(res.data));
-          Data.map( (val, index) => {
+          Data.map((val, index) => {
             val.value = val.packingInsCode;
-            val.text = `${val.packingGroup || val.unNumber || ''}${val.variation? (' - '+val.variation) : ''}`;
+            val.text = (val.packingGroup || val.variation) ?  (`${val.packingGroup || ''}${val.packingGroup && val.variation ? ' - ' : ''}${val.variation || ''}`) : '-';
             val.index = index;
           });
           this.setData({
             [`cacheData.packingGroup`]: Data
           })
         }
-      }
     })
   },
 
   // checkBoxToggle
-  checkBoxToggle({currentTarget}) {
+  checkBoxToggle({
+    currentTarget
+  }) {
     const keys = currentTarget.dataset.keys;
     this.setData({
       [keys]: !this.data[keys]
@@ -268,27 +307,21 @@ Page({
   },
 
   // openPicker
-  openPicker({currentTarget}) {
+  openPicker({
+    currentTarget
+  }) {
     const _t = this;
     const type = parseInt(currentTarget.dataset.type);
-    const {cacheData} = _t.data;
+    const {
+      cacheData
+    } = _t.data;
 
     // Packing Group
     if (type === 1) {
       const columnsList = cacheData.packingGroup;
-      if (columnsList.length < 1) {
-        wx.showToast({
-          title: languageUtils.languageVersion().lang.page.load.systemIsBusyNow,
-          icon: 'none',
-          mask: true,
-          duration: 2500
-        });
-
-        return false;
-      };
-
       _t.setData({
         columnsList,
+        pickerValueKey: 'text',
         pickerValueKeyFlag: type,
         isShowPicker: !0
       })
@@ -300,10 +333,21 @@ Page({
       const columnsList = _t.data.unitData[lang];
       _t.setData({
         columnsList,
+        pickerValueKey: 'text',
         pickerValueKeyFlag: type,
         isShowPicker: !0
       })
     };
+
+    // Packaging Description
+    if (type === 3) {
+      _t.setData({
+        columnsList: this.data.packageDescriptionLists,
+        pickerValueKeyFlag: type,
+        pickerValueKey: 'packagingDescription',
+        isShowPicker: !0
+      })
+    }
   },
 
   // onPickerClose
@@ -315,10 +359,16 @@ Page({
   },
 
   // onPickerConfirm
-  onPickerConfirm({detail}) {
+  onPickerConfirm({
+    detail
+  }) {
     const _t = this;
     const type = _t.data.pickerValueKeyFlag;
     // set select data
+    if (type == 3) {
+      detail.value = detail.packingRef
+      detail.text = detail.packagingDescription
+    }
     _t.setData({
       [`pickerChooseReault.${type}`]: detail,
       pickerValueKeyFlag: type,
@@ -335,16 +385,27 @@ Page({
         classNumber: detail.imdgClass,
         emsCode: detail.emsCode
       });
+      this.getPackageDescription()
     }
     if (type === 2) {
       _t.setData({
         [`tips.unit`]: ''
       });
     }
+    if (type === 3) {
+      this.data.requiredEmelemt[7] = null
+      console.log(detail)
+      this.setData({
+        [`tips.packageDescriptionName`]: '',
+        requiredEmelemt: this.data.requiredEmelemt
+      })
+    }
   },
 
   // clearValue
-  clearValue({currentTarget}) {
+  clearValue({
+    currentTarget
+  }) {
     const keys = currentTarget.dataset.keys.split(',');
     const isrequired = currentTarget.dataset.isrequired;
     keys.forEach(v => {
@@ -374,23 +435,27 @@ Page({
   recordFloat(val) {
     const _t = this;
     const decimalReg = /^\d{0,8}\.{0,1}(\d{1,2})?$/;
-    let value = val.replace(/^\./g,"");
+    let value = val.replace(/^\./g, "");
     let num = '';
 
     if (!value) {
-      _t.setData({ cacheNumber: '' })
+      _t.setData({
+        cacheNumber: ''
+      })
       return '';
     };
-    if(value && parseInt(value[0]) === 0){
-      if(typeof value[1] !== 'undefined' && value[1] && value[1] !== '.'){
-        value = value.substr(1,-1);
+    if (value && parseInt(value[0]) === 0) {
+      if (typeof value[1] !== 'undefined' && value[1] && value[1] !== '.') {
+        value = value.substr(1, -1);
       }
     };
 
     if (value && decimalReg.test(value)) {
-      _t.setData({ cacheNumber: value })
+      _t.setData({
+        cacheNumber: value
+      })
     } else {
-      if(value) value = _t.data.cacheNumber;
+      if (value) value = _t.data.cacheNumber;
     };
 
 
@@ -398,30 +463,38 @@ Page({
   },
 
   // fix
-  recordFloatBlur({detail, currentTarget}) {
+  recordFloatBlur({
+    detail,
+    currentTarget
+  }) {
     const keys = currentTarget.dataset.keys;
-    let {value} = detail;
+    let {
+      value
+    } = detail;
     let varLen = value.toString().split(".");
     // if(varLen.length === 1) {
     //   value = `${value.toString()}.00`;
     // };
 
     if (varLen.length > 1) {
-      if ( varLen[1] === '') {
+      if (varLen[1] === '') {
         value = `${value.toString()}00`;
       }
-      if( varLen[1] !== '' && varLen[1].length < 2) {
+      if (varLen[1] !== '' && varLen[1].length < 2) {
         value = `${value.toString()}0`;
       }
     };
     this.setData({
-      [`tips.${keys}`]: ((value && parseInt(value) <= 0 )?`${this.data.verifyInfo.required}` : ''),
-      [keys]: ((value && parseInt(value) <= 0 )? '': value)
+      [`tips.${keys}`]: ((value && parseInt(value) <= 0) ? `${this.data.verifyInfo.required}` : ''),
+      [keys]: ((value && parseInt(value) <= 0) ? '' : value)
     })
   },
 
   // setFlashPoint
-  setFlashPoint({detail, currentTarget}) {
+  setFlashPoint({
+    detail,
+    currentTarget
+  }) {
     const isrequired = currentTarget.dataset.isrequired;
     const flashPoint = this.recordFloat(detail.value) || '';
     let msg = '';
@@ -437,7 +510,10 @@ Page({
   },
 
   // setValues
-  setValues({detail, currentTarget}) {
+  setValues({
+    detail,
+    currentTarget
+  }) {
     const keys = currentTarget.dataset.keys;
     const keystype = currentTarget.dataset.keystype;
     const isrequired = currentTarget.dataset.isrequired;
@@ -446,7 +522,9 @@ Page({
       zh: `毛重必须大于净重`,
       en: `Gross weight must be greater than net weight.`
     };
-    let {value} = detail;
+    let {
+      value
+    } = detail;
     let msg = '';
 
     if (isrequired && !value) msg = `${this.data.verifyInfo.required}`;
@@ -456,7 +534,7 @@ Page({
       if (keys === 'netWeight') {
         const grossWeight = this.data.grossWeight;
         let msg = tips[lag];
-        if (grossWeight && ( parseInt(grossWeight) > parseInt(value) )) {
+        if (grossWeight && (parseInt(grossWeight) > parseInt(value))) {
           msg = '';
         };
         this.setData({
@@ -471,18 +549,25 @@ Page({
   },
 
   // setNumberValues
-  setNumberValues({detail, currentTarget}) {
+  setNumberValues({
+    detail,
+    currentTarget
+  }) {
     const _t = this;
-    const value = (detail.value).replace(/[^\d.]/g,'');
+    const value = (detail.value).replace(/[^\d.]/g, '');
     const keys = currentTarget.dataset.keys;
     const lag = languageUtils.languageVersion().lang.page.langue;
     const tips = {
       zh: `毛重必须大于净重`,
       en: `Gross weight should be greater than Net weight.`
     };
-    let { netWeight, grossWeight, verifyInfo } = _t.data;
+    let {
+      netWeight,
+      grossWeight,
+      verifyInfo
+    } = _t.data;
     let msg = '';
-    console.log('value', value, netWeight , parseInt(value) , parseInt(netWeight))
+    console.log('value', value, netWeight, parseInt(value), parseInt(netWeight))
     if (!value) msg = `${verifyInfo.required}`;
     if (value && !netWeight) msg = tips[lag];
     if (value && netWeight && parseInt(netWeight) >= parseInt(value)) msg = tips[lag];
@@ -496,11 +581,11 @@ Page({
   },
 
   // getPackageDescription
-  getPackageDescription(keyword) {
+  getPackageDescription() {
     packageDescription({
-      keyword,
+      innerFlag: false,
       packingInsCode: this.data.pickerChooseReault[1].packingInsCode
-    }).then(res=>{
+    }).then(res => {
       this.setData({
         packageDescriptionLoading: !1,
         packageDescriptionLists: res.data || []
@@ -509,7 +594,7 @@ Page({
       this.setData({
         packageDescriptionLoading: !1,
       })
-      // this.getPackageDescription(keyword)
+      this.getPackageDescription()
     })
   },
   // clickPackagingDescription
@@ -554,7 +639,7 @@ Page({
     this.setData({
       packageDescriptionName: data,
       packageDescriptionCode: '',
-      [`tips.packageDescriptionName`]: !data? `${this.data.verifyInfo.required}` : '',
+      [`tips.packageDescriptionName`]: !data ? `${this.data.verifyInfo.required}` : '',
       packageDescriptionLoading: !1,
       packageDescriptionLists: []
     })
@@ -569,8 +654,12 @@ Page({
   }, 800),
 
   // choosePackagingDescription
-  choosePackagingDescription({currentTarget}) {
-    const {item} = currentTarget.dataset;
+  choosePackagingDescription({
+    currentTarget
+  }) {
+    const {
+      item
+    } = currentTarget.dataset;
     this.setData({
       packageDescriptionCode: item.packingRef,
       packageDescriptionName: `${item.packingRef} - ${item.packagingDescription}`,
@@ -579,7 +668,9 @@ Page({
   },
 
   // setCommentOptional
-  setCommentOptional({detail}) {
+  setCommentOptional({
+    detail
+  }) {
     this.setData({
       commentOptional: detail.value,
       commentOptionalLength: detail.value.length || 0
@@ -587,7 +678,11 @@ Page({
   },
 
   // scrollTo
-  scrollTo({element, duration=200, offsetTop=0}) {
+  scrollTo({
+    element,
+    duration = 200,
+    offsetTop = 0
+  }) {
     // 使用wx.createSelectorQuery()查询到需要滚动到的元素位置
     // console.log('element', element)
     const query = wx.createSelectorQuery().in(this)
@@ -611,7 +706,7 @@ Page({
   // keys 为判断的keys
   // tipkey 为输出判断的key
   // scrollElement 为校验滚动点元素
-  verify(keys='', tipkey='', scrollElement='', nativeData='') {
+  verify(keys = '', tipkey = '', scrollElement = '', nativeData = '') {
     const _t = this;
     const data = _t.data;
     const dataKeys = keys.split(',');
@@ -643,7 +738,9 @@ Page({
         requiredEmelemt[index] = ''
       }
     };
-    this.setData({ requiredEmelemt });
+    this.setData({
+      requiredEmelemt
+    });
     return isFlag;
   },
 
@@ -689,7 +786,7 @@ Page({
     }
 
     // Packaging Description - packageDescriptionName
-    if (_t.verify('packageDescriptionName', 'packageDescriptionName', scrollToElement[7])) {
+    if (_t.verify('pickerChooseReault[3].text', 'packageDescriptionName', _t.data.pickerChooseReault[3].text)) {
       console.log('packageDescriptionName - 为空')
     }
 
@@ -709,10 +806,12 @@ Page({
     }
 
     // scrollTo
-    _t.scrollTo({element: _t.data.requiredEmelemt.find( v => !!v )})
+    _t.scrollTo({
+      element: _t.data.requiredEmelemt.find(v => !!v)
+    })
 
-    if (_t.data.requiredEmelemt.findIndex( v => !!v ) !== -1) {
-      console.log('存在必填为空', _t.data.requiredEmelemt, _t.data.requiredEmelemt.findIndex( v => !!v ))
+    if (_t.data.requiredEmelemt.findIndex(v => !!v) !== -1) {
+      console.log('存在必填为空', _t.data.requiredEmelemt, _t.data.requiredEmelemt.findIndex(v => !!v))
       return false
     }
 
@@ -725,7 +824,9 @@ Page({
       this.setData({
         [`tips.packageDescriptionName`]: tips[lag]
       })
-      _t.scrollTo({element: 'packaging-description'})
+      _t.scrollTo({
+        element: 'packaging-description'
+      })
       return false
     }
 

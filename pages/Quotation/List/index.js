@@ -171,16 +171,20 @@ Page({
         this.data.quoteLineList.forEach((item, index) => {
           if (item.quoteLines) {
             // 收货地
-            if (item.quoteLines[0].origin) {
+            if (item.quoteLines[0].origin && item.quoteLines[0].origin !== item.quoteLines[0].portOfLoading) {
               this.getPlacePoint(item.quoteLines[0].origin, item, 'placeOfReceiptLabel')
+            } else {
+              item.quoteLines[0].origin = ''
             }
             // 起运港
             this.getPlacePoint(item.quoteLines[0].portOfLoading, item, 'placeOfLoadingLabel')
             // 卸货港
             this.getPlacePoint(item.quoteLines[0].portOfDischarge, item, 'placeOfDischargeLabel')
             // 目的地
-            if (item.quoteLines[0].destination) {
+            if (item.quoteLines[0].destination && item.quoteLines[0].destination !== item.quoteLines[0].portOfDischarge) {
               this.getPlacePoint(item.quoteLines[0].destination, item, 'placeOfDeliveryLabel')
+            } else {
+              item.quoteLines[0].destination = ''
             }
           }
           if (item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length) {
@@ -247,6 +251,7 @@ Page({
       pointCode
     }).then(data => {
       item[type] = data.data.point.name + ', ' + data.data.country.code
+      item[type + 'Country'] = data.data.country.name
       this.setData({
         quoteLineList: this.data.quoteLineList
       })
