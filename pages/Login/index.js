@@ -19,7 +19,7 @@ Page({
     const data = e.detail.data[0]
     if (!data.status) {
       wx.setStorageSync('access_token', data.access_token)
-      wx.setStorageSync('expires_time', utils.setExpiresTime(data.expires_in))
+      wx.setStorageSync('expires_time', utils.setExpiresTime(config.expiresIn * 60))
       if (data.data && data.data.length) {
         let userInfo = data.data[0].customer
         const partnerList = data.partnerList

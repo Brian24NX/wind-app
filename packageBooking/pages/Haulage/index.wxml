@@ -191,7 +191,7 @@
         <image src="/assets/img/search/error@2x.png"></image>
         <text>{{verifyInfo.required}}</text>
       </view>
-      <view class="noRequest" wx:if="{{emailRemind2}}">
+      <view class="noRequest" wx:if="{{!emailRemind && emailRemind2}}">
         <image src="/assets/img/search/error@2x.png"></image>
         <text>The Email field must be a valid email</text>
       </view>

@@ -10,7 +10,7 @@ export const bookingQuotationList = (params) => {
 
 // 获取办公室列表
 export const bookOfficeList = (params) => {
-  return getRequest('/api/miniapp/agencyOffice', params, true, true)
+  return getRequest('/api/miniapp/agencyOffice', params, true)
 }
 
 // 获取国家列表

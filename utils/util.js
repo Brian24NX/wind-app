@@ -1,3 +1,5 @@
+const config = require('../config/config')
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -525,7 +527,7 @@ function checkAccessToken() {
       wx.removeStorageSync('partnerList')
       return false
     } else {
-      wx.setStorageSync('expires_time', this.setExpiresTime(15 * 60 - 1))
+      wx.setStorageSync('expires_time', this.setExpiresTime(config.expiresIn * 60 - 1))
       return true
     }
   }

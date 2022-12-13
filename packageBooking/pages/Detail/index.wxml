@@ -128,7 +128,7 @@
     <view class="cargoValue">
       <block wx:for="{{item.roleIds}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
         <text>{{languageContent.partyRole[items]}}</text>
-        <text wx:if="{{indexs !== item.roleIds.length - 1}}">、</text>
+        <text wx:if="{{indexs !== item.roleIds.length - 1}}">, </text>
       </block>
     </view>
   </view>
