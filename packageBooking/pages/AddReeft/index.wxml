@@ -152,6 +152,15 @@
       </view>
     </view>
 
+    <!-- Genset required -->
+    <view class="groups">
+      <view class="titles">Additional comments</view>
+      <view class="textareaContainer">
+        <textarea maxlength="150" value="{{additionalComments}}" bindinput="setAdditionalComments"></textarea>
+        <view class="fontCount">{{additionalCommentsLength}}/150</view>
+      </view>
+    </view>
+
   </view>
 
   <!-- Save btn -->

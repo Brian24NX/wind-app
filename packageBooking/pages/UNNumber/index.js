@@ -292,8 +292,8 @@ Page({
   clickPackingGroup(e) {
     const lag = languageUtils.languageVersion().lang.page.langue;
     const tips = {
-      zh: `请输入并获取正确的 UN Number or Proper Shipping Name`,
-      en: `The UN Number or Proper Shipping Name field is required.`
+      zh: `UN Number/Shipping Name 必填`,
+      en: `UN Number/Shipping Name is Required.`
     };
 
     if (!this.data.unNumberCode) {

@@ -45,6 +45,8 @@ Page({
       controlledAtmosphere: '',
       controlledAtmosphere1: '',
     },
+    additionalComments: '',
+    additionalCommentsLength: 0
   },
 
   /**
@@ -237,6 +239,16 @@ Page({
     })
   },
 
+  // setCommentOptional
+  setAdditionalComments({
+    detail
+  }) {
+    this.setData({
+      additionalComments: detail.value,
+      additionalCommentsLength: detail.value.length || 0
+    })
+  },
+
   onSave() {
     const _t = this;
     const _errorArr = [];
@@ -291,7 +303,8 @@ Page({
       switchControlledAtmosphere,
       switchControlledAtmosphereValue,
       switchControlledAtmosphereValue1,
-      switchGensetRequired
+      switchGensetRequired,
+      additionalComments
     } = _t.data;
     const newsData = {
       switchReeferMode,
@@ -305,7 +318,8 @@ Page({
       switchControlledAtmosphere,
       switchControlledAtmosphereValue,
       switchControlledAtmosphereValue1,
-      switchGensetRequired
+      switchGensetRequired,
+      additionalComments
     };
 
     wx.setStorageSync('addReeft', newsData);

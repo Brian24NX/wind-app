@@ -116,7 +116,7 @@
   <view class="scroll-gross-weight">
     <view class="title">Gross Weight <text class="red">*</text></view>
     <view class="inputs number">
-      <input type="number" maxlength="9" value="{{grossWeight}}" bindinput="setNumberValues" data-keys="grossWeight" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindblur="recordFloatBlur" data-keystype="number" />
+      <input type="digit" maxlength="9" value="{{grossWeight}}" bindinput="setNumberValues" data-keys="grossWeight" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindblur="recordFloatBlur" data-keystype="number" />
       <view class="deleteIcon" wx:if="{{grossWeight}}" catchtap="clearValue" data-keys="grossWeight" data-isrequired="true">
         <image src="/assets/img/search/close@2x.png"></image>
       </view>
