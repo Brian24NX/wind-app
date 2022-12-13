@@ -48,14 +48,21 @@ page{
 
 .queryContainer .addBtn {
   width: calc(100% - 120rpx - 46rpx);
-  height: 88rpx;
+  /* height: 88rpx; */
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   color: #2D75FF;
   font-size: 28rpx;
-  border: 1rpx solid #DFDFDF;
-  margin: 30rpx 0 30rpx 120rpx;
+  /* border: 1rpx solid #DFDFDF; */
+  margin: 20rpx 0 20rpx 120rpx;
+  padding-left: 30rpx;
+}
+
+.queryContainer .addBtn image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 20rpx;
 }
 
 .queryContainer .searchList {

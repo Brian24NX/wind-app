@@ -80,7 +80,7 @@ Page({
     });
 
     this.setData({
-      maxDate: new Date().setMonth(new Date().getMonth() + 3)
+      maxDate: new Date().setMonth(new Date().getMonth() + 4)
     });
 
     // 提示提示语

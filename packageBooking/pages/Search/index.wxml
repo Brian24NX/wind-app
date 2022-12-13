@@ -32,7 +32,10 @@
             <view class="leftLine otherLine"></view>
           </view>
         </view>
-        <view class="addBtn" catchtap="addPlaceOfReceipt" wx:if="{{!showPlaceOfReceipt}}">+ {{languageContent.addPlaceOfOrigin}}</view>
+        <view class="addBtn" catchtap="addPlaceOfReceipt" wx:if="{{!showPlaceOfReceipt}}">
+          <image src="/assets/img/booking/add.svg"></image>
+          <text>{{languageContent.addPlaceOfOrigin}}</text>
+        </view>
         <view class="searchList">
           <view class="searchTitle">{{languageContent.protOfLoading}}</view>
           <view class="codeInputs {{showRemind1 || showRemind2 ? 'noRequestBorder' : ''}}">
@@ -122,7 +125,10 @@
             <image class="shipLocation" src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
           </view>
         </view>
-        <view class="addBtn" style="margin-top: 40rpx;" catchtap="addPlaceOfDelivery" wx:if="{{!showPlaceOfDelivery}}">+ {{languageContent.addPlaceOfDelivery}}</view>
+        <view class="addBtn" catchtap="addPlaceOfDelivery" wx:if="{{!showPlaceOfDelivery}}">
+          <image src="/assets/img/booking/add.svg"></image>
+          <text>{{languageContent.addPlaceOfDelivery}}</text>
+        </view>
         <view class="searchList">
           <view class="searchTitle">{{languageContent.searchOn}}</view>
           <view class="selectContainer" catchtap="openPopup" data-type="1">
