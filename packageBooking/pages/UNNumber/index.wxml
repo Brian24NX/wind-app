@@ -170,9 +170,9 @@
       <text>{{tips.quantityValue}}</text>
     </view>
   </view>
-  <block wx:if="{{pickerChooseReault[3].packagingType === 'O'}}">
+  <!-- <block wx:if="{{pickerChooseReault[3].packagingType === 'O'}}">
     <view class="scroll-packaging-description">
-      <view class="title">Packaging Description <text class="red">*</text></view>
+      <view class="title">Inner Packaging <text class="red">*</text></view>
       <view class="selectContainer" catchtap="openPicker" data-type="3">
         <view style="{{pickerChooseReault[3].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[3].text || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
@@ -196,7 +196,7 @@
         <text>{{tips.quantityValue}}</text>
       </view>
     </view>
-  </block>
+  </block> -->
   <view class="shipOwner">
     <view class="checked {{isTransport?'bg':''}}" catchtap="checkBoxToggle" data-keys="isTransport">
       <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isTransport}}" />

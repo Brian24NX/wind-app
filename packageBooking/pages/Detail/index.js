@@ -183,6 +183,30 @@ Page({
     })
   },
 
+  setCorgoData(data, index) {
+    if (index !== undefined) {
+      this.data.cargoes[index] = data
+    } else {
+      this.data.cargoes.push(data)
+    }
+    this.setData({
+      cargoes: this.data.cargoes
+    })
+  },
+
+  editCargo(e) {
+    wx.navigateTo({
+      url: '/packageBooking/pages/Commodity/index?index=' + e.currentTarget.dataset.index,
+    })
+  },
+
+  deleteCargo(e) {
+    this.data.cargoes.splice(e.currentTarget.dataset.index, 1)
+    this.setData({
+      cargoes: this.data.cargoes
+    })
+  },
+
   addParty() {
     wx.navigateTo({
       url: '/packageBooking/pages/Party/index',
@@ -415,17 +439,6 @@ Page({
   setBookingComment(e) {
     this.setData({
       bookingComment: e.detail.value
-    })
-  },
-
-  setCorgoData(data, index) {
-    if (index !== undefined) {
-      this.data.cargoes[index] = data
-    } else {
-      this.data.cargoes.push(data)
-    }
-    this.setData({
-      cargoes: this.data.cargoes
     })
   },
 

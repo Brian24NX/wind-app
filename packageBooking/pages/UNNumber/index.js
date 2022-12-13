@@ -268,7 +268,7 @@ Page({
           const Data = JSON.parse(JSON.stringify(res.data));
           Data.map((val, index) => {
             val.value = val.packingInsCode;
-            val.text = `${val.packingGroup}${val.variation ? (' - ' + val.variation) : ''}`;
+            val.text = (val.packingGroup || val.variation) ?  (`${val.packingGroup || ''}${val.packingGroup && val.variation ? ' - ' : ''}${val.variation || ''}`) : '-';
             val.index = index;
           });
           this.setData({
@@ -393,7 +393,12 @@ Page({
       });
     }
     if (type === 3) {
+      this.data.requiredEmelemt[7] = null
       console.log(detail)
+      this.setData({
+        [`tips.packageDescriptionName`]: '',
+        requiredEmelemt: this.data.requiredEmelemt
+      })
     }
   },
 
@@ -781,7 +786,7 @@ Page({
     }
 
     // Packaging Description - packageDescriptionName
-    if (_t.verify('packageDescriptionName', 'packageDescriptionName', scrollToElement[7])) {
+    if (_t.verify('pickerChooseReault[3].text', 'packageDescriptionName', _t.data.pickerChooseReault[3].text)) {
       console.log('packageDescriptionName - 为空')
     }
 

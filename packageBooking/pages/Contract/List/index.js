@@ -466,7 +466,7 @@ Page({
       + `&pod=${detail.portOfDischarge}`
       + `&podLabel=${detail.portOfDischargeLabel2}`
       + `&quotationReference=${detail.quotationReference}`
-      + `&placeOfOrigin=${detail.origin || ''}`
+      + `&placeOfOrigin=${detail.exportInlandPointCode || ''}`
       + `&placeOfOriginLabel=${detail.placeOfReceiptLabel2 || ''}`
       + `&receiptHaulage=${detail.exportMovementType || ''}`
       + `&finalPlaceOfDelivery=${detail.importInlandPointCode || ''}`

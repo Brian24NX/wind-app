@@ -95,8 +95,8 @@
         <view>Commodity {{index + 1}}</view>
       </view>
       <view class="topRight">
-        <image src="/assets/img/booking/modify.png" />
-        <image src="/assets/img/booking/delete.png" />
+        <image src="/assets/img/booking/modify.png" catchtap="editCargo" data-index="{{index}}" />
+        <image src="/assets/img/booking/delete.png" catchtap="deleteCargo" data-index="{{index}}" />
       </view>
     </view>
     <view class="commodityDetail">

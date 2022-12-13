@@ -111,11 +111,9 @@
     <view class="titleLine"></view>
     <view>Special Attributes</view>
   </view>
-  <view class="add-reeft-outbox">
+  <view class="add-reeft-outbox" wx:if="{{pickerChooseReault[1].value === '20RE' || pickerChooseReault[1].value === '40RH' || pickerChooseReault[1].value === '45RH'}}">
     <view class="shipOwner add-reeft" catchtap="toAddReeft">
-      <view class="checked {{isAddReeft?'bg':''}}">
-        <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isAddReeft}}" />
-      </view>
+      <image src="/assets/img/booking/Reefer.svg" class="refferIcon"></image>
       <view class="text" data-keys="isAddReeft">Add Reefer<text class="red">*</text></view>
       <image class="arrow-right" src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
@@ -126,9 +124,7 @@
     </view>
   </view>
   <view class="shipOwner scroll-includeHazardous">
-    <view class="checked {{isIncludeHazardous?'bg':''}}">
-      <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isIncludeHazardous}}" />
-    </view>
+    <image src="/assets/img/booking/Hazardous.svg" class="refferIcon"></image>
     <view class="text">Include Hazardous</view>
   </view>
   <!-- error-tips -->
