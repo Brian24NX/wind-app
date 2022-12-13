@@ -162,7 +162,7 @@
 
       <custom-picker columns="{{searchList}}" valueKey="method" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
 
-      <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate" minDate="{{minDate}}"></custom-time>
+      <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate" minDate="{{minDate}}" maxDate="{{maxDate}}"></custom-time>
     </view>
   </view>
 </block>

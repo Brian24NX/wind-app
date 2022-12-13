@@ -63,6 +63,7 @@ Page({
     showPoDe: false,
     shippingCompanyList: ['0001', '0002', '0011', '0015'],
     minDate: new Date().getTime(),
+    maxDate: null,
     warmPrompt: '',
     hasPermission: null
   },
@@ -78,10 +79,8 @@ Page({
       hasPermission: utils.checkPermission('manageBkg')
     });
 
-    //设置最小日期
-    const today = new Date() // 当前
     this.setData({
-      minDate: today.setMonth(today.getMonth() - 3)
+      maxDate: new Date().setMonth(new Date().getMonth() + 3)
     });
 
     // 提示提示语
