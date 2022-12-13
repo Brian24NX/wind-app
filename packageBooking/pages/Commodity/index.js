@@ -378,7 +378,7 @@ Page({
       [`tips.${tipkeys}`]: (value ? '' : `${this.data.verifyInfo.required}`),
       [`tips.${resultkeys}`]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? '' : `${this.data.verifyInfo.required}`,
       [keys]: value,
-      [resultkeys]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? (parseInt(value) * parseInt(addkeysValue)) : ''
+      [resultkeys]: (value && parseInt(value) > 0 && addkeysValue && parseFloat(addkeysValue) > 0) ? (parseInt(value) * parseFloat(addkeysValue)) : ''
     });
   },
 
@@ -427,9 +427,9 @@ Page({
     const addkeysValue = this.data[addkeys];
     this.setData({
       [`tips.${tipkeys}`]: (value ? '' : `${this.data.verifyInfo.required}`),
-      [`tips.${resultkeys}`]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? '' : `${this.data.verifyInfo.required}`,
+      [`tips.${resultkeys}`]: (value && parseFloat(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? '' : `${this.data.verifyInfo.required}`,
       [keys]: value,
-      [resultkeys]: (value && parseInt(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? (parseInt(value) * parseInt(addkeysValue)) : ''
+      [resultkeys]: (value && parseFloat(value) > 0 && addkeysValue && parseInt(addkeysValue) > 0) ? (parseFloat(value) * parseInt(addkeysValue)) : ''
     });
   },
 
