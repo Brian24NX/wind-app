@@ -120,13 +120,14 @@ Page({
     exportHaulage: null,
     importHaulage: null,
     cargoes: [],
+    partiesList: [],
     // =================请求数据end=================
     // =================折叠start=================
     routeSelectedShow: false,
     receiptHaulageShow: false,
     deliveryHaulageShow: false,
     cargoShow: false,
-    partiesShow: false,
+    partiesShow: true,
     paymentShow: false,
     bookingOfficeShow: false,
     freeCommentsShow: false,
@@ -525,7 +526,7 @@ Page({
 
   getPartnerAddress(index) {
     customerPartners({
-      partners: [this.data.partiesList[index].code],
+      partners: [this.data.partyList[index].code],
       token: wx.getStorageSync('access_token')
     }).then(res => {
       console.log(res)
@@ -536,10 +537,36 @@ Page({
       delete partnerDetails.addressLine1
       delete partnerDetails.addressLine2
       delete partnerDetails.addressLine3
-      this.data.partiesList[index].address = partnerDetails
+      this.data.partyList[index].address = partnerDetails
       this.setData({
-        partiesList: this.data.partiesList
+        partyList: this.data.partyList
       })
+    })
+  },
+
+  confirmParty() {
+    let arr = []
+    this.data.partyList.forEach(i => {
+      if (!i.code) {
+        i.required1 = true
+        arr.push(1)
+      } else {
+        i.required1 = false
+      }
+      if (!i.roleIds.length) {
+        i.required2 = true
+        arr.push(2)
+      } else {
+        i.required2 = false
+      }
+    })
+    this.setData({
+      partyList: this.data.partyList
+    })
+    if (arr.length) return
+    this.setData({
+      partiesList: JSON.parse(JSON.stringify(this.data.partyList)),
+      partiesShow: false
     })
   },
 
@@ -595,8 +622,8 @@ Page({
 
   // =============== Parties start ============================
   setReference(e) {
-    let partiesList = this.data.partyList
-    partiesList[0].bookingPartyReference = e.detail.value
+    let partyList = this.data.partyList
+    partyList[0].bookingPartyReference = e.detail.value
     this.setData({
       partyList: this.data.partyList
     })

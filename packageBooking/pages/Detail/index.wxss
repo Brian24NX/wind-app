@@ -216,7 +216,7 @@ page {
 
 .oneCommodity .commodityDetail {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   margin-top: 26rpx;
 }
 
@@ -229,7 +229,7 @@ page {
 .oneCommodity .commodityDetail .commodityRight {
   font-size: 24rpx;
   color: #04246A;
-  width: 550rpx;
+  width: 500rpx;
 }
 
 .oneCommodity .commodityDetail .commodityRight .commodityName {

@@ -532,7 +532,7 @@
         </view>
       </view>
       <view class="commodityDetail">
-        <image src="/assets/img/booking/2.svg" />
+        <image src="/assets/img/booking/commodity.svg" />
         <view class="commodityRight">
           <view class="commodityName">{{item.commodity.commodityName + ' - ' + item.commodity.commodityCode}}</view>
           <view>{{item.sizeTypeName}} 132 x {{item.netWeight}} = 13200 {{item.netWeightUom}}</view>
@@ -629,6 +629,7 @@
         <view>Add Party</view>
       </view>
     </view>
+    <button class="haulageBtn" catchtap="confirmParty">Save</button>
   </view>
 </view>
 
