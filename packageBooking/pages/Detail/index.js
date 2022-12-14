@@ -875,6 +875,21 @@ Page({
   },
 
   submitBooking() {
+    // 提交数据时清除缓存数据的key
+    let cargoesOld = JSON.parse(JSON.stringify(this.data.cargoes));
+    let cargoes = [];
+    if (cargoesOld && cargoesOld.length > 0) {
+      cargoes = cargoesOld.map( v => {
+        if (v?.cacheData) {
+          delete(v['cacheData']);
+        }
+
+        return v
+      })
+    };
+
+    console.log('cargoes', cargoes)
+
     const params = {
       portOfLoading: this.data.portOfLoading,
       portOfDischarge: this.data.portOfDischarge,
@@ -888,7 +903,7 @@ Page({
       exportHaulage: this.data.exportHaulage,
       route: this.data.routeSelected,
       importHaulage: this.data.importHaulage,
-      cargoes: this.data.cargoes,
+      cargoes: cargoes,
       bookingPartyReference: this.data.partyList[0].bookingPartyReference || '',
       partners: this.data.partyList,
       vasProducts: [],

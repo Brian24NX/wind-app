@@ -87,9 +87,9 @@ Page({
     weightValue: '',
     totalWeightValue: '',
     isIncludeHazardous: false,
-    isAddReeft: false,
+    isAddReeft: false, // 是否 AddReeft
+    addReeft: null, // addReeft存的数据
     unList: [],
-    addReeft: null,
     tips: {
       commodityName: '',
       sizeType: '',
@@ -110,11 +110,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    if (options.index) {
-      this.setData({
-        index: options.index
-      })
-    }
     wx.setNavigationBarTitle({
       title: languageUtils.languageVersion().lang.page.bookingDetail.bookingDetail,
     })
@@ -125,9 +120,45 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
+    console.log('data', data)
     this.setData({
       agreementReference: data.quotationReference
     })
+
+
+
+    // 数据回显
+    const isIndex = options?.index;
+    if (isIndex && data && data.cargoes && data.cargoes[options.index]) {
+      const index = options.index
+      const {
+        commodityCode,
+        commodityName,
+        isUserContainer,
+        pickerChooseReault,
+        quantityValue,
+        weightValue,
+        totalWeightValue,
+        isIncludeHazardous,
+        isAddReeft,
+        addReeft,
+        unList
+      } = JSON.parse(JSON.stringify(data.cargoes))[options.index].cacheData
+      this.setData({
+        index,
+        commodityCode,
+        commodityName,
+        isUserContainer,
+        pickerChooseReault,
+        quantityValue,
+        weightValue,
+        totalWeightValue,
+        isIncludeHazardous,
+        isAddReeft,
+        addReeft,
+        unList
+      })
+    }
   },
 
   onShow() {
@@ -169,9 +200,9 @@ Page({
     // remove cache
     wx.removeStorageSync('addReeftCache')
 
-    // this.setData({
-    //   isAddReeft: (Object.keys(this.data.addReeft).length > 0 ? true : false)
-    // });
+    this.setData({
+      isAddReeft: (this.data.addReeft && (Object.keys(this.data.addReeft).length > 0) ? true : false)
+    });
     // addReeft ----- end
   },
 
@@ -325,9 +356,10 @@ Page({
     const type = _t.data.pickerValueKeyFlag;
     if (type === 1) {
       detail.value = detail.code;
+      detail.index = _t.data.columnsList.findIndex( v => v.code === detail.code);
       _t.setData({
         [`tips.sizeType`]: '',
-        isAddReeft: (detail.value === '20RF' || detail.value === '40RH' || detail.value === '45RH')
+        // isAddReeft: (detail.value === '20RF' || detail.value === '40RH' || detail.value === '45RH')
       })
     }
     if (type === 2) {
@@ -470,10 +502,10 @@ Page({
   // toAddReeft
   toAddReeft() {
     wx.navigateTo({
-      url: `/packageBooking/pages/AddReeft/index${(Object.keys(this.data.addReeft).length > 0? '?update=true': '')}`
+      url: `/packageBooking/pages/AddReeft/index${this.data.addReeft? '?update=true': ''}`
     })
 
-    if (Object.keys(this.data.addReeft).length > 0) {
+    if (this.data.addReeft && Object.keys(this.data.addReeft).length > 0) {
       wx.setStorageSync('addReeftCache', this.data.addReeft);
     }
   },
@@ -599,8 +631,11 @@ Page({
     }
 
     // addReeft
-    if (_t.verify('isAddReeft', 'addReeft', scrollToElement[6])) {
-      console.log('addReeft - 为空')
+    const addReeftResult = _t.data.pickerChooseReault[1].value;
+    if (addReeftResult === '20RF' || addReeftResult === '40RH' || addReeftResult === '45RH') {
+      if (_t.verify('addReeft', 'addReeft', scrollToElement[6])) {
+        console.log('addReeft - 为空')
+      }
     }
 
     // scrollTo
@@ -637,6 +672,7 @@ Page({
     // sumbit
     // do something...
     const {
+      quantityValue,
       commodityName,
       commodityCode,
       pickerChooseReault,
@@ -690,6 +726,20 @@ Page({
     })
 
     const submitData = {
+      // 回显缓存数据 - 提交数据时要清除该key
+      cacheData: {
+        commodityCode,
+        commodityName,
+        isUserContainer,
+        pickerChooseReault,
+        quantityValue,
+        weightValue,
+        totalWeightValue,
+        isIncludeHazardous,
+        isAddReeft,
+        addReeft,
+        unList
+      },
       commodity: {
         commodityName,
         commodityCode
