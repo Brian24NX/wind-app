@@ -1,14 +1,16 @@
 <!--packageBooking/pages/Detail/index.wxml-->
 <wxs module="commonFilters" src="/utils/format.wxs"></wxs>
+<wxs module="filters" src="./format.wxs"></wxs>
+
+<!-- Route Selected -->
 <view class="oneDetails">
-  <view class="detailTops">
+  <view class="detailTops" catchtap="zhedie" data-type="routeSelected">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/1.svg" mode="aspectFit" />
       <view>{{languageContent.routeSelected}}</view>
     </view>
-    <!-- <image class="editIcon" src="/assets/img/booking/edit.svg" /> -->
+    <image class="editIcon {{routeSelectedShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
-  <view class="routeContainer">
+  <view class="routeContainer" hidden="{{!routeSelectedShow}}">
     <view class="stepLists">
       <view class="oneStep">
         <view class="leftLines">
@@ -26,12 +28,13 @@
     </view>
     <view class="portTimeContainer">
       <view class="portTimes">
-        <view>PORT</view>
+        <view>POL</view>
         <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.departureDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.departureDate.utc, '-', '', true, true)}}</view>
       </view>
       <van-icon name="arrow" color="#04246A" />
       <view class="portTimes">
-        <view>PORT</view>
+        <view>
+          POD</view>
         <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.arrivalDate.utc, true, true) : commonFilters.formatEnDateLocal(routeSelected.arrivalDate.utc, '-', '', true, true)}}</view>
       </view>
     </view>
@@ -54,57 +57,491 @@
   </view>
 </view>
 
+<!-- Haulage Export -->
 <view class="oneDetails" wx:if="{{bookingSearchKey.receiptHaulage}}">
-  <view class="detailTops">
+  <view class="detailTops" catchtap="zhedie" data-type="receiptHaulage">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/7.svg" mode="aspectFit" />
       <view>Haulage Export</view>
     </view>
-    <view class="addIcon" catchtap="modifyHaulage" data-type="Export">
-      <image src="/assets/img/booking/modify.png" />
+    <image class="editIcon {{receiptHaulageShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+  </view>
+  <view hidden="{{!receiptHaulageShow}}">
+    <view class="haulageDetails">
+      <view class="haulageDetailTops2">
+        <view class="detailTopLeft">
+          <view class="topTitleLine"></view>
+          <text style="color: #4468BA;">Door Details</text>
+        </view>
+      </view>
+      <view class="point">Location point</view>
+      <view class="pointValue">{{bookingSearchKey.placeOfReceipt}}</view>
+      <block>
+        <view style="position: relative;">
+          <view class="key">Appointment Date</view>
+          <view class="keyValue {{exportHaulage.appointmentDateRemind ? 'noRequestBorder' : ''}}" catchtap="chooseDate" data-type="exportData">
+            <view style="{{!exportData.appointmentDate ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{exportData.appointmentDate || 'YYYY-MM-DD'}}</view>
+            <image src="/assets/img/booking/date.png"></image>
+          </view>
+          <view class="noRequest" wx:if="{{exportHaulage.appointmentDateRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view style="position: relative;">
+          <view class="key">Appointment Time</view>
+          <view class="keyValue {{exportHaulage.appointmentTimeRemind ? 'noRequestBorder' : ''}}" catchtap="chooseTime" data-type="exportData">
+            <view style="{{!exportData.appointmentTime ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{exportData.appointmentTime || 'HH:MM'}}</view>
+            <image src="/assets/img/booking/time.png"></image>
+          </view>
+          <view class="noRequest" wx:if="{{exportHaulage.appointmentTimeRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+      </block>
+      <view style="position: relative;">
+        <view class="key">Transport Mode</view>
+        <view class="transportMode">
+          <view class="oneMode" wx:for="{{transportModeList}}" wx:key="index" catchtap="chooseMode" data-id="{{item.id}}" data-type="exportData">
+            <image class="image" src="{{item.icon}}" mode="aspectFit"></image>
+            <view>{{languageContent.transportMode[item.id]}}</view>
+            <image src="/assets/img/booking/mode/checked.png" class="modeChecked" wx:if="{{exportData.transportMode === item.id}}"></image>
+          </view>
+        </view>
+        <view class="noRequest" wx:if="{{exportHaulage.transportModeRemind}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
+      </view>
     </view>
+    <block>
+      <view class="modifyContainer">
+        <view class="modifyTitles">
+          <view class="modifyTitleLine"></view>
+          <view>Address</view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Contact Company</text>
+          </view>
+          <view class="inputs {{exportHaulage.companyNameRemind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="companyName" value="{{exportData.companyName}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.companyName}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="companyName" />
+          </view>
+          <view class="noRequest" wx:if="{{companyNameRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Address</text>
+          </view>
+          <view class="inputs {{address2Remind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="address1" value="{{exportData.address1}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.address1}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="address1" />
+          </view>
+          <view class="noRequest" wx:if="{{address1Remind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Additional Address Details </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="inputs">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="address2" value="{{exportData.address2}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.address2}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="address2" />
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Additional Address Details </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="inputs">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="address3" value="{{exportData.address3}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.address3}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="address3" />
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>City</text>
+          </view>
+          <view class="inputs {{cityRemind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="city" value="{{exportData.city}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.city}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="city" />
+          </view>
+          <view class="noRequest" wx:if="{{cityRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Zip Code </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="inputs">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="zipCode" value="{{exportData.zipCode}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.zipCode}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="zipCode" />
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Country / Region</text>
+          </view>
+          <view class="selectContainer {{countryRemind ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="country" data-to="exportData">
+            <view style="{{exportData.countryCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{exportData.countryName || verifyInfo.select}}</view>
+            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          </view>
+          <view class="noRequest" wx:if="{{countryRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>State </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="selectContainer" catchtap="openPopup" data-type="state" data-to="exportData">
+            <view style="{{exportData.stateCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{exportData.stateName || verifyInfo.select}}</view>
+            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          </view>
+        </view>
+      </view>
+
+      <view class="modifyContainer">
+        <view class="modifyTitles">
+          <view class="modifyTitleLine"></view>
+          <view>Contact</view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Contact Name</text>
+          </view>
+          <view class="inputs {{contactNameRemind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="contactName" value="{{exportData.contactName}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.contactName}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="contactName" />
+          </view>
+          <view class="noRequest" wx:if="{{contactNameRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Phone Number</text>
+          </view>
+          <view class="inputs {{phoneNumberRemind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="phoneNumber" value="{{exportData.phoneNumber}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.phoneNumber}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="phoneNumber" />
+          </view>
+          <view class="noRequest" wx:if="{{phoneNumberRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Email</text>
+          </view>
+          <view class="inputs {{emailRemind || emailRemind2 ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="email" value="{{exportData.email}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.email}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="email" />
+          </view>
+          <view class="noRequest" wx:if="{{emailRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+          <view class="noRequest" wx:if="{{!emailRemind && emailRemind2}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>The Email field must be a valid email</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Loading Reference </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="inputs">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="customerReference" value="{{exportData.customerReference}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{exportData.customerReference}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="customerReference" />
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Transport Comment </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <textarea class="textarea" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="exportData" data-type2="transportComment" value="{{exportData.transportComment}}"></textarea>
+        </view>
+      </view>
+    </block>
   </view>
 </view>
 
+<!-- Haulage Import -->
 <view class="oneDetails" wx:if="{{bookingSearchKey.deliveryHaulage}}">
-  <view class="detailTops">
+  <view class="detailTops" catchtap="zhedie" data-type="deliveryHaulage">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/7.svg" mode="aspectFit" />
       <view>Haulage Import</view>
     </view>
-    <view class="addIcon" catchtap="modifyHaulage" data-type="Import">
-      <image src="/assets/img/booking/modify.png" />
+    <image class="editIcon {{deliveryHaulageShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+  </view>
+  <view hidden="{{!deliveryHaulageShow}}">
+    <view class="haulageDetails">
+      <view class="haulageDetailTops2">
+        <view class="detailTopLeft">
+          <view class="topTitleLine"></view>
+          <text style="color: #4468BA;">Door Details</text>
+        </view>
+      </view>
+      <view class="point">Location point</view>
+      <view class="pointValue">{{bookingSearchKey.placeOfDelivery}}</view>
+      <block>
+        <view style="position: relative;">
+          <view class="key">Appointment Date</view>
+          <view class="keyValue {{exportHaulage.appointmentDateRemind ? 'noRequestBorder' : ''}}" catchtap="chooseDate" data-type="importData">
+            <view style="{{!importData.appointmentDate ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{importData.appointmentDate || 'YYYY-MM-DD'}}</view>
+            <image src="/assets/img/booking/date.png"></image>
+          </view>
+          <view class="noRequest" wx:if="{{exportHaulage.appointmentDateRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view style="position: relative;">
+          <view class="key">Appointment Time</view>
+          <view class="keyValue {{exportHaulage.appointmentTimeRemind ? 'noRequestBorder' : ''}}" catchtap="chooseTime" data-type="importData">
+            <view style="{{!importData.appointmentTime ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{importData.appointmentTime || 'HH:MM'}}</view>
+            <image src="/assets/img/booking/time.png"></image>
+          </view>
+          <view class="noRequest" wx:if="{{exportHaulage.appointmentTimeRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+      </block>
+      <view style="position: relative;">
+        <view class="key">Transport Mode</view>
+        <view class="transportMode">
+          <view class="oneMode" wx:for="{{transportModeList}}" wx:key="index" catchtap="chooseMode" data-id="{{item.id}}" data-type="importData">
+            <image class="image" src="{{item.icon}}" mode="aspectFit"></image>
+            <view>{{languageContent.transportMode[item.id]}}</view>
+            <image src="/assets/img/booking/mode/checked.png" class="modeChecked" wx:if="{{importData.transportMode === item.id}}"></image>
+          </view>
+        </view>
+        <view class="noRequest" wx:if="{{exportHaulage.transportModeRemind}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
+      </view>
     </view>
+    <block>
+      <view class="modifyContainer">
+        <view class="modifyTitles">
+          <view class="modifyTitleLine"></view>
+          <view>Address</view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Contact Company</text>
+          </view>
+          <view class="inputs {{exportHaulage.companyNameRemind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="companyName" value="{{importData.companyName}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.companyName}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="companyName" />
+          </view>
+          <view class="noRequest" wx:if="{{companyNameRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Address</text>
+          </view>
+          <view class="inputs {{address2Remind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="address1" value="{{importData.address1}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.address1}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="address1" />
+          </view>
+          <view class="noRequest" wx:if="{{address1Remind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Additional Address Details </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="inputs">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="address2" value="{{importData.address2}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.address2}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="address2" />
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Additional Address Details </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="inputs">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="address3" value="{{importData.address3}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.address3}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="address3" />
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>City</text>
+          </view>
+          <view class="inputs {{cityRemind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="city" value="{{importData.city}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.city}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="city" />
+          </view>
+          <view class="noRequest" wx:if="{{cityRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Zip Code </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="inputs">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="zipCode" value="{{importData.zipCode}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.zipCode}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="zipCode" />
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Country / Region</text>
+          </view>
+          <view class="selectContainer {{countryRemind ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="country" data-to="importData">
+            <view style="{{importData.countryCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{importData.countryName || verifyInfo.select}}</view>
+            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          </view>
+          <view class="noRequest" wx:if="{{countryRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>State </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="selectContainer" catchtap="openPopup" data-type="state" data-to="importData">
+            <view style="{{importData.stateCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{importData.stateName || verifyInfo.select}}</view>
+            <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+          </view>
+        </view>
+      </view>
+
+      <view class="modifyContainer">
+        <view class="modifyTitles">
+          <view class="modifyTitleLine"></view>
+          <view>Contact</view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Contact Name</text>
+          </view>
+          <view class="inputs {{contactNameRemind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="contactName" value="{{importData.contactName}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.contactName}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="contactName" />
+          </view>
+          <view class="noRequest" wx:if="{{contactNameRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Phone Number</text>
+          </view>
+          <view class="inputs {{phoneNumberRemind ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="phoneNumber" value="{{importData.phoneNumber}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.phoneNumber}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="phoneNumber" />
+          </view>
+          <view class="noRequest" wx:if="{{phoneNumberRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Email</text>
+          </view>
+          <view class="inputs {{emailRemind || emailRemind2 ? 'noRequestBorder' : ''}}">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="email" value="{{importData.email}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.email}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="email" />
+          </view>
+          <view class="noRequest" wx:if="{{emailRemind}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+          <view class="noRequest" wx:if="{{!emailRemind && emailRemind2}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>The Email field must be a valid email</text>
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Loading Reference </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <view class="inputs">
+            <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="customerReference" value="{{importData.customerReference}}" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.customerReference}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="customerReference" />
+          </view>
+        </view>
+        <view class="oneModify">
+          <view class="title">
+            <text>Transport Comment </text>
+            <text class="optional">(optional)</text>
+          </view>
+          <textarea class="textarea" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="importData" data-type2="transportComment" value="{{importData.transportComment}}"></textarea>
+        </view>
+      </view>
+    </block>
   </view>
 </view>
 
+<!-- Cargo Detail -->
 <view class="oneDetails">
-  <view class="detailTops">
+  <view class="detailTops" catchtap="zhedie" data-type="cargo">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/2.svg" mode="aspectFit" />
       <view>{{languageContent.cargoDetail}}</view>
     </view>
-    <view class="addIcon" catchtap="addCommodity">
-      <image src="/assets/img/booking/add.png" />
-    </view>
+    <image class="editIcon {{cargoShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
-  <view class="oneCommodity" wx:for="{{cargoes}}" wx:key="index">
-    <view class="commodityTop">
-      <view class="topLeft">
-        <view class="leftLine"></view>
-        <view>Commodity {{index + 1}}</view>
+  <view hidden="{{!cargoShow}}">
+    <view class="oneCommodity" wx:for="{{cargoes}}" wx:key="index">
+      <view class="commodityTop">
+        <view class="topLeft">
+          <view class="leftLine"></view>
+          <view>Commodity {{index + 1}}</view>
+        </view>
+        <view class="topRight">
+          <image src="/assets/img/booking/modify.png" catchtap="editCargo" data-index="{{index}}" />
+          <image src="/assets/img/booking/delete.png" catchtap="deleteCargo" data-index="{{index}}" />
+        </view>
       </view>
-      <view class="topRight">
-        <image src="/assets/img/booking/modify.png" catchtap="editCargo" data-index="{{index}}" />
-        <image src="/assets/img/booking/delete.png" catchtap="deleteCargo" data-index="{{index}}" />
+      <view class="commodityDetail">
+        <image src="/assets/img/booking/2.svg" />
+        <view class="commodityRight">
+          <view class="commodityName">{{item.commodity.commodityName + ' - ' + item.commodity.commodityCode}}</view>
+          <view>{{item.sizeTypeName}} 132 x {{item.netWeight}} = 13200 {{item.netWeightUom}}</view>
+        </view>
       </view>
     </view>
-    <view class="commodityDetail">
-      <image src="/assets/img/booking/2.svg" />
-      <view class="commodityRight">
-        <view class="commodityName">{{item.commodity.commodityName + ' - ' + item.commodity.commodityCode}}</view>
-        <view>{{item.sizeTypeName}} 132 x {{item.netWeight}} = 13200 {{item.netWeightUom}}</view>
-      </view>
+    <view class="addParty" catchtap="addCommodity">
+      <image src="/assets/img/booking/add_2.svg"></image>
+      <view>Add Commodity</view>
     </view>
   </view>
   <!-- <view class="commodityRemind">
@@ -113,92 +550,156 @@
     </view> -->
 </view>
 
+<!-- Parties -->
 <view class="oneDetails">
-  <view class="detailTops">
+  <view class="detailTops" catchtap="zhedie" data-type="parties">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/3.svg" mode="aspectFit" />
       <view>{{languageContent.parties}}</view>
     </view>
-    <image class="editIcon" src="/assets/img/booking/edit.svg" catchtap="addParty" />
+    <image class="editIcon {{partiesShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
-  <view class="oneCargo" wx:for="{{partyList}}" wx:key="index">
-    <view class="cargoTitle">{{languageContent.partyName}}</view>
-    <view class="cargoValue">{{item.name}}</view>
-    <view class="cargoTitle">{{languageContent.role}}</view>
-    <view class="cargoValue">
-      <block wx:for="{{item.roleIds}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
-        <text>{{languageContent.partyRole[items]}}</text>
-        <text wx:if="{{indexs !== item.roleIds.length - 1}}">, </text>
-      </block>
+  <view class="partyList" hidden="{{!partiesShow}}">
+    <view class="oneParty" wx:for="{{partyList}}" wx:key="index">
+      <view class="editContainer" wx:if="{{index}}">
+        <image src="/assets/img/booking/modify.png" wx:if="{{item.code}}" catchtap="editParty" data-index="{{index}}" />
+        <image src="/assets/img/booking/delete.png" catchtap="deleteParty" data-index="{{index}}" />
+      </view>
+      <view wx:if="{{!index}}">
+        <view class="title">Party Name <text class="red">*</text></view>
+        <view class="selectContainer" catchtap="openPopup" data-type="party" data-to="partyList">
+          <view style="{{item.code ? 'color: #071E5D;' : ''}}">{{item.name || verifyInfo.select}}</view>
+          <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+        </view>
+      </view>
+      <view wx:if="{{index}}">
+        <view class="title">Party Name <text class="red">*</text></view>
+        <view class="inputContainers">
+          <view class="inputsContainer {{item.required1 ? 'noRequestBorder' : ''}}">
+            <input type="text" bindinput="enterParty" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" data-index="{{index}}" value="{{item.name}}" />
+            <view class="deleteIcon" wx:if="{{item.showPartyDelete}}" catchtap="deletePartyValue" data-index="{{index}}">
+              <image src="/assets/img/search/close@2x.png"></image>
+            </view>
+          </view>
+          <scroll-view class="scroll-view" wx:if='{{item.partyList.length}}' scroll-y>
+            <view wx:for="{{item.partyList}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs" class="item" bindtap='chooseParty' data-item="{{items}}" data-index="{{index}}">
+              <view class="polname">{{items.text}}</view>
+            </view>
+          </scroll-view>
+          <view class="scroll-view" wx:if="{{item.showParty}}">
+            <view class="item">Loading...</view>
+          </view>
+          <view class="noRequest" wx:if="{{item.required1}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <text>{{verifyInfo.required}}</text>
+          </view>
+        </view>
+      </view>
+      <view>
+        <view class="title">Address</view>
+        <view class="desc" wx:if="{{item.address.address1}}">{{item.address.address1}}, {{item.address.address2}}</view>
+      </view>
+      <view wx:if="{{!index}}">
+        <view class="title">My reference
+          <text class="optional">(optional)</text>
+        </view>
+        <view class="inputs">
+          <input type="number" value="{{item.bookingPartyReference}}" bindinput="setReference" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+          <view class="deleteIcon" wx:if="{{item.bookingPartyReference}}" catchtap="deleteBookingPartyReferenceValue">
+            <image src="/assets/img/search/close@2x.png"></image>
+          </view>
+        </view>
+      </view>
+      <view style="position: relative;">
+        <view class="title">Role <text class="red">*</text></view>
+        <view class="roleList">
+          <view class="oneRole" wx:for="{{!index ? roleList : otherRoleList}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs" catchtap="chooseRole" data-index="{{index}}" data-roleid="{{items}}">
+            <view class="checked" style="{{!filters.hasRole(item.roleIds, items) ? 'background-color: #ffffff' : ''}}">
+              <van-icon name="success" size="14px" color="#ffffff" />
+            </view>
+            <view>{{languageContent.partyRole[items]}}</view>
+          </view>
+        </view>
+        <view class="noRequest" wx:if="{{item.required2}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{verifyInfo.required}}</text>
+        </view>
+      </view>
+      <view class="addParty" catchtap="addParty" wx:if="{{index === partyList.length - 1}}">
+        <image src="/assets/img/booking/add_2.svg"></image>
+        <view>Add Party</view>
+      </view>
     </view>
   </view>
 </view>
 
+<!-- Payment -->
 <view class="oneDetails">
-  <view class="detailTops">
+  <view class="detailTops" catchtap="zhedie" data-type="payment">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/4.svg" mode="aspectFit" />
       <view>{{languageContent.payment}}</view>
     </view>
+    <image class="editIcon {{paymentShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
-  <view class="paymentTitle">{{languageContent.freightPayment}}</view>
-  <view class="paymentType">
-    <view class="onePaymentType" catchtap="changePaymentType" data-type="Prepaid">
-      <view class="paymentCheck">
-        <view class="checked" wx:if="{{payment.freightPayment === 'Prepaid'}}"></view>
+  <view hidden="{{!paymentShow}}">
+    <view class="paymentTitle">{{languageContent.freightPayment}}</view>
+    <view class="paymentType">
+      <view class="onePaymentType" catchtap="changePaymentType" data-type="Prepaid">
+        <view class="paymentCheck">
+          <view class="checked" wx:if="{{payment.freightPayment === 'Prepaid'}}"></view>
+        </view>
+        <view>Prepaid</view>
       </view>
-      <view>Prepaid</view>
-    </view>
-    <view class="onePaymentType" catchtap="changePaymentType" data-type="Collect">
-      <view class="paymentCheck">
-        <view class="checked" wx:if="{{payment.freightPayment === 'Collect'}}"></view>
-      </view>
-      <view>Collect</view>
-    </view>
-  </view>
-  <view class="paymentTitle mar"><text>{{languageContent.paymentLocation}}<text class="red">*</text></text></view>
-  <view class="inputContainers">
-    <view class="inputsContainer">
-      <input type="text" bindinput="changepaymentLocation" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{payment.paymentLocation.name}}" />
-      <view class="deleteIcon" wx:if="{{showPaymentLocationDelete}}" catchtap="deleteValue2" data-type="showPaymentLocationDelete">
-        <image src="/assets/img/search/close@2x.png"></image>
+      <view class="onePaymentType" catchtap="changePaymentType" data-type="Collect">
+        <view class="paymentCheck">
+          <view class="checked" wx:if="{{payment.freightPayment === 'Collect'}}"></view>
+        </view>
+        <view>Collect</view>
       </view>
     </view>
-    <scroll-view class="scroll-view" wx:if='{{paymentLocationList.length}}' scroll-y>
-      <view wx:for="{{paymentLocationList}}" wx:key="index" class="item" bindtap='choosePaymentLocation' data-index="{{index}}">
-        <view class="polname">{{item.pointName}}</view>
+    <view class="paymentTitle mar"><text>{{languageContent.paymentLocation}}<text class="red">*</text></text></view>
+    <view class="inputContainers">
+      <view class="inputsContainer">
+        <input type="text" bindinput="changepaymentLocation" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{payment.paymentLocation.name}}" />
+        <view class="deleteIcon" wx:if="{{showPaymentLocationDelete}}" catchtap="deleteValue2" data-type="showPaymentLocationDelete">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
       </view>
-    </scroll-view>
-    <view class="scroll-view" wx:if="{{showPaymentLocation}}">
-      <view class="item">Loading...</view>
-    </view>
-  </view>
-  <view class="paymentTitle mar">
-    <text>{{languageContent.freightPayer}}<text class="red">*</text></text>
-    <!-- <image src="/assets/img/booking/modify.png" catchtap="toModifyParty" /> -->
-  </view>
-  <view class="inputContainers">
-    <view class="inputsContainer">
-      <input type="text" bindinput="changefreightPayer" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{payment.freightPayerName}}" />
-      <view class="deleteIcon" wx:if="{{payment.freightPayerName}}" catchtap="deleteValue2" data-type="showFreightPayerDelete">
-        <image src="/assets/img/search/close@2x.png"></image>
+      <scroll-view class="scroll-view" wx:if='{{paymentLocationList.length}}' scroll-y>
+        <view wx:for="{{paymentLocationList}}" wx:key="index" class="item" bindtap='choosePaymentLocation' data-index="{{index}}">
+          <view class="polname">{{item.pointName}}</view>
+        </view>
+      </scroll-view>
+      <view class="scroll-view" wx:if="{{showPaymentLocation}}">
+        <view class="item">Loading...</view>
       </view>
     </view>
-    <scroll-view class="scroll-view" wx:if='{{freightPayerList.length}}' scroll-y>
-      <view wx:for="{{freightPayerList}}" wx:key="index" class="item" bindtap='chooseFreightPayer' data-index="{{index}}">
-        <view class="polname">{{item.label}}</view>
+    <view class="paymentTitle mar">
+      <text>{{languageContent.freightPayer}}<text class="red">*</text></text>
+      <!-- <image src="/assets/img/booking/modify.png" catchtap="toModifyParty" /> -->
+    </view>
+    <view class="inputContainers">
+      <view class="inputsContainer">
+        <input type="text" bindinput="changefreightPayer" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{payment.freightPayerName}}" />
+        <view class="deleteIcon" wx:if="{{payment.freightPayerName}}" catchtap="deleteValue2" data-type="showFreightPayerDelete">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
       </view>
-    </scroll-view>
-    <view class="scroll-view" wx:if="{{showFreightPayer}}">
-      <view class="item">Loading...</view>
+      <scroll-view class="scroll-view" wx:if='{{freightPayerList.length}}' scroll-y>
+        <view wx:for="{{freightPayerList}}" wx:key="index" class="item" bindtap='chooseFreightPayer' data-index="{{index}}">
+          <view class="polname">{{item.label}}</view>
+        </view>
+      </scroll-view>
+      <view class="scroll-view" wx:if="{{showFreightPayer}}">
+        <view class="item">Loading...</view>
+      </view>
     </view>
   </view>
 </view>
 
+<!-- VAS -->
 <!-- <view class="oneDetails">
     <view class="detailTops">
       <view class="detailTopLeft">
-        <image src="/assets/img/booking/6.svg" mode="aspectFit" />
         <view>{{languageContent.vas}}</view>
       </view>
       <image class="editIcon" src="/assets/img/booking/edit.svg" />
@@ -220,42 +721,48 @@
     </view>
   </view> -->
 
+<!-- Booking Office -->
 <view class="oneDetails">
-  <view class="detailTops">
+  <view class="detailTops" catchtap="zhedie" data-type="bookingOffice">
     <view class="detailTopLeft">
-      <image src="/assets/img/booking/5.svg" mode="aspectFit" />
       <view>{{languageContent.bookingOffice}}</view>
     </view>
+    <image class="editIcon {{bookingOfficeShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
-  <view class="inputContainers">
-    <view class="inputsContainer">
-      <input type="text" bindinput="changeOffice" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{preferredBookingOffice.name}}" />
-      <view class="deleteIcon" wx:if="{{showOfficeDelete}}" catchtap="deleteValue2" data-type="showOfficeDelete">
-        <image src="/assets/img/search/close@2x.png"></image>
+  <view style="margin-top: 30rpx;" hidden="{{!bookingOfficeShow}}">
+    <view class="inputContainers">
+      <view class="inputsContainer">
+        <input type="text" bindinput="changeOffice" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{preferredBookingOffice.name}}" />
+        <view class="deleteIcon" wx:if="{{showOfficeDelete}}" catchtap="deleteValue2" data-type="showOfficeDelete">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
       </view>
-    </view>
-    <scroll-view class="scroll-view" wx:if='{{officeList.length}}' scroll-y>
-      <view wx:for="{{officeList}}" wx:key="index" class="item" bindtap='chooseOffice' data-index="{{index}}">
-        <view class="polname">{{item.label}}</view>
+      <scroll-view class="scroll-view" wx:if='{{officeList.length}}' scroll-y>
+        <view wx:for="{{officeList}}" wx:key="index" class="item" bindtap='chooseOffice' data-index="{{index}}">
+          <view class="polname">{{item.label}}</view>
+        </view>
+      </scroll-view>
+      <view class="scroll-view" wx:if="{{showOffice}}">
+        <view class="item">Loading...</view>
       </view>
-    </scroll-view>
-    <view class="scroll-view" wx:if="{{showOffice}}">
-      <view class="item">Loading...</view>
     </view>
   </view>
 </view>
 
+<!-- Free Comments -->
 <view class="oneDetails">
-  <view class="detailTops">
+  <view class="detailTops" catchtap="zhedie" data-type="freeComments">
     <view class="detailTopLeft">
       <view>{{languageContent.freeComments}}</view>
     </view>
+    <image class="editIcon {{freeCommentsShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
-  <view class="textareaContainers">
+  <view class="textareaContainers" hidden="{{!freeCommentsShow}}">
     <textarea placeholder="{{languageContent.freeCommentsPlaceHolder}}" placeholder-class="placeholder" bindinput="setBookingComment" value="{{bookingComment}}"></textarea>
   </view>
 </view>
 
+<!-- Number -->
 <view class="oneDetails numContainer">
   <view class="totalTitle">Total Number</view>
   <view class="containers">
@@ -269,3 +776,5 @@
 <button class="sureBtn" hover-class="hoverClass" wx:if="{{noOfBooking > 1}}" catchtap="submitBooking">{{languageContent.save1 + noOfBooking + languageContent.save2}}</button>
 
 <custom-picker columns="{{columns}}" valueKey="{{valueKey}}" defaultIndex="{{defaultIndex}}" showPopup="{{isShowPicker}}" bindonClose="onPickerClose" bind:onConfirm="onPickerConfirm"></custom-picker>
+
+<custom-time type="{{timeType}}" minDate="{{minDate}}" maxDate="{{maxDate}}" showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>

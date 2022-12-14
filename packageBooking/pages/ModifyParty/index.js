@@ -29,7 +29,7 @@ Page({
       verifyInfo: language.verifyInfo,
       from: options.from,
       index: options.index,
-      contractDetail: data.partiesList[options.index].address
+      contractDetail: data.partyList[options.index].address
     })
   },
 

@@ -70,6 +70,21 @@ page {
   color: #071E5D;
 }
 
+.resultCardTops .matching {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: Antonio-Regular, Antonio;
+  color: #4468BA;
+  margin-top: 20rpx;
+}
+
+.resultCardTops .matching image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
 .resultContainers {
   width: 100%;
   padding-left: 30rpx;
@@ -93,7 +108,8 @@ page {
 
 .oneResult .resultTop .tagContainer {
   display: flex;
-  width: 420rpx;
+  flex-wrap: wrap;
+  /* width: 420rpx; */
 }
 
 .oneResult .resultTop .tagContainer .oneTag {
@@ -115,45 +131,56 @@ page {
   margin-right: 0 !important;
 }
 
-.oneResult .resultTop .days {
+.portTimeContainers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22rpx 22rpx 22rpx 10rpx;
+}
+
+.portTimeContainers .portTimeContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 450rpx;
+}
+
+.portTimes {
+  color: #04246A;
+  font-size: 24rpx;
+}
+
+.portTimes .portTime {
+  font-size: 40rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.bottomLine {
+  border-bottom: 1rpx solid #F4F4F4;
+  padding-bottom: 30rpx;
+}
+
+.portTimeContainers .days {
   font-size: 40rpx;
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #E20202;
 }
 
-.portTimeContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22rpx 22rpx 22rpx 10rpx;
-  border-bottom: 1rpx solid #F4F4F4;
-}
-
-.portTimeContainer .portTimes {
-  color: #04246A;
-  font-size: 24rpx;
-}
-
-.portTimeContainer .portTimes .portTime {
-  font-size: 40rpx;
-  font-family: Antonio-Bold, Antonio;
-  font-weight: bold;
-  color: #04246A;
-}
-
 .cutTimeContainers {
   padding: 30rpx 6rpx;
+  border-top: 1rpx solid #F4F4F4;
   border-bottom: 1rpx solid #F4F4F4;
 }
 
 .cutTimeContainers .cutTimeContainer {
   background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
-  padding: 26rpx 34rpx;
+  padding: 0 34rpx;
 }
 
 .cutTimeContainers .cutTimeContainer .oneCutTime {
-  padding: 10rpx 0;
+  padding: 20rpx 0;
   border-bottom: 1rpx solid #FFFFFF;
   display: flex;
   justify-content: space-between;
@@ -164,17 +191,21 @@ page {
   color: #6B7790;
 }
 
+.cutTimeContainers .cutTimeContainer .oneCutTime:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
 .cutTimeContainers .cutTimeContainer .oneCutTime view:nth-last-of-type(1) {
   color: #071E5D;
 }
 
 .resultBottoms {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   padding-top: 30rpx;
   padding-right: 6rpx;
   border-top: 1rpx solid #F4F4F4;
-  margin-top: 30rpx;
 }
 
 .resultBottoms .oneButtom {
@@ -184,6 +215,21 @@ page {
   color: #ffffff;
   font-size: 32rpx;
   line-height: 76rpx;
+  border-radius: 0;
+  margin: 0;
+}
+
+.resultBottoms .jiantou {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.resultBottoms .jiantou image {
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .yunshuContainers {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>向下箭头备份</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="15check收起" transform="translate(-329.000000, -142.000000)" fill="#071E5D" fill-rule="nonzero">
+            <g id="编组" transform="translate(15.000000, 113.000000)">
+                <g id="向下箭头备份" transform="translate(314.000000, 29.000000)">
+                    <rect id="矩形" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                    <path d="M15.1,5.05 C14.95,4.9 14.7,4.9 14.55,5.05 L8.05,11.55 L1.4,5.05 C1.25,4.9 1,4.9 0.85,5.05 C0.7,5.2 0.7,5.45 0.85,5.6 L7.75,12.35 C7.9,12.5 8.15,12.5 8.3,12.35 L15.1,5.6 C15.25,5.4 15.25,5.2 15.1,5.05 Z" id="路径"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -19,7 +19,6 @@
         </view>
         <view class="inputs selects" catchtap="openPicker">
           {{switchReeferModeUnit.text}}
-
           <!-- arrow-bottom -->
           <image class="arrow-bottom" src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
@@ -29,7 +28,7 @@
     <!-- error-tips -->
     <view class="error-tips" wx:if="{{errorTips.reeferMode}}">
       <image src="/assets/img/search/error@2x.png"></image>
-      <text>{{errorTips.reeferMode}}</text>
+      <text>{{verifyInfo.required}}</text>
     </view>
   </view>
 
@@ -55,12 +54,14 @@
         </view>
       </view>
 
-      <view class="desc-unit" wx:if="{{ switchVentilation }}">CBM/HR{{switchVentilationValue? (' = ' + switchVentilationComputeValue + ' CFT/HR') : ''}}</view>
+      <view class="desc-unit" wx:if="{{ switchVentilation }}">CBM/HR
+      <!-- {{switchVentilationValue? (' = ' + switchVentilationComputeValue + ' CFT/HR') : ''}} -->
+      </view>
 
       <!-- error-tips -->
       <view class="error-tips" wx:if="{{errorTips.ventilation}}">
         <image src="/assets/img/search/error@2x.png"></image>
-        <text>{{errorTips.ventilation}}</text>
+        <text>{{verifyInfo.required}}</text>
       </view>
     </view>
 

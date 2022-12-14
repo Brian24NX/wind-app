@@ -14,7 +14,6 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 38rpx;
 }
 
 .detailTops .detailTopLeft {
@@ -25,15 +24,13 @@ page {
   color: #071E5D;
 }
 
-.detailTops .detailTopLeft image {
-  width: 70rpx;
-  height: 70rpx;
-  margin-right: 20rpx;
+.detailTops .editIcon {
+  width: 40rpx;
+  height: 40rpx;
 }
 
-.detailTops .editIcon {
-  width: 70rpx;
-  height: 70rpx;
+.detailTops .editIcon2 {
+  transform: rotate(180deg);
 }
 
 .detailTops .addIcon {
@@ -71,6 +68,7 @@ page {
 .routeContainer {
   background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
   padding: 18rpx 18rpx 0;
+  margin-top: 30rpx;
 }
 
 .routeContainer .stepLists {
@@ -290,6 +288,7 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 30rpx;
 }
 
 .paymentTitle image {
@@ -375,6 +374,7 @@ page {
   width: 100%;
   height: 200rpx;
   border: 1rpx solid #DFDFDF;
+  margin-top: 30rpx;
 }
 
 .textareaContainers textarea {
@@ -523,11 +523,230 @@ page {
   border-right: 2rpx solid #DCDFE6;
 }
 
-/* Haulage */
+.noRequest {
+  font-size: 24rpx;
+  color: #E2014B;
+  position: absolute;
+  left: 0;
+  bottom: -34rpx;
+  display: flex;
+  align-items: center;
+}
+
+.noRequest image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
+.noRequestBorder {
+  border: 2rpx solid #E2014B !important;
+}
+
+/* haulage start */
+.point {
+  margin: 20rpx 0;
+  color: #04246A;
+  font-size: 28rpx;
+}
+
+.pointValue {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #071E5D;
+}
+
+.haulageDetailTops2 .detailTopLeft {
+  font-size: 42rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: bold;
+  color: #04246A;
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.haulageDetailTops2 .detailTopLeft view {
+  display: inline-block;
+  width: 6rpx;
+  height: 40rpx;
+  background-color: #E20202;
+  margin: 0 10rpx;
+}
+
+.routeContainer {
+  background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
+  padding: 18rpx 18rpx 0;
+}
+
+.routeContainer .stepLists {
+  padding-left: 50rpx;
+}
+
+.routeContainer .stepLists .oneStep {
+  padding-bottom: 10rpx;
+  position: relative;
+}
+
+.routeContainer .stepLists .oneStep:nth-last-of-type(1) {
+  padding-bottom: 0;
+}
+
+.routeContainer .stepLists .oneStep .leftLines {
+  position: absolute;
+  left: -50rpx;
+  height: 100%;
+  top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24rpx;
+}
+
+.routeContainer .stepLists .oneStep .leftLines image {
+  width: 24rpx;
+  height: 30rpx;
+}
+
+.routeContainer .stepLists .oneStep .leftLines .leftLineDto {
+  background-color: #E20202;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+}
+
+.routeContainer .stepLists .oneStep .leftLines .leftLine {
+  width: 0;
+  height: calc(100% - 16rpx);
+  border-left: 1rpx solid #9AA6C4;
+}
+
+.routeContainer .stepLists .oneStep .stepContent {
+  font-size: 52rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.portTimeContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22rpx 40rpx 22rpx 10rpx;
+  border-bottom: 1rpx solid #FFFFFF;
+  border-top: 1rpx solid #FFFFFF;
+  margin-top: 22rpx;
+}
+
+.portTimeContainer .portTimes {
+  color: #04246A;
+  font-size: 24rpx;
+}
+
+.portTimeContainer .portTimes .portTime {
+  font-size: 40rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.cutTimeContainers {
+  border-bottom: 1rpx solid #F4F4F4;
+}
+
+.cutTimeContainers .cutTimeContainer {
+  background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
+}
+
+.cutTimeContainers .cutTimeContainer .oneCutTime {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  font-weight: 500;
+  font-size: 24rpx;
+  color: #6B7790;
+}
+
+.cutTimeContainers .cutTimeContainer .oneCutTime:nth-last-of-type(1) {
+  border-bottom: none;
+}
+
+.cutTimeContainers .cutTimeContainer .oneCutTime view:nth-last-of-type(1) {
+  color: #071E5D;
+}
+
+.key {
+  margin: 40rpx 0 12rpx;
+  color: #04246A;
+  font-size: 28rpx;
+}
+
+.keyValue {
+  border: 1rpx solid #DFDFDF;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #04246A;
+}
+
+.keyValue view {
+  width: 500rpx;
+}
+
+.keyValue image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.transportMode {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.transportMode .oneMode {
+  padding: 40rpx 0;
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #E5E9F1;
+  color: #6B7790;
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  position: relative;
+}
+
+.transportMode .oneMode .modeChecked {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 30rpx;
+  width: 100%;
+}
+
+.transportMode .oneMode:nth-of-type(-n + 3) {
+  margin-top: 0;
+}
+
+.transportMode .oneMode .image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 14rpx;
+}
+
 .modifyContainer {
-  padding: 40rpx 48rpx;
+  padding: 40rpx 0 0;
   background-color: #ffffff;
-  margin-bottom: 30rpx;
 }
 
 .modifyContainer .modifyTitles {
@@ -637,23 +856,238 @@ page {
   width: 32rpx;
   height: 32rpx;
 }
+/* haulage end */
 
-.noRequest {
-  font-size: 24rpx;
-  color: #E2014B;
+/* parties start */
+.oneParty {
+  background-color: #ffffff;
+  border-top: 10rpx solid #E20202;
+  margin-top: 30rpx;
+  padding-bottom: 20rpx;
+  position: relative;
+}
+
+.oneParty .editContainer {
   position: absolute;
-  left: 0;
-  bottom: -34rpx;
+  right: 30rpx;
+  top: 20rpx;
+}
+
+.oneParty .editContainer image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+}
+
+.inputContainers {
+  border: 1rpx solid #DFDFDF;
+  width: 100%;
+  height: 80rpx;
+  position: relative;
+  font-size: 28rpx;
+  color: #04246A;
+}
+
+.inputsContainer {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.inputsContainer input {
+  width: calc(100% - 100rpx);
+  height: 100%;
+}
+
+.inputsContainer .deleteIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.inputsContainer .deleteIcon image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.inputContainers input {
+  height: 100%;
+  padding: 0 0 0 20rpx;
+}
+
+.scroll-view {
+  width: 100%;
+  background: #ffffff;
+  border: 1rpx solid #00245d;
+  max-height: 430rpx;
+  z-index: 10;
+  position: absolute;
+}
+
+.scroll-view .item {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #e2e2e2;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.scroll-view .item .polname {
+  width: 100%;
+  line-height: 30rpx;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #04246A;
+  margin-bottom: 12rpx;
+  margin-top: 30rpx;
+}
+
+.desc {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #04246A;
+  margin-bottom: 12rpx;
+  margin-top: 20rpx;
+}
+
+.selectContainer {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 28rpx;
+}
+
+.selectContainer view {
+  max-width: 520rpx;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selectContainer image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.inputs {
+  border: 1rpx solid #DFDFDF;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #04246A;
+  padding: 0 0 0 20rpx;
+}
+
+.inputs input {
+  height: 100%;
+  width: calc(100% - 80rpx);
+}
+
+.inputs .deleteIcon {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.noRequest image {
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 10rpx;
+.inputs .deleteIcon image {
+  width: 30rpx;
+  height: 30rpx;
 }
 
-.noRequestBorder {
-  border: 2rpx solid #E2014B !important;
+.roleList {
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.roleList .oneRole {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  color: #04246A;
+  margin-top: 20rpx;
+}
+
+.roleList .oneRole:nth-of-type(-n + 2) {
+  margin-top: 0;
+}
+
+.roleList .oneRole .checked {
+  width: 30rpx;
+  height: 30rpx;
+  border: 1rpx solid #04246A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #04246A;
+  margin-right: 20rpx;
+}
+
+.addBtn {
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #2D75FF;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 0;
+  margin-top: 30rpx;
+}
+
+.bottomBtn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding-bottom: env(safe-area-inset-bottom);
+  background-color: #2D75FF;
+  height: calc(env(safe-area-inset-bottom) + 80rpx);
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 0;
+  line-height: 80rpx;
+}
+
+.addParty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #04246A;
+  font-size: 26rpx;
+  margin-top: 40rpx;
+}
+
+.addParty image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+/* parties end */

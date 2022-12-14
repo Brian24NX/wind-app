@@ -1,0 +1,11 @@
+var hasRole = function(array, id) {
+  if (!id) return false
+  if (array.indexOf(id) > -1) {
+    return true
+  }
+  return false
+}
+
+module.exports = {
+  hasRole: hasRole
+}

@@ -644,7 +644,7 @@ var Languague = {
       freightPayer: 'Freight Payer',
       paymentLocation: 'Payment Location',
       bookingOffice: 'Preferred booking office',
-      freeComments: 'Free comments to the booking agent',
+      freeComments: 'Free comments',
       freeCommentsPlaceHolder: 'Example Release Order Date, Customer Broker ...',
       save: 'Place my Booking',
       save1: 'Place ',

@@ -53,9 +53,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // this.setData({
-    //   verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
-    // });
+    this.setData({
+      verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
+    });
 
     // 数据回显设置
     if (options?.update) {
@@ -95,6 +95,16 @@ Page({
 
   // onSwitchChange
   onSwitchChange({detail, currentTarget}) {
+    if (currentTarget.dataset.keys === 'switchVentilation') {
+      this.data.errorTips.ventilation = ''
+    } else if (currentTarget.dataset.keys === 'switchDehumified') {
+      this.data.errorTips.dehumified = ''
+    } else if (currentTarget.dataset.keys === 'switchControlledAtmosphere') {
+      this.data.errorTips.dehumified = ''
+    }
+    this.setData({
+      errorTips: this.data.errorTips
+    })
     this.setData({ [currentTarget.dataset.keys]: detail });
     this.clearAllData(detail, currentTarget.dataset.keys);
   },
@@ -145,6 +155,13 @@ Page({
         switchControlledAtmosphereValue: '',
         switchControlledAtmosphereValue1: '',
         switchGensetRequired: false,
+        errorTips: {
+          reeferMode: '',
+          ventilation: '',
+          dehumified: '',
+          controlledAtmosphere: '',
+          controlledAtmosphere1: '',
+        },
       })
     }
   },
@@ -193,6 +210,7 @@ Page({
   recordFloatBlur({detail, currentTarget}) {
     const keys = currentTarget.dataset.keys;
     let {value} = detail;
+    if (value > 999.99) value = 999.99
     let varLen = value.toString().split(".");
     // if(varLen.length === 1) {
     //   value = `${value.toString()}.00`;
@@ -278,11 +296,6 @@ Page({
   onSave() {
     const _t = this;
     const _errorArr = [];
-    const lag = languageUtils.languageVersion().lang.page.langue;
-    const saveTips = {
-      zh: `保存成功`,
-      en: `Saved successfully.`
-    };
     // regExp
     // Reefer Mode
     if (_t.data.switchReeferMode && !_t.data.switchReeferModeValue) {
@@ -350,13 +363,6 @@ Page({
 
     wx.setStorageSync('addReeft', newsData);
     wx.removeStorageSync('addReeftCache')
-
-    wx.showToast({
-      title: saveTips[lag],
-      icon: 'none',
-      mask: true,
-      duration: 1000
-    })
 
     setTimeout(() => {
       wx.navigateBack()

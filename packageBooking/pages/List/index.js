@@ -46,6 +46,7 @@ Page({
     })
     if (routings.length) {
       routings.forEach(element => {
+        element.show = false
         element.zhuanyun = element.journeyLegs.length - 1
         if (bookingSearchKey.placeOfReceipt) {
           element.journeyLegs.unshift({
@@ -99,5 +100,12 @@ Page({
       url: '/packageBooking/pages/Detail/index',
     })
     wx.setStorageSync('routeSelected', this.data.routings[e.currentTarget.dataset.index])
+  },
+
+  changeShow(e) {
+    this.data.routings[e.currentTarget.dataset.index].show = !this.data.routings[e.currentTarget.dataset.index].show
+    this.setData({
+      routings: this.data.routings
+    })
   }
 })

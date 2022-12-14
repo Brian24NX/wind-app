@@ -129,7 +129,7 @@
   </view>
   <view class="scroll-unit">
     <view class="title">Unit <text class="red">*</text></view>
-    <view class="selectContainer" catchtap="openPicker" data-type="3">
+    <view class="selectContainer" catchtap="openPicker" data-type="2">
       <view style="{{pickerChooseReault[2].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[2].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>

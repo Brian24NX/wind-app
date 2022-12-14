@@ -89,7 +89,7 @@ Page({
     isIncludeHazardous: false,
     isAddReeft: false,
     unList: [],
-    addReeft: {},
+    addReeft: null,
     tips: {
       commodityName: '',
       sizeType: '',
@@ -169,9 +169,9 @@ Page({
     // remove cache
     wx.removeStorageSync('addReeftCache')
 
-    this.setData({
-      isAddReeft: (Object.keys(this.data.addReeft).length > 0 ? true : false)
-    });
+    // this.setData({
+    //   isAddReeft: (Object.keys(this.data.addReeft).length > 0 ? true : false)
+    // });
     // addReeft ----- end
   },
 
@@ -278,22 +278,6 @@ Page({
     if (type === 1) {
       const List = wx.getStorageSync('containers') || [];
       const columnsList = JSON.parse(JSON.stringify(List));
-
-      if (columnsList.length < 1) {
-        columnsList.map((val, index) => {
-          val.index = index;
-          val.value = val.code;
-        });
-        wx.showToast({
-          title: languageUtils.languageVersion().lang.page.load.systemIsBusyNow,
-          icon: 'none',
-          mask: true,
-          duration: 2500
-        });
-
-        return false;
-      };
-
       _t.setData({
         columnsList,
         pickerValueKeyFlag: type,
@@ -343,6 +327,7 @@ Page({
       detail.value = detail.code;
       _t.setData({
         [`tips.sizeType`]: '',
+        isAddReeft: (detail.value === '20RF' || detail.value === '40RH' || detail.value === '45RH')
       })
     }
     if (type === 2) {
@@ -614,9 +599,9 @@ Page({
     }
 
     // addReeft
-    // if (_t.verify('isAddReeft', 'addReeft', scrollToElement[6])) {
-    //   console.log('addReeft - 为空')
-    // }
+    if (_t.verify('isAddReeft', 'addReeft', scrollToElement[6])) {
+      console.log('addReeft - 为空')
+    }
 
     // scrollTo
     _t.scrollTo({

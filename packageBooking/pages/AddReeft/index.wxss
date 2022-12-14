@@ -145,7 +145,7 @@ page {
 
 .groups .input-boxs.right .inputs {
   border: 1rpx solid #DFDFDF;
-  width: 100rpx;
+  width: 170rpx;
   line-height: 64rpx;
   /* font-size: 28rpx; */
   font-size: 24rpx;
@@ -163,7 +163,7 @@ page {
   position: relative;
   margin-left: 20rpx;
   height: 68rpx;
-  width: 176rpx;
+  width: 140rpx;
   padding-left: 28rpx;
 }
 
