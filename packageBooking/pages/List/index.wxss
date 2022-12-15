@@ -18,7 +18,7 @@ page {
   margin: 0 auto;
   background: url(https://wind.cma-cgm.com/images/instantQuote.png) no-repeat;
   background-size: 100% 100%;
-  padding: 30rpx;
+  padding: 20rpx 30rpx;
 }
 
 .searchResultTopContainer .resultCardTops .stepLists {
@@ -93,9 +93,9 @@ page {
 }
 
 .oneResult {
-  padding: 40rpx 24rpx;
+  padding: 20rpx 24rpx;
   background-color: #ffffff;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 
 .oneResult .resultTop {
@@ -135,7 +135,7 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22rpx 22rpx 22rpx 10rpx;
+  padding: 12rpx 22rpx 12rpx 10rpx;
 }
 
 .portTimeContainers .portTimeContainer {
@@ -156,16 +156,23 @@ page {
   color: #04246A;
 }
 
-.bottomLine {
-  border-bottom: 1rpx solid #F4F4F4;
-  padding-bottom: 30rpx;
-}
-
 .portTimeContainers .days {
   font-size: 40rpx;
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #E20202;
+}
+
+.cutOffTimes {
+  border-bottom: 1rpx solid #F4F4F4;
+  padding-bottom: 12rpx;
+  color: #6B7790;
+  font-size: 24rpx;
+}
+
+.cutOffTime {
+  color: #04246A;
+  margin-left: 10rpx;
 }
 
 .cutTimeContainers {
@@ -203,7 +210,7 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 30rpx;
+  padding-top: 20rpx;
   padding-right: 6rpx;
   border-top: 1rpx solid #F4F4F4;
 }
@@ -220,16 +227,17 @@ page {
 }
 
 .resultBottoms .jiantou {
-  width: 40rpx;
   height: 40rpx;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  color: #04246A;
+  font-size: 24rpx;
 }
 
 .resultBottoms .jiantou image {
   width: 30rpx;
   height: 30rpx;
+  margin-left: 12rpx;
 }
 
 .yunshuContainers {

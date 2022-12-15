@@ -46,9 +46,9 @@
       </view>
       <view class="days">{{items.transitDuration}} Days</view>
     </view>
-    <view class="portTimes bottomLine">
-      <view>Port Cut-off</view>
-      <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.cutOffPortDateTime.utc, true) : commonFilters.formatEnDateLocal(items.cutOffPortDateTime.utc, '-', '', true)}}</view>
+    <view class="cutOffTimes">
+      <text>Port Cut-off</text>
+      <text class="cutOffTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.cutOffPortDateTime.utc, true) : commonFilters.formatEnDateLocal(items.cutOffPortDateTime.utc, '-', '', true)}}</text>
     </view>
     <view style="margin-bottom: 30rpx;" wx:if="{{items.show}}">
       <view class="cutTimeContainers">
@@ -160,10 +160,11 @@
       </view>
     </view>
     <view class="resultBottoms">
-      <button class="oneButtom" catchtap="selectLine" data-index="{{indexs}}">Select</button>
       <view class="jiantou" catchtap="changeShow" data-index="{{indexs}}">
+        <text>{{items.show ? 'Hide' : 'Display'}}</text>
         <image style="{{items.show ? 'transform: rotate(180deg);' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit"></image>
       </view>
+      <button class="oneButtom" catchtap="selectLine" data-index="{{indexs}}">Select</button>
     </view>
   </view>
 </view>
