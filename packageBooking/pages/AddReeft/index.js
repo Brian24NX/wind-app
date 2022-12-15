@@ -73,7 +73,8 @@ Page({
           switchControlledAtmosphere,
           switchControlledAtmosphereValue,
           switchControlledAtmosphereValue1,
-          switchGensetRequired
+          switchGensetRequired,
+          additionalComments
         } = prevData;
         this.setData({
           switchReeferMode,
@@ -87,7 +88,8 @@ Page({
           switchControlledAtmosphere,
           switchControlledAtmosphereValue,
           switchControlledAtmosphereValue1,
-          switchGensetRequired
+          switchGensetRequired,
+          additionalComments
         })
       }
     }
