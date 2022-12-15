@@ -585,7 +585,21 @@ Page({
       agreementReference: this.data.reference,
       shippingCompany: this.data.shippingCompanyList[index]
     }).then(res => {
-      if (res.data && res.data.routings && res.data.routings.length) {
+      if (res.data && res.data.quotation.expiredReference) {
+        wx.showToast({
+          icon: 'none',
+          title: 'Quotation / Contract Number is expired',
+        })
+        return
+      }
+      if (res.data && res.data.quotation.invalidReference) {
+        wx.showToast({
+          icon: 'none',
+          title: 'Quotation / Contract Number is invalid',
+        })
+        return
+      }
+      if (res.data && !res.data.quotation.noMatchPOLPOD && res.data.routings && res.data.routings.length) {
         wx.setStorageSync('bookingRoutings', res.data.routings)
         wx.setStorageSync('containers', res.data.commodities.preferedContainerTypes.concat(res.data.commodities.containerTypes))
       } else {

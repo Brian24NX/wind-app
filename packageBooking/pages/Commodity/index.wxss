@@ -138,6 +138,7 @@ page {
   width: 30rpx;
   height: 30rpx;
   border: 1rpx solid #04246A;
+  transform: rotateZ(360deg);
   display: flex;
   align-items: center;
   justify-content: center;

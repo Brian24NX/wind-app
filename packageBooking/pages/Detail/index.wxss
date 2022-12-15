@@ -125,8 +125,8 @@ page {
   justify-content: space-between;
   align-items: center;
   padding: 22rpx 40rpx 22rpx 10rpx;
-  border-bottom: 1rpx solid #FFFFFF;
-  border-top: 1rpx solid #FFFFFF;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.6);
+  border-top: 1rpx solid rgba(255, 255, 255, 0.6);
   margin-top: 22rpx;
 }
 
@@ -142,9 +142,9 @@ page {
   color: #04246A;
 }
 
-.cutTimeContainers {
+/* .cutTimeContainers {
   border-bottom: 1rpx solid #F4F4F4;
-}
+} */
 
 .cutTimeContainers .cutTimeContainer {
   background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
@@ -152,7 +152,7 @@ page {
 
 .cutTimeContainers .cutTimeContainer .oneCutTime {
   padding: 20rpx 0;
-  border-bottom: 1rpx solid #FFFFFF;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.6);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -641,56 +641,6 @@ page {
   color: #071E5D;
 }
 
-.portTimeContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22rpx 40rpx 22rpx 10rpx;
-  border-bottom: 1rpx solid #FFFFFF;
-  border-top: 1rpx solid #FFFFFF;
-  margin-top: 22rpx;
-}
-
-.portTimeContainer .portTimes {
-  color: #04246A;
-  font-size: 24rpx;
-}
-
-.portTimeContainer .portTimes .portTime {
-  font-size: 40rpx;
-  font-family: Antonio-Bold, Antonio;
-  font-weight: bold;
-  color: #04246A;
-}
-
-.cutTimeContainers {
-  border-bottom: 1rpx solid #F4F4F4;
-}
-
-.cutTimeContainers .cutTimeContainer {
-  background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
-}
-
-.cutTimeContainers .cutTimeContainer .oneCutTime {
-  padding: 20rpx 0;
-  border-bottom: 1rpx solid #FFFFFF;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 24rpx;
-  font-weight: 500;
-  font-size: 24rpx;
-  color: #6B7790;
-}
-
-.cutTimeContainers .cutTimeContainer .oneCutTime:nth-last-of-type(1) {
-  border-bottom: none;
-}
-
-.cutTimeContainers .cutTimeContainer .oneCutTime view:nth-last-of-type(1) {
-  color: #071E5D;
-}
-
 .key {
   margin: 40rpx 0 12rpx;
   color: #04246A;
@@ -699,6 +649,7 @@ page {
 
 .keyValue {
   border: 1rpx solid #DFDFDF;
+  transform: rotateZ(360deg);
   padding: 0 20rpx;
   display: flex;
   justify-content: space-between;
@@ -803,6 +754,7 @@ page {
   width: 100%;
   height: 80rpx;
   border: 1rpx solid #DFDFDF;
+  transform: rotateZ(360deg);
   display: flex;
   align-items: center;
   justify-content: space-between;

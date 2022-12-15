@@ -631,8 +631,8 @@ var Languague = {
     bookingDetail: {
       title: 'Booking',
       bookingDetail: 'Booking Detail',
-      routeSelected: 'Route Selected',
-      cargoDetail: 'Cargo Detail',
+      routeSelected: 'Route selected',
+      cargoDetail: 'Cargo detail',
       commodity: 'Commodity',
       contaier: 'Contaier',
       vas: 'Additional Services',
@@ -646,7 +646,7 @@ var Languague = {
       bookingOffice: 'Preferred booking office',
       freeComments: 'Free comments',
       freeCommentsPlaceHolder: 'Example Release Order Date, Customer Broker ...',
-      save: 'Place my Booking',
+      save: 'Place My Booking',
       save1: 'Place ',
       save2: ' Booking',
       partyRole: {
