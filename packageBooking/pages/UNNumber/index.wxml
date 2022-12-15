@@ -9,7 +9,7 @@
     <view class="inputContainers">
       <view class="inputsContainer number">
         <input type="text" bindinput="enterUNNumber" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" placeholder-class="placeholder" value="{{unNumberName}}" />
-        <view class="deleteIcon" wx:if="{{unNumberName}}" catchtap="clearValue" data-keys="unNumberName,UNNumberLists,classNumber,emsCode,pickerChooseReault.1.text,pickerChooseReault.1.value,packageDescriptionLists,packageDescriptionCode,packageDescriptionName" data-isrequired="true">
+        <view class="deleteIcon" wx:if="{{unNumberName}}" catchtap="clearValue" data-keys="unNumberName,UNNumberLists,classNumber,emsCode,pickerChooseReault.1.text,pickerChooseReault.1.value,packageDescriptionLists,pickerChooseReault.3.text,packageDescriptionCode,packageDescriptionName,pickerChooseReault.4.text,innerPackageDescriptionCode,innerPackageDescriptionName" data-isrequired="true">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
       </view>
@@ -170,6 +170,34 @@
       <text>{{tips.quantityValue}}</text>
     </view>
   </view>
+  <!-- inner Packaging -->
+  <block wx:if="{{isShowInnerPackage}}">
+    <view class="scroll-inner-packaging-description">
+      <view class="title">Inner Packaging</view>
+      <view class="selectContainer" catchtap="openPicker" data-type="4">
+        <view style="{{pickerChooseReault[4].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[4].text || verifyInfo.select}}</view>
+        <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+      </view>
+      <view class="error-tips" wx:if="{{tips.innerPackageDescriptionName}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{tips.innerPackageDescriptionName}}</text>
+      </view>
+    </view>
+    <view class="scroll-inner-quantity">
+      <view class="title">Inner Quantity</view>
+      <view class="inputs number">
+        <input type="number" maxlength="6" value="{{innerQuantityValue}}" bindinput="setValues" placeholder="{{verifyInfo.input}}" data-keys="innerQuantityValue" data-keystype="number" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+        <view class="deleteIcon" wx:if="{{innerQuantityValue}}" catchtap="clearValue" data-keys="innerQuantityValue">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+      </view>
+
+      <view class="error-tips" wx:if="{{tips.innerQuantityValue}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{tips.innerQuantityValue}}</text>
+      </view>
+    </view>
+  </block>
   <!-- <block wx:if="{{pickerChooseReault[3].packagingType === 'O'}}">
     <view class="scroll-packaging-description">
       <view class="title">Inner Packaging <text class="red">*</text></view>
