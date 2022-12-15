@@ -543,6 +543,19 @@ page {
   border: 2rpx solid #E2014B !important;
 }
 
+.zhedieRequest {
+  font-size: 24rpx;
+  color: #E2014B;
+  display: flex;
+  align-items: center;
+}
+
+.zhedieRequest image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
 /* haulage start */
 .point {
   margin: 20rpx 0;
@@ -877,76 +890,6 @@ page {
   width: 40rpx;
   height: 40rpx;
   margin-left: 20rpx;
-}
-
-.inputContainers {
-  border: 1rpx solid #DFDFDF;
-  width: 100%;
-  height: 80rpx;
-  position: relative;
-  font-size: 28rpx;
-  color: #04246A;
-}
-
-.inputsContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.inputsContainer input {
-  width: calc(100% - 100rpx);
-  height: 100%;
-}
-
-.inputsContainer .deleteIcon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80rpx;
-  height: 80rpx;
-}
-
-.inputsContainer .deleteIcon image {
-  width: 30rpx;
-  height: 30rpx;
-}
-
-.inputContainers input {
-  height: 100%;
-  padding: 0 0 0 20rpx;
-}
-
-.scroll-view {
-  width: 100%;
-  background: #ffffff;
-  border: 1rpx solid #00245d;
-  max-height: 430rpx;
-  z-index: 10;
-  position: absolute;
-}
-
-.scroll-view .item {
-  width: 100%;
-  height: 80rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2rpx solid #e2e2e2;
-  padding: 0 20rpx;
-  font-size: 28rpx;
-  color: #333333;
-}
-
-.scroll-view .item .polname {
-  width: 100%;
-  line-height: 30rpx;
-  word-break: break-all;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .title {

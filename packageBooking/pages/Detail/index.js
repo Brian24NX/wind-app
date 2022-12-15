@@ -83,11 +83,14 @@ Page({
     showPaymentLocation: false,
     paymentLocationList: [],
     showPaymentLocationDelete: false,
+    freightPayerRemind: false,
+    paymentLocationRemind: false,
     vasList: [],
     preferredBookingOffice: null,
     showOffice: false,
     officeList: [],
     showOfficeDelete: false,
+    bookingOfficeRemind: false,
     bookingComment: '',
     noOfBooking: 1,
     currentPopup: '',
@@ -151,7 +154,14 @@ Page({
     // 分组校验
     exportRule: false,
     importRule: false,
-    partiesRule: false
+    partiesRule: false,
+    // 折叠后的提示
+    exportTip: '',
+    importTip: '',
+    cargoTip: '',
+    partyTip: '',
+    paymentTip: '',
+    officeTip: ''
   },
 
   /**
@@ -272,7 +282,6 @@ Page({
     fuzzyPointSearch({
       pointCode
     }).then(res => {
-      console.log(res)
       this.data[data].countryCode = res.data.country.code
       this.data[data].countryName = res.data.country.name
     }, () => {
@@ -314,7 +323,6 @@ Page({
   },
 
   confirmDate(e) {
-    console.log(e)
     if (this.data.timeType === 'date') {
       this.data[this.data.currentHaulage + 'Data'].appointmentDate = dayjs(e.detail).format('YYYY-MM-DD')
       this.data[this.data.currentHaulage + 'Remind'].appointmentDateRemind = false
@@ -343,7 +351,6 @@ Page({
   },
 
   chooseMode(e) {
-    console.log(e)
     this.data[e.currentTarget.dataset.type + 'Data'].transportMode = e.currentTarget.dataset.id
     this.data[e.currentTarget.dataset.type + 'Remind'].transportModeRemind = false
     this.setData({
@@ -390,6 +397,10 @@ Page({
 
   confirmHaulage(e) {
     const to = e.currentTarget.dataset.to
+    this.checkHaulageData(to)
+  },
+
+  checkHaulageData(to) {
     const data = this.data[to + 'Data']
     const dataRemind = this.data[to + 'Remind']
     if (data.mode === 'Door') {
@@ -453,11 +464,8 @@ Page({
     this.setData({
       [to + 'Remind']: dataRemind
     })
-    console.log(data)
-    console.log(dataRemind)
     if (data.mode === 'Door' && (dataRemind.appointmentDateRemind || dataRemind.appointmentTimeRemind || dataRemind.transportModeRemind || dataRemind.companyNameRemind || dataRemind.cityRemind || dataRemind.countryRemind || dataRemind.address1Remind || dataRemind.contactNameRemind || dataRemind.phoneNumberRemind || dataRemind.emailRemind || dataRemind.emailRemind2)) return
     if (data.mode === 'Ramp' && data.transportModeRemind) return
-    console.log(123)
     const haulageData = JSON.parse(JSON.stringify(this.data[to + 'Data']))
     let haulage = {
       appointmentInfo: {
@@ -490,14 +498,13 @@ Page({
         }
       }
     }
-    console.log(haulage)
     this.setData({
       [to + 'Haulage']: JSON.parse(JSON.stringify(haulage)),
       [to + 'HaulageShow']: false,
-      [to + 'Rule']: true
+      [to + 'Rule']: true,
+      [to + 'Tip']: ''
     })
   },
-
   // =============== 商品start ============================
   // 添加商品
   addCommodity() {
@@ -514,7 +521,8 @@ Page({
       this.data.cargoes.push(data)
     }
     this.setData({
-      cargoes: this.data.cargoes
+      cargoes: this.data.cargoes,
+      cargoTip: ''
     })
   },
 
@@ -554,7 +562,6 @@ Page({
   },
 
   chooseRole(e) {
-    console.log(e)
     const index = e.currentTarget.dataset.index
     const roleId = e.currentTarget.dataset.roleid
     const indexs = this.data.partyList[index].roleIds.indexOf(roleId)
@@ -661,7 +668,6 @@ Page({
       partners: [this.data.partyList[index].code],
       token: wx.getStorageSync('access_token')
     }).then(res => {
-      console.log(res)
       let partnerDetails = res.data[0].partnerDetails
       partnerDetails.address1 = partnerDetails.addressLine1
       partnerDetails.address2 = partnerDetails.addressLine2
@@ -699,7 +705,8 @@ Page({
     this.setData({
       partiesList: JSON.parse(JSON.stringify(this.data.partyList)),
       partiesShow: false,
-      partiesRule: true
+      partiesRule: true,
+      partyTip: ''
     })
   },
 
@@ -748,7 +755,9 @@ Page({
       preferredBookingOffice: {
         code: this.data.officeList[index].agency.code,
         name: this.data.officeList[index].agency.name + ';' + this.data.officeList[index].city.name + ';' + this.data.officeList[index].city.code
-      }
+      },
+      officeTip: '',
+      bookingOfficeRemind: false
     })
   },
   // =============== 商品end ============================
@@ -819,7 +828,8 @@ Page({
     this.data.payment.paymentLocation.name = this.data.paymentLocationList[index].pointName
     this.setData({
       paymentLocationList: [],
-      payment: this.data.payment
+      payment: this.data.payment,
+      paymentLocationRemind: false
     })
     this.getPlaceInfo()
   },
@@ -881,7 +891,8 @@ Page({
     this.data.payment.freightPayerName = this.data.freightPayerList[index].label
     this.setData({
       freightPayerList: [],
-      payment: this.data.payment
+      payment: this.data.payment,
+      freightPayerRemind: false
     })
   },
   // =============== 商品end ============================
@@ -994,7 +1005,6 @@ Page({
 
   // 通用单选框完成
   onPickerConfirm(e) {
-    console.log(e)
     const popupTo = this.data.popupTo
     if (this.data.currentPopup === 'country') {
       this.data[popupTo + 'Data'].countryCode = e.detail.laraCountry
@@ -1025,7 +1035,6 @@ Page({
     stateList({
       countryCode: this.data[this.data.popupTo + 'Data'].countryCode
     }).then(res => {
-      console.log(res)
       this.setData({
         [this.data.popupTo + 'DataStateList']: res.data.sort(this.sortStateArray)
       })
@@ -1050,14 +1059,93 @@ Page({
       })
     };
 
-    console.log('cargoes', cargoes)
+    if (this.data.bookingSearchKey.receiptHaulage) {
+      this.checkHaulageData('export')
+    }
+
+    if (this.data.bookingSearchKey.receiptHaulage && !this.data.exportRule) {
+      this.setData({
+        exportTip: '1'
+      })
+    } else {
+      this.setData({
+        exportTip: ''
+      })
+    }
+
+    if (this.data.bookingSearchKey.deliveryHaulage) {
+      this.checkHaulageData('import')
+    }
+
+    if (this.data.bookingSearchKey.deliveryHaulage && !this.data.importRule) {
+      this.setData({
+        importTip: '1'
+      })
+    } else {
+      this.setData({
+        importTip: ''
+      })
+    }
+
+    if (cargoes.length) {
+      this.setData({
+        cargoTip: ''
+      })
+    } else {
+      this.setData({
+        cargoTip: '1'
+      })
+    }
+
+    if (!this.data.partiesRule) {
+      this.setData({
+        partyTip: '1'
+      })
+    } else {
+      this.setData({
+        partyTip: ''
+      })
+    }
+
+    if (!this.data.payment.paymentLocation.code || !this.data.payment.freightPayerCode) {
+      this.setData({
+        paymentTip: '1'
+      })
+    } else {
+      this.setData({
+        paymentTip: ''
+      })
+    }
+
+    if (!this.data.payment.paymentLocation.code) {
+      this.setData({
+        paymentLocationRemind: true
+      })
+    }
+
+    if (!this.data.payment.freightPayerCode) {
+      this.setData({
+        freightPayerRemind: true
+      })
+    }
+
+    if (!this.data.preferredBookingOffice) {
+      this.setData({
+        officeTip: '1',
+        bookingOfficeRemind: true
+      })
+    } else {
+      this.setData({
+        officeTip: '',
+        bookingOfficeRemind: false
+      })
+    }
 
     if (this.data.bookingSearchKey.receiptHaulage && !this.data.exportRule) return
     if (this.data.bookingSearchKey.deliveryHaulage && !this.data.importRule) return
     if (!cargoes.length) return
     if (!this.data.partiesRule) return
-    if (!this.data.payment.paymentLocation.code) return
-    if (!this.data.payment.freightPayerCode) return
+    if (!this.data.payment.paymentLocation.code || !this.data.payment.freightPayerCode) return
     if (!this.data.preferredBookingOffice) return
 
     const params = {

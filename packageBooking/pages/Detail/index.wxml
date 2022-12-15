@@ -65,6 +65,10 @@
     </view>
     <image class="editIcon {{exportHaulageShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
+  <view class="zhedieRequest" wx:if="{{!exportHaulageShow && exportTip}}">
+    <image src="/assets/img/search/error@2x.png"></image>
+    <text>{{verifyInfo.required}}</text>
+  </view>
   <view hidden="{{!exportHaulageShow}}">
     <view class="haulageDetails">
       <view class="haulageDetailTops2">
@@ -292,6 +296,10 @@
       <view>Haulage Import</view>
     </view>
     <image class="editIcon {{importHaulageShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+  </view>
+  <view class="zhedieRequest" wx:if="{{!importHaulageShow && importTip}}">
+    <image src="/assets/img/search/error@2x.png"></image>
+    <text>{{verifyInfo.required}}</text>
   </view>
   <view hidden="{{!importHaulageShow}}">
     <view class="haulageDetails">
@@ -521,6 +529,10 @@
     </view>
     <image class="editIcon {{cargoShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
+  <view class="zhedieRequest" wx:if="{{!cargoShow && cargoTip}}">
+    <image src="/assets/img/search/error@2x.png"></image>
+    <text>{{verifyInfo.required}}</text>
+  </view>
   <view hidden="{{!cargoShow}}">
     <view class="oneCommodity" wx:for="{{cargoes}}" wx:key="index">
       <view class="commodityTop">
@@ -559,6 +571,10 @@
       <view>{{languageContent.parties}}</view>
     </view>
     <image class="editIcon {{partiesShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+  </view>
+  <view class="zhedieRequest" wx:if="{{!partiesShow && partyTip}}">
+    <image src="/assets/img/search/error@2x.png"></image>
+    <text>{{verifyInfo.required}}</text>
   </view>
   <view class="partyList" hidden="{{!partiesShow}}">
     <view class="oneParty" wx:for="{{partyList}}" wx:key="index">
@@ -643,6 +659,10 @@
     </view>
     <image class="editIcon {{paymentShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
+  <view class="zhedieRequest" wx:if="{{!paymentShow && paymentTip}}">
+    <image src="/assets/img/search/error@2x.png"></image>
+    <text>{{verifyInfo.required}}</text>
+  </view>
   <view hidden="{{!paymentShow}}">
     <view class="paymentTitle">{{languageContent.freightPayment}}</view>
     <view class="paymentType">
@@ -661,7 +681,7 @@
     </view>
     <view class="paymentTitle mar"><text>{{languageContent.paymentLocation}}<text class="red">*</text></text></view>
     <view class="inputContainers">
-      <view class="inputsContainer">
+      <view class="inputsContainer {{paymentLocationRemind ? 'noRequestBorder' : ''}}">
         <input type="text" bindinput="changepaymentLocation" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{payment.paymentLocation.name}}" />
         <view class="deleteIcon" wx:if="{{showPaymentLocationDelete}}" catchtap="deleteValue2" data-type="showPaymentLocationDelete">
           <image src="/assets/img/search/close@2x.png"></image>
@@ -675,13 +695,17 @@
       <view class="scroll-view" wx:if="{{showPaymentLocation}}">
         <view class="item">Loading...</view>
       </view>
+      <view class="noRequest" wx:if="{{paymentLocationRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
+      </view>
     </view>
     <view class="paymentTitle mar">
       <text>{{languageContent.freightPayer}}<text class="red">*</text></text>
       <!-- <image src="/assets/img/booking/modify.png" catchtap="toModifyParty" /> -->
     </view>
     <view class="inputContainers">
-      <view class="inputsContainer">
+      <view class="inputsContainer {{freightPayerRemind ? 'noRequestBorder' : ''}}">
         <input type="text" bindinput="changefreightPayer" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{payment.freightPayerName}}" />
         <view class="deleteIcon" wx:if="{{payment.freightPayerName}}" catchtap="deleteValue2" data-type="showFreightPayerDelete">
           <image src="/assets/img/search/close@2x.png"></image>
@@ -694,6 +718,10 @@
       </scroll-view>
       <view class="scroll-view" wx:if="{{showFreightPayer}}">
         <view class="item">Loading...</view>
+      </view>
+      <view class="noRequest" wx:if="{{freightPayerRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
       </view>
     </view>
   </view>
@@ -732,9 +760,13 @@
     </view>
     <image class="editIcon {{bookingOfficeShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
+  <view class="zhedieRequest" wx:if="{{!bookingOfficeShow && officeTip}}">
+    <image src="/assets/img/search/error@2x.png"></image>
+    <text>{{verifyInfo.required}}</text>
+  </view>
   <view style="margin-top: 30rpx;" hidden="{{!bookingOfficeShow}}">
     <view class="inputContainers">
-      <view class="inputsContainer">
+      <view class="inputsContainer {{bookingOfficeRemind ? 'noRequestBorder' : ''}}">
         <input type="text" bindinput="changeOffice" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{preferredBookingOffice.name}}" />
         <view class="deleteIcon" wx:if="{{showOfficeDelete}}" catchtap="deleteValue2" data-type="showOfficeDelete">
           <image src="/assets/img/search/close@2x.png"></image>
@@ -747,6 +779,10 @@
       </scroll-view>
       <view class="scroll-view" wx:if="{{showOffice}}">
         <view class="item">Loading...</view>
+      </view>
+      <view class="noRequest" wx:if="{{bookingOfficeRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
       </view>
     </view>
   </view>
