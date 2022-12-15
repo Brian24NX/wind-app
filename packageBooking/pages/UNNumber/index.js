@@ -45,6 +45,12 @@ Page({
         value: '',
         text: '',
         index: 0
+      },
+      // inner Packaging
+      4: {
+        value: '',
+        text: '',
+        index: 0
       }
     },
     // Constant - Unit Data
@@ -119,6 +125,8 @@ Page({
       unit: '',
       packageDescriptionName: '',
       quantityValue: '',
+      innerPackageDescriptionName: '',
+      innerQuantityValue: '',
       emergencyContactName: '',
       emergencyNumber: ''
     },
@@ -128,13 +136,20 @@ Page({
     packageDescriptionCode: '',
     packageDescriptionName: '',
     quantityValue: '',
+    // inner Packaging Description
+    isShowInnerPackage: false,
+    innerPackageDescriptionLoading: !1,
+    innerPackageDescriptionLists: [],
+    innerPackageDescriptionCode: '',
+    innerPackageDescriptionName: '',
+    innerQuantityValue: '',
     emergencyContactName: '',
     emergencyNumber: '',
     commentOptional: '',
     commentOptionalLength: 0,
     scrollEmelemt: '', // 定位元素
     requiredEmelemt: [], // 是否存在验证为空的元素
-    scrollToElement: ['unnumber', 'packing-group', 'class', 'emergency-procedure', 'net-weight', 'gross-weight', 'unit', 'packaging-description', 'quantity', 'emergency-contact-name', 'emergency-number']
+    scrollToElement: ['unnumber', 'packing-group', 'class', 'emergency-procedure', 'net-weight', 'gross-weight', 'unit', 'packaging-description', 'quantity', 'inner-packaging-description', 'inner-quantity', 'emergency-contact-name', 'emergency-number']
   },
 
   /**
@@ -173,7 +188,12 @@ Page({
           isTransport,
           commentOptional,
           commentOptionalLength,
-          cacheData
+          cacheData,
+          isShowInnerPackage,
+          innerPackageDescriptionLists,
+          innerPackageDescriptionCode,
+          innerPackageDescriptionName,
+          innerQuantityValue
         } = prevData[index];
         this.setData({
           id,
@@ -196,7 +216,12 @@ Page({
           isTransport,
           commentOptional,
           commentOptionalLength,
-          cacheData
+          cacheData,
+          isShowInnerPackage,
+          innerPackageDescriptionLists,
+          innerPackageDescriptionCode,
+          innerPackageDescriptionName,
+          innerQuantityValue
         })
       }
     }
@@ -221,7 +246,7 @@ Page({
       UNNumberLists: []
     })
 
-    console.log('enterUNNumber', this.data)
+    // console.log('enterUNNumber', this.data)
     if (data.length < 2) return false;
 
     this.setData({
@@ -348,6 +373,16 @@ Page({
         isShowPicker: !0
       })
     }
+
+    // inner Packaging Description
+    if (type === 4) {
+      _t.setData({
+        columnsList: this.data.innerPackageDescriptionLists,
+        pickerValueKeyFlag: type,
+        pickerValueKey: 'packagingDescription',
+        isShowPicker: !0
+      })
+    }
   },
 
   // onPickerClose
@@ -358,6 +393,24 @@ Page({
     })
   },
 
+  // 展示inner packagingDescription 逻辑
+  // 1) O,S -- 显示Inner Packaging
+  // 2) I,M -- 不显示Inner Packaging
+  // 3) x,null-- 不显示
+  checkInner(packagingType) {
+    const showArr = ['o', 's'];
+    const notShowArr = ['i', 'm', 'x', 'null'];
+    const type = `${packagingType || ''}`.toLowerCase();
+    if (type && showArr.includes(type)) {
+      return true
+      _t.getPackageDescription(_isShow)
+    } else if (type && notShowArr.includes(type)) {
+      return false
+    } else {
+      return false
+    };
+  },
+
   // onPickerConfirm
   onPickerConfirm({
     detail
@@ -365,18 +418,15 @@ Page({
     const _t = this;
     const type = _t.data.pickerValueKeyFlag;
     // set select data
-    if (type == 3) {
-      detail.value = detail.packingRef
-      detail.text = detail.packagingDescription
+    if (!detail) {
+      _t.setData({
+        isShowPicker: !1
+      });
+      return false;
     }
-    _t.setData({
-      [`pickerChooseReault.${type}`]: detail,
-      pickerValueKeyFlag: type,
-      isShowPicker: !1
-    });
+    console.log('detail', detail)
 
     // Packing Group
-    console.log('detail', detail)
     if (type === 1) {
       _t.setData({
         [`tips.packingGroup`]: '',
@@ -392,15 +442,52 @@ Page({
         [`tips.unit`]: ''
       });
     }
+
+    // package Description
     if (type === 3) {
-      // this.data.requiredEmelemt[7] = null
+      let isShowInnerPackage = false;
+      if (detail.value !== _t.data.packageDescriptionCode) {
+        // check inner package Description
+        isShowInnerPackage = _t.checkInner(detail.packagingType || '');
+        // get inner package Description list
+        if (isShowInnerPackage) _t.getPackageDescription(isShowInnerPackage);
+        _t.setData({
+          [`pickerChooseReault.4.text`]: '',
+          [`pickerChooseReault.4.value`]: '',
+          innerPackageDescriptionName: '',
+          innerPackageDescriptionCode: '',
+          [`tips.innerPackageDescriptionName`]: ''
+        })
+      }
+
+      // 设置 packagingDescription 数据
       this.setData({
+        isShowInnerPackage,
         packageDescriptionCode: detail.value,
         packageDescriptionName: detail.text,
         [`tips.packageDescriptionName`]: '',
         requiredEmelemt: this.data.requiredEmelemt
       })
     }
+
+    // inner package Description
+    if (type === 4) {
+      // this.data.requiredEmelemt[7] = null
+      this.setData({
+        innerPackageDescriptionCode: detail.value,
+        innerPackageDescriptionName: detail.text,
+        [`tips.innerPackageDescriptionName`]: '',
+        requiredEmelemt: this.data.requiredEmelemt
+      })
+    }
+
+
+    // setData
+    _t.setData({
+      [`pickerChooseReault.${type}`]: detail,
+      pickerValueKeyFlag: type,
+      isShowPicker: !1
+    });
   },
 
   // clearValue
@@ -414,17 +501,31 @@ Page({
       let _val = '';
       if (isrequired) msg = `${this.data.verifyInfo.required}`;
 
-      if (v.includes('pickerChooseReault.1')) {
+      if (v === 'unNumberName') {
+        this.setData({
+          isShowInnerPackage: false,
+          [`pickerChooseReault.4.text`]: '',
+          [`pickerChooseReault.4.value`]: '',
+          innerPackageDescriptionName: '',
+          innerPackageDescriptionCode: '',
+          [`tips.${v}`]: ''
+        })
+      }
+
+      if (v.includes('.')) {
         var _g = v.split('.');
         _val = this.data[_g[0]][_g[1]][_g[2]]
       } else {
         _val = this.data[v]
       }
+
       // 先设置提示语，再清数据
       if (_val) {
-        this.setData({
-          [`tips.${v.includes('pickerChooseReault.1')? 'packingGroup': v}`]: msg
-        })
+        if (!v.includes('innerPackageDescriptionName')) {
+          this.setData({
+            [`tips.${v.includes('pickerChooseReault.1')? 'packingGroup': v}`]: msg
+          })
+        }
       };
       this.setData({
         [v]: '',
@@ -569,7 +670,7 @@ Page({
       verifyInfo
     } = _t.data;
     let msg = '';
-    console.log('value', value, netWeight, parseFloat(value), parseFloat(netWeight))
+    // console.log('value', value, netWeight, parseFloat(value), parseFloat(netWeight))
     if (!value) msg = `${verifyInfo.required}`;
     if (value && !netWeight) msg = tips[lag];
     if (value && netWeight && parseFloat(netWeight) >= parseFloat(value)) msg = tips[lag];
@@ -583,20 +684,32 @@ Page({
   },
 
   // getPackageDescription
-  getPackageDescription() {
+  getPackageDescription(innerFlag=false) {
+    const loading = !innerFlag? `packageDescriptionLoading`: `innerPackageDescriptionLoading`;
+    const list = !innerFlag? `packageDescriptionLists`: `innerPackageDescriptionLists`;
+
     packageDescription({
-      innerFlag: false,
+      innerFlag,
       packingInsCode: this.data.pickerChooseReault[1].packingInsCode
     }).then(res => {
+      let Data = [];
+      if (res.data && res.data.length) {
+        Data = JSON.parse(JSON.stringify(res.data));
+        Data.map((val, index) => {
+          val.value = val.packingRef;
+          val.text = val.packagingDescription;
+          val.index = index;
+        });
+      };
       this.setData({
-        packageDescriptionLoading: !1,
-        packageDescriptionLists: res.data || []
+        [list]: Data,
+        [loading]: !1
       })
     }, () => {
       this.setData({
-        packageDescriptionLoading: !1,
+        [loading]: !1,
       })
-      this.getPackageDescription()
+      this.getPackageDescription(innerFlag)
     })
   },
   // clickPackagingDescription
@@ -652,7 +765,7 @@ Page({
     this.setData({
       packageDescriptionLoading: !0,
     })
-    this.getPackageDescription(data)
+    this.getPackageDescription()
   }, 800),
 
   // // choosePackagingDescription
@@ -737,7 +850,7 @@ Page({
       } else {
         _val = this.data[v]
       }
-      console.log('v', _val)
+      // console.log('v', _val)
       if (!_val && !nativeData) {
         msg = `${data.verifyInfo.required}`;
         isFlag = true;
@@ -813,13 +926,24 @@ Page({
       console.log('quantityValue - 为空')
     }
 
+    // // Packaging Description - innerPackageDescriptionName
+    // if (_t.verify('pickerChooseReault.4.text', 'innerPackageDescriptionName', _t.data.pickerChooseReault[4].text)) {
+    //   console.log('innerPackageDescriptionName - 为空')
+    // }
+
+    // // innerQuantity - innerQuantityValue
+    // if (_t.verify('innerQuantityValue', 'innerQuantityValue', scrollToElement[10])) {
+    //   console.log('innerQuantityValue - 为空')
+    // }
+
+
     // Emergency Contact Name - emergencyContactName
-    if (_t.verify('emergencyContactName', 'emergencyContactName', scrollToElement[9])) {
+    if (_t.verify('emergencyContactName', 'emergencyContactName', scrollToElement[11])) {
       console.log('emergencyContactName - 为空')
     }
 
     // Emergency Number - emergencyNumber
-    if (_t.verify('emergencyNumber', 'emergencyNumber', scrollToElement[10])) {
+    if (_t.verify('emergencyNumber', 'emergencyNumber', scrollToElement[12])) {
       console.log('emergencyNumber - 为空')
     }
 
@@ -848,6 +972,17 @@ Page({
       return false
     }
 
+    // inner
+    if (_t.data.innerPackageDescriptionName && !_t.data.innerQuantityValue) {
+      this.setData({
+        [`tips.innerQuantityValue`]: `${_t.data.verifyInfo.required}`
+      })
+      _t.scrollTo({
+        element: 'inner-quantity'
+      })
+      return false
+    }
+
     // 上层页面数据设置
     const prevData = JSON.parse(JSON.stringify(wx.getStorageSync('unNumberCache') || []));
 
@@ -872,7 +1007,12 @@ Page({
       isTransport,
       commentOptional,
       commentOptionalLength,
-      cacheData
+      cacheData,
+      isShowInnerPackage,
+      innerPackageDescriptionLists,
+      innerPackageDescriptionCode,
+      innerPackageDescriptionName,
+      innerQuantityValue
     } = _t.data;
     const newsData = {
       id: prevData.length + 1,
@@ -894,7 +1034,12 @@ Page({
       isIncludeHazardous,
       isTransport,
       commentOptional,
-      cacheData
+      cacheData,
+      isShowInnerPackage,
+      innerPackageDescriptionLists,
+      innerPackageDescriptionCode,
+      innerPackageDescriptionName,
+      innerQuantityValue
     };
     if (_t.data.id) {
       const index = prevData.findIndex(v => parseInt(v.id) === parseInt(_t.data.id));
