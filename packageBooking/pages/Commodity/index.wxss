@@ -171,7 +171,7 @@ page {
 }
 
 .selectContainer view {
-  /* width: 490rpx; */
+  width: 520rpx;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;

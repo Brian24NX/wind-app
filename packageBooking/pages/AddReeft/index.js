@@ -365,9 +365,6 @@ Page({
 
     wx.setStorageSync('addReeft', newsData);
     wx.removeStorageSync('addReeftCache')
-
-    setTimeout(() => {
-      wx.navigateBack()
-    }, 800)
+    wx.navigateBack()
   }
 })

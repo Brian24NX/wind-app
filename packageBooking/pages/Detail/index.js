@@ -21,6 +21,7 @@ Page({
     routeSelected: null,
     partyList: [],
     exportData: {
+      mode: '',
       appointmentDate: '',
       appointmentTime: '',
       transportMode: '',
@@ -41,6 +42,7 @@ Page({
       transportComment: ""
     },
     importData: {
+      mode: '',
       appointmentDate: '',
       appointmentTime: '',
       transportMode: '',
@@ -60,6 +62,8 @@ Page({
       customerReference: '',
       transportComment: ""
     },
+    exportRemind: {},
+    importRemind: {},
     roleList: ['SHP', 'FOR', 'CEE', 'NOT', 'NO2', 'DCD', 'NAC', '3BA', 'CUS'],
     payment: {
       freightPayment: 'Prepaid',
@@ -124,10 +128,10 @@ Page({
     // =================请求数据end=================
     // =================折叠start=================
     routeSelectedShow: false,
-    receiptHaulageShow: false,
-    deliveryHaulageShow: false,
+    exportHaulageShow: false,
+    importHaulageShow: false,
     cargoShow: false,
-    partiesShow: true,
+    partiesShow: false,
     paymentShow: false,
     bookingOfficeShow: false,
     freeCommentsShow: false,
@@ -143,7 +147,11 @@ Page({
     exportDataStateList: [],
     importDataStateList: [],
     partnerList: wx.getStorageSync('partnerList'),
-    otherRoleList: []
+    otherRoleList: [],
+    // 分组校验
+    exportRule: false,
+    importRule: false,
+    partiesRule: false
   },
 
   /**
@@ -226,6 +234,7 @@ Page({
   setPlaceOfReceipt() {
     const bookingSearchKey = wx.getStorageSync('bookingSearchKey')
     if (bookingSearchKey.placeOfReceipt) {
+      this.data.exportData.mode = bookingSearchKey.receiptHaulage
       this.setData({
         placeOfReceipt: {
           code: bookingSearchKey.placeOfReceipt.split(';').pop(),
@@ -233,7 +242,8 @@ Page({
           countryCode: "",
           countryName: "",
           placeType: bookingSearchKey.receiptHaulage
-        }
+        },
+        exportData: this.data.exportData
       })
       this.getCountryData(this.data.placeOfReceipt.code, 'placeOfReceipt')
     }
@@ -243,6 +253,7 @@ Page({
   setFinalPlaceOfDelivery() {
     const bookingSearchKey = wx.getStorageSync('bookingSearchKey')
     if (bookingSearchKey.placeOfDelivery) {
+      this.data.importData.mode = bookingSearchKey.deliveryHaulage
       this.setData({
         finalPlaceOfDelivery: {
           code: bookingSearchKey.placeOfDelivery.split(';').pop(),
@@ -250,7 +261,8 @@ Page({
           countryCode: "",
           countryName: "",
           placeType: bookingSearchKey.deliveryHaulage
-        }
+        },
+        importData: this.data.importData
       })
       this.getCountryData(this.data.finalPlaceOfDelivery.code, 'finalPlaceOfDelivery')
     }
@@ -274,7 +286,7 @@ Page({
     this.setData({
       currentHaulage: type
     })
-    if (type === 'exportData') {
+    if (type === 'export') {
       this.setData({
         minDate: new Date().getTime(),
         maxDate: new Date().setDate(new Date(this.data.routeSelected.departureDate.utc).getDate() - 1),
@@ -285,7 +297,7 @@ Page({
         maxDate: new Date().setFullYear(new Date(this.data.routeSelected.arrivalDate.utc).getFullYear() + 20)
       })
     }
-    const date = this.data[type].appointmentDate.replaceAll('-', '/')
+    const date = this.data[type + 'Data'].appointmentDate.replaceAll('-', '/')
     this.setData({
       timeType: 'date',
       currentDate: new Date(date).getTime(),
@@ -304,16 +316,20 @@ Page({
   confirmDate(e) {
     console.log(e)
     if (this.data.timeType === 'date') {
-      this.data[this.data.currentHaulage].appointmentDate = dayjs(e.detail).format('YYYY-MM-DD')
+      this.data[this.data.currentHaulage + 'Data'].appointmentDate = dayjs(e.detail).format('YYYY-MM-DD')
+      this.data[this.data.currentHaulage + 'Remind'].appointmentDateRemind = false
       this.setData({
-        [this.data.currentHaulage]: this.data[this.data.currentHaulage],
+        [this.data.currentHaulage + 'Data']: this.data[this.data.currentHaulage + 'Data'],
+        [this.data.currentHaulage + 'Remind']: this.data[this.data.currentHaulage + 'Remind'],
         appointmentDateRemind: false,
         showDatePopup: false
       })
     } else if (this.data.timeType === 'time') {
-      this.data[this.data.currentHaulage].appointmentTime = e.detail
+      this.data[this.data.currentHaulage + 'Data'].appointmentTime = e.detail
+      this.data[this.data.currentHaulage + 'Remind'].appointmentTimeRemind = false
       this.setData({
-        [this.data.currentHaulage]: this.data[this.data.currentHaulage],
+        [this.data.currentHaulage + 'Data']: this.data[this.data.currentHaulage + 'Data'],
+        [this.data.currentHaulage + 'Remind']: this.data[this.data.currentHaulage + 'Remind'],
         appointmentTimeRemind: false,
         showDatePopup: false
       })
@@ -328,10 +344,11 @@ Page({
 
   chooseMode(e) {
     console.log(e)
-    this.data[e.currentTarget.dataset.type].transportMode = e.currentTarget.dataset.id
+    this.data[e.currentTarget.dataset.type + 'Data'].transportMode = e.currentTarget.dataset.id
+    this.data[e.currentTarget.dataset.type + 'Remind'].transportModeRemind = false
     this.setData({
-      [e.currentTarget.dataset.type]: this.data[e.currentTarget.dataset.type],
-      transportModeRemind: false
+      [e.currentTarget.dataset.type + 'Data']: this.data[e.currentTarget.dataset.type + 'Data'],
+      [e.currentTarget.dataset.type + 'Remind']: this.data[e.currentTarget.dataset.type + 'Remind'],
     })
   },
 
@@ -339,9 +356,14 @@ Page({
     const value = e.detail.value
     const type = e.currentTarget.dataset.type
     const type2 = e.currentTarget.dataset.type2
-    this.data[type][type2] = value
+    this.data[type + 'Data'][type2] = value
+    this.data[type + 'Remind'][type2 + 'Remind'] = false
+    if (type2 === 'email') {
+      this.data[type + 'Remind']['emailRemind2'] = false
+    }
     this.setData({
-      [type]: this.data[type]
+      [type + 'Data']: this.data[type + 'Data'],
+      [type + 'Remind']: this.data[type + 'Remind']
     })
   },
 
@@ -364,6 +386,116 @@ Page({
 
   sortCountryArray(x, y) {
     return x.countryName.localeCompare(y.countryName);
+  },
+
+  confirmHaulage(e) {
+    const to = e.currentTarget.dataset.to
+    const data = this.data[to + 'Data']
+    const dataRemind = this.data[to + 'Remind']
+    if (data.mode === 'Door') {
+      if (!data.appointmentDate) {
+        dataRemind.appointmentDateRemind = true
+      } else {
+        dataRemind.appointmentDateRemind = false
+      }
+      if (!data.appointmentTime) {
+        dataRemind.appointmentTimeRemind = true
+      } else {
+        dataRemind.appointmentTimeRemind = false
+      }
+      if (!data.companyName) {
+        dataRemind.companyNameRemind = true
+      } else {
+        dataRemind.companyNameRemind = false
+      }
+      if (!data.city) {
+        dataRemind.cityRemind = true
+      } else {
+        dataRemind.cityRemind = false
+      }
+      if (!data.countryCode) {
+        dataRemind.countryRemind = true
+      } else {
+        dataRemind.countryRemind = false
+      }
+      if (!data.address1) {
+        dataRemind.address1Remind = true
+      } else {
+        dataRemind.address1Remind = false
+      }
+      if (!data.contactName) {
+        dataRemind.contactNameRemind = true
+      } else {
+        dataRemind.contactNameRemind = false
+      }
+      if (!data.phoneNumber) {
+        dataRemind.phoneNumberRemind = true
+      } else {
+        dataRemind.phoneNumberRemind = false
+      }
+      if (!data.email) {
+        dataRemind.emailRemind = true
+      } else {
+        dataRemind.emailRemind = false
+      }
+      let email = new RegExp("^[a-zA-Z0-9]+([._\\-]*[a-zA-Z0-9])*@([a-zA-Z0-9]+[-a-zA-Z0-9]*[a-zA-Z0-9]+.){1,63}[a-zA-Z0-9]+$");
+      if (!email.test(data.email)) {
+        dataRemind.emailRemind2 = true
+      } else {
+        dataRemind.emailRemind2 = false
+      }
+    }
+    if (!data.transportMode) {
+      dataRemind.transportModeRemind = true
+    } else {
+      dataRemind.transportModeRemind = false
+    }
+    this.setData({
+      [to + 'Remind']: dataRemind
+    })
+    console.log(data)
+    console.log(dataRemind)
+    if (data.mode === 'Door' && (dataRemind.appointmentDateRemind || dataRemind.appointmentTimeRemind || dataRemind.transportModeRemind || dataRemind.companyNameRemind || dataRemind.cityRemind || dataRemind.countryRemind || dataRemind.address1Remind || dataRemind.contactNameRemind || dataRemind.phoneNumberRemind || dataRemind.emailRemind || dataRemind.emailRemind2)) return
+    if (data.mode === 'Ramp' && data.transportModeRemind) return
+    console.log(123)
+    const haulageData = JSON.parse(JSON.stringify(this.data[to + 'Data']))
+    let haulage = {
+      appointmentInfo: {
+        appointmentTime: haulageData.appointmentTime,
+        appointmentDate: {
+          local: haulageData.appointmentDate,
+          utc: haulageData.appointmentDate
+        },
+        transportMode: haulageData.transportMode,
+        haulageLocation: to === 'export' ? this.data.placeOfReceipt : this.data.finalPlaceOfDelivery
+      },
+      haulageAddress: {
+        companyName: haulageData.companyName,
+        customerReference: '',
+        transportComment: haulageData.transportComment,
+        haulageAddress: {
+          contactName: haulageData.contactName,
+          address1: haulageData.address1,
+          address2: haulageData.address2,
+          address3: haulageData.address3,
+          countryName: haulageData.countryName,
+          countryCode: haulageData.countryCode,
+          stateCode: haulageData.stateCode,
+          stateName: haulageData.stateName,
+          city: haulageData.city,
+          zipCode: haulageData.zipCode,
+          email: haulageData.email,
+          phoneNumber: haulageData.phoneNumber,
+          fax: haulageData.fax
+        }
+      }
+    }
+    console.log(haulage)
+    this.setData({
+      [to + 'Haulage']: JSON.parse(JSON.stringify(haulage)),
+      [to + 'HaulageShow']: false,
+      [to + 'Rule']: true
+    })
   },
 
   // =============== 商品start ============================
@@ -566,7 +698,8 @@ Page({
     if (arr.length) return
     this.setData({
       partiesList: JSON.parse(JSON.stringify(this.data.partyList)),
-      partiesShow: false
+      partiesShow: false,
+      partiesRule: true
     })
   },
 
@@ -830,12 +963,12 @@ Page({
     if (type === 'country') {
       columns = this.data.countryList
       valueKey = 'countryName'
-      const index = this.data.countryList.findIndex(i => i.laraCountry === this.data.exportData.countryCode)
+      const index = this.data.countryList.findIndex(i => i.laraCountry === this.data[popupTo + 'Data'].countryCode)
       defaultIndex = index > -1 ? index : 0
     } else if (type === 'state') {
-      columns = this.data[this.data.popupTo + 'StateList']
+      columns = this.data[this.data.popupTo + 'DataStateList']
       valueKey = 'regionName'
-      const index = this.data[popupTo + 'StateList'].findIndex(i => i.areaCode === this.data[popupTo].stateCode)
+      const index = this.data[popupTo + 'DataStateList'].findIndex(i => i.areaCode === this.data[popupTo + 'Data'].stateCode)
       defaultIndex = index > -1 ? index : 0
     } else if (type === 'party') {
       columns = this.data.partnerList
@@ -864,17 +997,19 @@ Page({
     console.log(e)
     const popupTo = this.data.popupTo
     if (this.data.currentPopup === 'country') {
-      this.data[popupTo].countryCode = e.detail.laraCountry
-      this.data[popupTo].countryName = e.detail.countryName
+      this.data[popupTo + 'Data'].countryCode = e.detail.laraCountry
+      this.data[popupTo + 'Data'].countryName = e.detail.countryName
+      this.data[popupTo + 'Remind'].countryRemind = false
       this.setData({
-        [popupTo]: this.data[popupTo]
+        [popupTo + 'Data']: this.data[popupTo + 'Data'],
+        [popupTo + 'Remind']: this.data[popupTo + 'Remind']
       })
       this.getStateList()
     } else if (this.data.currentPopup === 'state') {
-      this.data[popupTo].stateCode = e.detail.areaCode
-      this.data[popupTo].stateName = e.detail.regionName
+      this.data[popupTo + 'Data'].stateCode = e.detail.areaCode
+      this.data[popupTo + 'Data'].stateName = e.detail.regionName
       this.setData({
-        [popupTo]: this.data[popupTo]
+        [popupTo + 'Data']: this.data[popupTo + 'Data']
       })
     } else if (this.data.currentPopup === 'party') {
       this.data.partyList[0].code = e.detail.code
@@ -888,11 +1023,11 @@ Page({
 
   getStateList() {
     stateList({
-      countryCode: this.data[this.data.popupTo].countryCode
+      countryCode: this.data[this.data.popupTo + 'Data'].countryCode
     }).then(res => {
       console.log(res)
       this.setData({
-        [this.data.popupTo + 'StateList']: res.data.sort(this.sortStateArray)
+        [this.data.popupTo + 'DataStateList']: res.data.sort(this.sortStateArray)
       })
     })
   },
@@ -906,7 +1041,7 @@ Page({
     let cargoesOld = JSON.parse(JSON.stringify(this.data.cargoes));
     let cargoes = [];
     if (cargoesOld && cargoesOld.length > 0) {
-      cargoes = cargoesOld.map( v => {
+      cargoes = cargoesOld.map(v => {
         if (v?.cacheData) {
           delete(v['cacheData']);
         }
@@ -916,6 +1051,14 @@ Page({
     };
 
     console.log('cargoes', cargoes)
+
+    if (this.data.bookingSearchKey.receiptHaulage && !this.data.exportRule) return
+    if (this.data.bookingSearchKey.deliveryHaulage && !this.data.importRule) return
+    if (!cargoes.length) return
+    if (!this.data.partiesRule) return
+    if (!this.data.payment.paymentLocation.code) return
+    if (!this.data.payment.freightPayerCode) return
+    if (!this.data.preferredBookingOffice) return
 
     const params = {
       portOfLoading: this.data.portOfLoading,
@@ -942,5 +1085,14 @@ Page({
       noOfBooking: this.data.noOfBooking
     }
     console.log(JSON.stringify(params))
+    wx.showLoading({
+      title: 'Loading...',
+    })
+    setTimeout(()=>{
+      wx.hideLoading()
+      wx.navigateTo({
+        url: '/packageBooking/pages/Result/index',
+      })
+    }, 1500)
   }
 })
