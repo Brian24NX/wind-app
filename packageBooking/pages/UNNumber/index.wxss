@@ -26,7 +26,7 @@ page {
 
 .containerTitle .titleLine {
   width: 6rpx;
-  height: 50rpx;
+  height: 40rpx;
   margin-right: 12rpx;
   background-color: #E20202;
 }
@@ -153,12 +153,12 @@ page {
   justify-content: space-between;
   align-items: center;
   padding: 0 24rpx;
-  color: #B9BFCA;
+  color: #071E5D;
   font-size: 28rpx;
 }
 
 .selectContainer view {
-  /* width: 490rpx; */
+  width: 520rpx;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;

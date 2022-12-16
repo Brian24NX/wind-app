@@ -169,7 +169,7 @@ page {
   justify-content: space-between;
   align-items: center;
   padding: 0 24rpx;
-  color: #B9BFCA;
+  color: #071E5D;
   font-size: 28rpx;
 }
 

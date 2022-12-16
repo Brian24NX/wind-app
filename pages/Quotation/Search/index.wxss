@@ -109,12 +109,6 @@ page {
   top: 134rpx;
 }
 
-.queryContainer .searchList .noRequest image {
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 10rpx;
-}
-
 .queryContainer .searchList .searchTitle {
   font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;

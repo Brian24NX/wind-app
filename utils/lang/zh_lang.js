@@ -718,7 +718,7 @@ var Languague = {
       shipperOwner: '发货人自备柜',
       sizeType: '尺寸/类型',
       Quantity: '数量',
-      perWeight: '每个集装箱的重量（净重）',
+      perWeight: '每个集装箱的重量 (净重)',
       totalWeight: '总重量',
       Unit: '单位',
       SpecialAttributes: '特殊属性',
@@ -789,6 +789,7 @@ var Languague = {
       fax: '传真',
       localLegalNumber: '本地法律编号',
       reference: '参考号',
+      optional: '可选',
       save: '保存'
     },
     bookingResult: {

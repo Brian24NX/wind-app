@@ -211,6 +211,7 @@ page {
 .commodityIndex image {
   width: 20rpx;
   height: 20rpx;
+  margin-left: 10rpx;
 }
 
 .oneCommodity .commodityTop .topRight {
@@ -388,7 +389,8 @@ page {
 }
 
 .textareaContainers textarea {
-  height: 100%;
+  width: calc(100% - 40rpx);
+  height: calc(100% - 40rpx);
   padding: 20rpx;
   font-size: 28rpx;
   color: #04246A;
@@ -498,10 +500,10 @@ page {
 }
 
 .totalTitle {
-  font-family: PingFangSC-Semibold, PingFang SC;
-  font-weight: 600;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
   color: #04246A;
-  font-size: 32rpx;
+  font-size: 36rpx;
 }
 
 .containers {
@@ -541,16 +543,6 @@ page {
   bottom: -34rpx;
   display: flex;
   align-items: center;
-}
-
-.noRequest image {
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 10rpx;
-}
-
-.noRequestBorder {
-  border: 2rpx solid #E2014B !important;
 }
 
 .zhedieRequest {
@@ -815,7 +807,7 @@ page {
   justify-content: space-between;
   align-items: center;
   padding: 0 24rpx;
-  color: #B9BFCA;
+  color: #04246A;
   font-size: 28rpx;
 }
 
@@ -922,7 +914,7 @@ page {
   width: 30rpx;
   height: 30rpx;
   border: 1rpx solid #04246A;
-  transform: rotate(180deg);
+  transform: rotate(360deg);
   display: flex;
   align-items: center;
   justify-content: center;

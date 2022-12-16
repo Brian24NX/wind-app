@@ -80,12 +80,6 @@
   align-items: center;
 }
 
-.emailContainers .emailContainer .noRequest image {
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 10rpx;
-}
-
 .emailContainers .emailContainer .placeholder {
   color: #B9BFCA;
   font-size: 28rpx;

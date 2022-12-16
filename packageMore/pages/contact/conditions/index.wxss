@@ -77,12 +77,6 @@ page {
   align-items: center;
 }
 
-.contactContainer .blockContainer .oneBlock .noRequest image {
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 10rpx;
-}
-
 .contactContainer .blockContainer .oneBlock .radioContainer {
   display: flex;
   justify-content: center;

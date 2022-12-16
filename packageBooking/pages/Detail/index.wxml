@@ -517,7 +517,7 @@
         </view>
       </view>
     </block>
-    <button class="haulageBtn" catchtap="confirmHaulage" data-to="import" style="margin-top: 30rpx;">Save</button>
+    <button class="haulageBtn" catchtap="confirmHaulage" data-to="import" style="margin-top: 30rpx;">{{languageContent.saveBtn}}</button>
   </view>
 </view>
 

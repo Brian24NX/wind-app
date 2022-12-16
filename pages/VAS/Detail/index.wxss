@@ -181,12 +181,6 @@ page {
   margin-top: 20rpx;
 }
 
-.noRequest image {
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 10rpx;
-}
-
 .subscribeBtn {
   margin-top: 30rpx;
   border-radius: 0;

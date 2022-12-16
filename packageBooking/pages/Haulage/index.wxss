@@ -373,13 +373,3 @@ page {
   display: flex;
   align-items: center;
 }
-
-.noRequest image {
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 10rpx;
-}
-
-.noRequestBorder {
-  border: 2rpx solid #E2014B !important;
-}

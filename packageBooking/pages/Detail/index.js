@@ -303,7 +303,7 @@ Page({
     } else {
       this.setData({
         minDate: new Date(this.data.routeSelected.arrivalDate.utc).getTime(),
-        maxDate: new Date().setFullYear(new Date(this.data.routeSelected.arrivalDate.utc).getFullYear() + 5)
+        maxDate: new Date().setFullYear(new Date(this.data.routeSelected.arrivalDate.utc).getFullYear() + 4)
       })
     }
     const date = this.data[type + 'Data'].appointmentDate.replaceAll('-', '/')
@@ -584,6 +584,16 @@ Page({
       partyList: this.data.partyList
     })
     this.setOtherParty()
+  },
+
+  deletePartyValue(e) {
+    this.data.partyList[e.currentTarget.dataset.index].code = ''
+    this.data.partyList[e.currentTarget.dataset.index].name = ''
+    this.data.partyList[e.currentTarget.dataset.index].required1 = false
+    this.data.partyList[e.currentTarget.dataset.index].showPartyDelete = false
+    this.setData({
+      partyList: this.data.partyList
+    })
   },
 
   setOtherParty() {

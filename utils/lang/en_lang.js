@@ -682,7 +682,7 @@ var Languague = {
       freightPayer: 'Freight Payer',
       paymentLocation: 'Payment Location',
       bookingOffice: 'Preferred Booking Office',
-      freeComments: 'Free comments',
+      freeComments: 'Free Comments',
       freeCommentsPlaceHolder: 'optional, example Release Order Date, Customer Broker ...',
       save: 'Place My Booking',
       save1: 'Place ',
@@ -755,7 +755,7 @@ var Languague = {
     reefer: {
       title: 'Reefer Settings',
       reeferMode: 'Reefer Mode',
-      noOperating: '(Non operating',
+      noOperating: '(Non operating)',
       Ventilation: 'Ventilation',
       close: '(Close)',
       Open: 'Open',
@@ -786,6 +786,7 @@ var Languague = {
       fax: 'Fax',
       localLegalNumber: 'Local legal identifier number',
       reference: 'Reference',
+      optional: 'Optional',
       save: 'Save'
     },
     bookingResult: {
