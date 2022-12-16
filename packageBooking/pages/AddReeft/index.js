@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
     verifyInfo: {},
     switchReeferMode: true,
     switchReeferModeValue: '',
@@ -19,7 +20,6 @@ Page({
     switchVentilationComputeValue: '0',
     switchDehumified: false,
     switchDehumifiedValue: '',
-    switchDehumifiedDesc: 'The accuracy of Dehumidify control is linked with the opening setup of fresh air exchange, an excessive choice will cause trouble, more info on CMA CGM site',
     switchControlledAtmosphere: false,
     switchControlledAtmosphereValue: '',
     switchControlledAtmosphereValue1: '',
@@ -53,7 +53,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    wx.setNavigationBarTitle({
+      title: languageUtils.languageVersion().lang.page.reefer.title,
+    })
     this.setData({
+      languageContent: languageUtils.languageVersion().lang.page.reefer,
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
     });
 

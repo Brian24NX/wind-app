@@ -755,6 +755,25 @@ var Languague = {
       remind: '请注意，我们的技术专家将验证您所提交的危险品详细信息，他们将为您提供进一步的信息，以帮助对所选航次进行危险品审批。 感谢你的理解。',
       save: '保存'
     },
+    reefer: {
+      title: '冻柜设置',
+      reeferMode: '冷冻模式',
+      noOperating: '(非运行)',
+      Ventilation: '通风',
+      close: '(关闭)',
+      Open: '开放',
+      Dehumified: '除湿',
+      no: '(无)',
+      yes: '确认',
+      yesAt: '确认在',
+      switchDehumifiedDesc: '除湿控制的精准度与新鲜空气的换气系统设置有关，过多的选择会引起故障，更多信息请访问CMA CGM官网。',
+      ControlledAtmosphere: '控制气流',
+      o2Operate: '以O²运行',
+      co2Operate: '和 CO²',
+      GensetRequired: '需要发电机',
+      AdditionalComments: '附加备注',
+      save: '保存'
+    },
     modifyParty: {
       address: '地址',
       partyName: '相关方名称',

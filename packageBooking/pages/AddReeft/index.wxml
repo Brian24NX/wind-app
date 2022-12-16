@@ -2,7 +2,7 @@
 <view class="oneContainer">
   <view class="containerTitle">
     <view class="titleLine"></view>
-    <view>Reefer Settings</view>
+    <view>{{languageContent.title}}</view>
   </view>
 
   <!-- Reefer mode -->
@@ -10,7 +10,7 @@
     <view class="items">
       <view class="switchs left">
         <van-switch checked="{{ switchReeferMode }}" bind:change="onSwitchChange" data-keys="switchReeferMode" size="28rpx" />
-        <text class="title {{!switchReeferMode && 'off'}}" catchtap="onToggleValue" data-keys="switchReeferMode">{{ switchReeferMode? 'Reefer mode': '(Non operating)' }}</text>
+        <text class="title {{!switchReeferMode && 'off'}}" catchtap="onToggleValue" data-keys="switchReeferMode">{{ switchReeferMode? languageContent.reeferMode: languageContent.noOperating }}</text>
       </view>
 
       <view class="input-boxs right" wx:if="{{ switchReeferMode }}">
@@ -41,13 +41,13 @@
       <view class="items">
         <view class="switchs left">
           <van-switch checked="{{ switchVentilation }}" bind:change="onSwitchChange" disabled="{{switchControlledAtmosphere}}" data-keys="switchVentilation" size="28rpx" />
-          <text class="title {{!switchVentilation && 'off'}} {{switchControlledAtmosphere && 'disabled'}}" catchtap="onToggleValue" data-isdisabled="{{switchControlledAtmosphere}}" data-keys="switchVentilation">Ventilation</text>
+          <text class="title {{!switchVentilation && 'off'}} {{switchControlledAtmosphere && 'disabled'}}" catchtap="onToggleValue" data-isdisabled="{{switchControlledAtmosphere}}" data-keys="switchVentilation">{{languageContent.Ventilation}}</text>
         </view>
         <view class="input-boxs right" wx:if="{{ !switchVentilation }}">
-          <text class="input-txt footer off">(Close)</text>
+          <text class="input-txt footer off">{{languageContent.close}}</text>
         </view>
         <view class="input-boxs right" wx:if="{{ switchVentilation }}">
-          <text class="input-txt header">Open</text>
+          <text class="input-txt header">{{languageContent.Open}}</text>
           <view class="inputs">
             <input type="digit" maxlength="6" bindinput="setFloatNumberValues" bindblur="recordFloatBlur" data-keys="switchVentilationValue" class="input-ipt" value="{{switchVentilationValue}}" data-clearkeys="ventilation" />
           </view>
@@ -70,13 +70,13 @@
       <view class="items">
         <view class="switchs left">
           <van-switch checked="{{ switchDehumified }}" bind:change="onSwitchChange" data-keys="switchDehumified" size="28rpx" />
-          <text class="title {{!switchDehumified && 'off'}}" catchtap="onToggleValue" data-keys="switchDehumified">Dehumified</text>
+          <text class="title {{!switchDehumified && 'off'}}" catchtap="onToggleValue" data-keys="switchDehumified">{{languageContent.Dehumified}}</text>
         </view>
         <view class="input-boxs right" wx:if="{{ !switchDehumified }}">
-          <text class="input-txt footer off">(No)</text>
+          <text class="input-txt footer off">{{languageContent.no}}</text>
         </view>
         <view class="input-boxs right" wx:if="{{ switchDehumified }}">
-          <text class="input-txt header">Yes at</text>
+          <text class="input-txt header">{{languageContent.yesAt}}</text>
           <view class="inputs">
             <input type="number" maxlength="3" bindinput="setNumberValues" bindblur="dehumifiedBBlur" data-keys="switchDehumifiedValue" data-clearkeys="dehumified" class="input-ipt" value="{{switchDehumifiedValue}}" />
           </view>
@@ -90,7 +90,7 @@
         <text>{{errorTips.dehumified}}</text>
       </view>
 
-      <text class="desc-txt" wx:if="{{ switchDehumified }}">{{switchDehumifiedDesc}}</text>
+      <text class="desc-txt" wx:if="{{ switchDehumified }}">{{languageContent.switchDehumifiedDesc}}</text>
     </view>
 
     <!-- Controlled Atmosphere -->
@@ -98,15 +98,15 @@
       <view class="items">
         <view class="switchs left">
           <van-switch checked="{{ switchControlledAtmosphere }}" bind:change="onSwitchChange" disabled="{{switchVentilation}}" data-keys="switchControlledAtmosphere" size="28rpx" />
-          <text class="title {{!switchControlledAtmosphere && 'off'}} {{switchVentilation && 'disabled'}}" catchtap="onToggleValue" data-isdisabled="{{switchVentilation}}" data-keys="switchControlledAtmosphere">Controlled Atmosphere</text>
+          <text class="title {{!switchControlledAtmosphere && 'off'}} {{switchVentilation && 'disabled'}}" catchtap="onToggleValue" data-isdisabled="{{switchVentilation}}" data-keys="switchControlledAtmosphere">{{languageContent.ControlledAtmosphere}}</text>
         </view>
         <view class="input-boxs right" wx:if="{{ !switchControlledAtmosphere }}">
-          <text class="input-txt footer off">(Non operating)</text>
+          <text class="input-txt footer off">{{languageContent.noOperating}}</text>
         </view>
       </view>
 
       <view class="input-boxs right" wx:if="{{ switchControlledAtmosphere }}">
-        <text class="input-txt header">Operating at O<text class="text-sup">2</text></text>
+        <text class="input-txt header">{{languageContent.o2Operate}}</text>
         <view class="inputs">
           <input type="number" maxlength="2" bindinput="setNumberValues" data-keys="switchControlledAtmosphereValue" class="input-ipt" value="{{switchControlledAtmosphereValue}}" data-clearkeys="controlledAtmosphere" bindblur="maxNumberBlur" />
         </view>
@@ -123,7 +123,7 @@
       </view>
 
       <view class="input-boxs right" wx:if="{{ switchControlledAtmosphere }}">
-        <text class="input-txt header">and CO<text class="text-sup">2</text></text>
+        <text class="input-txt header">{{languageContent.co2Operate}}</text>
         <view class="inputs">
           <input type="number" maxlength="2" class="input-ipt" bindinput="setNumberValues" data-keys="switchControlledAtmosphereValue1" value="{{switchControlledAtmosphereValue1}}" data-clearkeys="controlledAtmosphere1" bindblur="maxNumberBlur" />
         </view>
@@ -145,17 +145,17 @@
       <view class="items">
         <view class="switchs left">
           <van-switch checked="{{ switchGensetRequired }}" bind:change="onSwitchChange" data-keys="switchGensetRequired" size="28rpx" />
-          <text class="title {{!switchGensetRequired && 'off'}}" catchtap="onToggleValue" data-keys="switchGensetRequired">Genset required</text>
+          <text class="title {{!switchGensetRequired && 'off'}}" catchtap="onToggleValue" data-keys="switchGensetRequired">{{languageContent.GensetRequired}}</text>
         </view>
         <view class="input-boxs right">
-          <text class="input-txt footer {{!switchGensetRequired && 'off'}}">{{ switchGensetRequired? 'Yes': '(No)' }}</text>
+          <text class="input-txt footer {{!switchGensetRequired && 'off'}}">{{ switchGensetRequired? languageContent.yes: languageContent.no }}</text>
         </view>
       </view>
     </view>
 
     <!-- Genset required -->
     <view class="groups">
-      <view class="titles">Additional comments</view>
+      <view class="titles">{{languageContent.AdditionalComments}}</view>
       <view class="textareaContainer">
         <textarea maxlength="150" value="{{additionalComments}}" bindinput="setAdditionalComments"></textarea>
         <view class="fontCount">{{additionalCommentsLength}}/150</view>
@@ -165,7 +165,7 @@
   </view>
 
   <!-- Save btn -->
-  <button class="confirmBtn" hover-class="buttonClick" catchtap="onSave">Save</button>
+  <button class="confirmBtn" hover-class="buttonClick" catchtap="onSave">{{languageContent.save}}</button>
 </view>
 
 <!-- picker -->

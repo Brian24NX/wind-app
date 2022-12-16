@@ -752,6 +752,25 @@ var Languague = {
       remind: 'Please note that validation regarding the hazardous details provided will be done by our technical experts who could revert to you for any further information that could be helpful for hazardous approval on the voyage selected. Thanks for your understanding.',
       save: 'Save'
     },
+    reefer: {
+      title: 'Reefer Settings',
+      reeferMode: 'Reefer mode',
+      noOperating: '(Non operating',
+      Ventilation: 'Ventilation',
+      close: '(Close)',
+      Open: 'Open',
+      Dehumified: 'Dehumified',
+      no: '(No)',
+      yes: 'Yes',
+      yesAt: 'Yes at',
+      switchDehumifiedDesc: 'The accuracy of Dehumidify control is linked with the opening setup of fresh air exchange, an excessive choice will cause trouble, more info on CMA CGM site.',
+      ControlledAtmosphere: 'Controlled Atmosphere',
+      o2Operate: 'Operating at O²',
+      co2Operate: 'and CO²',
+      GensetRequired: 'Genset required',
+      AdditionalComments: 'Additional comments',
+      save: 'Save'
+    },
     modifyParty: {
       address: 'Address',
       partyName: 'Party Name',
