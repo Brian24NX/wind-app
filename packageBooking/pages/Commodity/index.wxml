@@ -114,7 +114,7 @@
   <view class="add-reeft-outbox" wx:if="{{pickerChooseReault[1].value === '20RF' || pickerChooseReault[1].value === '40RH' || pickerChooseReault[1].value === '45RH'}}">
     <view class="shipOwner add-reeft" catchtap="toAddReeft">
       <image src="/assets/img/booking/Reefer.svg" class="refferIcon"></image>
-      <view class="text" data-keys="isAddReeft"> Reefer<text class="red">*</text></view>
+      <view class="text" data-keys="isAddReeft"> {{languageContent.Reefer}}<text class="red">*</text></view>
       <image class="arrow-right" src="/assets/img/seniorsearch/bottomarrow.png"></image>
     </view>
     <!-- error-tips -->

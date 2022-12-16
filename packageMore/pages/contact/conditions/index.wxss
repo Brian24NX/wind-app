@@ -119,11 +119,6 @@ page {
   margin-right: 0;
 }
 
-.placeholder {
-  color: #B9BFCA;
-  font-style: italic;
-}
-
 .contactContainer .blockContainer .submitBtn {
   width: 100%;
   height: 88rpx;

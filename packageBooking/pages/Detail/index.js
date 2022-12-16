@@ -303,7 +303,7 @@ Page({
     } else {
       this.setData({
         minDate: new Date(this.data.routeSelected.arrivalDate.utc).getTime(),
-        maxDate: new Date().setFullYear(new Date(this.data.routeSelected.arrivalDate.utc).getFullYear() + 20)
+        maxDate: new Date().setFullYear(new Date(this.data.routeSelected.arrivalDate.utc).getFullYear() + 5)
       })
     }
     const date = this.data[type + 'Data'].appointmentDate.replaceAll('-', '/')

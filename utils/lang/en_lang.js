@@ -683,7 +683,7 @@ var Languague = {
       paymentLocation: 'Payment Location',
       bookingOffice: 'Preferred booking office',
       freeComments: 'Free comments',
-      freeCommentsPlaceHolder: '(optional) Example Release Order Date, Customer Broker ...',
+      freeCommentsPlaceHolder: 'optional, example Release Order Date, Customer Broker ...',
       save: 'Place My Booking',
       save1: 'Place ',
       save2: ' Booking',

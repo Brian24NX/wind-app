@@ -629,7 +629,7 @@ var Languague = {
       //查询
       search: "查询",
       reset: '重置',
-      remind: '增值服务功能升级中，敬请期待。\n如需添加增值服务产品，请移步至官网进行操作'
+      remind: '增值服务功能升级中，敬请期待。\n如需添加增值服务产品，请移步至官网进行操作。'
     },
     // 订舱详情
     bookingDetail: {
@@ -686,7 +686,7 @@ var Languague = {
       freightPayer: '费用付款方',
       bookingOffice: '首选订舱办事处',
       freeComments: '备注',
-      freeCommentsPlaceHolder: '（可选）附加备注（到付的本地费用付款方，首选仓库等）',
+      freeCommentsPlaceHolder: '可选，附加备注（到付的本地费用付款方，首选仓库等）',
       save: '制作我的订舱',
       save1: '制作 ',
       save2: ' 订舱',
@@ -718,7 +718,7 @@ var Languague = {
       shipperOwner: '发货人自备柜',
       sizeType: '尺寸/类型',
       Quantity: '数量',
-      perWeight: '每个集装箱的重量',
+      perWeight: '每个集装箱的重量（净重）',
       totalWeight: '总重量',
       Unit: '单位',
       SpecialAttributes: '特殊属性',

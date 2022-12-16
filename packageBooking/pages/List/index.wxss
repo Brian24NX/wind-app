@@ -135,7 +135,7 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12rpx 22rpx 12rpx 10rpx;
+  padding: 12rpx 22rpx 12rpx 0;
 }
 
 .portTimeContainers .portTimeContainer {

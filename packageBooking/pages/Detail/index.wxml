@@ -83,7 +83,7 @@
         <view style="position: relative;">
           <view class="key">{{languageContent.appointmentDate}}</view>
           <view class="keyValue {{exportRemind.appointmentDateRemind ? 'noRequestBorder' : ''}}" catchtap="chooseDate" data-type="export">
-            <view style="{{!exportData.appointmentDate ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{exportData.appointmentDate || 'YYYY-MM-DD'}}</view>
+            <view class="{{!exportData.appointmentDate ? 'placeholder' : ''}}">{{exportData.appointmentDate || 'YYYY-MM-DD'}}</view>
             <image src="/assets/img/booking/date.png"></image>
           </view>
           <view class="noRequest" wx:if="{{exportRemind.appointmentDateRemind}}">
@@ -94,7 +94,7 @@
         <view style="position: relative;">
           <view class="key">{{languageContent.appointmentTime}}</view>
           <view class="keyValue {{exportRemind.appointmentTimeRemind ? 'noRequestBorder' : ''}}" catchtap="chooseTime" data-type="export">
-            <view style="{{!exportData.appointmentTime ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{exportData.appointmentTime || 'HH:MM'}}</view>
+            <view class="{{!exportData.appointmentTime ? 'placeholder' : ''}}">{{exportData.appointmentTime || 'HH:MM'}}</view>
             <image src="/assets/img/booking/time.png"></image>
           </view>
           <view class="noRequest" wx:if="{{exportRemind.appointmentTimeRemind}}">
@@ -198,7 +198,7 @@
             <text>{{languageContent.countryRegin}}</text>
           </view>
           <view class="selectContainer {{exportRemind.countryRemind ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="country" data-to="export">
-            <view style="{{exportData.countryCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{exportData.countryName || verifyInfo.select}}</view>
+            <view class="{{!exportData.countryCode ? 'placeholder' : ''}}">{{exportData.countryName || verifyInfo.select}}</view>
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
           <view class="noRequest" wx:if="{{exportRemind.countryRemind}}">
@@ -212,7 +212,7 @@
             <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="selectContainer" catchtap="openPopup" data-type="state" data-to="export">
-            <view style="{{exportData.stateCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{exportData.stateName || verifyInfo.select}}</view>
+            <view class="{{!exportData.stateCode ? 'placeholder' : ''}}">{{exportData.stateName || verifyInfo.select}}</view>
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
         </view>
@@ -284,8 +284,8 @@
           <textarea class="textarea" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="transportComment" value="{{exportData.transportComment}}"></textarea>
         </view>
       </view>
-      <button class="haulageBtn" catchtap="confirmHaulage" data-to="export" style="margin-top: 30rpx;">{{languageContent.saveBtn}}</button>
     </block>
+    <button class="haulageBtn" catchtap="confirmHaulage" data-to="export" style="margin-top: 30rpx;">{{languageContent.saveBtn}}</button>
   </view>
 </view>
 
@@ -315,7 +315,7 @@
         <view style="position: relative;">
           <view class="key">{{languageContent.appointmentDate}}</view>
           <view class="keyValue {{importRemind.appointmentDateRemind ? 'noRequestBorder' : ''}}" catchtap="chooseDate" data-type="import">
-            <view style="{{!importData.appointmentDate ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{importData.appointmentDate || 'YYYY-MM-DD'}}</view>
+            <view class="{{!importData.appointmentDate ? 'placeholder' : ''}}">{{importData.appointmentDate || 'YYYY-MM-DD'}}</view>
             <image src="/assets/img/booking/date.png"></image>
           </view>
           <view class="noRequest" wx:if="{{importRemind.appointmentDateRemind}}">
@@ -326,7 +326,7 @@
         <view style="position: relative;">
           <view class="key">{{languageContent.appointmentTime}}</view>
           <view class="keyValue {{importRemind.appointmentTimeRemind ? 'noRequestBorder' : ''}}" catchtap="chooseTime" data-type="import">
-            <view style="{{!importData.appointmentTime ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{importData.appointmentTime || 'HH:MM'}}</view>
+            <view class="{{!importData.appointmentTime ? 'placeholder' : ''}}">{{importData.appointmentTime || 'HH:MM'}}</view>
             <image src="/assets/img/booking/time.png"></image>
           </view>
           <view class="noRequest" wx:if="{{importRemind.appointmentTimeRemind}}">
@@ -408,7 +408,7 @@
           </view>
           <view class="inputs {{importRemind.cityRemind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="city" value="{{importData.city}}" />
-            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.city}}" catchtap="deleteHaulageValue" data-type="exportData" data-type2="city" />
+            <image src="/assets/img/search/close@2x.png" wx:if="{{importData.city}}" catchtap="deleteHaulageValue" data-type="importData" data-type2="city" />
           </view>
           <view class="noRequest" wx:if="{{importRemind.cityRemind}}">
             <image src="/assets/img/search/error@2x.png"></image>
@@ -430,7 +430,7 @@
             <text>{{languageContent.countryRegin}}</text>
           </view>
           <view class="selectContainer {{importRemind.countryRemind ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="country" data-to="import">
-            <view style="{{importData.countryCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{importData.countryName || verifyInfo.select}}</view>
+            <view class="{{!importData.countryCode ? 'placeholder' : ''}}">{{importData.countryName || verifyInfo.select}}</view>
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
           <view class="noRequest" wx:if="{{importRemind.countryRemind}}">
@@ -444,7 +444,7 @@
             <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="selectContainer" catchtap="openPopup" data-type="state" data-to="import">
-            <view style="{{importData.stateCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{importData.stateName || verifyInfo.select}}</view>
+            <view class="{{!importData.stateCode ? 'placeholder' : ''}}">{{importData.stateName || verifyInfo.select}}</view>
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
         </view>
@@ -516,8 +516,8 @@
           <textarea class="textarea" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="transportComment" value="{{importData.transportComment}}"></textarea>
         </view>
       </view>
-      <button class="haulageBtn" catchtap="confirmHaulage" data-to="import" style="margin-top: 30rpx;">Save</button>
     </block>
+    <button class="haulageBtn" catchtap="confirmHaulage" data-to="import" style="margin-top: 30rpx;">Save</button>
   </view>
 </view>
 
@@ -538,7 +538,11 @@
       <view class="commodityTop">
         <view class="topLeft">
           <view class="leftLine"></view>
-          <view>{{languageContent.commodity}} {{index + 1}}</view>
+          <view class="commodityIndex">
+            <text>{{languageContent.commodity}} {{index + 1}}</text>
+            <image wx:if="{{item.reefer}}" src="/assets/img/booking/Reefer.svg"></image>
+            <image wx:if="{{item.hazardous}}" src="/assets/img/booking/Hazardous.svg"></image>
+          </view>
         </view>
         <view class="topRight">
           <image src="/assets/img/booking/modify.png" catchtap="editCargo" data-index="{{index}}" />
@@ -621,7 +625,7 @@
           <text class="optional">({{languageContent.optional}})</text>
         </view>
         <view class="inputs">
-          <input type="number" value="{{item.bookingPartyReference}}" bindinput="setReference" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
+          <input type="number" value="{{item.bookingPartyReference}}" bindinput="setReference" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" />
           <view class="deleteIcon" wx:if="{{item.bookingPartyReference}}" catchtap="deleteBookingPartyReferenceValue">
             <image src="/assets/img/search/close@2x.png"></image>
           </view>

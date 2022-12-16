@@ -8,12 +8,6 @@ page {
   padding-top: 30rpx;
 }
 
-.placeholder {
-  font-size: 28rpx;
-  color: #DFDFDF;
-  font-style: italic;
-}
-
 .chargeContainer .routeTitles {
   font-size: 56rpx;
   color: #04246A;

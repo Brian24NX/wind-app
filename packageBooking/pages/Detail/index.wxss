@@ -18,7 +18,7 @@ page {
 
 .detailTops .detailTopLeft {
   display: flex;
-  font-size: 48rpx;
+  font-size: 36rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #071E5D;
@@ -190,7 +190,7 @@ page {
 .oneCommodity .commodityTop .topLeft {
   display: flex;
   align-items: center;
-  font-size: 56rpx;
+  font-size: 36rpx;
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #04246A;
@@ -198,9 +198,19 @@ page {
 
 .oneCommodity .commodityTop .topLeft .leftLine {
   width: 6rpx;
-  height: 50rpx;
+  height: 40rpx;
   margin-right: 10rpx;
   background-color: #E20202;
+}
+
+.commodityIndex {
+  display: flex;
+  align-items: center;
+}
+
+.commodityIndex image {
+  width: 20rpx;
+  height: 20rpx;
 }
 
 .oneCommodity .commodityTop .topRight {
@@ -558,7 +568,7 @@ page {
 
 /* haulage start */
 .point {
-  margin: 20rpx 0;
+  margin: 10rpx 0;
   color: #04246A;
   font-size: 28rpx;
 }
@@ -576,7 +586,7 @@ page {
   color: #04246A;
   display: flex;
   align-items: center;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
 }
 
 .haulageDetailTops2 .detailTopLeft view {
@@ -642,7 +652,7 @@ page {
 }
 
 .key {
-  margin: 40rpx 0 12rpx;
+  margin: 30rpx 0 12rpx;
   color: #04246A;
   font-size: 28rpx;
 }
@@ -912,6 +922,7 @@ page {
   width: 30rpx;
   height: 30rpx;
   border: 1rpx solid #04246A;
+  transform: rotate(180deg);
   display: flex;
   align-items: center;
   justify-content: center;

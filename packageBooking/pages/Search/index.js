@@ -365,7 +365,7 @@ Page({
         deliveryHaulage: '',
         showDelete4: false
       })
-    } else if (type === '4') {
+    } else if (type === '5') {
       this.setData({
         reference: ''
       })

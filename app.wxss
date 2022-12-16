@@ -186,8 +186,8 @@ button::after {
 }
 
 .placeholder {
-  color: #7087A1;
-  font-size: 24rpx;
+  color: #B9BFCA;
+  font-size: 28rpx;
   font-style: italic;
 }
 
