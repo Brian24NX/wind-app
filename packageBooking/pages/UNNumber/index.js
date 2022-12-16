@@ -13,6 +13,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    languageContent: {},
+    language: 'zh',
     id: '',
     verifyInfo: {},
     // showUNNumberDelete: false,
@@ -157,6 +159,8 @@ Page({
    */
   onLoad(options) {
     this.setData({
+      languageContent: languageUtils.languageVersion().lang.page.unNumber,
+      language: languageUtils.languageVersion().lang.page.langue,
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
     })
 

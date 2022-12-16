@@ -41,15 +41,15 @@
     <view class="cutTimeContainers">
       <view class="cutTimeContainer">
         <view class="oneCutTime" wx:if="{{routeSelected.specialCutOffDate}}">
-          <view>Special BKG Cut-off</view>
+          <view>{{languageContent.specialBkgCutOff}}</view>
           <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.specialCutOffDate.local, true) : commonFilters.formatEnDateLocal(routeSelected.specialCutOffDate.local, '-', '', true)}}</view>
         </view>
         <view class="oneCutTime" wx:if="{{routeSelected.standardCutOffDate}}">
-          <view>Standard BKG Cut-off</view>
+          <view>{{languageContent.standardBkgCutOff}}</view>
           <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.standardCutOffDate.local, true) : commonFilters.formatEnDateLocal(routeSelected.standardCutOffDate.local, '-', '', true)}}</view>
         </view>
         <view class="oneCutTime">
-          <view>Port Cut-off</view>
+          <view>{{languageContent.portCutOff}}</view>
           <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(routeSelected.cutOffPortDateTime.utc, true) : commonFilters.formatEnDateLocal(routeSelected.cutOffPortDateTime.utc, '-', '', true)}}</view>
         </view>
       </view>
@@ -61,7 +61,7 @@
 <view class="oneDetails" wx:if="{{bookingSearchKey.receiptHaulage}}">
   <view class="detailTops" catchtap="zhedie" data-type="exportHaulage">
     <view class="detailTopLeft">
-      <view>Haulage Export</view>
+      <view>{{languageContent.haulageExport}}</view>
     </view>
     <image class="editIcon {{exportHaulageShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
@@ -77,11 +77,11 @@
           <text style="color: #4468BA;">{{exportData.mode}} Details</text>
         </view>
       </view>
-      <view class="point">Location point</view>
+      <view class="point">{{languageContent.locationPoint}}</view>
       <view class="pointValue">{{bookingSearchKey.placeOfReceipt}}</view>
-      <block>
+      <block wx:if="{{bookingSearchKey.receiptHaulage === 'Door'}}">
         <view style="position: relative;">
-          <view class="key">Appointment Date</view>
+          <view class="key">{{languageContent.appointmentDate}}</view>
           <view class="keyValue {{exportRemind.appointmentDateRemind ? 'noRequestBorder' : ''}}" catchtap="chooseDate" data-type="export">
             <view style="{{!exportData.appointmentDate ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{exportData.appointmentDate || 'YYYY-MM-DD'}}</view>
             <image src="/assets/img/booking/date.png"></image>
@@ -92,7 +92,7 @@
           </view>
         </view>
         <view style="position: relative;">
-          <view class="key">Appointment Time</view>
+          <view class="key">{{languageContent.appointmentTime}}</view>
           <view class="keyValue {{exportRemind.appointmentTimeRemind ? 'noRequestBorder' : ''}}" catchtap="chooseTime" data-type="export">
             <view style="{{!exportData.appointmentTime ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{exportData.appointmentTime || 'HH:MM'}}</view>
             <image src="/assets/img/booking/time.png"></image>
@@ -104,7 +104,7 @@
         </view>
       </block>
       <view style="position: relative;">
-        <view class="key">Transport Mode</view>
+        <view class="key">{{languageContent.transportModes}}</view>
         <view class="transportMode">
           <view class="oneMode" wx:for="{{transportModeList}}" wx:key="index" catchtap="chooseMode" data-id="{{item.id}}" data-type="export">
             <image class="image" src="{{item.icon}}" mode="aspectFit"></image>
@@ -118,15 +118,15 @@
         </view>
       </view>
     </view>
-    <block>
+    <block wx:if="{{bookingSearchKey.receiptHaulage === 'Door'}}">
       <view class="modifyContainer">
         <view class="modifyTitles">
           <view class="modifyTitleLine"></view>
-          <view>Address</view>
+          <view>{{languageContent.address}}</view>
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Contact Company</text>
+            <text>{{languageContent.contactCompany}}</text>
           </view>
           <view class="inputs {{exportRemind.companyNameRemind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="companyName" value="{{exportData.companyName}}" />
@@ -139,7 +139,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Address</text>
+            <text>{{languageContent.address1}}</text>
           </view>
           <view class="inputs {{exportRemind.address1Remind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="address1" value="{{exportData.address1}}" />
@@ -152,8 +152,8 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Additional Address Details </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.otherAddress}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="inputs">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="address2" value="{{exportData.address2}}" />
@@ -162,8 +162,8 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Additional Address Details </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.otherAddress}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="inputs">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="address3" value="{{exportData.address3}}" />
@@ -172,7 +172,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>City</text>
+            <text>{{languageContent.city}}</text>
           </view>
           <view class="inputs {{exportRemind.cityRemind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="city" value="{{exportData.city}}" />
@@ -185,8 +185,8 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Zip Code </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.zipCode}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="inputs">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="zipCode" value="{{exportData.zipCode}}" />
@@ -195,7 +195,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Country / Region</text>
+            <text>{{languageContent.countryRegin}}</text>
           </view>
           <view class="selectContainer {{exportRemind.countryRemind ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="country" data-to="export">
             <view style="{{exportData.countryCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{exportData.countryName || verifyInfo.select}}</view>
@@ -208,8 +208,8 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>State </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.state}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="selectContainer" catchtap="openPopup" data-type="state" data-to="export">
             <view style="{{exportData.stateCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{exportData.stateName || verifyInfo.select}}</view>
@@ -221,11 +221,11 @@
       <view class="modifyContainer">
         <view class="modifyTitles">
           <view class="modifyTitleLine"></view>
-          <view>Contact</view>
+          <view>{{languageContent.contact}}</view>
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Contact Name</text>
+            <text>{{languageContent.contactName}}</text>
           </view>
           <view class="inputs {{exportRemind.contactNameRemind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="contactName" value="{{exportData.contactName}}" />
@@ -238,7 +238,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Phone Number</text>
+            <text>{{languageContent.phoneNumber}}</text>
           </view>
           <view class="inputs {{exportRemind.phoneNumberRemind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="phoneNumber" value="{{exportData.phoneNumber}}" />
@@ -251,7 +251,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Email</text>
+            <text>{{languageContent.Email}}</text>
           </view>
           <view class="inputs {{exportRemind.emailRemind || exportRemind.emailRemind2 ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="email" value="{{exportData.email}}" />
@@ -263,13 +263,13 @@
           </view>
           <view class="noRequest" wx:if="{{!exportRemind.emailRemind && exportRemind.emailRemind2}}">
             <image src="/assets/img/search/error@2x.png"></image>
-            <text>The Email field must be a valid email</text>
+            <text>{{languageContent.emailExpired}}</text>
           </view>
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Loading Reference </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.LoadingReference}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="inputs">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="customerReference" value="{{exportData.customerReference}}" />
@@ -278,13 +278,13 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Transport Comment </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.TransportComment}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <textarea class="textarea" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="export" data-type2="transportComment" value="{{exportData.transportComment}}"></textarea>
         </view>
       </view>
-      <button class="haulageBtn" catchtap="confirmHaulage" data-to="export" style="margin-top: 30rpx;">Save</button>
+      <button class="haulageBtn" catchtap="confirmHaulage" data-to="export" style="margin-top: 30rpx;">{{languageContent.saveBtn}}</button>
     </block>
   </view>
 </view>
@@ -293,7 +293,7 @@
 <view class="oneDetails" wx:if="{{bookingSearchKey.deliveryHaulage}}">
   <view class="detailTops" catchtap="zhedie" data-type="importHaulage">
     <view class="detailTopLeft">
-      <view>Haulage Import</view>
+      <view>{{languageContent.haulageImport}}</view>
     </view>
     <image class="editIcon {{importHaulageShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
   </view>
@@ -309,11 +309,11 @@
           <text style="color: #4468BA;">{{importData.mode}} Details</text>
         </view>
       </view>
-      <view class="point">Location point</view>
+      <view class="point">{{languageContent.locationPoint}}</view>
       <view class="pointValue">{{bookingSearchKey.placeOfDelivery}}</view>
-      <block>
+      <block wx:if="{{bookingSearchKey.deliveryHaulage === 'Door'}}">
         <view style="position: relative;">
-          <view class="key">Appointment Date</view>
+          <view class="key">{{languageContent.appointmentDate}}</view>
           <view class="keyValue {{importRemind.appointmentDateRemind ? 'noRequestBorder' : ''}}" catchtap="chooseDate" data-type="import">
             <view style="{{!importData.appointmentDate ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{importData.appointmentDate || 'YYYY-MM-DD'}}</view>
             <image src="/assets/img/booking/date.png"></image>
@@ -324,7 +324,7 @@
           </view>
         </view>
         <view style="position: relative;">
-          <view class="key">Appointment Time</view>
+          <view class="key">{{languageContent.appointmentTime}}</view>
           <view class="keyValue {{importRemind.appointmentTimeRemind ? 'noRequestBorder' : ''}}" catchtap="chooseTime" data-type="import">
             <view style="{{!importData.appointmentTime ? 'color: #B9BFCA;font-style: italic;' : ''}}">{{importData.appointmentTime || 'HH:MM'}}</view>
             <image src="/assets/img/booking/time.png"></image>
@@ -336,7 +336,7 @@
         </view>
       </block>
       <view style="position: relative;">
-        <view class="key">Transport Mode</view>
+        <view class="key">{{languageContent.transportModes}}</view>
         <view class="transportMode">
           <view class="oneMode" wx:for="{{transportModeList}}" wx:key="index" catchtap="chooseMode" data-id="{{item.id}}" data-type="import">
             <image class="image" src="{{item.icon}}" mode="aspectFit"></image>
@@ -350,15 +350,15 @@
         </view>
       </view>
     </view>
-    <block>
+    <block wx:if="{{bookingSearchKey.deliveryHaulage === 'Door'}}">
       <view class="modifyContainer">
         <view class="modifyTitles">
           <view class="modifyTitleLine"></view>
-          <view>Address</view>
+          <view>{{languageContent.address}}</view>
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Contact Company</text>
+            <text>{{languageContent.contactCompany}}</text>
           </view>
           <view class="inputs {{importRemind.companyNameRemind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="companyName" value="{{importData.companyName}}" />
@@ -371,7 +371,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Address</text>
+            <text>{{languageContent.address1}}</text>
           </view>
           <view class="inputs {{importRemind.address1Remind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="address1" value="{{importData.address1}}" />
@@ -384,8 +384,8 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Additional Address Details </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.otherAddress}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="inputs">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="address2" value="{{importData.address2}}" />
@@ -394,8 +394,8 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Additional Address Details </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.otherAddress}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="inputs">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="address3" value="{{importData.address3}}" />
@@ -404,7 +404,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>City</text>
+            <text>{{languageContent.city}}</text>
           </view>
           <view class="inputs {{importRemind.cityRemind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="city" value="{{importData.city}}" />
@@ -417,8 +417,8 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Zip Code </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.zipCode}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="inputs">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="zipCode" value="{{importData.zipCode}}" />
@@ -427,7 +427,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Country / Region</text>
+            <text>{{languageContent.countryRegin}}</text>
           </view>
           <view class="selectContainer {{importRemind.countryRemind ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="country" data-to="import">
             <view style="{{importData.countryCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{importData.countryName || verifyInfo.select}}</view>
@@ -440,8 +440,8 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>State </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.state}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="selectContainer" catchtap="openPopup" data-type="state" data-to="import">
             <view style="{{importData.stateCode ? 'color: #071E5D;' : 'font-style: italic;'}}">{{importData.stateName || verifyInfo.select}}</view>
@@ -453,11 +453,11 @@
       <view class="modifyContainer">
         <view class="modifyTitles">
           <view class="modifyTitleLine"></view>
-          <view>Contact</view>
+          <view>{{languageContent.contact}}</view>
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Contact Name</text>
+            <text>{{languageContent.contactName}}</text>
           </view>
           <view class="inputs {{importRemind.contactNameRemind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="contactName" value="{{importData.contactName}}" />
@@ -470,7 +470,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Phone Number</text>
+            <text>{{languageContent.phoneNumber}}</text>
           </view>
           <view class="inputs {{importRemind.phoneNumberRemind ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="phoneNumber" value="{{importData.phoneNumber}}" />
@@ -483,7 +483,7 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Email</text>
+            <text>{{languageContent.Email}}</text>
           </view>
           <view class="inputs {{importRemind.emailRemind || importRemind.emailRemind2 ? 'noRequestBorder' : ''}}">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="email" value="{{importData.email}}" />
@@ -495,13 +495,13 @@
           </view>
           <view class="noRequest" wx:if="{{!importRemind.emailRemind && importRemind.emailRemind2}}">
             <image src="/assets/img/search/error@2x.png"></image>
-            <text>The Email field must be a valid email</text>
+            <text>{{languageContent.emailExpired}}</text>
           </view>
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Loading Reference </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.LoadingReference}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <view class="inputs">
             <input type="text" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="customerReference" value="{{importData.customerReference}}" />
@@ -510,8 +510,8 @@
         </view>
         <view class="oneModify">
           <view class="title">
-            <text>Transport Comment </text>
-            <text class="optional">(optional)</text>
+            <text>{{languageContent.TransportComment}} </text>
+            <text class="optional">({{languageContent.optional}})</text>
           </view>
           <textarea class="textarea" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" bindinput="setHaulageInputValue" data-type="import" data-type2="transportComment" value="{{importData.transportComment}}"></textarea>
         </view>
@@ -538,7 +538,7 @@
       <view class="commodityTop">
         <view class="topLeft">
           <view class="leftLine"></view>
-          <view>Commodity {{index + 1}}</view>
+          <view>{{languageContent.commodity}} {{index + 1}}</view>
         </view>
         <view class="topRight">
           <image src="/assets/img/booking/modify.png" catchtap="editCargo" data-index="{{index}}" />
@@ -555,7 +555,7 @@
     </view>
     <view class="addParty" catchtap="addCommodity">
       <image src="/assets/img/booking/add_2.svg"></image>
-      <view>Add Commodity</view>
+      <view>{{languageContent.addCommodity}}</view>
     </view>
   </view>
   <!-- <view class="commodityRemind">
@@ -583,14 +583,14 @@
         <image src="/assets/img/booking/delete.png" catchtap="deleteParty" data-index="{{index}}" />
       </view>
       <view wx:if="{{!index}}">
-        <view class="title">Party Name <text class="red">*</text></view>
+        <view class="title">{{languageContent.partyName}} <text class="red">*</text></view>
         <view class="selectContainer" catchtap="openPopup" data-type="party" data-to="partyList">
           <view style="{{item.code ? 'color: #071E5D;' : ''}}">{{item.name || verifyInfo.select}}</view>
           <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
         </view>
       </view>
       <view wx:if="{{index}}">
-        <view class="title">Party Name <text class="red">*</text></view>
+        <view class="title">{{languageContent.partyName}} <text class="red">*</text></view>
         <view class="inputContainers">
           <view class="inputsContainer {{item.required1 ? 'noRequestBorder' : ''}}">
             <input type="text" bindinput="enterParty" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" data-index="{{index}}" value="{{item.name}}" />
@@ -613,12 +613,12 @@
         </view>
       </view>
       <view>
-        <view class="title">Address</view>
+        <view class="title">{{languageContent.address}}</view>
         <view class="desc" wx:if="{{item.address.address1}}">{{item.address.address1}}, {{item.address.address2}}</view>
       </view>
       <view wx:if="{{!index}}">
-        <view class="title">My reference
-          <text class="optional">(optional)</text>
+        <view class="title">{{languageContent.myReference}}
+          <text class="optional">({{languageContent.optional}})</text>
         </view>
         <view class="inputs">
           <input type="number" value="{{item.bookingPartyReference}}" bindinput="setReference" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
@@ -628,7 +628,7 @@
         </view>
       </view>
       <view style="position: relative;">
-        <view class="title">Role <text class="red">*</text></view>
+        <view class="title">{{languageContent.role}} <text class="red">*</text></view>
         <view class="roleList">
           <view class="oneRole" wx:for="{{!index ? roleList : otherRoleList}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs" catchtap="chooseRole" data-index="{{index}}" data-roleid="{{items}}">
             <view class="checked" style="{{!filters.hasRole(item.roleIds, items) ? 'background-color: #ffffff' : ''}}">
@@ -644,10 +644,10 @@
       </view>
       <view class="addParty" catchtap="addParty" wx:if="{{index === partyList.length - 1}}">
         <image src="/assets/img/booking/add_2.svg"></image>
-        <view>Add Party</view>
+        <view>{{languageContent.addParty}}</view>
       </view>
     </view>
-    <button class="haulageBtn" catchtap="confirmParty">Save</button>
+    <button class="haulageBtn" catchtap="confirmParty">{{languageContent.saveBtn}}</button>
   </view>
 </view>
 
@@ -767,7 +767,7 @@
   <view style="margin-top: 30rpx;" hidden="{{!bookingOfficeShow}}">
     <view class="inputContainers">
       <view class="inputsContainer {{bookingOfficeRemind ? 'noRequestBorder' : ''}}">
-        <input type="text" bindinput="changeOffice" placeholder="{{verifyInfo.input}}" placeholder-class="placeholder" value="{{preferredBookingOffice.name}}" />
+        <input type="text" bindinput="changeOffice" placeholder="{{languageContent.bookingOffice}}" placeholder-class="placeholder" value="{{preferredBookingOffice.name}}" />
         <view class="deleteIcon" wx:if="{{showOfficeDelete}}" catchtap="deleteValue2" data-type="showOfficeDelete">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>

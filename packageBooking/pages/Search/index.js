@@ -64,7 +64,6 @@ Page({
     shippingCompanyList: ['0001', '0002', '0011', '0015'],
     minDate: new Date().getTime(),
     maxDate: null,
-    warmPrompt: '',
     hasPermission: null
   },
 
@@ -81,16 +80,6 @@ Page({
 
     this.setData({
       maxDate: new Date().setMonth(new Date().getMonth() + 4)
-    });
-
-    // 提示提示语
-    const warmPrompt = {
-      zh: `增值服务功能升级中，敬请期待。
-      \n如需添加增值服务产品，请移步至官网进行操作`,
-      en: `Value-added service (VAS) function coming soon.\n Please add additional services during booking on eCommerce website for now.`
-    }
-    this.setData({
-      warmPrompt: warmPrompt[lag]
     });
 
     if (options.pol && options.pod) {

@@ -2,13 +2,13 @@
 <view class="oneContainer">
   <view class="containerTitle">
     <view class="titleLine"></view>
-    <view>Global Details</view>
+    <view>{{languageContent.globalDetail}}</view>
   </view>
   <view class="scroll-unnumber">
-    <view class="title">UN Number or Proper Shipping Name <text class="red">*</text></view>
+    <view class="title">{{languageContent.unNumberName}} <text class="red">*</text></view>
     <view class="inputContainers">
       <view class="inputsContainer number">
-        <input type="text" bindinput="enterUNNumber" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" placeholder-class="placeholder" value="{{unNumberName}}" />
+        <input type="text" bindinput="enterUNNumber" placeholder="{{languageContent.nameOrCode}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" placeholder-class="placeholder" value="{{unNumberName}}" />
         <view class="deleteIcon" wx:if="{{unNumberName}}" catchtap="clearValue" data-keys="unNumberName,UNNumberLists,classNumber,emsCode,pickerChooseReault.1.text,pickerChooseReault.1.value,packageDescriptionLists,pickerChooseReault.3.text,packageDescriptionCode,packageDescriptionName,pickerChooseReault.4.text,innerPackageDescriptionCode,innerPackageDescriptionName" data-isrequired="true">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
@@ -29,7 +29,7 @@
     </view>
   </view>
   <view>
-    <view class="title">Chemical Name</view>
+    <view class="title">{{languageContent.chemicalName}}</view>
     <view class="inputs number">
       <input type="text" value="{{chemicalName}}" bindinput="setValues" data-keys="chemicalName" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
       <view class="deleteIcon" wx:if="{{chemicalName}}" catchtap="clearValue" data-keys="chemicalName" data-isrequired="true">
@@ -43,7 +43,7 @@
     </view>
   </view>
   <view class="scroll-packing-group">
-    <view class="title">Packing Group <text class="red">*</text></view>
+    <view class="title">{{languageContent.PackingGroup}} <text class="red">*</text></view>
     <view class="selectContainer" catchtap="openPicker" data-type="1">
       <view style="{{pickerChooseReault[1].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[1].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
@@ -55,7 +55,7 @@
     </view>
   </view>
   <view class="scroll-class">
-    <view class="title">Class <text class="red">*</text></view>
+    <view class="title">{{languageContent.Class}} <text class="red">*</text></view>
     <view class="inputs">{{classNumber}}</view>
     <view class="error-tips" wx:if="{{tips.classNumber}}">
       <image src="/assets/img/search/error@2x.png"></image>
@@ -63,7 +63,7 @@
     </view>
   </view>
   <view class="scroll-emergency-procedure">
-    <view class="title">Emergency procedure <text class="red">*</text></view>
+    <view class="title">{{languageContent.EmergencyProcedure}} <text class="red">*</text></view>
     <view class="inputs">{{emsCode}}</view>
     <view class="error-tips" wx:if="{{tips.emsCode}}">
       <image src="/assets/img/search/error@2x.png"></image>
@@ -71,7 +71,7 @@
     </view>
   </view>
   <view>
-    <view class="title">Flashpoint</view>
+    <view class="title">{{languageContent.Flashpoint}}</view>
     <view class="flashPoint">
       <view class="inputs number" style="width: 550rpx;">
         <input type="digit" value="{{flashPoint}}" maxlength="9" bindinput="setFlashPoint" data-keys="flashPoint" bindblur="recordFloatBlur" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
@@ -97,10 +97,10 @@
 <view class="oneContainer">
   <view class="containerTitle">
     <view class="titleLine"></view>
-    <view>Hazardous cargo weight per container</view>
+    <view>{{languageContent.hazWeight}}</view>
   </view>
   <view class="scroll-net-weight">
-    <view class="title">Net Weight <text class="red">*</text></view>
+    <view class="title">{{languageContent.NetWeight}} <text class="red">*</text></view>
     <view class="inputs number">
       <input type="digit" maxlength="9" value="{{netWeight}}" bindinput="setValues" data-keys="netWeight" data-isrequired="true" data-keystype="number" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindblur="recordFloatBlur" />
       <view class="deleteIcon" wx:if="{{netWeight}}" catchtap="clearValue" data-keys="netWeight" data-isrequired="true">
@@ -114,7 +114,7 @@
     </view>
   </view>
   <view class="scroll-gross-weight">
-    <view class="title">Gross Weight <text class="red">*</text></view>
+    <view class="title">{{languageContent.GrossWeight}} <text class="red">*</text></view>
     <view class="inputs number">
       <input type="digit" maxlength="9" value="{{grossWeight}}" bindinput="setNumberValues" data-keys="grossWeight" placeholder="{{verifyInfo.input}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindblur="recordFloatBlur" data-keystype="number" />
       <view class="deleteIcon" wx:if="{{grossWeight}}" catchtap="clearValue" data-keys="grossWeight" data-isrequired="true">
@@ -128,7 +128,7 @@
     </view>
   </view>
   <view class="scroll-unit">
-    <view class="title">Unit <text class="red">*</text></view>
+    <view class="title">{{languageContent.Unit}} <text class="red">*</text></view>
     <view class="selectContainer" catchtap="openPicker" data-type="2">
       <view style="{{pickerChooseReault[2].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[2].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
@@ -143,10 +143,10 @@
 <view class="oneContainer">
   <view class="containerTitle">
     <view class="titleLine"></view>
-    <view>Packing Details</view>
+    <view>{{languageContent.PackingDetails}}</view>
   </view>
   <view class="scroll-packaging-description">
-    <view class="title">Packaging Description <text class="red">*</text></view>
+    <view class="title">{{languageContent.PackagingDescription}} <text class="red">*</text></view>
     <view class="selectContainer" catchtap="openPicker" data-type="3">
       <view style="{{pickerChooseReault[3].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[3].text || verifyInfo.select}}</view>
       <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
@@ -157,7 +157,7 @@
     </view>
   </view>
   <view class="scroll-quantity">
-    <view class="title">Quantity <text class="red">*</text></view>
+    <view class="title">{{languageContent.Quantity}} <text class="red">*</text></view>
     <view class="inputs number">
       <input type="number" maxlength="6" value="{{quantityValue}}" bindinput="setValues" placeholder="{{verifyInfo.input}}" data-keys="quantityValue" data-isrequired="true" data-keystype="number" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
       <view class="deleteIcon" wx:if="{{quantityValue}}" catchtap="clearValue" data-keys="quantityValue" data-isrequired="true">
@@ -173,7 +173,7 @@
   <!-- inner Packaging -->
   <block wx:if="{{isShowInnerPackage}}">
     <view class="scroll-inner-packaging-description">
-      <view class="title">Inner Packaging</view>
+      <view class="title">{{languageContent.InnerPackaging}}</view>
       <view class="selectContainer" catchtap="openPicker" data-type="4">
         <view style="{{pickerChooseReault[4].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[4].text || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
@@ -184,7 +184,7 @@
       </view>
     </view>
     <view class="scroll-inner-quantity">
-      <view class="title">Inner Quantity</view>
+      <view class="title">{{languageContent.InnerQuantity}}</view>
       <view class="inputs number">
         <input type="number" maxlength="6" value="{{innerQuantityValue}}" bindinput="setValues" placeholder="{{verifyInfo.input}}" data-keys="innerQuantityValue" data-keystype="number" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
         <view class="deleteIcon" wx:if="{{innerQuantityValue}}" catchtap="clearValue" data-keys="innerQuantityValue">
@@ -198,48 +198,21 @@
       </view>
     </view>
   </block>
-  <!-- <block wx:if="{{pickerChooseReault[3].packagingType === 'O'}}">
-    <view class="scroll-packaging-description">
-      <view class="title">Inner Packaging <text class="red">*</text></view>
-      <view class="selectContainer" catchtap="openPicker" data-type="3">
-        <view style="{{pickerChooseReault[3].text !== '' ? 'color: #071E5D;' : 'font-style: italic;'}}">{{pickerChooseReault[3].text || verifyInfo.select}}</view>
-        <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
-      </view>
-      <view class="error-tips" wx:if="{{tips.packageDescriptionName}}">
-        <image src="/assets/img/search/error@2x.png"></image>
-        <text>{{tips.packageDescriptionName}}</text>
-      </view>
-    </view>
-    <view class="scroll-quantity">
-      <view class="title">Quantity <text class="red">*</text></view>
-      <view class="inputs number">
-        <input type="number" maxlength="6" value="{{quantityValue}}" bindinput="setValues" placeholder="{{verifyInfo.input}}" data-keys="quantityValue" data-isrequired="true" data-keystype="number" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
-        <view class="deleteIcon" wx:if="{{quantityValue}}" catchtap="clearValue" data-keys="quantityValue" data-isrequired="true">
-          <image src="/assets/img/search/close@2x.png"></image>
-        </view>
-      </view>
-
-      <view class="error-tips" wx:if="{{tips.quantityValue}}">
-        <image src="/assets/img/search/error@2x.png"></image>
-        <text>{{tips.quantityValue}}</text>
-      </view>
-    </view>
-  </block> -->
   <view class="shipOwner">
     <view class="checked {{isTransport?'bg':''}}" catchtap="checkBoxToggle" data-keys="isTransport">
       <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isTransport}}" />
     </view>
-    <view class="text" catchtap="checkBoxToggle" data-keys="isTransport">Transport of dangerous goods in limited quantities</view>
+    <view class="text" catchtap="checkBoxToggle" data-keys="isTransport">{{languageContent.transportOfDangerous}}</view>
   </view>
 </view>
 
 <view class="oneContainer">
   <view class="containerTitle">
     <view class="titleLine"></view>
-    <view>Emergency Details</view>
+    <view>{{languageContent.EmergencyDetails}}</view>
   </view>
   <view class="scroll-emergency-contact-name">
-    <view class="title">Emergency Contact Name <text class="red">*</text></view>
+    <view class="title">{{languageContent.EmergencyContactName}} <text class="red">*</text></view>
     <view class="inputs number">
       <input type="text" value="{{emergencyContactName}}" bindinput="setValues" placeholder="{{verifyInfo.input}}" data-keys="emergencyContactName" data-isrequired="true" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
       <view class="deleteIcon" wx:if="{{emergencyContactName}}" catchtap="clearValue" data-keys="emergencyContactName" data-isrequired="true">
@@ -253,7 +226,7 @@
     </view>
   </view>
   <view class="scroll-emergency-number">
-    <view class="title">Emergency Number <text class="red">*</text></view>
+    <view class="title">{{languageContent.EmergencyNumber}} <text class="red">*</text></view>
     <view class="inputs number">
       <input type="number" value="{{emergencyNumber}}" bindinput="setValues" placeholder="{{verifyInfo.input}}" data-keys="emergencyNumber" data-isrequired="true" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" />
       <view class="deleteIcon" wx:if="{{emergencyNumber}}" catchtap="clearValue" data-keys="emergencyNumber" data-isrequired="true">
@@ -267,16 +240,16 @@
     </view>
   </view>
   <view>
-    <view class="title">Comment <text class="kexuan">(Optional)</text></view>
+    <view class="title">{{languageContent.Comment}} <text class="kexuan">({{languageContent.Optional}})</text></view>
     <view class="textareaContainer">
       <textarea maxlength="150" value="{{commentOptional}}" bindinput="setCommentOptional"></textarea>
       <view class="fontCount">{{commentOptionalLength}}/150</view>
     </view>
   </view>
 
-  <view class="bottomRemind">Please note that validation regarding the hazardous details provided will be done by our technical experts who could revert to you for any further information that could be helpful for hazardous approval on the voyage selected. Thanks for your understanding.</view>
+  <view class="bottomRemind">{{languageContent.remind}}</view>
 
-  <button class="confirmBtn" hover-class="buttonClick" catchtap="onSave">Save</button>
+  <button class="confirmBtn" hover-class="buttonClick" catchtap="onSave">{{languageContent.save}}</button>
 </view>
 
 <!-- picker -->

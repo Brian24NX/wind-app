@@ -19,7 +19,7 @@
     </view>
     <view class="matching">
       <image src="/assets/img/booking/matching.svg"></image>
-      <view>{{routings.length}} matching</view>
+      <view>{{routings.length}} {{languageContent.matching}}</view>
     </view>
   </view>
 </view>
@@ -27,8 +27,8 @@
   <view class="oneResult" wx:for="{{routings}}" wx:for-item="items" wx:for-index="indexs" wx:key="indexs">
     <view class="resultTop">
       <view class="tagContainer">
-        <view class="oneTag" wx:if="{{!items.zhuanyun}}">DIRECT</view>
-        <view class="oneTag" wx:if="{{items.zhuanyun}}">TRANSHIPMENT</view>
+        <view class="oneTag" wx:if="{{!items.zhuanyun}}">{{languageContent.direct}}</view>
+        <view class="oneTag" wx:if="{{items.zhuanyun}}">{{languageContent.transhipment}}</view>
         <!-- <view class="oneTag oneTag2">LATE BOOKING</view> -->
       </view>
     </view>
@@ -44,21 +44,21 @@
           <view class="portTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.arrivalDate.utc, true, true) : commonFilters.formatEnDateLocal(items.arrivalDate.utc, '-', '', true, true)}}</view>
         </view>
       </view>
-      <view class="days">{{items.transitDuration}} Days</view>
+      <view class="days">{{items.transitDuration}} {{items.transitDuration > 1 ? languageContent.days : languageContent.day}}</view>
     </view>
     <view class="cutOffTimes">
-      <text>Port Cut-off</text>
+      <text>{{languageContent.portCutOff}}</text>
       <text class="cutOffTime">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.cutOffPortDateTime.utc, true) : commonFilters.formatEnDateLocal(items.cutOffPortDateTime.utc, '-', '', true)}}</text>
     </view>
     <view style="margin-bottom: 30rpx;" wx:if="{{items.show}}">
       <view class="cutTimeContainers">
         <view class="cutTimeContainer">
           <view class="oneCutTime" wx:if="{{items.specialCutOffDate}}">
-            <view>Special BKG Cut-off</view>
+            <view>{{languageContent.specialBkgCutOff}}</view>
             <view>{{language === 'zh' ? commonFilters.formatCnDateLocal(items.specialCutOffDate.local, true) : commonFilters.formatEnDateLocal(items.specialCutOffDate.local, '-', '', true)}}</view>
           </view>
           <view class="oneCutTime" wx:if="{{items.standardCutOffDate}}">
-            <view>Standard BKG Cut-off</view>
+            <view>{{languageContent.standardBkgCutOff}}</view>
             <view style="color: #2B74FF;">{{language === 'zh' ? commonFilters.formatCnDateLocal(items.standardCutOffDate.local, true) : commonFilters.formatEnDateLocal(items.standardCutOffDate.local, '-', '', true)}}</view>
           </view>
         </view>
@@ -161,10 +161,10 @@
     </view>
     <view class="resultBottoms">
       <view class="jiantou" catchtap="changeShow" data-index="{{indexs}}">
-        <text>{{items.show ? 'Hide' : 'Display'}}</text>
+        <text>{{items.show ? languageContent.hide : languageContent.display}}</text>
         <image style="{{items.show ? 'transform: rotate(180deg);' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit"></image>
       </view>
-      <button class="oneButtom" catchtap="selectLine" data-index="{{indexs}}">Select</button>
+      <button class="oneButtom" catchtap="selectLine" data-index="{{indexs}}">{{languageContent.select}}</button>
     </view>
   </view>
 </view>

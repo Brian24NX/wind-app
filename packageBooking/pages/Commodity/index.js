@@ -111,10 +111,10 @@ Page({
    */
   onLoad(options) {
     wx.setNavigationBarTitle({
-      title: languageUtils.languageVersion().lang.page.bookingDetail.bookingDetail,
+      title: languageUtils.languageVersion().lang.page.commodity.title,
     })
     this.setData({
-      languageContent: languageUtils.languageVersion().lang.page.bookingDetail,
+      languageContent: languageUtils.languageVersion().lang.page.commodity,
       verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
     })
     const pages = getCurrentPages()
