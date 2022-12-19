@@ -81,6 +81,27 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packagePrice/pages/calculatedCharges/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packagePrice/pages/calculatedChargeResult/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packagePrice/pages/calculatedChargeResult/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

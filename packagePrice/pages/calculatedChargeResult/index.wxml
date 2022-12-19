@@ -1,0 +1,71 @@
+<!--packagePrice/pages/calculatedChargeResult/index.wxml-->
+<wxs module="format" src="../../../utils/format.wxs"></wxs>
+<view class="searchResultTopContainer">
+  <view class="resultCardTops">
+    <view class="DNDTitle">
+      <text>{{languageContent.title1}} </text>
+      <text style="color: #E10202;">{{languageContent.title2}}</text>
+    </view>
+    <view class="DNDDate">
+      <image src="/assets/img/seniorsearch/date.png"></image>
+      <text>{{language === 'zh' ? format.formatCnDateLocal(chargeCalculationDate, true, true) : format.formatEnDateLocal(chargeCalculationDate, '-', '', true, true)}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="resultList">
+  <view class="oneResult" wx:for="{{calculatedChargeList}}" wx:key="index" catchtap="toDetail" data-index="{{index}}">
+    <view class="resultTop">
+      <view class="topOne">
+        <view>{{languageContent.shipmentRef}}</view>
+        <view class="topValue">{{item.blReference}}</view>
+      </view>
+      <view class="topOne">
+        <view>{{languageContent.containerNo}}</view>
+        <view class="topValue">{{item.containerId}}</view>
+      </view>
+    </view>
+    <view class="fenge">
+      <view class="leftCircle"></view>
+      <view class="centerLine"></view>
+      <view class="rightCircle"></view>
+    </view>
+    <view class="locationContainer">
+      <image src="/assets/img/search/zyg@2x.png"></image>
+      <view class="locationRight">
+        <view>{{languageContent.currentLocation}}</view>
+        <view class="locationName">{{item.paymentlocation.internalCode}}</view>
+        <view class="point">{{item.paymentlocation.name}}</view>
+      </view>
+    </view>
+    <view class="typeContianer">
+      <view class="oneType">
+        <text>{{languageContent.chargeType}}</text>
+        <view class="typeValue">{{item.chargeName}}</view>
+      </view>
+      <view class="oneType">
+        <text>{{languageContent.lastFreeDate}}</text>
+        <view class="typeValue">{{language === 'zh' ? format.formatCnDateLocal(item.freeDate, true, true) : format.formatEnDateLocal(item.freeDate, '-', '', true, true)}}</view>
+      </view>
+      <view class="oneType">
+        <text>{{languageContent.customersClearedDate}}</text>
+        <view class="typeValue">{{language === 'zh' ? format.formatCnDateLocal(item.customsClearedDate.utc, true, true) : format.formatEnDateLocal(item.customsClearedDate.utc, '-', '', true, true)}}</view>
+      </view>
+      <view class="oneType">
+        <text>{{languageContent.cashierClearedDate}}</text>
+        <view class="typeValue">N/A</view>
+      </view>
+    </view>
+    <view class="amountContainer">
+      <view class="amountLeft">
+        <image src="/assets/img/price/Cash.svg"></image>
+        <view class="amount">{{item.amount}}</view>
+        <view>
+          <view class="unit">{{item.currencyCode}}</view>
+          <view class="total">{{languageContent.total}}</view>
+        </view>
+      </view>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,59 @@
+<!--packagePrice/pages/calculatedChargeDetail/index.wxml-->
+<wxs module="format" src="../../../utils/format.wxs"></wxs>
+<view class="searchResultTopContainer">
+  <view class="resultCardTops">
+    <view class="DNDTitle">
+      <text>{{languageContent.title1}} </text>
+      <text style="color: #E10202;">{{languageContent.title2}}</text>
+    </view>
+    <view class="DNDDate">
+      <image src="/assets/img/seniorsearch/date.png"></image>
+      <text>{{language === 'zh' ? format.formatCnDateLocal(chargeCalculationDate, true, true) : format.formatEnDateLocal(chargeCalculationDate, '-', '', true, true)}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="resultList">
+  <view class="oneResult">
+    <view class="resultTop">
+      <view class="topOne">
+        <view>{{languageContent.shipmentRef}}</view>
+        <view class="topValue">{{calculatedChargeDetail.blReference}}</view>
+      </view>
+      <view class="topOne">
+        <view>{{languageContent.containerNo}}</view>
+        <view class="topValue">{{calculatedChargeDetail.containerId}}</view>
+      </view>
+    </view>
+    <block wx:for="{{calculatedChargeDetail.chargeDetails}}" wx:key="index">
+      <view class="fenge">
+        <view class="leftCircle"></view>
+        <view class="centerLine"></view>
+        <view class="rightCircle"></view>
+      </view>
+      <view class="typeContianer">
+        <view class="oneType">
+          <text>From Date</text>
+          <view class="typeValue">{{language === 'zh' ? format.formatCnDateLocal(item.fromDate, true, true) : format.formatEnDateLocal(item.fromDate, '-', '', true, true)}}</view>
+        </view>
+        <view class="oneType">
+          <text>To Date</text>
+          <view class="typeValue">{{language === 'zh' ? format.formatCnDateLocal(item.toDate, true, true) : format.formatEnDateLocal(item.toDate, '-', '', true, true)}}</view>
+        </view>
+        <view class="oneType">
+          <text>Days</text>
+          <view class="typeValue">{{item.noOfDays + ' ' + item.calculationType + ' Days'}}</view>
+        </view>
+        <view class="oneType">
+          <text>Rate</text>
+          <view class="typeValue">Free</view>
+        </view>
+      </view>
+      <view class="amountContainer">
+        <text class="amounts">{{languageContent.amount}}</text>
+        <text class="amount">{{item.billableAmount}}</text>
+        <text class="unit">{{item.currencyCode}}</text>
+      </view>
+    </block>
+  </view>
+</view>

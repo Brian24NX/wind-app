@@ -1,0 +1,385 @@
+/* packagePrice/pages/calculatedCharges/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.homeContainer .searchContainers {
+  width: 690rpx;
+  height: calc(100vh - 88rpx);
+  background-color: #ffffff;
+  margin: 30rpx auto 0;
+  padding: 40rpx 30rpx 48rpx;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 56rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+}
+
+.lines {
+  width: 6rpx;
+  height: 50rpx;
+  background: #E20202;
+}
+
+.title1 {
+  color: #04246A;
+  margin: 0 12rpx 0 12rpx;
+}
+
+.title2 {
+  color: #4469BB;
+  margin-bottom: 10rpx;
+}
+
+.container_title {
+  margin-top: 40rpx;
+}
+
+.all_check_box {
+  margin-top: 42rpx;
+}
+
+.van-checkbox__label {
+  color: #00245d !important;
+  font-size: 28rpx !important;
+}
+
+.van-checkbox__icon {
+  font-size: 30rpx !important;
+}
+
+.container_item {
+  width: 100%;
+  padding: 42rpx 0rpx 0 44rpx;
+}
+
+.van-checkbox-group--horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container_list {
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.cost_text {
+  margin-top: 40rpx;
+}
+
+.searchList {
+  margin: 20rpx 0 34rpx 0;
+  position: relative;
+}
+
+.selectContainer {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #071E5D;
+  font-size: 28rpx;
+}
+
+.selectContainer view {
+  width: 490rpx;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selectContainer image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.homeContainer .searchContainers .tabContainer {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #04246A;
+  height: 96rpx;
+}
+
+.homeContainer .searchContainers .tabContainer .oneTab {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  color: #071E5D;
+  font-size: 36rpx;
+}
+
+.homeContainer .searchContainers .tabContainer .actived {
+  font-weight: 500;
+  color: #04246A;
+  position: relative;
+}
+
+.homeContainer .searchContainers .tabContainer .actived .line {
+  width: 120rpx;
+  height: 10rpx;
+  background-color: #E20202;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.homeContainer .searchContainers .searchContents {
+  margin-top: 50rpx;
+  padding: 0 18rpx;
+}
+
+.homeContainer .searchContainers .searchContents .remind {
+  color: #071E5D;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.homeContainer .searchContainers .searchContents .serchTitle {
+  margin-bottom: 12rpx;
+  font-size: 28rpx;
+  color: #04246A;
+}
+
+.homeContainer .searchContainers .searchContents .mt20 {
+  margin-top: 20rpx;
+}
+
+.homeContainer .searchContainers .searchContents .inputs {
+  height: 88rpx;
+  border: 1rpx solid #DFDFDF;
+  font-size: 28rpx;
+  padding: 0 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #04246A;
+}
+
+.homeContainer .searchContainers .searchContents .inputs input {
+  height: 100%;
+  width: 490rpx;
+}
+
+.homeContainer .searchContainers .searchContents .inputs .delete {
+  width: 80rpx;
+  height: 88rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.homeContainer .searchContainers .searchContents .inputs .delete image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.homeContainer .searchContainers .searchContents .xialaInput {
+  position: relative;
+}
+
+.homeContainer .searchContainers .searchContents .xialaInput .xialaContainer {
+  position: absolute;
+  top: 86rpx;
+  z-index: 10;
+  background-color: #f5f5f5;
+  width: 100%;
+  max-height: 600rpx;
+  overflow-y: auto;
+  border: 1rpx solid #00245d;
+  transform: rotateZ(360deg);
+}
+
+.homeContainer .searchContainers .searchContents .xialaInput .xialaContainer .oneXiala {
+  /* width: 100%; */
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.oneXiala {
+  height: 80rpx;
+  background-color: #ffffff;
+  border-bottom: 2rpx solid #e2e2e2;
+  max-height: 430rpx;
+}
+
+.homeContainer .searchContainers .searchContents .noRequestBorder {
+  border: 2rpx solid #E2014B;
+}
+
+.homeContainer .searchContainers .searchContents .noRequest {
+  font-size: 24rpx;
+  color: #E2014B;
+  margin-top: 20rpx;
+  margin-bottom: -10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.homeContainer .searchContainers .searchContents .noRequest image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+
+.homeContainer .searchContainers .searchContents .searchBtn {
+  width: 100%;
+  height: 88rpx;
+  background-color: #2D75FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40rpx;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.homeContainer .searchContainers .searchContents .searchBtn2 {
+  margin-top: 20rpx;
+  color: #071E5D;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.reminds {
+  color: #E2014B;
+  font-size: 24rpx;
+  display: flex;
+  margin-top: 10rpx;
+}
+
+.reminds2 {
+  padding: 0 20rpx;
+  margin-top: 40rpx;
+}
+
+.reminds image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+
+.reminds view {
+  width: 540rpx;
+}
+
+.homeContainer .searchContainers .searchContents .priceList {
+  display: flex;
+  justify-content: space-between;
+  padding: 26rpx 0;
+}
+
+.homeContainer .searchContainers .searchContents .priceList .onePrice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #071E5D;
+  font-size: 32rpx;
+  width: 150rpx;
+  text-align: center;
+}
+
+.homeContainer .searchContainers .searchContents .priceList .onePrice image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 10rpx;
+}
+
+.placeholder {
+  color: #B9BFCA;
+  font-size: 28rpx;
+  font-style: italic;
+}
+
+.homeContainer .discoverContainer {
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 0 48rpx 30rpx;
+}
+
+.homeContainer .discoverContainer .discoverTitle {
+  height: 110rpx;
+  border-bottom: 1rpx solid #dddddd;
+  display: flex;
+  align-items: center;
+  margin-bottom: 48rpx;
+  font-size: 36rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #071E5D;
+}
+
+/* .homeContainer .discoverContainer .swiper {
+  height: 196rpx;
+} */
+
+.homeContainer .discoverContainer .swiper .discoverList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.homeContainer .discoverContainer .swiper .discoverList .oneDiscover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  margin-top: 48rpx;
+}
+
+.homeContainer .discoverContainer .swiper .oneSwiper:nth-of-type(1) .discoverList .oneDiscover:nth-of-type(-n + 4) {
+  margin-top: 0;
+}
+
+.homeContainer .discoverContainer .swiper .discoverList .oneDiscover .icon {
+  width: 68rpx;
+  height: 68rpx;
+  margin-bottom: 20rpx;
+  /* margin-right: 8rpx; */
+}
+
+.homeContainer .discoverContainer .swiper .discoverList .oneDiscover .discoverRight {
+  /* width: 226rpx; */
+  text-align: center;
+  color: #999999;
+  font-size: 24rpx;
+}
+
+.homeContainer .discoverContainer .swiper .discoverList .oneDiscover .discoverRight .discoverName {
+  color: #04246A;
+}
+
+.homeContainer .discoverContainer .swiperDtos {
+  margin-top: 30rpx;
+  height: 8rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.homeContainer .discoverContainer .swiperDtos .oneDto {
+  width: 24rpx;
+  height: 100%;
+  background-color: rgba(188, 197, 205, 0.34);
+}
+
+.homeContainer .discoverContainer .swiperDtos .dtoActived {
+  background-color: #04246A;
+}

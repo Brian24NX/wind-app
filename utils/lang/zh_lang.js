@@ -412,6 +412,42 @@ var Languague = {
       export: '出口',
       noChargeData: '未找到相关数据'
     },
+    //new D&D Charges
+    NewDDCharges:{
+      title: 'D&D 费用',
+      title1: 'D&D',
+      title2: '费用',
+      //运输编号
+      byShipment:'按运输编号',
+      //集装箱号
+      byContainer:'按集装箱号',
+      shipment:'运输号',
+      // 集装箱
+      container:'集装箱',
+      allContainer:'所有集装箱',
+      // 费用计算截至
+      cost:'费用计算截至',
+      // 计算费用
+      count:'计算费用',
+      containerNo:'集装箱号',
+      noContainer: '没有找到相关货柜，请核实您的提单'
+    },
+    NewDDChargesResult: {
+      title: 'D&D 结果',
+      title1: 'D&D',
+      title2: '结果',
+      //运输编号
+      shipmentRef:'运输号',
+      //集装箱号
+      containerNo:'货柜号',
+      currentLocation: '当前所在地',
+      chargeType: '费用类型',
+      lastFreeDate: '最后免费日期',
+      customersClearedDate: '美国清关日期',
+      cashierClearedDate: '结款日期',
+      total: '总计',
+      amount: 'Amount'
+    },
     // 报价
     quotation: {
       //航线|获取船期

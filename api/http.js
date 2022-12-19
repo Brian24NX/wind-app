@@ -101,6 +101,8 @@ const request = ({
               })
             }
             reject(res.data)
+          } else if (res.data.code == 422) {
+            reject(res.data)
           } else {
             if (!needError) {
               wx.showToast({
