@@ -54,7 +54,10 @@
         "pages/chargeFinder/index",
         "pages/chargeFinderResult/index",
         "pages/DDCharges/Search/index",
-        "pages/DDCharges/Result/index"
+        "pages/DDCharges/Result/index",
+        "pages/calculatedCharges/index",
+        "pages/calculatedChargeResult/index",
+        "pages/calculatedChargeDetail/index"
       ]
     },
     {

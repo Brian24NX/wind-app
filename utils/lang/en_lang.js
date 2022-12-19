@@ -409,6 +409,40 @@ var Languague = {
       export: 'Export',
       noChargeData: 'No data found'
     },
+    // new D&D Charges
+    NewDDCharges:{
+      title: 'D&D Charges',
+      title1: 'D&D',
+      title2: 'Charges',
+      //运输编号
+      byShipment:'By shipment ref.',
+      //集装箱号
+      byContainer:'By container no.',
+      shipment:'Shipment ref.',
+      // 集装箱
+      container:'Containers',
+      // 费用计算截至
+      cost:'Charge Calculation as of',
+      // 计算费用
+      count:'Calculate charges',
+      noContainer: 'No container found, please check your shipment reference or contact Customer Support'
+    },
+    NewDDChargesResult: {
+      title: 'D&D Result',
+      title1: 'D&D',
+      title2: 'Result',
+      //运输编号
+      shipmentRef:'Shipment Ref.',
+      //集装箱号
+      containerNo:'Container No.',
+      currentLocation: 'Current Location',
+      chargeType: 'Charge Type',
+      lastFreeDate: 'Last Free Date',
+      customersClearedDate: 'US Customs\n Cleared Date',
+      cashierClearedDate: 'Cashier\n Cleared Date',
+      total: 'TOTAL',
+      amount: 'Amount'
+    },
     // 报价
     quotation: {
       //航线|获取船期

@@ -18,8 +18,8 @@ Page({
       icon: '/assets/img/menu/D&D@2x.png',
       isNew: true,
       label: 'ddCharges',
-      url: '/packagePrice/pages/DDCharges/Search/index',
-      needLogin: false
+      url: '/packagePrice/pages/calculatedCharges/index',
+      needLogin: true
     }, {
       style: "330rpx",
       icon: '/assets/img/menu/cqcx@2x.png',

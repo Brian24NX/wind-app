@@ -1,0 +1,201 @@
+/* packagePrice/pages/calculatedChargeResult/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.searchResultTopContainer {
+  background-color: #F0F1F5;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding-top: 30rpx;
+}
+
+.searchResultTopContainer .resultCardTops {
+  width: 690rpx;
+  height: 210rpx;
+  margin: 0 auto;
+  background: url(https://wind.cma-cgm.com/images/DNDResult.png) no-repeat;
+  background-size: 100% auto;
+  padding: 30rpx 54rpx;
+}
+
+.DNDTitle {
+  font-size: 56rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.DNDDate {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #4468BA;
+  margin-top: 20rpx;
+}
+
+.DNDDate image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.resultList {
+  padding: 30rpx;
+}
+
+.resultList .oneResult {
+  background-color: #ffffff;
+  border-top: 10rpx solid #E20202;
+  margin-bottom: 30rpx;
+}
+
+.oneResult .resultTop {
+  display: flex;
+  justify-content: space-between;
+  padding: 48rpx 48rpx 30rpx;
+}
+
+.oneResult .resultTop .topOne {
+  font-size: 28rpx;
+  font-family: ArialMT;
+  color: #6B7790;
+}
+
+.oneResult .resultTop .topOne .topValue {
+  font-size: 48rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.fenge {
+  display: flex;
+  align-items: center;
+}
+
+.fenge .centerLine {
+  border-top: 2rpx dashed #F0F1F5;
+  width: 100%;
+}
+
+.fenge .leftCircle {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background-color: #F0F1F5;
+  position: relative;
+  left: -16rpx;
+}
+
+.fenge .rightCircle {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background-color: #F0F1F5;
+  position: relative;
+  right: -16rpx;
+}
+
+.locationContainer {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 48rpx;
+}
+
+.locationContainer image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+
+.locationContainer .locationRight {
+  font-size: 28rpx;
+  color: #6B7790;
+}
+
+.locationContainer .locationRight .locationName {
+  font-size: 48rpx;
+  font-family: Antonio-Bold, Antonio;
+  color: #071E5D;
+}
+
+.locationRight .point {
+  color: #071E5D;
+  font-size: 28rpx;
+}
+
+.typeContianer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 630rpx;
+  background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
+  margin: 0 auto 30rpx;
+  padding: 30rpx 40rpx;
+}
+
+.oneType {
+  width: 60%;
+  font-size: 24rpx;
+  color: #6B7790;
+  margin-top: 30rpx;
+}
+
+.oneType:nth-of-type(-n + 2) {
+  margin-top: 0;
+}
+
+.oneType:nth-of-type(2n) {
+  width: 40%;
+}
+
+.oneType .typeValue {
+  color: #071E5D;
+}
+
+.amountContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40rpx 40rpx;
+}
+
+.amountContainer .amountLeft {
+  display: flex;
+  align-items: center;
+}
+
+.amountContainer .amountLeft image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+}
+
+.amountLeft .amount {
+  font-size: 72rpx;
+  font-family: Antonio-Regular, Antonio;
+  color: #04246A;
+  margin-right: 20rpx;
+}
+
+.amountLeft .unit {
+  color: #E20202;
+  font-size: 24rpx;
+}
+
+.amountLeft .total {
+  height: 32rpx;
+  padding: 0 10rpx;
+  background-color: #E6EAEF;
+  border-radius: 16rpx;
+  line-height: 32rpx;
+  font-size: 16rpx;
+  font-weight: bold;
+  color: #071E5D;
+  margin-top: 6rpx;
+}

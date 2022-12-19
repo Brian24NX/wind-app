@@ -1,0 +1,97 @@
+<!--packagePrice/pages/calculatedCharges/index.wxml-->
+<view class="homeContainer">
+  <view class="searchContainers">
+    <view class="logo">
+      <view class="lines"></view>
+      <view class="title1">{{languageContent.title1}}</view>
+      <view class="title2">{{languageContent.title2}}</view>
+    </view>
+    <view class="tabContainer">
+      <view class="oneTab {{actived === item.id ? 'actived' : ''}}" wx:for="{{tabList}}" wx:key="index" bindtap="changeSearchTab" data-type="{{item.id}}">
+        <text>{{languageContent[item.id]}}</text>
+        <view class="line"></view>
+      </view>
+    </view>
+    <!-- 按运输编号 -->
+    <view class="searchContents" wx:if="{{actived === 'byShipment'}}">
+      <view class="remind">{{languageContent.shipment}}</view>
+      <view class="inputs {{showRemind || showRemind2 ? 'noRequestBorder' : ''}}">
+        <input type="text" placeholder="ex: ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" />
+        <view class="delete" catchtap="clearInput" wx:if="{{huoGuiValue}}">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+        <view class="delete" catchtap="searchResult">
+          <image src="/assets/img/search/search@2x.png"></image>
+        </view>
+      </view>
+      <view class="reminds" wx:if="{{showRemind2}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <view>{{verifyInfo.required}}</view>
+      </view>
+      <view class="reminds" wx:if="{{showRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <view>{{verifyInfo.gswx}}</view>
+      </view>
+      <block wx:if="{{containers.length}}">
+        <view class="container_list">
+          <view class="remind container_title">{{languageContent.container}}</view>
+          <view class="all_check_box">
+            <van-checkbox checked-color='#071E5D' shape="square" value="{{result.length === containers.length}}">{{languageContent.allContainer}}</van-checkbox>
+          </view>
+          <view class="container_item">
+            <van-checkbox-group value="{{ result }}" bind:change="onChange" direction="horizontal">
+              <van-checkbox checked-color='#071E5D' shape="square" wx:for="{{containers}}" wx:key="index" name="{{item.containerNumber}}">{{item.containerNumber}}</van-checkbox>
+            </van-checkbox-group>
+          </view>
+          <view class="cost_text">
+            {{languageContent.cost}}
+          </view>
+          <view class="searchList">
+            <view class="selectContainer" catchtap="openPopup" data-type="2">
+              <view style="{{date ? 'color: #071E5D;' : ''}}">{{date}}</view>
+              <image src="/assets/img/seniorsearch/Calendar.svg"></image>
+            </view>
+          </view>
+          <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
+          <button class="searchBtn" hover-class="hoverClass" bindtap="calculatedCharges">{{languageContent.count}}</button>
+        </view>
+      </block>
+      <view class="reminds reminds2" wx:if="{{noContainer}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <view>{{languageContent.noContainer}}</view>
+      </view>
+    </view>
+    <!-- 货物追踪 -->
+    <view class="searchContents" wx:if="{{actived === 'byContainer'}}">
+      <view class="remind">{{languageContent.containerNo}}</view>
+      <view class="inputs {{showRemind || showRemind2 ? 'noRequestBorder' : ''}}">
+        <input type="text" placeholder="ex: ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" />
+        <view class="delete" catchtap="clearInput" wx:if="{{huoGuiValue}}">
+          <image src="/assets/img/search/close@2x.png"></image>
+        </view>
+      </view>
+      <view class="reminds" wx:if="{{showRemind2}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <view>{{verifyInfo.required}}</view>
+      </view>
+      <view class="reminds" wx:if="{{showRemind}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <view>{{verifyInfo.gswx}}</view>
+      </view>
+      <view class="remind container_title">{{languageContent.cost_text}}</view>
+      <view class="searchList">
+        <view class="selectContainer" catchtap="openPopup" data-type="1">
+          <view>{{date}}</view>
+          <image src="/assets/img/seniorsearch/Calendar.svg"></image>
+        </view>
+      </view>
+      <button class="searchBtn" hover-class="hoverClass" bindtap="calculatedCharges">{{languageContent.count}}</button>
+    </view>
+    <view class="reminds reminds2" wx:if="{{errTip}}">
+      <image src="/assets/img/search/error@2x.png"></image>
+      <view>{{errTip}}</view>
+    </view>
+  </view>
+</view>
+
+<custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
