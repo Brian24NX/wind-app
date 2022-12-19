@@ -32,7 +32,7 @@ page {
 
 .title2 {
   color: #4469BB;
-  margin-bottom: 10rpx;
+  /* margin-bottom: 10rpx; */
 }
 
 .container_title {
