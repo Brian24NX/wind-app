@@ -20,7 +20,6 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
-    console.log(language)
     wx.setNavigationBarTitle({
       title: language.NewDDChargesResult.title,
     })
