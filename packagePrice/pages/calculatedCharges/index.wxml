@@ -16,7 +16,7 @@
     <view class="searchContents" wx:if="{{actived === 'byShipment'}}">
       <view class="remind">{{languageContent.shipment}}</view>
       <view class="inputs {{showRemind || showRemind2 ? 'noRequestBorder' : ''}}">
-        <input type="text" placeholder="ex: ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" />
+        <input type="text" placeholder="ex: ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" bindconfirm="searchResult" />
         <view class="delete" catchtap="clearInput" wx:if="{{huoGuiValue}}">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
@@ -36,12 +36,20 @@
         <view class="container_list">
           <view class="remind container_title">{{languageContent.container}}</view>
           <view class="all_check_box">
-            <van-checkbox checked-color='#071E5D' shape="square" value="{{result.length === containers.length}}">{{languageContent.allContainer}}</van-checkbox>
+            <van-checkbox checked-color='#071E5D' shape="square" value="{{result.length === containers.length}}" bind:change="chooseAll">{{languageContent.allContainer}}</van-checkbox>
           </view>
           <view class="container_item">
             <van-checkbox-group value="{{ result }}" bind:change="onChange" direction="horizontal">
-              <van-checkbox checked-color='#071E5D' shape="square" wx:for="{{containers}}" wx:key="index" name="{{item.containerNumber}}">{{item.containerNumber}}</van-checkbox>
+              <van-checkbox checked-color='#071E5D' shape="square" wx:for="{{containers}}" wx:key="index" name="{{item.containerNumber}}" class="oneCheck">{{item.containerNumber}}</van-checkbox>
             </van-checkbox-group>
+            <view class="displayMore" catchtap="getMoreContainer" wx:if="{{!noMore}}">
+              <text>Display more</text>
+              <image src="/assets/img/seniorsearch/bottomarrow.png" mode="aspectFit"></image>
+            </view>
+          </view>
+          <view class="reminds reminds2" wx:if="{{showRemind3}}">
+            <image src="/assets/img/search/error@2x.png"></image>
+            <view>{{verifyInfo.required}}</view>
           </view>
           <view class="remind cost_text">
             {{languageContent.cost}}
@@ -55,15 +63,15 @@
           <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
           <button class="searchBtn" hover-class="hoverClass" bindtap="calculatedCharges">{{languageContent.count}}</button>
         </view>
-        <view class="reminds reminds2" wx:if="{{noContainer}}">
-          <image src="/assets/img/search/error@2x.png"></image>
-          <view>{{languageContent.noContainer}}</view>
-        </view>
-        <view class="reminds reminds2" wx:if="{{errTip}}">
-          <image src="/assets/img/search/error@2x.png"></image>
-          <view>{{errTip}}</view>
-        </view>
       </block>
+      <view class="reminds reminds2" wx:if="{{noContainer}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <view>{{languageContent.noContainer}}</view>
+      </view>
+      <view class="reminds reminds2" wx:if="{{errTip}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <view>{{errTip}}</view>
+      </view>
 
     </view>
     <!-- 货物追踪 -->

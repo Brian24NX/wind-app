@@ -35,7 +35,9 @@ Page({
     currentDate: null,
     date: '',
     errTip: '',
-    noContainer: false
+    noContainer: false,
+    noMore: false,
+    page: 1
   },
   /**
    * 生命周期函数--监听页面加载
@@ -80,7 +82,8 @@ Page({
 
   onChange(event) {
     this.setData({
-      result: event.detail
+      result: event.detail,
+      showRemind3: false
     });
   },
 
@@ -125,9 +128,21 @@ Page({
     })
   },
 
+  getMoreContainer() {
+    if (this.data.noMore) return
+    this.setData({
+      page: ++this.data.page
+    })
+    this.getContainerList()
+  },
+
   searchResult() {
     this.setData({
-      noContainer: false
+      noContainer: false,
+      containers: [],
+      result: [],
+      noMore: false,
+      page: 1
     })
     if (!this.data.huoGuiValue) {
       this.setData({
@@ -145,24 +160,55 @@ Page({
       })
       return
     }
+    this.getContainerList()
+  },
+
+  getContainerList() {
     freightContainerSearch({
       bookingReference: this.data.huoGuiValue,
-      range: 1
+      range: this.data.page
     }).then(res => {
-      this.setData({
-        containers: res.data,
-        noContainer: !res.data.length
-      })
+      if (res.data && res.data.length) {
+        this.setData({
+          containers: this.data.containers.concat(res.data.filter(i => i.containerNumber))
+        })
+      } else {
+        this.setData({
+          noMore: true
+        })
+      }
+      if (this.data.page === 1 && (!res.data || !res.data.length)) {
+        this.setData({
+          noContainer: true
+        })
+      }
     })
-
   },
 
   clearInput() {
     this.setData({
       huoGuiValue: '',
+      showRemind3: false,
       showRemind2: false,
-      showRemind: false
+      showRemind: false,
+      result: [],
+      containers: []
     })
+  },
+
+  chooseAll() {
+    this.setData({
+      showRemind3: false
+    })
+    if (this.data.result.length === this.data.containers.length) {
+      this.setData({
+        result: []
+      })
+    } else {
+      this.setData({
+        result: this.data.containers.map(i => i.containerNumber)
+      })
+    }
   },
 
   setHuoGui(e) {
@@ -172,7 +218,10 @@ Page({
     this.setData({
       huoGuiValue: regvalue,
       showRemind: false,
-      showRemind2: false
+      showRemind2: false,
+      showRemind3: false,
+      result: [],
+      containers: []
     })
   },
 
@@ -182,6 +231,12 @@ Page({
     })
     let params = {}
     if (this.data.actived === 'byShipment') {
+      if (!this.data.result.length) {
+        this.setData({
+          showRemind3: true
+        })
+        return
+      }
       params = {
         shippingCompany: '0001',
         req: {

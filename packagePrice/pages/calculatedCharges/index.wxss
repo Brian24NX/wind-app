@@ -3,9 +3,13 @@ page {
   background-color: #F0F1F5;
 }
 
+.homeContainer {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 30rpx);
+}
+
 .homeContainer .searchContainers {
   width: 690rpx;
-  height: calc(100vh - 88rpx);
+  min-height: calc(100vh - 60rpx - env(safe-area-inset-bottom));
   background-color: #ffffff;
   margin: 30rpx auto 0;
   padding: 40rpx 30rpx 48rpx;
@@ -54,7 +58,24 @@ page {
 
 .container_item {
   width: 100%;
-  padding: 20rpx 0rpx 0 44rpx;
+  padding: 20rpx 0 0 20rpx;
+}
+
+.oneCheck {
+  width: 50%;
+  margin-bottom: 10rpx;
+}
+
+.displayMore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.displayMore image {
+  width: 20rpx;
+  height: 20rpx;
 }
 
 .van-checkbox-group--horizontal {
