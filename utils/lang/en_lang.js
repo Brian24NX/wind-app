@@ -422,7 +422,7 @@ var Languague = {
       // 集装箱
       container:'Container(s)',
       allContainer: 'All Containers',
-      containerNo: 'Container Number',
+      containerNo: 'Container number',
       // 费用计算截至
       cost:'Charge calculation as of',
       // 计算费用
