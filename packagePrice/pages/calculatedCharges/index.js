@@ -37,12 +37,14 @@ Page({
     errTip: '',
     noContainer: false,
     noMore: false,
-    page: 1
+    page: 1,
+    minDate: new Date().setFullYear(new Date().getFullYear() - 2),
+    maxDate: new Date().setFullYear(new Date().getFullYear() + 7)
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     this.initLanguage();
     this.setData({
       date: this.getDate()
