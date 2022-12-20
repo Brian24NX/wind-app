@@ -963,8 +963,17 @@ Page({
   // 设置数量
   setBookingNumberInputValue(e) {
     this.setData({
-      noOfBooking: Number(e.detail.value) || 1
+      noOfBooking: e.detail.value
     })
+  },
+
+  setBookingNumberBlur(e) {
+    console.log(e)
+    if (!e.detail.value || e.detail.value === '0') {
+      this.setData({
+        noOfBooking: 1
+      })
+    }
   },
 
   // 设置BookingComment

@@ -533,7 +533,7 @@
     <image src="/assets/img/search/error@2x.png"></image>
     <text>{{verifyInfo.required}}</text>
   </view>
-  <view hidden="{{!cargoShow}}">
+  <view style="margin-top: 30rpx;" hidden="{{!cargoShow}}">
     <view class="oneCommodity" wx:for="{{cargoes}}" wx:key="index">
       <view class="commodityTop">
         <view class="topLeft">
@@ -810,7 +810,7 @@
   <view class="totalTitle">Total Number</view>
   <view class="containers">
     <view class="actionBtn {{noOfBooking < 2 ? 'disabled' : ''}}" catchtap="reduce">-</view>
-    <input type="number" class="number" value="{{noOfBooking}}" maxlength="2" bindinput="setBookingNumberInputValue" />
+    <input type="number" class="number" value="{{noOfBooking}}" maxlength="2" bindinput="setBookingNumberInputValue" bindblur="setBookingNumberBlur" />
     <view class="actionBtn {{noOfBooking >= 99 ? 'disabled' : ''}}" catchtap="add">+</view>
   </view>
 </view>

@@ -589,60 +589,6 @@ page {
   margin: 0 10rpx;
 }
 
-.routeContainer {
-  background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
-  padding: 18rpx 18rpx 0;
-}
-
-.routeContainer .stepLists {
-  padding-left: 50rpx;
-}
-
-.routeContainer .stepLists .oneStep {
-  padding-bottom: 10rpx;
-  position: relative;
-}
-
-.routeContainer .stepLists .oneStep:nth-last-of-type(1) {
-  padding-bottom: 0;
-}
-
-.routeContainer .stepLists .oneStep .leftLines {
-  position: absolute;
-  left: -50rpx;
-  height: 100%;
-  top: 30rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 24rpx;
-}
-
-.routeContainer .stepLists .oneStep .leftLines image {
-  width: 24rpx;
-  height: 30rpx;
-}
-
-.routeContainer .stepLists .oneStep .leftLines .leftLineDto {
-  background-color: #E20202;
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 50%;
-}
-
-.routeContainer .stepLists .oneStep .leftLines .leftLine {
-  width: 0;
-  height: calc(100% - 16rpx);
-  border-left: 1rpx solid #9AA6C4;
-}
-
-.routeContainer .stepLists .oneStep .stepContent {
-  font-size: 52rpx;
-  font-family: Antonio-Regular, Antonio;
-  font-weight: 400;
-  color: #071E5D;
-}
-
 .key {
   margin: 30rpx 0 12rpx;
   color: #04246A;

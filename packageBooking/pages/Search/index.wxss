@@ -82,7 +82,7 @@ page{
 
 .queryContainer .searchList .leftIcons .leftLine {
   width: 2rpx;
-  height: 64rpx;
+  height: 70rpx;
   background-color: #9AA6C4;
   margin: 10rpx 0;
 }
