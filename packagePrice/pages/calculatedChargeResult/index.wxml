@@ -49,7 +49,7 @@
       </view>
       <view class="oneType">
         <text>{{languageContent.customersClearedDate}}</text>
-        <view class="typeValue">{{language === 'zh' ? format.formatCnDateLocal(item.customsClearedDate.utc, true, true) : format.formatEnDateLocal(item.customsClearedDate.utc, '-', '', true, true)}}</view>
+        <view class="typeValue">{{item.customsClearedDate ? (language === 'zh' ? format.formatCnDateLocal(item.customsClearedDate.utc, true, true) : format.formatEnDateLocal(item.customsClearedDate.utc, '-', '', true, true)) : 'N/A'}}</view>
       </view>
       <view class="oneType">
         <text>{{languageContent.cashierClearedDate}}</text>

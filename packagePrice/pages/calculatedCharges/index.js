@@ -146,7 +146,8 @@ Page({
       return
     }
     freightContainerSearch({
-      bookingReference: this.data.huoGuiValue
+      bookingReference: this.data.huoGuiValue,
+      range: 1
     }).then(res => {
       this.setData({
         containers: res.data,

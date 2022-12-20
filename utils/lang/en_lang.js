@@ -421,11 +421,13 @@ var Languague = {
       shipment:'Shipment ref.',
       // 集装箱
       container:'Containers',
+      allContainer: 'All Containers',
+      containerNo: 'Container Number',
       // 费用计算截至
-      cost:'Charge Calculation as of',
+      cost:'Charge calculation as of',
       // 计算费用
       count:'Calculate charges',
-      noContainer: 'No container found, please check your shipment reference or contact Customer Support'
+      noContainer: 'No container found, please check your shipment reference'
     },
     NewDDChargesResult: {
       title: 'D&D Result',

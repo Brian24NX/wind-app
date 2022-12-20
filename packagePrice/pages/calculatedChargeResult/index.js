@@ -18,8 +18,8 @@ Page({
   onLoad() {
     const language = languageUtils.languageVersion().lang.page
     const pages = getCurrentPages()
-    // const currentPage = pages[pages.length - 2]
-    // const data = currentPage.data
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
     console.log(language)
     wx.setNavigationBarTitle({
       title: language.NewDDChargesResult.title,
@@ -27,7 +27,7 @@ Page({
     this.setData({
       languageContent: language.NewDDChargesResult,
       language: language.langue,
-      // chargeCalculationDate: data.date,
+      chargeCalculationDate: data.date,
       calculatedChargeList: wx.getStorageSync('calculatedChargeResult') || []
     })
   },

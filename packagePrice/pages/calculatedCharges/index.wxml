@@ -43,7 +43,7 @@
               <van-checkbox checked-color='#071E5D' shape="square" wx:for="{{containers}}" wx:key="index" name="{{item.containerNumber}}">{{item.containerNumber}}</van-checkbox>
             </van-checkbox-group>
           </view>
-          <view class="cost_text">
+          <view class="remind cost_text">
             {{languageContent.cost}}
           </view>
           <view class="searchList">
@@ -55,11 +55,16 @@
           <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
           <button class="searchBtn" hover-class="hoverClass" bindtap="calculatedCharges">{{languageContent.count}}</button>
         </view>
+        <view class="reminds reminds2" wx:if="{{noContainer}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <view>{{languageContent.noContainer}}</view>
+        </view>
+        <view class="reminds reminds2" wx:if="{{errTip}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <view>{{errTip}}</view>
+        </view>
       </block>
-      <view class="reminds reminds2" wx:if="{{noContainer}}">
-        <image src="/assets/img/search/error@2x.png"></image>
-        <view>{{languageContent.noContainer}}</view>
-      </view>
+
     </view>
     <!-- 货物追踪 -->
     <view class="searchContents" wx:if="{{actived === 'byContainer'}}">
@@ -78,7 +83,7 @@
         <image src="/assets/img/search/error@2x.png"></image>
         <view>{{verifyInfo.gswx}}</view>
       </view>
-      <view class="remind container_title">{{languageContent.cost_text}}</view>
+      <view class="remind container_title">{{languageContent.cost}}</view>
       <view class="searchList">
         <view class="selectContainer" catchtap="openPopup" data-type="1">
           <view>{{date}}</view>
@@ -86,10 +91,10 @@
         </view>
       </view>
       <button class="searchBtn" hover-class="hoverClass" bindtap="calculatedCharges">{{languageContent.count}}</button>
-    </view>
-    <view class="reminds reminds2" wx:if="{{errTip}}">
-      <image src="/assets/img/search/error@2x.png"></image>
-      <view>{{errTip}}</view>
+      <view class="reminds reminds2" wx:if="{{errTip}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <view>{{errTip}}</view>
+      </view>
     </view>
   </view>
 </view>
