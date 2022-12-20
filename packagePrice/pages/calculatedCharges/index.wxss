@@ -32,16 +32,16 @@ page {
 
 .title2 {
   color: #4469BB;
-  margin-bottom: 10rpx;
+  /* margin-bottom: 10rpx; */
 }
 
 .container_title {
   margin-top: 40rpx;
 }
 
-.all_check_box {
+/* .all_check_box {
   margin-top: 42rpx;
-}
+} */
 
 .van-checkbox__label {
   color: #00245d !important;
@@ -54,7 +54,7 @@ page {
 
 .container_item {
   width: 100%;
-  padding: 42rpx 0rpx 0 44rpx;
+  padding: 20rpx 0rpx 0 44rpx;
 }
 
 .van-checkbox-group--horizontal {
@@ -266,7 +266,6 @@ page {
 }
 
 .reminds2 {
-  padding: 0 20rpx;
   margin-top: 40rpx;
 }
 

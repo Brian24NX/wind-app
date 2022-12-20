@@ -46,7 +46,7 @@
         </view>
         <view class="oneType">
           <text>Rate</text>
-          <view class="typeValue">Free</view>
+          <view class="typeValue">{{item.ratePerDay === '0' ? 'Free' : item.ratePerDay}}</view>
         </view>
       </view>
       <view class="amountContainer">

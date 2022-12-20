@@ -425,11 +425,11 @@ var Languague = {
       // 集装箱
       container:'集装箱',
       allContainer:'所有集装箱',
+      containerNo: '集装箱号',
       // 费用计算截至
       cost:'费用计算截至',
       // 计算费用
       count:'计算费用',
-      containerNo:'集装箱号',
       noContainer: '没有找到相关货柜，请核实您的提单'
     },
     NewDDChargesResult: {

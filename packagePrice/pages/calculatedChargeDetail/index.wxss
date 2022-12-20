@@ -17,7 +17,7 @@ page {
   width: 690rpx;
   height: 210rpx;
   margin: 0 auto;
-  background: url(https://wind.cma-cgm.com/images/DNDResult.png) no-repeat;
+  background: url(https://wind.cma-cgm.com/images/DNDResult.svg) no-repeat;
   background-size: 100% auto;
   padding: 30rpx 54rpx;
 }
