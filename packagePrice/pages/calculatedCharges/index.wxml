@@ -107,4 +107,4 @@
   </view>
 </view>
 
-<custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
+<custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" minDate="{{minDate}}" maxDate="{{maxDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
