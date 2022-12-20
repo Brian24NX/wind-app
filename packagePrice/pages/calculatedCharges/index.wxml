@@ -16,7 +16,7 @@
     <view class="searchContents" wx:if="{{actived === 'byShipment'}}">
       <view class="remind">{{languageContent.shipment}}</view>
       <view class="inputs {{showRemind || showRemind2 ? 'noRequestBorder' : ''}}">
-        <input type="text" placeholder="ex: ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" />
+        <input type="text" placeholder="ex: ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" bindconfirm="searchResult" />
         <view class="delete" catchtap="clearInput" wx:if="{{huoGuiValue}}">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
@@ -40,8 +40,12 @@
           </view>
           <view class="container_item">
             <van-checkbox-group value="{{ result }}" bind:change="onChange" direction="horizontal">
-              <van-checkbox checked-color='#071E5D' shape="square" wx:for="{{containers}}" wx:key="index" name="{{item.containerNumber}}">{{item.containerNumber}}</van-checkbox>
+              <van-checkbox checked-color='#071E5D' shape="square" wx:for="{{containers}}" wx:key="index" name="{{item.containerNumber}}" class="oneCheck">{{item.containerNumber}}</van-checkbox>
             </van-checkbox-group>
+            <view class="displayMore" catchtap="getMoreContainer" wx:if="{{!noMore}}">
+              <text>Display more</text>
+              <image src="/assets/img/seniorsearch/bottomarrow.png" mode="aspectFit"></image>
+            </view>
           </view>
           <view class="reminds reminds2" wx:if="{{showRemind3}}">
             <image src="/assets/img/search/error@2x.png"></image>

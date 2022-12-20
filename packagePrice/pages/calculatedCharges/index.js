@@ -35,7 +35,9 @@ Page({
     currentDate: null,
     date: '',
     errTip: '',
-    noContainer: false
+    noContainer: false,
+    noMore: false,
+    page: 1
   },
   /**
    * 生命周期函数--监听页面加载
@@ -126,9 +128,21 @@ Page({
     })
   },
 
+  getMoreContainer() {
+    if (this.data.noMore) return
+    this.setData({
+      page: ++this.data.page
+    })
+    this.getContainerList()
+  },
+
   searchResult() {
     this.setData({
-      noContainer: false
+      noContainer: false,
+      containers: [],
+      result: [],
+      noMore: false,
+      page: 1
     })
     if (!this.data.huoGuiValue) {
       this.setData({
@@ -146,23 +160,29 @@ Page({
       })
       return
     }
+    this.getContainerList()
+  },
+
+  getContainerList() {
     freightContainerSearch({
       bookingReference: this.data.huoGuiValue,
-      range: 1
+      range: this.data.page
     }).then(res => {
       if (res.data && res.data.length) {
         this.setData({
-          containers: res.data,
-          noContainer: false
+          containers: this.data.containers.concat(res.data.filter(i => i.containerNumber))
         })
       } else {
         this.setData({
-          containers: [],
+          noMore: true
+        })
+      }
+      if (this.data.page === 1 && (!res.data || !res.data.length)) {
+        this.setData({
           noContainer: true
         })
       }
     })
-
   },
 
   clearInput() {
@@ -198,7 +218,10 @@ Page({
     this.setData({
       huoGuiValue: regvalue,
       showRemind: false,
-      showRemind2: false
+      showRemind2: false,
+      showRemind3: false,
+      result: [],
+      containers: []
     })
   },
 
