@@ -330,7 +330,7 @@
             <view class="productName">{{item.productName}}</view>
             <view class="productInclude" wx:if="{{item.seletcedProduct.isInclude}}">{{languageContent.include}}</view>
             <view class="productPrices">
-              <view class="productPrice">{{item.seletcedProduct.amount}}</view>
+              <view class="productPrice">{{(item.seletcedProduct.levelOfCharge === 'Per BL' && item.seletcedProduct.calculationType !== 'FIX') ? item.seletcedProduct.amount : item.seletcedProduct.rateFrom}}</view>
               <view class="productUnit">
                 <view>{{item.seletcedProduct.currency}}</view>
                 <view>/{{item.seletcedProduct.levelOfCharge === 'Per Container' ? vasLanguageContent.containers : vasLanguageContent.perBL}}</view>

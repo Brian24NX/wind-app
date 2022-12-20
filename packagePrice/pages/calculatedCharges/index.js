@@ -174,7 +174,8 @@ Page({
         this.setData({
           containers: this.data.containers.concat(res.data.filter(i => i.containerNumber))
         })
-      } else {
+      }
+      if (!res.data || !res.data.length || res.data.length < 50) {
         this.setData({
           noMore: true
         })

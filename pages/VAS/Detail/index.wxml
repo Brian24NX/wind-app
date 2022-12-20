@@ -58,7 +58,7 @@
         </view>
       </view>
     </view>
-    <view class="totalAmount" wx:if="{{checkIndex !== null}}">
+    <view class="totalAmount" wx:if="{{checkIndex !== null && (vasDetail.chargeDetails[checkIndex].levelOfCharge === 'Per BL' && vasDetail.chargeDetails[checkIndex].calculationType !== 'FIX')}}">
       <image src="/assets/img/instantQuote/cash.svg"/>
       <view class="amounts">{{calculteResult}}</view>
       <view class="units">
