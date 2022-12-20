@@ -89,6 +89,7 @@ Page({
           element.arrivalDate = element.journeyLegs[element.journeyLegs.length - 2].arrivalDate
         }
       });
+      routings.sort((a, b) => a.departureDate.utc.localeCompare(b.departureDate.utc));
       this.setData({
         routings
       })

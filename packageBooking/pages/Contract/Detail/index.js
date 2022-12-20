@@ -322,7 +322,18 @@ Page({
 
   submit() {
     wx.navigateTo({
-      url: `/packageBooking/pages/Search/index?pol=${this.data.quotationDetail.portOfLoading}&polLabel=${this.data.quotationDetail.portOfLoadingLabel2}&pod=${this.data.quotationDetail.portOfDischarge}&podLabel=${this.data.quotationDetail.portOfDischargeLabel2}&quotationReference=${this.data.quotationDetail.quotationReference}`,
+      url: '/packageBooking/pages/Search/index?'
+      + `pol=${this.data.quotationDetail.portOfLoading}`
+      + `&polLabel=${this.data.quotationDetail.portOfLoadingLabel2}`
+      + `&pod=${this.data.quotationDetail.portOfDischarge}`
+      + `&podLabel=${this.data.quotationDetail.portOfDischargeLabel2}`
+      + `&quotationReference=${this.data.quotationDetail.quotationReference}`
+      + `&placeOfOrigin=${this.data.quotationDetail.exportInlandPointCode || ''}`
+      + `&placeOfOriginLabel=${this.data.quotationDetail.placeOfReceiptLabel2 || ''}`
+      + `&receiptHaulage=${this.data.quotationDetail.exportMovementType || ''}`
+      + `&finalPlaceOfDelivery=${this.data.quotationDetail.importInlandPointCode || ''}`
+      + `&finalPlaceOfDeliveryLabel=${this.data.quotationDetail.placeOfDeliveryLabel2 || ''}`
+      + `&deliveryHaulage=${this.data.quotationDetail.importMovementType || ''}`,
     })
   },
 
