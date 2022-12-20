@@ -76,6 +76,7 @@ page {
 .displayMore image {
   width: 20rpx;
   height: 20rpx;
+  margin-left: 10rpx;
 }
 
 .van-checkbox-group--horizontal {

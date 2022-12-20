@@ -126,9 +126,6 @@ Page({
     vasDetail.isProductSelected = true
     vasDetail.selectProductIndex = this.data.checkIndex
     vasDetail.seletcedProduct = vasDetail.chargeDetails[this.data.checkIndex]
-    vasDetail.seletcedProduct.cargoLines.forEach(i => {
-      i.equipmentSize = this.data.equipmentTypeSize
-    })
     if (vasDetail.seletcedProduct.levelOfCharge === 'Per BL' && vasDetail.seletcedProduct.calculationType !== 'FIX') {
       vasDetail.seletcedProduct.amount = Math.round(this.data.calculteResult)
       vasDetail.seletcedProduct.inputAmount = this.data.amount
@@ -139,6 +136,10 @@ Page({
         vasDetail.seletcedProduct.amount = vasDetail.seletcedProduct.rateFrom
       }
     }
+    vasDetail.seletcedProduct.cargoLines.forEach(i => {
+      i.equipmentSize = this.data.equipmentTypeSize
+      i.convertedRate = vasDetail.seletcedProduct.amount
+    })
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     currentPage.setSubscribedServices(vasDetail)
