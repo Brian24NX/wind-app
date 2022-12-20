@@ -174,7 +174,17 @@ Page({
 
   setBackData() {
     this.setData({
-      currentType: 'instation'
+      currentType: 'instation',
+      placeOfOrigin: '',
+      placeOfOriginLabel: '',
+      finalPlaceOfDelivery: '',
+      finalPlaceOfDeliveryLabel: '',
+      showDelete4: false,
+      showPlaceOfReceipt: false,
+      placeOfReceiptList: [],
+      showPlaceOfDelivery: false,
+      showDelete5: false,
+      placeOfDeliveryList: []
     })
     this.getCommodityList()
   },
