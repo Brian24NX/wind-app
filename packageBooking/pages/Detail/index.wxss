@@ -412,14 +412,28 @@ page {
 }
 
 .additionContainer .oneAddition {
-  padding: 22rpx 0 40rpx;
+  padding: 22rpx 0 30rpx;
   border-bottom: 1rpx solid #EEEEEE;
+}
+
+.additionContainer .oneAddition .in {
+  height: 36rpx;
+  line-height: 36rpx;
+  border-radius: 18rpx;
+  background-color: #CBE6DF;
+  padding: 0 20rpx;
+  color: #08855D;
+  font-size: 24rpx;
+  display: inline-block;
+  margin-bottom: 10rpx;
+  font-family: ArialMT;
 }
 
 .additionContainer .oneAddition .vasTitle {
   font-weight: 600;
   color: #04246A;
   font-size: 28rpx;
+  font-family: Antonio-Regular, Antonio;
 }
 
 .additionContainer .oneAddition .vasBottom {
@@ -457,6 +471,15 @@ page {
 
 .additionContainer .oneAddition .vasBottom .vasBottomRight .amountDesc view:nth-of-type(1) {
   margin-bottom: 10rpx;
+}
+
+.additionContainer .oneAddition .vasBtns {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #2D75FF;
+  font-size: 28rpx;
+  margin-top: 20rpx;
 }
 
 .scroll-view {
@@ -910,3 +933,91 @@ page {
   margin-right: 20rpx;
 }
 /* parties end */
+
+/* vas start */
+.additionServicesContainers {
+  padding: 30rpx 0;
+}
+
+.noVasRemind {
+  font-size: 32rpx;
+  color: #071E5D;
+  padding: 30rpx 60rpx;
+  text-align: center;
+}
+
+.additionList .oneAddition {
+  padding: 30rpx 0;
+  display: flex;
+  align-items: center;
+}
+
+.additionList .oneAddition image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 38rpx;
+}
+
+.additionList .additionDetail {
+  width: 390rpx;
+  color: #071E5D;
+  font-size: 20rpx;
+}
+
+.additionList .additionDetail .additionDetailTitle {
+  font-size: 32rpx;
+  font-family: Antonio-Bold, Antonio;
+  color: #071E5D;
+}
+
+.additionList .additionDetail .vasDesc {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.additionList .additionDetail .vasBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid #EEEEEE;
+  padding-top: 20rpx;
+  margin-top: 20rpx;
+}
+
+.additionList .additionDetail .vasBottom .vasBottomLeft {
+  display: flex;
+  align-items: center;
+}
+
+.additionList .additionDetail .vasBottom .vasBottomLeft .vasPrice {
+  font-size: 48rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #E10202;
+  margin-right: 10rpx;
+}
+
+.additionList .additionDetail .vasBottom .vasBottomLeft .vasUnit {
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.additionList .additionDetail .vasBottom .vasBtn {
+  width: 156rpx;
+  height: 60rpx;
+  border-radius: 0;
+  background-color: #071E5D;
+  color: #ffffff;
+  font-size: 32rpx;
+  padding: 0;
+  margin: 0;
+  line-height: 60rpx;
+}
+/* vas end */

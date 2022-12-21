@@ -82,7 +82,8 @@
         "pages/UNNumber/index",
         "pages/Party/index",
         "pages/AddReeft/index",
-        "pages/Haulage/index"
+        "pages/Haulage/index",
+        "pages/VasDetail/index"
       ]
     }
   ],

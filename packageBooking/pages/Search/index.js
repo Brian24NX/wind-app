@@ -605,6 +605,7 @@ Page({
         placeOfDelivery: this.data.finalPlaceOfDeliveryLabel || '',
         receiptHaulage: this.data.receiptHaulage || '',
         quotationReference: this.data.reference,
+        quotationId: res.data ? res.data.quotation.quoteLineList[0].id : '',
         shippingCompany: this.data.shippingCompanyList[index]
       }
       wx.setStorageSync('bookingSearchKey', bookingSearchKey)

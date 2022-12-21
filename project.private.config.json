@@ -102,6 +102,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packageBooking/pages/VasDetail/index",
+          "query": "productId=BARLOCK%2520security%2520device",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

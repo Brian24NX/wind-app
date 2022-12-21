@@ -732,19 +732,42 @@
 </view>
 
 <!-- VAS -->
-<!-- <view class="oneDetails">
-    <view class="detailTops">
-      <view class="detailTopLeft">
-        <view>{{languageContent.vas}}</view>
-      </view>
-      <image class="editIcon" src="/assets/img/booking/edit.svg" />
+<view class="oneDetails" wx:if="{{cargoes.length}}">
+  <view class="detailTops" catchtap="zhedie" data-type="vas">
+    <view class="detailTopLeft">
+      <view>{{languageContent.vas}}</view>
     </view>
-    <view class="additionContainer">
-      <view class="oneAddition" wx:for="{{vasList}}" wx:key="index">
-        <view class="vasTitle">SERENITY cargo value guarantee</view>
+    <image class="editIcon {{vasShow ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" />
+  </view>
+  <view hidden="{{!vasShow}}">
+    <view class="additionServicesContainers">
+      <view class="additionList">
+        <view class="oneAddition" wx:for="{{vasList}}">
+          <image src="{{baseUrl + item.productMainImage}}" mode="aspectFill"></image>
+          <view class="additionDetail">
+            <view class="additionDetailTitle">{{item.productName}}</view>
+            <view class="vasDesc">{{item.productShortDescription}}</view>
+            <view class="vasBottom">
+              <view class="vasBottomLeft">
+                <view class="vasPrice">{{item.minPrice}}</view>
+                <view class="vasUnit">
+                  <view>{{item.currency}}</view>
+                  <view>/{{item.levelOfCharge === 'Per Container' ? vasLanguageContent.containers : vasLanguageContent.perBL}}</view>
+                </view>
+              </view>
+              <button class="vasBtn" catchtap="toSelect" data-productid="{{item.productName}}">Select</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="additionContainer" wx:if="{{selectedVasList.length}}">
+      <view class="oneAddition" wx:for="{{selectedVasList}}" wx:key="index">
+        <view class="in" wx:if="{{item.isInclude}}">In your contract</view>
+        <view class="vasTitle">{{item.productName}}</view>
         <view class="vasBottom">
-          <view class="vasBottomLeft">Enjoy a full and quick compensation in case your cargo is damaged</view>
-          <view class="vasBottomRight">
+          <view class="vasBottomLeft" style="{{item.isInclude ? 'width: 100%' : ''}}">{{item.productShortDescription}}</view>
+          <view class="vasBottomRight" wx:if="{{!item.isInclude}}">
             <view class="totalAmount">100</view>
             <view class="amountDesc">
               <view>EUR in total</view>
@@ -752,9 +775,13 @@
             </view>
           </view>
         </view>
+        <view class="vasBtns">
+          <view>Unsubsribe</view>
+        </view>
       </view>
     </view>
-  </view> -->
+  </view>
+</view>
 
 <!-- Booking Office -->
 <view class="oneDetails">

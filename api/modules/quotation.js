@@ -53,6 +53,11 @@ export const vasLists = (params) => {
   return postRequest('/api/miniapp/quotation/quotationValueAddedServices', params, true, false, true, true)
 }
 
+// 获取报价单内的VAS
+export const quotationSelectedVas = (params) => {
+  return postRequest('/api/miniapp/quotation/quotationSelectedValueAddedServices', params, true, false, true)
+}
+
 export const vasFileDetail = (params) => {
   return getRequest('/api/miniapp/saveFileFromUrl', params, false, true)
 }

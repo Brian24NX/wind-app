@@ -10,13 +10,19 @@ import {
   paymentLocationLists,
   fuzzyPointSearch
 } from '../../api/modules/booking';
+import {
+  vasLists,
+  quotationSelectedVas
+} from '../../../api/modules/quotation';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    baseUrl: '',
     languageContent: {},
+    vasLanguageContent: {},
     verifyInfo: {},
     routeSelected: null,
     partyList: [],
@@ -128,6 +134,9 @@ Page({
     importHaulage: null,
     cargoes: [],
     partiesList: [],
+    vasLists: [],
+    selectedVasList: [],
+    quotationSelectedVas: [],
     // =================请求数据end=================
     // =================折叠start=================
     routeSelectedShow: false,
@@ -136,6 +145,7 @@ Page({
     cargoShow: false,
     partiesShow: false,
     paymentShow: false,
+    vasShow: false,
     bookingOfficeShow: false,
     freeCommentsShow: false,
     // =================折叠end=================
@@ -168,14 +178,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    const language = languageUtils.languageVersion().lang.page
     wx.setNavigationBarTitle({
-      title: languageUtils.languageVersion().lang.page.bookingDetail.bookingDetail,
+      title: language.bookingDetail.bookingDetail,
     })
     this.data.payment.freightPayerCode = this.data.partnerList[0].code
     this.data.payment.freightPayerName = this.data.partnerList[0].name
     this.setData({
-      languageContent: languageUtils.languageVersion().lang.page.bookingDetail,
-      verifyInfo: languageUtils.languageVersion().lang.page.verifyInfo,
+      languageContent: language.bookingDetail,
+      verifyInfo: language.verifyInfo,
+      baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (language.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
+      vasLanguageContent: language.vas,
       routeSelected: wx.getStorageSync('routeSelected'),
       bookingSearchKey: wx.getStorageSync('bookingSearchKey'),
       payment: this.data.payment,
@@ -188,6 +201,7 @@ Page({
     this.setFinalPlaceOfDelivery()
     this.setParties()
     this.getCountryList()
+    this.getQuotationSelectedVas()
   },
 
   setParties() {
@@ -524,6 +538,7 @@ Page({
       cargoes: this.data.cargoes,
       cargoTip: ''
     })
+    this.getVasList()
   },
 
   // 编辑商品
@@ -770,7 +785,7 @@ Page({
       bookingOfficeRemind: false
     })
   },
-  // =============== 商品end ============================
+  // =============== 办事处end ============================
 
   // =============== Parties start ============================
   setReference(e) {
@@ -906,6 +921,119 @@ Page({
     })
   },
   // =============== 商品end ============================
+
+  // =============== VAS start ============================
+  getQuotationSelectedVas() {
+    quotationSelectedVas({
+      "shippingCompany": this.data.bookingSearchKey.shippingCompany,
+      "quotelineIds": [wx.getStorageSync('bookingSearchKey').quotationId],
+      "validityDate": this.data.routeSelected.departureDate.utc + '+00:00'
+    }).then(res => {
+      console.log(res)
+      this.setData({
+        quotationSelectedVas: res.data && res.data.length ? res.data[0].chargeDetails : []
+      })
+    })
+  },
+  getVasList() {
+    const bookingParties = [{
+      "partnerCode": wx.getStorageSync('partnerList')[0].code,
+      "bookingParty": true,
+      "role": "BKG",
+      "name": wx.getStorageSync('partnerList')[0].name
+    }]
+    const cargoes = []
+    this.data.cargoes.forEach((item, index) => {
+      cargoes.push({
+        "cargoNumber": index + 1,
+        "packageCode": item.sizeTypeCode,
+        "packageBookedQuantity": Number(item.numberOfContainer),
+        "commodityCode": item.commodity.commodityCode,
+        "commodityName": item.commodity.commodityName,
+        "totalNetWeight": item.totalWeightValue,
+        "uomWeight": item.netWeightUom,
+        "hazardous": item.hazardous,
+        "oversize": false,
+        "refrigerated": false,
+        "shipperOwned": item.shipperOwnedContainer
+      })
+    })
+    vasLists({
+      "shippingCompany": this.data.bookingSearchKey.shippingCompany === "0001" ? 'CMACGM' : this.data.bookingSearchKey.shippingCompany === '0002' ? 'ANL' : this.data.bookingSearchKey.shippingCompany === '0011' ? 'CHENGLIE' : 'APL',
+      "placeReceipt": this.data.bookingSearchKey.placeOfReceipt.split(';').pop(),
+      "portLoading": this.data.bookingSearchKey.portOfLoading.split(';').pop(),
+      "portDischarge": this.data.bookingSearchKey.portOfDischarge.split(';').pop(),
+      "placeDelivery": this.data.bookingSearchKey.placeOfDelivery.split(';').pop(),
+      "placeOfPayment": this.data.bookingSearchKey.portOfDischarge.split(';').pop(),
+      "importMovementType": this.data.bookingSearchKey.deliveryHaulage.toLocaleUpperCase() || 'PORT',
+      "importHaulageMode": "MERCHANT",
+      "exportMovementType": this.data.bookingSearchKey.receiptHaulage.toLocaleUpperCase() || 'PORT',
+      "exportHaulageMode": "MERCHANT",
+      "applicationDate": this.data.routeSelected.departureDate.utc + '+00:00',
+      "locale": languageUtils.languageVersion().lang.page.langue === 'zh' ? 'zh_CN' : 'en_US',
+      "channel": "PRI",
+      "typeOfBl": "Negotiable",
+      bookingParties,
+      cargoes,
+      "currency": "",
+      "subscribedCharges": []
+    }).then(res => {
+      console.log(JSON.stringify(res.data))
+      if (res.data) {
+        res.data.forEach(one => {
+          one.isInclude = false
+          one.isSelected = false
+          for (let i = 0; i < one.chargeDetails.length; i++) {
+            const charge = one.chargeDetails[i];
+            if (this.data.quotationSelectedVas.findIndex(i => i.chargeCode === charge.chargeCode) > -1) {
+              one.isInclude = true
+              one.isSelected = true
+              break;
+            }
+          }
+          // if (one.isProductSelected) {
+          //   // console.log(subscribedCharges)
+          //   const index = subscribedCharges.findIndex(i => one.chargeDetails[0].chargeCode === i.code)
+          //   one.levelOfCharge = 'Per Container'
+          //   one.currency = subscribedCharges[index].currency
+          //   one.chargeDetails[0].currency = subscribedCharges[index].currency
+          //   one.chargeDetails[0].rateFrom = subscribedCharges[index].rateFrom
+          //   one.chargeDetails[0].amount = subscribedCharges[index].rateFrom
+          //   one.chargeDetails[0].levelOfCharge = 'Per Container'
+          //   one.chargeDetails[0].isInclude = true
+          //   one.seletcedProduct = one.chargeDetails[0]
+          // }
+          one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i => i.levelOfCharge === one.levelOfCharge).map(item => {
+            return item.rateFrom
+          }))
+          if (one.levelOfCharge === 'Per BL' && one.chargeDetails[0].calculationType !== 'FIX') {
+            one.minPrice = '%'
+          }
+        })
+        console.log(res.data)
+        this.setData({
+          vasLists: res.data
+        })
+        this.setData({
+          vasList: this.data.vasLists.filter(i => !i.isSelected),
+          selectedVasList: this.data.vasLists.filter(i => i.isSelected)
+        })
+      }
+    })
+  },
+
+  toSelect(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: `/packageBooking/pages/VasDetail/index?productId=${encodeURIComponent(e.currentTarget.dataset.productid)}`,
+    })
+  },
+
+  setSubscribedServices(data) {
+    console.log(data)
+  },
+
+  // =============== VAS end ============================
 
   // 清空输入框内容
   deleteValue2(e) {
@@ -1195,7 +1323,7 @@ Page({
     wx.showLoading({
       title: 'Loading...',
     })
-    setTimeout(()=>{
+    setTimeout(() => {
       wx.hideLoading()
       wx.navigateTo({
         url: '/packageBooking/pages/Result/index',
