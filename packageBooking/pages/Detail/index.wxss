@@ -407,13 +407,17 @@ page {
 }
 
 .additionContainer {
-  padding: 10rpx 20rpx 30rpx;
+  padding: 10rpx 20rpx 0;
   background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
 }
 
 .additionContainer .oneAddition {
   padding: 22rpx 0 30rpx;
   border-bottom: 1rpx solid #EEEEEE;
+}
+
+.additionContainer .oneAddition:nth-last-of-type(1) {
+  border-bottom: none;
 }
 
 .additionContainer .oneAddition .in {

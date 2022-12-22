@@ -291,7 +291,7 @@ page {
   align-items: center;
   justify-content: space-between;
   font-size: 24rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
+  font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #04246A;
   margin-top: 30rpx;
@@ -299,7 +299,7 @@ page {
 
 .cargoBottom .addContainer {
   width: 288rpx;
-  height: 70rpx;
+  height: 100%;
   border: 2rpx solid #DCDFE6;
   display: flex;
 }
@@ -310,13 +310,13 @@ page {
   text-align: center;
   line-height: 70rpx;
   border-right: 2rpx solid #DCDFE6;
-  font-size: 28rpx;
+  font-size: 56rpx;
   color: #04246A;
 }
 
 .cargoBottom .addContainer input {
   width: 150rpx;
-  height: 100%;
+  height: 70rpx;
   text-align: center;
   font-size: 28rpx;
   color: #04246A;
