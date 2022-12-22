@@ -57,7 +57,8 @@
         "pages/DDCharges/Result/index",
         "pages/calculatedCharges/index",
         "pages/calculatedChargeResult/index",
-        "pages/calculatedChargeDetail/index"
+        "pages/calculatedChargeDetail/index",
+        "pages/DNDCharge/index"
       ]
     },
     {

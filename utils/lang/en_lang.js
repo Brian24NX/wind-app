@@ -72,6 +72,7 @@ var Languague = {
       DDCharges: "D&D Charges",
       //查询费率
       chargeFinder: "Charge Finder",
+      guizu: 'D&D Prices',
       // 发现更多
       more: 'More to Discover',
       // cmacgm
@@ -281,6 +282,12 @@ var Languague = {
       topTitle: 'Demurrage &\n Detention Prices',
       selectTitle: 'Search Country/Region',
       send: 'Send email'
+    },
+    DDP: {
+      title1: 'Demurrage &',
+      title2: 'Detention Price',
+      ddDocument: 'D&D Document',
+      ddPrice: 'D&D Price'
     },
     // 我的
     userCenter: {

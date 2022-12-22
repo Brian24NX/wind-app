@@ -1,0 +1,65 @@
+/* packagePrice/pages/DNDCharge/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.topTitles {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx 0;
+  background-color: #F0F1F5;
+}
+
+.topTitles .topContainer {
+  background-image: url(https://wind.cma-cgm.com/images/guizefeilv.png);
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 56rpx;
+}
+
+.typeContainers {
+  background-color: #ffffff;
+  height: 98rpx;
+  width: 690rpx;
+  margin: 0 auto;
+  padding: 0 48rpx;
+  position: sticky;
+  top: 270rpx;
+  z-index: 11;
+}
+
+.typeContianer {
+  height: 100%;
+  display: flex;
+  border-bottom: 1rpx solid #04246A;
+}
+
+.typeContianer .oneType {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #04246A;
+  font-size: 32rpx;
+}
+
+.typeContianer .checked {
+  position: relative;
+  font-weight: bold;
+}
+
+.typeContianer .checked .checkLine {
+  width: 168rpx;
+  height: 8rpx;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #E20202;
+}

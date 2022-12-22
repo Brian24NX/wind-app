@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "DDCharge": "./components/DDCharge/index",
+    "DDDocument": "./components/DDDocuments/index"
+  }
+}

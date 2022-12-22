@@ -1,18 +1,13 @@
-<!--pages/RouterQuery/index.wxml-->
-<wxs module="format" src="../../utils/format.wxs"></wxs>
-<view class="queryContainer">
+<!--packagePrice/pages/DNDCharge/components/DDCharge/index.wxml-->
+<view class="chargeContainer" hidden="{{hide}}">
   <view class="searchLists">
-    <view class="routeTitles">
-      <text class="route1">{{languageContent.getASchedule1}}</text>
-      <view class="redline"></view><text class="route2">{{languageContent.getASchedule2}}</text>
-    </view>
     <view class="searchList">
       <view class="searchTitle">{{languageContent.protOfLoading}}</view>
       <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
-        <image class="codeIcon" src="../../assets/img/seniorsearch/position.png"></image>
+        <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
         <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
         <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
-          <image src="../../assets/img/search/close@2x.png"></image>
+          <image src="/assets/img/search/close@2x.png"></image>
         </view>
         <view class="noRequest" wx:if="{{showRemind1}}">
           <image src="/assets/img/search/error@2x.png"></image>
@@ -34,18 +29,18 @@
       <view class="leftIcons">
         <view class="leftDto"></view>
         <view class="leftLine"></view>
-        <image class="shipIcon" src="../../assets/img/seniorsearch/ship.png"></image>
+        <image class="shipIcon" src="/assets/img/seniorsearch/ship.png"></image>
         <view class="leftLine"></view>
-        <image class="shipLocation" src="../../assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+        <image class="shipLocation" src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
       </view>
     </view>
     <view class="searchList">
       <view class="searchTitle">{{languageContent.portOfDischarge}}</view>
       <view class="codeInputs {{showRemind3 || showRemind4 ? 'noRequestBorder' : ''}}">
-        <image class="codeIcon" src="../../assets/img/seniorsearch/position.png"></image>
+        <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
         <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" bindinput="changepod" />
         <view class="deleteIcon" wx:if="{{showDelete2}}" catchtap="deleteValue" data-type="2">
-          <image src="../../assets/img/search/close@2x.png"></image>
+          <image src="/assets/img/search/close@2x.png"></image>
         </view>
         <view class="noRequest" wx:if="{{showRemind3}}">
           <image src="/assets/img/search/error@2x.png"></image>
@@ -65,25 +60,26 @@
         </view>
       </view>
     </view>
-    <view class="searchList">
-      <view class="searchTitle">{{languageContent.searchOn}}</view>
-      <view class="selectContainer" catchtap="openPopup" data-type="1">
-        <view style="{{search !== '' ? 'color: #071E5D;' : ''}}">{{searchName || verifyInfo.select}}</view>
+    <view class="searchList" style="position: relative;">
+      <view class="searchTitle">{{languageContent.type}}</view>
+      <view class="selectContainer {{showRemind5 ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="1">
+        <view style="{{equipmentSize !== '' ? 'color: #071E5D;' : ''}}">{{equipmentSizeName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+      </view>
+      <view class="noRequest" style="left: 120rpx;top: 135rpx;" wx:if="{{showRemind5}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{verifyInfo.required}}</text>
       </view>
     </view>
     <view class="searchList">
-      <view class="searchTitle">{{languageContent.date}}</view>
-      <view class="selectContainer" catchtap="openPopup" data-type="2">
-        <view style="{{date ? 'color: #071E5D;' : ''}}">{{date ? (language === 'zh' ? format.formatCnDateLocal(date, true, true) : format.formatEnDateLocal(date, '-', '', true, true)) : verifyInfo.select}}</view>
-        <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
-      </view>
-    </view>
-    <view class="searchList">
-      <view class="searchTitle">{{languageContent.next}}</view>
-      <view class="selectContainer" catchtap="openPopup" data-type="3">
-        <view style="{{week ? 'color: #071E5D;' : ''}}">{{weekName || verifyInfo.select}}</view>
-        <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+      <view class="searchTitle">{{languageContent.specialCargo}}</view>
+      <view class="radioContainer">
+        <view class="oneRadio {{item.disabled ? 'disabled' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-item="{{item}}">
+          <view class="statusContainer">
+            <view class="checkedStatus" wx:if="{{item.isChecked}}"></view>
+          </view>
+          <view>{{languageContent[item.label]}}</view>
+        </view>
       </view>
     </view>
     <view class="btn" style="margin-top: 40rpx;">
@@ -92,23 +88,4 @@
   </view>
 
   <custom-picker columns="{{columns}}" valueKey="{{valueKey}}" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
-
-  <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
-
-  <view class="historyContainers" wx:if="{{array.length}}">
-    <view class="historyTitle">
-      <text>{{languageContent.history}}</text>
-      <view class="clearstyle" bindtap="deleteall">
-        <image class="historydel" src="../../assets/img/seniorsearch/delete.png"></image>
-      </view>
-    </view>
-    <view class="result">
-      <view class="oneResult" wx:for="{{array}}" wx:key="index" data-index="{{index}}" v-if="{{array[index]!=''}}" bindtap="getlocation">
-        <text class="fonthistory">{{item.name}}</text>
-        <view class="oneDelete">
-          <image class="btnclose" src="../../assets/img/search/close@2x.png" catchtap="onclose" data-index="{{index}}"></image>
-        </view>
-      </view>
-    </view>
-  </view>
 </view>

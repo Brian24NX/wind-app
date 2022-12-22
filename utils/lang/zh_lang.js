@@ -73,6 +73,7 @@ var Languague = {
       DDCharges: "D&D费用",
       //查询费率
       chargeFinder: "查询费率",
+      guizu: '柜租费率',
       // 发现更多
       more: '发现更多',
       // cmacgm
@@ -283,6 +284,12 @@ var Languague = {
       topTitle: '柜租费率',
       selectTitle: '选择国家/地区',
       send: '发送至邮箱'
+    },
+    DDP: {
+      title1: '柜租费率',
+      title2: '',
+      ddDocument: 'D&D Document',
+      ddPrice: 'D&D Price'
     },
     // 我的
     userCenter: {
