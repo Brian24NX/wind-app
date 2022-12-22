@@ -42,7 +42,10 @@
         <view class="calculatedContainer" wx:if="{{checkIndex === index && item.levelOfCharge === 'Per BL' && item.calculationType !== 'FIX'}}">
           <view class="calculatedTitle">{{item.personalizedValueLabel}}</view>
           <view class="calculatedInput">
-            <input type="number" maxlength="8" value="{{amount}}" bindinput="setAmount"/>
+            <view class="input">
+              <input type="number" maxlength="8" value="{{amount}}" bindinput="setAmount"/>
+              <view class="currency">{{item.currency}}</view>
+            </view>
             <button hover-class="hoverClass" catchtap="calculte" style="{{!amount ? 'opacity: 0.7;' : ''}}" disabled="{{!amount}}">{{languageContent.calculate}}</button>
           </view>
           <view class="calculateResult">

@@ -404,10 +404,11 @@ Page({
           one.minPrice = '%'
         }
       })
+      const arr = res.data.filter(i => i.bestSeller).concat(res.data.filter(i => !i.bestSeller))
       this.setData({
-        vasList: res.data,
-        noSelectVasList: res.data.filter(i => !i.isProductSelected),
-        subscribedServices: res.data.filter(i => i.isProductSelected)
+        vasList: arr,
+        noSelectVasList: arr.filter(i => !i.isProductSelected),
+        subscribedServices: arr.filter(i => i.isProductSelected)
       })
       this.calculatedCharges()
     }, () => {
