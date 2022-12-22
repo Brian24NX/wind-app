@@ -96,7 +96,7 @@
               <view class="priceCount">-</view>
               <view class="priceUnit">
                 <view class="unit"></view>
-                <view class="unit2">CONTRAIN</view>
+                <view class="unit2">{{languageContent.container}}</view>
               </view>
             </view>
             <view class="selects">

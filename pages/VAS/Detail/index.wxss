@@ -213,13 +213,24 @@ page {
   padding-bottom: 38rpx;
 }
 
-.calculatedContainer .calculatedInput input {
-  width: 370rpx;
+.calculatedContainer .calculatedInput .input {
+  width: 410rpx;
   height: 80rpx;
   border: 1rpx solid #dfdfdf;
   padding: 0 20rpx;
   font-size: 28rpx;
   color: #071E5D;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calculatedContainer .calculatedInput .input input {
+  height: 100%;
+}
+
+.calculatedContainer .calculatedInput .input .currency {
+  font-family: Antonio-Regular, Antonio;
 }
 
 .calculatedContainer .calculatedInput button {
