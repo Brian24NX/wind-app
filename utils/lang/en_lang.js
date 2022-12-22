@@ -741,7 +741,9 @@ var Languague = {
         Barge: 'Barge',
         BargeRoad: 'Barge + Truck',
         RailBarge: 'Train + Barge'
-      }
+      },
+      Edit: 'Edit',
+      Unsubsribe: 'Unsubsribe'
     },
     commodity: {
       title: 'Cargo Detail',
@@ -751,7 +753,7 @@ var Languague = {
       shipperOwner: 'Shipper Owned Container',
       sizeType: 'Size/Type',
       Quantity: 'Quantity',
-      perWeight: 'Weight Per Container',
+      perWeight: 'Weight Per Container (Net Weight)',
       totalWeight: 'Total Weight',
       Unit: 'Unit',
       SpecialAttributes: 'Special Attributes',

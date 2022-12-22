@@ -744,7 +744,9 @@ var Languague = {
         Barge: '驳船',
         BargeRoad: '驳船 + 拖车',
         RailBarge: '火车 + 驳船'
-      }
+      },
+      Edit: '编辑',
+      Unsubsribe: '取消订阅'
     },
     commodity: {
       title: '货品详情',

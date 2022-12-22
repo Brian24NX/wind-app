@@ -70,9 +70,9 @@
             <view>{{vasDetail.chargeDetails[checkIndex].rateFrom}} {{vasDetail.chargeDetails[checkIndex].currency}} / {{vasDetail.chargeDetails[checkIndex].levelOfCharge === 'Per BL' ? languageContent.perBL : languageContent.containers}}</view>
           </view>
           <view class="addContainer">
-            <view class="optration">-</view>
-            <input value="1" />
-            <view class="optration optrationRight">+</view>
+            <view class="optration" catchtap="plus" data-index="{{index}}">-</view>
+            <input value="{{item.number}}" bindblur="changeInput" data-index="{{index}}" />
+            <view class="optration optrationRight" catchtap="add" data-index="{{index}}">+</view>
           </view>
         </view>
       </view>
@@ -96,7 +96,7 @@
       <text>{{languageContent.required}}</text>
     </view>
   </view>
-  <button class="subscribeBtn" hover-class="hoverClass" catchtap="subscribeSubmit">{{languageContent.subscribe}}</button>
+  <button class="subscribeBtn" hover-class="hoverClass" catchtap="subscribeSubmit" wx:if="{{checkIndex !== null && calculteResult}}">{{languageContent.subscribe}}</button>
 </view>
 
 

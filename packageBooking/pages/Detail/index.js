@@ -1029,8 +1029,45 @@ Page({
     })
   },
 
-  setSubscribedServices(data) {
-    console.log(data)
+  toSubscribe(e) {
+    const index = this.data.vasLists.findIndex(i => i.parentProductId === e.currentTarget.dataset.productid)
+    this.data.vasLists[index].isSelected = true
+    this.setData({
+      vasLists: this.data.vasLists,
+      selectedVasList: this.data.vasLists.filter(i => i.isSelected),
+      vasList: this.data.vasLists.filter(i => !i.isSelected)
+    })
+  },
+
+  setSubscribedServices(detail, cargo) {
+    console.log(detail)
+    const index = this.data.vasLists.findIndex(i => i.parentProductId === detail.parentProductId)
+    this.data.vasLists[index] = detail
+    this.setData({
+      vasLists: this.data.vasLists,
+      selectedVasList: this.data.vasLists.filter(i => i.isSelected),
+      vasList: this.data.vasLists.filter(i => !i.isSelected)
+    })
+  },
+
+  editVas(e) {
+    const parentProductId = e.currentTarget.dataset.parentproductid
+    wx.navigateTo({
+      url: `/packageBooking/pages/VasDetail/index?productId=${encodeURIComponent(parentProductId)}`,
+    })
+  },
+
+  // 取消订阅
+  unSubsribe(e) {
+    const parentProductId = e.currentTarget.dataset.parentproductid
+    const index = this.data.vasLists.findIndex(i => i.parentProductId === parentProductId)
+    this.data.vasLists[index].isSelected = false
+    delete this.data.vasLists[index].seletcedProduct
+    this.setData({
+      vasLists: this.data.vasLists,
+      selectedVasList: this.data.vasLists.filter(i => i.isSelected),
+      vasList: this.data.vasLists.filter(i => !i.isSelected)
+    })
   },
 
   // =============== VAS end ============================

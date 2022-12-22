@@ -742,20 +742,26 @@
   <view hidden="{{!vasShow}}">
     <view class="additionServicesContainers">
       <view class="additionList">
-        <view class="oneAddition" wx:for="{{vasList}}">
-          <image src="{{baseUrl + item.productMainImage}}" mode="aspectFill"></image>
-          <view class="additionDetail">
-            <view class="additionDetailTitle">{{item.productName}}</view>
-            <view class="vasDesc">{{item.productShortDescription}}</view>
-            <view class="vasBottom">
-              <view class="vasBottomLeft">
-                <view class="vasPrice">{{item.minPrice}}</view>
-                <view class="vasUnit">
-                  <view>{{item.currency}}</view>
-                  <view>/{{item.levelOfCharge === 'Per Container' ? vasLanguageContent.containers : vasLanguageContent.perBL}}</view>
+        <view class="oneAdditions" wx:for="{{vasList}}" wx:key="index">
+          <view class="in in2" wx:if="{{item.isInclude}}">IN YOUR CONTRACT</view>
+          <view class="oneAddition">
+            <image src="{{baseUrl + item.productMainImage}}" mode="aspectFill"></image>
+            <view class="additionDetail">
+              <view class="additionDetailTitle">{{item.productName}}</view>
+              <view class="vasDesc">{{item.productShortDescription}}</view>
+              <view class="vasBottom">
+                <view class="vasBottomLeft">
+                  <block wx:if="{{!item.isInclude}}">
+                    <view class="vasPrice">{{item.minPrice}}</view>
+                    <view class="vasUnit">
+                      <view>{{item.currency}}</view>
+                      <view>/{{item.levelOfCharge === 'Per Container' ? vasLanguageContent.containers : vasLanguageContent.perBL}}</view>
+                    </view>
+                  </block>
                 </view>
+                <button class="vasBtn" catchtap="toSelect" data-productid="{{item.parentProductId}}" wx:if="{{!item.isInclude}}">Select</button>
+                <button class="vasBtn" catchtap="toSubscribe" data-productid="{{item.parentProductId}}" wx:if="{{item.isInclude}}">Subscribe</button>
               </view>
-              <button class="vasBtn" catchtap="toSelect" data-productid="{{item.productName}}">Select</button>
             </view>
           </view>
         </view>
@@ -763,20 +769,24 @@
     </view>
     <view class="additionContainer" wx:if="{{selectedVasList.length}}">
       <view class="oneAddition" wx:for="{{selectedVasList}}" wx:key="index">
-        <view class="in" wx:if="{{item.isInclude}}">In your contract</view>
+        <view class="in" wx:if="{{item.isInclude}}">IN YOUR CONTRACT</view>
         <view class="vasTitle">{{item.productName}}</view>
         <view class="vasBottom">
           <view class="vasBottomLeft" style="{{item.isInclude ? 'width: 100%' : ''}}">{{item.productShortDescription}}</view>
           <view class="vasBottomRight" wx:if="{{!item.isInclude}}">
-            <view class="totalAmount">100</view>
+            <view class="totalAmount">{{item.seletcedProduct.calculteResult}}</view>
             <view class="amountDesc">
-              <view>EUR in total</view>
-              <view>/ 4 Containers</view>
+              <view>{{item.seletcedProduct.currency}} in total</view>
+              <view>/ {{item.seletcedProduct.number}} Containers</view>
             </view>
           </view>
         </view>
         <view class="vasBtns">
-          <view>Unsubsribe</view>
+          <block wx:if="{{!item.isInclude}}">
+            <view catchtap="editVas" data-parentproductid="{{item.parentProductId}}">{{languageContent.Edit}}</view>
+            <view class="line"></view>
+          </block>
+          <view catchtap="unSubsribe" data-parentproductid="{{item.parentProductId}}">{{languageContent.Unsubsribe}}</view>
         </view>
       </view>
     </view>

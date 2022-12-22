@@ -17,7 +17,8 @@ Page({
     isAgree: false,
     showRemind: false,
     amount: '',
-    calculteResult: '',
+    calculteResult: 0,
+    number: 0,
     baseUrl: '',
     equipmentTypeSize: '',
     cargo: []
@@ -27,197 +28,47 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // const pages = getCurrentPages()
-    // const currentPage = pages[pages.length - 2]
-    // const data = currentPage.data
-    // let vasDetail = data.vasLists.find(i => i.productName === decodeURIComponent(options.productId))
-    // // console.log(vasDetail)
-    // if (vasDetail.seletcedProduct) {
-    //   this.setData({
-    //     isAgree: true,
-    //     checkIndex: vasDetail.chargeDetails.findIndex(i => i.chargeCode === vasDetail.seletcedProduct.chargeCode),
-    //     amount: vasDetail.seletcedProduct.inputAmount || '',
-    //     calculteResult: vasDetail.seletcedProduct.amount || '',
-    //   })
-    // }
-    // const languages = languageUtil.languageVersion().lang.page
-    // this.setData({
-    //   vasDetail: vasDetail,
-    //   languageContent: languages.vas,
-    //   baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
-    //   equipmentTypeSize: data.equipmentTypeSize,
-    //   cargo: data.cargoes
-    // })
-    // wx.setNavigationBarTitle({
-    //   title: vasDetail.productName,
-    // })
-    this.setData({
-      "amount": "",
-      "baseUrl": "https://www.cma-cgm.com/static/ecommerce/VASAssets/zh_CN/",
-      "calculteResult": "",
-      "cargo": [
-        {
-          "cacheData": {
-            "addReeft": null,
-            "commodityCode": "22042180",
-            "commodityName": "Grape wine, other than \"Marsala\", not sparkling or effervesc - 22042180",
-            "isAddReeft": false,
-            "isIncludeHazardous": false,
-            "isUserContainer": false,
-            "pickerChooseReault": {
-              "1": {
-                "code": "20ST",
-                "index": 0,
-                "text": "20' Dry Standard",
-                "value": "20ST"
-              },
-              "2": {
-                "index": 0,
-                "text": "KGM (Kilogram)",
-                "value": "KGM"
-              }
-            },
-            "quantityValue": "2",
-            "totalWeightValue": 4,
-            "unList": [],
-            "weightValue": "2"
-          },
-          "commodity": {
-            "commodityCode": "22042180",
-            "commodityName": "Grape wine, other than \"Marsala\", not sparkling or effervesc - 22042180"
-          },
-          "hazardous": false,
-          "hazardousDetails": [],
-          "netWeight": "2",
-          "netWeightUom": "KGM",
-          "numberOfContainer": "2",
-          "reefer": false,
-          "shipperOwnedContainer": false,
-          "sizeTypeCode": "20ST",
-          "sizeTypeName": "20' Dry Standard",
-          "totalWeightValue": 4
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 2]
+    const data = currentPage.data
+    let vasDetail = data.vasLists.find(i => i.productName === decodeURIComponent(options.productId))
+    // console.log(vasDetail)
+    let cargo = data.cargoes
+    
+    if (vasDetail.seletcedProduct) {
+      cargo = vasDetail.seletcedProduct.cargoes
+      this.setData({
+        isAgree: true,
+        checkIndex: vasDetail.chargeDetails.findIndex(i => i.chargeCode === vasDetail.seletcedProduct.chargeCode),
+        amount: vasDetail.seletcedProduct.inputAmount || '',
+        calculteResult: vasDetail.seletcedProduct.calculteResult || 0,
+      })
+    } else {
+      cargo = cargo.map(i => {
+        return {
+          ...i,
+          number: 0
         }
-      ],
-      "checkIndex": null,
-      "isAgree": false,
-      "languageContent": {
-        "additionalServices": "增值服务",
-        "additionalServicesChoosed": "已订阅的服务",
-        "additionalServicesDesc": "保护您的货物 · 拓展业务 · 争取实现碳中和",
-        "agree": "我同意",
-        "calculate": "计算",
-        "containers": "柜号",
-        "inputAmount": "请输入金额并计算",
-        "needProduct": "请选择产品",
-        "noChoosedAdditionalServices": "尚未选购增值服务，请选择下列适配您的报价的增值服务.",
-        "perBL": "提单",
-        "required": "您必须接受条款",
-        "send": "发送至邮箱",
-        "subscribe": "订阅",
-        "terms": "条件与条款",
-        "value": "值",
-        "warningRemind": "订舱提交后须经代理确认"
-      },
-      "showEmail": false,
-      "showRemind": false,
-      "vasDetail": {
-        "bestSeller": true,
-        "chargeDetails": [
-          {
-            "calculationType": "UNI",
-            "cargoLines": [
-              {
-                "cargoLineNumber": 1,
-                "cargoRate": 15,
-                "commodityName": "Grape wine, other than \"Marsala\", not sparkling or effervesc - 22042180",
-                "currency": "USD",
-                "isHazardous": false,
-                "isOOG": false,
-                "isShipperOwned": false,
-                "levelOfCharge": "Per Container",
-                "maxNoOfContainer": 2
-              }
-            ],
-            "chargeCode": "DTC03",
-            "chargeName": "SERENITY Standard Container for Shipper",
-            "conversionRate": 0,
-            "currency": "USD",
-            "levelOfCharge": "Per Container",
-            "maximumChargeableAmount": "0",
-            "minimumChargeableAmount": "0",
-            "rateFrom": 15,
-            "subscriptionMode": "cargoline"
-          },
-          {
-            "calculationType": "UNI",
-            "cargoLines": [
-              {
-                "cargoLineNumber": 1,
-                "cargoRate": 39,
-                "commodityName": "Grape wine, other than \"Marsala\", not sparkling or effervesc - 22042180",
-                "currency": "USD",
-                "isHazardous": false,
-                "isOOG": false,
-                "isShipperOwned": false,
-                "levelOfCharge": "Per Container",
-                "maxNoOfContainer": 2
-              }
-            ],
-            "chargeCode": "DTC07",
-            "chargeName": "SERENITY Premium Container for Shipper",
-            "conversionRate": 0,
-            "currency": "USD",
-            "levelOfCharge": "Per Container",
-            "maximumChargeableAmount": "0",
-            "minimumChargeableAmount": "0",
-            "rateFrom": 39,
-            "subscriptionMode": "cargoline"
-          }
-        ],
-        "confirmationNeeded": false,
-        "currency": "USD",
-        "featuredProduct": false,
-        "isExistingVas": false,
-        "isInclude": false,
-        "isProductSelected": false,
-        "isSelected": false,
-        "isTandCRequired": true,
-        "levelOfCharge": "Per Container",
-        "minPrice": 15,
-        "parentProductId": "SERENITY container guarantee (export)",
-        "productDescription": "意外事故可能会导致在您责任范围内的集装箱损坏。有了SERENITY Container Guarantee，您可以大幅度的减免相关的维修费用。",
-        "productFamily": "DTC01",
-        "productMainImage": "CMA_CGM_VAS_DTC.jpg",
-        "productName": "SERENITY container guarantee (export)",
-        "productSheet": "SERENITY container guarantee - Flyer.pdf",
-        "productShortDescription": "避免因集装箱损坏而产生的额外费用-出口",
-        "subscriptionAvailable": true,
-        "taxRate": 0,
-        "termsandConditions": "TC SERENITY container guarantee - 12th version ENG.pdf"
-      }
+      })
+    }
+    const languages = languageUtil.languageVersion().lang.page
+    this.setData({
+      vasDetail: vasDetail,
+      languageContent: languages.vas,
+      baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
+      equipmentTypeSize: data.equipmentTypeSize,
+      cargo
+    })
+    wx.setNavigationBarTitle({
+      title: vasDetail.productName,
     })
   },
 
   chooseCharge(e) {
     this.setData({
-      checkIndex: e.currentTarget.dataset.index,
-      amount: '',
+      checkIndex: e.currentTarget.dataset.index
     })
-    if (this.data.vasDetail.chargeDetails[this.data.checkIndex].levelOfCharge === 'Per BL' && this.data.vasDetail.chargeDetails[this.data.checkIndex].calculationType !== 'FIX') {
-      this.setData({
-        calculteResult: ''
-      })
-    } else {
-      let calculteResult = ''
-      if (this.data.vasDetail.chargeDetails[this.data.checkIndex].conversionRate) {
-        calculteResult = Math.round(this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom * this.data.vasDetail.chargeDetails[this.data.checkIndex].conversionRate)
-      } else {
-        calculteResult = this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom
-      }
-      this.setData({
-        calculteResult
-      })
-    }
+    this.calculte()
   },
 
   setAmount(e) {
@@ -227,17 +78,46 @@ Page({
     })
   },
 
-  calculte() {
-    let res = Number(this.data.amount) * this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom / 100
-    let calculteResult = res
-    if (Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].minimumChargeableAmount) !== 0 && res < Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].minimumChargeableAmount)) {
-      calculteResult = Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].minimumChargeableAmount)
-    }
-    if (Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].maximumChargeableAmount) !== 0 && res > Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].maximumChargeableAmount)) {
-      calculteResult = Number(this.data.vasDetail.chargeDetails[this.data.checkIndex].maximumChargeableAmount)
-    }
+  plus(e) {
+    const index = e.currentTarget.dataset.index
+    if (this.data.cargo[index].number < 1) return
+    this.data.cargo[index].number--;
     this.setData({
-      calculteResult: Math.round(calculteResult)
+      cargo: this.data.cargo
+    })
+    this.calculte()
+  },
+
+  add(e) {
+    const index = e.currentTarget.dataset.index
+    if (this.data.cargo[index].number >= Number(this.data.cargo[index].numberOfContainer)) return
+    this.data.cargo[index].number++;
+    this.setData({
+      cargo: this.data.cargo
+    })
+    this.calculte()
+  },
+
+  changeInput(e) {
+    const value = e.detail.value
+    const index = e.currentTarget.dataset.index
+    this.data.cargo[index].number = Number(value) > Number(this.data.cargo[index].numberOfContainer) ? Number(this.data.cargo[index].numberOfContainer) : Number(value)
+    this.setData({
+      cargo: this.data.cargo
+    })
+    this.calculte()
+  },
+
+  calculte() {
+    let calculteResult = 0
+    let number = 0
+    this.data.cargo.forEach(item => {
+      calculteResult += item.number * this.data.vasDetail.chargeDetails[this.data.checkIndex].rateFrom
+      number += item.number
+    })
+    this.setData({
+      calculteResult,
+      number
     })
   },
 
@@ -270,9 +150,10 @@ Page({
       })
       return
     }
-    vasDetail.isProductSelected = true
+    vasDetail.isSelected = true
     vasDetail.selectProductIndex = this.data.checkIndex
     vasDetail.seletcedProduct = vasDetail.chargeDetails[this.data.checkIndex]
+    vasDetail.seletcedProduct.cargoes = this.data.cargo
     if (vasDetail.seletcedProduct.levelOfCharge === 'Per BL' && vasDetail.seletcedProduct.calculationType !== 'FIX') {
       vasDetail.seletcedProduct.amount = Math.round(this.data.calculteResult)
       vasDetail.seletcedProduct.inputAmount = this.data.amount
@@ -283,6 +164,8 @@ Page({
         vasDetail.seletcedProduct.amount = vasDetail.seletcedProduct.rateFrom
       }
     }
+    vasDetail.seletcedProduct.calculteResult = this.data.calculteResult
+    vasDetail.seletcedProduct.number = this.data.number
     vasDetail.seletcedProduct.cargoLines.forEach(i => {
       i.equipmentSize = this.data.equipmentTypeSize
       i.convertedRate = vasDetail.seletcedProduct.amount

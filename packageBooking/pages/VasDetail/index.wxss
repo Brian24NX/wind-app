@@ -65,7 +65,7 @@ page {
 .chargeDetails {
   background-color: #ffffff;
   margin-top: 30rpx;
-  padding: 0 48rpx 80rpx;
+  padding: 0 48rpx 40rpx;
 }
 
 .chargeList .oneCharge {
@@ -262,7 +262,7 @@ page {
 }
 
 .cargoContainer .oneCargo {
-  margin-bottom: 30rpx;
+  margin-top: 30rpx;
 }
 
 .oneCargo .cargoTitle {

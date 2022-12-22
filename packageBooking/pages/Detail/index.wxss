@@ -412,7 +412,7 @@ page {
 }
 
 .additionContainer .oneAddition {
-  padding: 22rpx 0 30rpx;
+  padding: 20rpx 0;
   border-bottom: 1rpx solid #EEEEEE;
 }
 
@@ -420,7 +420,7 @@ page {
   border-bottom: none;
 }
 
-.additionContainer .oneAddition .in {
+.in {
   height: 36rpx;
   line-height: 36rpx;
   border-radius: 18rpx;
@@ -430,7 +430,7 @@ page {
   font-size: 24rpx;
   display: inline-block;
   margin-bottom: 10rpx;
-  font-family: ArialMT;
+  font-family: Antonio-Regular, Antonio;
 }
 
 .additionContainer .oneAddition .vasTitle {
@@ -484,6 +484,13 @@ page {
   color: #2D75FF;
   font-size: 28rpx;
   margin-top: 20rpx;
+}
+
+.additionContainer .oneAddition .vasBtns .line {
+  width: 2rpx;
+  height: 28rpx;
+  background-color: #979797;
+  margin: 0 30rpx;
 }
 
 .scroll-view {
@@ -950,10 +957,19 @@ page {
   text-align: center;
 }
 
-.additionList .oneAddition {
+.additionList .oneAdditions {
   padding: 30rpx 0;
+  position: relative;
+}
+
+.in2 {
+  position: absolute;
+  top: 10rpx;
+  z-index: 2;
+}
+
+.additionList .oneAddition {
   display: flex;
-  align-items: center;
 }
 
 .additionList .oneAddition image {
@@ -1014,13 +1030,13 @@ page {
 }
 
 .additionList .additionDetail .vasBottom .vasBtn {
-  width: 156rpx;
+  min-width: 156rpx;
   height: 60rpx;
   border-radius: 0;
   background-color: #071E5D;
   color: #ffffff;
   font-size: 32rpx;
-  padding: 0;
+  padding: 0 20rpx;
   margin: 0;
   line-height: 60rpx;
 }
