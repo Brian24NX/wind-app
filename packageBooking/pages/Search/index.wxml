@@ -164,7 +164,7 @@
       </view>
 
       <!-- tips -->
-      <text class="warm-prompt">{{languageContent.remind}}</text>
+      <!-- <text class="warm-prompt">{{languageContent.remind}}</text> -->
 
       <custom-picker columns="{{searchList}}" valueKey="method" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
 
