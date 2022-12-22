@@ -1,0 +1,39 @@
+<!--packagePrice/pages/DNDCharge/components/DDDocuments/index.wxml-->
+<view class="guizuContainer" hidden="{{hide}}">
+  <view class="selectContainer">
+    <view class="selectTitle">{{languageContent.selectTitle}}</view>
+    <view class="selects" catchtap="openPopup">
+      <view style="{{area ? 'color: #071E5D;' : 'font-style: italic;'}}">{{area || verifyInfo.select}}</view>
+      <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
+    </view>
+  </view>
+  <view class="guizuList" wx:if="{{lists.length}}">
+    <van-collapse accordion border="{{false}}" value="{{ activeNames }}" bind:change="onChange">
+      <van-collapse-item border="{{false}}" content-class="items" name="{{index}}" wx:for="{{lists}}" wx:key="index">
+        <view slot="title">
+          <view class="titles">
+            <view class="titleLine"></view>
+            <view>{{item.area}}</view>
+          </view>
+        </view>
+        <view class="fileList">
+          <view class="oneTemplate" wx:for="{{item.files}}" wx:for-item="items" wx:for-index="" wx:key="indexs">
+            <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
+            <view class="templateContent">
+              <view class="templateName">{{items.fileName}}</view>
+              <view catchtap="sendEmail" data-item="{{items}}">{{languageContent.send}}</view>
+            </view>
+            <view class="preview" catchtap="preview" data-filepath="{{items.filePath}}">
+              <image src="/assets/img/more/eye@2x.png"></image>
+            </view>
+          </view>
+        </view>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+  <view class="emptyContainer" wx:if="{{!loading && !lists.length}}">{{emptyContent.description}}</view>
+</view>
+
+<custom-picker columns="{{areaList}}" valueKey="label" showPopup="{{showPopup}}" defaultIndex="{{defaultIndex}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
+
+<email wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>

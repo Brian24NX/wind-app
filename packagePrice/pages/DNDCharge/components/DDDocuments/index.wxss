@@ -1,0 +1,82 @@
+/* packagePrice/pages/DNDCharge/components/DDDocuments/index.wxss */
+.guizuContainer {
+  padding: 0 30rpx 30rpx;
+}
+
+.guizuContainer .selectContainer {
+  background-color: #ffffff;
+  padding: 40rpx 48rpx 0;
+  position: sticky;
+  top: 366rpx;
+  z-index: 10;
+}
+
+.guizuContainer .selectContainer .selectTitle {
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246A;
+}
+
+.guizuContainer .selects {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  color: #B9BFCA;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+
+.guizuContainer .selects view {
+  width: 490rpx;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.guizuContainer .selects image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.guizuContainer .guizuList {
+  background-color: #ffffff;
+  padding: 20rpx 48rpx;
+}
+
+.guizuContainer .guizuList .titles {
+  display: flex;
+  font-size: 36rpx;
+  font-family: Antonio-Bold;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.guizuContainer .guizuList .titles .titleLine {
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+  margin-right: 16rpx;
+}
+
+.guizuContainer .guizuList .van-cell {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.guizuContainer .guizuList .items {
+  padding: 0 0 20rpx;
+}
+
+.guizuContainer .guizuList .fileList .oneTemplate {
+  margin-top: 20rpx;
+}
+
+.guizuContainer .guizuList .fileList .oneTemplate:nth-of-type(1) {
+  margin-top: 0;
+}

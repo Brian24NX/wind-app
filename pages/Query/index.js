@@ -45,22 +45,24 @@ Page({
       url: '/packageMore/pages/sanctionCheck/list/index',
       needLogin: false
     }, {
-      style: "216rpx",
+      style: "330rpx",
       icon: '/assets/img/menu/gzfl@2x.png',
       isNew: false,
       label: 'gzfl',
-      url: '/packagePrice/pages/guizufeilv/index',
+      url: '/packagePrice/pages/DNDCharge/index',
       needLogin: false
-    }, {
-      style: "216rpx",
-      icon: '/assets/img/menu/cxfl@2x.png',
-      isNew: false,
-      type: 2,
-      label: 'cxfl',
-      url: '/packagePrice/pages/chargeFinder/index',
-      needLogin: false
-    }, {
-      style: "216rpx",
+    },
+    //  {
+    //   style: "216rpx",
+    //   icon: '/assets/img/menu/cxfl@2x.png',
+    //   isNew: false,
+    //   type: 2,
+    //   label: 'cxfl',
+    //   url: '/packagePrice/pages/chargeFinder/index',
+    //   needLogin: false
+    // },
+     {
+      style: "330rpx",
       icon: '/assets/img/menu/dc@2x.png',
       isNew: false,
       label: 'dingcang',

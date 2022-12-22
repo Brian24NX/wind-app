@@ -39,6 +39,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Query/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "packagePrice/pages/DNDCharge/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

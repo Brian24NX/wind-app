@@ -1,0 +1,21 @@
+<!--packagePrice/pages/DNDCharge/index.wxml-->
+<view class="topTitles">
+  <view class="topContainer" style="{{language === 'zh' ? 'font-weight: bolder;' : 'font-weight: 400; font-family: Antonio-Regular;'}}">
+    <view>{{languageContent.title1}}</view>
+    <view style="color: #E20202;">{{languageContent.title2}}</view>
+  </view>
+</view>
+<view class="typeContainers">
+  <view class="typeContianer">
+    <view class="oneType {{currentType === 1 ? 'checked' : ''}}" catchtap="changeType" data-type="1">
+      <text>{{languageContent.ddDocument}}</text>
+      <view class="checkLine"></view>
+    </view>
+    <view class="oneType {{currentType === 2 ? 'checked' : ''}}" catchtap="changeType" data-type="2">
+      <text>{{languageContent.ddPrice}}</text>
+      <view class="checkLine"></view>
+    </view>
+  </view>
+</view>
+<DDCharge hide="{{currentType === 1}}"></DDCharge>
+<DDDocument hide="{{currentType === 2}}"></DDDocument>
