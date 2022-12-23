@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "email": "../../../components/email/index"
+    "email": "../../../components/email/index",
+    "van-popup": "@vant/weapp/popup/index"
   }
 }

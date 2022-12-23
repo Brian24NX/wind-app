@@ -322,6 +322,21 @@ function formatHuoYunStatus(code, language) {
       code: 'MDE',
       labelEn: "EMPTY IN DEPOT",
       labelCn: "集装箱在堆场"
+    },
+    {
+      code: 'PVD',
+      labelEn: "Vessel Departure",
+      labelCn: "Vessel Departure"
+    },
+    {
+      code: 'AVD',
+      labelEn: "Vessel Departure",
+      labelCn: "Vessel Departure"
+    },
+    {
+      code: 'PVA',
+      labelEn: "Vessel Arrival",
+      labelCn: "Vessel Arrival"
     }
   ]
   const index = codeArr.findIndex(item => item.code === code)

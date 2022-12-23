@@ -39,7 +39,9 @@ Component({
     timeRemaining: 0,
     showEmail: false,
     path: '',
-    isLoading: true
+    isLoading: true,
+    show: false,
+    location: ''
   },
 
   ready: function () {
@@ -64,23 +66,23 @@ Component({
         originalData: this.data.detail,
         isLoading: true
       })
-      if (!this.data.detail.movements.length) {
+      if (!this.data.detail.data.length) {
         this.setData({
           isLoading: false
         })
         wx.hideLoading()
         return
       }
-      const list = this.data.detail.movements.reverse();
+      const list = this.data.detail.data.reverse();
       list.forEach((item, index) => {
-        item.status.statusLabel = utils.formatHuoYunStatus(item.status.code, this.data.language)
-        item.orginDate = item.date
-        item.date = utils.substrTime(item.date)
-        item.date = dayjs(item.date).format('YYYY-MM-DD')
-        const dayStatus = dayjs(item.date).isBefore(dayjs(), 'date')
+        item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
+        item.orginDate = item.eventDateTime
+        item.eventDateTime = utils.substrTime(item.eventDateTime)
+        item.eventDateTime = dayjs(item.eventDateTime).format('YYYY-MM-DD')
+        const dayStatus = dayjs(item.eventDateTime).isBefore(dayjs(), 'date')
         if (dayStatus) {
           item.stepStatus = 'past'
-        } else if (dayjs().isSame(dayjs(item.date), 'date')) {
+        } else if (dayjs().isSame(dayjs(item.eventDateTime), 'date')) {
           item.stepStatus = 'being'
         } else {
           if (list[index - 1].stepStatus === 'past') {
@@ -94,21 +96,22 @@ Component({
           })
         }
       })
-      const date1 = dayjs(dayjs(list[list.length - 1].date).format('YYYY-MM-DD HH:mm:ss'))
+      const date1 = dayjs(dayjs(list[list.length - 1].eventDateTime).format('YYYY-MM-DD HH:mm:ss'))
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
-      const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) + 1
+      const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24)
       this.setData({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining,
         isLoading: false
       })
+      console.log(list)
       wx.hideLoading()
     },
 
     // 获取PDF地址
     getPDFUrl(callback) {
       const params = JSON.parse(JSON.stringify(this.data.detail))
-      params.movements = params.movements.reverse()
+      params.data = params.data.reverse()
       reportToPDF(params).then(res => {
         this.setData({
           path: config[config.dev_env].url + '/api/miniapp/' + res.data
@@ -185,6 +188,22 @@ Component({
         this.setData({
           showEmail: false
         })
+      })
+    },
+
+    lookLocation(e) {
+      const item = e.currentTarget.dataset.item
+      console.log(item)
+      this.setData({
+        show: true,
+        // location: item.transportCall.
+      })
+    },
+
+    onClose() {
+      this.setData({
+        show: false,
+        location: ''
       })
     }
   }
