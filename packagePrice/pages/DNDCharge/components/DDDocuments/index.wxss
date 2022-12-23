@@ -9,9 +9,9 @@
   background-color: #ffffff;
   padding: 40rpx 48rpx 0;
   position: sticky;
-  top: 368rpx;
+  top: 369rpx;
   left: 30rpx;
-  z-index: 10;
+  z-index: 8;
   width: 690rpx;
 }
 

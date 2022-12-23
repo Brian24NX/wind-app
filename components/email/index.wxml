@@ -1,5 +1,5 @@
 <!--pages/Orders/email/index.wxml-->
-<view class="emailContainers">
+<view class="emailContainers" catchtouchmove="stop">
   <view class="emailContainer">
     <view class="emailTops">
       <view>{{languageContent.title}}</view>

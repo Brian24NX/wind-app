@@ -286,7 +286,7 @@ var Languague = {
     DDP: {
       title1: 'Demurrage &',
       title2: 'Detention Price',
-      ddDocument: 'D&D Document',
+      ddDocument: 'Tariff Book',
       ddPrice: 'D&D Price'
     },
     // 我的
