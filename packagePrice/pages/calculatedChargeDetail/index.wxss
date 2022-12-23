@@ -46,7 +46,9 @@ page {
 }
 
 .resultList {
-  padding: 30rpx;
+  padding-bottom: 30rpx;
+  width: 690rpx;
+  margin: 30rpx auto 0;
 }
 
 .resultList .oneResult {

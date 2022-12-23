@@ -422,18 +422,18 @@ var Languague = {
       title1: 'D&D',
       title2: 'Charges',
       //运输编号
-      byShipment:'By shipment ref.',
+      byShipment:'By Shipment Ref.',
       //集装箱号
-      byContainer:'By container no.',
-      shipment:'Shipment ref.',
+      byContainer:'By Container No.',
+      shipment:'Shipment Ref.',
       // 集装箱
       container:'Container(s)',
       allContainer: 'All Containers',
       containerNo: 'Container Number',
       // 费用计算截至
-      cost:'Charge calculation as of',
+      cost:'Charge Calculation as of',
       // 计算费用
-      count:'Calculate charges',
+      count:'Calculate Charges',
       noContainer: 'No container found, please check your shipment reference'
     },
     NewDDChargesResult: {
