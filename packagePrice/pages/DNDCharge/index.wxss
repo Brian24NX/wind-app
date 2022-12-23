@@ -10,6 +10,7 @@ page {
   left: 0;
   right: 0;
   padding: 30rpx 0;
+  height: 270rpx;
   background-color: #F0F1F5;
 }
 
@@ -24,12 +25,13 @@ page {
 
 .typeContainers {
   background-color: #ffffff;
-  height: 98rpx;
+  height: 100rpx;
   width: 690rpx;
   margin: 0 auto;
   padding: 0 48rpx;
   position: sticky;
   top: 270rpx;
+  left: 30rpx;
   z-index: 11;
 }
 

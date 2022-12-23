@@ -1,6 +1,8 @@
 /* packagePrice/pages/DNDCharge/components/DDCharge/index.wxss */
 .chargeContainer {
   padding-bottom: 40rpx;
+  width: 690rpx;
+  margin: 0 auto;
 }
 
 .placeholder {

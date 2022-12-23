@@ -194,6 +194,7 @@ Page({
       showRemind3: false,
       showRemind2: false,
       showRemind: false,
+      errTip: '',
       result: [],
       containers: []
     })
@@ -223,6 +224,7 @@ Page({
       showRemind: false,
       showRemind2: false,
       showRemind3: false,
+      errTip: '',
       result: [],
       containers: []
     })

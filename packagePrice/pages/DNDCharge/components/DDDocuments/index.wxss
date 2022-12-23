@@ -1,14 +1,18 @@
 /* packagePrice/pages/DNDCharge/components/DDDocuments/index.wxss */
 .guizuContainer {
-  padding: 0 30rpx 30rpx;
+  /* padding: 0 30rpx 30rpx; */
+  width: 690rpx;
+  margin: 0 auto;
 }
 
 .guizuContainer .selectContainer {
   background-color: #ffffff;
   padding: 40rpx 48rpx 0;
   position: sticky;
-  top: 366rpx;
+  top: 368rpx;
+  left: 30rpx;
   z-index: 10;
+  width: 690rpx;
 }
 
 .guizuContainer .selectContainer .selectTitle {
@@ -47,6 +51,7 @@
 .guizuContainer .guizuList {
   background-color: #ffffff;
   padding: 20rpx 48rpx;
+  width: 690rpx;
 }
 
 .guizuContainer .guizuList .titles {
