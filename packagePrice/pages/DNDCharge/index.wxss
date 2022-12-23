@@ -24,12 +24,12 @@ page {
 
 .typeContainers {
   background-color: #ffffff;
-  height: 98rpx;
+  height: 100rpx;
   width: 690rpx;
   margin: 0 auto;
   padding: 0 48rpx;
   position: sticky;
-  top: 268rpx;
+  top: 270rpx;
   z-index: 11;
 }
 
