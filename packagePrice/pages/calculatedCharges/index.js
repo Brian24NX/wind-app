@@ -287,9 +287,15 @@ Page({
         url: '/packagePrice/pages/calculatedChargeResult/index',
       })
     }, err => {
-      this.setData({
-        errTip: err.message
-      })
+      if (err.code === '422' || err.message === 'Response status code does not indicate success: 400 (Bad Request).') {
+        this.setData({
+          errTip: 'No match found: your ref is incorrect or no charges were raised at this date.'
+        })
+      } else {
+        this.setData({
+          errTip: err.message
+        })
+      }
     })
   },
 })
