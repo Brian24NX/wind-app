@@ -12,9 +12,10 @@ page {
 }
 
 .contactContainer .blockContainer {
+  width: 690rpx;
   padding: 40rpx 48rpx;
   background-color: #ffffff;
-  margin-top: 30rpx;
+  margin: 30rpx auto 0;
 }
 
 .contactContainer .blockContainer .oneBlock {
