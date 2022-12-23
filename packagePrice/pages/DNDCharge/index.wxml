@@ -8,14 +8,14 @@
 <view class="typeContainers">
   <view class="typeContianer">
     <view class="oneType {{currentType === 1 ? 'checked' : ''}}" catchtap="changeType" data-type="1">
-      <text>{{languageContent.ddDocument}}</text>
+      <text>{{languageContent.ddPrice}}</text>
       <view class="checkLine"></view>
     </view>
     <view class="oneType {{currentType === 2 ? 'checked' : ''}}" catchtap="changeType" data-type="2">
-      <text>{{languageContent.ddPrice}}</text>
+      <text>{{languageContent.ddDocument}}</text>
       <view class="checkLine"></view>
     </view>
   </view>
 </view>
-<DDCharge hide="{{currentType === 1}}"></DDCharge>
-<DDDocument hide="{{currentType === 2}}"></DDDocument>
+<DDCharge hide="{{currentType === 2}}"></DDCharge>
+<DDDocument hide="{{currentType === 1}}"></DDDocument>

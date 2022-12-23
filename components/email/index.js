@@ -57,6 +57,10 @@ Component({
       })
       wx.setStorageSync('email', this.data.receiveMailAccount)
       this.triggerEvent("sendEmails", this.data.receiveMailAccount)
+    },
+
+    stop() {
+      return
     }
   }
 })

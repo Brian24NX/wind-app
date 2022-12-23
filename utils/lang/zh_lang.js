@@ -288,7 +288,7 @@ var Languague = {
     DDP: {
       title1: '柜租费率',
       title2: '',
-      ddDocument: 'D&D Document',
+      ddDocument: 'Tariff Book',
       ddPrice: 'D&D Price'
     },
     // 我的

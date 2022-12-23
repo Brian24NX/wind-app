@@ -3,6 +3,5 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "loading": "../../../../components/loading/index"
-  },
-  "addGlobalClass": true
+  }
 }
