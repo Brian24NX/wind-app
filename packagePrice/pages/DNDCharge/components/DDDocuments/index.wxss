@@ -7,8 +7,9 @@
   background-color: #ffffff;
   padding: 40rpx 48rpx 0;
   position: sticky;
-  top: 364rpx;
+  top: 370rpx;
   z-index: 10;
+  width: 690rpx;
 }
 
 .guizuContainer .selectContainer .selectTitle {
@@ -47,6 +48,7 @@
 .guizuContainer .guizuList {
   background-color: #ffffff;
   padding: 20rpx 48rpx;
+  width: 690rpx;
 }
 
 .guizuContainer .guizuList .titles {
