@@ -15,6 +15,7 @@ page {
   right: 0;
   padding: 30rpx 0 0;
   background-color: #F0F1F5;
+  width: 690rpx;
 }
 
 .userfulContainer .topTitles .categoryLists2 {
@@ -128,6 +129,7 @@ page {
   background-color: #ffffff;
   margin: 0;
   padding: 0 46rpx 30rpx;
+  width: 690rpx;
 }
 
 .userfulContainer .usefulListContainer .contentList .oneContent {

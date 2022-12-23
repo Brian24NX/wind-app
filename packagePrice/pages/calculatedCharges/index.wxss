@@ -19,7 +19,7 @@ page {
   display: flex;
   align-items: center;
   font-size: 56rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Regular, Antonio;
   font-weight: bold;
 }
 

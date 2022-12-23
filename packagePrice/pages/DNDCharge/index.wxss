@@ -10,6 +10,7 @@ page {
   left: 0;
   right: 0;
   padding: 30rpx 0;
+  height: 270rpx;
   background-color: #F0F1F5;
 }
 
@@ -30,6 +31,7 @@ page {
   padding: 0 48rpx;
   position: sticky;
   top: 270rpx;
+  left: 30rpx;
   z-index: 11;
 }
 

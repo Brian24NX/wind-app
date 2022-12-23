@@ -26,6 +26,7 @@ page {
   right: 0;
   padding: 30rpx 0 0;
   background-color: #F0F1F5;
+  width: 690rpx;
 }
 
 .businessContainer .topTitles .topBg {
@@ -37,6 +38,7 @@ page {
 .businessContainer .businessLists {
   background-color: #ffffff;
   padding: 0 40rpx 1rpx;
+  width: 690rpx;
 }
 
 .businessContainer .categoryList {
