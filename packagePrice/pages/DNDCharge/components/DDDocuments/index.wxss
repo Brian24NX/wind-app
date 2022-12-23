@@ -7,7 +7,7 @@
   background-color: #ffffff;
   padding: 40rpx 48rpx 0;
   position: sticky;
-  top: 366rpx;
+  top: 364rpx;
   z-index: 10;
 }
 
