@@ -136,7 +136,7 @@ button::after {
 }
 
 .inputContainer {
-  width: 100%;
+  /* width: 100%; */
   background-color: #ffffff;
   padding: 0 30rpx 0 40rpx;
   height: 72rpx;

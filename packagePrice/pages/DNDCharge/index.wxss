@@ -29,7 +29,7 @@ page {
   margin: 0 auto;
   padding: 0 48rpx;
   position: sticky;
-  top: 270rpx;
+  top: 268rpx;
   z-index: 11;
 }
 
