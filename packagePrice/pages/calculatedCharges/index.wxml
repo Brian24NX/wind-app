@@ -3,8 +3,8 @@
   <view class="searchContainers">
     <view class="logo">
       <view class="lines"></view>
-      <view class="title1">{{languageContent.title1}}</view>
-      <view class="title2">{{languageContent.title2}}</view>
+      <text class="title1">{{languageContent.title1}}</text>
+      <text class="title2">{{languageContent.title2}}</text>
     </view>
     <view class="tabContainer">
       <view class="oneTab {{actived === item.id ? 'actived' : ''}}" wx:for="{{tabList}}" wx:key="index" bindtap="changeSearchTab" data-type="{{item.id}}">
