@@ -119,7 +119,8 @@ Page({
   getHuoGuiResult() {
     let obj = {
       shipmentRef: this.data.shipmentRef,
-      eqpid: ''
+      limit: 100,
+      businessPartnerCodes: []
     }
     this.setData({
       loading: true,
@@ -137,7 +138,7 @@ Page({
       })
       data.forEach(route => {
         if (route.data) {
-          route.data.routes.forEach(item => {
+          route.data.forEach(item => {
             let oneRouteContainers = item.containers.filter(i => i.movements.length)
             if (oneRouteContainers.length) {
               oneRouteContainers = oneRouteContainers.map(oneRoute => {

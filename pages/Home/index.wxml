@@ -21,7 +21,7 @@
       </view>
       <view class="noRequest" wx:if="{{showRemind}}">
         <image src="/assets/img/search/error@2x.png"></image>
-        <text>{{huiguiType === 1 ? verifyInfo.required : huiguiType === 2 ? verifyInfo.gswx : huiguiType === 3 ? verifyInfo.more3 : verifyInfo.chongfu}}</text>
+        <text>{{huiguiType === 1 ? verifyInfo.required : huiguiType === 2 ? verifyInfo.gswx : huiguiType === 3 ? verifyInfo.more3 : huiguiType === 4 ? verifyInfo.chongfu : verifyInfo.only}}</text>
       </view>
       <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">{{languageContent.goods}}</button>
       <view class="reminds">{{languageContent.tips}}</view>

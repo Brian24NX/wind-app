@@ -208,7 +208,7 @@ Page({
     let value = e.detail.value.toUpperCase()
     let regvalue = value.trim()
     this.setData({
-      huoGuiValue: value
+      huoGuiValue: value.replaceAll('，', ',')
     })
     if (!value) {
       this.setData({
@@ -255,6 +255,20 @@ Page({
       this.setData({
         showRemind: true,
         huiguiType: 1
+      })
+      return
+    }
+    const huogui = this.data.huoGuiValue.replaceAll(' ', '').split(',')
+    var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
+    const checkRes = []
+    huogui.forEach(item => {
+      checkRes.push(reg.test(item.trim()))
+    })
+    console.log(checkRes)
+    if (checkRes.length > 1 && checkRes.filter(i=>i).length !== checkRes.length) {
+      this.setData({
+        huiguiType: 5,
+        showRemind: true
       })
       return
     }
