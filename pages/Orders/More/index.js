@@ -43,14 +43,14 @@ Component({
   methods: {
     setList() {
       const lists = this.data.list
-      console.log("More组件==>",lists)
+      console.log("More组件==>", lists)
       lists.forEach(one => {
         if (one.movement.length) {
-          let statusLabel 
+          // let statusLabel 
           one.movement = one.movement.reverse();
           one.movement.forEach((item, index) => {
-             item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
-             statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
+            item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
+            //  statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
             const dayStatus = dayjs(item.eventDateTime).isBefore(dayjs(), 'date')
             if (dayStatus) {
               item.stepStatus = 'past'
@@ -69,6 +69,10 @@ Component({
             one.timeRemaining = -1;
           }
           one.currentStatus = one.movement[beingIndex > -1 ? beingIndex : one.movement.length - 1]
+          const vessel = one.movement.filter(i => i.transportCall.modeOfTransport === 'VESSEL')
+          console.log(vessel[vessel.length - 2])
+          one.vesselName = vessel[vessel.length - 2].transportCall.vessel.vesselName
+          one.voyageReference = vessel[vessel.length - 2].transportCall.importVoyageNumber || vessel[vessel.length - 2].transportCall.exportVoyageNumber
         }
       })
       // console.log("MORE lists ==>",lists)

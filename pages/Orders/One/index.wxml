@@ -39,8 +39,8 @@
       </view>
     </view>
     <view class="stepBottom">
-      <view>{{stepList[0].transportCall.location.locationName}}{{stepList[0].carrierSpecificData.internalLocationCode ? ' (' + filters.setChina(stepList[0].carrierSpecificData.internalLocationCode, true, true) + ')' : ''}}</view>
-      <view>{{stepList[stepList.length - 1].transportCall.location.locationName}}{{stepList[stepList.length - 1].carrierSpecificData.internalLocationCode ? ' (' + filters.setChina(stepList[stepList.length - 1].carrierSpecificData.internalLocationCode, true, true) + ')' : ''}}</view>
+      <view>{{pol}}{{polCountryCode ? ' (' + filters.setChina(polCountryCode, true, true) + ')' : ''}}</view>
+      <view>{{pod}}{{podCountryCode ? ' (' + filters.setChina(podCountryCode, true, true) + ')' : ''}}</view>
     </view>
   </view>
   <view class="stepLists">

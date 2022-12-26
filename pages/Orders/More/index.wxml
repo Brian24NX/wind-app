@@ -19,7 +19,7 @@
           <view class="topLeft">
             <text>{{item.timeRemaining < 1 ? languageContent.tingbo : languageContent.yuji }}</text>
           </view>
-          <view class="topRight">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.movement[item.movement.length - 1].eventDateTime, '-', '') : filters.formatCnDateLocal(item.movement[item.movement.length - 1].eventDateTime)}}</view>
+          <view class="topRight">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.movement[item.movement.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(item.movement[item.movement.length - 1].eventDateTime)}}</view>
         </view>
         <view class="orderBottom">
           <view class="oneBottom">
@@ -57,11 +57,11 @@
             <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
             <view class="details">
               <view class="detailLeft">
-                <view class="huogui chuanming">{{item.movement[item.movement.length -3].transportCall.vessel.vesselName}}</view>
+                <view class="huogui chuanming">{{item.vesselName}}</view>
                 <view>{{languageContent.chuanming}}</view>
               </view>
               <view class="detailRight">
-                <view class="xiangxing">{{item.movement[item.movement.length - 4].carrierSpecificData.bookingExportVoyageReference}}</view>
+                <view class="xiangxing">{{item.voyageReference}}</view>
                 <view>{{languageContent.chuanci}}</view>
               </view>
             </view>

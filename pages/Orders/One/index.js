@@ -41,7 +41,11 @@ Component({
     path: '',
     isLoading: true,
     show: false,
-    location: ''
+    location: '',
+    pol: '',
+    polCountryCode: '',
+    pod: '',
+    podCountryCode: ''
   },
 
   ready: function () {
@@ -101,13 +105,18 @@ Component({
           })
         }
       })
+      const movements = list.filter(i => i.transportCall.modeOfTransport === 'VESSEL')
       const date1 = dayjs(dayjs(list[list.length - 1].eventDateTime).format('YYYY-MM-DD HH:mm:ss'))
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
       const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24)
       this.setData({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining,
-        isLoading: false
+        isLoading: false,
+        pol: movements[0].transportCall.location.locationName,
+        polCountryCode: movements[0].carrierSpecificData.internalLocationCode,
+        pod: movements[movements.length - 1].transportCall.location.locationName,
+        podCountryCode: movements[movements.length - 1].carrierSpecificData.internalLocationCode,
       })
       console.log(list)
       wx.hideLoading()
