@@ -123,7 +123,7 @@ Page({
       businessPartnerCodes: []
     }
     if (wx.getStorageSync('access_token') && wx.getStorageSync('partnerList').length) {
-      obj.businessPartnerCodes = wx.getStorageSync('partnerList').map(i=>i.code)
+      obj.businessPartnerCodes = wx.getStorageSync('partnerList').map(i => i.code)
     }
     this.setData({
       loading: true,
@@ -135,44 +135,65 @@ Page({
         loading: false
       })
       const data = res.data;
-      let containers = data
+      let containers = []
+      console.log("Order组件==>", containers, res.data.map(d => d.shipmentRef))
       this.setData({
         results: res.data.map(d => d.shipmentRef)
       })
-    //   data.forEach(route => {
-    //     if (route.data) {
-    //       route.data.forEach(item => {
-    //         let oneRouteContainers = item.containers.filter(i => i.movements.length)
-    //         if (oneRouteContainers.length) {
-    //           oneRouteContainers = oneRouteContainers.map(oneRoute => {
-    //             oneRoute.portOfLoadingCountryCode = route.data.portOfLoadingCountryCode
-    //             oneRoute.portOfLoadingCountryName = route.data.portOfLoading ? route.data.portOfLoading.name : ''
-    //             oneRoute.portOfDischargeCountryCode = route.data.portOfDischargeCountryCode
-    //             oneRoute.portOfDischargeCountryName = route.data.portOfDischarge ? route.data.portOfDischarge.name : ''
-    //             oneRoute.journeyLegs = item.journeyLegs
-    //             return oneRoute
-    //           })
-    //           containers = containers.concat(oneRouteContainers)
-    //         } else {
-    //           containers.push({
-    //             id: item.containers[0].id,
-    //             movements: []
-    //           })
-    //         }
-    //       })
-    //     } else {
-    //       containers.push({
-    //         id: route.shipmentRef,
-    //         movements: []
-    //       })
-    //     }
-    //   })
-    //   const length = containers.filter(item => item.movements.length).length
-    //   if (!length) {
-    //     this.setData({
-    //       noData: true
-    //     })
-    //   }
+      
+      data.forEach(route => {
+        console.log("遍历data==>", route.data)
+        if (route.data) {
+          route.data.forEach(item => {
+            // console.log("列==>",item,item.movement)
+            let oneRouteContainers = item.movement
+              containers.push(item)
+          })
+        } else {
+          // containerss.push(item)
+          // containers.push({
+          //   id: route.shipmentRef,
+          //   movements: []
+          // })
+        }
+      })
+      // data.forEach(route => {
+      //   if (route.data) {
+      //     route.data.forEach(item => {
+      //       console.log("列==>",item,item.movement)
+      //       let oneRouteContainers = item.containers.filter(i => i.movements.length)
+      //       let oneRouteContainers = item.movement
+      //       if (oneRouteContainers.length) {
+      //         oneRouteContainers = oneRouteContainers.map(oneRoute => {
+      //           oneRoute.portOfLoadingCountryCode = route.data.portOfLoadingCountryCode
+      //           oneRoute.portOfLoadingCountryName = route.data.portOfLoading ? route.data.portOfLoading.name : ''
+      //           oneRoute.portOfDischargeCountryCode = route.data.portOfDischargeCountryCode
+      //           oneRoute.portOfDischargeCountryName = route.data.portOfDischarge ? route.data.portOfDischarge.name : ''
+      //           oneRoute.journeyLegs = item.journeyLegs
+      //           return oneRoute
+      //         })
+      //         containers = containers.concat(oneRouteContainers)
+      //       } else {
+      //         containers.push({
+      //           id: item.containers[0].id,
+      //           movements: []
+      //         })
+      //       }
+      //     })
+      //   } else {
+      //     containers.push({
+      //       id: route.shipmentRef,
+      //       movements: []
+      //     })
+      //   }
+      // })
+
+      const length = containers.filter(item => item.movement.length).length
+      if (!length) {
+        this.setData({
+          noData: true
+        })
+      }
       this.setData({
         list: containers
       })

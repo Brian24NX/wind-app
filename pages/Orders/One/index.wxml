@@ -6,11 +6,11 @@
     <view class="resList others">
       <view class="oneRes">
         <image src="/assets/img/search/xianghao@2x.png" mode="aspectFit" class="resIcon"></image>
-        <view class="resContent">{{detail.shipmentRef}}</view>
+        <view class="resContent">{{detail.containerRef}}</view>
       </view>
       <view class="oneRes">
         <image src="/assets/img/search/daxiao@2x.png" mode="aspectFit" class="resIcon"></image>
-        <view class="resContent">{{detail.size}}{{detail.type}}</view>
+        <view class="resContent">{{detail.equipmentSize}}</view>
       </view>
     </view>
   </view>

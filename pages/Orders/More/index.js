@@ -43,30 +43,35 @@ Component({
   methods: {
     setList() {
       const lists = this.data.list
+      console.log("More组件==>",lists)
       lists.forEach(one => {
-        if (one.movements.length) {
-          one.movements = one.movements.reverse();
-          one.movements.forEach((item, index) => {
-            item.status.statusLabel = utils.formatHuoYunStatus(item.status.code, this.data.language)
-            const dayStatus = dayjs(item.date).isBefore(dayjs(), 'date')
+        if (one.movement.length) {
+          let statusLabel 
+          one.movement = one.movement.reverse();
+          one.movement.forEach((item, index) => {
+             item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
+             statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
+            const dayStatus = dayjs(item.eventDateTime).isBefore(dayjs(), 'date')
             if (dayStatus) {
               item.stepStatus = 'past'
-            } else if (dayjs().isSame(dayjs(item.date), 'date')) {
+            } else if (dayjs().isSame(dayjs(item.eventDateTime), 'date')) {
               item.stepStatus = 'being'
             } else {
-              if (one.movements[index - 1].stepStatus === 'past') {
-                one.movements[index - 1].stepStatus = 'being'
+              if (one.movement[index - 1].stepStatus === 'past') {
+                one.movement[index - 1].stepStatus = 'being'
               }
               item.stepStatus = 'coming'
             }
           })
-          const beingIndex = one.movements.findIndex(u => u.stepStatus === 'being')
+          // console.log("More组件 one.movement==>",statusLabel,one.movement)
+          const beingIndex = one.movement.findIndex(u => u.stepStatus === 'being')
           if (beingIndex === -1) {
             one.timeRemaining = -1;
           }
-          one.currentStatus = one.movements[beingIndex > -1 ? beingIndex : one.movements.length - 1]
+          one.currentStatus = one.movement[beingIndex > -1 ? beingIndex : one.movement.length - 1]
         }
       })
+      // console.log("MORE lists ==>",lists)
       this.setData({
         lists
       })

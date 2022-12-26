@@ -28,7 +28,7 @@ Page({
     }],
     actived: 'TRACKING',
     currentIndex: 0,
-    huoGuiValue: '',
+    huoGuiValue: '',//BCC0186925   CDDU9420999  TTNU8257966,CXRU1614539
     showRemind: false,
     qiYunValue: '',
     qiYunCode: '',

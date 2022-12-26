@@ -66,15 +66,20 @@ Component({
         originalData: this.data.detail,
         isLoading: true
       })
-      if (!this.data.detail.data.length) {
+      console.log("One组件 ==>",this.data.detail)
+      if ( !this.data.detail && !this.data.detail.movement.length) {
         this.setData({
           isLoading: false
         })
         wx.hideLoading()
         return
       }
-      const list = this.data.detail.data.reverse();
+
+      
+      const list = this.data.detail.movement.reverse();
+      
       list.forEach((item, index) => {
+        // console.log("列===>",item)
         item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
         item.orginDate = item.eventDateTime
         item.eventDateTime = utils.substrTime(item.eventDateTime)
