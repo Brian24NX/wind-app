@@ -6,11 +6,11 @@
     <view class="resList others">
       <view class="oneRes">
         <image src="/assets/img/search/xianghao@2x.png" mode="aspectFit" class="resIcon"></image>
-        <view class="resContent">{{detail.id}}</view>
+        <view class="resContent">{{detail.containerRef}}</view>
       </view>
       <view class="oneRes">
         <image src="/assets/img/search/daxiao@2x.png" mode="aspectFit" class="resIcon"></image>
-        <view class="resContent">{{detail.size}}{{detail.type}}</view>
+        <view class="resContent">{{detail.equipmentSize}}</view>
       </view>
     </view>
   </view>
@@ -39,8 +39,8 @@
       </view>
     </view>
     <view class="stepBottom">
-      <view>{{detail.portOfLoadingCountryName}}{{detail.portOfLoadingCountryCode ? '(' + detail.portOfLoadingCountryCode + ')' : ''}}</view>
-      <view>{{detail.portOfDischargeCountryName}}{{detail.portOfDischargeCountryCode ? '(' + detail.portOfDischargeCountryCode + ')' : ''}}</view>
+      <view>{{pol}}{{polCountryCode ? ' (' + filters.setChina(polCountryCode, true, true) + ')' : ''}}</view>
+      <view>{{pod}}{{podCountryCode ? ' (' + filters.setChina(podCountryCode, true, true) + ')' : ''}}</view>
     </view>
   </view>
   <view class="stepLists">
@@ -51,8 +51,8 @@
         <view class="leftLine {{item.stepStatus === 'past' ? 'past' : ''}}" wx:if="{{index !== stepList.length - 1}}"></view>
       </view>
       <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
-        <view class="stepSatus">{{item.status.statusLabel}}</view>
-        <view class="stepTime">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.orginDate, '-', 'short', false, true) : filters.formatCnDateLocal(item.orginDate, false, true)}} {{item.pointLocation.name}}, {{item.countryCode}}</view>
+        <view class="stepSatus">{{item.statusLabel}}</view>
+        <view class="stepTime">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.orginDate, '-', 'short') : filters.formatCnDateLocal(item.orginDate)}} <text style="color: #2D75FF;" catchtap="lookLocation" data-item="{{item}}">{{item.transportCall.location.locationName}}</text></view>
       </view>
     </view>
   </view>
@@ -66,3 +66,5 @@
   <view>未找到或已经卸货或返回堆场</view>
 </view>
 <email path="{{path}}" wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>
+
+<van-popup show="{{ show }}" bind:close="onClose">{{location}}</van-popup>

@@ -119,7 +119,11 @@ Page({
   getHuoGuiResult() {
     let obj = {
       shipmentRef: this.data.shipmentRef,
-      eqpid: ''
+      limit: 100,
+      businessPartnerCodes: []
+    }
+    if (wx.getStorageSync('access_token') && wx.getStorageSync('partnerList').length) {
+      obj.businessPartnerCodes = wx.getStorageSync('partnerList').map(i => i.code)
     }
     this.setData({
       loading: true,
@@ -132,38 +136,19 @@ Page({
       })
       const data = res.data;
       let containers = []
+      console.log("Order组件==>", containers, data.map(d => d.shipmentRef))
       this.setData({
-        results: res.data.map(d => d.shipmentRef)
+        results: data.map(d => d.shipmentRef)
       })
+
       data.forEach(route => {
-        if (route.data) {
-          route.data.routes.forEach(item => {
-            let oneRouteContainers = item.containers.filter(i => i.movements.length)
-            if (oneRouteContainers.length) {
-              oneRouteContainers = oneRouteContainers.map(oneRoute => {
-                oneRoute.portOfLoadingCountryCode = route.data.portOfLoadingCountryCode
-                oneRoute.portOfLoadingCountryName = route.data.portOfLoading ? route.data.portOfLoading.name : ''
-                oneRoute.portOfDischargeCountryCode = route.data.portOfDischargeCountryCode
-                oneRoute.portOfDischargeCountryName = route.data.portOfDischarge ? route.data.portOfDischarge.name : ''
-                oneRoute.journeyLegs = item.journeyLegs
-                return oneRoute
-              })
-              containers = containers.concat(oneRouteContainers)
-            } else {
-              containers.push({
-                id: item.containers[0].id,
-                movements: []
-              })
-            }
-          })
-        } else {
-          containers.push({
-            id: route.shipmentRef,
-            movements: []
-          })
+        console.log("遍历data==>", route.data)
+        if (route.data && route.data.length) {
+          containers = containers.concat(route.data)
         }
       })
-      const length = containers.filter(item => item.movements.length).length
+
+      const length = containers.filter(item => item.movement.length).length
       if (!length) {
         this.setData({
           noData: true

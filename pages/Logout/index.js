@@ -21,6 +21,8 @@ Page({
     wx.removeStorageSync('ccgId')
     wx.removeStorageSync('partnerCode')
     wx.removeStorageSync('partnerList')
+    wx.removeStorageSync('rights')
+    wx.removeStorageSync('shipCompanyList')
     setTimeout(() => {
       wx.reLaunch({
         url: '/pages/Home/index',

@@ -12,7 +12,7 @@
 }
 
 .oneOrderContainer {
-  padding: 0 48rpx;
+  padding: 0 40rpx;
   background-color: #ffffff;
   margin-bottom: 230rpx;
 }

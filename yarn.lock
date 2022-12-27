@@ -3,6 +3,16 @@
 
 
 "@vant/weapp@^1.10.2":
-  version "1.10.2"
-  resolved "https://registry.npmmirror.com/@vant/weapp/-/weapp-1.10.2.tgz#013fbf2fdc6d59d9e92bb82a0f772f032fb52945"
-  integrity sha512-caqA0xQxM4lMRncFsRPPVMDdEzUBCJ4xdFXuKReXpEU3qwnVIP/WIjVDIi7mWyS7xqz8C9WfSW5JL4PrlSq31w==
+  "integrity" "sha512-caqA0xQxM4lMRncFsRPPVMDdEzUBCJ4xdFXuKReXpEU3qwnVIP/WIjVDIi7mWyS7xqz8C9WfSW5JL4PrlSq31w=="
+  "resolved" "https://registry.npmmirror.com/@vant/weapp/-/weapp-1.10.2.tgz"
+  "version" "1.10.2"
+
+"dayjs@^1.11.0":
+  "integrity" "sha512-JLC809s6Y948/FuCZPm5IX8rRhQwOiyMb2TfVVQEixG7P8Lm/gt5S7yoQZmC8x1UehI9Pb7sksEt4xx14m+7Ug=="
+  "resolved" "https://registry.npmjs.org/dayjs/-/dayjs-1.11.0.tgz"
+  "version" "1.11.0"
+
+"mp-html@^2.3.1":
+  "integrity" "sha512-ltHmJVxmgvlcW9tmNUjkgn/491Q6xHBL484yvlVNWmKscGgNfXycvdmM981PaDnrDDSA59YPFDo1736B6S1zRg=="
+  "resolved" "https://registry.npmmirror.com/mp-html/-/mp-html-2.3.1.tgz"
+  "version" "2.3.1"

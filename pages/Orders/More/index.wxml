@@ -13,24 +13,24 @@
 </view>
 <view class="orderMoreList">
   <view wx:for="{{lists}}">
-    <view wx:if="{{item.movements.length}}">
+    <view wx:if="{{item.movement.length}}">
       <view class="oneOrder" bindtap="toDetail" data-index="{{index}}">
         <view class="orderTop">
           <view class="topLeft">
             <text>{{item.timeRemaining < 1 ? languageContent.tingbo : languageContent.yuji }}</text>
           </view>
-          <view class="topRight">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.movements[item.movements.length - 1].date, '-', '') : filters.formatCnDateLocal(item.movements[item.movements.length - 1].date)}}</view>
+          <view class="topRight">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.movement[item.movement.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(item.movement[item.movement.length - 1].eventDateTime)}}</view>
         </view>
         <view class="orderBottom">
           <view class="oneBottom">
             <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
             <view class="details">
               <view class="detailLeft">
-                <view class="huogui">{{item.id}}</view>
+                <view class="huogui">{{item.containerRef}}</view>
                 <view>{{languageContent.huoguihao}}</view>
               </view>
               <view class="detailRight">
-                <view class="xiangxing">{{item.size}}{{item.type}}</view>
+                <view class="xiangxing">{{item.equipmentSize }}</view>
                 <view>{{languageContent.xiangxing}}</view>
               </view>
             </view>
@@ -39,16 +39,15 @@
             <image src="/assets/img/search/zyg@2x.png" mode="aspectFit" class="leftIcon"></image>
             <view class="details" style="flex-direction: column;">
               <view>
-                <view class="status">{{languageContent.language === 'en' ? item.currentStatus.status.name : item.currentStatus.status.statusLabel}}</view>
+                <view class="status">{{languageContent.language === 'en' ? item.movement[item.movement.length - 4].carrierSpecificData.internalEventLabel : item.movement[item.movement.length - 1].statusLabel}}</view>
               </view>
-
               <view class="details2">
                 <view class="detailLeft">
-                  <view class="address">{{item.currentStatus.pointLocation.name}}</view>
+                  <view class="address">{{item.movement[item.movement.length - 1].transportCall.location.address.city}}</view>
                   <view>{{languageContent.location}}</view>
                 </view>
                 <view class="detailRight">
-                  <view class="xiangxing time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.currentStatus.date, '-', '', true) : filters.formatCnDateLocal(item.currentStatus.date, true)}}</view>
+                  <view class="xiangxing time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.currentStatus.eventDateTime, '-', '', true) : filters.formatCnDateLocal(item.currentStatus.eventDateTime, true)}}</view>
                   <view>{{languageContent.time}}</view>
                 </view>
               </view>
@@ -58,11 +57,11 @@
             <image src="/assets/img/search/hlzy@2x.png" mode="aspectFit" class="leftIcon"></image>
             <view class="details">
               <view class="detailLeft">
-                <view class="huogui chuanming">{{item.movements[item.movements.length - 2].vessel.name}}</view>
+                <view class="huogui chuanming">{{item.vesselName}}</view>
                 <view>{{languageContent.chuanming}}</view>
               </view>
               <view class="detailRight">
-                <view class="xiangxing">{{item.movements[item.movements.length - 2].voyageReference}}</view>
+                <view class="xiangxing">{{item.voyageReference}}</view>
                 <view>{{languageContent.chuanci}}</view>
               </view>
             </view>
