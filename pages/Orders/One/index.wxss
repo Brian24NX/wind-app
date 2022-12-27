@@ -53,18 +53,48 @@
 
 .oneOrderContainer .stepContainers {
   width: 100%;
-  height: 244rpx;
-  padding: 44rpx 0 0;
-  margin-top: 30rpx;
+  /* height: 244rpx; */
+  padding-bottom: 50rpx;
   background: url(https://wind.cma-cgm.com/images/hgbj@2x.png) no-repeat;
   background-size: 100% auto;
   background-position: bottom right;
 }
 
 .oneOrderContainer .stepContainers .stepContainer {
+  margin-top: 20rpx;
   height: 92rpx;
   display: flex;
   align-items: center;
+}
+
+.stepContainers .neilu {
+  padding-top: 20rpx;
+  min-height: 20rpx;
+  font-size: 24rpx;
+  color: #6B7790;
+}
+
+.stepContainers .neilu .neiluLocation {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stepContainers .neilu .neiluLocation view {
+  min-width: 80rpx;
+  height: 34rpx;
+  background-color: #E6EAEF;
+  border-radius: 4rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+  line-height: 34rpx;
+  text-align: center;
+  padding: 0 10rpx;
+}
+
+.stepContainers .neilu .neiluLocation view:nth-of-type(1) {
+  margin-right: 20rpx;
 }
 
 .oneOrderContainer .stepContainers .stepContainer .stepLine {
@@ -120,8 +150,24 @@
   color: #071E5D;
 }
 
-.oneOrderContainer .stepContainers .stepBottom view:nth-last-of-type(1) {
-  text-align: right;
+.oneOrderContainer .stepContainers .stepBottom .rights {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stepBottom .tag {
+  width: 62rpx;
+  height: 34rpx;
+  border-radius: 18rpx;
+  background-color: #E6EAEF;
+  font-size: 20rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+  text-align: center;
+  line-height: 34rpx;
+  margin-bottom: 4rpx;
 }
 
 .oneOrderContainer .stepLists {
