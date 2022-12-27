@@ -105,7 +105,7 @@ Component({
           })
         }
       })
-      const movements = list.filter(i => i.transportCall.modeOfTransport === 'VESSEL')
+      const movements = list.filter(i => (i.transportCall && (i.transportCall.modeOfTransport === 'VESSEL' || i.transportCall.modeOfTransport === 'BARGE')))
       const date1 = dayjs(dayjs(list[list.length - 1].eventDateTime).format('YYYY-MM-DD HH:mm:ss'))
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
       const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) || ''

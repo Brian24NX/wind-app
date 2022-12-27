@@ -69,7 +69,7 @@ Component({
             one.timeRemaining = -1;
           }
           one.currentStatus = one.movement[beingIndex > -1 ? beingIndex : one.movement.length - 1]
-          const vessel = one.movement.filter(i => i.transportCall.modeOfTransport === 'VESSEL')
+          const vessel = one.movement.filter(i => (i.transportCall && (i.transportCall.modeOfTransport === 'VESSEL' || i.transportCall.modeOfTransport === 'BARGE')))
           console.log(vessel[vessel.length - 2])
           one.vesselName = vessel[vessel.length - 2].transportCall.vessel.vesselName
           one.voyageReference = vessel[vessel.length - 2].transportCall.importVoyageNumber || vessel[vessel.length - 2].transportCall.exportVoyageNumber
