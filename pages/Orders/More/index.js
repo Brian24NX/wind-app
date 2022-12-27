@@ -43,14 +43,12 @@ Component({
   methods: {
     setList() {
       const lists = this.data.list
-      console.log("More组件==>", lists)
+      // console.log("More组件==>", lists)
       lists.forEach(one => {
         if (one.movement.length) {
-          // let statusLabel 
           one.movement = one.movement.reverse();
           one.movement.forEach((item, index) => {
             item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
-            //  statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
             const dayStatus = dayjs(item.eventDateTime).isBefore(dayjs(), 'date')
             if (dayStatus) {
               item.stepStatus = 'past'
@@ -70,7 +68,6 @@ Component({
           }
           one.currentStatus = one.movement[beingIndex > -1 ? beingIndex : one.movement.length - 1]
           const vessel = one.movement.filter(i => (i.transportCall && (i.transportCall.modeOfTransport === 'VESSEL' || i.transportCall.modeOfTransport === 'BARGE')))
-          console.log(vessel[vessel.length - 2])
           one.vesselName = vessel[vessel.length - 2].transportCall.vessel.vesselName
           one.voyageReference = vessel[vessel.length - 2].transportCall.importVoyageNumber || vessel[vessel.length - 2].transportCall.exportVoyageNumber
         }

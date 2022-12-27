@@ -1,7 +1,7 @@
 {
   "setting": {
     "urlCheck": false,
-    "compileHotReLoad": true
+    "compileHotReLoad": false
   },
   "condition": {
     "miniprogram": {
@@ -114,7 +114,7 @@
         {
           "name": "",
           "pathName": "pages/Orders/index",
-          "query": "str=SHZ5348203",
+          "query": "str=SHZ5311081",
           "launchMode": "default",
           "scene": null
         }

@@ -36,6 +36,7 @@ Component({
     language: 'zh',
     stepList: [],
     stepCount: 0,
+    totalCount: 0,
     timeRemaining: 0,
     showEmail: false,
     path: '',
@@ -45,7 +46,9 @@ Component({
     pol: '',
     polCountryCode: '',
     pod: '',
-    podCountryCode: ''
+    podCountryCode: '',
+    customsReference: '',
+    isNeiLu: false
   },
 
   ready: function () {
@@ -67,10 +70,11 @@ Component({
       this.setData({
         stepList: [],
         stepCount: 0,
+        totalCount: 0,
         originalData: this.data.detail,
         isLoading: true
       })
-      console.log("One组件 ==>",this.data.detail)
+      // console.log("One组件 ==>",this.data.detail)
       if ( !this.data.detail && !this.data.detail.movement.length) {
         this.setData({
           isLoading: false
@@ -99,16 +103,19 @@ Component({
           }
           item.stepStatus = 'coming'
         }
-        if (item.stepStatus === 'past' || item.stepStatus === 'being') {
-          this.setData({
-            stepCount: ++this.data.stepCount
-          })
-        }
+        // if (item.stepStatus === 'past' || item.stepStatus === 'being') {
+        //   this.setData({
+        //     stepCount: ++this.data.stepCount
+        //   })
+        // }
       })
       const movements = list.filter(i => (i.transportCall && (i.transportCall.modeOfTransport === 'VESSEL' || i.transportCall.modeOfTransport === 'BARGE')))
+      const customsReferences = list.filter(i => (i.carrierSpecificData && i.carrierSpecificData.internalEventLabel === 'Customs References' && i.carrierSpecificData.customsReferences && i.carrierSpecificData.customsReferences.length))
+      const date0 = dayjs(dayjs(list[0].eventDateTime).format('YYYY-MM-DD HH:mm:ss'))
       const date1 = dayjs(dayjs(list[list.length - 1].eventDateTime).format('YYYY-MM-DD HH:mm:ss'))
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
-      const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) || ''
+      const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) + 1 || ''
+      const isNeiLu = list[list.length - 1].transportCall.modeOfTransport !== "VESSEL" && list[list.length - 1].transportCall.modeOfTransport !== 'BARGE'
       this.setData({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining,
@@ -117,8 +124,11 @@ Component({
         polCountryCode: movements[0].carrierSpecificData.internalLocationCode,
         pod: movements[movements.length - 1].transportCall.location.locationName,
         podCountryCode: movements[movements.length - 1].carrierSpecificData.internalLocationCode,
+        customsReference: customsReferences.length ? customsReferences[0].carrierSpecificData.customsReferences[0].customsReference : '',
+        isNeiLu,
+        totalCount: date1.diff(date0),
+        stepCount: -date0.diff(date2)
       })
-      console.log(list)
       wx.hideLoading()
     },
 
@@ -207,11 +217,10 @@ Component({
 
     lookLocation(e) {
       const item = e.currentTarget.dataset.item
-      console.log(item)
-      this.setData({
-        show: true,
+      // this.setData({
+        // show: true,
         // location: item.transportCall.
-      })
+      // })
     },
 
     onClose() {

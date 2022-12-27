@@ -86,6 +86,20 @@ Page({
       })
       return
     }
+    const huoguiStr = this.data.huoGuiValue.replaceAll(' ', '')
+    const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
+    var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
+    const checkRes = []
+    huogui.forEach(item => {
+      checkRes.push(reg.test(item.trim()))
+    })
+    if (checkRes.length > 1 && checkRes.filter(i=>i).length !== checkRes.length) {
+      this.setData({
+        huiguiType: 5,
+        showRemind: true
+      })
+      return
+    }
     wx.navigateTo({
       url: `/pages/Orders/index?str=${this.data.huoGuiValue.replaceAll(' ', '')}`
     })

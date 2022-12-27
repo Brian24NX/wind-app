@@ -1,5 +1,6 @@
 // pages/Orders/index.js
 var languageUtil = require('../../utils/languageUtils')
+const dayjs = require("dayjs");
 import {
   shipmentTracking
 } from '../../api/modules/home';
@@ -103,10 +104,27 @@ Page({
   },
 
   searchList() {
+    const _this = this
     if (this.data.showRemind) {
       const remindMsg = this.data.huiguiType === 1 ? this.data.verifyInfo.required : this.data.huiguiType === 2 ? this.data.verifyInfo.gswx : this.data.huiguiType === 3 ? this.data.verifyInfo.more3 : this.data.verifyInfo.chongfu
       wx.showToast({
         title: remindMsg,
+        icon: 'none',
+        mask: true,
+        duration: 3000
+      })
+      return
+    }
+    const huoguiStr = this.data.shipmentRef.replaceAll(' ', '')
+    const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
+    var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
+    const checkRes = []
+    huogui.forEach(item => {
+      checkRes.push(reg.test(item.trim()))
+    })
+    if (checkRes.length > 1 && checkRes.filter(i => i).length !== checkRes.length) {
+      wx.showToast({
+        title: _this.data.verifyInfo.only,
         icon: 'none',
         mask: true,
         duration: 3000
@@ -135,17 +153,33 @@ Page({
         loading: false
       })
       const data = res.data;
+      if (!data) {
+        this.setData({
+          noData: true
+        })
+        return
+      }
       let containers = []
-      console.log("Order组件==>", containers, data.map(d => d.shipmentRef))
+      // console.log("Order组件==>", containers, data.map(d => d.shipmentRef))
       this.setData({
         results: data.map(d => d.shipmentRef)
       })
 
       data.forEach(route => {
-        console.log("遍历data==>", route.data)
+        // console.log("遍历data==>", route.data)
         if (route.data && route.data.length) {
           containers = containers.concat(route.data)
         }
+      })
+
+      containers.forEach(item => {
+        const movements = JSON.parse(JSON.stringify(item.movement))
+        item.movement = []
+        movements.forEach(move => {
+          if (!(move.eventClassifierCode === 'PLN' && dayjs(move.eventDateTime).isBefore(dayjs(), 'second'))) {
+            item.movement.push(move)
+          }
+        })
       })
 
       const length = containers.filter(item => item.movement.length).length
