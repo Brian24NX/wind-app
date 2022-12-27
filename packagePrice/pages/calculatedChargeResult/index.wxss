@@ -60,7 +60,7 @@ page {
 .oneResult .resultTop {
   display: flex;
   justify-content: space-between;
-  padding: 48rpx 48rpx 30rpx;
+  padding: 20rpx 48rpx 10rpx;
 }
 
 .oneResult .resultTop .topOne {
@@ -104,10 +104,15 @@ page {
   right: -16rpx;
 }
 
+.locationContainers {
+  display: flex;
+  padding: 20rpx 48rpx;
+}
+
 .locationContainer {
   display: flex;
+  width: 50%;
   align-items: center;
-  padding: 20rpx 48rpx;
 }
 
 .locationContainer image {
@@ -122,7 +127,7 @@ page {
 }
 
 .locationContainer .locationRight .locationName {
-  font-size: 48rpx;
+  font-size: 32rpx;
   font-family: Antonio-Bold, Antonio;
   color: #071E5D;
 }
@@ -137,26 +142,30 @@ page {
   flex-wrap: wrap;
   width: 630rpx;
   background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
-  margin: 0 auto 30rpx;
+  margin: 0 auto 20rpx;
   padding: 30rpx 40rpx;
 }
 
 .oneType {
-  width: 60%;
+  width: 50%;
   font-size: 24rpx;
   color: #6B7790;
-  margin-top: 30rpx;
+  /* margin-top: 30rpx; */
 }
 
-.oneType:nth-of-type(-n + 2) {
+/* .oneType:nth-of-type(-n + 2) {
   margin-top: 0;
 }
 
 .oneType:nth-of-type(2n) {
   width: 40%;
-}
+} */
 
 .oneType .typeValue {
+  color: #071E5D;
+}
+
+.oneType .point {
   color: #071E5D;
 }
 
@@ -164,7 +173,7 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40rpx 40rpx;
+  padding: 0 40rpx 20rpx;
 }
 
 .amountContainer .amountLeft {
@@ -200,4 +209,17 @@ page {
   font-weight: bold;
   color: #071E5D;
   margin-top: 6rpx;
+}
+
+.waring {
+  display: flex;
+  color: #6B7790;
+  font-size: 20rpx;
+  padding: 0 40rpx 30rpx;
+}
+
+.waring image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
 }
