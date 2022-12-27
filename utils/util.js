@@ -482,6 +482,7 @@ function getDayList(date, time) {
 }
 
 function substrTime(date) {
+  if (!date) return ''
   if (date.indexOf('T') > -1) {
     date = date.split('T')[0] + ' ' + date.split('T')[1].split('+')[0].split('-')[0].split('Z')[0]
   }
