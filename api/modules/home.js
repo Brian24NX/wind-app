@@ -10,7 +10,7 @@ export const routingFinder = (params) => {
 
 // 获取货物追踪数据
 export const shipmentTracking = (params) => {
-  return getRequest('/api/miniapp/shipment-tracking', params)
+  return postRequest('/api/miniapp/trackingEventsTrackingReference', params, true)
 }
 
 // 获取PDF下载路径

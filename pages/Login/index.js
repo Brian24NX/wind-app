@@ -34,7 +34,7 @@ Page({
           wx.setStorageSync('userInfo', userInfo)
         }
         if (profileRights && profileRights.length) {
-          const shipCompanyList = profileRights.map(item => (item.shipcomp))
+          const shipCompanyList = Array.from(new Set(profileRights.map(item => item.shipcomp)))
           const rights = []
           profileRights.forEach(i => {
             i.rights.forEach(r => {

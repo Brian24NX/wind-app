@@ -31,6 +31,10 @@ Page({
     })
   },
 
+  onUnload() {
+    wx.removeStorageSync('calculatedChargeResult')
+  },
+
   toDetail(e) {
     wx.navigateTo({
       url: `/packagePrice/pages/calculatedChargeDetail/index?index=${e.currentTarget.dataset.index}`,

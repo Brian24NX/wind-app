@@ -19,6 +19,7 @@ var Languague = {
       gswx: 'Invalid number, please check format',
       more3: 'Maximum three container states, please re-enter',
       chongfu: 'Duplicate number, please check and enter',
+      only: 'Please enter either one Booking reference or Multiple Container Reference',
       input: 'Input',
       select: 'Select'
     },
