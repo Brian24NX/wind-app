@@ -30,22 +30,27 @@
       <view class="centerLine"></view>
       <view class="rightCircle"></view>
     </view>
-    <view class="locationContainer">
-      <image src="/assets/img/search/zyg@2x.png"></image>
-      <view class="locationRight">
-        <view>{{languageContent.currentLocation}}</view>
-        <view class="locationName">{{item.paymentlocation.internalCode}}</view>
-        <view class="point">{{item.paymentlocation.name}}</view>
+    <view class="locationContainers">
+      <view class="locationContainer">
+        <image src="/assets/img/price/chargeType.svg"></image>
+        <view class="locationRight">
+          <view>{{languageContent.chargeType}}</view>
+          <view class="locationName">{{item.chargeName}}</view>
+        </view>
+      </view>
+      <view class="locationContainer">
+        <image src="/assets/img/price/time.svg"></image>
+        <view class="locationRight">
+          <view>{{languageContent.lastFreeDate}}</view>
+          <view class="locationName">{{language === 'zh' ? format.formatCnDateLocal(item.freeDate, true, true) : format.formatEnDateLocal(item.freeDate, '-', '', true, true)}}</view>
+        </view>
       </view>
     </view>
     <view class="typeContianer">
-      <view class="oneType">
-        <text>{{languageContent.chargeType}}</text>
-        <view class="typeValue">{{item.chargeName}}</view>
-      </view>
-      <view class="oneType">
-        <text>{{languageContent.lastFreeDate}}</text>
-        <view class="typeValue">{{language === 'zh' ? format.formatCnDateLocal(item.freeDate, true, true) : format.formatEnDateLocal(item.freeDate, '-', '', true, true)}}</view>
+      <view class="oneType" style="width: 100%;margin-bottom: 30rpx;">
+        <text>{{languageContent.currentLocation}}</text>
+        <view class="typeValue">{{item.paymentlocation.internalCode}}</view>
+        <view class="point">{{item.paymentlocation.name}}</view>
       </view>
       <view class="oneType">
         <text>{{languageContent.customersClearedDate}}</text>
@@ -66,6 +71,10 @@
         </view>
       </view>
       <van-icon name="arrow" />
+    </view>
+    <view class="waring">
+      <image src="/assets/img/price/waring.svg"></image>
+      <text>{{languageContent.cankao}}</text>
     </view>
   </view>
 </view>

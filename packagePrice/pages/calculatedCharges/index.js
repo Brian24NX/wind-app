@@ -175,7 +175,7 @@ Page({
           containers: this.data.containers.concat(res.data.filter(i => i.containerNumber))
         })
       }
-      if (!res.data || !res.data.length || res.data.length < 50) {
+      if (!res.data || !res.data.length || res.data.length < 10) {
         this.setData({
           noMore: true
         })
@@ -219,8 +219,9 @@ Page({
     //去掉空格和大写问题
     let value = e.detail.value.toUpperCase()
     let regvalue = value.trim()
+    const inputType =/[\W]/g
     this.setData({
-      huoGuiValue: regvalue,
+      huoGuiValue: regvalue.replace(inputType,''),
       showRemind: false,
       showRemind2: false,
       showRemind3: false,
@@ -260,7 +261,7 @@ Page({
         })
         return
       }
-      var reg = /^[0-9a-zA-Z]*$/g;
+      var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
       // 不包含，类型的数据
       if (!reg.test(this.data.huoGuiValue)) {
         this.setData({

@@ -35,6 +35,7 @@ var Languague = {
       required: '此项为必填项',
       // 格式无效
       gswx: '号码无效，请检查格式',
+      dcgswx: '运输号无效，请检查格式',
       more3: '最多可同时查询三个货柜状态，请重新输入',
       chongfu: '号码重复，请检查后输入',
       only: '请输入一个订舱号或多个货柜号',
@@ -454,7 +455,8 @@ var Languague = {
       customersClearedDate: '美国清关日期',
       cashierClearedDate: '结款日期',
       total: '总计',
-      amount: 'Amount'
+      amount: 'Amount',
+      cankao: '仅供参考，请以实际账单为准。'
     },
     // 报价
     quotation: {

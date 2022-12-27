@@ -17,6 +17,7 @@ var Languague = {
       required: 'Mandatory',
       // 格式无效
       gswx: 'Invalid number, please check format',
+      dcgswx: 'Invalid shipment ref, please check format',
       more3: 'Maximum three container states, please re-enter',
       chongfu: 'Duplicate number, please check and enter',
       only: 'Please enter either one Booking reference or Multiple Container Reference',
@@ -451,7 +452,8 @@ var Languague = {
       customersClearedDate: 'US Customs\n Cleared Date',
       cashierClearedDate: 'Cashier\n Cleared Date',
       total: 'TOTAL',
-      amount: 'Amount'
+      amount: 'Amount',
+      cankao: 'For reference only, please refer to invoice for actual cost.'
     },
     // 报价
     quotation: {

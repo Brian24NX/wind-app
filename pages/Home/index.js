@@ -28,7 +28,7 @@ Page({
     }],
     actived: 'TRACKING',
     currentIndex: 0,
-    huoGuiValue: '',//BCC0186925   CDDU9420999  TTNU8257966,CXRU1614539
+    huoGuiValue: '', //BCC0186925   CDDU9420999  TTNU8257966,CXRU1614539
     showRemind: false,
     qiYunValue: '',
     qiYunCode: '',
@@ -265,7 +265,8 @@ Page({
     huogui.forEach(item => {
       checkRes.push(reg.test(item.trim()))
     })
-    if (checkRes.length > 1 && checkRes.filter(i=>i).length !== checkRes.length) {
+    // console.log(checkRes)
+    if (checkRes.length > 1 && checkRes.filter(i => i).length !== checkRes.length) {
       this.setData({
         huiguiType: 5,
         showRemind: true
