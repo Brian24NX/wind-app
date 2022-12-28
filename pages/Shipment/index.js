@@ -110,7 +110,7 @@ Page({
     //获取当前小程序语言版本所对应的字典变量
     var lang = languageUtil.languageVersion()
     wx.setNavigationBarTitle({
-      title: lang.lang.page.homeInfo.TRACKING
+      title: lang.lang.page.homeInfo.TRACKING1
     })
     this.setData({
       language: lang.lang.page.langue,

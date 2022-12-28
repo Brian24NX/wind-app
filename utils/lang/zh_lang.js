@@ -50,6 +50,7 @@ var Languague = {
       hometitle: "CMA CGM",
       // 获取追踪
       TRACKING: '货物追踪',
+      TRACKING1: '货物追踪',
       chuanqi1: '货物',
       chuanqi2: '追踪',
       // 提示

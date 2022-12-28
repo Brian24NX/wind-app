@@ -50,8 +50,9 @@ var Languague = {
       hometitle: "CMA CGM",
       // 获取追踪
       TRACKING: 'TRACKING',
-      chuanqi1: 'SHIPMENT',
-      chuanqi2: ' TRACKING',
+      TRACKING1: 'Tracking',
+      chuanqi1: 'Shipment',
+      chuanqi2: ' Tracking',
       // 提示
       goodsRemind: 'Container, Bill of lading or Booking Number',
       //货物追踪按钮
@@ -680,8 +681,8 @@ var Languague = {
       cancel: 'Cancel'
     },
     copyInfo: {
-      success: 'Successfully copied, please view in browser.',
-      success2: 'Successfully copied.'
+      success: 'Successfully copied, please view in browser',
+      success2: 'Successfully copied'
     },
     load: {
       //努力加载中

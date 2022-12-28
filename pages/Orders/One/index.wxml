@@ -19,7 +19,7 @@
 <view class="oneOrderContainer" wx:if="{{stepList.length}}">
   <view class="timeContainer">
     <view class="times timeTop">
-      <view class="left">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].orginDate, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].orginDate)}}</view>
+      <view class="left">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].eventDateTime)}}</view>
       <view class="right">{{timeRemaining}} {{languageContent.tian}}</view>
     </view>
     <view class="times timeBottom">
@@ -36,7 +36,7 @@
           <view>POD: {{stepList[stepList.length - 1].transportCall.location.locationName}}</view>
           <view class="mode">{{stepList[stepList.length - 1].transportCall.modeOfTransport}}</view>
         </view>
-        <view class="time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].orginDate, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].orginDate)}}</view>
+        <view class="time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].eventDateTime)}}</view>
       </block>
       <view class="customerNumber" wx:if="{{customsReference}}">
         <text style="color: #071E5D;">Custom Number:</text>
@@ -71,7 +71,7 @@
       </view>
       <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
         <view class="stepSatus">{{item.statusLabel}}</view>
-        <view class="stepTime">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.orginDate, '-', 'short') : filters.formatCnDateLocal(item.orginDate)}} <text style="color: #2D75FF;" catchtap="lookLocation" data-item="{{item}}">{{item.transportCall.location.locationName}}</text></view>
+        <view class="stepTime">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.eventDateTime, '-', 'short') : filters.formatCnDateLocal(item.eventDateTime)}} <text style="color: #2D75FF;" catchtap="lookLocation" data-item="{{item}}">{{item.transportCall.location.locationName}}</text></view>
       </view>
     </view>
   </view>

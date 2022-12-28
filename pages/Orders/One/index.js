@@ -89,13 +89,12 @@ Component({
       list.forEach((item, index) => {
         // console.log("列===>",item)
         item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
-        item.orginDate = item.eventDateTime
-        item.eventDateTime = utils.substrTime(item.eventDateTime)
-        item.eventDateTime = dayjs(item.eventDateTime).format('YYYY-MM-DD')
-        const dayStatus = dayjs(item.eventDateTime).isBefore(dayjs(), 'date')
+        item.orginDate = utils.substrTime(item.eventDateTime)
+        item.orginDate = dayjs(item.orginDate).format('YYYY-MM-DD')
+        const dayStatus = dayjs(item.orginDate).isBefore(dayjs(), 'date')
         if (dayStatus) {
           item.stepStatus = 'past'
-        } else if (dayjs().isSame(dayjs(item.eventDateTime), 'date')) {
+        } else if (dayjs().isSame(dayjs(item.orginDate), 'date')) {
           item.stepStatus = 'being'
         } else {
           if (list[index - 1].stepStatus === 'past') {
@@ -111,8 +110,8 @@ Component({
       })
       const movements = list.filter(i => (i.transportCall && (i.transportCall.modeOfTransport === 'VESSEL' || i.transportCall.modeOfTransport === 'BARGE')))
       const customsReferences = list.filter(i => (i.carrierSpecificData && i.carrierSpecificData.internalEventLabel === 'Customs References' && i.carrierSpecificData.customsReferences && i.carrierSpecificData.customsReferences.length))
-      const date0 = dayjs(dayjs(list[0].eventDateTime).format('YYYY-MM-DD HH:mm:ss'))
-      const date1 = dayjs(dayjs(list[list.length - 1].eventDateTime).format('YYYY-MM-DD HH:mm:ss'))
+      const date0 = dayjs(dayjs(list[0].orginDate).format('YYYY-MM-DD HH:mm:ss'))
+      const date1 = dayjs(dayjs(list[list.length - 1].orginDate).format('YYYY-MM-DD HH:mm:ss'))
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
       const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) + 1 || ''
       const isNeiLu = list[list.length - 1].transportCall.modeOfTransport !== "VESSEL" && list[list.length - 1].transportCall.modeOfTransport !== 'BARGE'
@@ -135,7 +134,7 @@ Component({
     // 获取PDF地址
     getPDFUrl(callback) {
       const params = JSON.parse(JSON.stringify(this.data.detail))
-      params.data = params.data.reverse()
+      params.movement = params.movement.reverse()
       reportToPDF(params).then(res => {
         this.setData({
           path: config[config.dev_env].url + '/api/miniapp/' + res.data
