@@ -1006,20 +1006,37 @@ Page({
       "simulationDate": this.data.simulationDate,
       "weightPerContainer": this.data.weight
     }).then(res => {
-      if (res.data && res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
-        this.setData({
-          resultResq: res.data,
-          shippingCompany: this.data.shippingCompany
-        })
-        wx.navigateTo({
-          url: '/pages/Quotation/List/index',
-        })
+      if (res.data) {
+        if (res.data.hasFmcExcluded === true || res.data.hasFmcExcluded === false) {
+          this.setData({
+            resultResq: {}
+          })
+          wx.navigateTo({
+            url: '/pages/Quotation/List/index?isUs=1',
+          })
+        } else {
+          if (res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
+            this.setData({
+              resultResq: res.data,
+              shippingCompany: this.data.shippingCompany
+            })
+            wx.navigateTo({
+              url: '/pages/Quotation/List/index',
+            })
+          } else {
+            this.setData({
+              resultResq: {}
+            })
+            this.getNearByPortNextDeparture()
+          }
+        }
       } else {
         this.setData({
           resultResq: {}
         })
         this.getNearByPortNextDeparture()
       }
+      
     })
   },
 
@@ -1048,14 +1065,28 @@ Page({
         "simulationDate": this.data.simulationDate,
         "weightPerContainer": this.data.weight
       }).then(res => {
-        if (res.data && res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
-          this.setData({
-            resultResq: res.data,
-            shippingCompany: shippingCompany
-          })
-          wx.navigateTo({
-            url: '/pages/Quotation/List/index',
-          })
+        if (res.data) {
+          if (res.data.hasFmcExcluded === true || res.data.hasFmcExcluded === false) {
+            this.setData({
+              resultResq: {}
+            })
+            wx.navigateTo({
+              url: '/pages/Quotation/List/index?isUs=1',
+            })
+          } else {
+            if (res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
+              this.setData({
+                resultResq: res.data,
+                shippingCompany: shippingCompany
+              })
+              wx.navigateTo({
+                url: '/pages/Quotation/List/index',
+              })
+            } else {
+              index++;
+              this.getQuotationNextDepartures2(index === this.data.pricingGroups.length ? '' : this.data.pricingGroups[index].shippingCompany, index)
+            }
+          }
         } else {
           index++;
           this.getQuotationNextDepartures2(index === this.data.pricingGroups.length ? '' : this.data.pricingGroups[index].shippingCompany, index)

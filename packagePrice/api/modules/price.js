@@ -26,7 +26,16 @@ export const ddChargeFinder = (params) => {
 
 // 获取货柜
 export const freightContainerSearch = (params) => {
-  return getRequest('/api/miniapp/dnd/shipmentsDetail', params, false, true)
+  return getRequest('/api/miniapp/dnd/shipmentContainers', params, false, true)
+}
+
+// 获取订舱号详情
+export const shipmentDetail = (params) => {
+  return getRequest('/api/miniapp/dnd/shipmentDetail', params, false, true)
+}
+
+export const dndFuzzySearch = (params) => {
+  return getRequest('/api/miniapp/dndFuzzySearch', params, true, false, true)
 }
 
 // 计算费用

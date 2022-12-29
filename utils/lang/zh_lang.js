@@ -438,6 +438,9 @@ var Languague = {
       containerNo: '集装箱号',
       // 费用计算截至
       cost:'费用计算截至',
+      chargeFor: '查询',
+      export: '出口费用',
+      import: '进口费用',
       // 计算费用
       count:'计算费用',
       noContainer: '没有找到相关货柜，请核实您的提单'
@@ -457,7 +460,7 @@ var Languague = {
       cashierClearedDate: '结款日期',
       total: '总计',
       amount: 'Amount',
-      cankao: '仅供参考，请以实际账单为准。'
+      cankao: '仅供参考，请以实际账单为准。如有因船期延误或船公司换船引起的D&D费用，相应金额将在账单中扣除。出口退关集装箱不享受免费用箱期。'
     },
     // 报价
     quotation: {

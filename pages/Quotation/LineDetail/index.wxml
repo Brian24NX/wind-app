@@ -51,7 +51,7 @@
               </view>
               <view class="gangKouName">{{item.departureDetails.terminalName}}</view>
             </block>
-            <view class="gangKouTime" wx:if="{{item.specialBookingAcceptance}}">
+            <!-- <view class="gangKouTime" wx:if="{{item.specialBookingAcceptance}}">
               <text>Special Booking Cut-off：</text>
               <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.specialBookingAcceptance, false, true) : filters.formatEnDateLocal(item.specialBookingAcceptance, '-', '', false, true)}}</text>
             </view>
@@ -66,7 +66,7 @@
             <view class="gangKouTime">
               <text>{{languageContent.portCutOff}}：</text>
               <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(item.cutOffDate, false, true) : filters.formatEnDateLocal(item.cutOffDate, '-', '', false, true)}}</text>
-            </view>
+            </view> -->
             <view style="margin-top: 30rpx;">
               <view class="shipName">
                 <text>{{languageContent.vessel}}：</text>
@@ -77,8 +77,8 @@
                 <text>{{item.serviceName || '-'}}</text>
               </view>
             </view>
-            <view style="margin-top: 30rpx;">
-              <view class="shipName other" wx:if="{{item.localVoyageRef}}">
+            <view>
+              <view style="margin-top: 30rpx;" class="shipName other" wx:if="{{item.localVoyageRef}}">
                 <text>{{languageContent.localVoyageRef}}： </text>
                 <text>{{item.localVoyageRef}}</text>
               </view>

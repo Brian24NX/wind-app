@@ -435,6 +435,9 @@ var Languague = {
       containerNo: 'Container Number',
       // 费用计算截至
       cost:'Charge Calculation as of',
+      chargeFor: 'Charge for',
+      export: 'Export',
+      import: 'Import',
       // 计算费用
       count:'Calculate Charges',
       noContainer: 'No container found, please check your shipment reference'
@@ -454,7 +457,7 @@ var Languague = {
       cashierClearedDate: 'Cashier\n Cleared Date',
       total: 'TOTAL',
       amount: 'Amount',
-      cankao: 'For reference only, please refer to invoice for actual cost.'
+      cankao: 'For reference only, please refer to invoice for actual cost. For D&D charges due to vessel delay or vessel change by carrier, the extra amount will be deducted from the bill. Booking cancelled by customer is not eligible for D&D free time.'
     },
     // 报价
     quotation: {
