@@ -104,14 +104,14 @@ Component({
           item.stepStatus = 'coming'
         }
       })
-      const movements = list.filter(i => (i.transportCall && (i.transportCall.modeOfTransport === 'VESSEL' || i.transportCall.modeOfTransport === 'BARGE')))
+      const movements = list.filter(i => (i.carrierSpecificData.shipmentLocationType === 'POL' || i.carrierSpecificData.shipmentLocationType === 'POD'))
       const customsReferences = list.filter(i => (i.carrierSpecificData && i.carrierSpecificData.internalEventLabel === 'Customs References' && i.carrierSpecificData.customsReferences && i.carrierSpecificData.customsReferences.length))
       const date0 = dayjs(dayjs(list[0].orginDate).format('YYYY-MM-DD HH:mm:ss'))
       const date1 = dayjs(dayjs(list[list.length - 1].orginDate).format('YYYY-MM-DD HH:mm:ss'))
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
       const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) + 1 || ''
-      const isNeiLu1 = list[0].transportCall.modeOfTransport !== "VESSEL" && list[list.length - 1].transportCall.modeOfTransport !== 'BARGE'
-      const isNeiLu2 = list[list.length - 1].transportCall.modeOfTransport !== "VESSEL" && list[list.length - 1].transportCall.modeOfTransport !== 'BARGE'
+      const isNeiLu1 = list[0].carrierSpecificData.shipmentLocationType !== 'POL' && list[0].carrierSpecificData.shipmentLocationType !== 'POD' && list[0].transportCall.location.locationName !== movements[0].transportCall.location.locationName
+      const isNeiLu2 = list[list.length - 1].carrierSpecificData.shipmentLocationType !== "POL" && list[list.length - 1].carrierSpecificData.shipmentLocationType !== 'POD' && list[list.length - 1].transportCall.location.locationName !== movements[movements.length - 1].transportCall.location.locationName
       const totalCount = date1.diff(date0)
       this.setData({
         stepList: list,
