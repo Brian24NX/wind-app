@@ -138,6 +138,7 @@ Page({
     }
     vasDetail.seletcedProduct.cargoLines.forEach(i => {
       i.equipmentSize = this.data.equipmentTypeSize
+      i.levelOfCharge = i.levelOfCharge || vasDetail.seletcedProduct.levelOfCharge
       i.convertedRate = vasDetail.seletcedProduct.amount
     })
     const pages = getCurrentPages()

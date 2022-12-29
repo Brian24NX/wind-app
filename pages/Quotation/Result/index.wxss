@@ -4,7 +4,7 @@ page {
 }
 
 .resultContainer {
-  padding-bottom: 130rpx;
+  padding-bottom: 160rpx;
 }
 
 .resultTopContainer {
@@ -218,6 +218,52 @@ page {
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #071E5D;
+}
+
+.vasLists {
+  width: 690rpx;
+  padding: 40rpx 30rpx;
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+
+.vasList {
+  background: linear-gradient(180deg, #EEF1F6 0%, #F3F6FC 100%);
+  padding: 40rpx 20rpx;
+}
+
+.vasList .oneVas {
+  margin-bottom: 30rpx;
+}
+
+.vasList .oneVas:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+
+.vasList .oneVas .vasName {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+}
+
+.vasList .oneVas .desc {
+  font-size: 24rpx;
+  font-family: ArialMT;
+  color: #6B7790;
+}
+
+.vasList .oneVas .price {
+  text-align: right;
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.vasList .oneVas .price .amount {
+margin-right: 10rpx;
+font-size: 48rpx;
 }
 
 .bottomButtons {

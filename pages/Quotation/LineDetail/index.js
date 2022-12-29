@@ -10,6 +10,7 @@ Page({
     detail: {},
     shippingCompany: '',
     totalCO2: 0,
+    timeDetail: null,
     routingDetails: []
   },
 
@@ -43,6 +44,10 @@ Page({
       shippingCompany: data.shippingCompany,
       totalCO2: data.quotationDetail.totalCO2,
       routingDetails: data.quotationDetail.routingLegs
+    })
+    const timeDetail = this.data.routingDetails.filter(i => i.cutOffDate)
+    this.setData({
+      timeDetail: timeDetail.length ? timeDetail[0] : null
     })
   }
 })

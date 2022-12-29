@@ -5,6 +5,8 @@ const utils = require('../../../utils/util')
 const dayjs = require("dayjs")
 import {
   freightContainerSearch,
+  shipmentDetail,
+  dndFuzzySearch,
   calculatedCharge
 } from '../../api/modules/price';
 Page({
@@ -39,7 +41,13 @@ Page({
     noMore: false,
     page: 1,
     minDate: new Date().setFullYear(new Date().getFullYear() - 2),
-    maxDate: new Date().setFullYear(new Date().getFullYear() + 7)
+    maxDate: new Date().setFullYear(new Date().getFullYear() + 7),
+    cankao: '',
+    typeList: ['export', 'import'],
+    currentType: 'export',
+    pol: '',
+    pod: '',
+    calculatedChargeResult: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -64,7 +72,20 @@ Page({
     //获取当前小程序语言版本所对应的字典变量
     this.setData({
       languageContent: language.NewDDCharges,
+      language: language.langue,
       verifyInfo: language.verifyInfo
+    })
+  },
+
+  copyUrl() {
+    wx.setClipboardData({
+      data: 'https://www.cma-cgm.com/ebusiness/invoice',
+      success() {
+        wx.showToast({
+          title: languageUtil.languageVersion().lang.page.copyInfo.success,
+          icon: 'none'
+        })
+      }
     })
   },
 
@@ -78,7 +99,8 @@ Page({
       showRemind2: false,
       containers: [],
       result: [],
-      noContainer: false
+      noContainer: false,
+      currentType: 'export'
     })
   },
 
@@ -196,7 +218,8 @@ Page({
       showRemind: false,
       errTip: '',
       result: [],
-      containers: []
+      containers: [],
+      currentType: 'export'
     })
   },
 
@@ -219,15 +242,74 @@ Page({
     //去掉空格和大写问题
     let value = e.detail.value.toUpperCase()
     let regvalue = value.trim()
-    const inputType =/[\W]/g
+    const inputType = /[\W]/g
     this.setData({
-      huoGuiValue: regvalue.replace(inputType,''),
+      huoGuiValue: regvalue.replace(inputType, ''),
       showRemind: false,
       showRemind2: false,
       showRemind3: false,
       errTip: '',
       result: [],
       containers: []
+    })
+  },
+
+  changeType(e) {
+    this.setData({
+      currentType: e.currentTarget.dataset.item,
+      errTip: ''
+    })
+  },
+
+  getShipmentDetail() {
+    shipmentDetail({
+      bookingReference: this.data.actived === 'byShipment' ? this.data.huoGuiValue : this.data.calculatedChargeResult[0].blReference
+    }).then(res => {
+      const pol = res.data.shipmentSummary.routing.portOfLoading.code
+      const pod = res.data.shipmentSummary.routing.portOfDischarge.code
+      console.log(pol, pod)
+      this.setData({
+        pod,
+        pol
+      })
+      this.setResList()
+    })
+  },
+
+  setResList() {
+    const payCountry = (this.data.currentType === 'export' ? this.data.pol : this.data.pod).substr(0, 2)
+    const calculatedChargeList = this.data.calculatedChargeResult
+    const calculatedChargeLists = []
+    let arr = []
+    wx.showLoading({
+      title: languageUtil.languageVersion().lang.page.load.loading,
+      mark: true
+    })
+    calculatedChargeList.forEach(item => {
+      arr.push(dndFuzzySearch({
+          searchStr: item.paymentlocation.internalCode
+        })
+        .then(res => {
+          // console.log(res)
+          const data = res.data.filter(i => i.point.split(';')[0] === item.paymentlocation.internalCode)
+          // console.log(data[0])
+          if (data.length && data[0].pointCode.substr(0, 2) === payCountry) {
+            calculatedChargeLists.push(item)
+          }
+        }))
+    })
+    Promise.all(arr).finally(() => {
+      wx.hideLoading()
+      if (calculatedChargeLists.length) {
+        wx.setStorageSync('calculatedChargeResult', calculatedChargeLists)
+        wx.navigateTo({
+          url: `/packagePrice/pages/calculatedChargeResult/index`,
+        })
+      } else {
+        this.setData({
+          errTip: 'No match found: your ref is incorrect or no charges were raised at this date.'
+        })
+      }
     })
   },
 
@@ -282,13 +364,16 @@ Page({
     calculatedCharge(params).then(res => {
       console.log(res)
       if (res.data && res.data.length) {
-        wx.setStorageSync('calculatedChargeResult', res.data)
+        this.setData({
+          calculatedChargeResult: res.data
+        })
       } else {
-        wx.removeStorageSync('calculatedChargeResult')
+        this.setData({
+          calculatedChargeResult: []
+        })
       }
-      wx.navigateTo({
-        url: '/packagePrice/pages/calculatedChargeResult/index',
-      })
+      this.getShipmentDetail()
+      // this.getDndFuzzySearch()
     }, err => {
       if (err.code === '422' || err.message === 'Response status code does not indicate success: 400 (Bad Request).') {
         this.setData({

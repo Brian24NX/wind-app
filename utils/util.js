@@ -328,17 +328,22 @@ function formatHuoYunStatus(code, language) {
     {
       code: 'PVD',
       labelEn: "Vessel Departure",
-      labelCn: "Vessel Departure"
+      labelCn: "船离开"
     },
     {
       code: 'AVD',
       labelEn: "Vessel Departure",
-      labelCn: "Vessel Departure"
+      labelCn: "船离开"
     },
     {
       code: 'PVA',
       labelEn: "Vessel Arrival",
-      labelCn: "Vessel Arrival"
+      labelCn: "船到达"
+    },
+    {
+      code: 'AVA',
+      labelEn: "Vessel Arrival",
+      labelCn: "船到达"
     }
   ]
   const index = codeArr.findIndex(item => item.code === code)

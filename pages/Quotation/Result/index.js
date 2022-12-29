@@ -13,12 +13,13 @@ Page({
     quotationDetail: {},
     equipmentTypeName: '',
     weight: '',
-    containers: '',
+    containers: 1,
     commodityName: '',
     shippingCompany: '',
     fromLabel: '',
     toLabel: '',
     surchargeDetails: {},
+    subscribedServices: [],
     totalChargeAmount: 0
   },
 
@@ -50,7 +51,8 @@ Page({
       fromLabel: data.fromLabel,
       toLabel: data.toLabel,
       surchargeDetails: data.quotationDetail.surchargeDetails,
-      totalChargeAmount: data.totalChargeAmount
+      totalChargeAmount: data.totalChargeAmount,
+      subscribedServices: data.subscribedServices
     })
   },
 

@@ -29,7 +29,8 @@ Component({
     documentContent: {},
     language: 'zh',
     showEmail: false,
-    documentId: ''
+    documentId: '',
+    documentRef: ''
   },
   attached() {
     this.initLanguage()
@@ -49,7 +50,8 @@ Component({
     sendEmail(e) {
       this.setData({
         showEmail: true,
-        documentId: e.currentTarget.dataset.documentid
+        documentId: e.currentTarget.dataset.documentid,
+        documentRef: e.currentTarget.dataset.documentref
       })
     },
 
@@ -69,7 +71,7 @@ Component({
           mask: true
         })
         documentSendEmail({
-          fileName: res.data.fileName,
+          fileName: this.data.documentRef + '.pdf',
           documentId: this.data.documentId,
           receiveMailAccount: e.detail
         }).then(() => {

@@ -212,15 +212,21 @@
   margin-bottom: 30rpx;
 }
 
-.yunshuContainers .yunshuContainer .gangKouTime {
-  font-size: 20rpx;
+.times {
+  padding: 30rpx 0;
+  background-color: #ffffff;
+  margin-top: 30rpx;
+}
+
+.gangKouTime {
+  font-size: 24rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #6B7790;
   padding-left: 36rpx;
 }
 
-.yunshuContainers .yunshuContainer .gangKouTime .time {
+.gangKouTime .time {
   color: #071E5D;
 }
 

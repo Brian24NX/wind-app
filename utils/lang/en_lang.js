@@ -50,14 +50,15 @@ var Languague = {
       hometitle: "CMA CGM",
       // 获取追踪
       TRACKING: 'TRACKING',
-      chuanqi1: 'SHIPMENT',
-      chuanqi2: ' TRACKING',
+      TRACKING1: 'Tracking',
+      chuanqi1: 'Shipment',
+      chuanqi2: ' Tracking',
       // 提示
       goodsRemind: 'Container, Bill of lading or Booking Number',
       //货物追踪按钮
       goods: "Search",
       //提示
-      tips: "To track up to three containers, please enter references separated by a comma.",
+      tips: "Please enter a unique reference before launching your search, system will automatically recognise the type of value.",
       //船期查询
       SCHEDULE: "SCHEDULE",
       // 起运港
@@ -434,6 +435,9 @@ var Languague = {
       containerNo: 'Container Number',
       // 费用计算截至
       cost:'Charge Calculation as of',
+      chargeFor: 'Charge for',
+      export: 'Export',
+      import: 'Import',
       // 计算费用
       count:'Calculate Charges',
       noContainer: 'No container found, please check your shipment reference'
@@ -453,7 +457,7 @@ var Languague = {
       cashierClearedDate: 'Cashier\n Cleared Date',
       total: 'TOTAL',
       amount: 'Amount',
-      cankao: 'For reference only, please refer to invoice for actual cost.'
+      cankao: 'For reference only, please refer to invoice for actual cost. For D&D charges due to vessel delay or vessel change by carrier, the extra amount will be deducted from the bill. Booking cancelled by customer is not eligible for D&D free time.'
     },
     // 报价
     quotation: {
@@ -473,7 +477,7 @@ var Languague = {
       //港口名称/代码
       name: "Name/Code",
       //离港时间
-      departure: "Vessel departure from",
+      departure: "Vessel Departure from",
       equipmentType: 'Equipment Type',
       weight: 'Net Weight(KGM)',
       weightName: 'EX.10 000 kgm',
@@ -848,8 +852,8 @@ var Languague = {
       cancel: 'Cancel'
     },
     copyInfo: {
-      success: 'Successfully copied, please view in browser.',
-      success2: 'Successfully copied.'
+      success: 'Successfully copied, please view in browser',
+      success2: 'Successfully copied'
     },
     load: {
       //努力加载中

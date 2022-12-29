@@ -53,7 +53,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
+    if (options.isUs) {
+      this.setData({
+        isUs: true
+      })
+    }
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.qutationResult.title
     })
@@ -84,15 +89,6 @@ Page({
       receiptHaulage: data.receiptHaulage || '',
       deliveryHaulage: data.deliveryHaulage || ''
     })
-    if (this.data.portOfLoading.substr(0, 2) === 'US' || this.data.portOfDischarge.substr(0, 2) === 'US') {
-      this.setData({
-        isUs: true
-      })
-    } else {
-      this.setData({
-        isUs: false
-      })
-    }
     if (data.resultResq.traceId) {
       this.setData({
         oldQuoteLineList: data.resultResq.nextDepartureQuoteLineAndRoute,
@@ -196,9 +192,12 @@ Page({
                   "traceId": this.data.traceId,
                   "equipmentSizeType": this.data.equipmentSize,
                   "currencyCode": item.quoteLines[0].equipments[0].currencyCode,
+                  "loggedId": this.data.loggedId,
                   "oceanFreightRate": item.quoteLines[0].equipments[0].oceanFreightRate,
                   "nextDepartureScheduleNumber": item.scheduleNumber,
-                  "nextDepartureSolutionNumber": item.solutionNumber
+                  "nextDepartureSolutionNumber": item.solutionNumber,
+                  "inlandExportConstructed": true,
+                  "inlandImportConstructed": true
                 }
               }
             } else {

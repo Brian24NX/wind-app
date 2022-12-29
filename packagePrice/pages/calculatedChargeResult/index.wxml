@@ -72,9 +72,10 @@
       </view>
       <van-icon name="arrow" />
     </view>
-    <view class="waring">
-      <image src="/assets/img/price/waring.svg"></image>
-      <text>{{languageContent.cankao}}</text>
-    </view>
+  </view>
+  <view class="waring">
+    <image src="/assets/img/price/waring.svg"></image>
+    <view wx:if="{{language === 'en'}}">For reference only, please refer to <text style="color: #2D75FF;" catchtap="copyUrl">invoice for actual cost</text>. For D&D charges due to vessel delay or vessel change by carrier, the extra amount will be deducted from the bill. Booking cancelled by customer is not eligible for D&D free time.</view>
+    <view wx:else>仅供参考，请以<text style="color: #2D75FF;" catchtap="copyUrl">实际账单</text>为准。如有因船期延误或船公司换船引起的D&D费用，相应金额将在账单中扣除。出口退关集装箱不享受免费用箱期。</view>
   </view>
 </view>

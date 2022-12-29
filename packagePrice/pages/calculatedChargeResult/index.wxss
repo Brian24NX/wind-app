@@ -60,7 +60,9 @@ page {
 .oneResult .resultTop {
   display: flex;
   justify-content: space-between;
-  padding: 20rpx 48rpx 10rpx;
+  padding: 20rpx 0 10rpx;
+  width: 630rpx;
+  margin: 0 auto;
 }
 
 .oneResult .resultTop .topOne {
@@ -106,7 +108,9 @@ page {
 
 .locationContainers {
   display: flex;
-  padding: 20rpx 48rpx;
+  padding: 20rpx 0;
+  width: 630rpx;
+  margin: 0 auto;
 }
 
 .locationContainer {
@@ -215,11 +219,15 @@ page {
   display: flex;
   color: #6B7790;
   font-size: 20rpx;
-  padding: 0 40rpx 30rpx;
+  padding: 0 0 40rpx;
 }
 
 .waring image {
   width: 24rpx;
   height: 24rpx;
   margin-right: 10rpx;
+}
+
+.waring view {
+  width: 650rpx;
 }

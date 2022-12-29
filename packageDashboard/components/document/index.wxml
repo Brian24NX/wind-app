@@ -33,7 +33,7 @@
       <image src="/assets/img/more/info@2x.png" class="infoIcon"></image>
       <view class="templateContent">
         <view class="templateName">{{item.documentReference}}</view>
-        <view catchtap="sendEmail" data-documentid="{{item.documentId}}">{{documentContent.send}}</view>
+        <view catchtap="sendEmail" data-documentid="{{item.documentId}}" data-documentref="{{item.documentReference}}">{{documentContent.send}}</view>
       </view>
       <view class="preview" catchtap="preview" data-documentid="{{item.documentId}}">
         <image src="/assets/img/more/eye@2x.png"></image>

@@ -292,8 +292,8 @@ page {
 }
 
 .reminds image {
-  width: 32rpx;
-  height: 32rpx;
+  width: 24rpx;
+  height: 24rpx;
   margin-right: 20rpx;
 }
 
@@ -403,4 +403,60 @@ page {
 
 .homeContainer .discoverContainer .swiperDtos .dtoActived {
   background-color: #04246A;
+}
+
+.waring {
+  display: flex;
+  color: #6B7790;
+  font-size: 20rpx;
+  padding: 0 0 40rpx;
+  margin-top: 30rpx;
+}
+
+.waring image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+
+.waring view {
+  width: 550rpx;
+}
+
+.radioContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.radioContainer .oneRadio {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  font-size: 28rpx;
+  color: #071E5D;
+  margin-top: 20rpx;
+}
+
+.radioContainer .oneRadio:nth-of-type(-n + 2) {
+  margin-top: 0;
+}
+
+.radioContainer .oneRadio .statusContainer {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border: 1rpx solid #071E5D;
+  transform: rotateZ(360deg);
+  margin-right: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radioContainer .oneRadio .statusContainer .checkedStatus {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background-color: #071E5D;
 }

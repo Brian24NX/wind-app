@@ -81,6 +81,18 @@
       </view>
     </view>
   </view>
+  <view class="vasLists">
+    <view class="vasList">
+      <view class="oneVas" wx:for="{{subscribedServices}}" wx:key="index">
+        <view class="vasName">{{item.productName}}</view>
+        <view class="desc">{{item.productShortDescription}}</view>
+        <view class="price">
+          <text class="amount">{{item.levelOfCharge === 'Per Container' ? item.seletcedProduct.amount * containers : item.seletcedProduct.amount}}</text>
+          <text>{{item.seletcedProduct.currency}} in total</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
 
 <view class="bottomButtons">

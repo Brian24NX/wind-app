@@ -48,7 +48,8 @@ Component({
     pod: '',
     podCountryCode: '',
     customsReference: '',
-    isNeiLu: false
+    isNeiLu1: false,
+    isNeiLu2: false
   },
 
   ready: function () {
@@ -84,18 +85,17 @@ Component({
       }
 
       
-      const list = this.data.detail.movement.reverse();
+      const list = this.data.detail.movement;
       
       list.forEach((item, index) => {
         // console.log("列===>",item)
         item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
-        item.orginDate = item.eventDateTime
-        item.eventDateTime = utils.substrTime(item.eventDateTime)
-        item.eventDateTime = dayjs(item.eventDateTime).format('YYYY-MM-DD')
-        const dayStatus = dayjs(item.eventDateTime).isBefore(dayjs(), 'date')
+        item.orginDate = utils.substrTime(item.eventDateTime)
+        item.orginDate = dayjs(item.orginDate).format('YYYY-MM-DD')
+        const dayStatus = dayjs(item.orginDate).isBefore(dayjs(), 'date')
         if (dayStatus) {
           item.stepStatus = 'past'
-        } else if (dayjs().isSame(dayjs(item.eventDateTime), 'date')) {
+        } else if (dayjs().isSame(dayjs(item.orginDate), 'date')) {
           item.stepStatus = 'being'
         } else {
           if (list[index - 1].stepStatus === 'past') {
@@ -103,19 +103,16 @@ Component({
           }
           item.stepStatus = 'coming'
         }
-        // if (item.stepStatus === 'past' || item.stepStatus === 'being') {
-        //   this.setData({
-        //     stepCount: ++this.data.stepCount
-        //   })
-        // }
       })
-      const movements = list.filter(i => (i.transportCall && (i.transportCall.modeOfTransport === 'VESSEL' || i.transportCall.modeOfTransport === 'BARGE')))
+      const movements = list.filter(i => (i.carrierSpecificData.shipmentLocationType === 'POL' || i.carrierSpecificData.shipmentLocationType === 'POD'))
       const customsReferences = list.filter(i => (i.carrierSpecificData && i.carrierSpecificData.internalEventLabel === 'Customs References' && i.carrierSpecificData.customsReferences && i.carrierSpecificData.customsReferences.length))
-      const date0 = dayjs(dayjs(list[0].eventDateTime).format('YYYY-MM-DD HH:mm:ss'))
-      const date1 = dayjs(dayjs(list[list.length - 1].eventDateTime).format('YYYY-MM-DD HH:mm:ss'))
+      const date0 = dayjs(dayjs(list[0].orginDate).format('YYYY-MM-DD HH:mm:ss'))
+      const date1 = dayjs(dayjs(list[list.length - 1].orginDate).format('YYYY-MM-DD HH:mm:ss'))
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
       const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) + 1 || ''
-      const isNeiLu = list[list.length - 1].transportCall.modeOfTransport !== "VESSEL" && list[list.length - 1].transportCall.modeOfTransport !== 'BARGE'
+      const isNeiLu1 = list[0].carrierSpecificData.shipmentLocationType !== 'POL' && list[0].carrierSpecificData.shipmentLocationType !== 'POD' && list[0].transportCall.location.locationName !== movements[0].transportCall.location.locationName
+      const isNeiLu2 = list[list.length - 1].carrierSpecificData.shipmentLocationType !== "POL" && list[list.length - 1].carrierSpecificData.shipmentLocationType !== 'POD' && list[list.length - 1].transportCall.location.locationName !== movements[movements.length - 1].transportCall.location.locationName
+      const totalCount = date1.diff(date0)
       this.setData({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining,
@@ -125,9 +122,10 @@ Component({
         pod: movements[movements.length - 1].transportCall.location.locationName,
         podCountryCode: movements[movements.length - 1].carrierSpecificData.internalLocationCode,
         customsReference: customsReferences.length ? customsReferences[0].carrierSpecificData.customsReferences[0].customsReference : '',
-        isNeiLu,
-        totalCount: date1.diff(date0),
-        stepCount: -date0.diff(date2)
+        isNeiLu1,
+        isNeiLu2,
+        totalCount,
+        stepCount: (-date0.diff(date2) > totalCount ? totalCount : -date0.diff(date2))
       })
       wx.hideLoading()
     },
@@ -135,7 +133,7 @@ Component({
     // 获取PDF地址
     getPDFUrl(callback) {
       const params = JSON.parse(JSON.stringify(this.data.detail))
-      params.data = params.data.reverse()
+      params.movement = params.movement.reverse()
       reportToPDF(params).then(res => {
         this.setData({
           path: config[config.dev_env].url + '/api/miniapp/' + res.data
@@ -201,7 +199,7 @@ Component({
       })
       sendEmail({
         path: this.data.path,
-        shipmentRef: this.data.detail.id,
+        shipmentRef: this.data.detail.containerRef,
         receiveMailAccount: receiveMailAccount
       }).then(() => {
         wx.showToast({
