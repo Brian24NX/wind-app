@@ -31,9 +31,16 @@
   </view>
   <view class="stepContainers">
     <view class="neilu">
-      <block wx:if="{{isNeiLu}}">
+      <block wx:if="{{isNeiLu1}}">
         <view class="neiluLocation">
-          <view>POO: {{stepList[stepList.length - 1].transportCall.location.locationName}}</view>
+          <view>POO: {{stepList[0].transportCall.location.locationName}}</view>
+          <view class="mode">{{stepList[0].transportCall.modeOfTransport}}</view>
+        </view>
+        <view class="time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[0].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[0].eventDateTime)}}</view>
+      </block>
+      <block wx:if="{{isNeiLu2}}">
+        <view class="neiluLocation">
+          <view>FPD: {{stepList[stepList.length - 1].transportCall.location.locationName}}</view>
           <view class="mode">{{stepList[stepList.length - 1].transportCall.modeOfTransport}}</view>
         </view>
         <view class="time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].eventDateTime)}}</view>

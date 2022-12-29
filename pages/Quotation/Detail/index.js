@@ -230,7 +230,7 @@ Page({
           "description": item.seletcedProduct.subscriptionMode || '',
           "expectedActions": item.expectedActions,
           "hasChargeSelected": true,
-          "levelOfCharge": item.levelOfCharge,
+          "levelOfCharge": item.seletcedProduct.levelOfCharge,
           "maximumChargeableAmount": item.seletcedProduct.minimumChargeableAmount || '',
           "minimumChargeableAmount": item.seletcedProduct.maximumChargeableAmount || '',
           "rateFrom": item.seletcedProduct.rateFrom,

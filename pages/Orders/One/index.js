@@ -48,7 +48,8 @@ Component({
     pod: '',
     podCountryCode: '',
     customsReference: '',
-    isNeiLu: false
+    isNeiLu1: false,
+    isNeiLu2: false
   },
 
   ready: function () {
@@ -109,7 +110,8 @@ Component({
       const date1 = dayjs(dayjs(list[list.length - 1].orginDate).format('YYYY-MM-DD HH:mm:ss'))
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
       const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) + 1 || ''
-      const isNeiLu = list[list.length - 1].transportCall.modeOfTransport !== "VESSEL" && list[list.length - 1].transportCall.modeOfTransport !== 'BARGE'
+      const isNeiLu1 = list[0].transportCall.modeOfTransport !== "VESSEL" && list[list.length - 1].transportCall.modeOfTransport !== 'BARGE'
+      const isNeiLu2 = list[list.length - 1].transportCall.modeOfTransport !== "VESSEL" && list[list.length - 1].transportCall.modeOfTransport !== 'BARGE'
       const totalCount = date1.diff(date0)
       this.setData({
         stepList: list,
@@ -120,7 +122,8 @@ Component({
         pod: movements[movements.length - 1].transportCall.location.locationName,
         podCountryCode: movements[movements.length - 1].carrierSpecificData.internalLocationCode,
         customsReference: customsReferences.length ? customsReferences[0].carrierSpecificData.customsReferences[0].customsReference : '',
-        isNeiLu,
+        isNeiLu1,
+        isNeiLu2,
         totalCount,
         stepCount: (-date0.diff(date2) > totalCount ? totalCount : -date0.diff(date2))
       })
