@@ -47,7 +47,7 @@ Page({
       data: 'https://www.cma-cgm.com/ebusiness/invoice',
       success() {
         wx.showToast({
-          title: languageUtil.languageVersion().lang.page.copyInfo.success,
+          title: languageUtils.languageVersion().lang.page.copyInfo.success,
           icon: 'none'
         })
       }

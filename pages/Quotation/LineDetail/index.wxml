@@ -17,6 +17,24 @@
       </view>
     </view>
   </view>
+  <view class="times" wx:if="{{timeDetail}}">
+    <view class="gangKouTime" wx:if="{{timeDetail.specialBookingAcceptance}}">
+      <text>Special Booking Cut-off：</text>
+      <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(timeDetail.specialBookingAcceptance, false, true) : filters.formatEnDateLocal(timeDetail.specialBookingAcceptance, '-', '', false, true)}}</text>
+    </view>
+    <view class="gangKouTime" wx:if="{{timeDetail.standardBookingAcceptance}}">
+      <text>Standard Booking Cut-off：</text>
+      <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(timeDetail.standardBookingAcceptance, false, true) : filters.formatEnDateLocal(timeDetail.standardBookingAcceptance, '-', '', false, true)}}</text>
+    </view>
+    <view class="gangKouTime">
+      <text>{{languageContent.vgmCutOff}}：</text>
+      <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(timeDetail.vgmCutOffDate, false, true) : filters.formatEnDateLocal(timeDetail.vgmCutOffDate, '-', '', false, true)}}</text>
+    </view>
+    <view class="gangKouTime">
+      <text>{{languageContent.portCutOff}}：</text>
+      <text class="time">{{language === 'zh' ? filters.formatCnDateLocal(timeDetail.cutOffDate, false, true) : filters.formatEnDateLocal(timeDetail.cutOffDate, '-', '', false, true)}}</text>
+    </view>
+  </view>
   <view class="resultDetailContainer" wx:if="{{routingDetails.length}}">
     <image class="logo" wx:if="{{shippingCompany === '0001'}}" src="/assets/img/instantQuote/CMA.svg" mode="aspectFit"></image>
     <image class="logo" wx:if="{{shippingCompany === '0002'}}" src="/assets/img/instantQuote/ANL.svg" mode="aspectFit"></image>

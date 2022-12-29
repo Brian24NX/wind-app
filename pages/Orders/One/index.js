@@ -84,7 +84,7 @@ Component({
       }
 
       
-      const list = this.data.detail.movement.reverse();
+      const list = this.data.detail.movement;
       
       list.forEach((item, index) => {
         // console.log("列===>",item)
@@ -102,11 +102,6 @@ Component({
           }
           item.stepStatus = 'coming'
         }
-        // if (item.stepStatus === 'past' || item.stepStatus === 'being') {
-        //   this.setData({
-        //     stepCount: ++this.data.stepCount
-        //   })
-        // }
       })
       const movements = list.filter(i => (i.transportCall && (i.transportCall.modeOfTransport === 'VESSEL' || i.transportCall.modeOfTransport === 'BARGE')))
       const customsReferences = list.filter(i => (i.carrierSpecificData && i.carrierSpecificData.internalEventLabel === 'Customs References' && i.carrierSpecificData.customsReferences && i.carrierSpecificData.customsReferences.length))
@@ -115,6 +110,7 @@ Component({
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
       const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) + 1 || ''
       const isNeiLu = list[list.length - 1].transportCall.modeOfTransport !== "VESSEL" && list[list.length - 1].transportCall.modeOfTransport !== 'BARGE'
+      const totalCount = date1.diff(date0)
       this.setData({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining,
@@ -125,8 +121,8 @@ Component({
         podCountryCode: movements[movements.length - 1].carrierSpecificData.internalLocationCode,
         customsReference: customsReferences.length ? customsReferences[0].carrierSpecificData.customsReferences[0].customsReference : '',
         isNeiLu,
-        totalCount: date1.diff(date0),
-        stepCount: -date0.diff(date2)
+        totalCount,
+        stepCount: (-date0.diff(date2) > totalCount ? totalCount : -date0.diff(date2))
       })
       wx.hideLoading()
     },
@@ -200,7 +196,7 @@ Component({
       })
       sendEmail({
         path: this.data.path,
-        shipmentRef: this.data.detail.id,
+        shipmentRef: this.data.detail.containerRef,
         receiveMailAccount: receiveMailAccount
       }).then(() => {
         wx.showToast({

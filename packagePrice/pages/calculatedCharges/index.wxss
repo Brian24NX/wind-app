@@ -292,8 +292,8 @@ page {
 }
 
 .reminds image {
-  width: 32rpx;
-  height: 32rpx;
+  width: 24rpx;
+  height: 24rpx;
   margin-right: 20rpx;
 }
 

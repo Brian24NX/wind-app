@@ -173,12 +173,22 @@ Page({
       })
 
       containers.forEach(item => {
-        const movements = JSON.parse(JSON.stringify(item.movement))
+        const movements = JSON.parse(JSON.stringify(item.movement)).reverse()
         item.movement = []
         movements.forEach(move => {
-          if (!(move.eventClassifierCode === 'PLN' && dayjs(move.eventDateTime).isBefore(dayjs(), 'second'))) {
-            item.movement.push(move)
-          }
+          // if (item.movement.length) {
+            // console.log(move.eventDateTime)
+            // console.log(item.movement[item.movement.length -1].eventDateTime)
+            // console.log(dayjs(move.eventDateTime).isSame(dayjs(item.movement[item.movement.length -1].eventDateTime)))
+            // if (!(move.eventClassifierCode === 'PLN' && dayjs(move.eventDateTime).isBefore(dayjs(), 'second')) && move.eventDateTime && !dayjs(move.eventDateTime.split('T')[0]).isSame(dayjs(item.movement[item.movement.length -1].eventDateTime.split('T')[0]), 'day')) {
+            //   item.movement.push(move)
+            // }
+          // } else {
+            if (!(move.eventClassifierCode === 'PLN' && dayjs(move.eventDateTime).isBefore(dayjs(), 'second')) && move.eventDateTime) {
+              item.movement.push(move)
+            }
+          // }
+          // console.log(JSON.stringify(item.movement))
         })
       })
 

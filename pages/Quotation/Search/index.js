@@ -1074,6 +1074,7 @@ Page({
               url: '/pages/Quotation/List/index?isUs=1',
             })
           } else {
+            console.log(res)
             if (res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
               this.setData({
                 resultResq: res.data,

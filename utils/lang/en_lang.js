@@ -58,7 +58,7 @@ var Languague = {
       //货物追踪按钮
       goods: "Search",
       //提示
-      tips: "To track up to three containers, please enter references separated by a comma.",
+      tips: "Please enter a unique reference before launching your search, system will automatically recognise the type of value.",
       //船期查询
       SCHEDULE: "SCHEDULE",
       // 起运港
@@ -477,11 +477,11 @@ var Languague = {
       //港口名称/代码
       name: "Name/Code",
       //离港时间
-      departure: "Vessel departure from",
+      departure: "Vessel Departure from",
       equipmentType: 'Equipment Type',
       weight: 'Net Weight(KGM)',
       weightName: 'EX.10 000 kgm',
-      container: 'Number of container(s)',
+      container: 'Number of Container(s)',
       commodity: "Commodity",
       namedAccount: 'Named Account (if you have)',
       //查询

@@ -254,6 +254,11 @@
   color: #999999;
 }
 
+.vesselName {
+  color: #6B7790;
+  font-size: 24rpx;
+}
+
 .oneOrderContainer .bottomContainer {
   width: 100%;
   height: 274rpx;
@@ -269,7 +274,7 @@
 }
 
 .oneOrderContainer .bottomContainer .downloadBtn {
-  width: 596rpx;
+  width: 610rpx;
   height: 86rpx;
   background-color: #2D75FF;
   color: #ffffff;

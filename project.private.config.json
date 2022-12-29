@@ -61,6 +61,13 @@
           "query": "str=SHZ5311081",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/Quotation/Result/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

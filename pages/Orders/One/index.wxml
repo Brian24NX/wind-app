@@ -33,7 +33,7 @@
     <view class="neilu">
       <block wx:if="{{isNeiLu}}">
         <view class="neiluLocation">
-          <view>POD: {{stepList[stepList.length - 1].transportCall.location.locationName}}</view>
+          <view>POO: {{stepList[stepList.length - 1].transportCall.location.locationName}}</view>
           <view class="mode">{{stepList[stepList.length - 1].transportCall.modeOfTransport}}</view>
         </view>
         <view class="time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].eventDateTime)}}</view>
@@ -54,11 +54,11 @@
     <view class="stepBottom">
       <view>
         <view class="tag">POL</view>
-        <view>{{pol}}{{polCountryCode ? ' (' + filters.setChina(polCountryCode, true, true) + ')' : ''}}</view>
+        <view>{{pol}}{{polCountryCode ? ' (' + filters.setChina(polCountryCode, true, true, 'short') + ')' : ''}}</view>
       </view>
       <view class="rights">
         <view class="tag">POD</view>
-        <view>{{pod}}{{podCountryCode ? ' (' + filters.setChina(podCountryCode, true, true) + ')' : ''}}</view>
+        <view>{{pod}}{{podCountryCode ? ' (' + filters.setChina(podCountryCode, true, true, 'short') + ')' : ''}}</view>
       </view>
     </view>
   </view>
@@ -72,6 +72,7 @@
       <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
         <view class="stepSatus">{{item.statusLabel}}</view>
         <view class="stepTime">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.eventDateTime, '-', 'short') : filters.formatCnDateLocal(item.eventDateTime)}} <text style="color: #2D75FF;" catchtap="lookLocation" data-item="{{item}}">{{item.transportCall.location.locationName}}</text></view>
+        <view class="vesselName" wx:if="{{item.transportCall.vessel.vesselName}}">{{item.transportCall.vessel.vesselName}} | {{item.transportCall.exportVoyageNumber || item.transportCall.importVoyageNumber}}</view>
       </view>
     </view>
   </view>

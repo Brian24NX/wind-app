@@ -46,7 +46,7 @@ Component({
       // console.log("More组件==>", lists)
       lists.forEach(one => {
         if (one.movement.length) {
-          one.movement = one.movement.reverse();
+          one.movement = one.movement;
           one.movement.forEach((item, index) => {
             item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
             const dayStatus = dayjs(item.eventDateTime).isBefore(dayjs(), 'date')

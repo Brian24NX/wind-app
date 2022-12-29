@@ -199,11 +199,11 @@ function deleteStr(str) {
   }
 }
 
-function setChina(code, need, needFuHao) {
+function setChina(code, need, needFuHao, type) {
   if (!code) return
   var two = code.substring(0, 2)
   if (two === 'HK' || two === 'MO' || two === 'TW') {
-    return ', CHINA'
+    return (!needFuHao ? ', ' : '') + (type === 'short' ? 'CN' : 'CHINA')
   } else {
     return need ? (!needFuHao ? ', ' : '') + two : ''
   }
