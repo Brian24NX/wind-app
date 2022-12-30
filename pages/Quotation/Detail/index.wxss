@@ -163,6 +163,10 @@
   margin-right: 20rpx;
 }
 
+.paramContainer .oneParams > view {
+  width: 190rpx;
+}
+
 .paramContainer .oneParams .paramValue {
   font-size: 32rpx;
   font-family: Arial-BoldMT, Arial;
