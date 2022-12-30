@@ -6,7 +6,7 @@
 .aboutContainer .aboutTitle {
   text-align: center;
   font-size: 50rpx;
-  font-family: Antonio-Bold;
+  font-family: Antonio-Regular;
   font-weight: bold;
   color: #04246A;
 }

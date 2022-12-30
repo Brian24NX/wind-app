@@ -494,7 +494,7 @@
 
 .bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productName {
   font-size: 32rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Regular, Antonio;
   color: #071E5D;
   display: inline-block;
   white-space: nowrap;
@@ -808,7 +808,7 @@
 
 .additionList .additionDetail .additionDetailTitle {
   font-size: 32rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Regular, Antonio;
   color: #071E5D;
 }
 

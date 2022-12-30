@@ -29,7 +29,7 @@
 
 .oneInfo .infoTitle {
   font-size: 36rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Regular, Antonio;
   font-weight: bold;
   color: #071E5D;
   margin-bottom: 10rpx;

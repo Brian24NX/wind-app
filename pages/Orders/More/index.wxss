@@ -86,8 +86,8 @@
 
 .orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .address {
   font-size: 46rpx;
-  font-family: Antonio-Bold;
-  font-weight: bold;
+  font-family: Antonio-Regular, Antonio;
+  /* font-weight: bold; */
   color: #04246A;
 }
 

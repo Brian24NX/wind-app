@@ -384,6 +384,13 @@ Page({
       "currency": surchargeDetails.totalCharge.currency.code,
       subscribedCharges: subscribedCharges.map(i => i.code)
     }).then(res => {
+      if (this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH') {
+        const i = res.data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
+        console.log(i)
+        if (i > -1) {
+          res.data.splice(i, 1)
+        }
+      }
       res.data.forEach(one => {
         if (one.isProductSelected) {
           // console.log(subscribedCharges)

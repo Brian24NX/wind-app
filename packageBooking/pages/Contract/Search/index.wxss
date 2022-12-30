@@ -21,7 +21,7 @@ page{
   font-size: 56rpx;
   color: #04246A;
   font-weight: bold;
-  font-family: Antonio-Bold;
+  font-family: Antonio-Regular;
   display: flex;
   align-items: center;
   padding-left: 50rpx;

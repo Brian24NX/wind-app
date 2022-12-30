@@ -242,7 +242,7 @@ page {
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent .timeDayEn {
-  font-family: Antonio-Bold;
+  font-family: Antonio-Regular;
   font-weight: bold;
 }
 
