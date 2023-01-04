@@ -105,6 +105,14 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     let quotationDetail = data.quoteLineList[index]
+    // let surchargeDetail = quotationDetail.surchargeDetails[this.data.currentEquipmentType]
+    // console.log(quotationDetail)
+    if (quotationDetail.surchargeDetails.oceanFreight.paymentMethod === 'Collect') {
+      quotationDetail.surchargeDetails.collectChargeDetails = quotationDetail.surchargeDetails.collectChargeDetails.concat(quotationDetail.surchargeDetail.freightChargeDetails)
+      quotationDetail.surchargeDetails.freightChargeDetails = []
+      quotationDetail.surchargeDetails.collectCharges.amount += quotationDetail.surchargeDetails.freightCharges.amount
+      quotationDetail.surchargeDetails.freightCharges.amount = 0
+    }
     quotationDetail.surchargeDetails.oceanFreightDetailsLabel = quotationDetail.surchargeDetails.oceanFreightDetails.join(' / ')
     quotationDetail.surchargeDetails.oceanFreight.isChecked = true
     quotationDetail.surchargeDetails.freightCharges.isChecked = true

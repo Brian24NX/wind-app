@@ -59,10 +59,10 @@ Page({
       icon: '/assets/img/menu/D&D@2x.png',
       needLogin: true
     }, {
-      label: 'guizu',
+      label: 'chargeFinder',
       type: 'nav',
-      url: '/packagePrice/pages/DNDCharge/index',
-      icon: '/assets/img/home/PRICE_2@2x.png',
+      url: '/packagePrice/pages/chargeFinder/index',
+      icon: '/assets/img/home/PRICE_3@2x.png',
       needLogin: false
     }],
     moreMenuList: [

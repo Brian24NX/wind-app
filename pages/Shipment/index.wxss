@@ -125,6 +125,14 @@ page {
   color: #E2014B;
   margin-top: 20rpx;
   margin-bottom: -10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.homeContainer .searchContainers .searchContents .noRequest image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 20rpx;
 }
 
 .homeContainer .searchContainers .searchContents .searchBtn {
