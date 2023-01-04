@@ -3,7 +3,7 @@
   <view class="topTitles">
     <view class="searchResultContainers">
       <view class="searchResultContainer">
-        <view class="resTitle" style="{{language === 'zh' ? '' : 'font-family: Antonio-Bold;font-weight: bold;'}}">
+        <view class="resTitle" style="{{language === 'zh' ? '' : 'font-family: Antonio-Regular;font-weight: bold;'}}">
           <text>{{languageContent.detailTitle1}}</text>
           <text style="color: #4468BA;">{{languageContent.detailTitle2}}</text>
         </view>

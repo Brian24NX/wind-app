@@ -141,7 +141,7 @@ page {
 
 .quotationIds .quotationLeft .quotationId {
   font-size: 32rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Regular, Antonio;
   font-weight: bold;
   color: #4468BA;
 }
@@ -154,7 +154,7 @@ page {
 
 .quotationIds .quotationRight view:nth-of-type(1) {
   font-size: 32rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Regular, Antonio;
   font-weight: bold;
   color: #071E5D;
 }
@@ -343,7 +343,7 @@ page {
 }
 
 .resultContainers .oneResult .resContents .rightContainer .rightContent .timeDayEn {
-  font-family: Antonio-Bold;
+  font-family: Antonio-Regular;
   font-weight: bold;
 }
 
@@ -450,7 +450,7 @@ page {
   height: 118rpx;
   background-color: #ffffff;
   font-size: 36rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Regular, Antonio;
   font-weight: bold;
   color: #04246A;
   padding: 0 20rpx;
@@ -486,7 +486,7 @@ page {
 
 .equipmentTypeContainer .allInRate {
   font-size: 36rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Regular, Antonio;
   font-weight: bold;
   color: #04246A;
   display: flex;

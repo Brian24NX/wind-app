@@ -166,7 +166,7 @@
 
 .referenceTop .validityDate {
   font-size: 32rpx;
-  font-family: Antonio-Bold, Antonio;
+  font-family: Antonio-Regular, Antonio;
   font-weight: bold;
   color: #071E5D;
 }

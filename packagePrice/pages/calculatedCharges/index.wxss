@@ -285,6 +285,8 @@ page {
   font-size: 24rpx;
   display: flex;
   margin-top: 10rpx;
+  display: flex;
+  align-items: center;
 }
 
 .reminds2 {

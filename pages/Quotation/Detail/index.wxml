@@ -308,7 +308,7 @@
                 <view>/{{item.levelOfCharge === 'Per Container' ? vasLanguageContent.containers : vasLanguageContent.perBL}}</view>
               </view>
             </view>
-            <button class="vasBtn" catchtap="toSelect" data-productid="{{item.productName}}">Select</button>
+            <button class="vasBtn" catchtap="toSelect" data-productid="{{item.productName}}">{{vasLanguageContent.vasSelect}}</button>
           </view>
         </view>
       </view>

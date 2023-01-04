@@ -7,6 +7,7 @@ Page({
    */
   data: {
     currentType: 1,
+    language: 'zh',
     languageContent: {}
   },
 
@@ -16,7 +17,8 @@ Page({
    */
   onLoad: function () {
     this.setData({
-      languageContent: languageUtil.languageVersion().lang.page.DDP
+      languageContent: languageUtil.languageVersion().lang.page.DDP,
+      language: languageUtil.languageVersion().lang.page.langue
     })
   },
 

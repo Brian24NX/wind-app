@@ -81,7 +81,7 @@
       </view>
     </view>
   </view>
-  <view class="vasLists">
+  <view class="vasLists" wx:if="{{subscribedServices.length}}">
     <view class="vasList">
       <view class="oneVas" wx:for="{{subscribedServices}}" wx:key="index">
         <view class="vasName">{{item.productName}}</view>

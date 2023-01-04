@@ -21,7 +21,7 @@
 
 .additionalServicesPopup .serviceTitle {
   font-size: 36rpx;
-  font-family: Antonio-Bold;
+  font-family: Antonio-Regular;
   font-weight: bold;
   color: #071E5D;
 }
@@ -150,7 +150,7 @@
 
 .termTitle {
   font-size: 36rpx;
-  font-family: Antonio-Bold;
+  font-family: Antonio-Regular;
   font-weight: bold;
   color: #071E5D;
 }

@@ -136,7 +136,7 @@ Page({
 
   toDD() {
     wx.navigateTo({
-      url: '/packagePrice/pages/guizufeilv/index',
+      url: '/packagePrice/pages/DNDCharge/index',
     })
   }
 })

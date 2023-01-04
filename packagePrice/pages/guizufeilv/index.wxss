@@ -69,7 +69,7 @@ page {
 .guizuContainer .guizuList .titles {
   display: flex;
   font-size: 36rpx;
-  font-family: Antonio-Bold;
+  font-family: Antonio-Regular;
   font-weight: bold;
   color: #04246A;
 }

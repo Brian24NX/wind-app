@@ -96,7 +96,7 @@ var Languague = {
     },
     khtg: {
       topTitle: 'Business & Operational Update',
-      send: 'Send Email',
+      send: 'Send email',
       keyword: 'Keyword'
     },
     newsCenter: {
@@ -653,6 +653,7 @@ var Languague = {
       required: 'You must accept the terms and conditions',
       needProduct: 'Please select the product',
       inputAmount: 'Please input the amount and calculate',
+      vasSelect: 'Select'
     },
     // 订舱
     booking: {

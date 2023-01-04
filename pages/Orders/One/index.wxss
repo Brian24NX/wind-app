@@ -68,7 +68,7 @@
 }
 
 .stepContainers .neilu {
-  padding-top: 20rpx;
+  padding-top: 10rpx;
   min-height: 20rpx;
   font-size: 24rpx;
   color: #6B7790;
@@ -77,9 +77,10 @@
 .stepContainers .neilu .neiluLocation {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 10rpx;
 }
 
-.stepContainers .neilu .neiluLocation view {
+.stepContainers .neilu .neiluLocation .view {
   min-width: 80rpx;
   height: 34rpx;
   background-color: #E6EAEF;
@@ -91,9 +92,6 @@
   line-height: 34rpx;
   text-align: center;
   padding: 0 10rpx;
-}
-
-.stepContainers .neilu .neiluLocation view:nth-of-type(1) {
   margin-right: 20rpx;
 }
 

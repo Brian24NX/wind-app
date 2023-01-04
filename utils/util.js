@@ -277,12 +277,12 @@ function formatHuoYunStatus(code, language) {
     },
     {
       code: 'TAF',
-      labelEn: "Containerintransitforimport",
+      labelEn: "Container in transit for import",
       labelCn: "集装箱中转进口"
     },
     {
       code: 'PSI',
-      labelEn: "ContainerOnRailForImport",
+      labelEn: "Container On Rail For Import",
       labelCn: "集装箱进口上轨"
     },
     {

@@ -105,22 +105,28 @@ Component({
         }
       })
       const movements = list.filter(i => (i.carrierSpecificData.shipmentLocationType === 'POL' || i.carrierSpecificData.shipmentLocationType === 'POD'))
+      const pol = list.filter(i => (i.carrierSpecificData.shipmentLocationType === 'POL'))
+      const pod = list.filter(i => (i.carrierSpecificData.shipmentLocationType === 'POD'))
       const customsReferences = list.filter(i => (i.carrierSpecificData && i.carrierSpecificData.internalEventLabel === 'Customs References' && i.carrierSpecificData.customsReferences && i.carrierSpecificData.customsReferences.length))
       const date0 = dayjs(dayjs(list[0].orginDate).format('YYYY-MM-DD HH:mm:ss'))
       const date1 = dayjs(dayjs(list[list.length - 1].orginDate).format('YYYY-MM-DD HH:mm:ss'))
       const date2 = dayjs().format('YYYY-MM-DD HH:mm:ss')
       const timeRemaining = parseInt(date1.diff(date2) / 1000 / 60 / 60 / 24) + 1 || ''
-      const isNeiLu1 = list[0].carrierSpecificData.shipmentLocationType !== 'POL' && list[0].carrierSpecificData.shipmentLocationType !== 'POD' && list[0].transportCall.location.locationName !== movements[0].transportCall.location.locationName
-      const isNeiLu2 = list[list.length - 1].carrierSpecificData.shipmentLocationType !== "POL" && list[list.length - 1].carrierSpecificData.shipmentLocationType !== 'POD' && list[list.length - 1].transportCall.location.locationName !== movements[movements.length - 1].transportCall.location.locationName
+      let isNeiLu1 = false
+      let isNeiLu2 = false
+      if (utils.checkAccessToken()) {
+        isNeiLu1 = list[0].carrierSpecificData.shipmentLocationType !== 'POL' && list[0].carrierSpecificData.shipmentLocationType !== 'POD' && list[0].transportCall.location.locationName !== movements[0].transportCall.location.locationName
+        isNeiLu2 = list[list.length - 1].carrierSpecificData.shipmentLocationType !== "POL" && list[list.length - 1].carrierSpecificData.shipmentLocationType !== 'POD' && list[list.length - 1].transportCall.location.locationName !== movements[movements.length - 1].transportCall.location.locationName
+      }
       const totalCount = date1.diff(date0)
       this.setData({
         stepList: list,
         timeRemaining: timeRemaining < 0 ? 0 : timeRemaining,
         isLoading: false,
-        pol: movements[0].transportCall.location.locationName,
-        polCountryCode: movements[0].carrierSpecificData.internalLocationCode,
-        pod: movements[movements.length - 1].transportCall.location.locationName,
-        podCountryCode: movements[movements.length - 1].carrierSpecificData.internalLocationCode,
+        pol: pol.length ? pol[0].transportCall.location.locationName : '',
+        polCountryCode: pol.length ? pol[0].carrierSpecificData.internalLocationCode : '',
+        pod: pod.length ? pod[pod.length - 1].transportCall.location.locationName : '',
+        podCountryCode: pod.length ? pod[pod.length - 1].carrierSpecificData.internalLocationCode : '',
         customsReference: customsReferences.length ? customsReferences[0].carrierSpecificData.customsReferences[0].customsReference : '',
         isNeiLu1,
         isNeiLu2,
