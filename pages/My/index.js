@@ -158,6 +158,19 @@ Page({
     }
   },
 
+  // 管理我的通知
+  notifications() {
+    if (wx.getStorageSync('ccgId')) {
+      wx.navigateTo({
+        url: '/pages/notifications/index',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
+    }
+  },
+
   // 设置语言
   setLanguage() {
     wx.navigateTo({

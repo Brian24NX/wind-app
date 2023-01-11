@@ -13,7 +13,6 @@
     </view>
   </view>
 </view>
-
 <view class="myContainer">
   <view class="myDashboard">
     <view class="myDashboardTitle">{{languageContent.myDashboard}}</view>
@@ -23,6 +22,13 @@
         <text>{{languageContent[item.label]}}</text>
       </view>
     </view>
+  </view>
+  <view class="setting" catchtap="notifications">
+    <view class="settingLeft">
+      <image src="/assets/img/myAccount/notification@2x.png"></image>
+      <text>{{languageContent.notifications}}</text>
+    </view>
+    <van-icon name="arrow" color="#04246A" />
   </view>
   <view class="setting" catchtap="setLanguage">
     <view class="settingLeft">
@@ -39,5 +45,4 @@
     <van-icon name="arrow" color="#04246A" />
   </view>
 </view>
-
 <legal-terms-remind wx:if="{{showRemind}}" bindsetRemind="setRemind"></legal-terms-remind>

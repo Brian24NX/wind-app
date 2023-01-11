@@ -300,7 +300,8 @@ var Languague = {
       shipment: 'Shipment\nDashboard',
       document: 'Document\nDashboard',
       setting: 'Language Setting',
-      legalTerms: 'Privacy Policy'
+      legalTerms: 'Privacy Policy',
+      notifications: 'Manage My Notifications'
     },
     legalTerms: {
       title: 'Privacy Policy',
@@ -420,26 +421,26 @@ var Languague = {
       noChargeData: 'No data found'
     },
     // new D&D Charges
-    NewDDCharges:{
+    NewDDCharges: {
       title: 'D&D Charges',
       title1: 'D&D',
       title2: 'Charges',
       //运输编号
-      byShipment:'By Shipment Ref.',
+      byShipment: 'By Shipment Ref.',
       //集装箱号
-      byContainer:'By Container No.',
-      shipment:'Shipment Ref.',
+      byContainer: 'By Container No.',
+      shipment: 'Shipment Ref.',
       // 集装箱
-      container:'Container(s)',
+      container: 'Container(s)',
       allContainer: 'All Containers',
       containerNo: 'Container Number',
       // 费用计算截至
-      cost:'Charge Calculation as of',
+      cost: 'Charge Calculation as of',
       chargeFor: 'Charge for',
       export: 'Export',
       import: 'Import',
       // 计算费用
-      count:'Calculate Charges',
+      count: 'Calculate Charges',
       noContainer: 'No container found, please check your shipment reference'
     },
     NewDDChargesResult: {
@@ -447,9 +448,9 @@ var Languague = {
       title1: 'D&D',
       title2: 'Result',
       //运输编号
-      shipmentRef:'Shipment Ref.',
+      shipmentRef: 'Shipment Ref.',
       //集装箱号
-      containerNo:'Container No.',
+      containerNo: 'Container No.',
       currentLocation: 'Current Location',
       chargeType: 'Charge Type',
       lastFreeDate: 'Last Free Date',
@@ -896,35 +897,78 @@ var Languague = {
       desc4: 'If you agree to our policy, please click "Agree" to continue.',
       allow: 'Agree',
       refuse: 'Disagree'
+    },
+    manageNotifications: {
+      title: 'Manage My Notifications',
+      notice: 'To receive WeChat notifications, please make sure you also subscribe same notification on eCommerce website',
+      checkBoxLabel: 'Only for booking I submitted',
+      subscribe: [
+        {
+          id: 0,
+          name: 'booking',
+          title: 'Booking Follow Up',
+          description: 'Informs you of the following events: booking request, modification or cancellation received, booking confirmed, refused or cancelled.',
+        },
+        {
+          id: 1,
+          name: 'vgm',
+          title: 'My VGM follow up',
+          description: 'This notification informs you about the status of your VGM declaration, whether it was validated or rejected due to errors.',
+        },
+        {
+          id: 2,
+          name: 'eta',
+          title: 'ETA Change',
+          description: 'This notification informs you that the estimated time of arrival of your vessel has been modified.',
+        },
+        {
+          id: 3,
+          name: 'container',
+          title: 'Container loaded on board',
+          description: 'This notification informs you when a container has been loaded on board at POL.',
+        },
+        {
+          id: 4,
+          name: 'invoice',
+          title: 'Invoice Available',
+          description: 'This notification informs you that your import & export invoice is available on your ebusiness account',
+        },
+        {
+          id: 5,
+          name: 'eir',
+          title: 'EIR Print',
+          description: 'This notification informs you that your EIR is ready to be printed.',
+        },
+      ]
     }
   },
 
   //底部英文版工具栏，这里是用于自定义tarbar用的
   toolbar: {
     "list": [{
-        "pagePath": "/pages/Home/index",
-        "text": "Home",
-        "iconPath": "/assets/img/tabs/home.png",
-        "selectedIconPath": "/assets/img/tabs/home_selected.png"
-      },
-      {
-        "pagePath": "/pages/Query/index",
-        "text": "Query",
-        "iconPath": "/assets/img/tabs/query.png",
-        "selectedIconPath": "/assets/img/tabs/query_selected.png"
-      },
-      {
-        "pagePath": "/pages/Quotation/Search/index",
-        "text": "Quotation",
-        "iconPath": "/assets/img/tabs/price.png",
-        "selectedIconPath": "/assets/img/tabs/price_selected.png"
-      },
-      {
-        "pagePath": "/pages/My/index",
-        "text": "Me",
-        "iconPath": "/assets/img/tabs/mine.png",
-        "selectedIconPath": "/assets/img/tabs/mine_selected.png"
-      }
+      "pagePath": "/pages/Home/index",
+      "text": "Home",
+      "iconPath": "/assets/img/tabs/home.png",
+      "selectedIconPath": "/assets/img/tabs/home_selected.png"
+    },
+    {
+      "pagePath": "/pages/Query/index",
+      "text": "Query",
+      "iconPath": "/assets/img/tabs/query.png",
+      "selectedIconPath": "/assets/img/tabs/query_selected.png"
+    },
+    {
+      "pagePath": "/pages/Quotation/Search/index",
+      "text": "Quotation",
+      "iconPath": "/assets/img/tabs/price.png",
+      "selectedIconPath": "/assets/img/tabs/price_selected.png"
+    },
+    {
+      "pagePath": "/pages/My/index",
+      "text": "Me",
+      "iconPath": "/assets/img/tabs/mine.png",
+      "selectedIconPath": "/assets/img/tabs/mine_selected.png"
+    }
     ]
   }
 }
