@@ -302,7 +302,8 @@ var Languague = {
       shipment: '船运概览',
       document: '单证概览',
       setting: '语言设置',
-      legalTerms: '隐私政策'
+      legalTerms: '隐私政策',
+      notifications: '管理我的通知',
     },
     legalTerms: {
       title: '隐私政策',
@@ -423,26 +424,26 @@ var Languague = {
       noChargeData: '未找到相关数据'
     },
     //new D&D Charges
-    NewDDCharges:{
+    NewDDCharges: {
       title: 'D&D 费用',
       title1: 'D&D',
       title2: '费用',
       //运输编号
-      byShipment:'按运输编号',
+      byShipment: '按运输编号',
       //集装箱号
-      byContainer:'按集装箱号',
-      shipment:'运输号',
+      byContainer: '按集装箱号',
+      shipment: '运输号',
       // 集装箱
-      container:'集装箱',
-      allContainer:'所有集装箱',
+      container: '集装箱',
+      allContainer: '所有集装箱',
       containerNo: '集装箱号',
       // 费用计算截至
-      cost:'费用计算截至',
+      cost: '费用计算截至',
       chargeFor: '查询',
       export: '出口费用',
       import: '进口费用',
       // 计算费用
-      count:'计算费用',
+      count: '计算费用',
       noContainer: '没有找到相关货柜，请核实您的提单'
     },
     NewDDChargesResult: {
@@ -450,9 +451,9 @@ var Languague = {
       title1: 'D&D',
       title2: '结果',
       //运输编号
-      shipmentRef:'运输号',
+      shipmentRef: '运输号',
       //集装箱号
-      containerNo:'货柜号',
+      containerNo: '货柜号',
       currentLocation: '当前所在地',
       chargeType: '费用类型',
       lastFreeDate: '最后免费日期',
@@ -899,35 +900,78 @@ var Languague = {
       desc4: '若您同意我们的政策内容，请点击“同意”并继续。',
       allow: '同意',
       refuse: '不同意，继续浏览'
+    },
+    manageNotifications: {
+      title: '管理我的通知',
+      notice: '为了能收到微信通知，请确保您同时在电子商务网站上订阅相同的通知',
+      checkBoxLabel: '仅我提交的预定',
+      subscribe: [
+        {
+          id: 0,
+          name: 'booking',
+          title: '预订跟进',
+          description: '通知您以下消息：预订请求、收到的修改或取消、预订确认、拒绝或取消。',
+        },
+        {
+          id: 1,
+          name: 'vgm',
+          title: '我的VGM跟进',
+          description: '此通知通知您VGM声明的状态，无论其是否已验证或因错误而被拒绝。.',
+        },
+        {
+          id: 2,
+          name: 'eta',
+          title: 'ETA变更',
+          description: '此通知通知您船只的预计到达时间已修改。',
+        },
+        {
+          id: 3,
+          name: 'container',
+          title: '集装箱已装船',
+          description: '此通知通知您集装箱何时已在POL装船。',
+        },
+        {
+          id: 4,
+          name: 'invoice',
+          title: '可用发票',
+          description: '此通知通知您您的电子商务帐户上有进出口发票',
+        },
+        {
+          id: 5,
+          name: 'eir',
+          title: 'EIR打印',
+          description: '此通知通知您EIR已准备好打印。',
+        },
+      ]
     }
   },
 
   //顶部导航栏，这里是用于自定义tarbar用的
   toolbar: {
     "list": [{
-        "pagePath": "/pages/Home/index",
-        "text": "首页",
-        "iconPath": "/assets/img/tabs/home.png",
-        "selectedIconPath": "/assets/img/tabs/home_selected.png"
-      },
-      {
-        "pagePath": "/pages/Query/index",
-        "text": "查询",
-        "iconPath": "/assets/img/tabs/query.png",
-        "selectedIconPath": "/assets/img/tabs/query_selected.png"
-      },
-      {
-        "pagePath": "/pages/Quotation/Search/index",
-        "text": "报价",
-        "iconPath": "/assets/img/tabs/price.png",
-        "selectedIconPath": "/assets/img/tabs/price_selected.png"
-      },
-      {
-        "pagePath": "/pages/My/index",
-        "text": "我的",
-        "iconPath": "/assets/img/tabs/mine.png",
-        "selectedIconPath": "/assets/img/tabs/mine_selected.png"
-      }
+      "pagePath": "/pages/Home/index",
+      "text": "首页",
+      "iconPath": "/assets/img/tabs/home.png",
+      "selectedIconPath": "/assets/img/tabs/home_selected.png"
+    },
+    {
+      "pagePath": "/pages/Query/index",
+      "text": "查询",
+      "iconPath": "/assets/img/tabs/query.png",
+      "selectedIconPath": "/assets/img/tabs/query_selected.png"
+    },
+    {
+      "pagePath": "/pages/Quotation/Search/index",
+      "text": "报价",
+      "iconPath": "/assets/img/tabs/price.png",
+      "selectedIconPath": "/assets/img/tabs/price_selected.png"
+    },
+    {
+      "pagePath": "/pages/My/index",
+      "text": "我的",
+      "iconPath": "/assets/img/tabs/mine.png",
+      "selectedIconPath": "/assets/img/tabs/mine_selected.png"
+    }
     ]
   }
 }

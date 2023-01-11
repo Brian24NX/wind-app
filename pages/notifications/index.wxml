@@ -1,0 +1,31 @@
+<!-- pages/notifications/index.wxml -->
+<view class="notice">
+  <view>
+    <image class="avatar" src="/assets/img/myAccount/warn.png"></image>
+  </view>
+  <text class="noticeText">{{languageContent.notice}}</text>
+</view>
+<view class="notificationContainer">
+  <view class="officialCard">
+    <official-account></official-account>
+  </view>
+  <scroll-view class="notificationList">
+    <view wx:for="{{languageContent.subscribe}}" class="subscribeCard" wx:key="name">
+      <view class="subscribeTitle">
+        <text>{{item.title}}</text>
+      </view>
+      <view class="subscribeDes">
+        <text>{{item.description}}</text>
+      </view>
+      <view class="subscribeRow">
+        <checkbox-group bindchange="checkChange" id="{{item.id}}" class="checkBox">
+          <label class="checkboxLabel">
+            <checkbox value="{{item.name}}" checked="{{newSubs[item.id].isFlag}}" color="white" />
+            {{languageContent.checkBoxLabel}}
+          </label>
+        </checkbox-group>
+        <switch id="{{item.id}}" class="switchStyle" color="#071E5D" checked="{{newSubs[item.id].isSubscribed}}" bindchange="switchChange" />
+      </view>
+    </view>
+  </scroll-view>
+</view>
