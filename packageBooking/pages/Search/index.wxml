@@ -1,4 +1,4 @@
-<!--packageBooking/pages/Contract/Search/index.wxml-->
+<!-- packageBooking/pages/Contract/Search/index.wxml -->
 <block wx:if="{{hasPermission}}">
   <view class="priceContainer">
     <wxs module="format" src="/utils/format.wxs"></wxs>
@@ -6,21 +6,27 @@
       <view class="searchLists">
         <view class="routeTitles">
           <view class="redline"></view>
-          <text class="route1">{{languageContent.getASchedule1}}<text class="route2">{{languageContent.getASchedule2}}</text></text>
+          <text class="route1">{{languageContent.getASchedule1}}</text>
         </view>
         <view class="searchList" wx:if="{{showPlaceOfReceipt}}">
           <view class="searchTitle">{{languageContent.placeOfOrigin}}</view>
           <view class="codeInputs">
             <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
             <input value="{{placeOfOriginLabel}}" style="{{receiptHaulage ? 'width: 290rpx' : ''}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfReceipt" />
-            <view class="placeType" wx:if="{{receiptHaulage}}">{{format.localeUpperCase(receiptHaulage)}}</view>
+            <view class="placeType" wx:if="{{receiptHaulage}}">
+              {{format.localeUpperCase(receiptHaulage)}}
+            </view>
             <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
               <image src="/assets/img/search/close@2x.png"></image>
             </view>
             <scroll-view class="scroll-view" wx:if='{{placeOfReceiptList.length}}' scroll-y>
               <view wx:for="{{placeOfReceiptList}}" wx:key="index" class="item" bindtap='choosePlaceOfReceipt' data-index="{{index}}">
-                <view class="polname" style="{{item.PlaceType ? 'width: 340rpx;' : 'width: 100%;'}}">{{item.ActualName}}</view>
-                <view class="placeType" wx:if="{{item.PlaceType}}">{{format.localeUpperCase(item.PlaceType)}}</view>
+                <view class="polname" style="{{item.PlaceType ? 'width: 340rpx;' : 'width: 100%;'}}">
+                  {{item.ActualName}}
+                </view>
+                <view class="placeType" wx:if="{{item.PlaceType}}">
+                  {{format.localeUpperCase(item.PlaceType)}}
+                </view>
               </view>
             </scroll-view>
             <view class="scroll-view" wx:if="{{showPoR}}">
@@ -105,15 +111,21 @@
           <view class="searchTitle">{{languageContent.placeOfDelivery}}</view>
           <view class="codeInputs">
             <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-            <input value="{{finalPlaceOfDeliveryLabel}}"  style="{{deliveryHaulage ? 'width: 290rpx' : ''}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfDelivery" />
-            <view class="placeType" wx:if="{{deliveryHaulage}}">{{format.localeUpperCase(deliveryHaulage)}}</view>
+            <input value="{{finalPlaceOfDeliveryLabel}}" style="{{deliveryHaulage ? 'width: 290rpx' : ''}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changePlaceOfDelivery" />
+            <view class="placeType" wx:if="{{deliveryHaulage}}">
+              {{format.localeUpperCase(deliveryHaulage)}}
+            </view>
             <view class="deleteIcon" wx:if="{{showDelete4}}" catchtap="deleteValue" data-type="4">
               <image src="/assets/img/search/close@2x.png"></image>
             </view>
             <scroll-view class="scroll-view" wx:if='{{placeOfDeliveryList.length}}' scroll-y>
               <view wx:for="{{placeOfDeliveryList}}" wx:key="index" class="item" bindtap='choosePlaceOfDelivery' data-index="{{index}}">
-                <view class="polname" style="{{item.PlaceType ? 'width: 340rpx;' : 'width: 100%;'}}">{{item.ActualName}}</view>
-                <view class="placeType" wx:if="{{item.PlaceType}}">{{format.localeUpperCase(item.PlaceType)}}</view>
+                <view class="polname" style="{{item.PlaceType ? 'width: 340rpx;' : 'width: 100%;'}}">
+                  {{item.ActualName}}
+                </view>
+                <view class="placeType" wx:if="{{item.PlaceType}}">
+                  {{format.localeUpperCase(item.PlaceType)}}
+                </view>
               </view>
             </scroll-view>
             <view class="scroll-view" wx:if="{{showPoDe}}">
@@ -132,14 +144,18 @@
         <view class="searchList">
           <view class="searchTitle">{{languageContent.searchOn}}</view>
           <view class="selectContainer" catchtap="openPopup" data-type="1">
-            <view style="{{searchOn ? 'color: #071E5D;' : ''}}">{{searchOn ? searchOnLabel : verifyInfo.select}}</view>
+            <view style="{{searchOn ? 'color: #071E5D;' : ''}}">
+              {{searchOn ? searchOnLabel : verifyInfo.select}}
+            </view>
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
         </view>
         <view class="searchList">
           <view class="searchTitle">{{languageContent.date}}</view>
           <view class="selectContainer" catchtap="openPopup" data-type="2">
-            <view style="{{simulationDate ? 'color: #071E5D;' : ''}}">{{simulationDate ? (language === 'zh' ? format.formatCnDateLocal(simulationDate, true, true) : format.formatEnDateLocal(simulationDate, '-', '', true, true)) : verifyInfo.select}}</view>
+            <view style="{{simulationDate ? 'color: #071E5D;' : ''}}">
+              {{simulationDate ? (language === 'zh' ? format.formatCnDateLocal(simulationDate, true, true) : format.formatEnDateLocal(simulationDate, '-', '', true, true)) : verifyInfo.select}}
+            </view>
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
         </view>
@@ -156,21 +172,25 @@
             </view>
           </view>
         </view>
+        <view class="searchList">
+          <view class="needQuoBox">
+            <image class="infoIcon" src="/assets/img/search/info.png"></image>
+            <text class="needQuotation">{{languageContent.needQuo}}</text>
+          </view>
+          <view class="searchQuotation" catchtap="goQuotation">{{languageContent.searchQuo}}</view>
+        </view>
         <view class="btn" style="margin-top: 40rpx;">
-          <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">{{languageContent.search}}</button>
+          <button style="background: #2D75FF;border-radius: 0;" type="primary" bindtap="submit">
+            {{languageContent.search}}
+          </button>
           <view class="reset" catchtap="reset">{{languageContent.reset}}</view>
         </view>
-
       </view>
-
       <!-- tips -->
       <!-- <text class="warm-prompt">{{languageContent.remind}}</text> -->
-
       <custom-picker columns="{{searchList}}" valueKey="method" defaultIndex="{{defaultIndex}}" showPopup="{{showPopup}}" bindonClose="onClose" bind:onConfirm="onConfirm"></custom-picker>
-
       <custom-time showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate" minDate="{{minDate}}" maxDate="{{maxDate}}"></custom-time>
     </view>
   </view>
 </block>
-
 <no-permission wx:if="{{hasPermission === false}}"></no-permission>

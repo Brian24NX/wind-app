@@ -465,8 +465,8 @@ var Languague = {
       //航线|获取船期
       getASchedule1: "Instant ",
       getASchedule2: 'Quote',
-      type1: 'Instant Quote',
-      type2: 'My Contracts',
+      type1: 'SpotOn',
+      type2: 'My Quotations',
       placeOfOrigin: "Place of Receipt",
       addPlaceOfOrigin: "Add a Place of Receipt",
       //起运港
@@ -496,8 +496,8 @@ var Languague = {
       noOffer: 'No offer currently available',
       spotOut: 'Spot allocation sold out',
       container: 'CONTAINER',
-      title: 'Instant Quote',
-      title2: 'Instant Quote',
+      title: 'SpotOn',
+      title2: 'SpotOn',
       select: 'Select',
       days: 'DAYS',
       day: 'DAY',
@@ -659,8 +659,8 @@ var Languague = {
     // 订舱
     booking: {
       title: 'Click & Book',
-      getASchedule1: "Click ",
-      getASchedule2: '& Book',
+      getASchedule1: "Click Book",
+      getASchedule2: ' Book',
       placeOfOrigin: "Place of Receipt",
       addPlaceOfOrigin: "Add a Place of Receipt",
       //起运港
@@ -676,9 +676,11 @@ var Languague = {
       date: "Date",
       reference: 'Quotation / Contract Number',
       //查询
-      search: "Search",
+      search: "See the Routes",
       reset: 'Reset',
-      remind: 'Value-added service (VAS) function coming soon.\n Please add additional services during booking on eCommerce website for now.'
+      remind: 'Value-added service (VAS) function coming soon.\n Please add additional services during booking on eCommerce website for now.',
+      needQuo: 'Need a quotation？',
+      searchQuo: 'Search for a quote on My Quotations'
     },
     // 订舱详情
     bookingDetail: {

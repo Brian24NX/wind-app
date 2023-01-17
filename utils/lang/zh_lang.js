@@ -469,7 +469,7 @@ var Languague = {
       getASchedule1: "即时",
       getASchedule2: '报价',
       type1: '实时报价',
-      type2: '我的合同',
+      type2: '我的报价',
       placeOfOrigin: "收货地",
       addPlaceOfOrigin: '添加收货地',
       //起运港
@@ -547,7 +547,7 @@ var Languague = {
       weight: '净重（KGM）',
       containers: '货柜数量',
       Commodity: '商品',
-      title3: '我的合同',
+      title3: '我的报价',
       title4: '合同详情',
       book: '立即订舱',
       books: '订舱',
@@ -662,7 +662,7 @@ var Languague = {
     // 订舱
     booking: {
       title: '订舱',
-      getASchedule1: "Click ",
+      getASchedule1: "订舱",
       getASchedule2: '& Book',
       placeOfOrigin: "收货地",
       addPlaceOfOrigin: '添加收货地',
@@ -679,9 +679,11 @@ var Languague = {
       date: "日期",
       reference: '合约号',
       //查询
-      search: "查询",
+      search: "查看路线",
       reset: '重置',
-      remind: '增值服务功能升级中，敬请期待。\n如需添加增值服务产品，请移步至官网进行操作。'
+      remind: '增值服务功能升级中，敬请期待。\n如需添加增值服务产品，请移步至官网进行操作。',
+      needQuo: '需要报价？',
+      searchQuo: '在我的报价单上搜索报价'
     },
     // 订舱详情
     bookingDetail: {
@@ -916,7 +918,7 @@ var Languague = {
           id: 1,
           name: 'vgm',
           title: '我的VGM跟进',
-          description: '此通知通知您VGM声明的状态，无论其是否已验证或因错误而被拒绝。.',
+          description: '此通知通知您VGM声明的状态，无论其是否已验证或因错误而被拒绝。',
         },
         {
           id: 2,
@@ -934,7 +936,7 @@ var Languague = {
           id: 4,
           name: 'invoice',
           title: '可用发票',
-          description: '此通知通知您您的电子商务帐户上有进出口发票',
+          description: '此通知通知您您的电子商务帐户上有进出口发票。',
         },
         {
           id: 5,

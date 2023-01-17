@@ -1,7 +1,7 @@
 <!-- pages/notifications/index.wxml -->
 <view class="notice">
   <view>
-    <image class="avatar" src="/assets/img/myAccount/warn.png"></image>
+    <image class="avatar" src="/assets/img/myAccount/warn@2x.png"></image>
   </view>
   <text class="noticeText">{{languageContent.notice}}</text>
 </view>
@@ -18,13 +18,10 @@
         <text>{{item.description}}</text>
       </view>
       <view class="subscribeRow">
-        <checkbox-group bindchange="checkChange" id="{{item.id}}" class="checkBox">
-          <label class="checkboxLabel">
-            <checkbox value="{{item.name}}" checked="{{newSubs[item.id].isFlag}}" color="white" />
-            {{languageContent.checkBoxLabel}}
-          </label>
-        </checkbox-group>
-        <switch id="{{item.id}}" class="switchStyle" color="#071E5D" checked="{{newSubs[item.id].isSubscribed}}" bindchange="switchChange" />
+        <van-checkbox id="{{item.id}}" value="{{newSubs[item.id].isFlag}}" checked-color="#071e5d" icon-size="30rpx" shape="square" bind:change="checkChange">
+          <view class="checkboxLabel">{{languageContent.checkBoxLabel}}</view>
+        </van-checkbox>
+        <van-switch class="switchStyle" id="{{item.id}}" checked="{{newSubs[item.id].isSubscribed}}" active-color="#2B74FF" inactive-color="#9AA7C3" bind:change="switchChange" size="24rpx" />
       </view>
     </view>
   </scroll-view>

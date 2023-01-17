@@ -110,9 +110,19 @@ Page({
   // 去登录
   toLogin() {
     if (!wx.getStorageSync('ccgId')) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
+      wx.showToast({
+        title: languageUtils.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        mask: true,
+        duration: 2000
       })
+      wx.removeStorageSync('expires_time')
+      wx.removeStorageSync('access_token')
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/Login/index',
+        })
+      }, 500)
     }
   },
 
@@ -163,9 +173,19 @@ Page({
         this.addSubscribe()
       })
     } else {
-      wx.navigateTo({
-        url: '/pages/Login/index',
+      wx.showToast({
+        title: languageUtils.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        mask: true,
+        duration: 2000
       })
+      wx.removeStorageSync('expires_time')
+      wx.removeStorageSync('access_token')
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/Login/index',
+        })
+      }, 500)
     }
   },
 
@@ -183,9 +203,19 @@ Page({
         this.addSubscribe()
       })
     } else {
-      wx.navigateTo({
-        url: '/pages/Login/index',
+      wx.showToast({
+        title: languageUtils.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        mask: true,
+        duration: 2000
       })
+      wx.removeStorageSync('expires_time')
+      wx.removeStorageSync('access_token')
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/Login/index',
+        })
+      }, 500)
     }
   },
 
@@ -205,9 +235,19 @@ Page({
         this.addSubscribe()
       })
     } else {
-      wx.navigateTo({
-        url: '/pages/Login/index',
+      wx.showToast({
+        title: languageUtils.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        mask: true,
+        duration: 2000
       })
+      wx.removeStorageSync('expires_time')
+      wx.removeStorageSync('access_token')
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/Login/index',
+        })
+      }, 500)
     }
   },
 
@@ -216,19 +256,19 @@ Page({
     this.setData({
       formData: {
         id: Number(e.target.id) + 1,
-        isSubscribed: e.detail.value,
+        isSubscribed: e.detail,
         flag: this.data.formData.flag,
       },
       [recordKey]: {
         id: Number(e.target.id) + 1,
-        flag: e.detail.value ? this.data.formData.flag : 0,
-        isFlag: e.detail.value ? this.data.formData.flag > 0 ? true : false : false,
-        isSubscribed: e.detail.value,
+        flag: e.detail ? this.data.formData.flag : 0,
+        isFlag: e.detail ? this.data.formData.flag > 0 ? true : false : false,
+        isSubscribed: e.detail,
       }
     })
 
     //打开开关新增，关闭删除
-    if (e.detail.value) {
+    if (e.detail) {
       this.addSubscribeData()
     } else {
       this.deleteSubscribeData()
@@ -241,13 +281,12 @@ Page({
     this.setData({
       formData: {
         id: Number(e.target.id) + 1,
-        flag: e.detail.value.length > 0 ? 1 : 0,
+        flag: e.detail ? 1 : 0,
         isSubscribed: this.data.newSubs[e.target.id].isSubscribed,
       },
-      [recordKey1]: e.detail.value.length > 0 ? 1 : 0,
-      [recordKey2]: e.detail.value.length > 0 ? true : false,
+      [recordKey1]: e.detail ? 1 : 0,
+      [recordKey2]: e.detail,
     })
-
 
     if (this.data.formData.isSubscribed) {
       this.updateSubscribeData()

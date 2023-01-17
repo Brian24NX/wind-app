@@ -165,9 +165,19 @@ Page({
         url: '/pages/notifications/index',
       })
     } else {
-      wx.navigateTo({
-        url: '/pages/Login/index',
+      wx.showToast({
+        title: languageUtils.languageVersion().lang.page.load.noLogin,
+        icon: 'none',
+        mask: true,
+        duration: 2000
       })
+      wx.removeStorageSync('expires_time')
+      wx.removeStorageSync('access_token')
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/Login/index',
+        })
+      }, 500)
     }
   },
 

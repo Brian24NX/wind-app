@@ -116,7 +116,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () { },
 
   addPlaceOfReceipt() {
     this.setData({
@@ -612,6 +612,12 @@ Page({
       wx.navigateTo({
         url: '/packageBooking/pages/List/index',
       })
+    })
+  },
+
+  goQuotation() {
+    wx.switchTab({
+      url: '/pages/Quotation/Search/index',
     })
   },
 

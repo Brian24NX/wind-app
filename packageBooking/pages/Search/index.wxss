@@ -1,5 +1,5 @@
 /* packageBooking/pages/Contract/Search/index.wxss */
-page{
+page {
   background-color: #f5f5f5;
 }
 
@@ -11,10 +11,9 @@ page{
   padding-top: 30rpx;
 }
 
-
 .queryContainer .routeTitles {
   font-size: 56rpx;
-  color: #04246A;
+  color: #04246a;
   font-weight: bold;
   font-family: Antonio-Regular;
   display: flex;
@@ -24,13 +23,13 @@ page{
 }
 
 .queryContainer .route2 {
-  color: #4468BA;
+  color: #4468ba;
 }
 
 .queryContainer .redline {
   width: 8rpx;
   height: 50rpx;
-  background: #E20202;
+  background: #e20202;
   margin: 0 20rpx 0 0;
 }
 
@@ -46,7 +45,7 @@ page{
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2D75FF;
+  color: #2d75ff;
   font-size: 28rpx;
   margin: 20rpx 0 20rpx 120rpx;
 }
@@ -77,13 +76,13 @@ page{
   width: 18rpx;
   height: 18rpx;
   border-radius: 50%;
-  background-color: #E20202;
+  background-color: #e20202;
 }
 
 .queryContainer .searchList .leftIcons .leftLine {
   width: 2rpx;
   height: 70rpx;
-  background-color: #9AA6C4;
+  background-color: #9aa6c4;
   margin: 10rpx 0;
 }
 
@@ -103,7 +102,7 @@ page{
 
 .queryContainer .searchList .noRequest {
   font-size: 24rpx;
-  color: #E2014B;
+  color: #e2014b;
   position: absolute;
   left: 0;
   top: 90rpx;
@@ -115,17 +114,17 @@ page{
   font-size: 28rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
   margin-bottom: 12rpx;
 }
 
 .queryContainer .searchList .codeInputs {
   height: 88rpx;
-  border: 2rpx solid #DFDFDF;
+  border: 2rpx solid #dfdfdf;
   margin-top: 10rpx;
   padding: 0 0 0 20rpx;
   font-size: 28rpx;
-  color: #04246A;
+  color: #04246a;
   display: flex;
   align-items: center;
   position: relative;
@@ -195,7 +194,7 @@ page{
   justify-content: space-between;
   align-items: center;
   padding: 0 24rpx;
-  color: #B9BFCA;
+  color: #b9bfca;
   font-size: 28rpx;
 }
 
@@ -204,7 +203,7 @@ page{
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 
 .queryContainer .searchLists .selectContainer image {
@@ -213,15 +212,15 @@ page{
 }
 
 .noRequestBorder {
-  border: 2rpx solid #E2014B !important;
+  border: 2rpx solid #e2014b !important;
 }
 
 .queryContainer .containers {
   display: flex;
   height: 68rpx;
-  border: 2rpx solid #DCDFE6;
+  border: 2rpx solid #dcdfe6;
   width: 288rpx;
-  color: #04246A;
+  color: #04246a;
   font-size: 28rpx;
 }
 
@@ -241,8 +240,8 @@ page{
   align-items: center;
   justify-content: center;
   width: 155rpx;
-  border-left: 2rpx solid #DCDFE6;
-  border-right: 2rpx solid #DCDFE6;
+  border-left: 2rpx solid #dcdfe6;
+  border-right: 2rpx solid #dcdfe6;
 }
 
 .queryContainer .btn {
@@ -254,7 +253,7 @@ page{
   text-align: center;
   height: 80rpx;
   line-height: 80rpx;
-  color: #3476FF;
+  color: #3476ff;
   font-size: 28rpx;
 }
 
@@ -274,6 +273,33 @@ page{
 .warm-prompt {
   display: inline-block;
   margin: 20rpx 40rpx;
-  font-size:  26rpx;
+  font-size: 26rpx;
   color: #999;
+}
+.needQuoBox {
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.needQuotation {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246a;
+  line-height: 40rpx;
+  margin-left: 4rpx;
+}
+
+.searchQuotation {
+  font-size: 14px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #2d75ff;
+  line-height: 20px;
+  margin-left: 36rpx;
+}
+
+.infoIcon {
+  width: 32rpx;
+  height: 32rpx;
 }
