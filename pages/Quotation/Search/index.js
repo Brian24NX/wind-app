@@ -30,6 +30,7 @@ Page({
     maxDate: new Date().getTime() + 1000 * 60 * 60 * 24 * 30,
     showPol: false,
     showPod: false,
+    shipperOwnedContainer: false,
     // 收货地
     placeOfOrigin: '',
     placeOfOriginLabel: '',
@@ -154,7 +155,7 @@ Page({
     }
   },
 
-  onShareAppMessage: function () {},
+  onShareAppMessage: function () { },
 
   changeCurrentType(e) {
     this.setData({
@@ -932,7 +933,7 @@ Page({
       } else {
         this.setData({
           showRemind7: false,
-          partnerCode: this.data.checkPartnerList.map(i => {return i.code})
+          partnerCode: this.data.checkPartnerList.map(i => { return i.code })
         })
       }
     }
@@ -1036,7 +1037,7 @@ Page({
         })
         this.getNearByPortNextDeparture()
       }
-      
+
     })
   },
 
@@ -1176,6 +1177,16 @@ Page({
       partnerCode: []
     })
   },
+
+  // switchOwnedContainer(e){
+  //   this.setData({
+  //     shipperOwnedContainer: e.detail
+  //   })
+  //   wx.showToast({
+  //     title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
+  //     icon: 'none'
+  //   })
+  // },
 
   closeSelect() {
     this.setData({

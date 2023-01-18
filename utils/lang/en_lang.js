@@ -479,6 +479,7 @@ var Languague = {
       name: "Name/Code",
       //离港时间
       departure: "Vessel Departure from",
+      ownedContainer: 'Shipper Owned Container (SOC)',
       equipmentType: 'Equipment Type',
       weight: 'Net Weight(KGM)',
       weightName: 'EX.10 000 kgm',
@@ -497,7 +498,7 @@ var Languague = {
       spotOut: 'Spot allocation sold out',
       container: 'CONTAINER',
       title: 'SpotOn',
-      title2: 'SpotOn',
+      title2: 'Instant Quote',
       select: 'Select',
       days: 'DAYS',
       day: 'DAY',
@@ -680,7 +681,7 @@ var Languague = {
       reset: 'Reset',
       remind: 'Value-added service (VAS) function coming soon.\n Please add additional services during booking on eCommerce website for now.',
       needQuo: 'Need a quotation？',
-      searchQuo: 'Search for a quote on My Quotations'
+      searchQuo: 'Check your contracts or get an instant quote'
     },
     // 订舱详情
     bookingDetail: {
@@ -961,7 +962,7 @@ var Languague = {
     },
     {
       "pagePath": "/pages/Quotation/Search/index",
-      "text": "Quotation",
+      "text": "SpotOn",
       "iconPath": "/assets/img/tabs/price.png",
       "selectedIconPath": "/assets/img/tabs/price_selected.png"
     },

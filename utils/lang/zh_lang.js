@@ -469,7 +469,7 @@ var Languague = {
       getASchedule1: "即时",
       getASchedule2: '报价',
       type1: '实时报价',
-      type2: '我的报价',
+      type2: '我的合约',
       placeOfOrigin: "收货地",
       addPlaceOfOrigin: '添加收货地',
       //起运港
@@ -482,6 +482,7 @@ var Languague = {
       name: "名称/代码",
       //离港时间
       departure: "离港时间",
+      ownedContainer: '托运人自备集装箱（SOC）',
       equipmentType: '箱型',
       weight: '净重（KGM）',
       weightName: 'EX.10 000 kgm',
@@ -683,7 +684,7 @@ var Languague = {
       reset: '重置',
       remind: '增值服务功能升级中，敬请期待。\n如需添加增值服务产品，请移步至官网进行操作。',
       needQuo: '需要报价？',
-      searchQuo: '在我的报价单上搜索报价'
+      searchQuo: '查询我的合同或获取报价'
     },
     // 订舱详情
     bookingDetail: {
@@ -906,37 +907,37 @@ var Languague = {
     manageNotifications: {
       title: '管理我的通知',
       notice: '为了能收到微信通知，请确保您同时在电子商务网站上订阅相同的通知',
-      checkBoxLabel: '仅我提交的预定',
+      checkBoxLabel: '只适用于我管理的船运',
       subscribe: [
         {
           id: 0,
           name: 'booking',
-          title: '预订跟进',
-          description: '通知您以下消息：预订请求、收到的修改或取消、预订确认、拒绝或取消。',
+          title: '订舱跟进',
+          description: '这个通知涉及以下事项：订舱申请，修改申请和取消申请，订舱确认，订舱已被拒绝和取消。',
         },
         {
           id: 1,
           name: 'vgm',
-          title: '我的VGM跟进',
-          description: '此通知通知您VGM声明的状态，无论其是否已验证或因错误而被拒绝。',
+          title: '验证集装箱总重量(VGM)跟进',
+          description: '这份通知是告知您提交验证集装箱总重量申报(VGM)的状态， 是记录成功还是由于错误信息被拒绝。',
         },
         {
           id: 2,
           name: 'eta',
-          title: 'ETA变更',
-          description: '此通知通知您船只的预计到达时间已修改。',
+          title: '预计到港时间更改',
+          description: '通知：您的预计到港时间已更改',
         },
         {
           id: 3,
           name: 'container',
           title: '集装箱已装船',
-          description: '此通知通知您集装箱何时已在POL装船。',
+          description: '请知悉集装箱已在起运港装船。',
         },
         {
           id: 4,
           name: 'invoice',
-          title: '可用发票',
-          description: '此通知通知您您的电子商务帐户上有进出口发票。',
+          title: '可供使用发票',
+          description: '此通知用于通知您可以在您的电子商务账户上查阅进出口发票。',
         },
         {
           id: 5,

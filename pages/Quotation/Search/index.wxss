@@ -398,3 +398,17 @@ page {
   overflow: hidden;
   color: #04246A;
 }
+
+.switchBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switchBoxTitle {
+  font-size: 28rpx;
+font-family: PingFangSC-Regular, PingFang SC;
+font-weight: 400;
+color: #04246A;
+line-height: 40rpx;
+}

@@ -135,6 +135,16 @@ const request = ({
             })
           }
         }
+        if (err.errMsg.indexOf('request:fail') !== -1) {
+          if (!needError) {
+            wx.showToast({
+              title: languageUtil.languageVersion().lang.page.load.networkIsNotWorking,
+              icon: 'none',
+              duration: 3000
+            })
+          }
+        }
+
         // 返回错误提示信息
         reject('网络请求失败')
       }
