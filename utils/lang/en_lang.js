@@ -70,7 +70,7 @@ var Languague = {
       advancedBtn: 'Advanced Search',
       //实时报价
       PRICE: 'PRICE',
-      instantQuote: "Instant Quotation",
+      instantQuote: "SpotOn",
       //柜租费率
       DDCharges: "D&D Charges",
       //查询费率
@@ -498,7 +498,7 @@ var Languague = {
       spotOut: 'Spot allocation sold out',
       container: 'CONTAINER',
       title: 'SpotOn',
-      title2: 'Instant Quote',
+      title2: 'SpotOn',
       select: 'Select',
       days: 'DAYS',
       day: 'DAY',
