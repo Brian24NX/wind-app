@@ -91,7 +91,7 @@ var Languague = {
       valueAddedService: "客户通告",
       template: '模板及链接',
       // 管制品
-      gzp: '管制品查询',
+      gzp: '货物运输限制',
       // 联系我们
       callMe: '联系我们'
     },
@@ -130,7 +130,7 @@ var Languague = {
       dingcang: '订舱',
       chuanqi: '船期查询',
       huowu: '货物追踪',
-      gzp: '管制品查询',
+      gzp: '货物运输限制',
       gzfl: '柜租费率',
       cxfl: '查询费率',
       ddCharges: 'D&D费用'
@@ -269,8 +269,8 @@ var Languague = {
     },
     // 管制品查询
     sanction: {
-      title: '管制品查询',
-      topTitle: '管制品查询',
+      title: '货物运输限制',
+      topTitle: '货物运输限制',
       title1: '管制品',
       title2: '查询',
       placeholder: '名称/编码',
@@ -906,7 +906,7 @@ var Languague = {
     },
     manageNotifications: {
       title: '管理我的通知',
-      notice: '为了能收到微信通知，请确保您同时在电子商务网站上订阅相同的通知',
+      notice: '为了能收到微信通知，请确保您在eCommerce网站订阅相同通知，并关注"达飞轮船中国"公众号',
       checkBoxLabel: '只适用于我管理的船运',
       subscribe: [
         {

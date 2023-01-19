@@ -90,7 +90,7 @@ var Languague = {
       valueAddedService: "Customer Advisory",
       template: 'Template & Link',
       // 管制品
-      gzp: 'Sanction Check',
+      gzp: 'Cargo Restriction',
       // 联系我们
       callMe: 'Contact Us'
     },
@@ -129,7 +129,7 @@ var Languague = {
       dingcang: 'Place Booking',
       chuanqi: 'Routing Finder',
       huowu: 'Shipment Tracking',
-      gzp: 'Sanction Check',
+      gzp: 'Cargo Restriction',
       gzfl: 'D&D Prices',
       cxfl: 'Charge Finder',
       ddCharges: 'D&D Charges'
@@ -267,10 +267,10 @@ var Languague = {
     },
     // 管制品查询
     sanction: {
-      title: 'Sanction Check',
-      topTitle: 'Sanction\n Check',
-      title1: 'Sanction',
-      title2: ' Check',
+      title: 'Cargo Restriction',
+      topTitle: 'Cargo\n Restriction',
+      title1: 'Cargo',
+      title2: ' Restriction',
       placeholder: 'Name or Ref. No.',
       commodity: 'Commodity',
       country: 'Country/Region',
@@ -903,14 +903,14 @@ var Languague = {
     },
     manageNotifications: {
       title: 'Manage My Notifications',
-      notice: 'To receive WeChat notifications, please make sure you also subscribe same notification on eCommerce website',
+      notice: 'To receive WeChat notifications, please make sure to subscribe the same notifications on eCommerce website & follow "CMACGMCHINA" offical WeChat Account',
       checkBoxLabel: 'Only for booking I submitted',
       subscribe: [
         {
           id: 0,
           name: 'booking',
           title: 'Booking Follow Up',
-          description: 'Informs you of the following events: booking request, modification or cancellation received, booking confirmed, refused or cancelled.',
+          description: 'This notification informs you of the following events: booking request, modification or cancellation received, booking confirmed, refused or cancelled.',
         },
         {
           id: 1,
