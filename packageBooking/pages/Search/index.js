@@ -581,13 +581,13 @@ Page({
         })
         return
       }
-      if (res.data && res.data.quotation.invalidReference) {
-        wx.showToast({
-          icon: 'none',
-          title: 'Quotation / Contract Number is invalid',
-        })
-        return
-      }
+      // if (res.data && res.data.quotation.invalidReference) {
+      //   wx.showToast({
+      //     icon: 'none',
+      //     title: 'Quotation / Contract Number is invalid',
+      //   })
+      //   return
+      // }
       if (res.data && !res.data.quotation.noMatchPOLPOD && res.data.routings && res.data.routings.length) {
         wx.setStorageSync('bookingRoutings', res.data.routings)
         wx.setStorageSync('containers', res.data.commodities.preferedContainerTypes.concat(res.data.commodities.containerTypes))
