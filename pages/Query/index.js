@@ -13,20 +13,21 @@ Page({
     load: {},
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
-    menuList: [{
-      style: "330rpx",
-      icon: '/assets/img/menu/dc@2x.png',
-      isNew: false,
-      label: 'dingcang',
-      url: '/packageBooking/pages/Search/index',
-      needLogin: true
-    }, {
+    menuList: [ {
       style: "330rpx",
       icon: '/assets/img/menu/D&D@2x.png',
       isNew: true,
       label: 'ddCharges',
       url: '/packagePrice/pages/calculatedCharges/index',
       needLogin: true
+    }, {
+      style: "330rpx",
+      icon: '/assets/img/menu/cqcx@2x.png',
+      isNew: false,
+      label: 'chuanqi',
+      type: 2,
+      url: '/pages/RouterQuery/index',
+      needLogin: false
     }, {
       style: "330rpx",
       icon: '/assets/img/menu/hwzz@2x.png',
@@ -50,15 +51,15 @@ Page({
       label: 'gzfl',
       url: '/packagePrice/pages/DNDCharge/index',
       needLogin: false
-    }, {
+    },
+    {
       style: "330rpx",
-      icon: '/assets/img/menu/cqcx@2x.png',
+      icon: '/assets/img/menu/dc@2x.png',
       isNew: false,
-      label: 'chuanqi',
-      type: 2,
-      url: '/pages/RouterQuery/index',
-      needLogin: false
-    }],
+      label: 'dingcang',
+      url: '/packageBooking/pages/Search/index',
+      needLogin: true
+    },],
     showRemind: false
   },
 
@@ -78,7 +79,8 @@ Page({
 
   toFunction(e) {
     const index = e.currentTarget.dataset.index
-    if (!this.data.menuList[index].url) {
+    // 订舱功能升级中
+    if (!this.data.menuList[index].url || index === 5) {
       wx.showToast({
         title: this.data.load.functionIsUnderDevelopment,
         icon: 'none'
