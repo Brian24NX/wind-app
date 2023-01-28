@@ -2,13 +2,24 @@
 page {
   background-color: #f5f5f5;
 }
-
-.notice {
+.noticeBox {
   background-color: #0073e2;
   padding: 18rpx 44rpx 18px 30rpx;
+}
+
+.notice {
   display: flex;
   justify-content: start;
   align-items: flex-start;
+}
+
+.urlCopy {
+  text-decoration: underline;
+  margin-left: 48rpx;
+  font-style: italic;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #031745;
 }
 
 .notice .avatar {

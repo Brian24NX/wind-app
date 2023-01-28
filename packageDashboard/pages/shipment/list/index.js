@@ -142,6 +142,12 @@ Page({
       }).then(res => {
         if (res.data) {
           allList = res.data
+          
+          allList.forEach(listItem => {
+            if(listItem.status === "DraftSI"){
+              listItem.status = "SI Saved"
+            }
+          })
           this.dealPaging()
         } else {
           this.setData({

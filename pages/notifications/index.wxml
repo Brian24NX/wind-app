@@ -1,9 +1,12 @@
 <!-- pages/notifications/index.wxml -->
-<view class="notice">
-  <view>
-    <image class="avatar" src="/assets/img/myAccount/warn@2x.png"></image>
+<view class="noticeBox">
+  <view class="notice">
+    <view>
+      <image class="avatar" src="/assets/img/myAccount/warn@2x.png"></image>
+    </view>
+    <text class="noticeText">{{languageContent.notice}}</text>
   </view>
-  <text class="noticeText">{{languageContent.notice}}</text>
+  <text catchtap="copy" class="urlCopy">{{languageContent.urlLabel}}</text>
 </view>
 <view class="notificationContainer">
   <view class="officialCard">

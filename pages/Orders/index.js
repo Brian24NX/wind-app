@@ -175,6 +175,13 @@ Page({
       containers.forEach(item => {
         const movements = JSON.parse(JSON.stringify(item.movement)).reverse()
         item.movement = []
+
+        if(item.containerRef === '' || item.equipmentSize === ''){
+          this.setData({
+            noData: true
+          })
+        }
+
         movements.forEach(move => {
           // if (item.movement.length) {
             // console.log(move.eventDateTime)

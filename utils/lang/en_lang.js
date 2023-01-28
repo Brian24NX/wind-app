@@ -904,18 +904,19 @@ var Languague = {
     manageNotifications: {
       title: 'Manage My Notifications',
       notice: 'To receive WeChat notifications, please make sure to subscribe the same notifications on eCommerce website & follow "CMACGMCHINA" offical WeChat Account.',
+      urlLabel: 'Copy link for eCommerce website',
       checkBoxLabel: 'Only for booking I submitted',
       subscribe: [
         {
           id: 0,
           name: 'booking',
-          title: 'Booking Follow Up',
+          title: 'Booking Follow up',
           description: 'This notification informs you of the following events: booking request, modification or cancellation received, booking confirmed, refused or cancelled.',
         },
         {
           id: 1,
           name: 'vgm',
-          title: 'My VGM Follow Up',
+          title: 'My VGM Follow up',
           description: 'This notification informs you about the status of your VGM declaration, whether it was validated or rejected due to errors.',
         },
         {
@@ -927,7 +928,7 @@ var Languague = {
         {
           id: 3,
           name: 'container',
-          title: 'Container Loaded On Board',
+          title: 'Container Loaded on Board',
           description: 'This notification informs you when a container has been loaded on board at POL.',
         },
         {
@@ -939,8 +940,8 @@ var Languague = {
         {
           id: 5,
           name: 'eir',
-          title: 'EIR Print',
-          description: 'This notification informs you that your EIR is ready to be printed.',
+          title: 'EIR Readiness',
+          description: 'This notification informs you that your EIR is ready to be printed, which is exclusive to WeChat Mini-Program, not available on eCommerce website yet.',
         },
       ]
     }

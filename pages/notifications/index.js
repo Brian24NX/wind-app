@@ -292,4 +292,19 @@ Page({
       this.updateSubscribeData()
     }
   },
+
+  copy() {
+    const url = 'https://www.cma-cgm.com/ebusiness/subscription/dashboard'
+    wx.setClipboardData({
+      data: url,
+      success() {
+        wx.showToast({
+          title: languageUtils.languageVersion().lang.page.copyInfo.success,
+          icon: 'none',
+          mask: true,
+          duration: 2000
+        })
+      }
+    })
+  }
 })

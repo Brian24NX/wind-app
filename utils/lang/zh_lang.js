@@ -908,6 +908,7 @@ var Languague = {
       title: '管理我的通知',
       notice: '为了能收到微信通知，请确保您在eCommerce网站订阅相同通知，并关注"达飞轮船中国"公众号。',
       checkBoxLabel: '只适用于我管理的船运',
+      urlLabel: '获取eCommerce网站链接',
       subscribe: [
         {
           id: 0,
@@ -925,7 +926,7 @@ var Languague = {
           id: 2,
           name: 'eta',
           title: '预计离港 & 到港时间更改',
-          description: '此通知用于通知您的预计离港或到港你时间已更改。',
+          description: '此通知用于通知您的预计离港或到港时间已更改。',
         },
         {
           id: 3,
@@ -943,7 +944,7 @@ var Languague = {
           id: 5,
           name: 'eir',
           title: 'EIR打印',
-          description: '此通知通知您EIR已准备好打印。',
+          description: '此通知用于通知您的EIR已准备好打印，该通知仅通过微信小程序提供，无需至eCommerce官网订阅。',
         },
       ]
     }
