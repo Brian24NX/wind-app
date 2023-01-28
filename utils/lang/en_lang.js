@@ -903,7 +903,7 @@ var Languague = {
     },
     manageNotifications: {
       title: 'Manage My Notifications',
-      notice: 'To receive WeChat notifications, please make sure to subscribe the same notifications on eCommerce website & follow "CMACGMCHINA" offical WeChat Account',
+      notice: 'To receive WeChat notifications, please make sure to subscribe the same notifications on eCommerce website & follow "CMACGMCHINA" offical WeChat Account.',
       checkBoxLabel: 'Only for booking I submitted',
       subscribe: [
         {
@@ -915,26 +915,26 @@ var Languague = {
         {
           id: 1,
           name: 'vgm',
-          title: 'My VGM follow up',
+          title: 'My VGM Follow Up',
           description: 'This notification informs you about the status of your VGM declaration, whether it was validated or rejected due to errors.',
         },
         {
           id: 2,
           name: 'eta',
-          title: 'ETA Change',
-          description: 'This notification informs you that the estimated time of arrival of your vessel has been modified.',
+          title: 'ETA & ETD Change',
+          description: 'This notification informs you that the estimated time of arrival or departure of your vessel has been modified.',
         },
         {
           id: 3,
           name: 'container',
-          title: 'Container loaded on board',
+          title: 'Container Loaded On Board',
           description: 'This notification informs you when a container has been loaded on board at POL.',
         },
         {
           id: 4,
           name: 'invoice',
           title: 'Invoice Available',
-          description: 'This notification informs you that your import & export invoice is available on your ebusiness account',
+          description: 'This notification informs you that your import & export invoice is available on your ebusiness account.',
         },
         {
           id: 5,

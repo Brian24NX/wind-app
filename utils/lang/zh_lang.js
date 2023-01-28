@@ -906,7 +906,7 @@ var Languague = {
     },
     manageNotifications: {
       title: '管理我的通知',
-      notice: '为了能收到微信通知，请确保您在eCommerce网站订阅相同通知，并关注"达飞轮船中国"公众号',
+      notice: '为了能收到微信通知，请确保您在eCommerce网站订阅相同通知，并关注"达飞轮船中国"公众号。',
       checkBoxLabel: '只适用于我管理的船运',
       subscribe: [
         {
@@ -924,8 +924,8 @@ var Languague = {
         {
           id: 2,
           name: 'eta',
-          title: '预计到港时间更改',
-          description: '通知：您的预计到港时间已更改',
+          title: '预计离港 & 到港时间更改',
+          description: '此通知用于通知您的预计离港或到港你时间已更改。',
         },
         {
           id: 3,

@@ -179,7 +179,7 @@ page {
 .homeContainer .searchContainers .searchContents .priceList .onePrice {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   color: #071E5D;
   font-size: 32rpx;
