@@ -1005,7 +1005,8 @@ Page({
       "receiptHaulage": this.data.receiptHaulage || null,
       "shippingCompany": this.data.shippingCompany,
       "simulationDate": this.data.simulationDate,
-      "weightPerContainer": this.data.weight
+      "weightPerContainer": this.data.weight,
+      "shipperOwnedContainer": this.data.shipperOwnedContainer
     }).then(res => {
       if (res.data) {
         if (res.data.hasFmcExcluded === true || res.data.hasFmcExcluded === false) {
@@ -1064,7 +1065,8 @@ Page({
         "receiptHaulage": this.data.receiptHaulage || null,
         "shippingCompany": shippingCompany,
         "simulationDate": this.data.simulationDate,
-        "weightPerContainer": this.data.weight
+        "weightPerContainer": this.data.weight,
+        "shipperOwnedContainer": this.data.shipperOwnedContainer
       }).then(res => {
         if (res.data) {
           if (res.data.hasFmcExcluded === true || res.data.hasFmcExcluded === false) {
@@ -1178,15 +1180,11 @@ Page({
     })
   },
 
-  // switchOwnedContainer(e){
-  //   this.setData({
-  //     shipperOwnedContainer: e.detail
-  //   })
-  //   wx.showToast({
-  //     title: languageUtil.languageVersion().lang.page.load.functionIsUnderDevelopment,
-  //     icon: 'none'
-  //   })
-  // },
+  switchOwnedContainer(e) {
+    this.setData({
+      shipperOwnedContainer: e.detail
+    })
+  },
 
   closeSelect() {
     this.setData({

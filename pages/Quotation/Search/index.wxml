@@ -156,10 +156,10 @@
             <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
           </view>
         </view>
-        <!-- <view class="searchList switchBox">
+        <view class="searchList switchBox">
           <view class="switchBoxTitle">{{languageContent.ownedContainer}}</view>
           <van-switch class="switchStyle" id="shipperOwnedContainer" checked="{{shipperOwnedContainer}}" active-color="#2B74FF" inactive-color="#9AA7C3" bind:change="switchOwnedContainer" size="24rpx" />
-        </view> -->
+        </view>
         <block wx:if="{{currentType === 'instation'}}">
           <view class="searchList">
             <view class="searchTitle">{{languageContent.equipmentType}}</view>
