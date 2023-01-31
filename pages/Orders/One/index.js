@@ -98,7 +98,7 @@ Component({
         } else if (dayjs().isSame(dayjs(item.orginDate), 'date')) {
           item.stepStatus = 'being'
         } else {
-          if (list[index - 1].stepStatus === 'past') {
+          if (list[index - 1] && list[index - 1].stepStatus === 'past') {
             list[index - 1].stepStatus = 'being'
           }
           item.stepStatus = 'coming'

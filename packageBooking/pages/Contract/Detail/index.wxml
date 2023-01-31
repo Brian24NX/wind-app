@@ -417,7 +417,7 @@
     </view>
   </block>
 </view>
-<view class="bottomButtonContainer">
+<view class="bottomButtonContainer" style="display: none;">
   <view class="bottomButtonLeft">
     <!-- <view class="bottomPrices">
       <view class="bottomPrice">{{totalChargeAmount * quotationDetail.numberOfContainer}}</view>

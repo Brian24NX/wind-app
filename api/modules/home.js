@@ -73,6 +73,11 @@ export const equitmentSizeList = (params) => {
   return getRequest('/api/miniapp/equipmentSizeList', params, true, false)
 }
 
+// 获取箱型SpotOn
+export const equitmentSizeListSpotOn = (params) => {
+  return getRequest('/api/miniapp/equipmentSizeListForSpotOn', params, true, false)
+}
+
 // 获取商品
 export const getCommodityLists = (params) => {
   return getRequest('/api/miniapp/quotation/quotationCommodities', params, true, true, true)

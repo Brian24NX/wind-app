@@ -163,7 +163,8 @@
           </view>
         </view>
         <view class="btns">
-          <button class="selects {{(!item.isLoading && !item.surchargeDetails.length) ? 'notSelect' : ''}}" disabled="{{item.isLoading || !item.surchargeDetails.length}}" bindtap="toBook" data-detail="{{item}}">
+          <button style="display: none;"
+          class="selects {{(!item.isLoading && !item.surchargeDetails.length) ? 'notSelect' : ''}}" disabled="{{item.isLoading || !item.surchargeDetails.length}}" bindtap="toBook" data-detail="{{item}}">
           <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit" wx:if="{{item.isLoading}}"></image>
           <text wx:if="{{!item.isLoading}}">{{languageContent.books}}</text>
         </button>

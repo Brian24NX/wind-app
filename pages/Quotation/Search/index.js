@@ -8,7 +8,7 @@ import {
   getPortPlaceInfo,
   getAllNetworkPoint,
   getCommodityLists,
-  equitmentSizeList
+  equitmentSizeListSpotOn
 } from '../../../api/modules/home';
 import {
   quotationNextDepartures,
@@ -51,6 +51,8 @@ Page({
     placeOfDeliveryList: [],
     simulationDate: '',
     equipmentType: '',
+    equiptCode: '',
+    equiptInsCode: '',
     equipmentTypeName: '',
     equipmentTypeList: [],
     weight: null,
@@ -247,11 +249,12 @@ Page({
   },
 
   getEquitmentSizeList() {
-    equitmentSizeList().then(res => {
+    equitmentSizeListSpotOn().then(res => {
       if (res.data.length) {
         this.setData({
           equipmentTypeList: res.data,
           equipmentType: res.data[0].instantCode,
+          equiptCode: res.data[0].code,
           equipmentTypeName: this.data.language === 'en' ? res.data[0].nameEn : res.data[0].nameCn
         })
       }
@@ -763,6 +766,7 @@ Page({
     if (this.data.popupType === '1') {
       this.setData({
         equipmentType: e.detail.instantCode,
+        equiptCode: e.detail.code,
         equipmentTypeName: this.data.language === 'en' ? e.detail.nameEn : e.detail.nameCn
       })
       this.getCommodityList()
@@ -993,8 +997,8 @@ Page({
       "affiliates": this.data.partnerCode,
       "commodityCode": this.data.commodityCode,
       "deliveryHaulage": this.data.deliveryHaulage || null,
-      "equipmentSizeType": this.data.equipmentType,
-      "equipmentType": this.data.equipmentType.substr(2),
+      "equipmentSizeType": this.data.equiptCode,
+      "equipmentType": this.data.equiptCode.substr(2),
       "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
       "numberOfContainers": this.data.containers,
       "placeOfOrigin": this.data.placeOfOrigin || null,
@@ -1053,8 +1057,8 @@ Page({
         "affiliates": this.data.partnerCode,
         "commodityCode": this.data.commodityCode,
         "deliveryHaulage": this.data.deliveryHaulage || null,
-        "equipmentSizeType": this.data.equipmentType,
-        "equipmentType": this.data.equipmentType.substr(2),
+        "equipmentSizeType": this.data.equiptCode,
+        "equipmentType": this.data.equiptCode.substr(2),
         "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
         "numberOfContainers": this.data.containers,
         "placeOfOrigin": this.data.placeOfOrigin || null,
