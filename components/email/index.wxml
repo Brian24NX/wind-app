@@ -14,7 +14,7 @@
       </view>
     </view>
     <view class="noRequest" wx:if="{{showRemind}}">
-      <image src="/assets/img/search/error@2x.png"></image>
+      <image src="/assets/img/search/error@2x.png" class="noRequestImage"></image>
       <text>{{languageContent.exprise}}</text>
     </view>
     <button class="sendBtn" hover-class="hoverClass" catchtap="sendEmail">{{languageContent.send}}</button>

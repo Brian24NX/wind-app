@@ -943,7 +943,7 @@ var Languague = {
         {
           id: 5,
           name: 'eir',
-          title: 'EIR打印',
+          title: '放箱预告',
           description: '此通知用于通知您的EIR已准备好打印，该通知仅通过微信小程序提供，无需至eCommerce官网订阅。',
         },
       ]

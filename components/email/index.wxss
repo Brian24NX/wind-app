@@ -100,3 +100,9 @@
   margin: 45rpx auto;
   border-radius: 0;
 }
+
+.noRequestImage {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 12rpx;
+}

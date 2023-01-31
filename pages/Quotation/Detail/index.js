@@ -136,7 +136,7 @@ Page({
     const currentPage2 = pages[pages.length - 3]
     const data2 = currentPage2.data
     this.setData({
-      equipmentTypeSize: data2.equipmentType,
+      equipmentTypeSize: data2.equiptCode,
       equipmentTypeName: data2.equipmentTypeName,
       weight: data2.weight,
       containers: containers || data2.containers,

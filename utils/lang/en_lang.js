@@ -940,7 +940,7 @@ var Languague = {
         {
           id: 5,
           name: 'eir',
-          title: 'EIR Readiness',
+          title: 'Empty Release',
           description: 'This notification informs you that your EIR is ready to be printed, which is exclusive to WeChat Mini-Program, not available on eCommerce website yet.',
         },
       ]
