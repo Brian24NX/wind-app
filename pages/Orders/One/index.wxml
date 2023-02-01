@@ -1,4 +1,4 @@
-<!--pages/Orders/One/index.wxml-->
+<!-- pages/Orders/One/index.wxml -->
 <wxs module="filters" src="../../../utils/format.wxs"></wxs>
 <view class="searchResultContainers" wx:if="{{showSearch}}">
   <view class="searchResultContainer">
@@ -15,11 +15,12 @@
     </view>
   </view>
 </view>
-
 <view class="oneOrderContainer" wx:if="{{stepList.length}}">
   <view class="timeContainer">
     <view class="times timeTop">
-      <view class="left">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].eventDateTime)}}</view>
+      <view class="left">
+        {{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].eventDateTime)}}
+      </view>
       <view class="right">{{timeRemaining}} {{languageContent.tian}}</view>
     </view>
     <view class="times timeBottom">
@@ -35,14 +36,22 @@
         <view class="neiluLocation">
           <view class="view">POO: {{stepList[0].transportCall.location.locationName}}</view>
           <view class="view mode">{{stepList[0].transportCall.modeOfTransport}}</view>
-          <view class="time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[0].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[0].eventDateTime)}}</view>
+          <view class="time">
+            {{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[0].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[0].eventDateTime)}}
+          </view>
         </view>
       </block>
       <block wx:if="{{isNeiLu2}}">
         <view class="neiluLocation">
-          <view class="view">FPD: {{stepList[stepList.length - 1].transportCall.location.locationName}}</view>
-          <view class="view mode">{{stepList[stepList.length - 1].transportCall.modeOfTransport}}</view>
-        <view class="time">{{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].eventDateTime)}}</view>
+          <view class="view">
+            FPD: {{stepList[stepList.length - 1].transportCall.location.locationName}}
+          </view>
+          <view class="view mode">
+            {{stepList[stepList.length - 1].transportCall.modeOfTransport}}
+          </view>
+          <view class="time">
+            {{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].eventDateTime)}}
+          </view>
         </view>
       </block>
       <view class="customerNumber" wx:if="{{customsReference}}">
@@ -55,17 +64,21 @@
         <view class="stopDto dtoLeft"></view>
         <view class="stopDto dtoRight"></view>
         <view class="activedLine" style="width: {{(stepCount / totalCount) * 100 + '%;'}};"></view>
-        <image class="zhuizong" style="left: {{(stepCount / totalCount) * 100 + '%;'}}" src="/assets/img/search/zhuizong@2x.png"></image>
+        <image class="zhuizong" style="left: {{((stepCount / totalCount) * 100)< 10 ? '10%' : ((stepCount / totalCount) * 100) + '%;'}}" src="/assets/img/search/zhuizong@2x.png"></image>
       </view>
     </view>
     <view class="stepBottom">
       <view>
         <view class="tag">POL</view>
-        <view>{{pol}}{{polCountryCode ? ' (' + filters.setChina(polCountryCode, true, true, 'short') + ')' : ''}}</view>
+        <view>
+          {{pol}}{{polCountryCode ? ' (' + filters.setChina(polCountryCode, true, true, 'short') + ')' : ''}}
+        </view>
       </view>
       <view class="rights">
         <view class="tag">POD</view>
-        <view>{{pod}}{{podCountryCode ? ' (' + filters.setChina(podCountryCode, true, true, 'short') + ')' : ''}}</view>
+        <view>
+          {{pod}}{{podCountryCode ? ' (' + filters.setChina(podCountryCode, true, true, 'short') + ')' : ''}}
+        </view>
       </view>
     </view>
   </view>
@@ -78,8 +91,15 @@
       </view>
       <view class="stepContent {{item.stepStatus === 'being' ? 'beingBg' : ''}}">
         <view class="stepSatus">{{item.statusLabel}}</view>
-        <view class="stepTime">{{languageContent.language === 'en' ? filters.formatEnDateLocal(item.eventDateTime, '-', 'short') : filters.formatCnDateLocal(item.eventDateTime)}} <text style="color: #2D75FF;" catchtap="lookLocation" data-item="{{item}}">{{item.transportCall.location.locationName}}</text></view>
-        <view class="vesselName" wx:if="{{item.transportCall.vessel.vesselName}}">{{item.transportCall.vessel.vesselName}} | {{item.transportCall.exportVoyageNumber || item.transportCall.importVoyageNumber}}</view>
+        <view class="stepTime">
+          {{languageContent.language === 'en' ? filters.formatEnDateLocal(item.eventDateTime, '-', 'short') : filters.formatCnDateLocal(item.eventDateTime)}}
+          <text style="color: #2D75FF;" catchtap="lookLocation" data-item="{{item}}">
+            {{item.transportCall.location.locationName}}
+          </text>
+        </view>
+        <view class="vesselName" wx:if="{{item.transportCall.vessel.vesselName}}">
+          {{item.transportCall.vessel.vesselName}} | {{item.transportCall.exportVoyageNumber || item.transportCall.importVoyageNumber}}
+        </view>
       </view>
     </view>
   </view>
@@ -93,5 +113,4 @@
   <view>未找到或已经卸货或返回堆场</view>
 </view>
 <email path="{{path}}" wx:if="{{showEmail}}" bind:closeEmail="closeEmail" bind:sendEmails="sendEmails"></email>
-
 <van-popup show="{{ show }}" bind:close="onClose">{{location}}</van-popup>
