@@ -738,3 +738,8 @@
 .paddBottom {
   padding-bottom: 10rpx !important;
 }
+
+.imageBox {
+  width: 70rpx;
+  height: 60rpx;
+}

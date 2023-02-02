@@ -65,14 +65,18 @@
       </view>
     </view> -->
     <view class="oneParams">
-      <image src="/assets/img/instantQuote/param_4@2x.png"></image>
+      <view class="imageBox" >
+        <image src="/assets/img/instantQuote/param_4@2x.png" mode="aspectFit" ></image>
+      </view>
       <view class="paramValueContainer">
         <view class="paramValue">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
         <view class="param">{{languageContent.Commodity}}</view>
       </view>
     </view>
     <view class="oneParams" wx:if="{{quotationDetail.spotOffer}}">
-      <image src="/assets/img/instantQuote/param_3@2x.png"></image>
+      <view class="imageBox" >
+      <image src="/assets/img/instantQuote/param_3@2x.png" mode="aspectFit"></image>
+      </view>
       <view class="paramValueContainer">
         <view class="paramValue">{{quotationDetail.numberOfContainer}}</view>
         <view class="param">{{languageContent.containers}}</view>

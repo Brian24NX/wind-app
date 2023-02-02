@@ -2,7 +2,8 @@
 const languageUtils = require('../../../../utils/languageUtils')
 const utils = require('../../../../utils/util')
 import {
-  shipmentsList,
+  // shipmentsList,
+  shipmentsViewForSpotOn,
   shipmentsContainerList
 } from '../../../api/modules/dashboard'
 let allList = []
@@ -135,7 +136,7 @@ Page({
     })
     allList = []
     if (this.data.current === 'shipment') {
-      shipmentsList({
+      shipmentsViewForSpotOn({
         ccgId: wx.getStorageSync('ccgId'),
         owned: this.data.ownedId !== 'AllShipment',
         bookingReference: this.data.keyword

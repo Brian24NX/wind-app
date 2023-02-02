@@ -8,6 +8,10 @@ export const shipmentsList = (params) => {
   return getRequest('/api/miniapp/shipments/shipmentsView', params, true, true)
 }
 
+export const shipmentsViewForSpotOn = (params) => {
+  return getRequest('/api/miniapp/shipments/shipmentsViewForSpotOn', params, true, true)
+}
+
 // 获取船运详情
 export const shipmentsDetail = (params) => {
   return getRequest('/api/miniapp/shipments/shipmentsDetail', params, false, true)

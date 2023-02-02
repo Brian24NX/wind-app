@@ -138,7 +138,7 @@ var Languague = {
     queryRes: {
       topTitle: 'Tracking Details',
       title: 'Tracking Details',
-      placeholder: 'Container, Bill of Lading or Booking Number',
+      placeholder: 'Container, B/L or Booking No.',
       yuji: 'ETA Berth at POD',
       tingbo: 'Berth at POD',
       shengyu: 'Remaining',
