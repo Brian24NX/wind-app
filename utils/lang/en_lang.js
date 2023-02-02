@@ -415,7 +415,7 @@ var Languague = {
       hazardous: 'Hazardous',
       oversized: 'Oversized',
       search: 'Search',
-      detailTitle: 'D&D Charges',
+      detailTitle: 'D&D Prices',
       import: 'Import',
       export: 'Export',
       noChargeData: 'No data found'
