@@ -33,10 +33,12 @@
     </view>
   </view>
   <view class="charges">
-    <view class="viewTypes">
-      <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
-        <view>{{languageContent[item]}}</view>
-        <view class="activedLine"></view>
+    <view class="viewTypeBox">
+      <view class="viewTypes">
+        <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
+          <view>{{languageContent[item]}}</view>
+          <view class="activedLine"></view>
+        </view>
       </view>
     </view>
     <view class="chargesList" wx:if="{{list.length}}">
@@ -55,11 +57,6 @@
               <view>From Day {{items.dayFrom}} {{items.dayTo ? "to " + items.dayTo : ''}}</view>
               <view>{{items.rate}} {{items.currency}}/{{items.type}}</view>
             </view>
-          </view>
-          <view class="bottomLineContainer" wx:if="{{index !== list.length - 1}}">
-            <view class="leftDto"></view>
-            <view class="bottomLine"></view>
-            <view class="rightDto"></view>
           </view>
         </view>
       </view>

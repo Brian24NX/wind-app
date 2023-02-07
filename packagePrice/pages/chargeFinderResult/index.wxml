@@ -29,11 +29,13 @@
     </view>
   </view>
   <view class="charges">
+  <view class="viewTypeBox">
     <view class="viewTypes">
       <view class="oneType {{current === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
         <view>{{languageContent[item]}}</view>
         <view class="activedLine"></view>
       </view>
+    </view>
     </view>
     <view class="chargesList" wx:if="{{list.length}}">
       <view class="chargesTitle">
@@ -52,11 +54,6 @@
               <view>{{format.deleteStr(items.packageType.name)}}{{chargeFinderSearchKey.reefer !== '1' ? (format.deleteStr(items.packageType.name) === '40' ? 'RH' : format.deleteStr(items.packageType.name) === '45' ? 'RW' : '') : ''}}</view>
               <view>{{item.packageTariffs[0].calculationCode !== 'FIX' ? format.formatAmount(items.fixedCharge.amount, 2) + '/' + items.calculationCode : '-'}}</view>
             </view>
-          </view>
-          <view class="bottomLineContainer" wx:if="{{index !== list.length - 1}}">
-            <view class="leftDto"></view>
-            <view class="bottomLine"></view>
-            <view class="rightDto"></view>
           </view>
         </view>
       </view>

@@ -85,12 +85,16 @@ page {
 }
 
 .chargeDetail .charges {
-  background-color: #ffffff;
-  padding: 0 30rpx 40rpx;
+  padding: 0 0 40rpx;
   margin-top: 30rpx;
 }
 
 /* 分类 */
+.viewTypeBox {
+  padding: 0 30rpx;
+  background-color: #ffffff;
+}
+
 .chargeDetail .viewTypes {
   height: 94rpx;
   display: flex;
@@ -125,16 +129,14 @@ page {
   background-color: #E20202;
 }
 
-.charges .chargesList {
-  padding-top: 28rpx;
-}
-
 .charges .chargesTitle {
   display: flex;
   font-size: 36rpx;
   font-family: Antonio-Regular;
   font-weight: bold;
   color: #04246A;
+  padding: 28rpx 30rpx 0;
+  background-color: #ffffff;
 }
 
 .charges .chargesTitle view {
@@ -149,7 +151,9 @@ page {
 }
 
 .chargesList .chargesDetail .oneCharge {
-  padding: 40rpx 0 0;
+  padding: 40rpx 30rpx;
+  background-color: #ffffff;
+  margin-bottom: 30rpx;
 }
 
 .chargesDetail .oneCharge .oneChargeTitle {
