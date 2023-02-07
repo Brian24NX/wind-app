@@ -92,7 +92,8 @@ Page({
       portOfDischarge: data.portOfDischarge,
       portOfDischargeLabel: data.portOfDischargeLabel,
       placeOfOrigin: data.placeOfOrigin,
-      finalPlaceOfDelivery: data.finalPlaceOfDelivery
+      finalPlaceOfDelivery: data.finalPlaceOfDelivery,
+      transMode: wx.getStorageSync('transMode')
     })
     this.setDefaultInfo(options.index, options.containers)
     if (!this.data.isUs) {

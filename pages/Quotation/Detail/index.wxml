@@ -250,7 +250,8 @@
           </view>
           <view wx:else>
             <text>{{languageContent.transType}} </text>
-            <text class="bold">Intermodal</text>
+            <text class="bold">{{ !!transMode[quotationDetail.quoteLines[0].exportModeOfTranportCode] ? (language === 'zh' ? transMode[quotationDetail.quoteLines[0].exportModeOfTranportCode].zhLabel : transMode[quotationDetail.quoteLines[0].exportModeOfTranportCode].label) : 'Intermodal'}}
+            </text>
           </view>
         </view>
       </view>
@@ -271,7 +272,7 @@
           </view>
           <view wx:else>
             <text>{{languageContent.transType}} </text>
-            <text class="bold">Intermodal</text>
+            <text class="bold">{{ !!transMode[quotationDetail.quoteLines[0].importModeOfTranportCode] ? (language === 'zh' ? transMode[quotationDetail.quoteLines[0].importModeOfTranportCode].zhLabel : transMode[quotationDetail.quoteLines[0].importModeOfTranportCode].label) : 'Intermodal'}}</text>
           </view>
         </view>
       </view>
