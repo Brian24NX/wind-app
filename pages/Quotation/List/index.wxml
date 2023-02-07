@@ -40,6 +40,10 @@
                 <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
                 <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
               </view>
+              <view wx:if="{{item.quoteLines[0].exportModeOfTranportCode}}"  class="roadText  {{!item.canSelect ? 'disabledColor' : ''}}">
+                <image src="{{!!transMode[item.quoteLines[0].exportModeOfTranportCode]? transMode[item.quoteLines[0].exportModeOfTranportCode].icon : transMode['RD'].icon}}" class="roadIcon" style="margin-right: 16rpx;" mode="aspectFill"></image>
+              {{ !!transMode[item.quoteLines[0].exportModeOfTranportCode]? (language === 'zh' ? transMode[item.quoteLines[0].exportModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].exportModeOfTranportCode].label) : 'Intermodal'}}
+              </view>
             </view>
             <view style="position: relative;">
               <view class="time {{!item.canSelect ? 'disabledColor' : ''}}">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.departureDate, false, true) : commonFilters.formatEnDateLocal(item.departureDate, '-', '', false, true)}}</view>
@@ -55,6 +59,7 @@
               <view class="leftLines">
                 <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
                 <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+                
               </view>
             </view>
             <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="{{item.quoteLines && item.quoteLines[0].destination ? 'padding-bottom: 30rpx;' : ''}}">
@@ -63,9 +68,14 @@
                 <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
                 <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
               </view>
+              
               <view class="leftLines endLine" wx:else>
                 <image src="/assets/img/instantQuote/location-{{!item.canSelect ? 'grey' : 'red'}}.svg" mode="aspectFit"></image>
               </view>
+              <view wx:if="{{item.quoteLines[0].importModeOfTranportCode}}" class="roadText  {{!item.canSelect ? 'disabledColor' : ''}}">
+                <image src="{{ !!transMode[item.quoteLines[0].importModeOfTranportCode] ? transMode[item.quoteLines[0].importModeOfTranportCode].icon : transMode['RD'].icon}}" class="roadIcon" style="margin-right: 16rpx;"></image>
+              {{ !!transMode[item.quoteLines[0].importModeOfTranportCode] ? (language === 'zh' ? transMode[item.quoteLines[0].importModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].importModeOfTranportCode].label) : 'Intermodal'}}
+            </view>
             </view>
             <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{item.quoteLines && item.quoteLines[0].destination}}">
               <text>{{item.placeOfDeliveryLabel}}</text>

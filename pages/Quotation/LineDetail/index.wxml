@@ -124,7 +124,7 @@
             <view class="leftLine"></view>
             <view class="lineDto" wx:if="{{!index || !filters.checkIsVessel2(item.voyageRef)}}"></view>
             <image wx:if="{{index === routingDetails.length - 1}}" class="location" src="/assets/img/seniorsearch/location_white.png" mode="aspectFit"></image>
-            <image src="/assets/img/result/freight@2x.png" class="freight"></image>
+            <image src="{{index=== 0 ? (!!transMode[exportTransCode] ? transMode[exportTransCode].icon : transMode['RD'].icon) : (!!transMode[importTransCode] ? transMode[importTransCode].icon : transMode['RD'].icon)}}" class="freight"></image>
           </view>
           <view wx:if="{{index}}">
             <view class="diquContainer">
@@ -142,7 +142,9 @@
                 <view class="tags tags2" wx:if="{{detail.receiptHaulage}}">{{detail.receiptHaulage}}</view>
               </view>
             </block>
-            <view class="rails">{{item.vesselName || 'Intermodal'}}</view>
+            <view class="transModeLabel">
+              {{index === 0 ? (!!transMode[exportTransCode] ? (language === 'zh'? transMode[exportTransCode].zhLabel : transMode[exportTransCode].label): 'Intermodal'): (!!transMode[importTransCode] ? (language === 'zh'? transMode[importTransCode].zhLabel : transMode[importTransCode].label): 'Intermodal')}}
+            </view>
             <view class="timeContainer" style="margin-top: 10rpx;" wx:if="{{item.arrivalDate}}">{{language === 'zh' ? filters.formatCnDateLocal(item.arrivalDate, false, true) : filters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}}</view>
           </view>
         </view>

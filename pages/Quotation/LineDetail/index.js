@@ -11,7 +11,10 @@ Page({
     shippingCompany: '',
     totalCO2: 0,
     timeDetail: null,
-    routingDetails: []
+    routingDetails: [],
+    transMode: {},
+    exportTransCode: '',
+    importTransCode: ''
   },
 
   /**
@@ -23,7 +26,8 @@ Page({
     })
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.routeDetails,
-      language: languageUtil.languageVersion().lang.page.langue
+      language: languageUtil.languageVersion().lang.page.langue,
+      transMode: wx.getStorageSync('transMode')
     })
     this.dealData()
   },
@@ -43,11 +47,14 @@ Page({
       },
       shippingCompany: data.shippingCompany,
       totalCO2: data.quotationDetail.totalCO2,
-      routingDetails: data.quotationDetail.routingLegs
+      routingDetails: data.quotationDetail.routingLegs,
+      exportTransCode: data.quotationDetail.quoteLines[0].exportModeOfTranportCode,
+      importTransCode: data.quotationDetail.quoteLines[0].importModeOfTranportCode,
     })
     const timeDetail = this.data.routingDetails.filter(i => i.cutOffDate)
     this.setData({
       timeDetail: timeDetail.length ? timeDetail[0] : null
     })
+
   }
 })

@@ -14,6 +14,32 @@ Page({
     languageContent: {},
     language: 'zh',
     isPhoneX: getApp().globalData.isPhoneX,
+    transMode: {
+      'RD': {
+        code: 'RD',
+        label: 'Road',
+        zhLabel: '陆地',
+        icon: '/assets/img/result/road.png',
+      },
+      'BA': {
+        code: 'BA',
+        label: 'Barge',
+        zhLabel: '驳船',
+        icon: '/assets/img/result/barge.png',
+      },
+      'RL': {
+        code: 'RL',
+        label: 'Rail',
+        zhLabel: '铁道',
+        icon: '/assets/img/result/rail.png',
+      },
+      'RR': {
+        code: 'RR',
+        label: 'Rail / Road',
+        zhLabel: '铁路/公路',
+        icon: '/assets/img/result/railTruck.png',
+      },
+    },
     oldQuoteLineList: [],
     traceId: '',
     containers: 0,
@@ -54,6 +80,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setStorageSync('transMode', this.data.transMode)
     if (options.isUs) {
       this.setData({
         isUs: true

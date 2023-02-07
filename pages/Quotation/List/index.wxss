@@ -344,6 +344,11 @@ page {
   margin-right: 10rpx;
 }
 
+.iconBox {
+  width: 32rpx;
+  height: 32rpx;
+}
+
 .disabledColor {
   color: #cccccc !important;
 }
@@ -365,4 +370,19 @@ page {
   text-align: center;
   line-height: 40rpx;
   margin-left: 20rpx;
+}
+
+.roadText{
+  font-size: 20rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #9aa7c4;
+  line-height: 28rpx;
+  margin-top: 30rpx;
+  display: flex;
+}
+
+.roadIcon {
+  width: 32rpx !important;
+  height: 32rpx !important;
 }
