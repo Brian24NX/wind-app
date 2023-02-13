@@ -1,7 +1,6 @@
 <view class="navbarContainer" style="height: calc({{navHeight}}px + 36rpx);">
   <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit"></image>
 </view>
-
 <view class="homeContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
   <view class="searchContainers">
     <view class="tabContainer">
@@ -14,18 +13,18 @@
     <view class="searchContents" wx:if="{{actived === 'TRACKING'}}">
       <view class="remind">{{languageContent.goodsRemind}}</view>
       <view class="inputs {{showRemind ? 'noRequestBorder' : ''}}">
-        <input type="text" placeholder="ex: ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" />
+        <input type="text" placeholder="ex: ABCD1234567" placeholder-class="placeholder" bindinput="setHuoGui" value="{{huoGuiValue}}" bindfocus="showSearchHis" bindblur="hideSearchHis" />
         <view class="delete" catchtap="clearInput" data-type="1" wx:if="{{huoGuiValue}}">
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
       </view>
+      <item-list-box list="{{searchHis}}" showBox="{{showHis}}" bindchooseItem="chooseHis" binddelItem="delHis"></item-list-box>
       <view class="noRequest" wx:if="{{showRemind}}">
         <image src="/assets/img/search/error@2x.png"></image>
         <text>{{huiguiType === 1 ? verifyInfo.required : huiguiType === 2 ? verifyInfo.gswx : huiguiType === 3 ? verifyInfo.more3 : huiguiType === 4 ? verifyInfo.chongfu : verifyInfo.only}}</text>
       </view>
       <button class="searchBtn" hover-class="hoverClass" bindtap="toHuoWu">{{languageContent.goods}}</button>
       <view class="reminds">{{languageContent.tips}}</view>
-
     </view>
     <!-- 船期查询 -->
     <view class="searchContents" wx:if="{{actived === 'SCHEDULE'}}">
@@ -123,5 +122,4 @@
     </view>
   </view>
 </view>
-
 <legal-terms-remind wx:if="{{showLegalRemind}}" bindsetRemind="setRemind"></legal-terms-remind>

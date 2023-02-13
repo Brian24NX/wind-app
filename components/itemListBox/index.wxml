@@ -1,0 +1,9 @@
+<!-- components/itemListBox/index.wxml -->
+<view class="dropdownBox" wx:if="{{showBox && list.length > 0 }}">
+  <view class="dropdownItem" wx:for="{{list}}">
+    <view class="itemText" bindtap="chooseItem" data-item="{{item}}">{{item}}</view>
+    <view class="iconBox">
+      <image class="delHis" mode="aspectFill" catchtap="delItem" data-index="{{item}}" src="../../assets/img/search/close@2x.png"></image>
+    </view>
+  </view>
+</view>

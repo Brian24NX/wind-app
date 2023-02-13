@@ -18,7 +18,9 @@ Page({
     noData: false,
     list: [],
     results: [],
-    showSearch: true
+    showSearch: true,
+    showHis: false,
+    searchHis: [],
   },
 
   /**
@@ -26,6 +28,9 @@ Page({
    */
   onLoad: function (options) {
     this.initLanguage()
+    this.setData({
+      searchHis: wx.getStorageSync('trackSearchHis')
+    })
     if (options.showSearch) {
       this.setData({
         showSearch: false
@@ -67,7 +72,7 @@ Page({
     this.setData({
       shipmentRef: value
     })
-    if (!value) {
+    if (!value || value.replace(/\s*/g,"") === '') {
       this.setData({
         showRemind: true,
         huiguiType: 1
@@ -119,8 +124,18 @@ Page({
     const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
     var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
     const checkRes = []
+    var serList = this.data.searchHis ? this.data.searchHis: []
     huogui.forEach(item => {
-      checkRes.push(reg.test(item.trim()))
+      var noSpaceItem = item.replace(/\s*/g,"")
+      checkRes.push(reg.test(noSpaceItem))
+      if(noSpaceItem !== '' && serList.indexOf(noSpaceItem) === -1 ){
+        if(serList.length < 5){
+          serList.unshift(noSpaceItem)
+        }else{
+          serList.unshift(noSpaceItem)
+          serList.splice(serList.length-1,1)
+        }
+      }
     })
     if (checkRes.length > 1 && checkRes.filter(i => i).length !== checkRes.length) {
       wx.showToast({
@@ -131,7 +146,14 @@ Page({
       })
       return
     }
+    let newHis = [...new Set(serList)]
+    this.setData({
+      searchHis: newHis
+    })
+    this.showSearchHis();
+    wx.setStorageSync('trackSearchHis', this.data.searchHis);
     this.getHuoGuiResult()
+
   },
 
   getHuoGuiResult() {
@@ -199,5 +221,49 @@ Page({
         list: containers
       })
     })
-  }
+  },
+  showSearchHis(){
+    this.setData({
+      showHis: true
+    })
+  },
+
+  hideSearchHis(){
+    this.setData({
+      showHis: false
+    })
+  },
+
+  chooseHis(e){
+    var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
+    var testInput = reg.test(e.detail);
+    var testHave = false;
+    const huoguiStr = this.data.shipmentRef.replaceAll(' ', '')
+    const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
+    huogui.forEach(item => {
+      if(reg.test(item.trim())){
+        testHave = true
+      }else{
+        testHave = false
+      }
+    })
+    if(testInput && testHave){
+      let newStr = this.data.shipmentRef+','+e.detail
+      this.setData({
+        shipmentRef: newStr,
+        showRemind: false
+      })
+    }else{
+      this.setData({
+        shipmentRef: e.detail,
+        showRemind: false
+      })
+    }
+  },
+  delHis(e){
+    this.setData({
+      searchHis: e.detail
+    })
+    wx.setStorageSync('trackSearchHis',e.detail)
+  },
 })

@@ -1,0 +1,44 @@
+/* components/itemListBox/index.wxss */
+.dropdownBox {
+  width: 100%;
+  padding-bottom: 30rpx;
+  border: 1rpx solid #dfdfdf;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.dropdownItem {
+  margin: 30rpx 0 0 18rpx;
+  min-width: 268rpx;
+  width: 46%;
+  height: 40rpx;
+  background-color: #e5e9f0;
+  padding: 0 8rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemText {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246a;
+}
+
+.iconBox {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.delHis {
+  width: 24rpx;
+  height: 24rpx;
+}

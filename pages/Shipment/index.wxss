@@ -61,11 +61,12 @@ page {
 .homeContainer .searchContainers .searchContents .inputs {
   height: 88rpx;
   border: 1rpx solid #DFDFDF;
-  font-size: 36rpx;
+  font-size: 28rpx;
   padding: 0 16rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #04246A;
 }
 
 .homeContainer .searchContainers .searchContents .inputs input {

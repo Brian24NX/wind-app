@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "tab-bar":"/custom-tab-bar/index",
-    "legal-terms-remind": "/components/legalTermsRemind/index"
+    "legal-terms-remind": "/components/legalTermsRemind/index",
+    "item-list-box": "/components/itemListBox/index"
   },
   "navigationStyle": "custom"
 }

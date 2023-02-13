@@ -1,6 +1,6 @@
 module.exports = {
   app_name: 'CMA CGM',
-  version: "v6.1.0",
+  version: "v6.2.0",
   expiresIn: 30,
 	dev_env: 'pro', // 是否开发环境
 	pro: {

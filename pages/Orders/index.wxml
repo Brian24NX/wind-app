@@ -1,7 +1,7 @@
 <!--pages/Orders/index.wxml-->
 <view class="orderContainer">
-  <view class="inputContainer" wx:if="{{showSearch}}">
-    <input value="{{shipmentRef}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="changeHuoguiValue" bindconfirm="searchList" />
+  <view class="inputContainer" wx:if="{{showSearch}}" style="{{showHis ? 'border: 1rpx solid #dfdfdf;': 'border: none'}}">
+    <input value="{{shipmentRef}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="changeHuoguiValue" bindconfirm="searchList" bindfocus="showSearchHis" bindblur="hideSearchHis"/>
     <view class="delete" catchtap="deleteValue">
       <image src="/assets/img/search/close@2x.png" wx:if="{{shipmentRef}}"></image>
     </view>
@@ -9,6 +9,7 @@
       <image src="/assets/img/search/search@2x.png"></image>
     </view>
   </view>
+  <item-list-box list="{{searchHis}}" showBox="{{showHis}}" bindchooseItem="chooseHis" binddelItem="delHis"></item-list-box>
   <!-- 结果 -->
   <one languageContent="{{languageContent}}" detail="{{list[0]}}" list="{{list}}" wx:if="{{list.length === 1 && !noData && !loading}}"></one>
   <more languageContent="{{languageContent}}" results="{{results}}" list="{{list}}" wx:if="{{list.length > 1 && !noData && !loading}}"></more>

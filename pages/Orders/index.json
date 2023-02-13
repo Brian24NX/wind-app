@@ -3,6 +3,7 @@
   "usingComponents": {
     "one": "./One/index",
     "more": "./More/index",
-    "no": "./No/index"
+    "no": "./No/index",
+    "item-list-box": "/components/itemListBox/index"
   }
 }
