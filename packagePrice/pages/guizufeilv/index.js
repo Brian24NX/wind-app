@@ -41,13 +41,13 @@ Page({
   interLanguage() {
     const language = languageUtils.languageVersion()
     this.setData({
-      languageContent: language.lang.page.guizufeilv,
+      languageContent: language.lang.page.tariffBook,
       language: language.lang.page.langue,
       emptyContent: language.lang.page.empty,
       verifyInfo: language.lang.page.verifyInfo
     })
     wx.setNavigationBarTitle({
-      title: language.lang.page.guizufeilv.navBarTitle,
+      title: language.lang.page.tariffBook.navBarTitle,
     })
   },
 

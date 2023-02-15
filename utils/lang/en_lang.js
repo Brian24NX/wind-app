@@ -92,7 +92,8 @@ var Languague = {
       // 管制品
       gzp: 'Cargo Restriction',
       // 联系我们
-      callMe: 'Contact Us'
+      callMe: 'Contact Us',
+      tariff: 'Tariff Book'
     },
     khtg: {
       topTitle: 'Business & Operational Update',
@@ -130,9 +131,9 @@ var Languague = {
       chuanqi: 'Routing Finder',
       huowu: 'Shipment Tracking',
       gzp: 'Cargo Restriction',
-      gzfl: 'D&D Prices',
+      gzfl: 'D&D Prices\n(Standard)',
       cxfl: 'Charge Finder',
-      ddCharges: 'D&D Charges'
+      ddCharges: 'D&D Charges\n(Simulation)'
     },
     // 查询结果
     queryRes: {
@@ -283,6 +284,12 @@ var Languague = {
     guizufeilv: {
       navBarTitle: 'D&D Prices',
       topTitle: 'Demurrage &\n Detention Prices',
+      selectTitle: 'Search Country/Region',
+      send: 'Send email'
+    },
+    tariffBook : {
+      navBarTitle: 'Tariff Book',
+      topTitle: 'Tariff Book',
       selectTitle: 'Search Country/Region',
       send: 'Send email'
     },

@@ -80,6 +80,12 @@ Page({
           icon: '/assets/img/home/discover_2@2x.png',
           url: '/packageMore/pages/about/index'
         },
+        {
+          id: 'tariff',
+          type: 2,
+          icon: '/assets/img/home/tariffBook.png',
+          url: '/packagePrice/pages/guizufeilv/index'
+        },
         // {
         //   id: 'news',
         //   type: 2,
@@ -91,15 +97,15 @@ Page({
           type: 6,
           icon: '/assets/img/home/discover_4@2x.png',
           url: '/packageMore/pages/Faq/index'
-        },
+        }
+      ],
+      [
         {
           id: 'valueAddedService',
           type: 3,
           icon: '/assets/img/home/customernotice@2x.png',
           url: '/packageMore/pages/BusinessAndOperational/list/index'
-        }
-      ],
-      [
+        },
         {
           id: 'template',
           type: 7,

@@ -93,7 +93,8 @@ var Languague = {
       // 管制品
       gzp: '货物运输限制',
       // 联系我们
-      callMe: '联系我们'
+      callMe: '联系我们',
+      tariff: '滞留滞期费'
     },
     khtg: {
       topTitle: '业务及运营\n信息更新',
@@ -131,9 +132,9 @@ var Languague = {
       chuanqi: '船期查询',
       huowu: '货物追踪',
       gzp: '货物运输限制',
-      gzfl: '柜租费率',
+      gzfl: '柜租费率\n(标准)',
       cxfl: '查询费率',
-      ddCharges: 'D&D费用'
+      ddCharges: 'D&D费用\n(模拟)'
     },
     // 查询结果
     queryRes: {
@@ -285,6 +286,12 @@ var Languague = {
     guizufeilv: {
       navBarTitle: '柜租费率',
       topTitle: '柜租费率',
+      selectTitle: '选择国家/地区',
+      send: '发送至邮箱'
+    },
+    tariffBook : {
+      navBarTitle: '滞留滞期费',
+      topTitle: '滞留滞期费',
       selectTitle: '选择国家/地区',
       send: '发送至邮箱'
     },

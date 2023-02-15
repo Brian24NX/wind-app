@@ -20,7 +20,16 @@ Page({
       label: 'ddCharges',
       url: '/packagePrice/pages/calculatedCharges/index',
       needLogin: true
-    }, {
+    },
+    {
+      style: "330rpx",
+      icon: '/assets/img/menu/gzfl@2x.png',
+      isNew: false,
+      label: 'gzfl',
+      url: '/packagePrice/pages/DNDCharge/index',
+      needLogin: false
+    },
+    {
       style: "330rpx",
       icon: '/assets/img/menu/cqcx@2x.png',
       isNew: false,
@@ -44,14 +53,7 @@ Page({
       type: 2,
       url: '/packageMore/pages/sanctionCheck/list/index',
       needLogin: false
-    }, {
-      style: "330rpx",
-      icon: '/assets/img/menu/gzfl@2x.png',
-      isNew: false,
-      label: 'gzfl',
-      url: '/packagePrice/pages/DNDCharge/index',
-      needLogin: false
-    },
+    }, 
     {
       style: "330rpx",
       icon: '/assets/img/menu/dc@2x.png',
