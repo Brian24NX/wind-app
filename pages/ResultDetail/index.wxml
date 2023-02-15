@@ -12,7 +12,7 @@
         <image src="../../assets/img/result/calendar@2x.png" mode="aspectFit"></image><text>{{detail.transitTime}} {{detail.transitTime > 1 ? languageContent.days : languageContent.day}}</text>
       </view>
       <view class="cardtranshipment">
-        <image src="../../assets/img/result/zhuanyun@2x.png" mode="aspectFit"></image>
+        <image src="/assets/img/result/direct.png" mode="aspectFit"></image>
         <text>{{detail.transhipment ? (detail.transhipment > 1 ? languageContent.transhipments : languageContent.transhipment) : languageContent.zhida}}</text>
       </view>
     </view>
