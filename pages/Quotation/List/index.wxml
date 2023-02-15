@@ -25,10 +25,10 @@
   <view wx:if="{{quoteLineList.length}}">
     <view class="oneResult" wx:for="{{quoteLineList}}" wx:key="index">
       <view class="tips">
+        <view class="oneTip spotOn" wx:if="{{item.quoteLines.length && item.quoteLines[0].spotOffer}}">SPOTON</view>
         <view class="oneTip" wx:if="{{item.departureDateFlag}}">{{languageContent.earliestDeparture}}</view>
         <view class="oneTip" wx:if="{{item.arrivalDateFlag}}">{{languageContent.earliestArrival}}</view>
         <view class="oneTip" wx:if="{{item.transitFlag}}">{{languageContent.earliestTime}}</view>
-        <view class="oneTip spotOn" wx:if="{{item.quoteLines.length && item.quoteLines[0].spotOffer}}">SPOTON</view>
       </view>
       <view class="resContents">
         <view class="rightContainer">
@@ -40,9 +40,9 @@
                 <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
                 <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
               </view>
-              <view wx:if="{{item.quoteLines[0].exportModeOfTranportCode}}"  class="roadText  {{!item.canSelect ? 'disabledColor' : ''}}">
+              <view wx:if="{{item.quoteLines[0].exportModeOfTranportCode}}" class="roadText  {{!item.canSelect ? 'disabledColor' : ''}}">
                 <image src="{{!!transMode[item.quoteLines[0].exportModeOfTranportCode]? transMode[item.quoteLines[0].exportModeOfTranportCode].icon : transMode['RD'].icon}}" class="roadIcon" style="margin-right: 16rpx;" mode="aspectFill"></image>
-              {{ !!transMode[item.quoteLines[0].exportModeOfTranportCode]? (language === 'zh' ? transMode[item.quoteLines[0].exportModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].exportModeOfTranportCode].label) : 'Intermodal'}}
+                {{ !!transMode[item.quoteLines[0].exportModeOfTranportCode]? (language === 'zh' ? transMode[item.quoteLines[0].exportModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].exportModeOfTranportCode].label) : 'Intermodal'}}
               </view>
             </view>
             <view style="position: relative;">
@@ -59,7 +59,7 @@
               <view class="leftLines">
                 <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
                 <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
-                
+
               </view>
             </view>
             <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="{{item.quoteLines && item.quoteLines[0].destination ? 'padding-bottom: 30rpx;' : ''}}">
@@ -68,14 +68,14 @@
                 <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
                 <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
               </view>
-              
+
               <view class="leftLines endLine" wx:else>
                 <image src="/assets/img/instantQuote/location-{{!item.canSelect ? 'grey' : 'red'}}.svg" mode="aspectFit"></image>
               </view>
               <view wx:if="{{item.quoteLines[0].importModeOfTranportCode}}" class="roadText  {{!item.canSelect ? 'disabledColor' : ''}}">
                 <image src="{{ !!transMode[item.quoteLines[0].importModeOfTranportCode] ? transMode[item.quoteLines[0].importModeOfTranportCode].icon : transMode['RD'].icon}}" class="roadIcon" style="margin-right: 16rpx;"></image>
-              {{ !!transMode[item.quoteLines[0].importModeOfTranportCode] ? (language === 'zh' ? transMode[item.quoteLines[0].importModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].importModeOfTranportCode].label) : 'Intermodal'}}
-            </view>
+                {{ !!transMode[item.quoteLines[0].importModeOfTranportCode] ? (language === 'zh' ? transMode[item.quoteLines[0].importModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].importModeOfTranportCode].label) : 'Intermodal'}}
+              </view>
             </view>
             <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{item.quoteLines && item.quoteLines[0].destination}}">
               <text>{{item.placeOfDeliveryLabel}}</text>
@@ -92,7 +92,7 @@
               <view>{{item.tranShipment.length}} {{item.tranShipment.length > 1 ? languageContent.zhuanyuns : languageContent.zhuanyun}}</view>
             </view>
             <view class="zhuanrun {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{!item.tranShipment.length}}">
-              <image src="/assets/img/instantQuote/zhuanyun-{{!item.canSelect ? 'grey' : 'red'}}.svg"></image>
+              <image src="/assets/img/instantQuote/direct@2x-{{!item.canSelect ? 'grey' : 'red'}}.svg"></image>
               <view>{{languageContent.zhida}}</view>
             </view>
           </view>
