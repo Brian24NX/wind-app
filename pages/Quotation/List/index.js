@@ -39,6 +39,12 @@ Page({
         zhLabel: '铁路/公路',
         icon: '/assets/img/result/railTruck.png',
       },
+      'BR': {
+        code: 'BR',
+        label: 'Barge / Road',
+        zhLabel: '驳船/公路',
+        icon: '/assets/img/result/bargeRoad.png',
+      }
     },
     oldQuoteLineList: [],
     traceId: '',
@@ -73,7 +79,8 @@ Page({
     finalPlaceOfDelivery: '',
     commodityCode: '',
     partnerCode: [],
-    isUs: false
+    isUs: false,
+    equiptCode: ''
   },
 
   /**
@@ -97,6 +104,7 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     this.setData({
+      equiptCode: data.equiptCode,
       partnerCode: data.partnerCode,
       portOfLoading: data.portOfLoading,
       portOfLoadingLabel: data.portOfLoadingLabel,
@@ -217,14 +225,15 @@ Page({
                 "surchargeFromAqua": {
                   "offerId": item.offerId,
                   "traceId": this.data.traceId,
-                  "equipmentSizeType": this.data.equipmentSize,
+                  "equipmentSizeType": this.data.equiptCode,
                   "currencyCode": item.quoteLines[0].equipments[0].currencyCode,
                   "loggedId": this.data.loggedId,
                   "oceanFreightRate": item.quoteLines[0].equipments[0].oceanFreightRate,
                   "nextDepartureScheduleNumber": item.scheduleNumber,
                   "nextDepartureSolutionNumber": item.solutionNumber,
-                  "inlandExportConstructed": true,
-                  "inlandImportConstructed": true
+                  "inlandExportConstructed": this.data.placeOfOrigin !== '' ? true : false,
+                  "inlandImportConstructed": this.data.finalPlaceOfDelivery !== '' ? true : false,
+                  "inlandPolicy": "throughRate"
                 }
               }
             } else {
