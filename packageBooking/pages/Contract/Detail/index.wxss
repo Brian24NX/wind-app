@@ -672,7 +672,7 @@
 
 .EquipmentContainer {
   margin: 30rpx auto 0;
-  width: 570rpx;
+  /* width: 570rpx;   */
   border: 1rpx solid rgba(217, 222, 234, 0.3);
 }
 
