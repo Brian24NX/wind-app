@@ -2,6 +2,7 @@
   <image style="margin-top: {{navTop}}px;" src="/assets/img/logo@2x.png" class="logo" mode="aspectFit"></image>
 </view>
 <block wx:if="{{needLogin === false && hasPermission}}">
+<view class="contentContainer">
   <view class="priceContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
     <wxs module="format" src="/utils/format.wxs"></wxs>
     <view class="queryContainer">
@@ -294,9 +295,31 @@
       <custom-time minDate="{{minDate}}" maxDate="{{maxDate}}" showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
     </view>
   </view>
+  <view class="historyContainers" wx:if="{{currentType === 'instation'? hisListSpot.length : hisListQuot.length}}">
+    <view class="historyTitle">
+      <text>{{languageContent.history}}</text>
+      <view class="clearstyle" bindtap="deleteall">
+        <image class="historydel" src="/assets/img/seniorsearch/delete.png"></image>
+      </view>
+    </view>
+    <view class="result">
+      <view class="oneResult" wx:for="{{currentType === 'instation'? hisListSpot : hisListQuot}}" wx:key="index" data-index="{{index}}" v-if="{{hisList[index]!=''}}" bindtap="getlocation">
+        <view class="result">
+          <view class="fonthistory">{{item.poo!=='' ? item.pooLabel:item.polLabel}}</view>
+          <view>-</view> 
+          <view class="fonthistory">{{item.fpod!=='' ? item.fpodLabel:item.podLabel}}</view>
+        </view>
+        <view class="oneDelete" catchtap="deleteOne" data-index="{{item.key}}">
+          <image class="btnclose" src="/assets/img/search/close@2x.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
 </block>
 <block wx:else="{{needLogin === true && !hasPermission}}">
   <need-login bindtoLogin="toLogin" wx:if="{{needLogin}}"></need-login>
   <no-permission wx:if="{{needLogin === false && hasPermission === false}}"></no-permission>
 </block>
+
 <legal-terms-remind wx:if="{{showLegal}}" bindsetRemind="setRemind"></legal-terms-remind>

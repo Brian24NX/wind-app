@@ -500,7 +500,8 @@ var Languague = {
       search: "获取报价",
       search2: "查找价格",
       reset: '重置',
-      partners: '关联单位'
+      partners: '关联单位',
+      history: "查询历史"
     },
     // 报价详情
     qutationResult: {

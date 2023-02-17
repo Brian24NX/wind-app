@@ -1,8 +1,7 @@
 page {
   background-color: #F0F1F5;
 }
-
-.priceContainer {
+.contentContainer{
   padding-bottom: calc(130rpx + env(safe-area-inset-bottom));
 }
 
@@ -411,4 +410,74 @@ font-family: PingFangSC-Regular, PingFang SC;
 font-weight: 400;
 color: #04246A;
 line-height: 40rpx;
+}
+
+.historyContainers {
+  padding: 60rpx 30rpx 30rpx;
+}
+
+.historyTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #626262;
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+}
+
+.historydel {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.historydel image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.result {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 95%;
+  justify-content: space-between;
+}
+
+.oneResult {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10rpx 50rpx 10rpx 20rpx;
+  font-size: 24rpx;
+  color: #626262;
+  position: relative;
+  background-color: #EAEBEE;
+  border-radius: 24rpx;
+  margin-bottom: 20rpx;
+}
+.fonthistory{
+  width: 46%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.oneDelete {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.oneDelete image {
+  width: 24rpx;
+  height: 24rpx;
 }
