@@ -584,11 +584,13 @@
 .quoteDetails {
   background-color: #ffffff;
   padding: 28rpx 48rpx 0;
+  
 }
 
 .quoteDetails .oneQuoteDetail .oneQuoteTitle {
   background-color: #DBDFE8;
   height: 64rpx;
+  /* width: 340px; */
   padding: 0 26rpx;
   font-size: 32rpx;
   font-family: Antonio-Regular, Antonio;
@@ -672,8 +674,8 @@
 
 .EquipmentContainer {
   margin: 30rpx auto 0;
-  /* width: 570rpx;   */
-  border: 1rpx solid rgba(217, 222, 234, 0.3);
+  width: 340px;
+  /* border: 1rpx solid rgba(217, 222, 234, 0.3); */
 }
 
 .EquipmentContainer .EquipmentContainerTitle {
@@ -681,6 +683,7 @@
   align-items: center;
   background-color: #d9deea;
   height: 60rpx;
+  width: 340px;
   font-size: 24rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
@@ -703,6 +706,10 @@
 
 .EquipmentContainer .title2 view:nth-of-type(1) {
   width: 60%;
+}
+
+.EquipmentContainer .container2{
+  width: 340px;
 }
 
 .EquipmentContainer .oneEquipmentContainer {
