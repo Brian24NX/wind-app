@@ -497,7 +497,9 @@ var Languague = {
       search: "Get My Quote",
       search2: 'Search',
       reset: 'Reset',
-      partners: 'Partner(s) linked to your web account'
+      partners: 'Partner(s) linked to your web account',
+      //查询历史
+      history: "History"
     },
     // 报价详情
     qutationResult: {
