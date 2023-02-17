@@ -412,6 +412,8 @@ var Languague = {
       title: 'D&D费用',
       title1: 'D&D',
       title2: '费用',
+      titlenew: '柜租费率',
+      title3: 'Prices',
       //卸货港
       portOfDischarge: "卸货港",
       //起运港

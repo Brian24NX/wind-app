@@ -71,7 +71,7 @@ Page({
       verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
     })
     wx.setNavigationBarTitle({
-      title: languageUtil.languageVersion().lang.page.DDCharges.title
+      title: languageUtil.languageVersion().lang.page.DDCharges.titlenew
     })
   },
 

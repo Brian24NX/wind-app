@@ -4,15 +4,15 @@
     <view class="routeTitles">
       <view class="redline"></view>
       <view>
-        <text class="route1">{{languageContent.title1}}</text>
-        <text class="route2">{{languageContent.title2}}</text>
+        <text class="route1">{{languageContent.titlenew}}</text>
+        <!-- <text class="route2">{{languageContent.title2}}</text> -->
       </view>
     </view>
     <view class="searchList">
       <view class="searchTitle">{{languageContent.protOfLoading}}</view>
       <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
         <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-        <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
+        <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" placeholder-style="color:#DFDFDF;" bindinput="changepol"  />
         <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
@@ -45,7 +45,7 @@
       <view class="searchTitle">{{languageContent.portOfDischarge}}</view>
       <view class="codeInputs {{showRemind3 || showRemind4 ? 'noRequestBorder' : ''}}">
         <image class="codeIcon" src="/assets/img/seniorsearch/position.png"></image>
-        <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" bindinput="changepod" />
+        <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" placeholder-style="color:#DFDFDF;" bindinput="changepod" />
         <view class="deleteIcon" wx:if="{{showDelete2}}" catchtap="deleteValue" data-type="2">
           <image src="/assets/img/search/close@2x.png"></image>
         </view>
@@ -70,7 +70,7 @@
     <view class="searchList" style="position: relative;">
       <view class="searchTitle">{{languageContent.type}}</view>
       <view class="selectContainer {{showRemind5 ? 'noRequestBorder' : ''}}" catchtap="openPopup" data-type="1">
-        <view style="{{equipmentSize !== '' ? 'color: #071E5D;' : ''}}">{{equipmentSizeName || verifyInfo.select}}</view>
+        <view style="{{equipmentSize !== '' ? 'color: #071E5D;' : 'color: #DFDFDF;'}}">{{equipmentSizeName || verifyInfo.select}}</view>
         <image src="/assets/img/seniorsearch/bottomarrow.png"></image>
       </view>
       <view class="noRequest" style="left: 120rpx;top: 135rpx;" wx:if="{{showRemind5}}">
