@@ -444,7 +444,9 @@ Page({
       history.unshift({
         name: str,
         polCode: this.data.polcode,
-        podCode: this.data.podcode
+        podCode: this.data.podcode,
+        polpleace: this.data.polvalue,
+        podpleace: this.data.podvalue
       });
       this.setData({
         array: history,

@@ -219,6 +219,8 @@ page {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 95%;
+  justify-content: space-between;
 }
 
 .historyContainers .result .oneResult {
@@ -229,6 +231,10 @@ page {
   background-color: #EAEBEE;
   border-radius: 24rpx;
   margin-bottom: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .historyContainers .result .oneResult .oneDelete {
@@ -245,4 +251,11 @@ page {
 .historyContainers .result .oneResult .oneDelete image {
   width: 24rpx;
   height: 24rpx;
+}
+
+.fonthistory{
+  width: 46%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
