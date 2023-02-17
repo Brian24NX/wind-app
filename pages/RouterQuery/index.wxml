@@ -104,11 +104,7 @@
     </view>
     <view class="result">
       <view class="oneResult" wx:for="{{array}}" wx:key="index" data-index="{{index}}" v-if="{{array[index]!=''}}" bindtap="getlocation">
-        <view class="result">
-          <view class="fonthistory">{{item.polpleace}}</view>
-          <view>-</view> 
-          <view class="fonthistory">{{item.podpleace}}</view>
-        </view>
+        <text class="fonthistory">{{item.name}}</text>
         <view class="oneDelete">
           <image class="btnclose" src="../../assets/img/search/close@2x.png" catchtap="onclose" data-index="{{index}}"></image>
         </view>
