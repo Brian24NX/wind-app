@@ -69,7 +69,7 @@
           <view class="rightContent">
             <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{item.transitTime}} {{item.transitTime == 1 ? languageContent.day : languageContent.days}}</view>
             <view class="zhuanrun">
-              <image src="{{ item.transhipment ? '/assets/img/result/zhuanyun@2x.png' : '/assets/img/result/direct.svg' }}" mode="aspectFit"> </image>
+              <image src="{{ item.transhipment ? '/assets/img/result/zhuanyun@2x.png' : '/assets/img/instantQuote/direct@2x-red.svg' }}" mode="aspectFit"> </image>
               <view>{{item.transhipment ? item.transhipment + ' ' + languageContent.zhuanyun : languageContent.zhida}}</view>
             </view>
           </view>
