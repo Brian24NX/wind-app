@@ -26,7 +26,8 @@ Page({
       icon: '/assets/img/menu/gzfl@2x.png',
       isNew: false,
       label: 'gzfl',
-      url: '/packagePrice/pages/DNDCharge/index',
+      // url: '/packagePrice/pages/DNDCharge/index',
+      url: '/packagePrice/pages/DDCharges/Search/index',
       needLogin: false
     },
     {

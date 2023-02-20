@@ -10,7 +10,7 @@
       <view class="searchTitle">{{languageContent.protOfLoading}}</view>
       <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
         <image class="codeIcon" src="../../assets/img/seniorsearch/position.png"></image>
-        <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-style="font-size:28rpx;color:#DFDFDF;font-style: italic;" bindinput="changepol" />
+        <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" placeholder-style="color:#DFDFDF;" bindinput="changepol" />
         <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
@@ -43,7 +43,7 @@
       <view class="searchTitle">{{languageContent.portOfDischarge}}</view>
       <view class="codeInputs {{showRemind3 || showRemind4 ? 'noRequestBorder' : ''}}">
         <image class="codeIcon" src="../../assets/img/seniorsearch/position.png"></image>
-        <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" bindinput="changepod" />
+        <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" placeholder-style="color:#DFDFDF;" bindinput="changepod" />
         <view class="deleteIcon" wx:if="{{showDelete2}}" catchtap="deleteValue" data-type="2">
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
