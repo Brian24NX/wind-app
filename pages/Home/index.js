@@ -80,18 +80,18 @@ Page({
           icon: '/assets/img/home/discover_2@2x.png',
           url: '/packageMore/pages/about/index'
         },
-        {
-          id: 'tariff',
-          type: 2,
-          icon: '/assets/img/home/tariffBook.png',
-          url: '/packagePrice/pages/guizufeilv/index'
-        },
         // {
-        //   id: 'news',
+        //   id: 'tariff',
         //   type: 2,
-        //   icon: '/assets/img/home/discover_3@2x.png',
-        //   url: '/packageMore/pages/news/list/index'
+        //   icon: '/assets/img/home/tariffBook.png',
+        //   url: '/packagePrice/pages/guizufeilv/index'
         // },
+        {
+          id: 'news',
+          type: 2,
+          icon: '/assets/img/home/discover_3@2x.png',
+          url: '/packageMore/pages/news/list/index'
+        },
         {
           id: 'onlineServices',
           type: 6,
@@ -141,6 +141,39 @@ Page({
     this.setData({
       searchHis: wx.getStorageSync('trackSearchHis')
     })
+    var transMode = {
+      'RD': {
+        code: 'RD',
+        label: 'Road',
+        zhLabel: '陆地',
+        icon: '/assets/img/result/road.png',
+      },
+      'BA': {
+        code: 'BA',
+        label: 'Barge',
+        zhLabel: '驳船',
+        icon: '/assets/img/result/barge.png',
+      },
+      'RL': {
+        code: 'RL',
+        label: 'Rail',
+        zhLabel: '铁道',
+        icon: '/assets/img/result/rail.png',
+      },
+      'RR': {
+        code: 'RR',
+        label: 'Rail / Road',
+        zhLabel: '铁路/公路',
+        icon: '/assets/img/result/railTruck.png',
+      },
+      'BR': {
+        code: 'BR',
+        label: 'Barge / Road',
+        zhLabel: '驳船/公路',
+        icon: '/assets/img/result/bargeRoad.png',
+      }
+    }
+    wx.setStorageSync('transMode', transMode);
   },
   /**
    * 生命周期函数--监听页面显示

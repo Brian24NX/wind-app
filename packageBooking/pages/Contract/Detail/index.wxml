@@ -250,6 +250,19 @@
         </block>
       </view>
     </view>
+    <view class="soc" wx:if="{{quotationDetail.shipperOwnedContainer}}">
+      <view class="socTopTitle">
+        <view class="socTopTitleLine"></view>
+        <view>{{languageContent.soc}}</view>
+      </view>
+      <view class="socTitle">Your offer is valid only if your container:</view>
+      <text class="socDetail">
+        • Meets all the ISO standards for freight containers that allows them to be handled and stowed in stacks without any restriction, to withstand the stresses of a transport by sea and this for repeated use.
+        • Is plated, regularly inspected in compliance with the international Convention for Safe Containers (CSC)
+        • Is identified by owner’s code (3 letters) registred with the BIC, an equipment category (U for freight), 6 numerals and a check digit
+        • Is Customs approved
+      </text>
+    </view>
     <view class="otherContainer">
       <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}" wx:if="{{item.show}}">
         <image src="{{item.icon}}"></image>
@@ -308,7 +321,8 @@
           </view>
           <view wx:else>
             <text>{{languageContent.transType}} </text>
-            <text class="bold">Intermodal</text>
+            <text class="bold">{{ !!transMode[quotationDetail.exportModeOfTranportCode] ? (language === 'zh' ? transMode[quotationDetail.exportModeOfTranportCode].zhLabel : transMode[quotationDetail.exportModeOfTranportCode].label) : 'Intermodal'}}
+            </text>
           </view>
         </view>
       </view>
@@ -329,7 +343,8 @@
           </view>
           <view wx:else>
             <text>{{languageContent.transType}} </text>
-            <text class="bold">Intermodal</text>
+            <text class="bold">{{ !!transMode[quotationDetail.importModeOfTranportCode] ? (language === 'zh' ? transMode[quotationDetail.importModeOfTranportCode].zhLabel : transMode[quotationDetail.importModeOfTranportCode].label) : 'Intermodal'}}
+            </text>
           </view>
         </view>
       </view>

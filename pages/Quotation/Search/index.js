@@ -132,6 +132,7 @@ Page({
       hisListSpot: wx.getStorageSync('spotOnHis'),
       hisListQuot: wx.getStorageSync('quotationHis')
     })
+    wx.removeStorageSync('isSocAgree');
   },
 
   /**
@@ -876,6 +877,7 @@ Page({
 
   // 提交搜索
   submit() {
+    wx.removeStorageSync('isSocAgree');
     if (this.data.showDelete1) {
       this.setData({
         showRemind1: false

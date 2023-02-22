@@ -1,5 +1,6 @@
 <!--pages/Quotation/Detail/index.wxml-->
 <wxs module="format" src="/utils/format.wxs"></wxs>
+<scroll-view id="spot-page" scroll-y scrollWithAnimation scroll-top="{{scrollTop}}">
 <block wx:if="{{isFirst}}">
   <view class="resultContainers">
     <view class="resultCardContainers">
@@ -276,7 +277,39 @@
           </view>
         </view>
       </view>
+      <view class="oneQuoteDetail" wx:if="{{shipperOwnedContainer}}">
+        <view class="oneQuoteTitle">{{languageContent.additionalAttributes}}</view>
+        <view class="oneQuoteValue">
+          {{languageContent.socLabel}}
+        </view>
+      </view>
     </view>
+    <view class="soc" wx:if="{{shipperOwnedContainer}}">
+      <view class="socTopTitle">
+        <view class="socTopTitleLine"></view>
+        <view>{{languageContent.soc}}</view>
+      </view>
+      <view class="socTitle">Your offer is valid only if your container:</view>
+      <text class="socDetail">
+        • Meets all the ISO standards for freight containers that allows them to be handled and stowed in stacks without any restriction, to withstand the stresses of a transport by sea and this for repeated use.
+        • Is plated, regularly inspected in compliance with the international Convention for Safe Containers (CSC)
+        • Is identified by owner’s code (3 letters) registred with the BIC, an equipment category (U for freight), 6 numerals and a check digit
+        • Is Customs approved
+      </text>
+      <view class="socCheckbox socText">
+        <view class="checked {{isSocAgree?'bg':''}}" catchtap="checkBoxToggle" data-keys="isSocAgree">
+          <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isSocAgree}}" />
+        </view>
+        <view class="text" catchtap="checkBoxToggle" data-keys="isSocAgree">
+          {{languageContent.socAgree}}
+        </view>
+      </view>
+      <view class="noRequest" wx:if="{{showError}}">
+        <image src="/assets/img/search/error@2x.png"></image>
+        <text>{{languageContent.socWarn}}</text>
+      </view>
+    </view>
+
     <view class="otherContainer">
       <view class="oneOther" wx:for="{{otherList}}" wx:key="index" catchtap="toOther" data-item="{{item}}" wx:if="{{item.show}}">
         <image src="{{item.icon}}"></image>
@@ -365,6 +398,7 @@
     </view>
   </view>
 </view>
+</scroll-view>
 
 
 <view class="subscribedBg" catchtap="closeBg" catchtouchmove="prevent" wx:if="{{showVas}}"></view>

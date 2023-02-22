@@ -876,3 +876,74 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.soc {
+  margin: 30rpx 0 40rpx;
+  background-color: #ffffff;
+  padding: 28rpx 48rpx;
+}
+.socTopTitle {
+  display: flex;
+  align-items: center;
+  font-size: 48rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.socTopTitleLine {
+  margin-right: 20rpx;
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+}
+.socCheckbox {
+  font-size: 28rpx;
+  color: #04246A;
+  display: flex;
+  align-items: center;
+}
+
+.socCheckbox .refferIcon {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.socCheckbox .checked {
+  width: 30rpx;
+  height: 30rpx;
+  border: 1rpx solid #04246A;
+  transform: rotateZ(360deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.socCheckbox .checked.bg {
+  background-color: #04246A;
+}
+.socCheckbox .text {
+  padding-left: 10rpx;
+}
+
+.socText {
+  margin: 48rpx 0 10rpx;
+}
+
+.noRequest {
+  font-size: 24rpx;
+  color: #E2014B;
+  display: flex;
+  align-items: center;
+}
+.socDetail {
+  font-size: 24rpx;
+  color: #071E5D;
+  margin: 20rpx 0;
+}
+
+.socTitle {
+  font-size: 24rpx;
+  color: #071E5D;
+  margin: 40rpx 0 0;
+  font-weight: 600;
+}

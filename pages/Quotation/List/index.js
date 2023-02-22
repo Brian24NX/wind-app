@@ -14,38 +14,7 @@ Page({
     languageContent: {},
     language: 'zh',
     isPhoneX: getApp().globalData.isPhoneX,
-    transMode: {
-      'RD': {
-        code: 'RD',
-        label: 'Road',
-        zhLabel: '陆地',
-        icon: '/assets/img/result/road.png',
-      },
-      'BA': {
-        code: 'BA',
-        label: 'Barge',
-        zhLabel: '驳船',
-        icon: '/assets/img/result/barge.png',
-      },
-      'RL': {
-        code: 'RL',
-        label: 'Rail',
-        zhLabel: '铁道',
-        icon: '/assets/img/result/rail.png',
-      },
-      'RR': {
-        code: 'RR',
-        label: 'Rail / Road',
-        zhLabel: '铁路/公路',
-        icon: '/assets/img/result/railTruck.png',
-      },
-      'BR': {
-        code: 'BR',
-        label: 'Barge / Road',
-        zhLabel: '驳船/公路',
-        icon: '/assets/img/result/bargeRoad.png',
-      }
-    },
+    transMode: {},
     oldQuoteLineList: [],
     traceId: '',
     containers: 0,
@@ -80,14 +49,14 @@ Page({
     commodityCode: '',
     partnerCode: [],
     isUs: false,
-    equiptCode: ''
+    equiptCode: '',
+    shipperOwnedContainer: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setStorageSync('transMode', this.data.transMode)
     if (options.isUs) {
       this.setData({
         isUs: true
@@ -98,7 +67,8 @@ Page({
     })
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
-      language: languageUtil.languageVersion().lang.page.langue
+      language: languageUtil.languageVersion().lang.page.langue,
+      transMode: wx.getStorageSync('transMode')
     })
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
@@ -122,7 +92,8 @@ Page({
       fromCode: data.placeOfOriginLabel ? data.placeOfOriginLabel.split(';')[1] : data.portOfLoadingLabel.split(';')[1],
       toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
       receiptHaulage: data.receiptHaulage || '',
-      deliveryHaulage: data.deliveryHaulage || ''
+      deliveryHaulage: data.deliveryHaulage || '',
+      shipperOwnedContainer: data.shipperOwnedContainer
     })
     if (data.resultResq.traceId) {
       this.setData({

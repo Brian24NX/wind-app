@@ -746,3 +746,37 @@
   width: 70rpx;
   height: 60rpx;
 }
+
+.soc {
+  margin: 30rpx 0 40rpx;
+  background-color: #ffffff;
+  padding: 28rpx 48rpx;
+}
+.socTopTitle {
+  display: flex;
+  align-items: center;
+  font-size: 48rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: bold;
+  color: #04246A;
+}
+
+.socTopTitleLine {
+  margin-right: 20rpx;
+  width: 8rpx;
+  height: 42rpx;
+  background-color: #E20202;
+}
+
+.socDetail {
+  font-size: 24rpx;
+  color: #071E5D;
+  margin: 20rpx 0;
+}
+
+.socTitle {
+  font-size: 24rpx;
+  color: #071E5D;
+  margin: 40rpx 0 0;
+  font-weight: 600;
+}

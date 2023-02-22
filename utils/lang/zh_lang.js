@@ -649,7 +649,10 @@ var Languague = {
       total: '总计',
       include: '包含在报价里',
       createFail: '创建报价单失败，请联系您的代理',
-      getAgain: '获取报价'
+      getAgain: '获取报价',
+      soc: '托运人自备集装箱（SOC）',
+      socAgree: '我同意这些条件',
+      socWarn: '请接受T&C'
     },
     vas: {
       containers: '柜号',
