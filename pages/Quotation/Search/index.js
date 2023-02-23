@@ -118,7 +118,8 @@ Page({
     partnerCode: [],
     showPartner: false,
     needLogin: null,
-    hasPermission: null
+    hasPermission: null,
+    showDropdown: false  // 控制下拉框的显示和隐藏
   },
 
   /**
@@ -223,6 +224,22 @@ Page({
     }
   },
 
+  // 点击下拉框外部容器时隐藏下拉框
+  hideDropdown: function() {
+    this.setData({
+      showDropdown: false
+    })
+  },
+  
+//   document.addEventListener('click', function handleClickOutsideBox(event) {
+//   const box = document.getElementById('box');
+
+//   if (!box.contains(event.target)) {
+//     box.style.display = 'none';
+//   }
+// });
+ 
+
   checkAccessToken(callback) {
     if (!utils.checkAccessToken()) {
       wx.showToast({
@@ -289,6 +306,12 @@ Page({
       showPoR: false,
       placeOfReceiptList: []
     })
+    if (!data) {
+      this.setData({
+        receiptHaulage : null,
+      })
+      return
+    }
     if (data.length < 2) {
       this.setData({
         placeOfReceiptList: []
@@ -432,6 +455,12 @@ Page({
       showPoDe: false,
       placeOfDeliveryList: []
     })
+    if (!data) {
+      this.setData({
+        deliveryHaulage: null,
+      })
+      return
+    }
     if (data.length < 2) {
       this.setData({
         placeOfDeliveryList: []
