@@ -80,143 +80,149 @@
       </view>
     </view>
     <view class="rateContainer">
-      <view class="rateTitles">
+      <view class="rateTitles" catchtap="zhedie" data-type="foldContainerRate">
         <view class="titleLeft">
           <view class="titleLine"></view>
           <view>{{languageContent.perRate}}</view>
           <image src="/assets/img/instantQuote/info.svg" class="info" catchtap="toRemind"></image>
         </view>
-        <image src="/assets/img/instantQuote/person@2x.png"></image>
+        <image class="personImage" src="/assets/img/instantQuote/person@2x.png"></image>
+        <image class="editIcon {{foldContainerRate ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
-      <view class="rateTotal">
-        <view class="rateTotalLeft">
-          <image src="/assets/img/search/jzxh@2x.png"></image>
-          <view>{{languageContent.totalPer}}</view>
+      <view hidden="{{foldContainerRate}}">
+        <view class="rateTotal">
+          <view class="rateTotalLeft">
+            <image src="/assets/img/search/jzxh@2x.png"></image>
+            <view>{{languageContent.totalPer}}</view>
+          </view>
+          <view class="rateTotalRight">
+            <text class="ratePrice">{{totalChargeAmount}}</text>
+            <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
+          </view>
         </view>
-        <view class="rateTotalRight">
-          <text class="ratePrice">{{totalChargeAmount}}</text>
-          <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
-        </view>
-      </view>
-      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.oceanFreight.price.amount}}">
-        <view class="oneRate">
-          <view class="oneRateLeft" catchtap="changeCheck" data-id="oceanFreight">
-            <view class="rateCheckBox {{quotationDetail.surchargeDetails.oceanFreight.isChecked ? 'rateChecked' : ''}}">
-              <van-icon name="success" color="#ffffff" size="14px" />
+        <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.oceanFreight.price.amount}}">
+          <view class="oneRate">
+            <view class="oneRateLeft" catchtap="changeCheck" data-id="oceanFreight">
+              <view class="rateCheckBox {{quotationDetail.surchargeDetails.oceanFreight.isChecked ? 'rateChecked' : ''}}">
+                <van-icon name="success" color="#ffffff" size="14px" />
+              </view>
+              <text>{{languageContent.oceanFeight}}</text>
             </view>
-            <text>{{languageContent.oceanFeight}}</text>
-          </view>
-          <view class="oneRateRight">
-            <text class="ratePrice">{{quotationDetail.surchargeDetails.oceanFreight.price.amount}}</text>
-            <text>{{quotationDetail.surchargeDetails.oceanFreight.price.currency.code}}</text>
-          </view>
-        </view>
-        <view class="rateDesc">
-          <block wx:if="{{quotationDetail.surchargeDetails.oceanFreightDetails.length}}">{{languageContent.incluedLabel}} {{quotationDetail.surchargeDetails.oceanFreightDetailsLabel}}</block>
-        </view>
-      </view>
-      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.freightCharges.amount}}">
-        <view class="oneRate">
-          <view class="oneRateLeft" catchtap="changeCheck" data-id="freightCharges">
-            <view class="rateCheckBox {{quotationDetail.surchargeDetails.freightCharges.isChecked ? 'rateChecked' : ''}}">
-              <van-icon name="success" color="#ffffff" size="14px" />
-            </view>
-            <text>{{languageContent.perFeight}}</text>
-          </view>
-          <view class="oneRateRight">
-            <text class="ratePrice">{{quotationDetail.surchargeDetails.freightCharges.amount}}</text>
-            <text>{{quotationDetail.surchargeDetails.freightCharges.currency.code}}</text>
-          </view>
-        </view>
-        <view class="rateDetails">
-          <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.freightChargeDetails}}" wx:key="index">
-            <view>{{item.chargeName}}</view>
-            <view class="rateDetailRight">
-              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
-              {{item.price.amount}} {{item.price.currency.code}}
+            <view class="oneRateRight">
+              <text class="ratePrice">{{quotationDetail.surchargeDetails.oceanFreight.price.amount}}</text>
+              <text>{{quotationDetail.surchargeDetails.oceanFreight.price.currency.code}}</text>
             </view>
           </view>
+          <view class="rateDesc">
+            <block wx:if="{{quotationDetail.surchargeDetails.oceanFreightDetails.length}}">{{languageContent.incluedLabel}} {{quotationDetail.surchargeDetails.oceanFreightDetailsLabel}}</block>
+          </view>
         </view>
-      </view>
-      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.prepaidCharges.amount}}">
-        <view class="oneRate">
-          <view class="oneRateLeft" catchtap="changeCheck" data-id="prepaidCharges">
-            <view class="rateCheckBox {{quotationDetail.surchargeDetails.prepaidCharges.isChecked ? 'rateChecked' : ''}}">
-              <van-icon name="success" color="#ffffff" size="14px" />
+        <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.freightCharges.amount}}">
+          <view class="oneRate">
+            <view class="oneRateLeft" catchtap="changeCheck" data-id="freightCharges">
+              <view class="rateCheckBox {{quotationDetail.surchargeDetails.freightCharges.isChecked ? 'rateChecked' : ''}}">
+                <van-icon name="success" color="#ffffff" size="14px" />
+              </view>
+              <text>{{languageContent.perFeight}}</text>
             </view>
-            <text>{{languageContent.prepaid}}</text>
+            <view class="oneRateRight">
+              <text class="ratePrice">{{quotationDetail.surchargeDetails.freightCharges.amount}}</text>
+              <text>{{quotationDetail.surchargeDetails.freightCharges.currency.code}}</text>
+            </view>
           </view>
-          <view class="oneRateRight">
-            <text class="ratePrice">{{quotationDetail.surchargeDetails.prepaidCharges.amount}}</text>
-            <text>{{quotationDetail.surchargeDetails.prepaidCharges.currency.code}}</text>
-          </view>
-        </view>
-        <view class="rateDetails">
-          <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.prepaidChargeDetails}}" wx:key="index">
-            <view>{{item.chargeName}}</view>
-            <view class="rateDetailRight">
-              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
-              <text>{{item.price.amount}} {{item.price.currency.code}}</text>
+          <view class="rateDetails">
+            <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.freightChargeDetails}}" wx:key="index">
+              <view>{{item.chargeName}}</view>
+              <view class="rateDetailRight">
+                <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
+                {{item.price.amount}} {{item.price.currency.code}}
+              </view>
             </view>
           </view>
         </view>
-      </view>
-      <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.collectCharges.amount}}">
-        <view class="oneRate">
-          <view class="oneRateLeft" catchtap="changeCheck" data-id="collectCharges">
-            <view class="rateCheckBox {{quotationDetail.surchargeDetails.collectCharges.isChecked ? 'rateChecked' : ''}}">
-              <van-icon name="success" color="#ffffff" size="14px" />
+        <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.prepaidCharges.amount}}">
+          <view class="oneRate">
+            <view class="oneRateLeft" catchtap="changeCheck" data-id="prepaidCharges">
+              <view class="rateCheckBox {{quotationDetail.surchargeDetails.prepaidCharges.isChecked ? 'rateChecked' : ''}}">
+                <van-icon name="success" color="#ffffff" size="14px" />
+              </view>
+              <text>{{languageContent.prepaid}}</text>
             </view>
-            <text>{{languageContent.collect}}</text>
+            <view class="oneRateRight">
+              <text class="ratePrice">{{quotationDetail.surchargeDetails.prepaidCharges.amount}}</text>
+              <text>{{quotationDetail.surchargeDetails.prepaidCharges.currency.code}}</text>
+            </view>
           </view>
-          <view class="oneRateRight">
-            <text class="ratePrice">{{quotationDetail.surchargeDetails.collectCharges.amount}}</text>
-            <text>{{quotationDetail.surchargeDetails.collectCharges.currency.code}}</text>
+          <view class="rateDetails">
+            <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.prepaidChargeDetails}}" wx:key="index">
+              <view>{{item.chargeName}}</view>
+              <view class="rateDetailRight">
+                <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
+                <text>{{item.price.amount}} {{item.price.currency.code}}</text>
+              </view>
+            </view>
           </view>
         </view>
-        <view class="rateDetails">
-          <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.collectChargeDetails}}" wx:key="index">
-            <view>{{item.chargeName}}</view>
-            <view class="rateDetailRight">
-              <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
-              <text>{{item.price.amount}} {{item.price.currency.code}}</text>
+        <view class="oneRates" wx:if="{{quotationDetail.surchargeDetails.collectCharges.amount}}">
+          <view class="oneRate">
+            <view class="oneRateLeft" catchtap="changeCheck" data-id="collectCharges">
+              <view class="rateCheckBox {{quotationDetail.surchargeDetails.collectCharges.isChecked ? 'rateChecked' : ''}}">
+                <van-icon name="success" color="#ffffff" size="14px" />
+              </view>
+              <text>{{languageContent.collect}}</text>
+            </view>
+            <view class="oneRateRight">
+              <text class="ratePrice">{{quotationDetail.surchargeDetails.collectCharges.amount}}</text>
+              <text>{{quotationDetail.surchargeDetails.collectCharges.currency.code}}</text>
+            </view>
+          </view>
+          <view class="rateDetails">
+            <view class="oneRateDetail" wx:for="{{quotationDetail.surchargeDetails.collectChargeDetails}}" wx:key="index">
+              <view>{{item.chargeName}}</view>
+              <view class="rateDetailRight">
+                <image wx:if="{{item.fixedByThePricer}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
+                <text>{{item.price.amount}} {{item.price.currency.code}}</text>
+              </view>
             </view>
           </view>
         </view>
       </view>
     </view>
-    <view class="rateContainer" style="padding-bottom: 30rpx;" wx:if="{{quotationDetail.surchargeDetails.perBLCharges}}">
-      <view class="rateTitles">
+    <view class="rateContainer" wx:if="{{quotationDetail.surchargeDetails.perBLCharges}}">
+      <view class="rateTitles" catchtap="zhedie" data-type="foldBLRate">
         <view class="titleLeft">
           <view class="titleLine"></view>
           <view>{{languageContent.perBL}}</view>
         </view>
-        <image src="/assets/img/instantQuote/person@2x.png"></image>
+        <image class="personImage" src="/assets/img/instantQuote/person@2x.png"></image>
+        <image class="editIcon {{foldBLRate ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
-      <view class="rateTotal">
-        <view class="rateTotalLeft">
-          <image src="/assets/img/search/jzxh@2x.png"></image>
-          <view>{{languageContent.totalBL}}</view>
-        </view>
-        <view class="rateTotalRight">
-          <text class="ratePrice">{{quotationDetail.surchargeDetails.perBLCharges.amount}}</text>
-          <text>{{quotationDetail.surchargeDetails.perBLCharges.currency.code}}</text>
-        </view>
-      </view>
-      <view class="oneRates">
-        <view class="oneRate" wx:for="{{quotationDetail.surchargeDetails.perBLChargeDetails}}">
-          <view class="oneRateLeft">
-            <text>{{item.description}}<block wx:if="{{item.paymentMethod}}"> · {{item.paymentMethod === "C" ? 'COLLECT' : 'PREPAID'}} ·</block></text>
+        <view hidden="{{foldBLRate}}" style="padding-bottom: 30rpx;">
+        <view class="rateTotal">
+          <view class="rateTotalLeft">
+            <image src="/assets/img/search/jzxh@2x.png"></image>
+            <view>{{languageContent.totalBL}}</view>
           </view>
-          <view class="oneRateRight">
-            <image wx:if="{{item.hasFixed}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
-            <text class="ratePrice">{{item.rate}}</text>
-            <text>{{item.currency}}</text>
+          <view class="rateTotalRight">
+            <text class="ratePrice">{{quotationDetail.surchargeDetails.perBLCharges.amount}}</text>
+            <text>{{quotationDetail.surchargeDetails.perBLCharges.currency.code}}</text>
+          </view>
+        </view>
+        <view class="oneRates">
+          <view class="oneRate" wx:for="{{quotationDetail.surchargeDetails.perBLChargeDetails}}">
+            <view class="oneRateLeft">
+              <text>{{item.description}}<block wx:if="{{item.paymentMethod}}"> · {{item.paymentMethod === "C" ? 'COLLECT' : 'PREPAID'}} ·</block></text>
+            </view>
+            <view class="oneRateRight">
+              <image wx:if="{{item.hasFixed}}" src="/assets/img/instantQuote/anchor-home-bluelink.svg" mode="aspectFit" />
+              <text class="ratePrice">{{item.rate}}</text>
+              <text>{{item.currency}}</text>
+            </view>
           </view>
         </view>
       </view>
     </view>
-    <view class="surchargeDesc">
+    <view class="surchargeDesc" hidden="{{foldBLRate}}">
       <image src="/assets/img/instantQuote/error.svg"></image>
       <view class="surchargeDescRight">
         <block wx:if="{{language === 'en'}}">
@@ -229,84 +235,92 @@
         </block>
       </view>
     </view>
-    <view class="quoteDetails">
-      <view class="quoteTopTitle">
-        <view class="quoteTopLine"></view>
+    <view class="rateContainer">
+      <view class="rateTitles"  catchtap="zhedie" data-type="foldQuoteDetail">
+        <view class="titleLeft">
+        <view class="titleLine"></view>
         <view>{{languageContent.quoteDetails}}</view>
       </view>
-      <view class="oneQuoteDetail">
-        <view class="oneQuoteTitle">{{languageContent.export}}</view>
-        <view class="oneQuoteValue">
-          <view wx:if="{{quotationDetail.quoteLines[0].origin}}">
-            <text>{{languageContent.placeOfOrigin}} </text>
-            <text class="bold">{{quotationDetail.placeOfReceiptLabel}}</text>
-          </view>
-          <view>
-            <text>{{languageContent.movementType}} </text>
-            <text class="bold">{{quotationDetail.quoteLines[0].exportMovementType}}</text>
-          </view>
-          <view wx:if="{{!quotationDetail.quoteLines[0].origin}}">
-            <text>{{languageContent.bookPreCarriage}} </text>
-            <text class="bold">{{quotationDetail.quoteLines[0].exportConstruction ? languageContent.allowed : languageContent.refused}}</text>
-          </view>
-          <view wx:else>
-            <text>{{languageContent.transType}} </text>
-            <text class="bold">{{ !!transMode[quotationDetail.quoteLines[0].exportModeOfTranportCode] ? (language === 'zh' ? transMode[quotationDetail.quoteLines[0].exportModeOfTranportCode].zhLabel : transMode[quotationDetail.quoteLines[0].exportModeOfTranportCode].label) : 'Intermodal'}}
-            </text>
+        <image class="editIcon {{foldQuoteDetail ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+      </view>
+      <view hidden="{{foldQuoteDetail}}" style="padding: 30rpx 0;">
+        <view class="oneQuoteDetail">
+          <view class="oneQuoteTitle">{{languageContent.export}}</view>
+          <view class="oneQuoteValue">
+            <view wx:if="{{quotationDetail.quoteLines[0].origin}}">
+              <text>{{languageContent.placeOfOrigin}} </text>
+              <text class="bold">{{quotationDetail.placeOfReceiptLabel}}</text>
+            </view>
+            <view>
+              <text>{{languageContent.movementType}} </text>
+              <text class="bold">{{quotationDetail.quoteLines[0].exportMovementType}}</text>
+            </view>
+            <view wx:if="{{!quotationDetail.quoteLines[0].origin}}">
+              <text>{{languageContent.bookPreCarriage}} </text>
+              <text class="bold">{{quotationDetail.quoteLines[0].exportConstruction ? languageContent.allowed : languageContent.refused}}</text>
+            </view>
+            <view wx:else>
+              <text>{{languageContent.transType}} </text>
+              <text class="bold">{{ !!transMode[quotationDetail.quoteLines[0].exportModeOfTranportCode] ? (language === 'zh' ? transMode[quotationDetail.quoteLines[0].exportModeOfTranportCode].zhLabel : transMode[quotationDetail.quoteLines[0].exportModeOfTranportCode].label) : 'Intermodal'}}
+              </text>
+            </view>
           </view>
         </view>
-      </view>
-      <view class="oneQuoteDetail">
-        <view class="oneQuoteTitle">{{languageContent.import}}</view>
-        <view class="oneQuoteValue">
-          <view wx:if="{{quotationDetail.quoteLines[0].destination}}">
-            <text>{{languageContent.placeOfOrigin}} </text>
-            <text class="bold">{{quotationDetail.placeOfDeliveryLabel}}</text>
-          </view>
-          <view>
-            <text>{{languageContent.movementType}} </text>
-            <text class="bold">{{quotationDetail.quoteLines[0].importMovementType}}</text>
-          </view>
-          <view wx:if="{{!quotationDetail.quoteLines[0].destination}}">
-            <text>{{languageContent.bookOnCarriage}} </text>
-            <text class="bold">{{quotationDetail.quoteLines[0].importConstruction ? languageContent.allowed : languageContent.refused}}</text>
-          </view>
-          <view wx:else>
-            <text>{{languageContent.transType}} </text>
-            <text class="bold">{{ !!transMode[quotationDetail.quoteLines[0].importModeOfTranportCode] ? (language === 'zh' ? transMode[quotationDetail.quoteLines[0].importModeOfTranportCode].zhLabel : transMode[quotationDetail.quoteLines[0].importModeOfTranportCode].label) : 'Intermodal'}}</text>
+        <view class="oneQuoteDetail">
+          <view class="oneQuoteTitle">{{languageContent.import}}</view>
+          <view class="oneQuoteValue">
+            <view wx:if="{{quotationDetail.quoteLines[0].destination}}">
+              <text>{{languageContent.placeOfOrigin}} </text>
+              <text class="bold">{{quotationDetail.placeOfDeliveryLabel}}</text>
+            </view>
+            <view>
+              <text>{{languageContent.movementType}} </text>
+              <text class="bold">{{quotationDetail.quoteLines[0].importMovementType}}</text>
+            </view>
+            <view wx:if="{{!quotationDetail.quoteLines[0].destination}}">
+              <text>{{languageContent.bookOnCarriage}} </text>
+              <text class="bold">{{quotationDetail.quoteLines[0].importConstruction ? languageContent.allowed : languageContent.refused}}</text>
+            </view>
+            <view wx:else>
+              <text>{{languageContent.transType}} </text>
+              <text class="bold">{{ !!transMode[quotationDetail.quoteLines[0].importModeOfTranportCode] ? (language === 'zh' ? transMode[quotationDetail.quoteLines[0].importModeOfTranportCode].zhLabel : transMode[quotationDetail.quoteLines[0].importModeOfTranportCode].label) : 'Intermodal'}}</text>
+            </view>
           </view>
         </view>
-      </view>
-      <view class="oneQuoteDetail" wx:if="{{shipperOwnedContainer}}">
-        <view class="oneQuoteTitle">{{languageContent.additionalAttributes}}</view>
-        <view class="oneQuoteValue">
-          {{languageContent.socLabel}}
+        <view class="oneQuoteDetail" wx:if="{{shipperOwnedContainer}}">
+          <view class="oneQuoteTitle">{{languageContent.additionalAttributes}}</view>
+          <view class="oneQuoteValue">
+            {{languageContent.socLabel}}
+          </view>
         </view>
       </view>
     </view>
     <view class="soc" wx:if="{{shipperOwnedContainer}}">
-      <view class="socTopTitle">
+      <view class="socTopTitle" catchtap="zhedie" data-type="foldSoc">
         <view class="socTopTitleLine"></view>
         <view>{{languageContent.soc}}</view>
+        <image class="editIcon {{foldSoc ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
-      <view class="socTitle">Your offer is valid only if your container:</view>
-      <text class="socDetail">
-        • Meets all the ISO standards for freight containers that allows them to be handled and stowed in stacks without any restriction, to withstand the stresses of a transport by sea and this for repeated use.
-        • Is plated, regularly inspected in compliance with the international Convention for Safe Containers (CSC)
-        • Is identified by owner’s code (3 letters) registred with the BIC, an equipment category (U for freight), 6 numerals and a check digit
-        • Is Customs approved
-      </text>
-      <view class="socCheckbox socText">
-        <view class="checked {{isSocAgree?'bg':''}}" catchtap="checkBoxToggle" data-keys="isSocAgree">
-          <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isSocAgree}}" />
+      <view hidden="{{foldSoc}}" style="padding-bottom: 30rpx;">
+        <view class="socTitle">Your offer is valid only if your container:</view>
+        <text class="socDetail">
+          • Meets all the ISO standards for freight containers that allows them to be handled and stowed in stacks without any restriction, to withstand the stresses of a transport by sea and this for repeated use.
+          • Is plated, regularly inspected in compliance with the international Convention for Safe Containers (CSC)
+          • Is identified by owner’s code (3 letters) registred with the BIC, an equipment category (U for freight), 6 numerals and a check digit
+          • Is Customs approved
+        </text>
+        <view class="socCheckbox socText">
+          <view class="checked {{isSocAgree?'bg':''}}" catchtap="checkBoxToggle" data-keys="isSocAgree">
+            <van-icon name="success" size="14px" color="#ffffff" wx:if="{{isSocAgree}}" />
+          </view>
+          <view class="text" catchtap="checkBoxToggle" data-keys="isSocAgree">
+            {{languageContent.socAgree}}
+          </view>
         </view>
-        <view class="text" catchtap="checkBoxToggle" data-keys="isSocAgree">
-          {{languageContent.socAgree}}
+        <view class="noRequest" wx:if="{{showError}}">
+          <image src="/assets/img/search/error@2x.png"></image>
+          <text>{{languageContent.socWarn}}</text>
         </view>
-      </view>
-      <view class="noRequest" wx:if="{{showError}}">
-        <image src="/assets/img/search/error@2x.png"></image>
-        <text>{{languageContent.socWarn}}</text>
       </view>
     </view>
 

@@ -68,7 +68,11 @@ Page({
     isUs: false,
     isSocAgree: false,
     shipperOwnedContainer: false,
-    showError: false
+    showError: false,
+    foldContainerRate: true,
+    foldBLRate: true,
+    foldQuoteDetail: true,
+    foldSoc: true
   },
 
   /**
@@ -155,6 +159,13 @@ Page({
     if (!this.data.subscribedServices.length) return
     this.setData({
       showVas: !this.data.showVas
+    })
+  },
+
+  // 折叠
+  zhedie(e) {
+    this.setData({
+      [e.currentTarget.dataset.type]: !this.data[e.currentTarget.dataset.type]
     })
   },
 
@@ -245,7 +256,8 @@ Page({
   submit() {
     if(this.data.shipperOwnedContainer !== this.data.isSocAgree){
       this.setData({
-        showError: true
+        showError: true,
+        foldSoc: false
       })
       wx.pageScrollTo({
         duration: 500,

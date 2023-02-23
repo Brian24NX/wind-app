@@ -3,7 +3,7 @@
   width: 100%;
   min-height: 100vh;
   padding: 30rpx 30rpx 210rpx;
-  background-color: #F0F1F5;
+  background-color: #f0f1f5;
 }
 
 .resultContainers .resultCardContainers {
@@ -54,7 +54,7 @@
 }
 
 .stepLists .oneStep .leftLines .leftLineDto {
-  background-color: #E20202;
+  background-color: #e20202;
   width: 16rpx;
   height: 16rpx;
   border-radius: 50%;
@@ -63,14 +63,14 @@
 .stepLists .oneStep .leftLines .leftLine {
   width: 0;
   height: calc(100% - 16rpx);
-  border-left: 1rpx solid #9AA6C4;
+  border-left: 1rpx solid #9aa6c4;
 }
 
 .stepLists .oneStep .stepContent {
   font-size: 52rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #071E5D;
+  color: #071e5d;
 }
 
 .carddate,
@@ -85,7 +85,7 @@
   font-size: 28rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #4468BA;
+  color: #4468ba;
   margin-left: 10rpx;
 }
 
@@ -103,7 +103,7 @@
   font-size: 20rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
-  color: #6B7790;
+  color: #6b7790;
 }
 
 .solutionContainer .solutionLeft .solutionLeftOne {
@@ -146,7 +146,7 @@
 }
 
 .paramContainer .oneParams {
-  border-top: 1rpx solid #EEEEEE;
+  border-top: 1rpx solid #eeeeee;
   display: flex;
   width: 50%;
   align-items: center;
@@ -171,14 +171,14 @@
   font-size: 32rpx;
   font-family: Arial-BoldMT, Arial;
   font-weight: normal;
-  color: #071E5D;
+  color: #071e5d;
 }
 
 .paramContainer .oneParams .param {
   font-size: 20rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #071E5D;
+  color: #071e5d;
 }
 
 .rateContainer {
@@ -192,6 +192,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1rpx solid #eeeeee;
+  padding: 20rpx 0;
 }
 
 .rateTitles .titleLeft {
@@ -200,13 +201,13 @@
   font-size: 48rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
 }
 
 .rateTitles .titleLeft .titleLine {
   width: 6rpx;
   height: 40rpx;
-  background-color: #E20202;
+  background-color: #e20202;
   margin-right: 12rpx;
 }
 
@@ -217,10 +218,11 @@
   margin-top: -20rpx;
 }
 
-.rateTitles>image {
+.personImage {
+  position: absolute;
   width: 146rpx;
   height: 106rpx;
-  margin-right: -20rpx;
+  right: 60rpx;
 }
 
 .rateTotal {
@@ -237,7 +239,7 @@
   font-size: 24rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
 }
 
 .rateTotal .rateTotalLeft image {
@@ -250,7 +252,7 @@
   font-size: 32rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #E20202;
+  color: #e20202;
   display: flex;
   align-items: center;
 }
@@ -259,7 +261,7 @@
   font-size: 56rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
   margin-right: 12rpx;
 }
 
@@ -278,13 +280,13 @@
   font-size: 24rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
 }
 
 .oneRate .oneRateLeft .rateCheckBox {
   width: 30rpx;
   height: 30rpx;
-  border: 1rpx solid #04246A;
+  border: 1rpx solid #04246a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -293,7 +295,7 @@
 }
 
 .oneRate .oneRateLeft .rateChecked {
-  background-color: #04246A;
+  background-color: #04246a;
 }
 
 .oneRate .oneRateRight {
@@ -302,7 +304,7 @@
   font-size: 32rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #E20202;
+  color: #e20202;
 }
 
 .oneRate .oneRateRight image {
@@ -315,13 +317,13 @@
   font-size: 36rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
   margin-right: 12rpx;
 }
 
 .rateDesc {
   font-weight: 500;
-  color: #6B7790;
+  color: #6b7790;
   font-size: 16rpx;
   padding: 10rpx 4rpx 30rpx;
 }
@@ -335,7 +337,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #6B7790;
+  color: #6b7790;
   padding: 0 4rpx;
   font-size: 16rpx;
 }
@@ -371,7 +373,7 @@
   font-size: 20rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #071E5D;
+  color: #071e5d;
 }
 
 .otherContainer .oneOther image {
@@ -400,14 +402,17 @@
   font-size: 28rpx;
   font-family: Arial-BoldMT, Arial;
   font-weight: normal;
-  color: #04246A;
+  color: #04246a;
 }
 
 .additionalServiceList .oneAdditionalService .additionalServiceTopTitle {
   width: 520rpx;
 }
 
-.additionalServiceList .oneAdditionalService .additionalServiceTop .additionalServiceCheck {
+.additionalServiceList
+  .oneAdditionalService
+  .additionalServiceTop
+  .additionalServiceCheck {
   width: 30rpx;
   height: 30rpx;
   background-color: #071e5d;
@@ -425,13 +430,13 @@
   width: 400rpx;
   font-size: 24rpx;
   font-family: ArialMT;
-  color: #6B7790;
+  color: #6b7790;
 }
 
 .additionalServiceBottom .additionalServiceBottomPrice {
   display: flex;
   align-items: center;
-  color: #04246A;
+  color: #04246a;
   font-size: 24rpx;
   font-family: Antonio-Regular;
 }
@@ -440,7 +445,7 @@
   font-size: 48rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
   margin-right: 10rpx;
 }
 
@@ -467,9 +472,9 @@
   font-size: 48rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
   padding: 40rpx 0;
-  border-bottom: 1rpx solid #F4F4F4;
+  border-bottom: 1rpx solid #f4f4f4;
 }
 
 .bottomButtonContainers .subscribedList {
@@ -482,7 +487,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 30rpx 0;
-  border-bottom: 1rpx solid #F4F4F4;
+  border-bottom: 1rpx solid #f4f4f4;
 }
 
 .bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft {
@@ -496,10 +501,14 @@
   margin-right: 30rpx;
 }
 
-.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productName {
+.bottomButtonContainers
+  .subscribedList
+  .oneSubscribed
+  .subscribeLeft
+  .productName {
   font-size: 32rpx;
   font-family: Antonio-Regular, Antonio;
-  color: #071E5D;
+  color: #071e5d;
   display: inline-block;
   white-space: nowrap;
   width: 310rpx;
@@ -507,29 +516,46 @@
   text-overflow: ellipsis;
 }
 
-.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productInclude {
+.bottomButtonContainers
+  .subscribedList
+  .oneSubscribed
+  .subscribeLeft
+  .productInclude {
   color: #00865d;
   font-size: 24rpx;
 }
 
-.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productPrices {
+.bottomButtonContainers
+  .subscribedList
+  .oneSubscribed
+  .subscribeLeft
+  .productPrices {
   display: flex;
   align-items: center;
 }
 
-.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productPrices .productPrice {
+.bottomButtonContainers
+  .subscribedList
+  .oneSubscribed
+  .subscribeLeft
+  .productPrices
+  .productPrice {
   font-size: 48rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #E10202;
+  color: #e10202;
   margin-right: 20rpx;
 }
 
-.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productUnit {
+.bottomButtonContainers
+  .subscribedList
+  .oneSubscribed
+  .subscribeLeft
+  .productUnit {
   font-size: 24rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #071E5D;
+  color: #071e5d;
 }
 
 .bottomButtonContainers .subscribedList .oneSubscribed .subscribeRight {
@@ -543,14 +569,18 @@
   margin-left: 30rpx;
 }
 
-.bottomButtonContainers .subscribedList .oneSubscribed .subscribeRight image:nth-of-type(1) {
+.bottomButtonContainers
+  .subscribedList
+  .oneSubscribed
+  .subscribeRight
+  image:nth-of-type(1) {
   margin-left: 0;
 }
 
 .bottomButtonContainers .subscribedTitle .subscribedTitleLine {
   width: 8rpx;
   height: 42rpx;
-  background-color: #E20202;
+  background-color: #e20202;
   margin-right: 20rpx;
 }
 
@@ -567,7 +597,7 @@
   font-size: 32rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #E20202;
+  color: #e20202;
   line-height: 32rpx;
 }
 
@@ -580,13 +610,13 @@
   font-size: 72rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
   margin-right: 14rpx;
   line-height: 64rpx;
 }
 
 .bottomButtonContainer .bottomButtonLeft .containerNumber {
-  color: #6B7790;
+  color: #6b7790;
   font-size: 24rpx;
   margin-top: 6rpx;
 }
@@ -610,7 +640,7 @@
   height: 32rpx;
   min-width: 32rpx;
   text-align: center;
-  background-color: #E20202;
+  background-color: #e20202;
   border-radius: 16rpx;
   padding: 0 10rpx;
   color: #ffffff;
@@ -625,7 +655,7 @@
   font-size: 72rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #04246A;
+  color: #04246a;
   margin: 0 10rpx 0 20rpx;
 }
 
@@ -633,7 +663,7 @@
   font-size: 24rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #E20202;
+  color: #e20202;
 }
 
 .bottomButtonContainer .bottomLeft .priceUnit .total {
@@ -644,8 +674,8 @@
   font-size: 16rpx;
   font-family: Arial-BoldMT, Arial;
   font-weight: 400;
-  color: #071E5D;
-  background-color: #E6EAEF;
+  color: #071e5d;
+  background-color: #e6eaef;
 }
 
 .bottomButtonContainer .bottomButtonRight {
@@ -654,11 +684,11 @@
 
 .bottomButtonContainer .bottomButtonRight .buttons {
   height: 76rpx;
-  background-color: #E20202;
+  background-color: #e20202;
   font-size: 32rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   line-height: 76rpx;
   padding: 0 16rpx;
@@ -676,6 +706,7 @@
   justify-content: space-between;
   background-color: #ffffff;
   padding: 30rpx 36rpx;
+  margin-bottom: 30rpx;
 }
 
 .surchargeDesc image {
@@ -688,76 +719,76 @@
 .surchargeDesc .surchargeDescRight {
   width: 550rpx;
   font-size: 24rpx;
-  color: #6B7790;
+  color: #6b7790;
 }
 
 .quoteDetails {
   background-color: #ffffff;
-  padding: 28rpx 48rpx 0;
-  margin-top: 30rpx;
+  padding: 28rpx 48rpx;
+  height: 54px;
 }
 
 .quoteDetails .quoteTopTitle {
   display: flex;
   align-items: center;
-  font-size: 50rpx;
+  margin-bottom: 50rpx;
+  font-size: 48rpx;
   font-family: Antonio-Regular;
   font-weight: 400;
-  color: #04246A;
-  margin-bottom: 50rpx;
+  color: #04246a;
 }
 
 .quoteDetails .quoteTopTitle .quoteTopLine {
   width: 8rpx;
   height: 42rpx;
-  background-color: #E20202;
+  background-color: #e20202;
   margin-right: 20rpx;
 }
 
-.quoteDetails .oneQuoteDetail .oneQuoteTitle {
-  background-color: #DBDFE8;
+.oneQuoteDetail .oneQuoteTitle {
+  background-color: #dbdfe8;
   height: 64rpx;
   padding: 0 26rpx;
   font-size: 32rpx;
   font-family: Antonio-Regular, Antonio;
-  color: #071E5D;
+  color: #071e5d;
   display: flex;
   align-items: center;
 }
 
-.quoteDetails .oneQuoteDetail .oneQuoteTitle .perContainer {
+.oneQuoteDetail .oneQuoteTitle .perContainer {
   font-size: 24rpx;
   font-family: ArialMT;
-  color: #6B7790;
+  color: #6b7790;
   margin-left: 30rpx;
 }
 
-.quoteDetails .oneQuoteDetail .oneQuoteValue {
+.oneQuoteDetail .oneQuoteValue {
   padding: 30rpx 26rpx 40rpx;
-  color: #6B7790;
+  color: #6b7790;
   font-size: 24rpx;
 }
 
-.quoteDetails .oneQuoteDetail .oneQuoteValue view {
+.oneQuoteDetail .oneQuoteValue view {
   word-break: break-word;
 }
 
-.quoteDetails .bold {
+.oneQuoteDetail .bold {
   font-weight: bold;
-  color: #071E5D;
+  color: #071e5d;
 }
 
 /* Additional Services */
 .additionServicesContainers {
   padding: 30rpx;
   padding-bottom: calc(env(safe-area-inset-bottom) + 150rpx);
-  background-color: #F0F1F5;
+  background-color: #f0f1f5;
   min-height: calc(100vh - 30rpx - env(safe-area-inset-bottom) + 150rpx);
 }
 
 .noVasRemind {
   font-size: 32rpx;
-  color: #071E5D;
+  color: #071e5d;
   padding: 30rpx 60rpx;
   text-align: center;
 }
@@ -765,7 +796,7 @@
 .additionContainers {
   background-color: #ffffff;
   padding: 30rpx;
-  color: #071E5D;
+  color: #071e5d;
   font-size: 28rpx;
 }
 
@@ -775,14 +806,14 @@
   font-size: 32rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: bold;
-  color: #04246A;
+  color: #04246a;
   margin-bottom: 10rpx;
 }
 
 .additionContainers .additionContainer .additionTitleLine {
   width: 8rpx;
   height: 42rpx;
-  background-color: #E20202;
+  background-color: #e20202;
   margin-right: 16rpx;
 }
 
@@ -806,14 +837,14 @@
 
 .additionList .additionDetail {
   width: 390rpx;
-  color: #071E5D;
+  color: #071e5d;
   font-size: 20rpx;
 }
 
 .additionList .additionDetail .additionDetailTitle {
   font-size: 32rpx;
   font-family: Antonio-Regular, Antonio;
-  color: #071E5D;
+  color: #071e5d;
 }
 
 .additionList .additionDetail .vasDesc {
@@ -830,7 +861,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1rpx solid #EEEEEE;
+  border-top: 1rpx solid #eeeeee;
   padding-top: 20rpx;
   margin-top: 20rpx;
 }
@@ -844,7 +875,7 @@
   font-size: 48rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #E10202;
+  color: #e10202;
   margin-right: 10rpx;
 }
 
@@ -852,14 +883,14 @@
   font-size: 24rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
-  color: #071E5D;
+  color: #071e5d;
 }
 
 .additionList .additionDetail .vasBottom .vasBtn {
   width: 156rpx;
   height: 60rpx;
   border-radius: 0;
-  background-color: #071E5D;
+  background-color: #071e5d;
   color: #ffffff;
   font-size: 32rpx;
   padding: 0;
@@ -880,26 +911,28 @@
 .soc {
   margin: 30rpx 0 40rpx;
   background-color: #ffffff;
-  padding: 28rpx 48rpx;
+  padding: 0 48rpx;
 }
 .socTopTitle {
   display: flex;
   align-items: center;
   font-size: 48rpx;
-  font-family: Antonio-Regular, Antonio;
-  font-weight: bold;
-  color: #04246A;
+  font-family: Antonio-Regular;
+  font-weight: 400;
+  color: #04246a;
+  border-bottom: 1rpx solid #eeeeee;
+  padding: 20rpx 0;
 }
 
 .socTopTitleLine {
-  margin-right: 20rpx;
-  width: 8rpx;
-  height: 42rpx;
-  background-color: #E20202;
+  width: 6rpx;
+  height: 40rpx;
+  background-color: #e20202;
+  margin-right: 12rpx;
 }
 .socCheckbox {
   font-size: 28rpx;
-  color: #04246A;
+  color: #04246a;
   display: flex;
   align-items: center;
 }
@@ -912,14 +945,14 @@
 .socCheckbox .checked {
   width: 30rpx;
   height: 30rpx;
-  border: 1rpx solid #04246A;
+  border: 1rpx solid #04246a;
   transform: rotateZ(360deg);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .socCheckbox .checked.bg {
-  background-color: #04246A;
+  background-color: #04246a;
 }
 .socCheckbox .text {
   padding-left: 10rpx;
@@ -931,19 +964,32 @@
 
 .noRequest {
   font-size: 24rpx;
-  color: #E2014B;
+  color: #e2014b;
   display: flex;
   align-items: center;
 }
 .socDetail {
   font-size: 24rpx;
-  color: #071E5D;
+  color: #071e5d;
   margin: 20rpx 0;
 }
 
 .socTitle {
   font-size: 24rpx;
-  color: #071E5D;
+  color: #071e5d;
   margin: 40rpx 0 0;
   font-weight: 600;
+}
+
+.editIcon {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 60rpx;
+}
+
+.editIcon2 {
+  transform: rotate(180deg);
+  position: absolute;
+  right: 60rpx;
 }
