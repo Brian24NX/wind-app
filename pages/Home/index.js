@@ -80,18 +80,18 @@ Page({
           icon: '/assets/img/home/discover_2@2x.png',
           url: '/packageMore/pages/about/index'
         },
-        {
-          id: 'tariff',
-          type: 2,
-          icon: '/assets/img/home/tariffBook.png',
-          url: '/packagePrice/pages/guizufeilv/index'
-        },
         // {
-        //   id: 'news',
+        //   id: 'tariff',
         //   type: 2,
-        //   icon: '/assets/img/home/discover_3@2x.png',
-        //   url: '/packageMore/pages/news/list/index'
+        //   icon: '/assets/img/home/tariffBook.png',
+        //   url: '/packagePrice/pages/guizufeilv/index'
         // },
+        {
+          id: 'news',
+          type: 2,
+          icon: '/assets/img/home/discover_3@2x.png',
+          url: '/packageMore/pages/news/list/index'
+        },
         {
           id: 'onlineServices',
           type: 6,
@@ -141,6 +141,39 @@ Page({
     this.setData({
       searchHis: wx.getStorageSync('trackSearchHis')
     })
+    var transMode = {
+      'RD': {
+        code: 'RD',
+        label: 'Road',
+        zhLabel: '陆地',
+        icon: '/assets/img/result/road.png',
+      },
+      'BA': {
+        code: 'BA',
+        label: 'Barge',
+        zhLabel: '驳船',
+        icon: '/assets/img/result/barge.png',
+      },
+      'RL': {
+        code: 'RL',
+        label: 'Rail',
+        zhLabel: '铁道',
+        icon: '/assets/img/result/rail.png',
+      },
+      'RR': {
+        code: 'RR',
+        label: 'Rail / Road',
+        zhLabel: '铁路/公路',
+        icon: '/assets/img/result/railTruck.png',
+      },
+      'BR': {
+        code: 'BR',
+        label: 'Barge / Road',
+        zhLabel: '驳船/公路',
+        icon: '/assets/img/result/bargeRoad.png',
+      }
+    }
+    wx.setStorageSync('transMode', transMode);
   },
   /**
    * 生命周期函数--监听页面显示
@@ -260,6 +293,7 @@ Page({
 
   // 货物追踪
   toHuoWu() {
+    this.hideSearchHis()
     if (this.data.showRemind) {
       return
     }
@@ -301,7 +335,7 @@ Page({
     this.setData({
       searchHis: newHis
     })
-    this.showSearchHis();
+
     wx.setStorageSync('trackSearchHis', this.data.searchHis);
     wx.navigateTo({
       url: `/pages/Orders/index?str=${this.data.huoGuiValue.replaceAll(' ', '')}`
@@ -610,12 +644,16 @@ Page({
     })
   },
 
+  //选择历史记录
   chooseHis(e){
+    //判断是货柜号还是提单号
     var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
     var testInput = reg.test(e.detail);
     var testHave = false;
     const huoguiStr = this.data.huoGuiValue.replaceAll(' ', '')
     const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
+    if(huoguiStr.includes(e.detail)) return
+
     huogui.forEach(item => {
       if(reg.test(item.trim())){
         testHave = true
@@ -636,6 +674,8 @@ Page({
       })
     }
   },
+
+  //删除一条历史记录
   delHis(e){
     this.setData({
       searchHis: e.detail

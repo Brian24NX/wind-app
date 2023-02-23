@@ -18,6 +18,7 @@ Page({
     languageCode: '',
     todayDate: '',
     isFirst: true,
+    scrollTop: 0,//控制上滑距离
     otherList: [{
       icon: '/assets/img/instantQuote/other_1@2x.png',
       label: 'localCharge',
@@ -64,7 +65,14 @@ Page({
     subscribedServices: [],
     noSelectVasList: [],
     showVas: false,
-    isUs: false
+    isUs: false,
+    isSocAgree: false,
+    shipperOwnedContainer: false,
+    showError: false,
+    foldContainerRate: true,
+    foldBLRate: true,
+    foldQuoteDetail: true,
+    foldSoc: true
   },
 
   /**
@@ -93,7 +101,9 @@ Page({
       portOfDischargeLabel: data.portOfDischargeLabel,
       placeOfOrigin: data.placeOfOrigin,
       finalPlaceOfDelivery: data.finalPlaceOfDelivery,
-      transMode: wx.getStorageSync('transMode')
+      transMode: wx.getStorageSync('transMode'),
+      shipperOwnedContainer: data.shipperOwnedContainer,
+      isSocAgree: wx.getStorageSync('isSocAgree') ? wx.getStorageSync('isSocAgree') : false
     })
     this.setDefaultInfo(options.index, options.containers)
     if (!this.data.isUs) {
@@ -149,6 +159,13 @@ Page({
     if (!this.data.subscribedServices.length) return
     this.setData({
       showVas: !this.data.showVas
+    })
+  },
+
+  // 折叠
+  zhedie(e) {
+    this.setData({
+      [e.currentTarget.dataset.type]: !this.data[e.currentTarget.dataset.type]
     })
   },
 
@@ -209,7 +226,7 @@ Page({
 
   back() {
     this.setData({
-      isFirst: true
+      isFirst: true,
     })
     wx.pageScrollTo({
       duration: 300,
@@ -217,7 +234,37 @@ Page({
     })
   },
 
+  checkBoxToggle({
+    currentTarget
+  }) {
+    const keys = currentTarget.dataset.keys;
+    this.setData({
+      [keys]: !this.data[keys],
+    })
+    if(!this.data.isSocAgree){
+      this.setData({
+        showError: true
+      })
+    }else{
+      this.setData({
+        showError: false
+      })
+    }
+    wx.setStorageSync('isSocAgree',this.data.isSocAgree)
+  },
+
   submit() {
+    if(this.data.shipperOwnedContainer !== this.data.isSocAgree){
+      this.setData({
+        showError: true,
+        foldSoc: false
+      })
+      wx.pageScrollTo({
+        duration: 500,
+        scrollTop: 2000
+      })
+      return
+    }
     if (this.data.isFirst) {
       this.setData({
         isFirst: false
@@ -395,7 +442,6 @@ Page({
     }).then(res => {
       if (this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH') {
         const i = res.data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
-        console.log(i)
         if (i > -1) {
           res.data.splice(i, 1)
         }

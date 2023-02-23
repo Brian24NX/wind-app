@@ -647,7 +647,10 @@ var Languague = {
       total: 'TOTAL',
       include: 'INCLUDED IN OFFER',
       createFail: 'Failed to create quotation, please contact your agent',
-      getAgain: 'Get an Instant Quote'
+      getAgain: 'Get an Instant Quote',
+      soc: 'Shipper Owned Container (SOC)',
+      socAgree: 'I agree with these conditions',
+      socWarn: 'Please accept Terms and Conditions'
     },
     vas: {
       containers: 'Container',

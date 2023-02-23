@@ -57,7 +57,8 @@ Page({
     exportLocation: '',
     importLocation: '',
     showEmail: false,
-    commonEquipmentType: ''
+    commonEquipmentType: '',
+    transMode: {},
   },
 
   /**
@@ -91,7 +92,8 @@ Page({
       commonEquipmentType: data.commonEquipmentType,
       partnerCode: data.partnerCode,
       quotationDetail,
-      otherList: this.data.otherList
+      otherList: this.data.otherList,
+      transMode: wx.getStorageSync('transMode')
     })
     this.setChargeDetail()
     // this.dealEquipmentSize()
