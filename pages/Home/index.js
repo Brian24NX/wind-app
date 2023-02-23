@@ -643,13 +643,16 @@ Page({
     })
   },
 
+  //选择历史记录
   chooseHis(e){
+    //判断是货柜号还是提单号
     var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
     var testInput = reg.test(e.detail);
     var testHave = false;
     const huoguiStr = this.data.huoGuiValue.replaceAll(' ', '')
     const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
     huogui.forEach(item => {
+      if(e.detail === item ) return
       if(reg.test(item.trim())){
         testHave = true
       }else{
@@ -669,6 +672,8 @@ Page({
       })
     }
   },
+
+  //删除一条历史记录
   delHis(e){
     this.setData({
       searchHis: e.detail
