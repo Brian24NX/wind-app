@@ -86,8 +86,8 @@
           <view>{{languageContent.perRate}}</view>
           <image src="/assets/img/instantQuote/info.svg" class="info" catchtap="toRemind"></image>
         </view>
-        <image class="personImage" src="/assets/img/instantQuote/person@2x.png"></image>
-        <image class="editIcon {{foldContainerRate ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+        <!-- <image class="personImage" src="/assets/img/instantQuote/person@2x.png"></image> -->
+        <image class="editIcon {{foldContainerRate ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldContainerRate}}">
         <view class="rateTotal">
@@ -194,8 +194,7 @@
           <view class="titleLine"></view>
           <view>{{languageContent.perBL}}</view>
         </view>
-        <image class="personImage" src="/assets/img/instantQuote/person@2x.png"></image>
-        <image class="editIcon {{foldBLRate ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+        <image class="editIcon {{foldBLRate ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
         <view hidden="{{foldBLRate}}" style="padding-bottom: 30rpx;">
         <view class="rateTotal">
@@ -241,7 +240,7 @@
         <view class="titleLine"></view>
         <view>{{languageContent.quoteDetails}}</view>
       </view>
-        <image class="editIcon {{foldQuoteDetail ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+        <image class="editIcon {{foldQuoteDetail ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldQuoteDetail}}" style="padding: 30rpx 0;">
         <view class="oneQuoteDetail">
@@ -299,7 +298,7 @@
       <view class="socTopTitle" catchtap="zhedie" data-type="foldSoc">
         <view class="socTopTitleLine"></view>
         <view>{{languageContent.soc}}</view>
-        <image class="editIcon {{foldSoc ? 'editIcon2' : ''}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+        <image class="editIcon {{foldSoc ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldSoc}}" style="padding-bottom: 30rpx;">
         <view class="socTitle">Your offer is valid only if your container:</view>
