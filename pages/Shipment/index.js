@@ -82,6 +82,7 @@ Page({
 
   // 货物追踪
   toHuoWu() {
+    this.hideSearchHis()
     if (this.data.showRemind) {
       return
     }
@@ -120,7 +121,6 @@ Page({
     this.setData({
       searchHis: newHis
     })
-    this.showSearchHis();
     wx.setStorageSync('trackSearchHis', this.data.searchHis);
     wx.navigateTo({
       url: `/pages/Orders/index?str=${this.data.huoGuiValue.replaceAll(' ', '')}`
@@ -158,6 +158,7 @@ Page({
     var testHave = false;
     const huoguiStr = this.data.huoGuiValue.replaceAll(' ', '')
     const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
+    if(huoguiStr.includes(e.detail)) return
     huogui.forEach(item => {
       if(reg.test(item.trim())){
         testHave = true
