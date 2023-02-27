@@ -53,7 +53,7 @@
       <view class="oneParams">
         <image src="/assets/img/instantQuote/param_1@2x.png"></image>
         <view>
-          <view class="paramValue">{{equipmentTypeName}}</view>
+          <view class="paramValue">{{equipmentTypeName}} {{shipperOwnedContainer ? '(SOC)' : '' }}</view>
           <view class="param">{{languageContent.equipmentType}}</view>
         </view>
       </view>
@@ -87,6 +87,7 @@
           <image src="/assets/img/instantQuote/info.svg" class="info" catchtap="toRemind"></image>
         </view>
         <!-- <image class="personImage" src="/assets/img/instantQuote/person@2x.png"></image> -->
+        <!-- <view class="titleSOC" wx:if="{{shipperOwnedContainer}}"> {{item.equipmentType}} </view> -->
         <image class="editIcon {{foldContainerRate ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldContainerRate}}">

@@ -20,7 +20,8 @@ Page({
     toLabel: '',
     surchargeDetails: {},
     subscribedServices: [],
-    totalChargeAmount: 0
+    totalChargeAmount: 0,
+    shipperOwnedContainer: false,
   },
 
   /**
@@ -52,7 +53,8 @@ Page({
       toLabel: data.toLabel,
       surchargeDetails: data.quotationDetail.surchargeDetails,
       totalChargeAmount: data.totalChargeAmount,
-      subscribedServices: data.subscribedServices
+      subscribedServices: data.subscribedServices,
+      shipperOwnedContainer: data.shipperOwnedContainer,
     })
   },
 

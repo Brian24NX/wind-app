@@ -119,7 +119,6 @@ Page({
     showPartner: false,
     needLogin: null,
     hasPermission: null,
-    showDropdown: false  // 控制下拉框的显示和隐藏
   },
 
   /**
@@ -224,22 +223,6 @@ Page({
       })
     }
   },
-
-  // 点击下拉框外部容器时隐藏下拉框
-  hideDropdown: function() {
-    this.setData({
-      showDropdown: false
-    })
-  },
-  
-//   document.addEventListener('click', function handleClickOutsideBox(event) {
-//   const box = document.getElementById('box');
-
-//   if (!box.contains(event.target)) {
-//     box.style.display = 'none';
-//   }
-// });
- 
 
   checkAccessToken(callback) {
     if (!utils.checkAccessToken()) {
