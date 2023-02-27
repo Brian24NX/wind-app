@@ -295,7 +295,7 @@
       <custom-time minDate="{{minDate}}" maxDate="{{maxDate}}" showPopup="{{showDatePopup}}" currentDate="{{currentDate}}" bindonCancel="closeDate" bindonConfirm="confirmDate"></custom-time>
     </view>
   </view>
-  <view class="historyContainers" wx:if="{{currentType === 'instation'? hisListSpot.length : hisListQuot.length}}">
+  <!-- <view class="historyContainers" wx:if="{{currentType === 'instation'? hisListSpot.length : hisListQuot.length}}">
     <view class="historyTitle">
       <text>{{languageContent.history}}</text>
       <view class="clearstyle" bindtap="deleteall">
@@ -314,7 +314,7 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>
 </block>
 <block wx:else="{{needLogin === true && !hasPermission}}">
