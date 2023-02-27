@@ -10,7 +10,7 @@
       <view class="searchTitle">{{languageContent.protOfLoading}}</view>
       <view class="codeInputs {{showRemind1||showRemind2 ? 'noRequestBorder' : ''}}">
         <image class="codeIcon" src="../../assets/img/seniorsearch/position.png"></image>
-        <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" placeholder-style="color:#DFDFDF;" bindinput="changepol" />
+        <input value="{{polvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" placeholder-style="color:#DFDFDF;" bindinput="changepol" id="pol" bindblur="hideDropdown" />
         <view class="deleteIcon" wx:if="{{showDelete1}}" catchtap="deleteValue" data-type="1">
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
@@ -22,7 +22,7 @@
           <image src="/assets/img/search/error@2x.png"></image>
           <text>{{verifyInfo.gswx}}</text>
         </view>
-        <scroll-view class="scroll-view" wx:if='{{pollist.length}}' scroll-y>
+        <scroll-view class="scroll-view" wx:if='{{showDropdown.pol}}' scroll-y>
           <view wx:for="{{pollist}}" wx:key="index" class="item" bindtap='changepolname' data-index="{{index}}">
             <view class="polname">{{item.point}}</view>
           </view>
@@ -43,7 +43,7 @@
       <view class="searchTitle">{{languageContent.portOfDischarge}}</view>
       <view class="codeInputs {{showRemind3 || showRemind4 ? 'noRequestBorder' : ''}}">
         <image class="codeIcon" src="../../assets/img/seniorsearch/position.png"></image>
-        <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" placeholder-style="color:#DFDFDF;" bindinput="changepod" />
+        <input value="{{podvalue}}" type="text" placeholder="{{languageContent.name}}" placeholder-class="placeholder" placeholder-style="color:#DFDFDF;" bindinput="changepod" id="pod" bindblur="hideDropdown" />
         <view class="deleteIcon" wx:if="{{showDelete2}}" catchtap="deleteValue" data-type="2">
           <image src="../../assets/img/search/close@2x.png"></image>
         </view>
@@ -55,7 +55,7 @@
           <image src="/assets/img/search/error@2x.png"></image>
           <text>{{verifyInfo.gswx}}</text>
         </view>
-        <scroll-view class="scroll-view" wx:if='{{podlist.length}}' scroll-y>
+        <scroll-view class="scroll-view" wx:if='{{showDropdown.pod}}' scroll-y>
           <view wx:for="{{podlist}}" wx:key="index" class="item" bindtap='changepodname' data-index="{{index}}">
             <view class="polname">{{item.point}}</view>
           </view>

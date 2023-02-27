@@ -30,6 +30,12 @@ Page({
     hisListQuot: [],
     minDate: new Date().getTime(),
     maxDate: new Date().getTime() + 1000 * 60 * 60 * 24 * 30,
+    showDropdown: {
+      por: false,
+      pol: false,
+      pod: false,
+      podEnd: false,
+    },
     showPol: false,
     showPod: false,
     shipperOwnedContainer: false,
@@ -226,20 +232,20 @@ Page({
   },
 
   // 点击下拉框外部容器时隐藏下拉框
-  hideDropdown: function() {
+  hideDropdown: function () {
     this.setData({
       showDropdown: false
     })
   },
-  
-//   document.addEventListener('click', function handleClickOutsideBox(event) {
-//   const box = document.getElementById('box');
 
-//   if (!box.contains(event.target)) {
-//     box.style.display = 'none';
-//   }
-// });
- 
+  //   document.addEventListener('click', function handleClickOutsideBox(event) {
+  //   const box = document.getElementById('box');
+
+  //   if (!box.contains(event.target)) {
+  //     box.style.display = 'none';
+  //   }
+  // });
+
 
   checkAccessToken(callback) {
     if (!utils.checkAccessToken()) {
@@ -309,7 +315,7 @@ Page({
     })
     if (!data) {
       this.setData({
-        receiptHaulage : null,
+        receiptHaulage: null,
       })
       return
     }
@@ -318,8 +324,10 @@ Page({
         placeOfReceiptList: []
       })
       return
+    } else {
+      this.getPorData(data)
+      this.showDropdown(e[0].currentTarget.id || 'por')
     }
-    this.getPorData(data)
   }, 800),
 
   getPorData(data) {
@@ -385,8 +393,10 @@ Page({
         pollist: []
       })
       return
+    } else {
+      this.getPolData(data)
+      this.showDropdown(e[0].currentTarget.id || 'pol')
     }
-    this.getPolData(data)
   }, 800),
 
   getPolData(data) {
@@ -424,8 +434,10 @@ Page({
         podlist: []
       })
       return
+    } else {
+      this.getPodData(data)
+      this.showDropdown(e[0].currentTarget.id || 'pod')
     }
-    this.getPodData(data)
   }, 800),
 
   getPodData(data) {
@@ -467,8 +479,11 @@ Page({
         placeOfDeliveryList: []
       })
       return
+    } else {
+      this.getPooData(data)
+      this.showDropdown(e[0].currentTarget.id || 'podEnd')
     }
-    this.getPooData(data)
+
   }, 800),
 
   getPooData(data) {
@@ -1345,5 +1360,20 @@ Page({
       })
       wx.setStorageSync('quotationHis', rmList);
     }
+  },
+  showDropdown(id) {
+    var key = 'showDropdown.' + id
+    this.setData({
+      [key]: true
+    })
+  },
+
+  hideDropdown(e) {
+    var key = 'showDropdown.' + e.currentTarget.id
+    setTimeout(() => {
+      this.setData({
+        [key]: false,
+      })
+    }, 200)
   },
 })

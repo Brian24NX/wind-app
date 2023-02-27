@@ -18,6 +18,10 @@ Page({
     verifyInfo: {},
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
+    showDropdown: {
+      pol: false,
+      pod: false
+    },
     showPol: false,
     showPod: false,
     // 卸货港
@@ -63,7 +67,7 @@ Page({
     this.setDefaultLocation()
   },
 
-  onShareAppMessage: function () {},
+  onShareAppMessage: function () { },
 
   //初始化语言
   initLanguage() {
@@ -189,8 +193,10 @@ Page({
         pollist: []
       })
       return
+    } else {
+      this.getPolData(data)
+      this.showDropdown(e[0].currentTarget.id || 'pol')
     }
-    this.getPolData(data)
   }, 800),
 
   getPolData(data) {
@@ -228,8 +234,10 @@ Page({
         podlist: []
       })
       return
+    } else {
+      this.getPodData(data)
+      this.showDropdown(e[0].currentTarget.id || 'pod')
     }
-    this.getPodData(data)
   }, 800),
 
   getPodData(data) {
@@ -473,5 +481,20 @@ Page({
       array: history
     })
     wx.removeStorageSync('location')
-  }
+  },
+  showDropdown(id) {
+    var key = 'showDropdown.' + id
+    this.setData({
+      [key]: true
+    })
+  },
+
+  hideDropdown(e) {
+    var key = 'showDropdown.' + e.currentTarget.id
+    setTimeout(() => {
+      this.setData({
+        [key]: false,
+      })
+    }, 200)
+  },
 })
