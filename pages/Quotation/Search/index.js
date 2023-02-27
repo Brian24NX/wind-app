@@ -119,7 +119,6 @@ Page({
     showPartner: false,
     needLogin: null,
     hasPermission: null,
-    showDropdown: true, // 控制下拉框的显示和隐藏
   },
 
   /**
@@ -224,16 +223,6 @@ Page({
       })
     }
   },
-
-  // 点击下拉框外部容器时隐藏下拉框
-  hideDropdown () {
-    this.setData({
-      showDropdown: false,
-      pollist: []
-    })
-  },
-
- 
 
   checkAccessToken(callback) {
     if (!utils.checkAccessToken()) {
