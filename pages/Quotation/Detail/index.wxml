@@ -364,6 +364,8 @@
   </view>
   <!-- ============= VAS end ================ -->
 </block>
+
+</scroll-view>
 <view class="bottomButtonContainers" catchtap="prevent">
   <view class="subscribedContainers" wx:if="{{showVas}}">
     <view class="subscribedTitle">
@@ -412,7 +414,5 @@
     </view>
   </view>
 </view>
-</scroll-view>
-
 
 <view class="subscribedBg" catchtap="closeBg" catchtouchmove="prevent" wx:if="{{showVas}}"></view>

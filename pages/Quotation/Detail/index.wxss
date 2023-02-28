@@ -464,6 +464,7 @@
 
 .bottomButtonContainers .subscribedContainers {
   padding: 0 48rpx;
+  z-index: 99;
 }
 
 .bottomButtonContainers .subscribedTitle {
