@@ -357,6 +357,7 @@ function formatHuoYunStatus(code, language) {
 // 格式化文件状态
 function formatDocumentStatus(status, language) {
   const statusList = [{
+    id: '1',
     labelEn: "To be reviewed",
     labelCn: "等待审核"
   }, {

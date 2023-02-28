@@ -354,7 +354,7 @@ var Languague = {
       title: '船运概览',
       title1: '船运',
       title2: '概览',
-      placeholder: '搜索订舱号或提单号',
+      placeholder: '订舱号或提单号',
       shipment: '装运视图',
       shipmentRef: '运输号码',
       et: '到港时间',
