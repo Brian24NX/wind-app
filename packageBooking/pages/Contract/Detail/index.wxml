@@ -48,7 +48,7 @@
           <view style="text-align: right;">{{languageContent[filters.checkValidDate(quotationDetail.validityFrom, quotationDetail.validityTo)]}}</view>
         </view>
       </view>
-      
+
     </view>
   </view>
   <view class="paramContainer">
@@ -65,8 +65,8 @@
       </view>
     </view> -->
     <view class="oneParams">
-      <view class="imageBox" >
-        <image src="/assets/img/instantQuote/param_4@2x.png" mode="aspectFit" ></image>
+      <view class="imageBox">
+        <image src="/assets/img/instantQuote/param_4@2x.png" mode="aspectFit"></image>
       </view>
       <view class="paramValueContainer">
         <view class="paramValue">{{commonFilters.formatCommodityName(quotationDetail.commodities[0].name)}}</view>
@@ -74,8 +74,8 @@
       </view>
     </view>
     <view class="oneParams" wx:if="{{quotationDetail.spotOffer}}">
-      <view class="imageBox" >
-      <image src="/assets/img/instantQuote/param_3@2x.png" mode="aspectFit"></image>
+      <view class="imageBox">
+        <image src="/assets/img/instantQuote/param_3@2x.png" mode="aspectFit"></image>
       </view>
       <view class="paramValueContainer">
         <view class="paramValue">{{quotationDetail.numberOfContainer}}</view>
@@ -104,7 +104,8 @@
         <image src="/assets/img/instantQuote/person@2x.png"></image>
       </view>
       <view class="equipmentTypeList">
-        <view class="oneEquipment {{currentEquipmentType === index ? 'oneEquipmentChecked' : ''}}" wx:for="{{quotationDetail.surchargeDetails}}" wx:key="index" catchtap="changeCurrentEquipmentType" data-index="{{index}}">{{item.sizeType}}</view>
+        <view class="oneEquipment {{currentEquipmentType === index ? 'oneEquipmentChecked' : ''}}" wx:for="{{quotationDetail.surchargeDetails}}" wx:key="index" catchtap="changeCurrentEquipmentType" data-index="{{index}}">{{item.sizeType}} {{quotationDetail.shipperOwnedContainer ? '(SOC)' : ''}}      
+        </view>
       </view>
       <view class="rateTotal">
         <view class="rateTotalLeft">
