@@ -68,8 +68,8 @@ Component({
           }
           one.currentStatus = one.movement[beingIndex > -1 ? beingIndex : one.movement.length - 1]
           const vessel = one.movement.filter(i => (i.transportCall && (i.transportCall.modeOfTransport === 'VESSEL' || i.transportCall.modeOfTransport === 'BARGE')))
-          one.vesselName = vessel[vessel.length - 2].transportCall.vessel.vesselName
-          one.voyageReference = vessel[vessel.length - 2].transportCall.importVoyageNumber || vessel[vessel.length - 2].transportCall.exportVoyageNumber
+          one.vesselName = vessel[vessel.length - 2]?.transportCall.vessel.vesselName
+          one.voyageReference = vessel[vessel.length - 2]?.transportCall.importVoyageNumber || vessel[vessel.length - 2]?.transportCall.exportVoyageNumber
         }
       })
       // console.log("MORE lists ==>",lists)
