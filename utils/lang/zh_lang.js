@@ -155,6 +155,7 @@ var Languague = {
       chuanming: '船名',
       chuanci: '船次',
       noData: '未找到结果',
+      notFound: '未找到或已经卸货或返回到堆场',
       noDataDesc: '未找到或已经卸货或返回堆场'
     },
     //航线查询
