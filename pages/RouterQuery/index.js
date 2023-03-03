@@ -51,7 +51,12 @@ Page({
     popupType: 1,
     defaultIndex: 0,
     showDatePopup: false,
-    currentDate: null
+    currentDate: null,
+    showOverlay: false,
+    showDropdown: {
+      pol: false,
+      pod: false,
+    },
   },
 
 
@@ -189,8 +194,9 @@ Page({
         pollist: []
       })
       return
-    }
-    this.getPolData(data)
+    }else{
+      this.getPolData(data)
+      this.showDropdown(e[0].currentTarget.id || 'pol')}
   }, 800),
 
   getPolData(data) {
@@ -207,6 +213,8 @@ Page({
         this.setData({
           pollist: res.data || []
         })
+      }else{
+        this.hideDropdown()
       }
     }, () => {
       this.getPolData(data)
@@ -228,8 +236,10 @@ Page({
         podlist: []
       })
       return
-    }
+    }else{
     this.getPodData(data)
+    this.showDropdown(e[0].currentTarget.id || 'pod')
+    }
   }, 800),
 
   getPodData(data) {
@@ -246,6 +256,8 @@ Page({
         this.setData({
           podlist: res.data || []
         })
+      }else{
+        this.hideDropdown()
       }
     }, () => {
       this.getPodData(data)
@@ -283,6 +295,7 @@ Page({
       polcode: this.data.pollist[index].pointCode,
       pollist: [],
     })
+    this.hideDropdown()
   },
 
   // 卸货港
@@ -293,6 +306,7 @@ Page({
       podcode: this.data.podlist[index].pointCode,
       podlist: []
     })
+    this.hideDropdown()
   },
 
   openPopup(e) {
@@ -473,5 +487,23 @@ Page({
       array: history
     })
     wx.removeStorageSync('location')
-  }
+  },
+
+  showDropdown(id) {
+    var key = 'showDropdown.' + id
+    this.setData({
+      [key]: true,
+      showOverlay: true
+    })
+  },
+
+  hideDropdown(e) {
+    this.setData({
+      showDropdown: {
+        pol: false,
+        pod: false,
+      },
+      showOverlay: false
+    })
+  },
 })
