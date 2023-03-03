@@ -135,7 +135,7 @@ page {
   transform: rotateZ(360deg);
   top: 86rpx;
   left: -2rpx;
-  z-index: 40;
+  z-index: 99;
   max-height: 430rpx;
 }
 

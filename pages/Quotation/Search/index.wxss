@@ -1,6 +1,9 @@
 page {
   background-color: #F0F1F5;
 }
+.navbarContainer{
+  z-index: 500;
+}
 .contentContainer{
   padding-bottom: calc(130rpx + env(safe-area-inset-bottom));
 }

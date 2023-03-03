@@ -1,7 +1,7 @@
 <view class="navbarContainer" style="height: calc({{navHeight}}px + 36rpx);">
   <image style="margin-top: {{navTop}}px;" src="/assets/img/logo@2x.png" class="logo" mode="aspectFit"></image>
 </view>
-<van-overlay z-index="90" custom-style="opacity: 0.01" show="{{ showOverlay }}" bind:click="hideDropdown" lock-scroll="true">
+<van-overlay z-index="90" custom-style="opacity: 0.01" show="{{ showOverlay }}" bind:click="hideDropdown" lock-scroll="false">
 </van-overlay>
 <block wx:if="{{needLogin === false && hasPermission}}">
 <view class="contentContainer">
