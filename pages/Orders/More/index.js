@@ -28,6 +28,7 @@ Component({
   data: {
     lists: [],
     language: 'zh',
+    noDataItem: [],
   },
 
   ready() {
@@ -35,6 +36,13 @@ Component({
       language: languageUtils.languageVersion().lang.page.langue
     })
     this.setList()
+    var itemList = this.data.results
+    this.data.list.map(item => {
+      itemList.splice(itemList.findIndex(id => id === item.containerRef), 1);
+    })
+    this.setData({
+      noDataItem: itemList
+    })
   },
 
   /**

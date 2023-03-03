@@ -64,7 +64,7 @@
         <view class="stopDto dtoLeft"></view>
         <view class="stopDto dtoRight"></view>
         <view class="activedLine" style="width: {{(stepCount / totalCount) * 100 + '%;'}};"></view>
-        <image class="zhuizong" style="left: {{((stepCount / totalCount) * 100)< 10 ? '10%' : ((stepCount / totalCount) * 100) + '%;'}}" src="/assets/img/search/zhuizong@2x.png"></image>
+        <image class="zhuizong" style="left: {{(totalCount === 0 || ((stepCount / totalCount) * 100)< 10) ? '10%' : ((stepCount / totalCount) * 100) + '%;'}}" src="/assets/img/search/zhuizong@2x.png"></image>
       </view>
     </view>
     <view class="stepBottom">

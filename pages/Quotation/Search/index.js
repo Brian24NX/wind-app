@@ -119,6 +119,16 @@ Page({
     showPartner: false,
     needLogin: null,
     hasPermission: null,
+    showOverlay: false,
+    //隐藏下拉框
+    showDropdown: {
+      poo: false,
+      pol: false,
+      pod: false,
+      podEnd: false,
+    },
+    podEndWarn: false,
+    pooWarn: false,
   },
 
   /**
@@ -160,6 +170,11 @@ Page({
         hasPermission: utils.checkPermission('requestQuo')
       })
     }
+  },
+
+  isAdsValid(str){
+    let reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
+    return reg.test(str); 
   },
 
   onShareAppMessage: function () { },
@@ -288,11 +303,12 @@ Page({
     this.setData({
       showDelete4: !!data,
       showPoR: false,
+      pooWarn: false,
       placeOfReceiptList: []
     })
     if (!data) {
       this.setData({
-        receiptHaulage : null,
+        receiptHaulage: null,
       })
       return
     }
@@ -301,8 +317,10 @@ Page({
         placeOfReceiptList: []
       })
       return
+    } else {
+      this.getPorData(data)
+      this.showDropdown(e[0].currentTarget.id || 'poo')
     }
-    this.getPorData(data)
   }, 800),
 
   getPorData(data) {
@@ -321,6 +339,8 @@ Page({
           this.setData({
             placeOfReceiptList: res.data || []
           })
+        }else{
+          this.hideDropdown()
         }
       }, () => {
         this.getPorData(data)
@@ -368,8 +388,10 @@ Page({
         pollist: []
       })
       return
+    } else {
+      this.getPolData(data)
+      this.showDropdown(e[0].currentTarget.id || 'pol')
     }
-    this.getPolData(data)
   }, 800),
 
   getPolData(data) {
@@ -386,6 +408,8 @@ Page({
         this.setData({
           pollist: res.data || []
         })
+      }else{
+        this.hideDropdown()
       }
     }, () => {
       this.getPolData(data)
@@ -407,8 +431,10 @@ Page({
         podlist: []
       })
       return
+    } else {
+      this.getPodData(data)
+      this.showDropdown(e[0].currentTarget.id || 'pod')
     }
-    this.getPodData(data)
   }, 800),
 
   getPodData(data) {
@@ -425,6 +451,8 @@ Page({
         this.setData({
           podlist: res.data || []
         })
+      }else{
+        this.hideDropdown()
       }
     }, () => {
       this.getPodData(data)
@@ -437,6 +465,7 @@ Page({
     this.setData({
       showDelete5: !!data,
       showPoDe: false,
+      podEndWarn: false,
       placeOfDeliveryList: []
     })
     if (!data) {
@@ -450,8 +479,10 @@ Page({
         placeOfDeliveryList: []
       })
       return
+    } else {
+      this.getPooData(data)
+      this.showDropdown(e[0].currentTarget.id || 'podEnd')
     }
-    this.getPooData(data)
   }, 800),
 
   getPooData(data) {
@@ -470,6 +501,8 @@ Page({
           this.setData({
             placeOfDeliveryList: res.data || []
           })
+        }else{
+          this.hideDropdown()
         }
       }, () => {
         this.getPorData(data)
@@ -553,6 +586,7 @@ Page({
       receiptHaulage: this.data.placeOfReceiptList[index].PlaceType,
       placeOfReceiptList: [],
     })
+    this.hideDropdown()
   },
 
   // 起始港选择
@@ -563,6 +597,7 @@ Page({
       portOfLoading: this.data.pollist[index].pointCode,
       pollist: [],
     })
+    this.hideDropdown()
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
     } else {
@@ -578,6 +613,7 @@ Page({
       portOfDischarge: this.data.podlist[index].pointCode,
       podlist: []
     })
+    this.hideDropdown()
     if (this.data.currentType === 'instation') {
       this.getCommodityList()
     } else {
@@ -594,6 +630,7 @@ Page({
       deliveryHaulage: this.data.placeOfDeliveryList[index].PlaceType,
       placeOfDeliveryList: [],
     })
+    this.hideDropdown()
   },
 
   setWeight(e) {
@@ -890,13 +927,35 @@ Page({
   // 提交搜索
   submit() {
     wx.removeStorageSync('isSocAgree');
+    if (this.data.showDelete4) {
+      if (!this.isAdsValid(this.data.placeOfOriginLabel)) {
+        this.setData({
+          pooWarn: true
+        })
+      } else {
+        this.setData({
+          pooWarn: false
+        })
+      }
+    }
+
+    if (this.data.showDelete5) {
+      if (!this.isAdsValid(this.data.finalPlaceOfDeliveryLabel)) {
+        this.setData({
+          podEndWarn: true
+        })
+      } else {
+        this.setData({
+          podEndWarn: false
+        })
+      }
+    }
     if (this.data.showDelete1) {
       this.setData({
         showRemind1: false
       })
-      var reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
       if (this.data.portOfLoadingLabel) {
-        if (!reg.test(this.data.portOfLoadingLabel)) {
+        if (!this.isAdsValid(this.data.portOfLoadingLabel)) {
           this.setData({
             showRemind2: true
           })
@@ -923,7 +982,7 @@ Page({
         showRemind3: false
       })
       if (this.data.portOfDischargeLabel) {
-        if (!reg.test(this.data.portOfDischargeLabel)) {
+        if (!this.isAdsValid(this.data.portOfDischargeLabel)) {
           this.setData({
             showRemind4: true
           })
@@ -1199,7 +1258,9 @@ Page({
       showDelete4: false,
       showDelete5: false,
       checkPartnerList: JSON.parse(JSON.stringify(this.data.partnerList)),
-      partnerCode: []
+      partnerCode: [],
+      pooWarn: false,
+      podEndWarn: false
     })
   },
 
@@ -1214,6 +1275,27 @@ Page({
       showPartner: false
     })
   },
+
+  showDropdown(id) {
+    var key = 'showDropdown.' + id
+    this.setData({
+      [key]: true,
+      showOverlay: true
+    })
+  },
+
+  hideDropdown(e) {
+    this.setData({
+      showDropdown: {
+        poo: false,
+        pol: false,
+        pod: false,
+        podEnd: false,
+      },
+      showOverlay: false
+    })
+  },
+
   //保存查询历史-暂时不上
   // saveHistory() {
   //   var searchKey = {

@@ -16,6 +16,7 @@ Page({
     showRemind: false,
     loading: true,
     noData: false,
+    data: [],
     list: [],
     results: [],
     showSearch: true,
@@ -171,7 +172,8 @@ Page({
     })
     shipmentTracking(obj).then(res => {
       this.setData({
-        loading: false
+        loading: false,
+        data: res.data
       })
       const data = res.data;
       if (!data) {

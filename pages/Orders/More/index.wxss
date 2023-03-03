@@ -49,7 +49,7 @@
   border-bottom: none;
 }
 
-.orderMoreList .oneOrder .orderBottom .oneBottom .leftIcon {
+.leftIcon {
   width: 70rpx;
   height: 70rpx;
   margin-right: 30rpx;
@@ -91,7 +91,7 @@
   color: #04246A;
 }
 
-.orderMoreList .oneOrder .orderBottom .oneBottom .details .detailLeft .huogui {
+.huogui {
   color: #4468BA;
   font-size: 32rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
@@ -114,4 +114,28 @@
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #071E5D;
+}
+
+.noItemTop {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  border-bottom: 1rpx solid #DDDDDD;
+  font-size: 28rpx;
+}
+.noItemBox {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 20rpx;
+}
+.warnIcon {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 30rpx;
+}
+.warnText {
+  font-size: 24rpx;
+  color: #04246A;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
 }

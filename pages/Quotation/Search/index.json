@@ -6,7 +6,8 @@
     "legal-terms-remind": "/components/legalTermsRemind/index",
     "need-login": "/components/needLogin/index",
     "no-permission": "/components/noPermission/index",
-    "van-switch": "@vant/weapp/switch/index"
+    "van-switch": "@vant/weapp/switch/index",
+    "van-overlay": "@vant/weapp/overlay/index"
   },
   "navigationStyle": "custom"
 }

@@ -92,4 +92,16 @@
       </view>
     </view>
   </view>
+  <view wx:if="{{noDataItem.length > 0}}">
+    <view wx:for="{{noDataItem}}" class="oneOrder">
+      <view class="noItemTop">
+        <image src="/assets/img/search/jzxh@2x.png" mode="aspectFit" class="leftIcon"></image>
+        <view class="huogui">{{item}}</view>
+      </view>
+      <view class="noItemBox">
+        <image src="/assets/img/instantQuote/warning@2x.png" mode="aspectFit" class="warnIcon"></image>
+        <view class="warnText">{{languageContent.notFound}}</view>
+      </view>
+    </view>
+  </view>
 </view>
