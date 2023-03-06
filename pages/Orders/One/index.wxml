@@ -19,7 +19,7 @@
   <view class="timeContainer">
     <view class="times timeTop">
       <view class="left">
-        {{languageContent.language === 'en' ? filters.formatEnDateLocal(stepList[stepList.length - 1].eventDateTime, '-', 'short') : filters.formatCnDateLocal(stepList[stepList.length - 1].eventDateTime)}}
+        {{languageContent.language === 'en' ? filters.formatEnDateLocal(podTime, '-', 'short') : filters.formatCnDateLocal(podTime)}}
       </view>
       <view class="right">{{timeRemaining}} {{languageContent.tian}}</view>
     </view>
