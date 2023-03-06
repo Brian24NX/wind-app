@@ -49,7 +49,8 @@ Component({
     podCountryCode: '',
     customsReference: '',
     isNeiLu1: false,
-    isNeiLu2: false
+    isNeiLu2: false,
+    podTime: ''
   },
 
   ready: function () {
@@ -93,6 +94,11 @@ Component({
         item.orginDate = utils.substrTime(item.eventDateTime)
         item.orginDate = dayjs(item.orginDate).format('YYYY-MM-DD')
         const dayStatus = dayjs(item.orginDate).isBefore(dayjs(), 'date')
+        if(item.statusLabel === 'Discharged'){
+          this.setData({
+            podTime: item.eventDateTime
+          })
+        }
         if (dayStatus) {
           item.stepStatus = 'past'
         } else if (dayjs().isSame(dayjs(item.orginDate), 'date')) {
@@ -104,6 +110,13 @@ Component({
           item.stepStatus = 'coming'
         }
       })
+
+      if(this.data.podTime === ''){
+        this.setData({
+          podTime: list[list.length - 1].eventDateTime
+        }) 
+      }
+
       const movements = list.filter(i => (i.carrierSpecificData.shipmentLocationType === 'POL' || i.carrierSpecificData.shipmentLocationType === 'POD'))
       const pol = list.filter(i => (i.carrierSpecificData.shipmentLocationType === 'POL'))
       const pod = list.filter(i => (i.carrierSpecificData.shipmentLocationType === 'POD'))
