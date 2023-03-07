@@ -94,7 +94,7 @@ Component({
         item.orginDate = utils.substrTime(item.eventDateTime)
         item.orginDate = dayjs(item.orginDate).format('YYYY-MM-DD')
         const dayStatus = dayjs(item.orginDate).isBefore(dayjs(), 'date')
-        if(item.statusLabel === 'Discharged'){
+        if(item.carrierSpecificData.internalEventCode === 'IDF'){
           this.setData({
             podTime: item.eventDateTime
           })
