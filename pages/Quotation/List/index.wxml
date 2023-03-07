@@ -63,7 +63,8 @@
               </view>
             </view>
             <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="{{item.quoteLines && item.quoteLines[0].destination ? 'padding-bottom: 30rpx;' : ''}}">
-              <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivalDate, false, true) : commonFilters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}} {{item.placeOfDischargeLabel}}</text>
+              <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivalDate, false, true) : commonFilters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}}</text>
+              <view>{{item.placeOfDischargeLabel}}</view>
               <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
                 <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
                 <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
