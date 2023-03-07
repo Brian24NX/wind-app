@@ -168,10 +168,11 @@
 }
 
 .paramContainer .oneParams .paramValue {
-  font-size: 32rpx;
+  font-size: 24rpx;
   font-family: Arial-BoldMT, Arial;
   font-weight: normal;
   color: #071e5d;
+  word-break: keep-all
 }
 
 .paramContainer .oneParams .param {
