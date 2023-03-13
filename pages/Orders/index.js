@@ -151,17 +151,6 @@ Page({
     this.setData({
       searchHis: newHis
     })
-    
-    // if (this.data.searchHis) {
-    //   for (const i = 0; i < this.data.searchHis.length; i++) {
-    //     if (this.data.searchHis[i]== this.data.shipmentRef) {
-    //       this.data.searchHis.splice(this.data.searchHis.indexOf(this.data.searchHis[1]), 0, this.data.shipmentRef);//index:元素需要放置的位置索引，从0开始
-    //       this.data.searchHis.splice(i+1, 1);//移除原来位置上的该元素
-    //       break;
-    //     }
-    //   }
-    //   return this.data.searchHis
-    // }
     wx.setStorageSync('trackSearchHis', this.data.searchHis);
     this.getHuoGuiResult()
 
