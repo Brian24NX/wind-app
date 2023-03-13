@@ -64,7 +64,8 @@
               <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
               <view>{{item.service}}</view>
             </view>
-            <view class="time end">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivaldate, false, true) : commonFilters.formatEnDateLocal(item.arrivaldate, '-', '', false, true)}} {{item.pointto}}, {{podCode}}{{commonFilters.setChina(item.routingDetails[0].pointTo.location.internalCode)}}</view>
+            <view class="time end">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivaldate, false, true) : commonFilters.formatEnDateLocal(item.arrivaldate, '-', '', false, true)}}</view>
+            <view class="time">{{item.pointto}}, {{podCode}}{{commonFilters.setChina(item.routingDetails[0].pointTo.location.internalCode)}}</view>
           </view>
           <view class="rightContent">
             <view class="timeDay {{language === 'zh' ? '' : 'timeDayEn'}}">{{item.transitTime}} {{item.transitTime == 1 ? languageContent.day : languageContent.days}}</view>
