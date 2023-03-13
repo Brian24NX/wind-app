@@ -17,6 +17,7 @@ page {
   background-color: #F0F1F5;
   width: 690rpx;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .newsContainer .topTitles .topBg {
@@ -57,6 +58,14 @@ page {
   padding: 40rpx 40rpx 0;
   background-color: #ffffff;
   margin-top: 30rpx;
+  overflow-x: hidden;
+}
+
+scroll-view ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
 }
 
 .newsContainer .categoryList {

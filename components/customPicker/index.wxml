@@ -1,9 +1,9 @@
 <!--components/customPicker/index.wxml-->
 <van-popup bind:close="onClose" show="{{ showPopup }}" position="bottom">
-  <cover-view class="submitContainer" wx:if="{{showPicker}}">
-    <cover-view class="oneBtn" catchtap="onClose">{{languageContent.cancel}}</cover-view>
-    <cover-view class="oneBtn confirm" catchtap="onConfirm">{{languageContent.confirm}}</cover-view>
-  </cover-view>
+  <view class="submitContainer" wx:if="{{showPicker}}">
+    <view class="oneBtn" catchtap="onClose">{{languageContent.cancel}}</view>
+    <view class="oneBtn confirm" catchtap="onConfirm">{{languageContent.confirm}}</view>
+  </view>
   <picker-view wx:if="{{showPicker}}" indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
     <picker-view-column>
       <view wx:for="{{columns}}" class="onePicker" wx:key="index">{{item[valueKey]}}</view>
