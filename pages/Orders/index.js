@@ -29,9 +29,6 @@ Page({
    */
   onLoad: function (options) {
     this.initLanguage()
-    this.setData({
-      searchHis: wx.getStorageSync('trackSearchHis')
-    })
     if (options.showSearch) {
       this.setData({
         showSearch: false
@@ -43,6 +40,12 @@ Page({
       })
       this.getHuoGuiResult()
     }
+  },
+
+  onShow: function () {
+    this.setData({
+      searchHis: wx.getStorageSync('trackSearchHis')
+    })
   },
 
   initLanguage() {
@@ -129,7 +132,11 @@ Page({
     huogui.forEach(item => {
       var noSpaceItem = item.replace(/\s*/g,"")
       checkRes.push(reg.test(noSpaceItem))
-      if(noSpaceItem !== '' && serList.indexOf(noSpaceItem) === -1 ){
+      var idx = serList.indexOf(noSpaceItem)
+      if(idx !== -1){
+        serList.splice(idx,1)
+        serList.unshift(noSpaceItem)
+      }else if(noSpaceItem !== '' && idx === -1 ){
         if(serList.length < 5){
           serList.unshift(noSpaceItem)
         }else{

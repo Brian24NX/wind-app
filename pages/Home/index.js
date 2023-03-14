@@ -138,9 +138,6 @@ Page({
         actived: options.actived
       })
     }
-    this.setData({
-      searchHis: wx.getStorageSync('trackSearchHis')
-    })
     var transMode = {
       'RD': {
         code: 'RD',
@@ -175,10 +172,14 @@ Page({
     }
     wx.setStorageSync('transMode', transMode);
   },
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      searchHis: wx.getStorageSync('trackSearchHis')
+    })
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: 0,
@@ -313,7 +314,11 @@ Page({
     huogui.forEach(item => {
       var noSpaceItem = item.replace(/\s*/g,"")
       checkRes.push(reg.test(noSpaceItem))
-      if(noSpaceItem !== '' && serList.indexOf(noSpaceItem) === -1 ){
+      var idx = serList.indexOf(noSpaceItem)
+      if(idx !== -1){
+        serList.splice(idx,1)
+        serList.unshift(noSpaceItem)
+      }else if(noSpaceItem !== '' && idx === -1 ){
         if(serList.length < 5){
           serList.unshift(noSpaceItem)
         }else{

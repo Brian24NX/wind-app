@@ -273,10 +273,10 @@ var Languague = {
     sanction: {
       title: '货物运输限制',
       topTitle: '货物运输限制',
-      title1: '管制品',
+      title1: '货物运输限制',
       title2: '查询',
       placeholder: '名称/编码',
-      commodity: '管制品',
+      commodity: '货物运输限制',
       country: '国家/地区',
       type: '种类',
       code: '编码',

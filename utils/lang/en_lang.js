@@ -274,7 +274,7 @@ var Languague = {
       title1: 'Cargo',
       title2: ' Restriction',
       placeholder: 'Name or Ref. No.',
-      commodity: 'Commodity',
+      commodity: 'Cargo Restriction',
       country: 'Country/Region',
       type: 'Type',
       code: 'Reference Number',
