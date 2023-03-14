@@ -16,7 +16,6 @@ import {
   namedAccountsSearch
 } from '../../../api/modules/quotation';
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -927,6 +926,7 @@ Page({
   // 提交搜索
   submit() {
     wx.removeStorageSync('isSocAgree');
+    this.hideDropdown();
     if (this.data.showDelete4) {
       if (!this.isAdsValid(this.data.placeOfOriginLabel)) {
         this.setData({
@@ -1216,6 +1216,7 @@ Page({
   },
 
   reset() {
+    this.hideDropdown();
     this.setData({
       showPlaceOfDelivery: false,
       showPlaceOfReceipt: false,

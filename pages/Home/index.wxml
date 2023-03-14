@@ -1,6 +1,8 @@
 <view class="navbarContainer" style="height: calc({{navHeight}}px + 36rpx);">
   <image style="margin-top: {{navTop}}px;" src="../../assets/img/logo@2x.png" class="logo" mode="aspectFit"></image>
 </view>
+<van-overlay z-index="90" custom-style="opacity: 0.01" show="{{ showOverlay }}" bind:click="hideDropdown" lock-scroll="false">
+</van-overlay>
 <view class="homeContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
   <view class="searchContainers">
     <view class="tabContainer">
@@ -33,12 +35,12 @@
       <view class="serchTitle">{{languageContent.qyg}}</view>
       <view class="xialaInput">
         <view class="inputs {{showRemind2||showRemind5 ? 'noRequestBorder' : ''}}">
-          <input value="{{qiYunValue}}" type="text" placeholder="{{languageContent.gCode}}" placeholder-class="placeholder" bindinput="setQiYun" hold-keyboard="{{true}}" />
+          <input value="{{qiYunValue}}" type="text" placeholder="{{languageContent.gCode}}" placeholder-class="placeholder" bindinput="setQiYun" hold-keyboard="{{true}}" id="pol"/>
           <view class="delete" catchtap="clearInput" data-type="2" wx:if="{{showDelete1}}">
             <image src="../../assets/img/search/close@2x.png"></image>
           </view>
         </view>
-        <view class="xialaContainer" wx:if="{{codePolList.length}}">
+        <view class="xialaContainer" wx:if="{{showDropdown.pol}}">
           <view class="oneXiala" wx:for="{{codePolList}}" wx:key="index" bindtap='changepolname' data-index="{{index}}">{{item.point}}</view>
         </view>
         <view class="xialaContainer" wx:if="{{showPol}}">
@@ -56,12 +58,12 @@
       <view class="serchTitle mt20">{{languageContent.xhg}}</view>
       <view class="xialaInput">
         <view class="inputs {{showRemind3||showRemind4 ? 'noRequestBorder' : ''}}">
-          <input value="{{xieHuoValue}}" type="text" placeholder="{{languageContent.gCode}}" placeholder-class="placeholder" bindinput="setXieHuo" />
+          <input value="{{xieHuoValue}}" type="text" placeholder="{{languageContent.gCode}}" placeholder-class="placeholder" bindinput="setXieHuo" id="pod"/>
           <view class="delete" catchtap="clearInput" data-type="3" wx:if="{{showDelete2}}">
             <image src="../../assets/img/search/close@2x.png"></image>
           </view>
         </view>
-        <view class="xialaContainer" wx:if="{{codePodList.length}}">
+        <view class="xialaContainer" wx:if="{{showDropdown.pod}}">
           <view class="oneXiala" wx:for="{{codePodList}}" wx:key="index" bindtap='changepodname' data-index="{{index}}">{{item.point}}</view>
         </view>
         <view class="xialaContainer" wx:if="{{showPod}}">

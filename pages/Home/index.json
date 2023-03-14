@@ -2,7 +2,8 @@
   "usingComponents": {
     "tab-bar":"/custom-tab-bar/index",
     "legal-terms-remind": "/components/legalTermsRemind/index",
-    "item-list-box": "/components/itemListBox/index"
+    "item-list-box": "/components/itemListBox/index",
+    "van-overlay": "@vant/weapp/overlay/index"
   },
   "navigationStyle": "custom"
 }
