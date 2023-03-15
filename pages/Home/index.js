@@ -464,7 +464,7 @@ Page({
   },
 
   isAdsValid(str){
-    let reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
+    let reg = /^([A-z0-9\,\.\-\/\s]+[A-z0-9]+[\;]){2}([A-z0-9]+)$/;
     return reg.test(str); 
   },
 
@@ -476,7 +476,7 @@ Page({
         showRemind2: false
       })
       if (this.data.qiYunValue) {
-        if (!isAdsValid(this.data.qiYunValue)) {
+        if (!this.isAdsValid(this.data.qiYunValue)) {
           this.setData({
             showRemind5: true
           })
@@ -503,7 +503,7 @@ Page({
         showRemind3: false
       })
       if (this.data.xieHuoValue) {
-        if (!isAdsValid(this.data.xieHuoValue)) {
+        if (!this.isAdsValid(this.data.xieHuoValue)) {
           this.setData({
             showRemind4: true
           })
