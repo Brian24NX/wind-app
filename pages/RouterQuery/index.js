@@ -374,15 +374,20 @@ Page({
     return year + '-' + month + '-' + day;
   },
 
+  isAdsValid(str){
+    let reg = /^([A-z0-9\,\.\-\/\s]+[A-z0-9]+[\;]){2}([A-z0-9]+)$/;
+    return reg.test(str); 
+  },
+
   // 提交搜索
   submit() {
     if (this.data.showDelete1) {
       this.setData({
         showRemind1: false
       })
-      var reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
+      // var reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
       if (this.data.polvalue) {
-        if (!reg.test(this.data.polvalue)) {
+        if (!this.isAdsValid(this.data.polvalue)) {
           this.setData({
             showRemind2: true
           })
@@ -409,7 +414,7 @@ Page({
         showRemind3: false
       })
       if (this.data.podvalue) {
-        if (!reg.test(this.data.podvalue)) {
+        if (!this.isAdsValid(this.data.podvalue)) {
           this.setData({
             showRemind4: true
           })
