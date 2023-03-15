@@ -20,6 +20,11 @@ Page({
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     showHis: false,
+    showOverlay: false,
+    showDropdown: {
+      pol: false,
+      pod: false,
+    },
     searchHis: [],
     tabList: [{
       id: 'TRACKING'
@@ -362,8 +367,11 @@ Page({
         codePolList: []
       })
       return
+    }else{
+      this.getPolData(data)
+      this.showDropdown(e[0].currentTarget.id || 'pol')
     }
-    this.getPolData(data)
+    
   }, 800),
 
   getPolData(data) {
@@ -380,6 +388,8 @@ Page({
         this.setData({
           codePolList: res.data
         })
+      }else{
+        this.hideDropdown()
       }
     }, () => {
       this.getPolData(data)
@@ -401,8 +411,10 @@ Page({
         codePodList: []
       })
       return
+    }else{
+      this.getPodData(data)
+      this.showDropdown(e[0].currentTarget.id || 'pod')
     }
-    this.getPodData(data)
   }, 800),
 
   getPodData(data) {
@@ -419,6 +431,8 @@ Page({
         this.setData({
           codePodList: res.data
         })
+      }else{
+        this.hideDropdown()
       }
     }, () => {
       this.getPodData(data)
@@ -434,6 +448,7 @@ Page({
       qiYunValue: this.data.codePolList[index].point,
       qiYunCode: this.data.codePolList[index].pointCode
     })
+    this.hideDropdown()
   },
 
   // 设置卸货港
@@ -445,17 +460,23 @@ Page({
       xieHuoValue: this.data.codePodList[index].point,
       xieHuoCode: this.data.codePodList[index].pointCode
     })
+    this.hideDropdown()
+  },
+
+  isAdsValid(str){
+    let reg = /^([ ]*[A-z0-9]+([\,\.\-\;]*)){2,}$/;
+    return reg.test(str); 
   },
 
   // 船期搜索
   toChuanQi() {
+    this.hideDropdown();
     if (this.data.showDelete1) {
       this.setData({
         showRemind2: false
       })
-      var reg = /^([ ]*[A-z0-9]+([\/\,\.\-\;]*)){2,}$/;
       if (this.data.qiYunValue) {
-        if (!reg.test(this.data.qiYunValue)) {
+        if (!isAdsValid(this.data.qiYunValue)) {
           this.setData({
             showRemind5: true
           })
@@ -482,7 +503,7 @@ Page({
         showRemind3: false
       })
       if (this.data.xieHuoValue) {
-        if (!reg.test(this.data.xieHuoValue)) {
+        if (!isAdsValid(this.data.xieHuoValue)) {
           this.setData({
             showRemind4: true
           })
@@ -522,6 +543,7 @@ Page({
 
   // 高级查询
   toAdvancedSearch() {
+    this.hideDropdown();
     if (this.data.qiYunCode) {
       let polobject = {
         polvalue: this.data.qiYunValue,
@@ -686,5 +708,23 @@ Page({
       searchHis: e.detail
     })
     wx.setStorageSync('trackSearchHis',e.detail)
+  },
+
+  showDropdown(id) {
+    var key = 'showDropdown.' + id
+    this.setData({
+      [key]: true,
+      showOverlay: true
+    })
+  },
+
+  hideDropdown(e) {
+    this.setData({
+      showDropdown: {
+        pol: false,
+        pod: false,
+      },
+      showOverlay: false
+    })
   },
 })
