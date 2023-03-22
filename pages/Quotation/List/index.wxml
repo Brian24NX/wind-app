@@ -103,7 +103,7 @@
         <block wx:if="{{item.isLoading}}">
           <view class="oneBottom">
             <view class="bottomLeft">
-              <image src="/assets/img/instantQuote/cash.svg"></image>
+              <image src="/assets/img/instantQuote/Save-time-money2.svg"></image>
               <view class="priceCount">-</view>
               <view class="priceUnit">
                 <view class="unit"></view>
@@ -119,7 +119,7 @@
           <block wx:if="{{item.surchargeDetails && item.surchargeDetails.allocation}}">
             <view class="oneBottom">
               <view class="bottomLeft">
-                <image src="/assets/img/instantQuote/cash.svg"></image>
+                <image src="/assets/img/instantQuote/Save-time-money2.svg"></image>
                 <view class="priceCount">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.amount : '-'}}</view>
                 <view class="priceUnit">
                   <view class="unit">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.currency.code : ''}}</view>

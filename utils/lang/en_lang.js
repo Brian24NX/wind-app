@@ -88,7 +88,7 @@ var Languague = {
       onlineServices: 'Online Service',
       //增值服务
       valueAddedService: "Customer Advisory",
-      template: 'Template & Link',
+      template: 'Template\n &\u00A0Link',
       // 管制品
       gzp: 'Cargo Restriction',
       // 联系我们
