@@ -464,7 +464,7 @@ Page({
   },
 
   isAdsValid(str){
-    let reg = /^([A-z0-9\,\.\-\/\s]+[A-z0-9]+[\;]){2}([A-z0-9]+)$/;
+    let reg = /^([A-z0-9\,\.\-\/\s]+[A-z0-9\()]+[\;]){2}([A-z0-9]+)$/;
     return reg.test(str); 
   },
 

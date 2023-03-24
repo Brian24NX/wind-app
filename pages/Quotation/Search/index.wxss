@@ -269,8 +269,9 @@ page {
 }
 
 .queryContainer .btn {
-  width: 596rpx;
+  width: 517rpx;
   margin: 0 auto;
+  margin-left: 79rpx;
   z-index: 99;
   position: relative;
 }

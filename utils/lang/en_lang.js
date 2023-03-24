@@ -892,7 +892,7 @@ var Languague = {
       // 发送中
       send: 'Sending...',
       sendSuccess: 'Email sent successfully',
-      noLogin: 'Login failed or invalid. Please log in again',
+      noLogin: 'Login failed or invalid, please login again',
       notFound: 'This file is not available, please contact your agent',
       toLogin: 'Login',
       exit: 'Exiting...',
