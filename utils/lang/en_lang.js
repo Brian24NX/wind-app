@@ -309,7 +309,14 @@ var Languague = {
       document: 'Document\nDashboard',
       setting: 'Language Setting',
       legalTerms: 'Privacy Policy',
-      notifications: 'Manage My Notifications'
+      notifications: 'Manage My Notifications',
+      noAccount: "You don't have an account?",
+      siteName: 'CMA CGM eCommerce',
+      visitSite1: 'Please visit ',
+      visitSite2: ' website to register an account.',
+      refusedText: 'Please agree to phone number authorization before login',
+      refusedTitle: 'Info',
+      refusedButton: 'Ok'
     },
     legalTerms: {
       title: 'Privacy Policy',

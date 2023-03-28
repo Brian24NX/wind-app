@@ -34,3 +34,25 @@
   font-weight: 500;
   color: #FFFFFF;
 }
+
+.gotoWebsite {
+  color: #071E5D;
+  font-size: 28rpx;
+  position: relative;
+  padding-top: 24rpx;
+  width: 590rpx;
+  font-family: ArialMT;
+}
+
+.siteText {
+  font-size: 28rpx;
+  padding-top: 20rpx;
+  color: #071E5D;
+  font-family: ArialMT;
+}
+
+.urlCopy {
+  color: #2B73FC;
+  font-size: 28rpx;
+  font-family: ArialMT;
+}

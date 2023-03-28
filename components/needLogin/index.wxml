@@ -1,6 +1,14 @@
 <!--components/needLogin/index.wxml-->
 <view class="loginContainer">
-<image src="https://wind.cma-cgm.com/images/noLogin.png" mode=""/>
+  <image src="https://wind.cma-cgm.com/images/noLogin.png" mode="" />
   <view class="loginRemind">{{languageContent.noLogin}}</view>
-  <button class="loginBtn" catchtap="toLogin">{{languageContent.toLogin}}</button>
+  <button wx:if="{{!!phoneNumber}}" class="loginBtn" catchtap="toLogin" >{{languageContent.toLogin}}</button>
+  <button wx:else class="loginBtn" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber" >{{languageContent.toLogin}}</button>
+  <view class="gotoWebsite">
+    {{userCenter.noAccount}}
+    <view class="siteText">
+      {{userCenter.visitSite1}}
+      <text catchtap="copy" class="urlCopy">{{userCenter.siteName}}</text>{{userCenter.visitSite2}}
+    </view>
+  </view>
 </view>

@@ -82,3 +82,23 @@ export const equitmentSizeListSpotOn = (params) => {
 export const getCommodityLists = (params) => {
   return getRequest('/api/miniapp/quotation/quotationCommodities', params, true, true, true)
 }
+
+//获取手机号
+export const getUserPhoneNumber = (params) => {
+  return getRequest('/api/miniapp/user/wx/getPhoneNumber', params, false, false, true)
+}
+
+//获取微信token
+export const getWXToken = () => {
+  return getRequest('/api/miniapp/user/wx/getAccessToken', false, true)
+}
+
+// 绑定手机号
+export const bindPhone = (params) => {
+  return postRequest('/api/miniapp/bindPhoneNumber', params, true, true, true, true)
+}
+
+// 检查绑定
+export const checkPhoneBind = (params) => {
+  return postRequest('/api/miniapp/checkBind', params, true, true, true, true)
+}

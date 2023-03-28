@@ -312,6 +312,13 @@ var Languague = {
       setting: '语言设置',
       legalTerms: '隐私政策',
       notifications: '管理我的通知',
+      noAccount: '您还没有账户？',
+      siteName: 'CMA CGM',
+      visitSite1: '请前往 ',
+      visitSite2: ' 官网申请账户。',
+      refusedText: '您已拒绝授权，请重新点击并授权',
+      refusedTitle: '提示',
+      refusedButton: '知道了'
     },
     legalTerms: {
       title: '隐私政策',
