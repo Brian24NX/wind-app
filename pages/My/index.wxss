@@ -32,26 +32,27 @@ page {
   color: #ffffff;
 }
 
-.myNavbarContainer .myNavbarContent .userInfoContainer {
+.userInfoContainer {
   width: 690rpx;
-  height: 162rpx;
+  /* height: 162rpx; */
   background-color: #ffffff;
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
-  display: flex;
+  z-index: 10; */
+  padding: 30rpx 46rpx;
+  /* display: flex;
   align-items: center;
-  padding: 0 46rpx;
+  padding: 0 46rpx; */
 }
 
-.myNavbarContainer .myNavbarContent .userInfoContainer .avatar {
+.userInfoContainer .avatar {
   width: 88rpx;
   height: 88rpx;
 }
 
-.myNavbarContainer .myNavbarContent .userInfoContainer .avatar2 {
+.userInfoContainer .avatar2 {
   width: 96rpx;
   height: 96rpx;
   background-color: #04246A;
@@ -64,30 +65,41 @@ page {
   font-weight: bold;
 }
 
-.myNavbarContainer .myNavbarContent .userInfoContainer .infoCenter {
+.userInfoContainer .infoCenter {
   width: 490rpx;
   padding: 0 40rpx;
   color: #04246A;
   font-size: 36rpx;
 }
 
-.myNavbarContainer .myNavbarContent .userInfoContainer .noLogin {
+.userInfoContainer .noLogin {
   text-align: right;
   font-size: 28rpx;
 }
 
-.myNavbarContainer .myNavbarContent .userInfoContainer .rightIcon {
+button[type=default][plain] {
+  border: 0;
+  color: #04246A;
+}
+
+.userInfoContainer .rightIcon {
   width: 16rpx;
   height: 28rpx;
 }
 
 .myContainer {
-  padding: 410rpx 30rpx 0;
+  padding: 225rpx 30rpx 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
 .myContainer .myDashboard {
   background-color: #ffffff;
   padding: 0 46rpx;
+  margin-top: 30rpx;
 }
 
 .myContainer .myDashboard .myDashboardTitle {
@@ -143,4 +155,45 @@ page {
   width: 62rpx;
   height: 62rpx;
   margin-right: 20rpx;
+}
+
+.loginContainer {
+  width: 690rpx;
+  height: 162rpx;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.loginIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gotoWebsite {
+  background-color: #ffffff;
+  color: #071E5D;
+  font-size: 28rpx;
+  position: relative;
+  padding-top: 20rpx;
+  margin-top: 20rpx;
+  font-family: ArialMT;
+  border-top: 1rpx solid #EEEEEE;
+}
+
+.siteText {
+  font-size: 28rpx;
+  padding-top: 20rpx;
+  color: #071E5D;
+  font-family: ArialMT;
+}
+
+.urlCopy {
+  color: #2B73FC;
+  font-size: 28rpx;
+  font-family: ArialMT;
 }

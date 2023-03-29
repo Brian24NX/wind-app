@@ -4,7 +4,8 @@ const languageUtils = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
 import {
   customerProfile,
-  customerPartners
+  customerPartners,
+  getUserPhoneNumber,
 } from '../../api/modules/home'
 Page({
   /**
@@ -25,7 +26,9 @@ Page({
     }],
     needLogin: false,
     userInfo: {},
-    showRemind: false
+    showRemind: false,
+    phoneNumber: '',
+    preAccount: ''
   },
 
   /**
@@ -33,6 +36,12 @@ Page({
    */
   onLoad: function () {
     this.initLanguage();
+    let phone = wx.getStorageSync('phone')
+    if (phone) {
+      this.setData({
+        phoneNumber: phone
+      })
+    }
   },
 
   /**
@@ -80,6 +89,13 @@ Page({
           userInfo
         })
       }
+      //判断手机是否绑定
+      let phone = wx.getStorageSync('phone')
+      if (phone) {
+        this.setData({
+          phoneNumber: phone
+        })
+      }
       this.setData({
         needLogin: false
       })
@@ -122,6 +138,30 @@ Page({
       })
       this.getTabBar().setData({
         show: false
+      })
+    }
+
+  },
+
+  onGetPhoneNumber(e) {
+    if (e.detail.errMsg === "getPhoneNumber:ok") {
+      getUserPhoneNumber({
+        code: e.detail.code
+      }).then(res => {
+        this.setData({
+          phoneNumber: res.data
+        })
+        wx.setStorageSync('phone', res.data)
+        this.toLogin()
+      }).catch(err => {
+        console.error(err)
+      });
+    } else if (e.detail.errMsg === "getPhoneNumber:fail user deny") {
+      wx.showModal({
+        title: this.data.languageContent.refusedTitle,
+        content: this.data.languageContent.refusedText,
+        showCancel: false,
+        confirmText: this.data.languageContent.refusedButton
       })
     }
   },
@@ -207,5 +247,19 @@ Page({
         url: '/pages/Login/index',
       })
     }
+  },
+  copy() {
+    const url = 'https://www.cma-cgm.com/ebusiness/registration/information'
+    wx.setClipboardData({
+      data: url,
+      success() {
+        wx.showToast({
+          title: languageUtils.languageVersion().lang.page.copyInfo.success,
+          icon: 'none',
+          mask: true,
+          duration: 2000
+        })
+      }
+    })
   }
 })

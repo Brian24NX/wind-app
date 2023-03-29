@@ -1,19 +1,33 @@
 <view class="myNavbarContainer" style="padding-top: {{navTop}}px;">
   <view class="myNavbarContent">
     <view class="myNavBarTitle" style="height: {{navHeight}}px;">{{languageContent.title}}</view>
-    <view class="userInfoContainer" wx:if="{{needLogin}}" catchtap="toLogin">
+  </view>
+</view>
+
+<view class="myContainer">
+  <view class="userInfoContainer" wx:if="{{needLogin}}">
+    <view class="loginIcon">
       <image class="avatar" src="/assets/img/myAccount/avatar@2x.png"></image>
-      <view class="infoCenter noLogin">{{languageContent.login}}</view>
+      <!-- <view class="infoCenter noLogin">{{languageContent.login}}</view> -->
+      <button wx:if="{{!!phoneNumber}}" class="infoCenter noLogin" type="default" plain="true" catchtap="toLogin">{{languageContent.login}}</button>
+      <button wx:else class="infoCenter noLogin" type="default" plain="true" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber" >{{languageContent.login}}</button>
       <van-icon name="arrow" color="#04246A" />
     </view>
-    <view class="userInfoContainer" wx:else catchtap="toBaseInfo">
+    <view class="gotoWebsite">
+      {{languageContent.noAccount}}
+      <view class="siteText">
+        {{languageContent.visitSite1}}
+        <text catchtap="copy" class="urlCopy">{{languageContent.siteName}}</text>{{languageContent.visitSite2}}
+      </view>
+    </view>
+  </view>
+  <view class="userInfoContainer" wx:else catchtap="toBaseInfo">
+    <view class="loginIcon">
       <view class="avatar2">{{userInfo.avatar}}</view>
       <view class="infoCenter">{{userInfo.firstName}} {{userInfo.lastName}}</view>
       <van-icon name="arrow" color="#04246A" />
     </view>
   </view>
-</view>
-<view class="myContainer">
   <view class="myDashboard">
     <view class="myDashboardTitle">{{languageContent.myDashboard}}</view>
     <view class="dashboardList">
