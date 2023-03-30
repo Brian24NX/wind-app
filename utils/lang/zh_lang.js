@@ -73,7 +73,7 @@ var Languague = {
       //实时报价
       instantQuote: "实时报价",
       //柜租费率
-      DDCharges: "D&D费用",
+      DDCharges: "柜租费率",
       //查询费率
       chargeFinder: "查询费率",
       guizu: '柜租费率',
@@ -134,7 +134,7 @@ var Languague = {
       gzp: '货物运输限制',
       gzfl: '柜租费率\n(标准)',
       cxfl: '查询费率',
-      ddCharges: 'D&D费用\n(模拟)'
+      ddCharges: '柜租费率\n(动态)'
     },
     // 查询结果
     queryRes: {

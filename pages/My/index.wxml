@@ -15,7 +15,7 @@
       {{languageContent.noAccount}}
       <view class="siteText">
         {{languageContent.visitSite1}}
-        <text catchtap="copy" class="urlCopy">{{languageContent.siteName}}</text>{{languageContent.visitSite2}}
+        <text catchtap="copy" class="urlCopy">{{languageContent.siteName}} website</text>{{languageContent.visitSite2}}
       </view>
     </view>
   </view>
