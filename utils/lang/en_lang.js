@@ -311,9 +311,9 @@ var Languague = {
       legalTerms: 'Privacy Policy',
       notifications: 'Manage My Notifications',
       noAccount: "You don't have an account?",
-      siteName: 'CMA CGM eCommerce',
+      siteName: 'CMA CGM official',
       visitSite1: 'Please visit ',
-      visitSite2: ' website to register an account.',
+      visitSite2: ' to register an account.',
       refusedText: 'Please agree to phone number authorization before login',
       refusedTitle: 'Info',
       refusedButton: 'Ok'
@@ -879,7 +879,7 @@ var Languague = {
       cancel: 'Cancel'
     },
     copyInfo: {
-      success: 'Successfully copied, please view in browser',
+      success: 'Successfully copied,\nplease visit in browser',
       success2: 'Successfully copied'
     },
     load: {
