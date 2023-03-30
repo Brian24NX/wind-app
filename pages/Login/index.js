@@ -35,7 +35,11 @@ Page({
           "openId": openId,
           "phoneNumber": phone
         }).then(res => {
-          console.log('成功绑定手机', phone)
+          console.log('成功绑定手机')
+          wx.setStorageSync('bindDate', new Date())
+          wx.setStorageSync('phone', phone)
+        }).catch(err => {
+          console.error(err)
         })
       }
     })
@@ -70,11 +74,9 @@ Page({
             if (!openId) {
               wx.login({
                 success(res) {
-                  console.log('wx.login:', res)
                   wx.request({
                     url: config[config.dev_env].url + '/api/miniapp/wx/user/login?code=' + res.code,
                     success(data) {
-                      console.log('login code:', data)
                       wx.setStorageSync('openId', data.data.data)
                     }
                   })
