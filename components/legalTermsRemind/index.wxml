@@ -8,7 +8,7 @@
       <text>{{languageContent.desc3}}</text>
     </view>
     <view class="remindDesc">{{languageContent.desc4}}</view>
-    <button class="allow" catchtap="allow">{{languageContent.allow}}</button>
+    <button class="allow" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber">{{languageContent.allow}}</button>
     <view class="refuse" catchtap="refuse">{{languageContent.refuse}}</view>
   </view>
 </view>

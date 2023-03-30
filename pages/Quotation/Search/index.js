@@ -138,8 +138,8 @@ Page({
     this.getEquitmentSizeList()
     this.setData({
       simulationDate: this.getDate(),
-      // hisListSpot: wx.getStorageSync('spotOnHis'),
-      // hisListQuot: wx.getStorageSync('quotationHis')
+      hisListSpot: wx.getStorageSync('spotOnHis'),
+      hisListQuot: wx.getStorageSync('quotationHis')
     })
     wx.removeStorageSync('isSocAgree');
   },
@@ -171,9 +171,9 @@ Page({
     }
   },
 
-  isAdsValid(str){
+  isAdsValid(str) {
     let reg = /^([A-z0-9\,\.\-\/\s]+[A-z0-9]+[\;]){2}([A-z0-9]+)$/;
-    return reg.test(str); 
+    return reg.test(str);
   },
 
   onShareAppMessage: function () { },
@@ -224,7 +224,7 @@ Page({
   },
 
   toLogin() {
-    if (wx.getStorageSync('allowLegalTerms')) {
+    if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
       wx.navigateTo({
         url: '/pages/Login/index',
       })
@@ -247,7 +247,7 @@ Page({
         duration: 2500
       })
       setTimeout(() => {
-        if (wx.getStorageSync('allowLegalTerms')) {
+        if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
           wx.navigateTo({
             url: '/pages/Login/index',
           })
@@ -338,7 +338,7 @@ Page({
           this.setData({
             placeOfReceiptList: res.data || []
           })
-        }else{
+        } else {
           this.hideDropdown()
         }
       }, () => {
@@ -407,7 +407,7 @@ Page({
         this.setData({
           pollist: res.data || []
         })
-      }else{
+      } else {
         this.hideDropdown()
       }
     }, () => {
@@ -450,7 +450,7 @@ Page({
         this.setData({
           podlist: res.data || []
         })
-      }else{
+      } else {
         this.hideDropdown()
       }
     }, () => {
@@ -500,7 +500,7 @@ Page({
           this.setData({
             placeOfDeliveryList: res.data || []
           })
-        }else{
+        } else {
           this.hideDropdown()
         }
       }, () => {
@@ -881,9 +881,7 @@ Page({
       show: true
     })
     if (e.detail) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      this.toLogin()
     }
   },
 
@@ -1039,7 +1037,7 @@ Page({
       }
       if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6 || (this.data.partnerList.length > 1 && this.data.showRemind7)) return
       this.checkAccessToken(() => {
-        // this.saveHistory()
+        this.saveHistory()
         if (this.data.pricingGroups.length) {
           if (this.data.commodityCode === "FAK") {
             this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
@@ -1063,7 +1061,7 @@ Page({
             partnerCode: [this.data.partnerList[0].code]
           })
         }
-        // this.saveHistory()
+        this.saveHistory()
         wx.navigateTo({
           url: '/packageBooking/pages/Contract/List/index',
         })
@@ -1297,119 +1295,119 @@ Page({
     })
   },
 
-  //保存查询历史-暂时不上
-  // saveHistory() {
-  //   var searchKey = {
-  //     key: this.data.placeOfOrigin + '-' + this.data.portOfLoading + '-' + this.data.portOfDischarge + '-' + this.data.finalPlaceOfDelivery,
-  //     poo: this.data.placeOfOrigin || '',
-  //     pooLabel: this.data.placeOfOriginLabel || '',
-  //     pol: this.data.portOfLoading,
-  //     polLabel: this.data.portOfLoadingLabel,
-  //     pod: this.data.portOfDischarge,
-  //     podLabel: this.data.portOfDischargeLabel,
-  //     fpod: this.data.finalPlaceOfDelivery || '',
-  //     fpodLabel: this.data.finalPlaceOfDeliveryLabel || ''
-  //   }
-  //   searchKey.key = searchKey.poo + '-' + searchKey.pol + '-' + searchKey.pod + '-' + searchKey.fpod;
-  //   var history = [];
-  //   if (this.data.currentType === 'instation') {
-  //     history = this.data.hisListSpot || []
-  //   } else {
-  //     history = this.data.hisListQuot || []
-  //   }
+  //保存查询历史
+  saveHistory() {
+    var searchKey = {
+      key: this.data.placeOfOrigin + '-' + this.data.portOfLoading + '-' + this.data.portOfDischarge + '-' + this.data.finalPlaceOfDelivery,
+      poo: this.data.placeOfOrigin || '',
+      pooLabel: this.data.placeOfOriginLabel || '',
+      pol: this.data.portOfLoading,
+      polLabel: this.data.portOfLoadingLabel,
+      pod: this.data.portOfDischarge,
+      podLabel: this.data.portOfDischargeLabel,
+      fpod: this.data.finalPlaceOfDelivery || '',
+      fpodLabel: this.data.finalPlaceOfDeliveryLabel || ''
+    }
+    searchKey.key = searchKey.poo + '-' + searchKey.pol + '-' + searchKey.pod + '-' + searchKey.fpod;
+    var history = [];
+    if (this.data.currentType === 'instation') {
+      history = this.data.hisListSpot || []
+    } else {
+      history = this.data.hisListQuot || []
+    }
 
-  //   if (history.findIndex(item => item.key === searchKey.key) === -1) {
-  //     if (history.length < 5) {
-  //       history.unshift(searchKey)
-  //     } else {
-  //       history.unshift(searchKey)
-  //       history.splice(history.length - 1, 1)
-  //     }
-  //   }
+    if (history.findIndex(item => item.key === searchKey.key) === -1) {
+      if (history.length < 5) {
+        history.unshift(searchKey)
+      } else {
+        history.unshift(searchKey)
+        history.splice(history.length - 1, 1)
+      }
+    }
 
-  //   if (this.data.currentType === 'instation') {
-  //     this.setData({
-  //       hisListSpot: history
-  //     })
-  //     wx.setStorageSync('spotOnHis', history)
-  //   } else {
-  //     this.setData({
-  //       hisListQuot: history
-  //     })
-  //     wx.setStorageSync('quotationHis', history)
-  //   }
-  // },
+    if (this.data.currentType === 'instation') {
+      this.setData({
+        hisListSpot: history
+      })
+      wx.setStorageSync('spotOnHis', history)
+    } else {
+      this.setData({
+        hisListQuot: history
+      })
+      wx.setStorageSync('quotationHis', history)
+    }
+  },
 
-  // deleteall() {
-  //   if (this.data.currentType === 'instation') {
-  //     this.setData({
-  //       hisListSpot: []
-  //     })
-  //     wx.removeStorageSync('spotOnHis')
-  //   } else {
-  //     this.setData({
-  //       hisListQuot: []
-  //     })
-  //     wx.removeStorageSync('quotationHis')
-  //   }
+  deleteall() {
+    if (this.data.currentType === 'instation') {
+      this.setData({
+        hisListSpot: []
+      })
+      wx.removeStorageSync('spotOnHis')
+    } else {
+      this.setData({
+        hisListQuot: []
+      })
+      wx.removeStorageSync('quotationHis')
+    }
 
-  // },
-  // getlocation(e) {
-  //   var idx = e.currentTarget.dataset.index;
-  //   var listData = []
-  //   if (this.data.currentType === 'instation') {
-  //     listData = this.data.hisListSpot
-  //   } else {
-  //     listData = this.data.hisListQuot
-  //   }
+  },
+  getlocation(e) {
+    var idx = e.currentTarget.dataset.index;
+    var listData = []
+    if (this.data.currentType === 'instation') {
+      listData = this.data.hisListSpot
+    } else {
+      listData = this.data.hisListQuot
+    }
 
-  //   this.setData({
-  //     placeOfOrigin: listData[idx].poo || '',
-  //     portOfLoading: listData[idx].pol,
-  //     portOfDischarge: listData[idx].pod,
-  //     finalPlaceOfDelivery: listData[idx].fpod || '',
-  //     placeOfOriginLabel: listData[idx].pooLabel || '',
-  //     portOfDischargeLabel: listData[idx].podLabel,
-  //     portOfLoadingLabel: listData[idx].polLabel,
-  //     finalPlaceOfDeliveryLabel: listData[idx].fpodLabel || '',
-  //     showPlaceOfReceipt: listData[idx].poo !== '' ? true : false,
-  //     showPlaceOfDelivery: listData[idx].fpod !== '' ? true : false,
-  //     showRemind1: false,
-  //     showRemind2: false,
-  //     showRemind3: false,
-  //     showRemind4: false,
-  //     showDelete1: true,
-  //     showDelete2: true,
-  //     showDelete4: true,
-  //     showDelete5: true,
-  //   }, () => {
-  //     if (this.data.currentType === 'instation') {
-  //       this.getCommodityList()
-  //     } else {
-  //       this.getNamedAccountsSearch()
-  //     }
-  //   })
-  // },
-  // deleteOne(e) {
-  //   let curKey = e.currentTarget.dataset.index;
-  //   let rmList = []
-  //   if (this.data.currentType === 'instation') {
-  //     rmList = this.data.hisListSpot
-  //   } else {
-  //     rmList = this.data.hisListQuot
-  //   }
-  //   var idx = rmList.findIndex(item => item.key === curKey)
-  //   rmList.splice(idx, 1)
-  //   if (this.data.currentType === 'instation') {
-  //     this.setData({
-  //       hisListSpot: rmList
-  //     })
-  //     wx.setStorageSync('spotOnHis', rmList);
-  //   } else {
-  //     this.setData({
-  //       hisListQuot: rmList
-  //     })
-  //     wx.setStorageSync('quotationHis', rmList);
-  //   }
-  // },
+    this.setData({
+      placeOfOrigin: listData[idx].poo || '',
+      portOfLoading: listData[idx].pol,
+      portOfDischarge: listData[idx].pod,
+      finalPlaceOfDelivery: listData[idx].fpod || '',
+      placeOfOriginLabel: listData[idx].pooLabel || '',
+      portOfDischargeLabel: listData[idx].podLabel,
+      portOfLoadingLabel: listData[idx].polLabel,
+      finalPlaceOfDeliveryLabel: listData[idx].fpodLabel || '',
+      showPlaceOfReceipt: listData[idx].poo !== '' ? true : false,
+      showPlaceOfDelivery: listData[idx].fpod !== '' ? true : false,
+      showRemind1: false,
+      showRemind2: false,
+      showRemind3: false,
+      showRemind4: false,
+      showDelete1: true,
+      showDelete2: true,
+      showDelete4: true,
+      showDelete5: true,
+    }, () => {
+      if (this.data.currentType === 'instation') {
+        this.getCommodityList()
+      } else {
+        this.getNamedAccountsSearch()
+      }
+    })
+  },
+  deleteOne(e) {
+    let curKey = e.currentTarget.dataset.index;
+    let rmList = []
+    if (this.data.currentType === 'instation') {
+      rmList = this.data.hisListSpot
+    } else {
+      rmList = this.data.hisListQuot
+    }
+    var idx = rmList.findIndex(item => item.key === curKey)
+    rmList.splice(idx, 1)
+    if (this.data.currentType === 'instation') {
+      this.setData({
+        hisListSpot: rmList
+      })
+      wx.setStorageSync('spotOnHis', rmList);
+    } else {
+      this.setData({
+        hisListQuot: rmList
+      })
+      wx.setStorageSync('quotationHis', rmList);
+    }
+  },
 })

@@ -2,8 +2,7 @@
 <view class="loginContainer">
   <image src="https://wind.cma-cgm.com/images/noLogin.png" mode="" />
   <view class="loginRemind">{{languageContent.noLogin}}</view>
-  <button wx:if="{{!!phoneNumber}}" class="loginBtn" catchtap="toLogin" >{{languageContent.toLogin}}</button>
-  <button wx:else class="loginBtn" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber" >{{languageContent.toLogin}}</button>
+  <button class="loginBtn" catchtap="toLogin" >{{languageContent.toLogin}}</button>
   <view class="gotoWebsite">
     {{userCenter.noAccount}}
     <view class="siteText">

@@ -182,9 +182,7 @@ Page({
       wx.removeStorageSync('expires_time')
       wx.removeStorageSync('access_token')
       setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/Login/index',
-        })
+        this.toLogin()
       }, 500)
     }
   },
@@ -212,9 +210,7 @@ Page({
       wx.removeStorageSync('expires_time')
       wx.removeStorageSync('access_token')
       setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/Login/index',
-        })
+        this.toLogin()
       }, 500)
     }
   },
@@ -244,9 +240,7 @@ Page({
       wx.removeStorageSync('expires_time')
       wx.removeStorageSync('access_token')
       setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/Login/index',
-        })
+        this.toLogin()
       }, 500)
     }
   },

@@ -599,7 +599,7 @@ Page({
 
   // 去登录
   toLogin() {
-    if (wx.getStorageSync('allowLegalTerms')) {
+    if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
       wx.navigateTo({
         url: '/pages/Login/index',
       })
@@ -621,9 +621,7 @@ Page({
       show: true
     })
     if (e.detail) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      this.toLogin()
     }
   },
 

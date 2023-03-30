@@ -13,7 +13,7 @@ Page({
     load: {},
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
-    menuList: [ {
+    menuList: [{
       style: "330rpx",
       icon: '/assets/img/menu/D&D@2x.png',
       isNew: true,
@@ -54,7 +54,7 @@ Page({
       type: 2,
       url: '/packageMore/pages/sanctionCheck/list/index',
       needLogin: false
-    }, 
+    },
     {
       style: "330rpx",
       icon: '/assets/img/menu/dc@2x.png',
@@ -78,7 +78,7 @@ Page({
     }
   },
 
-  onShareAppMessage: function () {},
+  onShareAppMessage: function () { },
 
   toFunction(e) {
     const index = e.currentTarget.dataset.index
@@ -115,7 +115,7 @@ Page({
 
   // 去登录
   toLogin() {
-    if (wx.getStorageSync('allowLegalTerms')) {
+    if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
       wx.navigateTo({
         url: '/pages/Login/index',
       })
@@ -137,9 +137,7 @@ Page({
       show: true
     })
     if (e.detail) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      this.toLogin()
     }
   },
 

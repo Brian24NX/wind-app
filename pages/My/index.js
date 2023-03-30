@@ -5,7 +5,6 @@ const utils = require('../../utils/util')
 import {
   customerProfile,
   customerPartners,
-  getUserPhoneNumber,
 } from '../../api/modules/home'
 Page({
   /**
@@ -128,7 +127,7 @@ Page({
 
   // 去登录
   toLogin() {
-    if (wx.getStorageSync('allowLegalTerms')) {
+    if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
       wx.navigateTo({
         url: '/pages/Login/index',
       })
@@ -141,29 +140,6 @@ Page({
       })
     }
 
-  },
-
-  onGetPhoneNumber(e) {
-    if (e.detail.errMsg === "getPhoneNumber:ok") {
-      getUserPhoneNumber({
-        code: e.detail.code
-      }).then(res => {
-        this.setData({
-          phoneNumber: res.data
-        })
-        wx.setStorageSync('phone', res.data)
-        this.toLogin()
-      }).catch(err => {
-        console.error(err)
-      });
-    } else if (e.detail.errMsg === "getPhoneNumber:fail user deny") {
-      wx.showModal({
-        title: this.data.languageContent.refusedTitle,
-        content: this.data.languageContent.refusedText,
-        showCancel: false,
-        confirmText: this.data.languageContent.refusedButton
-      })
-    }
   },
 
   toBaseInfo() {
@@ -214,9 +190,7 @@ Page({
       wx.removeStorageSync('expires_time')
       wx.removeStorageSync('access_token')
       setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/Login/index',
-        })
+        this.toLogin()
       }, 500)
     }
   },
@@ -243,9 +217,7 @@ Page({
       show: true
     })
     if (e.detail) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      this.toLogin()
     }
   },
   copy() {

@@ -8,9 +8,7 @@
   <view class="userInfoContainer" wx:if="{{needLogin}}">
     <view class="loginIcon">
       <image class="avatar" src="/assets/img/myAccount/avatar@2x.png"></image>
-      <!-- <view class="infoCenter noLogin">{{languageContent.login}}</view> -->
-      <button wx:if="{{!!phoneNumber}}" class="infoCenter noLogin" type="default" plain="true" catchtap="toLogin">{{languageContent.login}}</button>
-      <button wx:else class="infoCenter noLogin" type="default" plain="true" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber" >{{languageContent.login}}</button>
+      <button class="infoCenter noLogin" type="default" plain="true" catchtap="toLogin">{{languageContent.login}}</button>
       <van-icon name="arrow" color="#04246A" />
     </view>
     <view class="gotoWebsite">
