@@ -881,7 +881,9 @@ Page({
       show: true
     })
     if (e.detail) {
-      this.toLogin()
+      wx.navigateTo({
+        url: '/pages/Login/index',
+      })
     }
   },
 
