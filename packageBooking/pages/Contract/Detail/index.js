@@ -59,6 +59,8 @@ Page({
     showEmail: false,
     commonEquipmentType: '',
     transMode: {},
+    foldContainerRate: true,
+    foldEachRate: true
   },
 
   /**
@@ -391,5 +393,12 @@ Page({
     let day = now.getDate();
     day = day < 10 ? ('0' + day) : day
     return year + '-' + month + '-' + day;
-  }
+  },
+
+    // 折叠
+  zhedie(e) {
+    this.setData({
+      [e.currentTarget.dataset.type]: !this.data[e.currentTarget.dataset.type]
+    })
+  },
 })
