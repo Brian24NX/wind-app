@@ -458,7 +458,8 @@ var Languague = {
       import: 'Import',
       // 计算费用
       count: 'Calculate Charges',
-      noContainer: 'No container found, please check your shipment reference'
+      noContainer: 'No container found, please check your shipment reference',
+      errTip: 'No match found: your ref is incorrect or no charges were raised at this date.'
     },
     NewDDChargesResult: {
       title: 'D&D Result',

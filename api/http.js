@@ -22,11 +22,11 @@ const request = ({
       })
       wx.removeStorageSync('expires_time')
       wx.removeStorageSync('access_token')
-      // setTimeout(() => {
-      //   wx.navigateTo({
-      //     url: '/pages/Login/index',
-      //   })
-      // }, 3000)
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/Login/index',
+        })
+      }, 3000)
       reject()
       return
     }
@@ -65,11 +65,11 @@ const request = ({
             })
             wx.removeStorageSync('expires_time')
             wx.removeStorageSync('access_token')
-            // setTimeout(() => {
-            //   wx.navigateTo({
-            //     url: '/pages/Login/index'
-            //   })
-            // }, 3000)
+            setTimeout(() => {
+              wx.navigateTo({
+                url: '/pages/Login/index'
+              })
+            }, 3000)
           } else if (res.data.code == 408) {
             if (!needError) {
               wx.showToast({
@@ -86,11 +86,11 @@ const request = ({
                 title: languageUtil.languageVersion().lang.page.load.noLogin,
                 icon: 'none'
               })
-              // setTimeout(() => {
-              //   wx.navigateTo({
-              //     url: '/pages/Login/index',
-              //   })
-              // }, 2000);
+              setTimeout(() => {
+                wx.navigateTo({
+                  url: '/pages/Login/index',
+                })
+              }, 2000);
             }
             reject(res.data)
           } else if (res.data.code == 403) {

@@ -461,7 +461,8 @@ var Languague = {
       import: '进口费用',
       // 计算费用
       count: '计算费用',
-      noContainer: '没有找到相关货柜，请核实您的提单'
+      noContainer: '没有找到相关货柜，请核实您的提单',
+      errTip: '没有找到匹配的：不正确的日期或者集装箱号码'
     },
     NewDDChargesResult: {
       title: 'D&D 结果',

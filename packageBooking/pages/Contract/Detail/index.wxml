@@ -219,7 +219,7 @@
         <image class="editIcon {{foldEachRate ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
         <!-- <image src="/assets/img/instantQuote/person@2x.png"></image> -->
       </view>
-      <view hidden="{{foldEachRate}}">
+      <view hidden="{{foldEachRate}}" class="hiddenBox">
         <view class="rateTotal">
           <view class="rateTotalLeft">
             <image src="/assets/img/search/jzxh@2x.png"></image>

@@ -793,3 +793,7 @@
   position: absolute;
   right: 60rpx;
 }
+
+.hiddenBox {
+  padding-bottom: 30rpx;
+}
