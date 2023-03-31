@@ -762,7 +762,7 @@
 }
 
 .socTopTitleLine {
-  margin-right: 20rpx;
+  margin-right: 12rpx;
   width: 6rpx;
   height: 42rpx;
   background-color: #E20202;
