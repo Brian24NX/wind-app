@@ -260,7 +260,7 @@
     <view class="soc" wx:if="{{quotationDetail.shipperOwnedContainer}}">
       <view class="socTopTitle" catchtap="zhedie" data-type="foldsoc">
         <view class="socTopTitleLine"></view>
-        <view>{{languageContent.socQua}}</view>
+        <view>{{languageContent.soc}}</view>
         <image class="editIcon {{foldsoc ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldsoc}}" class="hiddenBox">

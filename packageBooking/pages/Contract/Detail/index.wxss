@@ -756,14 +756,14 @@
   display: flex;
   align-items: center;
   font-size: 48rpx;
-  font-family: Antonio-Regular, Antonio;
-  font-weight: bold;
+  font-family: Antonio-Regular;
+  font-weight: 400;
   color: #04246A;
 }
 
 .socTopTitleLine {
   margin-right: 20rpx;
-  width: 8rpx;
+  width: 6rpx;
   height: 42rpx;
   background-color: #E20202;
 }

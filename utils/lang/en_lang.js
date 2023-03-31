@@ -657,10 +657,9 @@ var Languague = {
       include: 'INCLUDED IN OFFER',
       createFail: 'Failed to create quotation, please contact your agent',
       getAgain: 'Get an Instant Quote',
-      soc: 'Shipper Owned Container (SOC)',
+      soc: 'Shipper Owned Container',
       socAgree: 'I agree with these conditions',
       socWarn: 'Please accept Terms and Conditions',
-      socQua: 'Shipper Owned Container'
     },
     vas: {
       containers: 'Container',

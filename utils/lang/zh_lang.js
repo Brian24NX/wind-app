@@ -662,7 +662,6 @@ var Languague = {
       soc: '托运人自备集装箱（SOC）',
       socAgree: '我同意这些条件',
       socWarn: '请接受T&C',
-      socQua: '托运人自备集装箱',
     },
     vas: {
       containers: '柜号',
