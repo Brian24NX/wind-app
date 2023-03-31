@@ -313,7 +313,7 @@ var Languague = {
       legalTerms: '隐私政策',
       notifications: '管理我的通知',
       noAccount: '您还没有账户？',
-      siteName: 'CMA CGM',
+      siteName: 'CMA CGM official',
       visitSite1: '请前往 ',
       visitSite2: ' 官网申请账户。',
       refusedText: '您已拒绝授权，请重新点击并授权',
@@ -442,9 +442,9 @@ var Languague = {
     },
     //new D&D Charges
     NewDDCharges: {
-      title: 'D&D 费用',
-      title1: 'D&D',
-      title2: '费用',
+      title: '柜租费率',
+      title1: '柜租费率',
+      title2: '',
       //运输编号
       byShipment: '按运输编号',
       //集装箱号
