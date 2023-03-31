@@ -232,6 +232,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1rpx solid #eeeeee;
+  padding: 20rpx 0;
 }
 
 .rateTitles .titleLeft {
@@ -257,11 +258,11 @@
   margin-top: -20rpx;
 }
 
-.rateTitles > image {
+/* .rateTitles > image {
   width: 146rpx;
   height: 106rpx;
   margin-right: -20rpx;
-}
+} */
 
 .rateTypeContainers {
   display: flex;
@@ -778,4 +779,17 @@
   color: #071E5D;
   margin: 40rpx 0 0;
   font-weight: 600;
+}
+
+.editIcon {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 60rpx;
+}
+
+.editIcon2 {
+  transform: rotate(180deg);
+  position: absolute;
+  right: 60rpx;
 }
