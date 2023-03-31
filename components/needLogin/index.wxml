@@ -7,7 +7,7 @@
     {{userCenter.noAccount}}
     <view class="siteText">
       {{userCenter.visitSite1}}
-      <text catchtap="copy" class="urlCopy">{{userCenter.siteName}} website </text>{{userCenter.visitSite2}}
+      <text catchtap="copy" class="urlCopy">{{userCenter.siteName}} </text>{{userCenter.visitSite2}}
     </view>
   </view>
 </view>

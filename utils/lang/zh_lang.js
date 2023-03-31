@@ -313,9 +313,9 @@ var Languague = {
       legalTerms: '隐私政策',
       notifications: '管理我的通知',
       noAccount: '您还没有账户？',
-      siteName: 'CMA CGM official',
+      siteName: 'CMA CGM官网',
       visitSite1: '请前往 ',
-      visitSite2: ' 官网申请账户。',
+      visitSite2: ' 申请账户。',
       refusedText: '您已拒绝授权，请重新点击并授权',
       refusedTitle: '提示',
       refusedButton: '知道了'
@@ -661,7 +661,8 @@ var Languague = {
       getAgain: '获取报价',
       soc: '托运人自备集装箱（SOC）',
       socAgree: '我同意这些条件',
-      socWarn: '请接受T&C'
+      socWarn: '请接受T&C',
+      socQua: '托运人自备集装箱',
     },
     vas: {
       containers: '柜号',

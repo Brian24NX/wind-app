@@ -311,7 +311,7 @@ var Languague = {
       legalTerms: 'Privacy Policy',
       notifications: 'Manage My Notifications',
       noAccount: "You don't have an account?",
-      siteName: 'CMA CGM official',
+      siteName: 'CMA CGM official website',
       visitSite1: 'Please visit ',
       visitSite2: ' to register an account.',
       refusedText: 'Please agree to phone number authorization before login',
@@ -659,7 +659,8 @@ var Languague = {
       getAgain: 'Get an Instant Quote',
       soc: 'Shipper Owned Container (SOC)',
       socAgree: 'I agree with these conditions',
-      socWarn: 'Please accept Terms and Conditions'
+      socWarn: 'Please accept Terms and Conditions',
+      socQua: 'Shipper Owned Container'
     },
     vas: {
       containers: 'Container',
