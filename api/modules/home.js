@@ -102,3 +102,8 @@ export const bindPhone = (params) => {
 export const checkPhoneBind = (params) => {
   return postRequest('/api/miniapp/checkBind', params, true, true, true, true)
 }
+
+//写日志
+export const writeOperationLog = (params) => {
+  return postRequest('/api/miniapp/operation/miniLog', params, true, true, true, true)
+}

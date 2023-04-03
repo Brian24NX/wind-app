@@ -5,6 +5,8 @@ import {
   createQuotationQuotation
 } from '../../../api/modules/quotation';
 
+import { writeOperationLog } from '../../../api/modules/home'
+
 Page({
 
   /**
@@ -241,20 +243,20 @@ Page({
     this.setData({
       [keys]: !this.data[keys],
     })
-    if(!this.data.isSocAgree){
+    if (!this.data.isSocAgree) {
       this.setData({
         showError: true
       })
-    }else{
+    } else {
       this.setData({
         showError: false
       })
     }
-    wx.setStorageSync('isSocAgree',this.data.isSocAgree)
+    wx.setStorageSync('isSocAgree', this.data.isSocAgree)
   },
 
   submit() {
-    if(this.data.shipperOwnedContainer !== this.data.isSocAgree){
+    if (this.data.shipperOwnedContainer !== this.data.isSocAgree) {
       this.setData({
         showError: true,
         foldSoc: false
@@ -346,7 +348,19 @@ Page({
         }
       }
       createQuotationQuotation(params, wx.getStorageSync('ccgId')).then(res => {
+        const userInfo = wx.getStorageSync('userInfo')
         if (res.data) {
+          const params = {
+            "account": userInfo.email,
+            "ccgid": userInfo.ccgId,
+            "company": userInfo.company,
+            "nickname": userInfo.firstName + ' ' + userInfo.lastName,
+            "operationType": "SpotOn",
+            "shipmentRef": res.data
+          }
+          writeOperationLog(params).then(result => {
+            console.log('SpotOn日志记录成功')
+          })
           wx.navigateTo({
             url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
           })
