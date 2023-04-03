@@ -356,7 +356,7 @@ Page({
             "company": userInfo.company,
             "nickname": userInfo.firstName + ' ' + userInfo.lastName,
             "operationType": "SpotOn",
-            "shipmentRef": res.data
+            "shipmentRef": res.data ? res.data : '-'
           }
           writeOperationLog(params).then(result => {
             console.log('SpotOn日志记录成功')

@@ -42,7 +42,7 @@ Page({
             "company": _this.data.userInfo.company,
             "nickname": _this.data.userInfo.firstName + ' ' + _this.data.userInfo.lastName,
             "operationType": "Logout",
-            "shipmentRef": ""
+            "shipmentRef": "-"
           }
           writeOperationLog(params).then(res => {
             console.log('登出日志记录成功')

@@ -129,7 +129,7 @@ Page({
           "company": userInfo.company,
           "nickname": userInfo.firstName + ' ' + userInfo.lastName,
           "operationType": "Login",
-          "shipmentRef": ""
+          "shipmentRef": "-"
         }
         writeOperationLog(params).then(res => {
           console.log('登录日志记录成功')
