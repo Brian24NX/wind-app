@@ -354,7 +354,7 @@ Page({
             "account": userInfo.email,
             "ccgid": userInfo.ccgId,
             "company": userInfo.company,
-            "nickname": userInfo.firstName + ' ' + userInfo.lastName,
+            "nickname": userInfo.firstName + userInfo.lastName,
             "operationType": "SpotOn",
             "shipmentRef": res.data ? res.data : '-'
           }
