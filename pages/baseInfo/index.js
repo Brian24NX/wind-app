@@ -40,7 +40,7 @@ Page({
             "account": _this.data.userInfo.email,
             "ccgid": _this.data.userInfo.ccgId,
             "company": _this.data.userInfo.company,
-            "nickname": _this.data.userInfo.firstName + ' ' + _this.data.userInfo.lastName,
+            "nickname": _this.data.userInfo.firstName + _this.data.userInfo.lastName,
             "operationType": "Logout",
             "shipmentRef": "-"
           }
