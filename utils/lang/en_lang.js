@@ -934,7 +934,7 @@ var Languague = {
           id: 0,
           name: 'booking',
           title: 'Booking Follow up',
-          description: 'This notification informs you of the following events: booking request, modification or cancellation received, booking confirmed, refused or cancelled.',
+          description: 'This notification informs you that your booking is confirmed.',
         },
         {
           id: 1,

@@ -936,7 +936,7 @@ var Languague = {
           id: 0,
           name: 'booking',
           title: '订舱跟进',
-          description: '这个通知涉及以下事项：订舱申请，修改申请和取消申请，订舱确认，订舱已被拒绝和取消。',
+          description: '此通知用于通知您的订舱已确认。',
         },
         {
           id: 1,
