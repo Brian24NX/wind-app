@@ -60,7 +60,8 @@ Page({
     commonEquipmentType: '',
     transMode: {},
     foldContainerRate: true,
-    foldEachRate: true
+    foldEachRate: true,
+    foldsoc: true
   },
 
   /**

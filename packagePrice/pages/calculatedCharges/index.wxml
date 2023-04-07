@@ -80,7 +80,7 @@
       </view>
       <view class="reminds reminds2" wx:if="{{errTip}}">
         <image src="/assets/img/search/error@2x.png"></image>
-        <view>{{errTip}}</view>
+        <view>{{languageContent.errTip}}</view>
       </view>
       <view class="waring" wx:if="{{containers.length}}">
         <image src="/assets/img/price/waring.svg"></image>

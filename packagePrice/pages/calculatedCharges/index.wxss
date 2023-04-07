@@ -24,7 +24,7 @@ page {
 }
 
 .lines {
-  width: 6rpx;
+  width: 8rpx;
   height: 50rpx;
   background: #E20202;
 }

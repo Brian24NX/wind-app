@@ -311,7 +311,7 @@ var Languague = {
       legalTerms: 'Privacy Policy',
       notifications: 'Manage My Notifications',
       noAccount: "You don't have an account?",
-      siteName: 'CMA CGM official',
+      siteName: 'CMA CGM official website',
       visitSite1: 'Please visit ',
       visitSite2: ' to register an account.',
       refusedText: 'Please agree to phone number authorization before login',
@@ -458,7 +458,8 @@ var Languague = {
       import: 'Import',
       // 计算费用
       count: 'Calculate Charges',
-      noContainer: 'No container found, please check your shipment reference'
+      noContainer: 'No container found, please check your shipment reference',
+      errTip: 'No match found: your ref is incorrect or no charges were raised at this date.'
     },
     NewDDChargesResult: {
       title: 'D&D Result',
@@ -656,9 +657,9 @@ var Languague = {
       include: 'INCLUDED IN OFFER',
       createFail: 'Failed to create quotation, please contact your agent',
       getAgain: 'Get an Instant Quote',
-      soc: 'Shipper Owned Container (SOC)',
+      soc: 'Shipper Owned Container',
       socAgree: 'I agree with these conditions',
-      socWarn: 'Please accept Terms and Conditions'
+      socWarn: 'Please accept Terms and Conditions',
     },
     vas: {
       containers: 'Container',
@@ -933,7 +934,7 @@ var Languague = {
           id: 0,
           name: 'booking',
           title: 'Booking Follow up',
-          description: 'This notification informs you of the following events: booking request, modification or cancellation received, booking confirmed, refused or cancelled.',
+          description: 'This notification informs you that your booking is confirmed.',
         },
         {
           id: 1,

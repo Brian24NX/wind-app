@@ -3,7 +3,8 @@ const utils = require('../../utils/util')
 const config = require('../../config/config')
 import {
   bindPhone,
-  checkPhoneBind
+  checkPhoneBind,
+  writeOperationLog
 } from '../../api/modules/home'
 Page({
 
@@ -82,7 +83,12 @@ Page({
                   })
                 }
               })
-              this.checkBindStatus()
+              openId = wx.getStorageSync('openId')
+              phone = wx.getStorageSync('phone')
+              account = wx.getStorageSync('account')
+              if (openId && phone && account) {
+                this.checkBindStatus()
+              }
             }
           }
         }
@@ -117,6 +123,17 @@ Page({
           })
           wx.setStorageSync('partnerList', partnerLists)
         }
+        const params = {
+          "account": userInfo.email,
+          "ccgid": userInfo.ccgId,
+          "company": userInfo.company,
+          "nickname": userInfo.firstName + userInfo.lastName,
+          "operationType": "Login",
+          "shipmentRef": "-"
+        }
+        writeOperationLog(params).then(res => {
+          console.log('登录日志记录成功')
+        })
       }
     }
   }

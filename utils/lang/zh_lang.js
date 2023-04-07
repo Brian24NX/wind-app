@@ -313,9 +313,9 @@ var Languague = {
       legalTerms: '隐私政策',
       notifications: '管理我的通知',
       noAccount: '您还没有账户？',
-      siteName: 'CMA CGM official',
+      siteName: 'CMA CGM官网',
       visitSite1: '请前往 ',
-      visitSite2: ' 官网申请账户。',
+      visitSite2: ' 申请账户。',
       refusedText: '您已拒绝授权，请重新点击并授权',
       refusedTitle: '提示',
       refusedButton: '知道了'
@@ -461,7 +461,8 @@ var Languague = {
       import: '进口费用',
       // 计算费用
       count: '计算费用',
-      noContainer: '没有找到相关货柜，请核实您的提单'
+      noContainer: '没有找到相关货柜，请核实您的提单',
+      errTip: '没有找到匹配的：不正确的日期或者集装箱号码'
     },
     NewDDChargesResult: {
       title: 'D&D 结果',
@@ -660,7 +661,7 @@ var Languague = {
       getAgain: '获取报价',
       soc: '托运人自备集装箱（SOC）',
       socAgree: '我同意这些条件',
-      socWarn: '请接受T&C'
+      socWarn: '请接受T&C',
     },
     vas: {
       containers: '柜号',
@@ -935,7 +936,7 @@ var Languague = {
           id: 0,
           name: 'booking',
           title: '订舱跟进',
-          description: '这个通知涉及以下事项：订舱申请，修改申请和取消申请，订舱确认，订舱已被拒绝和取消。',
+          description: '此通知用于通知您的订舱已确认。',
         },
         {
           id: 1,
