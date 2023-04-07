@@ -936,12 +936,12 @@ var Languague = {
         //   title: 'Booking Follow up',
         //   description: 'This notification informs you that your booking is confirmed.',
         // },
-        {
-          id: 1,
-          name: 'vgm',
-          title: 'My VGM Follow up',
-          description: 'This notification informs you about the status of your VGM declaration, whether it was validated or rejected due to errors.',
-        },
+        // {
+        //   id: 1,
+        //   name: 'vgm',
+        //   title: 'My VGM Follow up',
+        //   description: 'This notification informs you about the status of your VGM declaration, whether it was validated or rejected due to errors.',
+        // },
         // {
         //   id: 2,
         //   name: 'eta',
