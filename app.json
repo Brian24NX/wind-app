@@ -26,7 +26,8 @@
     "pages/Quotation/NearPort/index",
     "pages/Quotation/LineDetail/index",
     "pages/Quotation/Others/Remind/index",
-    "pages/VAS/Detail/index"
+    "pages/VAS/Detail/index",
+    "pages/SeaInfoPage/index"
   ],
   "subPackages": [
     {
