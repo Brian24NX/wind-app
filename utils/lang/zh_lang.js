@@ -932,24 +932,24 @@ var Languague = {
       checkBoxLabel: '只适用于我管理的船运',
       urlLabel: '获取eCommerce网站链接',
       subscribe: [
-        {
-          id: 0,
-          name: 'booking',
-          title: '订舱跟进',
-          description: '此通知用于通知您的订舱已确认。',
-        },
-        {
-          id: 1,
-          name: 'vgm',
-          title: '验证集装箱总重量(VGM)跟进',
-          description: '这份通知是告知您提交验证集装箱总重量申报(VGM)的状态， 是记录成功还是由于错误信息被拒绝。',
-        },
-        {
-          id: 2,
-          name: 'eta',
-          title: '预计离港 & 到港时间更改',
-          description: '此通知用于通知您的预计离港或到港时间已更改。',
-        },
+        // {
+        //   id: 0,
+        //   name: 'booking',
+        //   title: '订舱跟进',
+        //   description: '此通知用于通知您的订舱已确认。',
+        // },
+        // {
+        //   id: 1,
+        //   name: 'vgm',
+        //   title: '验证集装箱总重量(VGM)跟进',
+        //   description: '这份通知是告知您提交验证集装箱总重量申报(VGM)的状态， 是记录成功还是由于错误信息被拒绝。',
+        // },
+        // {
+        //   id: 2,
+        //   name: 'eta',
+        //   title: '预计离港 & 到港时间更改',
+        //   description: '此通知用于通知您的预计离港或到港时间已更改。',
+        // },
         {
           id: 3,
           name: 'container',
