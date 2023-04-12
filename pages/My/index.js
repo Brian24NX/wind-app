@@ -147,6 +147,11 @@ Page({
     }
 
   },
+  goToSeaRewardPage () {
+    wx.navigateTo({
+      url: '/pages/SeaInfoPage/index',
+    })
+  },
 
   toBaseInfo() {
     wx.navigateTo({

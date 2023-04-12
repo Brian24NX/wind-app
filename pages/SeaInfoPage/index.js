@@ -1,18 +1,54 @@
 // pages/SeaInfoPage/index.js
+// const languageUtil = require('../../../utils/languageUtils')
+
+
 Page({
 
   /**
    * Page initial data
    */
   data: {
+    // languageContent: {}
+    foldRate: true,
+    foldRate2: true,
+    foldRate3: true,
+    foldRate4: true,
+
+
+
 
   },
 
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad(options) {
+  onLoad() {
+    // const languages = languageUtil.languageVersion().lang.page
+    // this.setData({
+    //   languageContent: languages.SeaRewardInfo,
+    // })
 
+  },
+
+    // 折叠
+  zhedie(e) {
+    this.setData({
+      [e.currentTarget.dataset.type]: !this.data[e.currentTarget.dataset.type]
+    })
+  },
+
+  onClick1() {
+    wx.showToast({
+      title: 'Function coming soon, stay tuned',
+      icon: 'none'
+    })
+    return
+  },
+
+  onClick2() {
+    wx.navigateTo({
+      url: '/pages/Quotation/List/index',
+    })
   },
 
   /**
