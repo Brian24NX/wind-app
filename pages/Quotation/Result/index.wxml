@@ -30,6 +30,14 @@
           <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
         </view>
       </view>
+      <view>
+        <view class="rewardEarned" wx:if="{{rewardsEarned && rewardsEarned !== 0}}">
+          <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onResInfo"></image>
+          <view>
+            {{seaReward.rewardResult1}}<Text>{{rewardsEarned}}</Text>{{seaReward.rewardResult2}}</view>
+          </view>
+        <view class="rewardInfo" wx:if="{{resInfo}}">{{seaReward.resultInfo}}</view>
+      </view>
       <view class="solutionContainer" catchtap="toLineDetail">
         <view class="solutionLeft">
           <view class="solutionLeftOne">

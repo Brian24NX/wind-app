@@ -198,7 +198,7 @@ page {
   width: 1rpx;
   height: calc(100% - 26rpx);
   margin: 5rpx 0;
-  background-color:  #9AA6C4;
+  background-color: #9AA6C4;
 }
 
 .resultContainers .oneResult .resContents .rightContainer .leftContent .end {
@@ -372,7 +372,7 @@ page {
   margin-left: 20rpx;
 }
 
-.roadText{
+.roadText {
   font-size: 20rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
@@ -385,4 +385,18 @@ page {
 .roadIcon {
   width: 32rpx !important;
   height: 32rpx !important;
+}
+
+.rewardEarned {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+  background: #F2F2F2;
+  padding: 4rpx 14rpx;
+  margin: 20rpx 0 6rpx;
+}
+
+.rewardEarned Text {
+  color: #E10202
 }

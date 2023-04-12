@@ -1,10 +1,12 @@
 page {
   background-color: #F0F1F5;
 }
-.navbarContainer{
+
+.navbarContainer {
   z-index: 500;
 }
-.contentContainer{
+
+.contentContainer {
   padding-bottom: calc(130rpx + env(safe-area-inset-bottom));
 }
 
@@ -361,10 +363,10 @@ page {
 
 .partnerCodeList .checkPartner .partnerName {
   display: inline-block;
-  white-space: nowrap; 
-  max-width: 330rpx; 
+  white-space: nowrap;
+  max-width: 330rpx;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 
 .partnerCodeList .checkPartner image {
@@ -412,10 +414,10 @@ page {
 
 .switchBoxTitle {
   font-size: 28rpx;
-font-family: PingFangSC-Regular, PingFang SC;
-font-weight: 400;
-color: #04246A;
-line-height: 40rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #04246A;
+  line-height: 40rpx;
 }
 
 .historyContainers {
@@ -465,7 +467,8 @@ line-height: 40rpx;
   border-radius: 24rpx;
   margin-bottom: 20rpx;
 }
-.fonthistory{
+
+.fonthistory {
   width: 46%;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -486,4 +489,60 @@ line-height: 40rpx;
 .oneDelete image {
   width: 24rpx;
   height: 24rpx;
+}
+
+.seaRewardBox {
+  height: 170rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30rpx auto 0;
+  padding: 0 40rpx;
+  width: 690rpx;
+}
+
+.seaIconBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.seaIcon {
+  height: 70rpx;
+}
+
+.seaIcon image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+
+.seaLogo {
+  display: flex;
+  flex-direction: column;
+}
+
+.seaText {
+  font-size: 28rpx;
+  color: #04246A;
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center;
+}
+
+.seaLogo image {
+  width: 236rpx;
+  height: 36rpx;
+}
+
+.seaLogo .seaText image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.seaLevelText {
+  color: #E10202;
+  font-weight: 700;
+  margin-left: 10rpx;
+  font-family: Antonio-Regular;
 }

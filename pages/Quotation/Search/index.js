@@ -23,10 +23,13 @@ Page({
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     languageContent: {}, // 用于保存当前页面所需字典变了
+    load: {},
     language: 'zh',
     verifyInfo: {},
+    seaReward: {},
     hisListSpot: [],
     hisListQuot: [],
+    seaRewardData: {},
     minDate: new Date().getTime(),
     maxDate: new Date().getTime() + 1000 * 60 * 60 * 24 * 30,
     showPol: false,
@@ -139,7 +142,8 @@ Page({
     this.setData({
       simulationDate: this.getDate(),
       hisListSpot: wx.getStorageSync('spotOnHis'),
-      hisListQuot: wx.getStorageSync('quotationHis')
+      hisListQuot: wx.getStorageSync('quotationHis'),
+      seaRewardData: wx.getStorageSync('seaRewardData')
     })
     wx.removeStorageSync('isSocAgree');
   },
@@ -286,8 +290,10 @@ Page({
     var lang = languageUtil.languageVersion()
     this.setData({
       languageContent: lang.lang.page.quotation,
-      language: languageUtil.languageVersion().lang.page.langue,
-      verifyInfo: languageUtil.languageVersion().lang.page.verifyInfo
+      language: lang.lang.page.langue,
+      verifyInfo: lang.lang.page.verifyInfo,
+      seaReward: lang.lang.page.seaReward,
+      load: lang.lang.page.load
     })
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
@@ -1412,4 +1418,11 @@ Page({
       wx.setStorageSync('quotationHis', rmList);
     }
   },
+
+  gotoDashboard(){
+    wx.showToast({
+      title: this.data.load.functionIsUnderDevelopment,
+      icon: 'none'
+    })
+  }
 })

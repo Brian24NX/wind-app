@@ -130,6 +130,9 @@
                 <text>{{languageContent.select}}</text>
               </view>
             </view>
+            <view class="rewardEarned" wx:if="{{ item.rewardsEarned !== 0 && item.rewardsEarned }}">
+              {{seaReward.earned}} <Text>{{item.rewardsEarned}}</Text>
+            </view>
           </block>
           <view class="oneBottom right" wx:else>{{languageContent.spotOut}}</view>
         </block>

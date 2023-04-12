@@ -7,6 +7,7 @@ Page({
    */
   data: {
     languageContent: {},
+    seaReward: {},
     language: 'zh',
     showEmail: false,
     reference: '',
@@ -22,6 +23,8 @@ Page({
     subscribedServices: [],
     totalChargeAmount: 0,
     shipperOwnedContainer: false,
+    resInfo: false,
+    rewardsEarned: 0,
   },
 
   /**
@@ -34,7 +37,8 @@ Page({
     let languageContent = languageUtils.languageVersion().lang.page.qutationResult;
     this.setData({
       languageContent,
-      language: languageUtils.languageVersion().lang.page.langue
+      language: languageUtils.languageVersion().lang.page.langue,
+      seaReward: languageUtils.languageVersion().lang.page.seaReward
     })
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
@@ -55,6 +59,7 @@ Page({
       totalChargeAmount: data.totalChargeAmount,
       subscribedServices: data.subscribedServices,
       shipperOwnedContainer: data.shipperOwnedContainer,
+      rewardsEarned: data.rewardsEarned
     })
   },
 
@@ -111,4 +116,10 @@ Page({
       url: '/pages/Quotation/LineDetail/index',
     })
   },
+
+  onResInfo() {
+    this.setData({
+      resInfo: !this.data.resInfo
+    })
+  }
 })

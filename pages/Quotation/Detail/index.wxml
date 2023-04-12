@@ -395,22 +395,34 @@
       </view>
     </view>
   </view>
-  <view class="bottomButtonContainer">
-    <view class="bottomLeft">
-      <view class="cashIcon" catchtap="previewVas">
-        <image src="/assets/img/instantQuote/cash@2x.png"></image>
-        <view class="vasCount">{{subscribedServices.length}}</view>
+  <view class="bottomContainer">
+    <view class="bottomTop" wx:if="{{!isFirst && burnRewards !== 0 && burnRewards && rewardsLevel !== 'Lieutenant'}}">
+    <view>
+      {{seaReward.save1}}<Text>{{burnRewards}}</Text> {{seaReward.save2}}<Text>{{burnRewards}}</Text> {{seaReward.usd}}
+    </view>
+    <van-switch id="useRewards" checked="{{useRewards}}" active-color="#2B74FF" inactive-color="#9AA7C3" bind:change="switchRewards" size="24rpx" />
+    </view>
+    <view class="bottomButtonContainer">
+      <view class="bottomLeft">
+        <view class="cashIcon" catchtap="previewVas">
+          <image src="/assets/img/instantQuote/cash@2x.png"></image>
+          <view class="vasCount">{{subscribedServices.length}}</view>
+        </view>
+        <view class="totalPrice" wx:if="{{!useRewards}}">{{finalPrice}}</view>
+        <view class="totalPrice" wx:else>{{finalPrice}}</view>
+        <view class="priceUnit">
+          <view class="unit">{{quotationDetail.surchargeDetails.totalCharge.currency.code}}<Text wx:if="{{useRewards}}">{{finalPrice + burnRewards}} {{quotationDetail.surchargeDetails.totalCharge.currency.code}}</Text></view>
+          <view class="total">{{languageContent.total}}</view>
+        </view>
       </view>
-      <view class="totalPrice">{{totalChargeAmount * containers}}</view>
-      <view class="priceUnit">
-        <view class="unit">{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</view>
-        <view class="total">{{languageContent.total}}</view>
+      <view class="bottomButtonRight">
+        <button class="buttons" wx:if="{{quotationDetail.quoteLines[0].allowSpecialQuotation || isUs}}" catchtap="booking">{{languageContent.book}}</button>
+        <!-- <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && !isUs && !isFirst}}" catchtap="back">{{languageContent.back}}</button> -->
+        <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && !isUs}}" catchtap="submit">{{isFirst ? languageContent.next : languageContent.saveQuotation}}</button>
       </view>
     </view>
-    <view class="bottomButtonRight">
-      <button class="buttons" wx:if="{{quotationDetail.quoteLines[0].allowSpecialQuotation || isUs}}" catchtap="booking">{{languageContent.book}}</button>
-      <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && !isUs && !isFirst}}" catchtap="back">{{languageContent.back}}</button>
-      <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && !isUs}}" catchtap="submit">{{isFirst ? languageContent.next : languageContent.saveQuotation}}</button>
+    <view class="nmilesCollected" wx:if="{{!isFirst && rewardsEarned && rewardsEarned !== 0}}">
+    {{seaReward.nmilesCollected}}<Text>{{rewardsEarned !== 0 ? rewardsEarned :quotationDetail.rewardsEarned}}</Text>
     </view>
   </view>
 </view>

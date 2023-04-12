@@ -309,6 +309,7 @@ var Languague = {
       myDashboard: '我的概览',
       shipment: '船运概览',
       document: '单证概览',
+      seaReward: 'Sea Rewards\nDashboard',
       setting: '语言设置',
       legalTerms: '隐私政策',
       notifications: '管理我的通知',
@@ -318,7 +319,27 @@ var Languague = {
       visitSite2: ' 申请账户。',
       refusedText: '您已拒绝授权，请重新点击并授权',
       refusedTitle: '提示',
-      refusedButton: '知道了'
+      refusedButton: '知道了',
+      rewardResult1: 'Potentially earned ',
+      rewardResult2: 'Nautical Miles',
+      resultInfo: 'Points will be effectively accumulated after payment of the invoice'
+    },
+    //sea reward
+    seaReward:{
+      activate: 'Activate to start saving money',
+      dashboard: 'Sea Rewards Dashboard',
+      save1: 'Use ',
+      save2: 'Nmiles to save ',
+      usd: 'USD?',
+      nmilesCollected: 'Nmiles to be collected: ',
+      earned: 'Nautical miles to be earned: ',
+      status: 'Current Status: ',
+      available: 'Nautical Miles Available',
+      usdSaved: '',
+      description: 'As a Captain you earn 2 Nautical Miles for every 100＄ spent on Spoton quotes. Nautical Miles are earned once the invoice is paied.',
+      rewardResult1: 'Potentially earned ',
+      rewardResult2: ' Nautical Miles',
+      resultInfo: 'Points will be effectively accumulated after payment of the invoice'
     },
     legalTerms: {
       title: '隐私政策',

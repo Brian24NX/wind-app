@@ -113,7 +113,7 @@ button[type=default][plain] {
 
 .myContainer .myDashboard .dashboardList {
   display: flex;
-  height: 190rpx;
+  /* height: 190rpx; */
 }
 
 .myContainer .myDashboard .dashboardList .oneDashboard {
@@ -121,11 +121,12 @@ button[type=default][plain] {
   flex: 1;
   width: 100%;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #04246A;
   text-align: center;
+  margin: 30rpx 0;
 }
 
 .myContainer .myDashboard .dashboardList .oneDashboard image {
@@ -136,6 +137,16 @@ button[type=default][plain] {
 
 .myContainer .setting {
   height: 120rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30rpx;
+  padding: 0 40rpx;
+}
+
+.seaRewardBox {
+  height: 170rpx;
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -196,4 +207,35 @@ button[type=default][plain] {
   color: #2B73FC;
   font-size: 28rpx;
   font-family: ArialMT;
+}
+
+.seaIconBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.seaIcon {
+  height: 70rpx;
+}
+
+.seaIcon image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+
+.seaLogo {
+  display: flex;
+  flex-direction: column;
+}
+
+.seaText {
+  font-size: 28rpx;
+  color: #04246A;
+  margin-top: 16rpx;
+}
+
+.seaLogo image {
+  width: 236rpx;
+  height: 36rpx;
 }

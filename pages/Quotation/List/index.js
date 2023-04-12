@@ -2,7 +2,8 @@
 import {
   quotationSort,
   getQuotationSurchargeDetail,
-  fuzzyPointSearch
+  fuzzyPointSearch,
+  seaEarnPoints,
 } from '../../../api/modules/quotation';
 const languageUtil = require('../../../utils/languageUtils')
 Page({
@@ -12,6 +13,7 @@ Page({
    */
   data: {
     languageContent: {},
+    seaReward: {},
     language: 'zh',
     isPhoneX: getApp().globalData.isPhoneX,
     transMode: {},
@@ -51,6 +53,7 @@ Page({
     isUs: false,
     equiptCode: '',
     shipperOwnedContainer: false,
+    rewardsEarned: 0
   },
 
   /**
@@ -68,7 +71,8 @@ Page({
     this.setData({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue,
-      transMode: wx.getStorageSync('transMode')
+      transMode: wx.getStorageSync('transMode'),
+      seaReward: languageUtil.languageVersion().lang.page.seaReward
     })
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
@@ -159,7 +163,8 @@ Page({
             return {
               ...item,
               isLoading: true,
-              canSelect: true
+              canSelect: true,
+              rewardsEarned: 0,
             }
           })
         })
@@ -279,6 +284,15 @@ Page({
           item.surchargeDetails = res.data && res.data.surchargeDetails ? res.data.surchargeDetails[0] : null
           item.surchargeDetails.allocation = allocation
           item.canSelect = true
+          //新增计算获得积分数量
+          setTimeout(() => {
+            seaEarnPoints({
+              "baseAmount": res.data.surchargeDetails[0].totalCharge.amount,
+              "partnerCode": wx.getStorageSync('partnerList')[0].code,
+            }).then(res => {
+              item.rewardsEarned = res.data.simulationResults[0].changeInPointsBalance
+            })
+          }, 300);
         } else {
           item.surchargeDetails = null
           item.canSelect = false
@@ -287,6 +301,7 @@ Page({
         item.surchargeDetails = null
         item.canSelect = false
       }
+
       this.setData({
         quoteLineList: this.data.quoteLineList
       })

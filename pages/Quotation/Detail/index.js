@@ -2,7 +2,9 @@
 const languageUtil = require('../../../utils/languageUtils')
 import {
   vasLists,
-  createQuotationQuotation
+  createQuotationQuotation,
+  seaBurnPoints,
+  seaEarnPoints,
 } from '../../../api/modules/quotation';
 
 import { writeOperationLog } from '../../../api/modules/home'
@@ -15,6 +17,7 @@ Page({
   data: {
     languageContent: {},
     vasLanguageContent: {},
+    seaReward: {},
     language: 'zh',
     baseUrl: '',
     languageCode: '',
@@ -74,7 +77,12 @@ Page({
     foldContainerRate: true,
     foldBLRate: true,
     foldQuoteDetail: true,
-    foldSoc: true
+    foldSoc: true,
+    burnRewards: 0,
+    rewardsEarned: 0,
+    useRewards: false,
+    finalPrice: 0,
+    rewardsLevel: ''
   },
 
   /**
@@ -92,6 +100,7 @@ Page({
       languageContent: languages.qutationResult,
       vasLanguageContent: languages.vas,
       language: languages.langue,
+      seaReward: languageUtil.languageVersion().lang.page.seaReward,
       isUs: data.isUs,
       languageCode: languages.langue === 'zh' ? 'zh_CN' : 'en_US',
       baseUrl: "https://www.cma-cgm.com/static/ecommerce/VASAssets/" + (languages.langue === 'zh' ? 'zh_CN' : 'en_US') + "/",
@@ -105,12 +114,39 @@ Page({
       finalPlaceOfDelivery: data.finalPlaceOfDelivery,
       transMode: wx.getStorageSync('transMode'),
       shipperOwnedContainer: data.shipperOwnedContainer,
-      isSocAgree: wx.getStorageSync('isSocAgree') ? wx.getStorageSync('isSocAgree') : false
+      isSocAgree: wx.getStorageSync('isSocAgree') ? wx.getStorageSync('isSocAgree') : false,
+      rewardsLevel: wx.getStorageSync('seaRewardData').level,
     })
     this.setDefaultInfo(options.index, options.containers)
     if (!this.data.isUs) {
       this.getVasList()
     }
+  },
+
+  getSeaBurnPoints(amount) {
+    seaBurnPoints({
+      "baseAmount": amount,
+      "partnerCode": wx.getStorageSync('partnerList')[0].code,
+    }).then(res => {
+      const burnAmount = res.data.burnAmount
+      if (burnAmount) {
+        this.setData({
+          burnRewards: burnAmount
+        })
+      }
+    }).catch(err => {
+      console.error(err)
+    })
+  },
+  getSeaEarnPoints(amount) {
+    seaEarnPoints({
+      "baseAmount": amount,
+      "partnerCode": wx.getStorageSync('partnerList')[0].code,
+    }).then(res => {
+      this.setData({
+        rewardsEarned: res.data.simulationResults ? res.data.simulationResults[0].changeInPointsBalance : 0
+      })
+    })
   },
 
   setDefaultInfo(index, containers) {
@@ -194,6 +230,11 @@ Page({
     this.setData({
       totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount
     })
+    this.setData({
+      finalPrice: this.data.totalChargeAmount * this.data.containers
+    })
+    this.getSeaBurnPoints(this.data.finalPrice)
+    this.getSeaEarnPoints(this.data.finalPrice)
   },
 
   changeCheck(e) {
@@ -546,6 +587,21 @@ Page({
     let day = now.getDate();
     day = day < 10 ? ('0' + day) : day
     return year + '-' + month + '-' + day;
+  },
+
+  switchRewards(e) {
+    if (e.detail) {
+      this.setData({
+        useRewards: e.detail,
+        finalPrice: this.data.finalPrice - this.data.burnRewards
+      })
+    } else {
+      this.setData({
+        useRewards: e.detail,
+        finalPrice: this.data.finalPrice + this.data.burnRewards
+      })
+    }
+    this.getSeaEarnPoints(this.data.finalPrice)
   },
 
   prevent() {

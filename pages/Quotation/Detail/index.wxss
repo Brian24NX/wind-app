@@ -163,7 +163,7 @@
   margin-right: 20rpx;
 }
 
-.paramContainer .oneParams > view {
+.paramContainer .oneParams>view {
   width: 190rpx;
 }
 
@@ -410,10 +410,7 @@
   width: 520rpx;
 }
 
-.additionalServiceList
-  .oneAdditionalService
-  .additionalServiceTop
-  .additionalServiceCheck {
+.additionalServiceList .oneAdditionalService .additionalServiceTop .additionalServiceCheck {
   width: 30rpx;
   height: 30rpx;
   background-color: #071e5d;
@@ -466,6 +463,7 @@
 .bottomButtonContainers .subscribedContainers {
   padding: 0 48rpx;
   z-index: 99;
+  margin-bottom: 372rpx;
 }
 
 .bottomButtonContainers .subscribedTitle {
@@ -503,11 +501,7 @@
   margin-right: 30rpx;
 }
 
-.bottomButtonContainers
-  .subscribedList
-  .oneSubscribed
-  .subscribeLeft
-  .productName {
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productName {
   font-size: 32rpx;
   font-family: Antonio-Regular, Antonio;
   color: #071e5d;
@@ -518,30 +512,17 @@
   text-overflow: ellipsis;
 }
 
-.bottomButtonContainers
-  .subscribedList
-  .oneSubscribed
-  .subscribeLeft
-  .productInclude {
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productInclude {
   color: #00865d;
   font-size: 24rpx;
 }
 
-.bottomButtonContainers
-  .subscribedList
-  .oneSubscribed
-  .subscribeLeft
-  .productPrices {
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productPrices {
   display: flex;
   align-items: center;
 }
 
-.bottomButtonContainers
-  .subscribedList
-  .oneSubscribed
-  .subscribeLeft
-  .productPrices
-  .productPrice {
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productPrices .productPrice {
   font-size: 48rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
@@ -549,11 +530,7 @@
   margin-right: 20rpx;
 }
 
-.bottomButtonContainers
-  .subscribedList
-  .oneSubscribed
-  .subscribeLeft
-  .productUnit {
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeLeft .productUnit {
   font-size: 24rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
@@ -571,11 +548,7 @@
   margin-left: 30rpx;
 }
 
-.bottomButtonContainers
-  .subscribedList
-  .oneSubscribed
-  .subscribeRight
-  image:nth-of-type(1) {
+.bottomButtonContainers .subscribedList .oneSubscribed .subscribeRight image:nth-of-type(1) {
   margin-left: 0;
 }
 
@@ -586,11 +559,47 @@
   margin-right: 20rpx;
 }
 
-.bottomButtonContainer {
+.bottomContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 22rpx 12rpx 32rpx
+}
+
+.bottomTop {
+  background: #F2F2F2;
+  padding: 18rpx 30rpx;
+  margin: 0 12rpx 22rpx;
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottomTop Text {
+  color: #E10202;
+}
+
+.bottomBottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 40rpx 30rpx;
+}
+
+.bottomButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
 }
 
 .bottomButtonContainer .bottomButtonLeft {
@@ -668,6 +677,15 @@
   color: #e20202;
 }
 
+.bottomButtonContainer .bottomLeft .priceUnit .unit Text {
+  color: #9AA7C3;
+  margin-left: 6rpx;
+  text-decoration: line-through;
+  font-weight: 400;
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+
+
 .bottomButtonContainer .bottomLeft .priceUnit .total {
   height: 32rpx;
   line-height: 32rpx;
@@ -678,6 +696,7 @@
   font-weight: 400;
   color: #071e5d;
   background-color: #e6eaef;
+  width: fit-content;
 }
 
 .bottomButtonContainer .bottomButtonRight {
@@ -783,9 +802,9 @@
 /* Additional Services */
 .additionServicesContainers {
   padding: 30rpx;
-  padding-bottom: calc(env(safe-area-inset-bottom) + 150rpx);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 330rpx);
   background-color: #f0f1f5;
-  min-height: calc(100vh - 30rpx - env(safe-area-inset-bottom) + 150rpx);
+  min-height: calc(100vh - 30rpx - env(safe-area-inset-bottom) + 330rpx);
 }
 
 .noVasRemind {
@@ -915,6 +934,7 @@
   background-color: #ffffff;
   padding: 0 48rpx;
 }
+
 .socTopTitle {
   display: flex;
   align-items: center;
@@ -932,6 +952,7 @@
   background-color: #e20202;
   margin-right: 12rpx;
 }
+
 .socCheckbox {
   font-size: 28rpx;
   color: #04246a;
@@ -953,9 +974,11 @@
   align-items: center;
   justify-content: center;
 }
+
 .socCheckbox .checked.bg {
   background-color: #04246a;
 }
+
 .socCheckbox .text {
   padding-left: 10rpx;
 }
@@ -970,6 +993,7 @@
   display: flex;
   align-items: center;
 }
+
 .socDetail {
   font-size: 24rpx;
   color: #071e5d;
@@ -994,4 +1018,16 @@
   transform: rotate(180deg);
   position: absolute;
   right: 60rpx;
+}
+
+.nmilesCollected {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+  margin: 16rpx auto 32rpx 116rpx;
+}
+
+.nmilesCollected Text {
+  color: #E10202;
 }
