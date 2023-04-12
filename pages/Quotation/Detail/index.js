@@ -3,7 +3,6 @@ const languageUtil = require('../../../utils/languageUtils')
 import {
   vasLists,
   createQuotationQuotation,
-  seaBurnPoints,
   seaEarnPoints,
 } from '../../../api/modules/quotation';
 
@@ -79,10 +78,10 @@ Page({
     foldQuoteDetail: true,
     foldSoc: true,
     burnRewards: 0,
-    rewardsEarned: 0,
+    rewardsEarned: null,
     useRewards: false,
     finalPrice: 0,
-    rewardsLevel: ''
+    rewardsLevel: '',
   },
 
   /**
@@ -116,6 +115,8 @@ Page({
       shipperOwnedContainer: data.shipperOwnedContainer,
       isSocAgree: wx.getStorageSync('isSocAgree') ? wx.getStorageSync('isSocAgree') : false,
       rewardsLevel: wx.getStorageSync('seaRewardData').level,
+      burnRewards: wx.getStorageSync('seaRewardData').pointsBalance,
+      containers: data.containers
     })
     this.setDefaultInfo(options.index, options.containers)
     if (!this.data.isUs) {
@@ -123,28 +124,14 @@ Page({
     }
   },
 
-  getSeaBurnPoints(amount) {
-    seaBurnPoints({
-      "baseAmount": amount,
-      "partnerCode": wx.getStorageSync('partnerList')[0].code,
-    }).then(res => {
-      const burnAmount = res.data.burnAmount
-      if (burnAmount) {
-        this.setData({
-          burnRewards: burnAmount
-        })
-      }
-    }).catch(err => {
-      console.error(err)
-    })
-  },
   getSeaEarnPoints(amount) {
     seaEarnPoints({
       "baseAmount": amount,
+      "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
     }).then(res => {
       this.setData({
-        rewardsEarned: res.data.simulationResults ? res.data.simulationResults[0].changeInPointsBalance : 0
+        rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance : null
       })
     })
   },
@@ -231,9 +218,15 @@ Page({
       totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount
     })
     this.setData({
-      finalPrice: this.data.totalChargeAmount * this.data.containers
+      finalPrice: this.data.totalChargeAmount * this.data.containers,
     })
-    this.getSeaBurnPoints(this.data.finalPrice)
+    
+    if(this.data.totalChargeAmount < this.data.burnRewards){
+      this.setData({
+        burnRewards: this.data.finalPrice
+      })
+    }
+    
     this.getSeaEarnPoints(this.data.finalPrice)
   },
 
@@ -601,7 +594,14 @@ Page({
         finalPrice: this.data.finalPrice + this.data.burnRewards
       })
     }
-    this.getSeaEarnPoints(this.data.finalPrice)
+    if(this.data.finalPrice === 0){
+      this.setData({
+        rewardsEarned: 0
+      })
+    }else{
+      this.getSeaEarnPoints(this.data.finalPrice)
+    }
+    
   },
 
   prevent() {

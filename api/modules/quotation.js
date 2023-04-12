@@ -72,9 +72,9 @@ export const exportPDF = (params) => {
   return postRequest('/api/miniapp/downloadQuotationPdf', params, true, false, true)
 }
 
-export const seaBurnPoints = (params) => {
-  return getRequest('/api/miniapp/sea/burnPoints', params, false, true)
-}
+// export const seaBurnPoints = (params) => {
+//   return getRequest('/api/miniapp/sea/burnPoints', params, false, true)
+// }
 
 export const seaEarnPoints = (params) => {
   return getRequest('/api/miniapp/sea/earnPoints', params, true, true, true)
