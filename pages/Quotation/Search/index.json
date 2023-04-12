@@ -7,7 +7,8 @@
     "need-login": "/components/needLogin/index",
     "no-permission": "/components/noPermission/index",
     "van-switch": "@vant/weapp/switch/index",
-    "van-overlay": "@vant/weapp/overlay/index"
+    "van-overlay": "@vant/weapp/overlay/index",
+    "van-icon": "@vant/weapp/icon/index"
   },
   "navigationStyle": "custom"
 }

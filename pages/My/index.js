@@ -14,6 +14,7 @@ Page({
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navObj,
     languageContent: {}, // 用于保存当前页面所需字典
+    seaReward: {},
     dashboardList: [{
       label: 'shipment',
       url: '/packageDashboard/pages/shipment/list/index',
@@ -22,6 +23,10 @@ Page({
       label: 'document',
       url: '/packageDashboard/pages/document/index',
       icon: '/assets/img/myAccount/document@2x.png'
+    }, {
+      label: 'seaReward',
+      url: '/packageDashboard/pages/seaReward/index',
+      icon: '/assets/img/seaReward/seaIcon@2x.png'
     }],
     needLogin: false,
     userInfo: {},
@@ -117,6 +122,7 @@ Page({
     var lang = languageUtils.languageVersion()
     this.setData({
       languageContent: lang.lang.page.userCenter,
+      seaReward: lang.lang.page.seaReward
     })
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({

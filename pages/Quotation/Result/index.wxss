@@ -102,7 +102,7 @@ page {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1rpx solid #eeeeee;
+  /* border-bottom: 1rpx solid #eeeeee; */
   padding: 30rpx 0 18rpx;
 }
 
@@ -140,6 +140,7 @@ page {
   justify-content: space-between;
   align-items: center;
   padding: 26rpx 0;
+  border-top: 1rpx solid #eeeeee;
 }
 
 .solutionContainer .solutionLeft {
@@ -206,7 +207,7 @@ page {
   margin-right: 20rpx;
 }
 
-.paramContainer .oneParams > view {
+.paramContainer .oneParams>view {
   width: 190rpx;
 }
 
@@ -267,8 +268,8 @@ page {
 }
 
 .vasList .oneVas .price .amount {
-margin-right: 10rpx;
-font-size: 48rpx;
+  margin-right: 10rpx;
+  font-size: 48rpx;
 }
 
 .bottomButtons {
@@ -297,4 +298,35 @@ font-size: 48rpx;
 .bottomButtons .oneButton:nth-of-type(1) {
   background-color: #071E5D;
   margin-right: 20rpx;
+}
+
+.rewardEarned {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #04246A;
+  background: #F2F2F2;
+  padding: 4rpx 14rpx;
+  margin-top: 10rpx;
+  display: flex;
+  align-items: center;
+  height: 50rpx;
+}
+
+.rewardEarned image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+
+.rewardEarned Text {
+  color: #E10202;
+}
+
+.rewardInfo {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #9AA7C3;
+  margin: 20rpx 0;
 }

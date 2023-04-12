@@ -4,7 +4,8 @@ const config = require('../../config/config')
 import {
   bindPhone,
   checkPhoneBind,
-  writeOperationLog
+  writeOperationLog,
+  seaPartnerInfo
 } from '../../api/modules/home'
 Page({
 
@@ -12,7 +13,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    baseUrl: config[config.dev_env].url
+    baseUrl: config[config.dev_env].url,
+    rewardList: [{
+      label: 'Lieutenant',
+      icon: '/assets/img/seaReward/lieutenant@2x.png'
+    }, {
+      label: 'Captain',
+      icon: '/assets/img/seaReward/captain@2x.png'
+    }, {
+      label: 'Master',
+      icon: '/assets/img/seaReward/master@2x.png'
+    }, {
+      label: 'Admiral',
+      icon: '/assets/img/seaReward/admiral@2x.png'
+    }],
   },
 
   /**
@@ -43,6 +57,24 @@ Page({
           console.error(err)
         })
       }
+    })
+  },
+
+  getSeaPartnerInfo() {
+    seaPartnerInfo({
+      "partnerCode": wx.getStorageSync('partnerList')[0].code,
+    }).then(res => {
+      const infodata = res.data
+      if (infodata.memberTiers && infodata.memberTiers.length) {
+        const myReward = this.data.rewardList.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
+        wx.setStorageSync('seaRewardData', {
+          memberStatus: infodata.memberStatus,
+          level: infodata.memberTiers[0].loyaltyMemberTierName,
+          icon: myReward ? myReward[0].icon : ''
+        })
+      }
+    }).catch(err => {
+      console.error(err)
     })
   },
 
@@ -134,6 +166,7 @@ Page({
         writeOperationLog(params).then(res => {
           console.log('登录日志记录成功')
         })
+        this.getSeaPartnerInfo()
       }
     }
   }

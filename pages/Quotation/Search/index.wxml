@@ -7,6 +7,22 @@
 <view class="contentContainer">
   <view class="priceContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
     <wxs module="format" src="/utils/format.wxs"></wxs>
+    <view class="seaRewardBox" wx:if="{{!needLogin}}" catchtap="gotoDashboard">
+      <view class="seaLogo">
+        <image src="/assets/img/seaReward/seaLogo@2x.png" mode="aspectFit"></image>
+        <view class="seaText">
+          <image src="{{seaRewardData.icon}}" mode="aspectFit"></image>
+          {{seaReward.status}}
+          <view class="seaLevelText">{{seaRewardData.level}}</view>
+        </view>
+      </view>
+      <view class="seaIconBox">
+        <view class="seaIcon">
+          <image src="/assets/img/seaReward/seaIcon@2x.png" mode="aspectFit"></image>
+        </view>
+        <van-icon name="arrow" color="#04246A" />
+      </view>
+    </view>
     <view class="queryContainer">
       <view class="searchLists" catchtap="closeSelect">
         <view class="searchTopTypes">

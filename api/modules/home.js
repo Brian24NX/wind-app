@@ -107,3 +107,8 @@ export const checkPhoneBind = (params) => {
 export const writeOperationLog = (params) => {
   return postRequest('/api/miniapp/operation/miniLog', params, true, true, true, true)
 }
+
+//获取客户消费信息
+export const seaPartnerInfo = (params) => {
+  return getRequest('/api/miniapp/sea/partnerInfo', params, true, true, true)
+}
