@@ -48,7 +48,7 @@ Page({
       needLogin: false
     }, {
       style: "330rpx",
-      icon: '/assets/img/menu/gzp@2x.png',
+      icon: '/assets/img/menu/gzp1.png',
       isNew: true,
       label: 'gzp',
       type: 2,
