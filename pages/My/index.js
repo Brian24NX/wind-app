@@ -25,7 +25,7 @@ Page({
       icon: '/assets/img/myAccount/document@2x.png'
     }, {
       label: 'seaReward',
-      url: '/packageDashboard/pages/seaReward/index',
+      url: '',
       icon: '/assets/img/seaReward/seaIcon@2x.png'
     }],
     needLogin: false,

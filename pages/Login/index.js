@@ -67,10 +67,12 @@ Page({
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
         const myReward = this.data.rewardList.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
+        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'AvailableNmiles' || j.loyaltyProgramCurrencyId === '0lc7Y000000001JQAQ')[0].pointsBalance
         wx.setStorageSync('seaRewardData', {
           memberStatus: infodata.memberStatus,
           level: infodata.memberTiers[0].loyaltyMemberTierName,
-          icon: myReward ? myReward[0].icon : ''
+          icon: myReward ? myReward[0].icon : '',
+          pointsBalance: points || 0
         })
       }
     }).catch(err => {

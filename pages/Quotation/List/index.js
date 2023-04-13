@@ -53,7 +53,7 @@ Page({
     isUs: false,
     equiptCode: '',
     shipperOwnedContainer: false,
-    rewardsEarned: 0
+    rewardsEarned: null
   },
 
   /**
@@ -164,7 +164,7 @@ Page({
               ...item,
               isLoading: true,
               canSelect: true,
-              rewardsEarned: 0,
+              rewardsEarned: null,
             }
           })
         })
@@ -288,9 +288,10 @@ Page({
           setTimeout(() => {
             seaEarnPoints({
               "baseAmount": res.data.surchargeDetails[0].totalCharge.amount,
+              "currencyType": res.data.surchargeDetails[0].totalCharge.currency.code,
               "partnerCode": wx.getStorageSync('partnerList')[0].code,
             }).then(res => {
-              item.rewardsEarned = res.data.simulationResults[0].changeInPointsBalance
+              item.rewardsEarned = res.data ? res.data.simulationResults[0].changeInPointsBalance : null
             })
           }, 300);
         } else {

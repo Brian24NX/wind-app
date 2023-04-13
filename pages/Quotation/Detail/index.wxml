@@ -396,7 +396,7 @@
     </view>
   </view>
   <view class="bottomContainer">
-    <view class="bottomTop" wx:if="{{!isFirst && burnRewards !== 0 && burnRewards && rewardsLevel !== 'Lieutenant'}}">
+    <view class="bottomTop" wx:if="{{(!isFirst && rewardsEarned !== null && rewardsLevel !== 'Lieutenant')}}">
     <view>
       {{seaReward.save1}}<Text>{{burnRewards}}</Text> {{seaReward.save2}}<Text>{{burnRewards}}</Text> {{seaReward.usd}}
     </view>
@@ -421,8 +421,8 @@
         <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && !isUs}}" catchtap="submit">{{isFirst ? languageContent.next : languageContent.saveQuotation}}</button>
       </view>
     </view>
-    <view class="nmilesCollected" wx:if="{{!isFirst && rewardsEarned && rewardsEarned !== 0}}">
-    {{seaReward.nmilesCollected}}<Text>{{rewardsEarned !== 0 ? rewardsEarned :quotationDetail.rewardsEarned}}</Text>
+    <view class="nmilesCollected" wx:if="{{!isFirst && rewardsEarned !== null}}">
+    {{seaReward.nmilesCollected}}<Text>{{rewardsEarned}}</Text>
     </view>
   </view>
 </view>
