@@ -421,7 +421,7 @@
         <button class="buttons" wx:if="{{!quotationDetail.quoteLines[0].allowSpecialQuotation && !isUs}}" catchtap="submit">{{isFirst ? languageContent.next : languageContent.saveQuotation}}</button>
       </view>
     </view>
-    <view class="nmilesCollected" wx:if="{{!isFirst && rewardsEarned !== null}}">
+    <view class="nmilesCollected" wx:if="{{rewardsEarned !== null}}">
     {{seaReward.nmilesCollected}}<Text>{{rewardsEarned}}</Text>
     </view>
   </view>

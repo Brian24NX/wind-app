@@ -25,6 +25,8 @@ Page({
     shipperOwnedContainer: false,
     resInfo: false,
     rewardsEarned: 0,
+    finalPrice: 0,
+    burnRewards: 0,
   },
 
   /**
@@ -59,7 +61,9 @@ Page({
       totalChargeAmount: data.totalChargeAmount,
       subscribedServices: data.subscribedServices,
       shipperOwnedContainer: data.shipperOwnedContainer,
-      rewardsEarned: data.rewardsEarned
+      rewardsEarned: data.rewardsEarned,
+      finalPrice: data.finalPrice,
+      burnRewards: data.burnRewards
     })
   },
 
