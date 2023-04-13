@@ -220,12 +220,13 @@ Page({
     this.setData({
       finalPrice: this.data.totalChargeAmount * this.data.containers,
     })
-
-    if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
+    
+    if(this.data.totalChargeAmount < this.data.burnRewards){
       this.setData({
         burnRewards: this.data.finalPrice
       })
     }
+    
     this.getSeaEarnPoints(this.data.finalPrice)
   },
 
@@ -329,24 +330,7 @@ Page({
           "subscriptionMode": item.seletcedProduct.subscriptionMode || ''
         })
       })
-      if (this.data.useRewards && this.data.burnRewards && this.data.burnRewards !== 0) {
-        vasChargeDetails.push({
-          "calculationType": '',
-          "cargoLines": [],
-          "chargeCode": 'FRT33',
-          "chargeName": '',
-          "currency": 'USD',
-          "description": '',
-          "expectedActions": '',
-          "hasChargeSelected": false,
-          "levelOfCharge": '',
-          "maximumChargeableAmount": '',
-          "minimumChargeableAmount": '',
-          "rateFrom": '',
-          "subscribedAmount": this.data.burnRewards,
-          "subscriptionMode": ''
-        })
-      }
+      // console.log(vasChargeDetails)
       if (this.data.quotationDetail.quoteLines[0].quoteLineId) {
         params = {
           "createLaraSpecialQuotation": {
@@ -610,14 +594,14 @@ Page({
         finalPrice: this.data.finalPrice + this.data.burnRewards
       })
     }
-    if (this.data.finalPrice === 0) {
+    if(this.data.finalPrice === 0){
       this.setData({
         rewardsEarned: 0
       })
-    } else {
+    }else{
       this.getSeaEarnPoints(this.data.finalPrice)
     }
-
+    
   },
 
   prevent() {

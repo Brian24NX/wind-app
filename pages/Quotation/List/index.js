@@ -168,6 +168,9 @@ Page({
             }
           })
         })
+        this.setData({
+          isLoading: false
+        })
         wx.pageScrollTo({
           duration: 500,
           scrollTop: 0
@@ -246,9 +249,6 @@ Page({
           quoteLineList: res.data
         })
       }
-      this.setData({
-        isLoading: false
-      })
     }, () => {
       this.setData({
         quoteLineList: [],
@@ -274,22 +274,8 @@ Page({
     })
   },
 
-  getSeaEarnPoints(totalCharge) {
-    return new Promise(function (resolve, reject) {
-      let pointBalance = 0
-      seaEarnPoints({
-        "baseAmount": totalCharge.amount,
-        "currencyType": totalCharge.currency.code,
-        "partnerCode": wx.getStorageSync('partnerList')[0].code,
-      }).then(result => {
-        pointBalance = result.data ? result.data.simulationResults[0].changeInPointsBalance : null
-        resolve(pointBalance)
-      })
-    })
-  },
-
   getQuotationSurchargeDetailFn(item, params, isFirst) {
-    getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(async (res) => {
+    getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(res => {
       item.isLoading = false
       item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
       const allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
@@ -299,8 +285,15 @@ Page({
           item.surchargeDetails.allocation = allocation
           item.canSelect = true
           //新增计算获得积分数量
-          const points = await this.getSeaEarnPoints(res.data.surchargeDetails[0].totalCharge)
-          item.rewardsEarned = points
+          setTimeout(() => {
+            seaEarnPoints({
+              "baseAmount": res.data.surchargeDetails[0].totalCharge.amount,
+              "currencyType": res.data.surchargeDetails[0].totalCharge.currency.code,
+              "partnerCode": wx.getStorageSync('partnerList')[0].code,
+            }).then(res => {
+              item.rewardsEarned = res.data ? res.data.simulationResults[0].changeInPointsBalance : null
+            })
+          }, 300);
         } else {
           item.surchargeDetails = null
           item.canSelect = false
