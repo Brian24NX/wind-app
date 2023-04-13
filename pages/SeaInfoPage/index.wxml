@@ -4,7 +4,7 @@
   <view class="resultContainers">
     <view class="resultCardContainers">
       <view class="titleArea">
-        <image src="/assets/img/seaReward/编组 4@2x.png" class="iconPig"></image>
+        <image src="/assets/img/seaReward/seaIcon@2x.png" class="iconPig"></image>
         <view class="textSeaRewards"> Sea ReWards</view>
       </view>
       <view class="textArea"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fringillaanmet pulvinar euismod sed a. Etpellentesque velit nec orci, mollislacus, magna amet, Vitae tortor nulla mauris, nec vivamus,Utegestas augue dolor adipiscing consequat nunc… </view>
@@ -13,7 +13,7 @@
       <view class="rateItem" catchtap="zhedie" data-type="foldRate">
         <view class="titleLine"></view>
         <view class="titleText"> Lieutenant </view>
-        <image src="/assets/img/seaReward/编组 13@2x.png" class="iconAnchor" />
+        <image src="/assets/img/seaReward/lieutenant@2x.png" class="iconAnchor" />
         <image class="editIcon" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate}}" class="hiddenContainer">
@@ -37,7 +37,7 @@
       <view class="rateItem" catchtap="zhedie" data-type="foldRate2">
         <view class="titleLine"></view>
         <view class="titleText"> Captain </view>
-        <image src="/assets/img/seaReward/编组 13@2x_2.png" class="iconAnchor" />
+        <image src="/assets/img/seaReward/captain@2x.png" class="iconAnchor" />
         <image class="editIcon" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate2}}" class="hiddenContainer">
@@ -61,7 +61,7 @@
       <view class="rateItem" catchtap="zhedie" data-type="foldRate3">
         <view class="titleLine"></view>
         <view class="titleText"> Master </view>
-        <image src="/assets/img/seaReward/编组 13@2x_3.png" class="iconAnchor" />
+        <image src="/assets/img/seaReward/master@2x.png" class="iconAnchor" />
         <image class="editIcon" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate3}}" class="hiddenContainer">
@@ -85,7 +85,7 @@
       <view class="rateItem" catchtap="zhedie" data-type="foldRate4">
         <view class="titleLine"></view>
         <view class="titleText"> Admiral </view>
-        <image src="/assets/img/seaReward/编组 13@2x_4.png" class="iconAnchor" />
+        <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" />
         <image class="editIcon" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate4}}" class="hiddenContainer">
@@ -110,7 +110,7 @@
     <view class="consoleContainer">
       <view class="consloleContainerItem">
         <view class="imageText">
-          <image src="/assets/img/seaReward/编组 9@2x.png" class="iconArea" />
+          <image src="/assets/img/seaReward/clock@2x.png" class="iconArea" />
           <view class="textContent"> Discover your Sea Rewards dashboard </view>
         </view>
         <button bindtap="onClick1" class="buttonClock">
@@ -119,7 +119,7 @@
       </view>
       <view class="consloleContainerItem">
         <view class="imageText">
-          <image src="/assets/img/seaReward/编组 10@2x.png" class="iconArea2" />
+          <image src="/assets/img/seaReward/quote@2x.png" class="iconArea2" />
           <view class="textContent2"> Start earning Nautical miles</view>
         </view>
         <button bindtap="onClick2" class="buttonQuote">
