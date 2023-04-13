@@ -46,8 +46,8 @@ Page({
   },
 
   onClick2() {
-    wx.navigateTo({
-      url: '/pages/Quotation/List/index',
+    wx.switchTab({
+      url: '/pages/Quotation/Search/index',
     })
   },
 
