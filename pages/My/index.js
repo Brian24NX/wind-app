@@ -32,7 +32,8 @@ Page({
     userInfo: {},
     showRemind: false,
     phoneNumber: '',
-    preAccount: ''
+    preAccount: '',
+    memberStatus: ''
   },
 
   /**
@@ -46,6 +47,9 @@ Page({
         phoneNumber: phone
       })
     }
+    this.setData({
+      memberStatus: wx.getStorageSync('seaRewardData').memberStatus
+    })
   },
 
   /**
@@ -112,6 +116,19 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: 3
+      })
+    }
+    if(this.data.memberStatus !== 'Active' || !this.data.needLogin){
+      this.setData({
+        dashboardList: [{
+          label: 'shipment',
+          url: '/packageDashboard/pages/shipment/list/index',
+          icon: '/assets/img/myAccount/shipment@2x.png'
+        }, {
+          label: 'document',
+          url: '/packageDashboard/pages/document/index',
+          icon: '/assets/img/myAccount/document@2x.png'
+        }]
       })
     }
   },

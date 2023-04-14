@@ -340,7 +340,7 @@
         <view class="additionTitleLine"></view>
         <view>{{vasLanguageContent.additionalServices}}</view>
       </view>
-      <view class="additionDesc">{{vasLanguageContent.additionalServicesDesc}}</view>
+      <!-- <view class="additionDesc">{{vasLanguageContent.additionalServicesDesc}}</view> -->
     </view>
     <view class="additionList">
       <view class="oneAddition" wx:for="{{noSelectVasList}}">

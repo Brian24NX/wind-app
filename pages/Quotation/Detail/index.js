@@ -82,6 +82,7 @@ Page({
     useRewards: false,
     finalPrice: 0,
     rewardsLevel: '',
+    memberStatus: ''
   },
 
   /**
@@ -116,6 +117,7 @@ Page({
       isSocAgree: wx.getStorageSync('isSocAgree') ? wx.getStorageSync('isSocAgree') : false,
       rewardsLevel: wx.getStorageSync('seaRewardData').level,
       burnRewards: wx.getStorageSync('seaRewardData').pointsBalance,
+      memberStatus: wx.getStorageSync('seaRewardData').memberStatus,
       containers: data.containers
     })
     this.setDefaultInfo(options.index, options.containers)
@@ -226,7 +228,9 @@ Page({
         burnRewards: this.data.finalPrice
       })
     }
-    this.getSeaEarnPoints(this.data.finalPrice)
+    if(this.data.memberStatus === 'Active'){
+      this.getSeaEarnPoints(this.data.finalPrice)
+    } 
   },
 
   changeCheck(e) {

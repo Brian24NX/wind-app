@@ -53,7 +53,8 @@ Page({
     isUs: false,
     equiptCode: '',
     shipperOwnedContainer: false,
-    rewardsEarned: null
+    rewardsEarned: null,
+    memberStatus: ''
   },
 
   /**
@@ -72,7 +73,8 @@ Page({
       languageContent: languageUtil.languageVersion().lang.page.qutationResult,
       language: languageUtil.languageVersion().lang.page.langue,
       transMode: wx.getStorageSync('transMode'),
-      seaReward: languageUtil.languageVersion().lang.page.seaReward
+      seaReward: languageUtil.languageVersion().lang.page.seaReward,
+      memberStatus: wx.getStorageSync('seaRewardData').memberStatus
     })
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
@@ -299,7 +301,10 @@ Page({
           item.surchargeDetails.allocation = allocation
           item.canSelect = true
           //新增计算获得积分数量
-          const points = await this.getSeaEarnPoints(res.data.surchargeDetails[0].totalCharge)
+          let points = null
+          if(this.data.memberStatus === 'Active'){
+            points = await this.getSeaEarnPoints(res.data.surchargeDetails[0].totalCharge)
+          }
           item.rewardsEarned = points
         } else {
           item.surchargeDetails = null

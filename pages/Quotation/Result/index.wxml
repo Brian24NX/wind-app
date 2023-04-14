@@ -26,7 +26,7 @@
           <view>{{quotationDetail.tranShipment.length ? (quotationDetail.tranShipment.length + ' ' + (quotationDetail.tranShipment.length > 1 ? languageContent.zhuanyuns : languageContent.zhuanyun)) : languageContent.zhida}}</view>
         </view>
         <view class="priceRight">
-          <view class="oldPrice" wx:if="{{ finalPrice === (totalChargeAmount * containers)}}">
+          <view class="oldPrice" wx:if="{{ rewardsEarned && finalPrice === (totalChargeAmount * containers)}}">
             <text style="margin-right: 4rpx;">{{totalChargeAmount * containers}}</text>
             <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
           </view>

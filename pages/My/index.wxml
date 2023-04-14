@@ -26,7 +26,7 @@
       <van-icon name="arrow" color="#04246A" />
     </view>
   </view>
-  <view class="seaRewardBox" wx:if="{{!needLogin}}" catchtap='goToSeaRewardPage'>
+  <view class="seaRewardBox" wx:if="{{!needLogin && memberStatus === 'Active'}}" catchtap='goToSeaRewardPage'>
     <view class="seaLogo">
       <image src="/assets/img/seaReward/seaLogo@2x.png" mode="aspectFit"></image>
       <view class="seaText">{{seaReward.activate}}</view>
@@ -41,7 +41,7 @@
   <view class="myDashboard">
     <view class="myDashboardTitle">{{languageContent.myDashboard}}</view>
     <view class="dashboardList">
-      <view class="oneDashboard" wx:for="{{dashboardList}}" wx:key="index" catchtap="toDashboard" data-url="{{item.url}}" wx:if="{{ (needLogin && item.label !== 'seaReward') || (!needLogin) }}">
+      <view class="oneDashboard" wx:for="{{dashboardList}}" wx:key="index" catchtap="toDashboard" data-url="{{item.url}}">
         <image src="{{item.icon}}"></image>
         <text>{{languageContent[item.label]}}</text>
       </view>

@@ -143,7 +143,7 @@ Page({
       simulationDate: this.getDate(),
       hisListSpot: wx.getStorageSync('spotOnHis'),
       hisListQuot: wx.getStorageSync('quotationHis'),
-      seaRewardData: wx.getStorageSync('seaRewardData')
+      seaRewardData: wx.getStorageSync('seaRewardData'),
     })
     wx.removeStorageSync('isSocAgree');
   },
