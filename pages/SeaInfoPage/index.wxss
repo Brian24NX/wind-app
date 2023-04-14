@@ -5,8 +5,9 @@
   padding: 30rpx 30rpx 210rpx;
   background-color: #f0f1f5;
 }
+
 .resultContainers .resultCardContainers {
-  background-color: rgba(255,255,255,1.000000);
+  background-color: rgba(255, 255, 255, 1.000000);
   width: 690rpx;
   height: 400rpx;
   align-self: center;
@@ -15,6 +16,7 @@
   padding: 48rpx 48rpx 42rpx 48rpx;
   margin-bottom: 20rpx;
 }
+
 .resultContainers .resultCardContainers .titleArea {
   width: 240rpx;
   margin-right: 354rpx;
@@ -22,6 +24,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .resultContainers .resultCardContainers .titleArea .iconPig {
   width: 70rpx;
   height: 70rpx;
@@ -29,7 +32,7 @@
 
 .resultContainers .resultCardContainers .titleArea .textSeaRewards {
   overflow-wrap: break-word;
-  color: rgba(4,36,106,1);
+  color: rgba(4, 36, 106, 1);
   font-size: 32rpx;
   font-family: Antonio-Regular;
   font-weight: normal;
@@ -38,11 +41,12 @@
   line-height: 46rpx;
   margin-top: 12rpx;
 }
+
 .resultContainers .resultCardContainers .textArea {
   width: 594rpx;
   height: 240rpx;
   overflow-wrap: break-word;
-  color: rgba(7,30,93,1);
+  color: rgba(7, 30, 93, 1);
   font-size: 28rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
@@ -60,7 +64,7 @@
 }
 
 .resultContainers .rateContainer .rateItem {
-  background-color: rgba(255,255,255,1.000000);
+  background-color: rgba(255, 255, 255, 1.000000);
   width: 690rpx;
   margin-left: -30rpx;
   margin-bottom: 25rpx;
@@ -71,7 +75,7 @@
 }
 
 .resultContainers .rateContainer .rateItem .titleLine {
-  background-color: rgba(226,2,2,1.000000);
+  background-color: rgba(226, 2, 2, 1.000000);
   width: 8rpx;
   height: 42rpx;
   display: flex;
@@ -82,7 +86,7 @@
 .resultContainers .rateContainer .rateItem .titleText {
   width: 120rpx;
   overflow-wrap: break-word;
-  color: rgba(7,30,93,1);
+  color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
   letter-spacing: -1rpx;
   font-family: Antonio-Regular;
@@ -105,6 +109,12 @@
   margin: 10rpx 0 8rpx 20rpx;
 }
 
+
+.editIcon2 {
+  transform: rotate(180deg);
+}
+
+
 .resultContainers .consoleContainer {
   width: 690rpx;
   flex-direction: row;
@@ -113,7 +123,7 @@
 }
 
 .resultContainers .consoleContainer .consloleContainerItem {
-  background-color: rgba(255,255,255,1.000000);
+  background-color: rgba(255, 255, 255, 1.000000);
   background-size: 100% 100%;
   display: flex;
   flex-direction: column;
@@ -136,7 +146,7 @@
   width: 222rpx;
   height: 92rpx;
   overflow-wrap: break-word;
-  color: rgba(7,30,93,1);
+  color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
   letter-spacing: -1rpx;
   font-family: Antonio-Regular;
@@ -147,18 +157,19 @@
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .buttonClock {
-  background-color: rgba(255,255,255,1.000000);
-  border: 1px solid rgba(45,117,255,1);
+  background-color: rgba(255, 255, 255, 1.000000);
+  border: 1px solid rgba(45, 117, 255, 1);
   margin-top: 20rpx;
   display: flex;
   flex-direction: column;
   padding: 18rpx 28rpx 18rpx 28rpx;
+  border-radius: 0%;
 }
 
 
 .resultContainers .consoleContainer .consloleContainerItem .buttonClock .buttonText {
   overflow-wrap: break-word;
-  color: rgba(45,117,255,1);
+  color: rgba(45, 117, 255, 1);
   font-size: 28rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
@@ -177,7 +188,7 @@
   width: 222rpx;
   height: 92rpx;
   overflow-wrap: break-word;
-  color: rgba(7,30,93,1);
+  color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
   letter-spacing: -1rpx;
   font-family: Antonio-Regular;
@@ -188,16 +199,17 @@
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .buttonQuote {
-  background-color: rgba(45,117,255,1.000000);
+  background-color: rgba(45, 117, 255, 1.000000);
   margin-top: 20rpx;
   display: flex;
   flex-direction: column;
   padding: 18rpx 58rpx 18rpx 58rpx;
+  border-radius: 0%;
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .buttonQuote .buttonText2 {
   overflow-wrap: break-word;
-  color: rgba(255,255,255,1);
+  color: rgba(255, 255, 255, 1);
   font-size: 28rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
@@ -225,7 +237,7 @@
 
 .waysToThere {
   overflow-wrap: break-word;
-  color: rgba(7,30,93,1);
+  color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
   letter-spacing: -1rpx;
   font-family: Antonio-Regular;
@@ -235,11 +247,12 @@
   line-height: 46rpx;
   margin-bottom: 15rpx;
 }
+
 .waysIntro {
   width: 594rpx;
   height: 68rpx;
   overflow-wrap: break-word;
-  color: rgba(7,30,93,1);
+  color: rgba(7, 30, 93, 1);
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
@@ -250,7 +263,7 @@
 
 .benefit {
   overflow-wrap: break-word;
-  color: rgba(7,30,93,1);
+  color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
   letter-spacing: -1rpx;
   font-family: Antonio-Regular;
@@ -270,7 +283,7 @@
 }
 
 .benefitIcon {
-  background-color: rgba(7,30,93,1.000000);
+  background-color: rgba(7, 30, 93, 1.000000);
   border-radius: 100%;
   width: 12rpx;
   height: 12rpx;
@@ -283,11 +296,10 @@
   width: 594rpx;
   height: 68rpx;
   overflow-wrap: break-word;
-  color: rgba(7,30,93,1.000000);
+  color: rgba(7, 30, 93, 1.000000);
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
   text-align: left;
   line-height: 34rpx;
 }
-

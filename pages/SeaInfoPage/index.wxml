@@ -5,7 +5,7 @@
     <view class="resultCardContainers">
       <view class="titleArea">
         <image src="/assets/img/seaReward/seaIcon@2x.png" class="iconPig"></image>
-        <view class="textSeaRewards"> Sea ReWards</view>
+        <view class="textSeaRewards"> Sea Reward</view>
       </view>
       <view class="textArea"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fringillaanmet pulvinar euismod sed a. Etpellentesque velit nec orci, mollislacus, magna amet, Vitae tortor nulla mauris, nec vivamus,Utegestas augue dolor adipiscing consequat nunc… </view>
     </view>
@@ -14,11 +14,11 @@
         <view class="titleLine"></view>
         <view class="titleText"> Lieutenant </view>
         <image src="/assets/img/seaReward/lieutenant@2x.png" class="iconAnchor" />
-        <image class="editIcon" src="/assets/img/booking/down.svg" mode="aspectFit" />
+        <image class="editIcon {{foldRate ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate}}" class="hiddenContainer">
         <view class="dropDown">
-          <view class="waysToThere"> How to Get there</view>
+          <view class="waysToThere"> How to get there</view>
           <view class="waysIntro"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringillaanmet pulvinar euismod sed …
           </view>
           <view class="benefit"> Benefits</view>
@@ -38,11 +38,11 @@
         <view class="titleLine"></view>
         <view class="titleText"> Captain </view>
         <image src="/assets/img/seaReward/captain@2x.png" class="iconAnchor" />
-        <image class="editIcon" src="/assets/img/booking/down.svg" mode="aspectFit" />
+        <image class="editIcon {{foldRate2 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate2}}" class="hiddenContainer">
         <view class="dropDown">
-          <view class="waysToThere"> How to Get there</view>
+          <view class="waysToThere"> How to get there</view>
           <view class="waysIntro"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringillaanmet pulvinar euismod sed …
           </view>
           <view class="benefit"> Benefits</view>
@@ -62,11 +62,11 @@
         <view class="titleLine"></view>
         <view class="titleText"> Master </view>
         <image src="/assets/img/seaReward/master@2x.png" class="iconAnchor" />
-        <image class="editIcon" src="/assets/img/booking/down.svg" mode="aspectFit" />
+        <image class="editIcon {{foldRate3 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate3}}" class="hiddenContainer">
         <view class="dropDown">
-          <view class="waysToThere"> How to Get there</view>
+          <view class="waysToThere"> How to get there</view>
           <view class="waysIntro"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringillaanmet pulvinar euismod sed …
           </view>
           <view class="benefit"> Benefits</view>
@@ -86,11 +86,11 @@
         <view class="titleLine"></view>
         <view class="titleText"> Admiral </view>
         <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" />
-        <image class="editIcon" src="/assets/img/booking/down.svg" mode="aspectFit" />
+        <image class="editIcon {{foldRate4 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate4}}" class="hiddenContainer">
         <view class="dropDown">
-          <view class="waysToThere"> How to Get there</view>
+          <view class="waysToThere"> How to get there</view>
           <view class="waysIntro"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringillaanmet pulvinar euismod sed …
           </view>
           <view class="benefit"> Benefits</view>
@@ -111,7 +111,7 @@
       <view class="consloleContainerItem">
         <view class="imageText">
           <image src="/assets/img/seaReward/clock@2x.png" class="iconArea" />
-          <view class="textContent"> Discover your Sea Rewards dashboard </view>
+          <view class="textContent"> Discover your Sea Reward dashboard </view>
         </view>
         <button bindtap="onClick1" class="buttonClock">
           <view class="buttonText"> My Sea Rewards </view>

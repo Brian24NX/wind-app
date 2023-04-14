@@ -23,10 +23,9 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad() {
-    // const languages = languageUtil.languageVersion().lang.page
-    // this.setData({
-    //   languageContent: languages.SeaRewardInfo,
-    // })
+    wx.setNavigationBarTitle({
+      title: 'Sea Reward Information'
+    })
 
   },
 
