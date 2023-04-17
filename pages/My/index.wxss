@@ -183,6 +183,7 @@ button[type=default][plain] {
   position: relative;
   display: flex;
   align-items: center;
+  width: 314px;
 }
 
 .gotoWebsite {

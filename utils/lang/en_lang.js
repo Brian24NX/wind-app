@@ -322,7 +322,7 @@ var Languague = {
     //sea reward
     seaReward:{
       seaRewardTitle: 'Sea Reward',
-      activate: 'Activate to start saving money',
+      activate: 'Start earning Nautical Miles!',
       dashboard: 'Sea Reward Dashboard',
       seaRewardInformation: 'Sea Reward Information',
       seaRewardIntro: 'Sea Reward is the loyalty program of CMA CGM dedicated to the digital SpotOn channel. Earn Nautical Miles every time you book with us!',
@@ -341,14 +341,14 @@ var Languague = {
       benefits: 'Benefits',
       seaRewardDiscover: 'Discover your Sea Reward dashboard',
       mySeaReward: 'My Sea Reward',
-      nauticalMiles: 'Start earning Nautical miles',
+      nauticalMiles: 'Start earning Nautical Miles',
       getAQuote: 'Get a Quote',
 
       save1: 'Use ',
       save2: 'Nmiles to save ',
       usd: 'USD?',
       nmilesCollected: 'Potential Nmiles to be collected: ',
-      earned: 'Nautical miles to be earned: ',
+      earned: 'Nautical Miles to be earned: ',
       status: 'Current Status: ',
       available: 'Nautical Miles Available',
       usdSaved: '',

@@ -350,8 +350,8 @@ var Languague = {
       getAQuote: '获取报价',
 
 
-      save1: 'Use ',
-      save2: 'Nmiles to save ',
+      save1: '使用 ',
+      save2: '海里抵扣 ',
       usd: 'USD?',
       nmilesCollected: '可获得海里: ',
       earned: '可获得海里:',

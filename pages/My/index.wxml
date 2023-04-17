@@ -9,7 +9,7 @@
     <view class="loginIcon">
       <image class="avatar" src="/assets/img/myAccount/avatar@2x.png"></image>
       <button class="infoCenter noLogin" type="default" plain="true" catchtap="toLogin">{{languageContent.login}}</button>
-      <van-icon name="arrow" color="#04246A" />
+      <view class="icon1"><van-icon name="arrow" color="#04246A" /></view>
     </view>
     <view class="gotoWebsite">
       {{languageContent.noAccount}}
@@ -32,9 +32,7 @@
       <view class="seaText">{{seaReward.activate}}</view>
     </view>
     <view class="seaIconBox">
-      <view class="seaIcon">
-        <image src="/assets/img/seaReward/seaIcon@2x.png" mode="aspectFit"></image>
-      </view>
+
       <van-icon name="arrow" color="#04246A" />
     </view>
   </view>

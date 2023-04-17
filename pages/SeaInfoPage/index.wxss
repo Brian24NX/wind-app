@@ -13,7 +13,7 @@
   align-self: center;
   display: flex;
   flex-direction: column;
-  padding: 48rpx 48rpx 42rpx 48rpx;
+  padding: 42rpx 48rpx 42rpx 48rpx;
   margin-bottom: 20rpx;
 }
 
@@ -40,6 +40,7 @@
   white-space: nowrap;
   line-height: 46rpx;
   margin-top: 12rpx;
+  margin-right: 20rpx;
 }
 
 .resultContainers .resultCardContainers .textArea {
@@ -58,7 +59,7 @@
 .resultContainers .rateContainer {
   display: flex;
   flex-direction: column;
-  padding: 30rpx 30rpx 10rpx 30rpx;
+  padding: 30rpx 30rpx 0rpx 30rpx;
   margin-top: -20rpx;
   position: relative;
 }
@@ -128,10 +129,11 @@
   display: flex;
   flex-direction: column;
   padding: 30rpx 24rpx 30rpx 24rpx;
+  width: 330rpx;
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .imageText {
-  margin-right: 58rpx;
+  margin-right: 38rpx;
   display: flex;
   flex-direction: column;
 }
@@ -140,6 +142,8 @@
   width: 90rpx;
   height: 90rpx;
   margin-right: 132rpx;
+  margin-left: -5rpx;
+
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .imageText .textContent {
@@ -164,7 +168,8 @@
   flex-direction: column;
   padding: 18rpx 28rpx 18rpx 28rpx;
   border-radius: 0%;
-  /* width: 153px; */
+  width: 280rpx;
+  height: 80rpx;
 }
 
 
@@ -183,6 +188,7 @@
   width: 90rpx;
   height: 90rpx;
   margin-right: 74rpx;
+  margin-left: -12rpx;
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .imageText .textContent2 {
@@ -205,6 +211,8 @@
   flex-direction: column;
   padding: 18rpx 58rpx 18rpx 58rpx;
   border-radius: 0%;
+  width: 280rpx;
+  height: 80rpx;
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .buttonQuote .buttonText2 {
@@ -226,7 +234,7 @@
   flex-direction: column;
   padding: 30rpx 30rpx 0rpx 30rpx;
   margin-bottom: 25rpx;
-  margin-top: -25rpx;
+  margin-top: -24rpx;
   margin-left: -5rpx;
 }
 
