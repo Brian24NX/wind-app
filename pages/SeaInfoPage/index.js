@@ -1,5 +1,8 @@
 // pages/SeaInfoPage/index.js
-// const languageUtil = require('../../../utils/languageUtils')
+
+var languageUtils = require('../../utils/languageUtils')
+
+
 
 
 Page({
@@ -8,7 +11,8 @@ Page({
    * Page initial data
    */
   data: {
-    // languageContent: {}
+    languageContent: {}, // 用于保存当前页面所需字典
+    seaReward: {},
     foldRate: true,
     foldRate2: true,
     foldRate3: true,
@@ -23,8 +27,9 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad() {
+    this.initLanguage();
     wx.setNavigationBarTitle({
-      title: 'Sea Reward Information'
+      title: languageUtils.languageVersion().lang.page.seaReward.seaRewardInformation
     })
 
   },
@@ -48,6 +53,20 @@ Page({
     wx.switchTab({
       url: '/pages/Quotation/Search/index',
     })
+  },
+
+  initLanguage() {
+    //获取当前小程序语言版本所对应的字典变量
+    var lang = languageUtils.languageVersion()
+    this.setData({
+      languageContent: lang.lang.page.userCenter,
+      seaReward: lang.lang.page.seaReward
+    })
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        list: lang.lang.toolbar.list //赋值
+      })
+    }
   },
 
   /**

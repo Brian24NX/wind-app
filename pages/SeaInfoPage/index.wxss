@@ -9,7 +9,7 @@
 .resultContainers .resultCardContainers {
   background-color: rgba(255, 255, 255, 1.000000);
   width: 690rpx;
-  height: 400rpx;
+  height: 300rpx;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -124,10 +124,10 @@
 
 .resultContainers .consoleContainer .consloleContainerItem {
   background-color: rgba(255, 255, 255, 1.000000);
-  background-size: 100% 100%;
+  background-size: 100%;
   display: flex;
   flex-direction: column;
-  padding: 54rpx 24rpx 30rpx 26rpx;
+  padding: 30rpx 24rpx 30rpx 24rpx;
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .imageText {
@@ -153,7 +153,7 @@
   font-weight: normal;
   text-align: left;
   line-height: 46rpx;
-  margin-top: 20rpx;
+
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .buttonClock {
@@ -164,6 +164,7 @@
   flex-direction: column;
   padding: 18rpx 28rpx 18rpx 28rpx;
   border-radius: 0%;
+  /* width: 153px; */
 }
 
 
@@ -195,7 +196,6 @@
   font-weight: normal;
   text-align: left;
   line-height: 46rpx;
-  margin-top: 20rpx;
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .buttonQuote {
