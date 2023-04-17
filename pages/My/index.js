@@ -23,10 +23,6 @@ Page({
       label: 'document',
       url: '/packageDashboard/pages/document/index',
       icon: '/assets/img/myAccount/document@2x.png'
-    }, {
-      label: 'seaReward',
-      url: '',
-      icon: '/assets/img/seaReward/seaIcon@2x.png'
     }],
     needLogin: false,
     userInfo: {},
@@ -118,7 +114,8 @@ Page({
         selected: 3
       })
     }
-    if(this.data.memberStatus !== 'Active' || !this.data.needLogin){
+
+    if(this.data.memberStatus === 'Active' && !this.data.needLogin){
       this.setData({
         dashboardList: [{
           label: 'shipment',
@@ -128,6 +125,10 @@ Page({
           label: 'document',
           url: '/packageDashboard/pages/document/index',
           icon: '/assets/img/myAccount/document@2x.png'
+        }, {
+          label: 'seaReward',
+          url: '',
+          icon: '/assets/img/seaReward/seaIcon@2x.png'
         }]
       })
     }
