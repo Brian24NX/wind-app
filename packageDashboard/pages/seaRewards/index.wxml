@@ -6,8 +6,8 @@
       <image class="otherIcon" src="/assets/img/seaReward/captain@2x.png"></image>
       <view class="boldText">{{(language === 'zh'? currentLevel.cnName :currentLevel.name) || seaRewardData.level}}</view>
       <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onOpenPopup"></image>
-      {{languageContent.next}}
-      <view class="boldText">{{language === 'zh'? nextLevel.cnName :nextLevel.name}}</view>
+      {{nextLevel.name ? languageContent.next : languageContent.detail.benefits}}
+      <view class="boldText" wx:if="{{nextLevel.name}}">{{language === 'zh'? nextLevel.cnName :nextLevel.name}}</view>
     </view>
     <van-row>
       <van-col span="14">
@@ -104,7 +104,7 @@
     </van-col>
   </van-row>
 </view>
-<van-popup show="{{ showPopup }}" bind:close="onClosePopup" closeable custom-style="height: 90%; width: 90%">
+<van-popup show="{{ showPopup }}" bind:close="onClosePopup" closeable custom-style=" width: 90%">
   <view class="popupContent">
     <view class="listTopTitles">
       <view class="boxtitleLine"></view>

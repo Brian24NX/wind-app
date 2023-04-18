@@ -4,7 +4,7 @@ page {
 }
 
 .documentContainer {
-  padding: 32rpx 30rpx 130rpx;
+  padding: 0 30rpx 140rpx;
 }
 
 .listTopContainers {
@@ -34,7 +34,7 @@ page {
 
 .topInfo {
   padding: 48rpx 48rpx 30rpx;
-  font-size: 20rpx;
+  font-size: 22rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #9AA7C3;
@@ -57,7 +57,7 @@ page {
 
 .boldText Text {
   color: #E10202;
-  font-size: 28rpx;
+  font-size: 24rpx;
 }
 
 .rowAlign {
@@ -197,7 +197,7 @@ page {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 30rpx;
+  padding: 42rpx 30rpx 42rpx;
 }
 
 .buttonNormal {
@@ -234,7 +234,7 @@ page {
 }
 
 .popupContent {
-  padding: 52rpx 48rpx;
+  padding: 52rpx 48rpx 22rpx;
 }
 
 .listTopTitles {

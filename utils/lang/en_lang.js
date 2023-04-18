@@ -359,7 +359,7 @@ var Languague = {
     },
     //sea reward dashboard
     seaRewardDashboard: {
-      title: 'Sea Rewards Dashboard',
+      title: 'Sea Reward Dashboard',
       next: 'Next level: ',
       available: ' Nautical Miles Available',
       saved: ' USD Saved',
@@ -372,7 +372,7 @@ var Languague = {
       quotRef: 'Quotation Ref.',
       invoiceRef: 'Invoice Ref:',
       nauticalMiles2: 'Nautical Miles:',
-      faq: 'Sea Rewards FAQ',
+      faq: 'Sea Reward FAQ',
       use: 'Use Rewards',
       nodata: "Haven't experienced Sea Reward yet?",
       getQuot: 'Get an instant quote now!',

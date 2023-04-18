@@ -376,7 +376,7 @@ var Languague = {
       placeholder: '报价单号/账单单号',
       raisedDate: '生成日期',
       quotRef: '报价单号',
-      invoiceRef: '发票号:',
+      invoiceRef: '账单单号:',
       nauticalMiles2: '海里:',
       faq: '常见问题',
       use: '获取报价',
