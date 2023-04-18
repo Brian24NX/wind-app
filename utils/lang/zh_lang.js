@@ -352,7 +352,7 @@ var Languague = {
 
       save1: '使用 ',
       save2: '海里抵扣 ',
-      usd: 'USD?',
+      usd: 'USD',
       nmilesCollected: '可获得海里: ',
       earned: '可获得海里:',
       status: '当前等级: ',

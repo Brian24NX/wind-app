@@ -346,7 +346,7 @@ var Languague = {
 
       save1: 'Use ',
       save2: 'Nmiles to save ',
-      usd: 'USD?',
+      usd: 'USD',
       nmilesCollected: 'Potential Nmiles to be collected: ',
       earned: 'Nautical Miles to be earned: ',
       status: 'Current Status: ',
