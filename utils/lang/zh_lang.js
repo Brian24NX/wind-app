@@ -327,7 +327,7 @@ var Languague = {
     //sea reward
     seaReward:{
       seaRewardTitle: '海里抵现',
-      activate: '激活里程抵现，开启省钱之旅',
+      activate: '海里抵现，开启您的省钱之旅！',
       dashboard: '我的海里',
       seaRewardInformation: '海里抵现',
       seaRewardIntro: '海里抵现是达飞轮船基于实时报价特别为您设计的一项遍及世界的海里奖励计划。每一次成功订舱，即可赚取海里!',
@@ -344,7 +344,7 @@ var Languague = {
       AdmiralBenefits: '每消费100 USD累积8海里',
       Howtogetthere: '等级条件',
       benefits: '等级权益',
-      seaRewardDiscover: '查看您的海里详情',
+      seaRewardDiscover: '查看您的海里\n详情',
       mySeaReward: '我的海里',
       nauticalMiles: '赚取海里',
       getAQuote: '获取报价',

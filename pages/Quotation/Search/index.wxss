@@ -546,3 +546,8 @@ page {
   margin-left: 10rpx;
   font-family: Antonio-Regular;
 }
+
+.anchorIcon {
+  margin-left: -5rpx;
+  margin-right: 10rpx;
+}

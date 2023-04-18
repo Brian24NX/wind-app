@@ -11,7 +11,7 @@
       <view class="seaLogo">
         <image src="/assets/img/seaReward/seaLogo@2x.png" mode="aspectFit"></image>
         <view class="seaText">
-          <image src="{{seaRewardData.icon}}" mode="aspectFit"></image>
+          <image class="anchorIcon" src="{{seaRewardData.icon}}" mode="aspectFit"></image>
           {{seaReward.status}}
           <view class="seaLevelText">{{seaRewardData.level}}</view>
         </view>
