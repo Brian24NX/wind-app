@@ -152,7 +152,7 @@ button[type=default][plain] {
   align-items: center;
   justify-content: space-between;
   margin-top: 30rpx;
-  padding: 0 40rpx;
+  padding: 0 46rpx;
 }
 
 .myContainer .setting .settingLeft {
@@ -236,6 +236,6 @@ button[type=default][plain] {
 }
 
 .seaLogo image {
-  width: 236rpx;
-  height: 36rpx;
+  width: 240rpx;
+  height: 30rpx;
 }

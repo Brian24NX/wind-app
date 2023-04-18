@@ -23,13 +23,18 @@ Page({
       label: 'document',
       url: '/packageDashboard/pages/document/index',
       icon: '/assets/img/myAccount/document@2x.png'
+    },{
+      label: 'seaReward',
+      url: '/packageDashboard/pages/seaRewards/index',
+      icon: '/assets/img/seaReward/seaIcon@2x.png'
     }],
     needLogin: false,
     userInfo: {},
     showRemind: false,
     phoneNumber: '',
     preAccount: '',
-    memberStatus: ''
+    memberStatus: null,
+    seaRewardData: null,
   },
 
   /**
@@ -43,8 +48,10 @@ Page({
         phoneNumber: phone
       })
     }
+    let reward = wx.getStorageSync('seaRewardData')
     this.setData({
-      memberStatus: wx.getStorageSync('seaRewardData').memberStatus
+      seaRewardData: reward,
+      memberStatus: reward.memberStatus,
     })
   },
 
@@ -115,23 +122,23 @@ Page({
       })
     }
 
-    if(this.data.memberStatus === 'Active' && !this.data.needLogin){
-      this.setData({
-        dashboardList: [{
-          label: 'shipment',
-          url: '/packageDashboard/pages/shipment/list/index',
-          icon: '/assets/img/myAccount/shipment@2x.png'
-        }, {
-          label: 'document',
-          url: '/packageDashboard/pages/document/index',
-          icon: '/assets/img/myAccount/document@2x.png'
-        }, {
-          label: 'seaReward',
-          url: '',
-          icon: '/assets/img/seaReward/seaIcon@2x.png'
-        }]
-      })
-    }
+    // if(this.data.memberStatus === 'Active' && !this.data.needLogin){
+    //   this.setData({
+    //     dashboardList: [{
+    //       label: 'shipment',
+    //       url: '/packageDashboard/pages/shipment/list/index',
+    //       icon: '/assets/img/myAccount/shipment@2x.png'
+    //     }, {
+    //       label: 'document',
+    //       url: '/packageDashboard/pages/document/index',
+    //       icon: '/assets/img/myAccount/document@2x.png'
+    //     }, {
+    //       label: 'seaReward',
+    //       url: '',
+    //       icon: '/assets/img/seaReward/seaIcon@2x.png'
+    //     }]
+    //   })
+    // }
   },
 
   //初始化语言

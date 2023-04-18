@@ -32,7 +32,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() { },
+  onLoad() {
+    if(wx.getStorageSync('partnerList')){
+      this.getSeaPartnerInfo()
+    }
+  },
 
   checkBindStatus() {
     let openId = wx.getStorageSync('openId')

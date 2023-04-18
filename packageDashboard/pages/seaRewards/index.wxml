@@ -1,0 +1,174 @@
+<!--packageDashboard/pages/seaRewards/index.wxml-->
+<view class="documentContainer">
+  <view class="listTopContainers topInfo">
+    <image class="seaLogo" src="/assets/img/seaReward/seaLogo@2x.png"></image>
+    <view class="rowAlign">
+      <image class="otherIcon" src="/assets/img/seaReward/captain@2x.png"></image>
+      <view class="boldText">{{(language === 'zh'? currentLevel.cnName :currentLevel.name) || seaRewardData.level}}</view>
+      <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onOpenPopup"></image>
+      {{languageContent.next}}
+      <view class="boldText">{{language === 'zh'? nextLevel.cnName :nextLevel.name}}</view>
+    </view>
+    <van-row>
+      <van-col span="14">
+        <view style="border-right: 1px solid #EEEEEE;">
+          <view class="rowAlign">
+            <image class="otherIcon" src="/assets/img/seaReward/greenShip@2x.png"></image>
+            <view class="boldText"><Text>{{availableMiles}}</Text>{{languageContent.available}}</view>
+          </view>
+          <view class="rowAlign">
+            <image class="infoIcon2" src="/assets/img/seaReward/info@2x.png"></image>
+            <view class="desc">{{languageContent.virtroles}}</view>
+          </view>
+        </view>
+      </van-col>
+      <van-col span="10">
+        <view class="rowAlign rightBox">
+          <image class="otherIcon" src="/assets/img/seaReward/greenRewards@2x.png"></image>
+          <view class="boldText"><Text>{{savedUSD}}</Text>{{languageContent.saved}}</view>
+        </view>
+        <view class="rowAlign rightBox">
+          <image class="infoIcon2" src="/assets/img/seaReward/info@2x.png" catchtap="onResInfo"></image>
+          <view class="desc">{{languageContent.spotOn}}</view>
+        </view>
+      </van-col>
+    </van-row>
+    <view class="descBox">{{languageContent.desc}}</view>
+  </view>
+  <view class="listTopContainers">
+    <view class="listTopContainer">
+      <view class="listTopTitles">
+        <view class="boxtitleLine"></view>
+        <view class="boxTitle">
+          <text>{{languageContent.nauticalMiles}}</text>
+        </view>
+      </view>
+      <view class="inputContainer">
+        <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+        <view class="delete" catchtap="deleteValue">
+          <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
+        </view>
+        <view class="search" bindtap="search">
+          <image src="/assets/img/search/search@2x.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{!loading && list.length > 0 && !noData}}">
+    <view wx:for="{{list}}" wx:key="index" class="itemBox listTopContainers">
+      <view class="ones">
+        <view class="boxTitle listStyle">{{languageContent.raisedDate}}</view>
+        <view class="oneRight">{{item.date}}</view>
+      </view>
+      <view class="quoatBox">
+        <image src="/assets/img/more/info@2x.png" class="docIcon"></image>
+        <view class="templateContent">
+          <view class="quoatName">{{item.quoteRef}}</view>
+          <view>{{languageContent.quotRef}}</view>
+        </view>
+        <view class="quotStatus">
+          {{item.status}}
+        </view>
+      </view>
+      <view class="ones ref">
+        <view>{{languageContent.invoiceRef}}</view>
+        <view class="invoiceNum">{{item.invoiceRef}}</view>
+      </view>
+      <view class="ones ref">
+        <view>{{languageContent.nauticalMiles2}}</view>
+        <view class="redMiles">+{{item.miles}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{noData}}" class="boxTitle noData">
+    <view class="siteText">{{languageContent.nodata}}</view>
+    <view catchtap="gotoQuat" class="urlCopy">{{languageContent.getQuot}}</view>
+  </view>
+  <view class="loadings" wx:if="{{loading}}">
+    <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
+  </view>
+</view>
+
+<view class="bottomFixed">
+  <van-row>
+    <van-col span="12">
+      <button bindtap="gotoFAQ" class="buttonOutline">
+        {{languageContent.faq}}
+      </button>
+    </van-col>
+    <van-col span="12">
+      <button bindtap="gotoQuat" class="buttonNormal">
+        {{languageContent.use}}
+      </button>
+    </van-col>
+  </van-row>
+</view>
+<van-popup show="{{ showPopup }}" bind:close="onClosePopup" closeable custom-style="height: 90%; width: 90%">
+  <view class="popupContent">
+    <view class="listTopTitles">
+      <view class="boxtitleLine"></view>
+      <view class="boxTitle">
+        <text>{{languageContent.detail.status}}</text>
+      </view>
+    </view>
+    <view class="detailBox">
+      <view class="ones" style="padding: 0 10rpx 16rpx">
+        <view class="rowAlign">
+          <image class="otherIcon" src="{{currentLevel.icon}}"></image>
+          <view class="boldText">{{language === 'zh'? currentLevel.cnName :currentLevel.name}}</view>
+        </view>
+        <image class="otherIcon" src="/assets/img/seaReward/lock@2x.png"></image>
+      </view>
+      <view class="detailDesc">
+        <view class="infoCenter detailRef" wx:if="{{currentLevel.condition !== ''}}">
+          <image class="detaiIcon" src="/assets/img/seaReward/book@2x.png"></image>{{languageContent.detail.conditions}}
+        </view>
+        <view class="description" wx:if="{{currentLevel.condition !== ''}}">{{language === 'zh'? currentLevel.cnCondition: currentLevel.condition}}</view>
+        <view class="infoCenter detailRef">
+          <image class="detaiIcon" src="/assets/img/seaReward/smallPig@2x.png"></image>{{languageContent.detail.benefits}}
+        </view>
+        <view class="description infoStart">
+          <view class="point"></view>
+          {{language === 'zh'? currentLevel.cnBenfits: currentLevel.benefits}}
+          <!-- <view wx:for="{{languageContent.detail.benDesc}}" class="infoStart">
+            <view class="point"></view>
+            <view style="width: 516rpx;">{{item}}</view>
+          </view> -->
+        </view>
+      </view>
+    </view>
+    <view class="listTopTitles" wx:if="{{nextLevel}}">
+      <view class="boxtitleLine"></view>
+      <view class="boxTitle">
+        <text>{{languageContent.detail.next}}</text>
+      </view>
+    </view>
+    <view class="detailBox" wx:if="{{nextLevel}}">
+      <view class="ones" style="padding: 0 10rpx 16rpx">
+        <view class="rowAlign">
+          <image class="otherIcon" src="{{nextLevel.icon}}"></image>
+          <view class="boldText">{{language === 'zh'? nextLevel.cnName:nextLevel.name}}</view>
+        </view>
+        <image class="otherIcon" src="/assets/img/seaReward/lock@2x.png"></image>
+      </view>
+      <view class="detailDesc">
+        <view class="infoCenter detailRef">
+          <image class="detaiIcon" src="/assets/img/seaReward/book@2x.png"></image>{{languageContent.detail.conditions}}
+        </view>
+        <view class="description">{{language === 'zh'? nextLevel.cnCondition:nextLevel.condition}}</view>
+        <view class="infoCenter detailRef">
+          <image class="detaiIcon" src="/assets/img/seaReward/smallPig@2x.png"></image>{{languageContent.detail.benefits}}
+        </view>
+        <view class="description infoStart">
+          <view class="point"></view>
+          {{language === 'zh'? nextLevel.cnBenfits:nextLevel.benefits}}
+          <!-- <view wx:for="{{languageContent.detail.benDesc}}" class="infoStart">
+            <view class="point"></view>
+            <view style="width: 516rpx;">{{item}}</view>
+          </view> -->
+        </view>
+      </view>
+    </view>
+  </view>
+</van-popup>

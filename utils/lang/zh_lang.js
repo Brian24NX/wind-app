@@ -363,6 +363,32 @@ var Languague = {
       rewardResult2: ' 海里',
       resultInfo: '实际海里累积将在账单支付后生效'
     },
+    //sea reward dashboard
+    seaRewardDashboard: {
+      title: '我的海里',
+      next: '下个等级: ',
+      available: ' 可用海里',
+      saved: ' USD已抵扣',
+      virtroles: 'CENTRIMEX-Virtroles',
+      spotOn: '最新报价单',
+      desc: '作为上尉，您在创建报价单时每消费100 USD将累积4海里。账单支付成功后即可有效累积海里数。',
+      nauticalMiles : '海里',
+      placeholder: '报价单号/账单单号',
+      raisedDate: '生成日期',
+      quotRef: '报价单号',
+      invoiceRef: '发票号:',
+      nauticalMiles2: '海里:',
+      faq: '常见问题',
+      use: '获取报价',
+      nodata: '您还未体验海里抵现？',
+      getQuot: '即刻开始实时报价！',
+      detail: {
+        status: '我的等级',
+        next: '下个等级',
+        conditions: '等级条件',
+        benefits: '等级权益',
+      }
+    },
     legalTerms: {
       title: '隐私政策',
       title1: '隐私',

@@ -9,11 +9,10 @@
 .resultContainers .resultCardContainers {
   background-color: rgba(255, 255, 255, 1.000000);
   width: 690rpx;
-  height: 300rpx;
   align-self: center;
   display: flex;
   flex-direction: column;
-  padding: 30rpx 48rpx 30rpx 48rpx;
+  padding: 42rpx 48rpx 42rpx;
   margin-bottom: 20rpx;
 }
 
@@ -44,16 +43,13 @@
 }
 
 .resultContainers .resultCardContainers .textArea {
-  width: 594rpx;
-  height: 240rpx;
   overflow-wrap: break-word;
-  color: rgba(7, 30, 93, 1);
-  font-size: 28rpx;
-  font-family: PingFangSC-Regular;
-  font-weight: normal;
   text-align: left;
-  line-height: 40rpx;
   margin-top: 10rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
 }
 
 .resultContainers .rateContainer {

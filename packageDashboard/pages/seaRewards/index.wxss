@@ -1,0 +1,312 @@
+/* packageDashboard/pages/seaRewards/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.documentContainer {
+  padding: 32rpx 30rpx 130rpx;
+}
+
+.listTopContainers {
+  background-color: #ffffff;
+  width: 100%;
+  margin: 30rpx 0;
+}
+
+.listTopContainer {
+  background-color: #ffffff;
+  padding: 30rpx;
+}
+
+.boxtitleLine {
+  width: 8rpx;
+  height: 42rpx;
+  background: #E20202;
+  margin-right: 20rpx;
+}
+
+.boxTitle {
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.topInfo {
+  padding: 48rpx 48rpx 30rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #9AA7C3;
+}
+
+.infoCenter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.boldText {
+  font-size: 24rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+  margin-left: 6rpx;
+}
+
+.boldText Text {
+  color: #E10202;
+  font-size: 28rpx;
+}
+
+.rowAlign {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 12rpx;
+}
+
+.divider {
+  padding-top: 30rpx;
+  border-top: 2rpx solid #EEEEEE;
+}
+
+.infoIcon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+  margin-left: 20rpx;
+}
+
+.infoIcon2 {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+  margin-left: 8rpx;
+}
+
+.otherIcon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.seaLogo {
+  width: 240rpx;
+  height: 30rpx;
+  margin-bottom: 38rpx;
+}
+
+.rightBox {
+  margin-left: 26rpx;
+}
+
+.descBox {
+  padding-top: 30rpx;
+  border-top: 2rpx solid #EEEEEE;
+  margin-top: 36rpx;
+}
+
+.ones {
+  display: flex;
+  justify-content: space-between;
+  font-size: 32rpx;
+  margin-top: 30rpx;
+}
+
+.ref {
+  min-height: 48rpx;
+  background: #EBEDF3;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
+  padding: 8rpx 20rpx;
+}
+
+.itemBox {
+  padding: 1rpx 30rpx 30rpx;
+  margin: 0 0 40rpx;
+}
+
+.oneRight {
+  font-size: 24rpx;
+  font-family: ArialMT;
+  color: #071E5D;
+  text-align: right;
+}
+
+.redMiles {
+  font-size: 24rpx;
+  font-family: Arial-BoldMT, Arial;
+  font-weight: normal;
+  color: #E10202;
+}
+
+.invoiceNum {
+  font-size: 24rpx;
+  font-family: Arial-BoldMT, Arial;
+  font-weight: normal;
+  color: #071E5D;
+}
+
+.quoatBox {
+  height: 100rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #E2E2E2;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  margin-top: 30rpx;
+}
+
+.templateContent {
+  width: calc(100% - 106rpx - 56rpx);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #6B7790;
+}
+
+.quoatName {
+  font-size: 24rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #071E5D;
+}
+
+.quotStatus {
+  font-size: 28rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #E10202;
+}
+
+.docIcon {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.bottomFixed {
+  background-color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 30rpx;
+}
+
+.buttonNormal {
+  width: 322rpx;
+  height: 80rpx;
+  background-color: #2D75FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  border-radius: 0;
+  z-index: 95;
+  margin-right: 0;
+}
+
+.buttonOutline {
+  width: 322rpx;
+  height: 80rpx;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #2D75FF;
+  border-radius: 0;
+  z-index: 95;
+  border: 2rpx solid #2D75FF;
+  margin-left: 0;
+}
+
+.popupContent {
+  padding: 52rpx 48rpx;
+}
+
+.listTopTitles {
+  display: flex;
+}
+
+.detailBox {
+  border: 1rpx solid #E2E2E2;
+  margin: 20rpx 0 30rpx;
+}
+
+.detailDesc {
+  border-top: 1rpx solid #E2E2E2;
+  padding: 20rpx 10rpx 0;
+}
+
+.detailRef {
+  background: #EBEDF3;
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+  min-height: 54rpx;
+  padding: 2rpx 12rpx;
+}
+
+.description {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #9AA7C3;
+  margin: 20rpx 10rpx 26rpx;
+}
+
+.detaiIcon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 4rpx;
+}
+
+.point {
+  width: 12rpx;
+  height: 12rpx;
+  background: #071E5D;
+  border-radius: 10rpx;
+  margin-right: 16rpx;
+}
+
+.infoStart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-direction: row;
+}
+
+.noData {
+  display: flex;
+  flex-direction: column;
+  margin-top: 42rpx;
+  align-items: center;
+  padding: 30rpx;
+}
+
+.siteText {
+  font-size: 28rpx;
+  padding-top: 20rpx;
+  color: #071E5D;
+  font-family: ArialMT;
+}
+
+.urlCopy {
+  color: #2B73FC;
+  font-size: 28rpx;
+  font-family: ArialMT;
+}

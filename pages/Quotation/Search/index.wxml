@@ -7,7 +7,7 @@
 <view class="contentContainer">
   <view class="priceContainer" style="padding-top: calc({{navHeight}}px + 36rpx);">
     <wxs module="format" src="/utils/format.wxs"></wxs>
-    <view class="seaRewardBox" wx:if="{{!needLogin && seaRewardData.memberStatus==='Active'}}" catchtap="gotoDashboard">
+    <view class="seaRewardBox" wx:if="{{!needLogin && seaRewardData.memberStatus==='Active'}}" catchtap="toSeaReward">
       <view class="seaLogo">
         <image src="/assets/img/seaReward/seaLogo@2x.png" mode="aspectFit"></image>
         <view class="seaText">

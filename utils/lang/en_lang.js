@@ -357,6 +357,32 @@ var Languague = {
       rewardResult2: ' Nautical Miles',
       resultInfo: 'Points will be effectively accumulated after payment of the invoice'
     },
+    //sea reward dashboard
+    seaRewardDashboard: {
+      title: 'Sea Rewards Dashboard',
+      next: 'Next level: ',
+      available: ' Nautical Miles Available',
+      saved: ' USD Saved',
+      virtroles: 'CENTRIMEX-Virtroles',
+      spotOn: 'On SpotOn quotes',
+      desc: 'As a Captain you earn 2 Nautical Miles for every 100＄ spent on Spoton quotes. Nautical Miles are earned once the invoice is paid.',
+      nauticalMiles : 'Nautical Miles',
+      placeholder: 'Quotation Ref. / Invoice Ref.',
+      raisedDate: 'Raised Date',
+      quotRef: 'Quotation Ref.',
+      invoiceRef: 'Invoice Ref:',
+      nauticalMiles2: 'Nautical Miles:',
+      faq: 'Sea Rewards FAQ',
+      use: 'Use Rewards',
+      nodata: "Haven't experienced Sea Reward yet?",
+      getQuot: 'Get an instant quote now!',
+      detail: {
+        status: 'My Status',
+        next: 'Next Level',
+        conditions: 'Conditions',
+        benefits: 'Benefits',
+      }
+    },
     legalTerms: {
       title: 'Privacy Policy',
       title1: 'Privacy',

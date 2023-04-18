@@ -242,6 +242,13 @@ Page({
     }
   },
 
+  toSeaReward(){
+    wx.navigateTo({
+      url: '/packageDashboard/pages/seaRewards/index',
+    })
+  },
+  
+
   checkAccessToken(callback) {
     if (!utils.checkAccessToken()) {
       wx.showToast({
@@ -1418,11 +1425,4 @@ Page({
       wx.setStorageSync('quotationHis', rmList);
     }
   },
-
-  gotoDashboard(){
-    wx.showToast({
-      title: this.data.load.functionIsUnderDevelopment,
-      icon: 'none'
-    })
-  }
 })

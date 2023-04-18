@@ -68,7 +68,8 @@
       "pages": [
         "pages/document/index",
         "pages/shipment/list/index",
-        "pages/shipment/detail/index"
+        "pages/shipment/detail/index",
+        "pages/seaRewards/index"
       ]
     },
     {
