@@ -90,6 +90,7 @@
         <view class="imageText">
           <image src="/assets/img/seaReward/clock@2x.png" class="iconArea" />
           <view class="textContent"> {{seaReward.seaRewardDiscover}}</view>
+          <view class="textContent"> {{seaReward.seaRewardDiscover2}}</view>
         </view>
         <button bindtap="onClick1" class="buttonClock">
           <view class="buttonText"> {{seaReward.mySeaReward}} </view>

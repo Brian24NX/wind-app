@@ -69,6 +69,7 @@
   display: flex;
   justify-content: flex-center;
   padding: 28rpx 30rpx 28rpx 30rpx;
+  position: relative;
 }
 
 .resultContainers .rateContainer .rateItem .titleLine {
@@ -144,7 +145,7 @@
 
 .resultContainers .consoleContainer .consloleContainerItem .imageText .textContent {
   width: 222rpx;
-  height: 92rpx;
+  /* height: 92rpx; */
   overflow-wrap: break-word;
   color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
@@ -230,8 +231,9 @@
   flex-direction: column;
   padding: 25rpx 30rpx 0rpx 30rpx;
   margin-bottom: 25rpx;
-  margin-top: -24rpx;
+  margin-top: -25rpx;
   margin-left: -5rpx;
+  border-top: 1rpx solid rgba(240, 241, 245, 1);
 }
 
 .dropDown {
@@ -294,7 +296,7 @@
   height: 12rpx;
   display: flex;
   flex-direction: column;
-  margin: 14rpx 0 42rpx 0;
+  margin: 11rpx 0 42rpx 0;
 }
 
 .benefitText {
