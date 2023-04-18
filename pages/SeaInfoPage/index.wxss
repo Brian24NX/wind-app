@@ -260,7 +260,7 @@
   width: 594rpx;
   height: 68rpx;
   overflow-wrap: break-word;
-  color: rgba(7, 30, 93, 1);
+  color: #9aa6b1;
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
@@ -304,7 +304,7 @@
   width: 594rpx;
   height: 68rpx;
   overflow-wrap: break-word;
-  color: rgba(7, 30, 93, 1.000000);
+  color: #9aa6b1;
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
