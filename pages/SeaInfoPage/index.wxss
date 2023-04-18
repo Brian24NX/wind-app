@@ -13,7 +13,7 @@
   align-self: center;
   display: flex;
   flex-direction: column;
-  padding: 42rpx 48rpx 42rpx 48rpx;
+  padding: 30rpx 48rpx 30rpx 48rpx;
   margin-bottom: 20rpx;
 }
 
@@ -95,7 +95,7 @@
   text-align: left;
   white-space: nowrap;
   line-height: 46rpx;
-  margin: 2rpx 0 0 20rpx;
+  margin: 0 0 0 20rpx;
 }
 
 .resultContainers .rateContainer .rateItem .iconAnchor {
@@ -232,7 +232,7 @@
   width: 690rpx;
   display: flex;
   flex-direction: column;
-  padding: 30rpx 30rpx 0rpx 30rpx;
+  padding: 25rpx 30rpx 0rpx 30rpx;
   margin-bottom: 25rpx;
   margin-top: -24rpx;
   margin-left: -5rpx;
@@ -284,10 +284,11 @@
 
 .benefitContent {
   width: 618rpx;
+  height: 60rpx;
   flex-direction: row;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10rpx;
+  /* margin-bottom: 10rpx; */
 }
 
 .benefitIcon {

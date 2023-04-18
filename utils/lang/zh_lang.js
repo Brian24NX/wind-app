@@ -134,7 +134,7 @@ var Languague = {
       gzp: '货物运输限制',
       gzfl: '柜租费率\n(标准)',
       cxfl: '查询费率',
-      ddCharges: '柜租费率\n(动态)'
+      ddCharges: '柜租费率\n(实时)'
     },
     // 查询结果
     queryRes: {
@@ -332,7 +332,7 @@ var Languague = {
       seaRewardInformation: '海里抵现',
       seaRewardIntro: '海里抵现是达飞轮船基于实时报价特别为您设计的一项遍及世界的海里奖励计划。每一次成功订舱，即可赚取海里!',
       Lieutenant: '中尉',
-      LieutenantBenefits: '每消费100USD累积2海里', 
+      LieutenantBenefits: '每消费100 USD累积2海里', 
       Captain: '上尉',
       CaptainGetThere: '要达到上尉级别，您需要至少在13周内每周预定最少3个TEU（标准箱）',
       CaptainBenefits: '每消费100 USD累积4海里',

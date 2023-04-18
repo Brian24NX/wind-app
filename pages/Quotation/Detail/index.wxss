@@ -679,7 +679,7 @@
 
 .bottomButtonContainer .bottomLeft .priceUnit .unit Text {
   color: #9AA7C3;
-  margin-left: 6rpx;
+  margin-left: 15rpx;
   text-decoration: line-through;
   font-weight: 400;
   font-family: PingFangSC-Regular, PingFang SC;
