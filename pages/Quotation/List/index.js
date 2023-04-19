@@ -283,6 +283,7 @@ Page({
         "baseAmount": totalCharge.amount,
         "currencyType": totalCharge.currency.code,
         "partnerCode": wx.getStorageSync('partnerList')[0].code,
+        "level": wx.getStorageSync('seaRewardData').level
       }).then(result => {
         pointBalance = result.data ? result.data.simulationResults[0].changeInPointsBalance : null
         resolve(pointBalance)

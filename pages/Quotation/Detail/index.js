@@ -131,6 +131,7 @@ Page({
       "baseAmount": amount,
       "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
+      "level": wx.getStorageSync('seaRewardData').level
     }).then(res => {
       this.setData({
         rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance : null

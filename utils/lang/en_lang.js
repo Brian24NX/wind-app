@@ -368,7 +368,7 @@ var Languague = {
       spotOn: 'On SpotOn quotes',
       desc1: 'As a ',
       desc2: ' you earn ',
-      desc3: ' Nautical Miles for every 100＄ spent on Spoton quotes. Nautical Miles are earned once the invoice is paid.',
+      desc3: ' Nautical Miles for every 100＄ spent on SpotOn quotes. Nautical Miles are earned once the invoice is paid.',
       nauticalMiles : 'Nautical Miles',
       placeholder: 'Quotation Ref. / Invoice Ref.',
       raisedDate: 'Raised Date',
