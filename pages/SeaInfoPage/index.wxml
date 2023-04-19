@@ -100,6 +100,7 @@
         <view class="imageText">
           <image src="/assets/img/seaReward/quote@2x.png" class="iconArea2" />
           <view class="textContent2"> {{seaReward.nauticalMiles}}</view>
+          <view class="textContent2"> {{seaReward.nauticalMiles2}}</view>
         </view>
         <button bindtap="onClick2" class="buttonQuote">
           <view class="buttonText2"> {{seaReward.getAQuote}} </view>

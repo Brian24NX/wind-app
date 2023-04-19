@@ -233,6 +233,7 @@ button[type=default][plain] {
   font-size: 28rpx;
   color: #04246A;
   margin-top: 16rpx;
+  margin-left: 5rpx;
 }
 
 .seaLogo image {

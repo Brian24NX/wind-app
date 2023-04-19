@@ -342,7 +342,8 @@ var Languague = {
       seaRewardDiscover: 'Discover your Sea',
       seaRewardDiscover2: 'Reward dashboard',
       mySeaReward: 'My Sea Reward',
-      nauticalMiles: 'Start earning Nautical Miles',
+      nauticalMiles: 'Start earning',
+      nauticalMiles2: 'Nautical Miles',
       getAQuote: 'Get a Quote',
 
       save1: 'Use ',
