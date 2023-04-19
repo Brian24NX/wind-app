@@ -109,6 +109,7 @@ page {
   height: 30rpx;
   margin-bottom: 22rpx;
 }
+
 .bottomLines {
   padding-bottom: 24rpx;
   border-bottom: solid 1rpx #EEEEEE;
@@ -124,6 +125,7 @@ page {
   border-top: 2rpx solid #EEEEEE;
   margin-top: 18rpx;
 }
+
 .smallDesc {
   font-size: 20rpx;
   font-family: PingFangSC-Regular, PingFang SC;
@@ -223,6 +225,7 @@ page {
   bottom: 0;
   width: 100%;
   padding: 42rpx 30rpx 42rpx;
+  z-index: 100;
 }
 
 .buttonNormal {
@@ -239,6 +242,22 @@ page {
   border-radius: 0;
   z-index: 95;
   margin-right: 0;
+}
+
+.buttonFull {
+  width: 100%;
+  height: 80rpx;
+  background-color: #2D75FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  border-radius: 0;
+  z-index: 95;
+  margin: 30rpx 0 30rpx;
 }
 
 .buttonOutline {
@@ -314,6 +333,7 @@ page {
   align-items: baseline;
   flex-direction: row;
 }
+
 .pointCenter {
   display: flex;
   justify-content: flex-start;
@@ -330,10 +350,10 @@ page {
 }
 
 .siteText {
-  font-size: 28rpx;
-  padding-top: 20rpx;
-  color: #071E5D;
-  font-family: ArialMT;
+  font-size: 36rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #04246A;
 }
 
 .urlCopy {
@@ -345,4 +365,10 @@ page {
 .oneLines {
   padding: 0 14rpx 22rpx;
   margin-top: 22rpx;
+}
+
+.noDataImage {
+  width: 534rpx;
+  height: 336rpx;
+  margin-bottom: 40rpx;
 }

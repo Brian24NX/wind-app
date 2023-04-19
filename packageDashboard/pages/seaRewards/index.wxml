@@ -53,13 +53,18 @@
         </view>
       </view>
     </view>
+    <view wx:if="{{noData}}" class="boxTitle noData">
+      <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
+      <view class="siteText">{{languageContent.nodata}}</view>
+      <button bindtap="gotoQuat" class="buttonFull">{{languageContent.getQuot}}</button>
+    </view>
   </view>
 
   <view wx:if="{{!loading && list.length > 0 && !noData}}">
     <view wx:for="{{list}}" wx:key="index" class="itemBox listTopContainers">
       <view class="ones">
         <view class="boxTitle listStyle">{{languageContent.raisedDate}}</view>
-        <view class="oneRight">{{item.date}}</view>
+        <view class="oneRight">{{language === 'zh'? item.cnDate :item.date}}</view>
       </view>
       <view class="quoatBox">
         <image src="/assets/img/more/info@2x.png" class="docIcon"></image>
@@ -68,7 +73,7 @@
           <view>{{languageContent.quotRef}}</view>
         </view>
         <view class="quotStatus">
-          {{item.status}}
+          {{language === 'zh'? item.cnStatus :item.status}}
         </view>
       </view>
       <view class="ones ref">
@@ -81,10 +86,7 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{noData}}" class="boxTitle noData">
-    <view class="siteText">{{languageContent.nodata}}</view>
-    <view catchtap="gotoQuat" class="urlCopy">{{languageContent.getQuot}}</view>
-  </view>
+
   <view class="loadings" wx:if="{{loading}}">
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
   </view>

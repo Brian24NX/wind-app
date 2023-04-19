@@ -61,18 +61,32 @@ Page({
     list: [{
       id: 1,
       date: '03-MAR-2023',
+      cnDate: '2023-03-03',
       quoteRef: 'QSPOT2827255',
       invoiceRef: 'FREX83088443',
       miles: '52.92',
-      status: 'EARNED'
+      status: 'EARNED',
+      cnStatus: '累积'
     },
     {
       id: 2,
       date: '03-MAR-2023',
+      cnDate: '2023-03-03',
       quoteRef: 'QSPOT2827124',
       invoiceRef: 'FREX83088443',
       miles: '30.08',
-      status: 'EAGAGED'
+      status: 'EAGAGED',
+      cnStatus: '锁定'
+    },
+    {
+      id: 3,
+      date: '03-MAR-2023',
+      cnDate: '2023-03-03',
+      quoteRef: 'QSPOT2827121',
+      invoiceRef: 'FREX83088441',
+      miles: '29.04',
+      status: 'USED',
+      cnStatus: '消耗'
     }
     ],
     //sea Reward
