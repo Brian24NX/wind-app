@@ -42,11 +42,9 @@ Page({
   },
 
   onClick1() {
-    wx.showToast({
-      title: 'Function coming soon, stay tuned',
-      icon: 'none'
+    wx.navigateTo({
+      url: '/packageDashboard/pages/seaRewards/index',
     })
-    return
   },
 
   onClick2() {
