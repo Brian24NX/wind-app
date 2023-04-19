@@ -28,7 +28,8 @@ Page({
       condition: '',
       cnCondition: '',
       benefits: 'Earn 2 Nautical Miles for 100 dollars spent',
-      cnBenfits: '每消费100 USD累积2海里'
+      cnBenfits: '每消费100 USD累积2海里',
+      rewards: '2'
     },
     {
       name: 'Captain',
@@ -37,7 +38,8 @@ Page({
       condition: 'To reach the Captain level, you need to book minimum 3 TEUs per week for at least 13 weeks',
       cnCondition: '要达到上尉级别，您需要至少在13周内每周预定最少3个TEU（标准箱）',
       benefits: 'Earn 4 Nautical Miles for 100 dollars spent',
-      cnBenfits: '每消费100 USD累积4海里'
+      cnBenfits: '每消费100 USD累积4海里',
+      rewards: '4'
     },
     {
       name: 'Master',
@@ -46,7 +48,8 @@ Page({
       condition: 'To reach the Master level, you need to book minimum 25 TEUs per week for at least 16 weeks',
       cnCondition: '要达到船长级别，您需要至少在16周内每周预定最少25个TEU（标准箱）',
       benefits: 'Earn 6 Nautical Miles for 100 dollars spent',
-      cnBenfits: '每消费100 USD累积6海里'
+      cnBenfits: '每消费100 USD累积6海里',
+      rewards: '6'
     },
     {
       name: 'Admiral',
@@ -55,7 +58,8 @@ Page({
       condition: 'To reach the Admiral level, you need to book minimum 120 TEUs per week for at least 20 weeks',
       cnCondition: '要达到上将级别，您需要至少在20周内每周预定最少120个TEU（标准箱）',
       benefits: 'Earn 8 Nautical Miles for 100 dollars spent',
-      cnBenfits: '每消费100 USD累积8海里'
+      cnBenfits: '每消费100 USD累积8海里',
+      rewards: '8'
     }
     ],
     list: [{

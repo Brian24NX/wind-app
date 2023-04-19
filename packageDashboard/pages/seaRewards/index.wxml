@@ -33,7 +33,7 @@
         </view>
       </van-col>
     </van-row>
-    <view class="descBox">{{languageContent.desc}}</view>
+    <view class="descBox">{{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}</view>
   </view>
   <view class="listTopContainers">
     <view class="listTopContainer">
