@@ -4,10 +4,10 @@
     <image class="seaLogo" src="/assets/img/seaReward/seaLogo@2x.png"></image>
     <view class="titleRowAlign bottomLines">
       <image class="otherIcon" src="/assets/img/seaReward/captain@2x.png"></image>
-      <view class="boldText">{{(language === 'zh'? currentLevel.cnName :currentLevel.name) || seaRewardData.level}}</view>
+      <view class="boldText uppercase">{{(language === 'zh'? currentLevel.cnName :currentLevel.name) || seaRewardData.level}}</view>
       <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onOpenPopup"></image>
       {{nextLevel.name ? languageContent.next : languageContent.detail.benefits}}
-      <view class="boldText" wx:if="{{nextLevel.name}}">{{language === 'zh'? nextLevel.cnName :nextLevel.name}}</view>
+      <view class="boldText uppercase" wx:if="{{nextLevel.name}}">{{language === 'zh'? nextLevel.cnName :nextLevel.name}}</view>
     </view>
     <van-row>
       <van-col span="14">
@@ -56,7 +56,7 @@
     <view wx:if="{{noData}}" class="boxTitle noData">
       <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
       <view class="siteText">{{languageContent.nodata}}</view>
-      <button bindtap="gotoQuat" class="buttonFull">{{languageContent.getQuot}}</button>
+      <view catchtap="gotoQuat" class="urlCopy">{{languageContent.getQuot}}</view>
     </view>
   </view>
 
@@ -117,8 +117,8 @@
     <view class="detailBox">
       <view class="ones oneLines">
         <view class="rowAlignNoMarg">
-          <image class="otherIcon" src="{{currentLevel.icon}}"></image>
-          <view class="boldText">{{language === 'zh'? currentLevel.cnName :currentLevel.name}}</view>
+          <image class="otherIcon iconMargin" src="{{currentLevel.icon}}"></image>
+          <view>{{language === 'zh'? currentLevel.cnName :currentLevel.name}}</view>
         </view>
         <image class="otherIcon" src="/assets/img/seaReward/lock@2x.png"></image>
       </view>
@@ -149,8 +149,8 @@
     <view class="detailBox" wx:if="{{nextLevel}}">
       <view class="ones oneLines">
         <view class="rowAlignNoMarg">
-          <image class="otherIcon" src="{{nextLevel.icon}}"></image>
-          <view class="boldText">{{language === 'zh'? nextLevel.cnName:nextLevel.name}}</view>
+          <image class="otherIcon iconMargin" src="{{nextLevel.icon}}"></image>
+          <view>{{language === 'zh'? nextLevel.cnName:nextLevel.name}}</view>
         </view>
         <image class="otherIcon" src="/assets/img/seaReward/locked@2x.png"></image>
       </view>

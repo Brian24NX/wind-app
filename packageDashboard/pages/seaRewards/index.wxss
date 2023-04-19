@@ -71,6 +71,11 @@ page {
   display: flex;
   align-items: center;
   flex-direction: row;
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+  text-transform: uppercase;
 }
 
 .titleRowAlign {
@@ -102,6 +107,9 @@ page {
 .otherIcon {
   width: 50rpx;
   height: 50rpx;
+}
+.iconMargin {
+  margin-right: 10rpx;
 }
 
 .seaLogo {
@@ -244,22 +252,6 @@ page {
   margin-right: 0;
 }
 
-.buttonFull {
-  width: 100%;
-  height: 80rpx;
-  background-color: #2D75FF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: #FFFFFF;
-  border-radius: 0;
-  z-index: 95;
-  margin: 30rpx 0 30rpx;
-}
-
 .buttonOutline {
   width: 322rpx;
   height: 80rpx;
@@ -358,8 +350,9 @@ page {
 
 .urlCopy {
   color: #2B73FC;
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-family: ArialMT;
+  margin-top: 10rpx;
 }
 
 .oneLines {
@@ -368,7 +361,19 @@ page {
 }
 
 .noDataImage {
-  width: 534rpx;
-  height: 336rpx;
-  margin-bottom: 40rpx;
+  width: 373rpx;
+  height: 235rpx;
+  margin-bottom: 50rpx;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.placeholder {
+  font-style: italic !important;
+  font-size: 24rpx;
+  font-family: Arial-ItalicMT, Arial;
+  font-weight: normal;
+  color: #7087A1;
 }
