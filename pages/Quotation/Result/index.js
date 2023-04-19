@@ -27,6 +27,7 @@ Page({
     rewardsEarned: 0,
     finalPrice: 0,
     burnRewards: 0,
+    useRewards: null,
   },
 
   /**
@@ -63,7 +64,8 @@ Page({
       shipperOwnedContainer: data.shipperOwnedContainer,
       rewardsEarned: data.rewardsEarned,
       finalPrice: data.finalPrice,
-      burnRewards: data.burnRewards
+      burnRewards: data.burnRewards,
+      useRewards: data.useRewards
     })
   },
 
