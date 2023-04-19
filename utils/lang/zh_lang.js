@@ -369,7 +369,7 @@ var Languague = {
       title: '我的海里',
       next: '下个等级: ',
       available: ' 可用海里',
-      saved: ' USD已抵扣',
+      saved: ' USD 已抵扣',
       virtroles: 'CENTRIMEX-Virtroles',
       spotOn: '最新报价单',
       desc: '作为上尉，您在创建报价单时每消费100 USD将累积4海里。账单支付成功后即可有效累积海里数。',

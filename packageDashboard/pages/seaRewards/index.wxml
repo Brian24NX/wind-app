@@ -2,7 +2,7 @@
 <view class="documentContainer">
   <view class="listTopContainers topInfo">
     <image class="seaLogo" src="/assets/img/seaReward/seaLogo@2x.png"></image>
-    <view class="rowAlign">
+    <view class="titleRowAlign bottomLines">
       <image class="otherIcon" src="/assets/img/seaReward/captain@2x.png"></image>
       <view class="boldText">{{(language === 'zh'? currentLevel.cnName :currentLevel.name) || seaRewardData.level}}</view>
       <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onOpenPopup"></image>
@@ -18,7 +18,7 @@
           </view>
           <view class="rowAlign">
             <image class="infoIcon2" src="/assets/img/seaReward/info@2x.png"></image>
-            <view class="desc">{{languageContent.virtroles}}</view>
+            <view class="smallDesc">{{languageContent.virtroles}}</view>
           </view>
         </view>
       </van-col>
@@ -28,8 +28,8 @@
           <view class="boldText"><Text>{{savedUSD}}</Text>{{languageContent.saved}}</view>
         </view>
         <view class="rowAlign rightBox">
-          <image class="infoIcon2" src="/assets/img/seaReward/info@2x.png" catchtap="onResInfo"></image>
-          <view class="desc">{{languageContent.spotOn}}</view>
+          <image class="infoIcon2" src="/assets/img/seaReward/info@2x.png"></image>
+          <view class="smallDesc">{{languageContent.spotOn}}</view>
         </view>
       </van-col>
     </van-row>
@@ -113,8 +113,8 @@
       </view>
     </view>
     <view class="detailBox">
-      <view class="ones" style="padding: 0 10rpx 16rpx">
-        <view class="rowAlign">
+      <view class="ones oneLines">
+        <view class="rowAlignNoMarg">
           <image class="otherIcon" src="{{currentLevel.icon}}"></image>
           <view class="boldText">{{language === 'zh'? currentLevel.cnName :currentLevel.name}}</view>
         </view>
@@ -128,7 +128,7 @@
         <view class="infoCenter detailRef">
           <image class="detaiIcon" src="/assets/img/seaReward/smallPig@2x.png"></image>{{languageContent.detail.benefits}}
         </view>
-        <view class="description infoStart">
+        <view class="description pointCenter">
           <view class="point"></view>
           {{language === 'zh'? currentLevel.cnBenfits: currentLevel.benefits}}
           <!-- <view wx:for="{{languageContent.detail.benDesc}}" class="infoStart">
@@ -145,12 +145,12 @@
       </view>
     </view>
     <view class="detailBox" wx:if="{{nextLevel}}">
-      <view class="ones" style="padding: 0 10rpx 16rpx">
-        <view class="rowAlign">
+      <view class="ones oneLines">
+        <view class="rowAlignNoMarg">
           <image class="otherIcon" src="{{nextLevel.icon}}"></image>
           <view class="boldText">{{language === 'zh'? nextLevel.cnName:nextLevel.name}}</view>
         </view>
-        <image class="otherIcon" src="/assets/img/seaReward/lock@2x.png"></image>
+        <image class="otherIcon" src="/assets/img/seaReward/locked@2x.png"></image>
       </view>
       <view class="detailDesc">
         <view class="infoCenter detailRef">
@@ -160,7 +160,7 @@
         <view class="infoCenter detailRef">
           <image class="detaiIcon" src="/assets/img/seaReward/smallPig@2x.png"></image>{{languageContent.detail.benefits}}
         </view>
-        <view class="description infoStart">
+        <view class="description pointCenter">
           <view class="point"></view>
           {{language === 'zh'? nextLevel.cnBenfits:nextLevel.benefits}}
           <!-- <view wx:for="{{languageContent.detail.benDesc}}" class="infoStart">

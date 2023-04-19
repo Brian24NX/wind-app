@@ -67,6 +67,19 @@ page {
   margin-bottom: 12rpx;
 }
 
+.rowAlignNoMarg {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.titleRowAlign {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 30rpx;
+}
+
 .divider {
   padding-top: 30rpx;
   border-top: 2rpx solid #EEEEEE;
@@ -94,8 +107,13 @@ page {
 .seaLogo {
   width: 240rpx;
   height: 30rpx;
-  margin-bottom: 38rpx;
+  margin-bottom: 22rpx;
 }
+.bottomLines {
+  padding-bottom: 24rpx;
+  border-bottom: solid 1rpx #EEEEEE;
+}
+
 
 .rightBox {
   margin-left: 26rpx;
@@ -104,7 +122,13 @@ page {
 .descBox {
   padding-top: 30rpx;
   border-top: 2rpx solid #EEEEEE;
-  margin-top: 36rpx;
+  margin-top: 18rpx;
+}
+.smallDesc {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #9AA7C3;
 }
 
 .ones {
@@ -112,6 +136,7 @@ page {
   justify-content: space-between;
   font-size: 32rpx;
   margin-top: 30rpx;
+  align-items: center;
 }
 
 .ref {
@@ -272,7 +297,7 @@ page {
 .detaiIcon {
   width: 50rpx;
   height: 50rpx;
-  margin-right: 4rpx;
+  margin-right: 8rpx;
 }
 
 .point {
@@ -287,6 +312,12 @@ page {
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
+  flex-direction: row;
+}
+.pointCenter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   flex-direction: row;
 }
 
@@ -309,4 +340,9 @@ page {
   color: #2B73FC;
   font-size: 28rpx;
   font-family: ArialMT;
+}
+
+.oneLines {
+  padding: 0 14rpx 22rpx;
+  margin-top: 22rpx;
 }
