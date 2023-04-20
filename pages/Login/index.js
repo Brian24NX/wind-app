@@ -33,6 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    wx.removeStorageSync('seaRewardData')
     if(wx.getStorageSync('partnerList')){
       this.getSeaPartnerInfo()
     }
@@ -75,7 +76,7 @@ Page({
         wx.setStorageSync('seaRewardData', {
           memberStatus: infodata.memberStatus,
           level: infodata.memberTiers[0].loyaltyMemberTierName,
-          icon: myReward ? myReward[0].icon : '',
+          icon: myReward[0] ? myReward[0].icon : '',
           pointsBalance: points || 0
         })
       }

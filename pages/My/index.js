@@ -48,11 +48,6 @@ Page({
         phoneNumber: phone
       })
     }
-    let reward = wx.getStorageSync('seaRewardData')
-    this.setData({
-      seaRewardData: reward,
-      memberStatus: reward.memberStatus,
-    })
   },
 
   /**
@@ -110,10 +105,21 @@ Page({
       this.setData({
         needLogin: false
       })
+      setTimeout(() => {
+        let reward = wx.getStorageSync('seaRewardData')
+        if(reward){
+          this.setData({
+            seaRewardData: reward,
+            memberStatus: reward.memberStatus,
+          })
+        }
+      },800)
     } else {
       this.setData({
         needLogin: true,
-        userInfo: {}
+        userInfo: {},
+        seaRewardData: null,
+        memberStatus: null,
       })
     }
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
@@ -122,23 +128,6 @@ Page({
       })
     }
 
-    // if(this.data.memberStatus === 'Active' && !this.data.needLogin){
-    //   this.setData({
-    //     dashboardList: [{
-    //       label: 'shipment',
-    //       url: '/packageDashboard/pages/shipment/list/index',
-    //       icon: '/assets/img/myAccount/shipment@2x.png'
-    //     }, {
-    //       label: 'document',
-    //       url: '/packageDashboard/pages/document/index',
-    //       icon: '/assets/img/myAccount/document@2x.png'
-    //     }, {
-    //       label: 'seaReward',
-    //       url: '',
-    //       icon: '/assets/img/seaReward/seaIcon@2x.png'
-    //     }]
-    //   })
-    // }
   },
 
   //初始化语言

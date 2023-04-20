@@ -35,7 +35,7 @@
         </view>
       </view>
       <view>
-        <view class="rewardEarned" wx:if="{{rewardsEarned && rewardsEarned !== 0}}">
+        <view class="rewardEarned" wx:if="{{rewardsEarned || rewardsEarned === 0}}">
           <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onResInfo"></image>
           <view>
             {{seaReward.rewardResult1}}<Text>{{rewardsEarned}}</Text>{{seaReward.rewardResult2}}</view>
