@@ -237,3 +237,9 @@
   display: flex;
   align-items: center;
 }
+
+.twoOneOne3 {
+  width: 300rpx;
+  display: flex;
+  justify-content: space-between;
+}

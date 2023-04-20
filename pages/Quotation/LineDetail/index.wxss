@@ -278,3 +278,9 @@
   font-weight: 400;
   margin: 0 16rpx 0 26rpx;
 }
+
+.twoOnOne2 {
+  width: 250rpx;
+  display: flex;
+  justify-content: space-between;
+}

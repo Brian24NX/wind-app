@@ -537,8 +537,8 @@ var Languague = {
       errTip: '没有找到匹配的：不正确的日期或者集装箱号码'
     },
     NewDDChargesResult: {
-      title: 'D&D 结果',
-      title1: 'D&D',
+      title: '柜租费率结果',
+      title1: '柜租费率',
       title2: '结果',
       //运输编号
       shipmentRef: '运输号',

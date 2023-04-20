@@ -187,6 +187,7 @@ page {
   background-color: #2D75FF;
   color: #ffffff;
   font-size: 36rpx;
+  width: 600rpx;
 }
 
 .hoverClass {

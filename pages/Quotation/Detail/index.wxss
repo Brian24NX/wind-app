@@ -116,9 +116,9 @@
   margin-bottom: 0;
 }
 
-.solutionContainer .solutionLeft .solutionLeftOne view {
-  max-width: 460rpx;
-}
+/* .solutionContainer .solutionLeft .solutionLeftOne view {
+  max-width: 700rpx;
+} */
 
 .solutionContainer .solutionLeft image {
   width: 34rpx;
@@ -1030,4 +1030,11 @@
 
 .nmilesCollected Text {
   color: #E10202;
+}
+
+.twoOnOne {
+  width: 250rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

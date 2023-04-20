@@ -8,6 +8,7 @@
         <view>{{detail.pointfrom}} - </view>
         <view>{{detail.pointto}}</view>
       </view>
+      <view class="twoOneOne3">
       <view class="carddate">
         <image src="../../assets/img/result/calendar@2x.png" mode="aspectFit"></image><text>{{detail.transitTime}} {{detail.transitTime > 1 ? languageContent.days : languageContent.day}}</text>
       </view>
@@ -16,6 +17,7 @@
         <text>{{detail.transhipment ? (detail.transhipment > 1 ? languageContent.transhipments : languageContent.transhipment) : languageContent.zhida}}</text>
       </view>
     </view>
+  </view>
   </view>
   <view class="resultDetailContainer">
     <view style="padding-top: 20rpx;" wx:for="{{routingDetails}}" wx:key="index">

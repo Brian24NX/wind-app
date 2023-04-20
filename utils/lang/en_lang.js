@@ -568,7 +568,7 @@ var Languague = {
       departure: "Vessel Departure from",
       ownedContainer: 'Shipper Owned Container (SOC)',
       equipmentType: 'Equipment Type',
-      weight: 'Net Weight(KGM)',
+      weight: 'Net Weight (KGM)',
       weightName: 'EX.10 000 kgm',
       container: 'Number of Container(s)',
       commodity: "Commodity",

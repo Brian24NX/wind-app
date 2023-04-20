@@ -63,7 +63,7 @@
     </view>
     <view class="amountContainer">
       <view class="amountLeft">
-        <image src="/assets/img/price/Cash.svg"></image>
+        <image src="/assets/img/instantQuote/Save-time-money2.svg"></image>
         <view class="amount">{{item.amount}}</view>
         <view>
           <view class="unit">{{item.currencyCode}}</view>
