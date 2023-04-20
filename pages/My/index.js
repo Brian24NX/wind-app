@@ -113,7 +113,7 @@ Page({
             memberStatus: reward.memberStatus,
           })
         }
-      },800)
+      },1000)
     } else {
       this.setData({
         needLogin: true,

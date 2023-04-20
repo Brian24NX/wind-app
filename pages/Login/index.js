@@ -16,15 +16,19 @@ Page({
     baseUrl: config[config.dev_env].url,
     rewardList: [{
       label: 'Lieutenant',
+      cnName: '中尉',
       icon: '/assets/img/seaReward/lieutenant@2x.png'
     }, {
       label: 'Captain',
+      cnName: '上尉',
       icon: '/assets/img/seaReward/captain@2x.png'
     }, {
       label: 'Master',
+      cnName: '船长',
       icon: '/assets/img/seaReward/master@2x.png'
     }, {
       label: 'Admiral',
+      cnName: '上将',
       icon: '/assets/img/seaReward/admiral@2x.png'
     }],
   },
@@ -77,7 +81,8 @@ Page({
           memberStatus: infodata.memberStatus,
           level: infodata.memberTiers[0].loyaltyMemberTierName,
           icon: myReward[0] ? myReward[0].icon : '',
-          pointsBalance: points || 0
+          pointsBalance: points || 0,
+          cnName: myReward[0] ? myReward[0].cnName : '',
         })
       }
     }).catch(err => {

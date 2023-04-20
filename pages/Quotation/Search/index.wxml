@@ -13,7 +13,7 @@
         <view class="seaText">
           <image class="anchorIcon" src="{{seaRewardData.icon}}" mode="aspectFit"></image>
           {{seaReward.status}}
-          <view class="seaLevelText">{{seaRewardData.level}}</view>
+          <view class="seaLevelText">{{language === 'zh'? seaRewardData.cnName :seaRewardData.level}}</view>
         </view>
       </view>
       <view class="seaIconBox">
