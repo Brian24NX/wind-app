@@ -1,0 +1,66 @@
+/* packageDashboard/pages/seaRewardFAQ/index.wxss */
+page {
+  background-color: #F0F1F5;
+}
+
+.documentContainer {
+  padding: 30rpx 30rpx 140rpx;
+}
+
+.rateContainer {
+  background-color: #ffffff;
+  padding: 0 48rpx;
+  margin-bottom: 30rpx;
+}
+
+.rateTitles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-bottom: 1rpx solid #eeeeee; */
+  padding: 30rpx 0;
+}
+
+.rateTitles .titleLeft {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #04246A;
+}
+
+.rateTitles .titleLeft .titleLine {
+  width: 6rpx;
+  height: 40rpx;
+  background-color: #e20202;
+  margin-right: 12rpx;
+}
+
+.rateTitles .titleLeft .info {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+  margin-top: -20rpx;
+}
+
+.desc {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #6B7790;
+  padding-bottom: 50rpx;
+}
+
+.editIcon {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 60rpx;
+}
+
+.editIcon2 {
+  transform: rotate(180deg);
+  position: absolute;
+  right: 60rpx;
+}

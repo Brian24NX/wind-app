@@ -15,7 +15,7 @@ page {
 
 .listTopContainer {
   background-color: #ffffff;
-  padding: 30rpx;
+  padding: 30rpx 30rpx 0;
 }
 
 .boxtitleLine {
@@ -25,16 +25,23 @@ page {
   margin-right: 20rpx;
 }
 
-.boxTitle {
+.searchBox {
   font-size: 32rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #071E5D;
 }
 
+.boxTitle {
+  font-size: 32rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #071E5D;
+}
+
 .topInfo {
   padding: 48rpx 48rpx 30rpx;
-  font-size: 22rpx;
+  font-size: 20rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #9AA7C3;
@@ -108,6 +115,7 @@ page {
   width: 50rpx;
   height: 50rpx;
 }
+
 .iconMargin {
   margin-right: 10rpx;
 }
@@ -125,13 +133,13 @@ page {
 
 
 .rightBox {
-  margin-left: 26rpx;
+  margin-left: 10rpx;
 }
 
 .descBox {
-  padding-top: 30rpx;
-  border-top: 2rpx solid #EEEEEE;
-  margin-top: 18rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+  margin-bottom: 18rpx;
 }
 
 .smallDesc {
@@ -139,6 +147,7 @@ page {
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #9AA7C3;
+  margin-left: 58rpx;
 }
 
 .ones {
@@ -176,6 +185,13 @@ page {
   font-family: Arial-BoldMT, Arial;
   font-weight: normal;
   color: #E10202;
+}
+
+.greenMiles {
+  font-size: 24rpx;
+  font-family: Arial-BoldMT, Arial;
+  font-weight: normal;
+  color: #00847B;
 }
 
 .invoiceNum {
@@ -220,6 +236,7 @@ page {
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #E10202;
+  text-transform: uppercase;
 }
 
 .docIcon {
@@ -376,4 +393,53 @@ page {
   font-family: Arial-ItalicMT, Arial;
   font-weight: normal;
   color: #7087A1;
+}
+
+.normalText {
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #071E5D;
+  margin-left: 18rpx;
+  margin-right: 6rpx;
+}
+
+.viewTypesContainer {
+  background-color: #ffffff;
+}
+
+.viewTypes {
+  height: 74rpx;
+  display: flex;
+  width: 360rpx;
+  margin-top: 16rpx;
+}
+
+.viewTypes .oneType {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: Antonio-Regular, Antonio;
+  font-weight: 400;
+  color: #071E5D;
+}
+
+.viewTypes .typeActived {
+  font-size: 28rpx;
+  font-family: Antonio-Bold, Antonio;
+  font-weight: bold;
+  color: #E10202;
+  position: relative;
+}
+
+.viewTypes .typeActived .activedLine {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 66rpx;
+  height: 4rpx;
+  background-color: #E20202;
 }

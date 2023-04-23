@@ -1,0 +1,13 @@
+<!--packageDashboard/pages/seaRewardFAQ/index.wxml-->
+<view class="documentContainer">
+  <view wx:for="{{list}}" wx:key="index" class="rateContainer">
+    <view class="rateTitles" catchtap="zhedie" data-type="{{index}}">
+      <view class="titleLeft">
+        <view class="titleLine"></view>
+        <view>{{item.title}}</view>
+      </view>
+      <image class="editIcon {{selected === index ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+    </view>
+    <view class="desc" wx:if="{{selected === index}}">{{item.desc}}</view>
+  </view>
+</view>

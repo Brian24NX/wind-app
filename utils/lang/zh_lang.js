@@ -364,6 +364,9 @@ var Languague = {
       rewardResult2: ' 海里',
       resultInfo: '实际海里累积将在账单支付后生效'
     },
+    seaRewardFAQ:{
+      title: '常见问题'
+    },
     //sea reward dashboard
     seaRewardDashboard: {
       title: '我的海里',
@@ -371,7 +374,7 @@ var Languague = {
       available: ' 可用海里',
       saved: ' USD 已抵扣',
       virtroles: 'CENTRIMEX-Virtroles',
-      spotOn: '最新报价单',
+      spotOn: '最新订舱',
       desc1: '作为',
       desc2: '，您在创建报价单时每消费100 USD将累积',
       desc3: '海里。账单支付成功后即可有效累积海里数。',
@@ -379,12 +382,21 @@ var Languague = {
       placeholder: '报价单号/账单单号',
       raisedDate: '生成日期',
       quotRef: '报价单号',
-      invoiceRef: '账单单号:',
-      nauticalMiles2: '海里:',
+      invoiceRef: '账单单号',
+      nauticalMiles2: '海里',
       faq: '常见问题',
       use: '获取报价',
       nodata: '您还未体验海里抵现？',
       getQuot: '即刻开始实时报价！',
+      transaction: '我的海里',
+      uo: 'UO:',
+      bp: 'BP:',
+      nextDate: '下次更新时间:',
+      all: '全部',
+      earnings: '累积',
+      burns: '抵扣',
+      quatedate: '报价单创建日期',
+      bookRef:'订舱单号',
       detail: {
         status: '我的等级',
         next: '下个等级',

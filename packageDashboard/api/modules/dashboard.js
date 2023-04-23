@@ -36,3 +36,18 @@ export const documentDetail = (params) => {
 export const documentSendEmail = (params) => {
   return postRequest('/api/miniapp/documents/documentEmail', params, true, true, true)
 }
+
+//获取sea reward dashboard
+export const rewardDashboard = (params) => {
+  return getRequest('/api/miniapp/sea/dashboard', params, true, true, true)
+}
+
+//获取客户消费信息
+export const seaPartnerInfo = (params) => {
+  return getRequest('/api/miniapp/sea/partnerInfo', params, true, true, true)
+}
+
+//获取sea reward FAQ
+export const seaRewardFAQ = (params) => {
+  return getRequest('/api/miniapp/sea/faq', params, true, true, true)
+}

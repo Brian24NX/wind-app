@@ -1,10 +1,10 @@
 // packageDashboard/pages/seaRewards/index.js
 const languageUtils = require('../../../utils/languageUtils')
-// import {
-//   documentList
-// } from '../../api/modules/dashboard'
-const utils = require('../../../utils/util')
-const pageSize = 20
+import {
+  rewardDashboard,
+  seaPartnerInfo
+} from '../../api/modules/dashboard'
+
 let allList = []
 
 Page({
@@ -96,9 +96,14 @@ Page({
     //sea Reward
     currentLevel: null,
     nextLevel: null,
-    availableMiles: 856,
-    savedUSD: 222,
+    availableMiles: 0,
+    savedUSD: 0,
     seaRewardData: null,
+    dashboard: null,
+    rewardLevel: null,
+    nextDate: '03-MAR-2023',
+    typeList: ['all', 'earnings', 'burns'],
+    curTab: 'all'
   },
 
   /**
@@ -106,14 +111,14 @@ Page({
    */
   onLoad() {
     this.initLanguage()
-    // this.search()
-    let idx = this.data.iconList.findIndex(item => item.name === wx.getStorageSync('seaRewardData').level)
-
     this.setData({
-      seaRewardData: wx.getStorageSync('seaRewardData'),
-      currentLevel: idx >= 0 ? this.data.iconList[idx] : null,
-      nextLevel: idx + 1 < this.data.iconList.length ? this.data.iconList[idx + 1] : null,
+      rewardLevel: wx.getStorageSync('rewardLevel')
     })
+  },
+
+  onShow() {
+    this.getRewardDashboard('all')
+    this.getSeaPartnerInfo()
   },
 
   initLanguage() {
@@ -124,6 +129,76 @@ Page({
     })
     wx.setNavigationBarTitle({
       title: language.lang.page.seaRewardDashboard.title,
+    })
+  },
+
+  changeType(e) {
+    this.setData({
+      curTab: e.currentTarget.dataset.type
+    })
+    this.getRewardDashboard(e.currentTarget.dataset.type)
+  },
+
+  getRewardDashboard(type) {
+    let requestType = ''
+    if (type === 'earnings') {
+      requestType = 'Accrual'
+    } else if (type === 'burns') {
+      requestType = 'Redemption'
+    }
+    rewardDashboard({
+      "partnerCode": wx.getStorageSync('partnerList')[0].code,
+      "requestType": requestType
+      // "range": pageSize
+    }).then(res => {
+      if (res.data) {
+        allList = res.data
+        this.setData({
+          dashboard: res.data.description
+        })
+      } else {
+        this.setData({
+          loading: false,
+          noData: true
+        })
+      }
+    }, () => {
+      this.setData({
+        loading: false,
+        noData: true
+      })
+    })
+  },
+
+  getSeaPartnerInfo() {
+    seaPartnerInfo({
+      "partnerCode": wx.getStorageSync('partnerList')[0].code,
+    }).then(res => {
+      const infodata = res.data
+      if (infodata.memberTiers && infodata.memberTiers.length) {
+        const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
+        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'AvailableNmiles' || j.loyaltyProgramCurrencyId === '0lc7Y000000001JQAQ')[0]
+        const newSea = {
+          memberStatus: infodata.memberStatus,
+          level: infodata.memberTiers[0].loyaltyMemberTierName,
+          icon: myReward[0] ? myReward[0].icon : '',
+          pointsBalance: points.pointsBalance || 0,
+          cnName: myReward[0] ? myReward[0].cnName : '',
+          usdSaved: points.totalPointsRedeemed || 0,
+          associatedAccount: infodata.associatedAccount.name
+        }
+        let idx = this.data.iconList.findIndex(item => item.name === infodata.memberTiers[0].loyaltyMemberTierName)
+        this.setData({
+          seaRewardData: newSea,
+          currentLevel: idx >= 0 ? this.data.iconList[idx] : null,
+          nextLevel: idx + 1 < this.data.iconList.length ? this.data.iconList[idx + 1] : null,
+          availableMiles: points.pointsBalance || 0,
+          savedUSD: points.totalPointsRedeemed || 0,
+        })
+        wx.setStorageSync('seaRewardData', newSea)
+      }
+    }).catch(err => {
+      console.error(err)
     })
   },
 
@@ -152,7 +227,7 @@ Page({
 
   gotoFAQ() {
     wx.navigateTo({
-      url: '/packageMore/pages/Faq/index',
+      url: '/packageDashboard/pages/seaRewardFAQ/index',
     })
   },
 
@@ -161,52 +236,4 @@ Page({
       url: '/pages/Quotation/Search/index',
     })
   },
-
-  search() {
-    // this.setData({
-    //   loading: true,
-    //   noData: false,
-    //   noMore: false,
-    //   page: 1,
-    //   list: []
-    // })
-    allList = []
-    // documentList({
-    //   ccgId: wx.getStorageSync('ccgId'),
-    //   bookingReference: this.data.keyword
-    // }).then(res => {
-    //   if (res.data) {
-    //     allList = res.data
-    //     this.dealPaging()
-    //   } else {
-    //     this.setData({
-    //       loading: false,
-    //       noData: true
-    //     })
-    //   }
-    // }, () => {
-    //   this.setData({
-    //     loading: false,
-    //     noData: true
-    //   })
-    // })
-  },
-
-  // dealPaging() {
-  //   setTimeout(() => {
-  //     const pageList = allList.slice((this.data.page - 1) * pageSize, pageSize)
-  //     pageList.forEach(item => {
-  //       item.statusLabel = utils.formatDocumentStatus(item.blStatus, this.data.language)
-  //       item.categoryName = utils.formatDocumentCategory(item.category)
-  //     })
-  //     this.setData({
-  //       noData: !allList.length,
-  //       list: this.data.list.concat(allList.slice((this.data.page - 1) * pageSize, pageSize)),
-  //       loading: false,
-  //     })
-  //     this.setData({
-  //       noMore: this.data.list.length >= allList.length
-  //     })
-  //   }, 600);
-  // }
 })

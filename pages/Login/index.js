@@ -14,7 +14,14 @@ Page({
    */
   data: {
     baseUrl: config[config.dev_env].url,
-    rewardList: [{
+    rewardLevel: null,
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad() {
+    let level = [{
       label: 'Lieutenant',
       cnName: '中尉',
       icon: '/assets/img/seaReward/lieutenant@2x.png'
@@ -30,17 +37,15 @@ Page({
       label: 'Admiral',
       cnName: '上将',
       icon: '/assets/img/seaReward/admiral@2x.png'
-    }],
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
+    }]
     wx.removeStorageSync('seaRewardData')
     if(wx.getStorageSync('partnerList')){
       this.getSeaPartnerInfo()
     }
+    wx.setStorageSync('rewardLevel', level)
+    this.setData({
+      rewardLevel: level
+    })
   },
 
   checkBindStatus() {
@@ -75,14 +80,16 @@ Page({
     }).then(res => {
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
-        const myReward = this.data.rewardList.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
-        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'AvailableNmiles' || j.loyaltyProgramCurrencyId === '0lc7Y000000001JQAQ')[0].pointsBalance
+        const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
+        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'AvailableNmiles' || j.loyaltyProgramCurrencyId === '0lc7Y000000001JQAQ')[0]
         wx.setStorageSync('seaRewardData', {
           memberStatus: infodata.memberStatus,
           level: infodata.memberTiers[0].loyaltyMemberTierName,
           icon: myReward[0] ? myReward[0].icon : '',
-          pointsBalance: points || 0,
+          pointsBalance: points.pointsBalance || 0,
           cnName: myReward[0] ? myReward[0].cnName : '',
+          usdSaved: points.totalPointsRedeemed || 0,
+          associatedAccount: infodata.associatedAccount.name
         })
       }
     }).catch(err => {

@@ -5,10 +5,12 @@
     <view class="titleRowAlign bottomLines">
       <image class="otherIcon" src="/assets/img/seaReward/captain@2x.png"></image>
       <view class="boldText uppercase">{{(language === 'zh'? currentLevel.cnName :currentLevel.name) || seaRewardData.level}}</view>
-      <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onOpenPopup"></image>
-      {{nextLevel.name ? languageContent.next : languageContent.detail.benefits}}
-      <view class="boldText uppercase" wx:if="{{nextLevel.name}}">{{language === 'zh'? nextLevel.cnName :nextLevel.name}}</view>
+      <!-- <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onOpenPopup"></image> -->
+      <view class="normalText">{{languageContent.uo}} IKEA</view>
+      <view>({{languageContent.nextDate}} {{nextDate}})</view>
+      <!-- <view class="boldText uppercase" wx:if="{{nextLevel.name}}">{{language === 'zh'? nextLevel.cnName :nextLevel.name}}</view> -->
     </view>
+    <view class="descBox">{{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}</view>
     <van-row>
       <van-col span="14">
         <view style="border-right: 1px solid #EEEEEE;">
@@ -17,8 +19,7 @@
             <view class="boldText"><Text>{{availableMiles}}</Text>{{languageContent.available}}</view>
           </view>
           <view class="rowAlign">
-            <image class="infoIcon2" src="/assets/img/seaReward/info@2x.png"></image>
-            <view class="smallDesc">{{languageContent.virtroles}}</view>
+            <view class="smallDesc">{{languageContent.bp}} {{seaRewardData.associatedAccount}}</view>
           </view>
         </view>
       </van-col>
@@ -28,19 +29,18 @@
           <view class="boldText"><Text>{{savedUSD}}</Text>{{languageContent.saved}}</view>
         </view>
         <view class="rowAlign rightBox">
-          <image class="infoIcon2" src="/assets/img/seaReward/info@2x.png"></image>
           <view class="smallDesc">{{languageContent.spotOn}}</view>
         </view>
       </van-col>
     </van-row>
-    <view class="descBox">{{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}</view>
+
   </view>
   <view class="listTopContainers">
     <view class="listTopContainer">
       <view class="listTopTitles">
         <view class="boxtitleLine"></view>
-        <view class="boxTitle">
-          <text>{{languageContent.nauticalMiles}}</text>
+        <view class="searchBox">
+          <text>{{languageContent.transaction}}</text>
         </view>
       </view>
       <view class="inputContainer">
@@ -52,6 +52,14 @@
           <image src="/assets/img/search/search@2x.png"></image>
         </view>
       </view>
+      <view class="viewTypesContainer">
+        <view class="viewTypes">
+          <view class="oneType {{curTab === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}">
+            <view>{{languageContent[item]}}</view>
+            <view class="activedLine"></view>
+          </view>
+        </view>
+      </view>
     </view>
     <view wx:if="{{noData}}" class="boxTitle noData">
       <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
@@ -61,12 +69,15 @@
   </view>
 
   <view wx:if="{{!loading && list.length > 0 && !noData}}">
-    <view wx:for="{{list}}" wx:key="index" class="itemBox listTopContainers">
+    <view wx:for="{{dashboard}}" wx:key="index" class="itemBox listTopContainers">
       <view class="ones">
-        <view class="boxTitle listStyle">{{languageContent.raisedDate}}</view>
-        <view class="oneRight">{{language === 'zh'? item.cnDate :item.date}}</view>
+        <view class="boxTitle listStyle">{{item.quotationReference}}</view>
+        <view class="oneRight quotStatus">
+          {{item.requestType === 'Accrual'? 'earnings' :'burns'}}
+        </view>
+        <!-- <view class="oneRight">{{language === 'zh'? item.cnDate :item.date}}</view> -->
       </view>
-      <view class="quoatBox">
+      <!-- <view class="quoatBox">
         <image src="/assets/img/more/info@2x.png" class="docIcon"></image>
         <view class="templateContent">
           <view class="quoatName">{{item.quoteRef}}</view>
@@ -75,14 +86,22 @@
         <view class="quotStatus">
           {{language === 'zh'? item.cnStatus :item.status}}
         </view>
+      </view> -->
+      <view class="ones ref">
+        <view>{{languageContent.quatedate}}</view>
+        <view class="invoiceNum">{{item.bookingDate}}</view>
+      </view>
+      <view class="ones ref">
+        <view>{{languageContent.bookRef}}</view>
+        <view class="invoiceNum">{{item.bookingReference}}</view>
       </view>
       <view class="ones ref">
         <view>{{languageContent.invoiceRef}}</view>
-        <view class="invoiceNum">{{item.invoiceRef}}</view>
+        <view class="invoiceNum">{{item.invoiceReference}}</view>
       </view>
       <view class="ones ref">
         <view>{{languageContent.nauticalMiles2}}</view>
-        <view class="redMiles">+{{item.miles}}</view>
+        <view class="{{item.requestType === 'Accrual' ? 'redMiles':'greenMiles'}}">{{item.requestType === 'Accrual' ? '+':'-'}}{{item.points}}</view>
       </view>
     </view>
   </view>
@@ -133,10 +152,6 @@
         <view class="description pointCenter">
           <view class="point"></view>
           {{language === 'zh'? currentLevel.cnBenfits: currentLevel.benefits}}
-          <!-- <view wx:for="{{languageContent.detail.benDesc}}" class="infoStart">
-            <view class="point"></view>
-            <view style="width: 516rpx;">{{item}}</view>
-          </view> -->
         </view>
       </view>
     </view>
@@ -165,10 +180,6 @@
         <view class="description pointCenter">
           <view class="point"></view>
           {{language === 'zh'? nextLevel.cnBenfits:nextLevel.benefits}}
-          <!-- <view wx:for="{{languageContent.detail.benDesc}}" class="infoStart">
-            <view class="point"></view>
-            <view style="width: 516rpx;">{{item}}</view>
-          </view> -->
         </view>
       </view>
     </view>
