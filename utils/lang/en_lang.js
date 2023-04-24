@@ -387,7 +387,7 @@ var Languague = {
       raisedDate: 'Raised Date',
       quotRef: 'Quotation Ref.',
       invoiceRef: 'Invoice Ref.',
-      nauticalMiles2: 'Nautical Miles.',
+      nauticalMiles2: 'Nautical Miles',
       faq: 'Sea Reward FAQ',
       use: 'Use Rewards',
       nodata: "Haven't experienced Sea Reward yet?",
