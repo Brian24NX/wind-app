@@ -237,6 +237,7 @@ page {
   font-weight: bold;
   color: #E10202;
   text-transform: uppercase;
+  margin-right: 20rpx;
 }
 
 .docIcon {
@@ -409,10 +410,10 @@ page {
 }
 
 .viewTypes {
-  height: 74rpx;
+  height: 94rpx;
   display: flex;
-  max-width: 360rpx;
   margin-top: 16rpx;
+  border-bottom: 1rpx solid #04246A;
 }
 
 .viewTypes .oneType {
@@ -420,7 +421,7 @@ page {
   flex: 1;
   justify-content: center;
   align-items: center;
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #071E5D;
@@ -439,11 +440,15 @@ page {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 66rpx;
-  height: 4rpx;
+  width: 120rpx;
+  height: 8rpx;
   background-color: #E20202;
 }
 
 .inputContainer .inputs {
   width: 550rpx;
+}
+
+.listStyle {
+  margin-left: 20rpx;
 }

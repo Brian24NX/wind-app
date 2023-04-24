@@ -173,6 +173,14 @@ Page({
         hasPermission: utils.checkPermission('requestQuo')
       })
     }
+    setTimeout(() => {
+      let reward = wx.getStorageSync('seaRewardData')
+      if(reward){
+        this.setData({
+          seaRewardData: reward,
+        })
+      }
+    },2000)
   },
 
   isAdsValid(str) {

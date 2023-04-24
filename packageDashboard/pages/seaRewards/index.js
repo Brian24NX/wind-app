@@ -148,7 +148,8 @@ Page({
     }
     rewardDashboard({
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
-      "requestType": requestType
+      "requestType": requestType,
+      "language": this.data.language
       // "range": pageSize
     }).then(res => {
       if (res.data) {
