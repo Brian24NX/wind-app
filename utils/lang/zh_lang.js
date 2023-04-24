@@ -379,7 +379,7 @@ var Languague = {
       desc2: '，您在创建报价单时每消费100 USD将累积',
       desc3: '海里。账单支付成功后即可有效累积海里数。',
       nauticalMiles : '海里',
-      placeholder: '报价单号/账单单号',
+      placeholder: '报价单号 / 订舱单号 / 账单单号',
       raisedDate: '生成日期',
       quotRef: '报价单号',
       invoiceRef: '账单单号',

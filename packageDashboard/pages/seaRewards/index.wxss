@@ -411,7 +411,7 @@ page {
 .viewTypes {
   height: 74rpx;
   display: flex;
-  width: 360rpx;
+  max-width: 360rpx;
   margin-top: 16rpx;
 }
 
@@ -442,4 +442,8 @@ page {
   width: 66rpx;
   height: 4rpx;
   background-color: #E20202;
+}
+
+.inputContainer .inputs {
+  width: 550rpx;
 }

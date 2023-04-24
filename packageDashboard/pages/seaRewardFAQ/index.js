@@ -61,6 +61,10 @@ Page({
   },
 
   zhedie(e) {
-    this.setData({ selected: e.target.dataset.type });
+    if (e.target.dataset.type === this.data.selected) {
+      this.setData({ selected: '' });
+    } else {
+      this.setData({ selected: e.target.dataset.type });
+    }
   },
 })
