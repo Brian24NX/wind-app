@@ -27,6 +27,7 @@
 .resultContainers .resultCardContainers .titleArea .iconPig {
   width: 70rpx;
   height: 70rpx;
+  margin-left: -6rpx;
 }
 
 .resultContainers .resultCardContainers .titleArea .textSeaRewards {

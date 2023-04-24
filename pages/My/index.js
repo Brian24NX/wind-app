@@ -167,6 +167,12 @@ Page({
     })
   },
 
+  buttonNX () {
+    wx.navigateTo({
+      url: "/pages/LoginCopy/index",
+    })
+  },
+
   toBaseInfo() {
     wx.navigateTo({
       url: '/pages/baseInfo/index',

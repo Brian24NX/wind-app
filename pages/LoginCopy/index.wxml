@@ -1,0 +1,38 @@
+<!--pages/LoginCopy/index.wxml-->
+<wxs module="format" src="/utils/format.wxs"></wxs>
+<scroll-view id="spot-page" scroll-y scrollWithAnimation scroll-top="{{scrollTop}}">
+  <view class="wrapper">
+    <view class="header">
+      <image src="/assets/img/CMAICON.png" class="iconCMA"></image>
+      <view class="dropDownContainer">
+        <van-dropdown-menu>
+          <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+        </van-dropdown-menu>
+      </view>
+
+    </view>
+    <view class="mainContainer">
+      <view class="loginContainer">
+        <view class="textSignIn">Sign In</view>
+        <view class="formArea">
+          <view class="titleLine">Login (Email)</view>
+          <view class="inputContent">
+            <input bindtap="click1" placeholder='' type="text" />
+          </view>
+          <view class="titleLine">Password</view>
+          <view class="inputContent">
+            <input bindtap="click2" placeholder='' type="text" />
+          </view>
+          <view class="forgotPassword">Forgotten Password?</view>
+          <button class="signIn" bindtap="click3">
+            <view class="textSubmit"> Sign In</view>
+          </button>
+        </view>
+      </view>
+      <view class="footNote">
+        © 2022 CMA CGM
+      </view>
+    </view>
+  </view>
+
+</scroll-view>

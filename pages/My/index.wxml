@@ -35,6 +35,7 @@
       <van-icon name="arrow" color="#04246A" />
     </view>
   </view>
+  <!-- <button catchtap="buttonNX">  click here   </button> -->
   <view class="myDashboard">
     <view class="myDashboardTitle">{{languageContent.myDashboard}}</view>
     <view class="dashboardList">
