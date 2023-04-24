@@ -57,7 +57,7 @@ page {
 .boldText {
   font-size: 24rpx;
   font-family: Antonio-Regular, Antonio;
-  font-weight: 400;
+  font-weight: 500;
   color: #071E5D;
   margin-left: 6rpx;
 }
@@ -428,7 +428,7 @@ page {
 }
 
 .viewTypes .typeActived {
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-family: Antonio-Bold, Antonio;
   font-weight: bold;
   color: #E10202;

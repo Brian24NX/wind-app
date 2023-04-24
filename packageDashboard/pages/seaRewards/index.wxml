@@ -89,7 +89,7 @@
       </view>
       <view class="ones ref">
         <view>{{languageContent.nauticalMiles2}}</view>
-        <view class="{{(item.requestType === 'Accrual' || item.requestType === '积累') ? 'redMiles':'greenMiles'}}">{{(item.requestType === 'Accrual' || item.requestType === '积累') ? '+':'-'}}{{item.points}}</view>
+        <view class="{{(item.requestType === 'Earned' || item.requestType === '积累') ? 'redMiles':'greenMiles'}}">{{(item.requestType === 'Earned' || item.requestType === '积累') ? '+':'-'}}{{item.points}}</view>
       </view>
     </view>
   </view>
