@@ -96,6 +96,33 @@
   margin: 0 0 0 20rpx;
 }
 
+.consloleContainerItem .consloleContainerItem_title{
+display: flex;
+}
+
+.consloleContainerItem .consloleContainerItem_title .titleLine {
+  background-color: rgba(226, 2, 2, 1.000000);
+  width: 8rpx;
+  height: 42rpx;
+  display: flex;
+  flex-direction: column;
+  margin: 4rpx 0 4rpx 0;
+}
+
+.consloleContainerItem .consloleContainerItem_title .titleText {
+  width: 120rpx;
+  overflow-wrap: break-word;
+  color: rgba(7, 30, 93, 1);
+  font-size: 32rpx;
+  letter-spacing: -1rpx;
+  font-family: Antonio-Regular;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  line-height: 46rpx;
+  margin: 0 0 0 20rpx;
+}
+
 .resultContainers .rateContainer .rateItem .iconAnchor {
   width: 50rpx;
   height: 50rpx;
@@ -131,24 +158,40 @@
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .imageText {
-  margin-right: 38rpx;
-  display: flex;
   flex-direction: column;
-}
+  height: 270rpx;
+  margin-top: 30rpx;
+  position: relative;
 
+}
+.resultContainers .consoleContainer .consloleContainerItem .imageText  .reward{
+  height: 100%;
+  width: 100%;
+}
+.resultContainers .consoleContainer .consloleContainerItem .imageText  .ouote{
+  height: 100%;
+  width: 100%;
+}
 .resultContainers .consoleContainer .consloleContainerItem .imageText .iconArea {
   width: 90rpx;
   height: 90rpx;
   margin-right: 90rpx;
   margin-left: 95rpx;
-
 }
-
-.resultContainers .consoleContainer .consloleContainerItem .imageText .textContent {
+.resultContainers .consoleContainer .consloleContainerItem .imageText .down{
+  position: absolute;
+  bottom: 10rpx;
+  width: 32rpx;
+  height: 32rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.resultContainers .consoleContainer .consloleContainerItem .imageText .text .textContent {
   width: 222rpx;
   /* height: 92rpx; */
   overflow-wrap: break-word;
-  color: rgba(7, 30, 93, 1);
+  color:rgba(255, 255, 255, 1);
   font-size: 32rpx;
   letter-spacing: -1rpx;
   font-family: Antonio-Regular;
@@ -156,7 +199,24 @@
   text-align: left;
   line-height: 46rpx;
   margin-left: 45rpx;
+}
+.resultContainers .consoleContainer .consloleContainerItem .imageText .text .textContent2 {
+  width: 222rpx;
+  /* height: 92rpx; */
+  overflow-wrap: break-word;
+  color:rgba(255, 255, 255, 1);
+  font-size: 32rpx;
+  letter-spacing: -1rpx;
+  font-family: Antonio-Regular;
+  font-weight: normal;
+  text-align: left;
+  line-height: 46rpx;
+  margin-left: 75rpx;
+}
 
+.resultContainers .consoleContainer .consloleContainerItem .imageText .text{
+  position: absolute;
+  bottom: 52rpx;
 }
 
 .resultContainers .consoleContainer .consloleContainerItem .buttonClock {
@@ -191,19 +251,7 @@
 
 }
 
-.resultContainers .consoleContainer .consloleContainerItem .imageText .textContent2 {
-  width: 222rpx;
-  /* height: 92rpx; */
-  overflow-wrap: break-word;
-  color: rgba(7, 30, 93, 1);
-  font-size: 32rpx;
-  letter-spacing: -1rpx;
-  font-family: Antonio-Regular;
-  font-weight: normal;
-  text-align: left;
-  line-height: 46rpx;
-  margin-left: 75rpx;
-}
+
 
 .resultContainers .consoleContainer .consloleContainerItem .buttonQuote {
   background-color: rgba(45, 117, 255, 1.000000);

@@ -87,24 +87,40 @@
     </view>
     <view class="consoleContainer">
       <view class="consloleContainerItem">
-        <view class="imageText">
-          <image src="/assets/img/seaReward/clock@2x.png" class="iconArea" />
+        <view class="consloleContainerItem_title">
+          <view class="titleLine"></view>
+          <view class="titleText"> {{seaReward.mySeaReward}} </view>
+        </view>
+        <view class="imageText" bindtap="onClick1">
+          <image src="/assets/img/seaReward/RewardBg.png" class="reward" />
+          <view class="text">
           <view class="textContent"> {{seaReward.seaRewardDiscover}}</view>
           <view class="textContent"> {{seaReward.seaRewardDiscover2}}</view>
+          </view>
+          <image src="/assets/img/SeaReward/downArrow.png" class="down"></image>
         </view>
-        <button bindtap="onClick1" class="buttonClock">
-          <view class="buttonText"> {{seaReward.mySeaReward}} </view>
-        </button>
+<!--        <button bindtap="onClick1" class="buttonClock">-->
+<!--          <view class="buttonText"> {{seaReward.mySeaReward}} </view>-->
+<!--        </button>-->
+
       </view>
       <view class="consloleContainerItem">
-        <view class="imageText">
-          <image src="/assets/img/seaReward/quote@2x.png" class="iconArea2" />
-          <view class="textContent2"> {{seaReward.nauticalMiles}}</view>
-          <view class="textContent2"> {{seaReward.nauticalMiles2}}</view>
+        <view class="consloleContainerItem_title">
+          <view class="titleLine"></view>
+          <view class="titleText"> {{seaReward.getAQuote}} </view>
         </view>
-        <button bindtap="onClick2" class="buttonQuote">
-          <view class="buttonText2"> {{seaReward.getAQuote}} </view>
-        </button>
+        <view class="imageText" bindtap="onClick2">
+          <image src="/assets/img/seaReward/QuoteBg.png" class="ouote" />
+          <view class="text">
+            <view class="textContent2"> {{seaReward.nauticalMiles}}</view>
+            <view class="textContent2"> {{seaReward.nauticalMiles2}}</view>
+          </view>
+
+          <image src="/assets/img/SeaReward/downArrow.png" class="down"></image>
+        </view>
+<!--        <button bindtap="onClick2" class="buttonQuote">-->
+<!--          <view class="buttonText2"> {{seaReward.getAQuote}} </view>-->
+<!--        </button>-->
       </view>
     </view>
   </view>
