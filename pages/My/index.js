@@ -35,6 +35,7 @@ Page({
     preAccount: '',
     memberStatus: null,
     seaRewardData: null,
+    count:0
   },
 
   /**
@@ -45,7 +46,8 @@ Page({
     let phone = wx.getStorageSync('phone')
     if (phone) {
       this.setData({
-        phoneNumber: phone
+        phoneNumber: phone,
+        count:1
       })
     }
   },
@@ -92,10 +94,6 @@ Page({
           }
         })
       } else {
-        wx.showLoading({
-          title: '加载中',
-          mask: true
-        })
         this.setData({
           userInfo
         })
@@ -110,10 +108,19 @@ Page({
       this.setData({
         needLogin: false
       })
+      if(this.data.count===1){
+        wx.showLoading({
+          title: '加载中',
+          mask: true
+        })
+      }
       setTimeout(() => {
         let reward = wx.getStorageSync('seaRewardData')
-        wx.hideLoading()
         if(reward){
+          this.setData({
+            count: 2
+          })
+          wx.hideLoading()
           this.setData({
             seaRewardData: reward,
             memberStatus: reward.memberStatus,
