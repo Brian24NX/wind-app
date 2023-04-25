@@ -88,9 +88,14 @@ Page({
               })
               wx.setStorageSync('partnerList', partnerLists)
             })
+
           }
         })
       } else {
+        wx.showLoading({
+          title: '加载中',
+          mask: true
+        })
         this.setData({
           userInfo
         })
@@ -107,6 +112,7 @@ Page({
       })
       setTimeout(() => {
         let reward = wx.getStorageSync('seaRewardData')
+        wx.hideLoading()
         if(reward){
           this.setData({
             seaRewardData: reward,
@@ -119,7 +125,7 @@ Page({
         needLogin: true,
         userInfo: {},
         seaRewardData: null,
-        memberStatus: null,
+        memberStatus: null
       })
     }
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
