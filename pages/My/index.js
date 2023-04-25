@@ -116,11 +116,11 @@ Page({
       }
       setTimeout(() => {
         let reward = wx.getStorageSync('seaRewardData')
+        this.setData({
+          count: 2
+        })
+        wx.hideLoading()
         if(reward){
-          this.setData({
-            count: 2
-          })
-          wx.hideLoading()
           this.setData({
             seaRewardData: reward,
             memberStatus: reward.memberStatus,
