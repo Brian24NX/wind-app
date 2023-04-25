@@ -159,7 +159,7 @@ display: flex;
 
 .resultContainers .consoleContainer .consloleContainerItem .imageText {
   flex-direction: column;
-  height: 270rpx;
+  height: 235rpx;
   margin-top: 30rpx;
   position: relative;
 
