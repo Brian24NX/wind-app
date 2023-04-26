@@ -390,7 +390,7 @@ var Languague = {
       getQuot: '即刻开始实时报价！',
       transaction: '我的海里',
       uo: 'UO:',
-      bp: 'BP:',
+      bp: 'Company:',
       nextDate: '下次更新时间:',
       all: '全部',
       earnings: '累积',

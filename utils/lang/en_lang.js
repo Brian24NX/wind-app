@@ -304,7 +304,7 @@ var Languague = {
     userCenter: {
       title: 'My Account',
       login: 'Login',
-      myDashboard: 'My Dashboard',
+      myDashboard: 'My Dashboards',
       shipment: 'Shipment\nDashboard',
       document: 'Document\nDashboard',
       seaReward: 'Sea Reward\nDashboard',
@@ -367,7 +367,7 @@ var Languague = {
       title: 'Sea Reward Dashboard',
       transaction: 'Transaction Journal',
       uo: 'UO:',
-      bp: 'BP:',
+      bp: 'Company:',
       nextDate: 'Next update:',
       all: 'ALL',
       earnings: 'EARNINGS',
