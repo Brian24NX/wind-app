@@ -76,7 +76,7 @@
       <view class="ones">
         <view class="boxTitle listStyle">{{item.quotationReference}}</view>
         <view class="oneRight quotStatus">
-          {{item.requestType}}
+          {{item.status}}
         </view>
       </view>
       <view class="ones ref">
@@ -93,7 +93,7 @@
       </view>
       <view class="ones ref">
         <view>{{languageContent.nauticalMiles2}}</view>
-        <view class="{{(item.requestType === 'Earned' || item.requestType === '积累') ? 'redMiles':'greenMiles'}}">{{item.pointsStr}}</view>
+        <view class="{{( item.pointsStr > 0) ? 'redMiles': 'greenMiles' }}">{{item.pointsStr}}</view>
       </view>
     </view>
   </view>
