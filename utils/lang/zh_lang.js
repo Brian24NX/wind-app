@@ -389,7 +389,7 @@ var Languague = {
       nodata: '您还未体验海里抵现？',
       getQuot: '即刻开始实时报价！',
       transaction: '我的海里',
-      uo: 'UO:',
+      uo: 'Parent Company:',
       bp: 'Company:',
       nextDate: '下次更新时间:',
       all: '全部',
@@ -970,6 +970,8 @@ var Languague = {
       success2: '已复制'
     },
     load: {
+      //加载中
+      load:'加载中',
       //努力加载中
       loading: "努力加载中...",
       //网络不给力,请稍后刷新

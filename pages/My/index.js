@@ -1,4 +1,6 @@
 // pages/my/index.js
+import languageUtil from "../../utils/languageUtils";
+
 const app = getApp();
 const languageUtils = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
@@ -56,6 +58,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(2222,languageUtil.languageVersion().lang.page.load.load)
     if (utils.checkAccessToken()) {
       let userInfo = wx.getStorageSync('userInfo')
       if (!userInfo) {
@@ -108,9 +111,10 @@ Page({
       this.setData({
         needLogin: false
       })
+      console.log(1111,languageUtil.languageVersion().lang.page.load.load)
       if(this.data.count===1){
         wx.showLoading({
-          title: '加载中',
+          title: languageUtil.languageVersion().lang.page.load.load,
           mask: true
         })
       }

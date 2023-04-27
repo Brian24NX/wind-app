@@ -42,7 +42,7 @@ Page({
       loading: true
     })
     wx.showLoading({
-      title: '加载中',
+      title: languageUtil.languageVersion().lang.page.load.load,
       mask: true
     })
     const pages = getCurrentPages()

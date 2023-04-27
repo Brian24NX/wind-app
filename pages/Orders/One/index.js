@@ -1,3 +1,5 @@
+import languageUtil from "../../../utils/languageUtils";
+
 const dayjs = require("dayjs");
 import {
   reportToPDF,
@@ -66,7 +68,7 @@ Component({
   methods: {
     setStepList() {
       wx.showLoading({
-        title: '加载中',
+        title:  languageUtil.languageVersion().lang.page.load.load,
         mask: true
       })
       this.setData({

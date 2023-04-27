@@ -366,12 +366,12 @@ var Languague = {
     seaRewardDashboard: {
       title: 'Sea Reward Dashboard',
       transaction: 'Transaction Journal',
-      uo: 'UO:',
+      uo: 'Parent Company:',
       bp: 'Company:',
       nextDate: 'Next update:',
       all: 'ALL',
-      earnings: 'EARNINGS',
-      burns: 'BURNS',
+      earnings: ' EARNED',
+      burns: ' USED',
       quatedate: 'Quotation Date',
       bookRef:'Booking Ref.',
       next: 'Next level: ',
@@ -965,6 +965,8 @@ var Languague = {
       success2: 'Successfully copied'
     },
     load: {
+      //加载中
+      load:'Loading',
       //努力加载中
       loading: "Loading...",
       //网络不给力,请稍后刷新
