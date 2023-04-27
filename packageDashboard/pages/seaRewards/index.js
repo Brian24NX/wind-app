@@ -104,7 +104,8 @@ Page({
     nextDate: '03-MAR-2023',
     nextDate2: '2023年3月3日',
     typeList: ['all', 'earnings', 'burns'],
-    curTab: 'all'
+    curTab: 'all',
+    item:null,//备份未筛选的数组数据
   },
 
   /**
@@ -162,11 +163,13 @@ Page({
                 (item) => item.quotationReference ===this.data.keyword
                     || item.invoiceReference ===this.data.keyword ||
                     item.bookingReference ===this.data.keyword
-            )
+            ),
+            item:res.data.description
           })
         }else{
           this.setData({
-            dashboard: res.data.description
+            dashboard: res.data.description,
+            item:res.data.description
           })
         }
 
@@ -240,6 +243,12 @@ Page({
                 item.bookingReference ===this.data.keyword
         )
       })
+    }else{
+      let data = this.data.item
+      this.setData({
+        dashboard : data
+      })
+      console.log(111,this.data.dashboard)
     }
   },
   deleteValue() {

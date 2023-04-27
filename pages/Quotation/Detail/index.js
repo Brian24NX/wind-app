@@ -131,18 +131,19 @@ Page({
   },
 
   getSeaEarnPoints(amount) {
-    console.log('333333333333',amount,sum,this.data.reduceMoney)
-    if(this.data.subscribedServices.length!==0&&this.data.reduceMoney){
+    // if(this.data.subscribedServices.length!==0&&this.data.reduceMoney){
 
     //   if(this.data.count===1){
-    //     if(this.data.reduceMoney) {
-    //       sum = sum - this.data.burnRewards
-    //     }
+        if(this.data.reduceMoney) {
+          sum = sum - this.data.burnRewards
+        }
     //   }
-    }
+    // }
     // console.log("------amount-------",amount,sum)
+    console.log('333333333333',amount,this.data.addMoney,sum,this.data.reduceMoney)
+
     seaEarnPoints({
-      "baseAmount":sum ,
+      "baseAmount":sum,
       "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
       "level": wx.getStorageSync('seaRewardData').level
@@ -638,7 +639,6 @@ Page({
           reduceMoney:e.detail,count:1
         }
     )
-
     if (e.detail) {
       this.setData({
         useRewards: e.detail,
