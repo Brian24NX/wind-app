@@ -219,10 +219,14 @@ Page({
       keyword: regvalue
     })
   },
-  search(allList){
-    console.log('搜索',allList,this.data.keyword)
-    const arrFilter = allList.filter((item) => item.quotationReference ===this.data.keyword && item.invoiceReference ===this.data.keyword &&item.bookingReference ===this.data.keyword)
-    console.log('-----------------------',arrFilter)
+  search(){
+    this.setData({
+      dashboard: this.data.dashboard.filter(
+          (item) => item.quotationReference ===this.data.keyword
+              || item.invoiceReference ===this.data.keyword ||
+              item.bookingReference ===this.data.keyword
+      )
+    })
   },
   deleteValue() {
     this.setData({

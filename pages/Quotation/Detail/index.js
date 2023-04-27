@@ -7,7 +7,7 @@ import {
 } from '../../../api/modules/quotation';
 
 import { writeOperationLog } from '../../../api/modules/home'
-
+let sum = 0
 Page({
 
   /**
@@ -82,13 +82,17 @@ Page({
     useRewards: false,
     finalPrice: 0,
     rewardsLevel: '',
-    memberStatus: ''
+    memberStatus: '',
+    addMoney:0, //增值订阅服务的总额
+    reduceMoney:false,//是否抵扣海里
+    count:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+
     wx.setNavigationBarTitle({
       title: languageUtil.languageVersion().lang.page.qutationResult.title2
     })
@@ -127,15 +131,26 @@ Page({
   },
 
   getSeaEarnPoints(amount) {
+    console.log('333333333333',amount,sum,this.data.reduceMoney)
+    if(this.data.subscribedServices.length!==0&&this.data.reduceMoney){
+
+    //   if(this.data.count===1){
+    //     if(this.data.reduceMoney) {
+    //       sum = sum - this.data.burnRewards
+    //     }
+    //   }
+    }
+    // console.log("------amount-------",amount,sum)
     seaEarnPoints({
-      "baseAmount": amount,
+      "baseAmount":sum ,
       "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
       "level": wx.getStorageSync('seaRewardData').level
     }).then(res => {
-      this.setData({
-        rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance : null
-      })
+      console.log("--------------",this.data.reduceMoney,res.data.simulationResults[0].changeInPointsBalance)
+        this.setData({
+          rewardsEarned:  res.data ? res.data.simulationResults[0].changeInPointsBalance : null
+        })
     })
   },
 
@@ -199,6 +214,8 @@ Page({
 
   calculatedCharges() {
     const surchargeDetails = this.data.quotationDetail.surchargeDetails
+    let addMoney = 0
+     console.log("'''''''''''surchargeDetails'''''''",surchargeDetails)
     let totalChargeAmount = 0
     if (surchargeDetails.oceanFreight.isChecked) {
       totalChargeAmount = totalChargeAmount + surchargeDetails.oceanFreight.price.amount
@@ -212,18 +229,27 @@ Page({
     if (surchargeDetails.collectCharges.isChecked) {
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
+    sum=totalChargeAmount
+    console.log('********订阅*********',this.data.subscribedServices,totalChargeAmount,sum)
+
+    //订阅的数组
     this.data.subscribedServices.forEach(i => {
       if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
         totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
+        addMoney = addMoney+ i.seletcedProduct.amount
       }
+      console.log(true,'11111111111111')
     })
+
+    console.log('++++++++++++0+++++++++++++',totalChargeAmount,addMoney,sum, this.data.count)
     this.setData({
-      totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount
+      totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
+      addMoney:addMoney
     })
+
     this.setData({
       finalPrice: this.data.totalChargeAmount * this.data.containers,
     })
-
     if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
       this.setData({
         burnRewards: this.data.finalPrice
@@ -553,6 +579,7 @@ Page({
   },
 
   setSubscribedServices(detail) {
+    console.log(999999999999999999999999,detail)
     const index = this.data.vasList.findIndex(i => i.parentProductId === detail.parentProductId)
     this.data.vasList[index] = detail
     this.setData({
@@ -604,6 +631,14 @@ Page({
   },
 
   switchRewards(e) {
+    console.log('------e.detail----------',e.detail,  this.data.count)
+    console.log('///////////22finalPrice22/////////////',this.data.finalPrice)
+    this.setData(
+        {
+          reduceMoney:e.detail,count:1
+        }
+    )
+
     if (e.detail) {
       this.setData({
         useRewards: e.detail,
