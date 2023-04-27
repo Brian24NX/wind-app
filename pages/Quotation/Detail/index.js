@@ -7,7 +7,6 @@ import {
 } from '../../../api/modules/quotation';
 
 import { writeOperationLog } from '../../../api/modules/home'
-let sum = 0
 Page({
 
   /**
@@ -78,9 +77,10 @@ Page({
     foldQuoteDetail: true,
     foldSoc: true,
     burnRewards: 0,
-    rewardsEarned: null,
+    rewardsEarned: null,   //海里
     useRewards: false,
-    finalPrice: 0,
+    finalPrice: 0,    //总计 （订阅）
+    sum:0,//初始值
     rewardsLevel: '',
     memberStatus: '',
     addMoney:0, //增值订阅服务的总额
@@ -134,16 +134,16 @@ Page({
     // if(this.data.subscribedServices.length!==0&&this.data.reduceMoney){
 
     //   if(this.data.count===1){
-        if(this.data.reduceMoney) {
-          sum = sum - this.data.burnRewards
-        }
+    //     if(this.data.reduceMoney) {
+    //       sum = sum - this.data.burnRewards
+    //     }
     //   }
     // }
     // console.log("------amount-------",amount,sum)
-    console.log('333333333333',amount,this.data.addMoney,sum,this.data.reduceMoney)
+    console.log('333333333333',amount,this.data.addMoney,this.data.sum,this.data.reduceMoney)
 
     seaEarnPoints({
-      "baseAmount":sum,
+      "baseAmount":amount - this.data.addMoney,
       "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
       "level": wx.getStorageSync('seaRewardData').level
@@ -230,9 +230,11 @@ Page({
     if (surchargeDetails.collectCharges.isChecked) {
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
-    sum=totalChargeAmount
-    console.log('********订阅*********',this.data.subscribedServices,totalChargeAmount,sum)
 
+    console.log('********订阅*********',this.data.sum)
+    this.setData({
+      sum:totalChargeAmount
+    })
     //订阅的数组
     this.data.subscribedServices.forEach(i => {
       if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
@@ -639,15 +641,18 @@ Page({
           reduceMoney:e.detail,count:1
         }
     )
+
     if (e.detail) {
       this.setData({
         useRewards: e.detail,
-        finalPrice: this.data.finalPrice - this.data.burnRewards
+        finalPrice: this.data.finalPrice - this.data.burnRewards,
+        sum:this.data.sum - this.data.burnRewards
       })
     } else {
       this.setData({
         useRewards: e.detail,
-        finalPrice: this.data.finalPrice + this.data.burnRewards
+        finalPrice: this.data.finalPrice + this.data.burnRewards,
+        sum:this.data.sum + this.data.burnRewards
       })
     }
     if (this.data.finalPrice === 0) {
