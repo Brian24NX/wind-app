@@ -102,6 +102,7 @@ Page({
     dashboard: null,
     rewardLevel: null,
     nextDate: '03-MAR-2023',
+    nextDate2: '2023年3月3日',
     typeList: ['all', 'earnings', 'burns'],
     curTab: 'all'
   },
@@ -218,7 +219,11 @@ Page({
       keyword: regvalue
     })
   },
-
+  search(allList){
+    console.log('搜索',allList,this.data.keyword)
+    const arrFilter = allList.filter((item) => item.quotationReference ===this.data.keyword && item.invoiceReference ===this.data.keyword &&item.bookingReference ===this.data.keyword)
+    console.log('-----------------------',arrFilter)
+  },
   deleteValue() {
     this.setData({
       keyword: ''

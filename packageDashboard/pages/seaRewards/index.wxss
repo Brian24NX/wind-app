@@ -91,6 +91,22 @@ page {
   flex-direction: row;
   margin-bottom: 30rpx;
 }
+.columnShowed1 {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: -20rpx;
+}
+
+.columnShowed2 {
+  margin-left: 5rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.dateTime {
+  margin-left: 17rpx;
+}
 
 .divider {
   padding-top: 30rpx;
