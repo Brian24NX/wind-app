@@ -290,14 +290,15 @@ display: flex;
 .hiddenContainer::after {
   content: "";
   display: block;
-  width: 100%;
+  width:calc(100% - 60rpx);
+  margin: 0 30rpx;
   height: 1rpx;
   position: absolute;
   left: 0;
 }
 
 .hiddenContainer::before {
-  background: linear-gradient(to right, transparent 0%, rgba(240, 241, 245, 1) 50%, transparent 100%);
+  background: #EEEEEE;
   top: 0;
 }
 
