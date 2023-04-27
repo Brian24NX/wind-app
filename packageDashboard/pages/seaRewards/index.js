@@ -155,9 +155,21 @@ Page({
     }).then(res => {
       if (res.data) {
         allList = res.data
-        this.setData({
-          dashboard: res.data.description
-        })
+        console.log(JSON.stringify(res.data.description))
+        if(this.data.keyword){
+          this.setData({
+            dashboard: this.data.dashboard.filter(
+                (item) => item.quotationReference ===this.data.keyword
+                    || item.invoiceReference ===this.data.keyword ||
+                    item.bookingReference ===this.data.keyword
+            )
+          })
+        }else{
+          this.setData({
+            dashboard: res.data.description
+          })
+        }
+
       } else {
         this.setData({
           loading: false,
@@ -220,13 +232,15 @@ Page({
     })
   },
   search(){
-    this.setData({
-      dashboard: this.data.dashboard.filter(
-          (item) => item.quotationReference ===this.data.keyword
-              || item.invoiceReference ===this.data.keyword ||
-              item.bookingReference ===this.data.keyword
-      )
-    })
+    if(this.data.keyword){
+      this.setData({
+        dashboard: this.data.dashboard.filter(
+            (item) => item.quotationReference ===this.data.keyword
+                || item.invoiceReference ===this.data.keyword ||
+                item.bookingReference ===this.data.keyword
+        )
+      })
+    }
   },
   deleteValue() {
     this.setData({
