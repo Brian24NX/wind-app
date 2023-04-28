@@ -101,8 +101,8 @@ Page({
     seaRewardData: null,
     dashboard: null,
     rewardLevel: null,
-    nextDate: '03-MAR-2023',
-    nextDate2: '2023年3月3日',
+    nextDate: '10-MAY-2023',
+    nextDate2: '2023年5月10日',
     typeList: ['all', 'earnings', 'burns'],
     curTab: 'all',
     item:null,//备份未筛选的数组数据
