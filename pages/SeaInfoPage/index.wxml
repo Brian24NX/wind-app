@@ -23,7 +23,7 @@
           </view> -->
           <view class="benefit"> {{seaReward.benefits}} </view>
           <view class="benefitContent">
-            <view class="benefitIcon"></view>
+<!--            <view class="benefitIcon"></view>-->
             <view class="benefitText"> {{seaReward.LieutenantBenefits}}
             </view>
           </view>
@@ -41,7 +41,7 @@
           <view class="waysIntro"> {{seaReward.CaptainGetThere}}</view>
           <view class="benefit"> {{seaReward.benefits}} </view>
           <view class="benefitContent">
-            <view class="benefitIcon"></view>
+<!--            <view class="benefitIcon"></view>-->
             <view class="benefitText"> {{seaReward.CaptainBenefits}}
             </view>
           </view>
@@ -60,7 +60,7 @@
           </view>
           <view class="benefit"> {{seaReward.benefits}} </view>
           <view class="benefitContent">
-            <view class="benefitIcon"></view>
+<!--            <view class="benefitIcon"></view>-->
             <view class="benefitText"> {{seaReward.MasterBenefits}} </view>
           </view>
         </view>
@@ -78,7 +78,7 @@
           </view>
           <view class="benefit"> {{seaReward.benefits}} </view>
           <view class="benefitContent">
-            <view class="benefitIcon"></view>
+<!--            <view class="benefitIcon"></view>-->
             <view class="benefitText"> {{seaReward.AdmiralBenefits}}
             </view>
           </view>

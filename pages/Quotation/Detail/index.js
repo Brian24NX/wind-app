@@ -228,35 +228,83 @@ Page({
       totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
     }
 
-    console.log('********订阅*********',this.data.sum)
-    this.setData({
-      sum:totalChargeAmount
-    })
-    //订阅的数组
-    this.data.subscribedServices.forEach(i => {
-      if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
-        totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
-        addMoney = addMoney+ i.seletcedProduct.amount
-      }
-    })
+    console.log('********订阅*********',this.data.sum,this.data.sum===0,this.data.useRewards)
 
-    console.log('++++++++++++0+++++++++++++',totalChargeAmount,addMoney,this.data.sum)
-    this.setData({
-      totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
-      addMoney:addMoney
-    })
-
-    this.setData({
-      finalPrice: this.data.totalChargeAmount * this.data.containers,
-    })
-    if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
+    if(this.data.sum===0){
       this.setData({
-        burnRewards: this.data.finalPrice
+        sum:totalChargeAmount
       })
+      //订阅的数组
+      this.data.subscribedServices.forEach(i => {
+        if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
+          totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
+          addMoney = addMoney+ i.seletcedProduct.amount
+        }
+      })
+      this.setData({
+        totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
+        addMoney:addMoney
+      })
+      this.setData({
+        finalPrice: this.data.totalChargeAmount * this.data.containers,
+      })
+      if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
+        console.log('burnRewards-----finalPrice',this.data.finalPrice)
+        this.setData({
+          burnRewards: this.data.finalPrice
+        })
+      }
+      console.log(3,this.data.burnRewards)
+      if(this.data.memberStatus === 'Active'){
+        this.getSeaEarnPoints(this.data.finalPrice)
+      }
+    }else{
+      //订阅的数组
+      this.data.subscribedServices.forEach(i => {
+        if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
+          addMoney = addMoney+ i.seletcedProduct.amount
+        }
+      })
+      this.setData({
+        totalChargeAmount: this.data.sum + addMoney || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
+        addMoney:addMoney
+      })
+
+      this.setData({
+        finalPrice: this.data.totalChargeAmount * this.data.containers,
+      })
+      if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
+        console.log('burnRewards-----finalPrice',this.data.finalPrice)
+        this.setData({
+          burnRewards: this.data.finalPrice
+        })
+      }
+      console.log(3,this.data.burnRewards)
+      if(this.data.memberStatus === 'Active'){
+        this.getSeaEarnPoints(this.data.finalPrice)
+      }
     }
-    if(this.data.memberStatus === 'Active'){
-      this.getSeaEarnPoints(this.data.finalPrice)
-    } 
+
+    console.log('totalChargeAmount',this.data.totalChargeAmount,this.data.addMoney,this.data.sum)
+
+    // this.data.subscribedServices.forEach(i => {
+    //   if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
+    //     totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
+    //     addMoney = addMoney+ i.seletcedProduct.amount
+    //   }
+    // })
+
+    // console.log('++++++++++++0+++++++++++++',totalChargeAmount,addMoney,this.data.sum)
+    // this.setData({
+    //   totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
+    //   addMoney:addMoney
+    // })
+    // console.log(1,this.data.totalChargeAmount,this.data.addMoney)
+    // this.setData({
+    //   finalPrice: this.data.totalChargeAmount * this.data.containers,
+    // })
+    // console.log(2,this.data.finalPrice,this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance)
+
   },
 
   changeCheck(e) {
