@@ -78,13 +78,12 @@ Page({
     foldSoc: true,
     burnRewards: 0,
     rewardsEarned: null,   //海里
-    useRewards: false,
+    useRewards: false,//是否抵扣海里
     finalPrice: 0,    //总计 （订阅）
     sum:0,//初始值
     rewardsLevel: '',
     memberStatus: '',
     addMoney:0, //增值订阅服务的总额
-    reduceMoney:false,//是否抵扣海里
     count:0,
   },
 
@@ -131,16 +130,16 @@ Page({
   },
 
   getSeaEarnPoints(amount) {
-    // if(this.data.subscribedServices.length!==0&&this.data.reduceMoney){
+    // if(this.data.subscribedServices.length!==0&&this.data.useRewards){
 
     //   if(this.data.count===1){
-    //     if(this.data.reduceMoney) {
+    //     if(this.data.useRewards) {
     //       sum = sum - this.data.burnRewards
     //     }
     //   }
     // }
     // console.log("------amount-------",amount,sum)
-    console.log('333333333333',amount,this.data.addMoney,this.data.sum,this.data.reduceMoney)
+    console.log('333333333333',amount,this.data.addMoney,amount-this.data.addMoney,this.data.sum,this.data.useRewards)
 
     seaEarnPoints({
       "baseAmount":amount - this.data.addMoney,
@@ -148,7 +147,6 @@ Page({
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
       "level": wx.getStorageSync('seaRewardData').level
     }).then(res => {
-      console.log("--------------",this.data.reduceMoney,res.data.simulationResults[0].changeInPointsBalance)
         this.setData({
           rewardsEarned:  res.data ? res.data.simulationResults[0].changeInPointsBalance : null
         })
@@ -216,7 +214,6 @@ Page({
   calculatedCharges() {
     const surchargeDetails = this.data.quotationDetail.surchargeDetails
     let addMoney = 0
-     console.log("'''''''''''surchargeDetails'''''''",surchargeDetails)
     let totalChargeAmount = 0
     if (surchargeDetails.oceanFreight.isChecked) {
       totalChargeAmount = totalChargeAmount + surchargeDetails.oceanFreight.price.amount
@@ -241,10 +238,9 @@ Page({
         totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
         addMoney = addMoney+ i.seletcedProduct.amount
       }
-      console.log(true,'11111111111111')
     })
 
-    console.log('++++++++++++0+++++++++++++',totalChargeAmount,addMoney,sum, this.data.count)
+    console.log('++++++++++++0+++++++++++++',totalChargeAmount,addMoney,this.data.sum)
     this.setData({
       totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
       addMoney:addMoney
@@ -582,7 +578,6 @@ Page({
   },
 
   setSubscribedServices(detail) {
-    console.log(999999999999999999999999,detail)
     const index = this.data.vasList.findIndex(i => i.parentProductId === detail.parentProductId)
     this.data.vasList[index] = detail
     this.setData({
@@ -634,14 +629,7 @@ Page({
   },
 
   switchRewards(e) {
-    console.log('------e.detail----------',e.detail,  this.data.count)
     console.log('///////////22finalPrice22/////////////',this.data.finalPrice)
-    this.setData(
-        {
-          reduceMoney:e.detail,count:1
-        }
-    )
-
     if (e.detail) {
       this.setData({
         useRewards: e.detail,
@@ -655,6 +643,7 @@ Page({
         sum:this.data.sum + this.data.burnRewards
       })
     }
+    console.log('------21--------',this.data.finalPrice,this.data.sum)
     if (this.data.finalPrice === 0) {
       this.setData({
         rewardsEarned: 0
