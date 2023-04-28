@@ -100,6 +100,7 @@ page {
   font-family: Antonio-Regular;
   font-weight: bold;
   color: #04246A;
+  align-items: center;
 }
 
 .userfulContainer .titles .titleLine {
