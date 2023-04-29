@@ -159,11 +159,7 @@ Page({
         console.log(JSON.stringify(res.data.description))
         if(this.data.keyword){
           this.setData({
-            dashboard: this.data.dashboard.filter(
-                (item) => item.quotationReference ===this.data.keyword
-                    || item.invoiceReference ===this.data.keyword ||
-                    item.bookingReference ===this.data.keyword
-            ),
+            dashboard:this.fuzzyQuery(res.data.description,this.data.keyword),
             item:res.data.description
           })
         }else{
@@ -233,15 +229,24 @@ Page({
     this.setData({
       keyword: regvalue
     })
+    this.search()
   },
-  search(){
-    if(this.data.keyword){
+
+  fuzzyQuery(list, keyWord) {
+  let arr = [];
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].quotationReference.indexOf(keyWord) >= 0 || list[i].invoiceReference.indexOf(keyWord)>-1 || list[i].bookingReference.indexOf(keyWord)>-1) {
+      arr.push(list[i]);
+    }
+  }
+  return arr;
+},
+search(){
+    let keyword = this.data.keyword
+    if(keyword){
+      console.log(this.data.dashboard,this.fuzzyQuery(this.data.dashboard,keyword))
       this.setData({
-        dashboard: this.data.dashboard.filter(
-            (item) => item.quotationReference ===this.data.keyword
-                || item.invoiceReference ===this.data.keyword ||
-                item.bookingReference ===this.data.keyword
-        )
+        dashboard: this.fuzzyQuery(this.data.dashboard,keyword)
       })
     }else{
       let data = this.data.item

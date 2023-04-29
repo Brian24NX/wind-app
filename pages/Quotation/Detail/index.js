@@ -138,9 +138,8 @@ Page({
     //     }
     //   }
     // }
-    // console.log("------amount-------",amount,sum)
-    console.log('333333333333',amount,this.data.addMoney,amount-this.data.addMoney,this.data.sum,this.data.useRewards)
-
+    console.log("------amount-------",amount,this.data.addMoney,amount-this.data.addMoney,)
+    console.log('333333333333',this.data.sum,this.data.useRewards,this.data.totalChargeAmount)
     seaEarnPoints({
       "baseAmount":amount - this.data.addMoney,
       "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
@@ -245,20 +244,29 @@ Page({
         totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
         addMoney:addMoney
       })
-      this.setData({
-        finalPrice: this.data.totalChargeAmount * this.data.containers,
-      })
+      if(this.data.useRewards){
+        this.setData({
+          finalPrice: this.data.totalChargeAmount * this.data.containers - this.data.burnRewards,
+        })
+      }else{
+        this.setData({
+          finalPrice: this.data.totalChargeAmount * this.data.containers
+        })
+      }
+
       if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
-        console.log('burnRewards-----finalPrice',this.data.finalPrice)
+        console.log('burnRewards-----finalPrice', this.data.finalPrice)
         this.setData({
           burnRewards: this.data.finalPrice
         })
       }
-      console.log(3,this.data.burnRewards)
       if(this.data.memberStatus === 'Active'){
         this.getSeaEarnPoints(this.data.finalPrice)
       }
     }else{
+      this.setData({
+        sum:this.data.sum
+      })
       //订阅的数组
       this.data.subscribedServices.forEach(i => {
         if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
@@ -269,23 +277,26 @@ Page({
         totalChargeAmount: this.data.sum + addMoney || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
         addMoney:addMoney
       })
-
-      this.setData({
-        finalPrice: this.data.totalChargeAmount * this.data.containers,
-      })
+        if(this.data.useRewards){
+          this.setData({
+            finalPrice: this.data.totalChargeAmount * this.data.containers - this.data.burnRewards,
+          })
+        }else{
+          this.setData({
+            finalPrice: this.data.totalChargeAmount * this.data.containers
+          })
+        }
+      console.log('finalPrice,sum,totalChargeAmount',this.data.finalPrice,this.data.sum,this.data.totalChargeAmount)
       if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
         console.log('burnRewards-----finalPrice',this.data.finalPrice)
         this.setData({
           burnRewards: this.data.finalPrice
         })
       }
-      console.log(3,this.data.burnRewards)
       if(this.data.memberStatus === 'Active'){
         this.getSeaEarnPoints(this.data.finalPrice)
       }
     }
-
-    console.log('totalChargeAmount',this.data.totalChargeAmount,this.data.addMoney,this.data.sum)
 
     // this.data.subscribedServices.forEach(i => {
     //   if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
@@ -677,21 +688,17 @@ Page({
   },
 
   switchRewards(e) {
-    console.log('///////////22finalPrice22/////////////',this.data.finalPrice)
     if (e.detail) {
       this.setData({
         useRewards: e.detail,
         finalPrice: this.data.finalPrice - this.data.burnRewards,
-        sum:this.data.sum - this.data.burnRewards
       })
     } else {
       this.setData({
         useRewards: e.detail,
         finalPrice: this.data.finalPrice + this.data.burnRewards,
-        sum:this.data.sum + this.data.burnRewards
       })
     }
-    console.log('------21--------',this.data.finalPrice,this.data.sum)
     if (this.data.finalPrice === 0) {
       this.setData({
         rewardsEarned: 0
