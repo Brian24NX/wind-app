@@ -46,6 +46,7 @@ Page({
     const pages = getCurrentPages()
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
+    console.log(data)
     this.setData({
       reference: options.quotationId,
       quotationDetail: data.quotationDetail,
