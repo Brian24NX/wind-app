@@ -130,18 +130,10 @@ Page({
   },
 
   getSeaEarnPoints(amount) {
-    // if(this.data.subscribedServices.length!==0&&this.data.useRewards){
-
-    //   if(this.data.count===1){
-    //     if(this.data.useRewards) {
-    //       sum = sum - this.data.burnRewards
-    //     }
-    //   }
-    // }
-    console.log("------amount-------",amount,this.data.addMoney,amount-this.data.addMoney,)
+    console.log("------amount-------",amount,this.data.addMoney,amount-this.data.addMoney* this.data.containers,)
     console.log('333333333333',this.data.sum,this.data.useRewards,this.data.totalChargeAmount)
     seaEarnPoints({
-      "baseAmount":amount - this.data.addMoney,
+      "baseAmount":amount - this.data.addMoney * this.data.containers,
       "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
       "level": wx.getStorageSync('seaRewardData').level
@@ -157,8 +149,6 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     let quotationDetail = data.quoteLineList[index]
-    // let surchargeDetail = quotationDetail.surchargeDetails[this.data.currentEquipmentType]
-    // console.log(quotationDetail)
     if (quotationDetail.surchargeDetails.oceanFreight.paymentMethod === 'Collect') {
       quotationDetail.surchargeDetails.collectChargeDetails = quotationDetail.surchargeDetails.collectChargeDetails.concat(quotationDetail.surchargeDetail.freightChargeDetails)
       quotationDetail.surchargeDetails.freightChargeDetails = []
@@ -228,7 +218,6 @@ Page({
     }
 
     console.log('********订阅*********',this.data.sum,this.data.sum===0,this.data.useRewards)
-
     if(this.data.sum===0){
       this.setData({
         sum:totalChargeAmount
@@ -255,7 +244,6 @@ Page({
       }
 
       if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
-        console.log('burnRewards-----finalPrice', this.data.finalPrice)
         this.setData({
           burnRewards: this.data.finalPrice
         })
