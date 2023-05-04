@@ -364,6 +364,7 @@ var Languague = {
     },
     //sea reward dashboard
     seaRewardDashboard: {
+      noData: 'No results found',
       title: 'Sea Reward Dashboard',
       transaction: 'Transaction Journal',
       uo: 'Parent Company:',

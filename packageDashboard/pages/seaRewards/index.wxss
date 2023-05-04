@@ -419,7 +419,7 @@ page {
   color: #071E5D;
   margin-left: 18rpx;
   margin-right: 6rpx;
-  margin-top: -20rpx;
+  margin-top: -17rpx;
 }
 
 .viewTypesContainer {

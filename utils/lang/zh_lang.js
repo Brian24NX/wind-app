@@ -369,6 +369,7 @@ var Languague = {
     },
     //sea reward dashboard
     seaRewardDashboard: {
+      noData: '未找到结果',
       title: '我的海里',
       next: '下个等级: ',
       available: ' 可用海里',

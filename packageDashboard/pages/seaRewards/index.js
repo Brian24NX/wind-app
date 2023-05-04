@@ -226,26 +226,20 @@ Page({
   },
 
   setInput(e) {
+
     let value = e.detail.value.toUpperCase()
     let regvalue = value.trim()
-    this.setData({
-      keyword: regvalue
-    })
-    var reg = /^([ ]*[A-z0-9]+([\,\，]*)){0,3}$/;
-    // 不包含，类型的数据
-    if (!reg.test(regvalue)) {
-      return
-    }
-    const value2 = (value.substr(value.length - 1, 1) === ',' || value.substr(value.length - 1, 1) === '，') ? value.substr(0, value.length - 1) : value
-    if (value2.split(',').length >= 2 && value2.split(',').length <= 3) {
-      const arr = value2.split(',').map(item => item.trim())
-      var newArr = arr.filter(function (value, index, self) {
-        return self.indexOf(value) === index;
-      });
-      if (newArr.length !== arr.length) {
-        return
+    console.log(11,value,regvalue,e.detail.value)
+    if (value) {
+      const reg = /[\u4e00-\u9fa5]/ig
+      if ((reg.test(value))) {
+        value = value.replace(reg, '')
       }
     }
+      this.setData({
+        keyword: value
+      })
+    console.log(this.data.keyword)
   },
 
   fuzzyQuery(list, keyWord) {
@@ -341,4 +335,14 @@ search(){
     })
     wx.setStorageSync('seaRewardsSearchHis',e.detail)
   },
+  // onName({detail}) {
+  //   let value = detail.value;
+  //   if (!value || value == " ") {
+  //     return '';
+  //   }
+  //   const rule = /[^\u4E00-\u9FA5]/g;
+  //   this.$nextTick(function() {
+  //     this.name = value.replace(rule, '');
+  //   })
+  // }
 })

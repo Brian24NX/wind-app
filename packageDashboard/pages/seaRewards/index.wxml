@@ -73,7 +73,7 @@
   </view>
 
   <view wx:if="{{!loading && list.length > 0 && !noData}}">
-    <view wx:for="{{dashboard}}" wx:key="index" class="itemBox listTopContainers">
+    <view  wx:for="{{dashboard}}" wx:key="index" class="itemBox listTopContainers">
       <view class="ones">
         <view class="boxTitle listStyle">{{item.quotationReference}}</view>
         <view class="oneRight quotStatus">
@@ -97,7 +97,12 @@
         <view class="{{( item.pointsStr > 0) ? 'redMiles': 'greenMiles' }}">{{item.pointsStr}}</view>
       </view>
     </view>
+    <view wx:if="{{dashboard.length==0}}" class="itemBox listTopContainers boxTitle noData">
+      <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
+      <view class="siteText">{{languageContent.noData}}</view>
+    </view>
   </view>
+
 
   <view class="loadings" wx:if="{{loading}}">
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
