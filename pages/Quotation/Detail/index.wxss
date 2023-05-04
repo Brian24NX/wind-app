@@ -947,8 +947,8 @@
 }
 
 .socTopTitleLine {
-  width: 6rpx;
-  height: 40rpx;
+  width: 8rpx;
+  height: 42rpx;
   background-color: #e20202;
   margin-right: 12rpx;
 }

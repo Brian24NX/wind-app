@@ -103,9 +103,11 @@ Page({
     rewardLevel: null,
     nextDate: '10-MAY-2023',
     nextDate2: '2023年5月10日',
-    typeList: ['all', 'earnings', 'burns'],
-    curTab: 'all',
+    typeList: ['earnings', 'burns'],
+    curTab: 'earnings',
     item:null,//备份未筛选的数组数据
+    showHis:false,
+    searchHis: [],
   },
 
   /**
@@ -114,12 +116,13 @@ Page({
   onLoad() {
     this.initLanguage()
     this.setData({
-      rewardLevel: wx.getStorageSync('rewardLevel')
+      rewardLevel: wx.getStorageSync('rewardLevel'),
+      searchHis: wx.getStorageSync('seaRewardsSearchHis')
     })
   },
 
   onShow() {
-    this.getRewardDashboard('all')
+    this.getRewardDashboard('earnings')
     this.getSeaPartnerInfo()
   },
 
@@ -156,7 +159,6 @@ Page({
     }).then(res => {
       if (res.data) {
         allList = res.data
-        console.log(JSON.stringify(res.data.description))
         if(this.data.keyword){
           this.setData({
             dashboard:this.fuzzyQuery(res.data.description,this.data.keyword),
@@ -229,7 +231,21 @@ Page({
     this.setData({
       keyword: regvalue
     })
-    this.search()
+    var reg = /^([ ]*[A-z0-9]+([\,\，]*)){0,3}$/;
+    // 不包含，类型的数据
+    if (!reg.test(regvalue)) {
+      return
+    }
+    const value2 = (value.substr(value.length - 1, 1) === ',' || value.substr(value.length - 1, 1) === '，') ? value.substr(0, value.length - 1) : value
+    if (value2.split(',').length >= 2 && value2.split(',').length <= 3) {
+      const arr = value2.split(',').map(item => item.trim())
+      var newArr = arr.filter(function (value, index, self) {
+        return self.indexOf(value) === index;
+      });
+      if (newArr.length !== arr.length) {
+        return
+      }
+    }
   },
 
   fuzzyQuery(list, keyWord) {
@@ -253,8 +269,34 @@ search(){
       this.setData({
         dashboard : data
       })
-      console.log(111,this.data.dashboard)
     }
+  const huoguiStr = this.data.keyword.replaceAll(' ', '')
+  const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
+  var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
+  const checkRes = []
+  var serList = this.data.searchHis ? this.data.searchHis: []
+  huogui.forEach(item => {
+    var noSpaceItem = item.replace(/\s*/g,"")
+    checkRes.push(reg.test(noSpaceItem))
+    var idx = serList.indexOf(noSpaceItem)
+    if(idx !== -1){
+      serList.splice(idx,1)
+      serList.unshift(noSpaceItem)
+    }else if(noSpaceItem !== '' && idx === -1 ){
+      if(serList.length < 5){
+        serList.unshift(noSpaceItem)
+      }else{
+        serList.unshift(noSpaceItem)
+        serList.splice(serList.length-1,1)
+      }
+    }
+  })
+  let newHis = [...new Set(serList)]
+  this.setData({
+    searchHis: newHis
+  })
+  wx.setStorageSync('seaRewardsSearchHis', this.data.searchHis);
+
   },
   deleteValue() {
     this.setData({
@@ -273,5 +315,30 @@ search(){
     wx.switchTab({
       url: '/pages/Quotation/Search/index',
     })
+  },
+  showSearchHis(){
+    this.setData({
+      showHis: true
+    })
+  },
+
+  hideSearchHis(){
+    this.search()
+    this.setData({
+      showHis: false
+    })
+  },
+
+  chooseHis(e){
+      this.setData({
+        keyword: e.detail,
+      })
+    console.log(this.data.keyword)
+  },
+  delHis(e){
+    this.setData({
+      searchHis: e.detail
+    })
+    wx.setStorageSync('seaRewardsSearchHis',e.detail)
   },
 })

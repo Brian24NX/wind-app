@@ -4,6 +4,7 @@
     "loading": "/components/loading/index",
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "item-list-box": "/components/itemListBox/index"
   }
 }

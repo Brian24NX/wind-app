@@ -10,7 +10,7 @@
       <!-- <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onOpenPopup"></image> -->
       <view class="columnShowed2">
       <view class="normalText">{{languageContent.uo}} IKEA</view>
-      <view class="dateTime">({{languageContent.nextDate}} {{ language === 'en'? nextDate : nextDate2}})</view>
+<!--      <view class="dateTime">({{languageContent.nextDate}} {{ language === 'en'? nextDate : nextDate2}})</view>-->
       </view>
     </view>
     <view class="descBox">{{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}</view>
@@ -47,7 +47,7 @@
         </view>
       </view>
       <view class="inputContainer">
-        <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindinput="setInput" bindconfirm="search" />
+        <input value="{{keyword}}" type="text" class="inputs" placeholder="{{languageContent.placeholder}}" placeholder-class="placeholder" bindfocus="showSearchHis" bindblur="hideSearchHis" bindinput="setInput" bindconfirm="search" />
         <view class="delete" catchtap="deleteValue">
           <image src="/assets/img/search/close@2x.png" wx:if="{{keyword}}"></image>
         </view>
@@ -55,6 +55,7 @@
           <image src="/assets/img/search/search@2x.png"></image>
         </view>
       </view>
+      <item-list-box list="{{searchHis}}" showBox="{{showHis}}" bindchooseItem="chooseHis" binddelItem="delHis"></item-list-box>
       <view class="viewTypesContainer">
         <view class="viewTypes">
           <view class="oneType {{curTab === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}" wx:if="{{currentLevel.name === 'Lieutenant' ? item !== 'burns' : item }}">
