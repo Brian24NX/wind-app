@@ -79,6 +79,9 @@
   display: flex;
   align-items: center;
 }
+.cardtranshipment {
+  margin-left: -100rpx;
+}
 
 .carddate text,
 .cardtranshipment text {
@@ -87,6 +90,7 @@
   font-weight: 400;
   color: #4468ba;
   margin-left: 10rpx;
+  width: 200rpx;
 }
 
 .solutionContainer {

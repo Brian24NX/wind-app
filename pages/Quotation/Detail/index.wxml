@@ -27,7 +27,7 @@
         </view>
         <view class="cardtranshipment">
           <image src="{{quotationDetail.tranShipment.length ? '/assets/img/result/zhuanyun@2x.png' : '/assets/img/result/direct.svg' }}" mode="aspectFit"></image>
-          <text>{{quotationDetail.tranShipment.length ? quotationDetail.tranShipment.length + ' ' + languageContent.zhuanyun : languageContent.zhida}}</text>
+          <text>{{quotationDetail.tranShipment.length ? quotationDetail.tranShipment.length + ' ' + languageContent.zhuanyuns : languageContent.zhida}}</text>
         </view>
       </view>
       </view>

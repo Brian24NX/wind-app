@@ -13,6 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // formattedDate: '',
     languageContent: {},
     language: 'zh',
     page: 1,
@@ -119,6 +120,17 @@ Page({
       rewardLevel: wx.getStorageSync('rewardLevel'),
       searchHis: wx.getStorageSync('seaRewardsSearchHis')
     })
+    data.forEach(item => {
+      item.bookingDate = formatDate(item.bookingDate);
+    })
+    // // 获取后端传来的日期字符串
+    // const dateString = item.bookingDate;
+    // // 调用 formatDate 函数，将日期字符串格式化为需要的格式a
+    // const formattedDate = formatDate(dateString);
+    // // 将格式化后的日期字符串赋值给模板数据
+    // this.setData({
+    //   formattedDate: formattedDate
+    // });
   },
 
   onShow() {
@@ -310,6 +322,16 @@ search(){
       url: '/pages/Quotation/Search/index',
     })
   },
+
+  formatDate(dateString) {
+    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    const date = new Date(dateString + 'Z'); //将UTC时间字符串转换为Date对象
+    const day = date.toLocaleString('en', { day: '2-digit' }).toUpperCase(); //将本地时间的日期格式化为 2 位数的数字并转换为大写字母
+    const month = months[date.getMonth()]; //获取月份的缩写
+    const year = date.getFullYear(); //获取年份
+    return `${day}-${month}-${year}`;
+  },
+  
   showSearchHis(){
     this.setData({
       showHis: true

@@ -82,7 +82,7 @@
       </view>
       <view class="ones ref">
         <view>{{languageContent.quatedate}}</view>
-        <view class="invoiceNum">{{item.bookingDate}}</view>
+        <view class="invoiceNum">{{ item.bookingDate }}</view>
       </view>
       <view class="ones ref">
         <view>{{languageContent.bookRef}}</view>
