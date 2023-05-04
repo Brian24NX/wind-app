@@ -4,10 +4,27 @@
     <view class="rateTitles" catchtap="zhedie" data-type="{{index}}">
       <view class="titleLeft">
         <view class="titleLine"></view>
-        <view>{{item.title}}</view>
+        <view>Lorem ipsum dolor sit amet consectetur ?</view>
       </view>
       <image class="editIcon {{selected === index ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
     </view>
-    <view class="desc" wx:if="{{selected === index}}">{{item.desc}}</view>
+    <view class="spaces"> 1</view>
+    <view class="rateTitles" catchtap="zhedie" data-type="{{index}}">
+      <view class="titleLeft">
+        <view class="titleLine"></view>
+        <view>Lorem ipsum dolor sit amet ?</view>
+      </view>
+      <image class="editIcon {{selected === index ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+    </view>
+    <view class="spaces"> 1</view>
+    <view class="rateTitles" catchtap="zhedie" data-type="{{index}}">
+      <view class="titleLeft">
+        <view class="titleLine"></view>
+        <view>Lorem ipsum dolor sit amet consectetur ?</view>
+      </view>
+      <image class="editIcon {{selected === index ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+    </view>
+    <!-- <view class="desc" wx:if="{{selected === index}}">{{item.desc}}</view> -->
+    <view class="desc" wx:if="{{selected === index}}">rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa</view>
   </view>
 </view>
