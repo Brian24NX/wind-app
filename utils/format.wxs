@@ -52,11 +52,31 @@ function formatEnDateUtc(date, fuhao, type, hideWeek, needTime) {
     min = dt.getMinutes() > 9 ? dt.getMinutes() : '0' + dt.getMinutes()
   var weekStr = (type === 'short' ? weeks[wn] : week[wn])
   if (!fuhao) {
-    return (!hideWeek ? weekStr + ', ' : '') + dn + " " + m[mn] + ", " + dt.getFullYear() + (needTime ? ' ' + hour + ':' + min : '')
+    return dt.getFullYear()
   } else {
-    return (!hideWeek ? weekStr + ', ' : '') + dn + fuhao + m[mn] + fuhao + dt.getFullYear() + (needTime ? ' ' + hour + ':' + min : '')
+    return dn + fuhao + m[mn] + fuhao + dt.getFullYear()
   }
 }
+
+//  SubVersion 
+// function formatEnDateUtc(date, fuhao, type, hideWeek, needTime) {
+//   if (!date) return ''
+//   var dt = getDate(date);
+//   var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+//   var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+//   var weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+//   var mn = dt.getMonth(),
+//     wn = dt.getDay(),
+//     dn = dt.getDate() > 9 ? dt.getDate() : '0' + dt.getDate()
+//   hour = dt.getHours() > 9 ? dt.getHours() : '0' + dt.getHours(),
+//     min = dt.getMinutes() > 9 ? dt.getMinutes() : '0' + dt.getMinutes()
+//   var weekStr = (type === 'short' ? weeks[wn] : week[wn])
+//   if (!fuhao) {
+//     return (!hideWeek ? weekStr + ', ' : '') + dn + " " + m[mn] + ", " + dt.getFullYear() + (needTime ? ' ' + hour + ':' + min : '')
+//   } else {
+//     return (!hideWeek ? weekStr + ', ' : '') + dn + fuhao + m[mn] + fuhao + dt.getFullYear() + (needTime ? ' ' + hour + ':' + min : '')
+//   }
+// }
 
 // 区分时区中文
 function formatCnDateUtc(date, hideWeek, needTime) {
