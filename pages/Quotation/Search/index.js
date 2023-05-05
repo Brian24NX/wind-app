@@ -344,6 +344,7 @@ Page({
   }, 800),
 
   getPorData(data) {
+    console.log('*************',data)
     this.setData({
       showPoR: true
     })
@@ -359,6 +360,7 @@ Page({
           this.setData({
             placeOfReceiptList: res.data || []
           })
+          console.log('this.data.placeOfReceiptList',this.data.placeOfReceiptList)
         } else {
           this.hideDropdown()
         }
@@ -387,6 +389,7 @@ Page({
         this.setData({
           placeOfReceiptList
         })
+        console.log('placeOfReceiptList',placeOfReceiptList)
       }, () => {
         this.getPorData(data)
       })
@@ -506,6 +509,7 @@ Page({
   }, 800),
 
   getPooData(data) {
+    console.log('----------',data)
     this.setData({
       showPoDe: true
     })
@@ -599,6 +603,7 @@ Page({
 
   // 收货地
   choosePlaceOfReceipt(e) {
+    console.log('收货地',e)
     let index = e.currentTarget.dataset.index;
     this.setData({
       placeOfOriginLabel: this.data.placeOfReceiptList[index].ActualName,
@@ -676,6 +681,7 @@ Page({
       portOfLoading: this.data.portOfLoading,
       portOfDischarge: this.data.portOfDischarge
     }).then(res => {
+      console.log(res)
       if (res.data) {
         let commodityList = []
         res.data.forEach(i => {
@@ -1329,7 +1335,9 @@ Page({
       pod: this.data.portOfDischarge,
       podLabel: this.data.portOfDischargeLabel,
       fpod: this.data.finalPlaceOfDelivery || '',
-      fpodLabel: this.data.finalPlaceOfDeliveryLabel || ''
+      fpodLabel: this.data.finalPlaceOfDeliveryLabel || '',
+      receiptHaulage: this.data.receiptHaulage,
+      deliveryHaulage: this.data.deliveryHaulage,
     }
     searchKey.key = searchKey.poo + '-' + searchKey.pol + '-' + searchKey.pod + '-' + searchKey.fpod;
     var history = [];
@@ -1403,6 +1411,8 @@ Page({
       showDelete2: true,
       showDelete4: true,
       showDelete5: true,
+      deliveryHaulage: listData[idx].deliveryHaulage || '',
+      receiptHaulage: listData[idx].receiptHaulage || '',
     }, () => {
       if (this.data.currentType === 'instation') {
         this.getCommodityList()
