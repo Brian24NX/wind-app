@@ -16,7 +16,13 @@ Page({
     loading: false,
     noMore: false,
     list: [],
-    selected: 0
+    selected: 0,
+    foldRate: true,
+    foldRate2: true,
+    foldRate3: true,
+    foldRate4: true,
+    foldRate5: true,
+    foldRate6: true
   },
 
   /**
@@ -60,11 +66,11 @@ Page({
     })
   },
 
+  
+    // 折叠
   zhedie(e) {
-    if (e.target.dataset.type === this.data.selected) {
-      this.setData({ selected: '' });
-    } else {
-      this.setData({ selected: e.target.dataset.type });
-    }
+    this.setData({
+      [e.currentTarget.dataset.type]: !this.data[e.currentTarget.dataset.type]
+    })
   },
 })

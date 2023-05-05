@@ -13,7 +13,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // formattedDate: '',
     languageContent: {},
     language: 'zh',
     page: 1,
@@ -114,23 +113,22 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  
+  // formatDate(timestamp) {
+  //   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  //   const date = new Date(timestamp);//将UTC时间字符串转换为Date对象
+  //   const day = date.getDate().toString().padStart(2, "0").toUpperCase();//将本地时间的日期格式化为 2 位数的数字并转换为大写字母
+  //   const month = months[date.getMonth()];//获取月份的缩写
+  //   const year = date.getFullYear();//获取年份
+  //   return `${day}-${month}-${year}`; 
+  // },
+
   onLoad() {
     this.initLanguage()
     this.setData({
       rewardLevel: wx.getStorageSync('rewardLevel'),
       searchHis: wx.getStorageSync('seaRewardsSearchHis')
     })
-    data.forEach(item => {
-      item.bookingDate = formatDate(item.bookingDate);
-    })
-    // // 获取后端传来的日期字符串
-    // const dateString = item.bookingDate;
-    // // 调用 formatDate 函数，将日期字符串格式化为需要的格式a
-    // const formattedDate = formatDate(dateString);
-    // // 将格式化后的日期字符串赋值给模板数据
-    // this.setData({
-    //   formattedDate: formattedDate
-    // });
   },
 
   onShow() {
@@ -323,14 +321,31 @@ search(){
     })
   },
 
+  // formatDate(dateString) {
+  //   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  //   const date = new Date(dateString + 'Z'); //将UTC时间字符串转换为Date对象
+  //   const day = date.toLocaleString('en', { day: '2-digit' }).toUpperCase(); //将本地时间的日期格式化为 2 位数的数字并转换为大写字母
+  //   const month = months[date.getMonth()]; //获取月份的缩写
+  //   const year = date.getFullYear(); //获取年份
+  //   return `${day}-${month}-${year}`;
+  // },
+
+  // 定义 formatDate 函数，参数为日期字符串
   formatDate(dateString) {
-    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-    const date = new Date(dateString + 'Z'); //将UTC时间字符串转换为Date对象
-    const day = date.toLocaleString('en', { day: '2-digit' }).toUpperCase(); //将本地时间的日期格式化为 2 位数的数字并转换为大写字母
-    const month = months[date.getMonth()]; //获取月份的缩写
-    const year = date.getFullYear(); //获取年份
-    return `${day}-${month}-${year}`;
-  },
+    // 将日期字符串转换成 Date 对象
+    const date = new Date(dateString);
+    console.log(11)
+    // 定义月份的英文缩写数组
+    const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    // 获取日期、月份、年份
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+    // 格式化日期
+    const formattedDate = `${day < 10 ? '0' + day : day}-${monthNames[monthIndex]}-${year}`;
+    // 返回格式化后的日期字符串
+    return formattedDate;
+},
   
   showSearchHis(){
     this.setData({
