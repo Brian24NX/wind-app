@@ -86,7 +86,7 @@
         <view>{{languageContent.quatedate}}</view>
         
         <!-- <view class="invoiceNum">{{  item.bookingDate }}</view> -->
-        <view class="invoiceNum">{{language === 'zh' ? format.formatCnDateUtc(item.bookingDate, false, true) : format.formatEnDateUtc(item.bookingDate, '-', '', false, true)}}</view>
+        <view class="invoiceNum">{{language === 'zh' ? format.SeaformatCnDateUtc(item.bookingDate, false, true) : format.SeaformatEnDateUtc(item.bookingDate, '-', '', false, true)}}</view>
         
       </view>
       <view class="ones ref">
