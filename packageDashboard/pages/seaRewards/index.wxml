@@ -1,5 +1,4 @@
 <!--packageDashboard/pages/seaRewards/index.wxml-->
-<wxs module="filter" src="./format.wxs"></wxs>
 <wxs module="format" src="../../../utils/format.wxs"></wxs>
 <view class="documentContainer">
   <view class="listTopContainers topInfo">
