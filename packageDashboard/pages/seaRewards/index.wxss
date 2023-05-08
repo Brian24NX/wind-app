@@ -156,6 +156,7 @@ page {
   padding-bottom: 30rpx;
   border-bottom: 2rpx solid #EEEEEE;
   margin-bottom: 18rpx;
+  color: #071E5D;
 }
 
 .smallDesc {

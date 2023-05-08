@@ -379,7 +379,7 @@ var Languague = {
       available: ' Nautical Miles Available',
       saved: ' USD Saved',
       virtroles: 'CENTRIMEX-Virtroles',
-      spotOn: 'On SpotOn quotes',
+      spotOn: 'On SpotOn Bookings',
       desc1: 'As a ',
       desc2: ' you earn ',
       desc3: ' Nautical Miles for every 100＄ spent on SpotOn quotes. Nautical Miles are earned once the invoice is paid.',

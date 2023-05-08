@@ -16,7 +16,7 @@
     </view>
     <view class="descBox">{{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}</view>
     <van-row>
-      <van-col span="14">
+      <van-col span="13">
         <view style="border-right: 1px solid #EEEEEE;">
           <view class="rowAlign">
             <image class="otherIcon" src="/assets/img/seaReward/greenShip@2x.png"></image>
@@ -27,7 +27,7 @@
           </view>
         </view>
       </van-col>
-      <van-col span="10">
+      <van-col span="11">
         <view class="rowAlign rightBox">
           <image class="otherIcon" src="/assets/img/seaReward/greenRewards@2x.png"></image>
           <view class="boldText"><Text>{{savedUSD}}</Text>{{languageContent.saved}}</view>
