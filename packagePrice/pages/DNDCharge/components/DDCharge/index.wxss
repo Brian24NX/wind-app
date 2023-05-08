@@ -196,6 +196,9 @@
   max-height: 430rpx;
 }
 
+.sview{
+  width: 101%;
+}
 .scroll-view .item:hover {
   color: #1c4ebb;
 }
