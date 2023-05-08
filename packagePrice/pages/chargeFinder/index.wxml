@@ -30,7 +30,7 @@
             <view class="polname">{{item.point}}</view>
           </view>
         </scroll-view>
-        <view class="scroll-view" wx:if="{{showPol}}">
+        <view class="scroll-view sview" wx:if="{{showPol}}">
           <view class="item">Loading...</view>
         </view>
       </view>
@@ -63,7 +63,7 @@
             <view class="polname">{{item.point}}</view>
           </view>
         </scroll-view>
-        <view class="scroll-view" wx:if="{{showPod}}">
+        <view class="scroll-view sview" wx:if="{{showPod}}">
           <view class="item">Loading...</view>
         </view>
       </view>
