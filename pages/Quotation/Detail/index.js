@@ -219,29 +219,32 @@ Page({
       if (surchargeDetails.collectCharges.isChecked) {
         totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
       }
+console.log(surchargeDetails.oceanFreight.price.amount,surchargeDetails.freightCharges.amount,surchargeDetails.prepaidCharges.amount,surchargeDetails.collectCharges.amount)
+      // if(!surchargeDetails.oceanFreight.isChecked&&!surchargeDetails.freightCharges.isChecked
+      //     &&!surchargeDetails.prepaidCharges.isChecked&&!surchargeDetails.collectCharges.isChecked)
       console.log('totalChargeAmount,false',totalChargeAmount)
-    console.log('********订阅*********',this.data.sum===0,this.data.useRewards)
       //订阅的数组
+    totalChargeAmount = totalChargeAmount|| this.data.quotationDetail.surchargeDetails.totalCharge.amount
+    console.log(totalChargeAmount,totalChargeAmount|| this.data.quotationDetail.surchargeDetails.totalCharge.amount)
       this.data.subscribedServices.forEach(i => {
         if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
           totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
           addMoney = addMoney+ i.seletcedProduct.amount
         }
       })
-      this.setData({
-        totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
-        addMoney:addMoney
-      })
-        if(this.data.useRewards){
+    if(this.data.useRewards){
           this.setData({
-            finalPrice: this.data.totalChargeAmount * this.data.containers - this.data.burnRewards,
+            finalPrice: totalChargeAmount * this.data.containers - this.data.burnRewards,
+            addMoney:addMoney,
+            totalChargeAmount:totalChargeAmount,
           })
         }else{
           this.setData({
-            finalPrice: this.data.totalChargeAmount * this.data.containers
+            finalPrice: totalChargeAmount * this.data.containers,
+            addMoney:addMoney,
+            totalChargeAmount:totalChargeAmount
           })
         }
-      console.log('finalPrice,sum,totalChargeAmount',this.data.finalPrice,this.data.sum,this.data.totalChargeAmount)
       if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
         console.log('burnRewards-----finalPrice',this.data.finalPrice)
         this.setData({
@@ -251,7 +254,6 @@ Page({
       if(this.data.memberStatus === 'Active'){
         this.getSeaEarnPoints(this.data.finalPrice)
       }
-
   },
 
   changeCheck(e) {
@@ -260,7 +262,7 @@ Page({
     this.setData({
       quotationDetail: this.data.quotationDetail
     })
-    this.calculatedCharges(true)
+    this.calculatedCharges()
   },
 
   toOther(e) {

@@ -168,7 +168,7 @@ page {
 }
 
 .sview{
-  width: 100.5%;
+  width: 100.8%;
 }
 .scroll-view .item {
   width: 100%;

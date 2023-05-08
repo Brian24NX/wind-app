@@ -197,7 +197,7 @@
 }
 
 .sview{
-  width: 100.5%;
+  width: 100.8%;
 }
 .scroll-view .item:hover {
   color: #1c4ebb;
