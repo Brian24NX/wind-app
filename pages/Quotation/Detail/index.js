@@ -130,8 +130,8 @@ Page({
   },
 
   getSeaEarnPoints(amount) {
-    console.log("------amount-------",amount,this.data.addMoney,amount-this.data.addMoney* this.data.containers,)
-    console.log('333333333333',this.data.sum,this.data.useRewards,this.data.totalChargeAmount)
+    console.log("------amount-------",amount,this.data.addMoney)
+    console.log('333333333333',this.data.sum,this.data.totalChargeAmount)
     seaEarnPoints({
       "baseAmount":amount - this.data.addMoney * this.data.containers,
       "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
@@ -174,6 +174,7 @@ Page({
       traceId: data.traceId,
       otherList: this.data.otherList
     })
+    console.log(33333333333333333)
     this.calculatedCharges()
     const currentPage2 = pages[pages.length - 3]
     const data2 = currentPage2.data
@@ -204,24 +205,22 @@ Page({
     const surchargeDetails = this.data.quotationDetail.surchargeDetails
     let addMoney = 0
     let totalChargeAmount = 0
-    if (surchargeDetails.oceanFreight.isChecked) {
-      totalChargeAmount = totalChargeAmount + surchargeDetails.oceanFreight.price.amount
-    }
-    if (surchargeDetails.freightCharges.isChecked) {
-      totalChargeAmount = totalChargeAmount + surchargeDetails.freightCharges.amount
-    }
-    if (surchargeDetails.prepaidCharges.isChecked) {
-      totalChargeAmount = totalChargeAmount + surchargeDetails.prepaidCharges.amount
-    }
-    if (surchargeDetails.collectCharges.isChecked) {
-      totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
-    }
-
-    console.log('********订阅*********',this.data.sum,this.data.sum===0,this.data.useRewards)
-    if(this.data.sum===0){
-      this.setData({
-        sum:totalChargeAmount
-      })
+    console.log(surchargeDetails.oceanFreight.isChecked,surchargeDetails.freightCharges.isChecked
+    ,surchargeDetails.prepaidCharges.isChecked,surchargeDetails.collectCharges.isChecked)
+      if (surchargeDetails.oceanFreight.isChecked) {
+        totalChargeAmount = totalChargeAmount + surchargeDetails.oceanFreight.price.amount
+      }
+      if (surchargeDetails.freightCharges.isChecked) {
+        totalChargeAmount = totalChargeAmount + surchargeDetails.freightCharges.amount
+      }
+      if (surchargeDetails.prepaidCharges.isChecked) {
+        totalChargeAmount = totalChargeAmount + surchargeDetails.prepaidCharges.amount
+      }
+      if (surchargeDetails.collectCharges.isChecked) {
+        totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
+      }
+      console.log('totalChargeAmount,false',totalChargeAmount)
+    console.log('********订阅*********',this.data.sum===0,this.data.useRewards)
       //订阅的数组
       this.data.subscribedServices.forEach(i => {
         if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
@@ -231,38 +230,6 @@ Page({
       })
       this.setData({
         totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
-        addMoney:addMoney
-      })
-      if(this.data.useRewards){
-        this.setData({
-          finalPrice: this.data.totalChargeAmount * this.data.containers - this.data.burnRewards,
-        })
-      }else{
-        this.setData({
-          finalPrice: this.data.totalChargeAmount * this.data.containers
-        })
-      }
-
-      if (this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance) {
-        this.setData({
-          burnRewards: this.data.finalPrice
-        })
-      }
-      if(this.data.memberStatus === 'Active'){
-        this.getSeaEarnPoints(this.data.finalPrice)
-      }
-    }else{
-      this.setData({
-        sum:this.data.sum
-      })
-      //订阅的数组
-      this.data.subscribedServices.forEach(i => {
-        if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
-          addMoney = addMoney+ i.seletcedProduct.amount
-        }
-      })
-      this.setData({
-        totalChargeAmount: this.data.sum + addMoney || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
         addMoney:addMoney
       })
         if(this.data.useRewards){
@@ -284,34 +251,16 @@ Page({
       if(this.data.memberStatus === 'Active'){
         this.getSeaEarnPoints(this.data.finalPrice)
       }
-    }
-
-    // this.data.subscribedServices.forEach(i => {
-    //   if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
-    //     totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
-    //     addMoney = addMoney+ i.seletcedProduct.amount
-    //   }
-    // })
-
-    // console.log('++++++++++++0+++++++++++++',totalChargeAmount,addMoney,this.data.sum)
-    // this.setData({
-    //   totalChargeAmount: totalChargeAmount || this.data.quotationDetail.surchargeDetails.totalCharge.amount,
-    //   addMoney:addMoney
-    // })
-    // console.log(1,this.data.totalChargeAmount,this.data.addMoney)
-    // this.setData({
-    //   finalPrice: this.data.totalChargeAmount * this.data.containers,
-    // })
-    // console.log(2,this.data.finalPrice,this.data.finalPrice < wx.getStorageSync('seaRewardData').pointsBalance)
 
   },
 
   changeCheck(e) {
+    console.log(e)
     this.data.quotationDetail.surchargeDetails[e.currentTarget.dataset.id].isChecked = !this.data.quotationDetail.surchargeDetails[e.currentTarget.dataset.id].isChecked
     this.setData({
       quotationDetail: this.data.quotationDetail
     })
-    this.calculatedCharges()
+    this.calculatedCharges(true)
   },
 
   toOther(e) {
@@ -507,6 +456,7 @@ Page({
   },
 
   getVasList() {
+    console.log(1111133344444111)
     const quoteLine = this.data.quotationDetail.quoteLines[0]
     const shippingCompany = quoteLine.shippingCompany
     const bookingParties = []
@@ -613,8 +563,10 @@ Page({
         noSelectVasList: arr.filter(i => !i.isProductSelected),
         subscribedServices: arr.filter(i => i.isProductSelected)
       })
+      console.log(111111111111111000)
       this.calculatedCharges()
     }, () => {
+      console.log('----------------------------')
       this.getVasList()
     })
   },
@@ -656,6 +608,7 @@ Page({
         showVas: false
       })
     }
+    console.log(444444444444444444)
     this.calculatedCharges()
   },
 
