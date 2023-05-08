@@ -173,7 +173,7 @@ page {
   max-height: 430rpx;
 }
 .sview{
-  width: 101%;
+  width: 100.5%;
 }
 .scroll-view .item:hover {
   color: #1c4ebb;

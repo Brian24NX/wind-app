@@ -206,16 +206,16 @@ Page({
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
-      this.setData({
-        showPol: false
-      })
-      if (res.data != '') {
-        this.setData({
-          pollist: res.data || []
-        })
-      }else{
-        this.hideDropdown()
-      }
+      // this.setData({
+      //   showPol: false
+      // })
+      // if (res.data != '') {
+      //   this.setData({
+      //     pollist: res.data || []
+      //   })
+      // }else{
+      //   this.hideDropdown()
+      // }
     }, () => {
       this.getPolData(data)
     })
@@ -249,9 +249,9 @@ Page({
     fuzzySearch({
       searchStr: data
     }, true).then(res => {
-      this.setData({
-        showPod: false
-      })
+      // this.setData({
+      //   showPod: false
+      // })
       if (res.data != '') {
         this.setData({
           podlist: res.data || []
