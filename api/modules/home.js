@@ -3,6 +3,11 @@ const {
   postRequest
 } = require('../http')
 
+// Mock-login
+export const mockLogin = (params) => {
+  return getRequest('/api/miniapp/sea/login', params, true)
+}
+
 // 获取航线查询数据
 export const routingFinder = (params) => {
   return getRequest('/api/miniapp/routing-finder', params)
