@@ -120,6 +120,7 @@ Page({
       }
       setTimeout(() => {
         let reward = wx.getStorageSync('seaRewardData')
+        console.log('reward',reward)
         this.setData({
           count: 2
         })

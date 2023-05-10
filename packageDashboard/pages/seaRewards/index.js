@@ -169,15 +169,16 @@ Page({
     }).then(res => {
       if (res.data) {
         allList = res.data
+        console.log('res.data',res.data)
         if(this.data.keyword){
           this.setData({
-            dashboard:this.fuzzyQuery(res.data.description,this.data.keyword),
-            item:res.data.description
+            dashboard:this.fuzzyQuery(res.data,this.data.keyword),
+            item:res.data
           })
         }else{
           this.setData({
-            dashboard: res.data.description,
-            item:res.data.description
+            dashboard: res.data,
+            item:res.data
           })
         }
 
@@ -202,7 +203,8 @@ Page({
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
-        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'AvailableNmiles' || j.loyaltyProgramCurrencyId === '0lc7Y000000001JQAQ')[0]
+
+        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
         const newSea = {
           memberStatus: infodata.memberStatus,
           level: infodata.memberTiers[0].loyaltyMemberTierName,
@@ -210,7 +212,7 @@ Page({
           pointsBalance: points.pointsBalance || 0,
           cnName: myReward[0] ? myReward[0].cnName : '',
           usdSaved: points.totalPointsRedeemed || 0,
-          associatedAccount: infodata.associatedAccount.name
+          // associatedAccount: infodata.associatedAccount.name
         }
         let idx = this.data.iconList.findIndex(item => item.name === infodata.memberTiers[0].loyaltyMemberTierName)
         this.setData({

@@ -21,7 +21,9 @@ Page({
     portOfDischargeCountry: '',
     exports: [],
     imports: [],
-    partnerCode: []
+    partnerCode: [],
+    count:0,
+    count1:0
   },
 
   /**
@@ -105,7 +107,10 @@ Page({
         })
       }
     }, () => {
-      this.getExportDDCharge(params)
+      this.data.count1 ++
+      if(this.data.count1<3) {
+        this.getExportDDCharge(params)
+      }
     })
   },
 
@@ -120,7 +125,10 @@ Page({
         })
       }
     }, () => {
-      this.getImportDDCharge(params)
+      this.data.count ++
+      if(this.data.count<3){
+        this.getImportDDCharge(params)    //偶尔航线会出现死循环
+      }
     })
   },
 

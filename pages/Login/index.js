@@ -81,7 +81,7 @@ Page({
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
-        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'AvailableNmiles' || j.loyaltyProgramCurrencyId === '0lc7Y000000001JQAQ')[0]
+        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
         wx.setStorageSync('seaRewardData', {
           memberStatus: infodata.memberStatus,
           level: infodata.memberTiers[0].loyaltyMemberTierName,
@@ -89,7 +89,7 @@ Page({
           pointsBalance: points.pointsBalance || 0,
           cnName: myReward[0] ? myReward[0].cnName : '',
           usdSaved: points.totalPointsRedeemed || 0,
-          associatedAccount: infodata.associatedAccount.name
+          // associatedAccount: infodata.associatedAccount.name
         })
       }
     }).catch(err => {

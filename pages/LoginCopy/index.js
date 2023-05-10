@@ -20,8 +20,12 @@ Page({
   data: {
       option1: [
         { text: 'English', value: 0 },
-        { text: '中文', value: 1 },
-        { text: '日本语', value: 2 },
+        { text: 'Français', value: 1 },
+        { text: 'Português', value: 2 },
+        { text: 'Español', value: 3 },
+        { text: '中文', value: 4 },
+        { text: '日本語', value: 5 },
+        {text:'한국어',value: 6}
       ],
       value1: 0,
       value2: 'a',
@@ -71,6 +75,7 @@ Page({
   toLogin() {
     console.log(this.data.username)
     mockLogin({username:this.data.username}).then(res=>{
+
       const data = res.data
       const ary = data.data[0]
       let userInfo = ary.customer
@@ -146,6 +151,7 @@ Page({
         })
       })
       wx.setStorageSync('partnerList', partnerLists)
+      this.getSeaPartnerInfo()
     }
     const params = {
       "account": userInfo.email,
@@ -159,13 +165,6 @@ Page({
       console.log('登录日志记录成功')
 
     })
-
-    setTimeout(() => {
-      wx.switchTab({
-        url: '/pages/My/index',
-      })
-    }, 3000)
-    this.getSeaPartnerInfo()
     })
   },
   
@@ -173,7 +172,6 @@ Page({
     let openId = wx.getStorageSync('openId')
     let phone = wx.getStorageSync('phone')
     let account = wx.getStorageSync('account')
-
     checkPhoneBind({
       "account": account,
       "openId": openId,
@@ -194,37 +192,6 @@ Page({
       }
     })
   },
-  click1(event){
-console.log(event.detail.value)
-this.data.userName = event.detail.value
-  },
-click2(event){
-  console.log(event.detail.value)
- this.data.password = event.detail.value
-},
-  click3() {
-    
-    // wx.switchTab({
-    //   url: '/pages/My/index'
-    // })
-
-  },
-  click1(event){
-console.log(event.detail.value)
-this.data.userName = event.detail.value
-  },
-click2(event){
-  console.log(event.detail.value)
- this.data.password = event.detail.value
-},
-  click3() {
-    
-    // wx.switchTab({
-    //   url: '/pages/My/index'
-    // })
-
-  },
-
   getSeaPartnerInfo() {
     seaPartnerInfo({
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
@@ -232,7 +199,20 @@ click2(event){
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
-        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'AvailableNmiles' || j.loyaltyProgramCurrencyId === '0lc7Y000000001JQAQ')[0]
+        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
+       console.log('infodata',infodata,myReward[0],points)
+        let list = {}
+        list = {
+          memberStatus: infodata.memberStatus,
+          level: infodata.memberTiers[0].loyaltyMemberTierName,
+          icon: myReward[0] ? myReward[0].icon : '',
+          pointsBalance: points.pointsBalance || 0,
+          cnName: myReward[0] ? myReward[0].cnName : '',
+          usdSaved: points.totalPointsRedeemed || 0,
+          // associatedAccount: infodata.associatedAccount.name
+        }
+        console.log('list',list)
+        wx.setStorageSync('one',1)
         wx.setStorageSync('seaRewardData', {
           memberStatus: infodata.memberStatus,
           level: infodata.memberTiers[0].loyaltyMemberTierName,
@@ -240,8 +220,13 @@ click2(event){
           pointsBalance: points.pointsBalance || 0,
           cnName: myReward[0] ? myReward[0].cnName : '',
           usdSaved: points.totalPointsRedeemed || 0,
-          associatedAccount: infodata.associatedAccount.name
+          // associatedAccount: infodata.associatedAccount.name
         })
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/My/index',
+          })
+        }, 3000)
       }
     }).catch(err => {
       console.error(err)
