@@ -39,6 +39,9 @@ Page({
    */
   onLoad: function () {
     // this.mockLogin()
+    wx.setNavigationBarTitle({
+      title: 'Sign In',
+    })
     let level = [{
       label: 'Lieutenant',
       cnName: '中尉',

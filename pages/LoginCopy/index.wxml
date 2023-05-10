@@ -17,11 +17,11 @@
         <view class="formArea">
           <view class="titleLine">Login (Email)</view>
           <view class="inputContent">
-            <input value="{{username}}" bindinput="onInput" placeholder='' type="text" />
+            <input value="{{username}}" bindinput="onInput" placeholder='' type="text" autocomplete="off" show-message="false"/>
           </view>
           <view class="titleLine">Password</view>
-          <view class="inputContent">
-            <input value="{{password}}" placeholder='' password='true' />
+          <view class="inputContent2">
+            <input value="{{password}}" placeholder='' password='true' autocomplete="off" />
           </view>
           <view class="forgotPassword">Forgotten Password?</view>
           <button class="signIn" bindtap="toLogin">
