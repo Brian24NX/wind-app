@@ -40,7 +40,7 @@ function formatCnDateLocal(date, hideWeek, hideTime) {
 
 // 区分时区英文(SeaReawardFAQ-Version)
 function SeaformatEnDateUtc(date, fuhao, type, hideWeek, needTime) {
-  if (!date) return ''
+  if (!date) return '-'
   var dt = getDate(date);
   var m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
   var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];

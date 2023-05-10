@@ -6,7 +6,7 @@ import {
 } from '../../api/modules/dashboard'
 
 let allList = []
-
+const pageSize = 5
 Page({
 
   /**
@@ -99,7 +99,7 @@ Page({
     availableMiles: 0,
     savedUSD: 0,
     seaRewardData: null,
-    dashboard: null,
+    dashboard: [],
     rewardLevel: null,
     nextDate: '10-MAY-2023',
     nextDate2: '2023年5月10日',
@@ -129,6 +129,17 @@ Page({
       rewardLevel: wx.getStorageSync('rewardLevel'),
       searchHis: wx.getStorageSync('seaRewardsSearchHis')
     })
+  },
+
+  onReachBottom(){
+    if (this.data.loading || this.data.noMore) return
+    this.setData({
+      page: ++this.data.page,
+      loading: true
+    })
+    console.log('触底了触底了',this.data.page)
+    this.dealPaging()
+
   },
 
   onShow() {
@@ -169,19 +180,7 @@ Page({
     }).then(res => {
       if (res.data) {
         allList = res.data
-        console.log('res.data',res.data)
-        if(this.data.keyword){
-          this.setData({
-            dashboard:this.fuzzyQuery(res.data,this.data.keyword),
-            item:res.data
-          })
-        }else{
-          this.setData({
-            dashboard: res.data,
-            item:res.data
-          })
-        }
-
+        this.dealPaging()
       } else {
         this.setData({
           loading: false,
@@ -195,7 +194,32 @@ Page({
       })
     })
   },
-
+  dealPaging() {
+    let that =this
+    let list = []
+    setTimeout(() => {
+      if(this.data.keyword){
+        that.setData({
+          noData: !allList.length,
+          dashboard:that.fuzzyQuery(allList,that.data.keyword),
+          item:this.data.dashboard,
+          loading: false
+        })
+      }else{
+        let list = allList.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
+        console.log('list',list,allList.concat(list))
+        that.setData({
+          noData: !allList.length,
+          dashboard: this.data.dashboard.concat(list),
+          item:this.data.dashboard.concat(list),
+          loading: false
+        })
+      }
+      this.setData({
+        noMore: this.data.dashboard.length >= allList.length
+      })
+    }, 200);
+  },
   getSeaPartnerInfo() {
     seaPartnerInfo({
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
@@ -238,7 +262,6 @@ Page({
   },
 
   setInput(e) {
-
     let value = e.detail.value.toUpperCase()
     let regvalue = value.trim()
     console.log(11,value,regvalue,e.detail.value)
@@ -261,6 +284,8 @@ Page({
       arr.push(list[i]);
     }
   }
+    const ary = arr.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
+    console.log(ary,arr)
   return arr;
 },
 search(){

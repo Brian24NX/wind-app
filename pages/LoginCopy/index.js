@@ -27,10 +27,59 @@ Page({
         { text: '日本語', value: 5 },
         {text:'한국어',value: 6}
       ],
+    language:0,
+      item: {
+      title:[
+          'Sign In',
+          'Connexion',
+          'Iniciar',
+          'Iniciar sesión',
+          '登录',
+        'サインイン',
+          '로그인'
+      ],
+        username:[
+            'Login (Email)',
+          'Identifiant (Email)',
+          'Usuário (Email)',
+            'Nombre de usuario (Email)',
+            '电子邮件',
+          'ログイン(メールアドレス)',
+            '사용자명 (이메일)'
+        ],
+        password: [
+            'Password',
+          'Mot de passe',
+            'Senha',
+            'Contraseña',
+            '密码',
+            'パスワード',
+            '비밀번호'
+        ],
+        Forgotten:[
+            'Forgotten Password?',
+            'Mot de passe oublié?',
+          'Esqueceu a senha?',
+            '¿Olvidó su contraseña?',
+            '忘记了密码？',
+            'パスワードをお忘れですか？',
+            '비밀번호를 잊으셨습니까?'
+        ],
+        sing:[
+            'Sign In',
+            'Connexion',
+            'Iniciar',
+            'Iniciar sesión',
+            '登录',
+            'サインイン',
+            '로그인'
+        ]
+      },
       value1: 0,
       value2: 'a',
       username:'',
-      password:''
+      password:'',
+      isShow:false
   },
 
 
@@ -84,10 +133,25 @@ Page({
     })
     console.log('Username',this.data.username)
   },
+  onShow(){
+    console.log(this.data.option1)
+  },
+  isShow(){
+    this.setData({
+      isShow: !this.data.isShow
+    })
+  },
+  languageBtn(val){
+    this.setData({
+      language: val.detail.index
+    })
+    this.setData({
+      isShow: false
+    })
+  },
   toLogin() {
     console.log(this.data.username)
     mockLogin({username:this.data.username}).then(res=>{
-
       const data = res.data
       const ary = data.data[0]
       let userInfo = ary.customer

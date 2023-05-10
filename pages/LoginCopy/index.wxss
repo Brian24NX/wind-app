@@ -18,20 +18,28 @@
   height: 95rpx;
 }
 
-.dropDownContainer .van-dropdown-menu{
-  height: 50rpx;
-  width: 200rpx;
-  padding: 2px 3px;
+.dropDownContainer{
+  height: 46rpx;
+  width: 180rpx;
+  padding: 4rpx 8rpx;
   border-width: 1px;
   border-style: solid;
-  border-color: #8d8d8d;
+  border-color:rgb(118, 118, 118);
   overflow: visible;
+  position: relative;
+  font-size: 24rpx;
+  color: #4C4C4C;
+}
+.arrow{
+  position: absolute;
+  right: 8rpx;
+  top:10rpx;
+  font-size: 28rpx;
 }
 .van-dropdown-menu__item {
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left !important;
 }
-
 
 .mainContainer {
   width: 100%;

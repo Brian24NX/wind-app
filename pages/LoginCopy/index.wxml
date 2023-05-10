@@ -4,28 +4,26 @@
   <view class="wrapper">
     <view class="header">
       <image src="/assets/img/CMAICON.png" class="iconCMA"></image>
-      <view class="dropDownContainer">
-        <van-dropdown-menu>
-          <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
-        </van-dropdown-menu>
+      <view class="dropDownContainer" bindtap="isShow">
+        {{option1[language].text}}
+        <van-icon name="arrow-down" class="arrow"/>
       </view>
-
     </view>
     <view class="mainContainer">
       <view class="loginContainer">
-        <view class="textSignIn">Sign In</view>
+        <view class="textSignIn">{{item.title[language]}}</view>
         <view class="formArea">
-          <view class="titleLine">Login (Email)</view>
+          <view class="titleLine">{{item.username[language]}}</view>
           <view class="inputContent">
             <input id="username-input" value="{{username}}" bindinput="onInput" placeholder='' type="text" autocomplete="off" show-message="false"/>
           </view>
-          <view class="titleLine">Password</view>
+          <view class="titleLine">{{item.password[language]}}</view>
           <view class="inputContent2">
             <input id="password-input" value="{{password}}" placeholder='' password='true' autocomplete="off" />
           </view>
-          <view class="forgotPassword">Forgotten Password?</view>
+          <view class="forgotPassword">{{item.Forgotten[language]}}</view>
           <button class="signIn" bindtap="toLogin">
-            <view class="textSubmit"> Sign In</view>
+            <view class="textSubmit"> {{item.sing[language]}}</view>
           </button>
         </view>
       </view>
@@ -33,6 +31,15 @@
         © 2022 CMA CGM
       </view>
     </view>
+
+    <van-popup show="{{isShow}}" round position="bottom">
+        <van-picker
+                show-toolbar
+                columns="{{option1}}"
+        bindcancel="isShow"
+        bindconfirm="languageBtn"
+        />
+    </van-popup>
   </view>
 
 </scroll-view>

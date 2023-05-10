@@ -90,11 +90,11 @@
       </view>
       <view class="ones ref">
         <view>{{languageContent.bookRef}}</view>
-        <view class="invoiceNum">{{item.bookingReference}}</view>
+        <view class="invoiceNum">{{item.bookingReference||'-'}}</view>
       </view>
       <view class="ones ref">
         <view>{{languageContent.invoiceRef}}</view>
-        <view class="invoiceNum">{{item.invoiceReference}}</view>
+        <view class="invoiceNum">{{item.invoiceReference||'-'}}</view>
       </view>
       <view class="ones ref">
         <view>{{languageContent.nauticalMiles2}}</view>
