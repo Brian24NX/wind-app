@@ -17,11 +17,11 @@
         <view class="formArea">
           <view class="titleLine">Login (Email)</view>
           <view class="inputContent">
-            <input bindtap="click1" placeholder='' type="text" />
+            <input :value="userName" bindinput="click1" placeholder='' type="text" />
           </view>
           <view class="titleLine">Password</view>
           <view class="inputContent">
-            <input bindtap="click2" placeholder='' type="text" />
+            <input :value="password" bindinput="click2" placeholder='' password type="text" />
           </view>
           <view class="forgotPassword">Forgotten Password?</view>
           <button class="signIn" bindtap="click3">

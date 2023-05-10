@@ -17,6 +17,8 @@ Page({
       ],
       value1: 0,
       value2: 'a',
+      userName:'',
+      password:''
   },
 
 
@@ -26,12 +28,26 @@ Page({
   onLoad(options) {
 
   },
+  click1(event){
+console.log(event.detail.value)
+this.data.userName = event.detail.value
+  },
+click2(event){
+  console.log(event.detail.value)
+ this.data.password = event.detail.value
+},
+  click3() {
+    
+    // wx.switchTab({
+    //   url: '/pages/My/index'
+    // })
+
+  },
 
   /**
    * Lifecycle function--Called when page is initially rendered
    */
   onReady() {
-
   },
 
   /**

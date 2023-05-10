@@ -1,6 +1,6 @@
 // pages/my/index.js
 import languageUtil from "../../utils/languageUtils";
-
+const config = require('../../config/config')
 const app = getApp();
 const languageUtils = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
@@ -165,9 +165,17 @@ Page({
   // 去登录
   toLogin() {
     if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+
+        console.log(11111111111111111,config.mockLogin)
+      if(config.mockLogin){
+        wx.navigateTo({
+          url: '/pages/LoginCopy/index'
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/Login/index'
+        })
+      }
     } else {
       this.setData({
         showRemind: true
@@ -185,9 +193,15 @@ Page({
   },
 
   buttonNX () {
-    wx.navigateTo({
-      url: "/pages/LoginCopy/index",
-    })
+    if(config.mockLogin){
+      wx.navigateTo({
+        url: '/pages/LoginCopy/index'
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/Login/index'
+      })
+    }
   },
 
   toBaseInfo() {
@@ -265,9 +279,17 @@ Page({
       show: true
     })
     if (e.detail) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      console.log(11111111111111111,config.mockLogin)
+      if(config.mockLogin){
+        wx.navigateTo({
+          url: '/pages/LoginCopy/index'
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/Login/index'
+        })
+      }
+  
     }
   },
   copy() {

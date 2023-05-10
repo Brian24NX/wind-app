@@ -2,6 +2,7 @@
 const app = getApp();
 var languageUtil = require('../../utils/languageUtils')
 const utils = require('../../utils/util')
+const config = require('../../config/config')
 
 Page({
 
@@ -116,9 +117,15 @@ Page({
   // 去登录
   toLogin() {
     if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      if(config.mockLogin){
+        wx.navigateTo({
+          url: '/pages/LoginCopy/index'
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/Login/index'
+        })
+      }
     } else {
       this.setData({
         showRemind: true
@@ -137,9 +144,15 @@ Page({
       show: true
     })
     if (e.detail) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      if(config.mockLogin){
+        wx.navigateTo({
+          url: '/pages/LoginCopy/index'
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/Login/index'
+        })
+      }
     }
   },
 

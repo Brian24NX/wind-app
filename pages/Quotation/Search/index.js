@@ -3,6 +3,7 @@ const app = getApp();
 var languageUtil = require('../../../utils/languageUtils')
 const utils = require('../../../utils/util')
 const dayjs = require("dayjs");
+const config = require('../../../config/config')
 import {
   fuzzySearch,
   getPortPlaceInfo,
@@ -237,9 +238,15 @@ Page({
 
   toLogin() {
     if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      if(config.mockLogin){
+        wx.navigateTo({
+          url: '/pages/LoginCopy/index'
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/Login/index'
+        })
+      }
     } else {
       this.setData({
         showLegal: true
@@ -267,9 +274,15 @@ Page({
       })
       setTimeout(() => {
         if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
-          wx.navigateTo({
-            url: '/pages/Login/index',
-          })
+          if(config.mockLogin){
+            wx.navigateTo({
+              url: '/pages/LoginCopy/index'
+            })
+          }else{
+            wx.navigateTo({
+              url: '/pages/Login/index'
+            })
+          }
         } else {
           this.setData({
             showLegal: true
@@ -908,9 +921,15 @@ Page({
       show: true
     })
     if (e.detail) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      if(config.mockLogin){
+        wx.navigateTo({
+          url: '/pages/LoginCopy/index'
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/Login/index'
+        })
+      }
     }
   },
 
