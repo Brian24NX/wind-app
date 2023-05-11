@@ -17,9 +17,9 @@ Page({
     language: 'zh',
     page: 1,
     keyword: '',
-    noData: false,
     loading: false,
     noMore: false,
+    noData: false,
     showPopup: false,
     iconList: [{
       name: 'Lieutenant',
@@ -113,15 +113,6 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  
-  // formatDate(timestamp) {
-  //   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-  //   const date = new Date(timestamp);//将UTC时间字符串转换为Date对象
-  //   const day = date.getDate().toString().padStart(2, "0").toUpperCase();//将本地时间的日期格式化为 2 位数的数字并转换为大写字母
-  //   const month = months[date.getMonth()];//获取月份的缩写
-  //   const year = date.getFullYear();//获取年份
-  //   return `${day}-${month}-${year}`; 
-  // },
 
   onLoad() {
     this.initLanguage()
@@ -137,7 +128,6 @@ Page({
       page: ++this.data.page,
       loading: true
     })
-    console.log('触底了触底了',this.data.page)
     this.dealPaging()
 
   },
@@ -179,7 +169,12 @@ Page({
       // "range": pageSize
     }).then(res => {
       if (res.data) {
+        this.setData({
+          dashboard:[],
+          page:1
+        })
         allList = res.data
+        console.log("allList",allList)
         this.dealPaging()
       } else {
         this.setData({
@@ -198,22 +193,24 @@ Page({
     let that =this
     let list = []
     setTimeout(() => {
-      if(this.data.keyword){
-        that.setData({
-          noData: !allList.length,
-          dashboard:that.fuzzyQuery(allList,that.data.keyword),
-          item:this.data.dashboard,
-          loading: false
-        })
-      }else{
-        let list = allList.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
-        console.log('list',list,allList.concat(list))
+      console.log('true',!this.data.keyword)
+      if(!this.data.keyword){
+        list = allList.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
         that.setData({
           noData: !allList.length,
           dashboard: this.data.dashboard.concat(list),
           item:this.data.dashboard.concat(list),
           loading: false
         })
+        console.log('list1',list,this.data.dashboard)
+      }else{
+        that.setData({
+          noData: !allList.length,
+          dashboard:that.fuzzyQuery(allList,that.data.keyword),
+          item:this.data.dashboard,
+          loading: false
+        })
+        console.log('list2',this.data.dashboard)
       }
       this.setData({
         noMore: this.data.dashboard.length >= allList.length
@@ -226,8 +223,8 @@ Page({
     }).then(res => {
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
+        console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
-
         const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
         const newSea = {
           memberStatus: infodata.memberStatus,
@@ -264,7 +261,6 @@ Page({
   setInput(e) {
     let value = e.detail.value.toUpperCase()
     let regvalue = value.trim()
-    console.log(11,value,regvalue,e.detail.value)
     if (value) {
       const reg = /[\u4e00-\u9fa5]/ig
       if ((reg.test(value))) {
@@ -274,33 +270,21 @@ Page({
       this.setData({
         keyword: value
       })
-    console.log(this.data.keyword)
   },
 
   fuzzyQuery(list, keyWord) {
   let arr = [];
   for (let i = 0; i < list.length; i++) {
-    if (list[i].quotationReference.indexOf(keyWord) >= 0 || list[i].invoiceReference.indexOf(keyWord)>-1 || list[i].bookingReference.indexOf(keyWord)>-1) {
+    if (list[i].quotationReference?.indexOf(keyWord) >= 0 || list[i].invoiceReference?.indexOf(keyWord)>-1 || list[i].bookingReference?.indexOf(keyWord)>-1) {
       arr.push(list[i]);
     }
   }
     const ary = arr.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
-    console.log(ary,arr)
+    console.log('list',ary,arr)
   return arr;
 },
 search(){
-    let keyword = this.data.keyword
-    if(keyword){
-      console.log(this.data.dashboard,this.fuzzyQuery(this.data.dashboard,keyword))
-      this.setData({
-        dashboard: this.fuzzyQuery(this.data.dashboard,keyword)
-      })
-    }else{
-      let data = this.data.item
-      this.setData({
-        dashboard : data
-      })
-    }
+ this.dealPaging()
   const huoguiStr = this.data.keyword.replaceAll(' ', '')
   const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
   var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
@@ -348,15 +332,6 @@ search(){
     })
   },
 
-  // formatDate(dateString) {
-  //   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-  //   const date = new Date(dateString + 'Z'); //将UTC时间字符串转换为Date对象
-  //   const day = date.toLocaleString('en', { day: '2-digit' }).toUpperCase(); //将本地时间的日期格式化为 2 位数的数字并转换为大写字母
-  //   const month = months[date.getMonth()]; //获取月份的缩写
-  //   const year = date.getFullYear(); //获取年份
-  //   return `${day}-${month}-${year}`;
-  // },
-
   // 定义 formatDate 函数，参数为日期字符串
   formatDate(dateString) {
     // 将日期字符串转换成 Date 对象
@@ -399,14 +374,4 @@ search(){
     })
     wx.setStorageSync('seaRewardsSearchHis',e.detail)
   },
-  // onName({detail}) {
-  //   let value = detail.value;
-  //   if (!value || value == " ") {
-  //     return '';
-  //   }
-  //   const rule = /[^\u4E00-\u9FA5]/g;
-  //   this.$nextTick(function() {
-  //     this.name = value.replace(rule, '');
-  //   })
-  // }
 })

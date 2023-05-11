@@ -11,8 +11,12 @@ page {
   background-color: #ffffff;
   width: 100%;
   margin: 30rpx 0;
-}
 
+}
+.stickyList{
+  position: sticky;
+  top: 0;
+}
 .listTopContainer {
   background-color: #ffffff;
   padding: 30rpx 30rpx 0;
@@ -469,4 +473,7 @@ page {
 
 .listStyle {
   margin-left: 20rpx;
+}
+.loadings{
+  padding: 0 48rpx 1rpx;
 }

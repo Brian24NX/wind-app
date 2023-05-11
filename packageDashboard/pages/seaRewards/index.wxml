@@ -39,7 +39,7 @@
     </van-row>
 
   </view>
-  <view class="listTopContainers">
+  <view class="listTopContainers stickyList">
     <view class="listTopContainer">
       <view class="listTopTitles">
         <view class="boxtitleLine"></view>
@@ -72,8 +72,7 @@
       <view catchtap="gotoQuat" class="urlCopy">{{languageContent.getQuot}}</view>
     </view>
   </view>
-
-  <view wx:if="{{!loading && list.length > 0 && !noData}}">
+  <view wx:if="{{dashboard.length > 0 && !noData}}">
     <view  wx:for="{{dashboard}}" wx:key="index" class="itemBox listTopContainers">
       <view class="ones">
         <view class="boxTitle listStyle">{{item.quotationReference}}</view>
@@ -83,10 +82,10 @@
       </view>
       <view class="ones ref">
         <view>{{languageContent.quatedate}}</view>
-        
+
         <!-- <view class="invoiceNum">{{  item.bookingDate }}</view> -->
         <view class="invoiceNum">{{language === 'zh' ? format.SeaformatCnDateUtc(item.bookingDate, false, true) : format.SeaformatEnDateUtc(item.bookingDate, '-', '', false, true)}}</view>
-        
+
       </view>
       <view class="ones ref">
         <view>{{languageContent.bookRef}}</view>
@@ -107,8 +106,7 @@
     </view>
   </view>
 
-
-  <view class="loadings" wx:if="{{loading}}">
+  <view class="loadings">
     <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
   </view>
 </view>

@@ -359,19 +359,19 @@ console.log(surchargeDetails.oceanFreight.price.amount,surchargeDetails.freightC
       })
       if (this.data.useRewards && this.data.burnRewards && this.data.burnRewards !== 0) {
         vasChargeDetails.push({
-          "calculationType": '',
-          "cargoLines": [],
-          "chargeCode": 'FRT33',
-          "chargeName": '',
+          "calculationType": 'FIX',
+          "cargoLines": null,
+          "chargeCode": 'REB75',
+          "chargeName": null,
           "currency": 'USD',
-          "description": '',
-          "expectedActions": '',
-          "hasChargeSelected": false,
-          "levelOfCharge": '',
-          "maximumChargeableAmount": '',
-          "minimumChargeableAmount": '',
-          "rateFrom": '',
-          "subscribedAmount": this.data.burnRewards,
+          "description": null,
+          "expectedActions": null,
+          "hasChargeSelected": true,
+          "levelOfCharge": 'Per BL',
+          "maximumChargeableAmount": 0,
+          "minimumChargeableAmount": 0,
+          "rateFrom": 0,
+          "subscribedAmount": -this.data.finalPrice,
           "subscriptionMode": ''
         })
       }
