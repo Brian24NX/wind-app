@@ -293,11 +293,11 @@ Page({
           usdSaved: points.totalPointsRedeemed || 0,
           // associatedAccount: infodata.associatedAccount.name
         })
-        // setTimeout(() => {
-        //   wx.switchTab({
-        //     url: '/pages/My/index',
-        //   })
-        // }, 3000)
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/My/index',
+          })
+        }, 3000)
       }
     }).catch(err => {
       console.error(err)
