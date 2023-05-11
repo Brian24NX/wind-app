@@ -87,19 +87,18 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function () {
+    wx.setNavigationBarTitle({
+      title: 'Sign In',
+    })
     // this.mockLogin()
     // 获取用户名和密码输入框的节点
     const usernameInput = this.selectComponent('#username-input').$fieldContext
     const passwordInput = this.selectComponent('#password-input').$fieldContext
-        
     // 禁用自动填充和保存功能
     usernameInput.setAutoFillEnabled(false)
     passwordInput.setAutoFillEnabled(false)
     usernameInput.setAutocomplete('off')
     passwordInput.setAutocomplete('off')
-    wx.setNavigationBarTitle({
-      title: 'Sign In',
-    })
     let level = [{
       label: 'Lieutenant',
       cnName: '中尉',

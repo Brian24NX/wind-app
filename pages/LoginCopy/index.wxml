@@ -22,9 +22,9 @@
             <input id="password-input" value="{{password}}" placeholder='' password='true' autocomplete="off" />
           </view>
           <view class="forgotPassword">{{item.Forgotten[language]}}</view>
-          <button class="signIn" bindtap="toLogin">
-            <view class="textSubmit"> {{item.sing[language]}}</view>
-          </button>
+          <view class="signIn" bindtap="toLogin">
+            {{item.sing[language]}}
+          </view>
         </view>
       </view>
       <view class="footNote">
