@@ -90,17 +90,6 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.item.title[this.data.language],
     })
-    // this.mockLogin()
-    // 获取用户名和密码输入框的节点
-    console.log(this.selectComponent('#username-input'))
-        console.log(this.selectComponent('#password-input'))
-    const usernameInput = this.selectComponent('#username-input').$fieldContext
-    const passwordInput = this.selectComponent('#password-input').$fieldContext
-    // 禁用自动填充和保存功能
-    usernameInput.setAutoFillEnabled(false)
-    passwordInput.setAutoFillEnabled(false)
-    usernameInput.setAutocomplete('off')
-    passwordInput.setAutocomplete('off')
     let level = [{
       label: 'Lieutenant',
       cnName: '中尉',
@@ -122,6 +111,7 @@ Page({
     if(wx.getStorageSync('partnerList')){
       this.getSeaPartnerInfo()
     }
+    console.log('level',level)
     wx.setStorageSync('rewardLevel', level)
     this.setData({
       rewardLevel: level
@@ -277,6 +267,8 @@ Page({
     }).then(res => {
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
+        console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
+
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
         const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
        console.log('infodata',infodata,myReward[0],points)
@@ -301,11 +293,11 @@ Page({
           usdSaved: points.totalPointsRedeemed || 0,
           // associatedAccount: infodata.associatedAccount.name
         })
-        setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/My/index',
-          })
-        }, 3000)
+        // setTimeout(() => {
+        //   wx.switchTab({
+        //     url: '/pages/My/index',
+        //   })
+        // }, 3000)
       }
     }).catch(err => {
       console.error(err)
