@@ -65,6 +65,7 @@
 
 .mainContainer .loginContainer .formArea {
   height: 500rpx;
+  position: relative;
 }
 
 .titleLine {
@@ -92,27 +93,20 @@
 .forgotPassword {
   font-size: 0.8em;
   color: #2563d9;
-  margin-left: 200rpx;
+  text-align: right;
   margin-bottom: 45rpx;
   width: 100%;
 }
 
 .signIn {
-  margin-left: 20rpx;
-  background-color: #f0f1f5;
-  display: flex;
-  flex-direction: row;
-}
-
-.textSubmit {
-  border-radius: 0%;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  border-radius: 0;
   background-color: #d81772;
-  font-size: 0.8em;
+  font-size: 0.65em;
   color: #fff;
-  text-align: center;
-  width: 520rpx;
-  margin-left: 240rpx;
-  /* padding: 0rpx, 15rpx, 0rpx, 15rpx; */
+  padding: 12rpx 24rpx;
 }
 
 .footNote {
