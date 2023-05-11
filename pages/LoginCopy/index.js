@@ -88,10 +88,12 @@ Page({
    */
   onLoad: function () {
     wx.setNavigationBarTitle({
-      title: 'Sign In',
+      title: this.data.item.title[this.data.language],
     })
     // this.mockLogin()
     // 获取用户名和密码输入框的节点
+    console.log(this.selectComponent('#username-input'))
+        console.log(this.selectComponent('#password-input'))
     const usernameInput = this.selectComponent('#username-input').$fieldContext
     const passwordInput = this.selectComponent('#password-input').$fieldContext
     // 禁用自动填充和保存功能
@@ -148,6 +150,7 @@ Page({
     this.setData({
       isShow: false
     })
+    this.onLoad()
   },
   toLogin() {
     console.log(this.data.username)
