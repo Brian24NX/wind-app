@@ -21,7 +21,7 @@
           <view class="inputContent2">
             <input id="password-input" value="{{password}}" placeholder='' password='true' autocomplete="off" />
           </view>
-          <view class="forgotPassword">{{item.Forgotten[language]}}</view>
+          <view class="forgotPassword" bindtap="page">{{item.Forgotten[language]}}</view>
           <view class="signIn" bindtap="toLogin">
             {{item.sing[language]}}
           </view>

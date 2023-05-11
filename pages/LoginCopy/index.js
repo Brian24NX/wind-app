@@ -124,6 +124,7 @@ Page({
     this.setData({
       rewardLevel: level
     })
+
   },
   onInput(event){
     console.log('key-on',event.detail.value)
@@ -305,6 +306,12 @@ Page({
       }
     }).catch(err => {
       console.error(err)
+    })
+  },
+
+  page(){
+    wx.navigateTo({
+      url: '/pages/LoginCopy/detail'
     })
   },
 })
