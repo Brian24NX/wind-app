@@ -169,6 +169,12 @@ Page({
   },
 
   getRewardDashboard(type) {
+    this.setData({
+      dashboard:[],
+      page:1,
+      loading: true,
+    })
+    allList=[]
     let requestType = ''
     if (type === 'earnings') {
       requestType = 'Accrual'
@@ -189,9 +195,6 @@ Page({
       }
       if (res.data) {
         this.setData({
-          dashboard:[],
-          page:1,
-          loading: true,
           item:res.data
         })
         allList = res.data
