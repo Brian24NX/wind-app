@@ -127,7 +127,6 @@ Page({
 
   onReachBottom(){
     if (this.data.loading || this.data.noMore) return
-    console.log(1111111111,this.data.keyword)
     if(this.data.dashboard.length>0){
       this.setData({
         page: ++this.data.page,
@@ -173,6 +172,7 @@ Page({
       dashboard:[],
       page:1,
       loading: true,
+      item:[]
     })
     let requestType = ''
     if (type === 'earnings') {
@@ -230,9 +230,8 @@ Page({
           loading: false,
         })
       }else{
-        allList = that.fuzzyQuery(allList,that.data.keyword)
         that.setData({
-          dashboard:that.fuzzyQuery(allList,that.data.keyword),
+          dashboard:this.data.dashboard.concat(that.fuzzyQuery(allList,that.data.keyword)),
           loading: false,
         })
       }
@@ -257,16 +256,18 @@ Page({
       }
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
-        console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
+
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
         const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
+        const rightusdSaved = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Burned Nmiles')[0]
+        console.log(1,this.data.rewardLevel,rightusdSaved)
         const newSea = {
           memberStatus: infodata.memberStatus,
           level: infodata.memberTiers[0].loyaltyMemberTierName,
           icon: myReward[0] ? myReward[0].icon : '',
           pointsBalance: points.pointsBalance || 0,
           cnName: myReward[0] ? myReward[0].cnName : '',
-          usdSaved: points.totalPointsRedeemed || 0,
+          usdSaved: points.pointsBalance || 0,
           // associatedAccount: infodata.associatedAccount.name
         }
         let idx = this.data.iconList.findIndex(item => item.name === infodata.memberTiers[0].loyaltyMemberTierName)
@@ -275,7 +276,7 @@ Page({
           currentLevel: idx >= 0 ? this.data.iconList[idx] : null,
           nextLevel: idx + 1 < this.data.iconList.length ? this.data.iconList[idx + 1] : null,
           availableMiles: points.pointsBalance || 0,
-          savedUSD: points.totalPointsRedeemed || 0,
+          savedUSD: rightusdSaved.pointsBalance || 0,
         })
         wx.setStorageSync('seaRewardData', newSea)
       }
@@ -321,13 +322,14 @@ Page({
   }
     const ary = arr.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
     console.log('list-------',ary,arr)
-  return arr;
+  return ary;
 },
 search(){
   this.setData({
     loading: true,
     page: 1,
-    dashboard: []
+    dashboard: [],
+    noMore:false
   })
   allList = this.data.item
  this.dealPaging()
