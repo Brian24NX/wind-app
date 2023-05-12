@@ -169,12 +169,6 @@ Page({
   },
 
   getRewardDashboard(type) {
-    this.setData({
-      dashboard:[],
-      page:1,
-      loading: true,
-    })
-    allList=[]
     let requestType = ''
     if (type === 'earnings') {
       requestType = 'Accrual'
@@ -195,6 +189,9 @@ Page({
       }
       if (res.data) {
         this.setData({
+          dashboard:[],
+          page:1,
+          loading: true,
           item:res.data
         })
         allList = res.data
@@ -207,6 +204,12 @@ Page({
         })
       }
     }, () => {
+      this.setData({
+        count: ++this.data.count,
+      })
+      if(this.data.count===2){
+        wx.hideLoading()
+      }
       this.setData({
         loading: false,
         noData: true
@@ -275,6 +278,12 @@ Page({
         wx.setStorageSync('seaRewardData', newSea)
       }
     }).catch(err => {
+      this.setData({
+        count: ++this.data.count,
+      })
+      if(this.data.count===2){
+        wx.hideLoading()
+      }
       console.error(err)
     })
   },
