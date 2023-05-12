@@ -28,6 +28,7 @@
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #04246a;
+  width: calc(100% - 40rpx);
 }
 
 .iconBox {
