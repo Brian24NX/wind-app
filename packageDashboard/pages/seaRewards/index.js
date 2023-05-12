@@ -1,4 +1,6 @@
 // packageDashboard/pages/seaRewards/index.js
+import languageUtil from "../../../utils/languageUtils";
+
 const languageUtils = require('../../../utils/languageUtils')
 import {
   rewardDashboard,
@@ -105,9 +107,10 @@ Page({
     nextDate2: '2023年5月10日',
     typeList: ['earnings', 'burns'],
     curTab: 'earnings',
-    item:null,//备份未筛选的数组数据
+    item:[],//备份未筛选的数组数据
     showHis:false,
     searchHis: [],
+    count:0
   },
 
   /**
@@ -124,15 +127,25 @@ Page({
 
   onReachBottom(){
     if (this.data.loading || this.data.noMore) return
-    this.setData({
-      page: ++this.data.page,
-      loading: true
-    })
-    this.dealPaging()
-
+    console.log(1111111111,this.data.keyword)
+    if(this.data.dashboard.length>0){
+      this.setData({
+        page: ++this.data.page,
+        loading: true,
+      })
+      this.dealPaging()
+    }
   },
 
   onShow() {
+    this.setData({
+      keyword:'',
+      page:1
+    })
+    wx.showLoading({
+      title: languageUtil.languageVersion().lang.page.load.load,
+      mask: true
+    })
     this.getRewardDashboard('earnings')
     this.getSeaPartnerInfo()
   },
@@ -168,10 +181,18 @@ Page({
       "language": this.data.language
       // "range": pageSize
     }).then(res => {
+      this.setData({
+        count: ++this.data.count,
+      })
+      if(this.data.count===2){
+        wx.hideLoading()
+      }
       if (res.data) {
         this.setData({
           dashboard:[],
-          page:1
+          page:1,
+          loading: true,
+          item:res.data
         })
         allList = res.data
         console.log("allList",allList)
@@ -193,34 +214,39 @@ Page({
     let that =this
     let list = []
     setTimeout(() => {
-      console.log('true',!this.data.keyword)
+      console.log('true',this.data.keyword,!this.data.keyword)
       if(!this.data.keyword){
         list = allList.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
         that.setData({
-          noData: !allList.length,
           dashboard: this.data.dashboard.concat(list),
-          item:this.data.dashboard.concat(list),
-          loading: false
+          loading: false,
         })
-        console.log('list1',list,this.data.dashboard)
       }else{
+        allList = that.fuzzyQuery(allList,that.data.keyword)
         that.setData({
-          noData: !allList.length,
           dashboard:that.fuzzyQuery(allList,that.data.keyword),
-          item:this.data.dashboard,
-          loading: false
+          loading: false,
         })
-        console.log('list2',this.data.dashboard)
       }
       this.setData({
         noMore: this.data.dashboard.length >= allList.length
       })
+      console.log('noMore',this.data.noMore,this.data.dashboard,allList)
     }, 200);
+
+    console.log()
   },
   getSeaPartnerInfo() {
     seaPartnerInfo({
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
     }).then(res => {
+      this.setData({
+        count: ++this.data.count,
+      })
+      console.log('getSeaPartnerInfo',this.data.count)
+      if(this.data.count===2){
+        wx.hideLoading()
+      }
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
         console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
@@ -280,10 +306,16 @@ Page({
     }
   }
     const ary = arr.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
-    console.log('list',ary,arr)
+    console.log('list-------',ary,arr)
   return arr;
 },
 search(){
+  this.setData({
+    loading: true,
+    page: 1,
+    dashboard: []
+  })
+  allList = this.data.item
  this.dealPaging()
   const huoguiStr = this.data.keyword.replaceAll(' ', '')
   const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
@@ -366,7 +398,6 @@ search(){
       this.setData({
         keyword: e.detail,
       })
-    console.log(this.data.keyword)
   },
   delHis(e){
     this.setData({

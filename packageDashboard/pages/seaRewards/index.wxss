@@ -4,7 +4,7 @@ page {
 }
 
 .documentContainer {
-  padding: 0 30rpx 140rpx;
+  padding: 0 30rpx 190rpx;
 }
 
 .listTopContainers {
@@ -476,4 +476,5 @@ page {
 }
 .loadings{
   padding: 0 48rpx 1rpx;
+  /*margin-bottom: 20rpx;*/
 }
