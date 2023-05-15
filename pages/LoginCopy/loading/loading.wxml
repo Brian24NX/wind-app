@@ -1,0 +1,8 @@
+<view class="login_load">
+    <view class="title">
+        {{title}}
+    </view>
+    <view class="title_main">
+        {{title_main}}
+    </view>
+</view>

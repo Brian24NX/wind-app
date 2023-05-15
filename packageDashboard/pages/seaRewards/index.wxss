@@ -100,12 +100,15 @@ page {
   align-items: center;
   flex-direction: row;
   margin-top: -20rpx;
+  padding-right: 25rpx;
 }
 
 .columnShowed2 {
-  margin-left: 5rpx;
+  /*padding-left: 50rpx;*/
   display: flex;
   flex-direction: column;
+  color: #071E5D;
+
 }
 
 .dateTime {
@@ -407,6 +410,7 @@ page {
 
 .uppercase {
   text-transform: uppercase;
+  min-width: 50rpx;
 }
 
 .placeholder {

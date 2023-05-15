@@ -87,6 +87,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function () {
+
     wx.setNavigationBarTitle({
       title: this.data.item.title[this.data.language],
     })
@@ -144,127 +145,12 @@ Page({
   },
   toLogin() {
     console.log(this.data.username)
-    mockLogin({username:this.data.username}).then(res=>{
-      const data = res.data
-      const ary = data.data[0]
-      let userInfo = ary.customer
-      console.log(1111,data)
-      console.log(22222,ary)
-      if (userInfo) {
-        wx.setStorageSync('ccgId', userInfo.ccgId)
-        userInfo.lastName = userInfo.lastName ? userInfo.lastName.toLocaleUpperCase() : ''
-        if (userInfo.lastName && userInfo.firstName) {
-          userInfo.avatar = userInfo.firstName.substr(0, 1) + userInfo.lastName.substr(0, 1)
-        }
-      wx.setStorageSync('access_token', data.access_token)
-      wx.setStorageSync('expires_time', utils.setExpiresTime(config.expiresIn * 60))
-      wx.setStorageSync('account', ary.customer.email)
-    
-      let openId = wx.getStorageSync('openId')
-      let phone = wx.getStorageSync('phone')
-      let account = wx.getStorageSync('account')
-      if (openId && phone && account) {
-        this.checkBindStatus()
-      } else {
-        if (!openId) {
-          wx.login({
-            success(res) {
-              wx.request({
-                url: config[config.dev_env].url + '/api/miniapp/wx/user/login?code=' + res.code,
-                success(data) {
-                  wx.setStorageSync('openId', data.data.data)
-                }
+    wx.navigateTo({
+                url: '/pages/LoginCopy/loading/loading',
               })
-            }
-          })
-          openId = wx.getStorageSync('openId')
-          phone = wx.getStorageSync('phone')
-          account = wx.getStorageSync('account')
-          if (openId && phone && account) {
-            this.checkBindStatus()
-          }
-        }
-      }
-    }
-
-    const partnerList = data.partnerList
-    const profileRights = ary.profilerights
-    console.log("----",partnerList,profileRights)
-    if (profileRights && profileRights.length) {
-      const shipCompanyList = Array.from(new Set(profileRights.map(item => item.shipcomp)))
-      const rights = []
-      profileRights.forEach(i => {
-        i.rights.forEach(r => {
-          if (rights.indexOf(r.code) === -1) {
-            rights.push(r.code)
-          }
-        })
-      })
-      wx.setStorageSync('shipCompanyList', shipCompanyList)
-      wx.setStorageSync('rights', rights)
-    }
-
-    if (partnerList && partnerList.length) {
-      let partnerLists = []
-      partnerList.forEach(i => {
-        i.partnerDetails.address1 = i.partnerDetails.addressLine1
-        i.partnerDetails.address2 = i.partnerDetails.addressLine2
-        i.partnerDetails.address3 = i.partnerDetails.addressLine3
-        delete i.partnerDetails.addressLine1
-        delete i.partnerDetails.addressLine2
-        delete i.partnerDetails.addressLine3
-        partnerLists.push({
-          code: i.partnerDetails.code,
-          name: i.partnerDetails.fullName + ' - ' + i.partnerDetails.city,
-          address: i.partnerDetails
-        })
-      })
-      wx.setStorageSync('partnerList', partnerLists)
-      this.getSeaPartnerInfo()
-    }
-    const params = {
-      "account": userInfo.email,
-      "ccgid": userInfo.ccgId,
-      "company": userInfo.company,
-      "nickname": userInfo.firstName + userInfo.lastName,
-      "operationType": "Login",
-      "shipmentRef": "-"
-    }
-    writeOperationLog(params).then(res => {
-      console.log('登录日志记录成功')
-    })
-      setTimeout(() => {
-        wx.switchTab({
-          url: '/pages/My/index',
-        })
-      }, 3000)
-    })
   },
-  
-  checkBindStatus() {
-    let openId = wx.getStorageSync('openId')
-    let phone = wx.getStorageSync('phone')
-    let account = wx.getStorageSync('account')
-    checkPhoneBind({
-      "account": account,
-      "openId": openId,
-      "phoneNumber": phone
-    }).then(res => {
-      if (res.data === "2") {
-        bindPhone({
-          "account": account,
-          "openId": openId,
-          "phoneNumber": phone
-        }).then(res => {
-          console.log('成功绑定手机')
-          wx.setStorageSync('bindDate', new Date())
-          wx.setStorageSync('phone', phone)
-        }).catch(err => {
-          console.error(err)
-        })
-      }
-    })
-  },
+
+
   getSeaPartnerInfo() {
     seaPartnerInfo({
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
