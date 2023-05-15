@@ -74,16 +74,19 @@ Page({
             this.setData({
               userInfo
             })
-            let partners = []
-            partners = res.data[0].profilerights.map(i => {
-              return i.partner.code
+            let partners =[]
+           res.data[0].profilerights.map(i => {
+              if(i.shipcomp==='0001'){
+                partners.push(i.partner.code)
+              }
             })
-            var newPartners = Array.from(new Set(partners))
+            console.log('-------------',partners)
+            // var newPartners = Array.from(new Set(partners))
+            // console.log('newPartners',newPartners)
             customerPartners({
-              "partners": newPartners,
+              "partners": partners,
               "token": wx.getStorageSync('access_token')
             }).then(result => {
-              console.log(11111111,result)
               let partnerLists = []
               result.data.forEach(i => {
                 partnerLists.push({

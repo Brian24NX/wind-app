@@ -101,7 +101,7 @@
         <view class="{{( item.pointsStr > 0) ? 'redMiles': 'greenMiles' }}">{{item.pointsStr}}</view>
       </view>
     </view>
-    <view wx:if="{{dashboard.length==0&&!loading&&!noData&&count>=2&&item.length>=0}}" class="itemBox listTopContainers boxTitle noData">
+    <view wx:if="{{dashboard.length==0&&!loading&&!noData&&item.length>=0}}" class="itemBox listTopContainers boxTitle noData">
       <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
       <view class="siteText">{{languageContent.noData}}</view>
     </view>
