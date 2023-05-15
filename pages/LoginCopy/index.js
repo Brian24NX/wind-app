@@ -232,8 +232,12 @@ Page({
     }
     writeOperationLog(params).then(res => {
       console.log('登录日志记录成功')
-
     })
+      setTimeout(() => {
+        wx.switchTab({
+          url: '/pages/My/index',
+        })
+      }, 3000)
     })
   },
   
@@ -268,7 +272,6 @@ Page({
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
         console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
-
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
         const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
        console.log('infodata',infodata,myReward[0],points)
@@ -293,11 +296,6 @@ Page({
           usdSaved: points.totalPointsRedeemed || 0,
           // associatedAccount: infodata.associatedAccount.name
         })
-        setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/My/index',
-          })
-        }, 3000)
       }
     }).catch(err => {
       console.error(err)

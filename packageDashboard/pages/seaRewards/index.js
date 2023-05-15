@@ -187,15 +187,6 @@ Page({
       "language": this.data.language
       // "range": pageSize
     }).then(res => {
-      this.setData({
-        count: ++this.data.count,
-      })
-      if(this.data.count===2){
-        wx.hideLoading()
-        this.setData({
-          isShow:true
-        })
-      }
       if (res.data) {
         this.setData({
           item:res.data
@@ -210,15 +201,6 @@ Page({
         })
       }
     }, () => {
-      this.setData({
-        count: ++this.data.count,
-      })
-      if(this.data.count===2){
-        wx.hideLoading()
-        this.setData({
-          isShow:true
-        })
-      }
       this.setData({
         loading: false,
         noData: true
@@ -255,15 +237,11 @@ Page({
       "partnerCode": wx.getStorageSync('partnerList')[0].code,
     }).then(res => {
       this.setData({
-        count: ++this.data.count,
+        isShow:true
       })
-      console.log('getSeaPartnerInfo',this.data.count)
-      if(this.data.count===2){
         wx.hideLoading()
-      }
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
-
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
         const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
         const rightusdSaved = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Burned Nmiles')[0]
@@ -289,11 +267,9 @@ Page({
       }
     }).catch(err => {
       this.setData({
-        count: ++this.data.count,
+        isShow: true,
       })
-      if(this.data.count===2){
-        wx.hideLoading()
-      }
+      wx.hideLoading()
       console.error(err)
     })
   },
