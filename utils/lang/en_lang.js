@@ -373,7 +373,7 @@ var Languague = {
       usd: 'USD',
       nmilesCollected: 'Potential Nmiles to be collected: ',
       earned: 'Potential Nmiles to be collected: ',
-      status: 'Current Status: ',
+      status: 'Your Rank: ',
       available: 'Nautical Miles Available',
       usdSaved: '',
       description: 'As a Captain you earn 2 Nautical Miles for every 100＄ spent on Spoton quotes. Nautical Miles are earned once the invoice is paied.',

@@ -24,7 +24,7 @@
             <view class="boldText"><Text>{{availableMiles}}</Text>{{languageContent.available}}</view>
           </view>
           <view class="rowAlign">
-            <view class="smallDesc">{{languageContent.bp}} {{seaRewardData.associatedAccount}}</view>
+            <view class="smallDesc">{{languageContent.bp}} {{partnerList[0].fullName}}</view>
           </view>
         </view>
       </van-col>

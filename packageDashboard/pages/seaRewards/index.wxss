@@ -98,8 +98,8 @@ page {
 .columnShowed1 {
   display: flex;
   align-items: center;
-  flex-direction: row;
-  margin-top: -20rpx;
+  /*flex-direction: row;*/
+  /*margin-top: -20rpx;*/
   padding-right: 25rpx;
 }
 

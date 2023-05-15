@@ -111,7 +111,8 @@ Page({
         showHis: false,
         searchHis: [],
         count: 0,
-        isShow: false
+        isShow: false,
+        partnerList : wx.getStorageSync('partnerList')
     },
 
     /**
