@@ -29,8 +29,8 @@
     "pages/VAS/Detail/index",
     "pages/SeaInfoPage/index",
     "pages/LoginCopy/index",
-    "pages/LoginCopy/detail/detail",
-    "pages/LoginCopy/loading/loading"
+    "pages/LoginCopy/detail/index",
+    "pages/LoginCopy/loading/index"
   ],
   "subPackages": [
     {

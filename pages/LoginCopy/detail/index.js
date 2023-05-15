@@ -1,4 +1,4 @@
-// pages/LoginCopy/detail.js
+// pages/LoginCopy/index.js
 Page({
 
   /**
