@@ -391,7 +391,6 @@ Page({
     },
 
     hideSearchHis() {
-        // this.search()
         this.setData({
             showHis: false
         })
@@ -401,6 +400,7 @@ Page({
         this.setData({
             keyword: e.detail,
         })
+        this.search()
     },
     delHis(e) {
         this.setData({

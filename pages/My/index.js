@@ -58,7 +58,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(2222,languageUtil.languageVersion().lang.page.load.load)
     if (utils.checkAccessToken()) {
       let userInfo = wx.getStorageSync('userInfo')
       if (!userInfo) {
@@ -84,11 +83,13 @@ Page({
               "partners": newPartners,
               "token": wx.getStorageSync('access_token')
             }).then(result => {
+              console.log(11111111,result)
               let partnerLists = []
               result.data.forEach(i => {
                 partnerLists.push({
                   code: i.partnerDetails.code,
-                  name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city
+                  name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city,
+                  fullName:i.partnerDetails.fullName
                 })
               })
               wx.setStorageSync('partnerList', partnerLists)
@@ -111,7 +112,6 @@ Page({
       this.setData({
         needLogin: false
       })
-      console.log(1111,languageUtil.languageVersion().lang.page.load.load)
       if(this.data.count===1){
         wx.showLoading({
           title: languageUtil.languageVersion().lang.page.load.load,
