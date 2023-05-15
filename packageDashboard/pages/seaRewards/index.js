@@ -351,7 +351,7 @@ Page({
         this.setData({
             keyword: ''
         })
-        // this.search()
+        this.search()
     },
 
     gotoFAQ() {
