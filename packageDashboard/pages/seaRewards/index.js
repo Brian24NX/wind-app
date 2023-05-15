@@ -110,7 +110,8 @@ Page({
     item:[],//备份未筛选的数组数据
     showHis:false,
     searchHis: [],
-    count:0
+    count:0,
+    isShow:false
   },
 
   /**
@@ -191,6 +192,9 @@ Page({
       })
       if(this.data.count===2){
         wx.hideLoading()
+        this.setData({
+          isShow:true
+        })
       }
       if (res.data) {
         this.setData({
@@ -211,6 +215,9 @@ Page({
       })
       if(this.data.count===2){
         wx.hideLoading()
+        this.setData({
+          isShow:true
+        })
       }
       this.setData({
         loading: false,
@@ -365,7 +372,7 @@ search(){
     this.setData({
       keyword: ''
     })
-    this.search()
+    // this.search()
   },
 
   gotoFAQ() {

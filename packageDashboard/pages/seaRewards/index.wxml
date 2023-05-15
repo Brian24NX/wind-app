@@ -1,6 +1,6 @@
 <!--packageDashboard/pages/seaRewards/index.wxml-->
 <wxs module="format" src="../../../utils/format.wxs"></wxs>
-<view class="documentContainer">
+<view class="documentContainer" wx:if="{{isShow}}">
   <view class="listTopContainers topInfo">
     <image class="seaLogo" src="/assets/img/seaReward/seaLogo@2x.png"></image>
     <view class="titleRowAlign bottomLines">
@@ -9,10 +9,10 @@
       <view class="boldText uppercase">{{(language === 'zh'? currentLevel.cnName :currentLevel.name) || seaRewardData.level}}</view>
       </view>
       <!-- <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onOpenPopup"></image> -->
-      <view class="columnShowed2">
-      <view class="normalText">{{languageContent.uo}} IKEA</view>
+<!--      <view class="columnShowed2">-->
+<!--      <view class="normalText">{{languageContent.uo}} IKEA</view>-->
 <!--      <view class="dateTime">({{languageContent.nextDate}} {{ language === 'en'? nextDate : nextDate2}})</view>-->
-      </view>
+<!--      </view>-->
     </view>
     <view class="descBox">{{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}</view>
     <van-row>
@@ -110,7 +110,7 @@
   </view>
 </view>
 
-<view class="bottomFixed">
+<view class="bottomFixed" wx:if="{{isShow}}">
   <van-row>
     <van-col span="12">
       <button bindtap="gotoFAQ" class="buttonOutline">

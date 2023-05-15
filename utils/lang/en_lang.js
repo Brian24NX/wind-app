@@ -322,7 +322,7 @@ var Languague = {
     //sea reward
     seaReward:{
       seaRewardTitle: 'Sea Reward',
-      activate: 'Start earning Nautical Miles!',
+      activate: 'Discover your new Loyalty program on SpotOn!',
       dashboard: 'Sea Reward Dashboard',
       seaRewardInformation: 'Sea Reward Information',
       seaRewardIntro: 'Sea Reward is the loyalty program of CMA CGM dedicated to the digital SpotOn channel. Earn Nautical Miles every time you book with us!',
