@@ -17,11 +17,11 @@
 }
 
 .resultContainers .resultCardContainers .titleArea {
-  width: 240rpx;
-  margin-right: 354rpx;
+  /* width: 240rpx; */
+  /* margin-right: 354rpx; */
   flex-direction: row;
   display: flex;
-  justify-content: space-between;
+  justify-content:flex-start
 }
 
 .resultContainers .resultCardContainers .titleArea .iconPig {
@@ -40,7 +40,7 @@
   white-space: nowrap;
   line-height: 46rpx;
   margin-top: 12rpx;
-  margin-right: 20rpx;
+  margin-left: 20rpx;
 }
 
 .resultContainers .resultCardContainers .textArea {
@@ -82,7 +82,7 @@
   margin: 4rpx 0 4rpx 0;
 }
 
-.resultContainers .rateContainer .rateItem .titleText {
+.titleText {
   width: 120rpx;
   overflow-wrap: break-word;
   color: rgba(7, 30, 93, 1);
@@ -312,6 +312,7 @@ display: flex;
 
 
 .waysToThere {
+  width: 594rpx;
   overflow-wrap: break-word;
   color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
@@ -322,22 +323,27 @@ display: flex;
   white-space: nowrap;
   line-height: 46rpx;
   margin-bottom: 15rpx;
+  background-color:#f0f1f5;
+  margin-left: 10rpx;
+  padding-left: 10rpx;
 }
 
 .waysIntro {
   width: 594rpx;
-  height: 68rpx;
+  /* height: 68rpx; */
   overflow-wrap: break-word;
   color: #9aa6b1;
-  font-size: 24rpx;
+  font-size: 20rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
   text-align: left;
   line-height: 34rpx;
   margin-bottom: 30rpx;
+  margin-left: 20rpx;
 }
 
 .benefit {
+  width: 594rpx;
   overflow-wrap: break-word;
   color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
@@ -348,15 +354,19 @@ display: flex;
   white-space: nowrap;
   line-height: 46rpx;
   margin-bottom: 15rpx;
+  background-color:#f0f1f5;
+  margin-left: 10rpx;
+  padding-left: 10rpx;
 }
 
 .benefitContent {
   width: 618rpx;
-  height: 60rpx;
+  /* height: 60rpx; */
   flex-direction: row;
   display: flex;
   justify-content: space-between;
   /* margin-bottom: 10rpx; */
+  margin-left: 20rpx;
 }
 
 .benefitIcon {
@@ -371,10 +381,58 @@ display: flex;
 
 .benefitText {
   width: 594rpx;
-  height: 68rpx;
+  /* height: 68rpx; */
   overflow-wrap: break-word;
   color: #9aa6b1;
-  font-size: 24rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: normal;
+  text-align: left;
+  line-height: 34rpx;
+  margin-bottom: 30rpx;
+}
+
+.rank {
+   display: flex;
+   flex-direction: row;
+   justify-content: left;
+   margin-bottom: 20rpx;
+   margin-left: 15rpx;
+}
+
+.iconAnchorMy {
+  width: 50rpx;
+  height: 50rpx
+}
+
+.benefitContent1 {
+  width: 618rpx;
+  /* height: 40rpx; */
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: 10rpx; */
+  margin-left: 20rpx;
+} 
+
+.benefitContent2 {
+  width: 618rpx;
+  /* height: 40rpx; */
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: 10rpx; */
+  margin-left: 20rpx;
+  margin-top: -30rpx;
+  margin-bottom: 30rpx;
+} 
+
+.benefitText1 {
+  width: 594rpx;
+  /* height: 68rpx; */
+  overflow-wrap: break-word;
+  color: #9aa6b1;
+  font-size: 20rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
   text-align: left;
