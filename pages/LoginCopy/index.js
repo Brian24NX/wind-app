@@ -146,7 +146,7 @@ Page({
   toLogin() {
     console.log(this.data.username)
     wx.navigateTo({
-                url: '/pages/LoginCopy/loading/index',
+                url: '/pages/loading/index',
               })
   },
 

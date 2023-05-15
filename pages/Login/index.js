@@ -52,7 +52,6 @@ Page({
     let openId = wx.getStorageSync('openId')
     let phone = wx.getStorageSync('phone')
     let account = wx.getStorageSync('account')
-
     checkPhoneBind({
       "account": account,
       "openId": openId,
@@ -80,6 +79,7 @@ Page({
     }).then(res => {
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
+        console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
         const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
         wx.setStorageSync('seaRewardData', {

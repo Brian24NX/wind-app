@@ -30,7 +30,7 @@
     "pages/SeaInfoPage/index",
     "pages/LoginCopy/index",
     "pages/LoginCopy/detail/index",
-    "pages/LoginCopy/loading/index"
+    "pages/loading/index"
   ],
   "subPackages": [
     {
