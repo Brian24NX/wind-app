@@ -330,7 +330,7 @@ display: flex;
 }
 
 .waysIntro {
-  width: 594rpx;
+  /* width: 594rpx; */
   /* height: 68rpx; */
   overflow-wrap: break-word;
   color: #9aa6b1;
@@ -361,7 +361,7 @@ display: flex;
 }
 
 .benefitContent {
-  width: 618rpx;
+  /* width: 618rpx; */
   /* height: 60rpx; */
   flex-direction: row;
   display: flex;
@@ -381,7 +381,7 @@ display: flex;
 }
 
 .benefitText {
-  width: 594rpx;
+  /* width: 594rpx; */
   /* height: 68rpx; */
   overflow-wrap: break-word;
   color: #9aa6b1;
@@ -391,6 +391,7 @@ display: flex;
   text-align: left;
   line-height: 34rpx;
   margin-bottom: 30rpx;
+  margin-left: 20rpx;
 }
 
 .rank {
@@ -407,7 +408,7 @@ display: flex;
 }
 
 .benefitContent1 {
-  width: 618rpx;
+  /* width: 618rpx; */
   /* height: 40rpx; */
   flex-direction: row;
   display: flex;
@@ -417,7 +418,7 @@ display: flex;
 } 
 
 .benefitContent2 {
-  width: 618rpx;
+  /* width: 618rpx; */
   /* height: 40rpx; */
   flex-direction: row;
   display: flex;
@@ -425,7 +426,7 @@ display: flex;
   /* margin-bottom: 10rpx; */
   margin-left: 20rpx;
   margin-top: -30rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 } 
 
 .benefitText1 {
