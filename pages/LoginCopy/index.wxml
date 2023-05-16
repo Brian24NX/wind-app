@@ -12,6 +12,11 @@
     <view class="mainContainer">
       <view class="loginContainer">
         <view class="textSignIn">{{item.title[language]}}</view>
+        <view wx:if="{{isErr}}" class="err">
+<!--          <image class="errImg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4A…UQkIZSAOrQRr/M5ABAAIMAIdoZwfQ/JzvAAAAAElFTkSuQmCC"></image>-->
+          {{item.err[language]}}
+        </view>
+        <view wx:if="{{isErr}}"  class="line"></view>
         <view class="formArea">
           <view class="titleLine">{{item.username[language]}}</view>
           <view class="inputContent">
@@ -19,7 +24,7 @@
           </view>
           <view class="titleLine">{{item.password[language]}}</view>
           <view class="inputContent2">
-            <input id="password-input" value="{{password}}" placeholder='' password='true' autocomplete="off" />
+            <input id="password-input" value="{{password}}" placeholder='' bindinput="pwdInput" password='true' autocomplete="off" />
           </view>
           <view class="forgotPassword" bindtap="page">{{item.Forgotten[language]}}</view>
           <view class="signIn" bindtap="toLogin">

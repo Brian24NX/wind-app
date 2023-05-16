@@ -73,13 +73,23 @@ Page({
             '登录',
             'サインイン',
             '로그인'
+        ],
+        err:[
+            'The user name or password is incorrect.',
+            'Le nom d\'utilisateur ou le mot de passe que vous avez entré n\'est pas reconnu. Veuillez réessayer',
+            'A palavra-passe ou nome de utilizador está incorrecto.',
+            'El nombre de usuario o la contraseña son incorrectos.',
+            '用户名或密码不正确。',
+            'ユーザー名またはパスワードが正しくありません。',
+            '사용자 이름 또는 비밀번호가 잘못되었습니다.',
         ]
       },
       value1: 0,
       value2: 'a',
       username:'',
       password:'',
-      isShow:false
+      isShow:false,
+    isErr:false
   },
 
 
@@ -143,13 +153,139 @@ Page({
     })
     this.onLoad()
   },
+  pwdInput(event){
+  this.setData({
+    password:event.detail.value
+  })
+  },
   toLogin() {
     console.log(this.data.username)
-    wx.navigateTo({
-                url: '/pages/loading/index',
-              })
-  },
+    mockLogin({username:this.data.username,pwd:this.data.password}).then(res=>{
+      console.log(res.data)
+      if(res.data){
+        this.setData({
+          isErr:false
+        })
+        const data = res.data
+        const ary = data.data[0]
+        let userInfo = ary.customer
+        if (userInfo) {
+          wx.setStorageSync('ccgId', userInfo.ccgId)
+          userInfo.lastName = userInfo.lastName ? userInfo.lastName.toLocaleUpperCase() : ''
+          if (userInfo.lastName && userInfo.firstName) {
+            userInfo.avatar = userInfo.firstName.substr(0, 1) + userInfo.lastName.substr(0, 1)
+          }
+          wx.setStorageSync('access_token', data.access_token)
+          wx.setStorageSync('expires_time', utils.setExpiresTime(config.expiresIn * 60))
+          wx.setStorageSync('account', ary.customer.email)
 
+          let openId = wx.getStorageSync('openId')
+          let phone = wx.getStorageSync('phone')
+          let account = wx.getStorageSync('account')
+          if (openId && phone && account) {
+            this.checkBindStatus()
+          } else {
+            if (!openId) {
+              wx.login({
+                success(res) {
+                  wx.request({
+                    url: config[config.dev_env].url + '/api/miniapp/wx/user/login?code=' + res.code,
+                    success(data) {
+                      wx.setStorageSync('openId', data.data.data)
+                    }
+                  })
+                }
+              })
+              openId = wx.getStorageSync('openId')
+              phone = wx.getStorageSync('phone')
+              account = wx.getStorageSync('account')
+              if (openId && phone && account) {
+                this.checkBindStatus()
+              }
+            }
+          }
+        }
+        const partnerList = data.partnerList
+        const profileRights = ary.profilerights
+        console.log("----",partnerList,profileRights)
+        if (profileRights && profileRights.length) {
+          const shipCompanyList = Array.from(new Set(profileRights.map(item => item.shipcomp)))
+          const rights = []
+          profileRights.forEach(i => {
+            i.rights.forEach(r => {
+              if (rights.indexOf(r.code) === -1) {
+                rights.push(r.code)
+              }
+            })
+          })
+          wx.setStorageSync('shipCompanyList', shipCompanyList)
+          wx.setStorageSync('rights', rights)
+        }
+        if (partnerList && partnerList.length) {
+          let partnerLists = []
+          partnerList.forEach(i => {
+            i.partnerDetails.address1 = i.partnerDetails.addressLine1
+            i.partnerDetails.address2 = i.partnerDetails.addressLine2
+            i.partnerDetails.address3 = i.partnerDetails.addressLine3
+            delete i.partnerDetails.addressLine1
+            delete i.partnerDetails.addressLine2
+            delete i.partnerDetails.addressLine3
+            partnerLists.push({
+              code: i.partnerDetails.code,
+              name: i.partnerDetails.fullName + ' - ' + i.partnerDetails.city,
+              address: i.partnerDetails
+            })
+          })
+          wx.setStorageSync('partnerList', partnerLists)
+          this.getSeaPartnerInfo()
+        }
+        const params = {
+          "account": userInfo.email,
+          "ccgid": userInfo.ccgId,
+          "company": userInfo.company,
+          "nickname": userInfo.firstName + userInfo.lastName,
+          "operationType": "Login",
+          "shipmentRef": "-"
+        }
+        writeOperationLog(params).then(res => {
+          console.log('登录日志记录成功')
+        })
+        wx.navigateTo({
+          url: '/pages/loading/index',
+        })
+      }else{
+        this.setData({
+          isErr:true
+        })
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+  checkBindStatus() {
+    let openId = wx.getStorageSync('openId')
+    let phone = wx.getStorageSync('phone')
+    let account = wx.getStorageSync('account')
+    checkPhoneBind({
+      "account": account,
+      "openId": openId,
+      "phoneNumber": phone
+    }).then(res => {
+      if (res.data === "2") {
+        bindPhone({
+          "account": account,
+          "openId": openId,
+          "phoneNumber": phone
+        }).then(res => {
+          console.log('成功绑定手机')
+          wx.setStorageSync('bindDate', new Date())
+          wx.setStorageSync('phone', phone)
+        }).catch(err => {
+          console.error(err)
+        })
+      }
+    })
+  },
 
   getSeaPartnerInfo() {
     seaPartnerInfo({
