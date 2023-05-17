@@ -21,31 +21,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    let level = [{
-      label: 'Lieutenant',
-      cnName: '中尉',
-      icon: '/assets/img/seaReward/lieutenant@2x.png'
-    }, {
-      label: 'Captain',
-      cnName: '上尉',
-      icon: '/assets/img/seaReward/captain@2x.png'
-    }, {
-      label: 'Master',
-      cnName: '船长',
-      icon: '/assets/img/seaReward/master@2x.png'
-    }, {
-      label: 'Admiral',
-      cnName: '上将',
-      icon: '/assets/img/seaReward/admiral@2x.png'
-    }]
+    // let level = [{
+    //   label: 'Lieutenant',
+    //   cnName: '中尉',
+    //   icon: '/assets/img/seaReward/lieutenant@2x.png'
+    // }, {
+    //   label: 'Captain',
+    //   cnName: '上尉',
+    //   icon: '/assets/img/seaReward/captain@2x.png'
+    // }, {
+    //   label: 'Master',
+    //   cnName: '船长',
+    //   icon: '/assets/img/seaReward/master@2x.png'
+    // }, {
+    //   label: 'Admiral',
+    //   cnName: '上将',
+    //   icon: '/assets/img/seaReward/admiral@2x.png'
+    // }]
     wx.removeStorageSync('seaRewardData')
-    if(wx.getStorageSync('partnerList')){
-      this.getSeaPartnerInfo()
-    }
-    wx.setStorageSync('rewardLevel', level)
-    this.setData({
-      rewardLevel: level
-    })
+
+
+    // wx.setStorageSync('rewardLevel', level)
+    // this.setData({
+    //   rewardLevel: level
+    // })
   },
 
   checkBindStatus() {
@@ -73,29 +72,29 @@ Page({
     })
   },
 
-  getSeaPartnerInfo() {
-    seaPartnerInfo({
-      "partnerCode": wx.getStorageSync('partnerList')[0].code,
-    }).then(res => {
-      const infodata = res.data
-      if (infodata.memberTiers && infodata.memberTiers.length) {
-        console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
-        const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
-        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
-        wx.setStorageSync('seaRewardData', {
-          memberStatus: infodata.memberStatus,
-          level: infodata.memberTiers[0].loyaltyMemberTierName,
-          icon: myReward[0] ? myReward[0].icon : '',
-          pointsBalance: points.pointsBalance || 0,
-          cnName: myReward[0] ? myReward[0].cnName : '',
-          usdSaved: points.totalPointsRedeemed || 0,
-          // associatedAccount: infodata.associatedAccount.name
-        })
-      }
-    }).catch(err => {
-      console.error(err)
-    })
-  },
+  // getSeaPartnerInfo() {
+  //   seaPartnerInfo({
+  //     "partnerCode": wx.getStorageSync('partnerList')[0].code,
+  //   }).then(res => {
+  //     const infodata = res.data
+  //     if (infodata.memberTiers && infodata.memberTiers.length) {
+  //       console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
+  //       const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
+  //       const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
+  //       wx.setStorageSync('seaRewardData', {
+  //         memberStatus: infodata.memberStatus,
+  //         level: infodata.memberTiers[0].loyaltyMemberTierName,
+  //         icon: myReward[0] ? myReward[0].icon : '',
+  //         pointsBalance: points.pointsBalance || 0,
+  //         cnName: myReward[0] ? myReward[0].cnName : '',
+  //         usdSaved: points.totalPointsRedeemed || 0,
+  //         // associatedAccount: infodata.associatedAccount.name
+  //       })
+  //     }
+  //   }).catch(err => {
+  //     console.error(err)
+  //   })
+  // },
 
   getMessage(e) {
     const data = e.detail.data[0]
@@ -185,7 +184,7 @@ Page({
         writeOperationLog(params).then(res => {
           console.log('登录日志记录成功')
         })
-        this.getSeaPartnerInfo()
+        // this.getSeaPartnerInfo()
       }
     }
   }

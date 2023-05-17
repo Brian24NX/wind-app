@@ -388,6 +388,7 @@ page {
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #04246A;
+  text-align: center;
 }
 
 .urlCopy {

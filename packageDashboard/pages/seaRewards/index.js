@@ -112,6 +112,7 @@ Page({
         searchHis: [],
         count: 0,
         isShow: false,
+        isShowLieutenant:false,//中尉没有抵扣
         partnerList : wx.getStorageSync('partnerList')
     },
 
@@ -166,10 +167,26 @@ Page({
     },
 
     changeType(e) {
+        console.log(e.currentTarget.dataset.type)
         this.setData({
-            curTab: e.currentTarget.dataset.type
+            curTab: e.currentTarget.dataset.type,
+
         })
-        this.getRewardDashboard(e.currentTarget.dataset.type)
+        if(this.data.currentLevel.name === 'Lieutenant'&&e.currentTarget.dataset.type==='burns'){
+           this.setData({
+               isShowLieutenant:true,
+               dashboard:[],
+               noData:true
+           })
+        }else {
+            this.setData({
+                isShowLieutenant:false,
+                noData:false
+            })
+            this.getRewardDashboard(e.currentTarget.dataset.type)
+        }
+
+
     },
 
     getRewardDashboard(type) {
@@ -362,9 +379,10 @@ Page({
     },
 
     gotoQuat() {
-        wx.switchTab({
-            url: '/pages/Quotation/Search/index',
-        })
+            wx.switchTab({
+                url: '/pages/Quotation/Search/index',
+            })
+
     },
 
     // 定义 formatDate 函数，参数为日期字符串

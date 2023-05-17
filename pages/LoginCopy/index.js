@@ -101,32 +101,32 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.item.title[this.data.language],
     })
-    let level = [{
-      label: 'Lieutenant',
-      cnName: '中尉',
-      icon: '/assets/img/seaReward/lieutenant@2x.png'
-    }, {
-      label: 'Captain',
-      cnName: '上尉',
-      icon: '/assets/img/seaReward/captain@2x.png'
-    }, {
-      label: 'Master',
-      cnName: '船长',
-      icon: '/assets/img/seaReward/master@2x.png'
-    }, {
-      label: 'Admiral',
-      cnName: '上将',
-      icon: '/assets/img/seaReward/admiral@2x.png'
-    }]
+    // let level = [{
+    //   label: 'Lieutenant',
+    //   cnName: '中尉',
+    //   icon: '/assets/img/seaReward/lieutenant@2x.png'
+    // }, {
+    //   label: 'Captain',
+    //   cnName: '上尉',
+    //   icon: '/assets/img/seaReward/captain@2x.png'
+    // }, {
+    //   label: 'Master',
+    //   cnName: '船长',
+    //   icon: '/assets/img/seaReward/master@2x.png'
+    // }, {
+    //   label: 'Admiral',
+    //   cnName: '上将',
+    //   icon: '/assets/img/seaReward/admiral@2x.png'
+    // }]
     wx.removeStorageSync('seaRewardData')
-    if(wx.getStorageSync('partnerList')){
-      this.getSeaPartnerInfo()
-    }
-    console.log('level',level)
-    wx.setStorageSync('rewardLevel', level)
-    this.setData({
-      rewardLevel: level
-    })
+    // if(wx.getStorageSync('partnerList')){
+    //   this.getSeaPartnerInfo()
+    // }
+    // console.log('level',level)
+    // wx.setStorageSync('rewardLevel', level)
+    // this.setData({
+    //   rewardLevel: level
+    // })
 
   },
   onInput(event){
@@ -232,7 +232,7 @@ Page({
             })
           })
           wx.setStorageSync('partnerList', partnerLists)
-          this.getSeaPartnerInfo()
+          // this.getSeaPartnerInfo()
         }
         const params = {
           "account": userInfo.email,
@@ -282,39 +282,39 @@ Page({
     })
   },
 
-  getSeaPartnerInfo() {
-    seaPartnerInfo({
-      "partnerCode": wx.getStorageSync('partnerList')[0].code,
-    }).then(res => {
-      const infodata = res.data
-      if (infodata.memberTiers && infodata.memberTiers.length) {
-        const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
-        const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
-        let list = {}
-        list = {
-          memberStatus: infodata.memberStatus,
-          level: infodata.memberTiers[0].loyaltyMemberTierName,
-          icon: myReward[0] ? myReward[0].icon : '',
-          pointsBalance: points.pointsBalance || 0,
-          cnName: myReward[0] ? myReward[0].cnName : '',
-          usdSaved: points.totalPointsRedeemed || 0,
-          // associatedAccount: infodata.associatedAccount.name
-        }
-        wx.setStorageSync('one',1)
-        wx.setStorageSync('seaRewardData', {
-          memberStatus: infodata.memberStatus,
-          level: infodata.memberTiers[0].loyaltyMemberTierName,
-          icon: myReward[0] ? myReward[0].icon : '',
-          pointsBalance: points.pointsBalance || 0,
-          cnName: myReward[0] ? myReward[0].cnName : '',
-          usdSaved: points.totalPointsRedeemed || 0,
-          // associatedAccount: infodata.associatedAccount.name
-        })
-      }
-    }).catch(err => {
-      console.error(err)
-    })
-  },
+  // getSeaPartnerInfo() {
+  //   seaPartnerInfo({
+  //     "partnerCode": wx.getStorageSync('partnerList')[0].code,
+  //   }).then(res => {
+  //     const infodata = res.data
+  //     if (infodata.memberTiers && infodata.memberTiers.length) {
+  //       const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
+  //       const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
+  //       let list = {}
+  //       list = {
+  //         memberStatus: infodata.memberStatus,
+  //         level: infodata.memberTiers[0].loyaltyMemberTierName,
+  //         icon: myReward[0] ? myReward[0].icon : '',
+  //         pointsBalance: points.pointsBalance || 0,
+  //         cnName: myReward[0] ? myReward[0].cnName : '',
+  //         usdSaved: points.totalPointsRedeemed || 0,
+  //         // associatedAccount: infodata.associatedAccount.name
+  //       }
+  //       wx.setStorageSync('one',1)
+  //       wx.setStorageSync('seaRewardData', {
+  //         memberStatus: infodata.memberStatus,
+  //         level: infodata.memberTiers[0].loyaltyMemberTierName,
+  //         icon: myReward[0] ? myReward[0].icon : '',
+  //         pointsBalance: points.pointsBalance || 0,
+  //         cnName: myReward[0] ? myReward[0].cnName : '',
+  //         usdSaved: points.totalPointsRedeemed || 0,
+  //         // associatedAccount: infodata.associatedAccount.name
+  //       })
+  //     }
+  //   }).catch(err => {
+  //     console.error(err)
+  //   })
+  // },
 
   page(){
     wx.navigateTo({

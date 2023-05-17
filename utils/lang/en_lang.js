@@ -402,6 +402,8 @@ var Languague = {
       saved: ' USD Saved',
       virtroles: 'CENTRIMEX-Virtroles',
       spotOn: 'On SpotOn Bookings',
+      Lieutenant:'Sorry, the benefit to use Nautical Miles is available starting Captain rank and above.',
+      Lieutenanttext:'Get an instant quote now to level up!',
       desc1: 'As a ',
       desc2: ' you earn ',
       desc3: ' Nautical Miles for every 100＄ spent on SpotOn quotes. Nautical Miles are earned once the invoice is paid.',

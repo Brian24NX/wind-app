@@ -419,6 +419,8 @@ var Languague = {
       all: '全部',
       earnings: '累积',
       burns: '抵扣',
+      Lieutenant:'抱歉，只有上尉及以上等级才可享受海里抵现权益。',
+      Lieutenanttext:'立即获取报价，升级您的等级吧！',
       quatedate: '报价单创建日期',
       bookRef:'订舱单号',
       detail: {
