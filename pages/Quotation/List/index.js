@@ -102,6 +102,7 @@ Page({
       shipperOwnedContainer: data.shipperOwnedContainer
     })
     if (data.resultResq.traceId) {
+      console.log('oldQuoteLineList',data.resultResq.nextDepartureQuoteLineAndRoute)
       this.setData({
         oldQuoteLineList: data.resultResq.nextDepartureQuoteLineAndRoute,
         traceId: data.resultResq.traceId,
@@ -170,6 +171,7 @@ Page({
             }
           })
         })
+        console.log('quoteLineList',this.data.quoteLineList)
         wx.pageScrollTo({
           duration: 500,
           scrollTop: 0
@@ -244,14 +246,17 @@ Page({
           }
         })
       } else {
+
         this.setData({
           quoteLineList: res.data
         })
+        console.log('res.data',res.data)
       }
       this.setData({
         isLoading: false
       })
     }, () => {
+      console.log([])
       this.setData({
         quoteLineList: [],
         isLoading: false
@@ -271,6 +276,7 @@ Page({
       this.setData({
         oldQuoteLineList: this.data.quoteLineList
       })
+      console.log('getPlacePoint',this.data.quoteLineList,this.data.oldQuoteLineList)
     }, () => {
       this.getPlacePoint(pointCode, item, type)
     })
@@ -319,10 +325,12 @@ Page({
       this.setData({
         quoteLineList: this.data.quoteLineList
       })
+      console.log('getQuotationSurchargeDetailFn,quoteLineList',this.data.quoteLineList)
       if (isFirst) {
         this.setData({
           oldQuoteLineList: this.data.quoteLineList
         })
+        console.log('getQuotationSurchargeDetailFn,oldQuoteLineList',this.data.oldQuoteLineList)
       }
     }, () => {
       this.getQuotationSurchargeDetailFn(item, params, isFirst)

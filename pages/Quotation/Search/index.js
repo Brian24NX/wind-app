@@ -34,7 +34,9 @@ Page({
     minDate: new Date().getTime(),
     maxDate: new Date().getTime() + 1000 * 60 * 60 * 24 * 30,
     showPol: false,
+    polCount:1,
     showPod: false,
+    podCount:1,
     shipperOwnedContainer: false,
     // 收货地
     placeOfOrigin: '',
@@ -89,7 +91,9 @@ Page({
     showPlaceOfReceipt: false,
     showPlaceOfDelivery: false,
     showPoR: false,
+    porCount:1,
     showPoDe: false,
+    poDeCount:1,
     pricingGroupSetups: [],
     pricingGroups: [],
     resultResq: {},
@@ -193,7 +197,7 @@ Page({
 
   changeCurrentType(e) {
     this.setData({
-      currentType: e.currentTarget.dataset.type
+      currentType: e.currentTarget.dataset.type,
     })
     this.reset()
     if (this.data.currentType === 'instation') {
@@ -336,6 +340,7 @@ Page({
     this.setData({
       showDelete4: !!data,
       showPoR: false,
+      porCount:1,
       pooWarn: false,
       placeOfReceiptList: []
     })
@@ -366,7 +371,8 @@ Page({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPoR: false
+          showPoR: false,
+          porCount:1,
         })
         if (res.data != '') {
           res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
@@ -378,14 +384,23 @@ Page({
           this.hideDropdown()
         }
       }, () => {
-        this.getPorData(data)
+        this.data.porCount++
+        if(this.data.porCount<=3){
+          this.getPorData(data)
+        }else{
+          this.setData({
+            showPoR: false,
+          })
+          this.hideDropdown()
+        }
       })
     } else {
       getPortPlaceInfo({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPoR: false
+          showPoR: false,
+          porCount:1,
         })
         let placeOfReceiptList = []
         if (res.data && res.data.length) {
@@ -404,7 +419,15 @@ Page({
         })
         console.log('placeOfReceiptList',placeOfReceiptList)
       }, () => {
-        this.getPorData(data)
+        this.data.porCount++
+        if(this.data.porCount<=3){
+          this.getPorData(data)
+        }else{
+          this.setData({
+            showPoR: false,
+          })
+          this.hideDropdown()
+        }
       })
     }
   },
@@ -417,6 +440,7 @@ Page({
       showRemind1: false,
       showRemind2: false,
       showPol: false,
+      polCount:1,
       pollist: []
     })
     if (data.length < 2) {
@@ -448,7 +472,15 @@ Page({
         this.hideDropdown()
       }
     }, () => {
-      this.getPolData(data)
+      this.data.polCount++
+      if(this.data.polCount<=3){
+        this.getPolData(data)
+      }else{
+        this.setData({
+          showPol: false
+        })
+        this.hideDropdown()
+      }
     })
   },
 
@@ -460,6 +492,7 @@ Page({
       showRemind3: false,
       showRemind4: false,
       showPod: false,
+      podCount:1,
       podlist: []
     })
     if (data.length < 2) {
@@ -491,7 +524,15 @@ Page({
         this.hideDropdown()
       }
     }, () => {
-      this.getPodData(data)
+      this.data.podCount++
+      if(this.data.podCount<=3){
+        this.getPodData(data)
+      }else{
+        this.setData({
+          showPod: false
+        })
+        this.hideDropdown()
+      }
     })
   },
 
@@ -501,6 +542,7 @@ Page({
     this.setData({
       showDelete5: !!data,
       showPoDe: false,
+      poDeCount:1,
       podEndWarn: false,
       placeOfDeliveryList: []
     })
@@ -522,7 +564,6 @@ Page({
   }, 800),
 
   getPooData(data) {
-    console.log('----------',data)
     this.setData({
       showPoDe: true
     })
@@ -531,7 +572,7 @@ Page({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPoDe: false
+          showPoDe: false,
         })
         if (res.data != '') {
           res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
@@ -549,7 +590,7 @@ Page({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPoDe: false
+          showPoDe: false,
         })
         let placeOfDeliveryList = []
         if (res.data && res.data.length) {
@@ -567,7 +608,7 @@ Page({
           placeOfDeliveryList
         })
       }, () => {
-        this.getPorData(data)
+          this.getPorData(data)
       })
     }
   },
@@ -1267,7 +1308,9 @@ Page({
       showPlaceOfDelivery: false,
       showPlaceOfReceipt: false,
       showPol: false,
+      polCount:1,
       showPod: false,
+      podCount:1,
       placeOfOrigin: '',
       placeOfOriginLabel: '',
       receiptHaulage: '',

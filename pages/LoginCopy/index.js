@@ -130,11 +130,9 @@ Page({
 
   },
   onInput(event){
-    console.log('key-on',event.detail.value)
     this.setData({
       username:event.detail.value
     })
-    console.log('Username',this.data.username)
   },
   onShow(){
     console.log(this.data.option1)
@@ -159,9 +157,7 @@ Page({
   })
   },
   toLogin() {
-    console.log(this.data.username)
     mockLogin({username:this.data.username,pwd:this.data.password}).then(res=>{
-      console.log(res.data)
       if(res.data){
         this.setData({
           isErr:false
@@ -207,7 +203,6 @@ Page({
         }
         const partnerList = data.partnerList
         const profileRights = ary.profilerights
-        console.log("----",partnerList,profileRights)
         if (profileRights && profileRights.length) {
           const shipCompanyList = Array.from(new Set(profileRights.map(item => item.shipcomp)))
           const rights = []
@@ -293,10 +288,8 @@ Page({
     }).then(res => {
       const infodata = res.data
       if (infodata.memberTiers && infodata.memberTiers.length) {
-        console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
         const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
         const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
-       console.log('infodata',infodata,myReward[0],points)
         let list = {}
         list = {
           memberStatus: infodata.memberStatus,
@@ -307,7 +300,6 @@ Page({
           usdSaved: points.totalPointsRedeemed || 0,
           // associatedAccount: infodata.associatedAccount.name
         }
-        console.log('list',list)
         wx.setStorageSync('one',1)
         wx.setStorageSync('seaRewardData', {
           memberStatus: infodata.memberStatus,
