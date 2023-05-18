@@ -1,17 +1,31 @@
 <!--packageDashboard/pages/seaRewardFAQ/index.wxml-->
 <scroll-view id="spot-page" scroll-y scrollWithAnimation scroll-top="{{scrollTop}}">
   <view class="resultContainers">
+
+    <view class="categoryLists">
+      <scroll-view class="categoryList" scroll-x scroll-with-animation scroll-left="{{scrollLeft}}" show-scrollbar="false" enhanced="true">
+        <view class="oneCategory {{categoryId === item.value ? 'categoryActived' : ''}}" id="categoryId-{{item.value}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.value}}">
+          <text>{{item.text}}</text>
+          <view class="line"></view>
+        </view>
+      </scroll-view>
+    </view>
     <view class="rateContainer">
       <view class="rateItem" catchtap="zhedie" data-type="foldRate">
         <view class="titleLine"></view>
-        <view class="titleText">  Lorem ipsum dolor sit amet consectetur ? </view>
+        <view class="titleText"> What are Nautical Miles? {{list[categoryId].one}}</view>
         <!-- <image src="/assets/img/seaReward/lieutenant@2x.png" class="iconAnchor" /> -->
         <image class="editIcon {{foldRate ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate}}" class="hiddenContainer">
         <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+
+          <view class="waysIntro"> Nautical Miles is the currency of the loyalty program that you will cumulate all long your booking journey.
+          The Nautical Miles are calculated regarding the amount of Ocean Freight purchased during your SpotOn booking.
+          From quotation to invoice generation you will be able to collect a simulation of Nautical Miles.
+          Once the invoice is paid Nautical Miles will be definitively credited to your Sea Reward account. Those Nautical Miles are called "Earned" Nautical Miles.
+          Then you will be able to use a proposed amount of "Earned" Nautical Miles on your next SpotOn quotations in order to get a discount in dollar (1 Nautical Miles = 1$). Those Nautical Miles will be considered "pending" Nautical Miles until invoice generation.
+          Once the invoice is paid those "engaged" Nautical Miles will be considered as "used" Nautical Miles and will give you the discount associated in dollar on your final invoice.
           </view>
 
         </view>
@@ -24,8 +38,8 @@
       </view>
       <view hidden="{{foldRate2}}" class="hiddenContainer">
         <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+
+          <view class="waysIntro"> rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
           </view>
 
         </view>
@@ -38,50 +52,50 @@
       </view>
       <view hidden="{{foldRate3}}" class="hiddenContainer">
         <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+
+          <view class="waysIntro"> rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
           </view>
 
         </view>
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate4">
         <view class="titleLine"></view>
-        <view class="titleText">  Lorem ipsum dolor sit amet consectetur ? </view>
+        <view class="titleText"> Lorem ipsum dolor sit amet consectetur ? </view>
         <!-- <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" /> -->
         <image class="editIcon {{foldRate4 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate4}}" class="hiddenContainer">
         <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+
+          <view class="waysIntro"> rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
           </view>
 
         </view>
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate5">
         <view class="titleLine"></view>
-        <view class="titleText">  Lorem ipsum dolor sit amet consectetur ? </view>
+        <view class="titleText"> Lorem ipsum dolor sit amet consectetur ? </view>
         <!-- <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" /> -->
         <image class="editIcon {{foldRate5 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate5}}" class="hiddenContainer">
         <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+
+          <view class="waysIntro"> rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
           </view>
 
         </view>
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate6">
         <view class="titleLine"></view>
-        <view class="titleText">  Lorem ipsum dolor sit amet consectetur ? </view>
+        <view class="titleText"> Lorem ipsum dolor sit amet consectetur ? </view>
         <!-- <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" /> -->
         <image class="editIcon {{foldRate6 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate6}}" class="hiddenContainer">
         <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+
+          <view class="waysIntro"> rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
           </view>
 
         </view>

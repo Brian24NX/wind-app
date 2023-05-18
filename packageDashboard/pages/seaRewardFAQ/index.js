@@ -22,13 +22,29 @@ Page({
     foldRate3: true,
     foldRate4: true,
     foldRate5: true,
-    foldRate6: true
+    foldRate6: true,
+    scrollLeft: 0,
+    categoryId: 0,
+    categoryList: [
+      { text: 'My Nautical Miles', value: 0 },
+      { text: 'My Reward & Rank', value: 1 },
+      { text: 'My Sea Reward account', value: 2 },
+      { text: 'Enrolment & Registration', value: 3 },
+    ],
+    list:[
+      {one:''},
+      {one:''},
+      {one:''},
+      {one:''}
+    ]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    console.log(this.data.categoryList)
     this.initLanguage(),
       this.getSeaRewardFAQ()
   },
@@ -43,6 +59,20 @@ Page({
       title: language.lang.page.seaRewardFAQ.title,
     })
   },
+
+    // 切换分类
+    changeCategory(e) {
+      const categoryId = e.currentTarget.dataset.id
+      console.log(categoryId)
+      this.setData({
+        categoryId
+      })
+      wx.createSelectorQuery().select('#categoryId-' + categoryId).boundingClientRect((rect) => {
+        this.setData({
+          scrollLeft: e.currentTarget.offsetLeft - this.data.scrollViewWidth / 2 + rect.width / 2
+        })
+      }).exec()
+    },
 
   getSeaRewardFAQ() {
     seaRewardFAQ({
