@@ -209,8 +209,8 @@ Page({
             // "range": pageSize
         }).then(res => {
             if (res.data) {
-          console.log(this.data.currentLevel)
-                if(type === 'earnings'&&this.data.currentLevel.name === 'Lieutenant'){
+
+                if(type === 'earnings'&&this.data.currentLevel.name === 'Lieutenant'&&res.data.length===0){
                     this.setData({
                         item: res.data
                     })
@@ -219,7 +219,10 @@ Page({
                         noData: true
                     })
                 }else{
-
+                    this.setData({
+                        item: res.data
+                    })
+                    allList = res.data
                     console.log("allList", allList)
                     this.dealPaging()
                 }
