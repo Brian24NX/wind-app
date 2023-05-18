@@ -32,42 +32,42 @@
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate2">
         <view class="titleLine"></view>
-        <view class="titleText"> Lorem ipsum dolor ? </view>
+        <view class="titleText"> Where do I find my current Nautical Miles balance ? </view>
         <!-- <image src="/assets/img/seaReward/captain@2x.png" class="iconAnchor" /> -->
         <image class="editIcon {{foldRate2 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate2}}" class="hiddenContainer">
         <view class="dropDown">
 
-          <view class="waysIntro"> rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+          <view class="waysIntro"> You can check your earned Nautical Miles in your "Sea Reward Dashboard" page.
           </view>
 
         </view>
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate3">
         <view class="titleLine"></view>
-        <view class="titleText"> Lorem ipsum dolor sit amet ? </view>
+        <view class="titleText"> Why my Nautical Miles are not credited in my account? </view>
         <!-- <image src="/assets/img/seaReward/master@2x.png" class="iconAnchor" /> -->
         <image class="editIcon {{foldRate3 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate3}}" class="hiddenContainer">
         <view class="dropDown">
 
-          <view class="waysIntro"> rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+          <view class="waysIntro"> The invoice might be not paid or still processing.
           </view>
 
         </view>
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate4">
         <view class="titleLine"></view>
-        <view class="titleText"> Lorem ipsum dolor sit amet consectetur ? </view>
+        <view class="titleText"> When will I receive the Nautical Miles I have earned? </view>
         <!-- <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" /> -->
         <image class="editIcon {{foldRate4 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate4}}" class="hiddenContainer">
         <view class="dropDown">
 
-          <view class="waysIntro"> rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+          <view class="waysIntro"> For each SpotOn booking, your "earned" Nautical Miles will be credited to your Sea Reward account at invoice payment.
           </view>
 
         </view>

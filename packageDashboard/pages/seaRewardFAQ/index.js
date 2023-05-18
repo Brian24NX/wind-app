@@ -1,5 +1,6 @@
 // packageDashboard/pages/seaRewardFAQ/index.js
 const languageUtils = require('../../../utils/languageUtils')
+import { formatHuoYunStatus } from '../../../utils/util'
 import {
   seaRewardFAQ
 } from '../../api/modules/dashboard'
@@ -33,8 +34,6 @@ Page({
     ],
     list:[
       {one:''},
-      {one:''},
-      {one:''},
       {one:''}
     ]
 
@@ -63,7 +62,7 @@ Page({
     // 切换分类
     changeCategory(e) {
       const categoryId = e.currentTarget.dataset.id
-      console.log(categoryId)
+      console.log(categoryId, 212323)
       this.setData({
         categoryId
       })
