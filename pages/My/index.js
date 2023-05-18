@@ -64,6 +64,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function () {
+        wx.setStorageSync('rewardLevel', this.data.rewardLevel)
         this.initLanguage();
         let phone = wx.getStorageSync('phone')
         if (phone) {
