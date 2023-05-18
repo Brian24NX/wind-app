@@ -8,7 +8,6 @@ const utils = require('../../utils/util')
 import {
     customerProfile,
     customerPartners,
-    seaPartnerInfo
 } from '../../api/modules/home'
 
 Page({
@@ -40,31 +39,13 @@ Page({
         preAccount: '',
         memberStatus: null,
         seaRewardData: null,
-        count: 0,
-        rewardLevel:[{
-            label: 'Lieutenant',
-            cnName: '中尉',
-            icon: '/assets/img/seaReward/lieutenant@2x.png'
-        }, {
-            label: 'Captain',
-            cnName: '上尉',
-            icon: '/assets/img/seaReward/captain@2x.png'
-        }, {
-            label: 'Master',
-            cnName: '船长',
-            icon: '/assets/img/seaReward/master@2x.png'
-        }, {
-            label: 'Admiral',
-            cnName: '上将',
-            icon: '/assets/img/seaReward/admiral@2x.png'
-        }]
+        count: 0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function () {
-        wx.setStorageSync('rewardLevel', this.data.rewardLevel)
         this.initLanguage();
         let phone = wx.getStorageSync('phone')
         if (phone) {
@@ -80,7 +61,6 @@ Page({
      */
     onShow: function () {
         if (utils.checkAccessToken()) {
-            console.log('---------------------------------------',wx.getStorageSync('partnerList')[0]?.code)
             let userInfo = wx.getStorageSync('userInfo')
             if (!userInfo) {
                 customerProfile({
@@ -135,16 +115,40 @@ Page({
                 needLogin: false
             })
             console.log('count', this.data.count, this.data.count === 1, wx.getStorageSync('seaRewardData'),new Date())
-            if (this.data.count === 1) {
-                wx.showLoading({
-                    title: languageUtil.languageVersion().lang.page.load.load,
-                    mask: true
-                })
-                if(wx.getStorageSync('partnerList')){
-                    this.getSeaPartnerInfo()
+            // if (this.data.count === 1) {
+            //     wx.showLoading({
+            //         title: languageUtil.languageVersion().lang.page.load.load,
+            //         mask: true
+            //     })
+            // }
+            setTimeout(() => {
+                if (this.data.count === 1) {
+                    wx.showLoading({
+                        title: languageUtil.languageVersion().lang.page.load.load,
+                        mask: true
+                    })
                 }
-            }
-
+                let reward = wx.getStorageSync('seaRewardData')
+                this.setData({
+                    count: 2
+                })
+                console.log(new Date(),reward)
+                if (reward) {
+                    this.setData({
+                        seaRewardData: reward,
+                        memberStatus: reward.memberStatus,
+                    })
+                    console.log(2,this.data.seaRewardData,this.data.memberStatus,new Date())
+                    // setTimeout(() => {
+                    //     console.log(2222,new Date())
+                        wx.hideLoading()
+                    // },1000)
+                } else {
+                    // this.$nextTick(()=>{
+                        wx.hideLoading()
+                    // })
+                }
+            }, 2000)
         } else {
             this.setData({
                 needLogin: true,
@@ -153,7 +157,6 @@ Page({
                 memberStatus: null
             })
         }
-
         if (typeof this.getTabBar === 'function' && this.getTabBar()) {
             this.getTabBar().setData({
                 selected: 3
@@ -161,43 +164,7 @@ Page({
         }
 
     },
-    getSeaPartnerInfo() {
-        seaPartnerInfo({
-            "partnerCode": wx.getStorageSync('partnerList')[0].code,
-        }).then(res => {
-            const infodata = res.data
-            if (infodata.memberTiers && infodata.memberTiers.length) {
-                console.log(1,this.data.rewardLevel,infodata.memberTiers[0].loyaltyMemberTierName)
-                const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
-                const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
-                wx.setStorageSync('seaRewardData', {
-                    memberStatus: infodata.memberStatus,
-                    level: infodata.memberTiers[0].loyaltyMemberTierName,
-                    icon: myReward[0] ? myReward[0].icon : '',
-                    pointsBalance: points.pointsBalance || 0,
-                    cnName: myReward[0] ? myReward[0].cnName : '',
-                    usdSaved: points.totalPointsRedeemed || 0,
-                    // associatedAccount: infodata.associatedAccount.name
-                })
-            }
-                this.setData({
-                    count: 2
-                })
-                    this.setData({
-                        seaRewardData: wx.getStorageSync('seaRewardData'),
-                        memberStatus:infodata.memberStatus,
-                    })
-                    console.log(2,this.data.seaRewardData,this.data.memberStatus,new Date())
-                    wx.hideLoading()
 
-        }).catch(err => {
-            this.setData({
-                count: 2
-            })
-            wx.hideLoading()
-            console.error(err)
-        })
-    },
     //初始化语言
     initLanguage() {
         //获取当前小程序语言版本所对应的字典变量

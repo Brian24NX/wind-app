@@ -151,8 +151,8 @@ Page({
             title: languageUtil.languageVersion().lang.page.load.load,
             mask: true
         })
-        this.getRewardDashboard('earnings')
         this.getSeaPartnerInfo()
+
     },
 
     initLanguage() {
@@ -209,17 +209,25 @@ Page({
             // "range": pageSize
         }).then(res => {
             if (res.data) {
-                this.setData({
-                    item: res.data
-                })
-                allList = res.data
-                console.log("allList", allList)
-                this.dealPaging()
+          console.log(this.data.currentLevel)
+                if(type === 'earnings'&&this.data.currentLevel.name === 'Lieutenant'){
+                    this.setData({
+                        item: res.data
+                    })
+                    allList = res.data
+                    this.setData({
+                        noData: true
+                    })
+                }else{
+
+                    console.log("allList", allList)
+                    this.dealPaging()
+                }
             } else {
-                this.setData({
-                    loading: false,
-                    noData: true
-                })
+                    this.setData({
+                        loading: false,
+                        noData: true
+                    })
             }
         }, () => {
             this.setData({
@@ -257,6 +265,7 @@ Page({
         seaPartnerInfo({
             "partnerCode": wx.getStorageSync('partnerList')[0].code,
         }).then(res => {
+            this.getRewardDashboard('earnings')
             this.setData({
                 isShow: true
             })
@@ -266,7 +275,6 @@ Page({
                 const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
                 const points = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Available Nmiles')[0]
                 const rightusdSaved = infodata.memberCurrencies.filter((j) => j.loyaltyMemberCurrencyName === 'Burned Nmiles')[0]
-                console.log(1, this.data.rewardLevel, rightusdSaved)
                 const newSea = {
                     memberStatus: infodata.memberStatus,
                     level: infodata.memberTiers[0].loyaltyMemberTierName,
@@ -284,6 +292,7 @@ Page({
                     availableMiles: points.pointsBalance || 0,
                     savedUSD: rightusdSaved.pointsBalance || 0,
                 })
+
                 wx.setStorageSync('seaRewardData', newSea)
             }
         }).catch(err => {

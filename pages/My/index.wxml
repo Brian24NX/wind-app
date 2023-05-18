@@ -26,8 +26,6 @@
       <van-icon name="arrow" color="#04246A" />
     </view>
   </view>
-<!--  {{memberStatus==='Active'}}-->
-<!--  {{!needLogin}}-->
   <view class="seaRewardBox" wx:if="{{!needLogin && memberStatus==='Active'}}" catchtap='goToSeaRewardPage'>
     <view class="seaLogo">
       <image src="/assets/img/seaReward/seaLogo@2x.png" mode="aspectFit"></image>

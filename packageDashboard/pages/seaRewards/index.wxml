@@ -62,7 +62,6 @@
         <view class="viewTypes">
           <view class="oneType {{curTab === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType"
                 data-type="{{item}}">
-<!--             wx:if="{{currentLevel.name === 'Lieutenant' ? item !== 'burns' : item }}"-->
             <view>{{languageContent[item]}}</view>
             <view class="activedLine"></view>
           </view>
