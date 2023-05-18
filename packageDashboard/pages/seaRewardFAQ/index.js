@@ -29,7 +29,7 @@ Page({
         categoryList: [
             {text: 'My Nautical Miles', value: 0},
             {text: 'My Reward & Rank', value: 1},
-            {text: 'My Sea Reward account', value: 2},
+            {text: 'My Sea Reward Account', value: 2},
             {text: 'Enrolment & Registration', value: 3},
         ],
         listItem: [
