@@ -36,7 +36,12 @@ Page({
             [
                 {
                     title: 'What are Nautical Miles?',
-                    content: ' Nautical Miles is the currency of the loyalty program that you will cumulate all long your booking journey.\nThe Nautical Miles are calculated regarding the amount of Ocean Freight purchased during your SpotOn booking.\nFrom quotation to invoice generation you will be able to collect a simulation of Nautical Miles.\nOnce the invoice is paid Nautical Miles will be definitively credited to your Sea Reward account. Those Nautical Miles are called "Earned" Nautical Miles.\nThen you will be able to use a proposed amount of "Earned" Nautical Miles on your next SpotOn quotations in order to get a discount in dollar (1 Nautical Miles = 1$). Those Nautical Miles will be considered "pending" Nautical Miles until invoice generation.\nOnce the invoice is paid those "engaged" Nautical Miles will be considered as "used" Nautical Miles and will give you the discount associated in dollar on your final invoice.',
+                    content: ' Nautical Miles is the currency of the loyalty program that you will cumulate all long your booking journey.' +
+                        'The Nautical Miles are calculated regarding the amount of Ocean Freight purchased during your SpotOn booking.' +
+                        '\nFrom quotation to invoice generation you will be able to collect a simulation of Nautical Miles.' +
+                        '\nOnce the invoice is paid Nautical Miles will be definitively credited to your Sea Reward account. Those Nautical Miles are called "Earned" Nautical Miles.' +
+                        '\nThen you will be able to use a proposed amount of "Earned" Nautical Miles on your next SpotOn quotations in order to get a discount in dollar (1 Nautical Miles = 1$). Those Nautical Miles will be considered "pending" Nautical Miles until invoice generation.' +
+                        '\nOnce the invoice is paid those "engaged" Nautical Miles will be considered as "used" Nautical Miles and will give you the discount associated in dollar on your final invoice.',
                     isShow: true
                 },
                 {
@@ -86,7 +91,9 @@ Page({
                 },
                 {
                     title: 'I have Nautical Miles in my Sea Reward account but I can\'t use them. Why can\'t I use them?',
-                    content: 'There are two main use cases when a contact of company wont be able to use its Nautical Miles:\n1) When the rank of the company is Lieutenant (you can only earn Nautical Miles, in Sea Reward program the benefit to use Nautical Miles is available starting Captain rank and above.\n2) The contact has placed a quotation but he is not recorded as main contact of the company. So, the contact will be able to earn Nautical Miles but not use Nautical Miles.',
+                    content: 'There are two main use cases when a contact of company wont be able to use its Nautical Miles:' +
+                        '\n1) When the rank of the company is Lieutenant (you can only earn Nautical Miles, in Sea Reward program the benefit to use Nautical Miles is available starting Captain rank and above.' +
+                        '\n2) The contact has placed a quotation but he is not recorded as main contact of the company. So, the contact will be able to earn Nautical Miles but not use Nautical Miles.',
                     isShow: true
                 },
                 {

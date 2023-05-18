@@ -16,12 +16,9 @@
         <!-- <image src="/assets/img/seaReward/lieutenant@2x.png" class="iconAnchor" /> -->
         <image class="editIcon {{item.isShow ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
+      <view class="lineZ"></view>
       <view hidden="{{item.isShow}}" class="hiddenContainer">
         <view class="dropDown">
-
-
-
-
           <view class="waysIntro" wx:if="{{item.content===listItem[0][1].content}}">
             You can check your earned Nautical Miles in your <view class="link" bindtap="SeaReward">"Sea Reward Dashboard"</view> page.
           </view>
@@ -33,9 +30,34 @@
           </view>
           <view class="waysIntro" wx:if="{{item.content===listItem[1][0].content}}">
             You can find all the information about the different rank of the program in the <view class="link" bindtap="Information">"Sea Reward Information"</view> page.
-
           </view>
-          <view class="waysIntro" wx:if="{{item.content!==listItem[0][1].content&&item.content!==listItem[3][0].content&&item.content!==listItem[0][14].content}}"> {{item.content}}
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][0].content}}">
+            <view class="lineBtom">Nautical Miles is the currency of the loyalty program that you will cumulate all long your booking journey.</view>
+            <view class="lineBtom">The Nautical Miles are calculated regarding the amount of Ocean Freight purchased during your SpotOn booking.</view>
+            <view class="lineBtom">From quotation to invoice generation you will be able to collect a simulation of Nautical Miles.</view>
+            <view class="lineBtom">Once the invoice is paid Nautical Miles will be definitively credited to your Sea Reward account. Those Nautical Miles are called "Earned" Nautical Miles.</view>
+            <view class="lineBtom">Then you will be able to use a proposed amount of "Earned" Nautical Miles on your next SpotOn quotations in order to get a discount in dollar (1 Nautical Miles = 1$). Those Nautical Miles will be considered "pending" Nautical Miles until invoice generation</view>
+            <view class="lineBtom">Once the invoice is paid those "engaged" Nautical Miles will be considered as "used" Nautical Miles and will give you the discount associated in dollar on your final invoice</view>
+          </view>
+
+
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][15].content}}">
+            <view class="lineBtom">There are some use cases when you will gain fewer Nautical Miles than the Nautical Miles estimated during your quotation journey:
+            </view>
+            <view class="lineBtom">1) Adding more Teu's between quotation and invoice stages, the amount of Ocean Freight will increase and the amount of potential Nautical Miles "earn" will increase accordingly.</view>
+            <view class="lineBtom">2) Removing Teu's between quotation and invoice stages, the amount of Ocean Freight will decrease and the amount of potential Nautical Miles "earn will decrease accordingly.</view>
+          </view>
+
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][10].content}}">
+            <view class="lineBtom">There are two main use cases when a contact of company wont be able to use its Nautical Miles:
+            </view>
+            <view class="lineBtom">1) When the rank of the company is Lieutenant (you can only earn Nautical Miles, in Sea Reward program the benefit to use Nautical Miles is available starting Captain rank and above
+            </view>
+            <view class="lineBtom">2) The contact has placed a quotation but he is not recorded as main contact of the company. So, the contact will be able to earn Nautical Miles but not use Nautical Miles.
+            </view>
+          </view>
+
+          <view class="waysIntro" wx:if="{{item.content!==listItem[0][10].content&&item.content!==listItem[0][15].content&&item.content!==listItem[1][0].content&&item.content!==listItem[0][1].content&&item.content!==listItem[3][0].content&&item.content!==listItem[0][14].content&&item.content!==listItem[0][0].content}}"> {{item.content}}
           </view>
         </view>
       </view>

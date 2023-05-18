@@ -12,11 +12,13 @@ page {
 
 
 .resultContainers .rateContainer {
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   padding: 0rpx 30rpx 0rpx 30rpx;
   /* margin-top: -20rpx; */
   position: relative;
+
 }
 
 .resultContainers .rateContainer .rateItem {
@@ -77,20 +79,22 @@ page {
 .editIcon2 {
   transform: rotate(180deg);
 }
-
+.lineZ{
+  border-bottom: 1rpx #EEEEEE solid;
+}
 .hiddenContainer {
   background-color: rgba(255, 255, 255, 1.000000);
   align-self: center;
-  width: 690rpx;
+  width: 693rpx;
   display: flex;
   flex-direction: column;
   padding: 25rpx 30rpx 0rpx 30rpx;
   /* margin-bottom: 25rpx; */
   /* margin-top: -25rpx; */
-  margin-left: -5rpx;
+  /*margin-left: -5rpx;*/
   /* border-top: 1rpx solid rgba(240, 241, 245, 1);  */
 }
-.hiddenContainer::before,
+
 .hiddenContainer::after {
   content: "";
   display: block;
@@ -235,4 +239,7 @@ scroll-view ::-webkit-scrollbar {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+.lineBtom{
+  margin-bottom: 25rpx;
 }

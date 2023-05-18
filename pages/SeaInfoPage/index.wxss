@@ -281,10 +281,9 @@ display: flex;
   width: 690rpx;
   display: flex;
   flex-direction: column;
-  padding: 25rpx 30rpx 0rpx 30rpx;
+  padding: 30rpx 48rpx;
   margin-bottom: 25rpx;
   margin-top: -25rpx;
-  margin-left: -5rpx;
   /* border-top: 1rpx solid rgba(240, 241, 245, 1);  */
 }
 .hiddenContainer::before,
@@ -313,7 +312,7 @@ display: flex;
 
 
 .waysToThere {
-  width: 594rpx;
+  /*width: 594rpx;*/
   overflow-wrap: break-word;
   color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
@@ -325,7 +324,7 @@ display: flex;
   line-height: 46rpx;
   margin-bottom: 15rpx;
   background-color:#f0f1f5;
-  margin-left: 10rpx;
+  /*margin-left: 10rpx;*/
   padding-left: 10rpx;
 }
 
@@ -340,7 +339,8 @@ display: flex;
   text-align: left;
   line-height: 34rpx;
   margin-bottom: 30rpx;
-  margin-left: 20rpx;
+  /*margin-left: 20rpx;*/
+  padding: 0 10rpx;
 }
 
 .benefit {
@@ -356,7 +356,6 @@ display: flex;
   line-height: 46rpx;
   margin-bottom: 15rpx;
   background-color:#f0f1f5;
-  margin-left: 10rpx;
   padding-left: 10rpx;
 }
 
@@ -367,7 +366,7 @@ display: flex;
   display: flex;
   justify-content: space-between;
   /* margin-bottom: 10rpx; */
-  margin-left: 20rpx;
+  /*margin-left: 20rpx;*/
 }
 
 .benefitIcon {
@@ -391,6 +390,7 @@ display: flex;
   text-align: left;
   line-height: 34rpx;
   margin-bottom: 30rpx;
+  padding: 0 12rpx;
 }
 
 .rank {
@@ -438,4 +438,5 @@ display: flex;
   font-weight: normal;
   text-align: left;
   line-height: 34rpx;
+  margin-left: 14rpx;
 }
