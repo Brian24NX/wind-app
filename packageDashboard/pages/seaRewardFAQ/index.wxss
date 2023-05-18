@@ -134,7 +134,7 @@ page {
   /* height: 68rpx; */
   overflow-wrap: break-word;
   color: #6b7790;
-  font-size: 24rpx;
+  font-size: 28rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
   text-align: left;
