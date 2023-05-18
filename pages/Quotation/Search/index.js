@@ -136,6 +136,7 @@ Page({
     },
     podEndWarn: false,
     pooWarn: false,
+    count:1
   },
 
   /**
@@ -784,9 +785,23 @@ Page({
         })
       }
     }, () => {
-      setTimeout(() => {
+      let time = setTimeout(() => {
+         this.data.count++
         this.getCommodityList()
       }, 500);
+      console.log(this.data.count,this.data.count>3,time)
+      if(this.data.count>3){
+        clearInterval(time)
+        this.setData({
+          commodityList: [],
+          commodityCode: 'FAK',
+          commodityName: this.data.language === 'en' ? 'Freight All Kinds' : '所有类型的费用',
+          pricingGroupSetups: [],
+          pricingGroups: [],
+          commodityLoading: false
+        })
+        console.log('tiem'.time)
+      }
     })
   },
 

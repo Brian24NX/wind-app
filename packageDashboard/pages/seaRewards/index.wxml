@@ -74,6 +74,11 @@
       <view class="siteText">{{isShowLieutenant?languageContent.Lieutenant:languageContent.nodata}}</view>
       <view catchtap="gotoQuat" class="urlCopy">{{isShowLieutenant?languageContent.Lieutenanttext:languageContent.getQuot}}</view>
     </view>
+
+    <view wx:if="{{dashboard.length==0&&!loading&&!noData&&item.length>=0}}" class="boxTitle noData">
+      <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
+      <view class="siteText">{{languageContent.noData}}</view>
+    </view>
   </view>
   <view wx:if="{{!isShowLieutenant}}">
     <view  wx:for="{{dashboard}}" wx:key="index" class="itemBox listTopContainers">
@@ -103,12 +108,8 @@
         <view class="{{( item.pointsStr > 0) ? 'redMiles': 'greenMiles' }}">{{item.pointsStr}}</view>
       </view>
     </view>
-    <view wx:if="{{dashboard.length==0&&!loading&&!noData&&item.length>=0}}" class="itemBox listTopContainers boxTitle noData">
-      <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
-      <view class="siteText">{{isShowLieutenant?languageContent.Lieutenant:languageContent.noData}}</view>
-    </view>
-    <view class="loadings" wx:else>
-      <loading loading="{{loading}}" noMore="{{noMore}}"></loading>
+    <view class="loadings" wx:if="{{!noData}}">
+      <loading loading="{{loading}}" noMore="{{noMore&&dashboard.length!=0}}"></loading>
     </view>
   </view>
 </view>
