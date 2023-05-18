@@ -209,7 +209,6 @@ Page({
             // "range": pageSize
         }).then(res => {
             if (res.data) {
-
                 if(type === 'earnings'&&this.data.currentLevel.name === 'Lieutenant'&&res.data.length===0){
                     this.setData({
                         item: res.data

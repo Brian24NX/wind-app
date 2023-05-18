@@ -1224,6 +1224,8 @@ Page({
         this.getNearByPortNextDeparture()
       }
 
+    }).catch((err)=>{
+      console.log(111,err)
     })
   },
 

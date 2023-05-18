@@ -333,7 +333,7 @@ display: flex;
   /* width: 594rpx; */
   /* height: 68rpx; */
   overflow-wrap: break-word;
-  color: #9aa6b1;
+  color: #6b7790;
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
@@ -384,7 +384,7 @@ display: flex;
   /* width: 594rpx; */
   /* height: 68rpx; */
   overflow-wrap: break-word;
-  color: #9aa6b1;
+  color: #6b7790;
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
@@ -432,7 +432,7 @@ display: flex;
   width: 594rpx;
   /* height: 68rpx; */
   overflow-wrap: break-word;
-  color: #9aa6b1;
+  color: #6b7790;
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;

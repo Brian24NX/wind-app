@@ -232,6 +232,7 @@ Page({
               }
             }
             setTimeout(() => {
+              console.log(!item.surchargeDetails && item.canSelect)
               if (!item.surchargeDetails && item.canSelect) {
                 this.getQuotationSurchargeDetailFn(item, params, isFirst)
               }
@@ -298,6 +299,7 @@ Page({
   },
 
   getQuotationSurchargeDetailFn(item, params, isFirst) {
+    console.log(item, params, isFirst)
     getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(async (res) => {
       item.isLoading = false
       item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
@@ -325,7 +327,6 @@ Page({
       this.setData({
         quoteLineList: this.data.quoteLineList
       })
-      console.log('getQuotationSurchargeDetailFn,quoteLineList',this.data.quoteLineList)
       if (isFirst) {
         this.setData({
           oldQuoteLineList: this.data.quoteLineList
