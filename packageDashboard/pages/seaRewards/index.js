@@ -302,7 +302,7 @@ Page({
                 isShow: true,
             })
             wx.hideLoading()
-            console.error(err)
+            console.log(err)
         })
     },
 
@@ -393,7 +393,6 @@ Page({
             wx.switchTab({
                 url: '/pages/Quotation/Search/index',
             })
-
     },
 
     // 定义 formatDate 函数，参数为日期字符串
