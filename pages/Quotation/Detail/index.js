@@ -175,16 +175,18 @@ Page({
       traceId: data.traceId,
       otherList: this.data.otherList
     })
-    console.log(33333333333333333)
     this.calculatedCharges()
     const currentPage2 = pages[pages.length - 3]
     const data2 = currentPage2.data
+    console.log("data2",data2)
     this.setData({
       equipmentTypeSize: data2.equiptCode,
       equipmentTypeName: data2.equipmentTypeName,
       weight: data2.weight,
       containers: containers || data2.containers,
-      commodityName: data2.commodityName
+      commodityName: data2.commodityName,
+      equipmentSize: data2.equiptCode,
+      equipmentTypeDescription: data2.equipmentTypeName
     })
   },
 
@@ -522,6 +524,8 @@ console.log(surchargeDetails.oceanFreight.price.amount,surchargeDetails.freightC
       "cargoes": [{
         "cargoNumber": 1,
         "packageCode": this.data.equipmentTypeSize,
+        "equipmentSize":this.data.equipmentTypeSize,
+        "equipmentTypeDescription": this.data.equipmentTypeName,
         "packageBookedQuantity": this.data.containers,
         "commodityCode": quoteLine.commodities[0].code,
         "commodityName": quoteLine.commodities[0].name,
