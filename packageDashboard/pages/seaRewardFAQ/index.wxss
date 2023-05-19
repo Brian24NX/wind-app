@@ -6,7 +6,7 @@ page {
 .resultContainers {
   width: 100%;
   min-height: 100vh;
-  padding: 30rpx 30rpx 210rpx;
+  padding: 30rpx;
   background-color: #f0f1f5;
 }
 

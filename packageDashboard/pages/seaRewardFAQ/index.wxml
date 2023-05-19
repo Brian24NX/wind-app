@@ -51,7 +51,7 @@
           <view class="waysIntro" wx:if="{{item.content===listItem[0][10].content}}">
             <view class="lineBtom">There are two main use cases when a contact of company won't be able to use its Nautical Miles:
             </view>
-            <view class="lineBtom">1) When the rank of the company is Lieutenant (you can only earn Nautical Miles, in Sea Reward program the benefit to use Nautical Miles is available starting Captain rank and above
+            <view class="lineBtom">1) When the rank of the company is Lieutenant (you can only earn Nautical Miles, in Sea Reward program the benefit to use Nautical Miles is available starting Captain rank and above.
             </view>
             <view class="lineBtom">2) The contact has placed a quotation but he is not recorded as main contact of the company. So, the contact will be able to earn Nautical Miles but not use Nautical Miles.
             </view>

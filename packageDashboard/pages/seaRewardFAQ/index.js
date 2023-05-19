@@ -70,11 +70,6 @@ Page({
                 },
                 {
                     title: 'How can I use my Nautical Miles to have a discount?',
-                    content: 'You can cumulate Nautical Miles on all your SpotOn quotations saved (excluding all shipments with Split/Merge/Part Load).',
-                    isShow: true
-                },
-                {
-                    title: 'How can I use my Nautical Miles to have a discount?',
                     content: 'You will be able to use your Nautical Miles available in your balance when placing your quotation on SpotOn.',
                     isShow: true
                 },
@@ -129,7 +124,7 @@ Page({
                 },
                 {
                     title: 'When my rank is updated?',
-                    content: 'Sea reward rank is re-evaluated each quarter. At the start of each quarter, customer rank is updated based on the 6 previous months activity on SpotOn. (e.g. Update date is Jan 10th, your activity will be calculated on the previous period from 1 July to 31 December).',
+                    content: 'Sea reward rank is re-evaluated each quarter. At the start of each quarter, customer rank is updated based on the 6 previous months activity on SpotOn (e.g. Update date is Jan 10th, your activity will be calculated on the previous period from 1 July to 31 December).',
                     isShow: true
                 },
             ],
