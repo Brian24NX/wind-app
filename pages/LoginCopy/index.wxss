@@ -2,7 +2,7 @@
 .wrapper {
   width: 100%;
   min-height: 100vh;
-  padding: 30rpx 85rpx 210rpx;
+  padding: 30rpx 105rpx 210rpx;
   background-color: white;
 }
 
@@ -12,51 +12,73 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
+.err{
+  color: #c5002e;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANCAYAAACZ3F9/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA7VpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wUmlnaHRzPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvcmlnaHRzLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcFJpZ2h0czpNYXJrZWQ9IkZhbHNlIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6QzE4M0UxODg3MTI1RTExMTgwMjNENURFNTlDMDM0QzMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTA0OTM5Qzk0NDk3MTFFNDhFNTRFNTE4RTY4MzdBQ0MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTA0OTM5Qzg0NDk3MTFFNDhFNTRFNTE4RTY4MzdBQ0MiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4QkZDRTk5M0IyRjcxMUUyOTM3RkNCQTU2OTcyNjcxOSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4QkZDRTk5NEIyRjcxMUUyOTM3RkNCQTU2OTcyNjcxOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnqxaYEAAACySURBVHjaYvz//z8DNvC8YRZMglGyIQ1DnhGbxkdMZqFAahWUGyb379RqYjXeBVJKUO49oEZldDVMWDSVI2kCASWoGCoA2YiMHzKa3gXi/0j8/yAxdHVMBGzDaSvcj0AJQSAF8huIZgD6ixEqDguE90CsDBR/j+7HcpgmHEAQqgZhI7pteADcViY8tjFCMVZbGYEhZgykz6AbjcWPyMAEpBGUQkIZSAOrQRr/M5ABAAIMAIdoZwfQ/JzvAAAAAElFTkSuQmCC) left 2px no-repeat;
+  margin-top: 10px;
+  padding:0 60rpx 0 39rpx;
+  margin-bottom: 40rpx;
+  margin-left: 60rpx;
+  font-size: 0.8em;
+}
+.line{
+  border-bottom: #cecece 1rpx solid;
+  margin-right: 30rpx;
+  margin-bottom: 40rpx;
+}
 .iconCMA {
   width: 155rpx;
   height: 95rpx;
 }
-
-.dropDownContainer .van-dropdown-menu{
-  height: 50rpx;
-  width: 200rpx;
-  padding: 2px 3px;
+.dropDownContainer{
+  height: 46rpx;
+  width: 180rpx;
+  padding: 4rpx 8rpx;
   border-width: 1px;
   border-style: solid;
-  border-color: #8d8d8d;
+  border-color:rgb(118, 118, 118);
   overflow: visible;
+  position: relative;
+  font-size: 24rpx;
+  color: #4C4C4C;
+}
+.arrow{
+  position: absolute;
+  right: 8rpx;
+  top:10rpx;
+  font-size: 28rpx;
 }
 .van-dropdown-menu__item {
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left !important;
 }
-
 
 .mainContainer {
   width: 100%;
-  height: 978rpx;
+  height: 778rpx;
   margin-top: 30rpx;
 }
 
 .mainContainer .loginContainer {
   width: 100%;
-  height: 658rpx;
-  padding: 0 30px 20px 30px;
+  /*height: 700rpx;*/
+  padding-bottom: 20rpx;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #f0f1f5;
-  margin-bottom: 80rpx;
+  margin-bottom: 110rpx;
 }
 
 .mainContainer .loginContainer .textSignIn {
   font-size: 1.7em;
   font-weight: normal;
-  padding: 30rpx 0rpx 30rpx 0rpx;
+  padding: 40rpx 60rpx;
   color: #184894;
 }
 
 .mainContainer .loginContainer .formArea {
   height: 500rpx;
+  position: relative;
+  margin:0 60rpx;
 }
 
 .titleLine {
@@ -69,30 +91,34 @@
   border: 1px solid #8d8d8d;
   background-color: white;
   font-size: 0.8em;
-  margin-bottom: 20rpx;
+  margin-bottom: 40rpx;
+  width: 400rpx;
+}
+
+.inputContent2 {
+  border: 1px solid #8d8d8d;
+  background-color: white;
+  font-size: 0.8em;
+  margin-bottom: 15rpx;
+  width: 400rpx;
 }
 
 .forgotPassword {
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #2563d9;
-  margin-left: 210rpx;
-  margin-bottom: 30rpx;
+  text-align: right;
+  margin-bottom: 45rpx;
 }
 
 .signIn {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  border-radius: 0;
   background-color: #d81772;
-  padding: 0;
-  width: 125rpx;
-  height: 53rpx;
-  border-radius: 0%;
-  margin-left: 340rpx;
-}
-
-.textSubmit {
-  font-size: 0.8em;
+  font-size: 0.65em;
   color: #fff;
-  text-align: center;
-  margin-top: -10rpx;
+  padding: 12rpx 24rpx;
 }
 
 .footNote {

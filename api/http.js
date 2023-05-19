@@ -23,9 +23,15 @@ const request = ({
       wx.removeStorageSync('expires_time')
       wx.removeStorageSync('access_token')
       setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/Login/index',
-        })
+        if(config.mockLogin){
+          wx.navigateTo({
+            url: '/pages/LoginCopy/index'
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/Login/index'
+          })
+        }
       }, 3000)
       reject()
       return
@@ -66,9 +72,17 @@ const request = ({
             wx.removeStorageSync('expires_time')
             wx.removeStorageSync('access_token')
             setTimeout(() => {
-              wx.navigateTo({
-                url: '/pages/Login/index'
-              })
+              console.log(1111111111111111111,config.mockLogin)
+              if(config.mockLogin){
+                wx.navigateTo({
+                  url: '/pages/LoginCopy/index'
+                })
+              }else{
+                wx.navigateTo({
+                  url: '/pages/Login/index'
+                })
+              }
+             
             }, 3000)
           } else if (res.data.code == 408) {
             if (!needError) {
@@ -87,9 +101,15 @@ const request = ({
                 icon: 'none'
               })
               setTimeout(() => {
-                wx.navigateTo({
-                  url: '/pages/Login/index',
-                })
+                if(config.mockLogin){
+                  wx.navigateTo({
+                    url: '/pages/LoginCopy/index'
+                  })
+                }else{
+                  wx.navigateTo({
+                    url: '/pages/Login/index'
+                  })
+                }
               }, 2000);
             }
             reject(res.data)

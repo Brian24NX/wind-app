@@ -3,6 +3,7 @@ const app = getApp();
 var languageUtil = require('../../../utils/languageUtils')
 const utils = require('../../../utils/util')
 const dayjs = require("dayjs");
+const config = require('../../../config/config')
 import {
   fuzzySearch,
   getPortPlaceInfo,
@@ -33,7 +34,9 @@ Page({
     minDate: new Date().getTime(),
     maxDate: new Date().getTime() + 1000 * 60 * 60 * 24 * 30,
     showPol: false,
+    polCount:1,
     showPod: false,
+    podCount:1,
     shipperOwnedContainer: false,
     // 收货地
     placeOfOrigin: '',
@@ -88,7 +91,9 @@ Page({
     showPlaceOfReceipt: false,
     showPlaceOfDelivery: false,
     showPoR: false,
+    porCount:1,
     showPoDe: false,
+    poDeCount:1,
     pricingGroupSetups: [],
     pricingGroups: [],
     resultResq: {},
@@ -131,6 +136,7 @@ Page({
     },
     podEndWarn: false,
     pooWarn: false,
+    count:1
   },
 
   /**
@@ -192,7 +198,7 @@ Page({
 
   changeCurrentType(e) {
     this.setData({
-      currentType: e.currentTarget.dataset.type
+      currentType: e.currentTarget.dataset.type,
     })
     this.reset()
     if (this.data.currentType === 'instation') {
@@ -237,9 +243,15 @@ Page({
 
   toLogin() {
     if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      if(config.mockLogin){
+        wx.navigateTo({
+          url: '/pages/LoginCopy/index'
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/Login/index'
+        })
+      }
     } else {
       this.setData({
         showLegal: true
@@ -267,9 +279,15 @@ Page({
       })
       setTimeout(() => {
         if (wx.getStorageSync('allowLegalTerms') && wx.getStorageSync('phone')) {
-          wx.navigateTo({
-            url: '/pages/Login/index',
-          })
+          if(config.mockLogin){
+            wx.navigateTo({
+              url: '/pages/LoginCopy/index'
+            })
+          }else{
+            wx.navigateTo({
+              url: '/pages/Login/index'
+            })
+          }
         } else {
           this.setData({
             showLegal: true
@@ -323,6 +341,7 @@ Page({
     this.setData({
       showDelete4: !!data,
       showPoR: false,
+      porCount:1,
       pooWarn: false,
       placeOfReceiptList: []
     })
@@ -353,7 +372,8 @@ Page({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPoR: false
+          showPoR: false,
+          porCount:1,
         })
         if (res.data != '') {
           res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
@@ -365,14 +385,23 @@ Page({
           this.hideDropdown()
         }
       }, () => {
-        this.getPorData(data)
+        this.data.porCount++
+        if(this.data.porCount<=3){
+          this.getPorData(data)
+        }else{
+          this.setData({
+            showPoR: false,
+          })
+          this.hideDropdown()
+        }
       })
     } else {
       getPortPlaceInfo({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPoR: false
+          showPoR: false,
+          porCount:1,
         })
         let placeOfReceiptList = []
         if (res.data && res.data.length) {
@@ -391,7 +420,15 @@ Page({
         })
         console.log('placeOfReceiptList',placeOfReceiptList)
       }, () => {
-        this.getPorData(data)
+        this.data.porCount++
+        if(this.data.porCount<=3){
+          this.getPorData(data)
+        }else{
+          this.setData({
+            showPoR: false,
+          })
+          this.hideDropdown()
+        }
       })
     }
   },
@@ -404,6 +441,7 @@ Page({
       showRemind1: false,
       showRemind2: false,
       showPol: false,
+      polCount:1,
       pollist: []
     })
     if (data.length < 2) {
@@ -435,7 +473,15 @@ Page({
         this.hideDropdown()
       }
     }, () => {
-      this.getPolData(data)
+      this.data.polCount++
+      if(this.data.polCount<=3){
+        this.getPolData(data)
+      }else{
+        this.setData({
+          showPol: false
+        })
+        this.hideDropdown()
+      }
     })
   },
 
@@ -447,6 +493,7 @@ Page({
       showRemind3: false,
       showRemind4: false,
       showPod: false,
+      podCount:1,
       podlist: []
     })
     if (data.length < 2) {
@@ -478,7 +525,15 @@ Page({
         this.hideDropdown()
       }
     }, () => {
-      this.getPodData(data)
+      this.data.podCount++
+      if(this.data.podCount<=3){
+        this.getPodData(data)
+      }else{
+        this.setData({
+          showPod: false
+        })
+        this.hideDropdown()
+      }
     })
   },
 
@@ -488,6 +543,7 @@ Page({
     this.setData({
       showDelete5: !!data,
       showPoDe: false,
+      poDeCount:1,
       podEndWarn: false,
       placeOfDeliveryList: []
     })
@@ -509,7 +565,6 @@ Page({
   }, 800),
 
   getPooData(data) {
-    console.log('----------',data)
     this.setData({
       showPoDe: true
     })
@@ -518,7 +573,7 @@ Page({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPoDe: false
+          showPoDe: false,
         })
         if (res.data != '') {
           res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
@@ -536,7 +591,7 @@ Page({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPoDe: false
+          showPoDe: false,
         })
         let placeOfDeliveryList = []
         if (res.data && res.data.length) {
@@ -554,7 +609,7 @@ Page({
           placeOfDeliveryList
         })
       }, () => {
-        this.getPorData(data)
+          this.getPorData(data)
       })
     }
   },
@@ -730,9 +785,23 @@ Page({
         })
       }
     }, () => {
-      setTimeout(() => {
+      let time = setTimeout(() => {
+         this.data.count++
         this.getCommodityList()
       }, 500);
+      console.log(this.data.count,this.data.count>3,time)
+      if(this.data.count>3){
+        clearInterval(time)
+        this.setData({
+          commodityList: [],
+          commodityCode: 'FAK',
+          commodityName: this.data.language === 'en' ? 'Freight All Kinds' : '所有类型的费用',
+          pricingGroupSetups: [],
+          pricingGroups: [],
+          commodityLoading: false
+        })
+        console.log('tiem'.time)
+      }
     })
   },
 
@@ -908,9 +977,15 @@ Page({
       show: true
     })
     if (e.detail) {
-      wx.navigateTo({
-        url: '/pages/Login/index',
-      })
+      if(config.mockLogin){
+        wx.navigateTo({
+          url: '/pages/LoginCopy/index'
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/Login/index'
+        })
+      }
     }
   },
 
@@ -1149,6 +1224,8 @@ Page({
         this.getNearByPortNextDeparture()
       }
 
+    }).catch((err)=>{
+      console.log(111,err)
     })
   },
 
@@ -1248,7 +1325,9 @@ Page({
       showPlaceOfDelivery: false,
       showPlaceOfReceipt: false,
       showPol: false,
+      polCount:1,
       showPod: false,
+      podCount:1,
       placeOfOrigin: '',
       placeOfOriginLabel: '',
       receiptHaulage: '',

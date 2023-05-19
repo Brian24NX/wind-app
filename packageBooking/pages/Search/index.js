@@ -2,6 +2,7 @@
 var languageUtil = require('../../../utils/languageUtils')
 const utils = require('../../../utils/util')
 const dayjs = require("dayjs");
+const config = require('../../../config/config')
 import {
   fuzzySearch,
   getAllNetworkPoint
@@ -139,9 +140,15 @@ Page({
         duration: 2500
       })
       setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/Login/index',
-        })
+        if(config.mockLogin){
+          wx.navigateTo({
+            url: '/pages/LoginCopy/index'
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/Login/index'
+          })
+        }
       }, 2500)
     } else {
       if (callback) {

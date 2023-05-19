@@ -1,6 +1,6 @@
 <!--packageDashboard/pages/seaRewards/index.wxml-->
 <wxs module="format" src="../../../utils/format.wxs"></wxs>
-<view class="documentContainer">
+<view class="documentContainer" wx:if="{{isShow}}">
   <view class="listTopContainers topInfo">
     <image class="seaLogo" src="/assets/img/seaReward/seaLogo@2x.png"></image>
     <view class="titleRowAlign bottomLines">
@@ -10,11 +10,12 @@
       </view>
       <!-- <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onOpenPopup"></image> -->
       <view class="columnShowed2">
-      <view class="normalText">{{languageContent.uo}} IKEA</view>
+<!--      <view class="normalText">{{languageContent.uo}} IKEA</view>-->
 <!--      <view class="dateTime">({{languageContent.nextDate}} {{ language === 'en'? nextDate : nextDate2}})</view>-->
+        {{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}
       </view>
     </view>
-    <view class="descBox">{{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}</view>
+<!--    <view class="descBox">{{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}</view>-->
     <van-row>
       <van-col span="13">
         <view style="border-right: 1px solid #EEEEEE;">
@@ -23,7 +24,7 @@
             <view class="boldText"><Text>{{availableMiles}}</Text>{{languageContent.available}}</view>
           </view>
           <view class="rowAlign">
-            <view class="smallDesc">{{languageContent.bp}} {{seaRewardData.associatedAccount}}</view>
+            <view class="smallDesc">{{languageContent.bp}} {{partnerList[0].fullName}}</view>
           </view>
         </view>
       </van-col>
@@ -39,7 +40,7 @@
     </van-row>
 
   </view>
-  <view class="listTopContainers">
+  <view class="listTopContainers stickyList">
     <view class="listTopContainer">
       <view class="listTopTitles">
         <view class="boxtitleLine"></view>
@@ -59,7 +60,8 @@
       <item-list-box list="{{searchHis}}" showBox="{{showHis}}" bindchooseItem="chooseHis" binddelItem="delHis"></item-list-box>
       <view class="viewTypesContainer">
         <view class="viewTypes">
-          <view class="oneType {{curTab === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType" data-type="{{item}}" wx:if="{{currentLevel.name === 'Lieutenant' ? item !== 'burns' : item }}">
+          <view class="oneType {{curTab === item ? 'typeActived' : ''}}" wx:for="{{typeList}}" wx:key="index" catchtap="changeType"
+                data-type="{{item}}">
             <view>{{languageContent[item]}}</view>
             <view class="activedLine"></view>
           </view>
@@ -68,12 +70,16 @@
     </view>
     <view wx:if="{{noData}}" class="boxTitle noData">
       <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
-      <view class="siteText">{{languageContent.nodata}}</view>
-      <view catchtap="gotoQuat" class="urlCopy">{{languageContent.getQuot}}</view>
+      <view class="siteText">{{isShowLieutenant?languageContent.Lieutenant:languageContent.nodata}}</view>
+      <view catchtap="gotoQuat" class="urlCopy">{{isShowLieutenant?languageContent.Lieutenanttext:languageContent.getQuot}}</view>
+    </view>
+
+    <view wx:if="{{dashboard.length==0&&!loading&&!noData&&item.length>=0}}" class="boxTitle noData">
+      <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
+      <view class="siteText">{{languageContent.noData}}</view>
     </view>
   </view>
-
-  <view wx:if="{{!loading && list.length > 0 && !noData}}">
+  <view wx:if="{{!isShowLieutenant}}">
     <view  wx:for="{{dashboard}}" wx:key="index" class="itemBox listTopContainers">
       <view class="ones">
         <view class="boxTitle listStyle">{{item.quotationReference}}</view>
@@ -83,37 +89,31 @@
       </view>
       <view class="ones ref">
         <view>{{languageContent.quatedate}}</view>
-        
+
         <!-- <view class="invoiceNum">{{  item.bookingDate }}</view> -->
         <view class="invoiceNum">{{language === 'zh' ? format.SeaformatCnDateUtc(item.bookingDate, false, true) : format.SeaformatEnDateUtc(item.bookingDate, '-', '', false, true)}}</view>
-        
+
       </view>
       <view class="ones ref">
         <view>{{languageContent.bookRef}}</view>
-        <view class="invoiceNum">{{item.bookingReference}}</view>
+        <view class="invoiceNum">{{item.bookingReference||'-'}}</view>
       </view>
       <view class="ones ref">
         <view>{{languageContent.invoiceRef}}</view>
-        <view class="invoiceNum">{{item.invoiceReference}}</view>
+        <view class="invoiceNum">{{item.invoiceReference||'-'}}</view>
       </view>
       <view class="ones ref">
         <view>{{languageContent.nauticalMiles2}}</view>
         <view class="{{( item.pointsStr > 0) ? 'redMiles': 'greenMiles' }}">{{item.pointsStr}}</view>
       </view>
     </view>
-    <view wx:if="{{dashboard.length==0}}" class="itemBox listTopContainers boxTitle noData">
-      <image class="noDataImage" src="/assets/img/seaReward/noData@2x.png"></image>
-      <view class="siteText">{{languageContent.noData}}</view>
+    <view class="loadings" wx:if="{{!noData}}">
+      <loading loading="{{loading}}" noMore="{{noMore&&dashboard.length!=0}}"></loading>
     </view>
-  </view>
-
-
-  <view class="loadings" wx:if="{{loading}}">
-    <loading loading="{{loading}}" noMore="{{noMore}}" wx:if="{{!noData}}"></loading>
   </view>
 </view>
 
-<view class="bottomFixed">
+<view class="bottomFixed" wx:if="{{isShow}}">
   <van-row>
     <van-col span="12">
       <button bindtap="gotoFAQ" class="buttonOutline">

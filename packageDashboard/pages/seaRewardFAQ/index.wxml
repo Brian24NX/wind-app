@@ -1,89 +1,74 @@
 <!--packageDashboard/pages/seaRewardFAQ/index.wxml-->
 <scroll-view id="spot-page" scroll-y scrollWithAnimation scroll-top="{{scrollTop}}">
   <view class="resultContainers">
-    <view class="rateContainer">
-      <view class="rateItem" catchtap="zhedie" data-type="foldRate">
+    <view class="categoryLists">
+      <scroll-view class="categoryList" scroll-x scroll-with-animation scroll-left="{{scrollLeft}}" show-scrollbar="false" enhanced="true">
+        <view class="oneCategory {{categoryId === item.value ? 'categoryActived' : ''}}" id="categoryId-{{item.value}}" wx:for="{{categoryList}}" wx:key="index" catchtap="changeCategory" data-id="{{item.value}}">
+          <text>{{item.text}}</text>
+          <view class="line"></view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="rateContainer" wx:for="{{listItem[categoryId]}}" wx:key="index" >
+      <view class="rateItem" bindtap="zhedie" data-index="{{index}}">
         <view class="titleLine"></view>
-        <view class="titleText">  Lorem ipsum dolor sit amet consectetur ? </view>
+        <view class="titleText">{{item.title}} </view>
         <!-- <image src="/assets/img/seaReward/lieutenant@2x.png" class="iconAnchor" /> -->
-        <image class="editIcon {{foldRate ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
+        <image class="editIcon {{item.isShow ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
-      <view hidden="{{foldRate}}" class="hiddenContainer">
+      <view class="lineZ"></view>
+      <view hidden="{{item.isShow}}" class="hiddenContainer">
         <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][1].content}}">
+            You can check your earned Nautical Miles in your <view class="link" bindtap="SeaReward">"Sea Reward Dashboard"</view> page.
+          </view>
+          <view class="waysIntro" wx:if="{{item.content===listItem[3][0].content}}">
+            You will see your rank on the <view class="link" bindtap="spotOn">"SpotOn"</view> page and you can access to the <view class="link" bindtap="SeaReward">"Sea Reward Dashboard"</view> page.
+          </view>
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][13].content}}">
+            You earn Nautical Miles according your rank and the ocean freight amount. Access to <view class="link" bindtap="Information">"Sea Reward Information"</view> page to find out the number of Nautical Miles you can earn according your rank.
+          </view>
+          <view class="waysIntro" wx:if="{{item.content===listItem[1][0].content}}">
+            You can find all the information about the different rank of the program in the <view class="link" bindtap="Information">"Sea Reward Information"</view> page.
+          </view>
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][0].content}}">
+            <view class="lineBtom">Nautical Miles is the currency of the loyalty program that you will cumulate all long your booking journey.</view>
+            <view class="lineBtom">The Nautical Miles are calculated regarding the amount of Ocean Freight purchased during your SpotOn booking.</view>
+            <view class="lineBtom">From quotation to invoice generation you will be able to collect a simulation of Nautical Miles.</view>
+            <view class="lineBtom">Once the invoice is paid Nautical Miles will be definitively credited to your Sea Reward account. Those Nautical Miles are called "Earned" Nautical Miles.</view>
+            <view class="lineBtom">Then you will be able to use a proposed amount of "Earned" Nautical Miles on your next SpotOn quotations in order to get a discount in dollar (1 Nautical Miles = 1$). Those Nautical Miles will be considered "pending" Nautical Miles until invoice generation.</view>
+            <view class="lineBtom">Once the invoice is paid those "engaged" Nautical Miles will be considered as "used" Nautical Miles and will give you the discount associated in dollar on your final invoice.</view>
           </view>
 
-        </view>
-      </view>
-      <view class="rateItem" catchtap="zhedie" data-type="foldRate2">
-        <view class="titleLine"></view>
-        <view class="titleText"> Lorem ipsum dolor ? </view>
-        <!-- <image src="/assets/img/seaReward/captain@2x.png" class="iconAnchor" /> -->
-        <image class="editIcon {{foldRate2 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
-      </view>
-      <view hidden="{{foldRate2}}" class="hiddenContainer">
-        <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][14].content}}">
+            <view class="lineBtom">There are some use cases when you will gain fewer Nautical Miles than the Nautical Miles estimated during your quotation journey:
+            </view>
+            <view class="lineBtom">1) Adding more Teu's between quotation and invoice stages, the amount of Ocean Freight will increase and the amount of potential Nautical Miles "earn" will increase accordingly.</view>
+            <view class="lineBtom">2) Removing Teu's between quotation and invoice stages, the amount of Ocean Freight will decrease and the amount of potential Nautical Miles "earn" will decrease accordingly.</view>
           </view>
 
-        </view>
-      </view>
-      <view class="rateItem" catchtap="zhedie" data-type="foldRate3">
-        <view class="titleLine"></view>
-        <view class="titleText"> Lorem ipsum dolor sit amet ? </view>
-        <!-- <image src="/assets/img/seaReward/master@2x.png" class="iconAnchor" /> -->
-        <image class="editIcon {{foldRate3 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
-      </view>
-      <view hidden="{{foldRate3}}" class="hiddenContainer">
-        <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][9].content}}">
+            <view class="lineBtom">There are two main use cases when a contact of company won't be able to use its Nautical Miles:
+            </view>
+            <view class="lineBtom">1) When the rank of the company is Lieutenant (you can only earn Nautical Miles, in Sea Reward program the benefit to use Nautical Miles is available starting Captain rank and above.
+            </view>
+            <view class="lineBtom">2) The contact has placed a quotation but he is not recorded as main contact of the company. So, the contact will be able to earn Nautical Miles but not use Nautical Miles.
+            </view>
           </view>
 
-        </view>
-      </view>
-      <view class="rateItem" catchtap="zhedie" data-type="foldRate4">
-        <view class="titleLine"></view>
-        <view class="titleText">  Lorem ipsum dolor sit amet consectetur ? </view>
-        <!-- <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" /> -->
-        <image class="editIcon {{foldRate4 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
-      </view>
-      <view hidden="{{foldRate4}}" class="hiddenContainer">
-        <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+
+          <view class="waysIntro" wx:if="{{item.content===listItem[2][3].content}}">
+            The "main partner" is a contact/user who is able to activate the Sea Reward account of the company, earn and use Nautical Miles. If you would like to know if you are a main partner, access to the <view class="link" bindtap="SeaReward">"Sea Reward Dashboard"</view> page and check if you have the tag "main partner" in the customer account scrolling list, you will be able to see which company you are link as main.
           </view>
 
-        </view>
-      </view>
-      <view class="rateItem" catchtap="zhedie" data-type="foldRate5">
-        <view class="titleLine"></view>
-        <view class="titleText">  Lorem ipsum dolor sit amet consectetur ? </view>
-        <!-- <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" /> -->
-        <image class="editIcon {{foldRate5 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
-      </view>
-      <view hidden="{{foldRate5}}" class="hiddenContainer">
-        <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+
+          <view class="waysIntro" wx:if="{{item.content===listItem[1][1].content}}">
+            You can find all the information about the program including the rank criterias information on the <view class="link" bindtap="Information">"Sea Reward Information"</view> page.
           </view>
 
-        </view>
-      </view>
-      <view class="rateItem" catchtap="zhedie" data-type="foldRate6">
-        <view class="titleLine"></view>
-        <view class="titleText">  Lorem ipsum dolor sit amet consectetur ? </view>
-        <!-- <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" /> -->
-        <image class="editIcon {{foldRate6 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
-      </view>
-      <view hidden="{{foldRate6}}" class="hiddenContainer">
-        <view class="dropDown">
-          
-          <view class="waysIntro">  rotrem psm coor s ame consaceru am st nbr aores d secs teus aus msst Ttane tcumen ausaue aemd ausane y cutate scaerae art est hrc. myelit curabitur risus falis senectus a ac dignissim magna, Pellentesgue cursus pharatra netus vitaa
+          <view class="waysIntro" wx:if="{{item.content!==listItem[1][1].content&&item.content!==listItem[2][3].content&&item.content!==listItem[0][9].content&&item.content!==listItem[0][13].content&&item.content!==listItem[1][0].content&&item.content!==listItem[0][1].content&&item.content!==listItem[3][0].content&&item.content!==listItem[0][14].content&&item.content!==listItem[0][0].content}}"> {{item.content}}
           </view>
-
         </view>
       </view>
     </view>

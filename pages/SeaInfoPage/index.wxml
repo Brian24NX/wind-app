@@ -10,20 +10,10 @@
       <view class="textArea"> {{seaReward.seaRewardIntro}} </view>
     </view>
     <view class="rateContainer">
-      <view class="rateItem" catchtap="zhedie" data-type="foldRate">
-        <view class="titleLine"></view>
-        <view class="titleText"> {{seaReward.Lieutenant}} </view>
-        <image src="/assets/img/seaReward/lieutenant@2x.png" class="iconAnchor" />
-        <image class="editIcon {{foldRate ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
-      </view>
       <view hidden="{{foldRate}}" class="hiddenContainer">
         <view class="dropDown">
-          <!-- <view class="waysToThere">  {{seaReward.Howtogetthere}} </view>
-          <view class="waysIntro"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringillaanmet pulvinar euismod sed …
-          </view> -->
           <view class="benefit"> {{seaReward.benefits}} </view>
           <view class="benefitContent">
-<!--            <view class="benefitIcon"></view>-->
             <view class="benefitText"> {{seaReward.LieutenantBenefits}}
             </view>
           </view>
@@ -31,56 +21,92 @@
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate2">
         <view class="titleLine"></view>
-        <view class="titleText"> {{seaReward.Captain}} </view>
-        <image src="/assets/img/seaReward/captain@2x.png" class="iconAnchor" />
+        <view class="titleText"> {{seaReward.NauticalMilesFocus}} </view>
+        <image src="" class="iconAnchor" />
         <image class="editIcon {{foldRate2 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate2}}" class="hiddenContainer">
         <view class="dropDown">
-          <view class="waysToThere"> {{seaReward.Howtogetthere}}</view>
-          <view class="waysIntro"> {{seaReward.CaptainGetThere}}</view>
-          <view class="benefit"> {{seaReward.benefits}} </view>
+          <view class="waysToThere"> {{seaReward.Howtogetthere1}}</view>
+          <view class="waysIntro"> {{seaReward.CaptainGetThere1}}</view>
+          <view class="benefit"> {{seaReward.benefits1}} </view>
           <view class="benefitContent">
-<!--            <view class="benefitIcon"></view>-->
-            <view class="benefitText"> {{seaReward.CaptainBenefits}}
+            <view class="benefitText"> {{seaReward.CaptainBenefits1}}
             </view>
           </view>
         </view>
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate3">
         <view class="titleLine"></view>
-        <view class="titleText"> {{seaReward.Master}} </view>
-        <image src="/assets/img/seaReward/master@2x.png" class="iconAnchor" />
+        <view class="titleText"> {{seaReward.NauticalMilesCycle}} </view>
+        <image src="" class="iconAnchor" />
         <image class="editIcon {{foldRate3 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
       <view hidden="{{foldRate3}}" class="hiddenContainer">
         <view class="dropDown">
-          <view class="waysToThere"> {{seaReward.Howtogetthere}}  </view>
-          <view class="waysIntro"> {{seaReward.MasterGetThere}}
-          </view>
-          <view class="benefit"> {{seaReward.benefits}} </view>
-          <view class="benefitContent">
-<!--            <view class="benefitIcon"></view>-->
-            <view class="benefitText"> {{seaReward.MasterBenefits}} </view>
+          <view class="waysToThere"> {{seaReward.Howtogetthere2}}  </view>
+          <view class="waysIntro ts"> {{seaReward.MasterGetThere2}}
           </view>
         </view>
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate4">
         <view class="titleLine"></view>
-        <view class="titleText"> {{seaReward.Admiral}} </view>
-        <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchor" />
+        <view class="titleText"> {{seaReward.RankFocus}} </view>
+        <image src="" class="iconAnchor" />
         <image class="editIcon {{foldRate4 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
-      <view hidden="{{foldRate4}}" class="hiddenContainer">
+      <view hidden="{{foldRate4}}" class="hiddenContainer tsD">
         <view class="dropDown">
-          <view class="waysToThere"> {{seaReward.Howtogetthere}} </view>
-          <view class="waysIntro"> {{seaReward.AdmiralGetThere}}
+          <view class="waysToThere"> {{seaReward.Howtogetthere3}} </view>
+          <view class="waysIntro"> {{seaReward.AdmiralGetThere3}}
           </view>
-          <view class="benefit"> {{seaReward.benefits}} </view>
-          <view class="benefitContent">
-<!--            <view class="benefitIcon"></view>-->
-            <view class="benefitText"> {{seaReward.AdmiralBenefits}}
-            </view>
+          <view class="rank">
+            <image src="/assets/img/seaReward/lieutenant@2x.png" class="iconAnchorMy" />
+            <view class="titleText"> {{seaReward.Lieutenant}} </view>
+          </view>
+          <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->
+           <view class="benefitContent1"> 
+            <view class="benefitIcon"></view>
+            <view class="benefitText1"> {{seaReward.LieutenantText1}}</view>
+          </view>
+          <view class="benefitContent2"> 
+            <view class="benefitIcon"></view>
+            <view class="benefitText1"> {{seaReward.LieutenantText2}}</view>
+          </view>
+          <view class="rank">
+            <image src="/assets/img/seaReward/captain@2x.png" class="iconAnchorMy" />
+            <view class="titleText"> {{seaReward.Captain}} </view>
+          </view>
+          <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->
+           <view class="benefitContent1"> 
+            <view class="benefitIcon"></view>
+            <view class="benefitText1"> {{seaReward.CaptainText1}}</view>
+          </view>
+          <view class="benefitContent2"> 
+            <view class="benefitIcon"></view>
+            <view class="benefitText1"> {{seaReward.CaptainText2}}</view>
+          </view>
+          <view class="rank">
+            <image src="/assets/img/seaReward/master@2x.png" class="iconAnchorMy" />
+            <view class="titleText"> {{seaReward.Master}} </view>
+          </view>
+          <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->
+           <view class="benefitContent1"> 
+            <view class="benefitIcon"></view>
+            <view class="benefitText1"> {{seaReward.MasterText1}}</view>
+          </view>
+          <view class="benefitContent2"> 
+            <view class="benefitIcon"></view>
+            <view class="benefitText1"> {{seaReward.MasterText2}}</view>
+          </view>
+          <view class="rank">
+            <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchorMy" />
+            <view class="titleText"> {{seaReward.Admiral}} </view>
+          </view>
+          <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->
+           <view class="benefitContent1"> 
+            <view class="benefitIcon"></view>
+            <view class="benefitText1"> {{seaReward.AdmiralText1}}</view>
           </view>
         </view>
       </view>
@@ -99,10 +125,6 @@
           </view>
           <image src="/assets/img/seaReward/downArrow.png" class="down"></image>
         </view>
-<!--        <button bindtap="onClick1" class="buttonClock">-->
-<!--          <view class="buttonText"> {{seaReward.mySeaReward}} </view>-->
-<!--        </button>-->
-
       </view>
       <view class="consloleContainerItem">
         <view class="consloleContainerItem_title">
@@ -118,9 +140,6 @@
 
           <image src="/assets/img/seaReward/downArrow.png" class="down"></image>
         </view>
-<!--        <button bindtap="onClick2" class="buttonQuote">-->
-<!--          <view class="buttonText2"> {{seaReward.getAQuote}} </view>-->
-<!--        </button>-->
       </view>
     </view>
   </view>

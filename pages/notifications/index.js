@@ -1,6 +1,7 @@
 // pages/my/index.js
 const app = getApp();
 const languageUtils = require('../../utils/languageUtils')
+const config = require('../../config/config')
 import {
   querySubscribe,
   addSubscribe,
@@ -119,9 +120,15 @@ Page({
       wx.removeStorageSync('expires_time')
       wx.removeStorageSync('access_token')
       setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/Login/index',
-        })
+        if(config.mockLogin){
+          wx.navigateTo({
+            url: '/pages/LoginCopy/index'
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/Login/index'
+          })
+        }
       }, 500)
     }
   },

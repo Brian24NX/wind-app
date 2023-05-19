@@ -1,0 +1,3 @@
+<view>
+    <web-view src="https://uat.wind.cma-cgm.com/ext/pwdreset/Identify?AdapterId=WIND&TargetResource=https%3A%2F%2Fauth.cma-cgm.com%2Fas%2F9OHYc%2Fresume%2Fas%2Fauthorization.ping&FlowId=Tg4G1SoHwm"></web-view>
+</view>

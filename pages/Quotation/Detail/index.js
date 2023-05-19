@@ -149,6 +149,7 @@ Page({
     const currentPage = pages[pages.length - 2]
     const data = currentPage.data
     let quotationDetail = data.quoteLineList[index]
+    console.log('---------',quotationDetail)
     if (quotationDetail.surchargeDetails.oceanFreight.paymentMethod === 'Collect') {
       quotationDetail.surchargeDetails.collectChargeDetails = quotationDetail.surchargeDetails.collectChargeDetails.concat(quotationDetail.surchargeDetail.freightChargeDetails)
       quotationDetail.surchargeDetails.freightChargeDetails = []
@@ -359,19 +360,19 @@ console.log(surchargeDetails.oceanFreight.price.amount,surchargeDetails.freightC
       })
       if (this.data.useRewards && this.data.burnRewards && this.data.burnRewards !== 0) {
         vasChargeDetails.push({
-          "calculationType": '',
-          "cargoLines": [],
-          "chargeCode": 'FRT33',
-          "chargeName": '',
+          "calculationType": 'FIX',
+          "cargoLines": null,
+          "chargeCode": 'REB75',
+          "chargeName": null,
           "currency": 'USD',
-          "description": '',
-          "expectedActions": '',
-          "hasChargeSelected": false,
-          "levelOfCharge": '',
-          "maximumChargeableAmount": '',
-          "minimumChargeableAmount": '',
-          "rateFrom": '',
-          "subscribedAmount": this.data.burnRewards,
+          "description": null,
+          "expectedActions": null,
+          "hasChargeSelected": true,
+          "levelOfCharge": 'Per BL',
+          "maximumChargeableAmount": 0,
+          "minimumChargeableAmount": 0,
+          "rateFrom": 0,
+          "subscribedAmount": -this.data.burnRewards,
           "subscriptionMode": ''
         })
       }
@@ -501,6 +502,7 @@ console.log(surchargeDetails.oceanFreight.price.amount,surchargeDetails.freightC
       }
     })
     subscribedCharges = subscribedCharges.concat(a).concat(b).concat(c).concat(d)
+
     vasLists({
       "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CHENGLIE' : 'APL',
       "placeReceipt": this.data.placeOfOrigin,

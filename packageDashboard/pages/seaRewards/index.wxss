@@ -4,15 +4,19 @@ page {
 }
 
 .documentContainer {
-  padding: 0 30rpx 140rpx;
+  padding: 0 30rpx 190rpx;
 }
 
 .listTopContainers {
   background-color: #ffffff;
   width: 100%;
   margin: 30rpx 0;
-}
 
+}
+.stickyList{
+  position: sticky;
+  top: 0;
+}
 .listTopContainer {
   background-color: #ffffff;
   padding: 30rpx 30rpx 0;
@@ -94,14 +98,17 @@ page {
 .columnShowed1 {
   display: flex;
   align-items: center;
-  flex-direction: row;
-  margin-top: -20rpx;
+  /*flex-direction: row;*/
+  /*margin-top: -20rpx;*/
+  padding-right: 25rpx;
 }
 
 .columnShowed2 {
-  margin-left: 5rpx;
+  /*padding-left: 50rpx;*/
   display: flex;
   flex-direction: column;
+  color: #071E5D;
+
 }
 
 .dateTime {
@@ -163,7 +170,7 @@ page {
   font-size: 20rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #9AA7C3;
+  color: #6b7790;
   margin-left: 58rpx;
 }
 
@@ -381,6 +388,7 @@ page {
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #04246A;
+  text-align: center;
 }
 
 .urlCopy {
@@ -403,6 +411,7 @@ page {
 
 .uppercase {
   text-transform: uppercase;
+  min-width: 50rpx;
 }
 
 .placeholder {
@@ -469,4 +478,8 @@ page {
 
 .listStyle {
   margin-left: 20rpx;
+}
+.loadings{
+  padding: 0 48rpx 1rpx;
+  /*margin-bottom: 20rpx;*/
 }

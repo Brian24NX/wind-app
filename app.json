@@ -28,7 +28,9 @@
     "pages/Quotation/Others/Remind/index",
     "pages/VAS/Detail/index",
     "pages/SeaInfoPage/index",
-    "pages/LoginCopy/index"
+    "pages/LoginCopy/index",
+    "pages/LoginCopy/detail/index",
+    "pages/loading/index"
   ],
   "subPackages": [
     {

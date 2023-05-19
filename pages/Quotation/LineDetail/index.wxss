@@ -280,7 +280,7 @@
 }
 
 .twoOnOne2 {
-  width: 350rpx;
+  width: 360rpx;
   display: flex;
   justify-content: space-between;
 }

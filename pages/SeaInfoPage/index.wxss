@@ -2,7 +2,7 @@
 .resultContainers {
   width: 100%;
   min-height: 100vh;
-  padding: 30rpx 30rpx 210rpx;
+  padding: 30rpx;
   background-color: #f0f1f5;
 }
 
@@ -17,13 +17,15 @@
 }
 
 .resultContainers .resultCardContainers .titleArea {
-  width: 240rpx;
-  margin-right: 354rpx;
+  /* width: 240rpx; */
+  /* margin-right: 354rpx; */
   flex-direction: row;
   display: flex;
-  justify-content: space-between;
+  justify-content:flex-start
 }
-
+.ts{
+  margin-bottom: 0 !important;
+}
 .resultContainers .resultCardContainers .titleArea .iconPig {
   width: 70rpx;
   height: 70rpx;
@@ -40,7 +42,7 @@
   white-space: nowrap;
   line-height: 46rpx;
   margin-top: 12rpx;
-  margin-right: 20rpx;
+  margin-left: 20rpx;
 }
 
 .resultContainers .resultCardContainers .textArea {
@@ -80,9 +82,10 @@
   display: flex;
   flex-direction: column;
   margin: 4rpx 0 4rpx 0;
+  margin-left: -7rpx;
 }
 
-.resultContainers .rateContainer .rateItem .titleText {
+.titleText {
   width: 120rpx;
   overflow-wrap: break-word;
   color: rgba(7, 30, 93, 1);
@@ -280,11 +283,13 @@ display: flex;
   width: 690rpx;
   display: flex;
   flex-direction: column;
-  padding: 25rpx 30rpx 0rpx 30rpx;
+  padding: 30rpx 48rpx;
   margin-bottom: 25rpx;
   margin-top: -25rpx;
-  margin-left: -5rpx;
   /* border-top: 1rpx solid rgba(240, 241, 245, 1);  */
+}
+.tsD{
+  padding: 30rpx 48rpx 0rpx !important;
 }
 .hiddenContainer::before,
 .hiddenContainer::after {
@@ -312,6 +317,7 @@ display: flex;
 
 
 .waysToThere {
+  /*width: 594rpx;*/
   overflow-wrap: break-word;
   color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
@@ -322,22 +328,28 @@ display: flex;
   white-space: nowrap;
   line-height: 46rpx;
   margin-bottom: 15rpx;
+  background-color:#f0f1f5;
+  /*margin-left: 10rpx;*/
+  padding-left: 10rpx;
 }
 
 .waysIntro {
-  width: 594rpx;
-  height: 68rpx;
+  /* width: 594rpx; */
+  /* height: 68rpx; */
   overflow-wrap: break-word;
-  color: #9aa6b1;
+  color: #6b7790;
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
   text-align: left;
   line-height: 34rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
+  /*margin-left: 20rpx;*/
+  padding: 0 10rpx;
 }
 
 .benefit {
+  width: 594rpx;
   overflow-wrap: break-word;
   color: rgba(7, 30, 93, 1);
   font-size: 32rpx;
@@ -348,15 +360,18 @@ display: flex;
   white-space: nowrap;
   line-height: 46rpx;
   margin-bottom: 15rpx;
+  background-color:#f0f1f5;
+  padding-left: 10rpx;
 }
 
 .benefitContent {
-  width: 618rpx;
-  height: 60rpx;
+  /* width: 618rpx; */
+  /* height: 60rpx; */
   flex-direction: row;
   display: flex;
   justify-content: space-between;
   /* margin-bottom: 10rpx; */
+  /*margin-left: 20rpx;*/
 }
 
 .benefitIcon {
@@ -370,13 +385,63 @@ display: flex;
 }
 
 .benefitText {
-  width: 594rpx;
-  height: 68rpx;
+  /* width: 594rpx; */
+  /* height: 68rpx; */
   overflow-wrap: break-word;
-  color: #9aa6b1;
+  color: #6b7790;
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: normal;
   text-align: left;
   line-height: 34rpx;
+  /*margin-bottom: 30rpx;*/
+  padding: 0 12rpx;
+}
+
+.rank {
+   display: flex;
+   flex-direction: row;
+   justify-content: left;
+   margin-bottom: 20rpx;
+   margin-left: 15rpx;
+}
+
+.iconAnchorMy {
+  width: 50rpx;
+  height: 50rpx
+}
+
+.benefitContent1 {
+  /* width: 618rpx; */
+  /* height: 40rpx; */
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: 10rpx; */
+  margin-left: 20rpx;
+} 
+
+.benefitContent2 {
+  /* width: 618rpx; */
+  /* height: 40rpx; */
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: 10rpx; */
+  margin-left: 20rpx;
+  margin-top: -30rpx;
+  margin-bottom: 20rpx;
+} 
+
+.benefitText1 {
+  width: 594rpx;
+  /* height: 68rpx; */
+  overflow-wrap: break-word;
+  color: #6b7790;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: normal;
+  text-align: left;
+  line-height: 34rpx;
+  margin-left: 14rpx;
 }
