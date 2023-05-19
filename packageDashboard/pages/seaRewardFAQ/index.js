@@ -39,7 +39,7 @@ Page({
                     isShow: true
                 },
                 {
-                    title: 'Where do I find my current Nautical Miles balance ?',
+                    title: 'Where do I find my current Nautical Miles balance?',
                     content: 'You can check your earned Nautical Miles in your "Sea Reward Dashboard" page.',
                     isShow: true
                 },
@@ -124,7 +124,7 @@ Page({
                 },
                 {
                     title: 'When my rank is updated?',
-                    content: 'Sea reward rank is re-evaluated each quarter. At the start of each quarter, customer rank is updated based on the 6 previous months activity on SpotOn (e.g. Update date is Jan 10th, your activity will be calculated on the previous period from 1 July to 31 December).',
+                    content: 'Sea Reward rank is re-evaluated each quarter. At the start of each quarter, customer rank is updated based on the 6 previous months activity on SpotOn (e.g. Update date is Jan 10th, your activity will be calculated on the previous period from Jul 1st to Dec 31st).',
                     isShow: true
                 },
             ],
@@ -165,7 +165,7 @@ Page({
                     isShow: true
                 },
                 {
-                    title: 'Why can\'t I register to Sea Reward account ?',
+                    title: 'Why can\'t I register to Sea Reward account?',
                     content: 'Maybe your current commercial agreement doesn\'t allow you to join Sea Reward program. If a customer with an existing commercial agreement wishes to join the Sea Reward Program, the customer should contact its commercial point.',
                     isShow: true
                 }

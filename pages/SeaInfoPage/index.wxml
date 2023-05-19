@@ -55,7 +55,7 @@
         <image src="" class="iconAnchor" />
         <image class="editIcon {{foldRate4 ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
       </view>
-      <view hidden="{{foldRate4}}" class="hiddenContainer">
+      <view hidden="{{foldRate4}}" class="hiddenContainer tsD">
         <view class="dropDown">
           <view class="waysToThere"> {{seaReward.Howtogetthere3}} </view>
           <view class="waysIntro"> {{seaReward.AdmiralGetThere3}}

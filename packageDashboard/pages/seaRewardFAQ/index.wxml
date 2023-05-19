@@ -48,7 +48,7 @@
             <view class="lineBtom">2) Removing Teu's between quotation and invoice stages, the amount of Ocean Freight will decrease and the amount of potential Nautical Miles "earn" will decrease accordingly.</view>
           </view>
 
-          <view class="waysIntro" wx:if="{{item.content===listItem[0][10].content}}">
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][9].content}}">
             <view class="lineBtom">There are two main use cases when a contact of company won't be able to use its Nautical Miles:
             </view>
             <view class="lineBtom">1) When the rank of the company is Lieutenant (you can only earn Nautical Miles, in Sea Reward program the benefit to use Nautical Miles is available starting Captain rank and above.
@@ -67,7 +67,7 @@
             You can find all the information about the program including the rank criterias information on the <view class="link" bindtap="Information">"Sea Reward Information"</view> page.
           </view>
 
-          <view class="waysIntro" wx:if="{{item.content!==listItem[1][1].content&&item.content!==listItem[2][3].content&&item.content!==listItem[0][10].content&&item.content!==listItem[0][15].content&&item.content!==listItem[1][0].content&&item.content!==listItem[0][1].content&&item.content!==listItem[3][0].content&&item.content!==listItem[0][14].content&&item.content!==listItem[0][0].content}}"> {{item.content}}
+          <view class="waysIntro" wx:if="{{item.content!==listItem[1][1].content&&item.content!==listItem[2][3].content&&item.content!==listItem[0][9].content&&item.content!==listItem[0][15].content&&item.content!==listItem[1][0].content&&item.content!==listItem[0][1].content&&item.content!==listItem[3][0].content&&item.content!==listItem[0][14].content&&item.content!==listItem[0][0].content}}"> {{item.content}}
           </view>
         </view>
       </view>

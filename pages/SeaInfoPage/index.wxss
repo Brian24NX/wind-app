@@ -283,10 +283,13 @@ display: flex;
   width: 690rpx;
   display: flex;
   flex-direction: column;
-  padding: 30rpx 48rpx 0rpx;
+  padding: 30rpx 48rpx;
   margin-bottom: 25rpx;
   margin-top: -25rpx;
   /* border-top: 1rpx solid rgba(240, 241, 245, 1);  */
+}
+.tsD{
+  padding: 30rpx 48rpx 0rpx !important;
 }
 .hiddenContainer::before,
 .hiddenContainer::after {
