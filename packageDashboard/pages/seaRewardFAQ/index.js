@@ -17,12 +17,6 @@ Page({
         noMore: false,
         list: [],
         selected: 0,
-        foldRate: true,
-        foldRate2: true,
-        foldRate3: true,
-        foldRate4: true,
-        foldRate5: true,
-        foldRate6: true,
         scrollLeft: 0,
         categoryId: 0,
         scrollViewWidth: 0,
@@ -71,12 +65,12 @@ Page({
                 },
                 {
                     title: 'Do I earn Nautical Miles on all quotations?',
-                    content: 'You can cumulate Nautical Miles on all your SpotOn quotations saved (excluding all shipments with Split/ Merge/ Part Load).',
+                    content: 'You can cumulate Nautical Miles on all your SpotOn quotations saved (excluding all shipments with Split/Merge/Part Load).',
                     isShow: true
                 },
                 {
                     title: 'How can I use my Nautical Miles to have a discount?',
-                    content: 'You can cumulate Nautical Miles on all your SpotOn quotations saved (excluding all shipments with Split/ Merge/ Part Load).',
+                    content: 'You can cumulate Nautical Miles on all your SpotOn quotations saved (excluding all shipments with Split/Merge/Part Load).',
                     isShow: true
                 },
                 {
@@ -98,7 +92,7 @@ Page({
                 },
                 {
                     title: 'How can I start earning Nautical Miles?',
-                    content: 'To start earning Nautical Nautical Miles you just need to place a quotation on SpotOn.',
+                    content: 'To start earning Nautical Miles you just need to place a quotation on SpotOn.',
                     isShow: true
                 },
                 {
@@ -135,7 +129,7 @@ Page({
                 },
                 {
                     title: 'When my rank is updated?',
-                    content: 'Sea reward rank is re-evaluated each quarter. At the start of each quarter, customer rank is updated based on the 6 previous months activity on SpotOn. (e.g. Update date is Jan 10th, your activity will be calculated on the previous period from 1 July to 31 December) ',
+                    content: 'Sea reward rank is re-evaluated each quarter. At the start of each quarter, customer rank is updated based on the 6 previous months activity on SpotOn. (e.g. Update date is Jan 10th, your activity will be calculated on the previous period from 1 July to 31 December).',
                     isShow: true
                 },
             ],
@@ -151,18 +145,16 @@ Page({
                     isShow: true
                 },
                 {
-                    title: 'What is a Parent Company means of the Sea Reward program?',
-                    content: 'The Parent Company brings together all the companies that make it up. The rank is calculated at the parent company level and all the companies of this parent company contribute to the status through their activity on SpotOn.',
-                    isShow: true
-                },
-                {
                     title: 'Can I spend Nautical Miles for another company?',
                     content: 'You can only spend Nautical Miles on the company account on which you earned Nautical Miles.',
                     isShow: true
                 },
                 {
                     title: 'What a "main partner" means for the Sea Reward program?',
-                    content: 'The "main partner" is a contact/user who is able to activate the Sea Reward account of the company, earn and use Nautical Miles. If you would like to know if you are a main partner, access to the "Sea Reward Dashboard" page and check if you have the tag "main partner" in the customer account scrolling list, you will be able to see which company you are link as main.',
+                    content: 'The "main partner" is a contact/user who is able to activate the Sea Reward account of ' +
+                        'the company, earn and use Nautical Miles. If you would like to know if you are a main partner,' +
+                        ' access to the "Sea Reward Dashboard" page and check if you have the tag "main partner" in the ' +
+                        'customer account scrolling list, you will be able to see which company you are link as main.',
                     isShow: true
                 },
                 {

@@ -10,20 +10,10 @@
       <view class="textArea"> {{seaReward.seaRewardIntro}} </view>
     </view>
     <view class="rateContainer">
-      <!-- <view class="rateItem" catchtap="zhedie" data-type="foldRate">
-        <view class="titleLine"></view>
-        <view class="titleText"> {{seaReward.Lieutenant}} </view>
-        <image src="/assets/img/seaReward/lieutenant@2x.png" class="iconAnchor" />
-        <image class="editIcon {{foldRate ? '' : 'editIcon2'}}" src="/assets/img/booking/down.svg" mode="aspectFit" />
-      </view> -->
       <view hidden="{{foldRate}}" class="hiddenContainer">
         <view class="dropDown">
-          <!-- <view class="waysToThere">  {{seaReward.Howtogetthere}} </view>
-          <view class="waysIntro"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fringillaanmet pulvinar euismod sed …
-          </view> -->
           <view class="benefit"> {{seaReward.benefits}} </view>
           <view class="benefitContent">
-<!--            <view class="benefitIcon"></view>-->
             <view class="benefitText"> {{seaReward.LieutenantBenefits}}
             </view>
           </view>
@@ -41,7 +31,6 @@
           <view class="waysIntro"> {{seaReward.CaptainGetThere1}}</view>
           <view class="benefit"> {{seaReward.benefits1}} </view>
           <view class="benefitContent">
-<!--            <view class="benefitIcon"></view>-->
             <view class="benefitText"> {{seaReward.CaptainBenefits1}}
             </view>
           </view>
@@ -56,13 +45,8 @@
       <view hidden="{{foldRate3}}" class="hiddenContainer">
         <view class="dropDown">
           <view class="waysToThere"> {{seaReward.Howtogetthere2}}  </view>
-          <view class="waysIntro"> {{seaReward.MasterGetThere2}}
+          <view class="waysIntro ts"> {{seaReward.MasterGetThere2}}
           </view>
-          <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->
-          <!-- <view class="benefitContent"> -->
-<!--            <view class="benefitIcon"></view>-->
-            <!-- <view class="benefitText"> {{seaReward.MasterBenefits}} </view>
-          </view> -->
         </view>
       </view>
       <view class="rateItem" catchtap="zhedie" data-type="foldRate4">
@@ -141,10 +125,6 @@
           </view>
           <image src="/assets/img/seaReward/downArrow.png" class="down"></image>
         </view>
-<!--        <button bindtap="onClick1" class="buttonClock">-->
-<!--          <view class="buttonText"> {{seaReward.mySeaReward}} </view>-->
-<!--        </button>-->
-
       </view>
       <view class="consloleContainerItem">
         <view class="consloleContainerItem_title">
@@ -160,9 +140,6 @@
 
           <image src="/assets/img/seaReward/downArrow.png" class="down"></image>
         </view>
-<!--        <button bindtap="onClick2" class="buttonQuote">-->
-<!--          <view class="buttonText2"> {{seaReward.getAQuote}} </view>-->
-<!--        </button>-->
       </view>
     </view>
   </view>

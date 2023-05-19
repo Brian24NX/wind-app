@@ -502,6 +502,7 @@ console.log(surchargeDetails.oceanFreight.price.amount,surchargeDetails.freightC
       }
     })
     subscribedCharges = subscribedCharges.concat(a).concat(b).concat(c).concat(d)
+
     vasLists({
       "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CHENGLIE' : 'APL',
       "placeReceipt": this.data.placeOfOrigin,
