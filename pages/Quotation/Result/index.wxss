@@ -327,7 +327,7 @@ page {
   font-size: 24rpx;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #9AA7C3;
+  color: #6b7790;
   margin: 20rpx 0;
 }
 

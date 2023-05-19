@@ -25,7 +25,7 @@
           <view class="waysIntro" wx:if="{{item.content===listItem[3][0].content}}">
             You will see your rank on the <view class="link" bindtap="spotOn">"SpotOn"</view> page and you can access to the <view class="link" bindtap="SeaReward">"Sea Reward Dashboard"</view> page.
           </view>
-          <view class="waysIntro" wx:if="{{item.content===listItem[0][14].content}}">
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][13].content}}">
             You earn Nautical Miles according your rank and the ocean freight amount. Access to <view class="link" bindtap="Information">"Sea Reward Information"</view> page to find out the number of Nautical Miles you can earn according your rank.
           </view>
           <view class="waysIntro" wx:if="{{item.content===listItem[1][0].content}}">
@@ -41,7 +41,7 @@
           </view>
 
 
-          <view class="waysIntro" wx:if="{{item.content===listItem[0][15].content}}">
+          <view class="waysIntro" wx:if="{{item.content===listItem[0][14].content}}">
             <view class="lineBtom">There are some use cases when you will gain fewer Nautical Miles than the Nautical Miles estimated during your quotation journey:
             </view>
             <view class="lineBtom">1) Adding more Teu's between quotation and invoice stages, the amount of Ocean Freight will increase and the amount of potential Nautical Miles "earn" will increase accordingly.</view>
@@ -67,7 +67,7 @@
             You can find all the information about the program including the rank criterias information on the <view class="link" bindtap="Information">"Sea Reward Information"</view> page.
           </view>
 
-          <view class="waysIntro" wx:if="{{item.content!==listItem[1][1].content&&item.content!==listItem[2][3].content&&item.content!==listItem[0][9].content&&item.content!==listItem[0][15].content&&item.content!==listItem[1][0].content&&item.content!==listItem[0][1].content&&item.content!==listItem[3][0].content&&item.content!==listItem[0][14].content&&item.content!==listItem[0][0].content}}"> {{item.content}}
+          <view class="waysIntro" wx:if="{{item.content!==listItem[1][1].content&&item.content!==listItem[2][3].content&&item.content!==listItem[0][9].content&&item.content!==listItem[0][13].content&&item.content!==listItem[1][0].content&&item.content!==listItem[0][1].content&&item.content!==listItem[3][0].content&&item.content!==listItem[0][14].content&&item.content!==listItem[0][0].content}}"> {{item.content}}
           </view>
         </view>
       </view>
