@@ -1,5 +1,6 @@
 // packageDashboard/pages/seaRewardFAQ/index.js
 const languageUtils = require('../../../utils/languageUtils')
+import { formatHuoYunStatus } from '../../../utils/util'
 import {
     seaRewardFAQ
 } from '../../api/modules/dashboard'
@@ -74,7 +75,7 @@ Page({
                     isShow: true
                 },
                 {
-                    title: 'Why dont I have Nautical Miles in my dashboard anymore?',
+                    title: 'Why don\'t I have Nautical Miles in my dashboard anymore?',
                     content: 'The Nautical Miles are collected by all the contacts belonging to the same company. But, only the main contact(s) of the company can use them.',
                     isShow: true
                 },
