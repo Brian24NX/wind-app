@@ -55,7 +55,7 @@ export const sendEmail = (params) => {
 
 // 获取用户信息
 export const customerProfile = (params) => {
-  return getRequest('/api/miniapp/customerProfile', params, false, true)
+  return getRequest('/api/miniapp/customerProfile', params, true, true)
 }
 
 // 获取用户Parnters

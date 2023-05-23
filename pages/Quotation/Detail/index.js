@@ -80,7 +80,6 @@ Page({
     rewardsEarned: null,   //海里
     useRewards: false,//是否抵扣海里
     finalPrice: 0,    //总计 （订阅）
-    sum:0,//初始值
     rewardsLevel: '',
     memberStatus: '',
     addMoney:0, //增值订阅服务的总额
@@ -131,7 +130,6 @@ Page({
 
   getSeaEarnPoints(amount) {
     console.log("------amount-------",amount,this.data.addMoney)
-    console.log('333333333333',this.data.sum,this.data.totalChargeAmount)
     seaEarnPoints({
       "baseAmount":amount - this.data.addMoney * this.data.containers,
       "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
@@ -222,13 +220,8 @@ Page({
       if (surchargeDetails.collectCharges.isChecked) {
         totalChargeAmount = totalChargeAmount + surchargeDetails.collectCharges.amount
       }
-console.log(surchargeDetails.oceanFreight.price.amount,surchargeDetails.freightCharges.amount,surchargeDetails.prepaidCharges.amount,surchargeDetails.collectCharges.amount)
-      // if(!surchargeDetails.oceanFreight.isChecked&&!surchargeDetails.freightCharges.isChecked
-      //     &&!surchargeDetails.prepaidCharges.isChecked&&!surchargeDetails.collectCharges.isChecked)
-      console.log('totalChargeAmount,false',totalChargeAmount)
       //订阅的数组
     totalChargeAmount = totalChargeAmount|| this.data.quotationDetail.surchargeDetails.totalCharge.amount
-    console.log(totalChargeAmount,totalChargeAmount|| this.data.quotationDetail.surchargeDetails.totalCharge.amount)
       this.data.subscribedServices.forEach(i => {
         if (i.seletcedProduct.levelOfCharge === 'Per Container' && !i.seletcedProduct.isInclude) {
           totalChargeAmount = totalChargeAmount + i.seletcedProduct.amount
@@ -360,7 +353,7 @@ console.log(surchargeDetails.oceanFreight.price.amount,surchargeDetails.freightC
           "subscriptionMode": item.seletcedProduct.subscriptionMode || ''
         })
       })
-      if (this.data.useRewards && this.data.burnRewards && this.data.burnRewards !== 0) {
+      if (this.data.useRewards && this.data.burnRewards && this                              .data.burnRewards !== 0) {
         vasChargeDetails.push({
           "calculationType": 'FIX',
           "cargoLines": null,

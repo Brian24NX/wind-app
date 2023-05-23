@@ -242,6 +242,7 @@ Page({
         let that = this
         let list = []
         setTimeout(() => {
+            //如果有所搜条件，就跳到搜索得方法里，如果没有就分页查询
             console.log('true', this.data.keyword, !this.data.keyword)
             if (!this.data.keyword) {
                 list = allList.slice((this.data.page - 1) * pageSize, this.data.page * pageSize)
@@ -348,6 +349,7 @@ Page({
         })
         allList = this.data.item
         this.dealPaging()
+        //一下得操作是搜索以后添加历史事件得数据得操作
         const huoguiStr = this.data.keyword.replaceAll(' ', '')
         const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
         var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;

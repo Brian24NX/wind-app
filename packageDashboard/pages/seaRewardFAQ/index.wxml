@@ -19,6 +19,7 @@
       <view class="lineZ"></view>
       <view hidden="{{item.isShow}}" class="hiddenContainer">
         <view class="dropDown">
+<!--          特殊的样式需要分开显示，例如跳转链接和换行-->
           <view class="waysIntro" wx:if="{{item.content===listItem[0][1].content}}">
             You can check your earned Nautical Miles in your <view class="link" bindtap="SeaReward">"Sea Reward Dashboard"</view> page.
           </view>
@@ -39,15 +40,12 @@
             <view class="lineBtom">Then you will be able to use a proposed amount of "Earned" Nautical Miles on your next SpotOn quotations in order to get a discount in dollar (1 Nautical Miles = 1$). Those Nautical Miles will be considered "pending" Nautical Miles until invoice generation.</view>
             <view class="lineBtom">Once the invoice is paid those "engaged" Nautical Miles will be considered as "used" Nautical Miles and will give you the discount associated in dollar on your final invoice.</view>
           </view>
-
-
           <view class="waysIntro" wx:if="{{item.content===listItem[0][14].content}}">
             <view class="lineBtom">There are some use cases when you will gain fewer Nautical Miles than the Nautical Miles estimated during your quotation journey:
             </view>
             <view class="lineBtom">1) Adding more Teu's between quotation and invoice stages, the amount of Ocean Freight will increase and the amount of potential Nautical Miles "earn" will increase accordingly.</view>
             <view class="lineBtom">2) Removing Teu's between quotation and invoice stages, the amount of Ocean Freight will decrease and the amount of potential Nautical Miles "earn" will decrease accordingly.</view>
           </view>
-
           <view class="waysIntro" wx:if="{{item.content===listItem[0][9].content}}">
             <view class="lineBtom">There are two main use cases when a contact of company won't be able to use its Nautical Miles:
             </view>
@@ -56,17 +54,13 @@
             <view class="lineBtom">2) The contact has placed a quotation but he is not recorded as main contact of the company. So, the contact will be able to earn Nautical Miles but not use Nautical Miles.
             </view>
           </view>
-
-
           <view class="waysIntro" wx:if="{{item.content===listItem[2][3].content}}">
             The "main partner" is a contact/user who is able to activate the Sea Reward account of the company, earn and use Nautical Miles. If you would like to know if you are a main partner, access to the <view class="link" bindtap="SeaReward">"Sea Reward Dashboard"</view> page and check if you have the tag "main partner" in the customer account scrolling list, you will be able to see which company you are link as main.
           </view>
-
-
           <view class="waysIntro" wx:if="{{item.content===listItem[1][1].content}}">
             You can find all the information about the program including the rank criterias information on the <view class="link" bindtap="Information">"Sea Reward Information"</view> page.
           </view>
-
+<!--          默认循环显示得样式-->
           <view class="waysIntro" wx:if="{{item.content!==listItem[1][1].content&&item.content!==listItem[2][3].content&&item.content!==listItem[0][9].content&&item.content!==listItem[0][13].content&&item.content!==listItem[1][0].content&&item.content!==listItem[0][1].content&&item.content!==listItem[3][0].content&&item.content!==listItem[0][14].content&&item.content!==listItem[0][0].content}}"> {{item.content}}
           </view>
         </view>

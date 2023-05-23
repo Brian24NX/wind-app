@@ -114,33 +114,27 @@ Page({
             this.setData({
                 needLogin: false
             })
-            console.log('count', this.data.count, this.data.count === 1, wx.getStorageSync('seaRewardData'),new Date())
-            // if (this.data.count === 1) {
-            //     wx.showLoading({
-            //         title: languageUtil.languageVersion().lang.page.load.load,
-            //         mask: true
-            //     })
-            // }
-            setTimeout(() => {
-                if (this.data.count === 1) {
-                    wx.showLoading({
-                        title: languageUtil.languageVersion().lang.page.load.load,
-                        mask: true
-                    })
-                }
-                let reward = wx.getStorageSync('seaRewardData')
-                this.setData({
-                    count: 2
+            console.log('count', this.data.count, this.data.count === 1,new Date())
+            if (this.data.count === 1) {
+                wx.showLoading({
+                    title: languageUtil.languageVersion().lang.page.load.load,
+                    mask: true
                 })
+            }
+            setTimeout(() => {
+                let reward = wx.getStorageSync('seaRewardData')
                 console.log(new Date(),reward)
                 if (reward) {
+                    this.setData({
+                        count: 2
+                    })
                     this.setData({
                         seaRewardData: reward,
                         memberStatus: reward.memberStatus,
                     })
                     console.log(2,this.data.seaRewardData,this.data.memberStatus,new Date())
                     // setTimeout(() => {
-                    //     console.log(2222,new Date())
+                        console.log(2222,new Date())
                         wx.hideLoading()
                     // },1000)
                 } else {
