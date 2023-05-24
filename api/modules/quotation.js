@@ -79,3 +79,9 @@ export const exportPDF = (params) => {
 export const seaEarnPoints = (params) => {
   return getRequest('/api/miniapp/sea/earnPoints', params, true, true, true)
 }
+
+
+//创建quotation后的获得积分
+export const seaQuotationCreation= (params) => {
+  return getRequest('/api/miniapp/sea/windQuotationCreation', params, true, true, true)
+}

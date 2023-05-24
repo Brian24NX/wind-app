@@ -21,12 +21,14 @@ Page({
         scrollLeft: 0,
         categoryId: 0,
         scrollViewWidth: 0,
+        //四个分类得标题
         categoryList: [
             {text: 'My Nautical Miles', value: 0},
             {text: 'My Reward & Rank', value: 1},
             {text: 'My Sea Reward Account', value: 2},
             {text: 'Enrolment & Registration', value: 3},
         ],
+        //循环显示得样式，四个分类
         listItem: [
             [
                 {
@@ -82,7 +84,7 @@ Page({
                 {
                     title: 'I have Nautical Miles in my Sea Reward account but I can\'t use them. Why can\'t I use them?',
                     content: 'There are two main use cases when a contact of company wont be able to use its Nautical Miles:' +
-                        '\n1) When the rank of the company is Lieutenant (you can only earn Nautical Miles, in Sea Reward program the benefit to use Nautical Miles is available starting Captain rank and above.' +
+                        '\n1) When the rank of the company is Lieutenant (   you can only earn Nautical Miles, in Sea Reward program the benefit to use Nautical Miles is available starting Captain rank and above.' +
                         '\n2) The contact has placed a quotation but he is not recorded as main contact of the company. So, the contact will be able to earn Nautical Miles but not use Nautical Miles.',
                     isShow: true
                 },
@@ -230,6 +232,7 @@ Page({
     },
     // 折叠
     zhedie(e) {
+        //修改当前点击得展开和缩回
         this.data.listItem[this.data.categoryId][e.currentTarget.dataset.index].isShow = !this.data.listItem[this.data.categoryId][e.currentTarget.dataset.index].isShow
         this.setData({
             listItem: this.data.listItem

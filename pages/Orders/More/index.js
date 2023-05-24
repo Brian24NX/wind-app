@@ -51,13 +51,14 @@ Component({
   methods: {
     setList() {
       const lists = this.data.list
-      // console.log("More组件==>", lists)
+      console.log("More组件==>", lists)
       lists.forEach(one => {
         if (one.movement.length) {
           one.movement = one.movement;
           one.movement.forEach((item, index) => {
             item.statusLabel = utils.formatHuoYunStatus(item.carrierSpecificData.internalEventCode, this.data.language)
             const dayStatus = dayjs(item.eventDateTime).isBefore(dayjs(), 'date')
+            console.log('item',item)
             if (dayStatus) {
               item.stepStatus = 'past'
             } else if (dayjs().isSame(dayjs(item.eventDateTime), 'date')) {
