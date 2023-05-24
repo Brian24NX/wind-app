@@ -83,5 +83,5 @@ export const seaEarnPoints = (params) => {
 
 //创建quotation后的获得积分
 export const seaQuotationCreation= (params) => {
-  return getRequest('/api/miniapp/sea/windQuotationCreation', params, true, true, true)
+  return postRequest('/api/miniapp/sea/windQuotationCreation', params, true, true, true)
 }

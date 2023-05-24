@@ -5,7 +5,7 @@ import {
     createQuotationQuotation,
     seaEarnPoints, seaQuotationCreation,
 } from '../../../api/modules/quotation';
-
+const dayjs = require("dayjs");
 import {writeOperationLog} from '../../../api/modules/home'
 
 Page({
@@ -92,7 +92,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
         wx.setNavigationBarTitle({
             title: languageUtil.languageVersion().lang.page.qutationResult.title2
         })
@@ -443,18 +442,19 @@ Page({
                         console.log('SpotOn日志记录成功')
                     })
 
-                    // if (wx.getStorageSync('seaRewardData').memberStatus == 'Active') {
-                    //     const data = {
-                    //         baseAmountUsd: this.data.oceanFreight,
-                    //         includeBurn: this.data.useRewards,
-                    //         quotationReference: res.data,
-                    //         partnerCode: wx.getStorageSync('partnerList')[0].code
-                    //     }
-                    //     console.log('--------------', data)
-                    //     seaQuotationCreation(data).then(res => {
-                    //         console.log(res)
-                    //     })
-                    // }
+                    if (wx.getStorageSync('seaRewardData').memberStatus == 'Active') {
+                        const data = {
+                            effectiveDate:dayjs(new Date()).format('YYYY-MM-DD'),
+                            baseAmountUsd: this.data.oceanFreight,
+                            includeBurn: this.data.useRewards,
+                            quotationReference: res.data,
+                            partnerCode: wx.getStorageSync('partnerList')[0].code
+                        }
+                        console.log('--------------', data)
+                        seaQuotationCreation(data).then(res => {
+                            console.log(res)
+                        })
+                    }
                     wx.navigateTo({
                         url: `/pages/Quotation/Result/index?quotationId=${res.data}`,
                     })

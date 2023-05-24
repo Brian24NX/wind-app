@@ -12,6 +12,7 @@ const request = ({
   hideLoading,
   needError
 }) => {
+  console.log('------------',url,hideLoading)
   return new Promise((resolve, reject) => {
     if (needAccessToken && !utils.checkAccessToken()) {
       wx.showToast({
@@ -37,6 +38,7 @@ const request = ({
       return
     }
     if (!hideLoading) {
+      console.log('http.js------------------')
       wx.showLoading({
         title: languageUtil.languageVersion().lang.page.load.loading,
         mask: true
@@ -55,6 +57,7 @@ const request = ({
       header,
       success: (res) => {
         if (!hideLoading) {
+          console.log('http.js-----1------')
           wx.hideLoading();
         }
         // 返回成功提示信息
@@ -145,6 +148,7 @@ const request = ({
       },
       fail: (err) => {
         if (!hideLoading) {
+          console.log('http.js-----2------')
           wx.hideLoading();
         }
         if (err.errMsg === 'request:fail timeout') {
