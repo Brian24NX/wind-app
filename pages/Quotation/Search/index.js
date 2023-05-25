@@ -426,7 +426,9 @@ Page({
         }else{
           this.setData({
             showPoR: false,
+            showPoDe:false,
             porCount:1,
+
           })
           this.hideDropdown()
         }
@@ -575,6 +577,7 @@ Page({
       }, true).then(res => {
         this.setData({
           showPoDe: false,
+          poDeCount:0
         })
         if (res.data != ''||res.data==undefined) {
           res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
@@ -590,7 +593,8 @@ Page({
           this.getPorData(data)
         }else{
           this.setData({
-            showPoDe: false
+            showPoDe: false,
+            poDeCount:0
           })
           this.hideDropdown()
         }
@@ -622,16 +626,7 @@ Page({
           })
         }
       }, () => {
-        this.data.poDeCount++
-        if(this.data.poDeCount<=3){
           this.getPorData(data)
-        }else{
-          this.setData({
-            showPoDe: false
-          })
-          console.log(this.data.showPoDe,1231564)
-          this.hideDropdown()
-        }
       })
     }
   },
