@@ -298,7 +298,7 @@ Page({
                 if(this.data.partnerList[0].code =='0002130568'){
                     this.setData({
                         availableMiles: points.pointsBalance || 260,
-                        savedUSD: rightusdSaved.pointsBalance || 80,
+                        savedUSD: rightusdSaved.pointsBalance || 4500,
                     })
                 }
                 wx.hideLoading()
