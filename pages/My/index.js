@@ -133,14 +133,9 @@ Page({
                         memberStatus: reward.memberStatus,
                     })
                     console.log(2,this.data.seaRewardData,this.data.memberStatus,new Date())
-                    // setTimeout(() => {
-                        console.log(2222,new Date())
                         wx.hideLoading()
-                    // },1000)
                 } else {
-                    // this.$nextTick(()=>{
                         wx.hideLoading()
-                    // })
                 }
             }, 2000)
         } else {

@@ -5,6 +5,7 @@ import {
     createQuotationQuotation,
     seaEarnPoints, seaQuotationCreation,
 } from '../../../api/modules/quotation';
+
 const dayjs = require("dayjs");
 import {writeOperationLog} from '../../../api/modules/home'
 
@@ -238,7 +239,7 @@ Page({
                 totalChargeAmount: totalChargeAmount,
                 oceanFreight: this.data.oceanFreight * this.data.containers - this.data.burnRewards
             })
-            console.log(1111111111,this.data.useRewards,this.data.oceanFreight)
+            console.log(1111111111, this.data.useRewards, this.data.oceanFreight)
         } else {
             this.setData({
                 finalPrice: totalChargeAmount * this.data.containers,
@@ -246,12 +247,19 @@ Page({
                 totalChargeAmount: totalChargeAmount,
                 oceanFreight: this.data.oceanFreight * this.data.containers
             })
-            console.log(2222222222222,this.data.useRewards,this.data.oceanFreight)
+            console.log(2222222222222, this.data.useRewards, this.data.oceanFreight)
         }
-        if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
+        console.log(this.data.burnRewards, wx.getStorageSync('seaRewardData').pointsBalance)
+        if (wx.getStorageSync('partnerList')[0].code == '0002130568') {
             this.setData({
-                burnRewards: this.data.finalPrice
+                burnRewards: 260,
             })
+        } else {
+            if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
+                this.setData({
+                    burnRewards: this.data.finalPrice
+                })
+            }
         }
         if (this.data.memberStatus === 'Active') {
             this.getSeaEarnPoints(this.data.finalPrice)
@@ -444,7 +452,7 @@ Page({
 
                     if (wx.getStorageSync('seaRewardData').memberStatus == 'Active') {
                         const data = {
-                            effectiveDate:dayjs(new Date()).format('YYYY-MM-DD'),
+                            effectiveDate: dayjs(new Date()).format('YYYY-MM-DD'),
                             baseAmountUsd: this.data.oceanFreight,
                             includeBurn: this.data.useRewards,
                             quotationReference: res.data,
@@ -517,48 +525,788 @@ Page({
             }
         })
         subscribedCharges = subscribedCharges.concat(a).concat(b).concat(c).concat(d)
-
-        vasLists({
-            "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CHENGLIE' : 'APL',
-            "placeReceipt": this.data.placeOfOrigin,
-            "portLoading": this.data.portOfLoading,
-            "portDischarge": this.data.portOfDischarge,
-            "placeDelivery": this.data.finalPlaceOfDelivery,
-            "placeOfPayment": this.data.portOfDischarge,
-            "importMovementType": quoteLine.importMovementType.toLocaleUpperCase(),
-            "importHaulageMode": "MERCHANT",
-            "exportMovementType": quoteLine.exportMovementType.toLocaleUpperCase(),
-            "exportHaulageMode": "MERCHANT",
-            "applicationDate": this.data.quotationDetail.departureDate,
-            "locale": this.data.languageCode,
-            "channel": "PRI",
-            "typeOfBl": "Negotiable",
-            "bookingParties": bookingParties,
-            "cargoes": [{
-                "cargoNumber": 1,
-                "packageCode": this.data.equipmentTypeSize,
-                "equipmentSize": this.data.equipmentTypeSize,
-                "equipmentTypeDescription": this.data.equipmentTypeName,
-                "packageBookedQuantity": this.data.containers,
-                "commodityCode": quoteLine.commodities[0].code,
-                "commodityName": quoteLine.commodities[0].name,
-                "totalNetWeight": 1,
-                "uomWeight": "TNE",
-                "hazardous": false,
-                "oversize": false,
-                "refrigerated": false,
-                "shipperOwned": false
-            }],
-            "currency": surchargeDetails.totalCharge.currency.code,
-            subscribedCharges: subscribedCharges.map(i => i.code)
-        }).then(res => {
+        if (wx.getStorageSync('partnerList')[0].code == '0002130568') {
+            const data = [
+                {
+                    "termsandConditions": "TC - BESC revue SP260122 - Final.pdf",
+                    "productFamily": "logistics_services",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": true,
+                    "parentProductId": "EASY IMPORT documentation",
+                    "featuredProduct": false,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 265,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 265,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "EASY IMPORT documentation",
+                        "unsubscriptionDisableForAll": true,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "CTN01"
+                    }],
+                    "productName": "EASY IMPORT documentation",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "Simplify your exports to West Africa",
+                    "bestSeller": false,
+                    "productMainImage": "SHIPFIN sea freight financing PIM.jpg",
+                    "productSheet": "EASY IMPORT documentation - Flyer English.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per Container",
+                    "productDescription": "Facilitate  your  procedures  thanks  to  the  preparation  of  your  Electronic  Cargo  Tracking Note by our services. The BESC/ECTN is an imperative document for any export to the countries of this region."
+                },
+                {
+                    "productFamily": "logistics_services",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": false,
+                    "parentProductId": "CUSTOMS CLEARANCE solutions Export",
+                    "contactEmail": "ho.kgibaud@cma-cgm.com",
+                    "featuredProduct": false,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "FIX",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "isHazardous": false,
+                            "maxNoOfContainer": 0,
+                            "cargoRate": 0,
+                            "isShipperOwned": false,
+                            "cargoLineNumber": 0
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 25,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per BL",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "CUSTOMS CLEARANCE solutions Export",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "shipmentlevel",
+                        "chargeCode": "CT001"
+                    }],
+                    "productName": "CUSTOMS CLEARANCE solutions Export",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "Let CMA CGM handle your customs clearance processes. \n",
+                    "bestSeller": false,
+                    "productMainImage": "SHIPFIN sea freight financing PIM.jpg",
+                    "productSheet": "CUSTOMS CLEARANCE solutions - Flyer English.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per BL",
+                    "productDescription": "With our dedicated team of customs clearance experts at CEVA, we offer fast and reliable import and export customs facilitation services. Whether you need us to perform customs entry for each harmonized tariff code or to complete your AES filings, we’ve got you covered!\n"
+                },
+                {
+                    "termsandConditions": "Cargo value serenity - TC English -  CMA CGM Group June 2022.pdf",
+                    "productFamily": "insurance_serenity",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": true,
+                    "parentProductId": "SERENITY cargo value guarantee",
+                    "featuredProduct": true,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "TEU",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 50,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 50,
+                        "maximumChargeableAmount": "0",
+                        "personalizedValueLabel": "test cn",
+                        "unsubscriptionDisableForLTA": true,
+                        "unsubscriptionDisableForQSPOT": true,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "Guarantee up to USD 25 000 per container",
+                        "unsubscriptionDisableForAll": true,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "CVS01"
+                    }, {
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 49,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 49,
+                        "maximumChargeableAmount": "0",
+                        "personalizedValueLabel": "test cn",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "保证每个容器高达50000美元",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "CVS02"
+                    }, {
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 99,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 99,
+                        "maximumChargeableAmount": "0",
+                        "personalizedValueLabel": "test cn",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "test",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "CVS03"
+                    }, {
+                        "calculationType": "PRC",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "isHazardous": false,
+                            "maxNoOfContainer": 0,
+                            "cargoRate": 0,
+                            "isShipperOwned": false,
+                            "cargoLineNumber": 0
+                        }],
+                        "minimumChargeableAmount": "100",
+                        "conversionRate": 0,
+                        "rateFrom": 0.2,
+                        "maximumChargeableAmount": "300",
+                        "personalizedValueLabel": "test cn",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": true,
+                        "currency": "USD",
+                        "levelOfCharge": "Per BL",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "每个集装箱的个性化保证",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "CVS00"
+                    }],
+                    "productName": "SERENITY cargo value guarantee",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "节省时间和金钱",
+                    "bestSeller": false,
+                    "productMainImage": "CMA CGM FREETIME extended Banner all sizes_PIM_350x148px.jpg",
+                    "currency": "USD",
+                    "levelOfCharge": "Per Container",
+                    "productDescription": "忘记测量员，行政手续，与承运人的无休止的法律纠纷，\n与您的银行的不愉快讨论，负面的商业影响。\n•全面的服务：门到门保证您的货物价值。\n•无中间人/无第三方：您只有一个联系点：CMA CGM\n•没有更多无休止的法律纠纷：可靠与否，CMA CGM将赔偿您的全部赔偿\n保证价值\n•全球援助：您将受益于最了解您的人的全力支持\n装船。\n•无论发生什么事情或谁负有责任，您都将获得赔偿。"
+                },
+                {
+                    "productFamily": "COLD_TREATMENT",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": false,
+                    "parentProductId": "COLD TREATMENT services",
+                    "contactEmail": "ho.kgibaud@cma-cgm.com",
+                    "featuredProduct": false,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 351,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 351,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "Guarantee up to USD 50 000",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "CTG02"
+                    }],
+                    "productName": "COLD TREATMENT services",
+                    "subscriptionAvailable": false,
+                    "taxRate": 0,
+                    "productShortDescription": "保持你的头部凉爽\n冷处理是确保灭绝昆虫和幼虫的过程。这个流程 在某些国家/地区必须出口农产品。",
+                    "bestSeller": false,
+                    "productMainImage": "CMA CGM VAS_Digital_BILLofLADING V2 350x148px.jpg",
+                    "productSheet": "COLD TREATMENT services - Flyer English.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per Container",
+                    "productDescription": "我们的冷处理保证可以补偿因冷处理失败而产生的以下后果，特别是如果您的货物被目的地的植物检疫机构拒收：\n•货物损坏\n•第二次冷处理过程的额外费用\n•额外费用（存储，堵塞费用，手续费......）\n•利润损失\n•重新计算费用"
+                },
+                {
+                    "productFamily": "ctr_preparation",
+                    "isExistingVas": false,
+                    "confirmationNeeded": true,
+                    "isTandCRequired": false,
+                    "parentProductId": "BARLOCK security device",
+                    "featuredProduct": false,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 80,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 80,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": true,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "BARLOCK security device",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "unitspercargoline",
+                        "chargeCode": "SEA07"
+                    }],
+                    "productName": "BARLOCK security device",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "\n添加额外保护以确保您的货物安全",
+                    "bestSeller": true,
+                    "productMainImage": "CMA CGM VAS_Digital_BILLofLADING V2 350x148px.jpg",
+                    "productSheet": "BARLOCK security device - Flyer.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per Container",
+                    "productDescription": "在运输高价值货物时，盗窃问题会产生压力。\n通过在您的集装箱门上添加钢筋锁，使得最终盗贼更加困难和长时间打开，并在运输过程中尽可能保证您的货物安全。\n\n酒吧锁将帮助您节省成本并避免复杂的保险索赔。\n\n由于钢筋锁，我们在烟草行业的客户之一在18个月内将事故从4减少到0。\n\n酒吧锁将在整个过程中保持密封状态，并且只能使用圆形钢锯在目的地打开。\n\n要订购带有常规安全封条的带锁条的容器 - 请咨询当地代表！\n\n降低风险和成本\n降低货物盗窃的风险及其后果\n降低保险费\n只需随容器一起提供强大的安全装置"
+                },
+                {
+                    "termsandConditions": "Flyers_Paperless_BL_11032019.pdf",
+                    "productFamily": "paperless_bl",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": false,
+                    "parentProductId": "BILL OF LADING paperless",
+                    "featuredProduct": false,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "FIX",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "isHazardous": false,
+                            "maxNoOfContainer": 0,
+                            "cargoRate": 0,
+                            "isShipperOwned": false,
+                            "cargoLineNumber": 0
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 55,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per BL",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "BILL OF LADING paperless",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "shipmentlevel",
+                        "chargeCode": "EBL10"
+                    }],
+                    "productName": "BILL OF LADING paperless",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "使用无纸提单（B / L），加快您的导入/导出过程，节省时间，快递和邮资成本，只需点击一下即可将您的提单转移到下一方！",
+                    "bestSeller": false,
+                    "productMainImage": "CMA CGM VAS_Digital_BILLofLADING V2 350x148px.jpg",
+                    "productSheet": "BILL OF LADING paperless - Flyer English.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per BL",
+                    "productDescription": "主要特点\n•不需要纸张或帖子！\n•各方之间的即时转移\n•立即向承运人投降\n•与纸质提单具有相同的法律价值\n•所有转账都是安全的\n•不再丢失文件"
+                },
+                {
+                    "termsandConditions": "TC SERENITY container guarantee - 12th version ENG.pdf",
+                    "productFamily": "DTC01",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": true,
+                    "parentProductId": "SERENITY container guarantee (export)",
+                    "featuredProduct": false,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 55,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 55,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "Standard Guarantee for Shipper",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "DTC03"
+                    }, {
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 61,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 61,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "Premium Guarantee for Shipper",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "DTC07"
+                    }],
+                    "productName": "SERENITY container guarantee (export)",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "Avoid costs in case of damage to our containers ",
+                    "bestSeller": false,
+                    "productMainImage": "SHIPFIN sea freight financing PIM.jpg",
+                    "productSheet": "SERENITY container guarantee_ENG Flyer_A4_HR.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per Container",
+                    "productDescription": "Accidental events may damage our containers while under your responsibility. With SERENITY Container Guarantee, you limit or avoid the relative repair costs."
+                },
+                {
+                    "termsandConditions": "TC SERENITY container guarantee - 12th version ENG.pdf",
+                    "productFamily": "DTC01",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": true,
+                    "parentProductId": "SERENITY container guarantee (import)",
+                    "featuredProduct": false,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 8,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 8,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "Standard Guarantee for Consignee",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "DTC04"
+                    }, {
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 39,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 39,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "Premium Guarantee for Consignee",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "DTC08"
+                    }],
+                    "productName": "SERENITY container guarantee (import)",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "Avoid costs in case of damage to our containers ",
+                    "bestSeller": false,
+                    "productMainImage": "LOCK MY PRICE PIM.jpg",
+                    "productSheet": "SERENITY container guarantee_ENG Flyer_A4_HR.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per Container",
+                    "productDescription": "Accidental events may damage our containers while under your responsibility. With SERENITY Container Guarantee, you limit or avoid the relative repair costs."
+                },
+                {
+                    "termsandConditions": "FREETIME Extended  - TC English -  JUNE22_ CMACNC.pdf",
+                    "productFamily": "Detention_and_Demmurage",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": true,
+                    "parentProductId": "FREETIME extended (Detention & Demurrage)",
+                    "featuredProduct": true,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 210,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "EUR",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0.9924990199,
+                        "rateFrom": 210,
+                        "maximumChargeableAmount": "0",
+                        "expectedActions": "14_c_g_i",
+                        "unsubscriptionDisableForLTA": true,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "EUR",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "14天免舱柜租（D&D）费（包含常规免费天数）",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "DTM11"
+                    }, {
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 1610,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "EUR",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0.9924990199,
+                        "rateFrom": 1610,
+                        "maximumChargeableAmount": "0",
+                        "expectedActions": "28_w_g_i",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "EUR",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "Up to 28 days at destination",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "DTM13"
+                    }, {
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 710,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "EUR",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0.9924990199,
+                        "rateFrom": 710,
+                        "maximumChargeableAmount": "0",
+                        "expectedActions": "21_c_g_i",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "EUR",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "21天免舱柜租（D&D）费（包含常规免费天数）",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "DTM12"
+                    }],
+                    "productName": "FREETIME extended (Detention & Demurrage)",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "延长目的地免滞箱费&滞港费（D&D）",
+                    "bestSeller": true,
+                    "productMainImage": "CMA CGM FREETIME extended Banner all sizes_PIM_350x148px.jpg",
+                    "productSheet": "FREETIME extended Flyer English.pdf",
+                    "currency": "EUR",
+                    "levelOfCharge": "Per Container",
+                    "productDescription": "需要更多时间来为您的供应链提供更大的弹性？随着CNC的免滞箱费&滞港费（D&D）升级，与常规的D&D费用相比，您现在能以更优惠的价格延长您在目的地的免费时间（D&D）。"
+                },
+                {
+                    "termsandConditions": "FREETIME Extended  - TC English -  JUNE22_ CMACNC.pdf",
+                    "productFamily": "Detention_and_Demmurage",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": true,
+                    "parentProductId": "FREETIME extended (Demurrage only)",
+                    "featuredProduct": true,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 1234,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 1234,
+                        "maximumChargeableAmount": "0",
+                        "expectedActions": "7_c_m_i",
+                        "unsubscriptionDisableForLTA": true,
+                        "unsubscriptionDisableForQSPOT": true,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "07 days bundle (Including Standard Free Days)",
+                        "unsubscriptionDisableForAll": true,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "DEM90"
+                    }],
+                    "productName": "FREETIME extended (Demurrage only)",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "Extend your Demurrage Free Time at destination",
+                    "bestSeller": true,
+                    "productMainImage": "CMA CGM FREETIME extended Banner all sizes_PIM_350x148px.jpg",
+                    "productSheet": "FREETIME extended - Flyer English Dic21.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per Container",
+                    "productDescription": "Need more time to enable greater flexibility for your supply chain? With CNC’s DEMURRAGE - FREE TIME UPGRADE, you can now extend your Demurrage Free Time at destination at a preferred rate compared to the usual demurrage charges"
+                },
+                {
+                    "termsandConditions": "TC SERENITY container guarantee - 12th version ENG.pdf",
+                    "productFamily": "STF",
+                    "isExistingVas": false,
+                    "confirmationNeeded": true,
+                    "isTandCRequired": true,
+                    "parentProductId": "SHIPFIN extended credit",
+                    "contactEmail": "ho.kgibaud@cma-cgm.com",
+                    "featuredProduct": false,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "UNI",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "equipmentTypeDescription": "20尺干货标准集装箱",
+                            "isHazardous": false,
+                            "maxNoOfContainer": 1,
+                            "cargoRate": 50,
+                            "isShipperOwned": false,
+                            "equipmentSize": "20ST",
+                            "currency": "USD",
+                            "cargoLineNumber": 1,
+                            "levelOfCharge": "Per Container",
+                            "commodityName": "Freight All Kind"
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 50,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": false,
+                        "unsubscriptionDisableForQSPOT": false,
+                        "currency": "USD",
+                        "levelOfCharge": "Per Container",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "SHIPFIN extended credit",
+                        "unsubscriptionDisableForAll": false,
+                        "subscriptionMode": "cargoline",
+                        "chargeCode": "FIT01"
+                    }],
+                    "productName": "SHIPFIN extended credit",
+                    "subscriptionAvailable": false,
+                    "taxRate": 0,
+                    "productShortDescription": "Cover your sea freight invoice. ",
+                    "bestSeller": false,
+                    "productMainImage": "SHIPFIN sea freight financing PIM.jpg",
+                    "productSheet": "SHIPFIN sea freight financing - Flyer English.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per Container",
+                    "productDescription": "<p>SHIPFIN sea freight financing allows you to pay your freight invoice up to 30 days after vessel departure.<br></p>"
+                },
+                {
+                    "termsandConditions": "LOCK MY PRICE OPTION T&C Jan23.pdf",
+                    "productFamily": "LockMyPrice",
+                    "isExistingVas": false,
+                    "confirmationNeeded": false,
+                    "isTandCRequired": true,
+                    "parentProductId": "LOCK MY PRICE option",
+                    "featuredProduct": false,
+                    "isProductSelected": false,
+                    "chargeDetails": [{
+                        "calculationType": "FIX",
+                        "cargoLines": [{
+                            "isOOG": false,
+                            "isHazardous": false,
+                            "maxNoOfContainer": 0,
+                            "cargoRate": 0,
+                            "isShipperOwned": false,
+                            "cargoLineNumber": 0
+                        }],
+                        "minimumChargeableAmount": "0",
+                        "conversionRate": 0,
+                        "rateFrom": 70,
+                        "maximumChargeableAmount": "0",
+                        "unsubscriptionDisableForLTA": true,
+                        "unsubscriptionDisableOn": ["ClickAndBook"],
+                        "unsubscriptionDisableForQSPOT": true,
+                        "currency": "USD",
+                        "levelOfCharge": "Per BL",
+                        "unsubscriptionDisableForUSContract": false,
+                        "chargeName": "LOCK MY PRICE option",
+                        "unsubscriptionDisableForAll": true,
+                        "subscriptionMode": "shipmentlevel",
+                        "chargeCode": "LOK01"
+                    }],
+                    "productName": "LOCK MY PRICE option",
+                    "subscriptionAvailable": true,
+                    "taxRate": 0,
+                    "productShortDescription": "Hold your price for 72 hours.",
+                    "bestSeller": false,
+                    "productMainImage": "LOCK MY PRICE PIM.jpg",
+                    "productSheet": "SpotOn - Flyer English.pdf",
+                    "currency": "USD",
+                    "levelOfCharge": "Per BL",
+                    "productDescription": "<p class=\"MsoNormal\">Want to keep the quotation conditions for an extended period\nof time? Thanks to our LOCK MY PRICE option, you can hold the\npricing conditions for 72 hours and place your booking later.<o:p></o:p></p>"
+                }
+            ]
             if (this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH') {
-                const i = res.data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
+                const i = data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
                 if (i > -1) {
-                    res.data.splice(i, 1)
+                    data.splice(i, 1)
                 }
             }
-            res.data.forEach(one => {
+            data.forEach(one => {
                 if (one.isProductSelected) {
                     // console.log(subscribedCharges)
                     const index = subscribedCharges.findIndex(i => one.chargeDetails[0].chargeCode === i.code)
@@ -578,16 +1326,86 @@ Page({
                     one.minPrice = '%'
                 }
             })
-            const arr = res.data.filter(i => i.bestSeller).concat(res.data.filter(i => !i.bestSeller))
+            const arr = data.filter(i => i.bestSeller).concat(data.filter(i => !i.bestSeller))
             this.setData({
                 vasList: arr,
                 noSelectVasList: arr.filter(i => !i.isProductSelected),
                 subscribedServices: arr.filter(i => i.isProductSelected)
             })
             this.calculatedCharges()
-        }, () => {
-            this.getVasList()
-        })
+        } else {
+            vasLists({
+                "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CHENGLIE' : 'APL',
+                "placeReceipt": this.data.placeOfOrigin,
+                "portLoading": this.data.portOfLoading,
+                "portDischarge": this.data.portOfDischarge,
+                "placeDelivery": this.data.finalPlaceOfDelivery,
+                "placeOfPayment": this.data.portOfDischarge,
+                "importMovementType": quoteLine.importMovementType.toLocaleUpperCase(),
+                "importHaulageMode": "MERCHANT",
+                "exportMovementType": quoteLine.exportMovementType.toLocaleUpperCase(),
+                "exportHaulageMode": "MERCHANT",
+                "applicationDate": this.data.quotationDetail.departureDate,
+                "locale": this.data.languageCode,
+                "channel": "PRI",
+                "typeOfBl": "Negotiable",
+                "bookingParties": bookingParties,
+                "cargoes": [{
+                    "cargoNumber": 1,
+                    "packageCode": this.data.equipmentTypeSize,
+                    "equipmentSize": this.data.equipmentTypeSize,
+                    "equipmentTypeDescription": this.data.equipmentTypeName,
+                    "packageBookedQuantity": this.data.containers,
+                    "commodityCode": quoteLine.commodities[0].code,
+                    "commodityName": quoteLine.commodities[0].name,
+                    "totalNetWeight": 1,
+                    "uomWeight": "TNE",
+                    "hazardous": false,
+                    "oversize": false,
+                    "refrigerated": false,
+                    "shipperOwned": false
+                }],
+                "currency": surchargeDetails.totalCharge.currency.code,
+                subscribedCharges: subscribedCharges.map(i => i.code)
+            }).then(res => {
+                console.log(res.data, JSON.stringify(res.data))
+                if (this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH') {
+                    const i = res.data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
+                    if (i > -1) {
+                        res.data.splice(i, 1)
+                    }
+                }
+                res.data.forEach(one => {
+                    if (one.isProductSelected) {
+                        // console.log(subscribedCharges)
+                        const index = subscribedCharges.findIndex(i => one.chargeDetails[0].chargeCode === i.code)
+                        one.levelOfCharge = 'Per Container'
+                        one.currency = subscribedCharges[index].currency
+                        one.chargeDetails[0].currency = subscribedCharges[index].currency
+                        one.chargeDetails[0].rateFrom = subscribedCharges[index].rateFrom
+                        one.chargeDetails[0].amount = subscribedCharges[index].rateFrom
+                        one.chargeDetails[0].levelOfCharge = 'Per Container'
+                        one.chargeDetails[0].isInclude = true
+                        one.seletcedProduct = one.chargeDetails[0]
+                    }
+                    one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i => i.levelOfCharge === one.levelOfCharge).map(item => {
+                        return item.rateFrom
+                    }))
+                    if (one.levelOfCharge === 'Per BL' && one.chargeDetails[0].calculationType !== 'FIX') {
+                        one.minPrice = '%'
+                    }
+                })
+                const arr = res.data.filter(i => i.bestSeller).concat(res.data.filter(i => !i.bestSeller))
+                this.setData({
+                    vasList: arr,
+                    noSelectVasList: arr.filter(i => !i.isProductSelected),
+                    subscribedServices: arr.filter(i => i.isProductSelected)
+                })
+                this.calculatedCharges()
+            }, () => {
+                this.getVasList()
+            })
+        }
     },
     toSelect(e) {
         wx.navigateTo({
@@ -662,7 +1480,7 @@ Page({
                 oceanFreight: this.data.oceanFreight + this.data.burnRewards
             })
         }
-        console.log(e.detail,this.data.oceanFreight,this.data.finalPrice)
+        console.log(e.detail, this.data.oceanFreight, this.data.finalPrice)
         if (this.data.finalPrice === 0) {
             this.setData({
                 rewardsEarned: 0

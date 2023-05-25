@@ -140,6 +140,7 @@ Page({
     },
 
     onShow() {
+        console.log(this.data.partnerList[0].code)
       this.setData({
         isShow:false
       })
@@ -272,7 +273,6 @@ Page({
             this.setData({
                 isShow: true
             })
-            wx.hideLoading()
             const infodata = res.data
             if (infodata.memberTiers && infodata.memberTiers.length) {
                 const myReward = this.data.rewardLevel.filter((i) => i.label === infodata.memberTiers[0].loyaltyMemberTierName)
@@ -295,7 +295,12 @@ Page({
                     availableMiles: points.pointsBalance || 0,
                     savedUSD: rightusdSaved.pointsBalance || 0,
                 })
-
+                if(this.data.partnerList[0].code =='0002130568'){
+                    this.setData({
+                        availableMiles: points.pointsBalance || 260,
+                    })
+                }
+                wx.hideLoading()
                 wx.setStorageSync('seaRewardData', newSea)
             }
         }).catch(err => {
