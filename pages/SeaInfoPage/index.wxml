@@ -61,7 +61,7 @@
           <view class="waysIntro"> {{seaReward.AdmiralGetThere3}}
           </view>
           <view class="rank">
-            <image src="/assets/img/seaReward/lieutenant@2x.png" class="iconAnchorMy" />
+            <image src="/assets/img/seaReward/lieutenant@2x.jpg" class="iconAnchorMy" />
             <view class="titleText"> {{seaReward.Lieutenant}} </view>
           </view>
           <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->
@@ -74,7 +74,7 @@
             <view class="benefitText1"> {{seaReward.LieutenantText2}}</view>
           </view>
           <view class="rank">
-            <image src="/assets/img/seaReward/captain@2x.png" class="iconAnchorMy" />
+            <image src="/assets/img/seaReward/captain@2x.jpg" class="iconAnchorMy" />
             <view class="titleText"> {{seaReward.Captain}} </view>
           </view>
           <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->
@@ -87,7 +87,7 @@
             <view class="benefitText1"> {{seaReward.CaptainText2}}</view>
           </view>
           <view class="rank">
-            <image src="/assets/img/seaReward/master@2x.png" class="iconAnchorMy" />
+            <image src="/assets/img/seaReward/master@2x.jpg" class="iconAnchorMy" />
             <view class="titleText"> {{seaReward.Master}} </view>
           </view>
           <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->

@@ -24,15 +24,15 @@ Page({
     let level = [{
       label: 'Lieutenant',
       cnName: '中尉',
-      icon: '/assets/img/seaReward/lieutenant@2x.png'
+      icon: '/assets/img/seaReward/lieutenant@2x.jpg'
     }, {
       label: 'Captain',
       cnName: '上尉',
-      icon: '/assets/img/seaReward/captain@2x.png'
+      icon: '/assets/img/seaReward/captain@2x.jpg'
     }, {
       label: 'Master',
       cnName: '船长',
-      icon: '/assets/img/seaReward/master@2x.png'
+      icon: '/assets/img/seaReward/master@2x.jpg'
     }, {
       label: 'Admiral',
       cnName: '上将',

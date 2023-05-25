@@ -26,6 +26,15 @@
 .ts{
   margin-bottom: 0 !important;
 }
+/*.image1{*/
+/*width: 101rpx !important;*/
+/*}*/
+/*.text1{*/
+/*  margin-left: 0 !important;*/
+/*}*/
+/*.rank1{*/
+/*  margin-left: 0 !important;*/
+/*}*/
 .resultContainers .resultCardContainers .titleArea .iconPig {
   width: 70rpx;
   height: 70rpx;

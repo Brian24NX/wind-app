@@ -26,7 +26,7 @@ Page({
         iconList: [{
             name: 'Lieutenant',
             cnName: '中尉',
-            icon: '/assets/img/seaReward/lieutenant@2x.png',
+            icon: '/assets/img/seaReward/lieutenant@2x.jpg',
             condition: '',
             cnCondition: '',
             benefits: 'Earn 2 Nautical Miles for 100 dollars spent',
@@ -36,7 +36,7 @@ Page({
             {
                 name: 'Captain',
                 cnName: '上尉',
-                icon: '/assets/img/seaReward/captain@2x.png',
+                icon: '/assets/img/seaReward/captain@2x.jpg',
                 condition: 'To reach the Captain level, you need to book minimum 3 TEUs per week for at least 13 weeks',
                 cnCondition: '要达到上尉级别，您需要至少在13周内每周预定最少3个TEU（标准箱）',
                 benefits: 'Earn 4 Nautical Miles for 100 dollars spent',
@@ -46,7 +46,7 @@ Page({
             {
                 name: 'Master',
                 cnName: '船长',
-                icon: '/assets/img/seaReward/master@2x.png',
+                icon: '/assets/img/seaReward/master@2x.jpg',
                 condition: 'To reach the Master level, you need to book minimum 25 TEUs per week for at least 16 weeks',
                 cnCondition: '要达到船长级别，您需要至少在16周内每周预定最少25个TEU（标准箱）',
                 benefits: 'Earn 6 Nautical Miles for 100 dollars spent',
@@ -140,9 +140,9 @@ Page({
     },
 
     onShow() {
-        console.log(this.data.partnerList[0].code)
       this.setData({
-        isShow:false
+        isShow:false,
+          partnerList : wx.getStorageSync('partnerList')
       })
         this.setData({
             keyword: '',
