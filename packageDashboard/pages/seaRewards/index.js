@@ -295,7 +295,9 @@ Page({
                     availableMiles: points.pointsBalance || 0,
                     savedUSD: rightusdSaved.pointsBalance || 0,
                 })
-                if(this.data.partnerList[0].code =='0002130568'){
+                console.log(points.pointsBalance,rightusdSaved.pointsBalance)
+                console.log(wx.getStorageSync('partnerList') =='0002130568')
+                if(wx.getStorageSync('partnerList') =='0002130568'){
                     this.setData({
                         availableMiles: points.pointsBalance || 260,
                         savedUSD: rightusdSaved.pointsBalance || 2400,
