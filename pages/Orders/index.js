@@ -182,6 +182,7 @@ Page({
         loading: false,
         data: res.data
       })
+      console.log('data',this.data.data)
       const data = res.data;
       if (!data) {
         this.setData({
@@ -195,6 +196,7 @@ Page({
         results: data.map(d => d.shipmentRef)
       })
 
+      console.log('results',this.data.results)
       data.forEach(route => {
         // console.log("遍历data==>", route.data)
         if (route.data && route.data.length) {
@@ -225,6 +227,7 @@ Page({
           noData: true
         })
       }
+      console.log('containers',containers)
       this.setData({
         list: containers
       })
