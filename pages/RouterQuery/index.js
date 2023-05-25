@@ -19,7 +19,9 @@ Page({
     navTop: app.globalData.navTop,
     navHeight: app.globalData.navHeight,
     showPol: false,
+    polCount:0,
     showPod: false,
+    podCount:0,
     // 卸货港
     podvalue: "",
     podcode: "",
@@ -187,6 +189,7 @@ Page({
       showRemind1: false,
       showRemind2: false,
       showPol: false,
+      polCount:0,
       pollist: []
     })
     if (data.length < 2) {
@@ -207,9 +210,10 @@ Page({
       searchStr: data
     }, true).then(res => {
       this.setData({
-        showPol: false
+        showPol: false,
+        polCount:0,
       })
-      if (res.data != '') {
+      if (res.data != ''||res.data==undefined) {
         this.setData({
           pollist: res.data || []
         })
@@ -217,7 +221,16 @@ Page({
         this.hideDropdown()
       }
     }, () => {
-      this.getPolData(data)
+      this.data.polCount++
+      if(this.data.polCount<=3){
+        this.getPolData(data)
+      }else{
+        this.setData({
+          showPol: false,
+          polCount:0,
+        })
+        this.hideDropdown()
+      }
     })
   },
 
@@ -229,6 +242,7 @@ Page({
       showRemind3: false,
       showRemind4: false,
       showPod: false,
+      podCount:0,
       podlist: []
     })
     if (data.length < 2) {
@@ -250,9 +264,10 @@ Page({
       searchStr: data
     }, true).then(res => {
       this.setData({
-        showPod: false
+        showPod: false,
+        podCount:0,
       })
-      if (res.data != '') {
+      if (res.data != ''||res.data==undefined) {
         this.setData({
           podlist: res.data || []
         })
@@ -260,7 +275,16 @@ Page({
         this.hideDropdown()
       }
     }, () => {
-      this.getPodData(data)
+      this.data.podCount++
+      if(this.data.podCount<=3){
+        this.getPodData(data)
+      }else{
+        this.setData({
+          showPod: false,
+          podCount:0,
+        })
+        this.hideDropdown()
+      }
     })
   },
 

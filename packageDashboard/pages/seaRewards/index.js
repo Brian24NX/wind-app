@@ -56,7 +56,7 @@ Page({
             {
                 name: 'Admiral',
                 cnName: '上将',
-                icon: '/assets/img/seaReward/admiral@2x.png',
+                icon: '/assets/img/seaReward/admiral@2x.jpg',
                 condition: 'To reach the Admiral level, you need to book minimum 120 TEUs per week for at least 20 weeks',
                 cnCondition: '要达到上将级别，您需要至少在20周内每周预定最少120个TEU（标准箱）',
                 benefits: 'Earn 8 Nautical Miles for 100 dollars spent',
@@ -295,14 +295,14 @@ Page({
                     availableMiles: points.pointsBalance || 0,
                     savedUSD: rightusdSaved.pointsBalance || 0,
                 })
-                console.log(points.pointsBalance,rightusdSaved.pointsBalance)
-                console.log(wx.getStorageSync('partnerList')[0].code,'0002130568',wx.getStorageSync('partnerList')[0].code =='0002130568')
-                if(wx.getStorageSync('partnerList')[0].code =='0002130568'){
-                    this.setData({
-                        availableMiles: points.pointsBalance || 260,
-                        savedUSD: rightusdSaved.pointsBalance || 2400,
-                    })
-                }
+                // console.log(points.pointsBalance,rightusdSaved.pointsBalance)
+                // console.log(wx.getStorageSync('partnerList')[0].code,'0002130568',wx.getStorageSync('partnerList')[0].code =='0002130568')
+                // if(wx.getStorageSync('partnerList')[0].code =='0002130568'){
+                //     this.setData({
+                //         availableMiles: points.pointsBalance || 260,
+                //         savedUSD: rightusdSaved.pointsBalance || 2400,
+                //     })
+                // }
                 wx.hideLoading()
                 wx.setStorageSync('seaRewardData', newSea)
             }

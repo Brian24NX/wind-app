@@ -29,8 +29,10 @@ Page({
     currentType: '1',
     pollist: [],
     showPol: false,
+    polCount:0,
     podlist: [],
     showPod: false,
+    podCount:0,
     date: '',
     showRemind1: false,
     showRemind2: false,
@@ -94,15 +96,24 @@ Page({
       searchStr: data
     }, true).then(res => {
       this.setData({
-        showPol: false
+        showPol: false,
+        polCount:0,
       })
-      if (res.data != '') {
+      if (res.data != ''||res.data==undefined) {
         this.setData({
           pollist: res.data || []
         })
       }
     }, () => {
-      this.getPolData(data)
+      this.data.polCount++
+      if(this.data.polCount<=3){
+        this.getPolData(data)
+      }else{
+        this.setData({
+          showPol: false,
+          polCount:0,
+        })
+      }
     })
   },
 
@@ -131,15 +142,24 @@ Page({
       searchStr: data
     }, true).then(res => {
       this.setData({
-        showPod: false
+        showPod: false,
+        podCount:0,
       })
-      if (res.data != '') {
+      if (res.data != ''||res.data==undefined) {
         this.setData({
           podlist: res.data || []
         })
       }
     }, () => {
-      this.getPodData(data)
+      this.data.podCount++
+      if(this.data.podCount<=3){
+        this.getPodData(data)
+      }else{
+        this.setData({
+          showPod: false,
+          podCount:0,
+        })
+      }
     })
   },
 

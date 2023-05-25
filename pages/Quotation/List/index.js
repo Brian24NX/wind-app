@@ -55,7 +55,9 @@ Page({
         equiptCode: '',
         shipperOwnedContainer: false,
         rewardsEarned: null,
-        memberStatus: ''
+        memberStatus: '',
+        porCount:0,
+        count:0
     },
 
     /**
@@ -280,11 +282,15 @@ Page({
             })
             console.log('getPlacePoint', this.data.quoteLineList, this.data.oldQuoteLineList)
         }, () => {
-            this.getPlacePoint(pointCode, item, type)
+            this.data.count++
+            if(this.data.count<=3){
+                this.getPlacePoint(pointCode, item, type)
+
+            }
         })
     },
 
-    getSeaEarnPoints(oceanFreight,totalCharge) {
+    getSeaEarnPoints(oceanFreight, totalCharge) {
         return new Promise(function (resolve, reject) {
             let pointBalance = 0
             seaEarnPoints({
@@ -314,7 +320,7 @@ Page({
                     let points = null
                     console.log(111, res.data.surchargeDetails[0].oceanFreight)
                     if (this.data.memberStatus === 'Active') {
-                        points = await this.getSeaEarnPoints(res.data.surchargeDetails[0].oceanFreight,res.data.surchargeDetails[0].totalCharge)
+                        points = await this.getSeaEarnPoints(res.data.surchargeDetails[0].oceanFreight, res.data.surchargeDetails[0].totalCharge)
                     }
                     item.rewardsEarned = points
                 } else {
@@ -333,10 +339,12 @@ Page({
                 this.setData({
                     oldQuoteLineList: this.data.quoteLineList
                 })
-                console.log('getQuotationSurchargeDetailFn,oldQuoteLineList', this.data.oldQuoteLineList)
             }
         }, () => {
-            this.getQuotationSurchargeDetailFn(item, params, isFirst)
+            this.data.porCount++
+            if(this.data.porCount<=3){
+                this.getQuotationSurchargeDetailFn(item, params, isFirst)
+            }
         })
     },
 

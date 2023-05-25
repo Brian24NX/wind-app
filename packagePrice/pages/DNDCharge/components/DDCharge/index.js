@@ -63,7 +63,9 @@ Component({
     equipmentSizeName: '',
     language: 'zh',
     showPol: false,
-    showPod: false
+    podCount:0,
+    showPod: false,
+    polCount:0,
   },
 
   attached() {
@@ -103,6 +105,7 @@ Component({
         showRemind1: false,
         showRemind2: false,
         showPol: false,
+        polCount:0,
         pollist: []
       })
       if (data.length < 2) {
@@ -122,15 +125,24 @@ Component({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPol: false
+          showPol: false,
+          polCount:0,
         })
-        if (res.data != '') {
+        if (res.data != ''||res.data==undefined) {
           this.setData({
             pollist: res.data || []
           })
         }
       }, () => {
-        this.getPolData(data)
+        this.data.polCount++
+        if(this.data.polCount<=3){
+          this.getPolData(data)
+        }else{
+          this.setData({
+            showPol: false,
+            polCount:0,
+          })
+        }
       })
     },
 
@@ -142,6 +154,7 @@ Component({
         showRemind3: false,
         showRemind4: false,
         showPod: false,
+        podCount:0,
         podlist: []
       })
       if (data.length < 2) {
@@ -161,15 +174,24 @@ Component({
         searchStr: data
       }, true).then(res => {
         this.setData({
-          showPod: false
+          showPod: false,
+          podCount:0,
         })
-        if (res.data != '') {
+        if (res.data != ''||res.data==undefined) {
           this.setData({
             podlist: res.data || []
           })
         }
       }, () => {
-        this.getPodData(data)
+        this.data.podCount++
+        if(this.data.podCount<=3){
+          this.getPodData(data)
+        }else{
+          this.setData({
+            showPod: false,
+            podCount:0,
+          })
+        }
       })
     },
 

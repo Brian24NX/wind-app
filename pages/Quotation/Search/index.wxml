@@ -60,7 +60,7 @@
                 </view>
               </view>
             </scroll-view>
-            <view class="scroll-view sview" wx:if="{{showPoR}}">
+            <view class="scroll-view sview" wx:if="{{ }}">
               <view class="item">Loading...</view>
             </view>
           </view>

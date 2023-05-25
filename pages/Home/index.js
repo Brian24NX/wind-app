@@ -45,7 +45,9 @@ Page({
     xieHuoValue: '',
     xieHuoCode: '',
     showPol: false,
+    polCount:0,
     showPod: false,
+    podCount:0,
     showRemind3: false,
     showRemind4: false,
     showRemind5: false,
@@ -362,6 +364,7 @@ Page({
       showRemind2: false,
       showRemind5: false,
       showPol: false,
+      polCount:0,
       codePolList: []
     })
     if (data.length < 2) {
@@ -384,9 +387,10 @@ Page({
       searchStr: data
     }, true).then(res => {
       this.setData({
-        showPol: false
+        showPol: false,
+        polCount:0
       })
-      if (res.data != '') {
+      if (res.data != ''||res.data==undefined) {
         this.setData({
           codePolList: res.data
         })
@@ -394,7 +398,16 @@ Page({
         this.hideDropdown()
       }
     }, () => {
-      this.getPolData(data)
+      this.data.polCount++
+      if(this.data.polCount<=3){
+        this.getPolData(data)
+      }else{
+        this.setData({
+          showPol: false,
+          polCount:0
+        })
+        this.hideDropdown()
+      }
     })
   },
 
@@ -406,6 +419,7 @@ Page({
       showRemind3: false,
       showRemind4: false,
       showPod: false,
+      podCount:0,
       codePodList: []
     })
     if (data.length < 2) {
@@ -427,9 +441,10 @@ Page({
       searchStr: data
     }, true).then(res => {
       this.setData({
-        showPod: false
+        showPod: false,
+        podCount:0,
       })
-      if (res.data != '') {
+      if (res.data != ''||res.data==undefined) {
         this.setData({
           codePodList: res.data
         })
@@ -437,7 +452,17 @@ Page({
         this.hideDropdown()
       }
     }, () => {
-      this.getPodData(data)
+
+      this.data.podCount++
+      if(this.data.podCount<=3){
+        this.getPodData(data)
+      }else{
+        this.setData({
+          showPod: false,
+          podCount:0,
+        })
+        this.hideDropdown()
+      }
     })
   },
 

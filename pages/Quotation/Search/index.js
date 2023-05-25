@@ -375,7 +375,7 @@ Page({
           showPoR: false,
           porCount:1,
         })
-        if (res.data != '') {
+        if (res.data != ''||res.data==undefined) {
           res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
           this.setData({
             placeOfReceiptList: res.data || []
@@ -391,6 +391,7 @@ Page({
         }else{
           this.setData({
             showPoR: false,
+            porCount:1,
           })
           this.hideDropdown()
         }
@@ -426,6 +427,7 @@ Page({
         }else{
           this.setData({
             showPoR: false,
+            porCount:1,
           })
           this.hideDropdown()
         }
@@ -465,7 +467,7 @@ Page({
       this.setData({
         showPol: false
       })
-      if (res.data != '') {
+      if (res.data != ''||res.data==undefined) {
         this.setData({
           pollist: res.data || []
         })
@@ -517,7 +519,7 @@ Page({
       this.setData({
         showPod: false
       })
-      if (res.data != '') {
+      if (res.data != ''||res.data==undefined) {
         this.setData({
           podlist: res.data || []
         })
@@ -575,7 +577,7 @@ Page({
         this.setData({
           showPoDe: false,
         })
-        if (res.data != '') {
+        if (res.data != ''||res.data==undefined) {
           res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
           this.setData({
             placeOfDeliveryList: res.data || []
@@ -584,7 +586,16 @@ Page({
           this.hideDropdown()
         }
       }, () => {
-        this.getPorData(data)
+        this.data.poDeCount++
+        if(this.data.poDeCount<=3){
+          this.getPorData(data)
+        }else{
+          this.setData({
+            showPoDe: false
+          })
+          this.hideDropdown()
+        }
+
       })
     } else {
       getPortPlaceInfo({
@@ -609,7 +620,15 @@ Page({
           placeOfDeliveryList
         })
       }, () => {
+        this.data.poDeCount++
+        if(this.data.poDeCount<=3){
           this.getPorData(data)
+        }else{
+          this.setData({
+            showPoDe: false
+          })
+          this.hideDropdown()
+        }
       })
     }
   },

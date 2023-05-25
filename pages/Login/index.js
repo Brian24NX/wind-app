@@ -36,7 +36,7 @@ Page({
     }, {
       label: 'Admiral',
       cnName: '上将',
-      icon: '/assets/img/seaReward/admiral@2x.png'
+      icon: '/assets/img/seaReward/admiral@2x.jpg'
     }]
     wx.removeStorageSync('seaRewardData')
     if(wx.getStorageSync('partnerList')){

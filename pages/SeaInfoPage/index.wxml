@@ -100,7 +100,7 @@
             <view class="benefitText1"> {{seaReward.MasterText2}}</view>
           </view>
           <view class="rank">
-            <image src="/assets/img/seaReward/admiral@2x.png" class="iconAnchorMy" />
+            <image src="/assets/img/seaReward/admiral@2x.jpg" class="iconAnchorMy" />
             <view class="titleText"> {{seaReward.Admiral}} </view>
           </view>
           <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->
