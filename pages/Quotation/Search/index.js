@@ -363,7 +363,6 @@ Page({
   }, 800),
 
   getPorData(data) {
-    console.log('*************',data)
     this.setData({
       showPoR: true
     })
@@ -604,21 +603,24 @@ Page({
         this.setData({
           showPoDe: false,
         })
-        let placeOfDeliveryList = []
-        if (res.data && res.data.length) {
-          res.data.forEach(item => {
-            if (item.point) {
-              placeOfDeliveryList.push({
-                ActualName: item.point.name + ';' + item.country.code + ';' + item.point.code,
-                Code: item.point.code,
-                PlaceType: ''
-              })
-            }
+        console.log(res)
+        if(res.data != ''||res.data==undefined){
+          let placeOfDeliveryList = []
+          if (res.data && res.data.length) {
+            res.data.forEach(item => {
+              if (item.point) {
+                placeOfDeliveryList.push({
+                  ActualName: item.point.name + ';' + item.country.code + ';' + item.point.code,
+                  Code: item.point.code,
+                  PlaceType: ''
+                })
+              }
+            })
+          }
+          this.setData({
+            placeOfDeliveryList
           })
         }
-        this.setData({
-          placeOfDeliveryList
-        })
       }, () => {
         this.data.poDeCount++
         if(this.data.poDeCount<=3){
@@ -627,6 +629,7 @@ Page({
           this.setData({
             showPoDe: false
           })
+          console.log(this.data.showPoDe,1231564)
           this.hideDropdown()
         }
       })
