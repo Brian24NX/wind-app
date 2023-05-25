@@ -296,7 +296,7 @@ Page({
                     savedUSD: rightusdSaved.pointsBalance || 0,
                 })
                 console.log(points.pointsBalance,rightusdSaved.pointsBalance)
-                console.log(wx.getStorageSync('partnerList')[0],'0002130568',wx.getStorageSync('partnerList')[0].code =='0002130568')
+                console.log(wx.getStorageSync('partnerList')[0].code,'0002130568',wx.getStorageSync('partnerList')[0].code =='0002130568')
                 if(wx.getStorageSync('partnerList')[0].code =='0002130568'){
                     this.setData({
                         availableMiles: points.pointsBalance || 260,
