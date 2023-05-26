@@ -425,7 +425,7 @@
       </view>
     </view>
     <view class="nmilesCollected" wx:if="{{rewardsEarned !== null}}">
-    {{seaReward.nmilesCollected}}<Text>{{rewardsEarned}}</Text>
+    {{seaReward.nmilesCollected}}<Text>{{rewardsEarned}}</Text> {{containers>1?seaReward.fortext+containers+seaReward.xiangzi:''}}
     </view>
   </view>
 </view>

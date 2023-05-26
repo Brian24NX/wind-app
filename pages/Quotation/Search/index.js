@@ -362,10 +362,12 @@ Page({
     }
   }, 800),
 
-  getPorData(data) {
-    this.setData({
-      showPoR: true
-    })
+  getPorData(data,bal) {
+    if(!bal){
+      this.setData({
+        showPoR: true
+      })
+    }
     if (this.data.currentType === 'instation') {
       getAllNetworkPoint({
         searchStr: data
@@ -386,7 +388,7 @@ Page({
       }, () => {
         this.data.porCount++
         if(this.data.porCount<=3){
-          this.getPorData(data)
+          this.getPorData(data,bal)
         }else{
           this.setData({
             showPoR: false,
@@ -422,7 +424,7 @@ Page({
       }, () => {
         this.data.porCount++
         if(this.data.porCount<=3){
-          this.getPorData(data)
+          this.getPorData(data,bal)
         }else{
           this.setData({
             showPoR: false,
@@ -542,6 +544,7 @@ Page({
 
   //获取目的地的接口处理
   changePlaceOfDelivery: utils.debounce(function (e) {
+    console.log('进这里来了啊')
     const data = e['0'].detail.value
     this.setData({
       showDelete5: !!data,
@@ -571,6 +574,7 @@ Page({
     this.setData({
       showPoDe: true
     })
+    console.log('这里呀判断了',this.data.currentType)
     if (this.data.currentType === 'instation') {
       getAllNetworkPoint({
         searchStr: data
@@ -607,7 +611,6 @@ Page({
         this.setData({
           showPoDe: false,
         })
-        console.log(res)
         if(res.data != ''||res.data==undefined){
           let placeOfDeliveryList = []
           if (res.data && res.data.length) {
@@ -626,7 +629,7 @@ Page({
           })
         }
       }, () => {
-          this.getPorData(data)
+          this.getPorData(data,true)
       })
     }
   },
@@ -871,12 +874,14 @@ Page({
     this.setData({
       containers: ++this.data.containers
     })
+
   },
 
   setInputValue(e) {
     this.setData({
       containers: !Number(e.detail.value) ? 1 : (Number(e.detail.value) > 100 ? 100 : Number(e.detail.value))
     })
+
   },
 
   openPopup(e) {
@@ -1044,6 +1049,7 @@ Page({
 
   // 提交搜索
   submit() {
+    console.log('containers',this.data.containers)
     wx.removeStorageSync('isSocAgree');
     this.hideDropdown();
     if (this.data.showDelete4) {

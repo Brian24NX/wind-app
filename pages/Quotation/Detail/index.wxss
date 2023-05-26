@@ -1025,7 +1025,7 @@
 }
 
 .nmilesCollected {
-  font-size: 28rpx;
+  font-size: 22rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #04246A;

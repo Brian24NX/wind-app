@@ -177,7 +177,6 @@ Page({
         this.calculatedCharges()
         const currentPage2 = pages[pages.length - 3]
         const data2 = currentPage2.data
-        console.log("data2", data2)
         this.setData({
             equipmentTypeSize: data2.equiptCode,
             equipmentTypeName: data2.equipmentTypeName,
@@ -1370,7 +1369,6 @@ Page({
                 "currency": surchargeDetails.totalCharge.currency.code,
                 subscribedCharges: subscribedCharges.map(i => i.code)
             }).then(res => {
-                console.log(res.data, JSON.stringify(res.data))
                 if (this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH') {
                     const i = res.data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
                     if (i > -1) {

@@ -82,6 +82,7 @@ Page({
         const pages = getCurrentPages()
         const currentPage = pages[pages.length - 2]
         const data = currentPage.data
+        console.log('list----- data',data)
         this.setData({
             equiptCode: data.equiptCode,
             partnerCode: data.partnerCode,
@@ -104,6 +105,7 @@ Page({
             deliveryHaulage: data.deliveryHaulage || '',
             shipperOwnedContainer: data.shipperOwnedContainer
         })
+        console.log('list----containers',this.data.containers)
         if (data.resultResq.traceId) {
             console.log('oldQuoteLineList', data.resultResq.nextDepartureQuoteLineAndRoute)
             this.setData({
