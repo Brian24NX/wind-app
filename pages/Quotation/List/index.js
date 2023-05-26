@@ -291,11 +291,11 @@ Page({
     },
 
     getSeaEarnPoints(oceanFreight, totalCharge) {
+        let that = this
         return new Promise(function (resolve, reject) {
-            console.log(54646)
             let pointBalance = 0
             seaEarnPoints({
-                "baseAmount": oceanFreight.price.amount,
+                "baseAmount": oceanFreight.price.amount * that.data.containers,
                 "currencyType": totalCharge.currency.code,
                 "partnerCode": wx.getStorageSync('partnerList')[0].code,
                 "level": wx.getStorageSync('seaRewardData').level
