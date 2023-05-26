@@ -237,7 +237,6 @@ Page({
                             }
                         }
                         setTimeout(() => {
-                            console.log(!item.surchargeDetails && item.canSelect)
                             if (!item.surchargeDetails && item.canSelect) {
                                 this.getQuotationSurchargeDetailFn(item, params, isFirst)
                             }
@@ -282,7 +281,6 @@ Page({
             this.setData({
                 oldQuoteLineList: this.data.quoteLineList
             })
-            console.log('getPlacePoint', this.data.quoteLineList, this.data.oldQuoteLineList)
         }, () => {
             this.data.count++
             if(this.data.count<=3){
@@ -294,6 +292,7 @@ Page({
 
     getSeaEarnPoints(oceanFreight, totalCharge) {
         return new Promise(function (resolve, reject) {
+            console.log(54646)
             let pointBalance = 0
             seaEarnPoints({
                 "baseAmount": oceanFreight.price.amount,
@@ -308,7 +307,6 @@ Page({
     },
 
     getQuotationSurchargeDetailFn(item, params, isFirst) {
-        console.log(item, params, isFirst)
         getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(async (res) => {
             item.isLoading = false
             item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0

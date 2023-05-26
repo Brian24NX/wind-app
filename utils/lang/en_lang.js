@@ -643,7 +643,7 @@ var Languague = {
       totalBL: 'Total per B/L',
       forContainer1: 'For ',
       forContainer2: ' container(s)',
-      saveQuotation: 'Save quote to book',
+      saveQuotation: 'Save Quote',
       apply: 'Apply',
       //排序
       sortBy: "Sort by",
