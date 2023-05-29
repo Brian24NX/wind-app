@@ -44,8 +44,7 @@
                 <view class="rewardEarned" wx:if="{{rewardsEarned || rewardsEarned === 0}}">
                     <image class="infoIcon" src="/assets/img/seaReward/info@2x.png" catchtap="onResInfo"></image>
                     <view>
-                        {{seaReward.earned}}<Text>{{rewardsEarned}}
-                    </Text> {{seaReward.earnedEdn}}{{containers > 1 ? seaReward.fortext + containers + seaReward.xiangzi : ''}}
+                        {{seaReward.earned}} <Text>{{rewardsEarned}}</Text>{{seaReward.earnedEdn}}{{containers > 1 ? seaReward.fortext + containers + seaReward.xiangzi : ''}}
                     </view>
                 </view>
                 <view class="rewardInfo" wx:if="{{resInfo}}">{{seaReward.resultInfo}}</view>

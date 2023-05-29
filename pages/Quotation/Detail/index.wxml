@@ -400,7 +400,7 @@
   <view class="bottomContainer">
     <view class="bottomTop" wx:if="{{(!isFirst && rewardsEarned !== null && rewardsLevel !== 'Lieutenant')}}">
     <view>
-      {{seaReward.save1}}<Text>{{burnRewards}}</Text> {{seaReward.save2}}<Text>{{burnRewards}} </Text>  
+      {{seaReward.save1}}<Text>{{burnRewards}}</Text> {{seaReward.save2}}<Text>{{burnRewards}} </Text>
       <Text>{{seaReward.usd}}</Text>?
     </view>
     <van-switch id="useRewards" checked="{{useRewards}}" active-color="#2B74FF" inactive-color="#9AA7C3" bind:change="switchRewards" size="24rpx" />
@@ -425,7 +425,7 @@
       </view>
     </view>
     <view class="nmilesCollected" wx:if="{{rewardsEarned !== null}}">
-    {{seaReward.earned}}<Text>{{rewardsEarned}}</Text> {{seaReward.earnedEdn}}{{containers>1?seaReward.fortext+containers+seaReward.xiangzi:''}}
+    {{seaReward.earned}} <Text>{{rewardsEarned}}</Text>{{seaReward.earnedEdn}}{{containers>1?seaReward.fortext+containers+seaReward.xiangzi:''}}
     </view>
   </view>
 </view>
