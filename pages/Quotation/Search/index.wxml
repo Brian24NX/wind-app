@@ -253,9 +253,13 @@
                 <view class="polname" style="width: 100%;">{{item.name}}</view>
               </view>
             </scroll-view>
-            <view class="noRequest commodityRequest" wx:if="{{showRemind7}}">
+            <view class="noRequest commodityRequest lw" wx:if="{{showRemind7}}">
               <image src="/assets/img/search/error@2x.png"></image>
               <text>{{verifyInfo.required}}</text>
+            </view>
+            <view class="tishi" wx:if="{{wx.getStorageSync('seaRewardData').memberStatus==='Active'}}">
+              <image src="/assets/img/search/error@2x.png"></image>
+              <text>Please note that Nautical Miles cannot be used for other partners than your main one</text>
             </view>
           </view>
           <view class="btn" style="margin-top: 40rpx;">
@@ -294,9 +298,14 @@
                 <view class="polname" style="width: 100%;">{{item.name}}</view>
               </view>
             </scroll-view>
-            <view class="noRequest commodityRequest" wx:if="{{showRemind7}}">
+            <view class="noRequest commodityRequest lw" wx:if="{{showRemind7}}">
               <image src="/assets/img/search/error@2x.png"></image>
               <text>{{verifyInfo.required}}</text>
+            </view>
+<!--            wx:if="{{wx.getStorageSync('seaRewardData').memberStatus==='Active'}}"-->
+            <view class="tishi"  wx:if="{{wx.getStorageSync('seaRewardData').memberStatus==='Active'}}">
+              <image src="/assets/img/search/error@2x.png"></image>
+              <text>Please note that Nautical Miles cannot be used for other partners than your main one</text>
             </view>
           </view>
           <view class="searchList">

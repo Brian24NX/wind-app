@@ -313,7 +313,7 @@ Page({
             const allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
             if (allocation) {
                 if (res.data && res.data.surchargeDetails) {
-                    item.surchargeDetails = res.data && res.data.surchargeDetails ? res.data.surchargeDetails[0] : null
+                    item.surchargeDetails = res.data && res.data.surchargeDetails ? res.data .surchargeDetails[0] : null
                     item.surchargeDetails.allocation = allocation
                     item.canSelect = true
                     //新增计算获得积分数量

@@ -554,3 +554,19 @@ page {
   margin-left: -5rpx;
   margin-right: 10rpx;
 }
+
+.tishi{
+  font-size: 24rpx;
+  color: #E2014B;
+  align-items: center;
+}
+.lw{
+  position: relative !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+.tishi image{
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
