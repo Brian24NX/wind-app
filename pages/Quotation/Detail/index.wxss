@@ -806,7 +806,7 @@
 /* Additional Services */
 .additionServicesContainers {
   padding: 30rpx;
-  padding-bottom: calc(env(safe-area-inset-bottom) + 170rpx);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 230rpx);
   background-color: #f0f1f5;
   min-height: calc(100vh - 30rpx - env(safe-area-inset-bottom) + 330rpx);
 }
