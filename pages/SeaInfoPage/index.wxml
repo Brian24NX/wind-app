@@ -71,7 +71,7 @@
           </view>
           <view class="benefitContent2"> 
             <view class="benefitIcon"></view>
-            <view class="benefitText1"> {{seaReward.LieutenantText2}}</view>
+            <view class="benefitText1"> {{seaReward.LieutenantText2}}5</view>
           </view>
           <view class="rank">
             <image src="/assets/img/seaReward/captain@2x.jpg" class="iconAnchorMy" />

@@ -333,26 +333,17 @@ var Languague = {
       seaRewardIntro: '海里抵现是达飞轮船基于实时报价及订舱特别为您设计的一项遍及世界的海里奖励计划。每一次成功订舱，即可赚取海里! ',
       Lieutenant: '中尉',
       LieutenantText1:'每消费100 USD累积2海里',
-      LieutenantText2: '要达到上尉级别，您需要至少在13周内每周预定最少3个TEU（标准箱）',
-
+      LieutenantText2: '要达到上尉级别，您需要预订至少1个TEU（标准箱），为期20周（共26周）',
       LieutenantBenefits: '每消费100 USD累积2海里', 
       Captain: '上尉',
       CaptainText1:'每消费100 USD累积4海里',
-      CaptainText2:'要达到船长级别，您需要至少在16周内每周预定最少25个TEU（标准箱）',
-
-      CaptainGetThere: '要达到上尉级别，您需要至少在13周内每周预定最少3个TEU（标准箱）',
-      CaptainBenefits: '每消费100 USD累积4海里',
+      CaptainText2:'要达到船长级别，您需要预订至少15个TEU（标准箱），为期20周（共26周）',
       Master: '船长',
       MasterText1: '每消费100 USD累积6海里',
       MasterText2: '要达到上将级别，您需要至少在20周内每周预定最少120个TEU（标准箱）',
-
-      MasterGetThere: '要达到船长级别，您需要至少在16周内每周预定最少25个TEU（标准箱）',
       MasterBenefits: '每消费100 USD累积6海里',
       Admiral: '上将',
       AdmiralText1: '每消费100 USD累积8海里',
-
-      AdmiralGetThere: '要达到上将级别，您需要至少在20周内每周预定最少120个TEU（标准箱）',
-      AdmiralBenefits: '每消费100 USD累积8海里',
       Howtogetthere: '等级条件',
       NauticalMilesFocus: '使用指南',
       NauticalMilesCycle: '累积说明',
@@ -371,12 +362,10 @@ var Languague = {
       mySeaReward: '我的海里',
       nauticalMiles: '赚取海里',
       getAQuote: '获取报价',
-
-
       save1: '使用 ',
       save2: '海里抵扣 ',
       usd: 'USD',
-      nmilesCollected: '可获得海里: ',
+      earnedEdn:'',
       fortext:'，共',
       xiangzi:'个货柜',
       earned: '可获得海里:',

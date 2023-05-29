@@ -131,7 +131,7 @@
               </view>
             </view>
             <view class="rewardEarned" wx:if="{{ item.rewardsEarned }}">
-          {{seaReward.earned}} <Text>{{item.rewardsEarned}}</Text>{{containers>1?seaReward.fortext+containers+seaReward.xiangzi:''}}
+          {{seaReward.earned}} <Text>{{item.rewardsEarned}}</Text>{{seaReward.earnedEdn}}{{containers>1?seaReward.fortext+containers+seaReward.xiangzi:''}}
             </view>
           </block>
           <view class="oneBottom right" wx:else>{{languageContent.spotOut}}</view>
