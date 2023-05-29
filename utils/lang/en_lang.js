@@ -362,7 +362,7 @@ var Languague = {
       save1: 'Use ',
       save2: 'Nmiles to save ',
       usd: 'USD',
-      earned: 'Earn up to',
+      earned: 'Earn up to ',
       earnedEdn:' Nautical Miles',
       fortext:' for ',
       xiangzi:' containers',

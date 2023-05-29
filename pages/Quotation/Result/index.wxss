@@ -301,7 +301,7 @@ page {
 }
 
 .rewardEarned {
-  font-size: 28rpx;
+  font-size: 22rpx;
   font-family: PingFangSC-Semibold, PingFang SC;
   font-weight: 600;
   color: #04246A;
@@ -314,8 +314,8 @@ page {
 }
 
 .rewardEarned image {
-  width: 32rpx;
-  height: 32rpx;
+  width: 24rpx;
+  height: 24rpx;
   margin-right: 8rpx;
 }
 

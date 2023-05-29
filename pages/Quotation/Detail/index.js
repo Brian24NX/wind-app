@@ -85,7 +85,7 @@ Page({
         rewardsLevel: '',
         memberStatus: '',
         addMoney: 0, //增值订阅服务的总额
-        count: 0,
+        count: 0,   //获取vas超过三次接口不调用
         oceanFreight: 0,//oceanFreight的值
     },
 
@@ -255,11 +255,11 @@ Page({
         //         burnRewards: 260,
         //     })
         // } else {
-            if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
-                this.setData({
-                    burnRewards: this.data.finalPrice
-                })
-            }
+        if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
+            this.setData({
+                burnRewards: this.data.finalPrice
+            })
+        }
         // }
         if (this.data.memberStatus === 'Active') {
             this.getSeaEarnPoints(this.data.finalPrice)
@@ -1335,76 +1335,79 @@ Page({
         //     })
         //     this.calculatedCharges()
         // } else {
-            vasLists({
-                "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CHENGLIE' : 'APL',
-                "placeReceipt": this.data.placeOfOrigin,
-                "portLoading": this.data.portOfLoading,
-                "portDischarge": this.data.portOfDischarge,
-                "placeDelivery": this.data.finalPlaceOfDelivery,
-                "placeOfPayment": this.data.portOfDischarge,
-                "importMovementType": quoteLine.importMovementType.toLocaleUpperCase(),
-                "importHaulageMode": "MERCHANT",
-                "exportMovementType": quoteLine.exportMovementType.toLocaleUpperCase(),
-                "exportHaulageMode": "MERCHANT",
-                "applicationDate": this.data.quotationDetail.departureDate,
-                "locale": this.data.languageCode,
-                "channel": "PRI",
-                "typeOfBl": "Negotiable",
-                "bookingParties": bookingParties,
-                "cargoes": [{
-                    "cargoNumber": 1,
-                    "packageCode": this.data.equipmentTypeSize,
-                    "equipmentSize": this.data.equipmentTypeSize,
-                    "equipmentTypeDescription": this.data.equipmentTypeName,
-                    "packageBookedQuantity": this.data.containers,
-                    "commodityCode": quoteLine.commodities[0].code,
-                    "commodityName": quoteLine.commodities[0].name,
-                    "totalNetWeight": 1,
-                    "uomWeight": "TNE",
-                    "hazardous": false,
-                    "oversize": false,
-                    "refrigerated": false,
-                    "shipperOwned": false
-                }],
-                "currency": surchargeDetails.totalCharge.currency.code,
-                subscribedCharges: subscribedCharges.map(i => i.code)
-            }).then(res => {
-                if (this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH') {
-                    const i = res.data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
-                    if (i > -1) {
-                        res.data.splice(i, 1)
-                    }
+        vasLists({
+            "shippingCompany": shippingCompany === "0001" ? 'CMACGM' : shippingCompany === '0002' ? 'ANL' : shippingCompany === '0011' ? 'CHENGLIE' : 'APL',
+            "placeReceipt": this.data.placeOfOrigin,
+            "portLoading": this.data.portOfLoading,
+            "portDischarge": this.data.portOfDischarge,
+            "placeDelivery": this.data.finalPlaceOfDelivery,
+            "placeOfPayment": this.data.portOfDischarge,
+            "importMovementType": quoteLine.importMovementType.toLocaleUpperCase(),
+            "importHaulageMode": "MERCHANT",
+            "exportMovementType": quoteLine.exportMovementType.toLocaleUpperCase(),
+            "exportHaulageMode": "MERCHANT",
+            "applicationDate": this.data.quotationDetail.departureDate,
+            "locale": this.data.languageCode,
+            "channel": "PRI",
+            "typeOfBl": "Negotiable",
+            "bookingParties": bookingParties,
+            "cargoes": [{
+                "cargoNumber": 1,
+                "packageCode": this.data.equipmentTypeSize,
+                "equipmentSize": this.data.equipmentTypeSize,
+                "equipmentTypeDescription": this.data.equipmentTypeName,
+                "packageBookedQuantity": this.data.containers,
+                "commodityCode": quoteLine.commodities[0].code,
+                "commodityName": quoteLine.commodities[0].name,
+                "totalNetWeight": 1,
+                "uomWeight": "TNE",
+                "hazardous": false,
+                "oversize": false,
+                "refrigerated": false,
+                "shipperOwned": false
+            }],
+            "currency": surchargeDetails.totalCharge.currency.code,
+            subscribedCharges: subscribedCharges.map(i => i.code)
+        }).then(res => {
+            if (this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH') {
+                const i = res.data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
+                if (i > -1) {
+                    res.data.splice(i, 1)
                 }
-                res.data.forEach(one => {
-                    if (one.isProductSelected) {
-                        // console.log(subscribedCharges)
-                        const index = subscribedCharges.findIndex(i => one.chargeDetails[0].chargeCode === i.code)
-                        one.levelOfCharge = 'Per Container'
-                        one.currency = subscribedCharges[index].currency
-                        one.chargeDetails[0].currency = subscribedCharges[index].currency
-                        one.chargeDetails[0].rateFrom = subscribedCharges[index].rateFrom
-                        one.chargeDetails[0].amount = subscribedCharges[index].rateFrom
-                        one.chargeDetails[0].levelOfCharge = 'Per Container'
-                        one.chargeDetails[0].isInclude = true
-                        one.seletcedProduct = one.chargeDetails[0]
-                    }
-                    one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i => i.levelOfCharge === one.levelOfCharge).map(item => {
-                        return item.rateFrom
-                    }))
-                    if (one.levelOfCharge === 'Per BL' && one.chargeDetails[0].calculationType !== 'FIX') {
-                        one.minPrice = '%'
-                    }
-                })
-                const arr = res.data.filter(i => i.bestSeller).concat(res.data.filter(i => !i.bestSeller))
-                this.setData({
-                    vasList: arr,
-                    noSelectVasList: arr.filter(i => !i.isProductSelected),
-                    subscribedServices: arr.filter(i => i.isProductSelected)
-                })
-                this.calculatedCharges()
-            }, () => {
-                this.getVasList()
+            }
+            res.data.forEach(one => {
+                if (one.isProductSelected) {
+                    // console.log(subscribedCharges)
+                    const index = subscribedCharges.findIndex(i => one.chargeDetails[0].chargeCode === i.code)
+                    one.levelOfCharge = 'Per Container'
+                    one.currency = subscribedCharges[index].currency
+                    one.chargeDetails[0].currency = subscribedCharges[index].currency
+                    one.chargeDetails[0].rateFrom = subscribedCharges[index].rateFrom
+                    one.chargeDetails[0].amount = subscribedCharges[index].rateFrom
+                    one.chargeDetails[0].levelOfCharge = 'Per Container'
+                    one.chargeDetails[0].isInclude = true
+                    one.seletcedProduct = one.chargeDetails[0]
+                }
+                one.minPrice = Math.min.apply(Math, one.chargeDetails.filter(i => i.levelOfCharge === one.levelOfCharge).map(item => {
+                    return item.rateFrom
+                }))
+                if (one.levelOfCharge === 'Per BL' && one.chargeDetails[0].calculationType !== 'FIX') {
+                    one.minPrice = '%'
+                }
             })
+            const arr = res.data.filter(i => i.bestSeller).concat(res.data.filter(i => !i.bestSeller))
+            this.setData({
+                vasList: arr,
+                noSelectVasList: arr.filter(i => !i.isProductSelected),
+                subscribedServices: arr.filter(i => i.isProductSelected)
+            })
+            this.calculatedCharges()
+        }, () => {
+            this.data.count++
+            if (this.data.count <= 3) {
+                this.getVasList()
+            }
+        })
         // }
     },
     toSelect(e) {
