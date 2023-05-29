@@ -340,7 +340,7 @@ var Languague = {
       CaptainText2:'要达到船长级别，您需要预订至少15个TEU（标准箱），为期20周（共26周）',
       Master: '船长',
       MasterText1: '每消费100 USD累积6海里',
-      MasterText2: '要达到上将级别，您需要至少在20周内每周预定最少120个TEU（标准箱）',
+      MasterText2: '要达到上将级别，您需要预订至少100个TEU（标准箱），为期20周（共26周）',
       MasterBenefits: '每消费100 USD累积6海里',
       Admiral: '上将',
       AdmiralText1: '每消费100 USD累积8海里',
