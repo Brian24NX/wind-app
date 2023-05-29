@@ -368,7 +368,7 @@ var Languague = {
       earnedEdn:'',
       fortext:'，共',
       xiangzi:'个货柜',
-      earned: '可获得海里:',
+      earned: '最多可获得海里:',
       status: '当前等级: ',
       available: 'Nautical Miles Available',
       usdSaved: '',
