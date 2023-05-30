@@ -128,7 +128,7 @@ Component({
           showPol: false,
           polCount:0,
         })
-        if (res.data != ''||res.data==undefined) {
+        if (res.data != ''&&res.data!==undefined) {
           this.setData({
             pollist: res.data || []
           })
@@ -177,7 +177,7 @@ Component({
           showPod: false,
           podCount:0,
         })
-        if (res.data != ''||res.data==undefined) {
+        if (res.data != ''&&res.data!==undefined) {
           this.setData({
             podlist: res.data || []
           })

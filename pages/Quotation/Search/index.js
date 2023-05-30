@@ -376,7 +376,7 @@ Page({
           showPoR: false,
           porCount:1,
         })
-        if (res.data != ''||res.data==undefined) {
+        if (res.data != ''&&res.data!==undefined) {
           res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
           this.setData({
             placeOfReceiptList: res.data || []
@@ -470,7 +470,7 @@ Page({
       this.setData({
         showPol: false
       })
-      if (res.data != ''||res.data==undefined) {
+      if (res.data != ''&&res.data!==undefined) {
         this.setData({
           pollist: res.data || []
         })
@@ -522,7 +522,8 @@ Page({
       this.setData({
         showPod: false
       })
-      if (res.data != ''||res.data==undefined) {
+      console.log(1111,res.data,res.data==undefined,res.data != '')
+      if (res.data != ''&&res.data!==undefined) {
         this.setData({
           podlist: res.data || []
         })
@@ -583,7 +584,7 @@ Page({
           showPoDe: false,
           poDeCount:0
         })
-        if (res.data != ''||res.data==undefined) {
+        if (res.data != ''&&res.data!==undefined) {
           res.data.forEach(item => item.ActualName = item.ActualName.replaceAll(' ', ""))
           this.setData({
             placeOfDeliveryList: res.data || []
@@ -611,7 +612,7 @@ Page({
         this.setData({
           showPoDe: false,
         })
-        if(res.data != ''||res.data==undefined){
+        if(res.data != ''&&res.data!==undefined){
           let placeOfDeliveryList = []
           if (res.data && res.data.length) {
             res.data.forEach(item => {

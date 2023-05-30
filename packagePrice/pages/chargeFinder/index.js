@@ -99,7 +99,7 @@ Page({
         showPol: false,
         polCount:0,
       })
-      if (res.data != ''||res.data==undefined) {
+      if (res.data != ''&&res.data!==undefined) {
         this.setData({
           pollist: res.data || []
         })
@@ -145,7 +145,7 @@ Page({
         showPod: false,
         podCount:0,
       })
-      if (res.data != ''||res.data==undefined) {
+      if (res.data != ''&&res.data!==undefined) {
         this.setData({
           podlist: res.data || []
         })

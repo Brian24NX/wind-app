@@ -390,7 +390,7 @@ Page({
         showPol: false,
         polCount:0
       })
-      if (res.data != ''||res.data==undefined) {
+      if (res.data != ''&&res.data!==undefined) {
         this.setData({
           codePolList: res.data
         })
@@ -444,7 +444,7 @@ Page({
         showPod: false,
         podCount:0,
       })
-      if (res.data != ''||res.data==undefined) {
+      if (res.data != ''&&res.data!==undefined) {
         this.setData({
           codePodList: res.data
         })
