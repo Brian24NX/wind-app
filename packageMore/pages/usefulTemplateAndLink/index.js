@@ -225,6 +225,11 @@ Page({
         noData: !list.length,
         list
       })
+    }).catch(err => {
+      this.setData({
+        loading: false,
+        noMore:true
+      })
     })
   },
 
@@ -252,6 +257,11 @@ Page({
         loading: false,
         noData: !list.length,
         list
+      })
+    }).catch(err => {
+      this.setData({
+        loading: false,
+        noMore:true
       })
     })
   },

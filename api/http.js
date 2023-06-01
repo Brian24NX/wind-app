@@ -1,7 +1,8 @@
 const config = require('../config/config')
 const languageUtil = require('../utils/languageUtils')
 const utils = require('../utils/util')
-
+// const {SHA256} = require('../utils/sha265')
+import SHA256 from '../utils/sha265.js'
 // 请求及拦截封装
 const request = ({
   url,
@@ -12,7 +13,6 @@ const request = ({
   hideLoading,
   needError
 }) => {
-  console.log('------------',url,hideLoading)
   return new Promise((resolve, reject) => {
     if (needAccessToken && !utils.checkAccessToken()) {
       wx.showToast({
@@ -38,15 +38,20 @@ const request = ({
       return
     }
     if (!hideLoading) {
-      console.log('http.js------------------')
       wx.showLoading({
         title: languageUtil.languageVersion().lang.page.load.loading,
         mask: true
       });
     }
+    let timeStamp = new Date().getTime() + Math.floor(Math.random() * 100000)
+    // console.log('SHA256',timeStamp,SHA256(2222))
     let header = {
-      'content-type': contentType || 'application/json'
+      'content-type': contentType || 'application/json',
+      'sign':SHA256(timeStamp+config.secret+config.appid),
+      'timeStamp':timeStamp,
+      'appId':config.appid
     }
+    console.log('-------------',header)
     if (needAccessToken) {
       header['Authorization'] = wx.getStorageSync('access_token')
     }

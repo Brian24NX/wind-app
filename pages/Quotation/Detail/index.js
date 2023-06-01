@@ -238,7 +238,6 @@ Page({
                 totalChargeAmount: totalChargeAmount,
                 oceanFreight: this.data.oceanFreight * this.data.containers - this.data.burnRewards
             })
-            console.log(1111111111, this.data.useRewards, this.data.oceanFreight)
         } else {
             this.setData({
                 finalPrice: totalChargeAmount * this.data.containers,
@@ -246,7 +245,6 @@ Page({
                 totalChargeAmount: totalChargeAmount,
                 oceanFreight: this.data.oceanFreight * this.data.containers
             })
-            console.log(2222222222222, this.data.useRewards, this.data.oceanFreight)
         }
         // console.log(this.data.burnRewards, wx.getStorageSync('seaRewardData').pointsBalance)
         //注释掉的0002130568模拟数据
@@ -456,7 +454,8 @@ Page({
                             baseAmountUsd: this.data.oceanFreight,
                             includeBurn: this.data.useRewards,
                             quotationReference: res.data,
-                            partnerCode: wx.getStorageSync('partnerList')[0].code
+                            partnerCode: wx.getStorageSync('partnerList')[0].code,
+                            shippingCompany:this.data.shippingCompany
                         }
                         console.log('--------------', data)
                         seaQuotationCreation(data).then(res => {
@@ -1369,6 +1368,7 @@ Page({
             "currency": surchargeDetails.totalCharge.currency.code,
             subscribedCharges: subscribedCharges.map(i => i.code)
         }).then(res => {
+            console.log('res',res)
             if (this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH') {
                 const i = res.data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
                 if (i > -1) {
@@ -1395,7 +1395,9 @@ Page({
                     one.minPrice = '%'
                 }
             })
+            console.log(res.data)
             const arr = res.data.filter(i => i.bestSeller).concat(res.data.filter(i => !i.bestSeller))
+            console.log(arr,arr.filter(i => !i.isProductSelected))
             this.setData({
                 vasList: arr,
                 noSelectVasList: arr.filter(i => !i.isProductSelected),

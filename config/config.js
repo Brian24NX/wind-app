@@ -13,5 +13,7 @@ module.exports = {
         url: 'https://uat.wind.cma-cgm.com',
         fileUrl: 'https://uat.wind-admin.cma-cgm.com/api/admin/',
         appId: 'wxa026e360ceef2f02'
-    }
+    },
+    appid:"9398902392",
+    secret:"tzG3D0J3M038zF7x215Uwx8D"
 }

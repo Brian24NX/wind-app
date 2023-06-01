@@ -9,6 +9,7 @@
   "dependencies": {
     "@vant/weapp": "^1.10.2",
     "dayjs": "^1.11.0",
+    "md5": "^2.3.0",
     "mp-html": "^2.3.1"
   },
   "repository": {
@@ -16,6 +17,5 @@
     "url": "your project git utl"
   },
   "description": "``` ├── README.md            - 说明文件 ├── api                  - 涉及到接口请求的模块，接口统一按照modules模块进行管理，以便后期更好维护 │   ├── http.js          - 对 wx.request 做了一层封装，支持 GET,POST,PUT,DELETE 方法  │   └── modules          - 接口请求按模块管理 │       ├── home.js      - home 接口请求，返回一个请求函数 │       ├── login.js     - login 接口请求，返回一个请求函数 │       ├── my.js        - my 接口请求，返回一个请求函数 │       ├── query.js     - query接口请求，返回一个请求函数 │       └── quotation.js - quotation 接口请求，返回一个请求函数 ├── app.js               - 小程序整体的app 逻辑 ├── app.json             - 小程序公共配置 ├── app.wxss             - 小程序公共样式表    ├── assets               - 静态文件，用于存放font、img、styles      │   ├── font             - 字体图标 │   ├── img              - 开发涉及到的图片，图片分大模块存放，例: 涉及到home模块下的图片新建home文件夹存放                            UI给完图，前端开发需要通过https://tinypng.com/这个网站对图片进行压缩 │   │   └── tabs         - tabs用到的图片 │   │   └── home         - home用到的图片 │   │   └── common       - 公共图片 │   └── styles           - 样式文件   │       └── common.wxss  - 公共的样式文件            ├── components           - 公共组件，多次使用到的组件需要单独封装抽离出来，要写好注释，需要传递什么 │   └── Header           - 例公用头部组件 ├── config               - 小程序配置文件，涉及环境，以及某环境下的baseUrl │   └── config.js        - config.js ├── pages                - 页面组件 │   ├── Home             - Home，命名规范为首字母大写驼峰命名 │   │   ├── index.js     - 逻辑 │   │   ├── index.json   - 页面的一些配置 │   │   ├── index.wxml   - 页面结构 │   │   └── index.wxss   - 页面样式 │   ├── My               - My 模块页面组件 │   ├── Query            - Query 模块页面组件 │   └── Quotation        - Quotation 模块页面组件 ├── project.config.json  - 工具配置 ├── sitemap.json         - 文件用于配置小程序及其页面是否允许被微信索引 └── utils                - 公共的js模块，当逻辑层多次使用的js，封装成函数，放到utils中，以免代码冗余     ├── storage.js       - storage 对小程序storage增删改查的函数方法     └── util.js          - util 公共函数方法，例如:时间格式化、跳过空数据、 ```",
-  "devDependencies": {},
   "author": ""
 }

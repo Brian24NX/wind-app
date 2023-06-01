@@ -82,7 +82,7 @@ Page({
         const pages = getCurrentPages()
         const currentPage = pages[pages.length - 2]
         const data = currentPage.data
-        console.log('list----- data',data)
+        console.log('list----- data',data,data.shippingCompany)
         this.setData({
             equiptCode: data.equiptCode,
             partnerCode: data.partnerCode,

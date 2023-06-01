@@ -108,7 +108,6 @@ Page({
       this.setData({
         categoryList: all.concat(res.data)
       })
-      console.log(1111,this.data.categoryList)
       if (!this.data.scrollViewWidth) {
         wx.createSelectorQuery().select('.categoryList').boundingClientRect((rect) => {
           this.setData({
@@ -155,6 +154,11 @@ Page({
         loading: false,
         noData: !list.length,
         list
+      })
+    }).catch(err => {
+      this.setData({
+        loading: false,
+        noMore:true
       })
     })
   },

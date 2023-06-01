@@ -125,6 +125,11 @@ Page({
         noData: !list.length,
         list
       })
+    }).catch(err => {
+      this.setData({
+        loading: false,
+        noMore:true
+      })
     })
   },
 
