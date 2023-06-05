@@ -68,7 +68,6 @@ Page({
                 }).then(res => {
                     let userInfo = res.data[0].customer
                     if (userInfo) {
-                        wx.setStorageSync('multiple', false)
                         userInfo.lastName = userInfo.lastName ? userInfo.lastName.toLocaleUpperCase() : ''
                         if (userInfo.lastName && userInfo.firstName) {
                             userInfo.avatar = userInfo.firstName.substr(0, 1) + userInfo.lastName.substr(0, 1)
@@ -104,11 +103,19 @@ Page({
                         }).then(result => {
                             let partnerLists = []
                             result.data.forEach(i => {
-                                partnerLists.push({
-                                    code: i.partnerDetails.code,
-                                    name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city,
-                                    fullName: i.partnerDetails.fullName
-                                })
+                                if(i.partnerDetails.code===wx.getStorageSync('partnerCode')){
+                                    partnerLists.unshift({
+                                        code: i.partnerDetails.code,
+                                        name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city,
+                                        fullName: i.partnerDetails.fullName
+                                    })
+                                }else{
+                                    partnerLists.push({
+                                        code: i.partnerDetails.code,
+                                        name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city,
+                                        fullName: i.partnerDetails.fullName
+                                    })
+                                }
                             })
                             wx.setStorageSync('partnerList', partnerLists)
                         })
@@ -130,7 +137,6 @@ Page({
             this.setData({
                 needLogin: false
             })
-            console.log('count', this.data.count, this.data.count === 1,new Date())
             if (this.data.count === 1) {
                 wx.showLoading({
                     title: languageUtil.languageVersion().lang.page.load.load,

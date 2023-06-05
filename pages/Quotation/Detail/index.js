@@ -138,7 +138,8 @@ Page({
             "level": wx.getStorageSync('seaRewardData').level
         }).then(res => {
             this.setData({
-                rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance : null
+                rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance: null
+                // rewardsEarned: res.data ? res.data.simulationResults?res.data.simulationResults[0].changeInPointsBalance:0 : null
             })
         })
     },

@@ -170,6 +170,7 @@ Page({
       }
     })
     this.setData({
+      seaRewardData: wx.getStorageSync('seaRewardData'),
       partnerList: JSON.parse(JSON.stringify(partnerList)),
       checkPartnerList: JSON.parse(JSON.stringify(partnerList)),
       needLogin: !utils.checkAccessToken()

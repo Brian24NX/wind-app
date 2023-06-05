@@ -257,7 +257,7 @@
               <image src="/assets/img/search/error@2x.png"></image>
               <text>{{verifyInfo.required}}</text>
             </view>
-            <view class="tishi" wx:if="{{wx.getStorageSync('seaRewardData').memberStatus==='Active'}}">
+            <view class="tishi" wx:if="{{seaRewardData.memberStatus==='Active'}}">
               <image src="/assets/img/search/error@2x.png"></image>
               <text>Please note that Nautical Miles cannot be used for other partners than your main one</text>
             </view>
@@ -303,7 +303,8 @@
               <text>{{verifyInfo.required}}</text>
             </view>
 <!--            wx:if="{{wx.getStorageSync('seaRewardData').memberStatus==='Active'}}"-->
-            <view class="tishi"  wx:if="{{wx.getStorageSync('seaRewardData').memberStatus==='Active'}}">
+
+            <view class="tishi"  wx:if="{{seaRewardData.memberStatus==='Active'}}">
               <image src="/assets/img/search/error@2x.png"></image>
               <text>Please note that Nautical Miles cannot be used for other partners than your main one</text>
             </view>
