@@ -156,7 +156,7 @@ Page({
           wx.setStorageSync('shipCompanyList', shipCompanyList)
           wx.setStorageSync('rights', rights)
         }
-
+         console.log('partnerList',partnerList)
         if (partnerList && partnerList.length) {
           let partnerLists = []
           partnerList.forEach(i => {

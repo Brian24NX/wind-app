@@ -353,10 +353,10 @@ var Languague = {
       Howtogetthere1:'海里累积',
       CaptainGetThere1:'海里是抵现奖励计划的计算单位。' +
           '您可以根据订舱金额累积海里。' +
-          '简单3个步骤即可累积海里：获取报价、订舱及支付账单',
+          '简单3个步骤即可累积海里：获取报价、订舱及支付账单。',
       benefits1:'海里抵扣',
       CaptainBenefits1:'在决定使用海里抵现权益后，您可以随时在实时报价过程中使用累积的海里进行抵扣，从而节省海运费用。' +
-          '简单3个步骤即可抵扣海里：创建报价时进行抵扣、订舱及支付账单',
+          '简单3个步骤即可抵扣海里：创建报价时进行抵扣、订舱及支付账单。',
       Howtogetthere2:'获取报价、订舱、支付账单及累积海里',
       MasterGetThere2:'成功订舱即可获得奖励，无论需要运输任何类型的集装箱或货物，达飞都为您提供全新的奖励计划。只需简单4个步骤：获取报价、订舱、支付账单及累积海里。',
       Howtogetthere3:'消费积海里，升级享权益',
@@ -367,7 +367,7 @@ var Languague = {
       seaRewardDiscover2: '',
       mySeaReward: '我的海里',
       nauticalMiles: '赚取海里',
-      getAQuote: '获取报价',
+      getAQuote: '赚取海里',
       save1: '使用 ',
       save2: '海里抵扣 ',
       usd: 'USD',
@@ -397,7 +397,7 @@ var Languague = {
       spotOn: '最新订舱',
       desc1: '权益：',
       desc2: '每消费100$累积',
-      desc3: '海里。',
+      desc3: '海里',
       nauticalMiles : '海里',
       placeholder: '报价单号 / 订舱单号 / 账单单号',
       raisedDate: '生成日期',

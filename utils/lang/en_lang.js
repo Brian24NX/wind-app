@@ -323,10 +323,10 @@ var Languague = {
     //sea reward
     seaReward:{
       seaRewardTitle: 'What is Sea Reward?',
-      activate: 'Discover Spot On loyalty program',
+      activate: 'Discover Spot On loyalty program!',
       dashboard: 'Sea Reward Dashboard',
       seaRewardInformation: 'Sea Reward Information',
-      seaRewardIntro: 'CMA CGM loyalty program dedicated to Spot on. Get rewarded every time you ship with us!',
+      seaRewardIntro: 'CMA CGM loyalty program dedicated to Spot On. Get rewarded every time you ship with us!',
       Lieutenant: 'Lieutenant',
       LieutenantText1:'Earn 2 Nautical Miles for every 100$ spent',
       LieutenantText2: 'To reach the Captain level, you need to book at least 1 TEU for 20 weeks out of 26',
@@ -357,7 +357,7 @@ var Languague = {
           '3 easy steps to use miles: Decide to use when quoting on Spot On, Book & Pay.',
       Howtogetthere2:'Get a Quote, Book, Pay and Be Rewarded',
       MasterGetThere2:'Being rewarded for every booking you make on SpotOn has never been easier. A new way to reward each and every one of you, no matter what type of container or cargo you carry. Four simple steps: get a quote, book, pay and be rewarded.',
-      Howtogetthere3:'Elevate your rank to access more rewards',
+      Howtogetthere3:'Elevate Your Rank to Access More Rewards',
       AdmiralGetThere3:'The regularity of your Spot On bookings defines your rank.\n' +
           '\n' +
           'Each quarter, your rank is defined based on your regularity the 6 previous months (26 weeks).',

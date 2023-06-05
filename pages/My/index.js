@@ -78,25 +78,28 @@ Page({
                             userInfo
                         })
                         let partners = []
-                        console.log('-----------',res.data[0].profilerights)
-                        let code = res.data[0].profilerights[0].partner.code
+                        // let code = res.data[0].profilerights[0].partner.code
                         res.data[0].profilerights.map(i => {
-                            console.log('code',code,i.partner.code,code===i.partner.code)
-                            if(code===i.partner.code){
-                                console.log(11,i.partner.code,i.shipcomp === '0001')
-                                if (i.shipcomp === '0001') {
+                            // console.log('code',code,i.partner.code,code===i.partner.code)
+                            // if(code===i.partner.code){
+                                // console.log(11,i.partner.code,i.shipcomp === '0001')
+                                // if (i.shipcomp === '0001') {
+                                //     partners.push(i.partner.code)
+                                // }
+                            // }else{
+                            //     wx.setStorageSync('multiple', true)
+                            //     console.log(22,i.partner.code,i.relationType === 'MAIN')
+                                // if (i.relationType === 'MAIN') {
                                     partners.push(i.partner.code)
-                                }
-                            }else{
-                                wx.setStorageSync('multiple', true)
-                                console.log(22,i.partner.code,i.relationType === 'MAIN')
-                                if (i.relationType === 'MAIN') {
-                                    partners.push(i.partner.code)
-                                }
+                                // }
+                            // }
+                            if (i.relationType === 'MAIN') {
+                                wx.setStorageSync('partnerCode', i.partner.code)
                             }
                         })
+                        console.log(partners,Array.from(new Set(partners)),wx.getStorageSync('partnerCode'))
                         customerPartners({
-                            "partners": partners,
+                            "partners": Array.from(new Set(partners)),
                             "token": wx.getStorageSync('access_token')
                         }).then(result => {
                             let partnerLists = []

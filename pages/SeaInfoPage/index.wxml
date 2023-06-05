@@ -29,7 +29,7 @@
         <view class="dropDown">
           <view class="waysToThere"> {{seaReward.Howtogetthere1}}</view>
           <view class="waysIntro"> {{seaReward.CaptainGetThere1}}</view>
-          <view class="benefit"> {{seaReward.benefits1}} </view>
+          <view class="benefit"> {{seaReward.benefits1}}</view>
           <view class="benefitContent">
             <view class="benefitText">
 
