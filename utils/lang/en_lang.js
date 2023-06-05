@@ -346,27 +346,25 @@ var Languague = {
       NauticalMilesCycle: 'My Nautical Miles Cycle',
       RankFocus: 'My Rank',
       Howtogetthere1:'Earn Nautical Miles',
-      CaptainGetThere1:'Nautical miles are the currency of the SeaReward program.\n' +
+      CaptainGetThere1:'Nautical miles are the currency of the Sea Reward program.\n' +
           'You earn nautical miles based on the amount you pay.' +
-          ' 3 easy steps to earn miles: Quote on Spot On, Book & Pay".',
+          ' 3 easy steps to earn miles: Quote on Spot On, Book & Pay.',
       benefits1:'Use Nautical Miles',
       CaptainBenefits1:'You can use your earned nautical miles as discount on Spot On.\n' +
           '\n' +
           'You decide when you want to save money.\n' +
           '\n' +
-          '3 easy steps to use miles: Decide to use when quoting on Spot On, Book & Pay".',
+          '3 easy steps to use miles: Decide to use when quoting on Spot On, Book & Pay.',
       Howtogetthere2:'Get a Quote, Book, Pay and Be Rewarded',
       MasterGetThere2:'Being rewarded for every booking you make on SpotOn has never been easier. A new way to reward each and every one of you, no matter what type of container or cargo you carry. Four simple steps: get a quote, book, pay and be rewarded.',
-      Howtogetthere3:'Get Rewarded Based on Your Rank',
-      AdmiralGetThere3:'Elevate your rank to access more rewards.\n' +
-          '\n' +
-          'The regularity of your Spot On bookings defines your rank.\n' +
+      Howtogetthere3:'Elevate your rank to access more rewards.',
+      AdmiralGetThere3:'The regularity of your Spot On bookings defines your rank.\n' +
           '\n' +
           'Each quarter, your rank is defined based on your regularity the 6 previous months (26 weeks).',
       benefits: 'Benefits',
       seaRewardDiscover: 'Discover your Sea',
       seaRewardDiscover2: 'Reward dashboard',
-      mySeaReward: 'SeaReward',
+      mySeaReward: 'Sea Reward',
       nauticalMiles: 'Start earning',
       nauticalMiles2: 'Nautical Miles',
       getAQuote: 'Spot On',
@@ -409,7 +407,7 @@ var Languague = {
       spotOn: 'On SpotOn Bookings',
       Lieutenant:'Sorry, the benefit to use Nautical Miles is available starting Captain rank and above.',
       Lieutenanttext:'Get an instant quote now to level up!',
-      desc1: 'Reward : ',
+      desc1: 'Reward: ',
       desc2: 'Earn ',
       desc3: ' Nautical Miles for every 100$ spent',
       nauticalMiles : 'Nautical Miles',

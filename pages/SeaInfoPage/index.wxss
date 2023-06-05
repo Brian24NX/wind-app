@@ -445,3 +445,6 @@ display: flex;
   line-height: 34rpx;
   margin-left: 14rpx;
 }
+.tslie{
+  margin-bottom: 20rpx;
+}

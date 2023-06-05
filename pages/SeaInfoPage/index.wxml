@@ -31,7 +31,13 @@
           <view class="waysIntro"> {{seaReward.CaptainGetThere1}}</view>
           <view class="benefit"> {{seaReward.benefits1}} </view>
           <view class="benefitContent">
-            <view class="benefitText"> {{seaReward.CaptainBenefits1}}
+            <view class="benefitText">
+
+<!--              You can use your earned nautical miles as discount on Spot On.-->
+
+<!--              <view>You decide when you want to save money.</view>-->
+<!--              3 easy steps to use miles: Decide to use when quoting on Spot On, Book & Pay.-->
+              {{seaReward.CaptainBenefits1}}
             </view>
           </view>
         </view>
@@ -65,7 +71,7 @@
             <view class="titleText"> {{seaReward.Lieutenant}} </view>
           </view>
           <!-- <view class="benefit"> {{seaReward.benefits}} </view> -->
-           <view class="benefitContent1"> 
+           <view class="benefitContent1 tslie">
             <view class="benefitIcon"></view>
             <view class="benefitText1"> {{seaReward.LieutenantText1}}</view>
           </view>
