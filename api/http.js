@@ -51,7 +51,6 @@ const request = ({
       'timeStamp':timeStamp,
       'appId':config.appid
     }
-    console.log('-------------',header)
     if (needAccessToken) {
       header['Authorization'] = wx.getStorageSync('access_token')
     }
@@ -62,7 +61,6 @@ const request = ({
       header,
       success: (res) => {
         if (!hideLoading) {
-          console.log('http.js-----1------')
           wx.hideLoading();
         }
         // 返回成功提示信息
@@ -80,7 +78,6 @@ const request = ({
             wx.removeStorageSync('expires_time')
             wx.removeStorageSync('access_token')
             setTimeout(() => {
-              console.log(1111111111111111111,config.mockLogin)
               if(config.mockLogin){
                 wx.navigateTo({
                   url: '/pages/LoginCopy/index'

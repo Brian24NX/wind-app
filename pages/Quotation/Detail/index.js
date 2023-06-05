@@ -131,7 +131,6 @@ Page({
     },
 
     getSeaEarnPoints(amount) {
-        console.log("------amount-------", this.data.oceanFreight, amount)
         seaEarnPoints({
             "baseAmount": this.data.oceanFreight,
             "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
@@ -253,9 +252,15 @@ Page({
         //         burnRewards: 260,
         //     })
         // } else {
+        console.log(this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance,this.data.burnRewards,wx.getStorageSync('seaRewardData').pointsBalance)
         if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
             this.setData({
                 burnRewards: this.data.finalPrice
+            })
+        }
+        if(wx.getStorageSync('seaRewardData').pointsBalance>this.data.oceanFreight){
+            this.setData({
+                burnRewards: this.data.oceanFreight
             })
         }
         // }

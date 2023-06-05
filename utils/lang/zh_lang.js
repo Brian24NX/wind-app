@@ -405,6 +405,7 @@ var Languague = {
       transaction: '我的海里',
       uo: 'Parent Company:',
       bp: 'Company:',
+      bp1:'Parent Company:',
       nextDate: '下次更新时间:',
       all: '全部',
       earnings: '累积',

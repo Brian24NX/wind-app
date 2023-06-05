@@ -68,6 +68,7 @@ Page({
                 }).then(res => {
                     let userInfo = res.data[0].customer
                     if (userInfo) {
+                        wx.setStorageSync('multiple', false)
                         userInfo.lastName = userInfo.lastName ? userInfo.lastName.toLocaleUpperCase() : ''
                         if (userInfo.lastName && userInfo.firstName) {
                             userInfo.avatar = userInfo.firstName.substr(0, 1) + userInfo.lastName.substr(0, 1)
@@ -77,9 +78,21 @@ Page({
                             userInfo
                         })
                         let partners = []
+                        console.log('-----------',res.data[0].profilerights)
+                        let code = res.data[0].profilerights[0].partner.code
                         res.data[0].profilerights.map(i => {
-                            if (i.shipcomp === '0001') {
-                                partners.push(i.partner.code)
+                            console.log('code',code,i.partner.code,code===i.partner.code)
+                            if(code===i.partner.code){
+                                console.log(11,i.partner.code,i.shipcomp === '0001')
+                                if (i.shipcomp === '0001') {
+                                    partners.push(i.partner.code)
+                                }
+                            }else{
+                                wx.setStorageSync('multiple', true)
+                                console.log(22,i.partner.code,i.relationType === 'MAIN')
+                                if (i.relationType === 'MAIN') {
+                                    partners.push(i.partner.code)
+                                }
                             }
                         })
                         customerPartners({

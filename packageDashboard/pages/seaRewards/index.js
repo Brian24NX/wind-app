@@ -113,7 +113,8 @@ Page({
         count: 0,
         isShow: false,
         isShowLieutenant:false,//中尉没有抵扣
-        partnerList : wx.getStorageSync('partnerList')
+        partnerList : wx.getStorageSync('partnerList'),
+        multiple:false,
     },
 
     /**
@@ -140,9 +141,11 @@ Page({
     },
 
     onShow() {
+
       this.setData({
         isShow:false,
-          partnerList : wx.getStorageSync('partnerList')
+          partnerList : wx.getStorageSync('partnerList'),
+          multiple:wx.getStorageSync('multiple')
       })
         this.setData({
             keyword: '',

@@ -384,6 +384,7 @@ var Languague = {
       transaction: 'Transaction Journal',
       uo: 'Parent Company:',
       bp: 'Company:',
+      bp1:'Parent Company:',
       nextDate: 'Next update:',
       all: 'ALL',
       earnings: ' EARNED',
