@@ -357,7 +357,7 @@ var Languague = {
           '3 easy steps to use miles: Decide to use when quoting on Spot On, Book & Pay.',
       Howtogetthere2:'Get a Quote, Book, Pay and Be Rewarded',
       MasterGetThere2:'Being rewarded for every booking you make on SpotOn has never been easier. A new way to reward each and every one of you, no matter what type of container or cargo you carry. Four simple steps: get a quote, book, pay and be rewarded.',
-      Howtogetthere3:'Elevate your rank to access more rewards.',
+      Howtogetthere3:'Elevate your rank to access more rewards',
       AdmiralGetThere3:'The regularity of your Spot On bookings defines your rank.\n' +
           '\n' +
           'Each quarter, your rank is defined based on your regularity the 6 previous months (26 weeks).',
