@@ -22,7 +22,8 @@ var Languague = {
       chongfu: 'Duplicate number, please check and enter',
       only: 'Please enter either one Booking reference or Multiple Container Reference',
       input: 'Input',
-      select: 'Select'
+      select: 'Select',
+      alarm:'Container is not linked to the current logged in carrier'
     },
     // 星期
     weeks: {
@@ -322,43 +323,53 @@ var Languague = {
     //sea reward
     seaReward:{
       seaRewardTitle: 'What is Sea Reward?',
-      activate: 'Discover your new loyalty program on SpotOn!',
+      activate: 'Discover Spot On loyalty program',
       dashboard: 'Sea Reward Dashboard',
       seaRewardInformation: 'Sea Reward Information',
-      seaRewardIntro: 'Sea Reward is the CMA CGM loyalty program dedicated to all SpotOn quotations and bookings. Earn nautical miles every time you ship with us!',
+      seaRewardIntro: 'CMA CGM loyalty program dedicated to Spot on. Get rewarded every time you ship with us!',
       Lieutenant: 'Lieutenant',
-      LieutenantText1:'Earn 2 Nautical Miles for 100 dollars spent',
+      LieutenantText1:'Earn 2 Nautical Miles for every 100$ spent',
       LieutenantText2: 'To reach the Captain level, you need to book at least 1 TEU for 20 weeks out of 26',
-
       LieutenantBenefits: 'Earn 2 Nautical Miles for 100 dollars spent', 
       Captain: 'Captain',
-      CaptainText1:'Earn 4 Nautical Miles for 100 dollars spent',
-      CaptainText2:'To reach the Master level, you need to book at least 15 TEU for 20 weeks out of 26',
+      CaptainText1:'Booked at least 1 TEU for 20 weeks',
+      CaptainText2:'Earn 4 Nautical Miles for every 100$ spent',
       Master: 'Master',
-      MasterText1: 'Earn 6 Nautical Miles for 100 dollars spent',
-      MasterText2:'To reach the Admiral level, you need to book at least 100 TEU for 20 weeks out of 26',
+      MasterText1: 'Booked at least 15 TEU for 20 weeks',
+      MasterText2:'Earn 6 Nautical Miles for every 100$ spent',
       MasterBenefits: 'Earn 6 Nautical Miles for 100 dollars spent',
       Admiral: 'Admiral',
-      AdmiralText1: 'Earn 8 Nautical Miles for 100 dollars spent',
+      AdmiralText1: 'Booked at least 150 TEU for 20 weeks',
+      AdmiralText2:'Earn 8 Nautical Miles for every 100$ spent',
       Howtogetthere: 'How to get there',
       NauticalMilesFocus: 'My Nautical Miles',
       NauticalMilesCycle: 'My Nautical Miles Cycle',
       RankFocus: 'My Rank',
       Howtogetthere1:'Earn Nautical Miles',
-      CaptainGetThere1:'Nautical miles is the currency of the loyalty program. With Sea Reward, you can earn Nautical Miles whenever you book on SpotOn, according your rank and the amount you spend on SpotOn. First, you will need to make a quotation, place a booking, pay the invoice and the Nautical Miles will be yours.',
+      CaptainGetThere1:'Nautical miles are the currency of the SeaReward program.\n' +
+          'You earn nautical miles based on the amount you pay.' +
+          ' 3 easy steps to earn miles: Quote on Spot On, Book & Pay".',
       benefits1:'Use Nautical Miles',
-      CaptainBenefits1:'Use your nautical miles for all your SpotOn quotations and bookings, whenever you want and no matter what your voyage and cargo. You decide when you want to save money.',
+      CaptainBenefits1:'You can use your earned nautical miles as discount on Spot On.\n' +
+          '\n' +
+          'You decide when you want to save money.\n' +
+          '\n' +
+          '3 easy steps to use miles: Decide to use when quoting on Spot On, Book & Pay".',
       Howtogetthere2:'Get a Quote, Book, Pay and Be Rewarded',
       MasterGetThere2:'Being rewarded for every booking you make on SpotOn has never been easier. A new way to reward each and every one of you, no matter what type of container or cargo you carry. Four simple steps: get a quote, book, pay and be rewarded.',
       Howtogetthere3:'Get Rewarded Based on Your Rank',
-      AdmiralGetThere3:'Level up your rank to earn even more rewards. Upon enrolling in the program, you all start with Lieutenant rank. Every quarter, your rank is updated based on your SpotOn activity over the 6 previous months.',
+      AdmiralGetThere3:'Elevate your rank to access more rewards.\n' +
+          '\n' +
+          'The regularity of your Spot On bookings defines your rank.\n' +
+          '\n' +
+          'Each quarter, your rank is defined based on your regularity the 6 previous months (26 weeks).',
       benefits: 'Benefits',
       seaRewardDiscover: 'Discover your Sea',
       seaRewardDiscover2: 'Reward dashboard',
-      mySeaReward: 'My Sea Reward',
+      mySeaReward: 'SeaReward',
       nauticalMiles: 'Start earning',
       nauticalMiles2: 'Nautical Miles',
-      getAQuote: 'Get a Quote',
+      getAQuote: 'Spot On',
       save1: 'Use ',
       save2: 'Nmiles to save ',
       usd: 'USD',
@@ -398,9 +409,9 @@ var Languague = {
       spotOn: 'On SpotOn Bookings',
       Lieutenant:'Sorry, the benefit to use Nautical Miles is available starting Captain rank and above.',
       Lieutenanttext:'Get an instant quote now to level up!',
-      desc1: 'As a ',
-      desc2: ' you earn ',
-      desc3: ' Nautical Miles for every 100＄ spent on SpotOn quotes. Nautical Miles are earned once the invoice is paid.',
+      desc1: 'Reward : ',
+      desc2: 'Earn ',
+      desc3: ' Nautical Miles for every 100$ spent',
       nauticalMiles : 'Nautical Miles',
       placeholder: 'Quotation Ref. / Booking Ref. / Invoice Ref.',
       raisedDate: 'Raised Date',

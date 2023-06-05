@@ -12,10 +12,10 @@
       <view class="columnShowed2">
 <!--      <view class="normalText">{{languageContent.uo}} IKEA</view>-->
 <!--      <view class="dateTime">({{languageContent.nextDate}} {{ language === 'en'? nextDate : nextDate2}})</view>-->
-        {{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}
+        {{languageContent.desc1}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}
+<!--        {{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}-->
       </view>
     </view>
-<!--    <view class="descBox">{{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}</view>-->
     <van-row>
       <van-col span="13">
         <view style="border-right: 1px solid #EEEEEE;">
@@ -92,7 +92,6 @@
 
         <!-- <view class="invoiceNum">{{  item.bookingDate }}</view> -->
         <view class="invoiceNum">{{language === 'zh' ? format.SeaformatCnDateUtc(item.bookingDate, false, true) : format.SeaformatEnDateUtc(item.bookingDate, '-', '', false, true)}}</view>
-
       </view>
       <view class="ones ref">
         <view>{{languageContent.bookRef}}</view>

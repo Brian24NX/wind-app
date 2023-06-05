@@ -127,7 +127,7 @@
       <button class="searchBtn" hover-class="hoverClass" bindtap="calculatedCharges">{{languageContent.count}}</button>
       <view class="reminds reminds2" wx:if="{{errTip}}">
         <image src="/assets/img/search/error@2x.png"></image>
-        <view>{{errTip}}</view>
+        <view>{{errTip==='失败'?verifyInfo.alarm:errTip}}</view>
       </view>
       <view class="waring">
         <image src="/assets/img/price/waring.svg"></image>
