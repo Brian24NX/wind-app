@@ -26,6 +26,7 @@
 .titleArea image {
   width: 240rpx;
   height: 30rpx;
+  margin-bottom: 10rpx;
 }
 
 .ts{

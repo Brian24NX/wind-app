@@ -20,7 +20,10 @@
       <van-col span="13">
         <view style="border-right: 1px solid #EEEEEE;">
           <view class="rowAlign">
-            <image class="otherIcon" src="/assets/img/seaReward/greenShip@2x.png"></image>
+            <image wx:if="{{currentLevel.name==='Lieutenant'}}" class="otherIcon"
+                   src="/assets/img/seaReward/NauticalMilesBloquesshape.png"></image>
+            <image wx:else class="otherIcon"
+                   src='/assets/img/seaReward/NauticalMilesDisposhape.png'></image>
             <view class="boldText"><Text>{{availableMiles}}</Text>{{languageContent.available}}</view>
           </view>
           <view class="rowAlign">
@@ -30,7 +33,7 @@
       </van-col>
       <van-col span="11">
         <view class="rowAlign rightBox">
-          <image class="otherIcon" src="/assets/img/seaReward/greenRewards@2x.png"></image>
+          <image class="otherIcon" src="/assets/img/seaReward/EconomiesRealiseesV3.png"></image>
           <view class="boldText"><Text>{{savedUSD}}</Text>{{languageContent.saved}}</view>
         </view>
         <view class="rowAlign rightBox">

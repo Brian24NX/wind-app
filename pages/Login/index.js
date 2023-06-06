@@ -99,6 +99,8 @@ Page({
 
   getMessage(e) {
     const data = e.detail.data[0]
+
+    console.log('-------------',data)
     if (!data.status) {
       wx.setStorageSync('access_token', data.access_token)
       wx.setStorageSync('expires_time', utils.setExpiresTime(config.expiresIn * 60))
@@ -151,6 +153,9 @@ Page({
               if (rights.indexOf(r.code) === -1) {
                 rights.push(r.code)
               }
+              if (i.relationType === 'MAIN') {
+                wx.setStorageSync('partnerCode', i.partner.code)
+              }
             })
           })
           wx.setStorageSync('shipCompanyList', shipCompanyList)
@@ -166,11 +171,19 @@ Page({
             delete i.partnerDetails.addressLine1
             delete i.partnerDetails.addressLine2
             delete i.partnerDetails.addressLine3
-            partnerLists.push({
-              code: i.partnerDetails.code,
-              name: i.partnerDetails.fullName + ' - ' + i.partnerDetails.city,
-              address: i.partnerDetails
-            })
+            if(i.partnerDetails.code===wx.getStorageSync('partnerCode')){
+              partnerLists.unshift({
+                code: i.partnerDetails.code,
+                name: i.partnerDetails.fullName + ' - ' + i.partnerDetails.city,
+                fullName: i.partnerDetails.fullName
+              })
+            }else{
+              partnerLists.push({
+                code: i.partnerDetails.code,
+                name: i.partnerDetails.fullName + ', ' + i.partnerDetails.city,
+                fullName: i.partnerDetails.fullName
+              })
+            }
           })
           wx.setStorageSync('partnerList', partnerLists)
         }

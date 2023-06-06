@@ -30,7 +30,7 @@ Page({
         }, {
             label: 'seaReward',
             url: '/packageDashboard/pages/seaRewards/index',
-            icon: '/assets/img/seaReward/seaIcon@2x.png'
+            icon: '/assets/img/seaReward/DashboardSRshape2.png'
         }],
         needLogin: false,
         userInfo: {},

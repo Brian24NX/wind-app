@@ -121,7 +121,6 @@ Page({
     if(wx.getStorageSync('partnerList')){
       this.getSeaPartnerInfo()
     }
-    console.log('level',level)
     wx.setStorageSync('rewardLevel', level)
     this.setData({
       rewardLevel: level
@@ -132,9 +131,6 @@ Page({
     this.setData({
       username:event.detail.value
     })
-  },
-  onShow(){
-    console.log(this.data.option1)
   },
   isShow(){
     this.setData({
@@ -255,6 +251,7 @@ Page({
     }).catch(err => {
       console.log(err)
     })
+
   },
   checkBindStatus() {
     let openId = wx.getStorageSync('openId')
