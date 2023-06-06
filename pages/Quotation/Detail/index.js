@@ -205,7 +205,8 @@ Page({
     calculatedCharges() {
         const surchargeDetails = this.data.quotationDetail.surchargeDetails
         this.setData({
-            oceanFreight: surchargeDetails.oceanFreight.price.amount
+            oceanFreight: surchargeDetails.oceanFreight.price.amount,
+            moneyUsed:surchargeDetails.oceanFreight.price.amount,
         })
         let addMoney = 0
         let totalChargeAmount = 0
@@ -439,6 +440,7 @@ Page({
                     }
                 }
             }
+            console.log(this.data.oceanFreight)
             createQuotationQuotation(params, wx.getStorageSync('ccgId')).then(res => {
                 const userInfo = wx.getStorageSync('userInfo')
                 if (res.data) {
@@ -457,7 +459,7 @@ Page({
                     if (wx.getStorageSync('seaRewardData').memberStatus == 'Active') {
                         const data = {
                             effectiveDate: dayjs(new Date()).format('YYYY-MM-DD'),
-                            baseAmountUsd: this.data.oceanFreight,
+                            baseAmountUsd: this.data.moneyUsed,
                             includeBurn: this.data.useRewards,
                             quotationReference: res.data,
                             partnerCode: wx.getStorageSync('partnerList')[0].code,

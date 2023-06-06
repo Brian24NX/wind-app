@@ -323,7 +323,7 @@ var Languague = {
     //sea reward
     seaReward:{
       seaRewardTitle: 'What is Sea Reward?',
-      activate: 'Discover Spot On loyalty program!',
+      activate: 'Discover SpotOn loyalty program!',
       dashboard: 'Sea Reward Dashboard',
       seaRewardInformation: 'Sea Reward Information',
       seaRewardIntro: 'CMA CGM loyalty program dedicated to Spot On. Get rewarded every time you ship with us!',
