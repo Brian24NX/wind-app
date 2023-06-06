@@ -4,8 +4,9 @@
   <view class="resultContainers">
     <view class="resultCardContainers">
       <view class="titleArea">
-        <image src="/assets/img/seaReward/seaIcon@2x.png" class="iconPig"></image>
-        <view class="textSeaRewards"> {{ seaReward.seaRewardTitle}} </view>
+        <image src="/assets/img/seaReward/seaLogo@2x.png" mode="aspectFit"></image>
+<!--        <image src="/assets/img/seaReward/seaIcon@2x.png" class="iconPig"></image>-->
+<!--        <view class="textSeaRewards"> {{ seaReward.seaRewardTitle}} </view>-->
       </view>
       <view class="textArea"> {{seaReward.seaRewardIntro}}</view>
     </view>

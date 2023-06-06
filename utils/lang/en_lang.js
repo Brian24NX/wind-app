@@ -326,7 +326,7 @@ var Languague = {
       activate: 'Discover SpotOn loyalty program!',
       dashboard: 'Sea Reward Dashboard',
       seaRewardInformation: 'Sea Reward Information',
-      seaRewardIntro: 'CMA CGM loyalty program dedicated to Spot On. Get rewarded every time you ship with us!',
+      seaRewardIntro: 'CMA CGM loyalty program dedicated to SpotOn. Get rewarded every time you ship with us!',
       Lieutenant: 'Lieutenant',
       LieutenantText1:'Earn 2 Nautical Miles for every 100$ spent',
       LieutenantText2: 'To reach the Captain level, you need to book at least 1 TEU for 20 weeks out of 26',
@@ -339,7 +339,7 @@ var Languague = {
       MasterText2:'Earn 6 Nautical Miles for every 100$ spent',
       MasterBenefits: 'Earn 6 Nautical Miles for 100 dollars spent',
       Admiral: 'Admiral',
-      AdmiralText1: 'Booked at least 150 TEU for 20 weeks',
+      AdmiralText1: 'Booked at least 100 TEU for 20 weeks',
       AdmiralText2:'Earn 8 Nautical Miles for every 100$ spent',
       Howtogetthere: 'How to get there',
       NauticalMilesFocus: 'My Nautical Miles',
@@ -348,13 +348,13 @@ var Languague = {
       Howtogetthere1:'Earn Nautical Miles',
       CaptainGetThere1:'Nautical miles are the currency of the Sea Reward program.\n' +
           'You earn nautical miles based on the amount you pay.' +
-          ' 3 easy steps to earn miles: Quote on Spot On, Book & Pay.',
+          ' 3 easy steps to earn miles: Quote on SpotOn, Book & Pay.',
       benefits1:'Use Nautical Miles',
-      CaptainBenefits1:'You can use your earned nautical miles as discount on Spot On.\n' +
+      CaptainBenefits1:'You can use your earned nautical miles as discount on SpotOn.\n' +
           '\n' +
           'You decide when you want to save money.\n' +
           '\n' +
-          '3 easy steps to use miles: Decide to use when quoting on Spot On, Book & Pay.',
+          '3 easy steps to use miles: Decide to use when quoting on SpotOn, Book & Pay.',
       Howtogetthere2:'Get a Quote, Book, Pay and Be Rewarded',
       MasterGetThere2:'Being rewarded for every booking you make on SpotOn has never been easier. A new way to reward each and every one of you, no matter what type of container or cargo you carry. Four simple steps: get a quote, book, pay and be rewarded.',
       Howtogetthere3:'Elevate Your Rank to Access More Rewards',
@@ -367,7 +367,7 @@ var Languague = {
       mySeaReward: 'Sea Reward',
       nauticalMiles: 'Start earning',
       nauticalMiles2: 'Nautical Miles',
-      getAQuote: 'Spot On',
+      getAQuote: 'SpotOn',
       save1: 'Use ',
       save2: 'Nmiles to save ',
       usd: 'USD',

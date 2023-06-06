@@ -459,7 +459,7 @@ Page({
                     if (wx.getStorageSync('seaRewardData').memberStatus == 'Active') {
                         const data = {
                             effectiveDate: dayjs(new Date()).format('YYYY-MM-DD'),
-                            baseAmountUsd: this.data.moneyUsed,
+                            baseAmountUsd: this.data.moneyUsed *this.data.containers,
                             includeBurn: this.data.useRewards,
                             quotationReference: res.data,
                             partnerCode: wx.getStorageSync('partnerList')[0].code,

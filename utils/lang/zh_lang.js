@@ -344,7 +344,7 @@ var Languague = {
       MasterText2: '每消费100$累积6海里',
       MasterBenefits: '每消费100 USD累积6海里',
       Admiral: '上将',
-      AdmiralText1: '20周内预定至少150个TEU（标准箱）',
+      AdmiralText1: '20周内预定至少100个TEU（标准箱）',
       AdmiralText2:'每消费100$累积8海里',
       Howtogetthere: '等级条件',
       NauticalMilesFocus: '使用指南',

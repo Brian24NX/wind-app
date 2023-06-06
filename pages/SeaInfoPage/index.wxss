@@ -23,6 +23,11 @@
   display: flex;
   justify-content:flex-start
 }
+.titleArea image {
+  width: 240rpx;
+  height: 30rpx;
+}
+
 .ts{
   margin-bottom: 0 !important;
 }
