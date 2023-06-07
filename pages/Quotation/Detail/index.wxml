@@ -403,7 +403,7 @@
       {{seaReward.save1}}<Text>{{burnRewards}}</Text> {{seaReward.save2}}<Text>{{burnRewards}} </Text>
       <Text>{{seaReward.usd}}</Text>?
     </view>
-    <van-switch id="useRewards" checked="{{useRewards}}" active-color="#2B74FF" inactive-color="#9AA7C3" bind:change="switchRewards" size="24rpx" />
+    <van-switch  disabled="{{disabled}}" id="useRewards" checked="{{useRewards}}" active-color="#2B74FF" inactive-color="#9AA7C3" bind:change="switchRewards" size="24rpx" />
     </view>
     <view class="bottomButtonContainer">
       <view class="bottomLeft">

@@ -87,6 +87,7 @@ Page({
         addMoney: 0, //增值订阅服务的总额
         count: 0,   //获取vas超过三次接口不调用
         oceanFreight: 0,//oceanFreight的值
+        disabled:false,//开关按钮无法点击
     },
 
     /**
@@ -130,18 +131,24 @@ Page({
         }
     },
 
-    getSeaEarnPoints(amount) {
-        seaEarnPoints({
-            "baseAmount": this.data.oceanFreight,
-            "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
-            "partnerCode": wx.getStorageSync('partnerList')[0].code,
-            "level": wx.getStorageSync('seaRewardData').level
-        }).then(res => {
-            this.setData({
-                rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance: null
-                // rewardsEarned: res.data ? res.data.simulationResults?res.data.simulationResults[0].changeInPointsBalance:0 : null
-            })
-        })
+    getSeaEarnPoints() {
+        //this.data.oceanFreight为0不掉接口   rewardsEarned直接为0        data:{}返回值也为0
+       if(this.data.oceanFreight===0){
+           this.setData({
+               rewardsEarned:0})
+       }else{
+           seaEarnPoints({
+               "baseAmount": this.data.oceanFreight,
+               "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
+               "partnerCode": wx.getStorageSync('partnerList')[0].code,
+               "level": wx.getStorageSync('seaRewardData').level
+           }).then(res => {
+               this.setData({
+                   // rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance: null
+                   rewardsEarned: res.data ? res.data.simulationResults?res.data.simulationResults[0].changeInPointsBalance:0 : null
+               })
+           })
+       }
     },
 
     setDefaultInfo(index, containers) {
@@ -254,6 +261,7 @@ Page({
         //         burnRewards: 260,
         //     })
         // } else {
+
         console.log(this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance,this.data.burnRewards,wx.getStorageSync('seaRewardData').pointsBalance)
         if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
             this.setData({
@@ -265,9 +273,22 @@ Page({
                 burnRewards: this.data.oceanFreight
             })
         }
+        //不是主公司无法选择   burnRewards为0无法点击
+        console.log('partnerCode-burnRewards',this.data.partnerCode,wx.getStorageSync('partnerCode'),this.data.partnerCode.indexOf(wx.getStorageSync('partnerCode')))
+        console.log(this.data.partnerCode.indexOf(wx.getStorageSync('partnerCode'))===-1,this.data.burnRewards===0)
+        console.log(this.data.burnRewards===0||this.data.partnerCode.indexOf(wx.getStorageSync('partnerCode'))===-1)
+        if(this.data.burnRewards===0||this.data.partnerCode.indexOf(wx.getStorageSync('partnerCode'))===-1){
+            this.setData({
+                disabled: true
+            })
+        }else{
+            this.setData({
+                disabled: false
+            })
+        }
         // }
         if (this.data.memberStatus === 'Active') {
-            this.getSeaEarnPoints(this.data.finalPrice)
+            this.getSeaEarnPoints()
         }
     },
 
@@ -1500,7 +1521,7 @@ Page({
                 rewardsEarned: 0
             })
         } else {
-            this.getSeaEarnPoints(this.data.finalPrice)
+            this.getSeaEarnPoints()
         }
 
     },
