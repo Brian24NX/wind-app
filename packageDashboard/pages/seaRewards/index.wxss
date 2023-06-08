@@ -152,6 +152,7 @@ page {
 .bottomLines{
   padding-bottom: 24rpx;
   border-bottom: solid 1rpx #EEEEEE;
+  margin-bottom: 24rpx;
 }
 
 .rightBox {

@@ -16,7 +16,7 @@
 <!--        {{languageContent.desc1}}{{language === 'zh'? currentLevel.cnName :currentLevel.name}}{{languageContent.desc2}}{{currentLevel.rewards}}{{languageContent.desc3}}-->
       </view>
     </view>
-    <view class="bottomLines">{{languageContent.bp}}{{partnerList.length>1?userInfo.company:partnerList[0].fullName}}</view>
+    <view class="bottomLines">{{languageContent.bp}} {{userInfo.company}}</view>
     <van-row>
       <van-col span="13">
         <view style="border-right: 1px solid #EEEEEE;">
