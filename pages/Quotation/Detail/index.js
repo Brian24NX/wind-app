@@ -131,23 +131,34 @@ Page({
         }
     },
 
+    onShow(){
+        console.log('-------back--------',wx.getStorageSync('back'))
+    },
     getSeaEarnPoints() {
         //this.data.oceanFreight为0不掉接口   rewardsEarned直接为0        data:{}返回值也为0
-       if(this.data.oceanFreight===0){
-           this.setData({
-               rewardsEarned:0})
-       }else{
-           seaEarnPoints({
-               "baseAmount": this.data.oceanFreight,
-               "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
-               "partnerCode": wx.getStorageSync('partnerList')[0].code,
-               "level": wx.getStorageSync('seaRewardData').level
-           }).then(res => {
-               this.setData({
-                   // rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance: null
-                   rewardsEarned: res.data ? res.data.simulationResults?res.data.simulationResults[0].changeInPointsBalance:0 : null
-               })
-           })
+       // if(this.data.oceanFreight===0){
+       //     this.setData({
+       //         rewardsEarned:0})
+       // }else{
+        if(this.data.quotationDetail.surchargeDetails.totalCharge.currency.code==='USD'){
+            seaEarnPoints({
+                "baseAmount": this.data.oceanFreight,
+                "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
+                "partnerCode": wx.getStorageSync('partnerList')[0].code,
+                "level": wx.getStorageSync('seaRewardData').level
+            }).then(res => {
+                this.setData({
+                    rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance: null
+                    // rewardsEarned: res.data ? res.data.simulationResults?res.data.simulationResults[0].changeInPointsBalance:0 : null
+                })
+            })
+        }else {
+            this.setData({
+                rewardsEarned:null
+                // rewardsEarned: res.data ? res.data.simulationResults?res.data.simulationResults[0].changeInPointsBalance:0 : null
+            })
+        // }
+
        }
     },
 
@@ -477,8 +488,9 @@ Page({
                         console.log('SpotOn日志记录成功')
                     })
                     //不是usd 不调取这个接口
-                    console.log(1111111111111,this.data.rewardsEarned,wx.getStorageSync('seaRewardData').memberStatus == 'Active'&&this.data.rewardsEarned)
-                    if (wx.getStorageSync('seaRewardData').memberStatus == 'Active'&&this.data.rewardsEarned) {
+                    console.log(1111111111111,this.data.rewardsEarned,this.data.rewardsEarned>=0,
+                        wx.getStorageSync('seaRewardData').memberStatus == 'Active'&&this.data.rewardsEarned>=0)
+                    if (wx.getStorageSync('seaRewardData').memberStatus == 'Active'&&this.data.rewardsEarned>=0) {
                         const data = {
                             effectiveDate: dayjs(new Date()).format('YYYY-MM-DD'),
                             baseAmountUsd: this.data.moneyUsed *this.data.containers,

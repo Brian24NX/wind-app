@@ -27,7 +27,7 @@
             <view class="boldText"><Text>{{availableMiles}}</Text>{{languageContent.available}}</view>
           </view>
           <view class="rowAlign">
-            <view class="smallDesc"> {{partnerList.length>0?languageContent.bp1:languageContent.bp}} {{partnerList[0].fullName}}</view>
+            <view class="smallDesc"> {{partnerList.length>1?languageContent.bp1:languageContent.bp}} {{partnerList[0].fullName}}</view>
           </view>
         </view>
       </van-col>

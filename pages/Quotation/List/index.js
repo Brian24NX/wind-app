@@ -291,23 +291,33 @@ Page({
     },
 
     getSeaEarnPoints(oceanFreight, totalCharge) {
+        console.log(totalCharge.currency.code)
         let that = this
-        return new Promise(function (resolve, reject) {
-            let pointBalance = 0
-            seaEarnPoints({
-                "baseAmount": oceanFreight.price.amount * that.data.containers,
-                "currencyType": totalCharge.currency.code,
-                "partnerCode": wx.getStorageSync('partnerList')[0].code,
-                "level": wx.getStorageSync('seaRewardData').level
-            }).then(result => {
-                pointBalance = result.data ? result.data.simulationResults[0].changeInPointsBalance : null
-                resolve(pointBalance)
+        if(totalCharge.currency.code==='USD'){
+            return new Promise(function (resolve, reject) {
+                let pointBalance = 0
+                seaEarnPoints({
+                    "baseAmount": oceanFreight.price.amount * that.data.containers,
+                    "currencyType": totalCharge.currency.code,
+                    "partnerCode": wx.getStorageSync('partnerList')[0].code,
+                    "level": wx.getStorageSync('seaRewardData').level
+                }).then(result => {
+                    pointBalance = result.data ? result.data.simulationResults[0].changeInPointsBalance : null
+                    resolve(pointBalance)
+                })
             })
-        })
+        }else{
+            return new Promise(function (resolve, reject) {
+                let pointBalance = null
+                    resolve(pointBalance)
+            })
+        }
+
+
     },
 
     getQuotationSurchargeDetailFn(item, params, isFirst) {
-        getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(async (res) => {
+        getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(  async (res) => {
             item.isLoading = false
             item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
             const allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
