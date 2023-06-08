@@ -115,6 +115,7 @@ Page({
         isShowLieutenant:false,//中尉没有抵扣
         partnerList : wx.getStorageSync('partnerList'),
         multiple:false,
+        userInfo:{},
     },
 
     /**
@@ -145,7 +146,8 @@ Page({
       this.setData({
         isShow:false,
           partnerList : wx.getStorageSync('partnerList'),
-          multiple:wx.getStorageSync('multiple')
+          multiple:wx.getStorageSync('multiple'),
+          userInfo: wx.getStorageSync('userInfo')
       })
         this.setData({
             keyword: '',

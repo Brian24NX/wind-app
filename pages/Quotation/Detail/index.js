@@ -488,9 +488,9 @@ Page({
                         console.log('SpotOn日志记录成功')
                     })
                     //不是usd 不调取这个接口
-                    console.log(1111111111111,this.data.rewardsEarned,this.data.rewardsEarned>=0,
-                        wx.getStorageSync('seaRewardData').memberStatus == 'Active'&&this.data.rewardsEarned>=0)
-                    if (wx.getStorageSync('seaRewardData').memberStatus == 'Active'&&this.data.rewardsEarned>=0) {
+                    console.log(1111111111111,this.data.rewardsEarned,this.data.rewardsEarned!==null,
+                        wx.getStorageSync('seaRewardData').memberStatus == 'Active'&&this.data.rewardsEarned!==null)
+                    if (wx.getStorageSync('seaRewardData').memberStatus == 'Active'&&this.data.rewardsEarned!==null) {
                         const data = {
                             effectiveDate: dayjs(new Date()).format('YYYY-MM-DD'),
                             baseAmountUsd: this.data.moneyUsed *this.data.containers,

@@ -93,7 +93,7 @@ page {
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin-bottom: 30rpx;
+  margin-bottom: 10rpx;
 }
 .columnShowed1 {
   display: flex;
@@ -149,11 +149,10 @@ page {
   margin-bottom: 22rpx;
 }
 
-.bottomLines {
+.bottomLines{
   padding-bottom: 24rpx;
   border-bottom: solid 1rpx #EEEEEE;
 }
-
 
 .rightBox {
   margin-left: 10rpx;
