@@ -27,9 +27,13 @@
                    src='/assets/img/seaReward/NauticalMilesDisposhape.png'></image>
             <view class="boldText"><Text>{{availableMiles}}</Text>{{languageContent.available}}</view>
           </view>
-          <view class="rowAlign" wx:if="{{partnerList.length>1}}">
+          <view class="rowAlign" wx:if="{{partnerList.length>1&&partnerList[0].code!=='0002130568'}}">
             <view class="smallDesc"> {{languageContent.bp1}} {{partnerList[0].fullName}}</view>
           </view>
+          <view class="rowAlign" wx:if="{{partnerList[0].code==='0002130568'}}">
+            <view class="smallDesc">  Parent Company: YNM WDIOHYEDQ MEWKRCKYR YE MCH</view>
+          </view>
+
         </view>
       </van-col>
       <van-col span="11">

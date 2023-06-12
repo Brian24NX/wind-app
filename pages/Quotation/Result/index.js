@@ -103,12 +103,11 @@ Page({
     })
   },
   onUnload(event){ //多层级跳转之后，监听左上角返回事件，直接退回到spot on
-
-    wx.setStorageSync('back',true)
-    console.log('返回上一页')
-    // wx.switchTab({
-    //   url: '/pages/Quotation/Search/index',
-    // })
+    // wx.setStorageSync('back',true)
+    // console.log('返回上一页')
+    wx.switchTab({
+      url: '/pages/Quotation/Search/index',
+    })
   },
   toHome() {
     wx.reLaunch({

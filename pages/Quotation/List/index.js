@@ -291,20 +291,25 @@ Page({
     },
 
     getSeaEarnPoints(oceanFreight, totalCharge) {
-        console.log(totalCharge.currency.code)
         let that = this
         if(totalCharge.currency.code==='USD'){
             return new Promise(function (resolve, reject) {
                 let pointBalance = 0
-                seaEarnPoints({
-                    "baseAmount": oceanFreight.price.amount * that.data.containers,
-                    "currencyType": totalCharge.currency.code,
-                    "partnerCode": wx.getStorageSync('partnerList')[0].code,
-                    "level": wx.getStorageSync('seaRewardData').level
-                }).then(result => {
-                    pointBalance = result.data ? result.data.simulationResults[0].changeInPointsBalance : null
+                if(wx.getStorageSync('partnerList')[0].code === '0002130568'){
+                    pointBalance=oceanFreight.price.amount* that.data.containers*0.04
                     resolve(pointBalance)
-                })
+                }else{
+                    seaEarnPoints({
+                        "baseAmount": oceanFreight.price.amount * that.data.containers,
+                        "currencyType": totalCharge.currency.code,
+                        "partnerCode": wx.getStorageSync('partnerList')[0].code,
+                        "level": wx.getStorageSync('seaRewardData').level
+                    }).then(result => {
+                        pointBalance = result.data ? result.data.simulationResults[0].changeInPointsBalance : null
+                        resolve(pointBalance)
+                    })
+                }
+
             })
         }else{
             return new Promise(function (resolve, reject) {
