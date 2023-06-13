@@ -361,21 +361,35 @@ page {
   color: #04246A;
   font-size: 28rpx;
   margin-top: 20rpx;
-  margin-right: 20rpx;
+  width: 100%;
 }
 
 .partnerCodeList .checkPartner .partnerName {
+  display: flex;
+  width: 317rpx;
+  align-items: center;
+}
+.maincode{
+  width: 82rpx;
+  height: 34rpx;
+  background: #071E5D;
+  font-size: 24rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.textmain{
   display: inline-block;
+  max-width:240rpx;
   white-space: nowrap;
-  max-width: 330rpx;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .partnerCodeList .checkPartner image {
-  width: 18rpx;
-  height: 18rpx;
-  margin-left: 28rpx;
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 20rpx;
 }
 
 .scroll-view2 {

@@ -288,6 +288,8 @@ button::after {
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #071E5D;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .oneTemplate .preview {

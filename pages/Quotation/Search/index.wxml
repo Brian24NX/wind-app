@@ -242,7 +242,10 @@
               </view>
               <view class="partnerCodeList" wx:else>
                 <view class="checkPartner" wx:for="{{checkPartnerList}}">
-                  <view class="partnerName">{{item.name}}</view>
+                  <view class="partnerName">
+                    <view class="textmain">{{item.name}}</view>
+                  <view class="maincode" wx:if="{{item.code===mainPartnerCode}}">MAIN</view>
+                  </view>
                   <image catchtap="deletePartner" data-index="{{index}}" src="/assets/img/search/close@2x.png"></image>
                 </view>
               </view>

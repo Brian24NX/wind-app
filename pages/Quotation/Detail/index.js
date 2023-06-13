@@ -136,24 +136,26 @@ Page({
     },
     getSeaEarnPoints() {
         //this.data.oceanFreight为0不掉接口   rewardsEarned直接为0        data:{}返回值也为0
-        if(wx.getStorageSync('partnerList')[0].code === '0002130568'){
-            this.setData({
-                rewardsEarned:this.data.oceanFreight*0.04
-            })
-            console.log('rewardsEarned',this.data.rewardsEarned)
-        }
         if(this.data.quotationDetail.surchargeDetails.totalCharge.currency.code==='USD'){
-            seaEarnPoints({
-                "baseAmount": this.data.oceanFreight,
-                "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
-                "partnerCode": wx.getStorageSync('partnerList')[0].code,
-                "level": wx.getStorageSync('seaRewardData').level
-            }).then(res => {
+            if(wx.getStorageSync('partnerList')[0].code === '0002130568'){
                 this.setData({
-                    rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance: null
-                    // rewardsEarned: res.data ? res.data.simulationResults?res.data.simulationResults[0].changeInPointsBalance:0 : null
+                    rewardsEarned:this.data.oceanFreight*0.04
                 })
-            })
+                console.log('rewardsEarned',this.data.rewardsEarned)
+            }else{
+                seaEarnPoints({
+                    "baseAmount": this.data.oceanFreight,
+                    "currencyType": this.data.quotationDetail.surchargeDetails.totalCharge.currency.code,
+                    "partnerCode": wx.getStorageSync('partnerList')[0].code,
+                    "level": wx.getStorageSync('seaRewardData').level
+                }).then(res => {
+                    this.setData({
+                        rewardsEarned: res.data ? res.data.simulationResults[0].changeInPointsBalance: null
+                        // rewardsEarned: res.data ? res.data.simulationResults?res.data.simulationResults[0].changeInPointsBalance:0 : null
+                    })
+                })
+            }
+
         }else {
             this.setData({
                 rewardsEarned:null
@@ -487,8 +489,7 @@ Page({
                         console.log('SpotOn日志记录成功')
                     })
                     //不是usd 不调取这个接口
-                    console.log(1111111111111,this.data.rewardsEarned,this.data.rewardsEarned!==null,
-                        wx.getStorageSync('seaRewardData').memberStatus === 'Active'&&this.data.rewardsEarned!==null)
+                    console.log(1111111111111,wx.getStorageSync('seaRewardData').memberStatus === 'Active'&&this.data.rewardsEarned!==null&&wx.getStorageSync('partnerList')[0].code !== '0002130568')
                     if (wx.getStorageSync('seaRewardData').memberStatus === 'Active'&&this.data.rewardsEarned!==null&&wx.getStorageSync('partnerList')[0].code !== '0002130568') {
                         const data = {
                             effectiveDate: dayjs(new Date()).format('YYYY-MM-DD'),
@@ -498,7 +499,7 @@ Page({
                             partnerCode: wx.getStorageSync('partnerList')[0].code,
                             shippingCompany:this.data.shippingCompany
                         }
-                        console.log('--------------', data)
+                        console.log('data-----',data)
                         seaQuotationCreation(data).then(res => {
                             console.log(res)
                         })

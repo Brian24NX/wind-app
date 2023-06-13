@@ -136,7 +136,8 @@ Page({
     },
     podEndWarn: false,
     pooWarn: false,
-    count:1
+    count:1,
+    mainPartnerCode:''
   },
 
   /**
@@ -173,7 +174,8 @@ Page({
       seaRewardData: wx.getStorageSync('seaRewardData'),
       partnerList: JSON.parse(JSON.stringify(partnerList)),
       checkPartnerList: JSON.parse(JSON.stringify(partnerList)),
-      needLogin: !utils.checkAccessToken()
+      needLogin: !utils.checkAccessToken(),
+      mainPartnerCode:wx.getStorageSync('partnerCode')
     })
     if (this.data.needLogin === false) {
       this.setData({
