@@ -117,7 +117,7 @@ Page({
                                     })
                                 }
                             })
-                            wx.setStorageSync('partnerList', partnerLists)
+                                wx.setStorageSync('partnerList', partnerLists)
                         })
 
                     }

@@ -177,11 +177,6 @@ Page({
       needLogin: !utils.checkAccessToken(),
       mainPartnerCode:wx.getStorageSync('partnerCode')
     })
-    if(wx.getStorageSync('partnerList')[0].code == '0002130568'){
-      this.setData({
-        partnerList:[]
-      })
-    }
     if (this.data.needLogin === false) {
       this.setData({
         hasPermission: utils.checkPermission('requestQuo')
@@ -365,7 +360,14 @@ Page({
       })
       return
     } else {
-      this.getPorData(data)
+      if(wx.getStorageSync('partnerList')[0].code == '0002130568'){
+        this.setData({
+          placeOfReceiptList: [{"Name":"Jiaxing - Nanhu, 33 ; CN ; CN1CQ","ActualName":"JIAXING-NANHU,33;CN;CN1CQ","Code":"CN1CQ","PlaceType":"Door","Country":{},"LocationId":"CDM00000002159"},{"Name":"Jiaxing - Haining, 33 ; CN ; CNHIN","ActualName":"JIAXING-HAINING,33;CN;CNHIN","Code":"CNHIN","PlaceType":"Door","Country":{},"LocationId":"-1932542"},{"Name":"Jiaxing - Haiyan, 33 ; CN ; CNHY1","ActualName":"JIAXING-HAIYAN,33;CN;CNHY1","Code":"CNHY1","PlaceType":"Door","Country":{},"LocationId":"-1931230"},{"Name":"Jiaxing, 33 ; CN ; CNJIX","ActualName":"JIAXING,33;CN;CNJIX","Code":"CNJIX","PlaceType":"Ramp","Country":{},"LocationId":"-1912033"},{"Name":"Jiaxing, 33 ; CN ; CNJIX","ActualName":"JIAXING,33;CN;CNJIX","Code":"CNJIX","PlaceType":"Door","Country":{},"LocationId":"-1912033"},{"Name":"Jiaxing - Jiashan, 33 ; CN ; CNJN2","ActualName":"JIAXING-JIASHAN,33;CN;CNJN2","Code":"CNJN2","PlaceType":"Door","Country":{},"LocationId":"-1930339"},{"Name":"Jiaxing - Pinghu, 33 ; CN ; CNPNU","ActualName":"JIAXING-PINGHU,33;CN;CNPNU","Code":"CNPNU","PlaceType":"Door","Country":{},"LocationId":"-1902106"},{"Name":"Jiaxing - Tongxiang, 33 ; CN ; CNTA1","ActualName":"JIAXING-TONGXIANG,33;CN;CNTA1","Code":"CNTA1","PlaceType":"Door","Country":{},"LocationId":"-1931136"}]
+        })
+      }else{
+        this.getPorData(data)
+      }
+
       this.showDropdown(e[0].currentTarget.id || 'poo')
     }
   }, 800),
@@ -389,7 +391,7 @@ Page({
           this.setData({
             placeOfReceiptList: res.data || []
           })
-          console.log('this.data.placeOfReceiptList',this.data.placeOfReceiptList)
+          // console.log('this.data.placeOfReceiptList',JSON.stringify(this.data.placeOfReceiptList))
         } else {
           this.hideDropdown()
         }
@@ -530,14 +532,22 @@ Page({
         this.setData({
           showPod: true
         })
-        this.setData({
-          showPod: false,
-          podlist:[{"pointCode":"BEANR","point":"ANTWERP;BE;BEANR"}]
-        })
+        console.log(data)
+        if(data==='BEANR'||data==='beanr'||data==='antw'||data==='ANTW'){
+          this.setData({
+            showPod: false,
+            podlist:[{"pointCode":"BEANR","point":"ANTWERP;BE;BEANR"}]
+          })
+        }else{
+          this.setData({
+            showPod: false,
+            podlist:[{"pointCode":"FRLEH","point":"LE HAVRE;FR;FRLEH"}]
+          })
+        }
+
       }else{
         this.getPodData(data)
       }
-
       this.showDropdown(e[0].currentTarget.id || 'pod')
     }
   }, 800),
@@ -556,7 +566,6 @@ Page({
         this.setData({
           podlist: res.data || []
         })
-
       } else {
         this.hideDropdown()
       }
@@ -596,7 +605,13 @@ Page({
       })
       return
     } else {
-      this.getPooData(data)
+      if(wx.getStorageSync('partnerList')[0].code == '0002130568'){
+        this.setData({
+          placeOfDeliveryList:[{"Name":"Paris, 75 ; FR ; FRPAR","ActualName":"PARIS,75;FR;FRPAR","Code":"FRPAR","PlaceType":"Ramp","Country":{},"LocationId":"-1456928"},{"Name":"Paris, 75 ; FR ; FRPAR","ActualName":"PARIS,75;FR;FRPAR","Code":"FRPAR","PlaceType":"Door","Country":{},"LocationId":"-1456928"}]
+        })
+      }else{
+        this.getPooData(data)
+      }
       this.showDropdown(e[0].currentTarget.id || 'podEnd')
     }
   }, 800),
@@ -619,6 +634,7 @@ Page({
           this.setData({
             placeOfDeliveryList: res.data || []
           })
+          console.log(JSON.stringify(this.data.placeOfDeliveryList))
         } else {
           this.hideDropdown()
         }
