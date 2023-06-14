@@ -139,7 +139,7 @@ Page({
         if(this.data.quotationDetail.surchargeDetails.totalCharge.currency.code==='USD'){
             if(wx.getStorageSync('partnerList')[0].code === '0002130568'){
                 this.setData({
-                    rewardsEarned:this.data.oceanFreight*0.04
+                    rewardsEarned:parseInt(this.data.oceanFreight*0.04)
                 })
                 console.log('rewardsEarned',this.data.rewardsEarned)
             }else{
