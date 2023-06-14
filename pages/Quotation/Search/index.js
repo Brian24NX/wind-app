@@ -532,8 +532,7 @@ Page({
         this.setData({
           showPod: true
         })
-        console.log(data)
-        if(data==='BEANR'||data==='beanr'||data==='antw'||data==='ANTW'){
+        if(data.indexOf('B')!==-1||data.indexOf('b')!==-1){
           this.setData({
             showPod: false,
             podlist:[{"pointCode":"BEANR","point":"ANTWERP;BE;BEANR"}]
@@ -1256,11 +1255,18 @@ Page({
       this.checkAccessToken(() => {
         this.saveHistory()
         if (this.data.pricingGroups.length) {
-          if (this.data.commodityCode === "FAK") {
-            this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
-          } else {
-            this.getQuotationNextDepartures()
+          if(wx.getStorageSync('partnerList')[0].code === '0002130568'){
+            wx.navigateTo({
+              url: '/pages/Quotation/List/index',
+            })
+          }else{
+            if (this.data.commodityCode === "FAK") {
+              this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
+            } else {
+              this.getQuotationNextDepartures()
+            }
           }
+
         } else {
           this.setData({
             resultResq: {}

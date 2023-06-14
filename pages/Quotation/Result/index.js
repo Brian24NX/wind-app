@@ -67,7 +67,8 @@ Page({
       rewardsEarned: data.rewardsEarned,
       finalPrice: data.finalPrice,
       burnRewards: data.burnRewards,
-      useRewards: data.useRewards
+      useRewards: data.useRewards,
+      code:wx.getStorageSync('partnerList')[0]?.code
     })
   },
 

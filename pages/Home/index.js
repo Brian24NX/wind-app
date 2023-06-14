@@ -373,7 +373,7 @@ Page({
       })
       return
     }else{
-      if(wx.getStorageSync('partnerList')[0].code == '0002130568'){
+      if(wx.getStorageSync('partnerList')[0]?.code == '0002130568'){
         this.setData({
           showPol: true
         })
@@ -438,7 +438,7 @@ Page({
       })
       return
     }else{
-      if(wx.getStorageSync('partnerList')[0].code == '0002130568'){
+      if(wx.getStorageSync('partnerList')[0]?.code == '0002130568'){
         this.setData({
           showPod: true
         })
