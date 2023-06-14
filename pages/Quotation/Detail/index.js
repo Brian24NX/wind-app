@@ -101,7 +101,9 @@ Page({
         const currentPage = pages[pages.length - 2]
         const data = currentPage.data
         const languages = languageUtil.languageVersion().lang.page
+        console.log(data)
         this.setData({
+            receiptHaulage:data.receiptHaulage,
             languageContent: languages.qutationResult,
             vasLanguageContent: languages.vas,
             language: languages.langue,
@@ -139,7 +141,7 @@ Page({
         if(this.data.quotationDetail.surchargeDetails.totalCharge.currency.code==='USD'){
             if(wx.getStorageSync('partnerList')[0].code === '0002130568'){
                 this.setData({
-                    rewardsEarned:parseInt(this.data.oceanFreight*0.04)
+                    rewardsEarned:Math.round(this.data.oceanFreight*0.04)
                 })
                 console.log('rewardsEarned',this.data.rewardsEarned)
             }else{
@@ -283,6 +285,11 @@ Page({
         if(wx.getStorageSync('seaRewardData').pointsBalance>this.data.oceanFreight){
             this.setData({
                 burnRewards: this.data.oceanFreight
+            })
+        }
+        if(!this.data.receiptHaulage){
+            this.setData({
+                burnRewards: 0
             })
         }
         //不是主公司无法选择   burnRewards为0无法点击

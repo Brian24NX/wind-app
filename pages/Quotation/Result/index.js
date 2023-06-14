@@ -75,7 +75,7 @@ Page({
 
   copyReference() {
     wx.setClipboardData({
-      data: this.data.reference,
+      data: this.data.code==='0002130568'?this.data.deliveryHaulage?'QSPOT8927896':'QSPOT7829849':this.data.reference,
       success() {
         wx.showToast({
           title: languageUtils.languageVersion().lang.page.copyInfo.success2,

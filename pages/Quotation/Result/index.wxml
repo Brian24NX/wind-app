@@ -33,7 +33,7 @@
                 </view>
                 <view class="priceRight">
                     <view class="oldPrice" wx:if="{{ useRewards }}">
-                        <text style="margin-right: 4rpx;">{{totalChargeAmount * containers}} </text>
+                        <text>{{totalChargeAmount * containers}} </text>
                         <text>{{quotationDetail.surchargeDetails.totalCharge.currency.code}}</text>
                     </view>
                     <text class="price">{{finalPrice}}</text>
