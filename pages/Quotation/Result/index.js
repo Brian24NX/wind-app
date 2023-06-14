@@ -28,6 +28,7 @@ Page({
     finalPrice: 0,
     burnRewards: 0,
     useRewards: null,
+    code:wx.getStorageSync('partnerList')[0].code
   },
 
   /**

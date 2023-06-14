@@ -198,7 +198,17 @@ Page({
       })
       return
     }else{
-      this.getPolData(data)
+      if(wx.getStorageSync('partnerList')[0].code == '0002130568'){
+        this.setData({
+          showPol: true
+        })
+        this.setData({
+          showPol: false,
+          pollist: [{"pointCode":"CNJIX","point":"JIAXING, 33;CN;CNJIX"}]
+        })
+      }else {
+        this.getPolData(data)
+      }
       this.showDropdown(e[0].currentTarget.id || 'pol')}
   }, 800),
 
@@ -251,7 +261,17 @@ Page({
       })
       return
     }else{
-    this.getPodData(data)
+      if(wx.getStorageSync('partnerList')[0].code == '0002130568'){
+        this.setData({
+          showPod: true
+        })
+        this.setData({
+          showPod: false,
+          podlist: [{"pointCode": "FRPAR", "point": "PARIS, 75;FR;FRPAR"}]
+        })
+      }else {
+        this.getPodData(data)
+      }
     this.showDropdown(e[0].currentTarget.id || 'pod')
     }
   }, 800),
