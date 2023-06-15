@@ -319,18 +319,6 @@ Page({
         if (data.length && data[0].pointCode.substr(0, 2) === payCountry) {
           calculatedChargeLists.push(item)
         }
-      wx.hideLoading()
-        console.log(1111,calculatedChargeLists)
-      if (calculatedChargeLists.length) {
-        wx.setStorageSync('calculatedChargeResult', calculatedChargeLists)
-        wx.navigateTo({
-          url: `/packagePrice/pages/calculatedChargeResult/index`,
-        })
-      } else {
-        this.setData({
-          errTip: 'No match found: your ref is incorrect or no charges were raised at this date.'
-        })
-      }
     }else{
         arr.push(
             dndFuzzySearch({
@@ -348,7 +336,6 @@ Page({
 
     })
     Promise.all(arr).finally(() => {
-      console.log(2,JSON.stringify(arr))
       wx.hideLoading()
       if (calculatedChargeLists.length) {
         wx.setStorageSync('calculatedChargeResult', calculatedChargeLists)

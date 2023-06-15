@@ -26,7 +26,7 @@ Page({
             {text: 'My Nautical Miles', value: 0},
             {text: 'My Reward & Rank', value: 1},
             {text: 'My Sea Reward Account', value: 2},
-            {text: 'Enrolment & Registration', value: 3},
+            {text: 'Enrollment & Registration', value: 3},
         ],
         //循环显示得样式，四个分类
         listItem: [
@@ -174,7 +174,6 @@ Page({
                 }
             ]
         ]
-
     },
 
     /**
