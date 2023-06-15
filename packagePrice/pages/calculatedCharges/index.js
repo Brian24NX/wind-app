@@ -47,7 +47,11 @@ Page({
     currentType: 'export',
     pol: '',
     pod: '',
-    calculatedChargeResult: []
+    calculatedChargeResult: [],
+    showShipment: false,
+    searchShipment: [],
+    showContainer: false,
+    searchContainer: [],
   },
   /**
    * 生命周期函数--监听页面加载
@@ -184,27 +188,59 @@ Page({
       })
       return
     }
+    const huoguiStr = this.data.huoGuiValue.replaceAll(' ', '')
+    const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
+    var reg = /^[0-9a-zA-Z]*$/g;
+    const checkRes = []
+    var serList = this.data.searchShipment ? this.data.searchShipment : []
+    huogui.forEach(item => {
+      var noSpaceItem = item.replace(/\s*/g, "")
+      checkRes.push(reg.test(noSpaceItem))
+      var idx = serList.indexOf(noSpaceItem)
+      if (idx !== -1) {
+        serList.splice(idx, 1)
+        serList.unshift(noSpaceItem)
+      } else if (noSpaceItem !== '' && idx === -1) {
+        if (serList.length < 5) {
+          serList.unshift(noSpaceItem)
+        } else {
+          serList.unshift(noSpaceItem)
+          serList.splice(serList.length - 1, 1)
+        }
+      }
+    })
+    let newHis = [...new Set(serList)]
+    this.setData({
+      searchShipment: newHis
+    })
+    wx.setStorageSync('searchShipment', this.data.searchShipment);
     this.getContainerList()
   },
 
   getContainerList() {
     if (wx.getStorageSync('partnerList')[0].code == '0002130568') {
-      let res ={
-        data:[{"refrigerated":false,"cgVolUom":"MTQ","oversize":false,"returnTerminal":{"code":"","name":""},"equipmentGoods":[{"volume":0,"commodity":{"code":"","name":""},"additionalGoodsDescription":"","package":{"code":"","name":""},"packageOnBl":"","weight":0,"uomVolume":"","uomWeight":"","packageNbPieces":0}],"reeferInfo":{"nitrogen":0,"temperatureUom":"","carbonDioxide":0,"presetTemperature":0,"dehumidity":0,"carriageTemperature":0,"presetCode":"","gensetRequired":false,"maximumTemperature":0,"minimumTemperature":0,"presetRule":"","oxygen":0,"controlledAtmosphere":{"code":"","name":""},"ventilatedOpenPercentage":0},"commodities":{"code":"820570"},"packNb":1216,"returnTurnReference":"","referenceCommodityDesc":"Vices, clamps and the like (excl. accessories for and parts ","uomWeight":"KGM","uomVolume":"MTQ","totalGrossWeight":42440,"discharged":false,"packageBookedQuantity":1216,"outOfGauges":{"backLength":0,"leftWidth":0,"widthUnit":"","frontLength":0,"lengthUnit":"","rightWidth":0,"heightUnit":"","height":0},"cargoMarkDesc":{"cargoItemNumber":1},"numberOfTeu":4,"sealReferences":{"sealNumber4":"","sealOwner4":"","sealNumber2":"","sealOwner3":"","sealNumber3":"","sealOwner2":"","sealOwner1":"CA","sealNumber1":"C6511256","sealType3":"","sealType4":"","sealType1":"Mechanical","sealType2":""},"equipmentRequired":true,"cWgth":13.5968,"containerSequence":0.5,"tcn":"","shortShipped":false,"released":false,"packageNbPieces":0,"cWgthUom":"KGM","hazardous":false,"groupSequence":"CT","requiredQualityGrade":{"code":"GC","name":"General Cargo"},"containerMarkDesc":{"containerNumber":"TRLU8733151","cargoItemNumber":1,"containerSequence":0.5},"cgVol":55,"fumigationRequired":false,"unitaryNetWeight":35000,"readyToLoadAtPortFullDate":{"utc":"0001-01-01T00:00:00"},"volume":110,"containerNumber":"TRLU8733151","loadOnBoardFullDate":{"utc":"0001-01-01T00:00:00"},"cargoItemNumber":1,"containerSizeType":"40ST","packageBooked":"CARTONS","shipperOwned":false,"tareWeight":0},{"refrigerated":false,"cgVolUom":"MTQ","oversize":false,"returnTerminal":{"code":"","name":""},"equipmentGoods":[{"volume":0,"commodity":{"code":"","name":""},"additionalGoodsDescription":"","package":{"code":"","name":""},"packageOnBl":"","weight":0,"uomVolume":"","uomWeight":"","packageNbPieces":0}],"reeferInfo":{"nitrogen":0,"temperatureUom":"","carbonDioxide":0,"presetTemperature":0,"dehumidity":0,"carriageTemperature":0,"presetCode":"","gensetRequired":false,"maximumTemperature":0,"minimumTemperature":0,"presetRule":"","oxygen":0,"controlledAtmosphere":{"code":"","name":""},"ventilatedOpenPercentage":0},"commodities":{"code":"820570"},"packNb":1347,"returnTurnReference":"","referenceCommodityDesc":"Vices, clamps and the like (excl. accessories for and parts ","uomWeight":"KGM","uomVolume":"MTQ","totalGrossWeight":42440,"discharged":false,"packageBookedQuantity":1347,"outOfGauges":{"backLength":0,"leftWidth":0,"widthUnit":"","frontLength":0,"lengthUnit":"","rightWidth":0,"heightUnit":"","height":0},"cargoMarkDesc":{"cargoItemNumber":1},"numberOfTeu":4,"sealReferences":{"sealNumber4":"","sealOwner4":"","sealNumber2":"","sealOwner3":"","sealNumber3":"","sealOwner2":"","sealOwner1":"CA","sealNumber1":"C6499387","sealType3":"","sealType4":"","sealType1":"Mechanical","sealType2":""},"equipmentRequired":true,"cWgth":14.925,"containerSequence":1,"tcn":"","shortShipped":false,"released":false,"packageNbPieces":0,"cWgthUom":"KGM","hazardous":false,"groupSequence":"CT","requiredQualityGrade":{"code":"GC","name":"General Cargo"},"containerMarkDesc":{"containerNumber":"APZU4866559","cargoItemNumber":1,"containerSequence":1},"cgVol":55,"fumigationRequired":false,"unitaryNetWeight":35000,"readyToLoadAtPortFullDate":{"utc":"0001-01-01T00:00:00"},"volume":110,"containerNumber":"APZU4866559","loadOnBoardFullDate":{"utc":"0001-01-01T00:00:00"},"cargoItemNumber":1,"containerSizeType":"40ST","packageBooked":"CARTONS","shipperOwned":false,"tareWeight":0}]
-      }
-      if (res.data && res.data.length) {
-        this.setData({
-          containers: this.data.containers.concat(res.data.filter(i => i.containerNumber))
-        })
-      }
-      if (!res.data || !res.data.length || res.data.length < 10) {
+      if(this.data.huoGuiValue==='CHN0359450'){
+        let res ={
+          data:[{"refrigerated":false,"cgVolUom":"MTQ","oversize":false,"returnTerminal":{"code":"","name":""},"equipmentGoods":[{"volume":0,"commodity":{"code":"","name":""},"additionalGoodsDescription":"","package":{"code":"","name":""},"packageOnBl":"","weight":0,"uomVolume":"","uomWeight":"","packageNbPieces":0}],"reeferInfo":{"nitrogen":0,"temperatureUom":"","carbonDioxide":0,"presetTemperature":0,"dehumidity":0,"carriageTemperature":0,"presetCode":"","gensetRequired":false,"maximumTemperature":0,"minimumTemperature":0,"presetRule":"","oxygen":0,"controlledAtmosphere":{"code":"","name":""},"ventilatedOpenPercentage":0},"commodities":{"code":"820570"},"packNb":1216,"returnTurnReference":"","referenceCommodityDesc":"Vices, clamps and the like (excl. accessories for and parts ","uomWeight":"KGM","uomVolume":"MTQ","totalGrossWeight":42440,"discharged":false,"packageBookedQuantity":1216,"outOfGauges":{"backLength":0,"leftWidth":0,"widthUnit":"","frontLength":0,"lengthUnit":"","rightWidth":0,"heightUnit":"","height":0},"cargoMarkDesc":{"cargoItemNumber":1},"numberOfTeu":4,"sealReferences":{"sealNumber4":"","sealOwner4":"","sealNumber2":"","sealOwner3":"","sealNumber3":"","sealOwner2":"","sealOwner1":"CA","sealNumber1":"C6511256","sealType3":"","sealType4":"","sealType1":"Mechanical","sealType2":""},"equipmentRequired":true,"cWgth":13.5968,"containerSequence":0.5,"tcn":"","shortShipped":false,"released":false,"packageNbPieces":0,"cWgthUom":"KGM","hazardous":false,"groupSequence":"CT","requiredQualityGrade":{"code":"GC","name":"General Cargo"},"containerMarkDesc":{"containerNumber":"TRLU8733151","cargoItemNumber":1,"containerSequence":0.5},"cgVol":55,"fumigationRequired":false,"unitaryNetWeight":35000,"readyToLoadAtPortFullDate":{"utc":"0001-01-01T00:00:00"},"volume":110,"containerNumber":"TRLU8733151","loadOnBoardFullDate":{"utc":"0001-01-01T00:00:00"},"cargoItemNumber":1,"containerSizeType":"40ST","packageBooked":"CARTONS","shipperOwned":false,"tareWeight":0},{"refrigerated":false,"cgVolUom":"MTQ","oversize":false,"returnTerminal":{"code":"","name":""},"equipmentGoods":[{"volume":0,"commodity":{"code":"","name":""},"additionalGoodsDescription":"","package":{"code":"","name":""},"packageOnBl":"","weight":0,"uomVolume":"","uomWeight":"","packageNbPieces":0}],"reeferInfo":{"nitrogen":0,"temperatureUom":"","carbonDioxide":0,"presetTemperature":0,"dehumidity":0,"carriageTemperature":0,"presetCode":"","gensetRequired":false,"maximumTemperature":0,"minimumTemperature":0,"presetRule":"","oxygen":0,"controlledAtmosphere":{"code":"","name":""},"ventilatedOpenPercentage":0},"commodities":{"code":"820570"},"packNb":1347,"returnTurnReference":"","referenceCommodityDesc":"Vices, clamps and the like (excl. accessories for and parts ","uomWeight":"KGM","uomVolume":"MTQ","totalGrossWeight":42440,"discharged":false,"packageBookedQuantity":1347,"outOfGauges":{"backLength":0,"leftWidth":0,"widthUnit":"","frontLength":0,"lengthUnit":"","rightWidth":0,"heightUnit":"","height":0},"cargoMarkDesc":{"cargoItemNumber":1},"numberOfTeu":4,"sealReferences":{"sealNumber4":"","sealOwner4":"","sealNumber2":"","sealOwner3":"","sealNumber3":"","sealOwner2":"","sealOwner1":"CA","sealNumber1":"C6499387","sealType3":"","sealType4":"","sealType1":"Mechanical","sealType2":""},"equipmentRequired":true,"cWgth":14.925,"containerSequence":1,"tcn":"","shortShipped":false,"released":false,"packageNbPieces":0,"cWgthUom":"KGM","hazardous":false,"groupSequence":"CT","requiredQualityGrade":{"code":"GC","name":"General Cargo"},"containerMarkDesc":{"containerNumber":"APZU4866559","cargoItemNumber":1,"containerSequence":1},"cgVol":55,"fumigationRequired":false,"unitaryNetWeight":35000,"readyToLoadAtPortFullDate":{"utc":"0001-01-01T00:00:00"},"volume":110,"containerNumber":"APZU4866559","loadOnBoardFullDate":{"utc":"0001-01-01T00:00:00"},"cargoItemNumber":1,"containerSizeType":"40ST","packageBooked":"CARTONS","shipperOwned":false,"tareWeight":0}]
+        }
+        if (res.data && res.data.length) {
+          this.setData({
+            containers: this.data.containers.concat(res.data.filter(i => i.containerNumber))
+          })
+        }
+        if (!res.data || !res.data.length || res.data.length < 10) {
+          this.setData({
+            noMore: true
+          })
+        }
+        if (this.data.page === 1 && (!res.data || !res.data.length)) {
+          this.setData({
+            noContainer: true
+          })
+        }
+      }else{
         this.setData({
           noMore: true
-        })
-      }
-      if (this.data.page === 1 && (!res.data || !res.data.length)) {
-        this.setData({
-          noContainer: true
         })
       }
     }else{
@@ -389,6 +425,32 @@ Page({
         })
         return
       }
+      const huoguiStr = this.data.huoGuiValue.replaceAll(' ', '')
+      const huogui = (huoguiStr.charAt(huoguiStr.length - 1) === ',' ? huoguiStr.substr(0, huoguiStr.length - 2) : huoguiStr).split(',')
+      var reg = /[A-Z]{3}[UJZ][0-9]{7}$/;
+      const checkRes = []
+      var serList = this.data.searchContainer ? this.data.searchContainer : []
+      huogui.forEach(item => {
+        var noSpaceItem = item.replace(/\s*/g, "")
+        checkRes.push(reg.test(noSpaceItem))
+        var idx = serList.indexOf(noSpaceItem)
+        if (idx !== -1) {
+          serList.splice(idx, 1)
+          serList.unshift(noSpaceItem)
+        } else if (noSpaceItem !== '' && idx === -1) {
+          if (serList.length < 5) {
+            serList.unshift(noSpaceItem)
+          } else {
+            serList.unshift(noSpaceItem)
+            serList.splice(serList.length - 1, 1)
+          }
+        }
+      })
+      let newHis = [...new Set(serList)]
+      this.setData({
+        searchContainer: newHis
+      })
+      wx.setStorageSync('searchContainer', this.data.searchContainer);
       params = {
         shippingCompany: '0001',
         req: {
@@ -445,5 +507,53 @@ Page({
       })
     }
 
+  },
+
+
+  chooseShipment(e) {
+    this.setData({
+      huoGuiValue: e.detail,
+    })
+    this.searchResult()
+  },
+  delShipment(e) {
+    this.setData({
+      searchShipment: e.detail
+    })
+    wx.setStorageSync('searchShipment', e.detail)
+  },
+  showSearchShipment() {
+    this.setData({
+      showShipment: true
+    })
+  },
+
+  hideSearchShipment() {
+    this.setData({
+      showShipment: false
+    })
+  },
+  chooseContainer(e) {
+    this.setData({
+      huoGuiValue: e.detail,
+    })
+    this.searchResult()
+  },
+  delContainer(e) {
+    this.setData({
+      searchContainer: e.detail
+    })
+    wx.setStorageSync('searchContainer', e.detail)
+  },
+  showSearchContainer() {
+    this.setData({
+      showContainer: true
+    })
+  },
+
+  hideSearchContainer() {
+    this.setData({
+      showContainer: false
+    })
   },
 })

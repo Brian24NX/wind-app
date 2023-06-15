@@ -18,7 +18,7 @@
             <view class="reference">
                 <view class="referenceTitle">{{languageContent.reference}}</view>
                 <view class="referenceNumber" catchtap="copyReference">
-                    <text>{{code==='0002130568'?deliveryHaulage?'QSPOT8927896':'QSPOT7829849':reference}}</text>
+                    <text>{{code==='0002130568'?deliveryHaulage?'QSPOT7829849':'QSPOT8927896':reference}}</text>
                     <image class="copyIcon" src="/assets/img/instantQuote/copy@2x.png"></image>
                 </view>
             </view>
