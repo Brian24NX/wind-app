@@ -59,7 +59,9 @@ Page({
   onLoad: function () {
     this.initLanguage();
     this.setData({
-      date: this.getDate()
+      date: this.getDate(),
+      searchShipment: wx.getStorageSync('searchShipment'),
+      searchContainer: wx.getStorageSync('searchContainer')
     })
   },
   /**
@@ -106,6 +108,7 @@ Page({
       noContainer: false,
       currentType: 'export'
     })
+    console.log(this.data.searchShipment,this.data.searchContainer)
   },
 
   onChange(event) {
@@ -213,6 +216,7 @@ Page({
     this.setData({
       searchShipment: newHis
     })
+    console.log('555555,searchContainer,searchShipment',this.data.searchContainer,this.data.searchShipment)
     wx.setStorageSync('searchShipment', this.data.searchShipment);
     this.getContainerList()
   },
@@ -238,10 +242,6 @@ Page({
             noContainer: true
           })
         }
-      }else{
-        this.setData({
-          noMore: true
-        })
       }
     }else{
       freightContainerSearch({
@@ -266,7 +266,6 @@ Page({
         }
       })
     }
-
   },
 
   clearInput() {
@@ -450,6 +449,7 @@ Page({
       this.setData({
         searchContainer: newHis
       })
+      console.log('searchContainer,searchShipment',this.data.searchContainer,this.data.searchShipment)
       wx.setStorageSync('searchContainer', this.data.searchContainer);
       params = {
         shippingCompany: '0001',
@@ -462,7 +462,7 @@ Page({
     }
     if (wx.getStorageSync('partnerList')[0].code == '0002130568') {
       console.log(this.data.huoGuiValue)
-      if(this.data.huoGuiValue=='APZU4866559'){
+      if(this.data.huoGuiValue=='APZU4866559'||this.data.huoGuiValue=='CHN0359450'){
         const res={
           data:[{"billableDays":14,"amount":8630,"blReference":"CHN0359450","payable":false,"chargeId":"1123157810","containerId":"APZU4866559","chargeName":"Merge","currencyCode":"CNY","freeDate":"2023-06-25T00:00:00Z","chargeDetails":[{"fromDate":"2023-06-12T00:00:00Z","calculationType":"Calendar","billableAmount":0,"toDate":"2023-06-25T00:00:00Z","ratePerDay":"0","currencyCode":"CNY","noOfDays":14},{"fromDate":"2023-06-26T00:00:00Z","calculationType":"Calendar","billableAmount":1480,"toDate":"2023-06-29T00:00:00Z","ratePerDay":"370","currencyCode":"CNY","noOfDays":4},{"fromDate":"2023-06-30T00:00:00Z","calculationType":"Calendar","billableAmount":4585,"toDate":"2023-07-06T00:00:00Z","ratePerDay":"655","currencyCode":"CNY","noOfDays":7},{"fromDate":"2023-07-07T00:00:00Z","calculationType":"Calendar","billableAmount":2565,"toDate":"2023-07-09T00:00:00Z","ratePerDay":"855","currencyCode":"CNY","noOfDays":3}],"paymentlocation":{"name":"BRILLIANT DEPOT","internalCode":"SHANGHAI"}}]
         }
@@ -545,7 +545,6 @@ Page({
     this.setData({
       huoGuiValue: e.detail,
     })
-    this.searchResult()
   },
   delContainer(e) {
     this.setData({

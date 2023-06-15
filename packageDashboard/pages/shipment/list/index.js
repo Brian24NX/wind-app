@@ -144,7 +144,7 @@ Page({
                     "estimatedDateOfArrival": "2023-06-20T21:00:00Z",
                     "from": "LIANYUNGANG, CNLYG",
                     "to": "SHEKOU, CNSHK",
-                    "status": "Booked",
+                    "status": "FINALBLISSUED",
                     "vesselName": "PALAWAN",
                     "voyageReference": "0XKE3S1MA"
                 },
@@ -224,8 +224,8 @@ Page({
             if (wx.getStorageSync('partnerList')[0]?.code == '0002130568') {
                 allList = [
                     {
-                    "bookingreference": "NAM6249215",
-                    "containerNumber": "NAM6249215",
+                    "bookingreference": "MAGU2239792",
+                    "containerNumber": "MAGU2239792",
                     "dischargeDatePODLocal": "2023-07-18T04:18:00+08:00",
                     "containerSizeType": "20ST",
                     "statusCode": "XOF",
