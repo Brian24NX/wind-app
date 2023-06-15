@@ -29,7 +29,8 @@ Page({
     burnRewards: 0,
     useRewards: null,
     code:wx.getStorageSync('partnerList')[0]?.code,
-    deliveryHaulage:''
+    deliveryHaulage:'',
+    count:1
   },
 
   /**
@@ -107,12 +108,15 @@ Page({
   },
   onUnload(event){ //多层级跳转之后，监听左上角返回事件，直接退回到spot on
     // wx.setStorageSync('back',true)
-    // console.log('返回上一页')
-    wx.reLaunch({
-      url: '/pages/Home/index',
-    })
+    console.log('返回上一页',1111,this.data.count)
+    if(this.data.count===1){
+      wx.reLaunch({
+        url: '/pages/Home/index',
+      })
+    }
   },
   toHome() {
+    console.log(this.data.count,this.data.count++)
     wx.reLaunch({
       url: '/pages/Home/index',
     })

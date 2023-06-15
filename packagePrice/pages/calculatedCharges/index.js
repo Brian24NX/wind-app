@@ -461,25 +461,33 @@ Page({
       }
     }
     if (wx.getStorageSync('partnerList')[0].code == '0002130568') {
-      const res={
-        data:[{"billableDays":14,"amount":8630,"blReference":"CHN0359450","payable":false,"chargeId":"1123157810","containerId":"APZU4866559","chargeName":"Merge","currencyCode":"CNY","freeDate":"2023-06-25T00:00:00Z","chargeDetails":[{"fromDate":"2023-06-12T00:00:00Z","calculationType":"Calendar","billableAmount":0,"toDate":"2023-06-25T00:00:00Z","ratePerDay":"0","currencyCode":"CNY","noOfDays":14},{"fromDate":"2023-06-26T00:00:00Z","calculationType":"Calendar","billableAmount":1480,"toDate":"2023-06-29T00:00:00Z","ratePerDay":"370","currencyCode":"CNY","noOfDays":4},{"fromDate":"2023-06-30T00:00:00Z","calculationType":"Calendar","billableAmount":4585,"toDate":"2023-07-06T00:00:00Z","ratePerDay":"655","currencyCode":"CNY","noOfDays":7},{"fromDate":"2023-07-07T00:00:00Z","calculationType":"Calendar","billableAmount":2565,"toDate":"2023-07-09T00:00:00Z","ratePerDay":"855","currencyCode":"CNY","noOfDays":3}],"paymentlocation":{"name":"BRILLIANT DEPOT","internalCode":"SHANGHAI"}}]
-      }
-      const pol = 'USSAV'
-      const pod = 'CNSHA'
-      if (res.data && res.data.length) {
+      console.log(this.data.huoGuiValue)
+      if(this.data.huoGuiValue=='APZU4866559'){
+        const res={
+          data:[{"billableDays":14,"amount":8630,"blReference":"CHN0359450","payable":false,"chargeId":"1123157810","containerId":"APZU4866559","chargeName":"Merge","currencyCode":"CNY","freeDate":"2023-06-25T00:00:00Z","chargeDetails":[{"fromDate":"2023-06-12T00:00:00Z","calculationType":"Calendar","billableAmount":0,"toDate":"2023-06-25T00:00:00Z","ratePerDay":"0","currencyCode":"CNY","noOfDays":14},{"fromDate":"2023-06-26T00:00:00Z","calculationType":"Calendar","billableAmount":1480,"toDate":"2023-06-29T00:00:00Z","ratePerDay":"370","currencyCode":"CNY","noOfDays":4},{"fromDate":"2023-06-30T00:00:00Z","calculationType":"Calendar","billableAmount":4585,"toDate":"2023-07-06T00:00:00Z","ratePerDay":"655","currencyCode":"CNY","noOfDays":7},{"fromDate":"2023-07-07T00:00:00Z","calculationType":"Calendar","billableAmount":2565,"toDate":"2023-07-09T00:00:00Z","ratePerDay":"855","currencyCode":"CNY","noOfDays":3}],"paymentlocation":{"name":"BRILLIANT DEPOT","internalCode":"SHANGHAI"}}]
+        }
+        const pol = 'USSAV'
+        const pod = 'CNSHA'
+        if (res.data && res.data.length) {
+          this.setData({
+            calculatedChargeResult: res.data,
+            pod,
+            pol,
+          })
+        } else {
+          this.setData({
+            calculatedChargeResult: [],
+            pod,
+            pol
+          })
+        }
+        this.setResList()
+      }else{
         this.setData({
-          calculatedChargeResult: res.data,
-          pod,
-          pol,
-        })
-      } else {
-        this.setData({
-          calculatedChargeResult: [],
-          pod,
-          pol
+          errTip: 'No match found: your ref is incorrect or no charges were raised at this date.'
         })
       }
-      this.setResList()
+
     }else{
       calculatedCharge(params).then(res => {
         console.log(res.data,JSON.stringify(res.data))
