@@ -175,14 +175,6 @@ Page({
                     "vesselName": "APGWA",
                     "voyageReference": "0MD82E1MA"
                 },
-                  {
-                    "bookingReference": "CHN0307065",
-                    "from": "SHANGHAI",
-                    "to": "HAMBURG",
-                    "status": "DraftSI",
-                    "vesselName": "CGTRO",
-                    "voyageReference": "0FLF1W1MA"
-                },
                  ]
                 allList.forEach(listItem => {
                     if (listItem.status === "DraftSI") {
