@@ -277,11 +277,11 @@ Page({
         // } else {
 
         console.log(this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance,this.data.burnRewards,wx.getStorageSync('seaRewardData').pointsBalance)
-        if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
-            this.setData({
-                burnRewards: this.data.finalPrice
-            })
-        }
+        // if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
+        //     this.setData({
+        //         burnRewards: this.data.finalPrice
+        //     })
+        // }
         if(wx.getStorageSync('seaRewardData').pointsBalance>this.data.oceanFreight){
             this.setData({
                 burnRewards: this.data.oceanFreight
@@ -758,7 +758,6 @@ Page({
                 useRewards: e.detail,
                 finalPrice: this.data.finalPrice - this.data.burnRewards,
                 oceanFreight: this.data.oceanFreight - this.data.burnRewards
-
             })
         } else {
             this.setData({

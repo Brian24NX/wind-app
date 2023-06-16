@@ -1589,7 +1589,6 @@ Page({
     } else {
       listData = this.data.hisListQuot
     }
-
     this.setData({
       placeOfOrigin: listData[idx].poo || '',
       portOfLoading: listData[idx].pol,
@@ -1603,7 +1602,7 @@ Page({
       showPlaceOfDelivery: listData[idx].fpod !== '' ? true : false,
       showRemind1: false,
       showRemind2: false,
-      showRemind3: false,
+       showRemind3: false,
       showRemind4: false,
       showDelete1: true,
       showDelete2: true,
@@ -1611,6 +1610,8 @@ Page({
       showDelete5: true,
       deliveryHaulage: listData[idx].deliveryHaulage || '',
       receiptHaulage: listData[idx].receiptHaulage || '',
+      pooWarn: false,
+      podEndWarn: false
     }, () => {
       if (this.data.currentType === 'instation') {
         this.getCommodityList()

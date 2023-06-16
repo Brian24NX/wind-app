@@ -4161,7 +4161,7 @@ Page({
         })
         wx.setStorageSync('trackSearchHis', this.data.searchHis);
         if (wx.getStorageSync('partnerList')[0]?.code == '0002130568') {
-            if (this.data.shipmentRef === 'DXB0768741') {
+            if (this.data.shipmentRef === 'NAM6249215') {
                 let obj = {
                     shipmentRef: this.data.shipmentRef,
                     limit: 100,
@@ -4224,7 +4224,358 @@ Page({
                 this.setData({
                     list: containers
                 })
-            } else {
+            }
+            else if (this.data.shipmentRef === 'MAGU2239792') {
+
+                  let  data=[
+                        {
+                            "data": [{
+                                "containerRef": "MAGU2239792", "equipmentSize": "22G1", "movement": [{
+                                    "eventID": "0e1e55da0ea7439dd7eb66f9988e8fa0f6a6c1a6",
+                                    "eventCreatedDateTime": "2023-06-13T02:33:07+00:00",
+                                    "eventType": "TRANSPORT",
+                                    "eventClassifierCode": "PLN",
+                                    "eventDateTime": "2023-07-18T04:18:00+08:00",
+                                    "carrierSpecificData": {
+                                        "internalEventCode": "PVA",
+                                        "internalEventLabel": "Vessel Arrival",
+                                        "internalLocationCode": "CNSHK",
+                                        "internalFacilityCode": "CNSHKDSCT",
+                                        "bookingExportVoyageReference": "0FTHSN1MA",
+                                        "transportationPhase": "Import",
+                                        "shipmentLocationType": "POD",
+                                        "transportCallSequenceTotal": 2,
+                                        "numberOfUnits": 12
+                                    },
+                                    "transportEventTypeCode": "ARRI",
+                                    "transportCall": {
+                                        "transportCallID": "50002857703",
+                                        "importVoyageNumber": "0FTHSN1MA",
+                                        "transportCallSequenceNumber": 2,
+                                        "facilityCode": "SCT",
+                                        "facilityCodeListProvider": "SMDG",
+                                        "modeOfTransport": "VESSEL",
+                                        "location": {
+                                            "locationName": "SHEKOU",
+                                            "latitude": "22.49639",
+                                            "longitude": "113.92",
+                                            "address": {
+                                                "name": "JETTY THREE, HARBOUR ROAD,",
+                                                "street": ".",
+                                                "city": "SHEKOU",
+                                                "country": "CHINA"
+                                            }
+                                        },
+                                        "vessel": {
+                                            "vesselIMONumber": "9850848",
+                                            "vesselName": "EVER FOND",
+                                            "vesselFlag": "LR",
+                                            "vesselCallSignNumber": "5LCS5",
+                                            "vesselOperatorCarrierCode": "EMC",
+                                            "vesselOperatorCarrierCodeListProvider": "SMDG"
+                                        }
+                                    },
+                                    "documentReferences": [{
+                                        "documentReferenceType": "BKG",
+                                        "documentReferenceValue": "401f423b25b649a73b7b64f232d9a33efcdd1a788e0992edfd8c48449f927dce"
+                                    }],
+                                    "references": [{"referenceType": "EQ", "referenceValue": "MAGU2239792"}],
+                                    "equipmentReference": "MAGU2239792"
+                                }, {
+                                    "eventID": "91c2c128b8913862789f84fc9674abe5064d09f7",
+                                    "eventCreatedDateTime": "2023-06-13T02:33:07+00:00",
+                                    "eventType": "TRANSPORT",
+                                    "eventClassifierCode": "PLN",
+                                    "eventDateTime": "2023-06-11T06:27:00-07:00",
+                                    "carrierSpecificData": {
+                                        "internalEventCode": "PVD",
+                                        "internalEventLabel": "Vessel Departure",
+                                        "internalLocationCode": "USLAX",
+                                        "internalFacilityCode": "USLAXMETS",
+                                        "bookingExportVoyageReference": "0FTHSN1MA",
+                                        "transportationPhase": "Export",
+                                        "shipmentLocationType": "POL",
+                                        "transportCallSequenceTotal": 2,
+                                        "numberOfUnits": 12
+                                    },
+                                    "transportEventTypeCode": "DEPA",
+                                    "transportCall": {
+                                        "transportCallID": "50002856834",
+                                        "exportVoyageNumber": "0FTHSN1MA",
+                                        "transportCallSequenceNumber": 1,
+                                        "facilityCode": "ETS",
+                                        "facilityCodeListProvider": "SMDG",
+                                        "modeOfTransport": "VESSEL",
+                                        "location": {
+                                            "locationName": "LOS ANGELES, CA",
+                                            "latitude": "34.05222",
+                                            "longitude": "-118.24278",
+                                            "address": {
+                                                "name": "389 TERMINAL ISLAND WAY",
+                                                "street": "BERTHS 226-236",
+                                                "postCode": "90731",
+                                                "city": "LOS ANGELES",
+                                                "country": "UNITED STATES"
+                                            }
+                                        },
+                                        "vessel": {
+                                            "vesselIMONumber": "9850848",
+                                            "vesselName": "EVER FOND",
+                                            "vesselFlag": "LR",
+                                            "vesselCallSignNumber": "5LCS5",
+                                            "vesselOperatorCarrierCode": "EMC",
+                                            "vesselOperatorCarrierCodeListProvider": "SMDG"
+                                        }
+                                    },
+                                    "documentReferences": [{
+                                        "documentReferenceType": "BKG",
+                                        "documentReferenceValue": "401f423b25b649a73b7b64f232d9a33efcdd1a788e0992edfd8c48449f927dce"
+                                    }],
+                                    "references": [{"referenceType": "EQ", "referenceValue": "MAGU2239792"}],
+                                    "equipmentReference": "MAGU2239792"
+                                }, {
+                                    "eventID": "93be2a319f6bb52aa06bbcd65827c340674e488b",
+                                    "eventCreatedDateTime": "2023-06-11T03:04:05+00:00",
+                                    "eventType": "TRANSPORT",
+                                    "eventClassifierCode": "ACT",
+                                    "eventDateTime": "2023-06-10T19:00:00-07:00",
+                                    "carrierSpecificData": {
+                                        "internalEventCode": "AVD",
+                                        "internalEventLabel": "Vessel Departure",
+                                        "internalLocationCode": "USLAX",
+                                        "internalFacilityCode": "USLAXMETS",
+                                        "bookingExportVoyageReference": "0FTHSN1MA",
+                                        "transportationPhase": "Export",
+                                        "shipmentLocationType": "POL",
+                                        "transportCallSequenceTotal": 2,
+                                        "numberOfUnits": 12
+                                    },
+                                    "transportEventTypeCode": "DEPA",
+                                    "transportCall": {
+                                        "transportCallID": "50002856834",
+                                        "exportVoyageNumber": "0FTHSN1MA",
+                                        "transportCallSequenceNumber": 1,
+                                        "facilityCode": "ETS",
+                                        "facilityCodeListProvider": "SMDG",
+                                        "modeOfTransport": "VESSEL",
+                                        "location": {
+                                            "locationName": "LOS ANGELES, CA",
+                                            "latitude": "34.05222",
+                                            "longitude": "-118.24278",
+                                            "address": {
+                                                "name": "389 TERMINAL ISLAND WAY",
+                                                "street": "BERTHS 226-236",
+                                                "postCode": "90731",
+                                                "city": "LOS ANGELES",
+                                                "country": "UNITED STATES"
+                                            }
+                                        },
+                                        "vessel": {
+                                            "vesselIMONumber": "9850848",
+                                            "vesselName": "EVER FOND",
+                                            "vesselFlag": "LR",
+                                            "vesselCallSignNumber": "5LCS5",
+                                            "vesselOperatorCarrierCode": "EMC",
+                                            "vesselOperatorCarrierCodeListProvider": "SMDG"
+                                        }
+                                    },
+                                    "documentReferences": [{
+                                        "documentReferenceType": "BKG",
+                                        "documentReferenceValue": "401f423b25b649a73b7b64f232d9a33efcdd1a788e0992edfd8c48449f927dce"
+                                    }],
+                                    "references": [{"referenceType": "EQ", "referenceValue": "MAGU2239792"}],
+                                    "equipmentReference": "MAGU2239792"
+                                }, {
+                                    "eventID": "f5f848998f46aa4fc657c98318ae928ef7f3181a",
+                                    "eventCreatedDateTime": "2023-06-11T05:40:14+00:00",
+                                    "eventType": "EQUIPMENT",
+                                    "eventClassifierCode": "ACT",
+                                    "eventDateTime": "2023-06-10T13:55:00-07:00",
+                                    "carrierSpecificData": {
+                                        "internalEventCode": "XOF",
+                                        "internalEventLabel": "Loaded on board",
+                                        "internalLocationCode": "USLAX",
+                                        "internalFacilityCode": "USLAXMETS",
+                                        "transportationPhase": "Export"
+                                    },
+                                    "transportCall": {
+                                        "transportCallID": "d6a28a49-9b82-48d5-be78-fee4629efa25",
+                                        "exportVoyageNumber": "0FTHSN1MA",
+                                        "facilityCode": "ETS",
+                                        "facilityCodeListProvider": "SMDG",
+                                        "modeOfTransport": "VESSEL",
+                                        "location": {
+                                            "locationName": "LOS ANGELES, CA",
+                                            "latitude": "34.05222",
+                                            "longitude": "-118.24278",
+                                            "address": {
+                                                "name": "389 TERMINAL ISLAND WAY",
+                                                "street": "BERTHS 226-236",
+                                                "postCode": "90731",
+                                                "city": "LOS ANGELES",
+                                                "country": "UNITED STATES"
+                                            }
+                                        },
+                                        "vessel": {
+                                            "vesselIMONumber": "9850848",
+                                            "vesselName": "EVER FOND",
+                                            "vesselFlag": "LR",
+                                            "vesselCallSignNumber": "5LCS5",
+                                            "vesselOperatorCarrierCode": "EMC",
+                                            "vesselOperatorCarrierCodeListProvider": "SMDG"
+                                        }
+                                    },
+                                    "documentReferences": [{
+                                        "documentReferenceType": "BKG",
+                                        "documentReferenceValue": "401f423b25b649a73b7b64f232d9a33efcdd1a788e0992edfd8c48449f927dce"
+                                    }],
+                                    "equipmentEventTypeCode": "LOAD",
+                                    "equipmentReference": "MAGU2239792",
+                                    "ISOEquipmentCode": "22G1",
+                                    "emptyIndicatorCode": "LADEN",
+                                    "isoequipmentCode": "22G1"
+                                }, {
+                                    "eventID": "bd25db5d947bb17bd01d3370f965bfefb2242228",
+                                    "eventCreatedDateTime": "2023-05-30T18:48:02+00:00",
+                                    "eventType": "EQUIPMENT",
+                                    "eventClassifierCode": "ACT",
+                                    "eventDateTime": "2023-05-30T11:18:00-07:00",
+                                    "carrierSpecificData": {
+                                        "internalEventCode": "XRX",
+                                        "internalEventLabel": "Gate in at Port terminal",
+                                        "internalLocationCode": "USLAX",
+                                        "internalFacilityCode": "USLAXMETS",
+                                        "transportationPhase": "Export"
+                                    },
+                                    "transportCall": {
+                                        "transportCallID": "73cefbc4-1445-488b-abe7-d8c8ebd27413",
+                                        "facilityCode": "ETS",
+                                        "facilityCodeListProvider": "SMDG",
+                                        "modeOfTransport": "TRUCK",
+                                        "location": {
+                                            "locationName": "LOS ANGELES, CA",
+                                            "latitude": "34.05222",
+                                            "longitude": "-118.24278",
+                                            "address": {
+                                                "name": "389 TERMINAL ISLAND WAY",
+                                                "street": "BERTHS 226-236",
+                                                "postCode": "90731",
+                                                "city": "LOS ANGELES",
+                                                "country": "UNITED STATES"
+                                            }
+                                        }
+                                    },
+                                    "documentReferences": [{
+                                        "documentReferenceType": "BKG",
+                                        "documentReferenceValue": "401f423b25b649a73b7b64f232d9a33efcdd1a788e0992edfd8c48449f927dce"
+                                    }],
+                                    "equipmentEventTypeCode": "GTIN",
+                                    "equipmentReference": "MAGU2239792",
+                                    "ISOEquipmentCode": "22G1",
+                                    "emptyIndicatorCode": "LADEN",
+                                    "isoequipmentCode": "22G1"
+                                }, {
+                                    "eventID": "bc2c62c5a8e89c405201a72409a6872208ff988b",
+                                    "eventCreatedDateTime": "2023-05-24T08:34:00+00:00",
+                                    "eventType": "EQUIPMENT",
+                                    "eventClassifierCode": "ACT",
+                                    "eventDateTime": "2023-05-23T23:40:00-07:00",
+                                    "carrierSpecificData": {
+                                        "internalEventCode": "MOS",
+                                        "internalEventLabel": "Empty Picked-up at Depot",
+                                        "internalLocationCode": "USLAX",
+                                        "internalFacilityCode": "USLAXSRIO",
+                                        "transportationPhase": "Export"
+                                    },
+                                    "transportCall": {
+                                        "transportCallID": "e5c8ae95-afb0-4248-abc2-e3c463626dda",
+                                        "modeOfTransport": "TRUCK",
+                                        "location": {
+                                            "locationName": "LOS ANGELES, CA",
+                                            "latitude": "34.05222",
+                                            "longitude": "-118.24278",
+                                            "address": {
+                                                "name": "SUCKOW ROAD",
+                                                "postCode": "93516",
+                                                "city": "LOS ANGELES",
+                                                "country": "UNITED STATES"
+                                            }
+                                        }
+                                    },
+                                    "documentReferences": [{
+                                        "documentReferenceType": "BKG",
+                                        "documentReferenceValue": "401f423b25b649a73b7b64f232d9a33efcdd1a788e0992edfd8c48449f927dce"
+                                    }],
+                                    "equipmentEventTypeCode": "GTOT",
+                                    "equipmentReference": "MAGU2239792",
+                                    "ISOEquipmentCode": "22G1",
+                                    "emptyIndicatorCode": "EMPTY",
+                                    "isoequipmentCode": "22G1"
+                                }]
+                            }], "shipmentRef": "MAGU2239792"
+                        }]
+                let obj = {
+                    shipmentRef: this.data.shipmentRef,
+                    limit: 100,
+                    businessPartnerCodes: []
+                }
+                if (wx.getStorageSync('access_token') && wx.getStorageSync('partnerList').length) {
+                    obj.businessPartnerCodes = wx.getStorageSync('partnerList').map(i => i.code)
+                }
+                this.setData({
+                    loading: true,
+                    noData: false,
+                    list: []
+                })
+                this.setData({
+                    loading: false,
+                    data: data
+                })
+                if (!data) {
+                    this.setData({
+                        noData: true
+                    })
+                    return
+                }
+                let containers = []
+                // console.log("Order组件==>", containers, data.map(d => d.shipmentRef))
+                this.setData({
+                    results: data.map(d => d.shipmentRef)
+                })
+                data.forEach(route => {
+                    // console.log("遍历data==>", route.data)
+                    if (route.data && route.data.length) {
+                        containers = containers.concat(route.data)
+                    }
+                })
+
+                containers.forEach(item => {
+                    const movements = JSON.parse(JSON.stringify(item.movement)).reverse()
+                    item.movement = []
+
+                    if (!wx.getStorageSync('access_token') && (item.containerRef === '' || item.equipmentSize === '')) {
+                        this.setData({
+                            noData: true
+                        })
+                    }
+
+                    movements.forEach(move => {
+                        if (!(move.eventClassifierCode === 'PLN' && dayjs(move.eventDateTime).isBefore(dayjs(), 'second')) && move.eventDateTime) {
+                            item.movement.push(move)
+                        }
+                    })
+                })
+
+                const length = containers.filter(item => item.movement.length).length
+                if (!length) {
+                    this.setData({
+                        noData: true
+                    })
+                }
+                this.setData({
+                    list: containers
+                })            }
+            else {
                 this.setData({
                     noData: true,
                     loading: false,
@@ -4256,7 +4607,6 @@ Page({
         })
         //模拟数据0002130568
         if (wx.getStorageSync('partnerList')[0]?.code == '0002130568') {
-            console.log(111, this.data.shipmentRef,this.data.shipmentRef === 'NAM6249215',this.data.shipmentRef === 'MAGU2239792')
             if (this.data.shipmentRef === 'NAM6249215') {
                 this.setData({
                     loading: false,
