@@ -457,7 +457,10 @@ Page({
       showRemind2: false,
       showPol: false,
       polCount:1,
-      pollist: []
+      pollist: [],
+      commodityCode: '',
+      commodityName: '',
+      commodityList: []
     })
     if (data.length < 2) {
       this.setData({
@@ -513,6 +516,7 @@ Page({
 
   //获取卸货港的接口处理
   changepod: utils.debounce(function (e) {
+
     const data = e['0'].detail.value
     this.setData({
       showDelete2: !!data,
@@ -520,7 +524,10 @@ Page({
       showRemind4: false,
       showPod: false,
       podCount:1,
-      podlist: []
+      podlist: [],
+      commodityCode: '',
+      commodityName: '',
+      commodityList: []
     })
     if (data.length < 2) {
       this.setData({
@@ -689,7 +696,10 @@ Page({
         pollist: [],
         showDelete1: false,
         showRemind1: false,
-        showRemind2: false
+        showRemind2: false,
+        commodityCode: '',
+        commodityName: '',
+        commodityList: []
       })
     } else if (type === '2') {
       this.setData({
@@ -698,7 +708,10 @@ Page({
         podlist: [],
         showDelete2: false,
         showRemind3: false,
-        showRemind4: false
+        showRemind4: false,
+        commodityCode: '',
+        commodityName: '',
+        commodityList: []
       })
     } else if (type === '3') {
       this.setData({
@@ -710,14 +723,16 @@ Page({
         placeOfOrigin: null,
         placeOfOriginLabel: '',
         receiptHaulage: null,
-        showDelete4: false
+        showDelete4: false,
+        pooWarn:false,
       })
     } else if (type === '5') {
       this.setData({
         finalPlaceOfDelivery: null,
         finalPlaceOfDeliveryLabel: '',
         deliveryHaulage: null,
-        showDelete5: false
+        showDelete5: false,
+        podEndWarn:false
       })
     }
   },
@@ -1251,7 +1266,7 @@ Page({
           showRemind6: false
         })
       }
-      if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6 || (this.data.partnerList.length > 1 && this.data.showRemind7)) return
+      if (this.data.podEndWarn||this.data.pooWarn||this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6 || (this.data.partnerList.length > 1 && this.data.showRemind7)) return
       this.checkAccessToken(() => {
         this.saveHistory()
         if (this.data.pricingGroups.length) {
@@ -1277,7 +1292,7 @@ Page({
         }
       })
     } else {
-      if (this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || (this.data.partnerList.length > 1 && this.data.showRemind7)) return
+      if (this.data.podEndWarn||this.data.pooWarn||this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || (this.data.partnerList.length > 1 && this.data.showRemind7)) return
       this.checkAccessToken(() => {
         if (this.data.partnerList.length === 1) {
           this.setData({
