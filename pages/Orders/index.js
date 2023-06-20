@@ -5009,7 +5009,7 @@ Page({
                     loading: false,
                     data: res.data
                 })
-                console.log('data', this.data.data, JSON.stringify(res.data))
+                // console.log('data', this.data.data, JSON.stringify(res.data))
                 const data = res.data;
                 if (!data) {
                     this.setData({

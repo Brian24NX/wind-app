@@ -190,7 +190,6 @@ Page({
                 }).then(res => {
                     if (res.data) {
                         allList = res.data
-                        console.log('1111111111', allList, JSON.stringify(allList))
                         allList.forEach(listItem => {
                             if (listItem.status === "DraftSI") {
                                 listItem.status = "SI Saved"

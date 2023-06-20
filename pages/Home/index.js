@@ -469,7 +469,6 @@ Page({
         this.setData({
           codePodList: res.data
         })
-        console.log(JSON.stringify(res.data))
       }else{
         this.hideDropdown()
       }

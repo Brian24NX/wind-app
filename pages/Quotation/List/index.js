@@ -82,7 +82,7 @@ Page({
         const pages = getCurrentPages()
         const currentPage = pages[pages.length - 2]
         const data = currentPage.data
-        console.log('list----- data', data, data.shippingCompany)
+        console.log('list----- data', data.shippingCompany, data.resultResq)
         this.setData({
             equiptCode: data.equiptCode,
             partnerCode: data.partnerCode,
@@ -105,7 +105,7 @@ Page({
             deliveryHaulage: data.deliveryHaulage || '',
             shipperOwnedContainer: data.shipperOwnedContainer
         })
-        console.log('list----containers', this.data.containers,data.resultResq.traceId)
+        // console.log('list----containers', data.resultResq,data.resultResq.traceId)
         if (data.resultResq.traceId) {
             console.log('oldQuoteLineList', data.resultResq.nextDepartureQuoteLineAndRoute)
             this.setData({
@@ -1912,7 +1912,7 @@ Page({
                     }),
                     oldQuoteLineList:quoteLineList
                 })
-                console.log('quoteLineList', this.data.quoteLineList, JSON.stringify(this.data.quoteLineList))
+                console.log('quoteLineList', this.data.quoteLineList)
                 wx.pageScrollTo({
                     duration: 500,
                     scrollTop: 0
@@ -1939,7 +1939,6 @@ Page({
                             }
                         })
                     })
-
                     wx.pageScrollTo({
                         duration: 500,
                         scrollTop: 0
@@ -1964,7 +1963,7 @@ Page({
                                 item.quoteLines[0].destination = ''
                             }
                         }
-                        console.log('----------',item,item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length)
+                        console.log('----------',item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length)
                         if (item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length) {
                             let params = {}
                             if (!item.quoteLines[0].quoteLineId) {
@@ -2058,9 +2057,11 @@ Page({
 
     getSeaEarnPoints(oceanFreight, totalCharge) {
         let that = this
+        //不是use得不调用接口，返回位null
         if (totalCharge.currency.code === 'USD') {
             return new Promise(function (resolve, reject) {
                 let pointBalance = 0
+                 //code位0002130568得不调用接口模拟数据
                 if (wx.getStorageSync('partnerList')[0].code === '0002130568') {
                     pointBalance = oceanFreight.price.amount * that.data.containers * 0.04
                     resolve(pointBalance)
@@ -2072,6 +2073,9 @@ Page({
                         "level": wx.getStorageSync('seaRewardData').level
                     }).then(result => {
                         pointBalance = result.data ? result.data.simulationResults[0].changeInPointsBalance : null
+                        resolve(pointBalance)
+                    }).catch(err=>{
+                        let pointBalance = null
                         resolve(pointBalance)
                     })
                 }
@@ -2109,10 +2113,10 @@ Page({
                 item.surchargeDetails = null
                 item.canSelect = false
             }
-
             this.setData({
                 quoteLineList: this.data.quoteLineList
             })
+            console.log('----------------********',this.data.quoteLineList)
             if (isFirst) {
                 this.setData({
                     oldQuoteLineList: this.data.quoteLineList

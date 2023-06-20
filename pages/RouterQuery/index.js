@@ -236,7 +236,7 @@ Page({
         polCount:0,
       })
       if (res.data != ''&&res.data!==undefined) {
-        console.log(res.data,JSON.stringify(res.data))
+        // console.log(res.data,JSON.stringify(res.data))
         this.setData({
           pollist: res.data || []
         })

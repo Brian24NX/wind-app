@@ -978,7 +978,7 @@ Page({
       "currency": "",
       "subscribedCharges": []
     }).then(res => {
-      console.log(JSON.stringify(res.data))
+      // console.log(JSON.stringify(res.data))
       if (res.data) {
         res.data.forEach(one => {
           one.isInclude = false
@@ -1356,7 +1356,7 @@ Page({
       communicationChannel: 'BKG_INSTANT',
       noOfBooking: this.data.noOfBooking
     }
-    console.log(JSON.stringify(params))
+    // console.log(JSON.stringify(params))
     wx.showLoading({
       title: 'Loading...',
     })

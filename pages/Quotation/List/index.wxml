@@ -1,158 +1,199 @@
 <!--页面常用方法编写-Jason-2022-03-22 13:52-->
 <wxs module="filters" src="./index.wxs"></wxs>
 <wxs module="commonFilters" src="/utils/format.wxs"></wxs>
-<!--pages/Result/index.wxml-->
+        <!--pages/Result/index.wxml-->
 <view class="searchResultTopContainer">
-  <view class="resultCardTops">
-    <view class="stepLists">
-      <view class="oneStep">
-        <view class="leftLines">
-          <view class="leftLineDto"></view>
-          <view class="leftLine"></view>
+    <view class="resultCardTops">
+        <view class="stepLists">
+            <view class="oneStep">
+                <view class="leftLines">
+                    <view class="leftLineDto"></view>
+                    <view class="leftLine"></view>
+                </view>
+                <view class="stepContent">{{fromLabel}}, {{fromCode}}</view>
+            </view>
+            <view class="oneStep">
+                <view class="leftLines" style="top: 20rpx;">
+                    <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
+                </view>
+                <view class="stepContent">{{toLabel}}, {{toCode}}</view>
+            </view>
         </view>
-        <view class="stepContent">{{fromLabel}}, {{fromCode}}</view>
-      </view>
-      <view class="oneStep">
-        <view class="leftLines" style="top: 20rpx;">
-          <image src="/assets/img/seniorsearch/location.png" mode="aspectFit"></image>
-        </view>
-        <view class="stepContent">{{toLabel}}, {{toCode}}</view>
-      </view>
     </view>
-  </view>
 </view>
 <view class="resultContainers">
-  <view wx:if="{{quoteLineList.length}}">
-    <view class="oneResult" wx:for="{{quoteLineList}}" wx:key="index">
-      <view class="tips">
-        <view class="oneTip spotOn" wx:if="{{item.quoteLines.length && item.quoteLines[0].spotOffer}}">SPOTON</view>
-        <view class="oneTip" wx:if="{{item.departureDateFlag}}">{{languageContent.earliestDeparture}}</view>
-        <view class="oneTip" wx:if="{{item.arrivalDateFlag}}">{{languageContent.earliestArrival}}</view>
-        <view class="oneTip" wx:if="{{item.transitFlag}}">{{languageContent.earliestTime}}</view>
-      </view>
-      <view class="resContents">
-        <view class="rightContainer">
-          <view class="leftContent">
-            <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="max-width: 380rpx;padding-bottom: 30rpx;" wx:if="{{item.quoteLines && item.quoteLines[0].origin}}">
-              <text>{{item.placeOfReceiptLabel}}</text>
-              <text class="placeType {{!item.canSelect ? 'disabledColor' : ''}}">{{commonFilters.localeUpperCase(item.quoteLines[0].exportMovementType)}}</text>
-              <view class="leftLines">
-                <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
-                <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
-              </view>
-              <view wx:if="{{item.quoteLines[0].exportModeOfTranportCode}}" class="roadText  {{!item.canSelect ? 'disabledColor' : ''}}">
-                <image src="{{!!transMode[item.quoteLines[0].exportModeOfTranportCode]? transMode[item.quoteLines[0].exportModeOfTranportCode].icon : transMode['RD'].icon}}" class="roadIcon" style="margin-right: 16rpx;" mode="aspectFill"></image>
-                {{ !!transMode[item.quoteLines[0].exportModeOfTranportCode]? (language === 'zh' ? transMode[item.quoteLines[0].exportModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].exportModeOfTranportCode].label) : 'Intermodal'}}
-              </view>
-            </view>
-            <view style="position: relative;">
-              <view class="time {{!item.canSelect ? 'disabledColor' : ''}}">{{language === 'zh' ? commonFilters.formatCnDateLocal(item.departureDate, false, true) : commonFilters.formatEnDateLocal(item.departureDate, '-', '', false, true)}}</view>
-              <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="max-width: 380rpx;">{{item.placeOfLoadingLabel}}</view>
-              <view class="ship {{!item.canSelect ? 'disabledColor' : ''}}">
-                <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit" class="shipIcon"></image>
-                <view>{{item.vesselName}}</view>
-              </view>
-              <view class="ship {{!item.canSelect ? 'disabledColor' : ''}}" style="width: 100%;padding-bottom: 20rpx;">
-                <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit" class="shipIcon"></image>
-                <view>{{item.scheduleDescription}}</view>
-              </view>
-              <view class="leftLines">
-                <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
-                <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
-
-              </view>
-            </view>
-            <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="{{item.quoteLines && item.quoteLines[0].destination ? 'padding-bottom: 30rpx;' : ''}}">
-              <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivalDate, false, true) : commonFilters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}}</text>
-              <view>{{item.placeOfDischargeLabel}}</view>
-              <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
-                <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
-                <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
-              </view>
-
-              <view class="leftLines endLine" wx:else>
-                <image src="/assets/img/instantQuote/location-{{!item.canSelect ? 'grey' : 'red'}}.svg" mode="aspectFit"></image>
-              </view>
-              <view wx:if="{{item.quoteLines[0].importModeOfTranportCode}}" class="roadText  {{!item.canSelect ? 'disabledColor' : ''}}">
-                <image src="{{ !!transMode[item.quoteLines[0].importModeOfTranportCode] ? transMode[item.quoteLines[0].importModeOfTranportCode].icon : transMode['RD'].icon}}" class="roadIcon" style="margin-right: 16rpx;"></image>
-                {{ !!transMode[item.quoteLines[0].importModeOfTranportCode] ? (language === 'zh' ? transMode[item.quoteLines[0].importModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].importModeOfTranportCode].label) : 'Intermodal'}}
-              </view>
-            </view>
-            <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{item.quoteLines && item.quoteLines[0].destination}}">
-              <text>{{item.placeOfDeliveryLabel}}</text>
-              <text class="placeType {{!item.canSelect ? 'disabledColor' : ''}}">{{commonFilters.localeUpperCase(item.quoteLines[0].importMovementType)}}</text>
-              <view class="leftLines endLine">
-                <image src="/assets/img/instantQuote/location-{{!item.canSelect ? 'grey' : 'red'}}.svg" mode="aspectFit"></image>
-              </view>
-            </view>
-          </view>
-          <view class="rightContent">
-            <view class="timeDay {{!item.canSelect ? 'disabledColor' : ''}} {{language === 'zh' ? '' : 'timeDayEn'}}">{{item.transitTime}} {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}</view>
-            <view class="zhuanrun {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{item.tranShipment.length}}">
-              <image src="/assets/img/instantQuote/zhuanyun-{{!item.canSelect ? 'grey' : 'red'}}.svg"></image>
-              <view>{{item.tranShipment.length}} {{item.tranShipment.length > 1 ? languageContent.zhuanyuns : languageContent.zhuanyun}}</view>
-            </view>
-            <view class="zhuanrun {{!item.canSelect ? 'disabledColor' : ''}}" wx:if="{{!item.tranShipment.length}}">
-              <image style="width: 17px; height: 17px;" src="/assets/img/instantQuote/direct@2x-{{!item.canSelect ? 'grey' : 'red'}}.svg"></image>
-              <view>{{languageContent.zhida}}</view>
-            </view>
-          </view>
-        </view>
-      </view>
-      <block wx:if="{{item.offerId !== 'No-Offer-Found'}}">
-        <block wx:if="{{item.isLoading}}">
-          <view class="oneBottom">
-            <view class="bottomLeft">
-              <image src="/assets/img/instantQuote/Save-time-money2.svg"></image>
-              <view class="priceCount">-</view>
-              <view class="priceUnit">
-                <view class="unit"></view>
-                <view class="unit2">{{languageContent.container}}</view>
-              </view>
-            </view>
-            <view class="selects">
-              <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg" mode="aspectFit"></image>
-            </view>
-          </view>
-        </block>
-        <block wx:else>
-          <block wx:if="{{item.surchargeDetails && item.surchargeDetails.allocation}}">
-            <view class="oneBottom">
-              <view class="bottomLeft">
-                <image src="/assets/img/instantQuote/Save-time-money2.svg"></image>
-                <view class="priceCount">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.amount : '-'}}</view>
-                <view class="priceUnit">
-                  <view class="unit">{{item.surchargeDetails ? item.surchargeDetails.totalCharge.currency.code : ''}}</view>
-                  <view class="unit2">{{languageContent.container}}</view>
+    <view wx:if="{{quoteLineList.length}}">
+        <view class="oneResult" wx:for="{{quoteLineList}}" wx:key="index">
+            <view class="tips">
+                <view class="oneTip spotOn" wx:if="{{item.quoteLines.length && item.quoteLines[0].spotOffer}}">SPOTON
                 </view>
-              </view>
-              <view class="selects {{item.surchargeDetails ? '' : 'disabled'}}" bindtap="toDetail" data-index="{{index}}">
-                <text>{{languageContent.select}}</text>
-              </view>
+                <view class="oneTip" wx:if="{{item.departureDateFlag}}">{{languageContent.earliestDeparture}}</view>
+                <view class="oneTip" wx:if="{{item.arrivalDateFlag}}">{{languageContent.earliestArrival}}</view>
+                <view class="oneTip" wx:if="{{item.transitFlag}}">{{languageContent.earliestTime}}</view>
             </view>
-            <view class="rewardEarned" wx:if="{{ item.rewardsEarned }}">
-          {{seaReward.earned}} <Text>{{item.rewardsEarned}}</Text>{{seaReward.earnedEdn}}{{containers>1?seaReward.fortext+containers+seaReward.xiangzi:''}}
+            <view class="resContents">
+                <view class="rightContainer">
+                    <view class="leftContent">
+                        <!--            没有报价可以选择得置灰-->
+                        <view class="time {{!item.canSelect ? 'disabledColor' : ''}}"
+                              style="max-width: 380rpx;padding-bottom: 30rpx;"
+                              wx:if="{{item.quoteLines && item.quoteLines[0].origin}}">
+                            <text>{{item.placeOfReceiptLabel}}</text>
+                            <text class="placeType {{!item.canSelect ? 'disabledColor' : ''}}">{{commonFilters.localeUpperCase(item.quoteLines[0].exportMovementType)}}</text>
+                            <view class="leftLines">
+                                <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+                                <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+                            </view>
+                            <view wx:if="{{item.quoteLines[0].exportModeOfTranportCode}}"
+                                  class="roadText  {{!item.canSelect ? 'disabledColor' : ''}}">
+                                <image src="{{!!transMode[item.quoteLines[0].exportModeOfTranportCode]? transMode[item.quoteLines[0].exportModeOfTranportCode].icon : transMode['RD'].icon}}"
+                                       class="roadIcon" style="margin-right: 16rpx;" mode="aspectFill"></image>
+                                {{ !!transMode[item.quoteLines[0].exportModeOfTranportCode] ? (language === 'zh' ? transMode[item.quoteLines[0].exportModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].exportModeOfTranportCode].label) : 'Intermodal'}}
+                            </view>
+                        </view>
+                        <view style="position: relative;">
+                            <view class="time {{!item.canSelect ? 'disabledColor' : ''}}">
+                                {{language === 'zh' ? commonFilters.formatCnDateLocal(item.departureDate, false, true) : commonFilters.formatEnDateLocal(item.departureDate, '-', '', false, true)}}
+                            </view>
+                            <view class="time {{!item.canSelect ? 'disabledColor' : ''}}" style="max-width: 380rpx;">
+                                {{item.placeOfLoadingLabel}}
+                            </view>
+                            <view class="ship {{!item.canSelect ? 'disabledColor' : ''}}">
+                                <image src="/assets/img/result/huolunhao@2x.png" mode="aspectFit"
+                                       class="shipIcon"></image>
+                                <view>{{item.vesselName}}</view>
+                            </view>
+                            <view class="ship {{!item.canSelect ? 'disabledColor' : ''}}"
+                                  style="width: 100%;padding-bottom: 20rpx;">
+                                <image src="/assets/img/result/hangxian@2x.png" mode="aspectFit"
+                                       class="shipIcon"></image>
+                                <view>{{item.scheduleDescription}}</view>
+                            </view>
+                            <view class="leftLines">
+                                <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+                                <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+
+                            </view>
+                        </view>
+                        <view class="time {{!item.canSelect ? 'disabledColor' : ''}}"
+                              style="{{item.quoteLines && item.quoteLines[0].destination ? 'padding-bottom: 30rpx;' : ''}}">
+                            <text>{{language === 'zh' ? commonFilters.formatCnDateLocal(item.arrivalDate, false, true) : commonFilters.formatEnDateLocal(item.arrivalDate, '-', '', false, true)}}</text>
+                            <view>{{item.placeOfDischargeLabel}}</view>
+                            <view class="leftLines" wx:if="{{item.placeOfDeliveryLabel}}">
+                                <view class="leftLineDto {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+                                <view class="leftLine {{!item.canSelect ? 'disabledBg' : ''}}"></view>
+                            </view>
+
+                            <view class="leftLines endLine" wx:else>
+                                <image src="/assets/img/instantQuote/location-{{!item.canSelect ? 'grey' : 'red'}}.svg"
+                                       mode="aspectFit"></image>
+                            </view>
+                            <view wx:if="{{item.quoteLines[0].importModeOfTranportCode}}"
+                                  class="roadText  {{!item.canSelect ? 'disabledColor' : ''}}">
+                                <image src="{{ !!transMode[item.quoteLines[0].importModeOfTranportCode] ? transMode[item.quoteLines[0].importModeOfTranportCode].icon : transMode['RD'].icon}}"
+                                       class="roadIcon" style="margin-right: 16rpx;"></image>
+                                {{ !!transMode[item.quoteLines[0].importModeOfTranportCode] ? (language === 'zh' ? transMode[item.quoteLines[0].importModeOfTranportCode].zhLabel : transMode[item.quoteLines[0].importModeOfTranportCode].label) : 'Intermodal'}}
+                            </view>
+                        </view>
+                        <view class="time {{!item.canSelect ? 'disabledColor' : ''}}"
+                              wx:if="{{item.quoteLines && item.quoteLines[0].destination}}">
+                            <text>{{item.placeOfDeliveryLabel}}</text>
+                            <text class="placeType {{!item.canSelect ? 'disabledColor' : ''}}">{{commonFilters.localeUpperCase(item.quoteLines[0].importMovementType)}}</text>
+                            <view class="leftLines endLine">
+                                <image src="/assets/img/instantQuote/location-{{!item.canSelect ? 'grey' : 'red'}}.svg"
+                                       mode="aspectFit"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="rightContent">
+                        <view class="timeDay {{!item.canSelect ? 'disabledColor' : ''}} {{language === 'zh' ? '' : 'timeDayEn'}}">
+                            {{item.transitTime}}
+                            {{Number(item.transitTime) == 1 ? languageContent.day : languageContent.days}}
+                        </view>
+                        <view class="zhuanrun {{!item.canSelect ? 'disabledColor' : ''}}"
+                              wx:if="{{item.tranShipment.length}}">
+                            <image src="/assets/img/instantQuote/zhuanyun-{{!item.canSelect ? 'grey' : 'red'}}.svg"></image>
+                            <view>{{item.tranShipment.length}}
+                                {{item.tranShipment.length > 1 ? languageContent.zhuanyuns : languageContent.zhuanyun}}
+                            </view>
+                        </view>
+                        <view class="zhuanrun {{!item.canSelect ? 'disabledColor' : ''}}"
+                              wx:if="{{!item.tranShipment.length}}">
+                            <image style="width: 17px; height: 17px;"
+                                   src="/assets/img/instantQuote/direct@2x-{{!item.canSelect ? 'grey' : 'red'}}.svg"></image>
+                            <view>{{languageContent.zhida}}</view>
+                        </view>
+                    </view>
+                </view>
             </view>
-          </block>
-          <view class="oneBottom right" wx:else>{{languageContent.spotOut}}</view>
-        </block>
-        <view class="warning" wx:if="{{item.noOfContainersAvailable}}">
-          <image src="/assets/img/instantQuote/warning@2x.png"></image>
-          <text>{{item.noOfContainersAvailable}} {{languageContent.containerRemind}}</text>
+            <!--   没有offerId得不显示选择   -->
+            <block wx:if="{{item.offerId !== 'No-Offer-Found'}}">
+                <!--      没有quoteLines 得永远loading -->
+                <block wx:if="{{item.isLoading}}">
+                    <view class="oneBottom">
+                        <view class="bottomLeft">
+                            <image src="/assets/img/instantQuote/Save-time-money2.svg"></image>
+                            <view class="priceCount">-</view>
+                            <view class="priceUnit">
+                                <view class="unit"></view>
+                                <view class="unit2">{{languageContent.container}}</view>
+                            </view>
+                        </view>
+                        <view class="selects">
+                            <image style="width: 100%;height: 100%;" src="/assets/img/instantQuote/loading.svg"
+                                   mode="aspectFit"></image>
+                        </view>
+                    </view>
+                </block>
+                <!--        什么都有得显示正常得页面，可以进入下一页-->
+                <block wx:else>
+                    <block wx:if="{{item.surchargeDetails && item.surchargeDetails.allocation}}">
+                        <view class="oneBottom">
+                            <view class="bottomLeft">
+                                <image src="/assets/img/instantQuote/Save-time-money2.svg"></image>
+                                <view class="priceCount">
+                                    {{item.surchargeDetails ? item.surchargeDetails.totalCharge.amount : '-'}}
+                                </view>
+                                <view class="priceUnit">
+                                    <view class="unit">
+                                        {{item.surchargeDetails ? item.surchargeDetails.totalCharge.currency.code : ''}}
+                                    </view>
+                                    <view class="unit2">{{languageContent.container}}</view>
+                                </view>
+                            </view>
+                            <view class="selects {{item.surchargeDetails ? '' : 'disabled'}}" bindtap="toDetail"
+                                  data-index="{{index}}">
+                                <text>{{languageContent.select}}</text>
+                            </view>
+                        </view>
+                        <view class="rewardEarned" wx:if="{{ item.rewardsEarned }}">
+                            {{seaReward.earned}} <Text>
+                            {{item.rewardsEarned}}</Text>{{seaReward.earnedEdn}}{{containers > 1 ? seaReward.fortext + containers + seaReward.xiangzi : ''}}
+                        </view>
+                    </block>
+                    <view class="oneBottom right" wx:else>{{languageContent.spotOut}}</view>
+                </block>
+                <!--        仓位不够得提示-->
+                <view class="warning" wx:if="{{item.noOfContainersAvailable}}">
+                    <image src="/assets/img/instantQuote/warning@2x.png"></image>
+                    <text>{{item.noOfContainersAvailable}} {{languageContent.containerRemind}}</text>
+                </view>
+            </block>
+            <!--  没有offerId显示目前没有报价可供选择    -->
+            <block wx:else>
+                <view class="oneBottom right">{{languageContent.noOffer}}</view>
+            </block>
         </view>
-      </block>
-      <block wx:else>
-        <view class="oneBottom right">{{languageContent.noOffer}}</view>
-      </block>
     </view>
-  </view>
-  <!--无结果-->
-  <view wx:if="{{(!oldQuoteLineList.length || !quoteLineList.length) && !isLoading}}">
-    <noresult languageContent="{{languageContent}}" isUs="{{isUs}}"></noresult>
-  </view>
+    <!--无结果-->
+    <view wx:if="{{(!oldQuoteLineList.length || !quoteLineList.length) && !isLoading}}">
+        <noresult languageContent="{{languageContent}}" isUs="{{isUs}}"></noresult>
+    </view>
 </view>
 
-<remind show="{{showRemind}}" containers="{{containers}}" hasContainers="{{hasContainers}}" languageContent="{{languageContent}}" bind:continue="onContinue" bind:hide="onClickHide"></remind>
+<remind show="{{showRemind}}" containers="{{containers}}" hasContainers="{{hasContainers}}"
+        languageContent="{{languageContent}}" bind:continue="onContinue" bind:hide="onClickHide"></remind>
 
-<!-- 底部筛选条件 tabbar -->
-<foot-tab-bar wx:if="{{oldQuoteLineList.length}}" languageContent="{{languageContent}}" radio="{{sort}}" plans="{{plans}}" routesPlanList="{{sortSolutionServices}}" bind:tabbarchange="onTabbarChange" />
+        <!-- 底部筛选条件 tabbar -->
+<foot-tab-bar wx:if="{{oldQuoteLineList.length}}" languageContent="{{languageContent}}" radio="{{sort}}"
+              plans="{{plans}}" routesPlanList="{{sortSolutionServices}}" bind:tabbarchange="onTabbarChange"/>

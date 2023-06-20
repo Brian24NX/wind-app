@@ -347,7 +347,7 @@ Page({
       showPoR: false,
       porCount:1,
       pooWarn: false,
-      placeOfReceiptList: []
+      placeOfReceiptList: [],
     })
     if (!data) {
       this.setData({
@@ -1177,7 +1177,8 @@ Page({
     console.log('containers',this.data.containers)
     wx.removeStorageSync('isSocAgree');
     this.hideDropdown();
-    if (this.data.showDelete4) {
+    console.log(this.data.showPlaceOfReceipt,this.data.showDelete4,this.data.placeOfOriginLabel,this.data.placeOfOriginLabel!=='')
+    if (this.data.showPlaceOfReceipt&&this.data.showDelete4) {
       if (!this.isAdsValid(this.data.placeOfOriginLabel)) {
         this.setData({
           pooWarn: true
@@ -1189,7 +1190,7 @@ Page({
       }
     }
 
-    if (this.data.showDelete5) {
+    if (this.data.showPlaceOfDelivery&&this.data.showDelete5) {
       if (!this.isAdsValid(this.data.finalPlaceOfDeliveryLabel)) {
         this.setData({
           podEndWarn: true
@@ -1268,6 +1269,8 @@ Page({
         })
       }
     }
+    console.log('instation',this.data.currentType === 'instation')
+
     if (this.data.currentType === 'instation') {
       if (!this.data.weight) {
         this.setData({
@@ -1290,19 +1293,21 @@ Page({
       if (this.data.podEndWarn||this.data.pooWarn||this.data.showRemind1 || this.data.showRemind2 || this.data.showRemind3 || this.data.showRemind4 || this.data.showRemind5 || this.data.showRemind6 || (this.data.partnerList.length > 1 && this.data.showRemind7)) return
       this.checkAccessToken(() => {
         this.saveHistory()
+        // debugger
+        console.log(1111,this.data.pricingGroups)
         if (this.data.pricingGroups.length) {
           if(wx.getStorageSync('partnerList')[0].code === '0002130568'){
             wx.navigateTo({
               url: '/pages/Quotation/List/index',
             })
           }else{
+            console.log(22222,this.data.commodityCode)
             if (this.data.commodityCode === "FAK") {
               this.getQuotationNextDepartures2(this.data.pricingGroups[0].shippingCompany, 0)
             } else {
               this.getQuotationNextDepartures()
             }
           }
-
         } else {
           this.setData({
             resultResq: {}
@@ -1385,6 +1390,7 @@ Page({
   },
 
   getQuotationNextDepartures2(shippingCompany, index) {
+    // debugger
     if (index === this.data.pricingGroups.length) {
       this.setData({
         resultResq: {}
@@ -1410,7 +1416,9 @@ Page({
         "weightPerContainer": this.data.weight,
         "shipperOwnedContainer": this.data.shipperOwnedContainer
       }).then(res => {
+        // debugger
         if (res.data) {
+          console.log(3333,res.data)
           if (res.data.hasFmcExcluded === true || res.data.hasFmcExcluded === false) {
             this.setData({
               resultResq: {}
@@ -1419,11 +1427,13 @@ Page({
               url: '/pages/Quotation/List/index?isUs=1',
             })
           } else {
+            console.log(4444,res.data.nextDepartureQuoteLineAndRoute)
             if (res.data.nextDepartureQuoteLineAndRoute && res.data.nextDepartureQuoteLineAndRoute.length) {
               this.setData({
                 resultResq: res.data,
                 shippingCompany: shippingCompany
               })
+              console.log(55,this.data.resultResq,shippingCompany)
               wx.navigateTo({
                 url: '/pages/Quotation/List/index',
               })

@@ -650,7 +650,7 @@ Page({
             "currency": surchargeDetails.totalCharge.currency.code,
             subscribedCharges: subscribedCharges.map(i => i.code)
         }).then(res => {
-            console.log('res',res,JSON.stringify(res))
+            // console.log('res',res,JSON.stringify(res))
             if (this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH') {
                 const i = res.data.findIndex(i => i.parentProductId === 'SEAPRIORITY go')
                 if (i > -1) {

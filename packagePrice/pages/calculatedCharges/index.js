@@ -248,7 +248,6 @@ Page({
         bookingReference: this.data.huoGuiValue,
         range: this.data.page
       }).then(res => {
-        console.log(JSON.stringify(res.data))
         if (res.data && res.data.length) {
           this.setData({
             containers: this.data.containers.concat(res.data.filter(i => i.containerNumber))
@@ -359,14 +358,12 @@ Page({
             dndFuzzySearch({
               searchStr: item.paymentlocation.internalCode
             }).then(res => {
-              console.log('res.data',res.data,JSON.stringify(res.data))
               const data = res.data.filter(i => i.point.split(';')[0] === item.paymentlocation.internalCode)
               if (data.length && data[0].pointCode.substr(0, 2) === payCountry) {
                 calculatedChargeLists.push(item)
               }
             })
         )
-        console.log(1,JSON.stringify(arr))
       }
 
     })
@@ -490,7 +487,6 @@ Page({
 
     }else{
       calculatedCharge(params).then(res => {
-        console.log(res.data,JSON.stringify(res.data))
         if (res.data && res.data.length) {
           this.setData({
             calculatedChargeResult: res.data
