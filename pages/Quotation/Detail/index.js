@@ -644,7 +644,7 @@ Page({
                 "uomWeight": "TNE",
                 "hazardous": false,
                 "oversize": false,
-                "refrigerated": false,
+                "refrigerated": this.data.equipmentTypeSize === '20RF' || this.data.equipmentTypeSize === '40RH'?true:false,
                 "shipperOwned": false
             }],
             "currency": surchargeDetails.totalCharge.currency.code,

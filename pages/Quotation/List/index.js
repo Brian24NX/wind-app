@@ -105,7 +105,7 @@ Page({
             deliveryHaulage: data.deliveryHaulage || '',
             shipperOwnedContainer: data.shipperOwnedContainer
         })
-        // console.log('list----containers', data.resultResq,data.resultResq.traceId)
+        console.log('list----containers', data.resultResq,data.resultResq.traceId)
         if (data.resultResq.traceId) {
             console.log('oldQuoteLineList', data.resultResq.nextDepartureQuoteLineAndRoute)
             this.setData({

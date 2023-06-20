@@ -971,7 +971,6 @@ Page({
           this.data.countName++
           this.getNamedAccountsSearch()
         }, 500);
-        console.log(1111111111111,this.data.countName)
         if(this.data.countName>3){
           clearInterval(time)
           this.setData({
@@ -1177,7 +1176,7 @@ Page({
     console.log('containers',this.data.containers)
     wx.removeStorageSync('isSocAgree');
     this.hideDropdown();
-    console.log(this.data.showPlaceOfReceipt,this.data.showDelete4,this.data.placeOfOriginLabel,this.data.placeOfOriginLabel!=='')
+    console.log(this.data.showPlaceOfReceipt,this.data.showDelete4,!this.isAdsValid(this.data.placeOfOriginLabel))
     if (this.data.showPlaceOfReceipt&&this.data.showDelete4) {
       if (!this.isAdsValid(this.data.placeOfOriginLabel)) {
         this.setData({
@@ -1451,11 +1450,12 @@ Page({
   },
 
   getNearByPortNextDeparture() {
+    console.log(this.data.equiptCode)
     nearByPortNextDeparture({
       "affiliates": this.data.partnerCode,
       "commodityCode": this.data.commodityCode,
       "deliveryHaulage": this.data.deliveryHaulage || null,
-      "equipmentSizeType": this.data.equipmentType,
+      "equipmentSizeType": this.data.equiptCode,
       "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
       "hasIQExcluded": false,
       "myPricesContractsExist": false,
@@ -1476,6 +1476,7 @@ Page({
         this.setData({
           nearPort: res.data
         })
+        console.log('nearPort',this.data.nearPort)
         wx.navigateTo({
           url: '/pages/Quotation/NearPort/index',
         })

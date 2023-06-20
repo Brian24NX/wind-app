@@ -58,7 +58,7 @@ Page({
       toCode: data.finalPlaceOfDeliveryLabel ? data.finalPlaceOfDeliveryLabel.split(';')[1] : data.portOfDischargeLabel.split(';')[1],
       commodityCode: data.commodityCode,
       deliveryHaulage: data.deliveryHaulage,
-      equipmentType: data.equipmentType,
+      equiptCode: data.equiptCode,
       finalPlaceOfDelivery: data.finalPlaceOfDelivery,
       containers: data.containers,
       placeOfOrigin: data.placeOfOrigin,
@@ -72,6 +72,7 @@ Page({
       commodityName: data.commodityName,
       partnerCode: data.partnerCode
     })
+    console.log(data)
     const res = data.nearPort
     const list = [...new Set(res.map(i => i.portOfLoading + '-' + i.portOfDischarge))].map(i => {
       return {
@@ -137,8 +138,8 @@ Page({
       "affiliates": this.data.partnerCode,
       "commodityCode": this.data.commodityCode,
       "deliveryHaulage": this.data.deliveryHaulage || null,
-      "equipmentSizeType": this.data.equipmentType,
-      "equipmentType": this.data.equipmentType.substr(2),
+      "equipmentSizeType": this.data.equiptCode,
+      "equipmentType": this.data.equiptCode.substr(2),
       "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
       "numberOfContainers": this.data.containers,
       "placeOfOrigin": this.data.placeOfOrigin || null,
@@ -181,8 +182,8 @@ Page({
       "affiliates": this.data.partnerCode,
       "commodityCode": this.data.commodityCode,
       "deliveryHaulage": this.data.deliveryHaulage || null,
-      "equipmentSizeType": this.data.equipmentType,
-      "equipmentType": this.data.equipmentType.substr(2),
+      "equipmentSizeType": this.data.equiptCode,
+      "equipmentType": this.data.equiptCode.substr(2),
       "finalPlaceOfDelivery": this.data.finalPlaceOfDelivery || null,
       "numberOfContainers": this.data.containers,
       "placeOfOrigin": this.data.placeOfOrigin || null,
