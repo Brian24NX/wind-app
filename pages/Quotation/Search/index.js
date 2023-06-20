@@ -137,7 +137,8 @@ Page({
     podEndWarn: false,
     pooWarn: false,
     count:1,
-    mainPartnerCode:''
+    mainPartnerCode:'',
+    countName:1,
   },
 
   /**
@@ -416,7 +417,8 @@ Page({
           porCount:1,
         })
         let placeOfReceiptList = []
-        if (res.data && res.data.length) {
+        console.log('------',res.data && res.data.length,res.data,res.data!==undefined)
+        if (res.data && res.data.length&&res.data!==undefined) {
           res.data.forEach(item => {
             if (item.point) {
               placeOfReceiptList.push({
@@ -426,11 +428,13 @@ Page({
               })
             }
           })
+        }else{
+          this.hideDropdown()
         }
         this.setData({
           placeOfReceiptList
         })
-        console.log('placeOfReceiptList',placeOfReceiptList)
+        console.log('placeOfReceiptList',placeOfReceiptList,this.data.showDropdown.pol)
       }, () => {
         this.data.porCount++
         if(this.data.porCount<=3){
@@ -640,7 +644,7 @@ Page({
           this.setData({
             placeOfDeliveryList: res.data || []
           })
-          console.log(JSON.stringify(this.data.placeOfDeliveryList))
+          // console.log(JSON.stringify(this.data.placeOfDeliveryList))
         } else {
           this.hideDropdown()
         }
@@ -664,9 +668,8 @@ Page({
         this.setData({
           showPoDe: false,
         })
-        if(res.data != ''&&res.data!==undefined){
           let placeOfDeliveryList = []
-          if (res.data && res.data.length) {
+          if (res.data && res.data.length&&res.data!==undefined) {
             res.data.forEach(item => {
               if (item.point) {
                 placeOfDeliveryList.push({
@@ -676,11 +679,14 @@ Page({
                 })
               }
             })
+          }  else{
+            this.hideDropdown()
+
           }
           this.setData({
             placeOfDeliveryList
           })
-        }
+
       }, () => {
           this.getPorData(data,true)
       })
@@ -795,10 +801,13 @@ Page({
   },
 
   setWeight(e) {
-    this.setData({
-      weight: Number(e.detail.value),
-      showRemind5: false
-    })
+    console.log(e.detail.value,'-------')
+    if(e.detail.value!==''){
+      this.setData({
+        weight: Number(e.detail.value),
+        showRemind5: false
+      })
+    }
   },
 
   // 获取商品
@@ -858,7 +867,7 @@ Page({
         portOfLoading: this.data.portOfLoading,
         portOfDischarge: this.data.portOfDischarge
       }).then(res => {
-        console.log(1111,res.data,JSON.stringify(res.data))
+        // console.log(1111,res.data,JSON.stringify(res.data))
         if (res.data) {
           let commodityList = []
           res.data.forEach(i => {
@@ -922,7 +931,7 @@ Page({
             pricingGroups: [],
             commodityLoading: false
           })
-          console.log('tiem'.time)
+          console.log('tiem',time)
         }
       })
     }
@@ -958,9 +967,21 @@ Page({
           namedAccountLoading: false
         })
       }, () => {
-        setTimeout(() => {
+        let time = setTimeout(() => {
+          this.data.countName++
           this.getNamedAccountsSearch()
         }, 500);
+        console.log(1111111111111,this.data.countName)
+        if(this.data.countName>3){
+          clearInterval(time)
+          this.setData({
+            namedAccountList: [],
+            namedAccountCode: '',
+            namedAccountLabel: '',
+            namedAccountLoading: false
+          })
+          console.log('tiem',time)
+        }
       })
     })
   },

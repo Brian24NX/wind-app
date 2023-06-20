@@ -1939,11 +1939,12 @@ Page({
                             }
                         })
                     })
-                    console.log('quoteLineList', this.data.quoteLineList, JSON.stringify(this.data.quoteLineList))
+
                     wx.pageScrollTo({
                         duration: 500,
                         scrollTop: 0
                     })
+                    console.log('quoteLineList', this.data.quoteLineList)
                     this.data.quoteLineList.forEach((item, index) => {
                         if (item.quoteLines) {
                             // 收货地
@@ -1963,6 +1964,7 @@ Page({
                                 item.quoteLines[0].destination = ''
                             }
                         }
+                        console.log('----------',item,item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length)
                         if (item.offerId !== "No-Offer-Found" && item.quoteLines && item.quoteLines.length) {
                             let params = {}
                             if (!item.quoteLines[0].quoteLineId) {
@@ -2081,8 +2083,6 @@ Page({
                 resolve(pointBalance)
             })
         }
-
-
     },
 
     getQuotationSurchargeDetailFn(item, params, isFirst) {
