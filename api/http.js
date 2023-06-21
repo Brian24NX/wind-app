@@ -2,7 +2,7 @@ const config = require('../config/config')
 const languageUtil = require('../utils/languageUtils')
 const utils = require('../utils/util')
 // const {SHA256} = require('../utils/sha265')
-import SHA256 from '../utils/sha265.js'
+import SHA256 from '../utils/sha256.js'
 // 请求及拦截封装
 const request = ({
   url,
