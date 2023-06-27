@@ -134,7 +134,7 @@ Page({
     },
 
     onShow(){
-        console.log('-------back--------',wx.getStorageSync('back'))
+        console.log('-------back--------',wx.getStorageSync('back'),this.data.isFirst)
     },
     getSeaEarnPoints() {
         //this.data.oceanFreight为0不掉接口   rewardsEarned直接为0        data:{}返回值也为0
@@ -231,8 +231,8 @@ Page({
         })
         let addMoney = 0
         let totalChargeAmount = 0
-        console.log('oceanFreight', this.data.oceanFreight)
-        if (surchargeDetails.oceanFreight.isChecked) {
+        console.log('oceanFreight', this.data.oceanFreight,this.data.isFirst,surchargeDetails.oceanFreight.isChecked)
+        if (surchargeDetails.oceanFreight.isChecked||!this.data.isFirst) {
             totalChargeAmount = totalChargeAmount + surchargeDetails.oceanFreight.price.amount
         }
         if (surchargeDetails.freightCharges.isChecked) {
@@ -268,34 +268,26 @@ Page({
                 oceanFreight: this.data.oceanFreight * this.data.containers
             })
         }
-        // console.log(this.data.burnRewards, wx.getStorageSync('seaRewardData').pointsBalance)
         //注释掉的0002130568模拟数据
-        // if (wx.getStorageSync('partnerList')[0].code == '0002130568') {
-        //     this.setData({
-        //         burnRewards: 260,
-        //     })
-        // } else {
-
-        console.log(this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance,this.data.burnRewards,wx.getStorageSync('seaRewardData').pointsBalance)
+        console.log('******',this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance,this.data.burnRewards,wx.getStorageSync('seaRewardData').pointsBalance)
         // if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
         //     this.setData({
         //         burnRewards: this.data.finalPrice
         //     })
         // }
-        if(wx.getStorageSync('seaRewardData').pointsBalance>this.data.oceanFreight){
+        console.log('----',this.data.burnRewards,this.data.burnRewards!==0,wx.getStorageSync('seaRewardData').pointsBalance>this.data.oceanFreight)
+        if(wx.getStorageSync('seaRewardData').pointsBalance>this.data.moneyUsed&&this.data.burnRewards!==0){
+            console.log(2222,this.data.moneyUsed)
             this.setData({
-                burnRewards: this.data.oceanFreight
+                burnRewards: this.data.moneyUsed
             })
         }
-        if(!this.data.receiptHaulage&&wx.getStorageSync('partnerCode')==='0002130568'){
-            this.setData({
-                burnRewards: 0
-            })
-        }
+        // if(!this.data.receiptHaulage&&wx.getStorageSync('partnerCode')==='0002130568'){
+        //     this.setData({
+        //         burnRewards: 0
+        //     })
+        // }
         //不是主公司无法选择   burnRewards为0无法点击
-        console.log('partnerCode-burnRewards',this.data.partnerCode,wx.getStorageSync('partnerCode'),this.data.partnerCode.indexOf(wx.getStorageSync('partnerCode')))
-        console.log(this.data.partnerCode.indexOf(wx.getStorageSync('partnerCode'))===-1,this.data.burnRewards===0)
-        console.log(this.data.burnRewards===0||this.data.partnerCode.indexOf(wx.getStorageSync('partnerCode'))===-1)
         if(this.data.burnRewards===0||this.data.partnerCode.indexOf(wx.getStorageSync('partnerCode'))===-1){
             this.setData({
                 disabled: true
@@ -305,7 +297,6 @@ Page({
                 disabled: false
             })
         }
-        // }
         if (this.data.memberStatus === 'Active') {
             this.getSeaEarnPoints()
         }
@@ -385,8 +376,13 @@ Page({
         }
         if (this.data.isFirst) {
             this.setData({
-                isFirst: false
+                isFirst: false,
             })
+            if(!this.data.quotationDetail.surchargeDetails.oceanFreight.isChecked){
+                this.setData({
+                    finalPrice: this.data.finalPrice+this.data.oceanFreight,
+                })
+            }
             wx.pageScrollTo({
                 duration: 300,
                 scrollTop: 0
@@ -480,7 +476,6 @@ Page({
                     }
                 }
             }
-            console.log(this.data.oceanFreight)
             if(wx.getStorageSync('partnerList')[0].code == '0002130568'){
                 wx.navigateTo({
                     url: `/pages/Quotation/Result/index`,

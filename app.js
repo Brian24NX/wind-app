@@ -58,6 +58,12 @@ App({
         this.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
         this.globalData.windowHeight = res.windowHeight;
         this.globalData.windowWidth = res.windowWidth;
+        console.log(11111111,res.language,res.language.indexOf('en')>-1)
+        if(res.language.indexOf('en')>-1){
+          this.globalData.version='en'
+        }else{
+          this.globalData.version='zh'
+        }
         if (res.model.indexOf('iPhone X') > -1 || res.model.indexOf('iPhone 11') > -1 || res.model.indexOf('iPhone 12') > -1 || res.model.indexOf('iPhone 13') > -1) {
           this.globalData.isPhoneX = true;
         } else {

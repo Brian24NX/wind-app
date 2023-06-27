@@ -168,7 +168,6 @@ Page({
         if (this.data.needDirectFlag) {
             params.needDirectFlag = true
         }
-        console.log(11111,wx.getStorageSync('partnerList')[0].code === '0002130568')
         if (wx.getStorageSync('partnerList')[0].code === '0002130568') {
             console.log(1111)
             let quoteLineList = []
@@ -2048,7 +2047,7 @@ Page({
             })
         }, () => {
             this.data.count++
-            if (this.data.count <= 3) {
+            if (this.data.count <= 4) {
                 this.getPlacePoint(pointCode, item, type)
 
             }
@@ -2123,10 +2122,13 @@ Page({
                 })
             }
         }, () => {
-            this.data.porCount++
-            if (this.data.porCount <= 3) {
-                this.getQuotationSurchargeDetailFn(item, params, isFirst)
-            }
+                let time = setTimeout(() => {
+                    this.data.porCount++
+                    this.getQuotationSurchargeDetailFn(item, params, isFirst)
+                }, 500);
+                if(this.data.porCount>20) {
+                    clearInterval(time)
+                }
         })
     },
 
