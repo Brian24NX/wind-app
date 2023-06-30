@@ -101,7 +101,7 @@ Page({
         const currentPage = pages[pages.length - 2]
         const data = currentPage.data
         const languages = languageUtil.languageVersion().lang.page
-        console.log(data)
+        console.log('-----',data,data.shipperOwnedContainer)
         this.setData({
             receiptHaulage:data.receiptHaulage,
             languageContent: languages.qutationResult,
@@ -265,7 +265,8 @@ Page({
                 finalPrice: totalChargeAmount * this.data.containers,
                 addMoney: addMoney,
                 totalChargeAmount: totalChargeAmount,
-                oceanFreight: this.data.oceanFreight * this.data.containers
+                oceanFreight: this.data.oceanFreight * this.data.containers,
+                moneyUsed:this.data.moneyUsed * this.data.containers,
             })
         }
         //注释掉的0002130568模拟数据

@@ -70,7 +70,8 @@ Page({
       weight: data.weight,
       equipmentTypeName: data.equipmentTypeName,
       commodityName: data.commodityName,
-      partnerCode: data.partnerCode
+      partnerCode: data.partnerCode,
+      shipperOwnedContainer:data.shipperOwnedContainer
     })
     console.log(data)
     const res = data.nearPort

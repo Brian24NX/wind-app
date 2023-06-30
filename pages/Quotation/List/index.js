@@ -2089,9 +2089,11 @@ Page({
     },
 
     getQuotationSurchargeDetailFn(item, params, isFirst) {
-        getQuotationSurchargeDetail(params, wx.getStorageSync('ccgId')).then(async (res) => {
+        getQuotationSurchargeDetail(params, wx.getStorageSync( 'ccgId')).then(async (res) => {
             item.isLoading = false
             item.noOfContainersAvailable = res.data.allocationDetails ? res.data.allocationDetails.noOfContainersAvailable : 0
+
+            // console.log('----',res.data.allocationDetails,item.noOfContainersAvailable)
             const allocation = res.data.allocationDetails ? res.data.allocationDetails.allocation : true
             if (allocation) {
                 if (res.data && res.data.surchargeDetails) {
