@@ -495,18 +495,16 @@ Page({
                         console.log('SpotOn日志记录成功')
                     })
                     //不是usd 不调取这个接口
-                    console.log(1111111111111,wx.getStorageSync('seaRewardData').memberStatus === 'Active'&&this.data.rewardsEarned!==null&&wx.getStorageSync('partnerList')[0].code !== '0002130568')
                     if (wx.getStorageSync('seaRewardData').memberStatus === 'Active'&&this.data.rewardsEarned!==null) {
                         const data = {
                             effectiveDate: dayjs(new Date()).format('YYYY-MM-DD'),
-                            baseAmountUsd: this.data.moneyUsed *this.data.containers,
+                            baseAmountUsd: this.data.moneyUsed,
                             includeBurn: this.data.useRewards,
                             quotationReference: res.data,
                             mainPartnerCode: wx.getStorageSync('partnerList')[0].code,
                             decidingParties:this.data.partnerCode,
                             shippingCompany:this.data.shippingCompany
                         }
-                        console.log('data-----',data)
                         seaQuotationCreation(data).then(res => {
                             console.log(res)
                         })
