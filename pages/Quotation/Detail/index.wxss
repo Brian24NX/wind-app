@@ -847,16 +847,16 @@
 }
 
 .additionList .oneAddition {
-  padding: 30rpx;
+  padding: 20rpx;
   background-color: #ffffff;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   display: flex;
   align-items: center;
 }
 
 .additionList .oneAddition image {
-  width: 200rpx;
-  height: 200rpx;
+  width: 180rpx;
+  height: 180rpx;
   margin-right: 38rpx;
 }
 
@@ -867,7 +867,7 @@
 }
 
 .additionList .additionDetail .additionDetailTitle {
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-family: Antonio-Regular, Antonio;
   color: #071e5d;
 }
@@ -887,12 +887,13 @@
   justify-content: space-between;
   align-items: center;
   border-top: 1rpx solid #eeeeee;
-  padding-top: 20rpx;
-  margin-top: 20rpx;
+  padding-top: 10rpx;
+  margin-top: 10rpx;
 }
 
 .additionList .additionDetail .vasBottom .vasBottomLeft {
   display: flex;
+  flex: 1;
   align-items: center;
 }
 
@@ -909,6 +910,8 @@
   font-family: Antonio-Regular, Antonio;
   font-weight: 400;
   color: #071e5d;
+  display: flex;
+  flex: 1;
 }
 
 .additionList .additionDetail .vasBottom .vasBtn {

@@ -6,7 +6,6 @@ import {
     rewardDashboard,
     seaPartnerInfo
 } from '../../api/modules/dashboard'
-
 let allList = []
 const pageSize = 5
 Page({

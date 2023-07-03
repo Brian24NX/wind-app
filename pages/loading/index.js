@@ -1,13 +1,4 @@
-// pages/LoginCopy/index.js
-import {
-    bindPhone,
-    checkPhoneBind,
-    mockLogin,
-    seaPartnerInfo,
-    writeOperationLog,
-} from '../../api/modules/home'
-const utils = require('../../utils/util')
-const config = require('../../config/config')
+
 Page({
 
     /**

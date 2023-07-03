@@ -231,7 +231,7 @@ Page({
         })
         let addMoney = 0
         let totalChargeAmount = 0
-        console.log('oceanFreight', this.data.oceanFreight,this.data.isFirst,surchargeDetails.oceanFreight.isChecked)
+
         if (surchargeDetails.oceanFreight.isChecked||!this.data.isFirst) {
             totalChargeAmount = totalChargeAmount + surchargeDetails.oceanFreight.price.amount
         }
@@ -252,13 +252,14 @@ Page({
                 addMoney = addMoney + i.seletcedProduct.amount
             }
         })
-
+        console.log('oceanFreight', this.data.containers,this.data.burnRewards)
         if (this.data.useRewards) {
             this.setData({
                 finalPrice: totalChargeAmount * this.data.containers - this.data.burnRewards,
                 addMoney: addMoney,
                 totalChargeAmount: totalChargeAmount,
-                oceanFreight: this.data.oceanFreight * this.data.containers - this.data.burnRewards
+                oceanFreight: this.data.oceanFreight * this.data.containers - this.data.burnRewards,
+                moneyUsed:this.data.moneyUsed * this.data.containers,
             })
         } else {
             this.setData({
@@ -267,27 +268,24 @@ Page({
                 totalChargeAmount: totalChargeAmount,
                 oceanFreight: this.data.oceanFreight * this.data.containers,
                 moneyUsed:this.data.moneyUsed * this.data.containers,
+
             })
         }
         //注释掉的0002130568模拟数据
-        console.log('******',this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance,this.data.burnRewards,wx.getStorageSync('seaRewardData').pointsBalance)
-        // if (this.data.burnRewards < wx.getStorageSync('seaRewardData').pointsBalance) {
-        //     this.setData({
-        //         burnRewards: this.data.finalPrice
-        //     })
-        // }
-        console.log('----',this.data.burnRewards,this.data.burnRewards!==0,wx.getStorageSync('seaRewardData').pointsBalance>this.data.oceanFreight)
+        console.log('******',this.data.containers,this.data.moneyUsed,wx.getStorageSync('seaRewardData').pointsBalance)
+        console.log('----',this.data.burnRewards,this.data.burnRewards!==0,wx.getStorageSync('seaRewardData').pointsBalance>this.data.moneyUsed)
+        console.log(1111,wx.getStorageSync('seaRewardData').pointsBalance>this.data.moneyUsed&&this.data.burnRewards!==0)
         if(wx.getStorageSync('seaRewardData').pointsBalance>this.data.moneyUsed&&this.data.burnRewards!==0){
             console.log(2222,this.data.moneyUsed)
             this.setData({
                 burnRewards: this.data.moneyUsed
             })
         }
-        // if(!this.data.receiptHaulage&&wx.getStorageSync('partnerCode')==='0002130568'){
-        //     this.setData({
-        //         burnRewards: 0
-        //     })
-        // }
+        if(!this.data.receiptHaulage&&wx.getStorageSync('partnerCode')==='0002130568'){
+            this.setData({
+                burnRewards: 0
+            })
+        }
         //不是主公司无法选择   burnRewards为0无法点击
         if(this.data.burnRewards===0||this.data.partnerCode.indexOf(wx.getStorageSync('partnerCode'))===-1){
             this.setData({
