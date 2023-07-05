@@ -94,7 +94,7 @@ Page({
         this.setData({
             showPol: true
         })
-        if (wx.getStorageSync('partnerList')[0].code == '0002130568') {
+        if (wx.getStorageSync('partnerList')[0]?.code == '0002130568') {
             this.setData({
                 showPol: false,
                 pollist: [{"pointCode": "CNSHA", "point": "SHANGHAI;CN;CNSHA"}]
@@ -148,7 +148,7 @@ Page({
         this.setData({
             showPod: true
         })
-        if (wx.getStorageSync('partnerList')[0].code == '0002130568') {
+        if (wx.getStorageSync('partnerList')[0]?.code == '0002130568') {
             this.setData({
                 showPod: false,
                 podlist:  [{"pointCode":"HKHKG","point":"HONG KONG;SAR;CHINA"}]
